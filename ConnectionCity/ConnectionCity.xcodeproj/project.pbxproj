@@ -352,15 +352,15 @@
 			isa = PBXGroup;
 			children = (
 				CE0BA5ED209D5EBD004C3C33 /* BaseViewController.m */,
-				CE0BA5EE209D5EBD004C3C33 /* BaseTabBarController.h */,
-				CE0BA5EF209D5EBD004C3C33 /* BaseNavigationController.m */,
+				CE0BA5F5209D5EBD004C3C33 /* BaseViewController.h */,
 				CE0BA5F0209D5EBD004C3C33 /* BaseModel.m */,
 				CE0BA5F6209D5EBD004C3C33 /* YTBaseTableViewController.h */,
 				CE0BA5F1209D5EBD004C3C33 /* YTBaseTableViewController.m */,
 				CE0BA5F2209D5EBD004C3C33 /* BaseModel.h */,
 				CE0BA5F3209D5EBD004C3C33 /* BaseNavigationController.h */,
+				CE0BA5EF209D5EBD004C3C33 /* BaseNavigationController.m */,
+				CE0BA5EE209D5EBD004C3C33 /* BaseTabBarController.h */,
 				CE0BA5F4209D5EBD004C3C33 /* BaseTabBarController.m */,
-				CE0BA5F5209D5EBD004C3C33 /* BaseViewController.h */,
 			);
 			path = Base;
 			sourceTree = "<group>";

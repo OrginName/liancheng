@@ -39,9 +39,9 @@
     ProfileController *profileVC = [[ProfileController alloc]init];
 
     NSArray *arrVC = @[messageVC,addressVC,lifeVC,foundVC,profileVC];
-    NSArray *titleArr = @[@"消息",@"通讯录",@"生活馆",@"发现",@"我的"];
-    NSArray *picArr = @[@"ic_page_main_2",@"ic_page_data_2",@"ic_page_person_2",@"ic_page_person_2",@"ic_page_person_2"];
-    NSArray *picSelectArr = @[@"ic_page_main",@"ic_page_data",@"ic_page_person",@"ic_page_person",@"ic_page_person"];
+    NSArray *titleArr = @[@"首页",@"消息",@"通讯录",@"发现",@"我的"];
+    NSArray *picArr = @[@"index-nav",@"nav-new",@"nav-tel",@"nav-fond",@"nav-our"];
+    NSArray *picSelectArr = @[@"index-nav1",@"nav-new1",@"nav-tel1",@"nav-fond1",@"nav-our1"];
 
     for (int i = 0; i < 5; i++) {
         [self addChildViewController:arrVC[i] title:titleArr[i] image:picArr[i] selectedImage:picSelectArr[i]];
@@ -58,9 +58,9 @@
 }
 #pragma mark --调整item的文字颜色和字体大小
 -(void)changeItemTextColourAndFont {
-    [[UITabBarItem appearance]setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor],NSFontAttributeName:[UIFont systemFontOfSize:12.0]} forState:UIControlStateNormal];
+    [[UITabBarItem appearance]setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor hexColorWithString:@"#282828"],NSFontAttributeName:[UIFont systemFontOfSize:12.0]} forState:UIControlStateNormal];
 
-    [[UITabBarItem appearance]setTitleTextAttributes:@{NSForegroundColorAttributeName:kMainGreenColor,NSFontAttributeName:[UIFont systemFontOfSize:12.0]} forState:UIControlStateSelected];
+    [[UITabBarItem appearance]setTitleTextAttributes:@{NSForegroundColorAttributeName:YSColor(252, 144, 0),NSFontAttributeName:[UIFont systemFontOfSize:12.0]} forState:UIControlStateSelected];
 }
 #pragma mark - UITabBarControllerDelegate
 //禁止tab多次点击

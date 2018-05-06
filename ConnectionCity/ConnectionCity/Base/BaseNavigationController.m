@@ -32,6 +32,8 @@
 {
     if(self.childViewControllers.count > 0)
     {
+//        viewController.hidesBottomBarWhenPushed = YES ;
+//        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return_" highImage:@"return_"];
         viewController.hidesBottomBarWhenPushed = YES ;
 //        viewController.automaticallyAdjustsScrollViewInsets = NO ;
     }

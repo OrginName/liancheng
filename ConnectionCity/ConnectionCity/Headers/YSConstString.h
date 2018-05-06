@@ -25,7 +25,7 @@
 /** RGB颜色 */
 #define YSColor(r, g, b)    [UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:1.0]
 /** 通用背景色 */
-#define kCommonBGColor      YSColor(242, 244, 245)
+#define kCommonBGColor      YSColor(239, 239, 239)
 /** 主绿色调 */
 #define kMainGreenColor    YSColor(34, 217, 99)
 /** 当前屏幕 */
