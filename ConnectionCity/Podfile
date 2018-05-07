@@ -8,5 +8,6 @@ pod 'MJExtension'
 pod 'IQKeyboardManager'
 pod 'Masonry'
 pod 'AMap2DMap'
+pod 'FMDB'
 end
 

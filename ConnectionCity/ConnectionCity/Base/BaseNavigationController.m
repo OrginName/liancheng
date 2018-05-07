@@ -22,8 +22,10 @@
     //self.navigationBarHidden = YES;
     //设置导航标题颜色
     [self.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.navigationBar setBackgroundImage:
+     [UIImage imageNamed:@"button"] forBarMetrics:UIBarMetricsDefault];
     //设置导航返回按钮颜色
-    [[UINavigationBar appearance]setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
+    [[UINavigationBar appearance]setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
     //隐藏导航返回字体
     //[[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(NSIntegerMin, NSIntegerMin) forBarMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-200, 0) forBarMetrics:UIBarMetricsDefault];
@@ -32,14 +34,16 @@
 {
     if(self.childViewControllers.count > 0)
     {
-//        viewController.hidesBottomBarWhenPushed = YES ;
-//        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return_" highImage:@"return_"];
         viewController.hidesBottomBarWhenPushed = YES ;
+//        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem  itemWithTarget:self action:@selector(back) image:@"" title:@"返回" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
 //        viewController.automaticallyAdjustsScrollViewInsets = NO ;
     }
     [super pushViewController:viewController animated:YES];
 }
-
+ 
+-(void)back{
+    
+}
 //设置状态栏颜色
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;

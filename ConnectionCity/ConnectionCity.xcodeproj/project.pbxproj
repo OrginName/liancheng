@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		729BA6AF209FEB9B009713FD /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6AD209FEB9A009713FD /* UIButton+ImageTitleSpacing.m */; };
+		729BA6C820A01E7F009713FD /* JFAreaDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6B420A01E7F009713FD /* JFAreaDataManager.m */; };
+		729BA6C920A01E7F009713FD /* shop_area.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 729BA6B620A01E7F009713FD /* shop_area.sqlite */; };
+		729BA6CB20A01E7F009713FD /* JFCityCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6BA20A01E7F009713FD /* JFCityCollectionFlowLayout.m */; };
+		729BA6CC20A01E7F009713FD /* JFCityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6BC20A01E7F009713FD /* JFCityCollectionViewCell.m */; };
+		729BA6CD20A01E7F009713FD /* JFCityHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6BE20A01E7F009713FD /* JFCityHeaderView.m */; };
+		729BA6CE20A01E7F009713FD /* JFCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6C020A01E7F009713FD /* JFCityTableViewCell.m */; };
+		729BA6CF20A01E7F009713FD /* JFCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6C220A01E7F009713FD /* JFCityViewController.m */; };
+		729BA6D020A01E7F009713FD /* JFSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6C420A01E7F009713FD /* JFSearchView.m */; };
+		729BA6D120A01E7F009713FD /* JFLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6C720A01E7F009713FD /* JFLocation.m */; };
+		729BA6D420A02311009713FD /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6D320A02311009713FD /* TestViewController.m */; };
+		729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6D620A029AB009713FD /* UIImage+Extension.m */; };
 		8817A720716E5B61344D714A /* libPods-ConnectionCity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */; };
 		CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA568209D5004004C3C33 /* AppDelegate.m */; };
 		CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0BA570209D5004004C3C33 /* Assets.xcassets */; };
@@ -83,6 +95,29 @@
 
 /* Begin PBXFileReference section */
 		2CE0B7079AD6747ED9FE53B2 /* Pods-ConnectionCity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectionCity.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectionCity/Pods-ConnectionCity.release.xcconfig"; sourceTree = "<group>"; };
+		729BA6AD209FEB9A009713FD /* UIButton+ImageTitleSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ImageTitleSpacing.m"; sourceTree = "<group>"; };
+		729BA6AE209FEB9A009713FD /* UIButton+ImageTitleSpacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ImageTitleSpacing.h"; sourceTree = "<group>"; };
+		729BA6B320A01E7F009713FD /* JFAreaDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAreaDataManager.h; sourceTree = "<group>"; };
+		729BA6B420A01E7F009713FD /* JFAreaDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAreaDataManager.m; sourceTree = "<group>"; };
+		729BA6B620A01E7F009713FD /* shop_area.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = shop_area.sqlite; sourceTree = "<group>"; };
+		729BA6B920A01E7F009713FD /* JFCityCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityCollectionFlowLayout.h; sourceTree = "<group>"; };
+		729BA6BA20A01E7F009713FD /* JFCityCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityCollectionFlowLayout.m; sourceTree = "<group>"; };
+		729BA6BB20A01E7F009713FD /* JFCityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityCollectionViewCell.h; sourceTree = "<group>"; };
+		729BA6BC20A01E7F009713FD /* JFCityCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityCollectionViewCell.m; sourceTree = "<group>"; };
+		729BA6BD20A01E7F009713FD /* JFCityHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityHeaderView.h; sourceTree = "<group>"; };
+		729BA6BE20A01E7F009713FD /* JFCityHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityHeaderView.m; sourceTree = "<group>"; };
+		729BA6BF20A01E7F009713FD /* JFCityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityTableViewCell.h; sourceTree = "<group>"; };
+		729BA6C020A01E7F009713FD /* JFCityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityTableViewCell.m; sourceTree = "<group>"; };
+		729BA6C120A01E7F009713FD /* JFCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityViewController.h; sourceTree = "<group>"; };
+		729BA6C220A01E7F009713FD /* JFCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityViewController.m; sourceTree = "<group>"; };
+		729BA6C320A01E7F009713FD /* JFSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSearchView.h; sourceTree = "<group>"; };
+		729BA6C420A01E7F009713FD /* JFSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSearchView.m; sourceTree = "<group>"; };
+		729BA6C620A01E7F009713FD /* JFLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLocation.h; sourceTree = "<group>"; };
+		729BA6C720A01E7F009713FD /* JFLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLocation.m; sourceTree = "<group>"; };
+		729BA6D220A02311009713FD /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		729BA6D320A02311009713FD /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		729BA6D520A029AA009713FD /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		729BA6D620A029AB009713FD /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		9E9EF5E7637D778FC51741D8 /* Pods-ConnectionCity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectionCity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectionCity/Pods-ConnectionCity.debug.xcconfig"; sourceTree = "<group>"; };
 		C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConnectionCity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0BA564209D5004004C3C33 /* ConnectionCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectionCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +254,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		729BA6B120A01E7F009713FD /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				729BA6B220A01E7F009713FD /* AreaDataManager */,
+				729BA6B520A01E7F009713FD /* AreaDB */,
+				729BA6B920A01E7F009713FD /* JFCityCollectionFlowLayout.h */,
+				729BA6BA20A01E7F009713FD /* JFCityCollectionFlowLayout.m */,
+				729BA6BB20A01E7F009713FD /* JFCityCollectionViewCell.h */,
+				729BA6BC20A01E7F009713FD /* JFCityCollectionViewCell.m */,
+				729BA6BD20A01E7F009713FD /* JFCityHeaderView.h */,
+				729BA6BE20A01E7F009713FD /* JFCityHeaderView.m */,
+				729BA6BF20A01E7F009713FD /* JFCityTableViewCell.h */,
+				729BA6C020A01E7F009713FD /* JFCityTableViewCell.m */,
+				729BA6C120A01E7F009713FD /* JFCityViewController.h */,
+				729BA6C220A01E7F009713FD /* JFCityViewController.m */,
+				729BA6C320A01E7F009713FD /* JFSearchView.h */,
+				729BA6C420A01E7F009713FD /* JFSearchView.m */,
+				729BA6C520A01E7F009713FD /* Location */,
+			);
+			path = Third;
+			sourceTree = "<group>";
+		};
+		729BA6B220A01E7F009713FD /* AreaDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				729BA6B320A01E7F009713FD /* JFAreaDataManager.h */,
+				729BA6B420A01E7F009713FD /* JFAreaDataManager.m */,
+			);
+			path = AreaDataManager;
+			sourceTree = "<group>";
+		};
+		729BA6B520A01E7F009713FD /* AreaDB */ = {
+			isa = PBXGroup;
+			children = (
+				729BA6B620A01E7F009713FD /* shop_area.sqlite */,
+			);
+			path = AreaDB;
+			sourceTree = "<group>";
+		};
+		729BA6C520A01E7F009713FD /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				729BA6C620A01E7F009713FD /* JFLocation.h */,
+				729BA6C720A01E7F009713FD /* JFLocation.m */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		8B7BE3068BAA237F55FD6962 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +340,7 @@
 				CE0BA5FC209D5EFF004C3C33 /* Headers */,
 				CE0BA5EC209D5EBD004C3C33 /* Base */,
 				CE0BA5BE209D5E9B004C3C33 /* Utils */,
+				729BA6B120A01E7F009713FD /* Third */,
 				CE0BA599209D5E6A004C3C33 /* Category */,
 			);
 			path = ConnectionCity;
@@ -283,6 +367,10 @@
 		CE0BA599209D5E6A004C3C33 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				729BA6D520A029AA009713FD /* UIImage+Extension.h */,
+				729BA6D620A029AB009713FD /* UIImage+Extension.m */,
+				729BA6AE209FEB9A009713FD /* UIButton+ImageTitleSpacing.h */,
+				729BA6AD209FEB9A009713FD /* UIButton+ImageTitleSpacing.m */,
 				CE0BA59A209D5E6A004C3C33 /* UIAlertView+Blocks.h */,
 				CE0BA59B209D5E6A004C3C33 /* UIColor+Extension.h */,
 				CE0BA59C209D5E6A004C3C33 /* NSString+MD5.h */,
@@ -407,6 +495,8 @@
 				CE0BA604209D60C3004C3C33 /* MessageController.h */,
 				CE0BA605209D60C3004C3C33 /* MessageController.m */,
 				CE0BA606209D60C3004C3C33 /* MessageController.xib */,
+				729BA6D220A02311009713FD /* TestViewController.h */,
+				729BA6D320A02311009713FD /* TestViewController.m */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -615,6 +705,7 @@
 				CE0BA633209D68A3004C3C33 /* ChangePasswordController.xib in Resources */,
 				CE0BA621209D61C0004C3C33 /* ProfileController.xib in Resources */,
 				CE0BA615209D6160004C3C33 /* LifeHallController.xib in Resources */,
+				729BA6C920A01E7F009713FD /* shop_area.sqlite in Resources */,
 				CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */,
 				CE0BA60F209D6126004C3C33 /* AddressBookController.xib in Resources */,
 				CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */,
@@ -690,7 +781,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -709,6 +800,7 @@
 				CE0BA614209D6160004C3C33 /* LifeHallController.m in Sources */,
 				CE0BA634209D68A3004C3C33 /* YSRegisterController.m in Sources */,
 				CE0BA5BB209D5E6B004C3C33 /* UIBarButtonItem+Extension.m in Sources */,
+				729BA6CB20A01E7F009713FD /* JFCityCollectionFlowLayout.m in Sources */,
 				CE0BA5E7209D5E9B004C3C33 /* YSTools.m in Sources */,
 				CE0BA5E2209D5E9B004C3C33 /* SRDownloadModel.m in Sources */,
 				CE0BA5E5209D5E9B004C3C33 /* YSNetworkTool.m in Sources */,
@@ -716,16 +808,23 @@
 				CE0BA5B6209D5E6B004C3C33 /* NSObject+YTGetObject.m in Sources */,
 				CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */,
 				CE0BA5B3209D5E6B004C3C33 /* UIView+YSCategory.m in Sources */,
+				729BA6CD20A01E7F009713FD /* JFCityHeaderView.m in Sources */,
 				CE0BA5B4209D5E6B004C3C33 /* UIFont+YTInchFit.m in Sources */,
 				CE0BA577209D5004004C3C33 /* main.m in Sources */,
+				729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
 				CE0BA60E209D6126004C3C33 /* AddressBookController.m in Sources */,
+				729BA6D020A01E7F009713FD /* JFSearchView.m in Sources */,
 				CE0BA620209D61C0004C3C33 /* ProfileController.m in Sources */,
+				729BA6D420A02311009713FD /* TestViewController.m in Sources */,
 				CE0BA5DF209D5E9B004C3C33 /* TakePhoto.m in Sources */,
+				729BA6AF209FEB9B009713FD /* UIButton+ImageTitleSpacing.m in Sources */,
+				729BA6D120A01E7F009713FD /* JFLocation.m in Sources */,
 				CE0BA5DE209D5E9B004C3C33 /* YTDataPacket.m in Sources */,
 				CE0BA5EB209D5E9B004C3C33 /* SRDownloadManager.m in Sources */,
 				CE0BA5F9209D5EBE004C3C33 /* BaseModel.m in Sources */,
 				CE0BA5E1209D5E9B004C3C33 /* YSAccountTool.m in Sources */,
+				729BA6CF20A01E7F009713FD /* JFCityViewController.m in Sources */,
 				CE0BA5B8209D5E6B004C3C33 /* UIColor+Extension.m in Sources */,
 				CE0BA5BA209D5E6B004C3C33 /* NSDate+Extend.m in Sources */,
 				CE0BA636209D68A3004C3C33 /* YSLoginController.m in Sources */,
@@ -735,11 +834,14 @@
 				CE0BA5FA209D5EBE004C3C33 /* YTBaseTableViewController.m in Sources */,
 				CE0BA61A209D6197004C3C33 /* FoundController.m in Sources */,
 				CE0BA5FB209D5EBE004C3C33 /* BaseTabBarController.m in Sources */,
+				729BA6CC20A01E7F009713FD /* JFCityCollectionViewCell.m in Sources */,
 				CE0BA607209D60C3004C3C33 /* MessageController.m in Sources */,
 				CE0BA5E8209D5E9B004C3C33 /* GlobalManager.m in Sources */,
 				CE0BA5B9209D5E6B004C3C33 /* UIAlertView+Blocks.m in Sources */,
 				CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */,
+				729BA6C820A01E7F009713FD /* JFAreaDataManager.m in Sources */,
 				CE0BA5E4209D5E9B004C3C33 /* MyDatePicker.m in Sources */,
+				729BA6CE20A01E7F009713FD /* JFCityTableViewCell.m in Sources */,
 				CE0BA5E0209D5E9B004C3C33 /* DDFileReader.m in Sources */,
 				CE0BA5EA209D5E9B004C3C33 /* YSBlutoothTool.m in Sources */,
 				CE0BA5B7209D5E6B004C3C33 /* NSData+hexString.m in Sources */,

@@ -28,6 +28,8 @@
 #define kCommonBGColor      YSColor(239, 239, 239)
 /** 主绿色调 */
 #define kMainGreenColor    YSColor(34, 217, 99)
+//项目字体颜色
+#define KFontColor  [UIColor hexColorWithString:@"#282828"]
 /** 当前屏幕 */
 #define kScreen            [UIScreen mainScreen].bounds
 /** 当前屏幕宽度 */

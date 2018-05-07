@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQE-3z-oMT">
-                    <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                     <subviews>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQO-qh-jzp">
                             <rect key="frame" x="35.5" y="0.0" width="60" height="50"/>
@@ -105,7 +105,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="KQE-3z-oMT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="hOe-2H-Va6"/>
+                <constraint firstItem="KQE-3z-oMT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hOe-2H-Va6"/>
                 <constraint firstItem="KQE-3z-oMT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kpj-E1-NYz"/>
                 <constraint firstAttribute="trailing" secondItem="KQE-3z-oMT" secondAttribute="trailing" id="opJ-pP-ajz"/>
             </constraints>
