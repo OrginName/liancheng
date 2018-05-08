@@ -17,7 +17,6 @@
 		729BA6CF20A01E7F009713FD /* JFCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6C220A01E7F009713FD /* JFCityViewController.m */; };
 		729BA6D020A01E7F009713FD /* JFSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6C420A01E7F009713FD /* JFSearchView.m */; };
 		729BA6D120A01E7F009713FD /* JFLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6C720A01E7F009713FD /* JFLocation.m */; };
-		729BA6D420A02311009713FD /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6D320A02311009713FD /* TestViewController.m */; };
 		729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6D620A029AB009713FD /* UIImage+Extension.m */; };
 		8817A720716E5B61344D714A /* libPods-ConnectionCity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */; };
 		CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA568209D5004004C3C33 /* AppDelegate.m */; };
