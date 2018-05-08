@@ -30,7 +30,7 @@
 -(void)MessageClick{
     
 }
-//定位按钮点击
+//城市选择按钮点击
 -(void)AddressClick:(UIButton *)btn{
     JFCityViewController * jf= [JFCityViewController new];
     jf.delegate = self;
@@ -65,6 +65,9 @@
 
     self.navigationItem.titleView = nav_view;
 
+}
+-(void)initMap{
+    
 }
 //首页三个按钮点击选中方法
 - (IBAction)btn_selected:(UIButton *)sender {

@@ -114,10 +114,9 @@
 		729BA6C420A01E7F009713FD /* JFSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSearchView.m; sourceTree = "<group>"; };
 		729BA6C620A01E7F009713FD /* JFLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLocation.h; sourceTree = "<group>"; };
 		729BA6C720A01E7F009713FD /* JFLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLocation.m; sourceTree = "<group>"; };
-		729BA6D220A02311009713FD /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		729BA6D320A02311009713FD /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		729BA6D520A029AA009713FD /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		729BA6D620A029AB009713FD /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
+		729BA6D820A04BE7009713FD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9E9EF5E7637D778FC51741D8 /* Pods-ConnectionCity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectionCity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectionCity/Pods-ConnectionCity.debug.xcconfig"; sourceTree = "<group>"; };
 		C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConnectionCity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0BA564209D5004004C3C33 /* ConnectionCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectionCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,6 +232,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				729BA6D920A04BE7009713FD /* MapKit.framework in Frameworks */,
 				8817A720716E5B61344D714A /* libPods-ConnectionCity.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +305,7 @@
 		8B7BE3068BAA237F55FD6962 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				729BA6D820A04BE7009713FD /* MapKit.framework */,
 				C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */,
 			);
 			name = Frameworks;
@@ -495,8 +496,6 @@
 				CE0BA604209D60C3004C3C33 /* MessageController.h */,
 				CE0BA605209D60C3004C3C33 /* MessageController.m */,
 				CE0BA606209D60C3004C3C33 /* MessageController.xib */,
-				729BA6D220A02311009713FD /* TestViewController.h */,
-				729BA6D320A02311009713FD /* TestViewController.m */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -663,6 +662,11 @@
 					CE0BA563209D5004004C3C33 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					CE0BA57B209D5004004C3C33 = {
 						CreatedOnToolsVersion = 9.2;
@@ -816,7 +820,6 @@
 				CE0BA60E209D6126004C3C33 /* AddressBookController.m in Sources */,
 				729BA6D020A01E7F009713FD /* JFSearchView.m in Sources */,
 				CE0BA620209D61C0004C3C33 /* ProfileController.m in Sources */,
-				729BA6D420A02311009713FD /* TestViewController.m in Sources */,
 				CE0BA5DF209D5E9B004C3C33 /* TakePhoto.m in Sources */,
 				729BA6AF209FEB9B009713FD /* UIButton+ImageTitleSpacing.m in Sources */,
 				729BA6D120A01E7F009713FD /* JFLocation.m in Sources */,
