@@ -23,6 +23,8 @@
 		8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A22A20A1B66B00F0740D /* CustomAnnotationView.m */; };
 		8D24A22E20A1B9BA00F0740D /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A22C20A1B9BA00F0740D /* CustomCalloutView.m */; };
 		8D24A23220A1CB8200F0740D /* FirstTanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A23120A1CB8200F0740D /* FirstTanView.m */; };
+		8D24A23520A1D5A700F0740D /* RefineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A23420A1D5A700F0740D /* RefineView.m */; };
+		8D24A23720A1D5BF00F0740D /* FirstTanView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D24A23620A1D5BF00F0740D /* FirstTanView.xib */; };
 		CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA568209D5004004C3C33 /* AppDelegate.m */; };
 		CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0BA570209D5004004C3C33 /* Assets.xcassets */; };
 		CE0BA577209D5004004C3C33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA576209D5004004C3C33 /* main.m */; };
@@ -126,6 +128,9 @@
 		8D24A22D20A1B9BA00F0740D /* CustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutView.h; sourceTree = "<group>"; };
 		8D24A23020A1CB8200F0740D /* FirstTanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstTanView.h; sourceTree = "<group>"; };
 		8D24A23120A1CB8200F0740D /* FirstTanView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstTanView.m; sourceTree = "<group>"; };
+		8D24A23320A1D5A600F0740D /* RefineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefineView.h; sourceTree = "<group>"; };
+		8D24A23420A1D5A700F0740D /* RefineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefineView.m; sourceTree = "<group>"; };
+		8D24A23620A1D5BF00F0740D /* FirstTanView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstTanView.xib; sourceTree = "<group>"; };
 		9E9EF5E7637D778FC51741D8 /* Pods-ConnectionCity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectionCity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectionCity/Pods-ConnectionCity.debug.xcconfig"; sourceTree = "<group>"; };
 		C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConnectionCity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0BA564209D5004004C3C33 /* ConnectionCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectionCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -336,8 +341,11 @@
 		8D24A22F20A1CB6000F0740D /* RefineThing */ = {
 			isa = PBXGroup;
 			children = (
+				8D24A23320A1D5A600F0740D /* RefineView.h */,
+				8D24A23420A1D5A700F0740D /* RefineView.m */,
 				8D24A23020A1CB8200F0740D /* FirstTanView.h */,
 				8D24A23120A1CB8200F0740D /* FirstTanView.m */,
+				8D24A23620A1D5BF00F0740D /* FirstTanView.xib */,
 			);
 			path = RefineThing;
 			sourceTree = "<group>";
@@ -743,6 +751,7 @@
 				CE0BA633209D68A3004C3C33 /* ChangePasswordController.xib in Resources */,
 				CE0BA621209D61C0004C3C33 /* ProfileController.xib in Resources */,
 				CE0BA615209D6160004C3C33 /* LifeHallController.xib in Resources */,
+				8D24A23720A1D5BF00F0740D /* FirstTanView.xib in Resources */,
 				729BA6C920A01E7F009713FD /* shop_area.sqlite in Resources */,
 				CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */,
 				CE0BA60F209D6126004C3C33 /* AddressBookController.xib in Resources */,
@@ -841,6 +850,7 @@
 				729BA6CB20A01E7F009713FD /* JFCityCollectionFlowLayout.m in Sources */,
 				CE0BA5E7209D5E9B004C3C33 /* YSTools.m in Sources */,
 				CE0BA5E2209D5E9B004C3C33 /* SRDownloadModel.m in Sources */,
+				8D24A23520A1D5A700F0740D /* RefineView.m in Sources */,
 				CE0BA5E5209D5E9B004C3C33 /* YSNetworkTool.m in Sources */,
 				CE0BA5BC209D5E6B004C3C33 /* MBProgressHUD+Extension.m in Sources */,
 				CE0BA5B6209D5E6B004C3C33 /* NSObject+YTGetObject.m in Sources */,
