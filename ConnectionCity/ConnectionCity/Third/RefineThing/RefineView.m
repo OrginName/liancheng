@@ -7,8 +7,8 @@
 //
 
 #import "RefineView.h"
-#import "UIView+Extension.h"
-#import "Header.h"
+#import "UIView+YSCategory.h"
+#import "YSConstString.h"
 
 #define TANWIDTH CGRectGetHeight(self.DateView.frame)
 #define TANHIDTH CGRectGetWidth(self.DateView.frame)
@@ -23,7 +23,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.blackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_W, SCREEN_H)];
+        self.blackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
         self.blackView.backgroundColor = [UIColor blackColor];
         self.blackView.alpha = 0.3;
         [self addSubview:self.blackView];
@@ -51,7 +51,7 @@
     self.blackView.userInteractionEnabled = YES;
     [self.blackView addGestureRecognizer:tap];
     [UIView animateWithDuration:0.5 animations:^{
-        self.bgView.Y = SCREENHEIGHT - TANWIDTH;
+        self.bgView.y = SCREENHEIGHT - TANWIDTH;
         
     }];
     [window addSubview:self];
@@ -70,7 +70,7 @@
     self.blackView.userInteractionEnabled = YES;
     [self.blackView addGestureRecognizer:tap];
     [UIView animateWithDuration:0.3 animations:^{
-        self.bgView.X= SCREENWIDTH-TANHIDTH;
+        self.bgView.x= SCREENWIDTH-TANHIDTH;
         
     }];
     [window addSubview:self];
@@ -85,10 +85,10 @@
 - (void)alertSelectViewClose {
     self.isOpen = NO;
     [UIView animateWithDuration:0.3 animations:^{
-        if (self.bgView.X!=0) {
-            self.bgView.X = SCREENWIDTH;
+        if (self.bgView.x!=0) {
+            self.bgView.x = SCREENWIDTH;
         }else{
-            self.bgView.Y = SCREENHEIGHT;
+            self.bgView.y = SCREENHEIGHT;
         }
         self.blackView.alpha = 0;
     } completion:^(BOOL finished) {
