@@ -71,7 +71,8 @@
 #define kNotifyCharacteristicUUID @"FFE1"
 /** 写特征的UUID */
 #define kWriteCharacteristicUUID  @"FFE1"
-
+/** 高德地图的key */
+#define KGDMapKey @"f007358f38f674546afa00a4b16940ae"
 /** 请求超时时间 */
 static double  const TIME_OUT_INTERVAL = 10;
 /** 获取到数据时回调更新特征的value的时候会调用 */

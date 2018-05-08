@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="btn_findPeople" destination="DQO-qh-jzp" id="VwR-DE-Qb3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view_Map" destination="UkB-Vd-NUg" id="MVf-r5-Qt4"/>
                 <outlet property="view_line" destination="PJ4-Xq-QQc" id="bf3-kC-BD9"/>
             </connections>
         </placeholder>
@@ -102,12 +103,20 @@
                         <constraint firstItem="DQO-qh-jzp" firstAttribute="bottom" secondItem="y05-EY-hKT" secondAttribute="bottom" id="yhP-99-dnI"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UkB-Vd-NUg">
+                    <rect key="frame" x="0.0" y="50" width="375" height="573"/>
+                    <color key="backgroundColor" red="1" green="0.53888495749999998" blue="0.25019151810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="UkB-Vd-NUg" secondAttribute="bottom" constant="44" id="0gg-4G-Rc4"/>
+                <constraint firstItem="UkB-Vd-NUg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="U1F-dq-baK"/>
+                <constraint firstItem="UkB-Vd-NUg" firstAttribute="top" secondItem="KQE-3z-oMT" secondAttribute="bottom" id="VxF-8V-5ks"/>
                 <constraint firstItem="KQE-3z-oMT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hOe-2H-Va6"/>
                 <constraint firstItem="KQE-3z-oMT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kpj-E1-NYz"/>
                 <constraint firstAttribute="trailing" secondItem="KQE-3z-oMT" secondAttribute="trailing" id="opJ-pP-ajz"/>
+                <constraint firstAttribute="trailing" secondItem="UkB-Vd-NUg" secondAttribute="trailing" id="yyA-VL-nsw"/>
             </constraints>
             <point key="canvasLocation" x="32.5" y="53.5"/>
         </view>

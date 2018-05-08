@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-
+#import <MAMapKit/MAMapKit.h>
+#import <AMapFoundationKit/AMapFoundationKit.h>
 @interface AppDelegate ()
 
 @end
@@ -27,7 +28,8 @@
     
     //通知键盘弹出状态
     [self notify_addObserver];
-
+    [[AMapServices sharedServices] setEnableHTTPS:YES];
+    [AMapServices sharedServices].apiKey = KGDMapKey;
     // Override point for customization after application launch.
     return YES;
 }

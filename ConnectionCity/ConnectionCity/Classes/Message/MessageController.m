@@ -8,9 +8,12 @@
 
 #import "MessageController.h"
 #import "JFCityViewController.h"
+#import <MAMapKit/MAMapKit.h>
+#import <AMapFoundationKit/AMapFoundationKit.h>
 @interface MessageController ()<JFCityViewControllerDelegate>
 @property (strong,nonatomic)UIButton * tmpBtn;
 @property (weak, nonatomic) IBOutlet UIView *view_line;
+@property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_findPeople;
 
 @end
@@ -64,7 +67,18 @@
     [nav_view addSubview:btn];
 
     self.navigationItem.titleView = nav_view;
-
+    
+    
+    ///初始化地图
+    MAMapView *_mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
+    ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
+    _mapView.showsUserLocation = YES;
+    _mapView.userTrackingMode = MAUserTrackingModeFollow;
+    _mapView.logoCenter = CGPointMake(CGRectGetWidth(self.view.bounds)-55, 450);
+    _mapView.showsScale= NO;  //设置成NO表示不显示比例尺；YES表示显示比例尺
+    [_mapView setZoomLevel:17.5 animated:YES];
+    ///把地图添加至view
+    [self.view_Map addSubview:_mapView];
 }
 //首页三个按钮点击选中方法
 - (IBAction)btn_selected:(UIButton *)sender {
