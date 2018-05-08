@@ -19,6 +19,10 @@
 		729BA6D120A01E7F009713FD /* JFLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6C720A01E7F009713FD /* JFLocation.m */; };
 		729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6D620A029AB009713FD /* UIImage+Extension.m */; };
 		8817A720716E5B61344D714A /* libPods-ConnectionCity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */; };
+		8D24A22720A19C8F00F0740D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729BA6D820A04BE7009713FD /* MapKit.framework */; };
+		8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A22A20A1B66B00F0740D /* CustomAnnotationView.m */; };
+		8D24A22E20A1B9BA00F0740D /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A22C20A1B9BA00F0740D /* CustomCalloutView.m */; };
+		8D24A23220A1CB8200F0740D /* FirstTanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A23120A1CB8200F0740D /* FirstTanView.m */; };
 		CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA568209D5004004C3C33 /* AppDelegate.m */; };
 		CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0BA570209D5004004C3C33 /* Assets.xcassets */; };
 		CE0BA577209D5004004C3C33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA576209D5004004C3C33 /* main.m */; };
@@ -116,6 +120,12 @@
 		729BA6D520A029AA009713FD /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		729BA6D620A029AB009713FD /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		729BA6D820A04BE7009713FD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8D24A22920A1B66B00F0740D /* CustomAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
+		8D24A22A20A1B66B00F0740D /* CustomAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
+		8D24A22C20A1B9BA00F0740D /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutView.m; sourceTree = "<group>"; };
+		8D24A22D20A1B9BA00F0740D /* CustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutView.h; sourceTree = "<group>"; };
+		8D24A23020A1CB8200F0740D /* FirstTanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstTanView.h; sourceTree = "<group>"; };
+		8D24A23120A1CB8200F0740D /* FirstTanView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstTanView.m; sourceTree = "<group>"; };
 		9E9EF5E7637D778FC51741D8 /* Pods-ConnectionCity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectionCity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectionCity/Pods-ConnectionCity.debug.xcconfig"; sourceTree = "<group>"; };
 		C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConnectionCity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0BA564209D5004004C3C33 /* ConnectionCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectionCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,7 +241,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				729BA6D920A04BE7009713FD /* MapKit.framework in Frameworks */,
+				8D24A22720A19C8F00F0740D /* MapKit.framework in Frameworks */,
 				8817A720716E5B61344D714A /* libPods-ConnectionCity.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,6 +266,8 @@
 		729BA6B120A01E7F009713FD /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				8D24A22F20A1CB6000F0740D /* RefineThing */,
+				8D24A22820A1B64400F0740D /* map */,
 				729BA6B220A01E7F009713FD /* AreaDataManager */,
 				729BA6B520A01E7F009713FD /* AreaDB */,
 				729BA6B920A01E7F009713FD /* JFCityCollectionFlowLayout.h */,
@@ -308,6 +320,26 @@
 				C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8D24A22820A1B64400F0740D /* map */ = {
+			isa = PBXGroup;
+			children = (
+				8D24A22D20A1B9BA00F0740D /* CustomCalloutView.h */,
+				8D24A22C20A1B9BA00F0740D /* CustomCalloutView.m */,
+				8D24A22920A1B66B00F0740D /* CustomAnnotationView.h */,
+				8D24A22A20A1B66B00F0740D /* CustomAnnotationView.m */,
+			);
+			path = map;
+			sourceTree = "<group>";
+		};
+		8D24A22F20A1CB6000F0740D /* RefineThing */ = {
+			isa = PBXGroup;
+			children = (
+				8D24A23020A1CB8200F0740D /* FirstTanView.h */,
+				8D24A23120A1CB8200F0740D /* FirstTanView.m */,
+			);
+			path = RefineThing;
 			sourceTree = "<group>";
 		};
 		CE0BA55B209D5004004C3C33 = {
@@ -662,8 +694,11 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
-							com.apple.Maps.iOS = {
+							com.apple.BackgroundModes = {
 								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
 							};
 						};
 					};
@@ -812,6 +847,7 @@
 				CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */,
 				CE0BA5B3209D5E6B004C3C33 /* UIView+YSCategory.m in Sources */,
 				729BA6CD20A01E7F009713FD /* JFCityHeaderView.m in Sources */,
+				8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */,
 				CE0BA5B4209D5E6B004C3C33 /* UIFont+YTInchFit.m in Sources */,
 				CE0BA577209D5004004C3C33 /* main.m in Sources */,
 				729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */,
@@ -832,6 +868,7 @@
 				CE0BA636209D68A3004C3C33 /* YSLoginController.m in Sources */,
 				CE0BA5E9209D5E9B004C3C33 /* YSRefreshTool.m in Sources */,
 				CE0BA5B2209D5E6B004C3C33 /* NSData+DDAdditions.m in Sources */,
+				8D24A23220A1CB8200F0740D /* FirstTanView.m in Sources */,
 				CE0BA5B5209D5E6B004C3C33 /* UIViewController+BackButtonHandler.m in Sources */,
 				CE0BA5FA209D5EBE004C3C33 /* YTBaseTableViewController.m in Sources */,
 				CE0BA61A209D6197004C3C33 /* FoundController.m in Sources */,
@@ -839,6 +876,7 @@
 				729BA6CC20A01E7F009713FD /* JFCityCollectionViewCell.m in Sources */,
 				CE0BA607209D60C3004C3C33 /* MessageController.m in Sources */,
 				CE0BA5E8209D5E9B004C3C33 /* GlobalManager.m in Sources */,
+				8D24A22E20A1B9BA00F0740D /* CustomCalloutView.m in Sources */,
 				CE0BA5B9209D5E6B004C3C33 /* UIAlertView+Blocks.m in Sources */,
 				CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */,
 				729BA6C820A01E7F009713FD /* JFAreaDataManager.m in Sources */,

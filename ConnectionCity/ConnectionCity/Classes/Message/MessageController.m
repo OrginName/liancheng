@@ -10,11 +10,25 @@
 #import "JFCityViewController.h"
 #import <MAMapKit/MAMapKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
-@interface MessageController ()<JFCityViewControllerDelegate>
+#import <AMapLocationKit/AMapLocationKit.h>
+#import "CustomAnnotationView.h"
+@interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate>
 @property (strong,nonatomic)UIButton * tmpBtn;
 @property (weak, nonatomic) IBOutlet UIView *view_line;
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_findPeople;
+@property (nonatomic, strong) MAPinAnnotationView * annotationView;
+@property (nonatomic, strong) AMapLocationManager * locationManager;
+@property (nonatomic, strong) MAPointAnnotation * pointAnnotaiton;
+@property (nonatomic, strong) MAMapView *mapView;
+@property (nonatomic, assign) CGFloat annotationViewAngle;
+@property (nonatomic, strong) CLHeading *heading;
+@property (nonatomic, copy) AMapLocatingCompletionBlock completionBlock;
+@property (weak, nonatomic) IBOutlet UIButton *btn_mapUserLocation;
+@property (weak, nonatomic) IBOutlet UIView *view_notice;
+@property (weak, nonatomic) IBOutlet UIView *view_userLocation;
+@property (weak, nonatomic) IBOutlet UILabel *lab_Location;
+@property (weak, nonatomic) IBOutlet UILabel *lab_Notice;
 
 @end
 
@@ -65,23 +79,57 @@
     [btn layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleRight imageTitleSpace:5];
     [btn addTarget:self action:@selector(AddressClick:) forControlEvents:UIControlEventTouchUpInside];
     [nav_view addSubview:btn];
-
     self.navigationItem.titleView = nav_view;
+//    初始化地图
+    [self initMapView];
+    [self.view_Map bringSubviewToFront:self.btn_mapUserLocation];
+    [self.view_Map bringSubviewToFront:self.view_notice];
+    [self.view_Map bringSubviewToFront:self.view_userLocation];
+     
     
-    
-    ///初始化地图
-    MAMapView *_mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
-    ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
-    _mapView.showsUserLocation = YES;
-    _mapView.userTrackingMode = MAUserTrackingModeFollow;
-    _mapView.logoCenter = CGPointMake(CGRectGetWidth(self.view.bounds)-55, 450);
-    _mapView.showsScale= NO;  //设置成NO表示不显示比例尺；YES表示显示比例尺
-    [_mapView setZoomLevel:17.5 animated:YES];
-    ///把地图添加至view
-    [self.view_Map addSubview:_mapView];
 }
--(void)initMap{
+-(void)initMapView{
+    ///初始化地图
+    self.mapView = [[MAMapView alloc] initWithFrame:self.view_Map.bounds];
+    ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
+//    self.mapView.showsUserLocation = YES;
+//    self.mapView.userTrackingMode = MAUserTrackingModeFollow;
+    self.mapView.showsCompass= NO;
+    self.mapView.logoCenter = CGPointMake(CGRectGetWidth(self.view_Map.bounds)-55, CGRectGetHeight(self.view_Map.bounds)+55);
+    self.mapView.showsScale= NO;  //设置成NO表示不显示比例尺；YES表示显示比例尺
+    self.mapView.delegate = self;
+    ///把地图添加至view
+    [self.view_Map addSubview:self.mapView];
+    [self configLocationManager];
+}
+#pragma mark - Action Handle
+
+- (void)configLocationManager
+{
+    self.locationManager = [[AMapLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    //设置不允许系统暂停定位
+    [self.locationManager setPausesLocationUpdatesAutomatically:NO];
+    //设置允许在后台定位
+//    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
+    //设置允许连续定位逆地理
+    [self.locationManager setLocatingWithReGeocode:YES];
+    [self.locationManager startUpdatingLocation];
+//    if ([AMapLocationManager headingAvailable] == YES)
+//    {
+//        [self.locationManager startUpdatingHeading];
+//    }
     
+    
+}
+//天生我才必有用的按钮点击
+- (IBAction)btn_TS:(UIButton *)sender {
+    NSLog(@"天生我才必有用");
+}
+//获取当前自己的位置并设为中心点
+- (IBAction)btn_UserLocation:(UIButton *)sender {
+    [self.mapView setCenterCoordinate:self.pointAnnotaiton.coordinate];
+    [self.mapView setZoomLevel:15.1 animated:NO];
 }
 //首页三个按钮点击选中方法
 - (IBAction)btn_selected:(UIButton *)sender {
@@ -104,6 +152,81 @@
     }];
 //    _selectIndex = sender.tag;
 }
+#pragma mark - AMapLocationManager Delegate
+
+- (void)amapLocationManager:(AMapLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"%s, amapLocationManager = %@, error = %@", __func__, [manager class], error);
+}
+
+- (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location reGeocode:(AMapLocationReGeocode *)reGeocode
+{
+    NSLog(@"location:{lat:%f; lon:%f; accuracy:%f, reGeocode:%@}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy, reGeocode.formattedAddress);
+    if (reGeocode.formattedAddress.length!=0) {
+        [self cleanUpAction];
+    }
+    //获取到定位信息，更新annotation
+    if (self.pointAnnotaiton == nil)
+    {
+        self.pointAnnotaiton = [[MAPointAnnotation alloc] init];
+        [self.pointAnnotaiton setCoordinate:location.coordinate];
+        [self.mapView addAnnotation:self.pointAnnotaiton];
+    }
+    [self.mapView selectAnnotation:self.pointAnnotaiton animated:YES];
+    [self.mapView setCenterCoordinate:location.coordinate];
+    [self.mapView setZoomLevel:15.1 animated:NO];
+    self.lab_Location.text =reGeocode.formattedAddress;
+    UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];
+    [btn setTitle:reGeocode.city forState:UIControlStateNormal];
+}
+
+ //停止定位
+- (void)cleanUpAction
+{
+    [self.locationManager stopUpdatingLocation];
+    [self.locationManager setDelegate:nil];
+}
+//- (BOOL)amapLocationManagerShouldDisplayHeadingCalibration:(AMapLocationManager *)manager
+//{
+//    return YES;
+//}
+
+//- (void)amapLocationManager:(AMapLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
+//{
+//    if (_annotationView != nil)
+//    {
+//        CGFloat angle = newHeading.trueHeading*M_PI/180.0f + M_PI - _annotationViewAngle;
+//        NSLog(@"################### heading : %f - %f", newHeading.trueHeading, newHeading.magneticHeading);
+//        _annotationViewAngle = newHeading.trueHeading*M_PI/180.0f + M_PI;
+//        _heading = newHeading;
+//        _annotationView.transform =  CGAffineTransformRotate(_annotationView.transform ,angle);
+//    }
+//}
+
+#pragma mark - MAMapView Delegate
+
+- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MAPointAnnotation class]])
+    {
+        static NSString *customReuseIndetifier = @"customReuseIndetifier";
+       CustomAnnotationView *annotationView = (CustomAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+        
+        if (annotationView == nil)
+        {
+            annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
+            // must set to NO, so we can show the custom callout view.
+            annotationView.canShowCallout = NO;
+            annotationView.draggable = YES;
+            annotationView.calloutOffset = CGPointMake(0, -10);
+            annotationView.animatesDrop = YES;
+        }
+        annotationView.image = [UIImage imageNamed:@"position"];
+        return annotationView;
+    }
+    
+    return nil;
+}
 #pragma mark - JFCityViewControllerDelegate
 - (void)cityName:(NSString *)name {
     UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];
@@ -121,8 +244,7 @@
     [self.navigationController.navigationBar setBackgroundImage:
      [UIImage imageNamed:@"button"] forBarMetrics:UIBarMetricsDefault];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)dealloc{
+    [self cleanUpAction];
 }
 @end
