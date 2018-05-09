@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AbilityHomeController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKY-59-JZ0">
+                    <rect key="frame" x="0.0" y="64" width="375" height="85"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6VR-Io-Czu">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDP-4L-Ap6">
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="50"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <inset key="titleEdgeInsets" minX="-33" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-94" maxY="0.0"/>
+                                    <state key="normal" title="苏州市" image="Arrow-xia1">
+                                        <color key="titleColor" red="0.38823529411764707" green="0.38823529411764707" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZS-aU-hqB">
+                                    <rect key="frame" x="125" y="0.0" width="125" height="50"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <inset key="titleEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-131" maxY="0.0"/>
+                                    <state key="normal" title="职业分类" image="Arrow-xia1">
+                                        <color key="titleColor" red="0.38823529410000002" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6S-JL-xQI">
+                                    <rect key="frame" x="250" y="0.0" width="125" height="50"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <inset key="titleEdgeInsets" minX="-22" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-135" maxY="0.0"/>
+                                    <state key="normal" title="筛选条件" image="Arrow-xia1">
+                                        <color key="titleColor" red="0.38823529410000002" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.21145966799999999" green="0.97187072109999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="FDP-4L-Ap6" firstAttribute="top" secondItem="6VR-Io-Czu" secondAttribute="top" id="0Sz-U8-cBu"/>
+                                <constraint firstAttribute="bottom" secondItem="n6S-JL-xQI" secondAttribute="bottom" id="20m-zS-Wtx"/>
+                                <constraint firstItem="n6S-JL-xQI" firstAttribute="leading" secondItem="iZS-aU-hqB" secondAttribute="trailing" id="Ap2-mQ-Fec"/>
+                                <constraint firstItem="FDP-4L-Ap6" firstAttribute="top" secondItem="6VR-Io-Czu" secondAttribute="top" id="BFT-TS-4qf"/>
+                                <constraint firstItem="n6S-JL-xQI" firstAttribute="top" secondItem="6VR-Io-Czu" secondAttribute="top" id="CAO-h4-841"/>
+                                <constraint firstItem="iZS-aU-hqB" firstAttribute="centerX" secondItem="6VR-Io-Czu" secondAttribute="centerX" id="CgY-h8-QIU"/>
+                                <constraint firstAttribute="bottom" secondItem="FDP-4L-Ap6" secondAttribute="bottom" id="Ji4-No-hXw"/>
+                                <constraint firstItem="iZS-aU-hqB" firstAttribute="leading" secondItem="FDP-4L-Ap6" secondAttribute="trailing" id="L4G-e4-7wD"/>
+                                <constraint firstAttribute="bottom" secondItem="FDP-4L-Ap6" secondAttribute="bottom" id="O42-CY-lQ8"/>
+                                <constraint firstItem="iZS-aU-hqB" firstAttribute="top" secondItem="FDP-4L-Ap6" secondAttribute="top" id="UXY-8u-OBp"/>
+                                <constraint firstItem="iZS-aU-hqB" firstAttribute="width" secondItem="FDP-4L-Ap6" secondAttribute="width" id="WM8-ZC-ElQ"/>
+                                <constraint firstItem="iZS-aU-hqB" firstAttribute="bottom" secondItem="FDP-4L-Ap6" secondAttribute="bottom" id="eHf-40-pXa"/>
+                                <constraint firstItem="FDP-4L-Ap6" firstAttribute="leading" secondItem="6VR-Io-Czu" secondAttribute="leading" id="hPp-4O-bd9"/>
+                                <constraint firstAttribute="trailing" secondItem="n6S-JL-xQI" secondAttribute="trailing" id="iqn-pz-MJc"/>
+                                <constraint firstAttribute="height" constant="50" id="pqh-QX-zVy"/>
+                                <constraint firstItem="n6S-JL-xQI" firstAttribute="width" secondItem="FDP-4L-Ap6" secondAttribute="width" id="sYZ-88-nrC"/>
+                                <constraint firstItem="FDP-4L-Ap6" firstAttribute="leading" secondItem="6VR-Io-Czu" secondAttribute="leading" id="x21-Yg-mlZ"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.18784238380000001" blue="0.1955954651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="6VR-Io-Czu" firstAttribute="leading" secondItem="sKY-59-JZ0" secondAttribute="leading" id="Fqd-is-NTJ"/>
+                        <constraint firstAttribute="trailing" secondItem="6VR-Io-Czu" secondAttribute="trailing" id="Z3y-fL-jqV"/>
+                        <constraint firstAttribute="height" constant="85" id="usm-Bu-Npr"/>
+                        <constraint firstItem="6VR-Io-Czu" firstAttribute="top" secondItem="sKY-59-JZ0" secondAttribute="top" id="yEL-D3-6ZE"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="sKY-59-JZ0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2BD-ed-vIl"/>
+                <constraint firstAttribute="trailing" secondItem="sKY-59-JZ0" secondAttribute="trailing" id="3GJ-AN-55n"/>
+                <constraint firstItem="sKY-59-JZ0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="wXU-8V-rjq"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Arrow-xia1" width="9" height="5"/>
+    </resources>
+</document>

@@ -7,15 +7,22 @@
 //
 
 #import "FirstTanView.h"
-
+#import "AddressBookController.h"
+#import "YSConstString.h"
 @implementation FirstTanView
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super initWithCoder:aDecoder]) {
+        
+    }
+    return self;
 }
-*/
-
+- (IBAction)FirstTanClick:(UIButton *)sender {
+    if (sender.tag==5) {
+        
+    }else{
+       [self.messController.navigationController pushViewController:[AddressBookController new] animated:YES];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:CLOSEANI object:nil];
+    
+}
 @end

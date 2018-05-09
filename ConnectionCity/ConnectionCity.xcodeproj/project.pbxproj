@@ -25,6 +25,15 @@
 		8D24A23220A1CB8200F0740D /* FirstTanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A23120A1CB8200F0740D /* FirstTanView.m */; };
 		8D24A23520A1D5A700F0740D /* RefineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A23420A1D5A700F0740D /* RefineView.m */; };
 		8D24A23720A1D5BF00F0740D /* FirstTanView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D24A23620A1D5BF00F0740D /* FirstTanView.xib */; };
+		8D2B8B8820A2D3B200C3157F /* BaseOneTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B8B8720A2D3B200C3157F /* BaseOneTabController.m */; };
+		8D2B8B9120A2DA9F00C3157F /* AbilityHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B8B8F20A2DA9F00C3157F /* AbilityHomeController.m */; };
+		8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9020A2DA9F00C3157F /* AbilityHomeController.xib */; };
+		8D2B8B9620A2DAAF00C3157F /* BulidTeamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9420A2DAAF00C3157F /* BulidTeamController.m */; };
+		8D2B8B9720A2DAAF00C3157F /* BulidTeamController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9520A2DAAF00C3157F /* BulidTeamController.xib */; };
+		8D2B8B9B20A2DABD00C3157F /* ConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9920A2DABD00C3157F /* ConnectionController.m */; };
+		8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9A20A2DABD00C3157F /* ConnectionController.xib */; };
+		8D2B8BA020A2DACC00C3157F /* MakeMoneyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9E20A2DACC00C3157F /* MakeMoneyController.m */; };
+		8D2B8BA120A2DACC00C3157F /* MakeMoneyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9F20A2DACC00C3157F /* MakeMoneyController.xib */; };
 		CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA568209D5004004C3C33 /* AppDelegate.m */; };
 		CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0BA570209D5004004C3C33 /* Assets.xcassets */; };
 		CE0BA577209D5004004C3C33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA576209D5004004C3C33 /* main.m */; };
@@ -131,6 +140,20 @@
 		8D24A23320A1D5A600F0740D /* RefineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefineView.h; sourceTree = "<group>"; };
 		8D24A23420A1D5A700F0740D /* RefineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefineView.m; sourceTree = "<group>"; };
 		8D24A23620A1D5BF00F0740D /* FirstTanView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstTanView.xib; sourceTree = "<group>"; };
+		8D2B8B8620A2D3B200C3157F /* BaseOneTabController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseOneTabController.h; sourceTree = "<group>"; };
+		8D2B8B8720A2D3B200C3157F /* BaseOneTabController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseOneTabController.m; sourceTree = "<group>"; };
+		8D2B8B8E20A2DA9F00C3157F /* AbilityHomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbilityHomeController.h; sourceTree = "<group>"; };
+		8D2B8B8F20A2DA9F00C3157F /* AbilityHomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AbilityHomeController.m; sourceTree = "<group>"; };
+		8D2B8B9020A2DA9F00C3157F /* AbilityHomeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AbilityHomeController.xib; sourceTree = "<group>"; };
+		8D2B8B9320A2DAAF00C3157F /* BulidTeamController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BulidTeamController.h; sourceTree = "<group>"; };
+		8D2B8B9420A2DAAF00C3157F /* BulidTeamController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BulidTeamController.m; sourceTree = "<group>"; };
+		8D2B8B9520A2DAAF00C3157F /* BulidTeamController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BulidTeamController.xib; sourceTree = "<group>"; };
+		8D2B8B9820A2DABD00C3157F /* ConnectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionController.h; sourceTree = "<group>"; };
+		8D2B8B9920A2DABD00C3157F /* ConnectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectionController.m; sourceTree = "<group>"; };
+		8D2B8B9A20A2DABD00C3157F /* ConnectionController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionController.xib; sourceTree = "<group>"; };
+		8D2B8B9D20A2DACC00C3157F /* MakeMoneyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MakeMoneyController.h; sourceTree = "<group>"; };
+		8D2B8B9E20A2DACC00C3157F /* MakeMoneyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MakeMoneyController.m; sourceTree = "<group>"; };
+		8D2B8B9F20A2DACC00C3157F /* MakeMoneyController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MakeMoneyController.xib; sourceTree = "<group>"; };
 		9E9EF5E7637D778FC51741D8 /* Pods-ConnectionCity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectionCity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectionCity/Pods-ConnectionCity.debug.xcconfig"; sourceTree = "<group>"; };
 		C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConnectionCity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0BA564209D5004004C3C33 /* ConnectionCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectionCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -350,6 +373,57 @@
 			path = RefineThing;
 			sourceTree = "<group>";
 		};
+		8D2B8B8920A2D9D300C3157F /* FindAbilityTab */ = {
+			isa = PBXGroup;
+			children = (
+				8D2B8B8B20A2DA7A00C3157F /* AbilityHome */,
+				8D2B8B8A20A2DA7A00C3157F /* BulidTeam */,
+				8D2B8B8C20A2DA7A00C3157F /* Connection */,
+				8D2B8B8D20A2DA7A00C3157F /* MakeMoney */,
+			);
+			path = FindAbilityTab;
+			sourceTree = "<group>";
+		};
+		8D2B8B8A20A2DA7A00C3157F /* BulidTeam */ = {
+			isa = PBXGroup;
+			children = (
+				8D2B8B9320A2DAAF00C3157F /* BulidTeamController.h */,
+				8D2B8B9420A2DAAF00C3157F /* BulidTeamController.m */,
+				8D2B8B9520A2DAAF00C3157F /* BulidTeamController.xib */,
+			);
+			path = BulidTeam;
+			sourceTree = "<group>";
+		};
+		8D2B8B8B20A2DA7A00C3157F /* AbilityHome */ = {
+			isa = PBXGroup;
+			children = (
+				8D2B8B8E20A2DA9F00C3157F /* AbilityHomeController.h */,
+				8D2B8B8F20A2DA9F00C3157F /* AbilityHomeController.m */,
+				8D2B8B9020A2DA9F00C3157F /* AbilityHomeController.xib */,
+			);
+			path = AbilityHome;
+			sourceTree = "<group>";
+		};
+		8D2B8B8C20A2DA7A00C3157F /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				8D2B8B9820A2DABD00C3157F /* ConnectionController.h */,
+				8D2B8B9920A2DABD00C3157F /* ConnectionController.m */,
+				8D2B8B9A20A2DABD00C3157F /* ConnectionController.xib */,
+			);
+			path = Connection;
+			sourceTree = "<group>";
+		};
+		8D2B8B8D20A2DA7A00C3157F /* MakeMoney */ = {
+			isa = PBXGroup;
+			children = (
+				8D2B8B9D20A2DACC00C3157F /* MakeMoneyController.h */,
+				8D2B8B9E20A2DACC00C3157F /* MakeMoneyController.m */,
+				8D2B8B9F20A2DACC00C3157F /* MakeMoneyController.xib */,
+			);
+			path = MakeMoney;
+			sourceTree = "<group>";
+		};
 		CE0BA55B209D5004004C3C33 = {
 			isa = PBXGroup;
 			children = (
@@ -489,6 +563,8 @@
 				CE0BA5EF209D5EBD004C3C33 /* BaseNavigationController.m */,
 				CE0BA5EE209D5EBD004C3C33 /* BaseTabBarController.h */,
 				CE0BA5F4209D5EBD004C3C33 /* BaseTabBarController.m */,
+				8D2B8B8620A2D3B200C3157F /* BaseOneTabController.h */,
+				8D2B8B8720A2D3B200C3157F /* BaseOneTabController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -519,6 +595,7 @@
 		CE0BA603209D605D004C3C33 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8D2B8B8920A2D9D300C3157F /* FindAbilityTab */,
 				CE0BA624209D68A2004C3C33 /* RegisterAndLogin */,
 				CE0BA61C209D61B4004C3C33 /* Profile */,
 				CE0BA616209D617F004C3C33 /* Found */,
@@ -747,16 +824,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D2B8BA120A2DACC00C3157F /* MakeMoneyController.xib in Resources */,
 				CE0BA61B209D6197004C3C33 /* FoundController.xib in Resources */,
 				CE0BA633209D68A3004C3C33 /* ChangePasswordController.xib in Resources */,
 				CE0BA621209D61C0004C3C33 /* ProfileController.xib in Resources */,
 				CE0BA615209D6160004C3C33 /* LifeHallController.xib in Resources */,
 				8D24A23720A1D5BF00F0740D /* FirstTanView.xib in Resources */,
+				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
 				729BA6C920A01E7F009713FD /* shop_area.sqlite in Resources */,
 				CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */,
 				CE0BA60F209D6126004C3C33 /* AddressBookController.xib in Resources */,
 				CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */,
 				CE0BA608209D60C3004C3C33 /* MessageController.xib in Resources */,
+				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
+				8D2B8B9720A2DAAF00C3157F /* BulidTeamController.xib in Resources */,
 				CE0BA635209D68A3004C3C33 /* YSLoginController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -853,7 +934,9 @@
 				8D24A23520A1D5A700F0740D /* RefineView.m in Sources */,
 				CE0BA5E5209D5E9B004C3C33 /* YSNetworkTool.m in Sources */,
 				CE0BA5BC209D5E6B004C3C33 /* MBProgressHUD+Extension.m in Sources */,
+				8D2B8B9B20A2DABD00C3157F /* ConnectionController.m in Sources */,
 				CE0BA5B6209D5E6B004C3C33 /* NSObject+YTGetObject.m in Sources */,
+				8D2B8B9120A2DA9F00C3157F /* AbilityHomeController.m in Sources */,
 				CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */,
 				CE0BA5B3209D5E6B004C3C33 /* UIView+YSCategory.m in Sources */,
 				729BA6CD20A01E7F009713FD /* JFCityHeaderView.m in Sources */,
@@ -867,6 +950,7 @@
 				CE0BA620209D61C0004C3C33 /* ProfileController.m in Sources */,
 				CE0BA5DF209D5E9B004C3C33 /* TakePhoto.m in Sources */,
 				729BA6AF209FEB9B009713FD /* UIButton+ImageTitleSpacing.m in Sources */,
+				8D2B8B8820A2D3B200C3157F /* BaseOneTabController.m in Sources */,
 				729BA6D120A01E7F009713FD /* JFLocation.m in Sources */,
 				CE0BA5DE209D5E9B004C3C33 /* YTDataPacket.m in Sources */,
 				CE0BA5EB209D5E9B004C3C33 /* SRDownloadManager.m in Sources */,
@@ -887,6 +971,7 @@
 				CE0BA607209D60C3004C3C33 /* MessageController.m in Sources */,
 				CE0BA5E8209D5E9B004C3C33 /* GlobalManager.m in Sources */,
 				8D24A22E20A1B9BA00F0740D /* CustomCalloutView.m in Sources */,
+				8D2B8BA020A2DACC00C3157F /* MakeMoneyController.m in Sources */,
 				CE0BA5B9209D5E6B004C3C33 /* UIAlertView+Blocks.m in Sources */,
 				CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */,
 				729BA6C820A01E7F009713FD /* JFAreaDataManager.m in Sources */,
@@ -895,6 +980,7 @@
 				CE0BA5E0209D5E9B004C3C33 /* DDFileReader.m in Sources */,
 				CE0BA5EA209D5E9B004C3C33 /* YSBlutoothTool.m in Sources */,
 				CE0BA5B7209D5E6B004C3C33 /* NSData+hexString.m in Sources */,
+				8D2B8B9620A2DAAF00C3157F /* BulidTeamController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

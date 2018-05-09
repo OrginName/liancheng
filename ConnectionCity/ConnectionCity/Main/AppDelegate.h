@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BaseOneTabController.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 /** 应用程序主窗口 */

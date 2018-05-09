@@ -12,7 +12,13 @@
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
 #import "CustomAnnotationView.h"
+#import "RefineView.h"
+#import "FirstTanView.h"
+#import "BaseOneTabController.h"
 @interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate>
+{
+    BOOL flag;
+}
 @property (strong,nonatomic)UIButton * tmpBtn;
 @property (weak, nonatomic) IBOutlet UIView *view_line;
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
@@ -29,7 +35,8 @@
 @property (weak, nonatomic) IBOutlet UIView *view_userLocation;
 @property (weak, nonatomic) IBOutlet UILabel *lab_Location;
 @property (weak, nonatomic) IBOutlet UILabel *lab_Notice;
-
+@property (nonatomic,strong) RefineView * refine;
+@property (nonatomic,strong) FirstTanView * first;
 @end
 
 @implementation MessageController
@@ -46,6 +53,56 @@
 //导航右侧按钮点击
 -(void)MessageClick{
     
+}
+//天生我才必有用的按钮点击
+- (IBAction)btn_TS:(UIButton *)sender {
+    self.first = [[[NSBundle mainBundle] loadNibNamed:@"FirstTanView" owner:nil options:nil] lastObject];
+    self.first.frame = CGRectMake(20, 0, kScreenWidth-40, 330);
+    self.first.messController = self;
+    self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.first];
+    [self.refine alertSelectViewshow];
+}
+//获取当前自己的位置并设为中心点
+- (IBAction)btn_UserLocation:(UIButton *)sender {
+    [self.mapView setCenterCoordinate:self.pointAnnotaiton.coordinate];
+    [self.mapView setZoomLevel:15.1 animated:NO];
+}
+//首页三个按钮点击选中方法
+- (IBAction)btn_selected:(UIButton *)sender {
+    if (sender.tag!=1) {
+        self.btn_findPeople.selected = NO;
+    }
+    if (_tmpBtn == nil){
+        sender.selected = YES;
+        _tmpBtn = sender;
+    }
+    else  if (_tmpBtn !=nil &&_tmpBtn == sender){
+        sender.selected = YES;
+    } else if (_tmpBtn!= sender && _tmpBtn!=nil){
+        _tmpBtn.selected = NO;
+        sender.selected = YES;
+        _tmpBtn = sender;
+    }
+    flag = YES;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.view_line.x = sender.x-20;
+    }];
+    switch (sender.tag) {
+        case 1:
+        {
+          BaseOneTabController * one = [[BaseOneTabController alloc] init];
+            [self.navigationController pushViewController:one animated:YES];
+        }
+            
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        default:
+            break;
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TABBAR" object:nil userInfo:@{@"tag":[NSString stringWithFormat:@"%ld",(long)sender.tag]}];
 }
 //城市选择按钮点击
 -(void)AddressClick:(UIButton *)btn{
@@ -122,36 +179,7 @@
     
     
 }
-//天生我才必有用的按钮点击
-- (IBAction)btn_TS:(UIButton *)sender {
-    NSLog(@"天生我才必有用");
-}
-//获取当前自己的位置并设为中心点
-- (IBAction)btn_UserLocation:(UIButton *)sender {
-    [self.mapView setCenterCoordinate:self.pointAnnotaiton.coordinate];
-    [self.mapView setZoomLevel:15.1 animated:NO];
-}
-//首页三个按钮点击选中方法
-- (IBAction)btn_selected:(UIButton *)sender {
-    if (sender.tag!=1) {
-        self.btn_findPeople.selected = NO;
-    }
-    if (_tmpBtn == nil){
-        sender.selected = YES;
-        _tmpBtn = sender;
-    }
-    else  if (_tmpBtn !=nil &&_tmpBtn == sender){
-        sender.selected = YES;
-    } else if (_tmpBtn!= sender && _tmpBtn!=nil){
-        _tmpBtn.selected = NO;
-        sender.selected = YES;
-        _tmpBtn = sender;
-    }
-    [UIView animateWithDuration:0.5 animations:^{
-        self.view_line.x = sender.x-20;
-    }];
-//    _selectIndex = sender.tag;
-}
+
 #pragma mark - AMapLocationManager Delegate
 
 - (void)amapLocationManager:(AMapLocationManager *)manager didFailWithError:(NSError *)error
@@ -234,15 +262,22 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    flag = NO;
+    self.navigationController.navigationBar.hidden= NO;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     [self.navigationController.navigationBar setBackgroundImage:
      [UIImage createImageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    [self.navigationController.navigationBar setBackgroundImage:
-     [UIImage imageNamed:@"button"] forBarMetrics:UIBarMetricsDefault];
+    if (flag) {
+        self.navigationController.navigationBar.hidden= YES;
+        
+    }else{
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        [self.navigationController.navigationBar setBackgroundImage:
+         [UIImage imageNamed:@"button"] forBarMetrics:UIBarMetricsDefault];
+    }
 }
 -(void)dealloc{
     [self cleanUpAction];
