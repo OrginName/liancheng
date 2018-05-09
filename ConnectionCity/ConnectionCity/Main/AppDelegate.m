@@ -23,8 +23,12 @@
     UIViewController *vc = [[UIViewController alloc]initWithNibName:nil bundle:nil];
     self.window.rootViewController = vc;
     
-    BaseTabBarController *baseTabBar = [[BaseTabBarController alloc]init];
-    [self.window setRootViewController:baseTabBar];
+//    BaseTabBarController *baseTabBar = [[BaseTabBarController alloc]init];
+//    [self.window setRootViewController:baseTabBar];
+    
+    BaseOneTabController * baseOneTabBar = [[BaseOneTabController alloc] init];
+    [self.window setRootViewController:baseOneTabBar];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Receivetag:) name:@"TABBAR" object:nil];
     //通知键盘弹出状态
     [self notify_addObserver];

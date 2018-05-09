@@ -7,9 +7,12 @@
 //
 
 #import "AbilityHomeController.h"
-
-@interface AbilityHomeController ()
-
+#import "CustomMap.h"
+#import "CustomLocatiom.h"
+@interface AbilityHomeController ()<CustomLocationDelegate>
+@property (weak, nonatomic) IBOutlet UIView *view_Map;
+@property (nonatomic,strong) CustomMap *cusMap;
+@property (nonatomic,strong) CustomLocatiom * location;
 @end
 
 @implementation AbilityHomeController
@@ -17,24 +20,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"arraw-right" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];  
+    [self setUI];
+//    self.location = [[CustomLocatiom alloc] init];
+//    _location.delegate = self;
+    
 }
 -(void)back{
     [self.tabBarController.navigationController popViewControllerAnimated:YES];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+-(void)setUI{
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"arraw-right" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    self.cusMap = [[CustomMap alloc] initWithFrame:CGRectMake(0, 0, self.view_Map.width, self.view_Map.height) withControl:self];
+//    self.cusMap.mapView.delegate = self;
+    [self.view_Map addSubview:self.cusMap];
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
 }
-*/
+- (void)currentLocation:(NSDictionary *)locationDictionary{
+    NSLog(@"5555555555555555");
+}
+ 
+
 
 @end
