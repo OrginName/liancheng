@@ -13,11 +13,10 @@
 @property (nonatomic,strong) CustomLocatiom * location;
 @property (nonatomic, strong) MAPinAnnotationView * annotationView;
 @property (nonatomic, strong) MAPointAnnotation * pointAnnotaiton;
-
+@property (nonatomic,strong) UIButton * btn_location;
 @end
 @implementation CustomMap
-
--(instancetype)initWithFrame:(CGRect)frame withControl:(id)control{
+-(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         ///初始化地图
         ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
@@ -30,15 +29,24 @@
         ///把地图添加至view
         map.delegate = self;
         self.mapView = map;
-        self.controller = control;
         [self addSubview:self.mapView];
         self.location = [[CustomLocatiom alloc] init];
         _location.delegate = self;
- 
+        
+        UIButton * btn = [[UIButton alloc] init];
+        [btn setBackgroundImage:[UIImage imageNamed:@"Location"] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(locationClick) forControlEvents:UIControlEventTouchUpInside];
+        self.btn_location = btn;
+        [self addSubview:btn];
+        [self initAnnotations];
     }
     return self;
 }
-
+//定位当前自己位置
+-(void)locationClick{
+    [self.mapView setCenterCoordinate:self.pointAnnotaiton.coordinate];
+    [self.mapView setZoomLevel:15.1 animated:NO];
+}
 #pragma mark - MAMapView Delegate
 
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
@@ -47,7 +55,6 @@
     {
         static NSString *customReuseIndetifier = @"customReuseIndetifier";
         CustomAnnotationView *annotationView = (CustomAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
-        
         if (annotationView == nil)
         {
             annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
@@ -55,12 +62,10 @@
             annotationView.canShowCallout = NO;
             annotationView.draggable = YES;
             annotationView.calloutOffset = CGPointMake(0, -10);
-            annotationView.animatesDrop = YES;
         }
-        annotationView.image = [UIImage imageNamed:@"position"];
+        annotationView.image = [UIImage imageNamed:@"position.png"];
         return annotationView;
     }
-    
     return nil;
 }
 
@@ -77,26 +82,58 @@
         [self.mapView selectAnnotation:self.pointAnnotaiton animated:YES];
         [self.mapView setCenterCoordinate:location.coordinate];
         [self.mapView setZoomLevel:15.1 animated:NO];
+        [self.mapView addAnnotations:self.annotations];
+    if ([self.delegate respondsToSelector:@selector(currentMapLocation:location:)]) {
+        [self.delegate currentMapLocation:locationDictionary location:location];
+        }
 }
-
+//定位失败
 - (void)locateFailure:(NSString *)message {
     
 }
 
-
+//正在定位
 - (void)locating {
     
 }
 
-
+//用户拒绝定位
 - (void)refuseToUsePositioningSystem:(NSString *)message {
     
 }
 
+
+#pragma mark - Initialization
+- (void)initAnnotations
+{
+    self.annotations = [NSMutableArray array];
+    
+    CLLocationCoordinate2D coordinates[10] = {
+        {39.992520, 116.336170},
+        {39.992520, 116.336170},
+        {39.998293, 116.352343},
+        {40.004087, 116.348904},
+        {40.001442, 116.353915},
+        {39.989105, 116.353915},
+        {39.989098, 116.360200},
+        {39.998439, 116.360201},
+        {39.979590, 116.324219},
+        {39.978234, 116.352792}};
+    
+    for (int i = 0; i < 10; ++i)
+    {
+        MAPointAnnotation *a1 = [[MAPointAnnotation alloc] init];
+        a1.coordinate = coordinates[i];
+        a1.title      = [NSString stringWithFormat:@"anno: %d", i];
+        [self.annotations addObject:a1];
+    }
+}
 -(void)layoutSubviews{
     [super layoutSubviews];
     self.mapView.frame = CGRectMake(0, 0, self.width, self.height);
-    self.mapView.logoCenter = CGPointMake(CGRectGetWidth(self.bounds)-55, CGRectGetHeight(self.bounds)+55);
+    self.mapView.logoCenter = CGPointMake(-30, 1000);
+    self.btn_location.frame = CGRectMake(CGRectGetWidth(self.frame)-50, 20, 40, 40);
+    
 }
 
 

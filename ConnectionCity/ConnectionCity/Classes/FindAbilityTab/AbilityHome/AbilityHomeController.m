@@ -8,11 +8,15 @@
 
 #import "AbilityHomeController.h"
 #import "CustomMap.h"
-#import "CustomLocatiom.h"
-@interface AbilityHomeController ()<CustomLocationDelegate>
+#import "JFCityViewController.h"
+#import "ClassificationsController.h"
+@interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
+@property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
+@property (weak, nonatomic) IBOutlet UIView *view_fajianli;
+@property (weak, nonatomic) IBOutlet UIView *view_SX;
 @property (nonatomic,strong) CustomMap *cusMap;
-@property (nonatomic,strong) CustomLocatiom * location;
+ 
 @end
 
 @implementation AbilityHomeController
@@ -21,25 +25,88 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setUI];
-//    self.location = [[CustomLocatiom alloc] init];
-//    _location.delegate = self;
+}
+//导航条人才类型选择
+-(void)AddressClick:(UIButton *)btn{
     
+}
+//搜索按钮点击
+-(void)SearchClick{
+    
+}
+//顶部三个筛选按钮的点击
+- (IBAction)btn_SX:(UIButton *)sender {
+    switch (sender.tag) {
+        case 1:
+        {
+            JFCityViewController * jf= [JFCityViewController new];
+            jf.delegate = self;
+            BaseNavigationController * nav = [[BaseNavigationController alloc] initWithRootViewController:jf];
+            [self.navigationController presentViewController:nav animated:YES completion:nil];
+        }
+            break;
+        case 2:
+        {
+            ClassificationsController * class = [ClassificationsController new];
+            class.title = @"职业分类";
+            class.block = ^(NSString *classifiation){
+                UILabel * btn = (UILabel *)[self.view_SX viewWithTag:2];
+                btn.text = classifiation;
+            };
+            [self.navigationController pushViewController:class animated:YES];
+        }
+            break;
+        case 3:
+        {
+            
+        }
+            break;
+        default:
+            break;
+    }
 }
 -(void)back{
     [self.tabBarController.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"BACKMAINWINDOW" object:nil];
+    
+    
 }
 -(void)setUI{
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"arraw-right" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
-    self.cusMap = [[CustomMap alloc] initWithFrame:CGRectMake(0, 0, self.view_Map.width, self.view_Map.height) withControl:self];
-//    self.cusMap.mapView.delegate = self;
+    self.cusMap = [[CustomMap alloc] initWithFrame:CGRectMake(0, 0, self.view_Map.width, self.view_Map.height) ];
+    self.cusMap.delegate = self;
     [self.view_Map addSubview:self.cusMap];
-
+    [self.view_Map bringSubviewToFront:self.btn_fajianli];
+    [self.view_Map bringSubviewToFront:self.view_fajianli];
+    [self initNavi];
+    [self initRightBarItem];
     
 }
-- (void)currentLocation:(NSDictionary *)locationDictionary{
-    NSLog(@"5555555555555555");
+-(void)initNavi{
+    //自定义标题视图
+    UIView * nav_view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+    UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+    btn.tag = 99999;
+    btn.titleLabel.font = [UIFont systemFontOfSize:16];
+    [btn setTitle:@"人才" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"Arrow-xia"] forState:UIControlStateNormal];
+    [btn layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleRight imageTitleSpace:5];
+    [btn addTarget:self action:@selector(AddressClick:) forControlEvents:UIControlEventTouchUpInside];
+    [nav_view addSubview:btn];
+    self.navigationItem.titleView = nav_view;
 }
- 
-
-
+-(void)initRightBarItem{
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SearchClick) image:@"search" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
+}
+#pragma mark - JFCityViewControllerDelegate
+- (void)cityName:(NSString *)name {
+    UILabel * btn = (UILabel *)[self.view_SX viewWithTag:1];
+    btn.text = name;
+}
+#pragma mark - CustomMapDelegate
+- (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location{
+    UILabel * btn = (UILabel *)[self.view_SX viewWithTag:1];
+    btn.text = locationDictionary[@"city"];
+}
 @end

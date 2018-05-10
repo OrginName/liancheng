@@ -18,7 +18,6 @@
 #define kCalloutWidth   150.0
 #define kCalloutHeight  40.0
 @interface CustomAnnotationView ()
-@property (nonatomic, strong) UIImageView *portraitImageView;
 @end
 
 @implementation CustomAnnotationView
@@ -86,11 +85,11 @@
     
     return inside;
 }
-#pragma mark - Life Cycle
-
-- (id)initWithAnnotation:(id<MAAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
-    return self;
-}
+//#pragma mark - Life Cycle
+//
+//- (id)initWithAnnotation:(id<MAAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
+//{
+//    self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
+//    return self;
+//}
 @end

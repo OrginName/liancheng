@@ -23,7 +23,7 @@
     //设置导航标题颜色
     [self.navigationBar setTintColor:[UIColor whiteColor]];
     [self.navigationBar setBackgroundImage:
-     [UIImage imageNamed:@"button"] forBarMetrics:UIBarMetricsDefault];
+     [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
     //设置导航返回按钮颜色
     [[UINavigationBar appearance]setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
     //隐藏导航返回字体

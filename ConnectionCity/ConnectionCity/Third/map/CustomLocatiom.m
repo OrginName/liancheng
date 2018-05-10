@@ -68,12 +68,12 @@
     });
     if (reGeocode.formattedAddress.length!=0) {
         NSDictionary *location1 = @{@"city":reGeocode.city,@"addRess":reGeocode.formattedAddress};
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
+//        static dispatch_once_t onceToken;
+//        dispatch_once(&onceToken, ^{
             if (self.delegate && [self.delegate respondsToSelector:@selector(currentLocation:location:)]) {
                 [self.delegate currentLocation:location1 location:location];
             }
-        });
+//        });
         [self cleanUpAction];
     }
     

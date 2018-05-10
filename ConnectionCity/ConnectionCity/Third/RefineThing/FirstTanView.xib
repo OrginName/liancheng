@@ -211,7 +211,7 @@
                         <constraint firstAttribute="height" constant="40" id="20i-kS-fJa"/>
                         <constraint firstAttribute="width" constant="40" id="imq-3C-y09"/>
                     </constraints>
-                    <state key="normal" backgroundImage="jiahao_11"/>
+                    <state key="normal" backgroundImage="ciose-big-index"/>
                     <connections>
                         <action selector="FirstTanClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="3pT-cU-m0s"/>
                     </connections>
@@ -231,7 +231,7 @@
         </view>
     </objects>
     <resources>
-        <image name="jiahao_11" width="37" height="37"/>
+        <image name="ciose-big-index" width="32" height="32"/>
         <image name="service" width="28" height="28"/>
         <image name="travrl" width="28" height="28"/>
         <image name="wupin" width="28" height="28"/>

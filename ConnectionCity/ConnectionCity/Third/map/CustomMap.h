@@ -10,8 +10,11 @@
 #import <MAMapKit/MAMapKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import "CustomLocatiom.h"
+@protocol CustomMapDelegate <NSObject>
+- (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location;
+@end
 @interface CustomMap : UIView
 @property (nonatomic,strong) MAMapView * mapView;
-
--(instancetype)initWithFrame:(CGRect)frame withControl:(id)control;
+@property (nonatomic, strong) NSMutableArray *annotations;
+@property (nonatomic, weak) id<CustomMapDelegate> delegate;
 @end

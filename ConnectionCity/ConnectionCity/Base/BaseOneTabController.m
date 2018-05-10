@@ -39,7 +39,7 @@
     
     NSArray *arrVC = @[messageVC,addressVC,lifeVC,foundVC,profileVC];
     NSArray *titleArr = @[@"首页",@"消息",@"建团队",@"赚外快",@"人脉"];
-    NSArray *picArr = @[@"index-nav",@"nav-new",@"nav-t",@"money",@"ren"];
+    NSArray *picArr = @[@"index-nav",@"nav-new1-1",@"nav-t",@"money",@"ren"];
     NSArray *picSelectArr = @[@"index-nav1",@"nav-new1",@"nav-t1",@"money1",@"ren1"];
     
     for (int i = 0; i < 5; i++) {

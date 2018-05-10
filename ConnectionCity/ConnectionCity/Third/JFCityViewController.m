@@ -60,7 +60,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
     self.view.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
     _HeaderSectionTotal = 1;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chooseCityWithName:) name:JFCityTableViewCellDidChangeCityNotification object:nil];
-    self.view_Bottom = [[UIView alloc] initWithFrame:CGRectMake(20, 84, kScreenWidth-40, kScreenHeight-20)];
+    self.view_Bottom = [[UIView alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth-40, kScreenHeight-20)];
     [self.view addSubview:self.view_Bottom];
     
     [self.view_Bottom addSubview:self.rootTableView];

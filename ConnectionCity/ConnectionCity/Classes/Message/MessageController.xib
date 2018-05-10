@@ -111,7 +111,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UkB-Vd-NUg">
                     <rect key="frame" x="0.0" y="50" width="375" height="568"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbH-Gb-BnT">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbH-Gb-BnT">
                             <rect key="frame" x="323" y="10" width="42" height="42"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="2GR-Kx-a6M"/>

@@ -23,23 +23,23 @@
     UIViewController *vc = [[UIViewController alloc]initWithNibName:nil bundle:nil];
     self.window.rootViewController = vc;
     
-//    BaseTabBarController *baseTabBar = [[BaseTabBarController alloc]init];
-//    [self.window setRootViewController:baseTabBar];
-    
-    BaseOneTabController * baseOneTabBar = [[BaseOneTabController alloc] init];
-    [self.window setRootViewController:baseOneTabBar];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Receivetag:) name:@"TABBAR" object:nil];
+    BaseTabBarController *baseTabBar = [[BaseTabBarController alloc]init];
+    [self.window setRootViewController:baseTabBar];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Receivetag:) name:@"TABBAR" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backWindow) name:@"BACKMAINWINDOW" object:nil];
     //通知键盘弹出状态
     [self notify_addObserver];
     [[AMapServices sharedServices] setEnableHTTPS:YES];
     [AMapServices sharedServices].apiKey = KGDMapKey;
-    // Override point for customization after application launch.
     return YES;
 }
+-(void)backWindow{
+    BaseTabBarController * baseTabBar = [[BaseTabBarController alloc] init];
+    [self.window setRootViewController:baseTabBar];
+}
 -(void)Receivetag:(NSNotification *)noti{
-//    BaseOneTabController * baseOneTabBar = [[BaseOneTabController alloc] init];
-//    [self.window setRootViewController:baseOneTabBar];
+    BaseOneTabController * baseOneTabBar = [[BaseOneTabController alloc] init];
+    [self.window setRootViewController:baseOneTabBar];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
