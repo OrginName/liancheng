@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilterController">
             <connections>
+                <outlet property="tab_Bottom" destination="TA0-Ts-bgQ" id="Mfa-6A-RNN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +19,59 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TA0-Ts-bgQ">
+                    <rect key="frame" x="10" y="10" width="355" height="567"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="pFm-Ln-8Uk"/>
+                        <outlet property="delegate" destination="-1" id="MmP-JB-GUn"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVe-ry-EZT">
+                    <rect key="frame" x="20" y="597" width="335" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqB-qs-ffP">
+                            <rect key="frame" x="0.0" y="0.0" width="167.5" height="50"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="重置">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugk-ih-u54">
+                            <rect key="frame" x="167.5" y="0.0" width="167.5" height="50"/>
+                            <color key="backgroundColor" red="0.94901960784313721" green="0.59607843137254901" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="确定">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.21145966799999999" green="0.97187072109999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="DqB-qs-ffP" firstAttribute="leading" secondItem="FVe-ry-EZT" secondAttribute="leading" id="3dq-1G-p2Y"/>
+                        <constraint firstItem="ugk-ih-u54" firstAttribute="top" secondItem="FVe-ry-EZT" secondAttribute="top" id="6b4-tT-yob"/>
+                        <constraint firstAttribute="height" constant="50" id="AGj-z9-yIw"/>
+                        <constraint firstItem="ugk-ih-u54" firstAttribute="leading" secondItem="DqB-qs-ffP" secondAttribute="trailing" id="BZG-iB-uER"/>
+                        <constraint firstItem="DqB-qs-ffP" firstAttribute="top" secondItem="FVe-ry-EZT" secondAttribute="top" id="b6W-VH-keh"/>
+                        <constraint firstAttribute="bottom" secondItem="ugk-ih-u54" secondAttribute="bottom" id="bkr-Et-DL6"/>
+                        <constraint firstAttribute="trailing" secondItem="ugk-ih-u54" secondAttribute="trailing" id="i9r-ow-Ae9"/>
+                        <constraint firstAttribute="bottom" secondItem="DqB-qs-ffP" secondAttribute="bottom" id="n4c-xl-EKl"/>
+                        <constraint firstItem="ugk-ih-u54" firstAttribute="width" secondItem="DqB-qs-ffP" secondAttribute="width" id="nF1-xU-9GR"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="TA0-Ts-bgQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="5wN-5l-AwF"/>
+                <constraint firstItem="FVe-ry-EZT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="66D-jV-hpT"/>
+                <constraint firstAttribute="trailing" secondItem="TA0-Ts-bgQ" secondAttribute="trailing" constant="10" id="D09-P1-h1l"/>
+                <constraint firstAttribute="bottom" secondItem="FVe-ry-EZT" secondAttribute="bottom" constant="20" id="W1h-w5-ZQi"/>
+                <constraint firstAttribute="trailing" secondItem="FVe-ry-EZT" secondAttribute="trailing" constant="20" id="tpK-5V-0GN"/>
+                <constraint firstItem="TA0-Ts-bgQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="wDl-aV-bzc"/>
+                <constraint firstItem="FVe-ry-EZT" firstAttribute="top" secondItem="TA0-Ts-bgQ" secondAttribute="bottom" constant="20" id="zbo-vV-ir9"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
 </document>

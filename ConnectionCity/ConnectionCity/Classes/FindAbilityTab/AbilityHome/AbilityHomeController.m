@@ -10,6 +10,7 @@
 #import "CustomMap.h"
 #import "JFCityViewController.h"
 #import "ClassificationsController.h"
+#import "FilterController.h"
 @interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
@@ -58,7 +59,9 @@
             break;
         case 3:
         {
-            
+            FilterController * filter = [FilterController new];
+            filter.title = @"筛选条件";
+            [self.navigationController pushViewController:filter animated:YES];
         }
             break;
         default:
@@ -72,7 +75,7 @@
     
 }
 -(void)setUI{
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"arraw-right" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
     self.cusMap = [[CustomMap alloc] initWithFrame:CGRectMake(0, 0, self.view_Map.width, self.view_Map.height) ];
     self.cusMap.delegate = self;
     [self.view_Map addSubview:self.cusMap];

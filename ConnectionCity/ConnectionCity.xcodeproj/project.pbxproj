@@ -40,6 +40,8 @@
 		8D67602820A408470027CDEE /* ClassificationsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D67602620A408470027CDEE /* ClassificationsController.xib */; };
 		8D67603320A420920027CDEE /* FilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67603120A420920027CDEE /* FilterController.m */; };
 		8D67603420A420920027CDEE /* FilterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D67603220A420920027CDEE /* FilterController.xib */; };
+		8D67603620A448CB0027CDEE /* SX.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D67603520A448CB0027CDEE /* SX.plist */; };
+		8D67603920A4688F0027CDEE /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67603820A4688F0027CDEE /* CustomButton.m */; };
 		CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA568209D5004004C3C33 /* AppDelegate.m */; };
 		CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0BA570209D5004004C3C33 /* Assets.xcassets */; };
 		CE0BA577209D5004004C3C33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA576209D5004004C3C33 /* main.m */; };
@@ -170,6 +172,9 @@
 		8D67603020A420920027CDEE /* FilterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterController.h; sourceTree = "<group>"; };
 		8D67603120A420920027CDEE /* FilterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterController.m; sourceTree = "<group>"; };
 		8D67603220A420920027CDEE /* FilterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterController.xib; sourceTree = "<group>"; };
+		8D67603520A448CB0027CDEE /* SX.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = SX.plist; sourceTree = "<group>"; };
+		8D67603720A4688F0027CDEE /* CustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
+		8D67603820A4688F0027CDEE /* CustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
 		9E9EF5E7637D778FC51741D8 /* Pods-ConnectionCity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectionCity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectionCity/Pods-ConnectionCity.debug.xcconfig"; sourceTree = "<group>"; };
 		C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConnectionCity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0BA564209D5004004C3C33 /* ConnectionCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectionCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -535,6 +540,8 @@
 				CE0BA5AF209D5E6B004C3C33 /* NSData+hexString.h */,
 				CE0BA5B0209D5E6B004C3C33 /* NSObject+YTGetObject.h */,
 				CE0BA5B1209D5E6B004C3C33 /* UIViewController+BackButtonHandler.h */,
+				8D67603720A4688F0027CDEE /* CustomButton.h */,
+				8D67603820A4688F0027CDEE /* CustomButton.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -614,6 +621,7 @@
 				CE0BA570209D5004004C3C33 /* Assets.xcassets */,
 				CE0BA575209D5004004C3C33 /* Info.plist */,
 				CE0BA576209D5004004C3C33 /* main.m */,
+				8D67603520A448CB0027CDEE /* SX.plist */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -863,6 +871,7 @@
 				CE0BA60F209D6126004C3C33 /* AddressBookController.xib in Resources */,
 				CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */,
 				CE0BA608209D60C3004C3C33 /* MessageController.xib in Resources */,
+				8D67603620A448CB0027CDEE /* SX.plist in Resources */,
 				8D67603420A420920027CDEE /* FilterController.xib in Resources */,
 				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
 				8D2B8B9720A2DAAF00C3157F /* BulidTeamController.xib in Resources */,
@@ -972,6 +981,7 @@
 				8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */,
 				CE0BA5B4209D5E6B004C3C33 /* UIFont+YTInchFit.m in Sources */,
 				CE0BA577209D5004004C3C33 /* main.m in Sources */,
+				8D67603920A4688F0027CDEE /* CustomButton.m in Sources */,
 				729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
 				CE0BA60E209D6126004C3C33 /* AddressBookController.m in Sources */,
