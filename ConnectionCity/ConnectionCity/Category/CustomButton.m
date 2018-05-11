@@ -13,17 +13,16 @@
     if (self=[super initWithFrame:frame]) {
         self.layer.cornerRadius = 5;
         self.layer.masksToBounds = YES;
-        self.layer.borderWidth = 1.0;
         self.titleLabel.font = [UIFont systemFontOfSize:14];
     }
     return self;
 }
 -(void)setSelected:(BOOL)selected{
     if (selected) {
-        self.layer.borderColor = [UIColor hexColorWithString:@"#f49930"].CGColor;
-        [self setTitleColor:[UIColor hexColorWithString:@"#f49930"] forState:UIControlStateNormal];
+        [self setBackgroundColor:[UIColor hexColorWithString:@"#f49930"]];
+        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }else{
-        self.layer.borderColor = YSColor(246, 246, 246).CGColor;
+        [self setBackgroundColor:[UIColor hexColorWithString:@"#f2f2f2"]];
         [self setTitleColor:[UIColor hexColorWithString:@"#282828"] forState:UIControlStateNormal];
     }
 }

@@ -1,33 +1,81 @@
 (
 	{
 		subname = (
-			"\U9762\U8bae",
-			"10W\U4ee5\U4e0b",
-			"10-15W",
-			"15W\U4ee5\U4e0a",
+			{
+				isSelected = YES;
+				title = "\U9762\U8bae";
+			},
+			{
+				isSelected = NO;
+				title = "10W\U4ee5\U4e0b";
+			},
+			{
+				isSelected = NO;
+				title = "10-15W";
+			},
+			{
+				isSelected = NO;
+				title = "15W\U4ee5\U4e0a";
+			},
 		);
 		name = "\U85aa\U8d44";
 	},
 	{
 		subname = (
-			"\U4e0d\U9650",
-			"\U4e2d\U4e13",
-			"\U5927\U4e13",
-			"\U672c\U79d1",
-			"\U7855\U58eb",
-			"\U535a\U58eb",
+			{
+				isSelected = YES;
+				title = "\U4e0d\U9650";
+			},
+			{
+				isSelected = NO;
+				title = "\U5e94\U5c4a\U6bd5\U4e1a\U751f";
+			},
+			{
+				isSelected = NO;
+				title = "3\U5e74\U4ee5\U5185";
+			},
+			{
+				isSelected = NO;
+				title = "3-5\U5e74";
+			},
+			{
+				isSelected = NO;
+				title = "5-8\U5e74";
+			},
+			{
+				isSelected = NO;
+				title = "8\U5e74\U4ee5\U4e0a";
+			},
 		);
-		name = "\U5b66\U5386";
+		name = "\U5de5\U4f5c\U7ecf\U9a8c";
 	},
 	{
 		subname = (
-			"\U4e0d\U9650",
-			"\U5e94\U5c4a\U6bd5\U4e1a\U751f",
-			"3\U5e74\U4ee5\U5185",
-			"3-5\U5e74",
-			"5-8\U5e74",
-			"8\U5e74\U4ee5\U4e0a",
+			{
+				isSelected = YES;
+				title = "\U4e0d\U9650";
+			},
+			{
+				isSelected = NO;
+				title = "\U4e2d\U4e13";
+			},
+			{
+				isSelected = NO;
+				title = "\U5927\U4e13";
+			},
+			{
+				isSelected = NO;
+				title = "\U672c\U79d1";
+			},
+			{
+				isSelected = NO;
+				title = "\U7855\U58eb";
+			},
+			{
+				isSelected = NO;
+				title = "\U535a\U58eb";
+			},
 		);
-		name = "\U5de5\U4f5c\U7ecf\U9a8c";
+		name = "\U5b66\U5386";
 	},
 )

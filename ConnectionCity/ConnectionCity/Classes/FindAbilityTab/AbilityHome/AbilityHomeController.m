@@ -11,6 +11,7 @@
 #import "JFCityViewController.h"
 #import "ClassificationsController.h"
 #import "FilterController.h"
+#import "FilterOneController.h"
 @interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
@@ -59,7 +60,7 @@
             break;
         case 3:
         {
-            FilterController * filter = [FilterController new];
+            FilterOneController * filter = [FilterOneController new];
             filter.title = @"筛选条件";
             [self.navigationController pushViewController:filter animated:YES];
         }

@@ -42,6 +42,10 @@
 		8D67603420A420920027CDEE /* FilterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D67603220A420920027CDEE /* FilterController.xib */; };
 		8D67603620A448CB0027CDEE /* SX.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D67603520A448CB0027CDEE /* SX.plist */; };
 		8D67603920A4688F0027CDEE /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67603820A4688F0027CDEE /* CustomButton.m */; };
+		8DB42FD420A57D6E00C4EBF8 /* FilterOneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB42FD220A57D6D00C4EBF8 /* FilterOneController.m */; };
+		8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DB42FD320A57D6E00C4EBF8 /* FilterOneController.xib */; };
+		8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB42FD720A57D9900C4EBF8 /* FilterLayout.m */; };
+		8DB42FDC20A57DBC00C4EBF8 /* FilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB42FDA20A57DBC00C4EBF8 /* FilterCell.m */; };
 		CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA568209D5004004C3C33 /* AppDelegate.m */; };
 		CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0BA570209D5004004C3C33 /* Assets.xcassets */; };
 		CE0BA577209D5004004C3C33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA576209D5004004C3C33 /* main.m */; };
@@ -175,6 +179,13 @@
 		8D67603520A448CB0027CDEE /* SX.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = SX.plist; sourceTree = "<group>"; };
 		8D67603720A4688F0027CDEE /* CustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		8D67603820A4688F0027CDEE /* CustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
+		8DB42FD120A57D6D00C4EBF8 /* FilterOneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterOneController.h; sourceTree = "<group>"; };
+		8DB42FD220A57D6D00C4EBF8 /* FilterOneController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterOneController.m; sourceTree = "<group>"; };
+		8DB42FD320A57D6E00C4EBF8 /* FilterOneController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterOneController.xib; sourceTree = "<group>"; };
+		8DB42FD620A57D9900C4EBF8 /* FilterLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterLayout.h; sourceTree = "<group>"; };
+		8DB42FD720A57D9900C4EBF8 /* FilterLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterLayout.m; sourceTree = "<group>"; };
+		8DB42FD920A57DBC00C4EBF8 /* FilterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterCell.h; sourceTree = "<group>"; };
+		8DB42FDA20A57DBC00C4EBF8 /* FilterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterCell.m; sourceTree = "<group>"; };
 		9E9EF5E7637D778FC51741D8 /* Pods-ConnectionCity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectionCity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectionCity/Pods-ConnectionCity.debug.xcconfig"; sourceTree = "<group>"; };
 		C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConnectionCity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0BA564209D5004004C3C33 /* ConnectionCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectionCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -422,6 +433,7 @@
 		8D2B8B8B20A2DA7A00C3157F /* AbilityHome */ = {
 			isa = PBXGroup;
 			children = (
+				8DB42FD020A57D5000C4EBF8 /* Fliter */,
 				8D2B8B8E20A2DA9F00C3157F /* AbilityHomeController.h */,
 				8D2B8B8F20A2DA9F00C3157F /* AbilityHomeController.m */,
 				8D2B8B9020A2DA9F00C3157F /* AbilityHomeController.xib */,
@@ -453,6 +465,20 @@
 				8D2B8B9F20A2DACC00C3157F /* MakeMoneyController.xib */,
 			);
 			path = MakeMoney;
+			sourceTree = "<group>";
+		};
+		8DB42FD020A57D5000C4EBF8 /* Fliter */ = {
+			isa = PBXGroup;
+			children = (
+				8DB42FD120A57D6D00C4EBF8 /* FilterOneController.h */,
+				8DB42FD220A57D6D00C4EBF8 /* FilterOneController.m */,
+				8DB42FD320A57D6E00C4EBF8 /* FilterOneController.xib */,
+				8DB42FD620A57D9900C4EBF8 /* FilterLayout.h */,
+				8DB42FD720A57D9900C4EBF8 /* FilterLayout.m */,
+				8DB42FD920A57DBC00C4EBF8 /* FilterCell.h */,
+				8DB42FDA20A57DBC00C4EBF8 /* FilterCell.m */,
+			);
+			path = Fliter;
 			sourceTree = "<group>";
 		};
 		CE0BA55B209D5004004C3C33 = {
@@ -864,6 +890,7 @@
 				CE0BA633209D68A3004C3C33 /* ChangePasswordController.xib in Resources */,
 				CE0BA621209D61C0004C3C33 /* ProfileController.xib in Resources */,
 				CE0BA615209D6160004C3C33 /* LifeHallController.xib in Resources */,
+				8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */,
 				8D24A23720A1D5BF00F0740D /* FirstTanView.xib in Resources */,
 				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
 				729BA6C920A01E7F009713FD /* shop_area.sqlite in Resources */,
@@ -967,6 +994,7 @@
 				CE0BA5BB209D5E6B004C3C33 /* UIBarButtonItem+Extension.m in Sources */,
 				729BA6CB20A01E7F009713FD /* JFCityCollectionFlowLayout.m in Sources */,
 				729BA6FE20A32F0B009713FD /* CustomMap.m in Sources */,
+				8DB42FDC20A57DBC00C4EBF8 /* FilterCell.m in Sources */,
 				CE0BA5E7209D5E9B004C3C33 /* YSTools.m in Sources */,
 				CE0BA5E2209D5E9B004C3C33 /* SRDownloadModel.m in Sources */,
 				8D24A23520A1D5A700F0740D /* RefineView.m in Sources */,
@@ -980,6 +1008,7 @@
 				729BA6CD20A01E7F009713FD /* JFCityHeaderView.m in Sources */,
 				8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */,
 				CE0BA5B4209D5E6B004C3C33 /* UIFont+YTInchFit.m in Sources */,
+				8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */,
 				CE0BA577209D5004004C3C33 /* main.m in Sources */,
 				8D67603920A4688F0027CDEE /* CustomButton.m in Sources */,
 				729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */,
@@ -992,6 +1021,7 @@
 				729BA6AF209FEB9B009713FD /* UIButton+ImageTitleSpacing.m in Sources */,
 				8D2B8B8820A2D3B200C3157F /* BaseOneTabController.m in Sources */,
 				729BA6D120A01E7F009713FD /* JFLocation.m in Sources */,
+				8DB42FD420A57D6E00C4EBF8 /* FilterOneController.m in Sources */,
 				CE0BA5DE209D5E9B004C3C33 /* YTDataPacket.m in Sources */,
 				CE0BA5EB209D5E9B004C3C33 /* SRDownloadManager.m in Sources */,
 				CE0BA5F9209D5EBE004C3C33 /* BaseModel.m in Sources */,

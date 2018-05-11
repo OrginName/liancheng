@@ -44,8 +44,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:leftCellIdentifier forIndexPath:indexPath];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:leftCellIdentifier];
-        [self setCellContent:cell indexPath:indexPath];
     }
+    [self setCellContent:cell indexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -74,7 +74,7 @@
             CustomButton * btn = [[CustomButton alloc] initWithFrame:CGRectMake(x,y, width, 40)];
             [btn setTitle:obj forState:UIControlStateNormal];
             btn.selected = NO;
-            btn.tag = indexPath.section*100+idx;
+            btn.tag = indexPath.section;
             [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
             [cell.contentView addSubview:btn];
 
@@ -111,11 +111,17 @@
 -(void)btnClick:(UIButton *)sender{
     NSLog(@"%ld",(long)sender.tag);
     if (sender.tag!=self.selectSection) {
-        _tmpBtn = nil;
         UITableViewCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:sender.tag]];
-        [[cell.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        [[cell.contentView subviews] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [obj removeFromSuperview];
+            if ([obj isKindOfClass:[UIButton class]]) {
+                UIButton * btn = (UIButton *)obj;
+                NSLog(@"%d",btn.selected);
+            }
 
-        [self.tab_Bottom reloadSections:[NSIndexSet indexSetWithIndex:sender.tag] withRowAnimation:UITableViewRowAnimationNone];
+        }];
+        _tmpBtn = nil;
+
     }
     if (_tmpBtn == nil){
         sender.selected = YES;
@@ -158,7 +164,7 @@
             [(UIView*)obj removeFromSuperview];
         }];
 
-        [self.tab_Bottom reloadData];
+//        [self.tab_Bottom reloadData];
     }else{
         
      }
