@@ -112,6 +112,10 @@
     NSLog(@"%ld",(long)sender.tag);
     if (sender.tag!=self.selectSection) {
         _tmpBtn = nil;
+        UITableViewCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:sender.tag]];
+        [[cell.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+
+        [self.tab_Bottom reloadSections:[NSIndexSet indexSetWithIndex:sender.tag] withRowAnimation:UITableViewRowAnimationNone];
     }
     if (_tmpBtn == nil){
         sender.selected = YES;
@@ -148,7 +152,20 @@
         _tmpBtn1 = btn;
     }
 }
+- (IBAction)btn_BottomClick:(UIButton *)sender {
+    if (sender.tag==1) {
+        [[self.tab_Bottom subviews] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [(UIView*)obj removeFromSuperview];
+        }];
+
+        [self.tab_Bottom reloadData];
+    }else{
+        
+     }
+}
 @end
+
+ 
  
 
 
