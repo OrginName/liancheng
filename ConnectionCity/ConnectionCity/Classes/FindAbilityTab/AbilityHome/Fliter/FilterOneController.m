@@ -191,20 +191,7 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     [self addSubview:btn_online];
 }
 -(void)btnClick1:(UIButton *)sender{
-    NSLog(@"%ld",(long)sender.tag);
-//    CustomButton * btn1 =(CustomButton *) [self viewWithTag:1000];
     CustomButton * btn2 = (CustomButton *)[self viewWithTag:1001];
-//    if (sender.tag==1000&&btn2.selected) {
-//        btn2.selected = NO;
-//        btn1.selected = YES;
-//    }else if(sender.tag==1000&&!btn2.selected) {
-//
-//    }else if (sender.tag==1001&&btn1.selected){
-//        btn1.selected = NO;
-//        btn2.selected = YES;
-//    }else if (sender.tag==1001&&!btn1.selected){
-//
-//    }
     if (sender.tag!=1001) {
         btn2.selected = NO;
     }
