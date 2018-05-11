@@ -11,3 +11,7 @@
 @interface FilterController : BaseViewController
 
 @end
+//cell
+@interface FilterCell : UITableViewCell
+
+@end
