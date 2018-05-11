@@ -26,8 +26,6 @@
     [self.tab_Bottom registerClass:[UITableViewCell class] forCellReuseIdentifier:leftCellIdentifier];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"SX" ofType:@"plist"];
     self.arrData = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
-    NSLog(@"%@",self.arrData);
-
 }
 #pragma mark - tableView 数据源代理方法 -
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -46,8 +44,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:leftCellIdentifier forIndexPath:indexPath];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:leftCellIdentifier];
+        [self setCellContent:cell indexPath:indexPath];
     }
-    [self setCellContent:cell indexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -76,7 +74,7 @@
             CustomButton * btn = [[CustomButton alloc] initWithFrame:CGRectMake(x,y, width, 40)];
             [btn setTitle:obj forState:UIControlStateNormal];
             btn.selected = NO;
-            btn.tag = indexPath.section;
+            btn.tag = indexPath.section*100+idx;
             [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
             [cell.contentView addSubview:btn];
 
@@ -151,3 +149,6 @@
     }
 }
 @end
+ 
+
+
