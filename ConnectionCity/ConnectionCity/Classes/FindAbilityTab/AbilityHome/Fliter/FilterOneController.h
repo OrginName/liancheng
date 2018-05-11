@@ -19,7 +19,5 @@
 -(void)getSHCollectionReusableViewHearderTitle:(NSString *)title;
 @end
 @interface FooterView : UIView
-{
-    UIButton * _tmpBtn;
-}
+@property (nonatomic,strong) UIButton * tmpBtn;
 @end

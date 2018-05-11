@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FilterCell : UICollectionViewCell
+@property (nonatomic, strong) UILabel * lab_title;
 - (void)configCellWithData:(NSDictionary *)dic;
 @end
 @interface FilterCellFour : UICollectionViewCell

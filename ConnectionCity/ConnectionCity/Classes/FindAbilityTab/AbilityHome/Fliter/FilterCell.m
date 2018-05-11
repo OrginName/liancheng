@@ -9,8 +9,7 @@
 #import "FilterCell.h"
 #import "YSConstString.h"
 @interface FilterCell()
-@property (nonatomic, strong) UILabel *label;
-@property (nonatomic, strong) UILabel * lab_title;
+//@property (nonatomic, strong) UILabel * lab_title;
 
 @end
 @implementation FilterCell
@@ -40,10 +39,12 @@
     if ([dic[@"isSelected"] boolValue]) {
         _lab_title.layer.borderColor = [UIColor hexColorWithString:@"#f49930"].CGColor;
         _lab_title.textColor = [UIColor hexColorWithString:@"#f49930"];
+        self.selected = YES;
         
     } else {
         _lab_title.layer.borderColor = YSColor(246, 246, 246).CGColor;
         _lab_title.textColor = [UIColor hexColorWithString:@"#282828"];
+        self.selected = NO;
     }
 }
 #pragma mark - setter and getter

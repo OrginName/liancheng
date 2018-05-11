@@ -38,8 +38,6 @@
 		8D2B8BA120A2DACC00C3157F /* MakeMoneyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9F20A2DACC00C3157F /* MakeMoneyController.xib */; };
 		8D67602720A408470027CDEE /* ClassificationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67602520A408470027CDEE /* ClassificationsController.m */; };
 		8D67602820A408470027CDEE /* ClassificationsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D67602620A408470027CDEE /* ClassificationsController.xib */; };
-		8D67603320A420920027CDEE /* FilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67603120A420920027CDEE /* FilterController.m */; };
-		8D67603420A420920027CDEE /* FilterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D67603220A420920027CDEE /* FilterController.xib */; };
 		8D67603620A448CB0027CDEE /* SX.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D67603520A448CB0027CDEE /* SX.plist */; };
 		8D67603920A4688F0027CDEE /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67603820A4688F0027CDEE /* CustomButton.m */; };
 		8DB42FD420A57D6E00C4EBF8 /* FilterOneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB42FD220A57D6D00C4EBF8 /* FilterOneController.m */; };
@@ -173,9 +171,6 @@
 		8D67602420A408470027CDEE /* ClassificationsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassificationsController.h; sourceTree = "<group>"; };
 		8D67602520A408470027CDEE /* ClassificationsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassificationsController.m; sourceTree = "<group>"; };
 		8D67602620A408470027CDEE /* ClassificationsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassificationsController.xib; sourceTree = "<group>"; };
-		8D67603020A420920027CDEE /* FilterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterController.h; sourceTree = "<group>"; };
-		8D67603120A420920027CDEE /* FilterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterController.m; sourceTree = "<group>"; };
-		8D67603220A420920027CDEE /* FilterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterController.xib; sourceTree = "<group>"; };
 		8D67603520A448CB0027CDEE /* SX.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = SX.plist; sourceTree = "<group>"; };
 		8D67603720A4688F0027CDEE /* CustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		8D67603820A4688F0027CDEE /* CustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
@@ -440,9 +435,6 @@
 				8D67602420A408470027CDEE /* ClassificationsController.h */,
 				8D67602520A408470027CDEE /* ClassificationsController.m */,
 				8D67602620A408470027CDEE /* ClassificationsController.xib */,
-				8D67603020A420920027CDEE /* FilterController.h */,
-				8D67603120A420920027CDEE /* FilterController.m */,
-				8D67603220A420920027CDEE /* FilterController.xib */,
 			);
 			path = AbilityHome;
 			sourceTree = "<group>";
@@ -899,7 +891,6 @@
 				CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */,
 				CE0BA608209D60C3004C3C33 /* MessageController.xib in Resources */,
 				8D67603620A448CB0027CDEE /* SX.plist in Resources */,
-				8D67603420A420920027CDEE /* FilterController.xib in Resources */,
 				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
 				8D2B8B9720A2DAAF00C3157F /* BulidTeamController.xib in Resources */,
 				CE0BA635209D68A3004C3C33 /* YSLoginController.xib in Resources */,
@@ -1048,7 +1039,6 @@
 				CE0BA5E4209D5E9B004C3C33 /* MyDatePicker.m in Sources */,
 				8D67602720A408470027CDEE /* ClassificationsController.m in Sources */,
 				729BA6CE20A01E7F009713FD /* JFCityTableViewCell.m in Sources */,
-				8D67603320A420920027CDEE /* FilterController.m in Sources */,
 				CE0BA5E0209D5E9B004C3C33 /* DDFileReader.m in Sources */,
 				CE0BA5EA209D5E9B004C3C33 /* YSBlutoothTool.m in Sources */,
 				CE0BA5B7209D5E6B004C3C33 /* NSData+hexString.m in Sources */,
