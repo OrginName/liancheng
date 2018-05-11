@@ -39,6 +39,15 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     [self.bollec_bottom addSubview:foot];
     
 }
+//底部重置确定按钮点击
+- (IBAction)ResetSureClick:(UIButton *)sender {
+    NSLog(@"123123");
+    if (sender.tag==1) {
+        [self loadData];
+    }else{
+        
+    }
+}
 -(void)loadData{
     self.dataArr = [[NSMutableArray alloc] init];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"SX" ofType:@"plist"];

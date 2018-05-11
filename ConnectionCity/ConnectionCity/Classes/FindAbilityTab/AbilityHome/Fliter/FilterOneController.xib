@@ -44,6 +44,9 @@
                             <state key="normal" title="重置">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="ResetSureClick:" destination="-1" eventType="touchUpInside" id="ozI-Ur-MvK"/>
+                            </connections>
                         </button>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3Y-qK-QbM">
                             <rect key="frame" x="177.5" y="0.0" width="177.5" height="50"/>
@@ -51,6 +54,9 @@
                             <state key="normal" title="确定">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="ResetSureClick:" destination="-1" eventType="touchUpInside" id="1oD-gk-a9m"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.21145966799999999" green="0.97187072109999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
