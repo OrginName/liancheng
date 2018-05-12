@@ -11,5 +11,6 @@
 @interface BaseViewController : UIViewController
 /** 获取文件路径 */
 - (NSString *)getFilePathWithName:(NSString *)name;
-
+//类名转换类
+-(UIViewController *)rotateClass:(NSString *)name;
 @end
