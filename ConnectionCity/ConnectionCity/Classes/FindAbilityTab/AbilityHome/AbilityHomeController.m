@@ -10,7 +10,6 @@
 #import "CustomMap.h"
 #import "JFCityViewController.h"
 #import "ClassificationsController.h"
-#import "FilterController.h"
 #import "FilterOneController.h"
 @interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;

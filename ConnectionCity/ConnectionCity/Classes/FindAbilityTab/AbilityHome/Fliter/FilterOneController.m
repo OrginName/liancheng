@@ -63,6 +63,7 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
                 }
             }
         }];
+//        NSArray * arr = [self.bollec_bottom indexPathsForSelectedItems];
         
         NSLog(@"当前的筛选条件是:%@",[str stringByAppendingString:self.foot.tmpBtn.titleLabel.text]);
     }
