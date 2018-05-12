@@ -92,7 +92,7 @@
     switch (sender.tag) {
         case 1:
         {
-          BaseOneTabController * one = [[BaseOneTabController alloc] init];
+            BaseOneTabController * one = [[BaseOneTabController alloc] init];
             [self.navigationController pushViewController:one animated:YES];
         }
             

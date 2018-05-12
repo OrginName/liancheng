@@ -20,7 +20,9 @@
     if (sender.tag==5) {
         
     }else{
-       [self.messController.navigationController pushViewController:[AddressBookController new] animated:YES];
+        AddressBookController * address = [AddressBookController new];
+        address.title = @"测试标题";
+       [self.messController.navigationController pushViewController:address animated:YES];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:CLOSEANI object:nil];
     

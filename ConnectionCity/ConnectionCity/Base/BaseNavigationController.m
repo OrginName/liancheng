@@ -17,15 +17,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //设置导航背景颜色
-    self.navigationBar.barTintColor = kMainGreenColor;
+//    self.navigationBar.barTintColor = kMainGreenColor;
     //隐藏导航条
     //self.navigationBarHidden = YES;
     //设置导航标题颜色
+    [self.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];  
     [self.navigationBar setTintColor:[UIColor whiteColor]];
     [self.navigationBar setBackgroundImage:
      [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
-    //设置导航返回按钮颜色
-    [[UINavigationBar appearance]setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
+     
     //隐藏导航返回字体
     //[[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(NSIntegerMin, NSIntegerMin) forBarMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-200, 0) forBarMetrics:UIBarMetricsDefault];

@@ -38,10 +38,12 @@
 		8D2B8BA120A2DACC00C3157F /* MakeMoneyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9F20A2DACC00C3157F /* MakeMoneyController.xib */; };
 		8D67602720A408470027CDEE /* ClassificationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67602520A408470027CDEE /* ClassificationsController.m */; };
 		8D67602820A408470027CDEE /* ClassificationsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D67602620A408470027CDEE /* ClassificationsController.xib */; };
-		8D67603320A420920027CDEE /* FilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67603120A420920027CDEE /* FilterController.m */; };
-		8D67603420A420920027CDEE /* FilterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D67603220A420920027CDEE /* FilterController.xib */; };
 		8D67603620A448CB0027CDEE /* SX.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D67603520A448CB0027CDEE /* SX.plist */; };
 		8D67603920A4688F0027CDEE /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67603820A4688F0027CDEE /* CustomButton.m */; };
+		8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990620A6FDEB00968F86 /* ResumeController.m */; };
+		8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA4990720A6FDEB00968F86 /* ResumeController.xib */; };
+		8DA4990D20A7063E00968F86 /* ResumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990B20A7063E00968F86 /* ResumeCell.m */; };
+		8DA4990E20A7063E00968F86 /* ResumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA4990C20A7063E00968F86 /* ResumeCell.xib */; };
 		8DB42FD420A57D6E00C4EBF8 /* FilterOneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB42FD220A57D6D00C4EBF8 /* FilterOneController.m */; };
 		8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DB42FD320A57D6E00C4EBF8 /* FilterOneController.xib */; };
 		8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB42FD720A57D9900C4EBF8 /* FilterLayout.m */; };
@@ -173,12 +175,15 @@
 		8D67602420A408470027CDEE /* ClassificationsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassificationsController.h; sourceTree = "<group>"; };
 		8D67602520A408470027CDEE /* ClassificationsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassificationsController.m; sourceTree = "<group>"; };
 		8D67602620A408470027CDEE /* ClassificationsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassificationsController.xib; sourceTree = "<group>"; };
-		8D67603020A420920027CDEE /* FilterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterController.h; sourceTree = "<group>"; };
-		8D67603120A420920027CDEE /* FilterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterController.m; sourceTree = "<group>"; };
-		8D67603220A420920027CDEE /* FilterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterController.xib; sourceTree = "<group>"; };
 		8D67603520A448CB0027CDEE /* SX.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = SX.plist; sourceTree = "<group>"; };
 		8D67603720A4688F0027CDEE /* CustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		8D67603820A4688F0027CDEE /* CustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
+		8DA4990520A6FDEB00968F86 /* ResumeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeController.h; sourceTree = "<group>"; };
+		8DA4990620A6FDEB00968F86 /* ResumeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeController.m; sourceTree = "<group>"; };
+		8DA4990720A6FDEB00968F86 /* ResumeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeController.xib; sourceTree = "<group>"; };
+		8DA4990A20A7063E00968F86 /* ResumeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeCell.h; sourceTree = "<group>"; };
+		8DA4990B20A7063E00968F86 /* ResumeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeCell.m; sourceTree = "<group>"; };
+		8DA4990C20A7063E00968F86 /* ResumeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeCell.xib; sourceTree = "<group>"; };
 		8DB42FD120A57D6D00C4EBF8 /* FilterOneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterOneController.h; sourceTree = "<group>"; };
 		8DB42FD220A57D6D00C4EBF8 /* FilterOneController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterOneController.m; sourceTree = "<group>"; };
 		8DB42FD320A57D6E00C4EBF8 /* FilterOneController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterOneController.xib; sourceTree = "<group>"; };
@@ -433,6 +438,7 @@
 		8D2B8B8B20A2DA7A00C3157F /* AbilityHome */ = {
 			isa = PBXGroup;
 			children = (
+				8DA4990420A6FDCB00968F86 /* PersonalResume */,
 				8DB42FD020A57D5000C4EBF8 /* Fliter */,
 				8D2B8B8E20A2DA9F00C3157F /* AbilityHomeController.h */,
 				8D2B8B8F20A2DA9F00C3157F /* AbilityHomeController.m */,
@@ -440,9 +446,6 @@
 				8D67602420A408470027CDEE /* ClassificationsController.h */,
 				8D67602520A408470027CDEE /* ClassificationsController.m */,
 				8D67602620A408470027CDEE /* ClassificationsController.xib */,
-				8D67603020A420920027CDEE /* FilterController.h */,
-				8D67603120A420920027CDEE /* FilterController.m */,
-				8D67603220A420920027CDEE /* FilterController.xib */,
 			);
 			path = AbilityHome;
 			sourceTree = "<group>";
@@ -465,6 +468,19 @@
 				8D2B8B9F20A2DACC00C3157F /* MakeMoneyController.xib */,
 			);
 			path = MakeMoney;
+			sourceTree = "<group>";
+		};
+		8DA4990420A6FDCB00968F86 /* PersonalResume */ = {
+			isa = PBXGroup;
+			children = (
+				8DA4990520A6FDEB00968F86 /* ResumeController.h */,
+				8DA4990620A6FDEB00968F86 /* ResumeController.m */,
+				8DA4990720A6FDEB00968F86 /* ResumeController.xib */,
+				8DA4990A20A7063E00968F86 /* ResumeCell.h */,
+				8DA4990B20A7063E00968F86 /* ResumeCell.m */,
+				8DA4990C20A7063E00968F86 /* ResumeCell.xib */,
+			);
+			path = PersonalResume;
 			sourceTree = "<group>";
 		};
 		8DB42FD020A57D5000C4EBF8 /* Fliter */ = {
@@ -890,6 +906,7 @@
 				CE0BA633209D68A3004C3C33 /* ChangePasswordController.xib in Resources */,
 				CE0BA621209D61C0004C3C33 /* ProfileController.xib in Resources */,
 				CE0BA615209D6160004C3C33 /* LifeHallController.xib in Resources */,
+				8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */,
 				8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */,
 				8D24A23720A1D5BF00F0740D /* FirstTanView.xib in Resources */,
 				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
@@ -899,7 +916,7 @@
 				CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */,
 				CE0BA608209D60C3004C3C33 /* MessageController.xib in Resources */,
 				8D67603620A448CB0027CDEE /* SX.plist in Resources */,
-				8D67603420A420920027CDEE /* FilterController.xib in Resources */,
+				8DA4990E20A7063E00968F86 /* ResumeCell.xib in Resources */,
 				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
 				8D2B8B9720A2DAAF00C3157F /* BulidTeamController.xib in Resources */,
 				CE0BA635209D68A3004C3C33 /* YSLoginController.xib in Resources */,
@@ -1031,6 +1048,7 @@
 				CE0BA5BA209D5E6B004C3C33 /* NSDate+Extend.m in Sources */,
 				CE0BA636209D68A3004C3C33 /* YSLoginController.m in Sources */,
 				CE0BA5E9209D5E9B004C3C33 /* YSRefreshTool.m in Sources */,
+				8DA4990D20A7063E00968F86 /* ResumeCell.m in Sources */,
 				CE0BA5B2209D5E6B004C3C33 /* NSData+DDAdditions.m in Sources */,
 				8D24A23220A1CB8200F0740D /* FirstTanView.m in Sources */,
 				CE0BA5B5209D5E6B004C3C33 /* UIViewController+BackButtonHandler.m in Sources */,
@@ -1048,8 +1066,8 @@
 				CE0BA5E4209D5E9B004C3C33 /* MyDatePicker.m in Sources */,
 				8D67602720A408470027CDEE /* ClassificationsController.m in Sources */,
 				729BA6CE20A01E7F009713FD /* JFCityTableViewCell.m in Sources */,
-				8D67603320A420920027CDEE /* FilterController.m in Sources */,
 				CE0BA5E0209D5E9B004C3C33 /* DDFileReader.m in Sources */,
+				8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */,
 				CE0BA5EA209D5E9B004C3C33 /* YSBlutoothTool.m in Sources */,
 				CE0BA5B7209D5E6B004C3C33 /* NSData+hexString.m in Sources */,
 				8D2B8B9620A2DAAF00C3157F /* BulidTeamController.m in Sources */,

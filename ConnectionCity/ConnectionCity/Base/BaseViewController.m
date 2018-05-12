@@ -62,7 +62,21 @@
     }
     return userPath;
 }
-
+/**
+ 类名转换类
+ 
+ @param name 类名
+ */
+-(UIViewController *)rotateClass:(NSString *)name{
+    Class c = NSClassFromString(name);
+    UIViewController * controller;
+#if __has_feature(objc_arc)
+    controller = [[c alloc] init];
+#else
+    controller = [[[c alloc] init] autorelease];
+#endif
+    return controller;
+}
 /*
 #pragma mark - Navigation
 

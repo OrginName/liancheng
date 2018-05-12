@@ -10,7 +10,6 @@
 #import "CustomMap.h"
 #import "JFCityViewController.h"
 #import "ClassificationsController.h"
-#import "FilterController.h"
 #import "FilterOneController.h"
 @interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
@@ -35,6 +34,10 @@
 //搜索按钮点击
 -(void)SearchClick{
     
+}
+//发布简历按钮点击
+- (IBAction)sendResume:(UIButton *)sender {
+    [self.navigationController pushViewController:[self rotateClass:@"ResumeController"] animated:YES];
 }
 //顶部三个筛选按钮的点击
 - (IBAction)btn_SX:(UIButton *)sender {
