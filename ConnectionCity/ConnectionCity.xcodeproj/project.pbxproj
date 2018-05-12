@@ -916,7 +916,10 @@
 				CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */,
 				CE0BA608209D60C3004C3C33 /* MessageController.xib in Resources */,
 				8D67603620A448CB0027CDEE /* SX.plist in Resources */,
+<<<<<<< HEAD
 				8DA4990E20A7063E00968F86 /* ResumeCell.xib in Resources */,
+=======
+>>>>>>> 13db831d33c832e3e762ef86b7f89fbdd4ce18c4
 				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
 				8D2B8B9720A2DAAF00C3157F /* BulidTeamController.xib in Resources */,
 				CE0BA635209D68A3004C3C33 /* YSLoginController.xib in Resources */,

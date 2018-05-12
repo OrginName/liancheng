@@ -17,6 +17,7 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
 @property (nonatomic,strong) NSMutableArray * arrData;
 @property (nonatomic, strong) NSMutableArray * dataArr;
 @property (nonatomic,strong) FilterLayout * flowLyout;
+@property (nonatomic,strong) FooterView * foot;
 @end
 
 @implementation FilterOneController
@@ -28,24 +29,42 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
 }
 -(void)setUI{
     // 最重要的一句代码!!!
-    self.bollec_bottom.contentInset = UIEdgeInsetsMake(0, 0, 100, 0);
+    
     self.bollec_bottom.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.flowLyout = [[FilterLayout alloc] init];
     _bollec_bottom.collectionViewLayout = self.flowLyout;
     [_bollec_bottom registerClass:[FilterCell class] forCellWithReuseIdentifier:ID];
     //自定义重用视图 FilterCollecFooterRuesuableView
     [self.bollec_bottom registerClass:[FilterCollecRuesuableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:collectionCellIndentider];
-    FooterView * foot = [[FooterView alloc] initWithFrame:CGRectMake(0, self.bollec_bottom.height-85, self.bollec_bottom.width, 100)];
-    [self.bollec_bottom addSubview:foot];
+    [self setBotomView];
     
+}
+-(void)setBotomView{
+    self.bollec_bottom.contentInset = UIEdgeInsetsMake(0, 0, 100, 0);
+    self.foot = [[FooterView alloc] initWithFrame:CGRectMake(0, self.bollec_bottom.height-85, self.bollec_bottom.width, 100)];
+    [self.bollec_bottom addSubview:self.foot];
 }
 //底部重置确定按钮点击
 - (IBAction)ResetSureClick:(UIButton *)sender {
-    NSLog(@"123123");
+//    NSLog(@"123123");
     if (sender.tag==1) {
         [self loadData];
+        self.foot.tmpBtn.selected = NO;
+        CustomButton * btn = (CustomButton *)[self.foot viewWithTag:1001];
+        btn.selected = YES;
+        self.foot.tmpBtn = btn;
     }else{
+       __block NSString * str = @"";
+        [[self.bollec_bottom subviews] enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj isKindOfClass:[UICollectionViewCell class]]) {
+                FilterCell * cell = (FilterCell *)obj;
+                if (cell.selected) {
+                    str = [str stringByAppendingString:cell.lab_title.text];
+                }
+            }
+        }];
         
+        NSLog(@"当前的筛选条件是:%@",[str stringByAppendingString:self.foot.tmpBtn.titleLabel.text]);
     }
 }
 -(void)loadData{
@@ -105,7 +124,6 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
 
 #pragma mark -----FilterCollecRuesuableView头部-----
 @interface FilterCollecRuesuableView (){
-    
     UILabel *titleLabel;
 }
 
@@ -166,16 +184,16 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     [self addSubview:btn];
     CustomButton * btn_online = [[CustomButton alloc] initWithFrame:CGRectMake(btn.x+120, btn.y, 100, 40)];
     [btn_online setTitle:@"在线" forState:UIControlStateNormal];
-    btn_online.selected = YES;
     [btn_online addTarget:self action:@selector(btnClick1:) forControlEvents:UIControlEventTouchUpInside];
     btn_online.tag = 1001;
+    btn_online.selected = YES;
+    _tmpBtn = btn_online;
     [self addSubview:btn_online];
 }
 -(void)btnClick1:(UIButton *)sender{
-    NSLog(@"%ld",(long)sender.tag);
-    UIButton * btn = [self viewWithTag:1001];
+    CustomButton * btn2 = (CustomButton *)[self viewWithTag:1001];
     if (sender.tag!=1001) {
-        btn.selected = NO;
+        btn2.selected = NO;
     }
     if (_tmpBtn == nil){
         sender.selected = YES;
