@@ -48,6 +48,23 @@
 		8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DB42FD320A57D6E00C4EBF8 /* FilterOneController.xib */; };
 		8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB42FD720A57D9900C4EBF8 /* FilterLayout.m */; };
 		8DB42FDC20A57DBC00C4EBF8 /* FilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB42FDA20A57DBC00C4EBF8 /* FilterCell.m */; };
+		8DD48CCB20A811EA00D6D1E6 /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CB920A811EA00D6D1E6 /* NSData+SDDataCache.m */; };
+		8DD48CCC20A811EA00D6D1E6 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CBC20A811EA00D6D1E6 /* TAAbstractDotView.m */; };
+		8DD48CCD20A811EA00D6D1E6 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CBE20A811EA00D6D1E6 /* TAAnimatedDotView.m */; };
+		8DD48CCE20A811EA00D6D1E6 /* TADotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CC020A811EA00D6D1E6 /* TADotView.m */; };
+		8DD48CCF20A811EA00D6D1E6 /* TAPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CC220A811EA00D6D1E6 /* TAPageControl.m */; };
+		8DD48CD020A811EA00D6D1E6 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CC420A811EA00D6D1E6 /* SDCollectionViewCell.m */; };
+		8DD48CD120A811EA00D6D1E6 /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CC620A811EA00D6D1E6 /* SDCycleScrollView.m */; };
+		8DD48CD220A811EA00D6D1E6 /* UIColor+MyColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CC820A811EA00D6D1E6 /* UIColor+MyColor.m */; };
+		8DD48CD320A811EA00D6D1E6 /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CCA20A811EA00D6D1E6 /* UIView+SDExtension.m */; };
+		8DD48CD720A81B9100D6D1E6 /* GuardCollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CD520A81B9100D6D1E6 /* GuardCollController.m */; };
+		8DD48CD820A81B9100D6D1E6 /* GuardCollController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DD48CD620A81B9100D6D1E6 /* GuardCollController.xib */; };
+		8DD48CDC20A8202800D6D1E6 /* ResumeMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CDB20A8202800D6D1E6 /* ResumeMo.m */; };
+		8DD48CDF20A828F200D6D1E6 /* CustomtextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CDE20A828F200D6D1E6 /* CustomtextView.m */; };
+		8DD48CE820A8367100D6D1E6 /* GuardEduController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CE620A8367100D6D1E6 /* GuardEduController.m */; };
+		8DD48CE920A8367100D6D1E6 /* GuardEduController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DD48CE720A8367100D6D1E6 /* GuardEduController.xib */; };
+		8DD48CEE20A8380D00D6D1E6 /* EditAllController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CEC20A8380D00D6D1E6 /* EditAllController.m */; };
+		8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DD48CED20A8380D00D6D1E6 /* EditAllController.xib */; };
 		CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA568209D5004004C3C33 /* AppDelegate.m */; };
 		CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0BA570209D5004004C3C33 /* Assets.xcassets */; };
 		CE0BA577209D5004004C3C33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA576209D5004004C3C33 /* main.m */; };
@@ -191,6 +208,37 @@
 		8DB42FD720A57D9900C4EBF8 /* FilterLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterLayout.m; sourceTree = "<group>"; };
 		8DB42FD920A57DBC00C4EBF8 /* FilterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterCell.h; sourceTree = "<group>"; };
 		8DB42FDA20A57DBC00C4EBF8 /* FilterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterCell.m; sourceTree = "<group>"; };
+		8DD48CB820A811EA00D6D1E6 /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
+		8DD48CB920A811EA00D6D1E6 /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
+		8DD48CBB20A811EA00D6D1E6 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
+		8DD48CBC20A811EA00D6D1E6 /* TAAbstractDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAbstractDotView.m; sourceTree = "<group>"; };
+		8DD48CBD20A811EA00D6D1E6 /* TAAnimatedDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAnimatedDotView.h; sourceTree = "<group>"; };
+		8DD48CBE20A811EA00D6D1E6 /* TAAnimatedDotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAAnimatedDotView.m; sourceTree = "<group>"; };
+		8DD48CBF20A811EA00D6D1E6 /* TADotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TADotView.h; sourceTree = "<group>"; };
+		8DD48CC020A811EA00D6D1E6 /* TADotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TADotView.m; sourceTree = "<group>"; };
+		8DD48CC120A811EA00D6D1E6 /* TAPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAPageControl.h; sourceTree = "<group>"; };
+		8DD48CC220A811EA00D6D1E6 /* TAPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TAPageControl.m; sourceTree = "<group>"; };
+		8DD48CC320A811EA00D6D1E6 /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
+		8DD48CC420A811EA00D6D1E6 /* SDCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCollectionViewCell.m; sourceTree = "<group>"; };
+		8DD48CC520A811EA00D6D1E6 /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
+		8DD48CC620A811EA00D6D1E6 /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
+		8DD48CC720A811EA00D6D1E6 /* UIColor+MyColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MyColor.h"; sourceTree = "<group>"; };
+		8DD48CC820A811EA00D6D1E6 /* UIColor+MyColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MyColor.m"; sourceTree = "<group>"; };
+		8DD48CC920A811EA00D6D1E6 /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
+		8DD48CCA20A811EA00D6D1E6 /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
+		8DD48CD420A81B9100D6D1E6 /* GuardCollController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuardCollController.h; sourceTree = "<group>"; };
+		8DD48CD520A81B9100D6D1E6 /* GuardCollController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuardCollController.m; sourceTree = "<group>"; };
+		8DD48CD620A81B9100D6D1E6 /* GuardCollController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuardCollController.xib; sourceTree = "<group>"; };
+		8DD48CDA20A8202800D6D1E6 /* ResumeMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeMo.h; sourceTree = "<group>"; };
+		8DD48CDB20A8202800D6D1E6 /* ResumeMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeMo.m; sourceTree = "<group>"; };
+		8DD48CDD20A828F200D6D1E6 /* CustomtextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomtextView.h; sourceTree = "<group>"; };
+		8DD48CDE20A828F200D6D1E6 /* CustomtextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomtextView.m; sourceTree = "<group>"; };
+		8DD48CE520A8367100D6D1E6 /* GuardEduController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuardEduController.h; sourceTree = "<group>"; };
+		8DD48CE620A8367100D6D1E6 /* GuardEduController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuardEduController.m; sourceTree = "<group>"; };
+		8DD48CE720A8367100D6D1E6 /* GuardEduController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuardEduController.xib; sourceTree = "<group>"; };
+		8DD48CEB20A8380D00D6D1E6 /* EditAllController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditAllController.h; sourceTree = "<group>"; };
+		8DD48CEC20A8380D00D6D1E6 /* EditAllController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditAllController.m; sourceTree = "<group>"; };
+		8DD48CED20A8380D00D6D1E6 /* EditAllController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditAllController.xib; sourceTree = "<group>"; };
 		9E9EF5E7637D778FC51741D8 /* Pods-ConnectionCity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectionCity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectionCity/Pods-ConnectionCity.debug.xcconfig"; sourceTree = "<group>"; };
 		C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConnectionCity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0BA564209D5004004C3C33 /* ConnectionCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectionCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -331,6 +379,7 @@
 		729BA6B120A01E7F009713FD /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				8DD48CB720A811EA00D6D1E6 /* SDCycleScrollView */,
 				8D24A22F20A1CB6000F0740D /* RefineThing */,
 				8D24A22820A1B64400F0740D /* map */,
 				729BA6B220A01E7F009713FD /* AreaDataManager */,
@@ -473,12 +522,20 @@
 		8DA4990420A6FDCB00968F86 /* PersonalResume */ = {
 			isa = PBXGroup;
 			children = (
+				8DD48CEA20A8379800D6D1E6 /* Cell */,
+				8DD48CD920A8201500D6D1E6 /* Model */,
 				8DA4990520A6FDEB00968F86 /* ResumeController.h */,
 				8DA4990620A6FDEB00968F86 /* ResumeController.m */,
 				8DA4990720A6FDEB00968F86 /* ResumeController.xib */,
-				8DA4990A20A7063E00968F86 /* ResumeCell.h */,
-				8DA4990B20A7063E00968F86 /* ResumeCell.m */,
-				8DA4990C20A7063E00968F86 /* ResumeCell.xib */,
+				8DD48CE520A8367100D6D1E6 /* GuardEduController.h */,
+				8DD48CE620A8367100D6D1E6 /* GuardEduController.m */,
+				8DD48CE720A8367100D6D1E6 /* GuardEduController.xib */,
+				8DD48CD420A81B9100D6D1E6 /* GuardCollController.h */,
+				8DD48CD520A81B9100D6D1E6 /* GuardCollController.m */,
+				8DD48CD620A81B9100D6D1E6 /* GuardCollController.xib */,
+				8DD48CEB20A8380D00D6D1E6 /* EditAllController.h */,
+				8DD48CEC20A8380D00D6D1E6 /* EditAllController.m */,
+				8DD48CED20A8380D00D6D1E6 /* EditAllController.xib */,
 			);
 			path = PersonalResume;
 			sourceTree = "<group>";
@@ -495,6 +552,58 @@
 				8DB42FDA20A57DBC00C4EBF8 /* FilterCell.m */,
 			);
 			path = Fliter;
+			sourceTree = "<group>";
+		};
+		8DD48CB720A811EA00D6D1E6 /* SDCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				8DD48CB820A811EA00D6D1E6 /* NSData+SDDataCache.h */,
+				8DD48CB920A811EA00D6D1E6 /* NSData+SDDataCache.m */,
+				8DD48CBA20A811EA00D6D1E6 /* PageControl */,
+				8DD48CC320A811EA00D6D1E6 /* SDCollectionViewCell.h */,
+				8DD48CC420A811EA00D6D1E6 /* SDCollectionViewCell.m */,
+				8DD48CC520A811EA00D6D1E6 /* SDCycleScrollView.h */,
+				8DD48CC620A811EA00D6D1E6 /* SDCycleScrollView.m */,
+				8DD48CC720A811EA00D6D1E6 /* UIColor+MyColor.h */,
+				8DD48CC820A811EA00D6D1E6 /* UIColor+MyColor.m */,
+				8DD48CC920A811EA00D6D1E6 /* UIView+SDExtension.h */,
+				8DD48CCA20A811EA00D6D1E6 /* UIView+SDExtension.m */,
+			);
+			path = SDCycleScrollView;
+			sourceTree = "<group>";
+		};
+		8DD48CBA20A811EA00D6D1E6 /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				8DD48CBB20A811EA00D6D1E6 /* TAAbstractDotView.h */,
+				8DD48CBC20A811EA00D6D1E6 /* TAAbstractDotView.m */,
+				8DD48CBD20A811EA00D6D1E6 /* TAAnimatedDotView.h */,
+				8DD48CBE20A811EA00D6D1E6 /* TAAnimatedDotView.m */,
+				8DD48CBF20A811EA00D6D1E6 /* TADotView.h */,
+				8DD48CC020A811EA00D6D1E6 /* TADotView.m */,
+				8DD48CC120A811EA00D6D1E6 /* TAPageControl.h */,
+				8DD48CC220A811EA00D6D1E6 /* TAPageControl.m */,
+			);
+			path = PageControl;
+			sourceTree = "<group>";
+		};
+		8DD48CD920A8201500D6D1E6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8DD48CDA20A8202800D6D1E6 /* ResumeMo.h */,
+				8DD48CDB20A8202800D6D1E6 /* ResumeMo.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8DD48CEA20A8379800D6D1E6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8DA4990A20A7063E00968F86 /* ResumeCell.h */,
+				8DA4990B20A7063E00968F86 /* ResumeCell.m */,
+				8DA4990C20A7063E00968F86 /* ResumeCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		CE0BA55B209D5004004C3C33 = {
@@ -584,6 +693,8 @@
 				CE0BA5B1209D5E6B004C3C33 /* UIViewController+BackButtonHandler.h */,
 				8D67603720A4688F0027CDEE /* CustomButton.h */,
 				8D67603820A4688F0027CDEE /* CustomButton.m */,
+				8DD48CDD20A828F200D6D1E6 /* CustomtextView.h */,
+				8DD48CDE20A828F200D6D1E6 /* CustomtextView.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -906,19 +1017,20 @@
 				CE0BA633209D68A3004C3C33 /* ChangePasswordController.xib in Resources */,
 				CE0BA621209D61C0004C3C33 /* ProfileController.xib in Resources */,
 				CE0BA615209D6160004C3C33 /* LifeHallController.xib in Resources */,
+				8DD48CE920A8367100D6D1E6 /* GuardEduController.xib in Resources */,
 				8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */,
 				8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */,
 				8D24A23720A1D5BF00F0740D /* FirstTanView.xib in Resources */,
 				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
+				8DD48CD820A81B9100D6D1E6 /* GuardCollController.xib in Resources */,
 				729BA6C920A01E7F009713FD /* shop_area.sqlite in Resources */,
 				CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */,
 				CE0BA60F209D6126004C3C33 /* AddressBookController.xib in Resources */,
 				CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */,
 				CE0BA608209D60C3004C3C33 /* MessageController.xib in Resources */,
 				8D67603620A448CB0027CDEE /* SX.plist in Resources */,
- 
 				8DA4990E20A7063E00968F86 /* ResumeCell.xib in Resources */,
- 
+				8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */,
 				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
 				8D2B8B9720A2DAAF00C3157F /* BulidTeamController.xib in Resources */,
 				CE0BA635209D68A3004C3C33 /* YSLoginController.xib in Resources */,
@@ -1010,11 +1122,15 @@
 				CE0BA5E3209D5E9B004C3C33 /* YTAlertUtil.m in Sources */,
 				CE0BA614209D6160004C3C33 /* LifeHallController.m in Sources */,
 				CE0BA634209D68A3004C3C33 /* YSRegisterController.m in Sources */,
+				8DD48CD220A811EA00D6D1E6 /* UIColor+MyColor.m in Sources */,
 				CE0BA5BB209D5E6B004C3C33 /* UIBarButtonItem+Extension.m in Sources */,
 				729BA6CB20A01E7F009713FD /* JFCityCollectionFlowLayout.m in Sources */,
+				8DD48CCB20A811EA00D6D1E6 /* NSData+SDDataCache.m in Sources */,
 				729BA6FE20A32F0B009713FD /* CustomMap.m in Sources */,
 				8DB42FDC20A57DBC00C4EBF8 /* FilterCell.m in Sources */,
+				8DD48CCF20A811EA00D6D1E6 /* TAPageControl.m in Sources */,
 				CE0BA5E7209D5E9B004C3C33 /* YSTools.m in Sources */,
+				8DD48CDF20A828F200D6D1E6 /* CustomtextView.m in Sources */,
 				CE0BA5E2209D5E9B004C3C33 /* SRDownloadModel.m in Sources */,
 				8D24A23520A1D5A700F0740D /* RefineView.m in Sources */,
 				CE0BA5E5209D5E9B004C3C33 /* YSNetworkTool.m in Sources */,
@@ -1022,15 +1138,20 @@
 				8D2B8B9B20A2DABD00C3157F /* ConnectionController.m in Sources */,
 				CE0BA5B6209D5E6B004C3C33 /* NSObject+YTGetObject.m in Sources */,
 				8D2B8B9120A2DA9F00C3157F /* AbilityHomeController.m in Sources */,
+				8DD48CE820A8367100D6D1E6 /* GuardEduController.m in Sources */,
+				8DD48CD320A811EA00D6D1E6 /* UIView+SDExtension.m in Sources */,
 				CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */,
 				CE0BA5B3209D5E6B004C3C33 /* UIView+YSCategory.m in Sources */,
 				729BA6CD20A01E7F009713FD /* JFCityHeaderView.m in Sources */,
+				8DD48CCC20A811EA00D6D1E6 /* TAAbstractDotView.m in Sources */,
 				8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */,
 				CE0BA5B4209D5E6B004C3C33 /* UIFont+YTInchFit.m in Sources */,
+				8DD48CDC20A8202800D6D1E6 /* ResumeMo.m in Sources */,
 				8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */,
 				CE0BA577209D5004004C3C33 /* main.m in Sources */,
 				8D67603920A4688F0027CDEE /* CustomButton.m in Sources */,
 				729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */,
+				8DD48CD720A81B9100D6D1E6 /* GuardCollController.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
 				CE0BA60E209D6126004C3C33 /* AddressBookController.m in Sources */,
 				729BA6D020A01E7F009713FD /* JFSearchView.m in Sources */,
@@ -1042,14 +1163,18 @@
 				729BA6D120A01E7F009713FD /* JFLocation.m in Sources */,
 				8DB42FD420A57D6E00C4EBF8 /* FilterOneController.m in Sources */,
 				CE0BA5DE209D5E9B004C3C33 /* YTDataPacket.m in Sources */,
+				8DD48CD120A811EA00D6D1E6 /* SDCycleScrollView.m in Sources */,
 				CE0BA5EB209D5E9B004C3C33 /* SRDownloadManager.m in Sources */,
+				8DD48CD020A811EA00D6D1E6 /* SDCollectionViewCell.m in Sources */,
 				CE0BA5F9209D5EBE004C3C33 /* BaseModel.m in Sources */,
 				CE0BA5E1209D5E9B004C3C33 /* YSAccountTool.m in Sources */,
 				729BA6CF20A01E7F009713FD /* JFCityViewController.m in Sources */,
 				CE0BA5B8209D5E6B004C3C33 /* UIColor+Extension.m in Sources */,
 				CE0BA5BA209D5E6B004C3C33 /* NSDate+Extend.m in Sources */,
 				CE0BA636209D68A3004C3C33 /* YSLoginController.m in Sources */,
+				8DD48CCE20A811EA00D6D1E6 /* TADotView.m in Sources */,
 				CE0BA5E9209D5E9B004C3C33 /* YSRefreshTool.m in Sources */,
+				8DD48CEE20A8380D00D6D1E6 /* EditAllController.m in Sources */,
 				8DA4990D20A7063E00968F86 /* ResumeCell.m in Sources */,
 				CE0BA5B2209D5E6B004C3C33 /* NSData+DDAdditions.m in Sources */,
 				8D24A23220A1CB8200F0740D /* FirstTanView.m in Sources */,
@@ -1068,6 +1193,7 @@
 				CE0BA5E4209D5E9B004C3C33 /* MyDatePicker.m in Sources */,
 				8D67602720A408470027CDEE /* ClassificationsController.m in Sources */,
 				729BA6CE20A01E7F009713FD /* JFCityTableViewCell.m in Sources */,
+				8DD48CCD20A811EA00D6D1E6 /* TAAnimatedDotView.m in Sources */,
 				CE0BA5E0209D5E9B004C3C33 /* DDFileReader.m in Sources */,
 				8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */,
 				CE0BA5EA209D5E9B004C3C33 /* YSBlutoothTool.m in Sources */,

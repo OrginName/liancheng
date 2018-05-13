@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <MAMapKit/MAMapKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
+#import "ResumeController.h"
 @interface AppDelegate ()
 
 @end
@@ -23,7 +24,7 @@
     UIViewController *vc = [[UIViewController alloc]initWithNibName:nil bundle:nil];
     self.window.rootViewController = vc;
     
-    BaseTabBarController *baseTabBar = [[BaseTabBarController alloc]init];
+    BaseOneTabController *baseTabBar = [[BaseOneTabController alloc]init];
     [self.window setRootViewController:baseTabBar];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Receivetag:) name:@"TABBAR" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backWindow) name:@"BACKMAINWINDOW" object:nil];

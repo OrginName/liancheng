@@ -36,7 +36,7 @@
                 <constraint firstAttribute="trailing" secondItem="fdy-6d-hRl" secondAttribute="trailing" constant="10" id="vJw-EC-yRW"/>
                 <constraint firstItem="fdy-6d-hRl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="xhX-rx-Cna"/>
             </constraints>
-            <point key="canvasLocation" x="39" y="-294"/>
+            <point key="canvasLocation" x="38.5" y="-294.5"/>
         </view>
     </objects>
 </document>
