@@ -7,7 +7,10 @@
 //
 
 #import "MyDatePicker.h"
+@interface MyDatePicker()
 
+@property (nonatomic,strong)UIView * blackView;
+@end
 @implementation MyDatePicker
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -18,12 +21,12 @@
         //格式化当前日期
         _dateStr = [_dateFormatter stringFromDate:[NSDate date]];
         //创建选择器背景View
-        UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 200)];
+        UIView *myView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 250)];
         myView.backgroundColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1];
         [self addSubview:myView];
         //创建取消、确定背景View
-        UIView *quxiaoquedingView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
-        quxiaoquedingView.backgroundColor = kMainGreenColor;
+        UIView *quxiaoquedingView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, myView.width, 40)];
+        quxiaoquedingView.backgroundColor = [UIColor hexColorWithString:@"#f49930"];
         [myView addSubview:quxiaoquedingView];
         //创建取消按钮
         UIButton *cancellBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -35,14 +38,14 @@
         [quxiaoquedingView addSubview:cancellBtn];
         //创建确定按钮
         UIButton *determineBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        determineBtn.frame = CGRectMake(kScreenWidth - 50, 0, 50, 40);
+        determineBtn.frame = CGRectMake(myView.width - 50, 0, 50, 40);
         determineBtn.titleLabel.font = [UIFont systemFontOfSize:16];
         [determineBtn setTitle:@"确定" forState:UIControlStateNormal];
         [determineBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [determineBtn addTarget:self action:@selector(determineClick:) forControlEvents:UIControlEventTouchUpInside];
         [quxiaoquedingView addSubview:determineBtn];
         //创建日期选择器
-        UIDatePicker *datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 40, kScreenWidth, 160)];
+        UIDatePicker *datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 40, myView.width, 160)];
         datePicker.date = [NSDate date];
         /*
         //设置日期选择器的最大最小日期
@@ -65,7 +68,7 @@
         [self.delegate myPickerViewWithPickerView:self cancellClick:btn];
     }
     __weak MyDatePicker *weakSelf = self;
-    CGRect rect = CGRectMake(0, kScreenHeight, kScreenWidth, 200);
+    CGRect rect = CGRectMake(0, kScreenHeight, self.width,self.height);
     [UIView animateWithDuration:0.25 animations:^{
         weakSelf.frame = rect;
     }];
@@ -75,7 +78,7 @@
         [self.delegate myDatePickerWithDateStr:_dateStr];
     }
     __weak MyDatePicker *weakSelf = self;
-    CGRect rect = CGRectMake(0, kScreenHeight, kScreenWidth, 200);
+    CGRect rect = CGRectMake(0, kScreenHeight, self.width, self.height);
     [UIView animateWithDuration:0.25 animations:^{
         weakSelf.frame = rect;
     }];
@@ -88,7 +91,7 @@
     self.hidden = NO;
     __weak MyDatePicker *weakSelf = self;
     [UIView animateWithDuration:0.25 animations:^{
-        weakSelf.frame = CGRectMake(0, kScreenHeight - 200, kScreenWidth, 200);
+        weakSelf.frame = CGRectMake(0, kScreenHeight - self.height, self.width, self.height);
     } completion:nil];
 }
 

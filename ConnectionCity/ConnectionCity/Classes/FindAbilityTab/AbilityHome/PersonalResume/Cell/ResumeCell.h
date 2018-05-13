@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ResumeMo.h"
 @interface ResumeCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lab_workEdu;//工作和教育标题
 @property (weak, nonatomic) IBOutlet UILabel *lab_proOrXL;//职业和学历
@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab_eduAndWork;//教育AND工作标题
 @property (weak, nonatomic) IBOutlet UILabel *lab_SalW;//薪资
 @property (weak, nonatomic) IBOutlet UILabel *lab_MyselfProW;//自我介绍
--(void)initTitle:(NSIndexPath *)indexPath;
+@property (nonatomic,strong)ResumeMo * Mo;
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView
-                            indexPath:(NSIndexPath *)indexPath;
+                            indexPath:(NSIndexPath *)indexPath withCollArr:(NSMutableArray * )arr withEduArr:(NSMutableArray * )EduArr;
 @end

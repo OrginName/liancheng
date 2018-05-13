@@ -7,9 +7,20 @@
 //
 
 #import "GuardEduController.h"
-
-@interface GuardEduController ()<UITextViewDelegate>
+#import "EditAllController.h"
+#import "MyDatePicker.h"
+@interface GuardEduController ()<UITextViewDelegate,MyDatePickerDelegate>
+{
+    NSInteger currtenTag;
+}
+@property (nonatomic,strong) MyDatePicker * myDatePick;
 @property (weak, nonatomic) IBOutlet CustomtextView *textView_Indro;
+@property (weak, nonatomic) IBOutlet UITextField *text_Coll;
+@property (weak, nonatomic) IBOutlet UITextField *text_Pro;
+@property (weak, nonatomic) IBOutlet UIButton *btn_Save;
+@property (weak, nonatomic) IBOutlet UITextField *text_XL;
+@property (weak, nonatomic) IBOutlet UITextField *end_Time;
+@property (weak, nonatomic) IBOutlet UITextField *Start_time;
 @end
 
 @implementation GuardEduController
@@ -20,16 +31,54 @@
 }
 //完成按钮点击
 -(void)complete{
-    [YTAlertUtil showTempInfo:@"别点了"];
+    [self btn_Save:nil];
+}
+//保存按钮点击
+- (IBAction)btn_Save:(UIButton *)sender {
+    if (self.text_Coll.text.length==0||self.text_Pro.text.length==0||self.text_XL.text.length==0||self.Start_time.text.length==02||self.end_Time.text.length==0) {
+        [YTAlertUtil showTempInfo:@"请查看是否输入完整"];
+        return;
+    }
+    ResumeMo * mo = [[ResumeMo alloc] init];
+    mo.collAndcompany = self.text_Coll.text;
+    mo.proAndPro = self.text_Pro.text;
+    mo.XLAndIntro = self.text_XL.text;
+    mo.satrtTime = self.Start_time.text;
+    mo.endTime = self.end_Time.text;
+    self.block(mo);
+    [self.navigationController popViewControllerAnimated:YES];
+}
+//各个编辑按钮点击
+- (IBAction)btn_Click:(UIButton *)sender {
+    NSArray * arr = @[self.text_Coll,self.text_Pro,self.text_XL];
+    if (sender.tag<4) {
+        EditAllController * edit = [EditAllController new];
+        edit.block = ^(NSString * str){
+            UITextField * text = (UITextField *)arr[sender.tag-1];
+            text.text = str;
+        };
+        [self.navigationController pushViewController:edit animated:YES];
+    }else{
+        currtenTag = sender.tag;
+        [self.myDatePick animateShow];
+    }
 }
 -(void)setUI{
     self.textView_Indro.placeholder = @"请输入工作描述";
     self.textView_Indro.placeholderColor = [UIColor hexColorWithString:@"#bbbbbb"];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(complete) image:@"" title:@"完成" EdgeInsets:UIEdgeInsetsZero];
-    [self initSettitle];
+    [self initDate];
 }
--(void)initSettitle{
-    
+#pragma mark ---myDatePickerDelegate-----
+- (void)myDatePickerWithDateStr:(NSString *)dateStr{
+    UITextField * text = (UITextField *)[self.view viewWithTag:currtenTag+6];
+    text.text = dateStr;
+}
+//创建日期插件
+-(void)initDate{
+    self.myDatePick = [[MyDatePicker alloc] initWithFrame:CGRectMake(0, self.view.height, self.view.width, 250)];
+    self.myDatePick.delegate  = self;
+    [self.view addSubview:self.myDatePick];
 }
 -(void)textViewDidChange:(UITextView *)textView{
     //首行缩进

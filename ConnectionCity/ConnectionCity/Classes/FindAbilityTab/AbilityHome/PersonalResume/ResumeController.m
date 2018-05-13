@@ -16,6 +16,8 @@
 @interface ResumeController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tab_bottom;
 @property (nonatomic,strong) SDCycleScrollView * cycleScrollView;
+@property (nonatomic,strong) NSMutableArray * CollArr;
+@property (nonatomic,strong) NSMutableArray * EduArr;
 @end
 
 @implementation ResumeController
@@ -24,7 +26,7 @@
     [super viewDidLoad];
     self.title  = @"个人简历";
     [self setUI];
- 
+    [self initData];
 }
 //导航栏完成按钮点击
 -(void)complete{
@@ -35,12 +37,19 @@
     [self initRightItem];
     [self initScroll];
 }
+-(void)initData{
+    self.CollArr = [[NSMutableArray alloc] init];
+    self.EduArr = [[NSMutableArray alloc] init];
+}
 #pragma mark - tableView 数据源代理方法 -
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section!=2&&section!=3) {
         return 1;
+    }else if(section==2){
+        return self.CollArr.count+2;
+    }else{
+        return self.EduArr.count+2;
     }
-    return 3;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 6;
@@ -50,8 +59,14 @@
         return 100;
     }else if (indexPath.section ==1||indexPath.section==4||indexPath.section==5){
         return 50;
+    }else if(indexPath.section==2){
+        if (indexPath.row==0||indexPath.row==self.CollArr.count+1) {
+            return 45;
+        }else{
+            return 90;
+        }
     }else{
-        if (indexPath.row==0||indexPath.row==2) {
+        if (indexPath.row==0||indexPath.row==self.EduArr.count+1) {
             return 45;
         }else{
             return 90;
@@ -62,23 +77,37 @@
     return 10;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ResumeCell *cell = [ResumeCell tempTableViewCellWith:tableView indexPath:indexPath];
-    return cell;
+    ResumeCell *cell = [ResumeCell tempTableViewCellWith:tableView indexPath:indexPath withCollArr:self.CollArr withEduArr:self.EduArr];
+    if (indexPath.section==3&&indexPath.row!=0&&indexPath.row!=self.EduArr.count+1) {
+        cell.Mo = self.EduArr[indexPath.row-1];
+    }
+    if (indexPath.section==2&&indexPath.row!=0&&indexPath.row!=self.CollArr.count+1) {
+        cell.Mo = self.CollArr[indexPath.row-1];
+    }    return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ((indexPath.section==2&&indexPath.row==2)) {
+    __block ResumeController * weakSelf  = self;
+    if ((indexPath.section==2&&indexPath.row==self.CollArr.count+1)) {
         GuardCollController * guard = [GuardCollController new];
         guard.title = @"新增工作经历";
+        guard.block = ^(ResumeMo * mo){
+            [weakSelf.CollArr addObject:mo];
+            [weakSelf.tab_bottom reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
+        };
         [self.navigationController pushViewController:guard animated:YES];
-    }else if((indexPath.section==3&&indexPath.row==2)){
+    }else if((indexPath.section==3&&indexPath.row==self.EduArr.count+1)){
         GuardEduController * guard = [GuardEduController new];
         guard.title = @"新增教育经历";
+        guard.block = ^(ResumeMo * mo){
+            [weakSelf.EduArr addObject:mo];
+            [weakSelf.tab_bottom reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationNone];
+        };
         [self.navigationController pushViewController:guard animated:YES];
     }
 }
 #pragma mark ---SDCycleScrollViewDelegate-----
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
-    
+//    轮播图点击
 }
 #pragma mark ---initUI--------
 -(void)initRightItem{

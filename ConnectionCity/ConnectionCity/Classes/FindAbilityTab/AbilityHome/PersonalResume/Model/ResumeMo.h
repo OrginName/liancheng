@@ -9,10 +9,11 @@
 #import "BaseModel.h"
 
 @interface ResumeMo : BaseModel
-proStr(company);
-proStr(profession);
-proStr(introduce);
-proStr(time);
+proStr(collAndcompany);//学校
+proStr(proAndPro);//专业职业
+proStr(XLAndIntro);//学历
+proStr(satrtTime);//开始时间
+proStr(endTime);//结束时间
 proArr(EditArr);
 proArr(CollArr);
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+typedef void(^EditBlock)(NSString * EditStr);
 @interface EditAllController : BaseViewController
-
+@property (nonatomic, copy) EditBlock block;
 @end

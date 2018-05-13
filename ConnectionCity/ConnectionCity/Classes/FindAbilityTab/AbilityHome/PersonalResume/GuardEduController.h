@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+#import "ResumeMo.h"
+typedef void(^ResumeBlock)(ResumeMo * Mo);
 @interface GuardEduController : BaseViewController
+@property (nonatomic, copy) ResumeBlock block;
 
 @end

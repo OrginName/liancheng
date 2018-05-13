@@ -15,8 +15,15 @@
     // Initialization code
      
 }
-
-+ (instancetype)tempTableViewCellWith:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
+-(void)setMo:(ResumeMo *)Mo{
+    _Mo = Mo;
+    self.lab_comAndCollege.text = Mo.collAndcompany;
+    self.lab_proAndCollW.text = Mo.proAndPro;
+    self.lab_proW.text = Mo.XLAndIntro;
+    self.lab_time.text = [NSString stringWithFormat:@"%@-%@",Mo.satrtTime,Mo.endTime];
+}
++ (instancetype)tempTableViewCellWith:(UITableView *)tableView
+                            indexPath:(NSIndexPath *)indexPath withCollArr:(NSMutableArray * )arr withEduArr:(NSMutableArray * )EduArr {
     NSString *identifier = @"";//对应xib中设置的identifier
     NSInteger index = 0; //xib中第几个Cell
     if (indexPath.section != 2 && indexPath.section != 3) {
@@ -26,7 +33,7 @@
         if (indexPath.row==0){
             identifier = [NSString stringWithFormat:@"ResumeCell%d",2];
             index = 2;
-        }else if (indexPath.row==2){
+        }else if ((indexPath.section==2&&indexPath.row==arr.count+1)||(indexPath.section==3&&indexPath.row==EduArr.count+1)){
             identifier = [NSString stringWithFormat:@"ResumeCell%d",3];
             index = 3;
         }else{

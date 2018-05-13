@@ -29,7 +29,7 @@
 }
 //导航条人才类型选择
 -(void)AddressClick:(UIButton *)btn{
-    
+    [YTAlertUtil showTempInfo:@"导航条人才类型选择"];
 }
 //搜索按钮点击
 -(void)SearchClick{

@@ -18,11 +18,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"编辑";
     [self setUI];
 }
 //完成按钮点击
 -(void)complete{
-    
+    if (self.textView_EditAll.text.length!=0) {
+//        [YTAlertUtil showTempInfo:@"请输入要编辑的内容"];
+        self.block(self.textView_EditAll.text);
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)setUI{
     self.textView_EditAll.placeholder = @"请输入内容";
