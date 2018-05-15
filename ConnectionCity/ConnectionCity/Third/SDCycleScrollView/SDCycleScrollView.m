@@ -451,6 +451,8 @@ NSString * const ID = @"cycleCell";
         [self setupTimer];
     }
 }
-
+-(void)reload{
+    [self.mainView reloadData];
+}
 
 @end

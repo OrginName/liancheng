@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		722D252920AA769600AB3863 /* FKGPopOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D252820AA769600AB3863 /* FKGPopOption.m */; };
+		722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D252C20AA76D400AB3863 /* JFCityCollectionFlowLayout.m */; };
+		722D253820AA76D400AB3863 /* JFCityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D252E20AA76D400AB3863 /* JFCityCollectionViewCell.m */; };
+		722D253920AA76D400AB3863 /* JFCityHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D253020AA76D400AB3863 /* JFCityHeaderView.m */; };
+		722D253A20AA76D400AB3863 /* JFCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D253220AA76D400AB3863 /* JFCityTableViewCell.m */; };
+		722D253B20AA76D400AB3863 /* JFCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D253420AA76D400AB3863 /* JFCityViewController.m */; };
+		722D253C20AA76D400AB3863 /* JFSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D253620AA76D400AB3863 /* JFSearchView.m */; };
 		729BA6AF209FEB9B009713FD /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6AD209FEB9A009713FD /* UIButton+ImageTitleSpacing.m */; };
 		729BA6C820A01E7F009713FD /* JFAreaDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6B420A01E7F009713FD /* JFAreaDataManager.m */; };
 		729BA6C920A01E7F009713FD /* shop_area.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 729BA6B620A01E7F009713FD /* shop_area.sqlite */; };
-		729BA6CB20A01E7F009713FD /* JFCityCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6BA20A01E7F009713FD /* JFCityCollectionFlowLayout.m */; };
-		729BA6CC20A01E7F009713FD /* JFCityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6BC20A01E7F009713FD /* JFCityCollectionViewCell.m */; };
-		729BA6CD20A01E7F009713FD /* JFCityHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6BE20A01E7F009713FD /* JFCityHeaderView.m */; };
-		729BA6CE20A01E7F009713FD /* JFCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6C020A01E7F009713FD /* JFCityTableViewCell.m */; };
-		729BA6CF20A01E7F009713FD /* JFCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6C220A01E7F009713FD /* JFCityViewController.m */; };
-		729BA6D020A01E7F009713FD /* JFSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6C420A01E7F009713FD /* JFSearchView.m */; };
 		729BA6D120A01E7F009713FD /* JFLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6C720A01E7F009713FD /* JFLocation.m */; };
 		729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6D620A029AB009713FD /* UIImage+Extension.m */; };
 		729BA6FE20A32F0B009713FD /* CustomMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6FD20A32F0B009713FD /* CustomMap.m */; };
@@ -140,23 +141,25 @@
 
 /* Begin PBXFileReference section */
 		2CE0B7079AD6747ED9FE53B2 /* Pods-ConnectionCity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectionCity.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectionCity/Pods-ConnectionCity.release.xcconfig"; sourceTree = "<group>"; };
+		722D252720AA769600AB3863 /* FKGPopOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKGPopOption.h; sourceTree = "<group>"; };
+		722D252820AA769600AB3863 /* FKGPopOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKGPopOption.m; sourceTree = "<group>"; };
+		722D252B20AA76D400AB3863 /* JFCityCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityCollectionFlowLayout.h; sourceTree = "<group>"; };
+		722D252C20AA76D400AB3863 /* JFCityCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityCollectionFlowLayout.m; sourceTree = "<group>"; };
+		722D252D20AA76D400AB3863 /* JFCityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityCollectionViewCell.h; sourceTree = "<group>"; };
+		722D252E20AA76D400AB3863 /* JFCityCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityCollectionViewCell.m; sourceTree = "<group>"; };
+		722D252F20AA76D400AB3863 /* JFCityHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityHeaderView.h; sourceTree = "<group>"; };
+		722D253020AA76D400AB3863 /* JFCityHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityHeaderView.m; sourceTree = "<group>"; };
+		722D253120AA76D400AB3863 /* JFCityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityTableViewCell.h; sourceTree = "<group>"; };
+		722D253220AA76D400AB3863 /* JFCityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityTableViewCell.m; sourceTree = "<group>"; };
+		722D253320AA76D400AB3863 /* JFCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityViewController.h; sourceTree = "<group>"; };
+		722D253420AA76D400AB3863 /* JFCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityViewController.m; sourceTree = "<group>"; };
+		722D253520AA76D400AB3863 /* JFSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSearchView.h; sourceTree = "<group>"; };
+		722D253620AA76D400AB3863 /* JFSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSearchView.m; sourceTree = "<group>"; };
 		729BA6AD209FEB9A009713FD /* UIButton+ImageTitleSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ImageTitleSpacing.m"; sourceTree = "<group>"; };
 		729BA6AE209FEB9A009713FD /* UIButton+ImageTitleSpacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ImageTitleSpacing.h"; sourceTree = "<group>"; };
 		729BA6B320A01E7F009713FD /* JFAreaDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAreaDataManager.h; sourceTree = "<group>"; };
 		729BA6B420A01E7F009713FD /* JFAreaDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAreaDataManager.m; sourceTree = "<group>"; };
 		729BA6B620A01E7F009713FD /* shop_area.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = shop_area.sqlite; sourceTree = "<group>"; };
-		729BA6B920A01E7F009713FD /* JFCityCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityCollectionFlowLayout.h; sourceTree = "<group>"; };
-		729BA6BA20A01E7F009713FD /* JFCityCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityCollectionFlowLayout.m; sourceTree = "<group>"; };
-		729BA6BB20A01E7F009713FD /* JFCityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityCollectionViewCell.h; sourceTree = "<group>"; };
-		729BA6BC20A01E7F009713FD /* JFCityCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityCollectionViewCell.m; sourceTree = "<group>"; };
-		729BA6BD20A01E7F009713FD /* JFCityHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityHeaderView.h; sourceTree = "<group>"; };
-		729BA6BE20A01E7F009713FD /* JFCityHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityHeaderView.m; sourceTree = "<group>"; };
-		729BA6BF20A01E7F009713FD /* JFCityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityTableViewCell.h; sourceTree = "<group>"; };
-		729BA6C020A01E7F009713FD /* JFCityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityTableViewCell.m; sourceTree = "<group>"; };
-		729BA6C120A01E7F009713FD /* JFCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityViewController.h; sourceTree = "<group>"; };
-		729BA6C220A01E7F009713FD /* JFCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityViewController.m; sourceTree = "<group>"; };
-		729BA6C320A01E7F009713FD /* JFSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSearchView.h; sourceTree = "<group>"; };
-		729BA6C420A01E7F009713FD /* JFSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSearchView.m; sourceTree = "<group>"; };
 		729BA6C620A01E7F009713FD /* JFLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLocation.h; sourceTree = "<group>"; };
 		729BA6C720A01E7F009713FD /* JFLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLocation.m; sourceTree = "<group>"; };
 		729BA6D520A029AA009713FD /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
@@ -376,26 +379,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		722D252620AA769600AB3863 /* PopView */ = {
+			isa = PBXGroup;
+			children = (
+				722D252720AA769600AB3863 /* FKGPopOption.h */,
+				722D252820AA769600AB3863 /* FKGPopOption.m */,
+			);
+			path = PopView;
+			sourceTree = "<group>";
+		};
+		722D252A20AA76D400AB3863 /* CitySelect */ = {
+			isa = PBXGroup;
+			children = (
+				722D252B20AA76D400AB3863 /* JFCityCollectionFlowLayout.h */,
+				722D252C20AA76D400AB3863 /* JFCityCollectionFlowLayout.m */,
+				722D252D20AA76D400AB3863 /* JFCityCollectionViewCell.h */,
+				722D252E20AA76D400AB3863 /* JFCityCollectionViewCell.m */,
+				722D252F20AA76D400AB3863 /* JFCityHeaderView.h */,
+				722D253020AA76D400AB3863 /* JFCityHeaderView.m */,
+				722D253120AA76D400AB3863 /* JFCityTableViewCell.h */,
+				722D253220AA76D400AB3863 /* JFCityTableViewCell.m */,
+				722D253320AA76D400AB3863 /* JFCityViewController.h */,
+				722D253420AA76D400AB3863 /* JFCityViewController.m */,
+				722D253520AA76D400AB3863 /* JFSearchView.h */,
+				722D253620AA76D400AB3863 /* JFSearchView.m */,
+			);
+			path = CitySelect;
+			sourceTree = "<group>";
+		};
 		729BA6B120A01E7F009713FD /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				722D252A20AA76D400AB3863 /* CitySelect */,
+				722D252620AA769600AB3863 /* PopView */,
 				8DD48CB720A811EA00D6D1E6 /* SDCycleScrollView */,
 				8D24A22F20A1CB6000F0740D /* RefineThing */,
 				8D24A22820A1B64400F0740D /* map */,
 				729BA6B220A01E7F009713FD /* AreaDataManager */,
 				729BA6B520A01E7F009713FD /* AreaDB */,
-				729BA6B920A01E7F009713FD /* JFCityCollectionFlowLayout.h */,
-				729BA6BA20A01E7F009713FD /* JFCityCollectionFlowLayout.m */,
-				729BA6BB20A01E7F009713FD /* JFCityCollectionViewCell.h */,
-				729BA6BC20A01E7F009713FD /* JFCityCollectionViewCell.m */,
-				729BA6BD20A01E7F009713FD /* JFCityHeaderView.h */,
-				729BA6BE20A01E7F009713FD /* JFCityHeaderView.m */,
-				729BA6BF20A01E7F009713FD /* JFCityTableViewCell.h */,
-				729BA6C020A01E7F009713FD /* JFCityTableViewCell.m */,
-				729BA6C120A01E7F009713FD /* JFCityViewController.h */,
-				729BA6C220A01E7F009713FD /* JFCityViewController.m */,
-				729BA6C320A01E7F009713FD /* JFSearchView.h */,
-				729BA6C420A01E7F009713FD /* JFSearchView.m */,
 				729BA6C520A01E7F009713FD /* Location */,
 			);
 			path = Third;
@@ -1123,18 +1144,21 @@
 				CE0BA614209D6160004C3C33 /* LifeHallController.m in Sources */,
 				CE0BA634209D68A3004C3C33 /* YSRegisterController.m in Sources */,
 				8DD48CD220A811EA00D6D1E6 /* UIColor+MyColor.m in Sources */,
+				722D253820AA76D400AB3863 /* JFCityCollectionViewCell.m in Sources */,
 				CE0BA5BB209D5E6B004C3C33 /* UIBarButtonItem+Extension.m in Sources */,
-				729BA6CB20A01E7F009713FD /* JFCityCollectionFlowLayout.m in Sources */,
 				8DD48CCB20A811EA00D6D1E6 /* NSData+SDDataCache.m in Sources */,
+				722D253B20AA76D400AB3863 /* JFCityViewController.m in Sources */,
 				729BA6FE20A32F0B009713FD /* CustomMap.m in Sources */,
 				8DB42FDC20A57DBC00C4EBF8 /* FilterCell.m in Sources */,
 				8DD48CCF20A811EA00D6D1E6 /* TAPageControl.m in Sources */,
 				CE0BA5E7209D5E9B004C3C33 /* YSTools.m in Sources */,
 				8DD48CDF20A828F200D6D1E6 /* CustomtextView.m in Sources */,
+				722D252920AA769600AB3863 /* FKGPopOption.m in Sources */,
 				CE0BA5E2209D5E9B004C3C33 /* SRDownloadModel.m in Sources */,
 				8D24A23520A1D5A700F0740D /* RefineView.m in Sources */,
 				CE0BA5E5209D5E9B004C3C33 /* YSNetworkTool.m in Sources */,
 				CE0BA5BC209D5E6B004C3C33 /* MBProgressHUD+Extension.m in Sources */,
+				722D253920AA76D400AB3863 /* JFCityHeaderView.m in Sources */,
 				8D2B8B9B20A2DABD00C3157F /* ConnectionController.m in Sources */,
 				CE0BA5B6209D5E6B004C3C33 /* NSObject+YTGetObject.m in Sources */,
 				8D2B8B9120A2DA9F00C3157F /* AbilityHomeController.m in Sources */,
@@ -1142,7 +1166,6 @@
 				8DD48CD320A811EA00D6D1E6 /* UIView+SDExtension.m in Sources */,
 				CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */,
 				CE0BA5B3209D5E6B004C3C33 /* UIView+YSCategory.m in Sources */,
-				729BA6CD20A01E7F009713FD /* JFCityHeaderView.m in Sources */,
 				8DD48CCC20A811EA00D6D1E6 /* TAAbstractDotView.m in Sources */,
 				8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */,
 				CE0BA5B4209D5E6B004C3C33 /* UIFont+YTInchFit.m in Sources */,
@@ -1154,7 +1177,6 @@
 				8DD48CD720A81B9100D6D1E6 /* GuardCollController.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
 				CE0BA60E209D6126004C3C33 /* AddressBookController.m in Sources */,
-				729BA6D020A01E7F009713FD /* JFSearchView.m in Sources */,
 				CE0BA620209D61C0004C3C33 /* ProfileController.m in Sources */,
 				729BA70120A331E0009713FD /* CustomLocatiom.m in Sources */,
 				CE0BA5DF209D5E9B004C3C33 /* TakePhoto.m in Sources */,
@@ -1162,13 +1184,13 @@
 				8D2B8B8820A2D3B200C3157F /* BaseOneTabController.m in Sources */,
 				729BA6D120A01E7F009713FD /* JFLocation.m in Sources */,
 				8DB42FD420A57D6E00C4EBF8 /* FilterOneController.m in Sources */,
+				722D253A20AA76D400AB3863 /* JFCityTableViewCell.m in Sources */,
 				CE0BA5DE209D5E9B004C3C33 /* YTDataPacket.m in Sources */,
 				8DD48CD120A811EA00D6D1E6 /* SDCycleScrollView.m in Sources */,
 				CE0BA5EB209D5E9B004C3C33 /* SRDownloadManager.m in Sources */,
 				8DD48CD020A811EA00D6D1E6 /* SDCollectionViewCell.m in Sources */,
 				CE0BA5F9209D5EBE004C3C33 /* BaseModel.m in Sources */,
 				CE0BA5E1209D5E9B004C3C33 /* YSAccountTool.m in Sources */,
-				729BA6CF20A01E7F009713FD /* JFCityViewController.m in Sources */,
 				CE0BA5B8209D5E6B004C3C33 /* UIColor+Extension.m in Sources */,
 				CE0BA5BA209D5E6B004C3C33 /* NSDate+Extend.m in Sources */,
 				CE0BA636209D68A3004C3C33 /* YSLoginController.m in Sources */,
@@ -1181,8 +1203,8 @@
 				CE0BA5B5209D5E6B004C3C33 /* UIViewController+BackButtonHandler.m in Sources */,
 				CE0BA5FA209D5EBE004C3C33 /* YTBaseTableViewController.m in Sources */,
 				CE0BA61A209D6197004C3C33 /* FoundController.m in Sources */,
+				722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */,
 				CE0BA5FB209D5EBE004C3C33 /* BaseTabBarController.m in Sources */,
-				729BA6CC20A01E7F009713FD /* JFCityCollectionViewCell.m in Sources */,
 				CE0BA607209D60C3004C3C33 /* MessageController.m in Sources */,
 				CE0BA5E8209D5E9B004C3C33 /* GlobalManager.m in Sources */,
 				8D24A22E20A1B9BA00F0740D /* CustomCalloutView.m in Sources */,
@@ -1192,10 +1214,10 @@
 				729BA6C820A01E7F009713FD /* JFAreaDataManager.m in Sources */,
 				CE0BA5E4209D5E9B004C3C33 /* MyDatePicker.m in Sources */,
 				8D67602720A408470027CDEE /* ClassificationsController.m in Sources */,
-				729BA6CE20A01E7F009713FD /* JFCityTableViewCell.m in Sources */,
 				8DD48CCD20A811EA00D6D1E6 /* TAAnimatedDotView.m in Sources */,
 				CE0BA5E0209D5E9B004C3C33 /* DDFileReader.m in Sources */,
 				8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */,
+				722D253C20AA76D400AB3863 /* JFSearchView.m in Sources */,
 				CE0BA5EA209D5E9B004C3C33 /* YSBlutoothTool.m in Sources */,
 				CE0BA5B7209D5E6B004C3C33 /* NSData+hexString.m in Sources */,
 				8D2B8B9620A2DAAF00C3157F /* BulidTeamController.m in Sources */,

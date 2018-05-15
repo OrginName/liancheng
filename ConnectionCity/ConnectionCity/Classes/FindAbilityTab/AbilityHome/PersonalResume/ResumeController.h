@@ -7,7 +7,13 @@
 //
 
 #import "BaseViewController.h"
-
+#define NS_ENUM(...) CF_ENUM(__VA_ARGS__)
+typedef NS_ENUM(NSInteger, flag) {
+    flagNew =0,
+    flagEdit,
+    flagDelete
+};
 @interface ResumeController : BaseViewController
-
+// 分页控件位置
+@property (nonatomic, assign) flag flagTag;
 @end

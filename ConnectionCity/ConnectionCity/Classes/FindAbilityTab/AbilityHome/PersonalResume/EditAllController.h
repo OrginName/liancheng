@@ -10,4 +10,5 @@
 typedef void(^EditBlock)(NSString * EditStr);
 @interface EditAllController : BaseViewController
 @property (nonatomic, copy) EditBlock block;
+@property (nonatomic,copy) NSString * receiveTxt;
 @end
