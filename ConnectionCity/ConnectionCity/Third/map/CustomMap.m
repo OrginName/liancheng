@@ -133,8 +133,5 @@
     self.mapView.frame = CGRectMake(0, 0, self.width, self.height);
     self.mapView.logoCenter = CGPointMake(-30, 1000);
     self.btn_location.frame = CGRectMake(CGRectGetWidth(self.frame)-50, 20, 40, 40);
-    
 }
-
-
 @end

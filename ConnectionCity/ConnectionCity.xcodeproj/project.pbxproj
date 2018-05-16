@@ -14,6 +14,11 @@
 		722D253A20AA76D400AB3863 /* JFCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D253220AA76D400AB3863 /* JFCityTableViewCell.m */; };
 		722D253B20AA76D400AB3863 /* JFCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D253420AA76D400AB3863 /* JFCityViewController.m */; };
 		722D253C20AA76D400AB3863 /* JFSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D253620AA76D400AB3863 /* JFSearchView.m */; };
+		722D254020AAA64C00AB3863 /* ShowResumeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D253E20AAA64C00AB3863 /* ShowResumeController.m */; };
+		722D254120AAA64C00AB3863 /* ShowResumeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 722D253F20AAA64C00AB3863 /* ShowResumeController.xib */; };
+		723D376120ABBEB4003FD4DF /* ShowResumeTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D376020ABBEB4003FD4DF /* ShowResumeTab.m */; };
+		723D376720ABDA62003FD4DF /* ShowResumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D376520ABDA62003FD4DF /* ShowResumeCell.m */; };
+		723D376820ABDA62003FD4DF /* ShowResumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D376620ABDA62003FD4DF /* ShowResumeCell.xib */; };
 		729BA6AF209FEB9B009713FD /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6AD209FEB9A009713FD /* UIButton+ImageTitleSpacing.m */; };
 		729BA6C820A01E7F009713FD /* JFAreaDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6B420A01E7F009713FD /* JFAreaDataManager.m */; };
 		729BA6C920A01E7F009713FD /* shop_area.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 729BA6B620A01E7F009713FD /* shop_area.sqlite */; };
@@ -155,6 +160,14 @@
 		722D253420AA76D400AB3863 /* JFCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityViewController.m; sourceTree = "<group>"; };
 		722D253520AA76D400AB3863 /* JFSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSearchView.h; sourceTree = "<group>"; };
 		722D253620AA76D400AB3863 /* JFSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSearchView.m; sourceTree = "<group>"; };
+		722D253D20AAA64C00AB3863 /* ShowResumeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowResumeController.h; sourceTree = "<group>"; };
+		722D253E20AAA64C00AB3863 /* ShowResumeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowResumeController.m; sourceTree = "<group>"; };
+		722D253F20AAA64C00AB3863 /* ShowResumeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowResumeController.xib; sourceTree = "<group>"; };
+		723D375F20ABBEB4003FD4DF /* ShowResumeTab.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowResumeTab.h; sourceTree = "<group>"; };
+		723D376020ABBEB4003FD4DF /* ShowResumeTab.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowResumeTab.m; sourceTree = "<group>"; };
+		723D376420ABDA62003FD4DF /* ShowResumeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowResumeCell.h; sourceTree = "<group>"; };
+		723D376520ABDA62003FD4DF /* ShowResumeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowResumeCell.m; sourceTree = "<group>"; };
+		723D376620ABDA62003FD4DF /* ShowResumeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowResumeCell.xib; sourceTree = "<group>"; };
 		729BA6AD209FEB9A009713FD /* UIButton+ImageTitleSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ImageTitleSpacing.m"; sourceTree = "<group>"; };
 		729BA6AE209FEB9A009713FD /* UIButton+ImageTitleSpacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ImageTitleSpacing.h"; sourceTree = "<group>"; };
 		729BA6B320A01E7F009713FD /* JFAreaDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAreaDataManager.h; sourceTree = "<group>"; };
@@ -407,6 +420,15 @@
 			path = CitySelect;
 			sourceTree = "<group>";
 		};
+		723D375E20ABBE7E003FD4DF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				723D375F20ABBEB4003FD4DF /* ShowResumeTab.h */,
+				723D376020ABBEB4003FD4DF /* ShowResumeTab.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		729BA6B120A01E7F009713FD /* Third */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,6 +565,7 @@
 		8DA4990420A6FDCB00968F86 /* PersonalResume */ = {
 			isa = PBXGroup;
 			children = (
+				723D375E20ABBE7E003FD4DF /* View */,
 				8DD48CEA20A8379800D6D1E6 /* Cell */,
 				8DD48CD920A8201500D6D1E6 /* Model */,
 				8DA4990520A6FDEB00968F86 /* ResumeController.h */,
@@ -557,6 +580,9 @@
 				8DD48CEB20A8380D00D6D1E6 /* EditAllController.h */,
 				8DD48CEC20A8380D00D6D1E6 /* EditAllController.m */,
 				8DD48CED20A8380D00D6D1E6 /* EditAllController.xib */,
+				722D253D20AAA64C00AB3863 /* ShowResumeController.h */,
+				722D253E20AAA64C00AB3863 /* ShowResumeController.m */,
+				722D253F20AAA64C00AB3863 /* ShowResumeController.xib */,
 			);
 			path = PersonalResume;
 			sourceTree = "<group>";
@@ -623,6 +649,9 @@
 				8DA4990A20A7063E00968F86 /* ResumeCell.h */,
 				8DA4990B20A7063E00968F86 /* ResumeCell.m */,
 				8DA4990C20A7063E00968F86 /* ResumeCell.xib */,
+				723D376420ABDA62003FD4DF /* ShowResumeCell.h */,
+				723D376520ABDA62003FD4DF /* ShowResumeCell.m */,
+				723D376620ABDA62003FD4DF /* ShowResumeCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1042,6 +1071,7 @@
 				8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */,
 				8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */,
 				8D24A23720A1D5BF00F0740D /* FirstTanView.xib in Resources */,
+				723D376820ABDA62003FD4DF /* ShowResumeCell.xib in Resources */,
 				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
 				8DD48CD820A81B9100D6D1E6 /* GuardCollController.xib in Resources */,
 				729BA6C920A01E7F009713FD /* shop_area.sqlite in Resources */,
@@ -1055,6 +1085,7 @@
 				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
 				8D2B8B9720A2DAAF00C3157F /* BulidTeamController.xib in Resources */,
 				CE0BA635209D68A3004C3C33 /* YSLoginController.xib in Resources */,
+				722D254120AAA64C00AB3863 /* ShowResumeController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1146,6 +1177,7 @@
 				8DD48CD220A811EA00D6D1E6 /* UIColor+MyColor.m in Sources */,
 				722D253820AA76D400AB3863 /* JFCityCollectionViewCell.m in Sources */,
 				CE0BA5BB209D5E6B004C3C33 /* UIBarButtonItem+Extension.m in Sources */,
+				723D376120ABBEB4003FD4DF /* ShowResumeTab.m in Sources */,
 				8DD48CCB20A811EA00D6D1E6 /* NSData+SDDataCache.m in Sources */,
 				722D253B20AA76D400AB3863 /* JFCityViewController.m in Sources */,
 				729BA6FE20A32F0B009713FD /* CustomMap.m in Sources */,
@@ -1162,6 +1194,7 @@
 				8D2B8B9B20A2DABD00C3157F /* ConnectionController.m in Sources */,
 				CE0BA5B6209D5E6B004C3C33 /* NSObject+YTGetObject.m in Sources */,
 				8D2B8B9120A2DA9F00C3157F /* AbilityHomeController.m in Sources */,
+				722D254020AAA64C00AB3863 /* ShowResumeController.m in Sources */,
 				8DD48CE820A8367100D6D1E6 /* GuardEduController.m in Sources */,
 				8DD48CD320A811EA00D6D1E6 /* UIView+SDExtension.m in Sources */,
 				CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */,
@@ -1175,6 +1208,7 @@
 				8D67603920A4688F0027CDEE /* CustomButton.m in Sources */,
 				729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */,
 				8DD48CD720A81B9100D6D1E6 /* GuardCollController.m in Sources */,
+				723D376720ABDA62003FD4DF /* ShowResumeCell.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
 				CE0BA60E209D6126004C3C33 /* AddressBookController.m in Sources */,
 				CE0BA620209D61C0004C3C33 /* ProfileController.m in Sources */,
