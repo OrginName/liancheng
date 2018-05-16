@@ -60,8 +60,8 @@
             annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
             // must set to NO, so we can show the custom callout view.
             annotationView.canShowCallout = NO;
-            annotationView.draggable = YES;
-            annotationView.calloutOffset = CGPointMake(0, -10);
+//            annotationView.draggable = YES;
+            annotationView.calloutOffset = CGPointMake(0, -18);
         }
         annotationView.image = [UIImage imageNamed:@"position.png"];
         return annotationView;
@@ -69,6 +69,17 @@
     return nil;
 }
 
+/**
+ 选中当前点击mark的代理
+
+ @param mapView mapView description
+ @param view view description
+ */
+- (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view{
+    if ([self.delegate respondsToSelector:@selector(currentAnimatinonViewClick:)]) {
+        [self.delegate currentAnimatinonViewClick:view];
+    }
+}
 #pragma mark -------CustomLocationDelegate------
 - (void)currentLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location{
     NSLog(@"%@",locationDictionary[@"addRess"]);
@@ -79,7 +90,9 @@
             [self.pointAnnotaiton setCoordinate:location.coordinate];
             [self.mapView addAnnotation:self.pointAnnotaiton];
         }
-        [self.mapView selectAnnotation:self.pointAnnotaiton animated:YES];
+        if (self.selectAnimation) {
+            [self.mapView selectAnnotation:self.pointAnnotaiton animated:YES];
+        }
         [self.mapView setCenterCoordinate:location.coordinate];
         [self.mapView setZoomLevel:15.1 animated:NO];
         [self.mapView addAnnotations:self.annotations];
@@ -107,7 +120,6 @@
 - (void)initAnnotations
 {
     self.annotations = [NSMutableArray array];
-    
     CLLocationCoordinate2D coordinates[10] = {
         {39.992520, 116.336170},
         {39.992520, 116.336170},
@@ -133,5 +145,14 @@
     self.mapView.frame = CGRectMake(0, 0, self.width, self.height);
     self.mapView.logoCenter = CGPointMake(-30, 1000);
     self.btn_location.frame = CGRectMake(CGRectGetWidth(self.frame)-50, 20, 40, 40);
+}
+
+/**
+ 是否默认选中当前mark
+
+ @param selectAnimation BOOl
+ */
+-(void)setSelectAnimation:(BOOL)selectAnimation{
+    _selectAnimation = selectAnimation;
 }
 @end

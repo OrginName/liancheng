@@ -12,9 +12,11 @@
 #import "CustomLocatiom.h"
 @protocol CustomMapDelegate <NSObject>
 - (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location;
+-(void)currentAnimatinonViewClick:(MAAnnotationView *)view;
 @end
 @interface CustomMap : UIView
 @property (nonatomic,strong) MAMapView * mapView;
 @property (nonatomic, strong) NSMutableArray *annotations;
 @property (nonatomic, weak) id<CustomMapDelegate> delegate;
+@property (nonatomic, assign) BOOL selectAnimation;//是否默认选中该mark
 @end

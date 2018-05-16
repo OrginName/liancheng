@@ -25,8 +25,8 @@
     UIViewController *vc = [[UIViewController alloc]initWithNibName:nil bundle:nil];
     self.window.rootViewController = vc;
     
-//    BaseOneTabController *baseTabBar = [[BaseOneTabController alloc]init];
-    ShowResumeController * baseTabBar = [ShowResumeController new];
+    BaseTabBarController *baseTabBar = [[BaseTabBarController alloc]init];
+//    ShowResumeController * baseTabBar = [ShowResumeController new];
     [self.window setRootViewController:baseTabBar];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Receivetag:) name:@"TABBAR" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backWindow) name:@"BACKMAINWINDOW" object:nil];

@@ -142,6 +142,7 @@
 //    初始化地图
 //    [self initMapView];
     self.cusMap = [[CustomMap alloc] initWithFrame:CGRectMake(0, 0, self.view_Map.width, self.view_Map.height)];
+    self.cusMap.selectAnimation = YES;
     [self.view_Map addSubview:self.cusMap];
     self.cusMap.delegate = self;
     [self.view_Map bringSubviewToFront:self.btn_mapUserLocation];

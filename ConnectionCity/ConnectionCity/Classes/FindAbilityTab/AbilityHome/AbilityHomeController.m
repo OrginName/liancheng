@@ -11,6 +11,7 @@
 #import "JFCityViewController.h"
 #import "ClassificationsController.h"
 #import "FilterOneController.h"
+#import "ShowResumeController.h"
 @interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
@@ -115,5 +116,8 @@
 - (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location{
     UILabel * btn = (UILabel *)[self.view_SX viewWithTag:1];
     btn.text = locationDictionary[@"city"];
+}
+-(void)currentAnimatinonViewClick:(MAAnnotationView *)view{
+    [self.navigationController pushViewController:[ShowResumeController new] animated:YES];
 }
 @end
