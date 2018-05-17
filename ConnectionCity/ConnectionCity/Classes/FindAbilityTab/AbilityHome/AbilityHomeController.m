@@ -125,12 +125,7 @@
     NSLog(@"123");
 }
 -(void)viewDidDisappear:(BOOL)animated{
-    NSLog(@"456");
     
 }
-- (void)didMoveToParentViewController:(UIViewController*)parent{
-    [super didMoveToParentViewController:parent];
-    NSLog(@"%s,%@",__FUNCTION__,parent);
-//    [self.tabBarController.navigationController popViewControllerAnimated:YES];
-}
+
 @end

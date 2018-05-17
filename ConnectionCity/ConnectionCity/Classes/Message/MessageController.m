@@ -47,6 +47,7 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self setUI];
+    flag = NO;
 }
 //导航左按钮我的点击
 -(void)MyselfClick{
@@ -64,6 +65,7 @@
     self.first.messController = self;
     self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.first];
     [self.refine alertSelectViewshow];
+    flag = NO;
 }
 //获取当前自己的位置并设为中心点
 - (IBAction)btn_UserLocation:(UIButton *)sender {
@@ -96,6 +98,7 @@
             BaseOneTabController * one = [[BaseOneTabController alloc] init];
             [self.navigationController pushViewController:one animated:YES];
 //            [[NSNotificationCenter defaultCenter] postNotificationName:@"TABBAR" object:nil];
+//
         }
             
             break;
@@ -272,7 +275,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    flag = NO;
+    
     self.navigationController.navigationBar.hidden= NO;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     [self.navigationController.navigationBar setBackgroundImage:
@@ -288,6 +291,15 @@
         self.navigationController.navigationBar.hidden= YES;
     }
 }
+//- (void)willMoveToParentViewController:(UIViewController*)parent{
+//    [super willMoveToParentViewController:parent];
+//    NSLog(@"%s,%@",__FUNCTION__,parent);
+//}
+//- (void)didMoveToParentViewController:(UIViewController*)parent{
+//    [super didMoveToParentViewController:parent];
+//    NSLog(@"%s,%@",__FUNCTION__,parent);
+//    //    [self.tabBarController.navigationController popViewControllerAnimated:YES];
+//}
 -(void)dealloc{
 //    [self cleanUpAction];
 }
