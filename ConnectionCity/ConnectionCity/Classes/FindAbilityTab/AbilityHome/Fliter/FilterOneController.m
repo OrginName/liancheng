@@ -28,8 +28,6 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     [self loadData];
 }
 -(void)setUI{
-    // 最重要的一句代码!!!
-    
     self.bollec_bottom.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.flowLyout = [[FilterLayout alloc] init];
     _bollec_bottom.collectionViewLayout = self.flowLyout;

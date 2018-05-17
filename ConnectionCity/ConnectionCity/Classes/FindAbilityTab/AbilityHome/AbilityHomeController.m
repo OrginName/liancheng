@@ -12,6 +12,7 @@
 #import "ClassificationsController.h"
 #import "FilterOneController.h"
 #import "ShowResumeController.h"
+#import "SearchHistoryController.h"
 @interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
@@ -27,6 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setUI];
+    
 }
 //导航条人才类型选择
 -(void)AddressClick:(UIButton *)btn{
@@ -34,7 +36,8 @@
 }
 //搜索按钮点击
 -(void)SearchClick{
-    
+    SearchHistoryController * search = [SearchHistoryController new];
+    [self.navigationController pushViewController:search animated:YES];
 }
 //发布简历按钮点击
 - (IBAction)sendResume:(UIButton *)sender {
@@ -75,9 +78,7 @@
 }
 -(void)back{
     [self.tabBarController.navigationController popViewControllerAnimated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"BACKMAINWINDOW" object:nil];
-    
-    
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"BACKMAINWINDOW" object:nil];
 }
 -(void)setUI{
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
@@ -119,5 +120,17 @@
 }
 -(void)currentAnimatinonViewClick:(MAAnnotationView *)view{
     [self.navigationController pushViewController:[ShowResumeController new] animated:YES];
+}
+-(void)viewWillAppear:(BOOL)animated{
+    NSLog(@"123");
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    NSLog(@"456");
+    
+}
+- (void)didMoveToParentViewController:(UIViewController*)parent{
+    [super didMoveToParentViewController:parent];
+    NSLog(@"%s,%@",__FUNCTION__,parent);
+//    [self.tabBarController.navigationController popViewControllerAnimated:YES];
 }
 @end

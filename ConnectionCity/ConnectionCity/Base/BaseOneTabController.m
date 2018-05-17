@@ -29,6 +29,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+   
 }
 - (void)addItems {
     AbilityHomeController *messageVC = [[AbilityHomeController alloc]init];

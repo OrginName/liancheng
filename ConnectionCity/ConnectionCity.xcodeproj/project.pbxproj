@@ -19,6 +19,10 @@
 		723D376120ABBEB4003FD4DF /* ShowResumeTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D376020ABBEB4003FD4DF /* ShowResumeTab.m */; };
 		723D376720ABDA62003FD4DF /* ShowResumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D376520ABDA62003FD4DF /* ShowResumeCell.m */; };
 		723D376820ABDA62003FD4DF /* ShowResumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D376620ABDA62003FD4DF /* ShowResumeCell.xib */; };
+		723D376B20AC2BC3003FD4DF /* SearchHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D376A20AC2BC3003FD4DF /* SearchHistoryController.m */; };
+		7294185320AD11E00054B71D /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185220AD11E00054B71D /* SearchCell.m */; };
+		7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185520AD11F70054B71D /* SearchCollectionCell.m */; };
+		7294185920AD120E0054B71D /* SearchLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185820AD120E0054B71D /* SearchLayout.m */; };
 		729BA6AF209FEB9B009713FD /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6AD209FEB9A009713FD /* UIButton+ImageTitleSpacing.m */; };
 		729BA6C820A01E7F009713FD /* JFAreaDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6B420A01E7F009713FD /* JFAreaDataManager.m */; };
 		729BA6C920A01E7F009713FD /* shop_area.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 729BA6B620A01E7F009713FD /* shop_area.sqlite */; };
@@ -168,6 +172,14 @@
 		723D376420ABDA62003FD4DF /* ShowResumeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowResumeCell.h; sourceTree = "<group>"; };
 		723D376520ABDA62003FD4DF /* ShowResumeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowResumeCell.m; sourceTree = "<group>"; };
 		723D376620ABDA62003FD4DF /* ShowResumeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowResumeCell.xib; sourceTree = "<group>"; };
+		723D376920AC2BC3003FD4DF /* SearchHistoryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchHistoryController.h; sourceTree = "<group>"; };
+		723D376A20AC2BC3003FD4DF /* SearchHistoryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchHistoryController.m; sourceTree = "<group>"; };
+		7294185120AD11E00054B71D /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
+		7294185220AD11E00054B71D /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
+		7294185420AD11F70054B71D /* SearchCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCollectionCell.h; sourceTree = "<group>"; };
+		7294185520AD11F70054B71D /* SearchCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCollectionCell.m; sourceTree = "<group>"; };
+		7294185720AD120E0054B71D /* SearchLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchLayout.h; sourceTree = "<group>"; };
+		7294185820AD120E0054B71D /* SearchLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchLayout.m; sourceTree = "<group>"; };
 		729BA6AD209FEB9A009713FD /* UIButton+ImageTitleSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ImageTitleSpacing.m"; sourceTree = "<group>"; };
 		729BA6AE209FEB9A009713FD /* UIButton+ImageTitleSpacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ImageTitleSpacing.h"; sourceTree = "<group>"; };
 		729BA6B320A01E7F009713FD /* JFAreaDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAreaDataManager.h; sourceTree = "<group>"; };
@@ -429,6 +441,29 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7294184F20AD119C0054B71D /* HistorySearch */ = {
+			isa = PBXGroup;
+			children = (
+				7294185020AD11B80054B71D /* Cell */,
+				723D376920AC2BC3003FD4DF /* SearchHistoryController.h */,
+				723D376A20AC2BC3003FD4DF /* SearchHistoryController.m */,
+				7294185720AD120E0054B71D /* SearchLayout.h */,
+				7294185820AD120E0054B71D /* SearchLayout.m */,
+			);
+			path = HistorySearch;
+			sourceTree = "<group>";
+		};
+		7294185020AD11B80054B71D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7294185120AD11E00054B71D /* SearchCell.h */,
+				7294185220AD11E00054B71D /* SearchCell.m */,
+				7294185420AD11F70054B71D /* SearchCollectionCell.h */,
+				7294185520AD11F70054B71D /* SearchCollectionCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		729BA6B120A01E7F009713FD /* Third */ = {
 			isa = PBXGroup;
 			children = (
@@ -530,6 +565,7 @@
 		8D2B8B8B20A2DA7A00C3157F /* AbilityHome */ = {
 			isa = PBXGroup;
 			children = (
+				7294184F20AD119C0054B71D /* HistorySearch */,
 				8DA4990420A6FDCB00968F86 /* PersonalResume */,
 				8DB42FD020A57D5000C4EBF8 /* Fliter */,
 				8D2B8B8E20A2DA9F00C3157F /* AbilityHomeController.h */,
@@ -1205,6 +1241,7 @@
 				8DD48CDC20A8202800D6D1E6 /* ResumeMo.m in Sources */,
 				8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */,
 				CE0BA577209D5004004C3C33 /* main.m in Sources */,
+				7294185920AD120E0054B71D /* SearchLayout.m in Sources */,
 				8D67603920A4688F0027CDEE /* CustomButton.m in Sources */,
 				729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */,
 				8DD48CD720A81B9100D6D1E6 /* GuardCollController.m in Sources */,
@@ -1221,7 +1258,9 @@
 				722D253A20AA76D400AB3863 /* JFCityTableViewCell.m in Sources */,
 				CE0BA5DE209D5E9B004C3C33 /* YTDataPacket.m in Sources */,
 				8DD48CD120A811EA00D6D1E6 /* SDCycleScrollView.m in Sources */,
+				7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */,
 				CE0BA5EB209D5E9B004C3C33 /* SRDownloadManager.m in Sources */,
+				723D376B20AC2BC3003FD4DF /* SearchHistoryController.m in Sources */,
 				8DD48CD020A811EA00D6D1E6 /* SDCollectionViewCell.m in Sources */,
 				CE0BA5F9209D5EBE004C3C33 /* BaseModel.m in Sources */,
 				CE0BA5E1209D5E9B004C3C33 /* YSAccountTool.m in Sources */,
@@ -1252,6 +1291,7 @@
 				CE0BA5E0209D5E9B004C3C33 /* DDFileReader.m in Sources */,
 				8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */,
 				722D253C20AA76D400AB3863 /* JFSearchView.m in Sources */,
+				7294185320AD11E00054B71D /* SearchCell.m in Sources */,
 				CE0BA5EA209D5E9B004C3C33 /* YSBlutoothTool.m in Sources */,
 				CE0BA5B7209D5E6B004C3C33 /* NSData+hexString.m in Sources */,
 				8D2B8B9620A2DAAF00C3157F /* BulidTeamController.m in Sources */,

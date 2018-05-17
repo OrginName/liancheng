@@ -50,11 +50,12 @@
 }
 //导航左按钮我的点击
 -(void)MyselfClick{
-    
+    [YTAlertUtil showTempInfo:@"正在认真开发..."];
 }
 //导航右侧按钮点击
 -(void)MessageClick{
-    
+    [YTAlertUtil showTempInfo:@"正在认真开发..."];
+
 }
 //天生我才必有用的按钮点击
 - (IBAction)btn_TS:(UIButton *)sender {
@@ -94,6 +95,7 @@
         {
             BaseOneTabController * one = [[BaseOneTabController alloc] init];
             [self.navigationController pushViewController:one animated:YES];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"TABBAR" object:nil];
         }
             
             break;
@@ -104,7 +106,6 @@
         default:
             break;
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"TABBAR" object:nil userInfo:@{@"tag":[NSString stringWithFormat:@"%ld",(long)sender.tag]}];
 }
 //城市选择按钮点击
 -(void)AddressClick:(UIButton *)btn{
@@ -279,13 +280,12 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    if (flag) {
-        self.navigationController.navigationBar.hidden= YES;
-        
-    }else{
+    if (!flag) {
         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
         [self.navigationController.navigationBar setBackgroundImage:
          [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
+    }else{
+        self.navigationController.navigationBar.hidden= YES;
     }
 }
 -(void)dealloc{
