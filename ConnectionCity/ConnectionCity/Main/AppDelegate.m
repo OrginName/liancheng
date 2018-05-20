@@ -26,6 +26,7 @@
     self.window.rootViewController = vc;
     
     BaseTabBarController *baseTabBar = [[BaseTabBarController alloc]init];
+    baseTabBar.selectedIndex = 2;
 //    ShowResumeController * baseTabBar = [ShowResumeController new];
     [self.window setRootViewController:baseTabBar];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Receivetag) name:@"TABBAR" object:nil];

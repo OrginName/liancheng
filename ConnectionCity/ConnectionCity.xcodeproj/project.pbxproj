@@ -25,6 +25,8 @@
 		7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187F20B13CB6001D6BE1 /* UIView+ViewController.m */; };
 		7274188620B1474B001D6BE1 /* ConnectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274188420B1474B001D6BE1 /* ConnectionCell.m */; };
 		7274188720B1474B001D6BE1 /* ConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7274188520B1474B001D6BE1 /* ConnectionCell.xib */; };
+		727418BF20B17536001D6BE1 /* CustomPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418BC20B17536001D6BE1 /* CustomPage.m */; };
+		727418C020B17536001D6BE1 /* CustomTabr.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418BE20B17536001D6BE1 /* CustomTabr.m */; };
 		7294185320AD11E00054B71D /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185220AD11E00054B71D /* SearchCell.m */; };
 		7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185520AD11F70054B71D /* SearchCollectionCell.m */; };
 		7294185920AD120E0054B71D /* SearchLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185820AD120E0054B71D /* SearchLayout.m */; };
@@ -194,6 +196,10 @@
 		7274188320B1474B001D6BE1 /* ConnectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionCell.h; sourceTree = "<group>"; };
 		7274188420B1474B001D6BE1 /* ConnectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectionCell.m; sourceTree = "<group>"; };
 		7274188520B1474B001D6BE1 /* ConnectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionCell.xib; sourceTree = "<group>"; };
+		727418BB20B17536001D6BE1 /* CustomPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPage.h; sourceTree = "<group>"; };
+		727418BC20B17536001D6BE1 /* CustomPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPage.m; sourceTree = "<group>"; };
+		727418BD20B17536001D6BE1 /* CustomTabr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabr.h; sourceTree = "<group>"; };
+		727418BE20B17536001D6BE1 /* CustomTabr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabr.m; sourceTree = "<group>"; };
 		7294185120AD11E00054B71D /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		7294185220AD11E00054B71D /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		7294185420AD11F70054B71D /* SearchCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCollectionCell.h; sourceTree = "<group>"; };
@@ -492,6 +498,17 @@
 				7274188520B1474B001D6BE1 /* ConnectionCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		727418BA20B17536001D6BE1 /* CusTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				727418BB20B17536001D6BE1 /* CustomPage.h */,
+				727418BC20B17536001D6BE1 /* CustomPage.m */,
+				727418BD20B17536001D6BE1 /* CustomTabr.h */,
+				727418BE20B17536001D6BE1 /* CustomTabr.m */,
+			);
+			path = CusTabBar;
 			sourceTree = "<group>";
 		};
 		7294184F20AD119C0054B71D /* HistorySearch */ = {
@@ -864,6 +881,7 @@
 		CE0BA5BE209D5E9B004C3C33 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				727418BA20B17536001D6BE1 /* CusTabBar */,
 				72BAB43720B047F500496D29 /* YSButton.h */,
 				72BAB43820B047F500496D29 /* YSButton.m */,
 				CE0BA5BF209D5E9B004C3C33 /* YSTools.h */,
@@ -1344,6 +1362,7 @@
 				8DB42FD420A57D6E00C4EBF8 /* FilterOneController.m in Sources */,
 				722D253A20AA76D400AB3863 /* JFCityTableViewCell.m in Sources */,
 				CE0BA5DE209D5E9B004C3C33 /* YTDataPacket.m in Sources */,
+				727418C020B17536001D6BE1 /* CustomTabr.m in Sources */,
 				8DD48CD120A811EA00D6D1E6 /* SDCycleScrollView.m in Sources */,
 				7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */,
 				CE0BA5EB209D5E9B004C3C33 /* SRDownloadManager.m in Sources */,
@@ -1351,6 +1370,7 @@
 				8DD48CD020A811EA00D6D1E6 /* SDCollectionViewCell.m in Sources */,
 				CE0BA5F9209D5EBE004C3C33 /* BaseModel.m in Sources */,
 				CE0BA5E1209D5E9B004C3C33 /* YSAccountTool.m in Sources */,
+				727418BF20B17536001D6BE1 /* CustomPage.m in Sources */,
 				CE0BA5B8209D5E6B004C3C33 /* UIColor+Extension.m in Sources */,
 				CE0BA5BA209D5E6B004C3C33 /* NSDate+Extend.m in Sources */,
 				CE0BA636209D68A3004C3C33 /* YSLoginController.m in Sources */,
