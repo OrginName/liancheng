@@ -27,6 +27,10 @@
 		7274188720B1474B001D6BE1 /* ConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7274188520B1474B001D6BE1 /* ConnectionCell.xib */; };
 		727418BF20B17536001D6BE1 /* CustomPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418BC20B17536001D6BE1 /* CustomPage.m */; };
 		727418C020B17536001D6BE1 /* CustomTabr.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418BE20B17536001D6BE1 /* CustomTabr.m */; };
+		727418C520B17E78001D6BE1 /* ChangePlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418C320B17E78001D6BE1 /* ChangePlayController.m */; };
+		727418C620B17E78001D6BE1 /* ChangePlayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727418C420B17E78001D6BE1 /* ChangePlayController.xib */; };
+		727418CB20B17F3D001D6BE1 /* ChangeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418CA20B17F3D001D6BE1 /* ChangeHeadView.m */; };
+		727418CD20B17F4B001D6BE1 /* ChangeHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727418CC20B17F4B001D6BE1 /* ChangeHeadView.xib */; };
 		7294185320AD11E00054B71D /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185220AD11E00054B71D /* SearchCell.m */; };
 		7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185520AD11F70054B71D /* SearchCollectionCell.m */; };
 		7294185920AD120E0054B71D /* SearchLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185820AD120E0054B71D /* SearchLayout.m */; };
@@ -200,6 +204,12 @@
 		727418BC20B17536001D6BE1 /* CustomPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPage.m; sourceTree = "<group>"; };
 		727418BD20B17536001D6BE1 /* CustomTabr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabr.h; sourceTree = "<group>"; };
 		727418BE20B17536001D6BE1 /* CustomTabr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabr.m; sourceTree = "<group>"; };
+		727418C220B17E78001D6BE1 /* ChangePlayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePlayController.h; sourceTree = "<group>"; };
+		727418C320B17E78001D6BE1 /* ChangePlayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePlayController.m; sourceTree = "<group>"; };
+		727418C420B17E78001D6BE1 /* ChangePlayController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePlayController.xib; sourceTree = "<group>"; };
+		727418C920B17F3D001D6BE1 /* ChangeHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeHeadView.h; sourceTree = "<group>"; };
+		727418CA20B17F3D001D6BE1 /* ChangeHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeHeadView.m; sourceTree = "<group>"; };
+		727418CC20B17F4B001D6BE1 /* ChangeHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeHeadView.xib; sourceTree = "<group>"; };
 		7294185120AD11E00054B71D /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		7294185220AD11E00054B71D /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		7294185420AD11F70054B71D /* SearchCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCollectionCell.h; sourceTree = "<group>"; };
@@ -509,6 +519,35 @@
 				727418BE20B17536001D6BE1 /* CustomTabr.m */,
 			);
 			path = CusTabBar;
+			sourceTree = "<group>";
+		};
+		727418C120B17E65001D6BE1 /* ChangePlay */ = {
+			isa = PBXGroup;
+			children = (
+				727418C720B17EAC001D6BE1 /* Cell */,
+				727418C820B17EAC001D6BE1 /* View */,
+				727418C220B17E78001D6BE1 /* ChangePlayController.h */,
+				727418C320B17E78001D6BE1 /* ChangePlayController.m */,
+				727418C420B17E78001D6BE1 /* ChangePlayController.xib */,
+			);
+			path = ChangePlay;
+			sourceTree = "<group>";
+		};
+		727418C720B17EAC001D6BE1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		727418C820B17EAC001D6BE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				727418C920B17F3D001D6BE1 /* ChangeHeadView.h */,
+				727418CA20B17F3D001D6BE1 /* ChangeHeadView.m */,
+				727418CC20B17F4B001D6BE1 /* ChangeHeadView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		7294184F20AD119C0054B71D /* HistorySearch */ = {
@@ -966,6 +1005,7 @@
 		CE0BA603209D605D004C3C33 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				727418C120B17E65001D6BE1 /* ChangePlay */,
 				8D2B8B8920A2D9D300C3157F /* FindAbilityTab */,
 				CE0BA624209D68A2004C3C33 /* RegisterAndLogin */,
 				CE0BA61C209D61B4004C3C33 /* Profile */,
@@ -1208,6 +1248,8 @@
 				8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */,
 				8D24A23720A1D5BF00F0740D /* FirstTanView.xib in Resources */,
 				723D376820ABDA62003FD4DF /* ShowResumeCell.xib in Resources */,
+				727418CD20B17F4B001D6BE1 /* ChangeHeadView.xib in Resources */,
+				727418C620B17E78001D6BE1 /* ChangePlayController.xib in Resources */,
 				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
 				8DD48CD820A81B9100D6D1E6 /* GuardCollController.xib in Resources */,
 				729BA6C920A01E7F009713FD /* shop_area.sqlite in Resources */,
@@ -1343,6 +1385,7 @@
 				8DD48CCC20A811EA00D6D1E6 /* TAAbstractDotView.m in Sources */,
 				8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */,
 				CE0BA5B4209D5E6B004C3C33 /* UIFont+YTInchFit.m in Sources */,
+				727418C520B17E78001D6BE1 /* ChangePlayController.m in Sources */,
 				8DD48CDC20A8202800D6D1E6 /* ResumeMo.m in Sources */,
 				8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */,
 				CE0BA577209D5004004C3C33 /* main.m in Sources */,
@@ -1350,6 +1393,7 @@
 				8D67603920A4688F0027CDEE /* CustomButton.m in Sources */,
 				729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */,
 				8DD48CD720A81B9100D6D1E6 /* GuardCollController.m in Sources */,
+				727418CB20B17F3D001D6BE1 /* ChangeHeadView.m in Sources */,
 				723D376720ABDA62003FD4DF /* ShowResumeCell.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
 				CE0BA60E209D6126004C3C33 /* AddressBookController.m in Sources */,
