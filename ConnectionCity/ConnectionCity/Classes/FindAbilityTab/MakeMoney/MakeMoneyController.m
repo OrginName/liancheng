@@ -32,7 +32,7 @@
     NSArray *titleArr = @[@"投标人",@"中标人",@"保证金",@"资金托管",@"足迹"];
     NSArray *picArr = @[@"Tendering5-5",@"Tendering4-4",@"Tendering3-3",@"Tendering2-2",@"Tendering1-1"];
     NSArray *picSelectArr = @[@"Tendering5",@"Tendering4",@"Tendering3",@"Tendering2",@"Tendering1"];
-    CustomPage *custom = [[CustomPage alloc]initSegmentWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) titlesArray:titleArr withSelectArr:picArr withDeSlectArr:picSelectArr vcOrviews:arrVC];
+    CustomPage *custom = [[CustomPage alloc]initSegmentWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kSafeAreaBottomHeight - 64) titlesArray:titleArr withSelectArr:picSelectArr withDeSlectArr:picArr vcOrviews:arrVC];
     [self.view addSubview:custom];
     
     // Do any additional setup after loading the view from its nib.
