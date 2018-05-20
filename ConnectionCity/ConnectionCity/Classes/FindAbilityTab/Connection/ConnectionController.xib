@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConnectionController">
             <connections>
+                <outlet property="btn_All" destination="Yrx-Fg-2Xd" id="hLS-lK-aox"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +19,60 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yrx-Fg-2Xd">
+                    <rect key="frame" x="10" y="10" width="167.5" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="V09-os-N52"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <inset key="imageEdgeInsets" minX="-14" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="所有的人" image="team-112">
+                        <color key="titleColor" red="0.39995792508125305" green="0.40002137422561646" blue="0.39994928240776062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="selected" title="所有的人" image="team-111">
+                        <color key="titleColor" red="0.95109003780000001" green="0.5641317964" blue="0.1661938429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="btn_Click:" destination="-1" eventType="touchUpInside" id="pjE-BK-u18"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YjF-8P-eVs">
+                    <rect key="frame" x="197.5" y="10" width="167.5" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <inset key="imageEdgeInsets" minX="-14" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="附近的人" image="fuji112">
+                        <color key="titleColor" red="0.3999579251" green="0.4000213742" blue="0.39994928239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="selected" title="附近的人" image="fujin111">
+                        <color key="titleColor" red="0.95109003782272339" green="0.56413179636001587" blue="0.16619384288787842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="btn_Click:" destination="-1" eventType="touchUpInside" id="qoA-Jg-b2d"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Yrx-Fg-2Xd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="2SC-rF-CAl"/>
+                <constraint firstItem="YjF-8P-eVs" firstAttribute="width" secondItem="Yrx-Fg-2Xd" secondAttribute="width" id="HWI-3N-CoA"/>
+                <constraint firstItem="YjF-8P-eVs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="KHy-hp-8r2"/>
+                <constraint firstAttribute="trailing" secondItem="YjF-8P-eVs" secondAttribute="trailing" constant="10" id="aJy-dm-tII"/>
+                <constraint firstItem="Yrx-Fg-2Xd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="jjm-uW-JWW"/>
+                <constraint firstItem="YjF-8P-eVs" firstAttribute="leading" secondItem="Yrx-Fg-2Xd" secondAttribute="trailing" constant="20" id="oQa-pI-ewo"/>
+                <constraint firstItem="YjF-8P-eVs" firstAttribute="height" secondItem="Yrx-Fg-2Xd" secondAttribute="height" id="vEV-l4-Rne"/>
+            </constraints>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="fuji112" width="15" height="19"/>
+        <image name="fujin111" width="15" height="19"/>
+        <image name="team-111" width="24" height="16"/>
+        <image name="team-112" width="24" height="16"/>
+    </resources>
 </document>

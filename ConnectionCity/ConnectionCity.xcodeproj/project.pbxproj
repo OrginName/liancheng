@@ -20,6 +20,11 @@
 		723D376720ABDA62003FD4DF /* ShowResumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D376520ABDA62003FD4DF /* ShowResumeCell.m */; };
 		723D376820ABDA62003FD4DF /* ShowResumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D376620ABDA62003FD4DF /* ShowResumeCell.xib */; };
 		723D376B20AC2BC3003FD4DF /* SearchHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D376A20AC2BC3003FD4DF /* SearchHistoryController.m */; };
+		7274188020B13CB6001D6BE1 /* MLMSegmentHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */; };
+		7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187C20B13CB6001D6BE1 /* MLMSegmentPage.m */; };
+		7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187F20B13CB6001D6BE1 /* UIView+ViewController.m */; };
+		7274188620B1474B001D6BE1 /* ConnectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274188420B1474B001D6BE1 /* ConnectionCell.m */; };
+		7274188720B1474B001D6BE1 /* ConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7274188520B1474B001D6BE1 /* ConnectionCell.xib */; };
 		7294185320AD11E00054B71D /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185220AD11E00054B71D /* SearchCell.m */; };
 		7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185520AD11F70054B71D /* SearchCollectionCell.m */; };
 		7294185920AD120E0054B71D /* SearchLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185820AD120E0054B71D /* SearchLayout.m */; };
@@ -30,6 +35,13 @@
 		729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6D620A029AB009713FD /* UIImage+Extension.m */; };
 		729BA6FE20A32F0B009713FD /* CustomMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA6FD20A32F0B009713FD /* CustomMap.m */; };
 		729BA70120A331E0009713FD /* CustomLocatiom.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA70020A331E0009713FD /* CustomLocatiom.m */; };
+		72BAB42A20B03A8C00496D29 /* BulidTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42820B03A8B00496D29 /* BulidTeamCell.m */; };
+		72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */; };
+		72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */; };
+		72BAB43220B03AB700496D29 /* BulidTeamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42F20B03AB700496D29 /* BulidTeamController.m */; };
+		72BAB43320B03AB700496D29 /* BulidTeamController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72BAB43020B03AB700496D29 /* BulidTeamController.xib */; };
+		72BAB43620B03B3F00496D29 /* YSSetUpBirthdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB43520B03B3F00496D29 /* YSSetUpBirthdayView.m */; };
+		72BAB43920B047F500496D29 /* YSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB43820B047F500496D29 /* YSButton.m */; };
 		8817A720716E5B61344D714A /* libPods-ConnectionCity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */; };
 		8D24A22720A19C8F00F0740D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729BA6D820A04BE7009713FD /* MapKit.framework */; };
 		8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A22A20A1B66B00F0740D /* CustomAnnotationView.m */; };
@@ -40,8 +52,6 @@
 		8D2B8B8820A2D3B200C3157F /* BaseOneTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B8B8720A2D3B200C3157F /* BaseOneTabController.m */; };
 		8D2B8B9120A2DA9F00C3157F /* AbilityHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B8B8F20A2DA9F00C3157F /* AbilityHomeController.m */; };
 		8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9020A2DA9F00C3157F /* AbilityHomeController.xib */; };
-		8D2B8B9620A2DAAF00C3157F /* BulidTeamController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9420A2DAAF00C3157F /* BulidTeamController.m */; };
-		8D2B8B9720A2DAAF00C3157F /* BulidTeamController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9520A2DAAF00C3157F /* BulidTeamController.xib */; };
 		8D2B8B9B20A2DABD00C3157F /* ConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9920A2DABD00C3157F /* ConnectionController.m */; };
 		8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9A20A2DABD00C3157F /* ConnectionController.xib */; };
 		8D2B8BA020A2DACC00C3157F /* MakeMoneyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9E20A2DACC00C3157F /* MakeMoneyController.m */; };
@@ -174,6 +184,16 @@
 		723D376620ABDA62003FD4DF /* ShowResumeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowResumeCell.xib; sourceTree = "<group>"; };
 		723D376920AC2BC3003FD4DF /* SearchHistoryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchHistoryController.h; sourceTree = "<group>"; };
 		723D376A20AC2BC3003FD4DF /* SearchHistoryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchHistoryController.m; sourceTree = "<group>"; };
+		7274187920B13CB6001D6BE1 /* MLMSegmentHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentHead.h; sourceTree = "<group>"; };
+		7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLMSegmentHead.m; sourceTree = "<group>"; };
+		7274187B20B13CB6001D6BE1 /* MLMSegmentPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentPage.h; sourceTree = "<group>"; };
+		7274187C20B13CB6001D6BE1 /* MLMSegmentPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLMSegmentPage.m; sourceTree = "<group>"; };
+		7274187D20B13CB6001D6BE1 /* SegmentPageHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentPageHead.h; sourceTree = "<group>"; };
+		7274187E20B13CB6001D6BE1 /* UIView+ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewController.h"; sourceTree = "<group>"; };
+		7274187F20B13CB6001D6BE1 /* UIView+ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewController.m"; sourceTree = "<group>"; };
+		7274188320B1474B001D6BE1 /* ConnectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionCell.h; sourceTree = "<group>"; };
+		7274188420B1474B001D6BE1 /* ConnectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectionCell.m; sourceTree = "<group>"; };
+		7274188520B1474B001D6BE1 /* ConnectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionCell.xib; sourceTree = "<group>"; };
 		7294185120AD11E00054B71D /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		7294185220AD11E00054B71D /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		7294185420AD11F70054B71D /* SearchCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCollectionCell.h; sourceTree = "<group>"; };
@@ -194,6 +214,18 @@
 		729BA6FD20A32F0B009713FD /* CustomMap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomMap.m; sourceTree = "<group>"; };
 		729BA6FF20A331E0009713FD /* CustomLocatiom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomLocatiom.h; sourceTree = "<group>"; };
 		729BA70020A331E0009713FD /* CustomLocatiom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomLocatiom.m; sourceTree = "<group>"; };
+		72BAB42720B03A8B00496D29 /* BulidTeamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulidTeamCell.h; sourceTree = "<group>"; };
+		72BAB42820B03A8B00496D29 /* BulidTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulidTeamCell.m; sourceTree = "<group>"; };
+		72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BulidTeamCell.xib; sourceTree = "<group>"; };
+		72BAB42C20B03A9D00496D29 /* BulidTeamSectionHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulidTeamSectionHead.h; sourceTree = "<group>"; };
+		72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulidTeamSectionHead.m; sourceTree = "<group>"; };
+		72BAB42F20B03AB700496D29 /* BulidTeamController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BulidTeamController.m; path = ../../../../../../BulidTeam/BulidTeamController.m; sourceTree = "<group>"; };
+		72BAB43020B03AB700496D29 /* BulidTeamController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BulidTeamController.xib; path = ../../../../../../BulidTeam/BulidTeamController.xib; sourceTree = "<group>"; };
+		72BAB43120B03AB700496D29 /* BulidTeamController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BulidTeamController.h; path = ../../../../../../BulidTeam/BulidTeamController.h; sourceTree = "<group>"; };
+		72BAB43420B03B3F00496D29 /* YSSetUpBirthdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSSetUpBirthdayView.h; sourceTree = "<group>"; };
+		72BAB43520B03B3F00496D29 /* YSSetUpBirthdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSSetUpBirthdayView.m; sourceTree = "<group>"; };
+		72BAB43720B047F500496D29 /* YSButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSButton.h; sourceTree = "<group>"; };
+		72BAB43820B047F500496D29 /* YSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSButton.m; sourceTree = "<group>"; };
 		8D24A22920A1B66B00F0740D /* CustomAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
 		8D24A22A20A1B66B00F0740D /* CustomAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
 		8D24A22C20A1B9BA00F0740D /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutView.m; sourceTree = "<group>"; };
@@ -208,9 +240,6 @@
 		8D2B8B8E20A2DA9F00C3157F /* AbilityHomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbilityHomeController.h; sourceTree = "<group>"; };
 		8D2B8B8F20A2DA9F00C3157F /* AbilityHomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AbilityHomeController.m; sourceTree = "<group>"; };
 		8D2B8B9020A2DA9F00C3157F /* AbilityHomeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AbilityHomeController.xib; sourceTree = "<group>"; };
-		8D2B8B9320A2DAAF00C3157F /* BulidTeamController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BulidTeamController.h; sourceTree = "<group>"; };
-		8D2B8B9420A2DAAF00C3157F /* BulidTeamController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BulidTeamController.m; sourceTree = "<group>"; };
-		8D2B8B9520A2DAAF00C3157F /* BulidTeamController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BulidTeamController.xib; sourceTree = "<group>"; };
 		8D2B8B9820A2DABD00C3157F /* ConnectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionController.h; sourceTree = "<group>"; };
 		8D2B8B9920A2DABD00C3157F /* ConnectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectionController.m; sourceTree = "<group>"; };
 		8D2B8B9A20A2DABD00C3157F /* ConnectionController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionController.xib; sourceTree = "<group>"; };
@@ -441,6 +470,30 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7274187820B13CB6001D6BE1 /* MLMSegmentPageView */ = {
+			isa = PBXGroup;
+			children = (
+				7274187920B13CB6001D6BE1 /* MLMSegmentHead.h */,
+				7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */,
+				7274187B20B13CB6001D6BE1 /* MLMSegmentPage.h */,
+				7274187C20B13CB6001D6BE1 /* MLMSegmentPage.m */,
+				7274187D20B13CB6001D6BE1 /* SegmentPageHead.h */,
+				7274187E20B13CB6001D6BE1 /* UIView+ViewController.h */,
+				7274187F20B13CB6001D6BE1 /* UIView+ViewController.m */,
+			);
+			path = MLMSegmentPageView;
+			sourceTree = "<group>";
+		};
+		7274188820B14773001D6BE1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7274188320B1474B001D6BE1 /* ConnectionCell.h */,
+				7274188420B1474B001D6BE1 /* ConnectionCell.m */,
+				7274188520B1474B001D6BE1 /* ConnectionCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		7294184F20AD119C0054B71D /* HistorySearch */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +520,7 @@
 		729BA6B120A01E7F009713FD /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				7274187820B13CB6001D6BE1 /* MLMSegmentPageView */,
 				722D252A20AA76D400AB3863 /* CitySelect */,
 				722D252620AA769600AB3863 /* PopView */,
 				8DD48CB720A811EA00D6D1E6 /* SDCycleScrollView */,
@@ -503,6 +557,25 @@
 				729BA6C720A01E7F009713FD /* JFLocation.m */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		72BAB42520B03A7B00496D29 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				72BAB42C20B03A9D00496D29 /* BulidTeamSectionHead.h */,
+				72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		72BAB42620B03A7B00496D29 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				72BAB42720B03A8B00496D29 /* BulidTeamCell.h */,
+				72BAB42820B03A8B00496D29 /* BulidTeamCell.m */,
+				72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		8B7BE3068BAA237F55FD6962 /* Frameworks */ = {
@@ -555,9 +628,11 @@
 		8D2B8B8A20A2DA7A00C3157F /* BulidTeam */ = {
 			isa = PBXGroup;
 			children = (
-				8D2B8B9320A2DAAF00C3157F /* BulidTeamController.h */,
-				8D2B8B9420A2DAAF00C3157F /* BulidTeamController.m */,
-				8D2B8B9520A2DAAF00C3157F /* BulidTeamController.xib */,
+				72BAB42620B03A7B00496D29 /* Cell */,
+				72BAB42520B03A7B00496D29 /* View */,
+				72BAB43120B03AB700496D29 /* BulidTeamController.h */,
+				72BAB42F20B03AB700496D29 /* BulidTeamController.m */,
+				72BAB43020B03AB700496D29 /* BulidTeamController.xib */,
 			);
 			path = BulidTeam;
 			sourceTree = "<group>";
@@ -581,6 +656,7 @@
 		8D2B8B8C20A2DA7A00C3157F /* Connection */ = {
 			isa = PBXGroup;
 			children = (
+				7274188820B14773001D6BE1 /* Cell */,
 				8D2B8B9820A2DABD00C3157F /* ConnectionController.h */,
 				8D2B8B9920A2DABD00C3157F /* ConnectionController.m */,
 				8D2B8B9A20A2DABD00C3157F /* ConnectionController.xib */,
@@ -758,7 +834,6 @@
 				CE0BA59C209D5E6A004C3C33 /* NSString+MD5.h */,
 				CE0BA59E209D5E6A004C3C33 /* MBProgressHUD+Extension.h */,
 				CE0BA59F209D5E6A004C3C33 /* NSData+DDAdditions.m */,
-				CE0BA5A0209D5E6A004C3C33 /* UIView+YSCategory.m */,
 				CE0BA5A1209D5E6A004C3C33 /* NSDate+Extend.h */,
 				CE0BA5A2209D5E6A004C3C33 /* UIFont+YTInchFit.m */,
 				CE0BA5A3209D5E6B004C3C33 /* UIViewController+BackButtonHandler.m */,
@@ -769,6 +844,7 @@
 				CE0BA5A8209D5E6B004C3C33 /* NSDate+Extend.m */,
 				CE0BA5A9209D5E6B004C3C33 /* UIFont+YTInchFit.h */,
 				CE0BA5AA209D5E6B004C3C33 /* UIView+YSCategory.h */,
+				CE0BA5A0209D5E6A004C3C33 /* UIView+YSCategory.m */,
 				CE0BA5AB209D5E6B004C3C33 /* NSData+DDAdditions.h */,
 				CE0BA59D209D5E6A004C3C33 /* UIBarButtonItem+Extension.h */,
 				CE0BA5AC209D5E6B004C3C33 /* UIBarButtonItem+Extension.m */,
@@ -788,6 +864,8 @@
 		CE0BA5BE209D5E9B004C3C33 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				72BAB43720B047F500496D29 /* YSButton.h */,
+				72BAB43820B047F500496D29 /* YSButton.m */,
 				CE0BA5BF209D5E9B004C3C33 /* YSTools.h */,
 				CE0BA5C0209D5E9B004C3C33 /* MyPickerView.h */,
 				CE0BA5C1209D5E9B004C3C33 /* YTSystemUtil.m */,
@@ -818,6 +896,8 @@
 				CE0BA5DA209D5E9B004C3C33 /* SRDownloadModel.h */,
 				CE0BA5DB209D5E9B004C3C33 /* YSBlutoothTool.m */,
 				CE0BA5DC209D5E9B004C3C33 /* SRDownloadManager.m */,
+				72BAB43420B03B3F00496D29 /* YSSetUpBirthdayView.h */,
+				72BAB43520B03B3F00496D29 /* YSSetUpBirthdayView.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1104,6 +1184,8 @@
 				CE0BA621209D61C0004C3C33 /* ProfileController.xib in Resources */,
 				CE0BA615209D6160004C3C33 /* LifeHallController.xib in Resources */,
 				8DD48CE920A8367100D6D1E6 /* GuardEduController.xib in Resources */,
+				7274188720B1474B001D6BE1 /* ConnectionCell.xib in Resources */,
+				72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */,
 				8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */,
 				8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */,
 				8D24A23720A1D5BF00F0740D /* FirstTanView.xib in Resources */,
@@ -1119,9 +1201,9 @@
 				8DA4990E20A7063E00968F86 /* ResumeCell.xib in Resources */,
 				8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */,
 				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
-				8D2B8B9720A2DAAF00C3157F /* BulidTeamController.xib in Resources */,
 				CE0BA635209D68A3004C3C33 /* YSLoginController.xib in Resources */,
 				722D254120AAA64C00AB3863 /* ShowResumeController.xib in Resources */,
+				72BAB43320B03AB700496D29 /* BulidTeamController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1206,6 +1288,7 @@
 				CE0BA5F8209D5EBE004C3C33 /* BaseNavigationController.m in Sources */,
 				CE0BA5E6209D5E9B004C3C33 /* MyPickerView.m in Sources */,
 				CE0BA5F7209D5EBE004C3C33 /* BaseViewController.m in Sources */,
+				7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */,
 				CE0BA5DD209D5E9B004C3C33 /* YTSystemUtil.m in Sources */,
 				CE0BA5E3209D5E9B004C3C33 /* YTAlertUtil.m in Sources */,
 				CE0BA614209D6160004C3C33 /* LifeHallController.m in Sources */,
@@ -1213,6 +1296,8 @@
 				8DD48CD220A811EA00D6D1E6 /* UIColor+MyColor.m in Sources */,
 				722D253820AA76D400AB3863 /* JFCityCollectionViewCell.m in Sources */,
 				CE0BA5BB209D5E6B004C3C33 /* UIBarButtonItem+Extension.m in Sources */,
+				72BAB43220B03AB700496D29 /* BulidTeamController.m in Sources */,
+				7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */,
 				723D376120ABBEB4003FD4DF /* ShowResumeTab.m in Sources */,
 				8DD48CCB20A811EA00D6D1E6 /* NSData+SDDataCache.m in Sources */,
 				722D253B20AA76D400AB3863 /* JFCityViewController.m in Sources */,
@@ -1225,6 +1310,7 @@
 				CE0BA5E2209D5E9B004C3C33 /* SRDownloadModel.m in Sources */,
 				8D24A23520A1D5A700F0740D /* RefineView.m in Sources */,
 				CE0BA5E5209D5E9B004C3C33 /* YSNetworkTool.m in Sources */,
+				72BAB43920B047F500496D29 /* YSButton.m in Sources */,
 				CE0BA5BC209D5E6B004C3C33 /* MBProgressHUD+Extension.m in Sources */,
 				722D253920AA76D400AB3863 /* JFCityHeaderView.m in Sources */,
 				8D2B8B9B20A2DABD00C3157F /* ConnectionController.m in Sources */,
@@ -1232,6 +1318,7 @@
 				8D2B8B9120A2DA9F00C3157F /* AbilityHomeController.m in Sources */,
 				722D254020AAA64C00AB3863 /* ShowResumeController.m in Sources */,
 				8DD48CE820A8367100D6D1E6 /* GuardEduController.m in Sources */,
+				72BAB43620B03B3F00496D29 /* YSSetUpBirthdayView.m in Sources */,
 				8DD48CD320A811EA00D6D1E6 /* UIView+SDExtension.m in Sources */,
 				CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */,
 				CE0BA5B3209D5E6B004C3C33 /* UIView+YSCategory.m in Sources */,
@@ -1273,13 +1360,17 @@
 				8DA4990D20A7063E00968F86 /* ResumeCell.m in Sources */,
 				CE0BA5B2209D5E6B004C3C33 /* NSData+DDAdditions.m in Sources */,
 				8D24A23220A1CB8200F0740D /* FirstTanView.m in Sources */,
+				7274188020B13CB6001D6BE1 /* MLMSegmentHead.m in Sources */,
 				CE0BA5B5209D5E6B004C3C33 /* UIViewController+BackButtonHandler.m in Sources */,
+				72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */,
 				CE0BA5FA209D5EBE004C3C33 /* YTBaseTableViewController.m in Sources */,
 				CE0BA61A209D6197004C3C33 /* FoundController.m in Sources */,
 				722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */,
+				72BAB42A20B03A8C00496D29 /* BulidTeamCell.m in Sources */,
 				CE0BA5FB209D5EBE004C3C33 /* BaseTabBarController.m in Sources */,
 				CE0BA607209D60C3004C3C33 /* MessageController.m in Sources */,
 				CE0BA5E8209D5E9B004C3C33 /* GlobalManager.m in Sources */,
+				7274188620B1474B001D6BE1 /* ConnectionCell.m in Sources */,
 				8D24A22E20A1B9BA00F0740D /* CustomCalloutView.m in Sources */,
 				8D2B8BA020A2DACC00C3157F /* MakeMoneyController.m in Sources */,
 				CE0BA5B9209D5E6B004C3C33 /* UIAlertView+Blocks.m in Sources */,
@@ -1294,7 +1385,6 @@
 				7294185320AD11E00054B71D /* SearchCell.m in Sources */,
 				CE0BA5EA209D5E9B004C3C33 /* YSBlutoothTool.m in Sources */,
 				CE0BA5B7209D5E6B004C3C33 /* NSData+hexString.m in Sources */,
-				8D2B8B9620A2DAAF00C3157F /* BulidTeamController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

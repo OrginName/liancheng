@@ -9,7 +9,7 @@
 #import "ShowResumeController.h"
 #import "ShowResumeTab.h"
 #define identifier @"ScrollCell"
-#define TabHeight kScreenHeight-120
+#define TabHeight kScreenHeight-185
 @interface ShowResumeController ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong)NSMutableArray *imageArray;
 @property (nonatomic, assign)Boolean isFullScreen;
