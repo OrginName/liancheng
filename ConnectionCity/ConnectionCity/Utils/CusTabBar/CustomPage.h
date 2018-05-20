@@ -26,6 +26,9 @@
 @property (nonatomic, strong) UIColor *headColor;
 ///顶部高度，默认 - 50
 @property (nonatomic, assign) CGFloat headHeight;
+///缓存页面数目，默认 - all
+@property (nonatomic, assign) NSInteger countLimit;
+
 ///delegate
 @property (nonatomic, weak) id<CustomPageDelegate> delegate;
 

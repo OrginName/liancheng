@@ -75,7 +75,6 @@
     if (!_view_Tabbar) {
         _view_Tabbar = [[UIView alloc] init];
         _view_Tabbar.backgroundColor = _tabBarColor;
-        
     }
     return _view_Tabbar;
 }

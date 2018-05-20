@@ -67,7 +67,7 @@
 #pragma mark - profile method
 -(void)p_back {
     [self.tabBarController.navigationController popViewControllerAnimated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"BACKMAINWINDOW" object:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"BACKMAINWINDOW" object:nil];
 }
 
 
