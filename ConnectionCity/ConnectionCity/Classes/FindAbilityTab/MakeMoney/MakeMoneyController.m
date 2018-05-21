@@ -59,8 +59,6 @@
     [super viewWillAppear:animated];
     self.custom.hidden = NO;
     self.tabBarController.tabBar.hidden = YES;
-//    BaseMakeMoneyTabController *tbVC = [[BaseMakeMoneyTabController alloc]init];
-//    kWindow.rootViewController = tbVC;
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];

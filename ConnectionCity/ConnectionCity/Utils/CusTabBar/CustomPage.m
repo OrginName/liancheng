@@ -75,7 +75,8 @@
 #pragma mark - create_scroll
 - (void)createViewsScroll {
     _viewsScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - _headHeight)];
-    _viewsScroll.userInteractionEnabled = NO;
+    _viewsScroll.userInteractionEnabled = YES;
+    _viewsScroll.scrollEnabled = NO;
     _viewsScroll.showsVerticalScrollIndicator = NO;
     _viewsScroll.showsHorizontalScrollIndicator = NO;
     _viewsScroll.bounces = NO;

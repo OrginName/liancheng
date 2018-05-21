@@ -39,7 +39,7 @@
 }
 -(void)TabbarDefulet{
     _tabBarColor = [UIColor whiteColor];
-    _titleFont = 14;
+    _titleFont = 12;
     _titleSelectColor = [UIColor orangeColor];
     _titleDeSelctColor = [UIColor grayColor];
 }
@@ -80,7 +80,7 @@
 }
 -(void)initBtn{
     for (int i=0; i<self.selectArr.count; i++) {
-        UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(i*(kScreenWidth/self.selectArr.count), 0, kScreenWidth/self.selectArr.count, BARHEIGHT)];
+        UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(i*(kScreenWidth/self.selectArr.count), 2, kScreenWidth/self.selectArr.count, BARHEIGHT)];
         btn.tag = i;
         btn.titleLabel.font = [UIFont systemFontOfSize:self.titleFont];
         [btn setTitle:self.TitleArr[i] forState:UIControlStateNormal];
@@ -88,7 +88,7 @@
         [btn setTitleColor:self.titleDeSelctColor forState:UIControlStateNormal];
         [btn setImage:[UIImage imageNamed:self.selectArr[i]] forState:UIControlStateSelected];
         [btn setImage:[UIImage imageNamed:self.DeSlectArr[i]] forState:UIControlStateNormal];
-        [btn layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleTop imageTitleSpace:3];
+        [btn layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleTop imageTitleSpace:15];
         
         [btn addTarget:self action:@selector(ChooseTab:) forControlEvents:UIControlEventTouchUpInside];
         [self.view_Tabbar addSubview:btn];

@@ -22,6 +22,8 @@
     [super viewDidLoad];
     [self setUI];
     [self setTableView];
+    self.view.backgroundColor = [UIColor redColor];
+    self.tableView.backgroundColor = [UIColor orangeColor];
     
     // Do any additional setup after loading the view from its nib.
 }
