@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ChangeCell">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="205"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="205"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="椭圆2拷贝4" translatesAutoresizingMaskIntoConstraints="NO" id="47k-uf-92p">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="143.5"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="苹果iPhone7 plus 红色128G 其他版本 出自哪" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQJ-Ss-YaH">
+                        <rect key="frame" x="0.0" y="149.5" width="150" height="37"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="37" id="0kI-QD-Reg"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.39211553335189819" green="0.39217787981033325" blue="0.39210706949234009" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="江苏 朔州" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7J-6V-e8A">
+                        <rect key="frame" x="0.0" y="191.5" width="150" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.39211553339999999" green="0.39217787980000002" blue="0.39210706950000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="47k-uf-92p" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="5Ri-Ym-0Lu"/>
+                <constraint firstItem="sQJ-Ss-YaH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Db3-Xw-PMZ"/>
+                <constraint firstAttribute="trailing" secondItem="sQJ-Ss-YaH" secondAttribute="trailing" id="IV3-xb-UYz"/>
+                <constraint firstItem="p7J-6V-e8A" firstAttribute="top" secondItem="sQJ-Ss-YaH" secondAttribute="bottom" constant="5" id="MeT-zH-H9T"/>
+                <constraint firstAttribute="trailing" secondItem="p7J-6V-e8A" secondAttribute="trailing" id="QwL-Jg-U9x"/>
+                <constraint firstItem="47k-uf-92p" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YjD-sn-NhQ"/>
+                <constraint firstItem="47k-uf-92p" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.7" id="Zy4-it-VxE"/>
+                <constraint firstItem="p7J-6V-e8A" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aFM-Bs-euo"/>
+                <constraint firstAttribute="trailing" secondItem="47k-uf-92p" secondAttribute="trailing" id="hiZ-RT-sj8"/>
+                <constraint firstItem="sQJ-Ss-YaH" firstAttribute="top" secondItem="47k-uf-92p" secondAttribute="bottom" constant="6" id="zIh-97-yE8"/>
+            </constraints>
+            <size key="customSize" width="150" height="205"/>
+            <point key="canvasLocation" x="4" y="39.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="椭圆2拷贝4" width="375" height="64"/>
+    </resources>
+</document>

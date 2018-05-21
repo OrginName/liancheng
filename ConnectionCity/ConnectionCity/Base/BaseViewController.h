@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface BaseViewController : UIViewController
+@property (nonatomic,assign) BOOL flag_back;
 /** 获取文件路径 */
 - (NSString *)getFilePathWithName:(NSString *)name;
 //类名转换类

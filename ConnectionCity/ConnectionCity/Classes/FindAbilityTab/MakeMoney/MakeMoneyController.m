@@ -29,7 +29,7 @@
     WinningBidderController *addressVC = [[WinningBidderController alloc]init];
     MarginController *lifeVC = [[MarginController alloc]init];
     BountyHostingController *foundVC = [[BountyHostingController alloc]init];
-    FootprintController *profileVC = [[FootprintController alloc]init];
+    FootprintController *profileVC = [FootprintController new];
     FirstController * first = [FirstController new];
     NSArray *arrVC = @[first,messageVC,addressVC,lifeVC,foundVC,profileVC];
     _titleArr = @[@"投标人",@"中标人",@"保证金",@"资金托管",@"足迹"];

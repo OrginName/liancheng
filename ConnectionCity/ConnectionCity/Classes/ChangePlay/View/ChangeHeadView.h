@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void(^CurrentBlock)(NSInteger  CurrentTag);
 @interface ChangeHeadView : UIView
-
+@property (nonatomic,copy) CurrentBlock block;
 @end
+
+

@@ -24,7 +24,15 @@
     self.navBarHairlineImageView.hidden = YES;
     self.view.backgroundColor = kCommonBGColor;
     
-    // Do any additional setup after loading the view.
+}
+-(void)setFlag_back:(BOOL)flag_back{
+    _flag_back = flag_back;
+    if (_flag_back) {
+        self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    }
+}
+-(void)back{
+    [self.tabBarController.navigationController popViewControllerAnimated:YES];
 }
 //设置状态栏颜色
 - (UIStatusBarStyle)preferredStatusBarStyle {

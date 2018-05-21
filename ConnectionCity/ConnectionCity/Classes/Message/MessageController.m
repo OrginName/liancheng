@@ -16,6 +16,7 @@
 #import "FirstTanView.h"
 #import "BaseOneTabController.h"
 #import "CustomMap.h"
+#import "BaseChangeTabController.h"
 @interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate>
 {
     BOOL flag;
@@ -103,6 +104,10 @@
             
             break;
         case 2:
+        {
+            BaseChangeTabController * one = [[BaseChangeTabController alloc] init];
+            [self.navigationController pushViewController:one animated:YES];
+        }
             break;
         case 3:
             break;
@@ -189,8 +194,6 @@
 ////    {
 ////        [self.locationManager startUpdatingHeading];
 ////    }
-//
-//
 //}
 //
 //#pragma mark - AMapLocationManager Delegate

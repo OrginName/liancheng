@@ -121,11 +121,4 @@
 -(void)currentAnimatinonViewClick:(MAAnnotationView *)view{
     [self.navigationController pushViewController:[ShowResumeController new] animated:YES];
 }
--(void)viewWillAppear:(BOOL)animated{
-    NSLog(@"123");
-}
--(void)viewDidDisappear:(BOOL)animated{
-    
-}
-
 @end

@@ -1,22 +1,22 @@
 //
-//  FirstController.m
+//  EnthusiastsControll.m
 //  ConnectionCity
 //
-//  Created by qt on 2018/5/20.
+//  Created by qt on 2018/5/21.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
 //
 
-#import "FirstController.h"
+#import "EnthusiastsControll.h"
 
-@interface FirstController ()
+@interface EnthusiastsControll ()
 
 @end
 
-@implementation FirstController
+@implementation EnthusiastsControll
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor cyanColor];
+    [super setFlag_back:YES];//设置返回按钮
 }
 
 - (void)didReceiveMemoryWarning {

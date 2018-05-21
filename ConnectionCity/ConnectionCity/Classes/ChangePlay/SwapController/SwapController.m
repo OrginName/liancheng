@@ -1,22 +1,22 @@
 //
-//  FirstController.m
+//  SwapController.m
 //  ConnectionCity
 //
-//  Created by qt on 2018/5/20.
+//  Created by qt on 2018/5/21.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
 //
 
-#import "FirstController.h"
+#import "SwapController.h"
 
-@interface FirstController ()
+@interface SwapController ()
 
 @end
 
-@implementation FirstController
+@implementation SwapController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor cyanColor];
+    [super setFlag_back:YES];//设置返回按钮
 }
 
 - (void)didReceiveMemoryWarning {

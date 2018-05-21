@@ -48,7 +48,7 @@
     _fontSize = 13;
     _headHeight = 50;
     _headColor = [UIColor whiteColor];
-    _countLimit = titlesArray.count;
+    _countLimit = viewsArray.count;
 }
 #pragma mark - viewsCache
 - (NSCache *)viewsCache {
@@ -67,7 +67,7 @@
     _customBar.titleDeSelctColor = _deselectColor;
     currentIndex = _showIndex;
     _customBar.titleFont = _fontSize;
-    _countLimit = MAX(1, MIN(_countLimit, titlesArray.count));
+    _countLimit = MAX(1, MIN(_countLimit, viewsArray.count));
     [self addSubview:self.customBar];
     [self createViewsScroll];
     [self defaultViewCache];

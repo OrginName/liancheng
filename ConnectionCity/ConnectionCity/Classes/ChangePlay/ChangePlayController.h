@@ -11,3 +11,12 @@
 @interface ChangePlayController : BaseViewController
 
 @end
+
+//UICollectionViewFlowLayout
+@interface ChangeLayout : UICollectionViewFlowLayout
+
+@end
+
+@interface ChangeCollecRuesuableView : UICollectionReusableView
+ 
+@end

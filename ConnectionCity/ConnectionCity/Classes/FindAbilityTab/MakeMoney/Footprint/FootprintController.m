@@ -20,10 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUI];
     [self setTableView];
-    self.view.backgroundColor = [UIColor redColor];
-    self.tableView.backgroundColor = [UIColor orangeColor];
+//    self.view.backgroundColor = [UIColor redColor];
+//    self.tableView.backgroundColor = [UIColor orangeColor];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -32,9 +31,7 @@
     // Dispose of any resources that can be recreated.
 }
 #pragma mark - setup
--(void)setUI {
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(p_back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
-}
+
 - (void)setTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"MarginCell" bundle:nil] forCellReuseIdentifier:@"MarginCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"FootprintCell" bundle:nil] forCellReuseIdentifier:@"FootprintCell"];

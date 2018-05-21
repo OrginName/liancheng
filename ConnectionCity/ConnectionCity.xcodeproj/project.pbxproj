@@ -33,6 +33,17 @@
 		727418CD20B17F4B001D6BE1 /* ChangeHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727418CC20B17F4B001D6BE1 /* ChangeHeadView.xib */; };
 		727418D120B1A058001D6BE1 /* FirstController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418CF20B1A058001D6BE1 /* FirstController.m */; };
 		727418D220B1A058001D6BE1 /* FirstController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727418D020B1A058001D6BE1 /* FirstController.xib */; };
+		727418D920B290AE001D6BE1 /* PlayPoductController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418D720B290AE001D6BE1 /* PlayPoductController.m */; };
+		727418DA20B290AE001D6BE1 /* PlayPoductController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727418D820B290AE001D6BE1 /* PlayPoductController.xib */; };
+		727418DE20B290BF001D6BE1 /* EnthusiastsControll.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418DC20B290BF001D6BE1 /* EnthusiastsControll.m */; };
+		727418DF20B290BF001D6BE1 /* EnthusiastsControll.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727418DD20B290BF001D6BE1 /* EnthusiastsControll.xib */; };
+		727418E320B290D1001D6BE1 /* SwapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418E120B290D1001D6BE1 /* SwapController.m */; };
+		727418E420B290D1001D6BE1 /* SwapController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727418E220B290D1001D6BE1 /* SwapController.xib */; };
+		727418E720B291B6001D6BE1 /* BaseChangeTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418E520B291B6001D6BE1 /* BaseChangeTabController.m */; };
+		727418EB20B2AAB9001D6BE1 /* ChangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418E920B2AAB9001D6BE1 /* ChangeCell.m */; };
+		727418EC20B2AAB9001D6BE1 /* ChangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727418EA20B2AAB9001D6BE1 /* ChangeCell.xib */; };
+		727418F020B2DDAC001D6BE1 /* ChangeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418EE20B2DDAC001D6BE1 /* ChangeListController.m */; };
+		727418F120B2DDAC001D6BE1 /* ChangeListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727418EF20B2DDAC001D6BE1 /* ChangeListController.xib */; };
 		7294185320AD11E00054B71D /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185220AD11E00054B71D /* SearchCell.m */; };
 		7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185520AD11F70054B71D /* SearchCollectionCell.m */; };
 		7294185920AD120E0054B71D /* SearchLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185820AD120E0054B71D /* SearchLayout.m */; };
@@ -237,6 +248,23 @@
 		727418CE20B1A058001D6BE1 /* FirstController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstController.h; sourceTree = "<group>"; };
 		727418CF20B1A058001D6BE1 /* FirstController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstController.m; sourceTree = "<group>"; };
 		727418D020B1A058001D6BE1 /* FirstController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstController.xib; sourceTree = "<group>"; };
+		727418D620B290AE001D6BE1 /* PlayPoductController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayPoductController.h; sourceTree = "<group>"; };
+		727418D720B290AE001D6BE1 /* PlayPoductController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayPoductController.m; sourceTree = "<group>"; };
+		727418D820B290AE001D6BE1 /* PlayPoductController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayPoductController.xib; sourceTree = "<group>"; };
+		727418DB20B290BF001D6BE1 /* EnthusiastsControll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnthusiastsControll.h; sourceTree = "<group>"; };
+		727418DC20B290BF001D6BE1 /* EnthusiastsControll.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnthusiastsControll.m; sourceTree = "<group>"; };
+		727418DD20B290BF001D6BE1 /* EnthusiastsControll.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnthusiastsControll.xib; sourceTree = "<group>"; };
+		727418E020B290D1001D6BE1 /* SwapController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwapController.h; sourceTree = "<group>"; };
+		727418E120B290D1001D6BE1 /* SwapController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwapController.m; sourceTree = "<group>"; };
+		727418E220B290D1001D6BE1 /* SwapController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwapController.xib; sourceTree = "<group>"; };
+		727418E520B291B6001D6BE1 /* BaseChangeTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseChangeTabController.m; sourceTree = "<group>"; };
+		727418E620B291B6001D6BE1 /* BaseChangeTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseChangeTabController.h; sourceTree = "<group>"; };
+		727418E820B2AAB9001D6BE1 /* ChangeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeCell.h; sourceTree = "<group>"; };
+		727418E920B2AAB9001D6BE1 /* ChangeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeCell.m; sourceTree = "<group>"; };
+		727418EA20B2AAB9001D6BE1 /* ChangeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeCell.xib; sourceTree = "<group>"; };
+		727418ED20B2DDAC001D6BE1 /* ChangeListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeListController.h; sourceTree = "<group>"; };
+		727418EE20B2DDAC001D6BE1 /* ChangeListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeListController.m; sourceTree = "<group>"; };
+		727418EF20B2DDAC001D6BE1 /* ChangeListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeListController.xib; sourceTree = "<group>"; };
 		7294185120AD11E00054B71D /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		7294185220AD11E00054B71D /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		7294185420AD11F70054B71D /* SearchCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCollectionCell.h; sourceTree = "<group>"; };
@@ -586,11 +614,19 @@
 		727418C120B17E65001D6BE1 /* ChangePlay */ = {
 			isa = PBXGroup;
 			children = (
+				727418D520B29095001D6BE1 /* EnthusiastsControll */,
+				727418D320B29094001D6BE1 /* PlayPoduct */,
+				727418D420B29095001D6BE1 /* SwapController */,
 				727418C720B17EAC001D6BE1 /* Cell */,
 				727418C820B17EAC001D6BE1 /* View */,
 				727418C220B17E78001D6BE1 /* ChangePlayController.h */,
 				727418C320B17E78001D6BE1 /* ChangePlayController.m */,
 				727418C420B17E78001D6BE1 /* ChangePlayController.xib */,
+				727418ED20B2DDAC001D6BE1 /* ChangeListController.h */,
+				727418EE20B2DDAC001D6BE1 /* ChangeListController.m */,
+				727418EF20B2DDAC001D6BE1 /* ChangeListController.xib */,
+				727418E620B291B6001D6BE1 /* BaseChangeTabController.h */,
+				727418E520B291B6001D6BE1 /* BaseChangeTabController.m */,
 			);
 			path = ChangePlay;
 			sourceTree = "<group>";
@@ -598,6 +634,9 @@
 		727418C720B17EAC001D6BE1 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				727418E820B2AAB9001D6BE1 /* ChangeCell.h */,
+				727418E920B2AAB9001D6BE1 /* ChangeCell.m */,
+				727418EA20B2AAB9001D6BE1 /* ChangeCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -610,6 +649,36 @@
 				727418CC20B17F4B001D6BE1 /* ChangeHeadView.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		727418D320B29094001D6BE1 /* PlayPoduct */ = {
+			isa = PBXGroup;
+			children = (
+				727418D620B290AE001D6BE1 /* PlayPoductController.h */,
+				727418D720B290AE001D6BE1 /* PlayPoductController.m */,
+				727418D820B290AE001D6BE1 /* PlayPoductController.xib */,
+			);
+			path = PlayPoduct;
+			sourceTree = "<group>";
+		};
+		727418D420B29095001D6BE1 /* SwapController */ = {
+			isa = PBXGroup;
+			children = (
+				727418E020B290D1001D6BE1 /* SwapController.h */,
+				727418E120B290D1001D6BE1 /* SwapController.m */,
+				727418E220B290D1001D6BE1 /* SwapController.xib */,
+			);
+			path = SwapController;
+			sourceTree = "<group>";
+		};
+		727418D520B29095001D6BE1 /* EnthusiastsControll */ = {
+			isa = PBXGroup;
+			children = (
+				727418DB20B290BF001D6BE1 /* EnthusiastsControll.h */,
+				727418DC20B290BF001D6BE1 /* EnthusiastsControll.m */,
+				727418DD20B290BF001D6BE1 /* EnthusiastsControll.xib */,
+			);
+			path = EnthusiastsControll;
 			sourceTree = "<group>";
 		};
 		7294184F20AD119C0054B71D /* HistorySearch */ = {
@@ -1237,14 +1306,14 @@
 		CEBEDD7420B17ED0000F9EE4 /* Footprint */ = {
 			isa = PBXGroup;
 			children = (
-				CEBEDD7520B17ED0000F9EE4 /* FootSectionHeadV.m */,
-				CEBEDD7620B17ED0000F9EE4 /* FootprintController.xib */,
-				CEBEDD7720B17ED0000F9EE4 /* FootprintController.h */,
-				CEBEDD7820B17ED0000F9EE4 /* FootprintCell.h */,
-				CEBEDD7920B17ED0000F9EE4 /* FootprintCell.xib */,
 				CEBEDD7A20B17ED0000F9EE4 /* FootSectionHeadV.h */,
+				CEBEDD7520B17ED0000F9EE4 /* FootSectionHeadV.m */,
+				CEBEDD7820B17ED0000F9EE4 /* FootprintCell.h */,
 				CEBEDD7B20B17ED0000F9EE4 /* FootprintCell.m */,
+				CEBEDD7920B17ED0000F9EE4 /* FootprintCell.xib */,
+				CEBEDD7720B17ED0000F9EE4 /* FootprintController.h */,
 				CEBEDD7C20B17ED0000F9EE4 /* FootprintController.m */,
+				CEBEDD7620B17ED0000F9EE4 /* FootprintController.xib */,
 			);
 			path = Footprint;
 			sourceTree = "<group>";
@@ -1382,6 +1451,7 @@
 				CEBEDD8C20B17ED1000F9EE4 /* BountyHostingController.xib in Resources */,
 				CEBEDD8820B17ED1000F9EE4 /* BidderController.xib in Resources */,
 				CE0BA61B209D6197004C3C33 /* FoundController.xib in Resources */,
+				727418F120B2DDAC001D6BE1 /* ChangeListController.xib in Resources */,
 				CE0BA633209D68A3004C3C33 /* ChangePasswordController.xib in Resources */,
 				CE0BA621209D61C0004C3C33 /* ProfileController.xib in Resources */,
 				CEBEDD8E20B17ED1000F9EE4 /* FootprintController.xib in Resources */,
@@ -1393,8 +1463,10 @@
 				8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */,
 				8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */,
 				8D24A23720A1D5BF00F0740D /* FirstTanView.xib in Resources */,
+				727418DA20B290AE001D6BE1 /* PlayPoductController.xib in Resources */,
 				723D376820ABDA62003FD4DF /* ShowResumeCell.xib in Resources */,
 				727418CD20B17F4B001D6BE1 /* ChangeHeadView.xib in Resources */,
+				727418EC20B2AAB9001D6BE1 /* ChangeCell.xib in Resources */,
 				727418C620B17E78001D6BE1 /* ChangePlayController.xib in Resources */,
 				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
 				CEBEDD8320B17ED1000F9EE4 /* MarginCell.xib in Resources */,
@@ -1406,9 +1478,11 @@
 				CE0BA60F209D6126004C3C33 /* AddressBookController.xib in Resources */,
 				CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */,
 				CEBEDD8F20B17ED1000F9EE4 /* FootprintCell.xib in Resources */,
+				727418E420B290D1001D6BE1 /* SwapController.xib in Resources */,
 				CE0BA608209D60C3004C3C33 /* MessageController.xib in Resources */,
 				8D67603620A448CB0027CDEE /* SX.plist in Resources */,
 				8DA4990E20A7063E00968F86 /* ResumeCell.xib in Resources */,
+				727418DF20B290BF001D6BE1 /* EnthusiastsControll.xib in Resources */,
 				8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */,
 				CEBEDD9820B17F40000F9EE4 /* BulidTeamController.xib in Resources */,
 				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
@@ -1523,14 +1597,18 @@
 				722D252920AA769600AB3863 /* FKGPopOption.m in Sources */,
 				CE0BA5E2209D5E9B004C3C33 /* SRDownloadModel.m in Sources */,
 				8D24A23520A1D5A700F0740D /* RefineView.m in Sources */,
+				727418EB20B2AAB9001D6BE1 /* ChangeCell.m in Sources */,
 				CE0BA5E5209D5E9B004C3C33 /* YSNetworkTool.m in Sources */,
 				72BAB43920B047F500496D29 /* YSButton.m in Sources */,
 				CE0BA5BC209D5E6B004C3C33 /* MBProgressHUD+Extension.m in Sources */,
 				722D253920AA76D400AB3863 /* JFCityHeaderView.m in Sources */,
+				727418DE20B290BF001D6BE1 /* EnthusiastsControll.m in Sources */,
+				727418E720B291B6001D6BE1 /* BaseChangeTabController.m in Sources */,
 				8D2B8B9B20A2DABD00C3157F /* ConnectionController.m in Sources */,
 				CE0BA5B6209D5E6B004C3C33 /* NSObject+YTGetObject.m in Sources */,
 				8D2B8B9120A2DA9F00C3157F /* AbilityHomeController.m in Sources */,
 				722D254020AAA64C00AB3863 /* ShowResumeController.m in Sources */,
+				727418E320B290D1001D6BE1 /* SwapController.m in Sources */,
 				8DD48CE820A8367100D6D1E6 /* GuardEduController.m in Sources */,
 				72BAB43620B03B3F00496D29 /* YSSetUpBirthdayView.m in Sources */,
 				8DD48CD320A811EA00D6D1E6 /* UIView+SDExtension.m in Sources */,
@@ -1590,8 +1668,10 @@
 				CEBEDD8720B17ED1000F9EE4 /* BidderController.m in Sources */,
 				72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */,
 				CE0BA5FA209D5EBE004C3C33 /* YTBaseTableViewController.m in Sources */,
+				727418F020B2DDAC001D6BE1 /* ChangeListController.m in Sources */,
 				CE0BA61A209D6197004C3C33 /* FoundController.m in Sources */,
 				722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */,
+				727418D920B290AE001D6BE1 /* PlayPoductController.m in Sources */,
 				72BAB42A20B03A8C00496D29 /* BulidTeamCell.m in Sources */,
 				CE0BA5FB209D5EBE004C3C33 /* BaseTabBarController.m in Sources */,
 				CE0BA607209D60C3004C3C33 /* MessageController.m in Sources */,
