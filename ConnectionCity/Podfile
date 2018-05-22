@@ -11,5 +11,6 @@ pod 'AMap2DMap'
 pod 'AMapSearch'
 pod 'AMapLocation'
 pod 'FMDB'
+pod 'TZImagePickerController'
 end
 

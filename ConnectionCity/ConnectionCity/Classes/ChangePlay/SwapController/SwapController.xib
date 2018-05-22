@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SwapController">
             <connections>
+                <outlet property="tab_Bottom" destination="SZ3-N6-KDM" id="IXT-s3-UcW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +19,24 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="grouped" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="SZ3-N6-KDM">
+                    <rect key="frame" x="10" y="10" width="355" height="608"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="J5S-OU-cWS"/>
+                        <outlet property="delegate" destination="-1" id="KlF-Mf-EQA"/>
+                    </connections>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="SZ3-N6-KDM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Cye-2b-y7F"/>
+                <constraint firstAttribute="trailing" secondItem="SZ3-N6-KDM" secondAttribute="trailing" constant="10" id="VC3-g2-Abc"/>
+                <constraint firstAttribute="bottom" secondItem="SZ3-N6-KDM" secondAttribute="bottom" constant="49" id="bLH-vh-eVx"/>
+                <constraint firstItem="SZ3-N6-KDM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="pd8-8B-KjZ"/>
+            </constraints>
         </view>
     </objects>
 </document>

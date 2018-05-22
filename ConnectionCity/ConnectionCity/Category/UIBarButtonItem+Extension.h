@@ -32,4 +32,5 @@
 @property BOOL shouldAnimateBadge;
 
 +(UIBarButtonItem *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image title:(NSString *)title EdgeInsets:(UIEdgeInsets )EdgeInsets;
++(UIBarButtonItem *)itemWithRectTarget:(id)target action:(SEL)action image:(NSString *)image title:(NSString *)title withRect:(CGRect)rect;
 @end

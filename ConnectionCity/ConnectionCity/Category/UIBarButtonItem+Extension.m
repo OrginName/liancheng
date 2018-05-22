@@ -294,6 +294,15 @@ NSString const *badgeValueKey = @"badgeValueKey";
 
     return [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
-
++(UIBarButtonItem *)itemWithRectTarget:(id)target action:(SEL)action image:(NSString *)image title:(NSString *)title withRect:(CGRect)rect{
+    UIButton*btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = rect;
+    btn.titleLabel.font = [UIFont systemFontOfSize:15];
+    btn.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    [btn setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    return [[UIBarButtonItem alloc]initWithCustomView:btn];
+}
 
 @end

@@ -16,6 +16,7 @@
 		722D253C20AA76D400AB3863 /* JFSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D253620AA76D400AB3863 /* JFSearchView.m */; };
 		722D254020AAA64C00AB3863 /* ShowResumeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D253E20AAA64C00AB3863 /* ShowResumeController.m */; };
 		722D254120AAA64C00AB3863 /* ShowResumeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 722D253F20AAA64C00AB3863 /* ShowResumeController.xib */; };
+		723B9F1320B4195B00AD919B /* PhotoSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = 723B9F1220B4195A00AD919B /* PhotoSelect.m */; };
 		723D376120ABBEB4003FD4DF /* ShowResumeTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D376020ABBEB4003FD4DF /* ShowResumeTab.m */; };
 		723D376720ABDA62003FD4DF /* ShowResumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D376520ABDA62003FD4DF /* ShowResumeCell.m */; };
 		723D376820ABDA62003FD4DF /* ShowResumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D376620ABDA62003FD4DF /* ShowResumeCell.xib */; };
@@ -44,6 +45,14 @@
 		727418EC20B2AAB9001D6BE1 /* ChangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727418EA20B2AAB9001D6BE1 /* ChangeCell.xib */; };
 		727418F020B2DDAC001D6BE1 /* ChangeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418EE20B2DDAC001D6BE1 /* ChangeListController.m */; };
 		727418F120B2DDAC001D6BE1 /* ChangeListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727418EF20B2DDAC001D6BE1 /* ChangeListController.xib */; };
+		727418F620B3B37B001D6BE1 /* SwapHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418F520B3B37B001D6BE1 /* SwapHeadView.m */; };
+		727418F820B3B387001D6BE1 /* SwapHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727418F720B3B387001D6BE1 /* SwapHeadView.xib */; };
+		727418FC20B3C282001D6BE1 /* SwapHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418FA20B3C282001D6BE1 /* SwapHomeCell.m */; };
+		727418FD20B3C282001D6BE1 /* SwapHomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727418FB20B3C282001D6BE1 /* SwapHomeCell.xib */; };
+		7274190120B3F60D001D6BE1 /* SendSwapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727418FF20B3F60D001D6BE1 /* SendSwapController.m */; };
+		7274190220B3F60D001D6BE1 /* SendSwapController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7274190020B3F60D001D6BE1 /* SendSwapController.xib */; };
+		7274190C20B402FC001D6BE1 /* LxGridViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274190B20B402FB001D6BE1 /* LxGridViewFlowLayout.m */; };
+		7274190F20B4036E001D6BE1 /* TZTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274190E20B4036E001D6BE1 /* TZTestCell.m */; };
 		7294185320AD11E00054B71D /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185220AD11E00054B71D /* SearchCell.m */; };
 		7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185520AD11F70054B71D /* SearchCollectionCell.m */; };
 		7294185920AD120E0054B71D /* SearchLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185820AD120E0054B71D /* SearchLayout.m */; };
@@ -218,6 +227,8 @@
 		722D253D20AAA64C00AB3863 /* ShowResumeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowResumeController.h; sourceTree = "<group>"; };
 		722D253E20AAA64C00AB3863 /* ShowResumeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowResumeController.m; sourceTree = "<group>"; };
 		722D253F20AAA64C00AB3863 /* ShowResumeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowResumeController.xib; sourceTree = "<group>"; };
+		723B9F1120B4195A00AD919B /* PhotoSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoSelect.h; sourceTree = "<group>"; };
+		723B9F1220B4195A00AD919B /* PhotoSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoSelect.m; sourceTree = "<group>"; };
 		723D375F20ABBEB4003FD4DF /* ShowResumeTab.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowResumeTab.h; sourceTree = "<group>"; };
 		723D376020ABBEB4003FD4DF /* ShowResumeTab.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowResumeTab.m; sourceTree = "<group>"; };
 		723D376420ABDA62003FD4DF /* ShowResumeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowResumeCell.h; sourceTree = "<group>"; };
@@ -265,6 +276,19 @@
 		727418ED20B2DDAC001D6BE1 /* ChangeListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeListController.h; sourceTree = "<group>"; };
 		727418EE20B2DDAC001D6BE1 /* ChangeListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeListController.m; sourceTree = "<group>"; };
 		727418EF20B2DDAC001D6BE1 /* ChangeListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeListController.xib; sourceTree = "<group>"; };
+		727418F420B3B37B001D6BE1 /* SwapHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwapHeadView.h; sourceTree = "<group>"; };
+		727418F520B3B37B001D6BE1 /* SwapHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwapHeadView.m; sourceTree = "<group>"; };
+		727418F720B3B387001D6BE1 /* SwapHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwapHeadView.xib; sourceTree = "<group>"; };
+		727418F920B3C282001D6BE1 /* SwapHomeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwapHomeCell.h; sourceTree = "<group>"; };
+		727418FA20B3C282001D6BE1 /* SwapHomeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwapHomeCell.m; sourceTree = "<group>"; };
+		727418FB20B3C282001D6BE1 /* SwapHomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwapHomeCell.xib; sourceTree = "<group>"; };
+		727418FE20B3F60D001D6BE1 /* SendSwapController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendSwapController.h; sourceTree = "<group>"; };
+		727418FF20B3F60D001D6BE1 /* SendSwapController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendSwapController.m; sourceTree = "<group>"; };
+		7274190020B3F60D001D6BE1 /* SendSwapController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendSwapController.xib; sourceTree = "<group>"; };
+		7274190A20B402FB001D6BE1 /* LxGridViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LxGridViewFlowLayout.h; sourceTree = "<group>"; };
+		7274190B20B402FB001D6BE1 /* LxGridViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LxGridViewFlowLayout.m; sourceTree = "<group>"; };
+		7274190D20B4036E001D6BE1 /* TZTestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZTestCell.h; sourceTree = "<group>"; };
+		7274190E20B4036E001D6BE1 /* TZTestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZTestCell.m; sourceTree = "<group>"; };
 		7294185120AD11E00054B71D /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		7294185220AD11E00054B71D /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		7294185420AD11F70054B71D /* SearchCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCollectionCell.h; sourceTree = "<group>"; };
@@ -567,6 +591,15 @@
 			path = CitySelect;
 			sourceTree = "<group>";
 		};
+		723B9F1020B4195A00AD919B /* PhotoSelect */ = {
+			isa = PBXGroup;
+			children = (
+				723B9F1120B4195A00AD919B /* PhotoSelect.h */,
+				723B9F1220B4195A00AD919B /* PhotoSelect.m */,
+			);
+			path = PhotoSelect;
+			sourceTree = "<group>";
+		};
 		723D375E20ABBE7E003FD4DF /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,9 +697,15 @@
 		727418D420B29095001D6BE1 /* SwapController */ = {
 			isa = PBXGroup;
 			children = (
+				7274190620B402E2001D6BE1 /* layout */,
+				727418F320B3B362001D6BE1 /* Cell */,
+				727418F220B3B356001D6BE1 /* View */,
 				727418E020B290D1001D6BE1 /* SwapController.h */,
 				727418E120B290D1001D6BE1 /* SwapController.m */,
 				727418E220B290D1001D6BE1 /* SwapController.xib */,
+				727418FE20B3F60D001D6BE1 /* SendSwapController.h */,
+				727418FF20B3F60D001D6BE1 /* SendSwapController.m */,
+				7274190020B3F60D001D6BE1 /* SendSwapController.xib */,
 			);
 			path = SwapController;
 			sourceTree = "<group>";
@@ -679,6 +718,37 @@
 				727418DD20B290BF001D6BE1 /* EnthusiastsControll.xib */,
 			);
 			path = EnthusiastsControll;
+			sourceTree = "<group>";
+		};
+		727418F220B3B356001D6BE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				727418F420B3B37B001D6BE1 /* SwapHeadView.h */,
+				727418F520B3B37B001D6BE1 /* SwapHeadView.m */,
+				727418F720B3B387001D6BE1 /* SwapHeadView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		727418F320B3B362001D6BE1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7274190D20B4036E001D6BE1 /* TZTestCell.h */,
+				7274190E20B4036E001D6BE1 /* TZTestCell.m */,
+				727418F920B3C282001D6BE1 /* SwapHomeCell.h */,
+				727418FA20B3C282001D6BE1 /* SwapHomeCell.m */,
+				727418FB20B3C282001D6BE1 /* SwapHomeCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		7274190620B402E2001D6BE1 /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				7274190A20B402FB001D6BE1 /* LxGridViewFlowLayout.h */,
+				7274190B20B402FB001D6BE1 /* LxGridViewFlowLayout.m */,
+			);
+			path = layout;
 			sourceTree = "<group>";
 		};
 		7294184F20AD119C0054B71D /* HistorySearch */ = {
@@ -1061,6 +1131,7 @@
 		CE0BA5BE209D5E9B004C3C33 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				723B9F1020B4195A00AD919B /* PhotoSelect */,
 				727418BA20B17536001D6BE1 /* CusTabBar */,
 				72BAB43720B047F500496D29 /* YSButton.h */,
 				72BAB43820B047F500496D29 /* YSButton.m */,
@@ -1445,6 +1516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D2B8BA120A2DACC00C3157F /* MakeMoneyController.xib in Resources */,
+				727418FD20B3C282001D6BE1 /* SwapHomeCell.xib in Resources */,
 				727418D220B1A058001D6BE1 /* FirstController.xib in Resources */,
 				8D67602820A408470027CDEE /* ClassificationsController.xib in Resources */,
 				CEBEDD8020B17ED1000F9EE4 /* WinningBidderCell.xib in Resources */,
@@ -1452,6 +1524,7 @@
 				CEBEDD8820B17ED1000F9EE4 /* BidderController.xib in Resources */,
 				CE0BA61B209D6197004C3C33 /* FoundController.xib in Resources */,
 				727418F120B2DDAC001D6BE1 /* ChangeListController.xib in Resources */,
+				727418F820B3B387001D6BE1 /* SwapHeadView.xib in Resources */,
 				CE0BA633209D68A3004C3C33 /* ChangePasswordController.xib in Resources */,
 				CE0BA621209D61C0004C3C33 /* ProfileController.xib in Resources */,
 				CEBEDD8E20B17ED1000F9EE4 /* FootprintController.xib in Resources */,
@@ -1474,6 +1547,7 @@
 				729BA6C920A01E7F009713FD /* shop_area.sqlite in Resources */,
 				CEBEDD8220B17ED1000F9EE4 /* MarginController.xib in Resources */,
 				CEBEDD7E20B17ED1000F9EE4 /* WinningBidderController.xib in Resources */,
+				7274190220B3F60D001D6BE1 /* SendSwapController.xib in Resources */,
 				CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */,
 				CE0BA60F209D6126004C3C33 /* AddressBookController.xib in Resources */,
 				CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */,
@@ -1625,6 +1699,7 @@
 				7294185920AD120E0054B71D /* SearchLayout.m in Sources */,
 				8D67603920A4688F0027CDEE /* CustomButton.m in Sources */,
 				727418D120B1A058001D6BE1 /* FirstController.m in Sources */,
+				727418FC20B3C282001D6BE1 /* SwapHomeCell.m in Sources */,
 				729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */,
 				8DD48CD720A81B9100D6D1E6 /* GuardCollController.m in Sources */,
 				727418CB20B17F3D001D6BE1 /* ChangeHeadView.m in Sources */,
@@ -1632,6 +1707,7 @@
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
 				CEBEDD7D20B17ED1000F9EE4 /* WinningBidderCell.m in Sources */,
 				CE0BA60E209D6126004C3C33 /* AddressBookController.m in Sources */,
+				7274190F20B4036E001D6BE1 /* TZTestCell.m in Sources */,
 				CE0BA620209D61C0004C3C33 /* ProfileController.m in Sources */,
 				729BA70120A331E0009713FD /* CustomLocatiom.m in Sources */,
 				CE0BA5DF209D5E9B004C3C33 /* TakePhoto.m in Sources */,
@@ -1647,12 +1723,14 @@
 				7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */,
 				CE0BA5EB209D5E9B004C3C33 /* SRDownloadManager.m in Sources */,
 				723D376B20AC2BC3003FD4DF /* SearchHistoryController.m in Sources */,
+				727418F620B3B37B001D6BE1 /* SwapHeadView.m in Sources */,
 				CEBEDD9020B17ED1000F9EE4 /* FootprintCell.m in Sources */,
 				8DD48CD020A811EA00D6D1E6 /* SDCollectionViewCell.m in Sources */,
 				CE0BA5F9209D5EBE004C3C33 /* BaseModel.m in Sources */,
 				CE0BA5E1209D5E9B004C3C33 /* YSAccountTool.m in Sources */,
 				727418BF20B17536001D6BE1 /* CustomPage.m in Sources */,
 				CE0BA5B8209D5E6B004C3C33 /* UIColor+Extension.m in Sources */,
+				7274190C20B402FC001D6BE1 /* LxGridViewFlowLayout.m in Sources */,
 				CE0BA5BA209D5E6B004C3C33 /* NSDate+Extend.m in Sources */,
 				CEBEDD9420B17EDA000F9EE4 /* BaseMakeMoneyTabController.m in Sources */,
 				CE0BA636209D68A3004C3C33 /* YSLoginController.m in Sources */,
@@ -1665,6 +1743,7 @@
 				8D24A23220A1CB8200F0740D /* FirstTanView.m in Sources */,
 				7274188020B13CB6001D6BE1 /* MLMSegmentHead.m in Sources */,
 				CE0BA5B5209D5E6B004C3C33 /* UIViewController+BackButtonHandler.m in Sources */,
+				723B9F1320B4195B00AD919B /* PhotoSelect.m in Sources */,
 				CEBEDD8720B17ED1000F9EE4 /* BidderController.m in Sources */,
 				72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */,
 				CE0BA5FA209D5EBE004C3C33 /* YTBaseTableViewController.m in Sources */,
@@ -1686,6 +1765,7 @@
 				CE0BA5E4209D5E9B004C3C33 /* MyDatePicker.m in Sources */,
 				8D67602720A408470027CDEE /* ClassificationsController.m in Sources */,
 				8DD48CCD20A811EA00D6D1E6 /* TAAnimatedDotView.m in Sources */,
+				7274190120B3F60D001D6BE1 /* SendSwapController.m in Sources */,
 				CE0BA5E0209D5E9B004C3C33 /* DDFileReader.m in Sources */,
 				8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */,
 				722D253C20AA76D400AB3863 /* JFSearchView.m in Sources */,

@@ -8,8 +8,13 @@
 
 #import "ChangeListController.h"
 #import "ChangeCell.h"
+#import "JFCityViewController.h"
+#import "ClassificationsController.h"
+#import "FilterOneController.h"
 #define ID @"ChangeCell"
-@interface ChangeListController ()
+@interface ChangeListController ()<JFCityViewControllerDelegate>
+@property (weak, nonatomic) IBOutlet UIView *view_X;
+@property (weak, nonatomic) IBOutlet UILabel *lab_City;
 @property (weak, nonatomic) IBOutlet UICollectionView *collec_Bottom;
 @property (nonatomic,strong) ChangeListLayout * flowLyout;
 
@@ -28,12 +33,51 @@
      self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SearchClick) image:@"search" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
     [self initNavi];
 }
+- (IBAction)btn_Click:(UIButton *)sender {
+    
+    switch (sender.tag) {
+        case 1:
+        {
+            JFCityViewController * jf= [JFCityViewController new];
+            jf.delegate = self;
+            BaseNavigationController * nav = [[BaseNavigationController alloc] initWithRootViewController:jf];
+            [self.navigationController presentViewController:nav animated:YES completion:nil];
+        }
+            break;
+        case 2:
+        {
+            ClassificationsController * class = [ClassificationsController new];
+            class.title = @"职业分类";
+            class.block = ^(NSString *classifiation){
+                UILabel * btn = (UILabel *)[self.view_X viewWithTag:2];
+                btn.text = classifiation;
+            };
+            [self.navigationController pushViewController:class animated:YES];
+        }
+            break;
+        case 3:
+        {
+            FilterOneController * filter = [FilterOneController new];
+            filter.title = @"筛选条件";
+            [self.navigationController pushViewController:filter animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
+}
+//标题栏点击
 -(void)AddressClick:(UIButton *)btn{
     [YTAlertUtil showTempInfo:@"标题栏点击"];
 }
 //搜索按钮点击
 -(void)SearchClick{
     [YTAlertUtil showTempInfo:@"搜搜"];
+}
+#pragma mark - JFCityViewControllerDelegate
+- (void)cityName:(NSString *)name {
+    UILabel * btn = (UILabel *)[self.view_X viewWithTag:1];
+    btn.text = name;
 }
 #pragma mark UICollectionViewDataSource 数据源方法
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
