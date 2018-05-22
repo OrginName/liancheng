@@ -111,6 +111,15 @@
 		8DD48CE920A8367100D6D1E6 /* GuardEduController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DD48CE720A8367100D6D1E6 /* GuardEduController.xib */; };
 		8DD48CEE20A8380D00D6D1E6 /* EditAllController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CEC20A8380D00D6D1E6 /* EditAllController.m */; };
 		8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DD48CED20A8380D00D6D1E6 /* EditAllController.xib */; };
+		CE03EDEC20B43DC400F07D78 /* FootprintTabbleHeadV.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE03EDE920B43DC300F07D78 /* FootprintTabbleHeadV.xib */; };
+		CE03EDED20B43DC400F07D78 /* FootprintTabbleHeadV.m in Sources */ = {isa = PBXBuildFile; fileRef = CE03EDEB20B43DC400F07D78 /* FootprintTabbleHeadV.m */; };
+		CE03EDF120B44FB000F07D78 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE03EDEF20B44FB000F07D78 /* FirstTableViewCell.m */; };
+		CE03EDF220B44FB000F07D78 /* FirstTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE03EDF020B44FB000F07D78 /* FirstTableViewCell.xib */; };
+		CE03EDF520B4544700F07D78 /* FirstSectionHeadV.m in Sources */ = {isa = PBXBuildFile; fileRef = CE03EDF420B4544700F07D78 /* FirstSectionHeadV.m */; };
+		CE03EDF920B4547200F07D78 /* FirstSectionHeadV.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE03EDF820B4547200F07D78 /* FirstSectionHeadV.xib */; };
+		CE03EDFC20B4595600F07D78 /* FirstCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CE03EDFB20B4595600F07D78 /* FirstCustomButton.m */; };
+		CE03EE0020B467EC00F07D78 /* ReleaseTenderController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE03EDFE20B467EC00F07D78 /* ReleaseTenderController.m */; };
+		CE03EE0120B467EC00F07D78 /* ReleaseTenderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE03EDFF20B467EC00F07D78 /* ReleaseTenderController.xib */; };
 		CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA568209D5004004C3C33 /* AppDelegate.m */; };
 		CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0BA570209D5004004C3C33 /* Assets.xcassets */; };
 		CE0BA577209D5004004C3C33 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA576209D5004004C3C33 /* main.m */; };
@@ -390,6 +399,20 @@
 		8DD48CED20A8380D00D6D1E6 /* EditAllController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditAllController.xib; sourceTree = "<group>"; };
 		9E9EF5E7637D778FC51741D8 /* Pods-ConnectionCity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectionCity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectionCity/Pods-ConnectionCity.debug.xcconfig"; sourceTree = "<group>"; };
 		C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConnectionCity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE03EDE920B43DC300F07D78 /* FootprintTabbleHeadV.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FootprintTabbleHeadV.xib; sourceTree = "<group>"; };
+		CE03EDEA20B43DC300F07D78 /* FootprintTabbleHeadV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootprintTabbleHeadV.h; sourceTree = "<group>"; };
+		CE03EDEB20B43DC400F07D78 /* FootprintTabbleHeadV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootprintTabbleHeadV.m; sourceTree = "<group>"; };
+		CE03EDEE20B44FB000F07D78 /* FirstTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstTableViewCell.h; sourceTree = "<group>"; };
+		CE03EDEF20B44FB000F07D78 /* FirstTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewCell.m; sourceTree = "<group>"; };
+		CE03EDF020B44FB000F07D78 /* FirstTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstTableViewCell.xib; sourceTree = "<group>"; };
+		CE03EDF320B4544700F07D78 /* FirstSectionHeadV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstSectionHeadV.h; sourceTree = "<group>"; };
+		CE03EDF420B4544700F07D78 /* FirstSectionHeadV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstSectionHeadV.m; sourceTree = "<group>"; };
+		CE03EDF820B4547200F07D78 /* FirstSectionHeadV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstSectionHeadV.xib; sourceTree = "<group>"; };
+		CE03EDFA20B4595600F07D78 /* FirstCustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstCustomButton.h; sourceTree = "<group>"; };
+		CE03EDFB20B4595600F07D78 /* FirstCustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstCustomButton.m; sourceTree = "<group>"; };
+		CE03EDFD20B467EC00F07D78 /* ReleaseTenderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReleaseTenderController.h; sourceTree = "<group>"; };
+		CE03EDFE20B467EC00F07D78 /* ReleaseTenderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReleaseTenderController.m; sourceTree = "<group>"; };
+		CE03EDFF20B467EC00F07D78 /* ReleaseTenderController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReleaseTenderController.xib; sourceTree = "<group>"; };
 		CE0BA564209D5004004C3C33 /* ConnectionCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectionCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0BA567209D5004004C3C33 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CE0BA568209D5004004C3C33 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -937,6 +960,17 @@
 				727418CE20B1A058001D6BE1 /* FirstController.h */,
 				727418CF20B1A058001D6BE1 /* FirstController.m */,
 				727418D020B1A058001D6BE1 /* FirstController.xib */,
+				CE03EDEE20B44FB000F07D78 /* FirstTableViewCell.h */,
+				CE03EDEF20B44FB000F07D78 /* FirstTableViewCell.m */,
+				CE03EDF020B44FB000F07D78 /* FirstTableViewCell.xib */,
+				CE03EDF320B4544700F07D78 /* FirstSectionHeadV.h */,
+				CE03EDF420B4544700F07D78 /* FirstSectionHeadV.m */,
+				CE03EDF820B4547200F07D78 /* FirstSectionHeadV.xib */,
+				CE03EDFA20B4595600F07D78 /* FirstCustomButton.h */,
+				CE03EDFB20B4595600F07D78 /* FirstCustomButton.m */,
+				CE03EDFD20B467EC00F07D78 /* ReleaseTenderController.h */,
+				CE03EDFE20B467EC00F07D78 /* ReleaseTenderController.m */,
+				CE03EDFF20B467EC00F07D78 /* ReleaseTenderController.xib */,
 			);
 			path = MakeMoney;
 			sourceTree = "<group>";
@@ -1385,6 +1419,9 @@
 				CEBEDD7720B17ED0000F9EE4 /* FootprintController.h */,
 				CEBEDD7C20B17ED0000F9EE4 /* FootprintController.m */,
 				CEBEDD7620B17ED0000F9EE4 /* FootprintController.xib */,
+				CE03EDEA20B43DC300F07D78 /* FootprintTabbleHeadV.h */,
+				CE03EDEB20B43DC400F07D78 /* FootprintTabbleHeadV.m */,
+				CE03EDE920B43DC300F07D78 /* FootprintTabbleHeadV.xib */,
 			);
 			path = Footprint;
 			sourceTree = "<group>";
@@ -1531,6 +1568,7 @@
 				CE0BA615209D6160004C3C33 /* LifeHallController.xib in Resources */,
 				8DD48CE920A8367100D6D1E6 /* GuardEduController.xib in Resources */,
 				7274188720B1474B001D6BE1 /* ConnectionCell.xib in Resources */,
+				CE03EDEC20B43DC400F07D78 /* FootprintTabbleHeadV.xib in Resources */,
 				CEBEDD8620B17ED1000F9EE4 /* BidderCell.xib in Resources */,
 				72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */,
 				8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */,
@@ -1543,9 +1581,11 @@
 				727418C620B17E78001D6BE1 /* ChangePlayController.xib in Resources */,
 				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
 				CEBEDD8320B17ED1000F9EE4 /* MarginCell.xib in Resources */,
+				CE03EDF220B44FB000F07D78 /* FirstTableViewCell.xib in Resources */,
 				8DD48CD820A81B9100D6D1E6 /* GuardCollController.xib in Resources */,
 				729BA6C920A01E7F009713FD /* shop_area.sqlite in Resources */,
 				CEBEDD8220B17ED1000F9EE4 /* MarginController.xib in Resources */,
+				CE03EE0120B467EC00F07D78 /* ReleaseTenderController.xib in Resources */,
 				CEBEDD7E20B17ED1000F9EE4 /* WinningBidderController.xib in Resources */,
 				7274190220B3F60D001D6BE1 /* SendSwapController.xib in Resources */,
 				CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */,
@@ -1560,6 +1600,7 @@
 				8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */,
 				CEBEDD9820B17F40000F9EE4 /* BulidTeamController.xib in Resources */,
 				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
+				CE03EDF920B4547200F07D78 /* FirstSectionHeadV.xib in Resources */,
 				CE0BA635209D68A3004C3C33 /* YSLoginController.xib in Resources */,
 				722D254120AAA64C00AB3863 /* ShowResumeController.xib in Resources */,
 			);
@@ -1649,7 +1690,9 @@
 				7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */,
 				CEBEDD8B20B17ED1000F9EE4 /* BountyHostingController.m in Sources */,
 				CE0BA5DD209D5E9B004C3C33 /* YTSystemUtil.m in Sources */,
+				CE03EDF520B4544700F07D78 /* FirstSectionHeadV.m in Sources */,
 				CE0BA5E3209D5E9B004C3C33 /* YTAlertUtil.m in Sources */,
+				CE03EDED20B43DC400F07D78 /* FootprintTabbleHeadV.m in Sources */,
 				CE0BA614209D6160004C3C33 /* LifeHallController.m in Sources */,
 				CE0BA634209D68A3004C3C33 /* YSRegisterController.m in Sources */,
 				8DD48CD220A811EA00D6D1E6 /* UIColor+MyColor.m in Sources */,
@@ -1695,6 +1738,7 @@
 				727418C520B17E78001D6BE1 /* ChangePlayController.m in Sources */,
 				8DD48CDC20A8202800D6D1E6 /* ResumeMo.m in Sources */,
 				8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */,
+				CE03EDFC20B4595600F07D78 /* FirstCustomButton.m in Sources */,
 				CE0BA577209D5004004C3C33 /* main.m in Sources */,
 				7294185920AD120E0054B71D /* SearchLayout.m in Sources */,
 				8D67603920A4688F0027CDEE /* CustomButton.m in Sources */,
@@ -1730,6 +1774,7 @@
 				CE0BA5E1209D5E9B004C3C33 /* YSAccountTool.m in Sources */,
 				727418BF20B17536001D6BE1 /* CustomPage.m in Sources */,
 				CE0BA5B8209D5E6B004C3C33 /* UIColor+Extension.m in Sources */,
+				CE03EE0020B467EC00F07D78 /* ReleaseTenderController.m in Sources */,
 				7274190C20B402FC001D6BE1 /* LxGridViewFlowLayout.m in Sources */,
 				CE0BA5BA209D5E6B004C3C33 /* NSDate+Extend.m in Sources */,
 				CEBEDD9420B17EDA000F9EE4 /* BaseMakeMoneyTabController.m in Sources */,
@@ -1751,6 +1796,7 @@
 				CE0BA61A209D6197004C3C33 /* FoundController.m in Sources */,
 				722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */,
 				727418D920B290AE001D6BE1 /* PlayPoductController.m in Sources */,
+				CE03EDF120B44FB000F07D78 /* FirstTableViewCell.m in Sources */,
 				72BAB42A20B03A8C00496D29 /* BulidTeamCell.m in Sources */,
 				CE0BA5FB209D5EBE004C3C33 /* BaseTabBarController.m in Sources */,
 				CE0BA607209D60C3004C3C33 /* MessageController.m in Sources */,

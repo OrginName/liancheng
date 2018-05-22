@@ -7,6 +7,7 @@
 //
 
 #import "FootprintController.h"
+#import "FootprintTabbleHeadV.h"
 #import "FootSectionHeadV.h"
 #import "FootprintCell.h"
 #import "MarginCell.h"
@@ -21,10 +22,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTableView];
-//    self.view.backgroundColor = [UIColor redColor];
-//    self.tableView.backgroundColor = [UIColor orangeColor];
     
     // Do any additional setup after loading the view from its nib.
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    FootprintTabbleHeadV *tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"FootprintTabbleHeadV" owner:nil options:nil] firstObject];
+    tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 110);
+    self.tableView.tableHeaderView = tableHeadV;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -36,6 +41,8 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"MarginCell" bundle:nil] forCellReuseIdentifier:@"MarginCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"FootprintCell" bundle:nil] forCellReuseIdentifier:@"FootprintCell"];
     [self.tableView registerClass:[FootSectionHeadV class] forHeaderFooterViewReuseIdentifier:@"FootSectionHeadV"];
+}
+- (void)viewWillLayoutSubviews {
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

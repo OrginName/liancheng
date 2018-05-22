@@ -1,5 +1,5 @@
 //
-//  FootprintCell.h
+//  FootprintTabbleHeadV.h
 //  ConnectionCity
 //
 //  Created by YanShuang Jiang on 2018/5/20.
@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FootprintCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *stateFinishLab;
+@interface FootprintTabbleHeadV : UIView
 
 @end

@@ -1,20 +1,17 @@
 //
-//  FootprintCell.m
+//  FirstTableViewCell.m
 //  ConnectionCity
 //
-//  Created by YanShuang Jiang on 2018/5/20.
+//  Created by YanShuang Jiang on 2018/5/22.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
 //
 
-#import "FootprintCell.h"
+#import "FirstTableViewCell.h"
 
-@implementation FootprintCell
+@implementation FirstTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    _stateFinishLab.layer.cornerRadius = 10;
-    _stateFinishLab.clipsToBounds = YES;
-    
     // Initialization code
 }
 

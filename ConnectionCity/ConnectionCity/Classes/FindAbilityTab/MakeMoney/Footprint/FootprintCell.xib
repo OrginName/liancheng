@@ -77,7 +77,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="stateFinishLab" destination="0K3-mO-hHA" id="eVG-s9-sm5"/>
+                <outlet property="stateFinishLab" destination="A02-jv-hK2" id="3SG-T7-GDU"/>
             </connections>
             <point key="canvasLocation" x="84" y="41.5"/>
         </tableViewCell>
