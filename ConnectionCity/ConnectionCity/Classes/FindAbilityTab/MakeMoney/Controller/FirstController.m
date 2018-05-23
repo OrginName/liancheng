@@ -9,8 +9,9 @@
 #import "FirstController.h"
 #import "FirstTableViewCell.h"
 #import "FirstSectionHeadV.h"
+#import "ReleaseTenderController.h"
 
-@interface FirstController ()
+@interface FirstController ()<FirstSectionHeadVDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -56,13 +57,30 @@
     UITableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"UITableViewHeaderFooterView"];
     if (headerView.subviews.count == 1) {
         FirstSectionHeadV *sectinV = [[[NSBundle mainBundle] loadNibNamed:@"FirstSectionHeadV" owner:nil options:nil] firstObject];
+        sectinV.delegate = self;
         sectinV.frame = CGRectMake(0, 0, kScreenWidth - 20, 100);
         [headerView addSubview:sectinV];
     }
     //返回区头视图
     return headerView;
 }
-
+#pragma mark - FirstSectionHeadVDelegate
+- (void)firstSectionHeadV:(FirstSectionHeadV *)view fbzbBtnClick:(UIButton *)btn {
+    ReleaseTenderController *fbVC = [[ReleaseTenderController alloc]init];
+    [self.navigationController pushViewController:fbVC animated:YES];
+}
+- (void)firstSectionHeadV:(FirstSectionHeadV *)view zbglBtnClick:(UIButton *)btn {
+    
+}
+- (void)firstSectionHeadV:(FirstSectionHeadV *)view cityBtnClick:(UIButton *)btn {
+    
+}
+- (void)firstSectionHeadV:(FirstSectionHeadV *)view typeBtnClick:(UIButton *)btn {
+    
+}
+- (void)firstSectionHeadV:(FirstSectionHeadV *)view timeBtnClick:(UIButton *)btn {
+    
+}
 /*
 #pragma mark - Navigation
 

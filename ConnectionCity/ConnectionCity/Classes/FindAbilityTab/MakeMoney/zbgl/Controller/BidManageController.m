@@ -1,18 +1,18 @@
 //
-//  ReleaseTenderController.m
+//  BidManageController.m
 //  ConnectionCity
 //
-//  Created by YanShuang Jiang on 2018/5/22.
+//  Created by YanShuang Jiang on 2018/5/23.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
 //
 
-#import "ReleaseTenderController.h"
+#import "BidManageController.h"
 
-@interface ReleaseTenderController ()
+@interface BidManageController ()
 
 @end
 
-@implementation ReleaseTenderController
+@implementation BidManageController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

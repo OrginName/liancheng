@@ -24,6 +24,9 @@
                             <state key="normal" title=" 发布招标" image="index-Release">
                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
+                            <connections>
+                                <action selector="fbzbBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="gco-qC-rna"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -44,6 +47,9 @@
                             <state key="normal" title=" 招标管理" image="m-Tendering1">
                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
+                            <connections>
+                                <action selector="zbglBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="dgY-KJ-n7j"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -72,6 +78,9 @@
                             <state key="normal" title="行业类型" image="Arrow-xia1">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="typeBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="LhD-ij-FO2"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0d-53-hhe" customClass="FirstCustomButton">
                             <rect key="frame" x="0.0" y="0.0" width="121" height="39"/>
@@ -80,6 +89,9 @@
                             <state key="normal" title="苏州市" image="Arrow-xia1">
                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
+                            <connections>
+                                <action selector="cityBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="yGB-1I-hZQ"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckY-Hm-cbJ" customClass="FirstCustomButton">
                             <rect key="frame" x="242.5" y="0.0" width="113.5" height="39"/>
@@ -88,6 +100,9 @@
                             <state key="normal" title="时间" image="Arrow-xia1">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="timeBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="z2i-oy-hr6"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
