@@ -24,6 +24,7 @@
                     <rect key="frame" x="10" y="10" width="355" height="608"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="J5S-OU-cWS"/>
                         <outlet property="delegate" destination="-1" id="KlF-Mf-EQA"/>

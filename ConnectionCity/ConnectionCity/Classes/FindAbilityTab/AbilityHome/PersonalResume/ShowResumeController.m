@@ -49,13 +49,15 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    
+
     for (UIView *view in cell.contentView.subviews) {
         [view removeFromSuperview];
     }
-    self.showTab = [[ShowResumeTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];
-    NSLog(@"indexPath.row ====>%ld",(long)indexPath.row);
-    [cell.contentView addSubview:self.showTab];
+    if (self.Receive_Type == ENUM_TypeResume) {
+        self.showTab = [[ShowResumeTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];
+        NSLog(@"indexPath.row ====>%ld",(long)indexPath.row);
+        [cell.contentView addSubview:self.showTab];
+    }
     return cell;
 }
 

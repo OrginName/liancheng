@@ -83,6 +83,10 @@
 		72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */; };
 		72BAB43620B03B3F00496D29 /* YSSetUpBirthdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB43520B03B3F00496D29 /* YSSetUpBirthdayView.m */; };
 		72BAB43920B047F500496D29 /* YSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB43820B047F500496D29 /* YSButton.m */; };
+		72EC1B5120B6EAB600ACC20B /* SendTreasureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1B4F20B6EAB600ACC20B /* SendTreasureController.m */; };
+		72EC1B5220B6EAB600ACC20B /* SendTreasureController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EC1B5020B6EAB600ACC20B /* SendTreasureController.xib */; };
+		72EC1B5B20B7027000ACC20B /* SwapListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1B5920B7027000ACC20B /* SwapListController.m */; };
+		72EC1B5C20B7027000ACC20B /* SwapListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EC1B5A20B7027000ACC20B /* SwapListController.xib */; };
 		8817A720716E5B61344D714A /* libPods-ConnectionCity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */; };
 		8D24A22720A19C8F00F0740D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729BA6D820A04BE7009713FD /* MapKit.framework */; };
 		8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A22A20A1B66B00F0740D /* CustomAnnotationView.m */; };
@@ -377,6 +381,12 @@
 		72BAB43520B03B3F00496D29 /* YSSetUpBirthdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSSetUpBirthdayView.m; sourceTree = "<group>"; };
 		72BAB43720B047F500496D29 /* YSButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSButton.h; sourceTree = "<group>"; };
 		72BAB43820B047F500496D29 /* YSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSButton.m; sourceTree = "<group>"; };
+		72EC1B4E20B6EAB600ACC20B /* SendTreasureController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendTreasureController.h; sourceTree = "<group>"; };
+		72EC1B4F20B6EAB600ACC20B /* SendTreasureController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendTreasureController.m; sourceTree = "<group>"; };
+		72EC1B5020B6EAB600ACC20B /* SendTreasureController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendTreasureController.xib; sourceTree = "<group>"; };
+		72EC1B5820B7027000ACC20B /* SwapListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwapListController.h; sourceTree = "<group>"; };
+		72EC1B5920B7027000ACC20B /* SwapListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwapListController.m; sourceTree = "<group>"; };
+		72EC1B5A20B7027000ACC20B /* SwapListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwapListController.xib; sourceTree = "<group>"; };
 		8D24A22920A1B66B00F0740D /* CustomAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
 		8D24A22A20A1B66B00F0740D /* CustomAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
 		8D24A22C20A1B9BA00F0740D /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutView.m; sourceTree = "<group>"; };
@@ -821,9 +831,15 @@
 				727418E020B290D1001D6BE1 /* SwapController.h */,
 				727418E120B290D1001D6BE1 /* SwapController.m */,
 				727418E220B290D1001D6BE1 /* SwapController.xib */,
+				72EC1B5820B7027000ACC20B /* SwapListController.h */,
+				72EC1B5920B7027000ACC20B /* SwapListController.m */,
+				72EC1B5A20B7027000ACC20B /* SwapListController.xib */,
 				727418FE20B3F60D001D6BE1 /* SendSwapController.h */,
 				727418FF20B3F60D001D6BE1 /* SendSwapController.m */,
 				7274190020B3F60D001D6BE1 /* SendSwapController.xib */,
+				72EC1B4E20B6EAB600ACC20B /* SendTreasureController.h */,
+				72EC1B4F20B6EAB600ACC20B /* SendTreasureController.m */,
+				72EC1B5020B6EAB600ACC20B /* SendTreasureController.xib */,
 			);
 			path = SwapController;
 			sourceTree = "<group>";
@@ -1750,6 +1766,7 @@
 				727418D220B1A058001D6BE1 /* FirstController.xib in Resources */,
 				8D67602820A408470027CDEE /* ClassificationsController.xib in Resources */,
 				CEBEDD8020B17ED1000F9EE4 /* WinningBidderCell.xib in Resources */,
+				72EC1B5C20B7027000ACC20B /* SwapListController.xib in Resources */,
 				CE97DBF620B5A2C1003E46BD /* ReleaseTenderCell.xib in Resources */,
 				CEBEDD8C20B17ED1000F9EE4 /* BountyHostingController.xib in Resources */,
 				CEBEDD8820B17ED1000F9EE4 /* BidderController.xib in Resources */,
@@ -1757,6 +1774,7 @@
 				727418F120B2DDAC001D6BE1 /* ChangeListController.xib in Resources */,
 				720263F620B5015500382B2F /* TZImagePickerController.bundle in Resources */,
 				727418F820B3B387001D6BE1 /* SwapHeadView.xib in Resources */,
+				72EC1B5220B6EAB600ACC20B /* SendTreasureController.xib in Resources */,
 				CE0BA633209D68A3004C3C33 /* ChangePasswordController.xib in Resources */,
 				CE0BA621209D61C0004C3C33 /* ProfileController.xib in Resources */,
 				CEBEDD8E20B17ED1000F9EE4 /* FootprintController.xib in Resources */,
@@ -1910,6 +1928,7 @@
 				CEBEDD8520B17ED1000F9EE4 /* MarginSectionHeadV.m in Sources */,
 				8DD48CDF20A828F200D6D1E6 /* CustomtextView.m in Sources */,
 				720263FD20B5015500382B2F /* TZVideoPlayerController.m in Sources */,
+				72EC1B5B20B7027000ACC20B /* SwapListController.m in Sources */,
 				722D252920AA769600AB3863 /* FKGPopOption.m in Sources */,
 				CE0BA5E2209D5E9B004C3C33 /* SRDownloadModel.m in Sources */,
 				8D24A23520A1D5A700F0740D /* RefineView.m in Sources */,
@@ -1956,6 +1975,7 @@
 				723D376720ABDA62003FD4DF /* ShowResumeCell.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
 				CEBEDD7D20B17ED1000F9EE4 /* WinningBidderCell.m in Sources */,
+				72EC1B5120B6EAB600ACC20B /* SendTreasureController.m in Sources */,
 				CE0BA60E209D6126004C3C33 /* AddressBookController.m in Sources */,
 				7274190F20B4036E001D6BE1 /* TZTestCell.m in Sources */,
 				CE0BA620209D61C0004C3C33 /* ProfileController.m in Sources */,

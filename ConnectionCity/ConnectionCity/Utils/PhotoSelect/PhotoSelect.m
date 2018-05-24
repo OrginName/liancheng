@@ -633,7 +633,7 @@
     _layout.itemSize = CGSizeMake(_itemWH, _itemWH);
     _layout.minimumInteritemSpacing = 10;
     _layout.minimumLineSpacing = 10;
-    _layout.sectionInset = UIEdgeInsetsMake(10, 10, 0, 0);
+    _layout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5);
     [self.collectionView setCollectionViewLayout:_layout];
     self.collectionView.frame = CGRectMake(0, 0, self.tz_width, self.tz_height);
 }

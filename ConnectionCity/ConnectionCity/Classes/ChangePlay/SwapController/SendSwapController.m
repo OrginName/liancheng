@@ -8,6 +8,7 @@
 
 #import "SendSwapController.h"
 #import "PhotoSelect.h"
+#import "EditAllController.h"
 @interface SendSwapController ()<PhotoSelectDelegate>
 {
     CGFloat itemHeigth;
@@ -16,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *view_PhotoSelect;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layou_Photo;
 @property (weak, nonatomic) IBOutlet CustomtextView *textview_MS;
+@property (weak, nonatomic) IBOutlet UITextField *txt_headTitle;
 
 @property (nonatomic,strong)PhotoSelect * photo;
 @end
@@ -33,12 +35,19 @@
 //所在地区 互换标题  互换板块
 - (IBAction)btn_Click:(UIButton *)sender {
     NSLog(@"%ld",(long)sender.tag);
+    if (sender.tag==3) {
+        EditAllController * edit = [EditAllController new];
+        edit.block = ^(NSString * str){
+            self.txt_headTitle.text = str;
+        };
+    }
 }
 -(void)setUI{
-    itemHeigth = (self.view_PhotoSelect.width - 50) / 4+15;
+    self.navigationItem.title = @"发布互换信息";
+    itemHeigth = (self.view_PhotoSelect.width - 50) / 4+10;
     self.photo = [[PhotoSelect alloc] initWithFrame:CGRectMake(0, 0, self.view_PhotoSelect.width, itemHeigth) withController:self];
     self.photo.backgroundColor = [UIColor clearColor];
-    self.layou_Photo.constant = itemHeigth+12;
+    self.layou_Photo.constant = itemHeigth+10;
     self.photo.PhotoDelegate = self;
     [self.view_PhotoSelect addSubview:self.photo];
     self.textview_MS.placeholder = @"   请输入描述";

@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SwapHeadView : UIView
+@protocol SwapHeadDelegate <NSObject>
+@optional
+-(void)swapHeadClick:(NSInteger )tag;
+@end
 
+@interface SwapHeadView : UIView
+@property (nonatomic,assign) id<SwapHeadDelegate>delegate;
 @end

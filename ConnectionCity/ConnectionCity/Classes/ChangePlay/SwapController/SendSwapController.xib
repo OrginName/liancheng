@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="layou_Photo" destination="5nL-wJ-Qvy" id="0EB-Fh-dqK"/>
                 <outlet property="textview_MS" destination="AxN-jT-GDP" id="3sD-sM-v9g"/>
+                <outlet property="txt_headTitle" destination="izO-x2-AYR" id="jRD-p0-ytY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="view_Bottom" destination="Eh0-Na-99v" id="usw-FQ-asi"/>
                 <outlet property="view_PhotoSelect" destination="Wdg-Ph-h6v" id="mya-1x-5J2"/>
@@ -129,6 +130,9 @@
                                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbx-Fk-bza">
                                                     <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="btn_Click:" destination="-1" eventType="touchUpInside" id="VIM-za-S6B"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -178,6 +182,9 @@
                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPx-GG-AMk">
                                                     <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="btn_Click:" destination="-1" eventType="touchUpInside" id="596-gi-Sxc"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

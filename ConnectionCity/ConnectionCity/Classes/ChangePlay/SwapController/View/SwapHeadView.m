@@ -13,6 +13,11 @@
     [super awakeFromNib];
     
 }
+- (IBAction)btn_Click:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(swapHeadClick:)]) {
+        [self.delegate swapHeadClick:sender.tag];
+    }
+}
 -(void)layoutSubviews{
     [super layoutSubviews];
 }

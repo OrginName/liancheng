@@ -7,7 +7,12 @@
 //
 
 #import "BaseViewController.h"
-
+//定义枚举类型
+typedef enum {
+    ENUM_TypeResume=0,//简历
+    ENUM_TypeTreasure,//宝物
+    ENUM_TypeCard//身份
+} Receive_Type;
 @interface ShowResumeController : BaseViewController
-
+@property(nonatomic,assign) NSInteger  Receive_Type;//接受类型
 @end

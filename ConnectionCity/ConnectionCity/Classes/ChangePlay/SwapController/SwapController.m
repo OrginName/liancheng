@@ -9,7 +9,8 @@
 #import "SwapHeadView.h"
 #import "SwapHomeCell.h"
 #import "SendSwapController.h"
-@interface SwapController ()<UITableViewDelegate,UITableViewDataSource>
+#import "ShowResumeController.h"
+@interface SwapController ()<UITableViewDelegate,UITableViewDataSource,SwapHeadDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,strong) SwapHeadView * headView ;
 
@@ -50,10 +51,14 @@
 }
 //发布按钮点击
 -(void)SearchClick{
-    [YTAlertUtil showTempInfo:@"发布"];
-    SendSwapController * send = [SendSwapController new];
-    send.title = @"发布互换信息";
-    [self.navigationController pushViewController:send animated:YES];
+    [self.navigationController pushViewController:[super rotateClass:@"SendSwapController"] animated:YES];
+}
+//表头部点击
+#pragma mark ----SwapHeadDelegate-----
+-(void)swapHeadClick:(NSInteger )tag
+{
+    NSArray * arr = @[@"SwapListController",@"SwapListController",@"SwapListController",@"SwapListController",@"SwapListController",@"SwapListController"];
+    [self.navigationController pushViewController:[super rotateClass:arr[tag-1]] animated:YES];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 10;
@@ -67,6 +72,11 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"SwapHomeCell" owner:nil options:nil] lastObject];
     }
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ShowResumeController * resume = [ShowResumeController new];
+    resume.Receive_Type = ENUM_TypeCard;
+    [self.navigationController pushViewController:resume animated:YES];
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView * view_headSection = [UIView new];
@@ -106,6 +116,7 @@
 //添加UITableview表头
 -(void)initHeadView{
     self.headView = [[[NSBundle mainBundle] loadNibNamed:@"SwapHeadView" owner:nil options:nil] lastObject];
+    self.headView.delegate = self;
     self.tab_Bottom.tableHeaderView.frame = CGRectMake(0, 0, self.tab_Bottom.width, 361);
     self.tab_Bottom.tableHeaderView = self.headView;
 }

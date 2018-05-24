@@ -30,13 +30,34 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="※" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgL-So-GC5">
+                    <rect key="frame" x="10" y="626" width="7.5" height="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.93904799222946167" green="0.6441044807434082" blue="0.31262964010238647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="请勿填写联系方式，涉黄涉暴内容，填写违规内容会导致您的账号被封禁" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3f-vh-MVS">
+                    <rect key="frame" x="18" y="622" width="347" height="39"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="6l9-bz-YEM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="fch-aZ-Klo" secondAttribute="trailing" constant="10" id="5s6-Sf-Foc"/>
+                <constraint firstAttribute="bottom" secondItem="S3f-vh-MVS" secondAttribute="bottom" constant="6" id="7bv-14-FNf"/>
+                <constraint firstItem="MgL-So-GC5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="cbS-eP-fOa"/>
+                <constraint firstAttribute="trailing" secondItem="S3f-vh-MVS" secondAttribute="trailing" constant="10" id="fp4-a5-OXf"/>
+                <constraint firstAttribute="bottom" secondItem="MgL-So-GC5" secondAttribute="bottom" constant="27" id="jNu-Lm-uyT"/>
                 <constraint firstItem="fch-aZ-Klo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="rEG-nP-cXq"/>
+                <constraint firstItem="S3f-vh-MVS" firstAttribute="leading" secondItem="MgL-So-GC5" secondAttribute="trailing" id="tgS-Cb-Vjd"/>
                 <constraint firstItem="fch-aZ-Klo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="vsW-LN-4ft"/>
             </constraints>
+            <point key="canvasLocation" x="64.5" y="108.5"/>
         </view>
     </objects>
 </document>
