@@ -110,6 +110,6 @@
     self.tab_Bottom.tableHeaderView = self.headView;
 }
 -(void)back{
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.tabBarController.navigationController popViewControllerAnimated:YES];
 }
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "PhotoSelect.h"
-#import <TZImagePickerController.h>
+#import "TZImagePickerController.h"
 #import "UIView+Layout.h"
 #import "TZTestCell.h"
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -18,8 +18,8 @@
 #import "TZPhotoPreviewController.h"
 #import "TZGifPhotoPreviewController.h"
 #import "TZLocationManager.h"
- 
-@interface PhotoSelect()<TZImagePickerControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate>
+
+@interface PhotoSelect()<TZImagePickerControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UINavigationControllerDelegate>
 {
     NSMutableArray *_selectedPhotos;
     NSMutableArray *_selectedAssets;
@@ -44,6 +44,39 @@
     }
     return self;
 }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+- (UIImagePickerController *)imagePickerVc {
+    if (_imagePickerVc == nil) {
+        _imagePickerVc = [[UIImagePickerController alloc] init];
+        _imagePickerVc.delegate = self;
+        // set appearance / 改变相册选择页的导航栏外观
+        if (iOS7Later) {
+            _imagePickerVc.navigationBar.barTintColor = self.controll.navigationController.navigationBar.barTintColor;
+        }
+        _imagePickerVc.navigationBar.tintColor = self.controll.navigationController.navigationBar.tintColor;
+        UIBarButtonItem *tzBarItem, *BarItem;
+        if (iOS9Later) {
+            if (@available(iOS 9.0, *)) {
+                tzBarItem = [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[TZImagePickerController class]]];
+            } else {
+                // Fallback on earlier versions
+            }
+            if (@available(iOS 9.0, *)) {
+                BarItem = [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UIImagePickerController class]]];
+            } else {
+                // Fallback on earlier versions
+            }
+        } else {
+            tzBarItem = [UIBarButtonItem appearanceWhenContainedIn:[TZImagePickerController class], nil];
+            BarItem = [UIBarButtonItem appearanceWhenContainedIn:[UIImagePickerController class], nil];
+        }
+        NSDictionary *titleTextAttributes = [tzBarItem titleTextAttributesForState:UIControlStateNormal];
+        [BarItem setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
+        
+    }
+    return _imagePickerVc;
+}
 -(void)defultFlag{
     self.showTakePhotoBtnSwitch = YES;
     self.showTakeVideoBtnSwitch=YES;
@@ -61,10 +94,10 @@
     // 如不需要长按排序效果，将LxGridViewFlowLayout类改成UICollectionViewFlowLayout即可
     _layout = [[LxGridViewFlowLayout alloc] init];
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:_layout];
-    CGFloat rgb = 244 / 255.0;
+    _collectionView.scrollEnabled = NO;
     _collectionView.alwaysBounceVertical = YES;
-    _collectionView.backgroundColor = [UIColor colorWithRed:rgb green:rgb blue:rgb alpha:1.0];
-    _collectionView.contentInset = UIEdgeInsetsMake(4, 4, 4, 4);
+    _collectionView.backgroundColor = [UIColor clearColor];
+//    _collectionView.contentInset = UIEdgeInsetsMake(10, 4, 4, 4);
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
     _collectionView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
@@ -80,14 +113,17 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TZTestCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TZTestCell" forIndexPath:indexPath];
     cell.videoImageView.hidden = YES;
-    if (indexPath.item == _selectedPhotos.count) {
+    if ((indexPath.item == _selectedPhotos.count)&&_selectedPhotos.count<=8) {
         cell.imageView.image = [UIImage imageNamed:@"AlbumAddBtn.png"];
         cell.deleteBtn.hidden = YES;
         cell.gifLable.hidden = YES;
-    } else {
+    } else if((indexPath.item != _selectedPhotos.count)&&_selectedPhotos.count<=8) {
         cell.imageView.image = _selectedPhotos[indexPath.item];
         cell.asset = _selectedAssets[indexPath.item];
         cell.deleteBtn.hidden = NO;
+    }else{
+        cell.imageView.image = [UIImage imageNamed:@""];
+        cell.deleteBtn.hidden = YES;
     }
     if (!self.allowPickingGifSwitch) {
         cell.gifLable.hidden = YES;
@@ -167,9 +203,9 @@
     imagePickerVc.allowTakePicture = self.showTakePhotoBtnSwitch; // 在内部显示拍照按钮
     imagePickerVc.allowTakeVideo = self.showTakeVideoBtnSwitch;   // 在内部显示拍视频按
     imagePickerVc.videoMaximumDuration = 10; // 视频最大拍摄时间
-//    [imagePickerVc setUiImagePickerControllerSettingBlock:^(UIImagePickerController *imagePickerController) {
-//        imagePickerController.videoQuality = UIImagePickerControllerQualityTypeHigh;
-//    }];
+    [imagePickerVc setUiImagePickerControllerSettingBlock:^(UIImagePickerController *imagePickerController) {
+        imagePickerController.videoQuality = UIImagePickerControllerQualityTypeHigh;
+    }];
     
     // imagePickerVc.photoWidth = 1000;
     
@@ -182,13 +218,11 @@
     // imagePickerVc.oKButtonTitleColorNormal = [UIColor greenColor];
     // imagePickerVc.navigationBar.translucent = NO;
     imagePickerVc.iconThemeColor = [UIColor colorWithRed:31 / 255.0 green:185 / 255.0 blue:34 / 255.0 alpha:1.0];
-    
-//    imagePickerVc.showPhotoCannotSelectLayer = YES;
-//    imagePickerVc.cannotSelectLayerColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
-    
-//    [imagePickerVc setPhotoPickerPageUIConfigBlock:^(UICollectionView *collectionView, UIView *bottomToolBar, UIButton *previewButton, UIButton *originalPhotoButton, UILabel *originalPhotoLabel, UIButton *doneButton, UIImageView *numberImageView, UILabel *numberLabel, UIView *divideLine) {
-//        [doneButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-//    }];
+    imagePickerVc.showPhotoCannotSelectLayer = YES;
+    imagePickerVc.cannotSelectLayerColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
+    [imagePickerVc setPhotoPickerPageUIConfigBlock:^(UICollectionView *collectionView, UIView *bottomToolBar, UIButton *previewButton, UIButton *originalPhotoButton, UILabel *originalPhotoLabel, UIButton *doneButton, UIImageView *numberImageView, UILabel *numberLabel, UIView *divideLine) {
+        [doneButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    }];
     /*
      [imagePickerVc setAssetCellDidSetModelBlock:^(TZAssetCell *cell, UIImageView *imageView, UIImageView *selectImageView, UILabel *indexLabel, UIView *bottomView, UILabel *timeLength, UIImageView *videoImgView) {
      cell.contentView.clipsToBounds = YES;
@@ -259,7 +293,9 @@
     // You can get the photos by block, the same as by delegate.
     // 你可以通过block或者代理，来得到用户选择的照片.
     [imagePickerVc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
-        
+        if ([self.PhotoDelegate respondsToSelector:@selector(selectImageArr:)]) {
+            [self.PhotoDelegate selectImageArr:photos];
+        }
     }];
     
     [self.controll presentViewController:imagePickerVc animated:YES completion:nil];
@@ -567,13 +603,37 @@
         // NSLog(@"图片名字:%@",fileName);
     }
 }
+#pragma mark - LxGridViewDataSource
+
+/// 以下三个方法为长按排序相关代码
+- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath {
+    return indexPath.item < _selectedPhotos.count;
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)sourceIndexPath canMoveToIndexPath:(NSIndexPath *)destinationIndexPath {
+    return (sourceIndexPath.item < _selectedPhotos.count && destinationIndexPath.item < _selectedPhotos.count);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)sourceIndexPath didMoveToIndexPath:(NSIndexPath *)destinationIndexPath {
+    UIImage *image = _selectedPhotos[sourceIndexPath.item];
+    [_selectedPhotos removeObjectAtIndex:sourceIndexPath.item];
+    [_selectedPhotos insertObject:image atIndex:destinationIndexPath.item];
+    
+    id asset = _selectedAssets[sourceIndexPath.item];
+    [_selectedAssets removeObjectAtIndex:sourceIndexPath.item];
+    [_selectedAssets insertObject:asset atIndex:destinationIndexPath.item];
+    
+    [_collectionView reloadData];
+}
+
 -(void)layoutSubviews{
     [super layoutSubviews];
-    _margin = 4;
-    _itemWH = (self.tz_width - 2 * _margin - 4) / 3 - _margin;
+    _margin = 5;
+    _itemWH = (self.tz_width - _margin*10) / 4;
     _layout.itemSize = CGSizeMake(_itemWH, _itemWH);
-    _layout.minimumInteritemSpacing = _margin;
-    _layout.minimumLineSpacing = _margin;
+    _layout.minimumInteritemSpacing = 10;
+    _layout.minimumLineSpacing = 10;
+    _layout.sectionInset = UIEdgeInsetsMake(10, 10, 0, 0);
     [self.collectionView setCollectionViewLayout:_layout];
     self.collectionView.frame = CGRectMake(0, 0, self.tz_width, self.tz_height);
 }

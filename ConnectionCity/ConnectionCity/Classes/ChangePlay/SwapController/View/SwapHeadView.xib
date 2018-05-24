@@ -22,7 +22,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjE-Lb-mYr">
                             <rect key="frame" x="0.0" y="0.0" width="389" height="110.5"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="椭圆2拷贝4" translatesAutoresizingMaskIntoConstraints="NO" id="pJO-bv-pvY">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ch-pe" translatesAutoresizingMaskIntoConstraints="NO" id="pJO-bv-pvY">
                                     <rect key="frame" x="0.0" y="0.0" width="389" height="110.5"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -358,15 +358,15 @@
                 <constraint firstItem="sW4-m0-g6p" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wZu-yd-GPh"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="148.5" y="-136.5"/>
+            <point key="canvasLocation" x="55" y="-156"/>
         </view>
     </objects>
     <resources>
         <image name="ch-huhuan" width="35" height="40"/>
         <image name="ch-long" width="70" height="70"/>
         <image name="ch-other" width="36" height="36"/>
+        <image name="ch-pe" width="355" height="100"/>
         <image name="ch-te" width="37" height="37"/>
         <image name="ch-zhang" width="37" height="40"/>
-        <image name="椭圆2拷贝4" width="375" height="64"/>
     </resources>
 </document>

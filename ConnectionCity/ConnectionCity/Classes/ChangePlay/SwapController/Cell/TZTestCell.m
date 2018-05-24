@@ -10,23 +10,24 @@
 #import "UIView+Layout.h"
 #import <Photos/Photos.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "TZImagePickerController/TZImagePickerController.h"
+#import "TZImagePickerController.h"
 
 @implementation TZTestCell
-
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.layer.cornerRadius = 5;
+        self.layer.masksToBounds = YES;
         self.backgroundColor = [UIColor whiteColor];
         _imageView = [[UIImageView alloc] init];
         _imageView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.500];
-        _imageView.contentMode = UIViewContentModeScaleAspectFit;
+        _imageView.contentMode = UIViewContentModeScaleToFill;
         [self addSubview:_imageView];
         self.clipsToBounds = YES;
         
         _videoImageView = [[UIImageView alloc] init];
         _videoImageView.image = [UIImage imageNamedFromMyBundle:@"MMVideoPreviewPlay"];
-        _videoImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _videoImageView.contentMode = UIViewContentModeScaleAspectFit;
         _videoImageView.hidden = YES;
         [self addSubview:_videoImageView];
         

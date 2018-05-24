@@ -79,9 +79,13 @@
     }
     if (model.needOscillatoryAnimation) {
         [UIView showOscillatoryAnimationWithLayer:self.selectImageView.layer type:TZOscillatoryAnimationToBigger];
-        model.needOscillatoryAnimation = NO;
     }
+    model.needOscillatoryAnimation = NO;
     [self setNeedsLayout];
+    
+    if (self.assetCellDidSetModelBlock) {
+        self.assetCellDidSetModelBlock(self, _imageView, _selectImageView, _indexLabel, _bottomView, _timeLength, _videoImgView);
+    }
 }
 
 - (void)setIndex:(NSInteger)index {
@@ -132,7 +136,7 @@
     }
     self.selectImageView.image = sender.isSelected ? self.photoSelImage : self.photoDefImage;
     if (sender.isSelected) {
-        if (![TZImagePickerConfig sharedInstance].showSelectedIndex) {
+        if (![TZImagePickerConfig sharedInstance].showSelectedIndex && ![TZImagePickerConfig sharedInstance].showPhotoCannotSelectLayer) {
             [UIView showOscillatoryAnimationWithLayer:_selectImageView.layer type:TZOscillatoryAnimationToBigger];
         }
         // 用户选中了该图片，提前获取一下大图
@@ -190,9 +194,6 @@
         imageView.clipsToBounds = YES;
         [self.contentView addSubview:imageView];
         _imageView = imageView;
-        
-        [self.contentView bringSubviewToFront:_selectImageView];
-        [self.contentView bringSubviewToFront:_bottomView];
     }
     return _imageView;
 }
@@ -217,6 +218,15 @@
         _bottomView = bottomView;
     }
     return _bottomView;
+}
+
+- (UIButton *)cannotSelectLayerButton {
+    if (_cannotSelectLayerButton == nil) {
+        UIButton *cannotSelectLayerButton = [[UIButton alloc] init];
+        [self.contentView addSubview:cannotSelectLayerButton];
+        _cannotSelectLayerButton = cannotSelectLayerButton;
+    }
+    return _cannotSelectLayerButton;
 }
 
 - (UIImageView *)videoImgView {
@@ -264,6 +274,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    _cannotSelectLayerButton.frame = self.bounds;
     if (self.allowPreview) {
         _selectPhotoButton.frame = CGRectMake(self.tz_width - 44, 0, 44, 44);
     } else {
@@ -288,6 +299,16 @@
     
     self.type = (NSInteger)self.model.type;
     self.showSelectBtn = self.showSelectBtn;
+    
+    [self.contentView bringSubviewToFront:_bottomView];
+    [self.contentView bringSubviewToFront:_cannotSelectLayerButton];
+    [self.contentView bringSubviewToFront:_selectPhotoButton];
+    [self.contentView bringSubviewToFront:_selectImageView];
+    [self.contentView bringSubviewToFront:_indexLabel];
+    
+    if (self.assetCellDidLayoutSubviewsBlock) {
+        self.assetCellDidLayoutSubviewsBlock(self, _imageView, _selectImageView, _indexLabel, _bottomView, _timeLength, _videoImgView);
+    }
 }
 
 @end
@@ -321,6 +342,10 @@
     } else {
         self.selectedCountButton.hidden = YES;
     }
+    
+    if (self.albumCellDidSetModelBlock) {
+        self.albumCellDidSetModelBlock(self, _posterImageView, _titleLabel);
+    }
 }
 
 /// For fitting iOS6
@@ -330,6 +355,10 @@
     NSInteger titleHeight = ceil(self.titleLabel.font.lineHeight);
     self.titleLabel.frame = CGRectMake(80, (self.tz_height - titleHeight) / 2, self.tz_width - 80 - 50, titleHeight);
     self.posterImageView.frame = CGRectMake(0, 0, 70, 70);
+    
+    if (self.albumCellDidLayoutSubviewsBlock) {
+        self.albumCellDidLayoutSubviewsBlock(self, _posterImageView, _titleLabel);
+    }
 }
 
 - (void)layoutSublayersOfLayer:(CALayer *)layer {

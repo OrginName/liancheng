@@ -73,6 +73,7 @@ static CGFloat itemMargin = 5;
     }
     return _imagePickerVc;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isFirstAppear = YES;
@@ -260,6 +261,10 @@ static CGFloat itemMargin = 5;
     [_bottomToolBar addSubview:_originalPhotoButton];
     [self.view addSubview:_bottomToolBar];
     [_originalPhotoButton addSubview:_originalPhotoLabel];
+    
+    if (tzImagePickerVc.photoPickerPageUIConfigBlock) {
+        tzImagePickerVc.photoPickerPageUIConfigBlock(_collectionView, _bottomToolBar, _previewButton, _originalPhotoButton, _originalPhotoLabel, _doneButton, _numberImageView, _numberLabel, _divideLine);
+    }
 }
 
 #pragma mark - Layout
@@ -320,6 +325,10 @@ static CGFloat itemMargin = 5;
     
     [TZImageManager manager].columnNumber = [TZImageManager manager].columnNumber;
     [self.collectionView reloadData];
+    
+    if (tzImagePickerVc.photoPickerPageDidLayoutSubviewsBlock) {
+        tzImagePickerVc.photoPickerPageDidLayoutSubviewsBlock(_collectionView, _bottomToolBar, _previewButton, _originalPhotoButton, _originalPhotoLabel, _doneButton, _numberImageView, _numberLabel, _divideLine);
+    }
 }
 
 #pragma mark - Notification
@@ -459,7 +468,7 @@ static CGFloat itemMargin = 5;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     // the cell lead to take a picture / 去拍照的cell
     TZImagePickerController *tzImagePickerVc = (TZImagePickerController *)self.navigationController;
-    if (((tzImagePickerVc.sortAscendingByModificationDate && indexPath.row >= _models.count) || (!tzImagePickerVc.sortAscendingByModificationDate && indexPath.row == 0)) && _showTakePhotoBtn) {
+    if (((tzImagePickerVc.sortAscendingByModificationDate && indexPath.item >= _models.count) || (!tzImagePickerVc.sortAscendingByModificationDate && indexPath.item == 0)) && _showTakePhotoBtn) {
         TZAssetCameraCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TZAssetCameraCell" forIndexPath:indexPath];
         cell.imageView.image = tzImagePickerVc.takePictureImage;
         if ([tzImagePickerVc.takePictureImageName isEqualToString:@"takePicture80"]) {
@@ -477,11 +486,13 @@ static CGFloat itemMargin = 5;
     cell.photoDefImage = tzImagePickerVc.photoDefImage;
     cell.photoSelImage = tzImagePickerVc.photoSelImage;
     cell.useCachedImage = self.useCachedImage;
+    cell.assetCellDidSetModelBlock = tzImagePickerVc.assetCellDidSetModelBlock;
+    cell.assetCellDidLayoutSubviewsBlock = tzImagePickerVc.assetCellDidLayoutSubviewsBlock;
     TZAssetModel *model;
     if (tzImagePickerVc.sortAscendingByModificationDate || !_showTakePhotoBtn) {
-        model = _models[indexPath.row];
+        model = _models[indexPath.item];
     } else {
-        model = _models[indexPath.row - 1];
+        model = _models[indexPath.item - 1];
     }
     cell.allowPickingGif = tzImagePickerVc.allowPickingGif;
     cell.model = model;
@@ -491,6 +502,13 @@ static CGFloat itemMargin = 5;
     }
     cell.showSelectBtn = tzImagePickerVc.showSelectBtn;
     cell.allowPreview = tzImagePickerVc.allowPreview;
+    
+    if (tzImagePickerVc.selectedModels.count >= tzImagePickerVc.maxImagesCount && tzImagePickerVc.showPhotoCannotSelectLayer && !model.isSelected) {
+        cell.cannotSelectLayerButton.backgroundColor = tzImagePickerVc.cannotSelectLayerColor;
+        cell.cannotSelectLayerButton.hidden = NO;
+    } else {
+        cell.cannotSelectLayerButton.hidden = YES;
+    }
     
     __weak typeof(cell) weakCell = cell;
     __weak typeof(self) weakSelf = self;
@@ -512,26 +530,27 @@ static CGFloat itemMargin = 5;
                 }
             }
             [strongSelf refreshBottomToolBarStatus];
-            if (tzImagePickerVc.showSelectedIndex) {
+            if (tzImagePickerVc.showSelectedIndex || tzImagePickerVc.showPhotoCannotSelectLayer) {
                 [strongSelf setUseCachedImageAndReloadData];
             }
+            [UIView showOscillatoryAnimationWithLayer:strongLayer type:TZOscillatoryAnimationToSmaller];
         } else {
             // 2. select:check if over the maxImagesCount / 选择照片,检查是否超过了最大个数的限制
             if (tzImagePickerVc.selectedModels.count < tzImagePickerVc.maxImagesCount) {
                 strongCell.selectPhotoButton.selected = YES;
                 model.isSelected = YES;
-                if (tzImagePickerVc.showSelectedIndex) {
+                if (tzImagePickerVc.showSelectedIndex || tzImagePickerVc.showPhotoCannotSelectLayer) {
                     model.needOscillatoryAnimation = YES;
                     [strongSelf setUseCachedImageAndReloadData];
                 }
                 [tzImagePickerVc addSelectedModel:model];
                 [strongSelf refreshBottomToolBarStatus];
+                [UIView showOscillatoryAnimationWithLayer:strongLayer type:TZOscillatoryAnimationToSmaller];
             } else {
                 NSString *title = [NSString stringWithFormat:[NSBundle tz_localizedStringForKey:@"Select a maximum of %zd photos"], tzImagePickerVc.maxImagesCount];
                 [tzImagePickerVc showAlertWithTitle:title];
             }
         }
-        [UIView showOscillatoryAnimationWithLayer:strongLayer type:TZOscillatoryAnimationToSmaller];
     };
     return cell;
 }
@@ -539,13 +558,13 @@ static CGFloat itemMargin = 5;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     // take a photo / 去拍照
     TZImagePickerController *tzImagePickerVc = (TZImagePickerController *)self.navigationController;
-    if (((tzImagePickerVc.sortAscendingByModificationDate && indexPath.row >= _models.count) || (!tzImagePickerVc.sortAscendingByModificationDate && indexPath.row == 0)) && _showTakePhotoBtn)  {
+    if (((tzImagePickerVc.sortAscendingByModificationDate && indexPath.item >= _models.count) || (!tzImagePickerVc.sortAscendingByModificationDate && indexPath.item == 0)) && _showTakePhotoBtn)  {
         [self takePhoto]; return;
     }
     // preview phote or video / 预览照片或视频
-    NSInteger index = indexPath.row;
+    NSInteger index = indexPath.item;
     if (!tzImagePickerVc.sortAscendingByModificationDate && _showTakePhotoBtn) {
-        index = indexPath.row - 1;
+        index = indexPath.item - 1;
     }
     TZAssetModel *model = _models[index];
     if (model.type == TZAssetModelMediaTypeVideo && !tzImagePickerVc.allowPickingMultipleVideo) {
@@ -587,7 +606,7 @@ static CGFloat itemMargin = 5;
 - (void)setUseCachedImageAndReloadData {
     self.useCachedImage = YES;
     [self.collectionView reloadData];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.useCachedImage = NO;
     });
 }
@@ -655,6 +674,9 @@ static CGFloat itemMargin = 5;
         self.imagePickerVc.mediaTypes= mediaTypes;
         if (iOS8Later) {
             _imagePickerVc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        }
+        if (tzImagePickerVc.uiImagePickerControllerSettingBlock) {
+            tzImagePickerVc.uiImagePickerControllerSettingBlock(_imagePickerVc);
         }
         [self presentViewController:_imagePickerVc animated:YES completion:nil];
     } else {

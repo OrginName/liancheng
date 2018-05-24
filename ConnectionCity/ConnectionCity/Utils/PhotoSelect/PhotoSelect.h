@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol PhotoSelectDelegate <NSObject>
+@optional
+-(void)selectImageArr:(NSArray *)imageArr;
+@end
 
 @interface PhotoSelect : UIView
 // 设置开关
@@ -24,5 +28,6 @@
 @property (assign, nonatomic) BOOL needCircleCropSwitch;//圆型裁剪
 @property (assign, nonatomic) BOOL allowPickingMuitlpleVideoSwitch;
 @property (assign, nonatomic) BOOL showSelectedIndexSwitch;
+@property (nonatomic,assign) id<PhotoSelectDelegate>PhotoDelegate;
 -(instancetype)initWithFrame:(CGRect)frame withController:(UIViewController *)controll;
 @end
