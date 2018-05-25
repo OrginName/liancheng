@@ -10,9 +10,10 @@
 #import "ChangeCell.h"
 #import "ChangeHeadView.h"
 #import "ChangeListController.h"
+#import "ShowResumeController.h"
 #define ID @"ChangeCell"
 static NSString * collectionCellIndentider = @"collectionCellIndentider";
-@interface ChangePlayController ()
+@interface ChangePlayController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *coll_Botom;
 @property (nonatomic,strong) ChangeLayout * flowLyout;
 @property (nonatomic,strong) ChangeHeadView *changeHead;
@@ -59,7 +60,11 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     cell.contentView.backgroundColor = [UIColor clearColor];
     return cell;
 }
-
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    ShowResumeController * show = [ShowResumeController new];
+    show.Receive_Type = ENUM_TypeTreasure;
+    [self.navigationController pushViewController:show animated:YES];
+}
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     UICollectionReusableView *reusableview = nil;
     if (kind == UICollectionElementKindSectionHeader){

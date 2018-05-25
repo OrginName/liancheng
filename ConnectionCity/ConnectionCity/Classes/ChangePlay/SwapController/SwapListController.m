@@ -8,6 +8,7 @@
 
 #import "SwapListController.h"
 #import "SwapHomeCell.h"
+#import "ShowResumeController.h"
 @interface SwapListController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @end
@@ -75,7 +76,9 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    ShowResumeController * show = [ShowResumeController new];
+    show.Receive_Type = ENUM_TypeCard;
+    [self.navigationController pushViewController:show animated:YES];
 }
 
 @end

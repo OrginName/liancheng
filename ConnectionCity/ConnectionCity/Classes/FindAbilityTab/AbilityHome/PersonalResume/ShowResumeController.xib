@@ -52,7 +52,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFq-8m-4ar">
                     <rect key="frame" x="10" y="567" width="355" height="40"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gA-fg-1Pq">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gA-fg-1Pq">
                             <rect key="frame" x="112.5" y="5" width="60" height="30"/>
                             <color key="backgroundColor" red="0.94892686605453491" green="0.94906681776046753" blue="0.94890779256820679" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -64,8 +64,11 @@
                                     <integer key="value" value="15"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="UPDownClick:" destination="-1" eventType="touchUpInside" id="e6E-n6-ocA"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6M-IM-Qgo">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6M-IM-Qgo">
                             <rect key="frame" x="182.5" y="5" width="60" height="30"/>
                             <color key="backgroundColor" red="0.94667142630000001" green="0.60174822809999995" blue="0.222879827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" image="del">
@@ -76,6 +79,9 @@
                                     <integer key="value" value="15"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="UPDownClick:" destination="-1" eventType="touchUpInside" id="eXe-IG-3kp"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

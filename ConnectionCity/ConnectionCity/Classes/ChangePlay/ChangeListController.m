@@ -11,6 +11,7 @@
 #import "JFCityViewController.h"
 #import "ClassificationsController.h"
 #import "FilterOneController.h"
+#import "ShowResumeController.h"
 #define ID @"ChangeCell"
 @interface ChangeListController ()<JFCityViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_X;
@@ -91,6 +92,11 @@
     ChangeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     cell.contentView.backgroundColor = [UIColor clearColor];
     return cell;
+}
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    ShowResumeController * show = [ShowResumeController new];
+    show.Receive_Type = ENUM_TypeTreasure;
+    [self.navigationController pushViewController:show animated:YES];
 }
 -(void)initNavi{
     //自定义标题视图
