@@ -20,5 +20,10 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)bidBtnClick:(id)sender {
+    if (_delegate && [_delegate respondsToSelector:@selector(firstTableViewCell:bidBtnClick:)]) {
+        [_delegate firstTableViewCell:self bidBtnClick:(UIButton *)sender];
+    }
+}
 
 @end

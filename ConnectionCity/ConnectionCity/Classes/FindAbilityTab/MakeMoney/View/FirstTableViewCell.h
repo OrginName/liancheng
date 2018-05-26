@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class FirstTableViewCell;
+
+@protocol FirstTableViewCellDelegate <NSObject>
+
+- (void)firstTableViewCell:(FirstTableViewCell *)firstTableViewCell  bidBtnClick:(UIButton *)btn;
+
+@end
+
 @interface FirstTableViewCell : UITableViewCell
+@property (nonatomic, weak) id<FirstTableViewCellDelegate>delegate;
+@property (weak, nonatomic) IBOutlet UIButton *bidBtn;
 
 @end
