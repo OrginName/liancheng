@@ -42,7 +42,7 @@
 }
 //发布简历按钮点击
 - (IBAction)sendResume:(UIButton *)sender {
-    [self.navigationController pushViewController:[self rotateClass:@""] animated:YES];
+    [self.navigationController pushViewController:[self rotateClass:@"SendServiceController"] animated:YES];
 }
 //顶部三个筛选按钮的点击
 - (IBAction)btn_SX:(UIButton *)sender {

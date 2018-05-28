@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="SendServiceCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服务标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqj-n1-gcW">
+                        <rect key="frame" x="16" y="13" width="57.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.36074590682983398" green="0.36080384254455566" blue="0.36073797941207886" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arraw-right" translatesAutoresizingMaskIntoConstraints="NO" id="Tnp-g5-M0m">
+                        <rect key="frame" x="294" y="14.5" width="10" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="10" id="H2v-jc-jyC"/>
+                            <constraint firstAttribute="height" constant="15" id="UQK-Cm-eWN"/>
+                        </constraints>
+                    </imageView>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写你可以赚钱的服务技能" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZD2-L8-OgU">
+                        <rect key="frame" x="83.5" y="0.0" width="200.5" height="43.5"/>
+                        <color key="textColor" red="0.7933233610590833" green="0.80117804780224255" blue="0.80117804780224255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AyV-j6-cvs">
+                        <rect key="frame" x="0.0" y="43" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.9763752818107605" green="0.97651916742324829" blue="0.97635573148727417" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="OyB-uJ-ACY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="AyV-j6-cvs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="3pl-90-KdF"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Tnp-g5-M0m" secondAttribute="trailing" id="45U-8O-sEl"/>
+                    <constraint firstItem="Tnp-g5-M0m" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6ge-7r-jss"/>
+                    <constraint firstAttribute="trailing" secondItem="AyV-j6-cvs" secondAttribute="trailing" id="8Bt-F6-EOz"/>
+                    <constraint firstItem="Tnp-g5-M0m" firstAttribute="leading" secondItem="ZD2-L8-OgU" secondAttribute="trailing" constant="10" id="93s-zQ-0zL"/>
+                    <constraint firstItem="ZD2-L8-OgU" firstAttribute="centerY" secondItem="Tnp-g5-M0m" secondAttribute="centerY" id="Lrr-DX-rad"/>
+                    <constraint firstItem="ZD2-L8-OgU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="aSw-DN-4oe"/>
+                    <constraint firstItem="ZD2-L8-OgU" firstAttribute="leading" secondItem="kqj-n1-gcW" secondAttribute="trailing" constant="10" id="kvf-Fh-cYW"/>
+                    <constraint firstAttribute="bottom" secondItem="ZD2-L8-OgU" secondAttribute="bottom" id="pKS-8v-72I"/>
+                    <constraint firstAttribute="bottom" secondItem="AyV-j6-cvs" secondAttribute="bottom" id="rGJ-ek-Nyf"/>
+                    <constraint firstItem="kqj-n1-gcW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="rwh-H6-NKN"/>
+                    <constraint firstItem="kqj-n1-gcW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="wew-zQ-RyI"/>
+                </constraints>
+            </tableViewCellContentView>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="arraw-right" width="9" height="15"/>
+    </resources>
+</document>
