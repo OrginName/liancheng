@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayPoductController">
             <connections>
+                <outlet property="tab_Bottom" destination="ARB-1J-C8B" id="E8R-op-G3f"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +19,25 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ARB-1J-C8B">
+                    <rect key="frame" x="10" y="10" width="355" height="647"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Q9e-rs-MWe"/>
+                        <outlet property="delegate" destination="-1" id="3Uv-UW-CaY"/>
+                    </connections>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ARB-1J-C8B" secondAttribute="trailing" constant="10" id="9sV-5I-loO"/>
+                <constraint firstItem="ARB-1J-C8B" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="J1V-Z3-mrh"/>
+                <constraint firstItem="ARB-1J-C8B" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="RLq-0g-sfh"/>
+                <constraint firstAttribute="bottom" secondItem="ARB-1J-C8B" secondAttribute="bottom" constant="10" id="tDG-Xf-fxd"/>
+            </constraints>
         </view>
     </objects>
 </document>
