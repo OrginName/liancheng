@@ -1629,8 +1629,8 @@
 			isa = PBXGroup;
 			children = (
 				CE52F14B20BC2F61004FF03B /* ServiceHomeController.m */,
-				CE52F14C20BC2F61004FF03B /* ServiceHomeController.xib */,
 				CE52F14D20BC2F61004FF03B /* ServiceHomeController.h */,
+				CE52F14C20BC2F61004FF03B /* ServiceHomeController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
