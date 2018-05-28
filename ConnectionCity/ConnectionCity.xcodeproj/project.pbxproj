@@ -205,6 +205,8 @@
 		CE0BA637209D68A3004C3C33 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA62D209D68A2004C3C33 /* ChangePasswordController.m */; };
 		CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE0BA62E209D68A2004C3C33 /* YSRegisterController.xib */; };
 		CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA631209D68A2004C3C33 /* YSAccount.m */; };
+		CE52F15F20BC2F61004FF03B /* ServiceHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE52F14B20BC2F61004FF03B /* ServiceHomeController.m */; };
+		CE52F16020BC2F61004FF03B /* ServiceHomeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE52F14C20BC2F61004FF03B /* ServiceHomeController.xib */; };
 		CE5C27FA20B8FE0A006A8332 /* BiddInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C27F820B8FE0A006A8332 /* BiddInfoController.m */; };
 		CE5C27FB20B8FE0A006A8332 /* BiddInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C27F920B8FE0A006A8332 /* BiddInfoController.xib */; };
 		CE5C27FE20B8FE3A006A8332 /* BiddInfoHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C27FD20B8FE3A006A8332 /* BiddInfoHeadView.m */; };
@@ -634,6 +636,9 @@
 		CE0BA62E209D68A2004C3C33 /* YSRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YSRegisterController.xib; sourceTree = "<group>"; };
 		CE0BA630209D68A2004C3C33 /* YSAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSAccount.h; sourceTree = "<group>"; };
 		CE0BA631209D68A2004C3C33 /* YSAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSAccount.m; sourceTree = "<group>"; };
+		CE52F14B20BC2F61004FF03B /* ServiceHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceHomeController.m; sourceTree = "<group>"; };
+		CE52F14C20BC2F61004FF03B /* ServiceHomeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceHomeController.xib; sourceTree = "<group>"; };
+		CE52F14D20BC2F61004FF03B /* ServiceHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceHomeController.h; sourceTree = "<group>"; };
 		CE5C27F720B8FE0A006A8332 /* BiddInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BiddInfoController.h; sourceTree = "<group>"; };
 		CE5C27F820B8FE0A006A8332 /* BiddInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BiddInfoController.m; sourceTree = "<group>"; };
 		CE5C27F920B8FE0A006A8332 /* BiddInfoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BiddInfoController.xib; sourceTree = "<group>"; };
@@ -1485,6 +1490,7 @@
 		CE0BA603209D605D004C3C33 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CE52F14720BC2F61004FF03B /* FindService */,
 				727418C120B17E65001D6BE1 /* ChangePlay */,
 				8D2B8B8920A2D9D300C3157F /* FindAbilityTab */,
 				CE0BA624209D68A2004C3C33 /* RegisterAndLogin */,
@@ -1583,6 +1589,177 @@
 			sourceTree = "<group>";
 		};
 		CE0BA632209D68A2004C3C33 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE52F14720BC2F61004FF03B /* FindService */ = {
+			isa = PBXGroup;
+			children = (
+				CE52F14820BC2F61004FF03B /* ServiceHome */,
+				CE52F14F20BC2F61004FF03B /* Traval */,
+				CE52F15320BC2F61004FF03B /* Profile */,
+				CE52F15720BC2F61004FF03B /* Circle */,
+				CE52F15B20BC2F61004FF03B /* ServiceStation */,
+			);
+			name = FindService;
+			path = "../../../../连城冲突/LC 3/ConnectionCity/ConnectionCity/Classes/FindService";
+			sourceTree = "<group>";
+		};
+		CE52F14820BC2F61004FF03B /* ServiceHome */ = {
+			isa = PBXGroup;
+			children = (
+				CE52F14920BC2F61004FF03B /* Models */,
+				CE52F14A20BC2F61004FF03B /* Controller */,
+				CE52F14E20BC2F61004FF03B /* View */,
+			);
+			path = ServiceHome;
+			sourceTree = "<group>";
+		};
+		CE52F14920BC2F61004FF03B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE52F14A20BC2F61004FF03B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE52F14B20BC2F61004FF03B /* ServiceHomeController.m */,
+				CE52F14C20BC2F61004FF03B /* ServiceHomeController.xib */,
+				CE52F14D20BC2F61004FF03B /* ServiceHomeController.h */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE52F14E20BC2F61004FF03B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE52F14F20BC2F61004FF03B /* Traval */ = {
+			isa = PBXGroup;
+			children = (
+				CE52F15020BC2F61004FF03B /* Models */,
+				CE52F15120BC2F61004FF03B /* Controller */,
+				CE52F15220BC2F61004FF03B /* View */,
+			);
+			path = Traval;
+			sourceTree = "<group>";
+		};
+		CE52F15020BC2F61004FF03B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE52F15120BC2F61004FF03B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE52F15220BC2F61004FF03B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE52F15320BC2F61004FF03B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CE52F15420BC2F61004FF03B /* Models */,
+				CE52F15520BC2F61004FF03B /* Controller */,
+				CE52F15620BC2F61004FF03B /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CE52F15420BC2F61004FF03B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE52F15520BC2F61004FF03B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE52F15620BC2F61004FF03B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE52F15720BC2F61004FF03B /* Circle */ = {
+			isa = PBXGroup;
+			children = (
+				CE52F15820BC2F61004FF03B /* Models */,
+				CE52F15920BC2F61004FF03B /* Controller */,
+				CE52F15A20BC2F61004FF03B /* View */,
+			);
+			path = Circle;
+			sourceTree = "<group>";
+		};
+		CE52F15820BC2F61004FF03B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE52F15920BC2F61004FF03B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE52F15A20BC2F61004FF03B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE52F15B20BC2F61004FF03B /* ServiceStation */ = {
+			isa = PBXGroup;
+			children = (
+				CE52F15C20BC2F61004FF03B /* Models */,
+				CE52F15D20BC2F61004FF03B /* Controller */,
+				CE52F15E20BC2F61004FF03B /* View */,
+			);
+			path = ServiceStation;
+			sourceTree = "<group>";
+		};
+		CE52F15C20BC2F61004FF03B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE52F15D20BC2F61004FF03B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE52F15E20BC2F61004FF03B /* View */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -2021,12 +2198,8 @@
 			files = (
 				8D2B8BA120A2DACC00C3157F /* MakeMoneyController.xib in Resources */,
 				727418FD20B3C282001D6BE1 /* SwapHomeCell.xib in Resources */,
- 
 				72EC1B7820BA9F7B00ACC20B /* PlayEditController.xib in Resources */,
- 
 				CE5C281220B91AFD006A8332 /* WinnerInfoCell.xib in Resources */,
-
-
 				727418D220B1A058001D6BE1 /* FirstController.xib in Resources */,
 				72EC1B7320BA984400ACC20B /* PlayDouctCell.xib in Resources */,
 				8D67602820A408470027CDEE /* ClassificationsController.xib in Resources */,
@@ -2081,6 +2254,7 @@
 				7274190220B3F60D001D6BE1 /* SendSwapController.xib in Resources */,
 				CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */,
 				CE0BA60F209D6126004C3C33 /* AddressBookController.xib in Resources */,
+				CE52F16020BC2F61004FF03B /* ServiceHomeController.xib in Resources */,
 				CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */,
 				CEBEDD8F20B17ED1000F9EE4 /* FootprintCell.xib in Resources */,
 				727418E420B290D1001D6BE1 /* SwapController.xib in Resources */,
@@ -2296,6 +2470,7 @@
 				72EC1B7720BA9F7B00ACC20B /* PlayEditController.m in Sources */,
 				720263F520B5015500382B2F /* TZImageManager.m in Sources */,
 				CE0BA5BA209D5E6B004C3C33 /* NSDate+Extend.m in Sources */,
+				CE52F15F20BC2F61004FF03B /* ServiceHomeController.m in Sources */,
 				CEBEDD9420B17EDA000F9EE4 /* BaseMakeMoneyTabController.m in Sources */,
 				CE0BA636209D68A3004C3C33 /* YSLoginController.m in Sources */,
 				8DD48CCE20A811EA00D6D1E6 /* TADotView.m in Sources */,
