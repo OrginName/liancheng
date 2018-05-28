@@ -17,6 +17,7 @@
 #import "BaseOneTabController.h"
 #import "CustomMap.h"
 #import "BaseChangeTabController.h"
+#import "BaseFindServiceTabController.h"
 @interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate>
 {
     BOOL flag;
@@ -110,6 +111,10 @@
         }
             break;
         case 3:
+        {
+            BaseFindServiceTabController * base = [BaseFindServiceTabController new];
+            [self.navigationController pushViewController:base animated:YES];
+        }
             break;
         default:
             break;

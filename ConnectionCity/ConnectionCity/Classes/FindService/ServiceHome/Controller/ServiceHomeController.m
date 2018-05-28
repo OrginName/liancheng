@@ -42,7 +42,7 @@
 }
 //发布简历按钮点击
 - (IBAction)sendResume:(UIButton *)sender {
-    [self.navigationController pushViewController:[self rotateClass:@"ResumeController"] animated:YES];
+    [self.navigationController pushViewController:[self rotateClass:@""] animated:YES];
 }
 //顶部三个筛选按钮的点击
 - (IBAction)btn_SX:(UIButton *)sender {
@@ -58,7 +58,7 @@
         case 2:
         {
             ClassificationsController * class = [ClassificationsController new];
-            class.title = @"职业分类";
+            class.title = @"服务分类";
             class.block = ^(NSString *classifiation){
                 UILabel * btn = (UILabel *)[self.view_SX viewWithTag:2];
                 btn.text = classifiation;
@@ -98,7 +98,7 @@
     UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
     btn.tag = 99999;
     btn.titleLabel.font = [UIFont systemFontOfSize:16];
-    [btn setTitle:@"人才" forState:UIControlStateNormal];
+    [btn setTitle:@"服务" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn setImage:[UIImage imageNamed:@"Arrow-xia"] forState:UIControlStateNormal];
     [btn layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleRight imageTitleSpace:5];
