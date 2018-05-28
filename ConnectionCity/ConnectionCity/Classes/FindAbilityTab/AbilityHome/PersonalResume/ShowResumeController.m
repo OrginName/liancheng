@@ -13,7 +13,6 @@
 #define identifier @"ScrollCell"
 #define TabHeight kScreenHeight-185
 @interface ShowResumeController ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
-@property (weak, nonatomic) IBOutlet UIButton *btn_sayAndChange;
 @property (nonatomic, strong)NSMutableArray *imageArray;
 @property (nonatomic, assign)Boolean isFullScreen;
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -48,7 +47,6 @@
         self.title = @"互换宝物";
         [self.view addSubview:self.btn_Like];
         [self.view addSubview:self.Save_Like];
-        [self.btn_sayAndChange setTitle:@"我想换" forState:UIControlStateNormal];
     }
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(Share) image:@"share" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, -10)];
     _currentIndex = 0;
@@ -66,12 +64,6 @@
 //收藏按钮点击
 -(void)SaveClick:(UIButton *)sender{
     sender.selected = !sender.selected;
-}
-//对话 关注  交换点击
-- (IBAction)callAndChangeClick:(UIButton *)sender {
-    if (sender.tag==4&&self.Receive_Type == ENUM_TypeTreasure) {
-        [self.navigationController pushViewController:[super rotateClass:@"DouctChangeController"] animated:YES];
-    }
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
