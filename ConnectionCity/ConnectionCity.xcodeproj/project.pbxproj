@@ -93,6 +93,7 @@
 		72EC1B6720B8465D00ACC20B /* ShowTreaueTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1B6620B8465D00ACC20B /* ShowTreaueTab.m */; };
 		72EC1B6B20B8475100ACC20B /* ShowtreaureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1B6920B8475100ACC20B /* ShowtreaureCell.m */; };
 		72EC1B6C20B8475100ACC20B /* ShowtreaureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EC1B6A20B8475100ACC20B /* ShowtreaureCell.xib */; };
+		72EC1B7720BA9F7B00ACC20B /* PlayEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1B7520BA9F7B00ACC20B /* PlayEditController.m */; };
 		8817A720716E5B61344D714A /* libPods-ConnectionCity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */; };
 		8D24A22720A19C8F00F0740D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729BA6D820A04BE7009713FD /* MapKit.framework */; };
 		8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A22A20A1B66B00F0740D /* CustomAnnotationView.m */; };
@@ -427,6 +428,15 @@
 		72EC1B6820B8475100ACC20B /* ShowtreaureCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowtreaureCell.h; sourceTree = "<group>"; };
 		72EC1B6920B8475100ACC20B /* ShowtreaureCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowtreaureCell.m; sourceTree = "<group>"; };
 		72EC1B6A20B8475100ACC20B /* ShowtreaureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowtreaureCell.xib; sourceTree = "<group>"; };
+		72EC1B6F20BA984400ACC20B /* PlayDouctCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayDouctCell.h; sourceTree = "<group>"; };
+		72EC1B7020BA984400ACC20B /* PlayDouctCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayDouctCell.m; sourceTree = "<group>"; };
+		72EC1B7120BA984400ACC20B /* PlayDouctCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayDouctCell.xib; sourceTree = "<group>"; };
+		72EC1B7420BA9F7B00ACC20B /* PlayEditController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayEditController.h; sourceTree = "<group>"; };
+		72EC1B7520BA9F7B00ACC20B /* PlayEditController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayEditController.m; sourceTree = "<group>"; };
+		72EC1B7620BA9F7B00ACC20B /* PlayEditController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayEditController.xib; sourceTree = "<group>"; };
+		72EC1B7A20BAACBA00ACC20B /* DouctChangeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DouctChangeController.h; sourceTree = "<group>"; };
+		72EC1B7B20BAACBA00ACC20B /* DouctChangeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DouctChangeController.m; sourceTree = "<group>"; };
+		72EC1B7C20BAACBA00ACC20B /* DouctChangeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DouctChangeController.xib; sourceTree = "<group>"; };
 		8D24A22920A1B66B00F0740D /* CustomAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
 		8D24A22A20A1B66B00F0740D /* CustomAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
 		8D24A22C20A1B9BA00F0740D /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutView.m; sourceTree = "<group>"; };
