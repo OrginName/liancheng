@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowResumeController">
             <connections>
-                <outlet property="btn_sayAndChange" destination="bpQ-Xt-5Rw" id="sA7-jT-ase"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,24 +22,18 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCo-gi-Xge">
                     <rect key="frame" x="10" y="617" width="355" height="40"/>
                     <subviews>
-                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpQ-Xt-5Rw">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpQ-Xt-5Rw">
                             <rect key="frame" x="177.5" y="0.0" width="177.5" height="40"/>
                             <color key="backgroundColor" red="0.94667142629623413" green="0.60174822807312012" blue="0.22287982702255249" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="关注">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <connections>
-                                <action selector="callAndChangeClick:" destination="-1" eventType="touchUpInside" id="Co9-eg-AWi"/>
-                            </connections>
                         </button>
-                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bn-iZ-lOc">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bn-iZ-lOc">
                             <rect key="frame" x="0.0" y="0.0" width="177.5" height="40"/>
                             <state key="normal" title="对话">
                                 <color key="titleColor" red="0.43917000290000002" green="0.43923890589999998" blue="0.43916058540000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
-                            <connections>
-                                <action selector="callAndChangeClick:" destination="-1" eventType="touchUpInside" id="TYt-GP-Ftj"/>
-                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
