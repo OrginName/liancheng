@@ -114,6 +114,8 @@
 		72EC1BB420BC386D00ACC20B /* SendServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EC1BB220BC386D00ACC20B /* SendServiceController.xib */; };
 		72EC1BB920BC4CA100ACC20B /* SendServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1BB720BC4CA100ACC20B /* SendServiceCell.m */; };
 		72EC1BBA20BC4CA100ACC20B /* SendServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EC1BB820BC4CA100ACC20B /* SendServiceCell.xib */; };
+		72EC1BBD20BDA25200ACC20B /* SendSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1BBC20BDA25200ACC20B /* SendSelectCell.m */; };
+		72EC1BC220BDB10500ACC20B /* SelectLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1BC120BDB10400ACC20B /* SelectLayout.m */; };
 		8817A720716E5B61344D714A /* libPods-ConnectionCity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */; };
 		8D24A22720A19C8F00F0740D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729BA6D820A04BE7009713FD /* MapKit.framework */; };
 		8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A22A20A1B66B00F0740D /* CustomAnnotationView.m */; };
@@ -480,6 +482,10 @@
 		72EC1BB620BC4CA100ACC20B /* SendServiceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendServiceCell.h; sourceTree = "<group>"; };
 		72EC1BB720BC4CA100ACC20B /* SendServiceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendServiceCell.m; sourceTree = "<group>"; };
 		72EC1BB820BC4CA100ACC20B /* SendServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendServiceCell.xib; sourceTree = "<group>"; };
+		72EC1BBB20BDA25200ACC20B /* SendSelectCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendSelectCell.h; sourceTree = "<group>"; };
+		72EC1BBC20BDA25200ACC20B /* SendSelectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendSelectCell.m; sourceTree = "<group>"; };
+		72EC1BC020BDB10400ACC20B /* SelectLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLayout.h; sourceTree = "<group>"; };
+		72EC1BC120BDB10400ACC20B /* SelectLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLayout.m; sourceTree = "<group>"; };
 		8D24A22920A1B66B00F0740D /* CustomAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
 		8D24A22A20A1B66B00F0740D /* CustomAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
 		8D24A22C20A1B9BA00F0740D /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutView.m; sourceTree = "<group>"; };
@@ -1333,9 +1339,13 @@
 		72EC1BB520BC4C8700ACC20B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				72EC1BC020BDB10400ACC20B /* SelectLayout.h */,
+				72EC1BC120BDB10400ACC20B /* SelectLayout.m */,
 				72EC1BB620BC4CA100ACC20B /* SendServiceCell.h */,
 				72EC1BB720BC4CA100ACC20B /* SendServiceCell.m */,
 				72EC1BB820BC4CA100ACC20B /* SendServiceCell.xib */,
+				72EC1BBB20BDA25200ACC20B /* SendSelectCell.h */,
+				72EC1BBC20BDA25200ACC20B /* SendSelectCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1641,6 +1651,7 @@
 				72BAB43820B047F500496D29 /* YSButton.m */,
 				CE0BA5BF209D5E9B004C3C33 /* YSTools.h */,
 				CE0BA5C0209D5E9B004C3C33 /* MyPickerView.h */,
+				CE0BA5D1209D5E9B004C3C33 /* MyPickerView.m */,
 				CE0BA5C1209D5E9B004C3C33 /* YTSystemUtil.m */,
 				CE0BA5C2209D5E9B004C3C33 /* YTDataPacket.m */,
 				CE0BA5C3209D5E9B004C3C33 /* YSNetworkTool.h */,
@@ -1658,7 +1669,6 @@
 				CE0BA5CE209D5E9B004C3C33 /* YSNetworkTool.m */,
 				CE0BA5CF209D5E9B004C3C33 /* YTDataPacket.h */,
 				CE0BA5D0209D5E9B004C3C33 /* YTSystemUtil.h */,
-				CE0BA5D1209D5E9B004C3C33 /* MyPickerView.m */,
 				CE0BA5D2209D5E9B004C3C33 /* YSTools.m */,
 				CE0BA5D3209D5E9B004C3C33 /* YSAccountTool.h */,
 				CE0BA5D4209D5E9B004C3C33 /* DDFileReader.h */,
@@ -2500,6 +2510,7 @@
 				720263F820B5015500382B2F /* TZLocationManager.m in Sources */,
 				720263F420B5015500382B2F /* TZImageCropManager.m in Sources */,
 				723D376720ABDA62003FD4DF /* ShowResumeCell.m in Sources */,
+				72EC1BBD20BDA25200ACC20B /* SendSelectCell.m in Sources */,
 				CE5C27FE20B8FE3A006A8332 /* BiddInfoHeadView.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
 				CEBEDD7D20B17ED1000F9EE4 /* WinningBidderCell.m in Sources */,
@@ -2583,6 +2594,7 @@
 				CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */,
 				CE97DBF520B5A2C1003E46BD /* ReleaseTenderCell.m in Sources */,
 				CE5C27FA20B8FE0A006A8332 /* BiddInfoController.m in Sources */,
+				72EC1BC220BDB10500ACC20B /* SelectLayout.m in Sources */,
 				729BA6C820A01E7F009713FD /* JFAreaDataManager.m in Sources */,
 				CE0BA5E4209D5E9B004C3C33 /* MyDatePicker.m in Sources */,
 				8D67602720A408470027CDEE /* ClassificationsController.m in Sources */,

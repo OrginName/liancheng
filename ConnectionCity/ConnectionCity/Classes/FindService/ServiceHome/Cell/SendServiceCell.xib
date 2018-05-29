@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="SendServiceCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SendServiceCell0" id="KGk-i7-Jjw" customClass="SendServiceCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -32,7 +32,7 @@
                             <constraint firstAttribute="height" constant="15" id="UQK-Cm-eWN"/>
                         </constraints>
                     </imageView>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写你可以赚钱的服务技能" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZD2-L8-OgU">
+                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写你可以赚钱的服务技能" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZD2-L8-OgU">
                         <rect key="frame" x="83.5" y="0.0" width="200.5" height="43.5"/>
                         <color key="textColor" red="0.7933233610590833" green="0.80117804780224255" blue="0.80117804780224255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -61,9 +61,107 @@
                     <constraint firstItem="kqj-n1-gcW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="wew-zQ-RyI"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lab_title" destination="kqj-n1-gcW" id="oqU-OZ-7FQ"/>
+                <outlet property="txt_Placeholder" destination="ZD2-L8-OgU" id="0sl-B0-sdQ"/>
+            </connections>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SendServiceCell1" rowHeight="28" id="w9A-0f-Sc7" customClass="SendServiceCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="28"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w9A-0f-Sc7" id="UYo-jL-SML">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="27.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4P-md-4HS">
+                        <rect key="frame" x="10" y="0.0" width="57" height="27.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="57" id="Wr8-kV-lpe"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="9" maxY="0.0"/>
+                        <inset key="imageEdgeInsets" minX="-11" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="元/单" image="men">
+                            <color key="titleColor" red="0.79332336110000001" green="0.80117804780000001" blue="0.80117804780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <state key="selected" image="women"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ble-VI-riB">
+                        <rect key="frame" x="77" y="0.0" width="75" height="27.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="75" id="ccd-4J-fQM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="9" maxY="0.0"/>
+                        <inset key="imageEdgeInsets" minX="-11" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="元/小时" image="men">
+                            <color key="titleColor" red="0.79332336110000001" green="0.80117804780000001" blue="0.80117804780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <state key="selected" image="women"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFf-Mq-F7f">
+                        <rect key="frame" x="162" y="0.0" width="56" height="27.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="56" id="JM9-tZ-vBH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="9" maxY="0.0"/>
+                        <inset key="imageEdgeInsets" minX="-11" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="元/天" image="men">
+                            <color key="titleColor" red="0.79332336110000001" green="0.80117804780000001" blue="0.80117804780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="h4P-md-4HS" firstAttribute="leading" secondItem="UYo-jL-SML" secondAttribute="leading" constant="10" id="7Qm-PK-GUi"/>
+                    <constraint firstItem="h4P-md-4HS" firstAttribute="top" secondItem="UYo-jL-SML" secondAttribute="top" id="HzI-Tx-b0E"/>
+                    <constraint firstItem="ble-VI-riB" firstAttribute="top" secondItem="UYo-jL-SML" secondAttribute="top" id="LLZ-nA-aFt"/>
+                    <constraint firstAttribute="bottom" secondItem="ble-VI-riB" secondAttribute="bottom" id="SS3-cz-y6H"/>
+                    <constraint firstAttribute="bottom" secondItem="h4P-md-4HS" secondAttribute="bottom" id="b7d-FM-kHI"/>
+                    <constraint firstAttribute="bottom" secondItem="dFf-Mq-F7f" secondAttribute="bottom" id="cR0-0f-K2Y"/>
+                    <constraint firstItem="dFf-Mq-F7f" firstAttribute="leading" secondItem="ble-VI-riB" secondAttribute="trailing" constant="10" id="fuq-lF-Akh"/>
+                    <constraint firstItem="ble-VI-riB" firstAttribute="leading" secondItem="h4P-md-4HS" secondAttribute="trailing" constant="10" id="iGL-1Z-nei"/>
+                    <constraint firstItem="dFf-Mq-F7f" firstAttribute="top" secondItem="UYo-jL-SML" secondAttribute="top" id="nKL-E1-jbI"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="84" y="226"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SendServiceCell2" rowHeight="28" id="nzt-WA-Zgm" customClass="SendServiceCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="28"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nzt-WA-Zgm" id="EGS-cT-JJz">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="27.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="men" translatesAutoresizingMaskIntoConstraints="NO" id="qvh-jD-ZZ9">
+                        <rect key="frame" x="10" y="6" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="9F3-4X-kC0"/>
+                            <constraint firstAttribute="width" constant="15" id="yLc-aV-nIf"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阅读并同意找服务发布规则" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftn-vN-SzV">
+                        <rect key="frame" x="35" y="0.0" width="171.5" height="27"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="ftn-vN-SzV" secondAttribute="bottom" id="3vp-1Q-E0U"/>
+                    <constraint firstItem="ftn-vN-SzV" firstAttribute="leading" secondItem="qvh-jD-ZZ9" secondAttribute="trailing" constant="10" id="Lgc-A1-LtS"/>
+                    <constraint firstItem="qvh-jD-ZZ9" firstAttribute="leading" secondItem="EGS-cT-JJz" secondAttribute="leading" constant="10" id="Pw3-Hv-qrM"/>
+                    <constraint firstItem="qvh-jD-ZZ9" firstAttribute="centerY" secondItem="EGS-cT-JJz" secondAttribute="centerY" id="hNo-CW-ET1"/>
+                    <constraint firstItem="ftn-vN-SzV" firstAttribute="centerY" secondItem="qvh-jD-ZZ9" secondAttribute="centerY" id="iuT-46-bOH"/>
+                    <constraint firstItem="ftn-vN-SzV" firstAttribute="top" secondItem="EGS-cT-JJz" secondAttribute="top" id="qte-Qq-Qcl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="84" y="309"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="arraw-right" width="9" height="15"/>
+        <image name="men" width="13" height="13"/>
+        <image name="women" width="13" height="13"/>
     </resources>
 </document>

@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SendServiceCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UILabel *lab_title;
+@property (weak, nonatomic) IBOutlet UITextField *txt_Placeholder;
++ (instancetype)tempTableViewCellWith:(UITableView *)tableView
+                            indexPath:(NSIndexPath *)indexPath;
 @end

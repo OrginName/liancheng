@@ -7,18 +7,38 @@
 //
 
 #import "SendServiceCell.h"
+@interface SendServiceCell()
 
+@end
 @implementation SendServiceCell
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+static NSArray * arr_Str;
++(void)initialize{
+    arr_Str = @[@{@"title":@"服务标题",@"placeholder":@"填写你可以赚钱的服务技能"},@{@"title":@"服务类别",@"placeholder":@"游戏服务/王者荣耀"},@{@"title":@"服务介绍",@"placeholder":@"介绍你自己的服务优势"},@{@"title":@"服务价格",@"placeholder":@"填写价格"}];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
++ (instancetype)tempTableViewCellWith:(UITableView *)tableView
+                            indexPath:(NSIndexPath *)indexPath{
+    NSString *identifier = @"";
+    NSInteger index = 0;
+    if (indexPath.section!=4&&indexPath.section!=5) {
+        identifier = @"SendServiceCell0";
+        index = 0;
+    }else if (indexPath.section==4){
+        identifier = @"SendServiceCell1";
+        index = 1;
+    }else if (indexPath.section==5){
+        identifier = @"SendServiceCell2";
+        index = 2;
+    }
+    SendServiceCell *cell = (SendServiceCell*)[tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"SendServiceCell" owner:self options:nil] objectAtIndex:index];
+    }
+    if (indexPath.section!=4&&indexPath.section!=5){
+        cell.lab_title.text = arr_Str[indexPath.section][@"title"];
+        cell.txt_Placeholder.placeholder = arr_Str[indexPath.section][@"placeholder"];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
 }
-
 @end
