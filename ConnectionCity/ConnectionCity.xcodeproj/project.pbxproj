@@ -36,6 +36,13 @@
 		723D376720ABDA62003FD4DF /* ShowResumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D376520ABDA62003FD4DF /* ShowResumeCell.m */; };
 		723D376820ABDA62003FD4DF /* ShowResumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723D376620ABDA62003FD4DF /* ShowResumeCell.xib */; };
 		723D376B20AC2BC3003FD4DF /* SearchHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723D376A20AC2BC3003FD4DF /* SearchHistoryController.m */; };
+		723F4FA120BED37800AF8268 /* TrvalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4F9F20BED37800AF8268 /* TrvalCell.m */; };
+		723F4FA220BED37800AF8268 /* TrvalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723F4FA020BED37800AF8268 /* TrvalCell.xib */; };
+		723F4FA620BEDE6000AF8268 /* TrvalInvitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FA420BEDE6000AF8268 /* TrvalInvitController.m */; };
+		723F4FA720BEDE6000AF8268 /* TrvalInvitController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723F4FA520BEDE6000AF8268 /* TrvalInvitController.xib */; };
+		723F4FAF20BEE8FF00AF8268 /* TrvalTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FAE20BEE8FF00AF8268 /* TrvalTrip.m */; };
+		723F4FB320BEEA8D00AF8268 /* TrvalTripCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FB120BEEA8D00AF8268 /* TrvalTripCell.m */; };
+		723F4FB420BEEA8D00AF8268 /* TrvalTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723F4FB220BEEA8D00AF8268 /* TrvalTripCell.xib */; };
 		7274188020B13CB6001D6BE1 /* MLMSegmentHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */; };
 		7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187C20B13CB6001D6BE1 /* MLMSegmentPage.m */; };
 		7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187F20B13CB6001D6BE1 /* UIView+ViewController.m */; };
@@ -352,6 +359,17 @@
 		723D376620ABDA62003FD4DF /* ShowResumeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowResumeCell.xib; sourceTree = "<group>"; };
 		723D376920AC2BC3003FD4DF /* SearchHistoryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchHistoryController.h; sourceTree = "<group>"; };
 		723D376A20AC2BC3003FD4DF /* SearchHistoryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchHistoryController.m; sourceTree = "<group>"; };
+		723F4F9E20BED37800AF8268 /* TrvalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrvalCell.h; sourceTree = "<group>"; };
+		723F4F9F20BED37800AF8268 /* TrvalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrvalCell.m; sourceTree = "<group>"; };
+		723F4FA020BED37800AF8268 /* TrvalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrvalCell.xib; sourceTree = "<group>"; };
+		723F4FA320BEDE6000AF8268 /* TrvalInvitController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrvalInvitController.h; sourceTree = "<group>"; };
+		723F4FA420BEDE6000AF8268 /* TrvalInvitController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrvalInvitController.m; sourceTree = "<group>"; };
+		723F4FA520BEDE6000AF8268 /* TrvalInvitController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrvalInvitController.xib; sourceTree = "<group>"; };
+		723F4FAD20BEE8FF00AF8268 /* TrvalTrip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrvalTrip.h; sourceTree = "<group>"; };
+		723F4FAE20BEE8FF00AF8268 /* TrvalTrip.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrvalTrip.m; sourceTree = "<group>"; };
+		723F4FB020BEEA8D00AF8268 /* TrvalTripCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrvalTripCell.h; sourceTree = "<group>"; };
+		723F4FB120BEEA8D00AF8268 /* TrvalTripCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrvalTripCell.m; sourceTree = "<group>"; };
+		723F4FB220BEEA8D00AF8268 /* TrvalTripCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrvalTripCell.xib; sourceTree = "<group>"; };
 		7274187920B13CB6001D6BE1 /* MLMSegmentHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentHead.h; sourceTree = "<group>"; };
 		7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLMSegmentHead.m; sourceTree = "<group>"; };
 		7274187B20B13CB6001D6BE1 /* MLMSegmentPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentPage.h; sourceTree = "<group>"; };
@@ -872,6 +890,19 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		723F4F9D20BED36300AF8268 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				723F4F9E20BED37800AF8268 /* TrvalCell.h */,
+				723F4F9F20BED37800AF8268 /* TrvalCell.m */,
+				723F4FA020BED37800AF8268 /* TrvalCell.xib */,
+				723F4FB020BEEA8D00AF8268 /* TrvalTripCell.h */,
+				723F4FB120BEEA8D00AF8268 /* TrvalTripCell.m */,
+				723F4FB220BEEA8D00AF8268 /* TrvalTripCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		7274187820B13CB6001D6BE1 /* MLMSegmentPageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1305,6 +1336,7 @@
 		72EC1B9320BC307E00ACC20B /* Traval */ = {
 			isa = PBXGroup;
 			children = (
+				723F4F9D20BED36300AF8268 /* Cell */,
 				72EC1B9420BC307E00ACC20B /* Controller */,
 				72EC1B9520BC307E00ACC20B /* Models */,
 				72EC1B9620BC307E00ACC20B /* View */,
@@ -1318,6 +1350,9 @@
 				72EC1BA820BC34AA00ACC20B /* TravalController.h */,
 				72EC1BA920BC34AA00ACC20B /* TravalController.m */,
 				72EC1BAA20BC34AA00ACC20B /* TravalController.xib */,
+				723F4FA320BEDE6000AF8268 /* TrvalInvitController.h */,
+				723F4FA420BEDE6000AF8268 /* TrvalInvitController.m */,
+				723F4FA520BEDE6000AF8268 /* TrvalInvitController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1332,6 +1367,8 @@
 		72EC1B9620BC307E00ACC20B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				723F4FAD20BEE8FF00AF8268 /* TrvalTrip.h */,
+				723F4FAE20BEE8FF00AF8268 /* TrvalTrip.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2275,6 +2312,7 @@
 				8D67602820A408470027CDEE /* ClassificationsController.xib in Resources */,
 				CEBEDD8020B17ED1000F9EE4 /* WinningBidderCell.xib in Resources */,
 				72EC1B7E20BAACBA00ACC20B /* DouctChangeController.xib in Resources */,
+				723F4FA220BED37800AF8268 /* TrvalCell.xib in Resources */,
 				72EC1B5C20B7027000ACC20B /* SwapListController.xib in Resources */,
 				CE97DBF620B5A2C1003E46BD /* ReleaseTenderCell.xib in Resources */,
 				CEBEDD8C20B17ED1000F9EE4 /* BountyHostingController.xib in Resources */,
@@ -2290,6 +2328,7 @@
 				CE0BA621209D61C0004C3C33 /* ProfileController.xib in Resources */,
 				CEBEDD8E20B17ED1000F9EE4 /* FootprintController.xib in Resources */,
 				CE0BA615209D6160004C3C33 /* LifeHallController.xib in Resources */,
+				723F4FA720BEDE6000AF8268 /* TrvalInvitController.xib in Resources */,
 				CE5C280020B8FE5A006A8332 /* BiddInfoHeadView.xib in Resources */,
 				8DD48CE920A8367100D6D1E6 /* GuardEduController.xib in Resources */,
 				72EC1BBA20BC4CA100ACC20B /* SendServiceCell.xib in Resources */,
@@ -2326,6 +2365,7 @@
 				CE5C283920B99441006A8332 /* PayOrderController.xib in Resources */,
 				72EC1BB420BC386D00ACC20B /* SendServiceController.xib in Resources */,
 				7274190220B3F60D001D6BE1 /* SendSwapController.xib in Resources */,
+				723F4FB420BEEA8D00AF8268 /* TrvalTripCell.xib in Resources */,
 				CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */,
 				CE0BA60F209D6126004C3C33 /* AddressBookController.xib in Resources */,
 				72EC1B9820BC307E00ACC20B /* ServiceHomeController.xib in Resources */,
@@ -2434,6 +2474,7 @@
 				7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */,
 				CEBEDD8B20B17ED1000F9EE4 /* BountyHostingController.m in Sources */,
 				CE0BA5DD209D5E9B004C3C33 /* YTSystemUtil.m in Sources */,
+				723F4FA120BED37800AF8268 /* TrvalCell.m in Sources */,
 				CE03EDF520B4544700F07D78 /* FirstSectionHeadV.m in Sources */,
 				CE0BA5E3209D5E9B004C3C33 /* YTAlertUtil.m in Sources */,
 				720263FE20B5015500382B2F /* UIView+Layout.m in Sources */,
@@ -2448,6 +2489,7 @@
 				72EC1B9C20BC346700ACC20B /* FriendCircleController.m in Sources */,
 				CEBEDD9120B17ED1000F9EE4 /* FootprintController.m in Sources */,
 				CEBEDD8120B17ED1000F9EE4 /* MarginController.m in Sources */,
+				723F4FA620BEDE6000AF8268 /* TrvalInvitController.m in Sources */,
 				7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */,
 				CEBEDD9920B17F40000F9EE4 /* BulidTeamController.m in Sources */,
 				723D376120ABBEB4003FD4DF /* ShowResumeTab.m in Sources */,
@@ -2462,6 +2504,7 @@
 				720263FD20B5015500382B2F /* TZVideoPlayerController.m in Sources */,
 				72EC1B5B20B7027000ACC20B /* SwapListController.m in Sources */,
 				CE5C282F20B9733A006A8332 /* ConsultativeNegotiationCell.m in Sources */,
+				723F4FAF20BEE8FF00AF8268 /* TrvalTrip.m in Sources */,
 				722D252920AA769600AB3863 /* FKGPopOption.m in Sources */,
 				CE0BA5E2209D5E9B004C3C33 /* SRDownloadModel.m in Sources */,
 				8D24A23520A1D5A700F0740D /* RefineView.m in Sources */,
@@ -2538,6 +2581,7 @@
 				72EC1B5F20B8341900ACC20B /* ShowCardTab.m in Sources */,
 				72EC1B6B20B8475100ACC20B /* ShowtreaureCell.m in Sources */,
 				CEBEDD9020B17ED1000F9EE4 /* FootprintCell.m in Sources */,
+				723F4FB320BEEA8D00AF8268 /* TrvalTripCell.m in Sources */,
 				CE5C281520B91B3A006A8332 /* WinnerInfoHeadView.m in Sources */,
 				8DD48CD020A811EA00D6D1E6 /* SDCollectionViewCell.m in Sources */,
 				CE0BA5F9209D5EBE004C3C33 /* BaseModel.m in Sources */,

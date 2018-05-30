@@ -77,12 +77,9 @@
             break;
     }
 }
--(void)back{
-    [self.tabBarController.navigationController popViewControllerAnimated:YES];
-    //    [[NSNotificationCenter defaultCenter] postNotificationName:@"BACKMAINWINDOW" object:nil];
-}
+ 
 -(void)setUI{
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    [super setFlag_back:YES];//设置返回按钮
     self.cusMap = [[CustomMap alloc] initWithFrame:CGRectMake(0, 0, self.view_Map.width, self.view_Map.height) ];
     self.cusMap.delegate = self;
     [self.view_Map addSubview:self.cusMap];
