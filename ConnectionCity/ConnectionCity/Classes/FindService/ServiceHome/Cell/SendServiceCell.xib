@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -65,6 +65,7 @@
                 <outlet property="lab_title" destination="kqj-n1-gcW" id="oqU-OZ-7FQ"/>
                 <outlet property="txt_Placeholder" destination="ZD2-L8-OgU" id="0sl-B0-sdQ"/>
             </connections>
+            <point key="canvasLocation" x="84" y="125"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SendServiceCell1" rowHeight="28" id="w9A-0f-Sc7" customClass="SendServiceCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="28"/>
@@ -73,7 +74,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="27.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4P-md-4HS">
+                    <button opaque="NO" tag="1" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4P-md-4HS">
                         <rect key="frame" x="10" y="0.0" width="57" height="27.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="57" id="Wr8-kV-lpe"/>
@@ -85,8 +86,12 @@
                             <color key="titleColor" red="0.79332336110000001" green="0.80117804780000001" blue="0.80117804780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <state key="selected" image="women"/>
+                        <connections>
+                            <action selector="priceTypeClcik:" destination="w9A-0f-Sc7" eventType="touchUpInside" id="DH9-vX-yVG"/>
+                            <action selector="priceTypeClcik:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="h8c-hI-yPD"/>
+                        </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ble-VI-riB">
+                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ble-VI-riB">
                         <rect key="frame" x="77" y="0.0" width="75" height="27.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="75" id="ccd-4J-fQM"/>
@@ -98,8 +103,12 @@
                             <color key="titleColor" red="0.79332336110000001" green="0.80117804780000001" blue="0.80117804780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <state key="selected" image="women"/>
+                        <connections>
+                            <action selector="priceTypeClcik:" destination="w9A-0f-Sc7" eventType="touchUpInside" id="SD3-Wv-Stf"/>
+                            <action selector="priceTypeClcik:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hz4-ea-P1W"/>
+                        </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFf-Mq-F7f">
+                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFf-Mq-F7f">
                         <rect key="frame" x="162" y="0.0" width="56" height="27.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="56" id="JM9-tZ-vBH"/>
@@ -110,6 +119,11 @@
                         <state key="normal" title="元/天" image="men">
                             <color key="titleColor" red="0.79332336110000001" green="0.80117804780000001" blue="0.80117804780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <state key="selected" image="women"/>
+                        <connections>
+                            <action selector="priceTypeClcik:" destination="w9A-0f-Sc7" eventType="touchUpInside" id="81C-Rf-Vwv"/>
+                            <action selector="priceTypeClcik:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9ev-ep-GrB"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -133,26 +147,31 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="27.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="men" translatesAutoresizingMaskIntoConstraints="NO" id="qvh-jD-ZZ9">
-                        <rect key="frame" x="10" y="6" width="15" height="15"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="15" id="9F3-4X-kC0"/>
-                            <constraint firstAttribute="width" constant="15" id="yLc-aV-nIf"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阅读并同意找服务发布规则" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftn-vN-SzV">
-                        <rect key="frame" x="35" y="0.0" width="171.5" height="27"/>
+                        <rect key="frame" x="30" y="0.0" width="171.5" height="27"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4w-SQ-LCB">
+                        <rect key="frame" x="10" y="7" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="Fjk-IM-oY5"/>
+                            <constraint firstAttribute="width" constant="15" id="mEh-DD-4ro"/>
+                        </constraints>
+                        <state key="normal" image="men"/>
+                        <state key="selected" image="women"/>
+                        <connections>
+                            <action selector="btnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9wr-qG-nUi"/>
+                            <action selector="btnClick:" destination="nzt-WA-Zgm" eventType="touchUpInside" id="ivV-3z-udc"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="ftn-vN-SzV" secondAttribute="bottom" id="3vp-1Q-E0U"/>
-                    <constraint firstItem="ftn-vN-SzV" firstAttribute="leading" secondItem="qvh-jD-ZZ9" secondAttribute="trailing" constant="10" id="Lgc-A1-LtS"/>
-                    <constraint firstItem="qvh-jD-ZZ9" firstAttribute="leading" secondItem="EGS-cT-JJz" secondAttribute="leading" constant="10" id="Pw3-Hv-qrM"/>
-                    <constraint firstItem="qvh-jD-ZZ9" firstAttribute="centerY" secondItem="EGS-cT-JJz" secondAttribute="centerY" id="hNo-CW-ET1"/>
-                    <constraint firstItem="ftn-vN-SzV" firstAttribute="centerY" secondItem="qvh-jD-ZZ9" secondAttribute="centerY" id="iuT-46-bOH"/>
+                    <constraint firstItem="g4w-SQ-LCB" firstAttribute="leading" secondItem="EGS-cT-JJz" secondAttribute="leading" constant="10" id="6lr-Ea-A6R"/>
+                    <constraint firstItem="ftn-vN-SzV" firstAttribute="leading" secondItem="g4w-SQ-LCB" secondAttribute="trailing" constant="5" id="VLo-io-Bpz"/>
+                    <constraint firstItem="g4w-SQ-LCB" firstAttribute="centerY" secondItem="EGS-cT-JJz" secondAttribute="centerY" id="ewt-xj-0y7"/>
                     <constraint firstItem="ftn-vN-SzV" firstAttribute="top" secondItem="EGS-cT-JJz" secondAttribute="top" id="qte-Qq-Qcl"/>
                 </constraints>
             </tableViewCellContentView>

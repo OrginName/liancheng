@@ -8,7 +8,9 @@
 
 #import "SendServiceCell.h"
 @interface SendServiceCell()
-
+{
+    UIButton * _tmpBtn;
+}
 @end
 @implementation SendServiceCell
 static NSArray * arr_Str;
@@ -40,5 +42,25 @@ static NSArray * arr_Str;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+- (IBAction)priceTypeClcik:(UIButton *)sender {
+    if (sender.tag!=3) {
+        UIButton * btn = (UIButton *)[self viewWithTag:1];
+        btn.selected = NO;
+    }
+    if (_tmpBtn == nil){
+        sender.selected = YES;
+        _tmpBtn = sender;
+    }
+    if (_tmpBtn !=nil &&_tmpBtn == sender){
+        sender.selected = YES;
+    } else if (_tmpBtn!= sender && _tmpBtn!=nil){
+        _tmpBtn.selected = NO;
+        sender.selected = YES;
+        _tmpBtn = sender;
+    }
+}
+- (IBAction)btnClick:(UIButton *)sender {
+    sender.selected = !sender.selected;
 }
 @end
