@@ -11,7 +11,8 @@
 typedef enum {
     ENUM_TypeResume=0,//简历
     ENUM_TypeTreasure,//宝物
-    ENUM_TypeCard//身份
+    ENUM_TypeCard,//身份
+    ENUM_TypeTrval//陪游 邀约
 } Receive_Type;
 @interface ShowResumeController : BaseViewController
 @property(nonatomic,assign) NSInteger  Receive_Type;//接受类型

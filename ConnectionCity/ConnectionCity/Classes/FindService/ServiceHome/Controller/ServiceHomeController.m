@@ -117,7 +117,9 @@
     btn.text = locationDictionary[@"city"];
 }
 -(void)currentAnimatinonViewClick:(MAAnnotationView *)view{
-    [self.navigationController pushViewController:[ShowResumeController new] animated:YES];
+    ShowResumeController * show = [ShowResumeController new];
+    show.Receive_Type = ENUM_TypeTrval;
+    [self.navigationController pushViewController:show animated:YES];
 }
 
 @end

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="ServiceListCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LbI-i0-53D">
+                        <rect key="frame" x="0.0" y="69" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Zsb-U6-pU8"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="D3d-ji-4yy">
+                        <rect key="frame" x="10" y="10" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="Bqu-h7-Fi8"/>
+                            <constraint firstAttribute="height" constant="50" id="mW9-nC-pY5"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="25"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王者荣耀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXl-bc-ODf">
+                        <rect key="frame" x="70" y="13" width="70" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.25882352941176473" green="0.25882352941176473" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最高段位：王者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rij-Tl-6Dj">
+                        <rect key="frame" x="70" y="40" width="100" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.95686274509803926" green="0.67843137254901964" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arraw-right" translatesAutoresizingMaskIntoConstraints="NO" id="Jqd-6b-jEX">
+                        <rect key="frame" x="304" y="26.5" width="10" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="10" id="LNh-mL-AKi"/>
+                            <constraint firstAttribute="height" constant="15" id="r7w-Fy-nKF"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="HXl-bc-ODf" firstAttribute="leading" secondItem="D3d-ji-4yy" secondAttribute="trailing" constant="10" id="3tg-h9-o8g"/>
+                    <constraint firstItem="LbI-i0-53D" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="KwE-qo-V1c"/>
+                    <constraint firstItem="HXl-bc-ODf" firstAttribute="top" secondItem="D3d-ji-4yy" secondAttribute="top" constant="3" id="OOH-fm-R8T"/>
+                    <constraint firstItem="Rij-Tl-6Dj" firstAttribute="bottom" secondItem="D3d-ji-4yy" secondAttribute="bottom" constant="-3" id="Qgl-Mf-5uK"/>
+                    <constraint firstAttribute="trailing" secondItem="LbI-i0-53D" secondAttribute="trailing" id="TeV-6E-F3D"/>
+                    <constraint firstItem="D3d-ji-4yy" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xgk-oo-gj4"/>
+                    <constraint firstItem="Jqd-6b-jEX" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="10" id="agW-IV-T5U"/>
+                    <constraint firstAttribute="bottom" secondItem="LbI-i0-53D" secondAttribute="bottom" id="dR9-hv-3zV"/>
+                    <constraint firstItem="Jqd-6b-jEX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rc8-U0-MD0"/>
+                    <constraint firstItem="D3d-ji-4yy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="uIb-xW-GWB"/>
+                    <constraint firstItem="Rij-Tl-6Dj" firstAttribute="leading" secondItem="D3d-ji-4yy" secondAttribute="trailing" constant="10" id="vHb-AY-Mdn"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="34" y="67"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="1" width="639" height="512"/>
+        <image name="arraw-right" width="9" height="15"/>
+    </resources>
+</document>

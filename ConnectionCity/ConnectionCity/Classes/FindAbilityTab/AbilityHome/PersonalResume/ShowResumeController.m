@@ -10,6 +10,7 @@
 #import "ShowResumeTab.h"
 #import "ShowCardTab.h"
 #import "ShowTreaueTab.h"
+#import "ShowtrvalTab.h"
 #define identifier @"ScrollCell"
 #define TabHeight kScreenHeight-185
 @interface ShowResumeController ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -22,6 +23,7 @@
 @property (nonatomic, strong)ShowResumeTab * showTab;
 @property (nonatomic, strong)ShowCardTab * showCardTab;
 @property (nonatomic, strong)ShowTreaueTab * showTreaueTab;
+@property (nonatomic, strong)ShowtrvalTab * trvaltab;
 @property (nonatomic, strong)UIButton * btn_Like;
 @property (nonatomic, strong)UIButton * Save_Like;
 @end
@@ -49,6 +51,10 @@
         [self.view addSubview:self.btn_Like];
         [self.view addSubview:self.Save_Like];
         [self.btn_sayAndChange setTitle:@"我想换" forState:UIControlStateNormal];
+    }else if (self.Receive_Type == ENUM_TypeTrval){
+        [self.view addSubview:self.btn_Like];
+        [self.view addSubview:self.Save_Like];
+        self.title = @"欧阳姐姐";
     }
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(Share) image:@"share" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, -10)];
     _currentIndex = 0;
@@ -96,6 +102,9 @@
     }else if(self.Receive_Type == ENUM_TypeCard){
         self.showCardTab = [[ShowCardTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];
         [cell.contentView addSubview:self.showCardTab];
+    }else if (self.Receive_Type == ENUM_TypeTrval){
+        self.trvaltab = [[ShowtrvalTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight) withControl:self];
+        [cell.contentView addSubview:self.trvaltab];
     }else {
         self.showTreaueTab = [[ShowTreaueTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];
         [cell.contentView addSubview:self.showTreaueTab];

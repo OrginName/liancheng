@@ -124,6 +124,13 @@
 		72EC1BBD20BDA25200ACC20B /* SendSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1BBC20BDA25200ACC20B /* SendSelectCell.m */; };
 		72EC1BC220BDB10500ACC20B /* SelectLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1BC120BDB10400ACC20B /* SelectLayout.m */; };
 		8817A720716E5B61344D714A /* libPods-ConnectionCity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */; };
+		8D09E18120BFB49A000F7EBD /* SendTripController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E17F20BFB49A000F7EBD /* SendTripController.m */; };
+		8D09E18220BFB49A000F7EBD /* SendTripController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D09E18020BFB49A000F7EBD /* SendTripController.xib */; };
+		8D09E18620BFC4B8000F7EBD /* AppointmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E18420BFC4B8000F7EBD /* AppointmentController.m */; };
+		8D09E18720BFC4B8000F7EBD /* AppointmentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D09E18520BFC4B8000F7EBD /* AppointmentController.xib */; };
+		8D09E18E20BFD52E000F7EBD /* ShowtrvalTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E18D20BFD52E000F7EBD /* ShowtrvalTab.m */; };
+		8D09E19C20BFDC16000F7EBD /* ShowTrvalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E19A20BFDC16000F7EBD /* ShowTrvalCell.m */; };
+		8D09E19D20BFDC16000F7EBD /* ShowTrvalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D09E19B20BFDC16000F7EBD /* ShowTrvalCell.xib */; };
 		8D24A22720A19C8F00F0740D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729BA6D820A04BE7009713FD /* MapKit.framework */; };
 		8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A22A20A1B66B00F0740D /* CustomAnnotationView.m */; };
 		8D24A22E20A1B9BA00F0740D /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A22C20A1B9BA00F0740D /* CustomCalloutView.m */; };
@@ -137,6 +144,10 @@
 		8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9A20A2DABD00C3157F /* ConnectionController.xib */; };
 		8D2B8BA020A2DACC00C3157F /* MakeMoneyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9E20A2DACC00C3157F /* MakeMoneyController.m */; };
 		8D2B8BA120A2DACC00C3157F /* MakeMoneyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9F20A2DACC00C3157F /* MakeMoneyController.xib */; };
+		8D5B3C3820C0143200773105 /* ServiceListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B3C3620C0143200773105 /* ServiceListController.m */; };
+		8D5B3C3920C0143200773105 /* ServiceListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D5B3C3720C0143200773105 /* ServiceListController.xib */; };
+		8D5B3C3D20C0147A00773105 /* ServiceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B3C3B20C0147A00773105 /* ServiceListCell.m */; };
+		8D5B3C3E20C0147A00773105 /* ServiceListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D5B3C3C20C0147A00773105 /* ServiceListCell.xib */; };
 		8D67602720A408470027CDEE /* ClassificationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67602520A408470027CDEE /* ClassificationsController.m */; };
 		8D67602820A408470027CDEE /* ClassificationsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D67602620A408470027CDEE /* ClassificationsController.xib */; };
 		8D67603620A448CB0027CDEE /* SX.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D67603520A448CB0027CDEE /* SX.plist */; };
@@ -504,6 +515,17 @@
 		72EC1BBC20BDA25200ACC20B /* SendSelectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendSelectCell.m; sourceTree = "<group>"; };
 		72EC1BC020BDB10400ACC20B /* SelectLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLayout.h; sourceTree = "<group>"; };
 		72EC1BC120BDB10400ACC20B /* SelectLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLayout.m; sourceTree = "<group>"; };
+		8D09E17E20BFB49A000F7EBD /* SendTripController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendTripController.h; sourceTree = "<group>"; };
+		8D09E17F20BFB49A000F7EBD /* SendTripController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendTripController.m; sourceTree = "<group>"; };
+		8D09E18020BFB49A000F7EBD /* SendTripController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendTripController.xib; sourceTree = "<group>"; };
+		8D09E18320BFC4B8000F7EBD /* AppointmentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppointmentController.h; sourceTree = "<group>"; };
+		8D09E18420BFC4B8000F7EBD /* AppointmentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppointmentController.m; sourceTree = "<group>"; };
+		8D09E18520BFC4B8000F7EBD /* AppointmentController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppointmentController.xib; sourceTree = "<group>"; };
+		8D09E18C20BFD52E000F7EBD /* ShowtrvalTab.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowtrvalTab.h; sourceTree = "<group>"; };
+		8D09E18D20BFD52E000F7EBD /* ShowtrvalTab.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowtrvalTab.m; sourceTree = "<group>"; };
+		8D09E19920BFDC16000F7EBD /* ShowTrvalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowTrvalCell.h; sourceTree = "<group>"; };
+		8D09E19A20BFDC16000F7EBD /* ShowTrvalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowTrvalCell.m; sourceTree = "<group>"; };
+		8D09E19B20BFDC16000F7EBD /* ShowTrvalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTrvalCell.xib; sourceTree = "<group>"; };
 		8D24A22920A1B66B00F0740D /* CustomAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
 		8D24A22A20A1B66B00F0740D /* CustomAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
 		8D24A22C20A1B9BA00F0740D /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutView.m; sourceTree = "<group>"; };
@@ -524,6 +546,12 @@
 		8D2B8B9D20A2DACC00C3157F /* MakeMoneyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MakeMoneyController.h; sourceTree = "<group>"; };
 		8D2B8B9E20A2DACC00C3157F /* MakeMoneyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MakeMoneyController.m; sourceTree = "<group>"; };
 		8D2B8B9F20A2DACC00C3157F /* MakeMoneyController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MakeMoneyController.xib; sourceTree = "<group>"; };
+		8D5B3C3520C0143200773105 /* ServiceListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceListController.h; sourceTree = "<group>"; };
+		8D5B3C3620C0143200773105 /* ServiceListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceListController.m; sourceTree = "<group>"; };
+		8D5B3C3720C0143200773105 /* ServiceListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceListController.xib; sourceTree = "<group>"; };
+		8D5B3C3A20C0147A00773105 /* ServiceListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceListCell.h; sourceTree = "<group>"; };
+		8D5B3C3B20C0147A00773105 /* ServiceListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceListCell.m; sourceTree = "<group>"; };
+		8D5B3C3C20C0147A00773105 /* ServiceListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceListCell.xib; sourceTree = "<group>"; };
 		8D67602420A408470027CDEE /* ClassificationsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassificationsController.h; sourceTree = "<group>"; };
 		8D67602520A408470027CDEE /* ClassificationsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassificationsController.m; sourceTree = "<group>"; };
 		8D67602620A408470027CDEE /* ClassificationsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassificationsController.xib; sourceTree = "<group>"; };
@@ -1264,10 +1292,10 @@
 		72EC1B8820BC307E00ACC20B /* ServiceHome */ = {
 			isa = PBXGroup;
 			children = (
+				8D09E18820BFD4F0000F7EBD /* View */,
 				72EC1BB520BC4C8700ACC20B /* Cell */,
 				72EC1B8920BC307E00ACC20B /* Controller */,
 				72EC1B8D20BC307E00ACC20B /* Models */,
-				72EC1B8E20BC307E00ACC20B /* View */,
 			);
 			path = ServiceHome;
 			sourceTree = "<group>";
@@ -1281,6 +1309,9 @@
 				72EC1BB020BC386D00ACC20B /* SendServiceController.h */,
 				72EC1BB120BC386D00ACC20B /* SendServiceController.m */,
 				72EC1BB220BC386D00ACC20B /* SendServiceController.xib */,
+				8D5B3C3520C0143200773105 /* ServiceListController.h */,
+				8D5B3C3620C0143200773105 /* ServiceListController.m */,
+				8D5B3C3720C0143200773105 /* ServiceListController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1290,13 +1321,6 @@
 			children = (
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		72EC1B8E20BC307E00ACC20B /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		72EC1B8F20BC307E00ACC20B /* ServiceStation */ = {
@@ -1353,6 +1377,12 @@
 				723F4FA320BEDE6000AF8268 /* TrvalInvitController.h */,
 				723F4FA420BEDE6000AF8268 /* TrvalInvitController.m */,
 				723F4FA520BEDE6000AF8268 /* TrvalInvitController.xib */,
+				8D09E17E20BFB49A000F7EBD /* SendTripController.h */,
+				8D09E17F20BFB49A000F7EBD /* SendTripController.m */,
+				8D09E18020BFB49A000F7EBD /* SendTripController.xib */,
+				8D09E18320BFC4B8000F7EBD /* AppointmentController.h */,
+				8D09E18420BFC4B8000F7EBD /* AppointmentController.m */,
+				8D09E18520BFC4B8000F7EBD /* AppointmentController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1383,6 +1413,12 @@
 				72EC1BB820BC4CA100ACC20B /* SendServiceCell.xib */,
 				72EC1BBB20BDA25200ACC20B /* SendSelectCell.h */,
 				72EC1BBC20BDA25200ACC20B /* SendSelectCell.m */,
+				8D09E19920BFDC16000F7EBD /* ShowTrvalCell.h */,
+				8D09E19A20BFDC16000F7EBD /* ShowTrvalCell.m */,
+				8D09E19B20BFDC16000F7EBD /* ShowTrvalCell.xib */,
+				8D5B3C3A20C0147A00773105 /* ServiceListCell.h */,
+				8D5B3C3B20C0147A00773105 /* ServiceListCell.m */,
+				8D5B3C3C20C0147A00773105 /* ServiceListCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1394,6 +1430,15 @@
 				C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8D09E18820BFD4F0000F7EBD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8D09E18C20BFD52E000F7EBD /* ShowtrvalTab.h */,
+				8D09E18D20BFD52E000F7EBD /* ShowtrvalTab.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		8D24A22820A1B64400F0740D /* map */ = {
@@ -2319,6 +2364,7 @@
 				CE5C280520B90473006A8332 /* BiddInfoCell.xib in Resources */,
 				72EC1B6C20B8475100ACC20B /* ShowtreaureCell.xib in Resources */,
 				CEBEDD8820B17ED1000F9EE4 /* BidderController.xib in Resources */,
+				8D5B3C3E20C0147A00773105 /* ServiceListCell.xib in Resources */,
 				CE0BA61B209D6197004C3C33 /* FoundController.xib in Resources */,
 				727418F120B2DDAC001D6BE1 /* ChangeListController.xib in Resources */,
 				720263F620B5015500382B2F /* TZImagePickerController.bundle in Resources */,
@@ -2343,6 +2389,7 @@
 				8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */,
 				8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */,
 				8D24A23720A1D5BF00F0740D /* FirstTanView.xib in Resources */,
+				8D09E19D20BFDC16000F7EBD /* ShowTrvalCell.xib in Resources */,
 				727418DA20B290AE001D6BE1 /* PlayPoductController.xib in Resources */,
 				CE97DC0820B5B1CA003E46BD /* BidManageController.xib in Resources */,
 				723D376820ABDA62003FD4DF /* ShowResumeCell.xib in Resources */,
@@ -2351,8 +2398,10 @@
 				727418EC20B2AAB9001D6BE1 /* ChangeCell.xib in Resources */,
 				727418C620B17E78001D6BE1 /* ChangePlayController.xib in Resources */,
 				CE5C281720B91B47006A8332 /* WinnerInfoHeadView.xib in Resources */,
+				8D09E18220BFB49A000F7EBD /* SendTripController.xib in Resources */,
 				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
 				CE5C281C20B94D84006A8332 /* BidManagerCell.xib in Resources */,
+				8D09E18720BFC4B8000F7EBD /* AppointmentController.xib in Resources */,
 				CEBEDD8320B17ED1000F9EE4 /* MarginCell.xib in Resources */,
 				CE03EDF220B44FB000F07D78 /* FirstTableViewCell.xib in Resources */,
 				CE97DBFB20B5AE9F003E46BD /* ReleaseTenderAdditionalCell.xib in Resources */,
@@ -2375,6 +2424,7 @@
 				CE0BA608209D60C3004C3C33 /* MessageController.xib in Resources */,
 				CE5C283020B9733A006A8332 /* ConsultativeNegotiationCell.xib in Resources */,
 				8D67603620A448CB0027CDEE /* SX.plist in Resources */,
+				8D5B3C3920C0143200773105 /* ServiceListController.xib in Resources */,
 				8DA4990E20A7063E00968F86 /* ResumeCell.xib in Resources */,
 				727418DF20B290BF001D6BE1 /* EnthusiastsControll.xib in Resources */,
 				72EC1BAC20BC34AA00ACC20B /* TravalController.xib in Resources */,
@@ -2492,6 +2542,7 @@
 				723F4FA620BEDE6000AF8268 /* TrvalInvitController.m in Sources */,
 				7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */,
 				CEBEDD9920B17F40000F9EE4 /* BulidTeamController.m in Sources */,
+				8D5B3C3D20C0147A00773105 /* ServiceListCell.m in Sources */,
 				723D376120ABBEB4003FD4DF /* ShowResumeTab.m in Sources */,
 				8DD48CCB20A811EA00D6D1E6 /* NSData+SDDataCache.m in Sources */,
 				722D253B20AA76D400AB3863 /* JFCityViewController.m in Sources */,
@@ -2541,6 +2592,7 @@
 				8DD48CDC20A8202800D6D1E6 /* ResumeMo.m in Sources */,
 				8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */,
 				CE03EDFC20B4595600F07D78 /* FirstCustomButton.m in Sources */,
+				8D09E18120BFB49A000F7EBD /* SendTripController.m in Sources */,
 				CE0BA577209D5004004C3C33 /* main.m in Sources */,
 				7294185920AD120E0054B71D /* SearchLayout.m in Sources */,
 				720263FB20B5015500382B2F /* TZPhotoPreviewController.m in Sources */,
@@ -2571,6 +2623,7 @@
 				722D253A20AA76D400AB3863 /* JFCityTableViewCell.m in Sources */,
 				CE0BA5DE209D5E9B004C3C33 /* YTDataPacket.m in Sources */,
 				CEBEDD8A20B17ED1000F9EE4 /* BidderSectionHeadV.m in Sources */,
+				8D09E18620BFC4B8000F7EBD /* AppointmentController.m in Sources */,
 				720263F720B5015500382B2F /* TZImagePickerController.m in Sources */,
 				727418C020B17536001D6BE1 /* CustomTabr.m in Sources */,
 				8DD48CD120A811EA00D6D1E6 /* SDCycleScrollView.m in Sources */,
@@ -2593,6 +2646,7 @@
 				72EC1B7720BA9F7B00ACC20B /* PlayEditController.m in Sources */,
 				720263F520B5015500382B2F /* TZImageManager.m in Sources */,
 				CE0BA5BA209D5E6B004C3C33 /* NSDate+Extend.m in Sources */,
+				8D5B3C3820C0143200773105 /* ServiceListController.m in Sources */,
 				72EC1B9720BC307E00ACC20B /* ServiceHomeController.m in Sources */,
 				CEBEDD9420B17EDA000F9EE4 /* BaseMakeMoneyTabController.m in Sources */,
 				CE0BA636209D68A3004C3C33 /* YSLoginController.m in Sources */,
@@ -2613,6 +2667,7 @@
 				72EC1B7220BA984400ACC20B /* PlayDouctCell.m in Sources */,
 				727418F020B2DDAC001D6BE1 /* ChangeListController.m in Sources */,
 				CE0BA61A209D6197004C3C33 /* FoundController.m in Sources */,
+				8D09E19C20BFDC16000F7EBD /* ShowTrvalCell.m in Sources */,
 				722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */,
 				727418D920B290AE001D6BE1 /* PlayPoductController.m in Sources */,
 				CE03EDF120B44FB000F07D78 /* FirstTableViewCell.m in Sources */,
@@ -2621,6 +2676,7 @@
 				72EC1B6320B8357400ACC20B /* ShowCardCell.m in Sources */,
 				72EC1BA120BC347D00ACC20B /* ProfileServiceController.m in Sources */,
 				CE5C280420B90473006A8332 /* BiddInfoCell.m in Sources */,
+				8D09E18E20BFD52E000F7EBD /* ShowtrvalTab.m in Sources */,
 				CE0BA607209D60C3004C3C33 /* MessageController.m in Sources */,
 				CE0BA5E8209D5E9B004C3C33 /* GlobalManager.m in Sources */,
 				72EC1BB320BC386D00ACC20B /* SendServiceController.m in Sources */,

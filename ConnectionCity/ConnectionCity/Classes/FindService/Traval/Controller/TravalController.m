@@ -14,6 +14,7 @@
 {
     UIButton * _tmpBtn;
 }
+@property (weak, nonatomic) IBOutlet UIButton *btn_PYYY;
 @property (nonatomic,strong)TrvalTrip * trval;
 @property (weak, nonatomic) IBOutlet UIButton *btn_travl;
 @property (weak, nonatomic) IBOutlet UIButton *btn_invit;
@@ -33,7 +34,20 @@
     [YTAlertUtil showTempInfo:@"筛选"];
 }
 - (IBAction)send_invit:(UIButton *)sender {
-    [self.navigationController pushViewController:[super rotateClass:@"TrvalInvitController"] animated:YES];
+    NSString * str = @"";
+    if ([sender.titleLabel.text isEqualToString:@"发布陪游"]) {
+        str = @"SendTripController";
+    } else {
+        str = @"TrvalInvitController";
+    }
+    [self.navigationController pushViewController:[super rotateClass:str] animated:YES];
+}
+//城市更改
+-(void)CityClick{
+    [YTAlertUtil showTempInfo:@"城市更改"];
+}
+-(void)back{
+    [self.tabBarController.navigationController popViewControllerAnimated:YES];
 }
 //添加UI
 -(void)setUI{
@@ -43,7 +57,23 @@
     TrvalCell * cell = [[NSBundle mainBundle] loadNibNamed:@"TrvalCell" owner:nil options:nil][1];
     self.tab_Bottom.tableHeaderView = cell;
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SearchClick) image:@"" title:@"筛选" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
-    [self.view addSubview:self.trval];
+    [self.view_tab addSubview:self.trval];
+    [self initLeftBarButton];
+}
+-(void)initLeftBarButton{
+    //为导航栏添加右侧按钮1
+    UIBarButtonItem * left1 = [UIBarButtonItem itemWithRectTarget:self action:@selector(back) image:@"return-f" title:@"" withRect:CGRectMake(0, 0, 10, 10)];
+    UIButton*btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(0, 0, 30, 30);
+    btn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [btn setTitle:@"苏州市" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(CityClick) forControlEvents:UIControlEventTouchUpInside];
+    [btn setImage:[UIImage imageNamed:@"s-xiala"] forState:UIControlStateNormal];
+    btn.imageEdgeInsets = UIEdgeInsetsMake(0, 40, -7, 0);
+    btn.titleEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
+    UIBarButtonItem *right2 = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    NSArray *  arr = @[left1,right2];
+    self.navigationItem.leftBarButtonItems = arr;
 }
 #pragma mark ---- UITableviewDelegate------
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -62,11 +92,14 @@
     if (sender.tag==1) {
         self.btn_invit.selected = NO;
         self.btn_invit.layer.borderColor = [UIColor clearColor].CGColor;
-        self.view_tab.hidden = YES;
+        self.tab_Bottom.hidden = YES;
         self.trval.hidden = NO;
+        [self.btn_PYYY setTitle:@"发布陪游" forState:UIControlStateNormal];
     }else{
-        self.view_tab.hidden = NO;
+        self.tab_Bottom.hidden = NO;
         self.trval.hidden = YES;
+        [self.btn_PYYY setTitle:@"发布邀约" forState:UIControlStateNormal];
+
     }
     if (_tmpBtn == nil){
         sender.selected = YES;
@@ -87,7 +120,7 @@
 }
 -(TrvalTrip *)trval{
     if (!_trval) {
-        _trval = [[TrvalTrip alloc] initWithFrame:CGRectMake(10, 70, kScreenWidth-20, kScreenHeight-195)];
+        _trval = [[TrvalTrip alloc] initWithFrame:CGRectMake(0, 0, self.view_tab.width, self.view_tab.height-185) withControl:self];
         _trval.hidden = YES;
     }
     return _trval;

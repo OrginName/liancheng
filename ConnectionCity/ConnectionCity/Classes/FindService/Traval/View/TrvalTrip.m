@@ -8,13 +8,16 @@
 
 #import "TrvalTrip.h"
 #import "TrvalTripCell.h"
+#import "AppointmentController.h"
 @interface TrvalTrip()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic,strong) UICollectionView * bollec_bottom;
 @property (nonatomic,strong)TrvalTripLayout * flowLyout;
+@property (nonatomic,strong)UIViewController * control;
 @end
 @implementation TrvalTrip
--(instancetype)initWithFrame:(CGRect)frame{
+-(instancetype)initWithFrame:(CGRect)frame withControl:(UIViewController *)control{
     if (self = [super initWithFrame:frame]) {
+        self.control = control;
         [self addSubview:self.bollec_bottom];
         [self.bollec_bottom registerNib:[UINib nibWithNibName:@"TrvalTripCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"TripCell"];
     }
@@ -31,6 +34,9 @@
     TrvalTripCell * cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"TripCell" forIndexPath:indexPath];
     cell.contentView.backgroundColor = [UIColor clearColor];
     return cell;
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [self.control.navigationController pushViewController:[AppointmentController new] animated:YES];
 }
 -(UICollectionView *)bollec_bottom{
     if (!_bollec_bottom) {
