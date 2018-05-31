@@ -43,6 +43,17 @@
 		723F4FAF20BEE8FF00AF8268 /* TrvalTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FAE20BEE8FF00AF8268 /* TrvalTrip.m */; };
 		723F4FB320BEEA8D00AF8268 /* TrvalTripCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FB120BEEA8D00AF8268 /* TrvalTripCell.m */; };
 		723F4FB420BEEA8D00AF8268 /* TrvalTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723F4FB220BEEA8D00AF8268 /* TrvalTripCell.xib */; };
+		723F4FB720C0316600AF8268 /* FriendCirleTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FB620C0316600AF8268 /* FriendCirleTab.m */; };
+		723F4FBC20C0409700AF8268 /* CircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FBA20C0409700AF8268 /* CircleCell.m */; };
+		723F4FBD20C0409700AF8268 /* CircleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723F4FBB20C0409700AF8268 /* CircleCell.xib */; };
+		723F4FCF20C0528500AF8268 /* MMImageListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FC420C0528400AF8268 /* MMImageListView.m */; };
+		723F4FD020C0528500AF8268 /* MMImagePreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FC620C0528400AF8268 /* MMImagePreviewView.m */; };
+		723F4FD120C0528500AF8268 /* MomentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FC820C0528400AF8268 /* MomentCell.m */; };
+		723F4FD220C0528500AF8268 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FCC20C0528400AF8268 /* Comment.m */; };
+		723F4FD320C0528500AF8268 /* Moment.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FCE20C0528400AF8268 /* Moment.m */; };
+		723F4FD620C055D300AF8268 /* UIView+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FD520C055D300AF8268 /* UIView+Geometry.m */; };
+		723F4FD920C0572100AF8268 /* MLLabelUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FD820C0572100AF8268 /* MLLabelUtil.m */; };
+		723F4FDC20C0578000AF8268 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FDA20C0577F00AF8268 /* Utility.m */; };
 		7274188020B13CB6001D6BE1 /* MLMSegmentHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */; };
 		7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187C20B13CB6001D6BE1 /* MLMSegmentPage.m */; };
 		7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187F20B13CB6001D6BE1 /* UIView+ViewController.m */; };
@@ -381,6 +392,28 @@
 		723F4FB020BEEA8D00AF8268 /* TrvalTripCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrvalTripCell.h; sourceTree = "<group>"; };
 		723F4FB120BEEA8D00AF8268 /* TrvalTripCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrvalTripCell.m; sourceTree = "<group>"; };
 		723F4FB220BEEA8D00AF8268 /* TrvalTripCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrvalTripCell.xib; sourceTree = "<group>"; };
+		723F4FB520C0316600AF8268 /* FriendCirleTab.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendCirleTab.h; sourceTree = "<group>"; };
+		723F4FB620C0316600AF8268 /* FriendCirleTab.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendCirleTab.m; sourceTree = "<group>"; };
+		723F4FB920C0409700AF8268 /* CircleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleCell.h; sourceTree = "<group>"; };
+		723F4FBA20C0409700AF8268 /* CircleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleCell.m; sourceTree = "<group>"; };
+		723F4FBB20C0409700AF8268 /* CircleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircleCell.xib; sourceTree = "<group>"; };
+		723F4FC320C0528400AF8268 /* MMImageListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImageListView.h; sourceTree = "<group>"; };
+		723F4FC420C0528400AF8268 /* MMImageListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMImageListView.m; sourceTree = "<group>"; };
+		723F4FC520C0528400AF8268 /* MMImagePreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImagePreviewView.h; sourceTree = "<group>"; };
+		723F4FC620C0528400AF8268 /* MMImagePreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMImagePreviewView.m; sourceTree = "<group>"; };
+		723F4FC720C0528400AF8268 /* MomentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentCell.h; sourceTree = "<group>"; };
+		723F4FC820C0528400AF8268 /* MomentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentCell.m; sourceTree = "<group>"; };
+		723F4FC920C0528400AF8268 /* MomentKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentKit.h; sourceTree = "<group>"; };
+		723F4FCB20C0528400AF8268 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		723F4FCC20C0528400AF8268 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		723F4FCD20C0528400AF8268 /* Moment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Moment.h; sourceTree = "<group>"; };
+		723F4FCE20C0528400AF8268 /* Moment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Moment.m; sourceTree = "<group>"; };
+		723F4FD420C055D200AF8268 /* UIView+Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Geometry.h"; sourceTree = "<group>"; };
+		723F4FD520C055D300AF8268 /* UIView+Geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Geometry.m"; sourceTree = "<group>"; };
+		723F4FD720C0572000AF8268 /* MLLabelUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLLabelUtil.h; sourceTree = "<group>"; };
+		723F4FD820C0572100AF8268 /* MLLabelUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLLabelUtil.m; sourceTree = "<group>"; };
+		723F4FDA20C0577F00AF8268 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		723F4FDB20C0577F00AF8268 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		7274187920B13CB6001D6BE1 /* MLMSegmentHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentHead.h; sourceTree = "<group>"; };
 		7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLMSegmentHead.m; sourceTree = "<group>"; };
 		7274187B20B13CB6001D6BE1 /* MLMSegmentPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentPage.h; sourceTree = "<group>"; };
@@ -931,6 +964,58 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		723F4FB820C0408300AF8268 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				723F4FB920C0409700AF8268 /* CircleCell.h */,
+				723F4FBA20C0409700AF8268 /* CircleCell.m */,
+				723F4FBB20C0409700AF8268 /* CircleCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		723F4FC120C0527300AF8268 /* FiendPicTxt */ = {
+			isa = PBXGroup;
+			children = (
+				723F4FCA20C0528400AF8268 /* Model */,
+				723F4FC220C0528400AF8268 /* View */,
+				723F4FB520C0316600AF8268 /* FriendCirleTab.h */,
+				723F4FB620C0316600AF8268 /* FriendCirleTab.m */,
+			);
+			path = FiendPicTxt;
+			sourceTree = "<group>";
+		};
+		723F4FC220C0528400AF8268 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				723F4FC320C0528400AF8268 /* MMImageListView.h */,
+				723F4FC420C0528400AF8268 /* MMImageListView.m */,
+				723F4FC520C0528400AF8268 /* MMImagePreviewView.h */,
+				723F4FC620C0528400AF8268 /* MMImagePreviewView.m */,
+				723F4FC720C0528400AF8268 /* MomentCell.h */,
+				723F4FC820C0528400AF8268 /* MomentCell.m */,
+				723F4FD720C0572000AF8268 /* MLLabelUtil.h */,
+				723F4FD820C0572100AF8268 /* MLLabelUtil.m */,
+				723F4FC920C0528400AF8268 /* MomentKit.h */,
+				723F4FDB20C0577F00AF8268 /* Utility.h */,
+				723F4FDA20C0577F00AF8268 /* Utility.m */,
+				723F4FD420C055D200AF8268 /* UIView+Geometry.h */,
+				723F4FD520C055D300AF8268 /* UIView+Geometry.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		723F4FCA20C0528400AF8268 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				723F4FCB20C0528400AF8268 /* Comment.h */,
+				723F4FCC20C0528400AF8268 /* Comment.m */,
+				723F4FCD20C0528400AF8268 /* Moment.h */,
+				723F4FCE20C0528400AF8268 /* Moment.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7274187820B13CB6001D6BE1 /* MLMSegmentPageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1224,6 +1309,7 @@
 		72EC1B8020BC307E00ACC20B /* Circle */ = {
 			isa = PBXGroup;
 			children = (
+				723F4FB820C0408300AF8268 /* Cell */,
 				72EC1B8120BC307E00ACC20B /* Controller */,
 				72EC1B8220BC307E00ACC20B /* Models */,
 				72EC1B8320BC307E00ACC20B /* View */,
@@ -1251,6 +1337,7 @@
 		72EC1B8320BC307E00ACC20B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				723F4FC120C0527300AF8268 /* FiendPicTxt */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2395,6 +2482,7 @@
 				723D376820ABDA62003FD4DF /* ShowResumeCell.xib in Resources */,
 				727418CD20B17F4B001D6BE1 /* ChangeHeadView.xib in Resources */,
 				72EC1B9D20BC346700ACC20B /* FriendCircleController.xib in Resources */,
+				723F4FBD20C0409700AF8268 /* CircleCell.xib in Resources */,
 				727418EC20B2AAB9001D6BE1 /* ChangeCell.xib in Resources */,
 				727418C620B17E78001D6BE1 /* ChangePlayController.xib in Resources */,
 				CE5C281720B91B47006A8332 /* WinnerInfoHeadView.xib in Resources */,
@@ -2536,6 +2624,7 @@
 				8DD48CD220A811EA00D6D1E6 /* UIColor+MyColor.m in Sources */,
 				722D253820AA76D400AB3863 /* JFCityCollectionViewCell.m in Sources */,
 				CE0BA5BB209D5E6B004C3C33 /* UIBarButtonItem+Extension.m in Sources */,
+				723F4FB720C0316600AF8268 /* FriendCirleTab.m in Sources */,
 				72EC1B9C20BC346700ACC20B /* FriendCircleController.m in Sources */,
 				CEBEDD9120B17ED1000F9EE4 /* FootprintController.m in Sources */,
 				CEBEDD8120B17ED1000F9EE4 /* MarginController.m in Sources */,
@@ -2551,6 +2640,7 @@
 				8DD48CCF20A811EA00D6D1E6 /* TAPageControl.m in Sources */,
 				CE0BA5E7209D5E9B004C3C33 /* YSTools.m in Sources */,
 				CEBEDD8520B17ED1000F9EE4 /* MarginSectionHeadV.m in Sources */,
+				723F4FD320C0528500AF8268 /* Moment.m in Sources */,
 				8DD48CDF20A828F200D6D1E6 /* CustomtextView.m in Sources */,
 				720263FD20B5015500382B2F /* TZVideoPlayerController.m in Sources */,
 				72EC1B5B20B7027000ACC20B /* SwapListController.m in Sources */,
@@ -2569,14 +2659,17 @@
 				727418DE20B290BF001D6BE1 /* EnthusiastsControll.m in Sources */,
 				727418E720B291B6001D6BE1 /* BaseChangeTabController.m in Sources */,
 				720263F020B5015500382B2F /* NSBundle+TZImagePicker.m in Sources */,
+				723F4FBC20C0409700AF8268 /* CircleCell.m in Sources */,
 				8D2B8B9B20A2DABD00C3157F /* ConnectionController.m in Sources */,
 				CE0BA5B6209D5E6B004C3C33 /* NSObject+YTGetObject.m in Sources */,
 				8D2B8B9120A2DA9F00C3157F /* AbilityHomeController.m in Sources */,
+				723F4FD020C0528500AF8268 /* MMImagePreviewView.m in Sources */,
 				CE5C283820B99441006A8332 /* PayOrderController.m in Sources */,
 				722D254020AAA64C00AB3863 /* ShowResumeController.m in Sources */,
 				727418E320B290D1001D6BE1 /* SwapController.m in Sources */,
 				8DD48CE820A8367100D6D1E6 /* GuardEduController.m in Sources */,
 				72BAB43620B03B3F00496D29 /* YSSetUpBirthdayView.m in Sources */,
+				723F4FD220C0528500AF8268 /* Comment.m in Sources */,
 				8DD48CD320A811EA00D6D1E6 /* UIView+SDExtension.m in Sources */,
 				72EC1B6720B8465D00ACC20B /* ShowTreaueTab.m in Sources */,
 				CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */,
@@ -2588,6 +2681,7 @@
 				8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */,
 				CE5C282A20B972B9006A8332 /* ConsultativeNegotiationController.m in Sources */,
 				CE0BA5B4209D5E6B004C3C33 /* UIFont+YTInchFit.m in Sources */,
+				723F4FDC20C0578000AF8268 /* Utility.m in Sources */,
 				727418C520B17E78001D6BE1 /* ChangePlayController.m in Sources */,
 				8DD48CDC20A8202800D6D1E6 /* ResumeMo.m in Sources */,
 				8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */,
@@ -2600,6 +2694,7 @@
 				727418D120B1A058001D6BE1 /* FirstController.m in Sources */,
 				727418FC20B3C282001D6BE1 /* SwapHomeCell.m in Sources */,
 				729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */,
+				723F4FD120C0528500AF8268 /* MomentCell.m in Sources */,
 				8DD48CD720A81B9100D6D1E6 /* GuardCollController.m in Sources */,
 				727418CB20B17F3D001D6BE1 /* ChangeHeadView.m in Sources */,
 				720263F820B5015500382B2F /* TZLocationManager.m in Sources */,
@@ -2646,6 +2741,7 @@
 				72EC1B7720BA9F7B00ACC20B /* PlayEditController.m in Sources */,
 				720263F520B5015500382B2F /* TZImageManager.m in Sources */,
 				CE0BA5BA209D5E6B004C3C33 /* NSDate+Extend.m in Sources */,
+				723F4FD920C0572100AF8268 /* MLLabelUtil.m in Sources */,
 				8D5B3C3820C0143200773105 /* ServiceListController.m in Sources */,
 				72EC1B9720BC307E00ACC20B /* ServiceHomeController.m in Sources */,
 				CEBEDD9420B17EDA000F9EE4 /* BaseMakeMoneyTabController.m in Sources */,
@@ -2659,6 +2755,7 @@
 				8D24A23220A1CB8200F0740D /* FirstTanView.m in Sources */,
 				7274188020B13CB6001D6BE1 /* MLMSegmentHead.m in Sources */,
 				CE0BA5B5209D5E6B004C3C33 /* UIViewController+BackButtonHandler.m in Sources */,
+				723F4FCF20C0528500AF8268 /* MMImageListView.m in Sources */,
 				723B9F1320B4195B00AD919B /* PhotoSelect.m in Sources */,
 				CEBEDD8720B17ED1000F9EE4 /* BidderController.m in Sources */,
 				72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */,
@@ -2678,6 +2775,7 @@
 				CE5C280420B90473006A8332 /* BiddInfoCell.m in Sources */,
 				8D09E18E20BFD52E000F7EBD /* ShowtrvalTab.m in Sources */,
 				CE0BA607209D60C3004C3C33 /* MessageController.m in Sources */,
+				723F4FD620C055D300AF8268 /* UIView+Geometry.m in Sources */,
 				CE0BA5E8209D5E9B004C3C33 /* GlobalManager.m in Sources */,
 				72EC1BB320BC386D00ACC20B /* SendServiceController.m in Sources */,
 				7274188620B1474B001D6BE1 /* ConnectionCell.m in Sources */,
