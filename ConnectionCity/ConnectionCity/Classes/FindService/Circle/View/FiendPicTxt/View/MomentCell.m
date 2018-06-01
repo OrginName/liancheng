@@ -9,7 +9,7 @@
 #import "MomentCell.h"
 #import "UIButton+ImageTitleSpacing.h"
 #import "MomentKit.h"
-#import <MLLinkLabel.h>
+#import <MLLabel/MLLinkLabel.h>
 #import "MLLabelUtil.h"
 #import "UIView+Geometry.h"
 #import "Utility.h"
@@ -79,7 +79,6 @@ CGFloat maxLimitHeight = 0;
    
     //点赞
     _praiseBtn = [[UIButton alloc] init];
-    _praiseBtn = [[UIButton alloc] init];
     _praiseBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
     _praiseBtn.backgroundColor = [UIColor clearColor];
     [_praiseBtn setTitle:@"点赞(222)" forState:UIControlStateNormal];
@@ -87,7 +86,6 @@ CGFloat maxLimitHeight = 0;
     [_praiseBtn addTarget:self action:@selector(priseMoment:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_praiseBtn];
     //评论
-    _commentBtn = [[UIButton alloc] init];
     _commentBtn = [[UIButton alloc] init];
     _commentBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
     _commentBtn.backgroundColor = [UIColor clearColor];
@@ -97,7 +95,6 @@ CGFloat maxLimitHeight = 0;
     [self.contentView addSubview:_commentBtn];
  
     //分享
-    _shareBtn = [[UIButton alloc] init];
     _shareBtn = [[UIButton alloc] init];
     _shareBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
     _shareBtn.backgroundColor = [UIColor clearColor];
@@ -109,7 +106,6 @@ CGFloat maxLimitHeight = 0;
     [self.contentView addSubview:_shareBtn];
     
     //分享
-    _letterBtn = [[UIButton alloc] init];
     _letterBtn = [[UIButton alloc] init];
     _letterBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
     _letterBtn.backgroundColor = [UIColor clearColor];

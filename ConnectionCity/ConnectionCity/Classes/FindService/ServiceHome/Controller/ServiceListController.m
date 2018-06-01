@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationItem.title = @"服务约单";
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;

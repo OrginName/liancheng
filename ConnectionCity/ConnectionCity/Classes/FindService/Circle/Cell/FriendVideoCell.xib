@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoCell" id="gTV-IL-0wX" customClass="FriendVideoCell">
+            <rect key="frame" x="0.0" y="0.0" width="218" height="313"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="218" height="313"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="Qfq-EI-BbG">
+                        <rect key="frame" x="0.0" y="0.0" width="218" height="313"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大海的孩子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bch-W5-zY8">
+                        <rect key="frame" x="40" y="278" width="87" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="button" translatesAutoresizingMaskIntoConstraints="NO" id="LM5-Zh-tQt">
+                        <rect key="frame" x="10" y="273" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="4vz-5U-bTw"/>
+                            <constraint firstAttribute="width" constant="25" id="oKk-qp-v0V"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <real key="value" value="12.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PF5-Y3-R2A">
+                        <rect key="frame" x="158" y="278" width="50" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="115赞" image="s-praise"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一个人的自由行，上海自由行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhF-tU-1DA">
+                        <rect key="frame" x="10" y="252" width="198" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Qfq-EI-BbG" secondAttribute="trailing" id="4oe-zT-NAm"/>
+                <constraint firstItem="Bch-W5-zY8" firstAttribute="centerY" secondItem="LM5-Zh-tQt" secondAttribute="centerY" id="6Pi-gg-1td"/>
+                <constraint firstItem="PF5-Y3-R2A" firstAttribute="centerY" secondItem="Bch-W5-zY8" secondAttribute="centerY" id="9Q1-Gj-Gh7"/>
+                <constraint firstItem="LM5-Zh-tQt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="9xT-IH-IJV"/>
+                <constraint firstAttribute="bottom" secondItem="LM5-Zh-tQt" secondAttribute="bottom" constant="15" id="Avf-um-K7a"/>
+                <constraint firstItem="XhF-tU-1DA" firstAttribute="leading" secondItem="LM5-Zh-tQt" secondAttribute="leading" id="JkT-dN-Om5"/>
+                <constraint firstItem="Bch-W5-zY8" firstAttribute="width" secondItem="Qfq-EI-BbG" secondAttribute="width" multiplier="0.4" id="MWN-yB-1au"/>
+                <constraint firstAttribute="bottom" secondItem="Qfq-EI-BbG" secondAttribute="bottom" id="fpt-1a-U2w"/>
+                <constraint firstItem="Qfq-EI-BbG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="gTD-Gs-cTg"/>
+                <constraint firstItem="LM5-Zh-tQt" firstAttribute="top" secondItem="XhF-tU-1DA" secondAttribute="bottom" constant="5" id="hbn-sN-bzV"/>
+                <constraint firstAttribute="trailing" secondItem="PF5-Y3-R2A" secondAttribute="trailing" constant="10" id="jaY-BQ-YB3"/>
+                <constraint firstItem="XhF-tU-1DA" firstAttribute="trailing" secondItem="PF5-Y3-R2A" secondAttribute="trailing" id="qT8-if-fTy"/>
+                <constraint firstItem="Qfq-EI-BbG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="sU1-7D-jsi"/>
+                <constraint firstItem="Bch-W5-zY8" firstAttribute="leading" secondItem="LM5-Zh-tQt" secondAttribute="trailing" constant="5" id="zcG-Do-L4d"/>
+            </constraints>
+            <size key="customSize" width="218" height="313"/>
+            <point key="canvasLocation" x="0.0" y="59.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="1" width="639" height="512"/>
+        <image name="button" width="51" height="51"/>
+        <image name="s-praise" width="16" height="16"/>
+    </resources>
+</document>

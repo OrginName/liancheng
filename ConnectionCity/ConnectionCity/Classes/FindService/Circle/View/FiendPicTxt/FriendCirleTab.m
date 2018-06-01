@@ -10,13 +10,16 @@
 #import "MomentCell.h"
 #import "Moment.h"
 #import "Comment.h"
+#import "MomentDetailController.h"
 @interface FriendCirleTab()<UITableViewDelegate,UITableViewDataSource,MomentCellDelegate>
 @property (nonatomic,strong)UIImageView * headImage;
 @property (nonatomic,strong) NSMutableArray *momentList;
+@property (nonatomic,strong) UIViewController * controller;
 @end
 @implementation FriendCirleTab
 -(instancetype)initWithFrame:(CGRect)frame withControll:(UIViewController *)control{
     if (self = [super initWithFrame:frame]) {
+        self.controller = control;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.delegate = self;
         self.dataSource = self;
@@ -101,7 +104,11 @@
     cell.delegate = self;
     return cell;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    MomentDetailController * mom = [MomentDetailController new];
+    mom.receiveMo = self.momentList[indexPath.row];
+    [self.controller.navigationController pushViewController:mom animated:YES];
+}
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -160,7 +167,8 @@
         _headImage.image = [UIImage imageNamed:@"1"];
         UIImageView * image1 = [[UIImageView alloc] initWithFrame:CGRectMake(_headImage.width-70, _headImage.height-25, 50, 50)];
         image1.image = [UIImage imageNamed:@"1"];
-        image1.layer.cornerRadius = 5;
+        image1.layer.cornerRadius = 25;
+        image1.layer.masksToBounds = YES;
         [_headImage addSubview:image1];
         UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(image1.x-40, image1.y, 100, 25)];
         lab.text = @"菲菲二";

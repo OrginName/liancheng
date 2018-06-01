@@ -17,9 +17,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab_proAndCollW;//大学And公司赋值
 @property (weak, nonatomic) IBOutlet UILabel *lab_proW;//描述赋值
 @property (weak, nonatomic) IBOutlet UILabel *lab_eduAndWork;//教育AND工作标题
-@property (weak, nonatomic) IBOutlet UILabel *lab_SalW;//薪资
+@property (weak, nonatomic) IBOutlet UITextField *txt_salWay;//薪资
 @property (weak, nonatomic) IBOutlet UILabel *lab_MyselfProW;//自我介绍
 @property (nonatomic,strong)ResumeMo * Mo;
+@property (weak, nonatomic) IBOutlet UILabel *lab_salaryAndJY;
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView
                             indexPath:(NSIndexPath *)indexPath withCollArr:(NSMutableArray * )arr withEduArr:(NSMutableArray * )EduArr;
 @end

@@ -10,7 +10,7 @@
 #import "Moment.h"
 #import "Comment.h"
 #import "MMImageListView.h"
-#import <MLLinkLabel.h>
+#import <MLLabel/MLLinkLabel.h>
 //#### 动态
 
 @protocol MomentCellDelegate;

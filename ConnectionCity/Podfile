@@ -12,5 +12,6 @@ pod 'AMapSearch'
 pod 'AMapLocation'
 pod 'FMDB'
 pod 'TZImagePickerController'
+pod 'MLLabel'
 end
 

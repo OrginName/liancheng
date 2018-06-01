@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -66,14 +66,15 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="lab_MyselfProW" destination="lgR-NB-e91" id="rNs-1M-tiy"/>
-                <outlet property="lab_SalW" destination="7ic-5O-Nuq" id="veK-Qf-SIp"/>
                 <outlet property="lab_comAndCollege" destination="jUg-oI-1H9" id="NWx-su-0RM"/>
                 <outlet property="lab_pro" destination="lBl-Ug-7o5" id="w5Y-3v-Td7"/>
                 <outlet property="lab_proAndCollW" destination="Y5t-p3-rry" id="73h-Zr-ZOR"/>
                 <outlet property="lab_proOrXL" destination="Ruz-Qy-bN8" id="Pfw-TI-m0Q"/>
                 <outlet property="lab_proW" destination="911-dO-236" id="H5n-2D-36e"/>
+                <outlet property="lab_salaryAndJY" destination="Pgt-2y-FR6" id="YkT-ag-GA5"/>
                 <outlet property="lab_time" destination="zlv-F6-bha" id="P2p-jk-uUn"/>
                 <outlet property="lab_workEdu" destination="CZU-ER-lZo" id="Nm0-ep-8Ik"/>
+                <outlet property="txt_salWay" destination="97u-j9-o4E" id="WKg-7K-6Nt"/>
             </connections>
             <point key="canvasLocation" x="25" y="6"/>
         </tableViewCell>
@@ -103,12 +104,6 @@
                         <color key="textColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20W以下" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ic-5O-Nuq">
-                        <rect key="frame" x="227" y="16.5" width="59" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.7725490196" green="0.7725490196" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arraw-right" translatesAutoresizingMaskIntoConstraints="NO" id="ji6-wY-biQ">
                         <rect key="frame" x="294" y="17.5" width="10" height="15"/>
                         <constraints>
@@ -116,20 +111,28 @@
                             <constraint firstAttribute="width" constant="10" id="rRI-kI-kJv"/>
                         </constraints>
                     </imageView>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择年薪" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97u-j9-o4E">
+                        <rect key="frame" x="210.5" y="0.0" width="75.5" height="49.5"/>
+                        <color key="textColor" red="0.78823529411764703" green="0.78823529411764703" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="7ic-5O-Nuq" firstAttribute="centerY" secondItem="Pgt-2y-FR6" secondAttribute="centerY" id="5uU-vb-D4q"/>
-                    <constraint firstItem="ji6-wY-biQ" firstAttribute="leading" secondItem="7ic-5O-Nuq" secondAttribute="trailing" constant="8" id="F7P-Iu-EEW"/>
+                    <constraint firstAttribute="bottom" secondItem="97u-j9-o4E" secondAttribute="bottom" id="Bhq-Gs-en6"/>
                     <constraint firstItem="ji6-wY-biQ" firstAttribute="trailing" secondItem="dBx-Ct-69D" secondAttribute="trailingMargin" id="LEs-Zp-R0C"/>
+                    <constraint firstItem="ji6-wY-biQ" firstAttribute="leading" secondItem="97u-j9-o4E" secondAttribute="trailing" constant="8" id="WdN-dz-SyC"/>
                     <constraint firstItem="SR1-yt-qF5" firstAttribute="leading" secondItem="dBx-Ct-69D" secondAttribute="leadingMargin" id="XmK-UQ-WQJ"/>
                     <constraint firstItem="Pgt-2y-FR6" firstAttribute="centerY" secondItem="SR1-yt-qF5" secondAttribute="centerY" id="hDe-Fs-ufh"/>
                     <constraint firstItem="Pgt-2y-FR6" firstAttribute="leading" secondItem="SR1-yt-qF5" secondAttribute="trailing" constant="10" id="tgt-cm-gyM"/>
+                    <constraint firstItem="97u-j9-o4E" firstAttribute="top" secondItem="dBx-Ct-69D" secondAttribute="top" id="wlT-Mw-TxM"/>
                     <constraint firstItem="SR1-yt-qF5" firstAttribute="centerY" secondItem="dBx-Ct-69D" secondAttribute="centerY" id="zKc-KY-dm9"/>
                     <constraint firstItem="ji6-wY-biQ" firstAttribute="centerY" secondItem="Pgt-2y-FR6" secondAttribute="centerY" id="zTI-cL-Q7i"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="lab_SalW" destination="7ic-5O-Nuq" id="0Sg-pL-J8n"/>
+                <outlet property="lab_salaryAndJY" destination="Pgt-2y-FR6" id="ozO-ld-jaG"/>
+                <outlet property="txt_salWay" destination="97u-j9-o4E" id="W6Z-6P-Mw8"/>
             </connections>
             <point key="canvasLocation" x="25" y="128"/>
         </tableViewCell>

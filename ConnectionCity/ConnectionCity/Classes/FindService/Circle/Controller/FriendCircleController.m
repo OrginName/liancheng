@@ -7,31 +7,113 @@
 //
 
 #import "FriendCircleController.h"
-
+#import "CustomButton.h"
+#import "FriendCirleTab.h"
+#import "FriendVideo.h"
+#import "FriendMyselfTab.h"
+static NSInteger i;//判断当前返回按钮点击次数
 @interface FriendCircleController ()
-
+{
+    UIButton * _tmpBtn;
+}
+@property (nonatomic,strong)FriendCirleTab * frendTab;
+@property (nonatomic,strong)FriendVideo * frendVedio;
+@property (nonatomic,strong)FriendMyselfTab * frendMyselfTab;
 @end
 
 @implementation FriendCircleController
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+     i=0;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setUI];
+}
+//发布朋友圈
+-(void)SendFriend{
+    [self.navigationController pushViewController:[super rotateClass:@"SendMomentController"] animated:YES];
+}
+- (IBAction)tagSelectClick:(CustomButton *)sender {
+    UIButton * btn = [self.view viewWithTag:1];
+    if (sender.tag!=1) {
+        btn.selected= NO;
+        
+    }
+    if (sender.tag==2) {
+        self.navigationItem.title = @"服务圈视频";
+        self.frendTab.hidden = YES;
+        self.frendVedio.hidden = NO;
+        self.frendMyselfTab.hidden = YES;
+    }else if(sender.tag==3){
+        self.frendTab.hidden = YES;
+        self.frendVedio.hidden = YES;
+        self.frendMyselfTab.hidden = NO;
+        self.navigationItem.title = @"我的";
+    }else{
+        self.navigationItem.title = @"圈子";
+        self.frendTab.hidden = NO;
+        self.frendVedio.hidden = YES;
+        self.frendMyselfTab.hidden = YES;
+    }
+    if (_tmpBtn == nil){
+        sender.selected = YES;
+        _tmpBtn = sender;
+    }
+    if (_tmpBtn !=nil &&_tmpBtn == sender){
+        sender.selected = YES;
+    } else if (_tmpBtn!= sender && _tmpBtn!=nil){
+        _tmpBtn.selected = NO;
+        sender.selected = YES;
+        _tmpBtn = sender;
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)setUI{
+    UIButton * btn = [self.view viewWithTag:1];
+    btn.selected = YES;
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    [self.view addSubview:self.frendTab];
+    [self.view addSubview:self.frendVedio];
+    [self.view addSubview:self.frendMyselfTab];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SendFriend) image:@"" title:@"发布" EdgeInsets:UIEdgeInsetsZero];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+//图文
+-(FriendCirleTab *)frendTab{
+    if (!_frendTab) {
+        _frendTab = [[FriendCirleTab alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth-20, kScreenHeight-134) withControll:self];
+        _frendTab.hidden = NO;
+    }
+    return _frendTab;
 }
-*/
-
+//视频
+-(FriendVideo *)frendVedio{
+    if (!_frendVedio) {
+        _frendVedio = [[FriendVideo alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth-20, kScreenHeight-134) collectionViewLayout:[UICollectionViewFlowLayout new] withController:self];
+        _frendVedio.hidden = YES;
+    }
+    return _frendVedio;
+}
+//我的
+-(FriendMyselfTab *)frendMyselfTab{
+    if (!_frendMyselfTab) {
+        _frendMyselfTab = [[FriendMyselfTab alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth-20, kScreenHeight-134) style:UITableViewStyleGrouped];
+        _frendMyselfTab.hidden = YES;
+    }
+    return _frendMyselfTab;
+}
+-(void)back{
+    if (self.tabBarController.tabBar.hidden) {
+        i++;
+        if (i==1) {
+            self.tabBarController.tabBar.hidden = NO;
+        }else{
+            [self.tabBarController.navigationController popViewControllerAnimated:YES];
+            self.tabBarController.tabBar.selectedItem = 0;
+        }
+    }else{
+        [self.tabBarController.navigationController popViewControllerAnimated:YES];
+    }
+}
 @end

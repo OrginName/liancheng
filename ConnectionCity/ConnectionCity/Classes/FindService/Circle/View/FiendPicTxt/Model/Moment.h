@@ -35,4 +35,6 @@
 // 评论集合
 @property (nonatomic,strong) NSArray *commentList;
 
+@property (nonatomic,assign) CGFloat cellHeight;
+
 @end
