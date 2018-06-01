@@ -160,6 +160,17 @@
 		8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DB42FD320A57D6E00C4EBF8 /* FilterOneController.xib */; };
 		8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB42FD720A57D9900C4EBF8 /* FilterLayout.m */; };
 		8DB42FDC20A57DBC00C4EBF8 /* FilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB42FDA20A57DBC00C4EBF8 /* FilterCell.m */; };
+		8DC17A7620C0E430005D9EE0 /* FriendCirleTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC17A5E20C0E430005D9EE0 /* FriendCirleTab.m */; };
+		8DC17A7720C0E430005D9EE0 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC17A6120C0E430005D9EE0 /* Comment.m */; };
+		8DC17A7820C0E430005D9EE0 /* Moment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC17A6320C0E430005D9EE0 /* Moment.m */; };
+		8DC17A7920C0E430005D9EE0 /* MLLabelUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC17A6620C0E430005D9EE0 /* MLLabelUtil.m */; };
+		8DC17A7A20C0E430005D9EE0 /* MMImageListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC17A6820C0E430005D9EE0 /* MMImageListView.m */; };
+		8DC17A7B20C0E430005D9EE0 /* MMImagePreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC17A6A20C0E430005D9EE0 /* MMImagePreviewView.m */; };
+		8DC17A7C20C0E430005D9EE0 /* MomentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC17A6C20C0E430005D9EE0 /* MomentCell.m */; };
+		8DC17A7D20C0E430005D9EE0 /* UIView+Geometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC17A6F20C0E430005D9EE0 /* UIView+Geometry.m */; };
+		8DC17A7E20C0E430005D9EE0 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC17A7120C0E430005D9EE0 /* Utility.m */; };
+		8DC17A7F20C0E430005D9EE0 /* CircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC17A7420C0E430005D9EE0 /* CircleCell.m */; };
+		8DC17A8020C0E430005D9EE0 /* CircleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DC17A7520C0E430005D9EE0 /* CircleCell.xib */; };
 		8DD48CCB20A811EA00D6D1E6 /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CB920A811EA00D6D1E6 /* NSData+SDDataCache.m */; };
 		8DD48CCC20A811EA00D6D1E6 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CBC20A811EA00D6D1E6 /* TAAbstractDotView.m */; };
 		8DD48CCD20A811EA00D6D1E6 /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CBE20A811EA00D6D1E6 /* TAAnimatedDotView.m */; };
@@ -571,6 +582,28 @@
 		8DB42FD720A57D9900C4EBF8 /* FilterLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterLayout.m; sourceTree = "<group>"; };
 		8DB42FD920A57DBC00C4EBF8 /* FilterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterCell.h; sourceTree = "<group>"; };
 		8DB42FDA20A57DBC00C4EBF8 /* FilterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterCell.m; sourceTree = "<group>"; };
+		8DC17A5D20C0E430005D9EE0 /* FriendCirleTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCirleTab.h; sourceTree = "<group>"; };
+		8DC17A5E20C0E430005D9EE0 /* FriendCirleTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCirleTab.m; sourceTree = "<group>"; };
+		8DC17A6020C0E430005D9EE0 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		8DC17A6120C0E430005D9EE0 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		8DC17A6220C0E430005D9EE0 /* Moment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Moment.h; sourceTree = "<group>"; };
+		8DC17A6320C0E430005D9EE0 /* Moment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Moment.m; sourceTree = "<group>"; };
+		8DC17A6520C0E430005D9EE0 /* MLLabelUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLLabelUtil.h; sourceTree = "<group>"; };
+		8DC17A6620C0E430005D9EE0 /* MLLabelUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLLabelUtil.m; sourceTree = "<group>"; };
+		8DC17A6720C0E430005D9EE0 /* MMImageListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImageListView.h; sourceTree = "<group>"; };
+		8DC17A6820C0E430005D9EE0 /* MMImageListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMImageListView.m; sourceTree = "<group>"; };
+		8DC17A6920C0E430005D9EE0 /* MMImagePreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMImagePreviewView.h; sourceTree = "<group>"; };
+		8DC17A6A20C0E430005D9EE0 /* MMImagePreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMImagePreviewView.m; sourceTree = "<group>"; };
+		8DC17A6B20C0E430005D9EE0 /* MomentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentCell.h; sourceTree = "<group>"; };
+		8DC17A6C20C0E430005D9EE0 /* MomentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomentCell.m; sourceTree = "<group>"; };
+		8DC17A6D20C0E430005D9EE0 /* MomentKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomentKit.h; sourceTree = "<group>"; };
+		8DC17A6E20C0E430005D9EE0 /* UIView+Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Geometry.h"; sourceTree = "<group>"; };
+		8DC17A6F20C0E430005D9EE0 /* UIView+Geometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Geometry.m"; sourceTree = "<group>"; };
+		8DC17A7020C0E430005D9EE0 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		8DC17A7120C0E430005D9EE0 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		8DC17A7320C0E430005D9EE0 /* CircleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleCell.h; sourceTree = "<group>"; };
+		8DC17A7420C0E430005D9EE0 /* CircleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleCell.m; sourceTree = "<group>"; };
+		8DC17A7520C0E430005D9EE0 /* CircleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircleCell.xib; sourceTree = "<group>"; };
 		8DD48CB820A811EA00D6D1E6 /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		8DD48CB920A811EA00D6D1E6 /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
 		8DD48CBB20A811EA00D6D1E6 /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -1224,9 +1257,10 @@
 		72EC1B8020BC307E00ACC20B /* Circle */ = {
 			isa = PBXGroup;
 			children = (
+				8DC17A7220C0E430005D9EE0 /* Cell */,
+				8DC17A5B20C0E430005D9EE0 /* View */,
 				72EC1B8120BC307E00ACC20B /* Controller */,
 				72EC1B8220BC307E00ACC20B /* Models */,
-				72EC1B8320BC307E00ACC20B /* View */,
 			);
 			path = Circle;
 			sourceTree = "<group>";
@@ -1246,13 +1280,6 @@
 			children = (
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		72EC1B8320BC307E00ACC20B /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		72EC1B8420BC307E00ACC20B /* Profile */ = {
@@ -1574,6 +1601,66 @@
 				8DB42FDA20A57DBC00C4EBF8 /* FilterCell.m */,
 			);
 			path = Fliter;
+			sourceTree = "<group>";
+		};
+		8DC17A5B20C0E430005D9EE0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8DC17A5C20C0E430005D9EE0 /* FiendPicTxt */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8DC17A5C20C0E430005D9EE0 /* FiendPicTxt */ = {
+			isa = PBXGroup;
+			children = (
+				8DC17A5D20C0E430005D9EE0 /* FriendCirleTab.h */,
+				8DC17A5E20C0E430005D9EE0 /* FriendCirleTab.m */,
+				8DC17A5F20C0E430005D9EE0 /* Model */,
+				8DC17A6420C0E430005D9EE0 /* View */,
+			);
+			path = FiendPicTxt;
+			sourceTree = "<group>";
+		};
+		8DC17A5F20C0E430005D9EE0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8DC17A6020C0E430005D9EE0 /* Comment.h */,
+				8DC17A6120C0E430005D9EE0 /* Comment.m */,
+				8DC17A6220C0E430005D9EE0 /* Moment.h */,
+				8DC17A6320C0E430005D9EE0 /* Moment.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8DC17A6420C0E430005D9EE0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8DC17A6520C0E430005D9EE0 /* MLLabelUtil.h */,
+				8DC17A6620C0E430005D9EE0 /* MLLabelUtil.m */,
+				8DC17A6720C0E430005D9EE0 /* MMImageListView.h */,
+				8DC17A6820C0E430005D9EE0 /* MMImageListView.m */,
+				8DC17A6920C0E430005D9EE0 /* MMImagePreviewView.h */,
+				8DC17A6A20C0E430005D9EE0 /* MMImagePreviewView.m */,
+				8DC17A6B20C0E430005D9EE0 /* MomentCell.h */,
+				8DC17A6C20C0E430005D9EE0 /* MomentCell.m */,
+				8DC17A6D20C0E430005D9EE0 /* MomentKit.h */,
+				8DC17A6E20C0E430005D9EE0 /* UIView+Geometry.h */,
+				8DC17A6F20C0E430005D9EE0 /* UIView+Geometry.m */,
+				8DC17A7020C0E430005D9EE0 /* Utility.h */,
+				8DC17A7120C0E430005D9EE0 /* Utility.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8DC17A7220C0E430005D9EE0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8DC17A7320C0E430005D9EE0 /* CircleCell.h */,
+				8DC17A7420C0E430005D9EE0 /* CircleCell.m */,
+				8DC17A7520C0E430005D9EE0 /* CircleCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		8DD48CB720A811EA00D6D1E6 /* SDCycleScrollView */ = {
@@ -2395,6 +2482,7 @@
 				723D376820ABDA62003FD4DF /* ShowResumeCell.xib in Resources */,
 				727418CD20B17F4B001D6BE1 /* ChangeHeadView.xib in Resources */,
 				72EC1B9D20BC346700ACC20B /* FriendCircleController.xib in Resources */,
+				8DC17A8020C0E430005D9EE0 /* CircleCell.xib in Resources */,
 				727418EC20B2AAB9001D6BE1 /* ChangeCell.xib in Resources */,
 				727418C620B17E78001D6BE1 /* ChangePlayController.xib in Resources */,
 				CE5C281720B91B47006A8332 /* WinnerInfoHeadView.xib in Resources */,
@@ -2521,6 +2609,7 @@
 				CE0BA5F8209D5EBE004C3C33 /* BaseNavigationController.m in Sources */,
 				CE0BA5E6209D5E9B004C3C33 /* MyPickerView.m in Sources */,
 				CE0BA5F7209D5EBE004C3C33 /* BaseViewController.m in Sources */,
+				8DC17A7E20C0E430005D9EE0 /* Utility.m in Sources */,
 				7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */,
 				CEBEDD8B20B17ED1000F9EE4 /* BountyHostingController.m in Sources */,
 				CE0BA5DD209D5E9B004C3C33 /* YTSystemUtil.m in Sources */,
@@ -2533,9 +2622,11 @@
 				CE03EDED20B43DC400F07D78 /* FootprintTabbleHeadV.m in Sources */,
 				CE0BA614209D6160004C3C33 /* LifeHallController.m in Sources */,
 				CE0BA634209D68A3004C3C33 /* YSRegisterController.m in Sources */,
+				8DC17A7F20C0E430005D9EE0 /* CircleCell.m in Sources */,
 				8DD48CD220A811EA00D6D1E6 /* UIColor+MyColor.m in Sources */,
 				722D253820AA76D400AB3863 /* JFCityCollectionViewCell.m in Sources */,
 				CE0BA5BB209D5E6B004C3C33 /* UIBarButtonItem+Extension.m in Sources */,
+				8DC17A7620C0E430005D9EE0 /* FriendCirleTab.m in Sources */,
 				72EC1B9C20BC346700ACC20B /* FriendCircleController.m in Sources */,
 				CEBEDD9120B17ED1000F9EE4 /* FootprintController.m in Sources */,
 				CEBEDD8120B17ED1000F9EE4 /* MarginController.m in Sources */,
@@ -2548,13 +2639,16 @@
 				722D253B20AA76D400AB3863 /* JFCityViewController.m in Sources */,
 				729BA6FE20A32F0B009713FD /* CustomMap.m in Sources */,
 				8DB42FDC20A57DBC00C4EBF8 /* FilterCell.m in Sources */,
+				8DC17A7C20C0E430005D9EE0 /* MomentCell.m in Sources */,
 				8DD48CCF20A811EA00D6D1E6 /* TAPageControl.m in Sources */,
 				CE0BA5E7209D5E9B004C3C33 /* YSTools.m in Sources */,
 				CEBEDD8520B17ED1000F9EE4 /* MarginSectionHeadV.m in Sources */,
+				8DC17A7720C0E430005D9EE0 /* Comment.m in Sources */,
 				8DD48CDF20A828F200D6D1E6 /* CustomtextView.m in Sources */,
 				720263FD20B5015500382B2F /* TZVideoPlayerController.m in Sources */,
 				72EC1B5B20B7027000ACC20B /* SwapListController.m in Sources */,
 				CE5C282F20B9733A006A8332 /* ConsultativeNegotiationCell.m in Sources */,
+				8DC17A7820C0E430005D9EE0 /* Moment.m in Sources */,
 				723F4FAF20BEE8FF00AF8268 /* TrvalTrip.m in Sources */,
 				722D252920AA769600AB3863 /* FKGPopOption.m in Sources */,
 				CE0BA5E2209D5E9B004C3C33 /* SRDownloadModel.m in Sources */,
@@ -2597,6 +2691,7 @@
 				7294185920AD120E0054B71D /* SearchLayout.m in Sources */,
 				720263FB20B5015500382B2F /* TZPhotoPreviewController.m in Sources */,
 				8D67603920A4688F0027CDEE /* CustomButton.m in Sources */,
+				8DC17A7920C0E430005D9EE0 /* MLLabelUtil.m in Sources */,
 				727418D120B1A058001D6BE1 /* FirstController.m in Sources */,
 				727418FC20B3C282001D6BE1 /* SwapHomeCell.m in Sources */,
 				729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */,
@@ -2643,6 +2738,7 @@
 				CE0BA5B8209D5E6B004C3C33 /* UIColor+Extension.m in Sources */,
 				CE03EE0020B467EC00F07D78 /* ReleaseTenderController.m in Sources */,
 				7274190C20B402FC001D6BE1 /* LxGridViewFlowLayout.m in Sources */,
+				8DC17A7A20C0E430005D9EE0 /* MMImageListView.m in Sources */,
 				72EC1B7720BA9F7B00ACC20B /* PlayEditController.m in Sources */,
 				720263F520B5015500382B2F /* TZImageManager.m in Sources */,
 				CE0BA5BA209D5E6B004C3C33 /* NSDate+Extend.m in Sources */,
@@ -2679,6 +2775,7 @@
 				8D09E18E20BFD52E000F7EBD /* ShowtrvalTab.m in Sources */,
 				CE0BA607209D60C3004C3C33 /* MessageController.m in Sources */,
 				CE0BA5E8209D5E9B004C3C33 /* GlobalManager.m in Sources */,
+				8DC17A7D20C0E430005D9EE0 /* UIView+Geometry.m in Sources */,
 				72EC1BB320BC386D00ACC20B /* SendServiceController.m in Sources */,
 				7274188620B1474B001D6BE1 /* ConnectionCell.m in Sources */,
 				8D24A22E20A1B9BA00F0740D /* CustomCalloutView.m in Sources */,
@@ -2697,6 +2794,7 @@
 				72EC1BC220BDB10500ACC20B /* SelectLayout.m in Sources */,
 				729BA6C820A01E7F009713FD /* JFAreaDataManager.m in Sources */,
 				CE0BA5E4209D5E9B004C3C33 /* MyDatePicker.m in Sources */,
+				8DC17A7B20C0E430005D9EE0 /* MMImagePreviewView.m in Sources */,
 				8D67602720A408470027CDEE /* ClassificationsController.m in Sources */,
 				720263F920B5015500382B2F /* TZPhotoPickerController.m in Sources */,
 				8DD48CCD20A811EA00D6D1E6 /* TAAnimatedDotView.m in Sources */,
