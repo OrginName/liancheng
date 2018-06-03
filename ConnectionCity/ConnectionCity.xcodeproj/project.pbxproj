@@ -339,6 +339,22 @@
 		CEC4A54C20C3FC180026EE19 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A54A20C3FC180026EE19 /* ProfileCell.xib */; };
 		CEC4A54E20C3FE070026EE19 /* MenuIcons.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A54D20C3FE070026EE19 /* MenuIcons.plist */; };
 		CEC4A55120C3FF4F0026EE19 /* YTSideMenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A54F20C3FF4F0026EE19 /* YTSideMenuModel.m */; };
+		CEC4A55520C407240026EE19 /* EditProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A55320C407240026EE19 /* EditProfileController.m */; };
+		CEC4A55620C407240026EE19 /* EditProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A55420C407240026EE19 /* EditProfileController.xib */; };
+		CEC4A55A20C407500026EE19 /* MemberCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A55820C407500026EE19 /* MemberCenterController.m */; };
+		CEC4A55B20C407500026EE19 /* MemberCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A55920C407500026EE19 /* MemberCenterController.xib */; };
+		CEC4A55F20C407990026EE19 /* MembershipRenewalController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A55D20C407990026EE19 /* MembershipRenewalController.m */; };
+		CEC4A56020C407990026EE19 /* MembershipRenewalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A55E20C407990026EE19 /* MembershipRenewalController.xib */; };
+		CEC4A56420C407BF0026EE19 /* WalletController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A56220C407BF0026EE19 /* WalletController.m */; };
+		CEC4A56520C407BF0026EE19 /* WalletController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A56320C407BF0026EE19 /* WalletController.xib */; };
+		CEC4A56920C407EB0026EE19 /* TopUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A56720C407EB0026EE19 /* TopUpController.m */; };
+		CEC4A56A20C407EB0026EE19 /* TopUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A56820C407EB0026EE19 /* TopUpController.xib */; };
+		CEC4A56E20C4081F0026EE19 /* WithdrawalController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A56C20C4081F0026EE19 /* WithdrawalController.m */; };
+		CEC4A56F20C4081F0026EE19 /* WithdrawalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A56D20C4081F0026EE19 /* WithdrawalController.xib */; };
+		CEC4A57320C4083E0026EE19 /* WithdrawalManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A57120C4083E0026EE19 /* WithdrawalManagerController.m */; };
+		CEC4A57420C4083E0026EE19 /* WithdrawalManagerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A57220C4083E0026EE19 /* WithdrawalManagerController.xib */; };
+		CEC4A57820C40A250026EE19 /* EditProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A57620C40A250026EE19 /* EditProfileCell.m */; };
+		CEC4A57920C40A250026EE19 /* EditProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A57720C40A250026EE19 /* EditProfileCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -926,6 +942,30 @@
 		CEC4A54D20C3FE070026EE19 /* MenuIcons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MenuIcons.plist; sourceTree = "<group>"; };
 		CEC4A54F20C3FF4F0026EE19 /* YTSideMenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTSideMenuModel.m; sourceTree = "<group>"; };
 		CEC4A55020C3FF4F0026EE19 /* YTSideMenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTSideMenuModel.h; sourceTree = "<group>"; };
+		CEC4A55220C407240026EE19 /* EditProfileController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileController.h; sourceTree = "<group>"; };
+		CEC4A55320C407240026EE19 /* EditProfileController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileController.m; sourceTree = "<group>"; };
+		CEC4A55420C407240026EE19 /* EditProfileController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileController.xib; sourceTree = "<group>"; };
+		CEC4A55720C407500026EE19 /* MemberCenterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberCenterController.h; sourceTree = "<group>"; };
+		CEC4A55820C407500026EE19 /* MemberCenterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberCenterController.m; sourceTree = "<group>"; };
+		CEC4A55920C407500026EE19 /* MemberCenterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberCenterController.xib; sourceTree = "<group>"; };
+		CEC4A55C20C407990026EE19 /* MembershipRenewalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MembershipRenewalController.h; sourceTree = "<group>"; };
+		CEC4A55D20C407990026EE19 /* MembershipRenewalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MembershipRenewalController.m; sourceTree = "<group>"; };
+		CEC4A55E20C407990026EE19 /* MembershipRenewalController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MembershipRenewalController.xib; sourceTree = "<group>"; };
+		CEC4A56120C407BF0026EE19 /* WalletController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletController.h; sourceTree = "<group>"; };
+		CEC4A56220C407BF0026EE19 /* WalletController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletController.m; sourceTree = "<group>"; };
+		CEC4A56320C407BF0026EE19 /* WalletController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletController.xib; sourceTree = "<group>"; };
+		CEC4A56620C407EB0026EE19 /* TopUpController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopUpController.h; sourceTree = "<group>"; };
+		CEC4A56720C407EB0026EE19 /* TopUpController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopUpController.m; sourceTree = "<group>"; };
+		CEC4A56820C407EB0026EE19 /* TopUpController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopUpController.xib; sourceTree = "<group>"; };
+		CEC4A56B20C4081F0026EE19 /* WithdrawalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawalController.h; sourceTree = "<group>"; };
+		CEC4A56C20C4081F0026EE19 /* WithdrawalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawalController.m; sourceTree = "<group>"; };
+		CEC4A56D20C4081F0026EE19 /* WithdrawalController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawalController.xib; sourceTree = "<group>"; };
+		CEC4A57020C4083E0026EE19 /* WithdrawalManagerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawalManagerController.h; sourceTree = "<group>"; };
+		CEC4A57120C4083E0026EE19 /* WithdrawalManagerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawalManagerController.m; sourceTree = "<group>"; };
+		CEC4A57220C4083E0026EE19 /* WithdrawalManagerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawalManagerController.xib; sourceTree = "<group>"; };
+		CEC4A57520C40A250026EE19 /* EditProfileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileCell.h; sourceTree = "<group>"; };
+		CEC4A57620C40A250026EE19 /* EditProfileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileCell.m; sourceTree = "<group>"; };
+		CEC4A57720C40A250026EE19 /* EditProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2482,6 +2522,27 @@
 				CE0BA61D209D61C0004C3C33 /* ProfileController.h */,
 				CE0BA61E209D61C0004C3C33 /* ProfileController.m */,
 				CE0BA61F209D61C0004C3C33 /* ProfileController.xib */,
+				CEC4A55220C407240026EE19 /* EditProfileController.h */,
+				CEC4A55320C407240026EE19 /* EditProfileController.m */,
+				CEC4A55420C407240026EE19 /* EditProfileController.xib */,
+				CEC4A55720C407500026EE19 /* MemberCenterController.h */,
+				CEC4A55820C407500026EE19 /* MemberCenterController.m */,
+				CEC4A55920C407500026EE19 /* MemberCenterController.xib */,
+				CEC4A55C20C407990026EE19 /* MembershipRenewalController.h */,
+				CEC4A55D20C407990026EE19 /* MembershipRenewalController.m */,
+				CEC4A55E20C407990026EE19 /* MembershipRenewalController.xib */,
+				CEC4A56120C407BF0026EE19 /* WalletController.h */,
+				CEC4A56220C407BF0026EE19 /* WalletController.m */,
+				CEC4A56320C407BF0026EE19 /* WalletController.xib */,
+				CEC4A56B20C4081F0026EE19 /* WithdrawalController.h */,
+				CEC4A56C20C4081F0026EE19 /* WithdrawalController.m */,
+				CEC4A56D20C4081F0026EE19 /* WithdrawalController.xib */,
+				CEC4A57020C4083E0026EE19 /* WithdrawalManagerController.h */,
+				CEC4A57120C4083E0026EE19 /* WithdrawalManagerController.m */,
+				CEC4A57220C4083E0026EE19 /* WithdrawalManagerController.xib */,
+				CEC4A56620C407EB0026EE19 /* TopUpController.h */,
+				CEC4A56720C407EB0026EE19 /* TopUpController.m */,
+				CEC4A56820C407EB0026EE19 /* TopUpController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2492,6 +2553,9 @@
 				CEC4A54820C3FC180026EE19 /* ProfileCell.h */,
 				CEC4A54920C3FC180026EE19 /* ProfileCell.m */,
 				CEC4A54A20C3FC180026EE19 /* ProfileCell.xib */,
+				CEC4A57520C40A250026EE19 /* EditProfileCell.h */,
+				CEC4A57620C40A250026EE19 /* EditProfileCell.m */,
+				CEC4A57720C40A250026EE19 /* EditProfileCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2643,6 +2707,7 @@
 				8DEA450A20C1148C001529F1 /* SendMomentController.xib in Resources */,
 				CE5C280520B90473006A8332 /* BiddInfoCell.xib in Resources */,
 				72EC1B6C20B8475100ACC20B /* ShowtreaureCell.xib in Resources */,
+				CEC4A55620C407240026EE19 /* EditProfileController.xib in Resources */,
 				CEBEDD8820B17ED1000F9EE4 /* BidderController.xib in Resources */,
 				8D5B3C3E20C0147A00773105 /* ServiceListCell.xib in Resources */,
 				CE0BA61B209D6197004C3C33 /* FoundController.xib in Resources */,
@@ -2655,12 +2720,14 @@
 				CEBEDD8E20B17ED1000F9EE4 /* FootprintController.xib in Resources */,
 				CE0BA615209D6160004C3C33 /* LifeHallController.xib in Resources */,
 				723F4FA720BEDE6000AF8268 /* TrvalInvitController.xib in Resources */,
+				CEC4A55B20C407500026EE19 /* MemberCenterController.xib in Resources */,
 				CEC4A53E20C3D6FC0026EE19 /* TeamCollectionCell.xib in Resources */,
 				CEC4A54C20C3FC180026EE19 /* ProfileCell.xib in Resources */,
 				CE5C280020B8FE5A006A8332 /* BiddInfoHeadView.xib in Resources */,
 				8DD48CE920A8367100D6D1E6 /* GuardEduController.xib in Resources */,
 				72EC1BBA20BC4CA100ACC20B /* SendServiceCell.xib in Resources */,
 				CEC4A53F20C3D6FC0026EE19 /* TeamHeadCell.xib in Resources */,
+				CEC4A56F20C4081F0026EE19 /* WithdrawalController.xib in Resources */,
 				7274188720B1474B001D6BE1 /* ConnectionCell.xib in Resources */,
 				CE03EDEC20B43DC400F07D78 /* FootprintTabbleHeadV.xib in Resources */,
 				CE5C282B20B972B9006A8332 /* ConsultativeNegotiationController.xib in Resources */,
@@ -2673,6 +2740,8 @@
 				72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */,
 				8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */,
 				8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */,
+				CEC4A57420C4083E0026EE19 /* WithdrawalManagerController.xib in Resources */,
+				CEC4A57920C40A250026EE19 /* EditProfileCell.xib in Resources */,
 				8D24A23720A1D5BF00F0740D /* FirstTanView.xib in Resources */,
 				8D09E19D20BFDC16000F7EBD /* ShowTrvalCell.xib in Resources */,
 				727418DA20B290AE001D6BE1 /* PlayPoductController.xib in Resources */,
@@ -2688,6 +2757,7 @@
 				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
 				CE5C281C20B94D84006A8332 /* BidManagerCell.xib in Resources */,
 				8D09E18720BFC4B8000F7EBD /* AppointmentController.xib in Resources */,
+				CEC4A56520C407BF0026EE19 /* WalletController.xib in Resources */,
 				CEBEDD8320B17ED1000F9EE4 /* MarginCell.xib in Resources */,
 				CE03EDF220B44FB000F07D78 /* FirstTableViewCell.xib in Resources */,
 				CE97DBFB20B5AE9F003E46BD /* ReleaseTenderAdditionalCell.xib in Resources */,
@@ -2702,6 +2772,7 @@
 				7274190220B3F60D001D6BE1 /* SendSwapController.xib in Resources */,
 				723F4FB420BEEA8D00AF8268 /* TrvalTripCell.xib in Resources */,
 				CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */,
+				CEC4A56020C407990026EE19 /* MembershipRenewalController.xib in Resources */,
 				CE0BA60F209D6126004C3C33 /* AddressBookController.xib in Resources */,
 				72EC1B9820BC307E00ACC20B /* ServiceHomeController.xib in Resources */,
 				CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */,
@@ -2710,6 +2781,7 @@
 				CE0BA608209D60C3004C3C33 /* MessageController.xib in Resources */,
 				CE5C283020B9733A006A8332 /* ConsultativeNegotiationCell.xib in Resources */,
 				8D67603620A448CB0027CDEE /* SX.plist in Resources */,
+				CEC4A56A20C407EB0026EE19 /* TopUpController.xib in Resources */,
 				8D5B3C3920C0143200773105 /* ServiceListController.xib in Resources */,
 				8DC17A8420C0E598005D9EE0 /* FriendCircleController.xib in Resources */,
 				8DEA450F20C1193E001529F1 /* MomentDetailController.xib in Resources */,
@@ -2823,6 +2895,7 @@
 				CEC4A52F20C3D6D10026EE19 /* TeamHeadView.m in Sources */,
 				72EC1BB920BC4CA100ACC20B /* SendServiceCell.m in Sources */,
 				CE03EDED20B43DC400F07D78 /* FootprintTabbleHeadV.m in Sources */,
+				CEC4A55A20C407500026EE19 /* MemberCenterController.m in Sources */,
 				CE0BA614209D6160004C3C33 /* LifeHallController.m in Sources */,
 				CE0BA634209D68A3004C3C33 /* YSRegisterController.m in Sources */,
 				8DC17A7F20C0E430005D9EE0 /* CircleCell.m in Sources */,
@@ -2847,6 +2920,7 @@
 				8DD48CCF20A811EA00D6D1E6 /* TAPageControl.m in Sources */,
 				CE0BA5E7209D5E9B004C3C33 /* YSTools.m in Sources */,
 				CEBEDD8520B17ED1000F9EE4 /* MarginSectionHeadV.m in Sources */,
+				CEC4A57820C40A250026EE19 /* EditProfileCell.m in Sources */,
 				8DC17A7720C0E430005D9EE0 /* Comment.m in Sources */,
 				8DD48CDF20A828F200D6D1E6 /* CustomtextView.m in Sources */,
 				720263FD20B5015500382B2F /* TZVideoPlayerController.m in Sources */,
@@ -2862,6 +2936,7 @@
 				727418EB20B2AAB9001D6BE1 /* ChangeCell.m in Sources */,
 				CE0BA5E5209D5E9B004C3C33 /* YSNetworkTool.m in Sources */,
 				CE97DC0720B5B1CA003E46BD /* BidManageController.m in Sources */,
+				CEC4A56420C407BF0026EE19 /* WalletController.m in Sources */,
 				72BAB43920B047F500496D29 /* YSButton.m in Sources */,
 				8DEA451320C11F85001529F1 /* MommentPlayerController.m in Sources */,
 				CE0BA5BC209D5E6B004C3C33 /* MBProgressHUD+Extension.m in Sources */,
@@ -2909,6 +2984,7 @@
 				720263F820B5015500382B2F /* TZLocationManager.m in Sources */,
 				720263F420B5015500382B2F /* TZImageCropManager.m in Sources */,
 				723D376720ABDA62003FD4DF /* ShowResumeCell.m in Sources */,
+				CEC4A56920C407EB0026EE19 /* TopUpController.m in Sources */,
 				72EC1BBD20BDA25200ACC20B /* SendSelectCell.m in Sources */,
 				CE5C27FE20B8FE3A006A8332 /* BiddInfoHeadView.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
@@ -2917,6 +2993,7 @@
 				CE0BA60E209D6126004C3C33 /* AddressBookController.m in Sources */,
 				7274190F20B4036E001D6BE1 /* TZTestCell.m in Sources */,
 				CEC4A52920C3D6AE0026EE19 /* TeamChatController.m in Sources */,
+				CEC4A57320C4083E0026EE19 /* WithdrawalManagerController.m in Sources */,
 				CEC4A52820C3D6AE0026EE19 /* TeamInfoController.m in Sources */,
 				CE0BA620209D61C0004C3C33 /* ProfileController.m in Sources */,
 				8DEA450020C0ECB6001529F1 /* CustomButton.m in Sources */,
@@ -2936,6 +3013,8 @@
 				8DD48CD120A811EA00D6D1E6 /* SDCycleScrollView.m in Sources */,
 				7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */,
 				CE0BA5EB209D5E9B004C3C33 /* SRDownloadManager.m in Sources */,
+				CEC4A56E20C4081F0026EE19 /* WithdrawalController.m in Sources */,
+				CEC4A55520C407240026EE19 /* EditProfileController.m in Sources */,
 				723D376B20AC2BC3003FD4DF /* SearchHistoryController.m in Sources */,
 				727418F620B3B37B001D6BE1 /* SwapHeadView.m in Sources */,
 				72EC1B5F20B8341900ACC20B /* ShowCardTab.m in Sources */,
@@ -2975,6 +3054,7 @@
 				8DEA44D620C0E9ED001529F1 /* FriendVideoCell.m in Sources */,
 				CE0BA5FA209D5EBE004C3C33 /* YTBaseTableViewController.m in Sources */,
 				720263F320B5015500382B2F /* TZGifPhotoPreviewController.m in Sources */,
+				CEC4A55F20C407990026EE19 /* MembershipRenewalController.m in Sources */,
 				72EC1B7220BA984400ACC20B /* PlayDouctCell.m in Sources */,
 				727418F020B2DDAC001D6BE1 /* ChangeListController.m in Sources */,
 				CE0BA61A209D6197004C3C33 /* FoundController.m in Sources */,
