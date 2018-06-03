@@ -8,13 +8,14 @@
 
 #import "TeamHeadView.h"
 #import "TeamCollectionCell.h"
-
+@interface TeamHeadView()<UICollectionViewDelegate,UICollectionViewDataSource>
+@end
 @implementation TeamHeadView
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-
-    // Initialization code
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
 }
 - (void)layoutSubviews {
     [self setUI];

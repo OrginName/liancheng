@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ImH-9w-LmE">
                         <rect key="frame" x="10" y="10" width="50" height="70"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O6C-vP-1L8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="O6C-vP-1L8">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="yRM-gY-i9a"/>
@@ -61,4 +61,7 @@
             <point key="canvasLocation" x="69" y="85"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="1" width="639" height="512"/>
+    </resources>
 </document>
