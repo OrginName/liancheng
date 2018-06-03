@@ -10,6 +10,7 @@
 #import "BulidTeamCell.h"
 #import "BulidTeamSectionHead.h"
 #import "YSButton.h"
+#import "TeamChatController.h"
 
 @interface BulidTeamController ()<BulidTeamSectionHeadDelegate>
 {
@@ -24,15 +25,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setUI];
     [self p_initDataSource];
     [self p_initTableView];
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
-
-    
 }
--(void)back{
-    [self.tabBarController.navigationController popViewControllerAnimated:YES];
-    //    [[NSNotificationCenter defaultCenter] postNotificationName:@"BACKMAINWINDOW" object:nil];
+#pragma mark - setup
+- (void)setUI {
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(p_back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -56,6 +55,8 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    TeamChatController *teamChatVC = [[TeamChatController alloc]init];
+    [self.navigationController pushViewController:teamChatVC animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 60;
@@ -118,10 +119,11 @@
     [headerView addSubview:headerBtn];
     self.tableView.tableHeaderView = headerView;
 }
-
+- (void)p_back{
+    [self.tabBarController.navigationController popViewControllerAnimated:YES];
+    //    [[NSNotificationCenter defaultCenter] postNotificationName:@"BACKMAINWINDOW" object:nil];
+}
 
 @end
 
-@implementation ZYButton
 
-@end

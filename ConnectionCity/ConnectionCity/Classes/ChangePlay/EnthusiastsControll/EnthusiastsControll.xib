@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EnthusiastsControll">
             <connections>
+                <outlet property="tableView" destination="6Nr-dr-jBn" id="O4z-Cm-lLx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +19,23 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Nr-dr-jBn">
+                    <rect key="frame" x="10" y="0.0" width="355" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="bxZ-1B-l3H"/>
+                        <outlet property="delegate" destination="-1" id="W1w-7d-Uzi"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="6Nr-dr-jBn" secondAttribute="bottom" id="2x6-I8-8Ku"/>
+                <constraint firstItem="6Nr-dr-jBn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Xmg-bh-haM"/>
+                <constraint firstAttribute="trailing" secondItem="6Nr-dr-jBn" secondAttribute="trailing" constant="10" id="gYH-l9-9yV"/>
+                <constraint firstItem="6Nr-dr-jBn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kFH-DC-dBO"/>
+            </constraints>
         </view>
     </objects>
 </document>

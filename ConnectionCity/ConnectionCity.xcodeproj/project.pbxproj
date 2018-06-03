@@ -321,6 +321,20 @@
 		CEBEDD9420B17EDA000F9EE4 /* BaseMakeMoneyTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBEDD9320B17EDA000F9EE4 /* BaseMakeMoneyTabController.m */; };
 		CEBEDD9820B17F40000F9EE4 /* BulidTeamController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBEDD9620B17F40000F9EE4 /* BulidTeamController.xib */; };
 		CEBEDD9920B17F40000F9EE4 /* BulidTeamController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBEDD9720B17F40000F9EE4 /* BulidTeamController.m */; };
+		CEC4A52820C3D6AE0026EE19 /* TeamInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A52320C3D6AC0026EE19 /* TeamInfoController.m */; };
+		CEC4A52920C3D6AE0026EE19 /* TeamChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A52420C3D6AD0026EE19 /* TeamChatController.m */; };
+		CEC4A52A20C3D6AE0026EE19 /* TeamChatController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A52620C3D6AD0026EE19 /* TeamChatController.xib */; };
+		CEC4A52B20C3D6AE0026EE19 /* TeamInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A52720C3D6AD0026EE19 /* TeamInfoController.xib */; };
+		CEC4A52F20C3D6D10026EE19 /* TeamHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A52D20C3D6D10026EE19 /* TeamHeadView.m */; };
+		CEC4A53020C3D6D10026EE19 /* TeamHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A52E20C3D6D10026EE19 /* TeamHeadView.xib */; };
+		CEC4A53D20C3D6FC0026EE19 /* TeamCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A53120C3D6FA0026EE19 /* TeamCollectionCell.m */; };
+		CEC4A53E20C3D6FC0026EE19 /* TeamCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A53320C3D6FA0026EE19 /* TeamCollectionCell.xib */; };
+		CEC4A53F20C3D6FC0026EE19 /* TeamHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A53420C3D6FA0026EE19 /* TeamHeadCell.xib */; };
+		CEC4A54020C3D6FC0026EE19 /* TeamSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A53520C3D6FB0026EE19 /* TeamSwitchCell.m */; };
+		CEC4A54120C3D6FC0026EE19 /* TeamNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A53620C3D6FB0026EE19 /* TeamNameCell.m */; };
+		CEC4A54220C3D6FC0026EE19 /* TeamSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A53820C3D6FB0026EE19 /* TeamSwitchCell.xib */; };
+		CEC4A54320C3D6FC0026EE19 /* TeamHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A53A20C3D6FB0026EE19 /* TeamHeadCell.m */; };
+		CEC4A54420C3D6FC0026EE19 /* TeamNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A53B20C3D6FC0026EE19 /* TeamNameCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -881,6 +895,27 @@
 		CEBEDD9520B17F3F000F9EE4 /* BulidTeamController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulidTeamController.h; sourceTree = "<group>"; };
 		CEBEDD9620B17F40000F9EE4 /* BulidTeamController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BulidTeamController.xib; sourceTree = "<group>"; };
 		CEBEDD9720B17F40000F9EE4 /* BulidTeamController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulidTeamController.m; sourceTree = "<group>"; };
+		CEC4A52220C3D6AC0026EE19 /* TeamInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamInfoController.h; sourceTree = "<group>"; };
+		CEC4A52320C3D6AC0026EE19 /* TeamInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamInfoController.m; sourceTree = "<group>"; };
+		CEC4A52420C3D6AD0026EE19 /* TeamChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamChatController.m; sourceTree = "<group>"; };
+		CEC4A52520C3D6AD0026EE19 /* TeamChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamChatController.h; sourceTree = "<group>"; };
+		CEC4A52620C3D6AD0026EE19 /* TeamChatController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamChatController.xib; sourceTree = "<group>"; };
+		CEC4A52720C3D6AD0026EE19 /* TeamInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamInfoController.xib; sourceTree = "<group>"; };
+		CEC4A52C20C3D6D10026EE19 /* TeamHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamHeadView.h; sourceTree = "<group>"; };
+		CEC4A52D20C3D6D10026EE19 /* TeamHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamHeadView.m; sourceTree = "<group>"; };
+		CEC4A52E20C3D6D10026EE19 /* TeamHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamHeadView.xib; sourceTree = "<group>"; };
+		CEC4A53120C3D6FA0026EE19 /* TeamCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamCollectionCell.m; sourceTree = "<group>"; };
+		CEC4A53220C3D6FA0026EE19 /* TeamCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamCollectionCell.h; sourceTree = "<group>"; };
+		CEC4A53320C3D6FA0026EE19 /* TeamCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamCollectionCell.xib; sourceTree = "<group>"; };
+		CEC4A53420C3D6FA0026EE19 /* TeamHeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamHeadCell.xib; sourceTree = "<group>"; };
+		CEC4A53520C3D6FB0026EE19 /* TeamSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamSwitchCell.m; sourceTree = "<group>"; };
+		CEC4A53620C3D6FB0026EE19 /* TeamNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamNameCell.m; sourceTree = "<group>"; };
+		CEC4A53720C3D6FB0026EE19 /* TeamHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamHeadCell.h; sourceTree = "<group>"; };
+		CEC4A53820C3D6FB0026EE19 /* TeamSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamSwitchCell.xib; sourceTree = "<group>"; };
+		CEC4A53920C3D6FB0026EE19 /* TeamNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamNameCell.h; sourceTree = "<group>"; };
+		CEC4A53A20C3D6FB0026EE19 /* TeamHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamHeadCell.m; sourceTree = "<group>"; };
+		CEC4A53B20C3D6FC0026EE19 /* TeamNameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamNameCell.xib; sourceTree = "<group>"; };
+		CEC4A53C20C3D6FC0026EE19 /* TeamSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamSwitchCell.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1238,6 +1273,9 @@
 			children = (
 				72BAB42C20B03A9D00496D29 /* BulidTeamSectionHead.h */,
 				72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */,
+				CEC4A52C20C3D6D10026EE19 /* TeamHeadView.h */,
+				CEC4A52D20C3D6D10026EE19 /* TeamHeadView.m */,
+				CEC4A52E20C3D6D10026EE19 /* TeamHeadView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1248,6 +1286,18 @@
 				72BAB42720B03A8B00496D29 /* BulidTeamCell.h */,
 				72BAB42820B03A8B00496D29 /* BulidTeamCell.m */,
 				72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */,
+				CEC4A53220C3D6FA0026EE19 /* TeamCollectionCell.h */,
+				CEC4A53120C3D6FA0026EE19 /* TeamCollectionCell.m */,
+				CEC4A53320C3D6FA0026EE19 /* TeamCollectionCell.xib */,
+				CEC4A53720C3D6FB0026EE19 /* TeamHeadCell.h */,
+				CEC4A53A20C3D6FB0026EE19 /* TeamHeadCell.m */,
+				CEC4A53420C3D6FA0026EE19 /* TeamHeadCell.xib */,
+				CEC4A53920C3D6FB0026EE19 /* TeamNameCell.h */,
+				CEC4A53620C3D6FB0026EE19 /* TeamNameCell.m */,
+				CEC4A53B20C3D6FC0026EE19 /* TeamNameCell.xib */,
+				CEC4A53C20C3D6FC0026EE19 /* TeamSwitchCell.h */,
+				CEC4A53520C3D6FB0026EE19 /* TeamSwitchCell.m */,
+				CEC4A53820C3D6FB0026EE19 /* TeamSwitchCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1560,6 +1610,12 @@
 				CEBEDD9520B17F3F000F9EE4 /* BulidTeamController.h */,
 				CEBEDD9720B17F40000F9EE4 /* BulidTeamController.m */,
 				CEBEDD9620B17F40000F9EE4 /* BulidTeamController.xib */,
+				CEC4A52520C3D6AD0026EE19 /* TeamChatController.h */,
+				CEC4A52420C3D6AD0026EE19 /* TeamChatController.m */,
+				CEC4A52620C3D6AD0026EE19 /* TeamChatController.xib */,
+				CEC4A52220C3D6AC0026EE19 /* TeamInfoController.h */,
+				CEC4A52320C3D6AC0026EE19 /* TeamInfoController.m */,
+				CEC4A52720C3D6AD0026EE19 /* TeamInfoController.xib */,
 			);
 			path = BulidTeam;
 			sourceTree = "<group>";
@@ -2526,9 +2582,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEC4A54420C3D6FC0026EE19 /* TeamNameCell.xib in Resources */,
 				8D2B8BA120A2DACC00C3157F /* MakeMoneyController.xib in Resources */,
+				CEC4A53020C3D6D10026EE19 /* TeamHeadView.xib in Resources */,
 				727418FD20B3C282001D6BE1 /* SwapHomeCell.xib in Resources */,
 				72EC1B7820BA9F7B00ACC20B /* PlayEditController.xib in Resources */,
+				CEC4A54220C3D6FC0026EE19 /* TeamSwitchCell.xib in Resources */,
 				CE5C281220B91AFD006A8332 /* WinnerInfoCell.xib in Resources */,
 				727418D220B1A058001D6BE1 /* FirstController.xib in Resources */,
 				8D09426720C14AF200C45E2B /* EvaluationController.xib in Resources */,
@@ -2555,9 +2614,11 @@
 				CEBEDD8E20B17ED1000F9EE4 /* FootprintController.xib in Resources */,
 				CE0BA615209D6160004C3C33 /* LifeHallController.xib in Resources */,
 				723F4FA720BEDE6000AF8268 /* TrvalInvitController.xib in Resources */,
+				CEC4A53E20C3D6FC0026EE19 /* TeamCollectionCell.xib in Resources */,
 				CE5C280020B8FE5A006A8332 /* BiddInfoHeadView.xib in Resources */,
 				8DD48CE920A8367100D6D1E6 /* GuardEduController.xib in Resources */,
 				72EC1BBA20BC4CA100ACC20B /* SendServiceCell.xib in Resources */,
+				CEC4A53F20C3D6FC0026EE19 /* TeamHeadCell.xib in Resources */,
 				7274188720B1474B001D6BE1 /* ConnectionCell.xib in Resources */,
 				CE03EDEC20B43DC400F07D78 /* FootprintTabbleHeadV.xib in Resources */,
 				CE5C282B20B972B9006A8332 /* ConsultativeNegotiationController.xib in Resources */,
@@ -2580,6 +2641,7 @@
 				727418EC20B2AAB9001D6BE1 /* ChangeCell.xib in Resources */,
 				727418C620B17E78001D6BE1 /* ChangePlayController.xib in Resources */,
 				CE5C281720B91B47006A8332 /* WinnerInfoHeadView.xib in Resources */,
+				CEC4A52B20C3D6AE0026EE19 /* TeamInfoController.xib in Resources */,
 				8D09E18220BFB49A000F7EBD /* SendTripController.xib in Resources */,
 				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
 				CE5C281C20B94D84006A8332 /* BidManagerCell.xib in Resources */,
@@ -2622,6 +2684,7 @@
 				CE0BA635209D68A3004C3C33 /* YSLoginController.xib in Resources */,
 				72EC1B6420B8357400ACC20B /* ShowCardCell.xib in Resources */,
 				722D254120AAA64C00AB3863 /* ShowResumeController.xib in Resources */,
+				CEC4A52A20C3D6AE0026EE19 /* TeamChatController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2715,6 +2778,7 @@
 				CE0BA5E3209D5E9B004C3C33 /* YTAlertUtil.m in Sources */,
 				720263FE20B5015500382B2F /* UIView+Layout.m in Sources */,
 				CE5C281F20B953C1006A8332 /* BidManagerHeadV.m in Sources */,
+				CEC4A52F20C3D6D10026EE19 /* TeamHeadView.m in Sources */,
 				72EC1BB920BC4CA100ACC20B /* SendServiceCell.m in Sources */,
 				CE03EDED20B43DC400F07D78 /* FootprintTabbleHeadV.m in Sources */,
 				CE0BA614209D6160004C3C33 /* LifeHallController.m in Sources */,
@@ -2751,6 +2815,7 @@
 				CE0BA5E2209D5E9B004C3C33 /* SRDownloadModel.m in Sources */,
 				8D24A23520A1D5A700F0740D /* RefineView.m in Sources */,
 				720263F120B5015500382B2F /* TZAssetCell.m in Sources */,
+				CEC4A54320C3D6FC0026EE19 /* TeamHeadCell.m in Sources */,
 				727418EB20B2AAB9001D6BE1 /* ChangeCell.m in Sources */,
 				CE0BA5E5209D5E9B004C3C33 /* YSNetworkTool.m in Sources */,
 				CE97DC0720B5B1CA003E46BD /* BidManageController.m in Sources */,
@@ -2777,6 +2842,7 @@
 				CE97DBFA20B5AE9F003E46BD /* ReleaseTenderAdditionalCell.m in Sources */,
 				8DD48CCC20A811EA00D6D1E6 /* TAAbstractDotView.m in Sources */,
 				CEBEDD8420B17ED1000F9EE4 /* MarginCell.m in Sources */,
+				CEC4A54020C3D6FC0026EE19 /* TeamSwitchCell.m in Sources */,
 				8D09426620C14AF200C45E2B /* EvaluationController.m in Sources */,
 				8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */,
 				CE5C282A20B972B9006A8332 /* ConsultativeNegotiationController.m in Sources */,
@@ -2806,6 +2872,8 @@
 				72EC1B5120B6EAB600ACC20B /* SendTreasureController.m in Sources */,
 				CE0BA60E209D6126004C3C33 /* AddressBookController.m in Sources */,
 				7274190F20B4036E001D6BE1 /* TZTestCell.m in Sources */,
+				CEC4A52920C3D6AE0026EE19 /* TeamChatController.m in Sources */,
+				CEC4A52820C3D6AE0026EE19 /* TeamInfoController.m in Sources */,
 				CE0BA620209D61C0004C3C33 /* ProfileController.m in Sources */,
 				8DEA450020C0ECB6001529F1 /* CustomButton.m in Sources */,
 				729BA70120A331E0009713FD /* CustomLocatiom.m in Sources */,
@@ -2873,12 +2941,14 @@
 				72BAB42A20B03A8C00496D29 /* BulidTeamCell.m in Sources */,
 				CE0BA5FB209D5EBE004C3C33 /* BaseTabBarController.m in Sources */,
 				72EC1B6320B8357400ACC20B /* ShowCardCell.m in Sources */,
+				CEC4A53D20C3D6FC0026EE19 /* TeamCollectionCell.m in Sources */,
 				72EC1BA120BC347D00ACC20B /* ProfileServiceController.m in Sources */,
 				CE5C280420B90473006A8332 /* BiddInfoCell.m in Sources */,
 				8D09E18E20BFD52E000F7EBD /* ShowtrvalTab.m in Sources */,
 				CE0BA607209D60C3004C3C33 /* MessageController.m in Sources */,
 				CE0BA5E8209D5E9B004C3C33 /* GlobalManager.m in Sources */,
 				8DC17A7D20C0E430005D9EE0 /* UIView+Geometry.m in Sources */,
+				CEC4A54120C3D6FC0026EE19 /* TeamNameCell.m in Sources */,
 				8DEA450420C10BB7001529F1 /* FindMySelfCell.m in Sources */,
 				72EC1BB320BC386D00ACC20B /* SendServiceController.m in Sources */,
 				7274188620B1474B001D6BE1 /* ConnectionCell.m in Sources */,
