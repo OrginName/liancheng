@@ -355,6 +355,8 @@
 		CEC4A57420C4083E0026EE19 /* WithdrawalManagerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A57220C4083E0026EE19 /* WithdrawalManagerController.xib */; };
 		CEC4A57820C40A250026EE19 /* EditProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A57620C40A250026EE19 /* EditProfileCell.m */; };
 		CEC4A57920C40A250026EE19 /* EditProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A57720C40A250026EE19 /* EditProfileCell.xib */; };
+		CEC4A57C20C41D540026EE19 /* ProfileHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A57B20C41D540026EE19 /* ProfileHeadView.m */; };
+		CEC4A57E20C41D610026EE19 /* ProfileHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A57D20C41D610026EE19 /* ProfileHeadView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -966,6 +968,9 @@
 		CEC4A57520C40A250026EE19 /* EditProfileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileCell.h; sourceTree = "<group>"; };
 		CEC4A57620C40A250026EE19 /* EditProfileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileCell.m; sourceTree = "<group>"; };
 		CEC4A57720C40A250026EE19 /* EditProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileCell.xib; sourceTree = "<group>"; };
+		CEC4A57A20C41D540026EE19 /* ProfileHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileHeadView.h; sourceTree = "<group>"; };
+		CEC4A57B20C41D540026EE19 /* ProfileHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileHeadView.m; sourceTree = "<group>"; };
+		CEC4A57D20C41D610026EE19 /* ProfileHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeadView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2556,6 +2561,9 @@
 				CEC4A57520C40A250026EE19 /* EditProfileCell.h */,
 				CEC4A57620C40A250026EE19 /* EditProfileCell.m */,
 				CEC4A57720C40A250026EE19 /* EditProfileCell.xib */,
+				CEC4A57A20C41D540026EE19 /* ProfileHeadView.h */,
+				CEC4A57B20C41D540026EE19 /* ProfileHeadView.m */,
+				CEC4A57D20C41D610026EE19 /* ProfileHeadView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2736,6 +2744,7 @@
 				CEBEDD8620B17ED1000F9EE4 /* BidderCell.xib in Resources */,
 				CE5C282620B955F5006A8332 /* BidManagerFootV.xib in Resources */,
 				8DEA44D720C0E9ED001529F1 /* FriendVideoCell.xib in Resources */,
+				CEC4A57E20C41D610026EE19 /* ProfileHeadView.xib in Resources */,
 				8DEA451420C11F85001529F1 /* MommentPlayerController.xib in Resources */,
 				72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */,
 				8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */,
@@ -2905,6 +2914,7 @@
 				8DC17A7620C0E430005D9EE0 /* FriendCirleTab.m in Sources */,
 				CEBEDD9120B17ED1000F9EE4 /* FootprintController.m in Sources */,
 				CEBEDD8120B17ED1000F9EE4 /* MarginController.m in Sources */,
+				CEC4A57C20C41D540026EE19 /* ProfileHeadView.m in Sources */,
 				723F4FA620BEDE6000AF8268 /* TrvalInvitController.m in Sources */,
 				7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */,
 				CEBEDD9920B17F40000F9EE4 /* BulidTeamController.m in Sources */,

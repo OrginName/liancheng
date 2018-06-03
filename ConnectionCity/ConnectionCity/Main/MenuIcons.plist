@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>icon</key>
-		<string>news</string>
+		<string>our-center</string>
 		<key>title</key>
 		<string>会员中心</string>
 		<key>class</key>
@@ -12,7 +12,7 @@
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>news</string>
+		<string>our-center-1</string>
 		<key>title</key>
 		<string>个人中心</string>
 		<key>class</key>
@@ -20,7 +20,7 @@
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>news</string>
+		<string>our-renzhen</string>
 		<key>title</key>
 		<string>认证中心</string>
 		<key>class</key>
@@ -28,7 +28,7 @@
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>news</string>
+		<string>our-qian</string>
 		<key>title</key>
 		<string>钱包</string>
 		<key>class</key>
@@ -36,7 +36,7 @@
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>news</string>
+		<string>our-vip</string>
 		<key>title</key>
 		<string>收藏</string>
 		<key>class</key>
@@ -44,7 +44,7 @@
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>news</string>
+		<string>our-photo</string>
 		<key>title</key>
 		<string>相册</string>
 		<key>class</key>
@@ -52,7 +52,7 @@
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>news</string>
+		<string>our-kf</string>
 		<key>title</key>
 		<string>客服</string>
 		<key>class</key>
@@ -60,7 +60,7 @@
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>news</string>
+		<string>our-shetup</string>
 		<key>title</key>
 		<string>设置</string>
 		<key>class</key>

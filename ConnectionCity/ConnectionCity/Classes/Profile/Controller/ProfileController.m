@@ -9,6 +9,7 @@
 #import "ProfileController.h"
 #import "YTSideMenuModel.h"
 #import "ProfileCell.h"
+#import "ProfileHeadView.h"
 
 @interface ProfileController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -20,22 +21,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setUI];
     [self setupTableView];
 
     // Do any additional setup after loading the view from its nib.
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //关闭自适应
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        // Fallback on earlier versions
+        self.automaticallyAdjustsScrollViewInsets = YES;
+    }
+    //设置导航透明
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]forBarMetrics:UIBarMetricsDefault];
+    //去掉导航栏底部的黑线
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 #pragma mark - Setup
+- (void)setUI {
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(rightBarClick) image:@"erweima" title:nil EdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+}
 - (void)setupTableView {
     [self registerCell];
 }
-
 - (void)registerCell {
     [self.tableView registerNib:[UINib nibWithNibName:@"ProfileCell" bundle:nil] forCellReuseIdentifier:@"ProfileCell"];
+    ProfileHeadView *tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"ProfileHeadView" owner:nil options:nil] firstObject];
+    tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 210 + 64);
+    self.tableView.tableHeaderView = tableHeadV;
 }
 #pragma mark - setter and getter
 - (NSArray<YTSideMenuModel *> *)menuModels {
@@ -74,6 +94,10 @@
 //    [rootNC pushViewController:vc animated:YES];
 }
 
+#pragma mark - 点击事件
+- (void)rightBarClick {
+    
+}
 /*
 #pragma mark - Navigation
 

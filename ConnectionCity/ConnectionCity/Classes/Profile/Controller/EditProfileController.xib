@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileController">
             <connections>
+                <outlet property="tableView" destination="DZr-gO-1LP" id="wsj-Ip-xrK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +19,23 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DZr-gO-1LP">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="mNR-bY-aTd"/>
+                        <outlet property="delegate" destination="-1" id="AOG-S2-iu7"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="DZr-gO-1LP" secondAttribute="bottom" id="6wb-rU-eBU"/>
+                <constraint firstAttribute="trailing" secondItem="DZr-gO-1LP" secondAttribute="trailing" id="Sgu-m0-TfC"/>
+                <constraint firstItem="DZr-gO-1LP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="rvv-lT-ICv"/>
+                <constraint firstItem="DZr-gO-1LP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zHw-qk-XOo"/>
+            </constraints>
         </view>
     </objects>
 </document>

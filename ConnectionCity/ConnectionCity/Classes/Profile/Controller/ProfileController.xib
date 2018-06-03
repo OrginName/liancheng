@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iek-pl-F59">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                     <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="G3d-SZ-74c"/>
@@ -31,7 +31,7 @@
             </subviews>
             <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="iek-pl-F59" secondAttribute="bottom" id="CWv-sE-H4G"/>
+                <constraint firstAttribute="bottom" secondItem="iek-pl-F59" secondAttribute="bottom" constant="49" id="CWv-sE-H4G"/>
                 <constraint firstItem="iek-pl-F59" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PMJ-Ma-OtU"/>
                 <constraint firstAttribute="trailing" secondItem="iek-pl-F59" secondAttribute="trailing" id="gen-Ss-Nay"/>
                 <constraint firstItem="iek-pl-F59" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="k5u-tS-3Lw"/>
