@@ -40,6 +40,9 @@
     //去掉导航栏底部的黑线
     self.navigationController.navigationBar.shadowImage = [UIImage new];
 }
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -88,10 +91,11 @@
     
     // 根据类名跳转控制器
 //    NSString *className = [YTAccountInfo loginState] ? self.menuModels[indexPath.row].mClass : @"YTLoginViewController";
-//    UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc]init];
-//    if (vc == nil)return;
-//    UINavigationController *rootNC = [NSObject yt_getRootNC];
-//    [rootNC pushViewController:vc animated:YES];
+    
+    NSString *className = self.menuModels[indexPath.row].mClass;
+    UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc]init];
+    if (vc == nil)return;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 点击事件

@@ -16,7 +16,7 @@
 		<key>title</key>
 		<string>个人中心</string>
 		<key>class</key>
-		<string>ParkingRecordController</string>
+		<string>MemberCenterController</string>
 	</dict>
 	<dict>
 		<key>icon</key>
@@ -24,7 +24,7 @@
 		<key>title</key>
 		<string>认证中心</string>
 		<key>class</key>
-		<string>WalletViewController</string>
+		<string>CertificationCenterController</string>
 	</dict>
 	<dict>
 		<key>icon</key>
