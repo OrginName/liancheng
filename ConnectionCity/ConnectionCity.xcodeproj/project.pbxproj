@@ -359,6 +359,7 @@
 		CEC4A57920C40A250026EE19 /* EditProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A57720C40A250026EE19 /* EditProfileCell.xib */; };
 		CEC4A57C20C41D540026EE19 /* ProfileHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A57B20C41D540026EE19 /* ProfileHeadView.m */; };
 		CEC4A57E20C41D610026EE19 /* ProfileHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A57D20C41D610026EE19 /* ProfileHeadView.xib */; };
+		CEE4B28720C585A4008B8731 /* YSClubEditDepartmant.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B28320C585A3008B8731 /* YSClubEditDepartmant.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -976,6 +977,10 @@
 		CEC4A57A20C41D540026EE19 /* ProfileHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileHeadView.h; sourceTree = "<group>"; };
 		CEC4A57B20C41D540026EE19 /* ProfileHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileHeadView.m; sourceTree = "<group>"; };
 		CEC4A57D20C41D610026EE19 /* ProfileHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeadView.xib; sourceTree = "<group>"; };
+		CEE4B28320C585A3008B8731 /* YSClubEditDepartmant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSClubEditDepartmant.m; sourceTree = "<group>"; };
+		CEE4B28520C585A4008B8731 /* YSClubEditDepartmant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSClubEditDepartmant.h; sourceTree = "<group>"; };
+		CEE4B28A20C585F7008B8731 /* YSSetUpBirthdayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YSSetUpBirthdayView.h; sourceTree = "<group>"; };
+		CEE4B28B20C585F9008B8731 /* YSSetUpBirthdayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YSSetUpBirthdayView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2020,14 +2025,13 @@
 		CE0BA5BE209D5E9B004C3C33 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CEE4B28920C585D4008B8731 /* CustomPicker */,
 				8DEA451720C12BF5001529F1 /* CustomPlayer */,
 				723B9F1020B4195A00AD919B /* PhotoSelect */,
 				727418BA20B17536001D6BE1 /* CusTabBar */,
 				72BAB43720B047F500496D29 /* YSButton.h */,
 				72BAB43820B047F500496D29 /* YSButton.m */,
 				CE0BA5BF209D5E9B004C3C33 /* YSTools.h */,
-				CE0BA5C0209D5E9B004C3C33 /* MyPickerView.h */,
-				CE0BA5D1209D5E9B004C3C33 /* MyPickerView.m */,
 				CE0BA5C1209D5E9B004C3C33 /* YTSystemUtil.m */,
 				CE0BA5C2209D5E9B004C3C33 /* YTDataPacket.m */,
 				CE0BA5C3209D5E9B004C3C33 /* YSNetworkTool.h */,
@@ -2037,8 +2041,6 @@
 				CE0BA5C7209D5E9B004C3C33 /* SRDownloadModel.m */,
 				CE0BA5C8209D5E9B004C3C33 /* YTAlertUtil.m */,
 				CE0BA5C9209D5E9B004C3C33 /* YSRefreshTool.h */,
-				CE0BA5D7209D5E9B004C3C33 /* MyDatePicker.h */,
-				CE0BA5CA209D5E9B004C3C33 /* MyDatePicker.m */,
 				CE0BA5CB209D5E9B004C3C33 /* GlobalManager.h */,
 				CE0BA5CC209D5E9B004C3C33 /* SRDownloadManager.h */,
 				CE0BA5CD209D5E9B004C3C33 /* YSBlutoothTool.h */,
@@ -2576,6 +2578,21 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		CEE4B28920C585D4008B8731 /* CustomPicker */ = {
+			isa = PBXGroup;
+			children = (
+				CE0BA5C0209D5E9B004C3C33 /* MyPickerView.h */,
+				CE0BA5D1209D5E9B004C3C33 /* MyPickerView.m */,
+				CE0BA5D7209D5E9B004C3C33 /* MyDatePicker.h */,
+				CE0BA5CA209D5E9B004C3C33 /* MyDatePicker.m */,
+				CEE4B28520C585A4008B8731 /* YSClubEditDepartmant.h */,
+				CEE4B28320C585A3008B8731 /* YSClubEditDepartmant.m */,
+				CEE4B28A20C585F7008B8731 /* YSSetUpBirthdayView.h */,
+				CEE4B28B20C585F9008B8731 /* YSSetUpBirthdayView.m */,
+			);
+			path = CustomPicker;
+			sourceTree = "<group>";
+		};
 		FED23FC9B0FA87A13AD43642 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2968,6 +2985,7 @@
 				CE0BA5B6209D5E6B004C3C33 /* NSObject+YTGetObject.m in Sources */,
 				8D2B8B9120A2DA9F00C3157F /* AbilityHomeController.m in Sources */,
 				CE5C283820B99441006A8332 /* PayOrderController.m in Sources */,
+				CEE4B28720C585A4008B8731 /* YSClubEditDepartmant.m in Sources */,
 				722D254020AAA64C00AB3863 /* ShowResumeController.m in Sources */,
 				727418E320B290D1001D6BE1 /* SwapController.m in Sources */,
 				8DD48CE820A8367100D6D1E6 /* GuardEduController.m in Sources */,
