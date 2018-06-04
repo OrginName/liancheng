@@ -42,6 +42,8 @@
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:
+     [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
