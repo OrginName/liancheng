@@ -11,7 +11,8 @@ pod 'AMap2DMap'
 pod 'AMapSearch'
 pod 'AMapLocation'
 pod 'FMDB'
-pod 'TZImagePickerController'
 pod 'MLLabel'
+pod 'RongCloudIM/IMLib', '~> 2.8.3'
+pod 'RongCloudIM/IMKit', '~> 2.8.3'
 end
 
