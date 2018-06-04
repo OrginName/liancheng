@@ -29,8 +29,14 @@
 }
 
 #pragma mark - Event response
-- (IBAction)backBtnClick:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+- (IBAction)eyeBtnClick:(id)sender {
+
+}
+- (IBAction)checkBtnClick:(id)sender {
+    
+}
+- (IBAction)serviceBtnClick:(id)sender {
+    
 }
 - (IBAction)loginBtnClick:(id)sender {
     if ([YSTools dx_isNullOrNilWithObject:_phoneTF.text] || [YSTools dx_isNullOrNilWithObject:_passwordTF.text]) {
@@ -42,26 +48,32 @@
         return;
     }
     WeakSelf
-    [YSNetworkTool POST:loginURL params:@{@"phone":_phoneTF.text,@"password":_passwordTF.text} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        if (![YSTools dx_isNullOrNilWithObject:responseObject]) {
-            YSAccount *account = [YSAccount mj_objectWithKeyValues:responseObject];
-            [YSAccountTool saveAccount:account];
-            [YTAlertUtil showTempInfo:@"登录成功"];
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        }else{
-            [YTAlertUtil showTempInfo:@"用户名或密码错误"];
-        }
-    } failure:nil];
+//    [YSNetworkTool POST:loginURL params:@{@"phone":_phoneTF.text,@"password":_passwordTF.text} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//        if (![YSTools dx_isNullOrNilWithObject:responseObject]) {
+//            YSAccount *account = [YSAccount mj_objectWithKeyValues:responseObject];
+//            [YSAccountTool saveAccount:account];
+//            [YTAlertUtil showTempInfo:@"登录成功"];
+//            [weakSelf.navigationController popViewControllerAnimated:YES];
+//        }else{
+//            [YTAlertUtil showTempInfo:@"用户名或密码错误"];
+//        }
+//    } failure:nil];
     
 }
-- (IBAction)offlineScanEntryBtnClick:(id)sender {
-    
+- (IBAction)forgetBtnClick:(id)sender {
+    YSRegisterController *registerVC = [[YSRegisterController alloc]init];
+    [self.navigationController pushViewController:registerVC animated:YES];
 }
 - (IBAction)registerBtnClick:(id)sender {
     YSRegisterController *registerVC = [[YSRegisterController alloc]init];
     [self.navigationController pushViewController:registerVC animated:YES];
 }
-
+- (IBAction)wxBtnClick:(id)sender {
+    
+}
+- (IBAction)qqBtnClick:(id)sender {
+    
+}
 /*
 #pragma mark - Navigation
 

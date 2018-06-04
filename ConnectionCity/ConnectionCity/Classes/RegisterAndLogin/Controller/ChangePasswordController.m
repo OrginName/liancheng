@@ -42,14 +42,14 @@
     }
     WeakSelf
     NSString *userid = [NSString stringWithFormat:@"%lu",(unsigned long)kAccount.userid];
-    [YSNetworkTool POSTData:updatepassword params:@{@"userid":userid ,@"newPassword":_nwePasswordTF.text,@"oldpPassword":_currentPasswordTF.text} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        if ([responseObject isEqualToString:@"OK"]) {
-            [YTAlertUtil showTempInfo:@"修改成功"];
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        }else{
-            [YTAlertUtil showTempInfo:responseObject];
-        }
-    } failure:nil];
+//    [YSNetworkTool POSTData:updatepassword params:@{@"userid":userid ,@"newPassword":_nwePasswordTF.text,@"oldpPassword":_currentPasswordTF.text} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//        if ([responseObject isEqualToString:@"OK"]) {
+//            [YTAlertUtil showTempInfo:@"修改成功"];
+//            [weakSelf.navigationController popViewControllerAnimated:YES];
+//        }else{
+//            [YTAlertUtil showTempInfo:responseObject];
+//        }
+//    } failure:nil];
 }
 - (IBAction)backBtnClick:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];

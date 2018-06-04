@@ -25,7 +25,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DwN-O1-9Sf">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Oa9-39-2WZ">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-reg" translatesAutoresizingMaskIntoConstraints="NO" id="Oa9-39-2WZ">
                                     <rect key="frame" x="156" y="45" width="62" height="62"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="62" id="mbQ-9f-oUR"/>
@@ -260,6 +260,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo" width="23" height="20"/>
+        <image name="logo-reg" width="62" height="62"/>
     </resources>
 </document>

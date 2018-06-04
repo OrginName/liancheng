@@ -42,14 +42,14 @@
         return;
     }
     WeakSelf
-    [YSNetworkTool POSTData:registerURL params:@{@"phone":_phoneTF.text,@"password":_nwePasswordTF.text,@"pillowid":@"null",@"lasttime":@"null"} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        if ([YSTools isNum:responseObject]) {
-            [YTAlertUtil showTempInfo:@"注册成功"];
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        }else{
-            [YTAlertUtil showTempInfo:responseObject];
-        }
-    } failure:nil];
+//    [YSNetworkTool POSTData:registerURL params:@{@"phone":_phoneTF.text,@"password":_nwePasswordTF.text,@"pillowid":@"null",@"lasttime":@"null"} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//        if ([YSTools isNum:responseObject]) {
+//            [YTAlertUtil showTempInfo:@"注册成功"];
+//            [weakSelf.navigationController popViewControllerAnimated:YES];
+//        }else{
+//            [YTAlertUtil showTempInfo:responseObject];
+//        }
+//    } failure:nil];
 }
 /*
 #pragma mark - Navigation
