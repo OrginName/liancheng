@@ -28,22 +28,22 @@
     BaseTabBarController *baseTabBar = [[BaseTabBarController alloc]init];
 //    ShowResumeController * baseTabBar = [ShowResumeController new];
     [self.window setRootViewController:baseTabBar];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Receivetag) name:@"TABBAR" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backWindow) name:@"BACKMAINWINDOW" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Receivetag) name:@"TABBAR" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backWindow) name:@"BACKMAINWINDOW" object:nil];
     //通知键盘弹出状态
     [self notify_addObserver];
     [[AMapServices sharedServices] setEnableHTTPS:YES];
     [AMapServices sharedServices].apiKey = KGDMapKey;
     return YES;
 }
--(void)backWindow{
-    BaseTabBarController * baseTabBar = [[BaseTabBarController alloc] init];
-    [self.window setRootViewController:baseTabBar];
-}
--(void)Receivetag{
-    BaseOneTabController * baseOneTabBar = [[BaseOneTabController alloc] init];
-    [self.window setRootViewController:baseOneTabBar];
-}
+//-(void)backWindow{
+//    BaseTabBarController * baseTabBar = [[BaseTabBarController alloc] init];
+//    [self.window setRootViewController:baseTabBar];
+//}
+//-(void)Receivetag{
+//    BaseOneTabController * baseOneTabBar = [[BaseOneTabController alloc] init];
+//    [self.window setRootViewController:baseOneTabBar];
+//}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

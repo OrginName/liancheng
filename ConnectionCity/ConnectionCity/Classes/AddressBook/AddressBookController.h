@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
-@interface AddressBookController : BaseViewController
+#import <RongIMKit/RongIMKit.h>
+@interface AddressBookController : RCConversationListViewController
 
 @end
