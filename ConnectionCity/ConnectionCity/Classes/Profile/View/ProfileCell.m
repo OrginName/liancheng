@@ -9,18 +9,23 @@
 #import "ProfileCell.h"
 
 @implementation ProfileCell
-
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+}
++ (instancetype)tempTableViewCellWith:(UITableView *)tableView
+                            indexPath:(NSIndexPath *)indexPath currentTag:(NSInteger)tag{
+    NSString * str = [NSString stringWithFormat:@"ProfileCell%ld",tag];
+    ProfileCell * cell = [tableView dequeueReusableCellWithIdentifier:str];
+    if (!cell) {
+        cell = [[NSBundle mainBundle] loadNibNamed:@"ProfileCell" owner:nil options:nil][tag];
+    }
+    return cell;
 }
 - (IBAction)btn_Click:(UIButton *)sender {
+    
     if ([self.delegate respondsToSelector:@selector(selectedItemButton:)]) {
         [self.delegate selectedItemButton:sender.tag];
     }

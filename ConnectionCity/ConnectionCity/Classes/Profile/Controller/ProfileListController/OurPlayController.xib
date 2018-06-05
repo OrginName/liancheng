@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OurPlayController">
+            <connections>
+                <outlet property="btn_All" destination="kHs-V1-4ox" id="pjd-qE-Vr0"/>
+                <outlet property="tab_Bottom" destination="jdp-Bm-xTC" id="lky-uP-BgF"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCV-Xn-fgV" customClass="CustomButton">
+                    <rect key="frame" x="198" y="10" width="167" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="imageEdgeInsets" minX="-14" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="我和别人换" image="our-huhuan1">
+                        <color key="titleColor" red="0.3999579251" green="0.4000213742" blue="0.39994928239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="selected" title="附近的人" image="fujin111">
+                        <color key="titleColor" red="0.95109003780000001" green="0.5641317964" blue="0.1661938429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="selectBackColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="NOselectBackColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                            <color key="value" red="0.96078431369999995" green="0.66274509800000003" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="NoSelectTitleColor">
+                            <color key="value" red="0.3999579251" green="0.4000213742" blue="0.39994928239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="NoSelectBorderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="SelectborderColor">
+                            <color key="value" red="0.96078431369999995" green="0.66274509800000003" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="SelectborderWidth">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="btnClick:" destination="-1" eventType="touchUpInside" id="Mi5-G0-JrY"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHs-V1-4ox" customClass="CustomButton">
+                    <rect key="frame" x="10" y="10" width="167.5" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="98w-UO-xzm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <inset key="imageEdgeInsets" minX="-14" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="别人和我换" image="our-huhuan">
+                        <color key="titleColor" red="0.3999579251" green="0.4000213742" blue="0.39994928239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" red="0.3999579251" green="0.4000213742" blue="0.39994928239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="selectBackColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="NOselectBackColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                            <color key="value" red="0.96078431369999995" green="0.66274509800000003" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="NoSelectTitleColor">
+                            <color key="value" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="NoSelectBorderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="SelectborderColor">
+                            <color key="value" red="0.96078431369999995" green="0.66274509800000003" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="SelectborderWidth">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="btnClick:" destination="-1" eventType="touchUpInside" id="t2e-gB-5Jn"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="255" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jdp-Bm-xTC">
+                    <rect key="frame" x="10" y="70" width="355" height="587"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="XGE-NR-h47"/>
+                        <outlet property="delegate" destination="-1" id="jHa-jw-OjM"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="kHs-V1-4ox" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="3ry-Xx-Him"/>
+                <constraint firstAttribute="trailing" secondItem="sCV-Xn-fgV" secondAttribute="trailing" constant="10" id="MQY-Sd-uB5"/>
+                <constraint firstItem="kHs-V1-4ox" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="MWj-5l-6PN"/>
+                <constraint firstItem="sCV-Xn-fgV" firstAttribute="width" secondItem="kHs-V1-4ox" secondAttribute="width" id="VG8-HD-5xO"/>
+                <constraint firstItem="sCV-Xn-fgV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="VXh-XU-bdC"/>
+                <constraint firstAttribute="trailing" secondItem="jdp-Bm-xTC" secondAttribute="trailing" constant="10" id="WVa-aT-cGA"/>
+                <constraint firstItem="jdp-Bm-xTC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="YRN-uI-KDB"/>
+                <constraint firstAttribute="bottom" secondItem="jdp-Bm-xTC" secondAttribute="bottom" constant="10" id="a5U-HE-MvV"/>
+                <constraint firstItem="sCV-Xn-fgV" firstAttribute="leading" secondItem="kHs-V1-4ox" secondAttribute="trailing" constant="20" id="lfo-ta-lW6"/>
+                <constraint firstItem="sCV-Xn-fgV" firstAttribute="height" secondItem="kHs-V1-4ox" secondAttribute="height" id="twi-hl-y40"/>
+                <constraint firstItem="jdp-Bm-xTC" firstAttribute="top" secondItem="sCV-Xn-fgV" secondAttribute="bottom" constant="10" id="zxP-lL-jt8"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="fujin111" width="15" height="19"/>
+        <image name="our-huhuan" width="17" height="16"/>
+        <image name="our-huhuan1" width="19" height="17"/>
+    </resources>
+</document>

@@ -18,8 +18,18 @@
         self.NOselectBackColor = [UIColor hexColorWithString:@"#f2f2f2"];
         self.NoSelectTitleColor = [UIColor hexColorWithString:@"#282828"];
         self.selectTitleColor = [UIColor whiteColor];
+        self.NoSelectBorderColor = [UIColor whiteColor];
+        self.SelectborderColor = [UIColor whiteColor];
+        self.layer.borderWidth = 1;
     }
     return self;
+}
+-(void)setNoSelectBorderColor:(UIColor *)NoSelectBorderColor{
+    _NoSelectBorderColor = NoSelectBorderColor;
+    self.layer.borderColor = NoSelectBorderColor.CGColor;
+}
+-(void)setSelectborderColor:(UIColor *)SelectborderColor{
+    _SelectborderColor = SelectborderColor;
 }
 -(void)setSelectBackColor:(UIColor *)selectBackColor{
     _selectBackColor = selectBackColor;
@@ -33,13 +43,20 @@
 -(void)setNoSelectTitleColor:(UIColor *)NoSelectTitleColor{
     _NoSelectTitleColor = NoSelectTitleColor;
 }
+-(void)setSelectborderWidth:(NSInteger)SelectborderWidth{
+    _SelectborderWidth = SelectborderWidth;
+    self.layer.borderWidth = SelectborderWidth;
+}
 -(void)setSelected:(BOOL)selected{
     if (selected) {
         [self setBackgroundColor:self.selectBackColor];
         [self setTitleColor: self.selectTitleColor forState:UIControlStateNormal];
+        self.layer.borderColor = self.SelectborderColor.CGColor;
     }else{
         [self setBackgroundColor:self.NOselectBackColor];
         [self setTitleColor:self.NoSelectTitleColor forState:UIControlStateNormal];
+        self.layer.borderColor = self.NoSelectBorderColor.CGColor;
+
     }
 }
 

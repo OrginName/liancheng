@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+#import "YTSideMenuModel.h"
 @interface OurResumeController : BaseViewController
-
+@property (nonatomic,strong)YTSideMenuModel * receive_Mo;
+@property (nonatomic,assign)NSInteger index;
 @end

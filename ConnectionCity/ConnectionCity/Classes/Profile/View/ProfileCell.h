@@ -17,4 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *iconImgV;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (nonatomic,assign) id<profileCellDelegate>delegate;
++ (instancetype)tempTableViewCellWith:(UITableView *)tableView
+                            indexPath:(NSIndexPath *)indexPath currentTag:(NSInteger)tag;
 @end

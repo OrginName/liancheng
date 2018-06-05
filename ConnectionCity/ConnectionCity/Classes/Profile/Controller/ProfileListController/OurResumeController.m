@@ -20,21 +20,26 @@
     [self setUI];
 }
 -(void)setUI{
-    self.navigationItem.title = @"我的发布-简历";
+    self.navigationItem.title = [NSString stringWithFormat:@"我的发布-%@",self.receive_Mo.mTitle];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 10;
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.index==2) {
+        return 97;
+    }else if(self.index==7){
+        return 66;
+    }else
+        return 90;
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ProfileCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell1"];
-    if (!cell) {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"ProfileCell" owner:nil options:nil][1];
-    }
+    ProfileCell * cell = [ProfileCell tempTableViewCellWith:tableView indexPath:indexPath currentTag:self.index];
     cell.delegate = self;
     return cell;
 }
 #pragma mark -----profileCellDelegate-----
 - (void)selectedItemButton:(NSInteger)index{
-    
+    NSLog(@"%ld",index);
 }
 @end

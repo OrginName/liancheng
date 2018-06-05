@@ -9,6 +9,7 @@
 #import "OurSendController.h"
 #import "YTSideMenuModel.h"
 #import "ProfileCell.h"
+#import "OurResumeController.h"
 @interface OurSendController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, copy) NSArray <YTSideMenuModel *> *menuModels;
 @property (weak, nonatomic) IBOutlet UITableView *tab_bottom;
@@ -42,8 +43,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSString *className = self.menuModels[indexPath.row].mClass;
-    UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc]init];
+    OurResumeController *vc = (OurResumeController *)[[NSClassFromString(className) alloc]init];
     if (vc == nil)return;
+    vc.receive_Mo = self.menuModels[indexPath.row];
+    vc.index = indexPath.row+2;
     [self.navigationController pushViewController:vc animated:YES];
 }
 #pragma mark - setter and getter

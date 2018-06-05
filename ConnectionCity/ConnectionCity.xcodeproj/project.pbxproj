@@ -144,10 +144,20 @@
 		8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9A20A2DABD00C3157F /* ConnectionController.xib */; };
 		8D2B8BA020A2DACC00C3157F /* MakeMoneyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9E20A2DACC00C3157F /* MakeMoneyController.m */; };
 		8D2B8BA120A2DACC00C3157F /* MakeMoneyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9F20A2DACC00C3157F /* MakeMoneyController.xib */; };
+		8D35878720C6A544008A5E74 /* OurPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D35878520C6A544008A5E74 /* OurPlayController.m */; };
+		8D35878820C6A544008A5E74 /* OurPlayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D35878620C6A544008A5E74 /* OurPlayController.xib */; };
+		8D35878C20C6A693008A5E74 /* OurPlayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D35878A20C6A693008A5E74 /* OurPlayCell.m */; };
+		8D35878D20C6A693008A5E74 /* OurPlayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D35878B20C6A693008A5E74 /* OurPlayCell.xib */; };
 		8D50C55120C632090095A824 /* OurSendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D50C54F20C632090095A824 /* OurSendController.m */; };
 		8D50C55220C632090095A824 /* OurSendController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D50C55020C632090095A824 /* OurSendController.xib */; };
 		8D50C55620C636560095A824 /* OurResumeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D50C55420C636560095A824 /* OurResumeController.m */; };
 		8D50C55720C636560095A824 /* OurResumeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D50C55520C636560095A824 /* OurResumeController.xib */; };
+		8D50C55B20C669020095A824 /* OurConcernController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D50C55920C669020095A824 /* OurConcernController.m */; };
+		8D50C55C20C669020095A824 /* OurConcernController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D50C55A20C669020095A824 /* OurConcernController.xib */; };
+		8D50C56020C66EAF0095A824 /* OurServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D50C55E20C66EAF0095A824 /* OurServiceController.m */; };
+		8D50C56120C66EAF0095A824 /* OurServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D50C55F20C66EAF0095A824 /* OurServiceController.xib */; };
+		8D50C56620C67C2F0095A824 /* OurServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D50C56420C67C2F0095A824 /* OurServiceCell.m */; };
+		8D50C56720C67C2F0095A824 /* OurServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D50C56520C67C2F0095A824 /* OurServiceCell.xib */; };
 		8D5B3C3820C0143200773105 /* ServiceListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B3C3620C0143200773105 /* ServiceListController.m */; };
 		8D5B3C3920C0143200773105 /* ServiceListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D5B3C3720C0143200773105 /* ServiceListController.xib */; };
 		8D5B3C3D20C0147A00773105 /* ServiceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B3C3B20C0147A00773105 /* ServiceListCell.m */; };
@@ -616,12 +626,27 @@
 		8D2B8B9D20A2DACC00C3157F /* MakeMoneyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MakeMoneyController.h; sourceTree = "<group>"; };
 		8D2B8B9E20A2DACC00C3157F /* MakeMoneyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MakeMoneyController.m; sourceTree = "<group>"; };
 		8D2B8B9F20A2DACC00C3157F /* MakeMoneyController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MakeMoneyController.xib; sourceTree = "<group>"; };
+		8D35878420C6A544008A5E74 /* OurPlayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurPlayController.h; sourceTree = "<group>"; };
+		8D35878520C6A544008A5E74 /* OurPlayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurPlayController.m; sourceTree = "<group>"; };
+		8D35878620C6A544008A5E74 /* OurPlayController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OurPlayController.xib; sourceTree = "<group>"; };
+		8D35878920C6A693008A5E74 /* OurPlayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurPlayCell.h; sourceTree = "<group>"; };
+		8D35878A20C6A693008A5E74 /* OurPlayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurPlayCell.m; sourceTree = "<group>"; };
+		8D35878B20C6A693008A5E74 /* OurPlayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OurPlayCell.xib; sourceTree = "<group>"; };
 		8D50C54E20C632090095A824 /* OurSendController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurSendController.h; sourceTree = "<group>"; };
 		8D50C54F20C632090095A824 /* OurSendController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurSendController.m; sourceTree = "<group>"; };
 		8D50C55020C632090095A824 /* OurSendController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OurSendController.xib; sourceTree = "<group>"; };
 		8D50C55320C636560095A824 /* OurResumeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurResumeController.h; sourceTree = "<group>"; };
 		8D50C55420C636560095A824 /* OurResumeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurResumeController.m; sourceTree = "<group>"; };
 		8D50C55520C636560095A824 /* OurResumeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OurResumeController.xib; sourceTree = "<group>"; };
+		8D50C55820C669020095A824 /* OurConcernController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurConcernController.h; sourceTree = "<group>"; };
+		8D50C55920C669020095A824 /* OurConcernController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurConcernController.m; sourceTree = "<group>"; };
+		8D50C55A20C669020095A824 /* OurConcernController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OurConcernController.xib; sourceTree = "<group>"; };
+		8D50C55D20C66EAF0095A824 /* OurServiceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurServiceController.h; sourceTree = "<group>"; };
+		8D50C55E20C66EAF0095A824 /* OurServiceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurServiceController.m; sourceTree = "<group>"; };
+		8D50C55F20C66EAF0095A824 /* OurServiceController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OurServiceController.xib; sourceTree = "<group>"; };
+		8D50C56320C67C2F0095A824 /* OurServiceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurServiceCell.h; sourceTree = "<group>"; };
+		8D50C56420C67C2F0095A824 /* OurServiceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurServiceCell.m; sourceTree = "<group>"; };
+		8D50C56520C67C2F0095A824 /* OurServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OurServiceCell.xib; sourceTree = "<group>"; };
 		8D5B3C3520C0143200773105 /* ServiceListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceListController.h; sourceTree = "<group>"; };
 		8D5B3C3620C0143200773105 /* ServiceListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceListController.m; sourceTree = "<group>"; };
 		8D5B3C3720C0143200773105 /* ServiceListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceListController.xib; sourceTree = "<group>"; };
@@ -1741,17 +1766,48 @@
 			path = MakeMoney;
 			sourceTree = "<group>";
 		};
+		8D35878320C692EB008A5E74 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8D50C54D20C631CF0095A824 /* ProfileListController */ = {
 			isa = PBXGroup;
 			children = (
+				8D35878320C692EB008A5E74 /* View */,
+				8D50C56220C67BBB0095A824 /* Cell */,
+				8D50C55D20C66EAF0095A824 /* OurServiceController.h */,
+				8D50C55E20C66EAF0095A824 /* OurServiceController.m */,
+				8D50C55F20C66EAF0095A824 /* OurServiceController.xib */,
 				8D50C54E20C632090095A824 /* OurSendController.h */,
 				8D50C54F20C632090095A824 /* OurSendController.m */,
 				8D50C55020C632090095A824 /* OurSendController.xib */,
 				8D50C55320C636560095A824 /* OurResumeController.h */,
 				8D50C55420C636560095A824 /* OurResumeController.m */,
 				8D50C55520C636560095A824 /* OurResumeController.xib */,
+				8D50C55820C669020095A824 /* OurConcernController.h */,
+				8D50C55920C669020095A824 /* OurConcernController.m */,
+				8D50C55A20C669020095A824 /* OurConcernController.xib */,
+				8D35878420C6A544008A5E74 /* OurPlayController.h */,
+				8D35878520C6A544008A5E74 /* OurPlayController.m */,
+				8D35878620C6A544008A5E74 /* OurPlayController.xib */,
 			);
 			path = ProfileListController;
+			sourceTree = "<group>";
+		};
+		8D50C56220C67BBB0095A824 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8D50C56320C67C2F0095A824 /* OurServiceCell.h */,
+				8D50C56420C67C2F0095A824 /* OurServiceCell.m */,
+				8D50C56520C67C2F0095A824 /* OurServiceCell.xib */,
+				8D35878920C6A693008A5E74 /* OurPlayCell.h */,
+				8D35878A20C6A693008A5E74 /* OurPlayCell.m */,
+				8D35878B20C6A693008A5E74 /* OurPlayCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		8DA4990420A6FDCB00968F86 /* PersonalResume */ = {
@@ -2791,6 +2847,7 @@
 				CE03EDEC20B43DC400F07D78 /* FootprintTabbleHeadV.xib in Resources */,
 				CE5C282B20B972B9006A8332 /* ConsultativeNegotiationController.xib in Resources */,
 				CE5C27FB20B8FE0A006A8332 /* BiddInfoController.xib in Resources */,
+				8D35878820C6A544008A5E74 /* OurPlayController.xib in Resources */,
 				CE5C282120B953CE006A8332 /* BidManagerHeadV.xib in Resources */,
 				CEBEDD8620B17ED1000F9EE4 /* BidderCell.xib in Resources */,
 				CE5C282620B955F5006A8332 /* BidManagerFootV.xib in Resources */,
@@ -2808,11 +2865,13 @@
 				CE97DC0820B5B1CA003E46BD /* BidManageController.xib in Resources */,
 				723D376820ABDA62003FD4DF /* ShowResumeCell.xib in Resources */,
 				727418CD20B17F4B001D6BE1 /* ChangeHeadView.xib in Resources */,
+				8D35878D20C6A693008A5E74 /* OurPlayCell.xib in Resources */,
 				8DC17A8020C0E430005D9EE0 /* CircleCell.xib in Resources */,
 				727418EC20B2AAB9001D6BE1 /* ChangeCell.xib in Resources */,
 				727418C620B17E78001D6BE1 /* ChangePlayController.xib in Resources */,
 				CE5C281720B91B47006A8332 /* WinnerInfoHeadView.xib in Resources */,
 				CEC4A52B20C3D6AE0026EE19 /* TeamInfoController.xib in Resources */,
+				8D50C56120C66EAF0095A824 /* OurServiceController.xib in Resources */,
 				8D09E18220BFB49A000F7EBD /* SendTripController.xib in Resources */,
 				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
 				CE5C281C20B94D84006A8332 /* BidManagerCell.xib in Resources */,
@@ -2828,6 +2887,7 @@
 				CE03EE0120B467EC00F07D78 /* ReleaseTenderController.xib in Resources */,
 				CEBEDD7E20B17ED1000F9EE4 /* WinningBidderController.xib in Resources */,
 				CE5C283920B99441006A8332 /* PayOrderController.xib in Resources */,
+				8D50C55C20C669020095A824 /* OurConcernController.xib in Resources */,
 				72EC1BB420BC386D00ACC20B /* SendServiceController.xib in Resources */,
 				7274190220B3F60D001D6BE1 /* SendSwapController.xib in Resources */,
 				8D50C55220C632090095A824 /* OurSendController.xib in Resources */,
@@ -2855,6 +2915,7 @@
 				CEBEDD9820B17F40000F9EE4 /* BulidTeamController.xib in Resources */,
 				CE5C280D20B91AD8006A8332 /* WinnerInfoController.xib in Resources */,
 				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
+				8D50C56720C67C2F0095A824 /* OurServiceCell.xib in Resources */,
 				CE03EDF920B4547200F07D78 /* FirstSectionHeadV.xib in Resources */,
 				CE0BA635209D68A3004C3C33 /* YSLoginController.xib in Resources */,
 				72EC1B6420B8357400ACC20B /* ShowCardCell.xib in Resources */,
@@ -2940,6 +3001,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D50C56620C67C2F0095A824 /* OurServiceCell.m in Sources */,
 				CE0BA637209D68A3004C3C33 /* ChangePasswordController.m in Sources */,
 				CE0BA5F8209D5EBE004C3C33 /* BaseNavigationController.m in Sources */,
 				CE0BA5E6209D5E9B004C3C33 /* MyPickerView.m in Sources */,
@@ -2983,6 +3045,7 @@
 				8DD48CCF20A811EA00D6D1E6 /* TAPageControl.m in Sources */,
 				CE0BA5E7209D5E9B004C3C33 /* YSTools.m in Sources */,
 				CEBEDD8520B17ED1000F9EE4 /* MarginSectionHeadV.m in Sources */,
+				8D50C55B20C669020095A824 /* OurConcernController.m in Sources */,
 				CEC4A57820C40A250026EE19 /* EditProfileCell.m in Sources */,
 				8DC17A7720C0E430005D9EE0 /* Comment.m in Sources */,
 				8DD48CDF20A828F200D6D1E6 /* CustomtextView.m in Sources */,
@@ -3095,6 +3158,7 @@
 				727418BF20B17536001D6BE1 /* CustomPage.m in Sources */,
 				CE0BA5B8209D5E6B004C3C33 /* UIColor+Extension.m in Sources */,
 				CE03EE0020B467EC00F07D78 /* ReleaseTenderController.m in Sources */,
+				8D35878720C6A544008A5E74 /* OurPlayController.m in Sources */,
 				7274190C20B402FC001D6BE1 /* LxGridViewFlowLayout.m in Sources */,
 				8DC17A7A20C0E430005D9EE0 /* MMImageListView.m in Sources */,
 				72EC1B7720BA9F7B00ACC20B /* PlayEditController.m in Sources */,
@@ -3121,6 +3185,7 @@
 				CE0BA5FA209D5EBE004C3C33 /* YTBaseTableViewController.m in Sources */,
 				720263F320B5015500382B2F /* TZGifPhotoPreviewController.m in Sources */,
 				CEC4A55F20C407990026EE19 /* MembershipRenewalController.m in Sources */,
+				8D50C56020C66EAF0095A824 /* OurServiceController.m in Sources */,
 				72EC1B7220BA984400ACC20B /* PlayDouctCell.m in Sources */,
 				727418F020B2DDAC001D6BE1 /* ChangeListController.m in Sources */,
 				CE0BA61A209D6197004C3C33 /* FoundController.m in Sources */,
@@ -3148,6 +3213,7 @@
 				CEBEDD7F20B17ED1000F9EE4 /* WinningBidderController.m in Sources */,
 				720263FC20B5015500382B2F /* TZProgressView.m in Sources */,
 				720263F220B5015500382B2F /* TZAssetModel.m in Sources */,
+				8D35878C20C6A693008A5E74 /* OurPlayCell.m in Sources */,
 				72EC1BAF20BC350D00ACC20B /* BaseFindServiceTabController.m in Sources */,
 				CE5C281B20B94D84006A8332 /* BidManagerCell.m in Sources */,
 				8D2B8BA020A2DACC00C3157F /* MakeMoneyController.m in Sources */,

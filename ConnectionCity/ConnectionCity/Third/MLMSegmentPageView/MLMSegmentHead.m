@@ -194,8 +194,8 @@ static CGFloat animation_time = .3;
     scroll.bounces = NO;
     
     for (NSInteger i = 0; i < titlesArray.count; i ++) {
-        
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.tag = i;
         [button setTitle:titlesArray[i] forState:UIControlStateNormal];
         button.frame = CGRectMake(i * buttonWidth, 0, buttonWidth, SCROLL_HEIGHT);
         if (select) {

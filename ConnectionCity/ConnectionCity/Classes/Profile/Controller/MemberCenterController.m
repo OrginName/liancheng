@@ -56,10 +56,12 @@
         NSMutableArray <YTSideMenuModel *> *menuArr = [NSMutableArray array];
         NSArray * menuArray = @[@{@"icon":@"our-fabu",
                                   @"title":@"我的发布",@"class":@"OurSendController"},
-                                @{@"icon":@"our-service",@"title":@"我的服务",@"class":@"OurSendController"},
-                                @{@"icon":@"our-travel",@"title":@"我的旅行",@"class":@"OurSendController"},
-                                @{@"icon":@"our-wanjia",@"title":@"我的玩家",@"class":@"OurSendController"},
-                                @{@"icon":@"our-guanzhu",@"title":@"我的关注",@"class":@"OurSendController"}];
+                                @{@"icon":@"our-fabu",
+                                  @"title":@"我的评价",@"class":@"OurSendController"},
+                                @{@"icon":@"our-service",@"title":@"我的服务",@"class":@"OurServiceController"},
+                                @{@"icon":@"our-travel",@"title":@"我的旅行",@"class":@"OurServiceController"},
+                                @{@"icon":@"our-wanjia",@"title":@"我的玩家",@"class":@"OurPlayController"},
+                                @{@"icon":@"our-guanzhu",@"title":@"我的关注",@"class":@"OurConcernController"}];
         [menuArray enumerateObjectsUsingBlock:^(NSDictionary *_Nonnull dic, NSUInteger idx, BOOL * _Nonnull stop) {
             YTSideMenuModel *model = [YTSideMenuModel modelWithDictionary:dic];
             [menuArr addObject:model];

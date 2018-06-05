@@ -20,7 +20,7 @@
 @end
 
 @interface MLMSegmentPage : UIView
-
+@property (nonatomic, strong) MLMSegmentHead *headView;
 ///第一次进入是否加载,YES加载countLimit个页面，默认 - NO
 @property (nonatomic, assign) BOOL loadAll;
 ///缓存页面数目，默认 - all
