@@ -2650,11 +2650,16 @@
 		CEC4A54620C3FBE50026EE19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< Updated upstream
  
 				72EBB8B220C6DB3600F670E9 /* AuthenticationController */,
 
 				CEE4B2A820C6D8E4008B8731 /* Members */,
 
+=======
+				72EBB8B220C6DB3600F670E9 /* AuthenticationController */,
+				CEE4B2A820C6D8E4008B8731 /* Members */,
+>>>>>>> Stashed changes
 				8D50C54D20C631CF0095A824 /* ProfileListController */,
 				CE0BA61D209D61C0004C3C33 /* ProfileController.h */,
 				CE0BA61E209D61C0004C3C33 /* ProfileController.m */,
