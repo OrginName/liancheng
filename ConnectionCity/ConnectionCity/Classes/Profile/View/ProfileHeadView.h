@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class ProfileHeadView;
+
+@protocol ProfileHeadViewDelegate <NSObject>
+
+- (void)profileHeadView:(ProfileHeadView *)view editBtnClick:(UIButton *)btn;
+- (void)profileHeadView:(ProfileHeadView *)view xfBtnClick:(UIButton *)btn;
+
+@end
+
+
 @interface ProfileHeadView : UIView
+@property (nonatomic, weak) id<ProfileHeadViewDelegate>delegate;
 
 @end

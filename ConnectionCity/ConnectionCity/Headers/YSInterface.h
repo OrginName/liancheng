@@ -11,13 +11,13 @@
 
 
 //主机地址
-#define HOSTURL @"http://api.lc.test.cn-apps.com:8080/"
+#define HOSTURL @"http://api.lc.test.cn-apps.com:8080"
 //0、短信验证
-static NSString * const smsVerificationCode = @"sms/verification-code";
+static NSString * const smsVerificationCode = @"/sms/verification-code";
 //1、注册
-static NSString * const registerUrl = @"register";
+static NSString * const registerUrl = @"/register";
 //2、登录
-static NSString * const login = @"login";
+static NSString * const login = @"/login";
 
 
 #endif /* YSInterface_h */

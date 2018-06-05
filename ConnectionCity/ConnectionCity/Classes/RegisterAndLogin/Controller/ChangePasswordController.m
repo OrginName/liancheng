@@ -9,9 +9,11 @@
 #import "ChangePasswordController.h"
 
 @interface ChangePasswordController ()
-@property (weak, nonatomic) IBOutlet UITextField *currentPasswordTF;
+@property (weak, nonatomic) IBOutlet UITextField *phoneTF;
+@property (weak, nonatomic) IBOutlet UITextField *verificationCodeTF;
 @property (weak, nonatomic) IBOutlet UITextField *nwePasswordTF;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTF;
+@property (weak, nonatomic) IBOutlet UIButton *changePSBtn;
 
 @end
 
@@ -19,6 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initUI];
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -26,22 +30,38 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark - setup
+- (void)initUI {
+    self.changePSBtn.layer.cornerRadius = 3;
+    self.navigationItem.title = @"忘记密码";
+}
 #pragma mark - Event response
-- (IBAction)commitBtnClick:(id)sender {
-    if ([YSTools dx_isNullOrNilWithObject:_currentPasswordTF.text] || [YSTools dx_isNullOrNilWithObject:_nwePasswordTF.text] || [YSTools dx_isNullOrNilWithObject:_confirmPasswordTF.text]) {
-        [YTAlertUtil showTempInfo:@"请将信息填写完整"];
-        return;
-    }
-    if ([_currentPasswordTF.text isEqualToString:_nwePasswordTF.text]) {
-        [YTAlertUtil showTempInfo:@"新旧密码不能相同"];
-        return;
-    }
-    if (![_nwePasswordTF.text isEqualToString:_confirmPasswordTF.text]) {
-        [YTAlertUtil showTempInfo:@"确认密码输入不正确"];
+- (IBAction)getVerificationCodeBtnClick:(id)sender {
+    UIButton *btn = (UIButton *)sender;
+    if (![YSTools isRightPhoneNumberFormat:_phoneTF.text]) {
+        [YTAlertUtil showTempInfo:@"请填写正确的手机号码"];
         return;
     }
     WeakSelf
-    NSString *userid = [NSString stringWithFormat:@"%lu",(unsigned long)kAccount.userid];
+    [YSNetworkTool POST:smsVerificationCode params:@{@"mobile": _phoneTF.text} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YSTools DaojiShi:btn];
+        
+    } failure:nil];
+}
+- (IBAction)changePSBtnClick:(id)sender {
+    if ([YSTools dx_isNullOrNilWithObject:_phoneTF.text] || [YSTools dx_isNullOrNilWithObject:_verificationCodeTF.text] || [YSTools dx_isNullOrNilWithObject:_nwePasswordTF.text] || [YSTools dx_isNullOrNilWithObject:_confirmPasswordTF.text]) {
+        [YTAlertUtil showTempInfo:@"请将信息填写完整"];
+        return;
+    }
+    if (![YSTools isRightPhoneNumberFormat:_phoneTF.text]) {
+        [YTAlertUtil showTempInfo:@"请填写正确的手机号码"];
+        return;
+    }
+    if (![_nwePasswordTF.text isEqualToString:_confirmPasswordTF.text]) {
+        [YTAlertUtil showTempInfo:@"两次密码输入不一致"];
+        return;
+    }
+    WeakSelf
 //    [YSNetworkTool POSTData:updatepassword params:@{@"userid":userid ,@"newPassword":_nwePasswordTF.text,@"oldpPassword":_currentPasswordTF.text} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
 //        if ([responseObject isEqualToString:@"OK"]) {
 //            [YTAlertUtil showTempInfo:@"修改成功"];
@@ -50,9 +70,6 @@
 //            [YTAlertUtil showTempInfo:responseObject];
 //        }
 //    } failure:nil];
-}
-- (IBAction)backBtnClick:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

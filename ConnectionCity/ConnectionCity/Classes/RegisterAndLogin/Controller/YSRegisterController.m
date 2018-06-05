@@ -36,6 +36,18 @@
     self.registerBtn.layer.cornerRadius = 3;
 }
 #pragma mark - Event response
+- (IBAction)getVerificationCodeBtnClick:(id)sender {
+    UIButton *btn = (UIButton *)sender;
+    if (![YSTools isRightPhoneNumberFormat:_phoneTF.text]) {
+        [YTAlertUtil showTempInfo:@"请填写正确的手机号码"];
+        return;
+    }
+    WeakSelf
+    [YSNetworkTool POST:smsVerificationCode params:@{@"mobile": _phoneTF.text} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YSTools DaojiShi:btn];
+        
+    } failure:nil];
+}
 - (IBAction)registerBtnClick:(id)sender {
     if ([YSTools dx_isNullOrNilWithObject:_phoneTF.text] || [YSTools dx_isNullOrNilWithObject:_verificationCodeTF.text] || [YSTools dx_isNullOrNilWithObject:_nwePasswordTF.text] || [YSTools dx_isNullOrNilWithObject:_confirmPasswordTF.text]) {
         [YTAlertUtil showTempInfo:@"请将信息填写完整"];

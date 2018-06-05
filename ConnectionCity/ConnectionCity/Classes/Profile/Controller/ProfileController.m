@@ -10,8 +10,9 @@
 #import "YTSideMenuModel.h"
 #import "ProfileCell.h"
 #import "ProfileHeadView.h"
+#import "MemberRenewalController.h"
 
-@interface ProfileController ()
+@interface ProfileController ()<ProfileHeadViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, copy) NSArray <YTSideMenuModel *> *menuModels;
 
@@ -60,6 +61,7 @@
 //    [self.tableView registerNib:[UINib nibWithNibName:@"ProfileCell" bundle:nil] forCellReuseIdentifier:@"ProfileCell0"];
     ProfileHeadView *tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"ProfileHeadView" owner:nil options:nil] firstObject];
     tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 210 + 64);
+    tableHeadV.delegate = self;
     self.tableView.tableHeaderView = tableHeadV;
 }
 #pragma mark - setter and getter
@@ -101,6 +103,14 @@
     UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc]init];
     if (vc == nil)return;
     [self.navigationController pushViewController:vc animated:YES];
+}
+#pragma mark - ProfileHeadViewDelegate
+- (void)profileHeadView:(ProfileHeadView *)view editBtnClick:(UIButton *)btn {
+    
+}
+- (void)profileHeadView:(ProfileHeadView *)view xfBtnClick:(UIButton *)btn {
+    MemberRenewalController *xfVC = [[MemberRenewalController alloc]init];
+    [self.navigationController pushViewController:xfVC animated:YES];
 }
 
 #pragma mark - 点击事件

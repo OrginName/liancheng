@@ -9,6 +9,18 @@
 #import "ProfileHeadView.h"
 
 @implementation ProfileHeadView
+#pragma mark - 点击事件
+- (IBAction)editBtnClick:(id)sender {
+    if (_delegate && [_delegate respondsToSelector:@selector(profileHeadView:editBtnClick:)]) {
+        [_delegate profileHeadView:self editBtnClick:(UIButton *)sender];
+    }
+}
+- (IBAction)membershipRenewalBtnClick:(id)sender {
+    if (_delegate && [_delegate respondsToSelector:@selector(profileHeadView:xfBtnClick:)]) {
+        [_delegate profileHeadView:self xfBtnClick:(UIButton *)sender];
+    }
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

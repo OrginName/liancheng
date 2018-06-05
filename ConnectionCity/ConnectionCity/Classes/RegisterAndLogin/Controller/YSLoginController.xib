@@ -26,7 +26,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7Q-Hb-Tdf">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="668"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="604"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-reg" translatesAutoresizingMaskIntoConstraints="NO" id="PFV-fL-NcC">
                                     <rect key="frame" x="156" y="45" width="62" height="62"/>
@@ -230,7 +230,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohh-Et-hcv">
-                                    <rect key="frame" x="25" y="548" width="325" height="120"/>
+                                    <rect key="frame" x="25" y="484" width="325" height="120"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gr3-TQ-zTb">
                                             <rect key="frame" x="0.0" y="6" width="325" height="1"/>
@@ -360,7 +360,7 @@
                                 <constraint firstItem="PFV-fL-NcC" firstAttribute="centerX" secondItem="c7Q-Hb-Tdf" secondAttribute="centerX" id="9Vi-cs-ynr"/>
                                 <constraint firstItem="BZy-IG-NfW" firstAttribute="leading" secondItem="c7Q-Hb-Tdf" secondAttribute="leading" constant="25" id="K28-Oc-rxY"/>
                                 <constraint firstAttribute="trailing" secondItem="BZy-IG-NfW" secondAttribute="trailing" constant="25" id="XIE-p4-rST"/>
-                                <constraint firstAttribute="height" constant="668" id="ikF-0Z-bpY"/>
+                                <constraint firstAttribute="height" constant="604" id="ikF-0Z-bpY"/>
                                 <constraint firstItem="PFV-fL-NcC" firstAttribute="top" secondItem="c7Q-Hb-Tdf" secondAttribute="top" constant="45" id="tel-kt-H57"/>
                                 <constraint firstItem="BZy-IG-NfW" firstAttribute="top" secondItem="PFV-fL-NcC" secondAttribute="bottom" constant="22" id="uOJ-AF-SKL"/>
                                 <constraint firstAttribute="bottom" secondItem="ohh-Et-hcv" secondAttribute="bottom" id="w5u-GP-aBA"/>

@@ -125,6 +125,9 @@
                                             <state key="normal" title="获取验证码">
                                                 <color key="titleColor" red="0.93474149703979492" green="0.36836501955986023" blue="0.33746045827865601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="getVerificationCodeBtnClick:" destination="-1" eventType="touchUpInside" id="9e3-EW-MQF"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册既代表阅读并同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8T-CH-i5R">
                                             <rect key="frame" x="0.0" y="249" width="123" height="21"/>
@@ -169,7 +172,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bz-Vr-0Dk">
-                                            <rect key="frame" x="181" y="249" width="50" height="21"/>
+                                            <rect key="frame" x="185.5" y="249" width="50" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="6E4-c5-zLf"/>
                                             </constraints>
@@ -228,7 +231,7 @@
                                         <constraint firstItem="EgN-7b-AdT" firstAttribute="top" secondItem="lHa-86-rds" secondAttribute="bottom" id="hXB-94-2Z7"/>
                                         <constraint firstItem="UXH-BS-fBN" firstAttribute="leading" secondItem="yAZ-Ki-brk" secondAttribute="leading" id="hbQ-nW-WGY"/>
                                         <constraint firstItem="4UM-F3-gT3" firstAttribute="leading" secondItem="yAZ-Ki-brk" secondAttribute="leading" id="jRF-Z2-Ki2"/>
-                                        <constraint firstItem="8bz-Vr-0Dk" firstAttribute="leading" secondItem="i5H-Xj-bUd" secondAttribute="trailing" constant="-4.5" id="jTi-SE-e89"/>
+                                        <constraint firstItem="8bz-Vr-0Dk" firstAttribute="leading" secondItem="i5H-Xj-bUd" secondAttribute="trailing" id="jTi-SE-e89"/>
                                         <constraint firstItem="a8T-CH-i5R" firstAttribute="leading" secondItem="yAZ-Ki-brk" secondAttribute="leading" id="llx-BE-FcX"/>
                                         <constraint firstAttribute="trailing" secondItem="EgN-7b-AdT" secondAttribute="trailing" id="o7o-Kf-jIz"/>
                                         <constraint firstItem="lHa-86-rds" firstAttribute="top" secondItem="lgx-Un-6Ro" secondAttribute="bottom" id="ra2-nk-vi8"/>

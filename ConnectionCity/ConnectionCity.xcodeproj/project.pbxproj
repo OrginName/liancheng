@@ -376,6 +376,16 @@
 		CEC4A57C20C41D540026EE19 /* ProfileHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A57B20C41D540026EE19 /* ProfileHeadView.m */; };
 		CEC4A57E20C41D610026EE19 /* ProfileHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A57D20C41D610026EE19 /* ProfileHeadView.xib */; };
 		CEE4B28720C585A4008B8731 /* YSClubEditDepartmant.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B28320C585A3008B8731 /* YSClubEditDepartmant.m */; };
+		CEE4B29120C6B17C008B8731 /* FoundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B28F20C6B17C008B8731 /* FoundCell.m */; };
+		CEE4B29220C6B17C008B8731 /* FoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE4B29020C6B17C008B8731 /* FoundCell.xib */; };
+		CEE4B29720C6B5A2008B8731 /* NearManController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B29520C6B5A2008B8731 /* NearManController.m */; };
+		CEE4B29820C6B5A2008B8731 /* NearManController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE4B29620C6B5A2008B8731 /* NearManController.xib */; };
+		CEE4B29C20C6B67A008B8731 /* NearManCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B29A20C6B67A008B8731 /* NearManCell.m */; };
+		CEE4B29D20C6B67A008B8731 /* NearManCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE4B29B20C6B67A008B8731 /* NearManCell.xib */; };
+		CEE4B2A620C6CC3F008B8731 /* PersonalCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B2A420C6CC3F008B8731 /* PersonalCenterController.m */; };
+		CEE4B2A720C6CC3F008B8731 /* PersonalCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE4B2A520C6CC3F008B8731 /* PersonalCenterController.xib */; };
+		CEE4B2AF20C6D948008B8731 /* MemberRenewalController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B2AD20C6D948008B8731 /* MemberRenewalController.m */; };
+		CEE4B2B020C6D948008B8731 /* MemberRenewalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE4B2AE20C6D948008B8731 /* MemberRenewalController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1021,6 +1031,21 @@
 		CEE4B28520C585A4008B8731 /* YSClubEditDepartmant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSClubEditDepartmant.h; sourceTree = "<group>"; };
 		CEE4B28A20C585F7008B8731 /* YSSetUpBirthdayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YSSetUpBirthdayView.h; sourceTree = "<group>"; };
 		CEE4B28B20C585F9008B8731 /* YSSetUpBirthdayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YSSetUpBirthdayView.m; sourceTree = "<group>"; };
+		CEE4B28E20C6B17C008B8731 /* FoundCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundCell.h; sourceTree = "<group>"; };
+		CEE4B28F20C6B17C008B8731 /* FoundCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoundCell.m; sourceTree = "<group>"; };
+		CEE4B29020C6B17C008B8731 /* FoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoundCell.xib; sourceTree = "<group>"; };
+		CEE4B29420C6B5A2008B8731 /* NearManController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NearManController.h; sourceTree = "<group>"; };
+		CEE4B29520C6B5A2008B8731 /* NearManController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NearManController.m; sourceTree = "<group>"; };
+		CEE4B29620C6B5A2008B8731 /* NearManController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NearManController.xib; sourceTree = "<group>"; };
+		CEE4B29920C6B67A008B8731 /* NearManCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NearManCell.h; sourceTree = "<group>"; };
+		CEE4B29A20C6B67A008B8731 /* NearManCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NearManCell.m; sourceTree = "<group>"; };
+		CEE4B29B20C6B67A008B8731 /* NearManCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NearManCell.xib; sourceTree = "<group>"; };
+		CEE4B2A320C6CC3F008B8731 /* PersonalCenterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalCenterController.h; sourceTree = "<group>"; };
+		CEE4B2A420C6CC3F008B8731 /* PersonalCenterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalCenterController.m; sourceTree = "<group>"; };
+		CEE4B2A520C6CC3F008B8731 /* PersonalCenterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalCenterController.xib; sourceTree = "<group>"; };
+		CEE4B2AC20C6D948008B8731 /* MemberRenewalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberRenewalController.h; sourceTree = "<group>"; };
+		CEE4B2AD20C6D948008B8731 /* MemberRenewalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberRenewalController.m; sourceTree = "<group>"; };
+		CEE4B2AE20C6D948008B8731 /* MemberRenewalController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberRenewalController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2250,9 +2275,9 @@
 		CE0BA616209D617F004C3C33 /* Found */ = {
 			isa = PBXGroup;
 			children = (
-				CE0BA617209D6197004C3C33 /* FoundController.h */,
-				CE0BA618209D6197004C3C33 /* FoundController.m */,
-				CE0BA619209D6197004C3C33 /* FoundController.xib */,
+				CEE4B29320C6B553008B8731 /* Controller */,
+				CEE4B28C20C6B157008B8731 /* Models */,
+				CEE4B28D20C6B157008B8731 /* View */,
 			);
 			path = Found;
 			sourceTree = "<group>";
@@ -2625,7 +2650,11 @@
 		CEC4A54620C3FBE50026EE19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< Updated upstream
 				72EBB8B220C6DB3600F670E9 /* AuthenticationController */,
+=======
+				CEE4B2A820C6D8E4008B8731 /* Members */,
+>>>>>>> Stashed changes
 				8D50C54D20C631CF0095A824 /* ProfileListController */,
 				CE0BA61D209D61C0004C3C33 /* ProfileController.h */,
 				CE0BA61E209D61C0004C3C33 /* ProfileController.m */,
@@ -2687,6 +2716,76 @@
 				CEE4B28B20C585F9008B8731 /* YSSetUpBirthdayView.m */,
 			);
 			path = CustomPicker;
+			sourceTree = "<group>";
+		};
+		CEE4B28C20C6B157008B8731 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CEE4B28D20C6B157008B8731 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEE4B28E20C6B17C008B8731 /* FoundCell.h */,
+				CEE4B28F20C6B17C008B8731 /* FoundCell.m */,
+				CEE4B29020C6B17C008B8731 /* FoundCell.xib */,
+				CEE4B29920C6B67A008B8731 /* NearManCell.h */,
+				CEE4B29A20C6B67A008B8731 /* NearManCell.m */,
+				CEE4B29B20C6B67A008B8731 /* NearManCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEE4B29320C6B553008B8731 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE0BA617209D6197004C3C33 /* FoundController.h */,
+				CE0BA618209D6197004C3C33 /* FoundController.m */,
+				CE0BA619209D6197004C3C33 /* FoundController.xib */,
+				CEE4B29420C6B5A2008B8731 /* NearManController.h */,
+				CEE4B29520C6B5A2008B8731 /* NearManController.m */,
+				CEE4B29620C6B5A2008B8731 /* NearManController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CEE4B2A820C6D8E4008B8731 /* Members */ = {
+			isa = PBXGroup;
+			children = (
+				CEE4B2AA20C6D8F9008B8731 /* Controller */,
+				CEE4B2A920C6D8F9008B8731 /* Models */,
+				CEE4B2AB20C6D8FA008B8731 /* View */,
+			);
+			path = Members;
+			sourceTree = "<group>";
+		};
+		CEE4B2A920C6D8F9008B8731 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CEE4B2AA20C6D8F9008B8731 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CEE4B2A320C6CC3F008B8731 /* PersonalCenterController.h */,
+				CEE4B2A420C6CC3F008B8731 /* PersonalCenterController.m */,
+				CEE4B2A520C6CC3F008B8731 /* PersonalCenterController.xib */,
+				CEE4B2AC20C6D948008B8731 /* MemberRenewalController.h */,
+				CEE4B2AD20C6D948008B8731 /* MemberRenewalController.m */,
+				CEE4B2AE20C6D948008B8731 /* MemberRenewalController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CEE4B2AB20C6D8FA008B8731 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		FED23FC9B0FA87A13AD43642 /* Pods */ = {
@@ -2826,6 +2925,7 @@
 				727418D220B1A058001D6BE1 /* FirstController.xib in Resources */,
 				8D09426720C14AF200C45E2B /* EvaluationController.xib in Resources */,
 				72EC1B7320BA984400ACC20B /* PlayDouctCell.xib in Resources */,
+				CEE4B2A720C6CC3F008B8731 /* PersonalCenterController.xib in Resources */,
 				8D67602820A408470027CDEE /* ClassificationsController.xib in Resources */,
 				CEBEDD8020B17ED1000F9EE4 /* WinningBidderCell.xib in Resources */,
 				72EC1B7E20BAACBA00ACC20B /* DouctChangeController.xib in Resources */,
@@ -2833,6 +2933,7 @@
 				72EC1B5C20B7027000ACC20B /* SwapListController.xib in Resources */,
 				CE97DBF620B5A2C1003E46BD /* ReleaseTenderCell.xib in Resources */,
 				CEC4A54E20C3FE070026EE19 /* MenuIcons.plist in Resources */,
+				CEE4B29D20C6B67A008B8731 /* NearManCell.xib in Resources */,
 				CE0A99DE20C57C44003A4D91 /* CertificationCenterController.xib in Resources */,
 				CEBEDD8C20B17ED1000F9EE4 /* BountyHostingController.xib in Resources */,
 				8DEA450A20C1148C001529F1 /* SendMomentController.xib in Resources */,
@@ -2871,7 +2972,9 @@
 				CEC4A57E20C41D610026EE19 /* ProfileHeadView.xib in Resources */,
 				8DEA451420C11F85001529F1 /* MommentPlayerController.xib in Resources */,
 				72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */,
+				CEE4B29820C6B5A2008B8731 /* NearManController.xib in Resources */,
 				8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */,
+				CEE4B29220C6B17C008B8731 /* FoundCell.xib in Resources */,
 				8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */,
 				CEC4A57420C4083E0026EE19 /* WithdrawalManagerController.xib in Resources */,
 				CEC4A57920C40A250026EE19 /* EditProfileCell.xib in Resources */,
@@ -2924,6 +3027,7 @@
 				8DC17A8420C0E598005D9EE0 /* FriendCircleController.xib in Resources */,
 				8DEA450F20C1193E001529F1 /* MomentDetailController.xib in Resources */,
 				8DA4990E20A7063E00968F86 /* ResumeCell.xib in Resources */,
+				CEE4B2B020C6D948008B8731 /* MemberRenewalController.xib in Resources */,
 				727418DF20B290BF001D6BE1 /* EnthusiastsControll.xib in Resources */,
 				72EC1BAC20BC34AA00ACC20B /* TravalController.xib in Resources */,
 				72EC1BA220BC347D00ACC20B /* ProfileServiceController.xib in Resources */,
@@ -3035,6 +3139,7 @@
 				720263FE20B5015500382B2F /* UIView+Layout.m in Sources */,
 				CE5C281F20B953C1006A8332 /* BidManagerHeadV.m in Sources */,
 				CEC4A52F20C3D6D10026EE19 /* TeamHeadView.m in Sources */,
+				CEE4B2A620C6CC3F008B8731 /* PersonalCenterController.m in Sources */,
 				72EC1BB920BC4CA100ACC20B /* SendServiceCell.m in Sources */,
 				CE03EDED20B43DC400F07D78 /* FootprintTabbleHeadV.m in Sources */,
 				CEC4A55A20C407500026EE19 /* MemberCenterController.m in Sources */,
@@ -3082,6 +3187,7 @@
 				CE97DC0720B5B1CA003E46BD /* BidManageController.m in Sources */,
 				CEC4A56420C407BF0026EE19 /* WalletController.m in Sources */,
 				72BAB43920B047F500496D29 /* YSButton.m in Sources */,
+				CEE4B2AF20C6D948008B8731 /* MemberRenewalController.m in Sources */,
 				8DEA451320C11F85001529F1 /* MommentPlayerController.m in Sources */,
 				CE0BA5BC209D5E6B004C3C33 /* MBProgressHUD+Extension.m in Sources */,
 				722D253920AA76D400AB3863 /* JFCityHeaderView.m in Sources */,
@@ -3195,6 +3301,7 @@
 				CE0BA5B2209D5E6B004C3C33 /* NSData+DDAdditions.m in Sources */,
 				8D24A23220A1CB8200F0740D /* FirstTanView.m in Sources */,
 				7274188020B13CB6001D6BE1 /* MLMSegmentHead.m in Sources */,
+				CEE4B29720C6B5A2008B8731 /* NearManController.m in Sources */,
 				CE0BA5B5209D5E6B004C3C33 /* UIViewController+BackButtonHandler.m in Sources */,
 				723B9F1320B4195B00AD919B /* PhotoSelect.m in Sources */,
 				CEBEDD8720B17ED1000F9EE4 /* BidderController.m in Sources */,
@@ -3238,8 +3345,10 @@
 				CE0BA5B9209D5E6B004C3C33 /* UIAlertView+Blocks.m in Sources */,
 				8DC17AB620C0E7E5005D9EE0 /* FriendMyselfTab.m in Sources */,
 				CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */,
+				CEE4B29120C6B17C008B8731 /* FoundCell.m in Sources */,
 				CE97DBF520B5A2C1003E46BD /* ReleaseTenderCell.m in Sources */,
 				CE5C27FA20B8FE0A006A8332 /* BiddInfoController.m in Sources */,
+				CEE4B29C20C6B67A008B8731 /* NearManCell.m in Sources */,
 				72EC1BC220BDB10500ACC20B /* SelectLayout.m in Sources */,
 				729BA6C820A01E7F009713FD /* JFAreaDataManager.m in Sources */,
 				CE0BA5E4209D5E9B004C3C33 /* MyDatePicker.m in Sources */,
