@@ -7,8 +7,11 @@
 //
 
 #import "CertificationCenterController.h"
-
+#import "CardAuthorController.h"
 @interface CertificationCenterController ()
+@property (weak, nonatomic) IBOutlet UILabel *lab_RZ1;
+@property (weak, nonatomic) IBOutlet UILabel *lab_RZ2;
+@property (weak, nonatomic) IBOutlet UILabel *lab_RZ3;
 
 @end
 
@@ -17,6 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+}
+- (IBAction)btnClick:(UIButton *)sender {
+    if (sender.tag==1) {
+        [self.navigationController pushViewController:[super rotateClass:@"CardAuthorController"] animated:YES];
+    }
 }
 -(void)setUI{
     self.navigationItem.title = @"认证中心";
