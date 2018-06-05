@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YSLoginController">
             <connections>
+                <outlet property="loginBtn" destination="qg5-Qu-3qW" id="9EN-gQ-aV4"/>
                 <outlet property="passwordTF" destination="rHx-VA-e53" id="SDa-YI-a0S"/>
                 <outlet property="phoneTF" destination="5S9-lL-JvW" id="mST-r9-HxN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

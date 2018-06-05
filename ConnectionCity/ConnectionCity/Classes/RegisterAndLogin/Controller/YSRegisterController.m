@@ -10,8 +10,10 @@
 
 @interface YSRegisterController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
+@property (weak, nonatomic) IBOutlet UITextField *verificationCodeTF;
 @property (weak, nonatomic) IBOutlet UITextField *nwePasswordTF;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTF;
+@property (weak, nonatomic) IBOutlet UIButton *registerBtn;
 
 @end
 
@@ -20,6 +22,8 @@
 #pragma mark - View life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initUI];
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -27,18 +31,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark - Event response
-- (IBAction)backBtnClick:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+#pragma mark - setup
+- (void)initUI {
+    self.registerBtn.layer.cornerRadius = 3;
 }
+#pragma mark - Event response
 - (IBAction)registerBtnClick:(id)sender {
-    if ([YSTools dx_isNullOrNilWithObject:_phoneTF.text] || [YSTools dx_isNullOrNilWithObject:_nwePasswordTF.text] || [YSTools dx_isNullOrNilWithObject:_confirmPasswordTF.text]) {
+    if ([YSTools dx_isNullOrNilWithObject:_phoneTF.text] || [YSTools dx_isNullOrNilWithObject:_verificationCodeTF.text] || [YSTools dx_isNullOrNilWithObject:_nwePasswordTF.text] || [YSTools dx_isNullOrNilWithObject:_confirmPasswordTF.text]) {
         [YTAlertUtil showTempInfo:@"请将信息填写完整"];
         return;
     }
     if (![YSTools isRightPhoneNumberFormat:_phoneTF.text]) {
         [YTAlertUtil showTempInfo:@"请填写正确的手机号码"];
+        return;
+    }
+    if (![_nwePasswordTF.text isEqualToString:_confirmPasswordTF.text]) {
+        [YTAlertUtil showTempInfo:@"两次密码输入不一致"];
         return;
     }
     WeakSelf
@@ -50,6 +58,12 @@
 //            [YTAlertUtil showTempInfo:responseObject];
 //        }
 //    } failure:nil];
+}
+- (IBAction)termsOfUseBtnClick:(id)sender {
+    
+}
+- (IBAction)privacyPolicyBtnClick:(id)sender {
+    
 }
 /*
 #pragma mark - Navigation

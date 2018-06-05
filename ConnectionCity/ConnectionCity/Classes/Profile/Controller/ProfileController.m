@@ -26,7 +26,7 @@
 
     // Do any additional setup after loading the view from its nib.
 }
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     //关闭自适应
     if (@available(iOS 11.0, *)) {

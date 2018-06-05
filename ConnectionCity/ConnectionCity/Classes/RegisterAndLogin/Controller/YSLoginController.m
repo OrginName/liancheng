@@ -8,10 +8,12 @@
 
 #import "YSLoginController.h"
 #import "YSRegisterController.h"
+#import "ChangePasswordController.h"
 
 @interface YSLoginController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 
 @end
 
@@ -20,6 +22,8 @@
 #pragma mark - View life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initUI];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -27,7 +31,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+#pragma mark - setup
+- (void)initUI {
+    self.loginBtn.layer.cornerRadius = 3;
+}
 #pragma mark - Event response
 - (IBAction)eyeBtnClick:(id)sender {
 
@@ -61,8 +68,8 @@
     
 }
 - (IBAction)forgetBtnClick:(id)sender {
-    YSRegisterController *registerVC = [[YSRegisterController alloc]init];
-    [self.navigationController pushViewController:registerVC animated:YES];
+    ChangePasswordController *forgetVC = [[YSRegisterController alloc]init];
+    [self.navigationController pushViewController:forgetVC animated:YES];
 }
 - (IBAction)registerBtnClick:(id)sender {
     YSRegisterController *registerVC = [[YSRegisterController alloc]init];
