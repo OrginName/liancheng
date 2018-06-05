@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol profileCellDelegate <NSObject>
+@optional
+- (void)selectedItemButton:(NSInteger)index;
+@end
+
 @interface ProfileCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *iconImgV;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
-
+@property (nonatomic,assign) id<profileCellDelegate>delegate;
 @end

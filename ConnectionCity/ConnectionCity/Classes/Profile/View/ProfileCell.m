@@ -20,5 +20,10 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)btn_Click:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(selectedItemButton:)]) {
+        [self.delegate selectedItemButton:sender.tag];
+    }
+}
 
 @end

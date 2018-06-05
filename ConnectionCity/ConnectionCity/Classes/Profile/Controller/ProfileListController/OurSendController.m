@@ -1,40 +1,36 @@
 //
-//  MemberCenterController.m
+//  OurSendController.m
 //  ConnectionCity
 //
-//  Created by YanShuang Jiang on 2018/6/3.
+//  Created by umbrella on 2018/6/5.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
 //
 
-#import "MemberCenterController.h"
-#import "ProfileHeadView.h"
-#import "ProfileCell.h"
+#import "OurSendController.h"
 #import "YTSideMenuModel.h"
-@interface MemberCenterController ()<UITableViewDelegate,UITableViewDataSource>
+#import "ProfileCell.h"
+@interface OurSendController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, copy) NSArray <YTSideMenuModel *> *menuModels;
-@property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
+@property (weak, nonatomic) IBOutlet UITableView *tab_bottom;
+
 @end
 
-@implementation MemberCenterController
+@implementation OurSendController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    
 }
 //添加UI
 -(void)setUI{
-    self.navigationItem.title = @"个人中心";
-    ProfileHeadView *tableHeadV = [[NSBundle mainBundle] loadNibNamed:@"ProfileHeadView" owner:nil options:nil][1];
-    tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 210 + 64);
-    self.tab_Bottom.tableHeaderView = tableHeadV;
+    self.navigationItem.title = @"我的发布";
 }
 #pragma mark ---UITableviewDelegate--------
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.menuModels.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ProfileCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell0"];
+    ProfileCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell"];
     if (!cell) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"ProfileCell" owner:nil options:nil][0];
     }
@@ -54,12 +50,13 @@
 - (NSArray<YTSideMenuModel *> *)menuModels {
     if (_menuModels == nil) {
         NSMutableArray <YTSideMenuModel *> *menuArr = [NSMutableArray array];
-        NSArray * menuArray = @[@{@"icon":@"our-fabu",
-                                  @"title":@"我的发布",@"class":@"OurSendController"},
-                                @{@"icon":@"our-service",@"title":@"我的服务",@"class":@"OurSendController"},
-                                @{@"icon":@"our-travel",@"title":@"我的旅行",@"class":@"OurSendController"},
-                                @{@"icon":@"our-wanjia",@"title":@"我的玩家",@"class":@"OurSendController"},
-                                @{@"icon":@"our-guanzhu",@"title":@"我的关注",@"class":@"OurSendController"}];
+        NSArray * menuArray = @[@{@"icon":@"our-jl",
+                                  @"title":@"简历",@"class":@"OurResumeController"},
+                                @{@"icon":@"服务",@"title":@"服务",@"class":@"OurResumeController"},
+                                @{@"icon":@"our-t-1",@"title":@"陪旅行",@"class":@"OurResumeController"},
+                                @{@"icon":@"our-t-line",@"title":@"旅行邀约",@"class":@"OurResumeController"},
+                                @{@"icon":@"our-wup",@"title":@"宝物",@"class":@"OurResumeController"},
+                                @{@"icon":@"our-ch",@"title":@"身份互换",@"class":@"OurResumeController"}];
         [menuArray enumerateObjectsUsingBlock:^(NSDictionary *_Nonnull dic, NSUInteger idx, BOOL * _Nonnull stop) {
             YTSideMenuModel *model = [YTSideMenuModel modelWithDictionary:dic];
             [menuArr addObject:model];
@@ -72,19 +69,10 @@
     [super viewWillAppear:animated];
     //关闭自适应
     if (@available(iOS 11.0, *)) {
-        self.tab_Bottom.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        self.tab_bottom.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     } else {
         // Fallback on earlier versions
         self.automaticallyAdjustsScrollViewInsets = YES;
     }
-    //设置导航透明
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]forBarMetrics:UIBarMetricsDefault];
-    //去掉导航栏底部的黑线
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-}
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:
-     [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
 }
 @end

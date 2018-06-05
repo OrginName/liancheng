@@ -144,6 +144,10 @@
 		8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9A20A2DABD00C3157F /* ConnectionController.xib */; };
 		8D2B8BA020A2DACC00C3157F /* MakeMoneyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9E20A2DACC00C3157F /* MakeMoneyController.m */; };
 		8D2B8BA120A2DACC00C3157F /* MakeMoneyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9F20A2DACC00C3157F /* MakeMoneyController.xib */; };
+		8D50C55120C632090095A824 /* OurSendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D50C54F20C632090095A824 /* OurSendController.m */; };
+		8D50C55220C632090095A824 /* OurSendController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D50C55020C632090095A824 /* OurSendController.xib */; };
+		8D50C55620C636560095A824 /* OurResumeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D50C55420C636560095A824 /* OurResumeController.m */; };
+		8D50C55720C636560095A824 /* OurResumeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D50C55520C636560095A824 /* OurResumeController.xib */; };
 		8D5B3C3820C0143200773105 /* ServiceListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B3C3620C0143200773105 /* ServiceListController.m */; };
 		8D5B3C3920C0143200773105 /* ServiceListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D5B3C3720C0143200773105 /* ServiceListController.xib */; };
 		8D5B3C3D20C0147A00773105 /* ServiceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B3C3B20C0147A00773105 /* ServiceListCell.m */; };
@@ -612,6 +616,12 @@
 		8D2B8B9D20A2DACC00C3157F /* MakeMoneyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MakeMoneyController.h; sourceTree = "<group>"; };
 		8D2B8B9E20A2DACC00C3157F /* MakeMoneyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MakeMoneyController.m; sourceTree = "<group>"; };
 		8D2B8B9F20A2DACC00C3157F /* MakeMoneyController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MakeMoneyController.xib; sourceTree = "<group>"; };
+		8D50C54E20C632090095A824 /* OurSendController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurSendController.h; sourceTree = "<group>"; };
+		8D50C54F20C632090095A824 /* OurSendController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurSendController.m; sourceTree = "<group>"; };
+		8D50C55020C632090095A824 /* OurSendController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OurSendController.xib; sourceTree = "<group>"; };
+		8D50C55320C636560095A824 /* OurResumeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurResumeController.h; sourceTree = "<group>"; };
+		8D50C55420C636560095A824 /* OurResumeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurResumeController.m; sourceTree = "<group>"; };
+		8D50C55520C636560095A824 /* OurResumeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OurResumeController.xib; sourceTree = "<group>"; };
 		8D5B3C3520C0143200773105 /* ServiceListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceListController.h; sourceTree = "<group>"; };
 		8D5B3C3620C0143200773105 /* ServiceListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceListController.m; sourceTree = "<group>"; };
 		8D5B3C3720C0143200773105 /* ServiceListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceListController.xib; sourceTree = "<group>"; };
@@ -1731,6 +1741,19 @@
 			path = MakeMoney;
 			sourceTree = "<group>";
 		};
+		8D50C54D20C631CF0095A824 /* ProfileListController */ = {
+			isa = PBXGroup;
+			children = (
+				8D50C54E20C632090095A824 /* OurSendController.h */,
+				8D50C54F20C632090095A824 /* OurSendController.m */,
+				8D50C55020C632090095A824 /* OurSendController.xib */,
+				8D50C55320C636560095A824 /* OurResumeController.h */,
+				8D50C55420C636560095A824 /* OurResumeController.m */,
+				8D50C55520C636560095A824 /* OurResumeController.xib */,
+			);
+			path = ProfileListController;
+			sourceTree = "<group>";
+		};
 		8DA4990420A6FDCB00968F86 /* PersonalResume */ = {
 			isa = PBXGroup;
 			children = (
@@ -2531,6 +2554,7 @@
 		CEC4A54620C3FBE50026EE19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8D50C54D20C631CF0095A824 /* ProfileListController */,
 				CE0BA61D209D61C0004C3C33 /* ProfileController.h */,
 				CE0BA61E209D61C0004C3C33 /* ProfileController.m */,
 				CE0BA61F209D61C0004C3C33 /* ProfileController.xib */,
@@ -2724,6 +2748,7 @@
 				CEC4A53020C3D6D10026EE19 /* TeamHeadView.xib in Resources */,
 				727418FD20B3C282001D6BE1 /* SwapHomeCell.xib in Resources */,
 				72EC1B7820BA9F7B00ACC20B /* PlayEditController.xib in Resources */,
+				8D50C55720C636560095A824 /* OurResumeController.xib in Resources */,
 				CEC4A54220C3D6FC0026EE19 /* TeamSwitchCell.xib in Resources */,
 				CE5C281220B91AFD006A8332 /* WinnerInfoCell.xib in Resources */,
 				727418D220B1A058001D6BE1 /* FirstController.xib in Resources */,
@@ -2805,6 +2830,7 @@
 				CE5C283920B99441006A8332 /* PayOrderController.xib in Resources */,
 				72EC1BB420BC386D00ACC20B /* SendServiceController.xib in Resources */,
 				7274190220B3F60D001D6BE1 /* SendSwapController.xib in Resources */,
+				8D50C55220C632090095A824 /* OurSendController.xib in Resources */,
 				723F4FB420BEEA8D00AF8268 /* TrvalTripCell.xib in Resources */,
 				CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */,
 				CEC4A56020C407990026EE19 /* MembershipRenewalController.xib in Resources */,
@@ -2924,6 +2950,7 @@
 				CE0BA5DD209D5E9B004C3C33 /* YTSystemUtil.m in Sources */,
 				723F4FA120BED37800AF8268 /* TrvalCell.m in Sources */,
 				CE03EDF520B4544700F07D78 /* FirstSectionHeadV.m in Sources */,
+				8D50C55120C632090095A824 /* OurSendController.m in Sources */,
 				CE0BA5E3209D5E9B004C3C33 /* YTAlertUtil.m in Sources */,
 				720263FE20B5015500382B2F /* UIView+Layout.m in Sources */,
 				CE5C281F20B953C1006A8332 /* BidManagerHeadV.m in Sources */,
@@ -3038,6 +3065,7 @@
 				CE0BA5DF209D5E9B004C3C33 /* TakePhoto.m in Sources */,
 				729BA6AF209FEB9B009713FD /* UIButton+ImageTitleSpacing.m in Sources */,
 				8D2B8B8820A2D3B200C3157F /* BaseOneTabController.m in Sources */,
+				8D50C55620C636560095A824 /* OurResumeController.m in Sources */,
 				720263FA20B5015500382B2F /* TZPhotoPreviewCell.m in Sources */,
 				729BA6D120A01E7F009713FD /* JFLocation.m in Sources */,
 				8DB42FD420A57D6E00C4EBF8 /* FilterOneController.m in Sources */,
@@ -3294,7 +3322,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";
@@ -3316,7 +3344,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";

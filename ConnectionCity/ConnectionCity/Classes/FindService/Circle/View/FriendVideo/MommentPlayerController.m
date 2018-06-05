@@ -26,7 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    
 }
 -(void)setUI{
     self.navigationItem.title = @"服务圈视频";

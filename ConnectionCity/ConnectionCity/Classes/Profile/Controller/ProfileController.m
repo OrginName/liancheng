@@ -57,7 +57,7 @@
     [self registerCell];
 }
 - (void)registerCell {
-    [self.tableView registerNib:[UINib nibWithNibName:@"ProfileCell" bundle:nil] forCellReuseIdentifier:@"ProfileCell"];
+//    [self.tableView registerNib:[UINib nibWithNibName:@"ProfileCell" bundle:nil] forCellReuseIdentifier:@"ProfileCell0"];
     ProfileHeadView *tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"ProfileHeadView" owner:nil options:nil] firstObject];
     tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 210 + 64);
     self.tableView.tableHeaderView = tableHeadV;
@@ -82,7 +82,10 @@
     return self.menuModels.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ProfileCell *profileCell = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell"];
+    ProfileCell *profileCell = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell0"];
+    if (!profileCell) {
+        profileCell = [[NSBundle mainBundle] loadNibNamed:@"ProfileCell" owner:nil options:nil][0];
+    }
     YTSideMenuModel *model = self.menuModels[indexPath.row];
     profileCell.iconImgV.image = [UIImage imageNamed:model.mIcon];
     profileCell.titleLab.text = model.mTitle;
