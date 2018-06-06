@@ -92,6 +92,14 @@
 		72BAB43920B047F500496D29 /* YSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB43820B047F500496D29 /* YSButton.m */; };
 		72EBB8B620C6DB5900F670E9 /* CardAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */; };
 		72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */; };
+		72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8BA20C800C200F670E9 /* PresentCell.m */; };
+		72EBB8BD20C800C300F670E9 /* PresentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8BB20C800C200F670E9 /* PresentCell.xib */; };
+		72EBB8D120C8184700F670E9 /* SetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8CF20C8184700F670E9 /* SetController.m */; };
+		72EBB8D220C8184700F670E9 /* SetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8D020C8184700F670E9 /* SetController.xib */; };
+		72EBB8D620C81B4600F670E9 /* AccontManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8D420C81B4600F670E9 /* AccontManageController.m */; };
+		72EBB8D720C81B4600F670E9 /* AccontManageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8D520C81B4600F670E9 /* AccontManageController.xib */; };
+		72EBB8DB20C81CA500F670E9 /* AccountManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8D920C81CA500F670E9 /* AccountManageCell.m */; };
+		72EBB8DC20C81CA500F670E9 /* AccountManageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8DA20C81CA500F670E9 /* AccountManageCell.xib */; };
 		72EC1B5120B6EAB600ACC20B /* SendTreasureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1B4F20B6EAB600ACC20B /* SendTreasureController.m */; };
 		72EC1B5220B6EAB600ACC20B /* SendTreasureController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EC1B5020B6EAB600ACC20B /* SendTreasureController.xib */; };
 		72EC1B5B20B7027000ACC20B /* SwapListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1B5920B7027000ACC20B /* SwapListController.m */; };
@@ -145,8 +153,6 @@
 		8D22C35220C7CDA1004DC8F4 /* ExchangeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D22C35020C7CDA1004DC8F4 /* ExchangeController.xib */; };
 		8D22C36020C7D18E004DC8F4 /* PresentManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C35E20C7D18E004DC8F4 /* PresentManageViewController.m */; };
 		8D22C36120C7D18E004DC8F4 /* PresentManageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D22C35F20C7D18E004DC8F4 /* PresentManageViewController.xib */; };
-		8D22C36B20C7D4F7004DC8F4 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C36920C7D4F6004DC8F4 /* PresentCell.m */; };
-		8D22C36C20C7D4F7004DC8F4 /* PresentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D22C36A20C7D4F6004DC8F4 /* PresentCell.xib */; };
 		8D22C37020C7DC46004DC8F4 /* BindingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C36E20C7DC46004DC8F4 /* BindingController.m */; };
 		8D22C37120C7DC46004DC8F4 /* BindingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D22C36F20C7DC46004DC8F4 /* BindingController.xib */; };
 		8D22C37520C7E54D004DC8F4 /* TransactionRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C37320C7E54D004DC8F4 /* TransactionRecordController.m */; };
@@ -576,6 +582,18 @@
 		72EBB8B320C6DB5900F670E9 /* CardAuthorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardAuthorController.h; sourceTree = "<group>"; };
 		72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardAuthorController.m; sourceTree = "<group>"; };
 		72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardAuthorController.xib; sourceTree = "<group>"; };
+		72EBB8B920C800C200F670E9 /* PresentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentCell.h; sourceTree = "<group>"; };
+		72EBB8BA20C800C200F670E9 /* PresentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentCell.m; sourceTree = "<group>"; };
+		72EBB8BB20C800C200F670E9 /* PresentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresentCell.xib; sourceTree = "<group>"; };
+		72EBB8CE20C8184700F670E9 /* SetController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetController.h; sourceTree = "<group>"; };
+		72EBB8CF20C8184700F670E9 /* SetController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetController.m; sourceTree = "<group>"; };
+		72EBB8D020C8184700F670E9 /* SetController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetController.xib; sourceTree = "<group>"; };
+		72EBB8D320C81B4600F670E9 /* AccontManageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccontManageController.h; sourceTree = "<group>"; };
+		72EBB8D420C81B4600F670E9 /* AccontManageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccontManageController.m; sourceTree = "<group>"; };
+		72EBB8D520C81B4600F670E9 /* AccontManageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccontManageController.xib; sourceTree = "<group>"; };
+		72EBB8D820C81CA500F670E9 /* AccountManageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountManageCell.h; sourceTree = "<group>"; };
+		72EBB8D920C81CA500F670E9 /* AccountManageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountManageCell.m; sourceTree = "<group>"; };
+		72EBB8DA20C81CA500F670E9 /* AccountManageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountManageCell.xib; sourceTree = "<group>"; };
 		72EC1B4E20B6EAB600ACC20B /* SendTreasureController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendTreasureController.h; sourceTree = "<group>"; };
 		72EC1B4F20B6EAB600ACC20B /* SendTreasureController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendTreasureController.m; sourceTree = "<group>"; };
 		72EC1B5020B6EAB600ACC20B /* SendTreasureController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendTreasureController.xib; sourceTree = "<group>"; };
@@ -657,9 +675,6 @@
 		8D22C35D20C7D18E004DC8F4 /* PresentManageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PresentManageViewController.h; sourceTree = "<group>"; };
 		8D22C35E20C7D18E004DC8F4 /* PresentManageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresentManageViewController.m; sourceTree = "<group>"; };
 		8D22C35F20C7D18E004DC8F4 /* PresentManageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresentManageViewController.xib; sourceTree = "<group>"; };
-		8D22C36820C7D4F6004DC8F4 /* PresentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentCell.h; sourceTree = "<group>"; };
-		8D22C36920C7D4F6004DC8F4 /* PresentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentCell.m; sourceTree = "<group>"; };
-		8D22C36A20C7D4F6004DC8F4 /* PresentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresentCell.xib; sourceTree = "<group>"; };
 		8D22C36D20C7DC46004DC8F4 /* BindingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingController.h; sourceTree = "<group>"; };
 		8D22C36E20C7DC46004DC8F4 /* BindingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingController.m; sourceTree = "<group>"; };
 		8D22C36F20C7DC46004DC8F4 /* BindingController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BindingController.xib; sourceTree = "<group>"; };
@@ -1493,6 +1508,41 @@
 			path = AuthenticationController;
 			sourceTree = "<group>";
 		};
+		72EBB8B820C800C200F670E9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				72EBB8B920C800C200F670E9 /* PresentCell.h */,
+				72EBB8BA20C800C200F670E9 /* PresentCell.m */,
+				72EBB8BB20C800C200F670E9 /* PresentCell.xib */,
+			);
+			name = Cell;
+			path = Wallet/Cell;
+			sourceTree = "<group>";
+		};
+		72EBB8BE20C8155B00F670E9 /* Set */ = {
+			isa = PBXGroup;
+			children = (
+				72EBB8DD20C81CB800F670E9 /* Cell */,
+				72EBB8CE20C8184700F670E9 /* SetController.h */,
+				72EBB8CF20C8184700F670E9 /* SetController.m */,
+				72EBB8D020C8184700F670E9 /* SetController.xib */,
+				72EBB8D320C81B4600F670E9 /* AccontManageController.h */,
+				72EBB8D420C81B4600F670E9 /* AccontManageController.m */,
+				72EBB8D520C81B4600F670E9 /* AccontManageController.xib */,
+			);
+			path = Set;
+			sourceTree = "<group>";
+		};
+		72EBB8DD20C81CB800F670E9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				72EBB8D820C81CA500F670E9 /* AccountManageCell.h */,
+				72EBB8D920C81CA500F670E9 /* AccountManageCell.m */,
+				72EBB8DA20C81CA500F670E9 /* AccountManageCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		72EC1B6D20BA982C00ACC20B /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1758,7 +1808,6 @@
 		8D22C34320C7C995004DC8F4 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
-				8D22C36720C7D4F6004DC8F4 /* Cell */,
 				8D22C34420C7C9CC004DC8F4 /* RechargeController.h */,
 				8D22C34520C7C9CC004DC8F4 /* RechargeController.m */,
 				8D22C34620C7C9CC004DC8F4 /* RechargeController.xib */,
@@ -1779,16 +1828,6 @@
 				8D22C37420C7E54D004DC8F4 /* TransactionRecordController.xib */,
 			);
 			path = Wallet;
-			sourceTree = "<group>";
-		};
-		8D22C36720C7D4F6004DC8F4 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				8D22C36820C7D4F6004DC8F4 /* PresentCell.h */,
-				8D22C36920C7D4F6004DC8F4 /* PresentCell.m */,
-				8D22C36A20C7D4F6004DC8F4 /* PresentCell.xib */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		8D24A22820A1B64400F0740D /* map */ = {
@@ -2737,6 +2776,8 @@
 		CEC4A54620C3FBE50026EE19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				72EBB8BE20C8155B00F670E9 /* Set */,
+				72EBB8B820C800C200F670E9 /* Cell */,
 				8D22C34320C7C995004DC8F4 /* Wallet */,
 				72EBB8B220C6DB3600F670E9 /* AuthenticationController */,
 				CEE4B2A820C6D8E4008B8731 /* Members */,
@@ -3051,6 +3092,7 @@
 				CE03EDEC20B43DC400F07D78 /* FootprintTabbleHeadV.xib in Resources */,
 				CE5C282B20B972B9006A8332 /* ConsultativeNegotiationController.xib in Resources */,
 				CE5C27FB20B8FE0A006A8332 /* BiddInfoController.xib in Resources */,
+				72EBB8DC20C81CA500F670E9 /* AccountManageCell.xib in Resources */,
 				8D35878820C6A544008A5E74 /* OurPlayController.xib in Resources */,
 				CE5C282120B953CE006A8332 /* BidManagerHeadV.xib in Resources */,
 				CEBEDD8620B17ED1000F9EE4 /* BidderCell.xib in Resources */,
@@ -3091,6 +3133,7 @@
 				CE97DBFB20B5AE9F003E46BD /* ReleaseTenderAdditionalCell.xib in Resources */,
 				8DD48CD820A81B9100D6D1E6 /* GuardCollController.xib in Resources */,
 				729BA6C920A01E7F009713FD /* shop_area.sqlite in Resources */,
+				72EBB8D220C8184700F670E9 /* SetController.xib in Resources */,
 				72EC1BA720BC349600ACC20B /* ServiceStationController.xib in Resources */,
 				CEBEDD8220B17ED1000F9EE4 /* MarginController.xib in Resources */,
 				8D22C36120C7D18E004DC8F4 /* PresentManageViewController.xib in Resources */,
@@ -3111,6 +3154,7 @@
 				727418E420B290D1001D6BE1 /* SwapController.xib in Resources */,
 				8D22C37120C7DC46004DC8F4 /* BindingController.xib in Resources */,
 				CE0BA608209D60C3004C3C33 /* MessageController.xib in Resources */,
+				72EBB8D720C81B4600F670E9 /* AccontManageController.xib in Resources */,
 				72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */,
 				CE5C283020B9733A006A8332 /* ConsultativeNegotiationCell.xib in Resources */,
 				8D67603620A448CB0027CDEE /* SX.plist in Resources */,
@@ -3121,7 +3165,6 @@
 				8DA4990E20A7063E00968F86 /* ResumeCell.xib in Resources */,
 				CEE4B2B020C6D948008B8731 /* MemberRenewalController.xib in Resources */,
 				727418DF20B290BF001D6BE1 /* EnthusiastsControll.xib in Resources */,
-				8D22C36C20C7D4F7004DC8F4 /* PresentCell.xib in Resources */,
 				72EC1BAC20BC34AA00ACC20B /* TravalController.xib in Resources */,
 				72EC1BA220BC347D00ACC20B /* ProfileServiceController.xib in Resources */,
 				8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */,
@@ -3132,6 +3175,7 @@
 				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
 				8D50C56720C67C2F0095A824 /* OurServiceCell.xib in Resources */,
 				CE03EDF920B4547200F07D78 /* FirstSectionHeadV.xib in Resources */,
+				72EBB8BD20C800C300F670E9 /* PresentCell.xib in Resources */,
 				CE0BA635209D68A3004C3C33 /* YSLoginController.xib in Resources */,
 				72EC1B6420B8357400ACC20B /* ShowCardCell.xib in Resources */,
 				722D254120AAA64C00AB3863 /* ShowResumeController.xib in Resources */,
@@ -3220,6 +3264,7 @@
 				8D50C56620C67C2F0095A824 /* OurServiceCell.m in Sources */,
 				CE0BA637209D68A3004C3C33 /* ChangePasswordController.m in Sources */,
 				CE0BA5F8209D5EBE004C3C33 /* BaseNavigationController.m in Sources */,
+				72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */,
 				CE0BA5E6209D5E9B004C3C33 /* MyPickerView.m in Sources */,
 				CE0BA5F7209D5EBE004C3C33 /* BaseViewController.m in Sources */,
 				8DC17A7E20C0E430005D9EE0 /* Utility.m in Sources */,
@@ -3237,6 +3282,7 @@
 				CEC4A52F20C3D6D10026EE19 /* TeamHeadView.m in Sources */,
 				CEE4B2A620C6CC3F008B8731 /* PersonalCenterController.m in Sources */,
 				72EC1BB920BC4CA100ACC20B /* SendServiceCell.m in Sources */,
+				72EBB8D620C81B4600F670E9 /* AccontManageController.m in Sources */,
 				CE03EDED20B43DC400F07D78 /* FootprintTabbleHeadV.m in Sources */,
 				CEC4A55A20C407500026EE19 /* MemberCenterController.m in Sources */,
 				CE0BA614209D6160004C3C33 /* LifeHallController.m in Sources */,
@@ -3256,6 +3302,7 @@
 				723D376120ABBEB4003FD4DF /* ShowResumeTab.m in Sources */,
 				8DD48CCB20A811EA00D6D1E6 /* NSData+SDDataCache.m in Sources */,
 				722D253B20AA76D400AB3863 /* JFCityViewController.m in Sources */,
+				72EBB8DB20C81CA500F670E9 /* AccountManageCell.m in Sources */,
 				729BA6FE20A32F0B009713FD /* CustomMap.m in Sources */,
 				8DB42FDC20A57DBC00C4EBF8 /* FilterCell.m in Sources */,
 				8DEA451A20C12C06001529F1 /* CustomPlayer.m in Sources */,
@@ -3311,7 +3358,6 @@
 				8DD48CCC20A811EA00D6D1E6 /* TAAbstractDotView.m in Sources */,
 				CEBEDD8420B17ED1000F9EE4 /* MarginCell.m in Sources */,
 				CEC4A54020C3D6FC0026EE19 /* TeamSwitchCell.m in Sources */,
-				8D22C36B20C7D4F7004DC8F4 /* PresentCell.m in Sources */,
 				8D09426620C14AF200C45E2B /* EvaluationController.m in Sources */,
 				8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */,
 				CE5C282A20B972B9006A8332 /* ConsultativeNegotiationController.m in Sources */,
@@ -3466,6 +3512,7 @@
 				8DC17A8520C0E598005D9EE0 /* FriendCircleController.m in Sources */,
 				722D253C20AA76D400AB3863 /* JFSearchView.m in Sources */,
 				8D22C37520C7E54D004DC8F4 /* TransactionRecordController.m in Sources */,
+				72EBB8D120C8184700F670E9 /* SetController.m in Sources */,
 				7294185320AD11E00054B71D /* SearchCell.m in Sources */,
 				CE5C282420B955EA006A8332 /* BidManagerFootV.m in Sources */,
 				CE0BA5EA209D5E9B004C3C33 /* YSBlutoothTool.m in Sources */,

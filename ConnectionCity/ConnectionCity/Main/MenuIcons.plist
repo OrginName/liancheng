@@ -64,7 +64,7 @@
 		<key>title</key>
 		<string>设置</string>
 		<key>class</key>
-		<string>SetViewController</string>
+		<string>SetController</string>
 	</dict>
 </array>
 </plist>
