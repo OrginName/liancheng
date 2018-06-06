@@ -16,22 +16,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setUI];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)setUI{
+    self.navigationItem.title = @"钱包";
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)BtnClick:(UIButton *)sender {
+    if (sender.tag>4) {
+        [YTAlertUtil showTempInfo:@"待开发"];
+        return;
+    }
+    NSArray * arr = @[@"RechargeController",@"ExpressiveController",@"ExchangeController",@"TransactionRecordController"];
+    [self.navigationController pushViewController:[super rotateClass:arr[sender.tag-1]] animated:YES];
 }
-*/
-
 @end

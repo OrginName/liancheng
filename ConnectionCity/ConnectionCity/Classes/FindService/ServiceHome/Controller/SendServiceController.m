@@ -36,7 +36,7 @@
     self.arr2 = @[@{@"isMulitable":@"0",@"name":@"擅长位置",@"subname":@[@{@"isSelected":@YES,@"title":@"坦克"},@{@"isSelected":@NO,@"title":@"射手"},@{@"isSelected":@NO,@"title":@"法师"},@{@"isSelected":@NO,@"title":@"刺客"}]}];
 }
 -(void)setUI{
-    itemHeigth = (self.tab_Bottom.width - 50) / 4+10;
+    itemHeigth = (kScreenWidth-70) / 4+10;
     self.photo = [[PhotoSelect alloc] initWithFrame:CGRectMake(0, 0, self.tab_Bottom.width, itemHeigth) withController:self];
     self.photo.backgroundColor = [UIColor whiteColor];
     self.photo.PhotoDelegate = self;

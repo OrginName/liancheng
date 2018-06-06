@@ -30,6 +30,12 @@
     [self.lab_tips addGestureRecognizer:tap];
 }
 -(void)labClick:(UIGestureRecognizer *)tap{
-    
+    //取得所点击的点的坐标
+    CGPoint point = [tap locationInView:self.lab_tips];
+    if (point.x>147&&point.x<197) {
+        [YTAlertUtil showTempInfo:@"使用条款"];
+    }else if (point.x>217&&point.x<270){
+        [YTAlertUtil showTempInfo:@"隐私政策"];
+    }
 }
 @end

@@ -57,7 +57,7 @@
     TrvalCell * cell = [[NSBundle mainBundle] loadNibNamed:@"TrvalCell" owner:nil options:nil][1];
     self.tab_Bottom.tableHeaderView = cell;
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SearchClick) image:@"" title:@"筛选" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
-    [self.view_tab addSubview:self.trval];
+    [self.view addSubview:self.trval];
     [self initLeftBarButton];
 }
 -(void)initLeftBarButton{
@@ -120,7 +120,7 @@
 }
 -(TrvalTrip *)trval{
     if (!_trval) {
-        _trval = [[TrvalTrip alloc] initWithFrame:CGRectMake(0, 0, self.view_tab.width, self.view_tab.height-185) withControl:self];
+        _trval = [[TrvalTrip alloc] initWithFrame:CGRectMake(10, 70, kScreenWidth-20, kScreenHeight-260) withControl:self];
         _trval.hidden = YES;
     }
     return _trval;

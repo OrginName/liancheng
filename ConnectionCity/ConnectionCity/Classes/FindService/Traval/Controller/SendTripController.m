@@ -47,8 +47,8 @@
 }
 -(void)setUI{
     self.navigationItem.title = @"发布陪游";
-    itemHeigth = (self.view_Select.width - 50) / 4+10;
-    self.photo = [[PhotoSelect alloc] initWithFrame:CGRectMake(0, 0, self.view_Select.width, itemHeigth) withController:self];
+    itemHeigth = (kScreenWidth-70) / 4+10;
+    self.photo = [[PhotoSelect alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, itemHeigth) withController:self];
     self.photo.backgroundColor = [UIColor whiteColor];
     self.photo.PhotoDelegate = self;
     self.layout_select.constant = itemHeigth;

@@ -32,7 +32,7 @@
 		<key>title</key>
 		<string>钱包</string>
 		<key>class</key>
-		<string>CarTableViewController</string>
+		<string>WalletController</string>
 	</dict>
 	<dict>
 		<key>icon</key>

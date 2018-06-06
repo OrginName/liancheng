@@ -26,7 +26,7 @@
 -(void)setUI{
     self.navigationItem.title = @"个人中心";
     ProfileHeadView *tableHeadV = [[NSBundle mainBundle] loadNibNamed:@"ProfileHeadView" owner:nil options:nil][1];
-    tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 210 + 64);
+    tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 300);
     self.tab_Bottom.tableHeaderView = tableHeadV;
 }
 #pragma mark ---UITableviewDelegate--------

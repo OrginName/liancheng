@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionRecordController">
+            <connections>
+                <outlet property="btn_All" destination="HuL-BM-VO9" id="jFx-Rq-WAD"/>
+                <outlet property="tab_Bottom" destination="vFz-87-ha3" id="OQD-Lq-o5Z"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vGA-Rn-xkr">
+                    <rect key="frame" x="10" y="10" width="355" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuL-BM-VO9" customClass="CustomButton">
+                            <rect key="frame" x="0.0" y="0.0" width="111.5" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="全部">
+                                <color key="titleColor" red="0.68627450980000004" green="0.68627450980000004" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="selectBackColor">
+                                    <color key="value" red="0.96078431369999995" green="0.66274509800000003" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="NOselectBackColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="NoSelectTitleColor">
+                                    <color key="value" red="0.68627450980000004" green="0.68627450980000004" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="NoSelectBorderColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="SelectborderColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="SelectborderWidth">
+                                    <integer key="value" value="0"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="BtnSelectClick:" destination="-1" eventType="touchUpInside" id="4aT-Oz-eLO"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDi-hg-TtO" customClass="CustomButton">
+                            <rect key="frame" x="121.5" y="0.0" width="112" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="收入">
+                                <color key="titleColor" red="0.68627450980000004" green="0.68627450980000004" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="selectBackColor">
+                                    <color key="value" red="0.96078431369999995" green="0.66274509800000003" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="NOselectBackColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                                    <color key="value" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="NoSelectTitleColor">
+                                    <color key="value" red="0.68627450980000004" green="0.68627450980000004" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="NoSelectBorderColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="SelectborderColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="SelectborderWidth">
+                                    <integer key="value" value="0"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="BtnSelectClick:" destination="-1" eventType="touchUpInside" id="My4-lC-ZTU"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGE-MY-8w6" customClass="CustomButton">
+                            <rect key="frame" x="243.5" y="0.0" width="111.5" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="支出">
+                                <color key="titleColor" red="0.68627450980000004" green="0.68627450980000004" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="selectBackColor">
+                                    <color key="value" red="0.96078431369999995" green="0.66274509800000003" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="NOselectBackColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="NoSelectTitleColor">
+                                    <color key="value" red="0.68627450980000004" green="0.68627450980000004" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="NoSelectBorderColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="SelectborderColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="SelectborderWidth">
+                                    <integer key="value" value="0"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="BtnSelectClick:" destination="-1" eventType="touchUpInside" id="GU7-M7-QWA"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="YDi-hg-TtO" firstAttribute="width" secondItem="HuL-BM-VO9" secondAttribute="width" id="0DH-tc-lN5"/>
+                        <constraint firstItem="iGE-MY-8w6" firstAttribute="top" secondItem="vGA-Rn-xkr" secondAttribute="top" id="2Gl-5t-bMN"/>
+                        <constraint firstAttribute="trailing" secondItem="iGE-MY-8w6" secondAttribute="trailing" id="88Z-kB-aaU"/>
+                        <constraint firstItem="YDi-hg-TtO" firstAttribute="centerX" secondItem="vGA-Rn-xkr" secondAttribute="centerX" id="9Ns-WC-x5a"/>
+                        <constraint firstItem="HuL-BM-VO9" firstAttribute="leading" secondItem="vGA-Rn-xkr" secondAttribute="leading" id="CjO-CY-qwV"/>
+                        <constraint firstAttribute="bottom" secondItem="YDi-hg-TtO" secondAttribute="bottom" id="N8T-rM-3Ja"/>
+                        <constraint firstItem="iGE-MY-8w6" firstAttribute="leading" secondItem="YDi-hg-TtO" secondAttribute="trailing" constant="10" id="Q6S-9m-Ae1"/>
+                        <constraint firstAttribute="bottom" secondItem="HuL-BM-VO9" secondAttribute="bottom" id="QMT-Bn-3Ro"/>
+                        <constraint firstItem="HuL-BM-VO9" firstAttribute="top" secondItem="vGA-Rn-xkr" secondAttribute="top" id="QUb-ql-dBM"/>
+                        <constraint firstAttribute="height" constant="40" id="V9a-x2-QDI"/>
+                        <constraint firstItem="YDi-hg-TtO" firstAttribute="top" secondItem="vGA-Rn-xkr" secondAttribute="top" id="WOg-rj-yMZ"/>
+                        <constraint firstAttribute="bottom" secondItem="iGE-MY-8w6" secondAttribute="bottom" id="X79-z7-SCq"/>
+                        <constraint firstItem="YDi-hg-TtO" firstAttribute="leading" secondItem="HuL-BM-VO9" secondAttribute="trailing" constant="10" id="eNP-iS-s0G"/>
+                        <constraint firstItem="iGE-MY-8w6" firstAttribute="width" secondItem="HuL-BM-VO9" secondAttribute="width" id="xAf-oa-cej"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIP-HR-kA1">
+                    <rect key="frame" x="20" y="65" width="79" height="32"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="2018年4月">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="BtnSelectClick:" destination="-1" eventType="touchUpInside" id="1t9-Qa-tn8"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow-xia1" translatesAutoresizingMaskIntoConstraints="NO" id="SPV-NU-DmV">
+                    <rect key="frame" x="104" y="77" width="12" height="8"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="12" id="dg3-MF-Weh"/>
+                        <constraint firstAttribute="height" constant="8" id="e8J-FR-rgY"/>
+                    </constraints>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="66" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vFz-87-ha3">
+                    <rect key="frame" x="10" y="137" width="355" height="515"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="evn-cR-O1W"/>
+                        <outlet property="delegate" destination="-1" id="jJp-rm-hC0"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvg-Kb-wWQ">
+                    <rect key="frame" x="20" y="94" width="149" height="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="收入 ¥5000  支出 ¥3000">
+                        <color key="titleColor" red="0.68627450980000004" green="0.68627450980000004" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="selectBackColor">
+                            <color key="value" red="0.96078431369999995" green="0.66274509800000003" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="NOselectBackColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="NoSelectTitleColor">
+                            <color key="value" red="0.68627450980000004" green="0.68627450980000004" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="NoSelectBorderColor">
+                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="SelectborderColor">
+                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="SelectborderWidth">
+                            <integer key="value" value="0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="BtnSelectClick:" destination="-1" eventType="touchUpInside" id="Dzs-Y3-uE0"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="SPV-NU-DmV" firstAttribute="leading" secondItem="SIP-HR-kA1" secondAttribute="trailing" constant="5" id="0jo-6U-K6l"/>
+                <constraint firstAttribute="trailing" secondItem="vGA-Rn-xkr" secondAttribute="trailing" constant="10" id="6Lw-4S-vFm"/>
+                <constraint firstItem="vGA-Rn-xkr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="6hS-93-aUS"/>
+                <constraint firstItem="vFz-87-ha3" firstAttribute="top" secondItem="Hvg-Kb-wWQ" secondAttribute="bottom" constant="15" id="AOU-zu-Hwt"/>
+                <constraint firstItem="vFz-87-ha3" firstAttribute="trailing" secondItem="vGA-Rn-xkr" secondAttribute="trailing" id="Gmg-WR-ZTG"/>
+                <constraint firstAttribute="bottom" secondItem="vFz-87-ha3" secondAttribute="bottom" constant="15" id="HqF-YV-iuf"/>
+                <constraint firstItem="Hvg-Kb-wWQ" firstAttribute="leading" secondItem="SIP-HR-kA1" secondAttribute="leading" id="KVN-uB-Jf9"/>
+                <constraint firstItem="SIP-HR-kA1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="YfQ-jX-rii"/>
+                <constraint firstItem="vGA-Rn-xkr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="ZoH-aB-YqC"/>
+                <constraint firstItem="Hvg-Kb-wWQ" firstAttribute="top" secondItem="vGA-Rn-xkr" secondAttribute="bottom" constant="44" id="be2-lp-8jE"/>
+                <constraint firstItem="SIP-HR-kA1" firstAttribute="top" secondItem="vGA-Rn-xkr" secondAttribute="bottom" constant="15" id="m4k-RZ-y82"/>
+                <constraint firstItem="SPV-NU-DmV" firstAttribute="centerY" secondItem="SIP-HR-kA1" secondAttribute="centerY" id="qni-b9-r1i"/>
+                <constraint firstItem="vFz-87-ha3" firstAttribute="leading" secondItem="vGA-Rn-xkr" secondAttribute="leading" id="udh-Iv-iXs"/>
+            </constraints>
+            <point key="canvasLocation" x="34.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Arrow-xia1" width="9" height="5"/>
+    </resources>
+</document>

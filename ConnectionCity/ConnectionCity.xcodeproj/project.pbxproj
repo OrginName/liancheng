@@ -133,6 +133,24 @@
 		8D09E18E20BFD52E000F7EBD /* ShowtrvalTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E18D20BFD52E000F7EBD /* ShowtrvalTab.m */; };
 		8D09E19C20BFDC16000F7EBD /* ShowTrvalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E19A20BFDC16000F7EBD /* ShowTrvalCell.m */; };
 		8D09E19D20BFDC16000F7EBD /* ShowTrvalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D09E19B20BFDC16000F7EBD /* ShowTrvalCell.xib */; };
+		8D22C33C20C77B70004DC8F4 /* IdentityAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C33A20C77B70004DC8F4 /* IdentityAuthorController.m */; };
+		8D22C33D20C77B70004DC8F4 /* IdentityAuthorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D22C33B20C77B70004DC8F4 /* IdentityAuthorController.xib */; };
+		8D22C34120C77C0F004DC8F4 /* SkillCertificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C33F20C77C0F004DC8F4 /* SkillCertificationController.m */; };
+		8D22C34220C77C0F004DC8F4 /* SkillCertificationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D22C34020C77C0F004DC8F4 /* SkillCertificationController.xib */; };
+		8D22C34720C7C9CC004DC8F4 /* RechargeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C34520C7C9CC004DC8F4 /* RechargeController.m */; };
+		8D22C34820C7C9CC004DC8F4 /* RechargeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D22C34620C7C9CC004DC8F4 /* RechargeController.xib */; };
+		8D22C34C20C7CD68004DC8F4 /* ExpressiveController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C34A20C7CD68004DC8F4 /* ExpressiveController.m */; };
+		8D22C34D20C7CD68004DC8F4 /* ExpressiveController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D22C34B20C7CD68004DC8F4 /* ExpressiveController.xib */; };
+		8D22C35120C7CDA1004DC8F4 /* ExchangeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C34F20C7CDA1004DC8F4 /* ExchangeController.m */; };
+		8D22C35220C7CDA1004DC8F4 /* ExchangeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D22C35020C7CDA1004DC8F4 /* ExchangeController.xib */; };
+		8D22C36020C7D18E004DC8F4 /* PresentManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C35E20C7D18E004DC8F4 /* PresentManageViewController.m */; };
+		8D22C36120C7D18E004DC8F4 /* PresentManageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D22C35F20C7D18E004DC8F4 /* PresentManageViewController.xib */; };
+		8D22C36B20C7D4F7004DC8F4 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C36920C7D4F6004DC8F4 /* PresentCell.m */; };
+		8D22C36C20C7D4F7004DC8F4 /* PresentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D22C36A20C7D4F6004DC8F4 /* PresentCell.xib */; };
+		8D22C37020C7DC46004DC8F4 /* BindingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C36E20C7DC46004DC8F4 /* BindingController.m */; };
+		8D22C37120C7DC46004DC8F4 /* BindingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D22C36F20C7DC46004DC8F4 /* BindingController.xib */; };
+		8D22C37520C7E54D004DC8F4 /* TransactionRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C37320C7E54D004DC8F4 /* TransactionRecordController.m */; };
+		8D22C37620C7E54D004DC8F4 /* TransactionRecordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D22C37420C7E54D004DC8F4 /* TransactionRecordController.xib */; };
 		8D24A22720A19C8F00F0740D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729BA6D820A04BE7009713FD /* MapKit.framework */; };
 		8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A22A20A1B66B00F0740D /* CustomAnnotationView.m */; };
 		8D24A22E20A1B9BA00F0740D /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A22C20A1B9BA00F0740D /* CustomCalloutView.m */; };
@@ -621,6 +639,33 @@
 		8D09E19920BFDC16000F7EBD /* ShowTrvalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowTrvalCell.h; sourceTree = "<group>"; };
 		8D09E19A20BFDC16000F7EBD /* ShowTrvalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowTrvalCell.m; sourceTree = "<group>"; };
 		8D09E19B20BFDC16000F7EBD /* ShowTrvalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTrvalCell.xib; sourceTree = "<group>"; };
+		8D22C33920C77B70004DC8F4 /* IdentityAuthorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IdentityAuthorController.h; sourceTree = "<group>"; };
+		8D22C33A20C77B70004DC8F4 /* IdentityAuthorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IdentityAuthorController.m; sourceTree = "<group>"; };
+		8D22C33B20C77B70004DC8F4 /* IdentityAuthorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdentityAuthorController.xib; sourceTree = "<group>"; };
+		8D22C33E20C77C0F004DC8F4 /* SkillCertificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkillCertificationController.h; sourceTree = "<group>"; };
+		8D22C33F20C77C0F004DC8F4 /* SkillCertificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkillCertificationController.m; sourceTree = "<group>"; };
+		8D22C34020C77C0F004DC8F4 /* SkillCertificationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillCertificationController.xib; sourceTree = "<group>"; };
+		8D22C34420C7C9CC004DC8F4 /* RechargeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RechargeController.h; sourceTree = "<group>"; };
+		8D22C34520C7C9CC004DC8F4 /* RechargeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RechargeController.m; sourceTree = "<group>"; };
+		8D22C34620C7C9CC004DC8F4 /* RechargeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RechargeController.xib; sourceTree = "<group>"; };
+		8D22C34920C7CD68004DC8F4 /* ExpressiveController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpressiveController.h; sourceTree = "<group>"; };
+		8D22C34A20C7CD68004DC8F4 /* ExpressiveController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpressiveController.m; sourceTree = "<group>"; };
+		8D22C34B20C7CD68004DC8F4 /* ExpressiveController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpressiveController.xib; sourceTree = "<group>"; };
+		8D22C34E20C7CDA1004DC8F4 /* ExchangeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeController.h; sourceTree = "<group>"; };
+		8D22C34F20C7CDA1004DC8F4 /* ExchangeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeController.m; sourceTree = "<group>"; };
+		8D22C35020C7CDA1004DC8F4 /* ExchangeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExchangeController.xib; sourceTree = "<group>"; };
+		8D22C35D20C7D18E004DC8F4 /* PresentManageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PresentManageViewController.h; sourceTree = "<group>"; };
+		8D22C35E20C7D18E004DC8F4 /* PresentManageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresentManageViewController.m; sourceTree = "<group>"; };
+		8D22C35F20C7D18E004DC8F4 /* PresentManageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresentManageViewController.xib; sourceTree = "<group>"; };
+		8D22C36820C7D4F6004DC8F4 /* PresentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentCell.h; sourceTree = "<group>"; };
+		8D22C36920C7D4F6004DC8F4 /* PresentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentCell.m; sourceTree = "<group>"; };
+		8D22C36A20C7D4F6004DC8F4 /* PresentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresentCell.xib; sourceTree = "<group>"; };
+		8D22C36D20C7DC46004DC8F4 /* BindingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingController.h; sourceTree = "<group>"; };
+		8D22C36E20C7DC46004DC8F4 /* BindingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingController.m; sourceTree = "<group>"; };
+		8D22C36F20C7DC46004DC8F4 /* BindingController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BindingController.xib; sourceTree = "<group>"; };
+		8D22C37220C7E54D004DC8F4 /* TransactionRecordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransactionRecordController.h; sourceTree = "<group>"; };
+		8D22C37320C7E54D004DC8F4 /* TransactionRecordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransactionRecordController.m; sourceTree = "<group>"; };
+		8D22C37420C7E54D004DC8F4 /* TransactionRecordController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionRecordController.xib; sourceTree = "<group>"; };
 		8D24A22920A1B66B00F0740D /* CustomAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
 		8D24A22A20A1B66B00F0740D /* CustomAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
 		8D24A22C20A1B9BA00F0740D /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutView.m; sourceTree = "<group>"; };
@@ -1438,6 +1483,12 @@
 				72EBB8B320C6DB5900F670E9 /* CardAuthorController.h */,
 				72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */,
 				72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */,
+				8D22C33920C77B70004DC8F4 /* IdentityAuthorController.h */,
+				8D22C33A20C77B70004DC8F4 /* IdentityAuthorController.m */,
+				8D22C33B20C77B70004DC8F4 /* IdentityAuthorController.xib */,
+				8D22C33E20C77C0F004DC8F4 /* SkillCertificationController.h */,
+				8D22C33F20C77C0F004DC8F4 /* SkillCertificationController.m */,
+				8D22C34020C77C0F004DC8F4 /* SkillCertificationController.xib */,
 			);
 			path = AuthenticationController;
 			sourceTree = "<group>";
@@ -1702,6 +1753,42 @@
 				8D09E18D20BFD52E000F7EBD /* ShowtrvalTab.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8D22C34320C7C995004DC8F4 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				8D22C36720C7D4F6004DC8F4 /* Cell */,
+				8D22C34420C7C9CC004DC8F4 /* RechargeController.h */,
+				8D22C34520C7C9CC004DC8F4 /* RechargeController.m */,
+				8D22C34620C7C9CC004DC8F4 /* RechargeController.xib */,
+				8D22C34920C7CD68004DC8F4 /* ExpressiveController.h */,
+				8D22C34A20C7CD68004DC8F4 /* ExpressiveController.m */,
+				8D22C34B20C7CD68004DC8F4 /* ExpressiveController.xib */,
+				8D22C34E20C7CDA1004DC8F4 /* ExchangeController.h */,
+				8D22C34F20C7CDA1004DC8F4 /* ExchangeController.m */,
+				8D22C35020C7CDA1004DC8F4 /* ExchangeController.xib */,
+				8D22C35D20C7D18E004DC8F4 /* PresentManageViewController.h */,
+				8D22C35E20C7D18E004DC8F4 /* PresentManageViewController.m */,
+				8D22C35F20C7D18E004DC8F4 /* PresentManageViewController.xib */,
+				8D22C36D20C7DC46004DC8F4 /* BindingController.h */,
+				8D22C36E20C7DC46004DC8F4 /* BindingController.m */,
+				8D22C36F20C7DC46004DC8F4 /* BindingController.xib */,
+				8D22C37220C7E54D004DC8F4 /* TransactionRecordController.h */,
+				8D22C37320C7E54D004DC8F4 /* TransactionRecordController.m */,
+				8D22C37420C7E54D004DC8F4 /* TransactionRecordController.xib */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		8D22C36720C7D4F6004DC8F4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8D22C36820C7D4F6004DC8F4 /* PresentCell.h */,
+				8D22C36920C7D4F6004DC8F4 /* PresentCell.m */,
+				8D22C36A20C7D4F6004DC8F4 /* PresentCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		8D24A22820A1B64400F0740D /* map */ = {
@@ -2650,16 +2737,9 @@
 		CEC4A54620C3FBE50026EE19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-
- 
-				72EBB8B220C6DB3600F670E9 /* AuthenticationController */,
-
-				CEE4B2A820C6D8E4008B8731 /* Members */,
-
-
+				8D22C34320C7C995004DC8F4 /* Wallet */,
 				72EBB8B220C6DB3600F670E9 /* AuthenticationController */,
 				CEE4B2A820C6D8E4008B8731 /* Members */,
-
 				8D50C54D20C631CF0095A824 /* ProfileListController */,
 				CE0BA61D209D61C0004C3C33 /* ProfileController.h */,
 				CE0BA61E209D61C0004C3C33 /* ProfileController.m */,
@@ -2924,6 +3004,7 @@
 				CEC4A53020C3D6D10026EE19 /* TeamHeadView.xib in Resources */,
 				727418FD20B3C282001D6BE1 /* SwapHomeCell.xib in Resources */,
 				72EC1B7820BA9F7B00ACC20B /* PlayEditController.xib in Resources */,
+				8D22C35220C7CDA1004DC8F4 /* ExchangeController.xib in Resources */,
 				8D50C55720C636560095A824 /* OurResumeController.xib in Resources */,
 				CEC4A54220C3D6FC0026EE19 /* TeamSwitchCell.xib in Resources */,
 				CE5C281220B91AFD006A8332 /* WinnerInfoCell.xib in Resources */,
@@ -2964,6 +3045,7 @@
 				8DD48CE920A8367100D6D1E6 /* GuardEduController.xib in Resources */,
 				72EC1BBA20BC4CA100ACC20B /* SendServiceCell.xib in Resources */,
 				CEC4A53F20C3D6FC0026EE19 /* TeamHeadCell.xib in Resources */,
+				8D22C33D20C77B70004DC8F4 /* IdentityAuthorController.xib in Resources */,
 				CEC4A56F20C4081F0026EE19 /* WithdrawalController.xib in Resources */,
 				7274188720B1474B001D6BE1 /* ConnectionCell.xib in Resources */,
 				CE03EDEC20B43DC400F07D78 /* FootprintTabbleHeadV.xib in Resources */,
@@ -2977,9 +3059,11 @@
 				CEC4A57E20C41D610026EE19 /* ProfileHeadView.xib in Resources */,
 				8DEA451420C11F85001529F1 /* MommentPlayerController.xib in Resources */,
 				72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */,
+				8D22C34D20C7CD68004DC8F4 /* ExpressiveController.xib in Resources */,
 				CEE4B29820C6B5A2008B8731 /* NearManController.xib in Resources */,
 				8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */,
 				CEE4B29220C6B17C008B8731 /* FoundCell.xib in Resources */,
+				8D22C37620C7E54D004DC8F4 /* TransactionRecordController.xib in Resources */,
 				8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */,
 				CEC4A57420C4083E0026EE19 /* WithdrawalManagerController.xib in Resources */,
 				CEC4A57920C40A250026EE19 /* EditProfileCell.xib in Resources */,
@@ -2996,6 +3080,7 @@
 				CE5C281720B91B47006A8332 /* WinnerInfoHeadView.xib in Resources */,
 				CEC4A52B20C3D6AE0026EE19 /* TeamInfoController.xib in Resources */,
 				8D50C56120C66EAF0095A824 /* OurServiceController.xib in Resources */,
+				8D22C34220C77C0F004DC8F4 /* SkillCertificationController.xib in Resources */,
 				8D09E18220BFB49A000F7EBD /* SendTripController.xib in Resources */,
 				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
 				CE5C281C20B94D84006A8332 /* BidManagerCell.xib in Resources */,
@@ -3008,6 +3093,7 @@
 				729BA6C920A01E7F009713FD /* shop_area.sqlite in Resources */,
 				72EC1BA720BC349600ACC20B /* ServiceStationController.xib in Resources */,
 				CEBEDD8220B17ED1000F9EE4 /* MarginController.xib in Resources */,
+				8D22C36120C7D18E004DC8F4 /* PresentManageViewController.xib in Resources */,
 				CE03EE0120B467EC00F07D78 /* ReleaseTenderController.xib in Resources */,
 				CEBEDD7E20B17ED1000F9EE4 /* WinningBidderController.xib in Resources */,
 				CE5C283920B99441006A8332 /* PayOrderController.xib in Resources */,
@@ -3023,6 +3109,7 @@
 				CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */,
 				CEBEDD8F20B17ED1000F9EE4 /* FootprintCell.xib in Resources */,
 				727418E420B290D1001D6BE1 /* SwapController.xib in Resources */,
+				8D22C37120C7DC46004DC8F4 /* BindingController.xib in Resources */,
 				CE0BA608209D60C3004C3C33 /* MessageController.xib in Resources */,
 				72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */,
 				CE5C283020B9733A006A8332 /* ConsultativeNegotiationCell.xib in Resources */,
@@ -3034,12 +3121,14 @@
 				8DA4990E20A7063E00968F86 /* ResumeCell.xib in Resources */,
 				CEE4B2B020C6D948008B8731 /* MemberRenewalController.xib in Resources */,
 				727418DF20B290BF001D6BE1 /* EnthusiastsControll.xib in Resources */,
+				8D22C36C20C7D4F7004DC8F4 /* PresentCell.xib in Resources */,
 				72EC1BAC20BC34AA00ACC20B /* TravalController.xib in Resources */,
 				72EC1BA220BC347D00ACC20B /* ProfileServiceController.xib in Resources */,
 				8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */,
 				8DEA450520C10BB7001529F1 /* FindMySelfCell.xib in Resources */,
 				CEBEDD9820B17F40000F9EE4 /* BulidTeamController.xib in Resources */,
 				CE5C280D20B91AD8006A8332 /* WinnerInfoController.xib in Resources */,
+				8D22C34820C7C9CC004DC8F4 /* RechargeController.xib in Resources */,
 				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
 				8D50C56720C67C2F0095A824 /* OurServiceCell.xib in Resources */,
 				CE03EDF920B4547200F07D78 /* FirstSectionHeadV.xib in Resources */,
@@ -3127,6 +3216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D22C34120C77C0F004DC8F4 /* SkillCertificationController.m in Sources */,
 				8D50C56620C67C2F0095A824 /* OurServiceCell.m in Sources */,
 				CE0BA637209D68A3004C3C33 /* ChangePasswordController.m in Sources */,
 				CE0BA5F8209D5EBE004C3C33 /* BaseNavigationController.m in Sources */,
@@ -3142,6 +3232,7 @@
 				8D50C55120C632090095A824 /* OurSendController.m in Sources */,
 				CE0BA5E3209D5E9B004C3C33 /* YTAlertUtil.m in Sources */,
 				720263FE20B5015500382B2F /* UIView+Layout.m in Sources */,
+				8D22C34720C7C9CC004DC8F4 /* RechargeController.m in Sources */,
 				CE5C281F20B953C1006A8332 /* BidManagerHeadV.m in Sources */,
 				CEC4A52F20C3D6D10026EE19 /* TeamHeadView.m in Sources */,
 				CEE4B2A620C6CC3F008B8731 /* PersonalCenterController.m in Sources */,
@@ -3179,6 +3270,7 @@
 				8DD48CDF20A828F200D6D1E6 /* CustomtextView.m in Sources */,
 				720263FD20B5015500382B2F /* TZVideoPlayerController.m in Sources */,
 				72EC1B5B20B7027000ACC20B /* SwapListController.m in Sources */,
+				8D22C33C20C77B70004DC8F4 /* IdentityAuthorController.m in Sources */,
 				CE5C282F20B9733A006A8332 /* ConsultativeNegotiationCell.m in Sources */,
 				8DC17A7820C0E430005D9EE0 /* Moment.m in Sources */,
 				723F4FAF20BEE8FF00AF8268 /* TrvalTrip.m in Sources */,
@@ -3207,6 +3299,7 @@
 				CEE4B28720C585A4008B8731 /* YSClubEditDepartmant.m in Sources */,
 				722D254020AAA64C00AB3863 /* ShowResumeController.m in Sources */,
 				727418E320B290D1001D6BE1 /* SwapController.m in Sources */,
+				8D22C35120C7CDA1004DC8F4 /* ExchangeController.m in Sources */,
 				8DD48CE820A8367100D6D1E6 /* GuardEduController.m in Sources */,
 				72BAB43620B03B3F00496D29 /* YSSetUpBirthdayView.m in Sources */,
 				8DD48CD320A811EA00D6D1E6 /* UIView+SDExtension.m in Sources */,
@@ -3218,6 +3311,7 @@
 				8DD48CCC20A811EA00D6D1E6 /* TAAbstractDotView.m in Sources */,
 				CEBEDD8420B17ED1000F9EE4 /* MarginCell.m in Sources */,
 				CEC4A54020C3D6FC0026EE19 /* TeamSwitchCell.m in Sources */,
+				8D22C36B20C7D4F7004DC8F4 /* PresentCell.m in Sources */,
 				8D09426620C14AF200C45E2B /* EvaluationController.m in Sources */,
 				8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */,
 				CE5C282A20B972B9006A8332 /* ConsultativeNegotiationController.m in Sources */,
@@ -3229,6 +3323,7 @@
 				8D09E18120BFB49A000F7EBD /* SendTripController.m in Sources */,
 				8DC17AB220C0E7B8005D9EE0 /* FriendVideo.m in Sources */,
 				CE0BA577209D5004004C3C33 /* main.m in Sources */,
+				8D22C37020C7DC46004DC8F4 /* BindingController.m in Sources */,
 				7294185920AD120E0054B71D /* SearchLayout.m in Sources */,
 				720263FB20B5015500382B2F /* TZPhotoPreviewController.m in Sources */,
 				8DC17A7920C0E430005D9EE0 /* MLLabelUtil.m in Sources */,
@@ -3323,6 +3418,7 @@
 				722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */,
 				727418D920B290AE001D6BE1 /* PlayPoductController.m in Sources */,
 				CE03EDF120B44FB000F07D78 /* FirstTableViewCell.m in Sources */,
+				8D22C34C20C7CD68004DC8F4 /* ExpressiveController.m in Sources */,
 				72BAB42A20B03A8C00496D29 /* BulidTeamCell.m in Sources */,
 				CE0BA5FB209D5EBE004C3C33 /* BaseTabBarController.m in Sources */,
 				72EC1B6320B8357400ACC20B /* ShowCardCell.m in Sources */,
@@ -3363,11 +3459,13 @@
 				8DD48CCD20A811EA00D6D1E6 /* TAAnimatedDotView.m in Sources */,
 				72EC1B7D20BAACBA00ACC20B /* DouctChangeController.m in Sources */,
 				7274190120B3F60D001D6BE1 /* SendSwapController.m in Sources */,
+				8D22C36020C7D18E004DC8F4 /* PresentManageViewController.m in Sources */,
 				CE0BA5E0209D5E9B004C3C33 /* DDFileReader.m in Sources */,
 				72EC1BAB20BC34AA00ACC20B /* TravalController.m in Sources */,
 				8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */,
 				8DC17A8520C0E598005D9EE0 /* FriendCircleController.m in Sources */,
 				722D253C20AA76D400AB3863 /* JFSearchView.m in Sources */,
+				8D22C37520C7E54D004DC8F4 /* TransactionRecordController.m in Sources */,
 				7294185320AD11E00054B71D /* SearchCell.m in Sources */,
 				CE5C282420B955EA006A8332 /* BidManagerFootV.m in Sources */,
 				CE0BA5EA209D5E9B004C3C33 /* YSBlutoothTool.m in Sources */,
