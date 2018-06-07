@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface EditProfileCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *titleLab;
+@property (weak, nonatomic) IBOutlet UILabel *contentLab;
 
 @end

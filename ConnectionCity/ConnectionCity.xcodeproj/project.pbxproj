@@ -339,6 +339,8 @@
 		CE5C283920B99441006A8332 /* PayOrderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C283720B99441006A8332 /* PayOrderController.xib */; };
 		CE6BEC1A20C83740003B36D7 /* LCPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC1920C83740003B36D7 /* LCPicker.m */; };
 		CE6BEC1D20C83769003B36D7 /* LCDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC1C20C83769003B36D7 /* LCDatePicker.m */; };
+		CE6BEC2C20C970C1003B36D7 /* EditProfileHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC2B20C970C1003B36D7 /* EditProfileHeadView.m */; };
+		CE6BEC2E20C970D1003B36D7 /* EditProfileHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6BEC2D20C970D1003B36D7 /* EditProfileHeadView.xib */; };
 		CE97DBF520B5A2C1003E46BD /* ReleaseTenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97DBF320B5A2C1003E46BD /* ReleaseTenderCell.m */; };
 		CE97DBF620B5A2C1003E46BD /* ReleaseTenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE97DBF420B5A2C1003E46BD /* ReleaseTenderCell.xib */; };
 		CE97DBFA20B5AE9F003E46BD /* ReleaseTenderAdditionalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97DBF820B5AE9F003E46BD /* ReleaseTenderAdditionalCell.m */; };
@@ -997,6 +999,9 @@
 		CE6BEC1920C83740003B36D7 /* LCPicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCPicker.m; sourceTree = "<group>"; };
 		CE6BEC1B20C83769003B36D7 /* LCDatePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCDatePicker.h; sourceTree = "<group>"; };
 		CE6BEC1C20C83769003B36D7 /* LCDatePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCDatePicker.m; sourceTree = "<group>"; };
+		CE6BEC2A20C970C1003B36D7 /* EditProfileHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileHeadView.h; sourceTree = "<group>"; };
+		CE6BEC2B20C970C1003B36D7 /* EditProfileHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileHeadView.m; sourceTree = "<group>"; };
+		CE6BEC2D20C970D1003B36D7 /* EditProfileHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileHeadView.xib; sourceTree = "<group>"; };
 		CE97DBF220B5A2C1003E46BD /* ReleaseTenderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReleaseTenderCell.h; sourceTree = "<group>"; };
 		CE97DBF320B5A2C1003E46BD /* ReleaseTenderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReleaseTenderCell.m; sourceTree = "<group>"; };
 		CE97DBF420B5A2C1003E46BD /* ReleaseTenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReleaseTenderCell.xib; sourceTree = "<group>"; };
@@ -1991,6 +1996,9 @@
 				8D8E4EC920C9109E00C3D537 /* EditProfileController.h */,
 				8D8E4ECA20C9109E00C3D537 /* EditProfileController.m */,
 				8D8E4ECB20C9109E00C3D537 /* EditProfileController.xib */,
+				CE6BEC2A20C970C1003B36D7 /* EditProfileHeadView.h */,
+				CE6BEC2B20C970C1003B36D7 /* EditProfileHeadView.m */,
+				CE6BEC2D20C970D1003B36D7 /* EditProfileHeadView.xib */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -3086,6 +3094,7 @@
 				8D67602820A408470027CDEE /* ClassificationsController.xib in Resources */,
 				CEBEDD8020B17ED1000F9EE4 /* WinningBidderCell.xib in Resources */,
 				72EC1B7E20BAACBA00ACC20B /* DouctChangeController.xib in Resources */,
+				CE6BEC2E20C970D1003B36D7 /* EditProfileHeadView.xib in Resources */,
 				8D8E4ED420C9320200C3D537 /* PrivateController.xib in Resources */,
 				723F4FA220BED37800AF8268 /* TrvalCell.xib in Resources */,
 				72EC1B5C20B7027000ACC20B /* SwapListController.xib in Resources */,
@@ -3415,6 +3424,7 @@
 				CE5C27FE20B8FE3A006A8332 /* BiddInfoHeadView.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
 				CEBEDD7D20B17ED1000F9EE4 /* WinningBidderCell.m in Sources */,
+				CE6BEC2C20C970C1003B36D7 /* EditProfileHeadView.m in Sources */,
 				72EC1B5120B6EAB600ACC20B /* SendTreasureController.m in Sources */,
 				CE0BA60E209D6126004C3C33 /* AddressBookController.m in Sources */,
 				7274190F20B4036E001D6BE1 /* TZTestCell.m in Sources */,

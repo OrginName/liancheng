@@ -22,7 +22,7 @@
                         <rect key="frame" x="10" y="0.0" width="300" height="43.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arraw-right" translatesAutoresizingMaskIntoConstraints="NO" id="Hfl-zl-WB3">
-                                <rect key="frame" x="274" y="14" width="9" height="16"/>
+                                <rect key="frame" x="281" y="14" width="9" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="YaY-dA-dts"/>
                                     <constraint firstAttribute="width" constant="9" id="nqP-j0-Fmw"/>
@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="海通物业管理有限公司" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXe-Ea-DGT">
-                                <rect key="frame" x="120" y="0.0" width="149" height="43.5"/>
+                                <rect key="frame" x="120" y="0.0" width="156" height="43.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -59,7 +59,7 @@
                             <constraint firstAttribute="trailing" secondItem="bMM-PE-r5C" secondAttribute="trailing" id="A57-jW-mTK"/>
                             <constraint firstAttribute="bottom" secondItem="FXe-Ea-DGT" secondAttribute="bottom" id="HA9-JV-w5T"/>
                             <constraint firstAttribute="bottom" secondItem="bMM-PE-r5C" secondAttribute="bottom" id="Q1z-iM-YcS"/>
-                            <constraint firstAttribute="trailing" secondItem="Hfl-zl-WB3" secondAttribute="trailing" constant="17" id="WG7-lc-txK"/>
+                            <constraint firstAttribute="trailing" secondItem="Hfl-zl-WB3" secondAttribute="trailing" constant="10" id="WG7-lc-txK"/>
                             <constraint firstItem="qbX-TF-oTO" firstAttribute="leading" secondItem="3Gl-La-WwY" secondAttribute="leading" constant="15" id="ZCW-Uk-aL2"/>
                             <constraint firstItem="FXe-Ea-DGT" firstAttribute="leading" secondItem="qbX-TF-oTO" secondAttribute="trailing" constant="5" id="bJK-f9-snX"/>
                             <constraint firstAttribute="bottom" secondItem="qbX-TF-oTO" secondAttribute="bottom" id="wca-Dx-tmC"/>
@@ -76,6 +76,10 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="contentLab" destination="FXe-Ea-DGT" id="1QY-Jw-rlT"/>
+                <outlet property="titleLab" destination="qbX-TF-oTO" id="DJa-d9-UEa"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>
