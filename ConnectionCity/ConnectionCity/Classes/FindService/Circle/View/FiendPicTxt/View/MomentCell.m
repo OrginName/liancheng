@@ -79,7 +79,7 @@ CGFloat maxLimitHeight = 0;
    
     //点赞
     _praiseBtn = [[UIButton alloc] init];
-    _praiseBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+    _praiseBtn.titleLabel.font = [UIFont systemFontOfSize:12.0f];
     _praiseBtn.backgroundColor = [UIColor clearColor];
     [_praiseBtn setTitle:@"点赞(222)" forState:UIControlStateNormal];
     [_praiseBtn setTitleColor:TitleColor forState:UIControlStateNormal];
@@ -87,7 +87,7 @@ CGFloat maxLimitHeight = 0;
     [self.contentView addSubview:_praiseBtn];
     //评论
     _commentBtn = [[UIButton alloc] init];
-    _commentBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+    _commentBtn.titleLabel.font = [UIFont systemFontOfSize:12.0f];
     _commentBtn.backgroundColor = [UIColor clearColor];
     [_commentBtn setTitle:@"评论(22)" forState:UIControlStateNormal];
     [_commentBtn setTitleColor:TitleColor forState:UIControlStateNormal];
@@ -96,7 +96,7 @@ CGFloat maxLimitHeight = 0;
  
     //分享
     _shareBtn = [[UIButton alloc] init];
-    _shareBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+    _shareBtn.titleLabel.font = [UIFont systemFontOfSize:12.0f];
     _shareBtn.backgroundColor = [UIColor clearColor];
     [_shareBtn setTitle:@"分享" forState:UIControlStateNormal];
     [_shareBtn setImage:[UIImage imageNamed:@"f-share"] forState:UIControlStateNormal];
@@ -107,7 +107,7 @@ CGFloat maxLimitHeight = 0;
     
     //分享
     _letterBtn = [[UIButton alloc] init];
-    _letterBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+    _letterBtn.titleLabel.font = [UIFont systemFontOfSize:12.0f];
     _letterBtn.backgroundColor = [UIColor clearColor];
     [_letterBtn setTitle:@"私信" forState:UIControlStateNormal];
     [_letterBtn setImage:[UIImage imageNamed:@"f-sixin"] forState:UIControlStateNormal];
@@ -181,10 +181,10 @@ CGFloat maxLimitHeight = 0;
         _locationLab.hidden = YES;
         _timeLab.frame = CGRectMake(_nameLab.left, bottom, textW, kTimeLabelH);
     }
-    _praiseBtn.frame = CGRectMake(_timeLab.right+5, _timeLab.top, 60, kTimeLabelH);
-    _commentBtn.frame = CGRectMake(_praiseBtn.right+5, _timeLab.top, 60, kTimeLabelH);
-    _shareBtn.frame = CGRectMake(_commentBtn.right+5, _timeLab.top, 40, kTimeLabelH);
-    _letterBtn.frame = CGRectMake(_shareBtn.right+5, _timeLab.top, 40, kTimeLabelH);
+    _praiseBtn.frame = CGRectMake(_timeLab.right+1, _timeLab.top, 60, kTimeLabelH);
+    _commentBtn.frame = CGRectMake(_praiseBtn.right+1, _timeLab.top, 60, kTimeLabelH);
+    _shareBtn.frame = CGRectMake(_commentBtn.right+1, _timeLab.top, 40, kTimeLabelH);
+    _letterBtn.frame = CGRectMake(_shareBtn.right+1, _timeLab.top, 40, kTimeLabelH);
     bottom = _timeLab.bottom + kPaddingValue;
      
     // 处理评论/赞

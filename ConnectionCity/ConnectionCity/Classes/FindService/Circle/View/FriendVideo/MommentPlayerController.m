@@ -29,16 +29,16 @@
 }
 -(void)setUI{
     self.navigationItem.title = @"服务圈视频";
-    NSString * url = @"http://mp4.vjshi.com/2015-01-01/1420097727300_256.mp4";
+    NSString * url = @"http://mp4.vjshi.com/2017-12-06/7ecbdc27e9ca1a1f2aeb8ac58c43c60a.mp4";
     [self.view addSubview:self.playView];
     UIImage * image = [self.playView getVideoPreViewImage:url];
     self.imageBg.image = image;
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(ShareBtn) image:@"f-share" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(ShareBtn) image:@"share-1" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, -10)];
     
 }
 //分享
 -(void)ShareBtn{
-    
+    [YTAlertUtil showTempInfo:@"分享"];
 }
 - (IBAction)BtnClcik:(UIButton *)sender {
     NSArray * arr = @[@"ServiceListController",@"EvaluationController",@"ServiceListController"];
@@ -49,7 +49,7 @@
 - (IBAction)palyBtnClcik:(UIButton *)sender {
     self.imageBg.hidden = YES;
     self.playView.hidden = NO;
-    [self.playView setupPlayerWith:[NSURL URLWithString:@"http://mp4.vjshi.com/2015-01-01/1420097727300_256.mp4"]];
+    [self.playView setupPlayerWith:[NSURL URLWithString:@"http://mp4.vjshi.com/2017-12-06/7ecbdc27e9ca1a1f2aeb8ac58c43c60a.mp4"]];
     [self.view bringSubviewToFront:self.image_head];
     [self.view bringSubviewToFront:self.lab_title];
     [self.view bringSubviewToFront:self.lab_SubTitle];

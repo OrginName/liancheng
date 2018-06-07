@@ -14,6 +14,7 @@
 @property (nonatomic,strong) SDCycleScrollView * cycleScrollView;
 @property (nonatomic,strong) NSMutableArray * lunArr;//轮播图数组
 @property (nonatomic,strong) UITableView * tab_Bottom;
+@property (nonatomic,strong) UIButton * btn_Like;
 @end
 @implementation ShowCardTab
 -(instancetype)initWithFrame:(CGRect)frame{
@@ -63,6 +64,7 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         cycleScrollView.imageURLStringsGroup = weakSelf.lunArr;
     });
+    [cycleScrollView addSubview:self.btn_Like];
 }
 -(void)layoutSubviews{
     [super layoutSubviews];
@@ -83,5 +85,26 @@
         _lunArr = [[NSMutableArray alloc] init];
     }
     return _lunArr;
+}
+//点赞按钮点击
+-(void)likeClick:(UIButton *)sender{
+    sender.selected = !sender.selected;
+}
+
+-(UIButton *)btn_Like{
+    if (!_btn_Like) {
+        _btn_Like = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-60, 10, 30, 40)];
+        _btn_Like.backgroundColor = [UIColor whiteColor];
+        _btn_Like.layer.cornerRadius = 5;
+        [_btn_Like setImage:[UIImage imageNamed:@"s-praise"] forState:UIControlStateNormal];
+        [_btn_Like setImage:[UIImage imageNamed:@"s-praise1"] forState:UIControlStateSelected];
+        _btn_Like.titleLabel.font = [UIFont systemFontOfSize:13];
+        [_btn_Like setTitle:@"12" forState:UIControlStateNormal];
+        [_btn_Like setTitleColor:YSColor(181, 181, 181) forState:UIControlStateNormal];
+        [_btn_Like setTitleColor:YSColor(251, 159, 14) forState:UIControlStateSelected];
+        [_btn_Like addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_btn_Like layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleTop imageTitleSpace:2];
+    }
+    return _btn_Like;
 }
 @end

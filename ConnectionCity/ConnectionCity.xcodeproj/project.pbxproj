@@ -191,6 +191,13 @@
 		8D67602720A408470027CDEE /* ClassificationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67602520A408470027CDEE /* ClassificationsController.m */; };
 		8D67602820A408470027CDEE /* ClassificationsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D67602620A408470027CDEE /* ClassificationsController.xib */; };
 		8D67603620A448CB0027CDEE /* SX.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D67603520A448CB0027CDEE /* SX.plist */; };
+		8D8E4ECC20C9109E00C3D537 /* EditProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E4EC720C9109E00C3D537 /* EditProfileCell.m */; };
+		8D8E4ECD20C9109E00C3D537 /* EditProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D8E4EC820C9109E00C3D537 /* EditProfileCell.xib */; };
+		8D8E4ECE20C9109E00C3D537 /* EditProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E4ECA20C9109E00C3D537 /* EditProfileController.m */; };
+		8D8E4ECF20C9109E00C3D537 /* EditProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D8E4ECB20C9109E00C3D537 /* EditProfileController.xib */; };
+		8D8E4ED320C9320200C3D537 /* PrivateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E4ED120C9320200C3D537 /* PrivateController.m */; };
+		8D8E4ED420C9320200C3D537 /* PrivateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D8E4ED220C9320200C3D537 /* PrivateController.xib */; };
+		8D8E4ED720C937D200C3D537 /* NKColorSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E4ED620C937D200C3D537 /* NKColorSwitch.m */; };
 		8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990620A6FDEB00968F86 /* ResumeController.m */; };
 		8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA4990720A6FDEB00968F86 /* ResumeController.xib */; };
 		8DA4990D20A7063E00968F86 /* ResumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990B20A7063E00968F86 /* ResumeCell.m */; };
@@ -335,10 +342,6 @@
 		CE5C283920B99441006A8332 /* PayOrderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C283720B99441006A8332 /* PayOrderController.xib */; };
 		CE6BEC1A20C83740003B36D7 /* LCPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC1920C83740003B36D7 /* LCPicker.m */; };
 		CE6BEC1D20C83769003B36D7 /* LCDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC1C20C83769003B36D7 /* LCDatePicker.m */; };
-		CE6BEC2620C90806003B36D7 /* EditProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC2020C90806003B36D7 /* EditProfileController.m */; };
-		CE6BEC2720C90806003B36D7 /* EditProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC2120C90806003B36D7 /* EditProfileCell.m */; };
-		CE6BEC2820C90806003B36D7 /* EditProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6BEC2220C90806003B36D7 /* EditProfileController.xib */; };
-		CE6BEC2920C90806003B36D7 /* EditProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6BEC2520C90806003B36D7 /* EditProfileCell.xib */; };
 		CE97DBF520B5A2C1003E46BD /* ReleaseTenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97DBF320B5A2C1003E46BD /* ReleaseTenderCell.m */; };
 		CE97DBF620B5A2C1003E46BD /* ReleaseTenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE97DBF420B5A2C1003E46BD /* ReleaseTenderCell.xib */; };
 		CE97DBFA20B5AE9F003E46BD /* ReleaseTenderAdditionalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97DBF820B5AE9F003E46BD /* ReleaseTenderAdditionalCell.m */; };
@@ -732,6 +735,17 @@
 		8D67602520A408470027CDEE /* ClassificationsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassificationsController.m; sourceTree = "<group>"; };
 		8D67602620A408470027CDEE /* ClassificationsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassificationsController.xib; sourceTree = "<group>"; };
 		8D67603520A448CB0027CDEE /* SX.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = SX.plist; sourceTree = "<group>"; };
+		8D8E4EC620C9109E00C3D537 /* EditProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileCell.h; sourceTree = "<group>"; };
+		8D8E4EC720C9109E00C3D537 /* EditProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileCell.m; sourceTree = "<group>"; };
+		8D8E4EC820C9109E00C3D537 /* EditProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileCell.xib; sourceTree = "<group>"; };
+		8D8E4EC920C9109E00C3D537 /* EditProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileController.h; sourceTree = "<group>"; };
+		8D8E4ECA20C9109E00C3D537 /* EditProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileController.m; sourceTree = "<group>"; };
+		8D8E4ECB20C9109E00C3D537 /* EditProfileController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileController.xib; sourceTree = "<group>"; };
+		8D8E4ED020C9320200C3D537 /* PrivateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateController.h; sourceTree = "<group>"; };
+		8D8E4ED120C9320200C3D537 /* PrivateController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrivateController.m; sourceTree = "<group>"; };
+		8D8E4ED220C9320200C3D537 /* PrivateController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivateController.xib; sourceTree = "<group>"; };
+		8D8E4ED520C937D200C3D537 /* NKColorSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKColorSwitch.h; sourceTree = "<group>"; };
+		8D8E4ED620C937D200C3D537 /* NKColorSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKColorSwitch.m; sourceTree = "<group>"; };
 		8DA4990520A6FDEB00968F86 /* ResumeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeController.h; sourceTree = "<group>"; };
 		8DA4990620A6FDEB00968F86 /* ResumeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeController.m; sourceTree = "<group>"; };
 		8DA4990720A6FDEB00968F86 /* ResumeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeController.xib; sourceTree = "<group>"; };
@@ -993,12 +1007,6 @@
 		CE6BEC1920C83740003B36D7 /* LCPicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCPicker.m; sourceTree = "<group>"; };
 		CE6BEC1B20C83769003B36D7 /* LCDatePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCDatePicker.h; sourceTree = "<group>"; };
 		CE6BEC1C20C83769003B36D7 /* LCDatePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCDatePicker.m; sourceTree = "<group>"; };
-		CE6BEC2020C90806003B36D7 /* EditProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileController.m; sourceTree = "<group>"; };
-		CE6BEC2120C90806003B36D7 /* EditProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileCell.m; sourceTree = "<group>"; };
-		CE6BEC2220C90806003B36D7 /* EditProfileController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileController.xib; sourceTree = "<group>"; };
-		CE6BEC2320C90806003B36D7 /* EditProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileCell.h; sourceTree = "<group>"; };
-		CE6BEC2420C90806003B36D7 /* EditProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileController.h; sourceTree = "<group>"; };
-		CE6BEC2520C90806003B36D7 /* EditProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileCell.xib; sourceTree = "<group>"; };
 		CE97DBF220B5A2C1003E46BD /* ReleaseTenderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReleaseTenderCell.h; sourceTree = "<group>"; };
 		CE97DBF320B5A2C1003E46BD /* ReleaseTenderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReleaseTenderCell.m; sourceTree = "<group>"; };
 		CE97DBF420B5A2C1003E46BD /* ReleaseTenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReleaseTenderCell.xib; sourceTree = "<group>"; };
@@ -1537,6 +1545,9 @@
 				72EBB8D320C81B4600F670E9 /* AccontManageController.h */,
 				72EBB8D420C81B4600F670E9 /* AccontManageController.m */,
 				72EBB8D520C81B4600F670E9 /* AccontManageController.xib */,
+				8D8E4ED020C9320200C3D537 /* PrivateController.h */,
+				8D8E4ED120C9320200C3D537 /* PrivateController.m */,
+				8D8E4ED220C9320200C3D537 /* PrivateController.xib */,
 			);
 			path = Set;
 			sourceTree = "<group>";
@@ -1985,6 +1996,19 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		8D8E4EC520C9109E00C3D537 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				8D8E4EC620C9109E00C3D537 /* EditProfileCell.h */,
+				8D8E4EC720C9109E00C3D537 /* EditProfileCell.m */,
+				8D8E4EC820C9109E00C3D537 /* EditProfileCell.xib */,
+				8D8E4EC920C9109E00C3D537 /* EditProfileController.h */,
+				8D8E4ECA20C9109E00C3D537 /* EditProfileController.m */,
+				8D8E4ECB20C9109E00C3D537 /* EditProfileController.xib */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
 		8DA4990420A6FDCB00968F86 /* PersonalResume */ = {
 			isa = PBXGroup;
 			children = (
@@ -2241,6 +2265,8 @@
 		CE0BA599209D5E6A004C3C33 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				8D8E4ED520C937D200C3D537 /* NKColorSwitch.h */,
+				8D8E4ED620C937D200C3D537 /* NKColorSwitch.m */,
 				8DEA44FF20C0ECB6001529F1 /* CustomButton.h */,
 				8DEA44FE20C0ECB6001529F1 /* CustomButton.m */,
 				729BA6D520A029AA009713FD /* UIImage+Extension.h */,
@@ -2612,20 +2638,6 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		CE6BEC1F20C90806003B36D7 /* EditProfile */ = {
-			isa = PBXGroup;
-			children = (
-				CE6BEC2020C90806003B36D7 /* EditProfileController.m */,
-				CE6BEC2120C90806003B36D7 /* EditProfileCell.m */,
-				CE6BEC2220C90806003B36D7 /* EditProfileController.xib */,
-				CE6BEC2320C90806003B36D7 /* EditProfileCell.h */,
-				CE6BEC2420C90806003B36D7 /* EditProfileController.h */,
-				CE6BEC2520C90806003B36D7 /* EditProfileCell.xib */,
-			);
-			name = EditProfile;
-			path = "../../../../../../连城冲突/LC 5/ConnectionCity/ConnectionCity/Classes/Profile/Controller/EditProfile";
-			sourceTree = "<group>";
-		};
 		CE97DBFC20B5B161003E46BD /* fbzb */ = {
 			isa = PBXGroup;
 			children = (
@@ -2821,7 +2833,7 @@
 		CEC4A54620C3FBE50026EE19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CE6BEC1F20C90806003B36D7 /* EditProfile */,
+				8D8E4EC520C9109E00C3D537 /* EditProfile */,
 				72EBB8BE20C8155B00F670E9 /* Set */,
 				72EBB8B820C800C200F670E9 /* Cell */,
 				8D22C34320C7C995004DC8F4 /* Wallet */,
@@ -3094,9 +3106,11 @@
 				8D09426720C14AF200C45E2B /* EvaluationController.xib in Resources */,
 				72EC1B7320BA984400ACC20B /* PlayDouctCell.xib in Resources */,
 				CEE4B2A720C6CC3F008B8731 /* PersonalCenterController.xib in Resources */,
+				8D8E4ECF20C9109E00C3D537 /* EditProfileController.xib in Resources */,
 				8D67602820A408470027CDEE /* ClassificationsController.xib in Resources */,
 				CEBEDD8020B17ED1000F9EE4 /* WinningBidderCell.xib in Resources */,
 				72EC1B7E20BAACBA00ACC20B /* DouctChangeController.xib in Resources */,
+				8D8E4ED420C9320200C3D537 /* PrivateController.xib in Resources */,
 				723F4FA220BED37800AF8268 /* TrvalCell.xib in Resources */,
 				72EC1B5C20B7027000ACC20B /* SwapListController.xib in Resources */,
 				CE97DBF620B5A2C1003E46BD /* ReleaseTenderCell.xib in Resources */,
@@ -3192,7 +3206,7 @@
 				727418E420B290D1001D6BE1 /* SwapController.xib in Resources */,
 				8D22C37120C7DC46004DC8F4 /* BindingController.xib in Resources */,
 				CE0BA608209D60C3004C3C33 /* MessageController.xib in Resources */,
-				CE6BEC2820C90806003B36D7 /* EditProfileController.xib in Resources */,
+				8D8E4ECD20C9109E00C3D537 /* EditProfileCell.xib in Resources */,
 				72EBB8D720C81B4600F670E9 /* AccontManageController.xib in Resources */,
 				72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */,
 				CE5C283020B9733A006A8332 /* ConsultativeNegotiationCell.xib in Resources */,
@@ -3205,7 +3219,6 @@
 				CEE4B2B020C6D948008B8731 /* MemberRenewalController.xib in Resources */,
 				727418DF20B290BF001D6BE1 /* EnthusiastsControll.xib in Resources */,
 				72EC1BAC20BC34AA00ACC20B /* TravalController.xib in Resources */,
-				CE6BEC2920C90806003B36D7 /* EditProfileCell.xib in Resources */,
 				72EC1BA220BC347D00ACC20B /* ProfileServiceController.xib in Resources */,
 				8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */,
 				8DEA450520C10BB7001529F1 /* FindMySelfCell.xib in Resources */,
@@ -3311,6 +3324,7 @@
 				7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */,
 				CEBEDD8B20B17ED1000F9EE4 /* BountyHostingController.m in Sources */,
 				72EBB8B620C6DB5900F670E9 /* CardAuthorController.m in Sources */,
+				8D8E4ECC20C9109E00C3D537 /* EditProfileCell.m in Sources */,
 				CE0BA5DD209D5E9B004C3C33 /* YTSystemUtil.m in Sources */,
 				723F4FA120BED37800AF8268 /* TrvalCell.m in Sources */,
 				CE03EDF520B4544700F07D78 /* FirstSectionHeadV.m in Sources */,
@@ -3343,6 +3357,7 @@
 				723D376120ABBEB4003FD4DF /* ShowResumeTab.m in Sources */,
 				8DD48CCB20A811EA00D6D1E6 /* NSData+SDDataCache.m in Sources */,
 				722D253B20AA76D400AB3863 /* JFCityViewController.m in Sources */,
+				8D8E4ED720C937D200C3D537 /* NKColorSwitch.m in Sources */,
 				72EBB8DB20C81CA500F670E9 /* AccountManageCell.m in Sources */,
 				729BA6FE20A32F0B009713FD /* CustomMap.m in Sources */,
 				8DB42FDC20A57DBC00C4EBF8 /* FilterCell.m in Sources */,
@@ -3400,11 +3415,11 @@
 				CEC4A54020C3D6FC0026EE19 /* TeamSwitchCell.m in Sources */,
 				8D09426620C14AF200C45E2B /* EvaluationController.m in Sources */,
 				8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */,
-				CE6BEC2620C90806003B36D7 /* EditProfileController.m in Sources */,
 				CE5C282A20B972B9006A8332 /* ConsultativeNegotiationController.m in Sources */,
 				CE0BA5B4209D5E6B004C3C33 /* UIFont+YTInchFit.m in Sources */,
 				727418C520B17E78001D6BE1 /* ChangePlayController.m in Sources */,
 				8DD48CDC20A8202800D6D1E6 /* ResumeMo.m in Sources */,
+				8D8E4ED320C9320200C3D537 /* PrivateController.m in Sources */,
 				8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */,
 				CE03EDFC20B4595600F07D78 /* FirstCustomButton.m in Sources */,
 				8D09E18120BFB49A000F7EBD /* SendTripController.m in Sources */,
@@ -3555,7 +3570,7 @@
 				72EBB8D120C8184700F670E9 /* SetController.m in Sources */,
 				7294185320AD11E00054B71D /* SearchCell.m in Sources */,
 				CE5C282420B955EA006A8332 /* BidManagerFootV.m in Sources */,
-				CE6BEC2720C90806003B36D7 /* EditProfileCell.m in Sources */,
+				8D8E4ECE20C9109E00C3D537 /* EditProfileController.m in Sources */,
 				CE0BA5EA209D5E9B004C3C33 /* YSBlutoothTool.m in Sources */,
 				CE0BA5B7209D5E6B004C3C33 /* NSData+hexString.m in Sources */,
 				CEBEDD8920B17ED1000F9EE4 /* BidderCell.m in Sources */,

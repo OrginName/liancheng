@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SDCycleScrollView.h"
 @interface ShowTreaueTab : UIView
-
+@property (nonatomic,strong) SDCycleScrollView * cycleScrollView;
 @end

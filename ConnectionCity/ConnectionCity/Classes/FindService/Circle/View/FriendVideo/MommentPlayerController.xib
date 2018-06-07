@@ -38,7 +38,7 @@
                         <constraint firstAttribute="height" constant="50" id="9tj-y5-KNd"/>
                         <constraint firstAttribute="width" constant="50" id="sy9-mX-VBV"/>
                     </constraints>
-                    <state key="normal" backgroundImage="ch-change"/>
+                    <state key="normal" backgroundImage="q-play"/>
                     <connections>
                         <action selector="palyBtnClcik:" destination="-1" eventType="touchUpInside" id="h2t-Vg-GBC"/>
                     </connections>
@@ -207,7 +207,7 @@
     </objects>
     <resources>
         <image name="1" width="639" height="512"/>
-        <image name="ch-change" width="38" height="38"/>
+        <image name="q-play" width="67" height="67"/>
         <image name="video-sc" width="30" height="29"/>
         <image name="video-sx" width="28" height="28"/>
         <image name="video-zan" width="27" height="28"/>

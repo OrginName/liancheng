@@ -24,8 +24,7 @@
 @property (nonatomic, strong)ShowCardTab * showCardTab;
 @property (nonatomic, strong)ShowTreaueTab * showTreaueTab;
 @property (nonatomic, strong)ShowtrvalTab * trvaltab;
-@property (nonatomic, strong)UIButton * btn_Like;
-@property (nonatomic, strong)UIButton * Save_Like;
+
 @end
 
 @implementation ShowResumeController
@@ -43,17 +42,14 @@
     [self.view addSubview:self.collectionView];
     if(self.Receive_Type == ENUM_TypeCard){
         self.title = @"互换身份";
-        [self.view addSubview:self.btn_Like];
     }else if (self.Receive_Type == ENUM_TypeResume){
        self.title = @"个人简历";
     }else if (self.Receive_Type == ENUM_TypeTreasure){
         self.title = @"互换宝物";
-        [self.view addSubview:self.btn_Like];
-        [self.view addSubview:self.Save_Like];
         [self.btn_sayAndChange setTitle:@"我想换" forState:UIControlStateNormal];
     }else if (self.Receive_Type == ENUM_TypeTrval){
-        [self.view addSubview:self.btn_Like];
-        [self.view addSubview:self.Save_Like];
+//        [self.view addSubview:self.btn_Like];
+//        [self.view addSubview:self.Save_Like];
         self.title = @"欧阳姐姐";
     }
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(Share) image:@"share" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, -10)];
@@ -65,14 +61,7 @@
 -(void)complete{
     
 }
-//点赞按钮点击
--(void)likeClick:(UIButton *)sender{
-    sender.selected = !sender.selected;
-}
-//收藏按钮点击
--(void)SaveClick:(UIButton *)sender{
-    sender.selected = !sender.selected;
-}
+
 //对话 关注  交换点击
 - (IBAction)callAndChangeClick:(UIButton *)sender {
     if (sender.tag==4&&self.Receive_Type == ENUM_TypeTreasure) {
@@ -111,7 +100,7 @@
     }
     return cell;
 }
-
+ 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     return UIEdgeInsetsMake(0, 0, 0, 0);
@@ -157,39 +146,7 @@
     }
     return _collectionView;
 }
-#warning 收藏按钮选中和未选中图片记得更换
--(UIButton *)Save_Like{
-    if (!_Save_Like) {
-        _Save_Like = [[UIButton alloc] initWithFrame:CGRectMake(_collectionView.width-30, 70, 30, 40)];
-        _Save_Like.backgroundColor = [UIColor whiteColor];
-        _Save_Like.layer.cornerRadius = 5;
-        [_Save_Like setImage:[UIImage imageNamed:@"s-praise"] forState:UIControlStateNormal];
-        [_Save_Like setImage:[UIImage imageNamed:@"s-praise1"] forState:UIControlStateSelected];
-        _Save_Like.titleLabel.font = [UIFont systemFontOfSize:13];
-        [_Save_Like setTitle:@"12" forState:UIControlStateNormal];
-        [_Save_Like setTitleColor:YSColor(181, 181, 181) forState:UIControlStateNormal];
-        [_Save_Like setTitleColor:YSColor(251, 159, 14) forState:UIControlStateSelected];
-        [_Save_Like addTarget:self action:@selector(SaveClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_Save_Like layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleTop imageTitleSpace:2];
-    }
-    return _Save_Like;
-}
--(UIButton *)btn_Like{
-    if (!_btn_Like) {
-        _btn_Like = [[UIButton alloc] initWithFrame:CGRectMake(_collectionView.width-30, 20, 30, 40)];
-        _btn_Like.backgroundColor = [UIColor whiteColor];
-        _btn_Like.layer.cornerRadius = 5;
-        [_btn_Like setImage:[UIImage imageNamed:@"s-praise"] forState:UIControlStateNormal];
-        [_btn_Like setImage:[UIImage imageNamed:@"s-praise1"] forState:UIControlStateSelected];
-        _btn_Like.titleLabel.font = [UIFont systemFontOfSize:13];
-        [_btn_Like setTitle:@"12" forState:UIControlStateNormal];
-        [_btn_Like setTitleColor:YSColor(181, 181, 181) forState:UIControlStateNormal];
-        [_btn_Like setTitleColor:YSColor(251, 159, 14) forState:UIControlStateSelected];
-        [_btn_Like addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_btn_Like layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleTop imageTitleSpace:2];
-    }
-    return _btn_Like;
-}
+
 
 - (IBAction)UPDownClick:(UIButton *)sender {
 //    [self layoutIfNeeded];

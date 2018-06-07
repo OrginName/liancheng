@@ -144,7 +144,7 @@
     [super layoutSubviews];
     self.mapView.frame = CGRectMake(0, 0, self.width, self.height);
     self.mapView.logoCenter = CGPointMake(-30, 1000);
-    self.btn_location.frame = CGRectMake(CGRectGetWidth(self.frame)-50, 20, 40, 40);
+    self.btn_location.frame = CGRectMake(kScreenWidth-50, 10, 40, 40);
 }
 
 /**

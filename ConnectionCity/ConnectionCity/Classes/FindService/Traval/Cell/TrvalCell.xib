@@ -232,7 +232,7 @@
                 <outlet property="lab_title" destination="aug-a8-BHG" id="BZM-9s-hvY"/>
                 <outlet property="txt_View" destination="Jtv-ZB-dph" id="mMc-Zi-aPe"/>
             </connections>
-            <point key="canvasLocation" x="-3" y="-72"/>
+            <point key="canvasLocation" x="142" y="-36"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrvalCell1" rowHeight="50" id="k32-hG-FAI" customClass="TrvalCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
@@ -299,13 +299,13 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="旅行去哪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aug-a8-BHG">
-                        <rect key="frame" x="36" y="15" width="65.5" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <rect key="frame" x="36" y="16" width="61.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.72933942080000003" green="0.72944873570000002" blue="0.72932440040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jxN-hL-1Gq">
-                        <rect key="frame" x="107.5" y="0.0" width="187.5" height="49"/>
+                        <rect key="frame" x="103.5" y="0.0" width="191.5" height="49"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
@@ -335,7 +335,7 @@
             <connections>
                 <outlet property="lab_title" destination="aug-a8-BHG" id="6qO-f2-1ns"/>
             </connections>
-            <point key="canvasLocation" x="142" y="220"/>
+            <point key="canvasLocation" x="142" y="207"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrvalCell3" rowHeight="96" id="jpa-uc-1vp" customClass="TrvalCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
@@ -347,7 +347,7 @@
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Jtv-ZB-dph" customClass="CustomtextView">
                         <rect key="frame" x="20" y="10" width="285" height="75.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                 </subviews>
@@ -361,7 +361,7 @@
             <connections>
                 <outlet property="txt_View" destination="Jtv-ZB-dph" id="jie-d5-9DR"/>
             </connections>
-            <point key="canvasLocation" x="142" y="337"/>
+            <point key="canvasLocation" x="142" y="324"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -101,19 +101,18 @@
             [self.navigationController pushViewController:one animated:YES];
 //            [[NSNotificationCenter defaultCenter] postNotificationName:@"TABBAR" object:nil];
 //
-        }
-            
+        } 
             break;
         case 2:
         {
-            BaseChangeTabController * one = [[BaseChangeTabController alloc] init];
-            [self.navigationController pushViewController:one animated:YES];
+            BaseFindServiceTabController * base = [BaseFindServiceTabController new];
+            [self.navigationController pushViewController:base animated:YES];
         }
             break;
         case 3:
         {
-            BaseFindServiceTabController * base = [BaseFindServiceTabController new];
-            [self.navigationController pushViewController:base animated:YES];
+            BaseChangeTabController * one = [[BaseChangeTabController alloc] init];
+            [self.navigationController pushViewController:one animated:YES];
         }
             break;
         default:

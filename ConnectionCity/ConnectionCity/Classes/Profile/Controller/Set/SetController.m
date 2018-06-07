@@ -25,7 +25,7 @@
 }
 -(void)setUI{
     self.navigationItem.title = @"设置";
-    arr_controller = @[@"AccontManageController",@"AccontManageController",@"AccontManageController",@"AccontManageController",@"AccontManageController",@"AccontManageController",@"AccontManageController"];
+    arr_controller = @[@"AccontManageController",@"AccontManageController",@"AccontManageController",@"AccontManageController",@"PrivateController",@"AccontManageController",@"AccontManageController"];
 }
 -(void)initData{
     self.arr_Title = @[@"账号管理",@"账号安全",@"消息通知",@"聊天记录",@"隐私联系人",@"关于连程",@"退出"];
