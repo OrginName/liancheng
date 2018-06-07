@@ -333,10 +333,12 @@
 		CE5C283020B9733A006A8332 /* ConsultativeNegotiationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C282E20B9733A006A8332 /* ConsultativeNegotiationCell.xib */; };
 		CE5C283820B99441006A8332 /* PayOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C283620B99441006A8332 /* PayOrderController.m */; };
 		CE5C283920B99441006A8332 /* PayOrderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C283720B99441006A8332 /* PayOrderController.xib */; };
-		CE6BEC1620C80DA0003B36D7 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC1420C80DA0003B36D7 /* PresentCell.m */; };
-		CE6BEC1720C80DA0003B36D7 /* PresentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6BEC1520C80DA0003B36D7 /* PresentCell.xib */; };
 		CE6BEC1A20C83740003B36D7 /* LCPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC1920C83740003B36D7 /* LCPicker.m */; };
 		CE6BEC1D20C83769003B36D7 /* LCDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC1C20C83769003B36D7 /* LCDatePicker.m */; };
+		CE6BEC2620C90806003B36D7 /* EditProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC2020C90806003B36D7 /* EditProfileController.m */; };
+		CE6BEC2720C90806003B36D7 /* EditProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC2120C90806003B36D7 /* EditProfileCell.m */; };
+		CE6BEC2820C90806003B36D7 /* EditProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6BEC2220C90806003B36D7 /* EditProfileController.xib */; };
+		CE6BEC2920C90806003B36D7 /* EditProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6BEC2520C90806003B36D7 /* EditProfileCell.xib */; };
 		CE97DBF520B5A2C1003E46BD /* ReleaseTenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97DBF320B5A2C1003E46BD /* ReleaseTenderCell.m */; };
 		CE97DBF620B5A2C1003E46BD /* ReleaseTenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE97DBF420B5A2C1003E46BD /* ReleaseTenderCell.xib */; };
 		CE97DBFA20B5AE9F003E46BD /* ReleaseTenderAdditionalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97DBF820B5AE9F003E46BD /* ReleaseTenderAdditionalCell.m */; };
@@ -385,8 +387,6 @@
 		CEC4A54C20C3FC180026EE19 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A54A20C3FC180026EE19 /* ProfileCell.xib */; };
 		CEC4A54E20C3FE070026EE19 /* MenuIcons.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A54D20C3FE070026EE19 /* MenuIcons.plist */; };
 		CEC4A55120C3FF4F0026EE19 /* YTSideMenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A54F20C3FF4F0026EE19 /* YTSideMenuModel.m */; };
-		CEC4A55520C407240026EE19 /* EditProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A55320C407240026EE19 /* EditProfileController.m */; };
-		CEC4A55620C407240026EE19 /* EditProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A55420C407240026EE19 /* EditProfileController.xib */; };
 		CEC4A55A20C407500026EE19 /* MemberCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A55820C407500026EE19 /* MemberCenterController.m */; };
 		CEC4A55B20C407500026EE19 /* MemberCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A55920C407500026EE19 /* MemberCenterController.xib */; };
 		CEC4A56420C407BF0026EE19 /* WalletController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A56220C407BF0026EE19 /* WalletController.m */; };
@@ -397,8 +397,6 @@
 		CEC4A56F20C4081F0026EE19 /* WithdrawalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A56D20C4081F0026EE19 /* WithdrawalController.xib */; };
 		CEC4A57320C4083E0026EE19 /* WithdrawalManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A57120C4083E0026EE19 /* WithdrawalManagerController.m */; };
 		CEC4A57420C4083E0026EE19 /* WithdrawalManagerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A57220C4083E0026EE19 /* WithdrawalManagerController.xib */; };
-		CEC4A57820C40A250026EE19 /* EditProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A57620C40A250026EE19 /* EditProfileCell.m */; };
-		CEC4A57920C40A250026EE19 /* EditProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A57720C40A250026EE19 /* EditProfileCell.xib */; };
 		CEC4A57C20C41D540026EE19 /* ProfileHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A57B20C41D540026EE19 /* ProfileHeadView.m */; };
 		CEC4A57E20C41D610026EE19 /* ProfileHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A57D20C41D610026EE19 /* ProfileHeadView.xib */; };
 		CEE4B28720C585A4008B8731 /* YSClubEditDepartmant.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B28320C585A3008B8731 /* YSClubEditDepartmant.m */; };
@@ -995,6 +993,12 @@
 		CE6BEC1920C83740003B36D7 /* LCPicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCPicker.m; sourceTree = "<group>"; };
 		CE6BEC1B20C83769003B36D7 /* LCDatePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCDatePicker.h; sourceTree = "<group>"; };
 		CE6BEC1C20C83769003B36D7 /* LCDatePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCDatePicker.m; sourceTree = "<group>"; };
+		CE6BEC2020C90806003B36D7 /* EditProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileController.m; sourceTree = "<group>"; };
+		CE6BEC2120C90806003B36D7 /* EditProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileCell.m; sourceTree = "<group>"; };
+		CE6BEC2220C90806003B36D7 /* EditProfileController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileController.xib; sourceTree = "<group>"; };
+		CE6BEC2320C90806003B36D7 /* EditProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileCell.h; sourceTree = "<group>"; };
+		CE6BEC2420C90806003B36D7 /* EditProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileController.h; sourceTree = "<group>"; };
+		CE6BEC2520C90806003B36D7 /* EditProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileCell.xib; sourceTree = "<group>"; };
 		CE97DBF220B5A2C1003E46BD /* ReleaseTenderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReleaseTenderCell.h; sourceTree = "<group>"; };
 		CE97DBF320B5A2C1003E46BD /* ReleaseTenderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReleaseTenderCell.m; sourceTree = "<group>"; };
 		CE97DBF420B5A2C1003E46BD /* ReleaseTenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReleaseTenderCell.xib; sourceTree = "<group>"; };
@@ -1069,7 +1073,6 @@
 		CEC4A54D20C3FE070026EE19 /* MenuIcons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MenuIcons.plist; sourceTree = "<group>"; };
 		CEC4A54F20C3FF4F0026EE19 /* YTSideMenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTSideMenuModel.m; sourceTree = "<group>"; };
 		CEC4A55020C3FF4F0026EE19 /* YTSideMenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTSideMenuModel.h; sourceTree = "<group>"; };
-		CEC4A55220C407240026EE19 /* EditProfileController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileController.h; sourceTree = "<group>"; };
 		CEC4A55320C407240026EE19 /* EditProfileController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileController.m; sourceTree = "<group>"; };
 		CEC4A55420C407240026EE19 /* EditProfileController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileController.xib; sourceTree = "<group>"; };
 		CEC4A55720C407500026EE19 /* MemberCenterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberCenterController.h; sourceTree = "<group>"; };
@@ -1087,7 +1090,6 @@
 		CEC4A57020C4083E0026EE19 /* WithdrawalManagerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawalManagerController.h; sourceTree = "<group>"; };
 		CEC4A57120C4083E0026EE19 /* WithdrawalManagerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawalManagerController.m; sourceTree = "<group>"; };
 		CEC4A57220C4083E0026EE19 /* WithdrawalManagerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawalManagerController.xib; sourceTree = "<group>"; };
-		CEC4A57520C40A250026EE19 /* EditProfileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileCell.h; sourceTree = "<group>"; };
 		CEC4A57620C40A250026EE19 /* EditProfileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileCell.m; sourceTree = "<group>"; };
 		CEC4A57720C40A250026EE19 /* EditProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileCell.xib; sourceTree = "<group>"; };
 		CEC4A57A20C41D540026EE19 /* ProfileHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileHeadView.h; sourceTree = "<group>"; };
@@ -2190,6 +2192,7 @@
 				CE0BA565209D5004004C3C33 /* Products */,
 				FED23FC9B0FA87A13AD43642 /* Pods */,
 				8B7BE3068BAA237F55FD6962 /* Frameworks */,
+				CE6BEC1E20C90759003B36D7 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2588,19 +2591,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		CE6BEC0E20C7FF72003B36D7 /* EditProfile */ = {
-			isa = PBXGroup;
-			children = (
-				CEC4A55220C407240026EE19 /* EditProfileController.h */,
-				CEC4A55320C407240026EE19 /* EditProfileController.m */,
-				CEC4A55420C407240026EE19 /* EditProfileController.xib */,
-				CEC4A57520C40A250026EE19 /* EditProfileCell.h */,
-				CEC4A57620C40A250026EE19 /* EditProfileCell.m */,
-				CEC4A57720C40A250026EE19 /* EditProfileCell.xib */,
-			);
-			path = EditProfile;
-			sourceTree = "<group>";
-		};
 		CE6BEC1220C80DA0003B36D7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2609,6 +2599,31 @@
 				CE6BEC1520C80DA0003B36D7 /* PresentCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		CE6BEC1E20C90759003B36D7 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				CEC4A57620C40A250026EE19 /* EditProfileCell.m */,
+				CEC4A55320C407240026EE19 /* EditProfileController.m */,
+				CEC4A55420C407240026EE19 /* EditProfileController.xib */,
+				CEC4A57720C40A250026EE19 /* EditProfileCell.xib */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		CE6BEC1F20C90806003B36D7 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				CE6BEC2020C90806003B36D7 /* EditProfileController.m */,
+				CE6BEC2120C90806003B36D7 /* EditProfileCell.m */,
+				CE6BEC2220C90806003B36D7 /* EditProfileController.xib */,
+				CE6BEC2320C90806003B36D7 /* EditProfileCell.h */,
+				CE6BEC2420C90806003B36D7 /* EditProfileController.h */,
+				CE6BEC2520C90806003B36D7 /* EditProfileCell.xib */,
+			);
+			name = EditProfile;
+			path = "../../../../../../连城冲突/LC 5/ConnectionCity/ConnectionCity/Classes/Profile/Controller/EditProfile";
 			sourceTree = "<group>";
 		};
 		CE97DBFC20B5B161003E46BD /* fbzb */ = {
@@ -2806,6 +2821,7 @@
 		CEC4A54620C3FBE50026EE19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CE6BEC1F20C90806003B36D7 /* EditProfile */,
 				72EBB8BE20C8155B00F670E9 /* Set */,
 				72EBB8B820C800C200F670E9 /* Cell */,
 				8D22C34320C7C995004DC8F4 /* Wallet */,
@@ -3091,7 +3107,6 @@
 				8DEA450A20C1148C001529F1 /* SendMomentController.xib in Resources */,
 				CE5C280520B90473006A8332 /* BiddInfoCell.xib in Resources */,
 				72EC1B6C20B8475100ACC20B /* ShowtreaureCell.xib in Resources */,
-				CEC4A55620C407240026EE19 /* EditProfileController.xib in Resources */,
 				CEBEDD8820B17ED1000F9EE4 /* BidderController.xib in Resources */,
 				8D5B3C3E20C0147A00773105 /* ServiceListCell.xib in Resources */,
 				CE0BA61B209D6197004C3C33 /* FoundController.xib in Resources */,
@@ -3133,7 +3148,6 @@
 				8D22C37620C7E54D004DC8F4 /* TransactionRecordController.xib in Resources */,
 				8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */,
 				CEC4A57420C4083E0026EE19 /* WithdrawalManagerController.xib in Resources */,
-				CEC4A57920C40A250026EE19 /* EditProfileCell.xib in Resources */,
 				8D24A23720A1D5BF00F0740D /* FirstTanView.xib in Resources */,
 				8D09E19D20BFDC16000F7EBD /* ShowTrvalCell.xib in Resources */,
 				727418DA20B290AE001D6BE1 /* PlayPoductController.xib in Resources */,
@@ -3178,6 +3192,7 @@
 				727418E420B290D1001D6BE1 /* SwapController.xib in Resources */,
 				8D22C37120C7DC46004DC8F4 /* BindingController.xib in Resources */,
 				CE0BA608209D60C3004C3C33 /* MessageController.xib in Resources */,
+				CE6BEC2820C90806003B36D7 /* EditProfileController.xib in Resources */,
 				72EBB8D720C81B4600F670E9 /* AccontManageController.xib in Resources */,
 				72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */,
 				CE5C283020B9733A006A8332 /* ConsultativeNegotiationCell.xib in Resources */,
@@ -3190,6 +3205,7 @@
 				CEE4B2B020C6D948008B8731 /* MemberRenewalController.xib in Resources */,
 				727418DF20B290BF001D6BE1 /* EnthusiastsControll.xib in Resources */,
 				72EC1BAC20BC34AA00ACC20B /* TravalController.xib in Resources */,
+				CE6BEC2920C90806003B36D7 /* EditProfileCell.xib in Resources */,
 				72EC1BA220BC347D00ACC20B /* ProfileServiceController.xib in Resources */,
 				8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */,
 				8DEA450520C10BB7001529F1 /* FindMySelfCell.xib in Resources */,
@@ -3337,7 +3353,6 @@
 				CE0BA5E7209D5E9B004C3C33 /* YSTools.m in Sources */,
 				CEBEDD8520B17ED1000F9EE4 /* MarginSectionHeadV.m in Sources */,
 				8D50C55B20C669020095A824 /* OurConcernController.m in Sources */,
-				CEC4A57820C40A250026EE19 /* EditProfileCell.m in Sources */,
 				8DC17A7720C0E430005D9EE0 /* Comment.m in Sources */,
 				8DD48CDF20A828F200D6D1E6 /* CustomtextView.m in Sources */,
 				720263FD20B5015500382B2F /* TZVideoPlayerController.m in Sources */,
@@ -3385,6 +3400,7 @@
 				CEC4A54020C3D6FC0026EE19 /* TeamSwitchCell.m in Sources */,
 				8D09426620C14AF200C45E2B /* EvaluationController.m in Sources */,
 				8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */,
+				CE6BEC2620C90806003B36D7 /* EditProfileController.m in Sources */,
 				CE5C282A20B972B9006A8332 /* ConsultativeNegotiationController.m in Sources */,
 				CE0BA5B4209D5E6B004C3C33 /* UIFont+YTInchFit.m in Sources */,
 				727418C520B17E78001D6BE1 /* ChangePlayController.m in Sources */,
@@ -3438,7 +3454,6 @@
 				7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */,
 				CE0BA5EB209D5E9B004C3C33 /* SRDownloadManager.m in Sources */,
 				CEC4A56E20C4081F0026EE19 /* WithdrawalController.m in Sources */,
-				CEC4A55520C407240026EE19 /* EditProfileController.m in Sources */,
 				723D376B20AC2BC3003FD4DF /* SearchHistoryController.m in Sources */,
 				727418F620B3B37B001D6BE1 /* SwapHeadView.m in Sources */,
 				72EC1B5F20B8341900ACC20B /* ShowCardTab.m in Sources */,
@@ -3540,6 +3555,7 @@
 				72EBB8D120C8184700F670E9 /* SetController.m in Sources */,
 				7294185320AD11E00054B71D /* SearchCell.m in Sources */,
 				CE5C282420B955EA006A8332 /* BidManagerFootV.m in Sources */,
+				CE6BEC2720C90806003B36D7 /* EditProfileCell.m in Sources */,
 				CE0BA5EA209D5E9B004C3C33 /* YSBlutoothTool.m in Sources */,
 				CE0BA5B7209D5E6B004C3C33 /* NSData+hexString.m in Sources */,
 				CEBEDD8920B17ED1000F9EE4 /* BidderCell.m in Sources */,
