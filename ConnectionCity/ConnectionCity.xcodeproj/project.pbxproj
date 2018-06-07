@@ -1814,10 +1814,7 @@
 		8D22C34320C7C995004DC8F4 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< Updated upstream
-=======
 				CE6BEC1220C80DA0003B36D7 /* Cell */,
->>>>>>> Stashed changes
 				8D22C34420C7C9CC004DC8F4 /* RechargeController.h */,
 				8D22C34520C7C9CC004DC8F4 /* RechargeController.m */,
 				8D22C34620C7C9CC004DC8F4 /* RechargeController.xib */,
@@ -2809,12 +2806,8 @@
 		CEC4A54620C3FBE50026EE19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< Updated upstream
 				72EBB8BE20C8155B00F670E9 /* Set */,
 				72EBB8B820C800C200F670E9 /* Cell */,
-=======
-				CE6BEC0E20C7FF72003B36D7 /* EditProfile */,
->>>>>>> Stashed changes
 				8D22C34320C7C995004DC8F4 /* Wallet */,
 				72EBB8B220C6DB3600F670E9 /* AuthenticationController */,
 				CEE4B2A820C6D8E4008B8731 /* Members */,
@@ -3206,11 +3199,7 @@
 				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
 				8D50C56720C67C2F0095A824 /* OurServiceCell.xib in Resources */,
 				CE03EDF920B4547200F07D78 /* FirstSectionHeadV.xib in Resources */,
-<<<<<<< Updated upstream
 				72EBB8BD20C800C300F670E9 /* PresentCell.xib in Resources */,
-=======
-				CE6BEC1720C80DA0003B36D7 /* PresentCell.xib in Resources */,
->>>>>>> Stashed changes
 				CE0BA635209D68A3004C3C33 /* YSLoginController.xib in Resources */,
 				72EC1B6420B8357400ACC20B /* ShowCardCell.xib in Resources */,
 				722D254120AAA64C00AB3863 /* ShowResumeController.xib in Resources */,
@@ -3299,11 +3288,7 @@
 				8D50C56620C67C2F0095A824 /* OurServiceCell.m in Sources */,
 				CE0BA637209D68A3004C3C33 /* ChangePasswordController.m in Sources */,
 				CE0BA5F8209D5EBE004C3C33 /* BaseNavigationController.m in Sources */,
-<<<<<<< Updated upstream
 				72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */,
-=======
-				CE6BEC1620C80DA0003B36D7 /* PresentCell.m in Sources */,
->>>>>>> Stashed changes
 				CE0BA5E6209D5E9B004C3C33 /* MyPickerView.m in Sources */,
 				CE0BA5F7209D5EBE004C3C33 /* BaseViewController.m in Sources */,
 				8DC17A7E20C0E430005D9EE0 /* Utility.m in Sources */,
