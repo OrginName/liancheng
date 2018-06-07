@@ -99,6 +99,10 @@
 		72EBB8D720C81B4600F670E9 /* AccontManageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8D520C81B4600F670E9 /* AccontManageController.xib */; };
 		72EBB8DB20C81CA500F670E9 /* AccountManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8D920C81CA500F670E9 /* AccountManageCell.m */; };
 		72EBB8DC20C81CA500F670E9 /* AccountManageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8DA20C81CA500F670E9 /* AccountManageCell.xib */; };
+		72EBB8E120C95F8800F670E9 /* AccountSecurityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8DF20C95F8800F670E9 /* AccountSecurityController.m */; };
+		72EBB8E220C95F8800F670E9 /* AccountSecurityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8E020C95F8800F670E9 /* AccountSecurityController.xib */; };
+		72EBB8E620C9682A00F670E9 /* AccountOneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8E420C9682A00F670E9 /* AccountOneController.m */; };
+		72EBB8E720C9682A00F670E9 /* AccountOneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8E520C9682A00F670E9 /* AccountOneController.xib */; };
 		72EC1B5120B6EAB600ACC20B /* SendTreasureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1B4F20B6EAB600ACC20B /* SendTreasureController.m */; };
 		72EC1B5220B6EAB600ACC20B /* SendTreasureController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EC1B5020B6EAB600ACC20B /* SendTreasureController.xib */; };
 		72EC1B5B20B7027000ACC20B /* SwapListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1B5920B7027000ACC20B /* SwapListController.m */; };
@@ -593,6 +597,12 @@
 		72EBB8D820C81CA500F670E9 /* AccountManageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountManageCell.h; sourceTree = "<group>"; };
 		72EBB8D920C81CA500F670E9 /* AccountManageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountManageCell.m; sourceTree = "<group>"; };
 		72EBB8DA20C81CA500F670E9 /* AccountManageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountManageCell.xib; sourceTree = "<group>"; };
+		72EBB8DE20C95F8800F670E9 /* AccountSecurityController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountSecurityController.h; sourceTree = "<group>"; };
+		72EBB8DF20C95F8800F670E9 /* AccountSecurityController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountSecurityController.m; sourceTree = "<group>"; };
+		72EBB8E020C95F8800F670E9 /* AccountSecurityController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSecurityController.xib; sourceTree = "<group>"; };
+		72EBB8E320C9682A00F670E9 /* AccountOneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountOneController.h; sourceTree = "<group>"; };
+		72EBB8E420C9682A00F670E9 /* AccountOneController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountOneController.m; sourceTree = "<group>"; };
+		72EBB8E520C9682A00F670E9 /* AccountOneController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountOneController.xib; sourceTree = "<group>"; };
 		72EC1B4E20B6EAB600ACC20B /* SendTreasureController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendTreasureController.h; sourceTree = "<group>"; };
 		72EC1B4F20B6EAB600ACC20B /* SendTreasureController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendTreasureController.m; sourceTree = "<group>"; };
 		72EC1B5020B6EAB600ACC20B /* SendTreasureController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendTreasureController.xib; sourceTree = "<group>"; };
@@ -1539,6 +1549,12 @@
 				8D8E4ED020C9320200C3D537 /* PrivateController.h */,
 				8D8E4ED120C9320200C3D537 /* PrivateController.m */,
 				8D8E4ED220C9320200C3D537 /* PrivateController.xib */,
+				72EBB8DE20C95F8800F670E9 /* AccountSecurityController.h */,
+				72EBB8DF20C95F8800F670E9 /* AccountSecurityController.m */,
+				72EBB8E020C95F8800F670E9 /* AccountSecurityController.xib */,
+				72EBB8E320C9682A00F670E9 /* AccountOneController.h */,
+				72EBB8E420C9682A00F670E9 /* AccountOneController.m */,
+				72EBB8E520C9682A00F670E9 /* AccountOneController.xib */,
 			);
 			path = Set;
 			sourceTree = "<group>";
@@ -3105,6 +3121,7 @@
 				CEBEDD8C20B17ED1000F9EE4 /* BountyHostingController.xib in Resources */,
 				8DEA450A20C1148C001529F1 /* SendMomentController.xib in Resources */,
 				CE5C280520B90473006A8332 /* BiddInfoCell.xib in Resources */,
+				72EBB8E220C95F8800F670E9 /* AccountSecurityController.xib in Resources */,
 				72EC1B6C20B8475100ACC20B /* ShowtreaureCell.xib in Resources */,
 				CEBEDD8820B17ED1000F9EE4 /* BidderController.xib in Resources */,
 				8D5B3C3E20C0147A00773105 /* ServiceListCell.xib in Resources */,
@@ -3185,6 +3202,7 @@
 				723F4FB420BEEA8D00AF8268 /* TrvalTripCell.xib in Resources */,
 				CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */,
 				CE0BA60F209D6126004C3C33 /* AddressBookController.xib in Resources */,
+				72EBB8E720C9682A00F670E9 /* AccountOneController.xib in Resources */,
 				72EC1B9820BC307E00ACC20B /* ServiceHomeController.xib in Resources */,
 				CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */,
 				CEBEDD8F20B17ED1000F9EE4 /* FootprintCell.xib in Resources */,
@@ -3330,6 +3348,7 @@
 				8DD48CD220A811EA00D6D1E6 /* UIColor+MyColor.m in Sources */,
 				722D253820AA76D400AB3863 /* JFCityCollectionViewCell.m in Sources */,
 				CE0BA5BB209D5E6B004C3C33 /* UIBarButtonItem+Extension.m in Sources */,
+				72EBB8E620C9682A00F670E9 /* AccountOneController.m in Sources */,
 				8DC17A7620C0E430005D9EE0 /* FriendCirleTab.m in Sources */,
 				CEBEDD9120B17ED1000F9EE4 /* FootprintController.m in Sources */,
 				CEBEDD8120B17ED1000F9EE4 /* MarginController.m in Sources */,
@@ -3554,6 +3573,7 @@
 				CE5C282420B955EA006A8332 /* BidManagerFootV.m in Sources */,
 				8D8E4ECE20C9109E00C3D537 /* EditProfileController.m in Sources */,
 				CE0BA5EA209D5E9B004C3C33 /* YSBlutoothTool.m in Sources */,
+				72EBB8E120C95F8800F670E9 /* AccountSecurityController.m in Sources */,
 				CE0BA5B7209D5E6B004C3C33 /* NSData+hexString.m in Sources */,
 				CEBEDD8920B17ED1000F9EE4 /* BidderCell.m in Sources */,
 			);
