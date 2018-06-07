@@ -9,10 +9,10 @@
 #import "SendServiceController.h"
 #import "PhotoSelect.h"
 #import "SendServiceCell.h"
-#import "MyPickerView.h"
+#import "LCPicker.h"
 #import "SendSelectCell.h"
 #import "EditAllController.h"
-@interface SendServiceController ()<PhotoSelectDelegate,UITableViewDelegate,UITableViewDataSource,MyPickerViewDelegate>
+@interface SendServiceController ()<PhotoSelectDelegate,UITableViewDelegate,UITableViewDataSource,LCPickerDelegate>
 {
     CGFloat itemHeigth,layout_Height;
     UIButton * _tmpBtn;
@@ -20,7 +20,7 @@
 @property (nonatomic,strong)SendSelectCell * selectView;
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,strong)PhotoSelect * photo;
-@property (nonatomic,strong) MyPickerView * myPicker;
+@property (nonatomic,strong) LCPicker * myPicker;
 @property (nonatomic,assign) NSInteger section2Num;
 @property (nonatomic,strong) NSArray * arr1;
 @property (nonatomic,strong) NSArray * arr2;
@@ -104,7 +104,6 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == 1) {
-        _myPicker.mutableArr = [NSMutableArray arrayWithObjects:@"游戏服务",@"王者服务", nil];
         [_myPicker animateShow];
     }else if(indexPath.section!=4&&indexPath.section!=5){
         SendServiceCell * cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section]];
@@ -115,17 +114,17 @@
         [self.navigationController pushViewController:edit animated:YES];
     }
 } 
-#pragma mark ---- MyPickerViewDelegate ---
-- (void)myPickerViewWithPickerView:(MyPickerView *)pickerV Str:(NSString *)Str{
+#pragma mark ---- LCPickerDelegate ---
+- (void)lcPickerViewWithPickerView:(LCPicker *)picker str:(NSString *)str {
     SendServiceCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
     [_selectView.arrData removeAllObjects];
-    if ([Str isEqualToString:@"游戏服务"]) {
+    if ([str isEqualToString:@"游戏服务"]) {
         _selectView.arrData = [self.arr1 mutableCopy];
     }else{
         _selectView.arrData = [self.arr2 mutableCopy];
     }
     [self.tab_Bottom reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
-    cell.txt_Placeholder.text = Str;
+    cell.txt_Placeholder.text = str;
 }
 #pragma mark ----PhotoSelectDelegate-----
 -(void)selectImageArr:(NSArray *)imageArr{
@@ -140,9 +139,10 @@
     }
 }
 #pragma mark --- 懒加载UI-----
--(MyPickerView *)myPicker{
+-(LCPicker *)myPicker{
     if (!_myPicker) {
-        _myPicker = [[MyPickerView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 200)];
+        _myPicker = [[LCPicker alloc] init];
+        _myPicker.mutableArr = [NSMutableArray arrayWithObjects:@"游戏服务",@"王者服务", nil];
         _myPicker.delegate = self;
     }
     return _myPicker;

@@ -333,6 +333,10 @@
 		CE5C283020B9733A006A8332 /* ConsultativeNegotiationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C282E20B9733A006A8332 /* ConsultativeNegotiationCell.xib */; };
 		CE5C283820B99441006A8332 /* PayOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C283620B99441006A8332 /* PayOrderController.m */; };
 		CE5C283920B99441006A8332 /* PayOrderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C283720B99441006A8332 /* PayOrderController.xib */; };
+		CE6BEC1620C80DA0003B36D7 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC1420C80DA0003B36D7 /* PresentCell.m */; };
+		CE6BEC1720C80DA0003B36D7 /* PresentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6BEC1520C80DA0003B36D7 /* PresentCell.xib */; };
+		CE6BEC1A20C83740003B36D7 /* LCPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC1920C83740003B36D7 /* LCPicker.m */; };
+		CE6BEC1D20C83769003B36D7 /* LCDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC1C20C83769003B36D7 /* LCDatePicker.m */; };
 		CE97DBF520B5A2C1003E46BD /* ReleaseTenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97DBF320B5A2C1003E46BD /* ReleaseTenderCell.m */; };
 		CE97DBF620B5A2C1003E46BD /* ReleaseTenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE97DBF420B5A2C1003E46BD /* ReleaseTenderCell.xib */; };
 		CE97DBFA20B5AE9F003E46BD /* ReleaseTenderAdditionalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97DBF820B5AE9F003E46BD /* ReleaseTenderAdditionalCell.m */; };
@@ -385,8 +389,6 @@
 		CEC4A55620C407240026EE19 /* EditProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A55420C407240026EE19 /* EditProfileController.xib */; };
 		CEC4A55A20C407500026EE19 /* MemberCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A55820C407500026EE19 /* MemberCenterController.m */; };
 		CEC4A55B20C407500026EE19 /* MemberCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A55920C407500026EE19 /* MemberCenterController.xib */; };
-		CEC4A55F20C407990026EE19 /* MembershipRenewalController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A55D20C407990026EE19 /* MembershipRenewalController.m */; };
-		CEC4A56020C407990026EE19 /* MembershipRenewalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A55E20C407990026EE19 /* MembershipRenewalController.xib */; };
 		CEC4A56420C407BF0026EE19 /* WalletController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A56220C407BF0026EE19 /* WalletController.m */; };
 		CEC4A56520C407BF0026EE19 /* WalletController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC4A56320C407BF0026EE19 /* WalletController.xib */; };
 		CEC4A56920C407EB0026EE19 /* TopUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC4A56720C407EB0026EE19 /* TopUpController.m */; };
@@ -986,6 +988,13 @@
 		CE5C283520B99441006A8332 /* PayOrderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayOrderController.h; sourceTree = "<group>"; };
 		CE5C283620B99441006A8332 /* PayOrderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayOrderController.m; sourceTree = "<group>"; };
 		CE5C283720B99441006A8332 /* PayOrderController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayOrderController.xib; sourceTree = "<group>"; };
+		CE6BEC1320C80DA0003B36D7 /* PresentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentCell.h; sourceTree = "<group>"; };
+		CE6BEC1420C80DA0003B36D7 /* PresentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentCell.m; sourceTree = "<group>"; };
+		CE6BEC1520C80DA0003B36D7 /* PresentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresentCell.xib; sourceTree = "<group>"; };
+		CE6BEC1820C83740003B36D7 /* LCPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCPicker.h; sourceTree = "<group>"; };
+		CE6BEC1920C83740003B36D7 /* LCPicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCPicker.m; sourceTree = "<group>"; };
+		CE6BEC1B20C83769003B36D7 /* LCDatePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCDatePicker.h; sourceTree = "<group>"; };
+		CE6BEC1C20C83769003B36D7 /* LCDatePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCDatePicker.m; sourceTree = "<group>"; };
 		CE97DBF220B5A2C1003E46BD /* ReleaseTenderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReleaseTenderCell.h; sourceTree = "<group>"; };
 		CE97DBF320B5A2C1003E46BD /* ReleaseTenderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReleaseTenderCell.m; sourceTree = "<group>"; };
 		CE97DBF420B5A2C1003E46BD /* ReleaseTenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReleaseTenderCell.xib; sourceTree = "<group>"; };
@@ -1066,9 +1075,6 @@
 		CEC4A55720C407500026EE19 /* MemberCenterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberCenterController.h; sourceTree = "<group>"; };
 		CEC4A55820C407500026EE19 /* MemberCenterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberCenterController.m; sourceTree = "<group>"; };
 		CEC4A55920C407500026EE19 /* MemberCenterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberCenterController.xib; sourceTree = "<group>"; };
-		CEC4A55C20C407990026EE19 /* MembershipRenewalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MembershipRenewalController.h; sourceTree = "<group>"; };
-		CEC4A55D20C407990026EE19 /* MembershipRenewalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MembershipRenewalController.m; sourceTree = "<group>"; };
-		CEC4A55E20C407990026EE19 /* MembershipRenewalController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MembershipRenewalController.xib; sourceTree = "<group>"; };
 		CEC4A56120C407BF0026EE19 /* WalletController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletController.h; sourceTree = "<group>"; };
 		CEC4A56220C407BF0026EE19 /* WalletController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletController.m; sourceTree = "<group>"; };
 		CEC4A56320C407BF0026EE19 /* WalletController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletController.xib; sourceTree = "<group>"; };
@@ -1808,6 +1814,10 @@
 		8D22C34320C7C995004DC8F4 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< Updated upstream
+=======
+				CE6BEC1220C80DA0003B36D7 /* Cell */,
+>>>>>>> Stashed changes
 				8D22C34420C7C9CC004DC8F4 /* RechargeController.h */,
 				8D22C34520C7C9CC004DC8F4 /* RechargeController.m */,
 				8D22C34620C7C9CC004DC8F4 /* RechargeController.xib */,
@@ -2581,6 +2591,29 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		CE6BEC0E20C7FF72003B36D7 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				CEC4A55220C407240026EE19 /* EditProfileController.h */,
+				CEC4A55320C407240026EE19 /* EditProfileController.m */,
+				CEC4A55420C407240026EE19 /* EditProfileController.xib */,
+				CEC4A57520C40A250026EE19 /* EditProfileCell.h */,
+				CEC4A57620C40A250026EE19 /* EditProfileCell.m */,
+				CEC4A57720C40A250026EE19 /* EditProfileCell.xib */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		CE6BEC1220C80DA0003B36D7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CE6BEC1320C80DA0003B36D7 /* PresentCell.h */,
+				CE6BEC1420C80DA0003B36D7 /* PresentCell.m */,
+				CE6BEC1520C80DA0003B36D7 /* PresentCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		CE97DBFC20B5B161003E46BD /* fbzb */ = {
 			isa = PBXGroup;
 			children = (
@@ -2776,8 +2809,12 @@
 		CEC4A54620C3FBE50026EE19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< Updated upstream
 				72EBB8BE20C8155B00F670E9 /* Set */,
 				72EBB8B820C800C200F670E9 /* Cell */,
+=======
+				CE6BEC0E20C7FF72003B36D7 /* EditProfile */,
+>>>>>>> Stashed changes
 				8D22C34320C7C995004DC8F4 /* Wallet */,
 				72EBB8B220C6DB3600F670E9 /* AuthenticationController */,
 				CEE4B2A820C6D8E4008B8731 /* Members */,
@@ -2785,18 +2822,12 @@
 				CE0BA61D209D61C0004C3C33 /* ProfileController.h */,
 				CE0BA61E209D61C0004C3C33 /* ProfileController.m */,
 				CE0BA61F209D61C0004C3C33 /* ProfileController.xib */,
-				CEC4A55220C407240026EE19 /* EditProfileController.h */,
-				CEC4A55320C407240026EE19 /* EditProfileController.m */,
-				CEC4A55420C407240026EE19 /* EditProfileController.xib */,
 				CEC4A55720C407500026EE19 /* MemberCenterController.h */,
 				CEC4A55820C407500026EE19 /* MemberCenterController.m */,
 				CEC4A55920C407500026EE19 /* MemberCenterController.xib */,
 				CE0A99DA20C57C44003A4D91 /* CertificationCenterController.h */,
 				CE0A99DB20C57C44003A4D91 /* CertificationCenterController.m */,
 				CE0A99DC20C57C44003A4D91 /* CertificationCenterController.xib */,
-				CEC4A55C20C407990026EE19 /* MembershipRenewalController.h */,
-				CEC4A55D20C407990026EE19 /* MembershipRenewalController.m */,
-				CEC4A55E20C407990026EE19 /* MembershipRenewalController.xib */,
 				CEC4A56120C407BF0026EE19 /* WalletController.h */,
 				CEC4A56220C407BF0026EE19 /* WalletController.m */,
 				CEC4A56320C407BF0026EE19 /* WalletController.xib */,
@@ -2819,9 +2850,6 @@
 				CEC4A54820C3FC180026EE19 /* ProfileCell.h */,
 				CEC4A54920C3FC180026EE19 /* ProfileCell.m */,
 				CEC4A54A20C3FC180026EE19 /* ProfileCell.xib */,
-				CEC4A57520C40A250026EE19 /* EditProfileCell.h */,
-				CEC4A57620C40A250026EE19 /* EditProfileCell.m */,
-				CEC4A57720C40A250026EE19 /* EditProfileCell.xib */,
 				CEC4A57A20C41D540026EE19 /* ProfileHeadView.h */,
 				CEC4A57B20C41D540026EE19 /* ProfileHeadView.m */,
 				CEC4A57D20C41D610026EE19 /* ProfileHeadView.xib */,
@@ -2840,6 +2868,10 @@
 				CEE4B28320C585A3008B8731 /* YSClubEditDepartmant.m */,
 				CEE4B28A20C585F7008B8731 /* YSSetUpBirthdayView.h */,
 				CEE4B28B20C585F9008B8731 /* YSSetUpBirthdayView.m */,
+				CE6BEC1820C83740003B36D7 /* LCPicker.h */,
+				CE6BEC1920C83740003B36D7 /* LCPicker.m */,
+				CE6BEC1B20C83769003B36D7 /* LCDatePicker.h */,
+				CE6BEC1C20C83769003B36D7 /* LCDatePicker.m */,
 			);
 			path = CustomPicker;
 			sourceTree = "<group>";
@@ -3146,7 +3178,6 @@
 				8D50C55220C632090095A824 /* OurSendController.xib in Resources */,
 				723F4FB420BEEA8D00AF8268 /* TrvalTripCell.xib in Resources */,
 				CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */,
-				CEC4A56020C407990026EE19 /* MembershipRenewalController.xib in Resources */,
 				CE0BA60F209D6126004C3C33 /* AddressBookController.xib in Resources */,
 				72EC1B9820BC307E00ACC20B /* ServiceHomeController.xib in Resources */,
 				CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */,
@@ -3175,7 +3206,11 @@
 				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
 				8D50C56720C67C2F0095A824 /* OurServiceCell.xib in Resources */,
 				CE03EDF920B4547200F07D78 /* FirstSectionHeadV.xib in Resources */,
+<<<<<<< Updated upstream
 				72EBB8BD20C800C300F670E9 /* PresentCell.xib in Resources */,
+=======
+				CE6BEC1720C80DA0003B36D7 /* PresentCell.xib in Resources */,
+>>>>>>> Stashed changes
 				CE0BA635209D68A3004C3C33 /* YSLoginController.xib in Resources */,
 				72EC1B6420B8357400ACC20B /* ShowCardCell.xib in Resources */,
 				722D254120AAA64C00AB3863 /* ShowResumeController.xib in Resources */,
@@ -3264,7 +3299,11 @@
 				8D50C56620C67C2F0095A824 /* OurServiceCell.m in Sources */,
 				CE0BA637209D68A3004C3C33 /* ChangePasswordController.m in Sources */,
 				CE0BA5F8209D5EBE004C3C33 /* BaseNavigationController.m in Sources */,
+<<<<<<< Updated upstream
 				72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */,
+=======
+				CE6BEC1620C80DA0003B36D7 /* PresentCell.m in Sources */,
+>>>>>>> Stashed changes
 				CE0BA5E6209D5E9B004C3C33 /* MyPickerView.m in Sources */,
 				CE0BA5F7209D5EBE004C3C33 /* BaseViewController.m in Sources */,
 				8DC17A7E20C0E430005D9EE0 /* Utility.m in Sources */,
@@ -3280,6 +3319,7 @@
 				8D22C34720C7C9CC004DC8F4 /* RechargeController.m in Sources */,
 				CE5C281F20B953C1006A8332 /* BidManagerHeadV.m in Sources */,
 				CEC4A52F20C3D6D10026EE19 /* TeamHeadView.m in Sources */,
+				CE6BEC1D20C83769003B36D7 /* LCDatePicker.m in Sources */,
 				CEE4B2A620C6CC3F008B8731 /* PersonalCenterController.m in Sources */,
 				72EC1BB920BC4CA100ACC20B /* SendServiceCell.m in Sources */,
 				72EBB8D620C81B4600F670E9 /* AccontManageController.m in Sources */,
@@ -3455,11 +3495,11 @@
 				8DEA44D620C0E9ED001529F1 /* FriendVideoCell.m in Sources */,
 				CE0BA5FA209D5EBE004C3C33 /* YTBaseTableViewController.m in Sources */,
 				720263F320B5015500382B2F /* TZGifPhotoPreviewController.m in Sources */,
-				CEC4A55F20C407990026EE19 /* MembershipRenewalController.m in Sources */,
 				8D50C56020C66EAF0095A824 /* OurServiceController.m in Sources */,
 				72EC1B7220BA984400ACC20B /* PlayDouctCell.m in Sources */,
 				727418F020B2DDAC001D6BE1 /* ChangeListController.m in Sources */,
 				CE0BA61A209D6197004C3C33 /* FoundController.m in Sources */,
+				CE6BEC1A20C83740003B36D7 /* LCPicker.m in Sources */,
 				8D09E19C20BFDC16000F7EBD /* ShowTrvalCell.m in Sources */,
 				722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */,
 				727418D920B290AE001D6BE1 /* PlayPoductController.m in Sources */,
@@ -3665,7 +3705,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";
@@ -3687,7 +3727,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";

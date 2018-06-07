@@ -11,6 +11,7 @@
 #import "ProfileCell.h"
 #import "ProfileHeadView.h"
 #import "MemberRenewalController.h"
+#import "EditProfileController.h"
 
 @interface ProfileController ()<ProfileHeadViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -60,7 +61,7 @@
 - (void)registerCell {
 //    [self.tableView registerNib:[UINib nibWithNibName:@"ProfileCell" bundle:nil] forCellReuseIdentifier:@"ProfileCell0"];
     ProfileHeadView *tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"ProfileHeadView" owner:nil options:nil] firstObject];
-    tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 210 + 64);
+    tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 250 + 64);
     tableHeadV.delegate = self;
     self.tableView.tableHeaderView = tableHeadV;
 }
@@ -106,7 +107,8 @@
 }
 #pragma mark - ProfileHeadViewDelegate
 - (void)profileHeadView:(ProfileHeadView *)view editBtnClick:(UIButton *)btn {
-    
+    EditProfileController *editVC = [[EditProfileController alloc]init];
+    [self.navigationController pushViewController:editVC animated:YES];
 }
 - (void)profileHeadView:(ProfileHeadView *)view xfBtnClick:(UIButton *)btn {
     MemberRenewalController *xfVC = [[MemberRenewalController alloc]init];

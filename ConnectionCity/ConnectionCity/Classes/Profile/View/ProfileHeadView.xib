@@ -12,14 +12,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProfileHeadView">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="372"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="257"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRV-wf-20O">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="362"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="247"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="rta-ti-fu8">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="362"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="247"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ch-02-h" translatesAutoresizingMaskIntoConstraints="NO" id="k30-U3-4pb">
                             <rect key="frame" x="160.5" y="70" width="54" height="54"/>
@@ -141,7 +141,7 @@
                 <constraint firstItem="CRV-wf-20O" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pgc-bq-wvX"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="21.5" y="-107"/>
+            <point key="canvasLocation" x="21.5" y="-164.5"/>
         </view>
         <view contentMode="scaleToFill" id="olY-B0-hn9" customClass="ProfileHeadView">
             <rect key="frame" x="0.0" y="0.0" width="375" height="372"/>

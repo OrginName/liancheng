@@ -40,7 +40,7 @@
 		<key>title</key>
 		<string>收藏</string>
 		<key>class</key>
-		<string>MessageController</string>
+		<string>SetViewController</string>
 	</dict>
 	<dict>
 		<key>icon</key>

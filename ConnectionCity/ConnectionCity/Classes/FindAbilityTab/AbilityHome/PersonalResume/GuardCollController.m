@@ -7,13 +7,13 @@
 //
 
 #import "GuardCollController.h"
-#import "MyDatePicker.h"
+#import "LCDatePicker.h"
 #import "EditAllController.h"
-@interface GuardCollController ()<UITextViewDelegate,MyDatePickerDelegate>
+@interface GuardCollController ()<UITextViewDelegate,LCDatePickerDelegate>
 {
     NSInteger  currentTag;
 }
-@property (nonatomic,strong) MyDatePicker * myDatePick;
+@property (nonatomic,strong) LCDatePicker * myDatePick;
 @property (weak, nonatomic) IBOutlet CustomtextView *textView_Indro;
 @property (weak, nonatomic) IBOutlet UIButton *bttn_Save;
 @property (weak, nonatomic) IBOutlet UITextField *txt_Company;
@@ -67,14 +67,14 @@
     [self initDate];
     
 }
-#pragma mark ---myDatePickerDelegate-----
-- (void)myDatePickerWithDateStr:(NSString *)dateStr{
+#pragma mark ---LCDatePickerDelegate-----
+- (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
     UITextField * text = (UITextField *)[self.view viewWithTag:currentTag+5];
-    text.text = dateStr;
+    text.text = str;
 }
 //创建日期插件
 -(void)initDate{
-    self.myDatePick = [[MyDatePicker alloc] initWithFrame:CGRectMake(0, self.view.height, self.view.width, 250)];
+    self.myDatePick = [[LCDatePicker alloc] init];
     self.myDatePick.delegate  = self;
     [self.view addSubview:self.myDatePick];
 }

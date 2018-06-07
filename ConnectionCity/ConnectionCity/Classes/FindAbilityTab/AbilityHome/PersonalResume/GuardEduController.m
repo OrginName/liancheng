@@ -8,12 +8,12 @@
 
 #import "GuardEduController.h"
 #import "EditAllController.h"
-#import "MyDatePicker.h"
-@interface GuardEduController ()<UITextViewDelegate,MyDatePickerDelegate>
+#import "LCDatePicker.h"
+@interface GuardEduController ()<UITextViewDelegate,LCDatePickerDelegate>
 {
     NSInteger currtenTag;
 }
-@property (nonatomic,strong) MyDatePicker * myDatePick;
+@property (nonatomic,strong) LCDatePicker * myDatePick;
 @property (weak, nonatomic) IBOutlet CustomtextView *textView_Indro;
 @property (weak, nonatomic) IBOutlet UITextField *text_Coll;
 @property (weak, nonatomic) IBOutlet UITextField *text_Pro;
@@ -69,14 +69,14 @@
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(complete) image:@"" title:@"完成" EdgeInsets:UIEdgeInsetsZero];
     [self initDate];
 }
-#pragma mark ---myDatePickerDelegate-----
-- (void)myDatePickerWithDateStr:(NSString *)dateStr{
+#pragma mark ---LCDatePickerDelegate-----
+- (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
     UITextField * text = (UITextField *)[self.view viewWithTag:currtenTag+6];
-    text.text = dateStr;
+    text.text = str;
 }
 //创建日期插件
 -(void)initDate{
-    self.myDatePick = [[MyDatePicker alloc] initWithFrame:CGRectMake(0, self.view.height, self.view.width, 250)];
+    self.myDatePick = [[LCDatePicker alloc] init];
     self.myDatePick.delegate  = self;
     [self.view addSubview:self.myDatePick];
 }
