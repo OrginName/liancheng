@@ -8,27 +8,30 @@
 
 #import "LCPicker.h"
 
-@interface LCPicker()<UIPickerViewDataSource,UIPickerViewDelegate>
+@interface LCPicker()<UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *timeTextField;
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, strong) NSString *pickerViewStr;
 
 @end
 @implementation LCPicker
-- (instancetype)init
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super init];
+    self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
         //初始化默认字符串
         self.pickerViewStr = @"";
         //添加子控件
         [self addSubview:self.timeTextField];
+        //隐藏
+        self.hidden = YES;
+        [kWindow addSubview:self];
     }
     return self;
 }
 - (UITextField *)timeTextField {
     if (!_timeTextField) {
-        _timeTextField = [[UITextField alloc] init];
         //创建选择器
         _pickerView = [[UIPickerView alloc]init];
         _pickerView.dataSource = self;
@@ -40,6 +43,8 @@
         UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(done)];
         toolBar.items = @[cancelItem,item,doneItem];
         toolBar.frame = CGRectMake(0, 0, 0, 44);
+        _timeTextField = [[UITextField alloc] init];
+        _timeTextField.delegate = self;
         _timeTextField.inputView = _pickerView;
         _timeTextField.inputAccessoryView = toolBar;
     }
@@ -55,9 +60,19 @@
     }
 }
 - (void)animateShow {
+    self.alpha = 0;
+    self.hidden = NO;
+    [UIView animateWithDuration:0.4 animations:^{
+        self.alpha = 1;
+    } completion:nil];
     [self.timeTextField becomeFirstResponder];
 }
 - (void)cancel {
+    [UIView animateWithDuration:0.4 animations:^{
+        self.alpha = 0;
+    } completion:^(BOOL finished) {
+        self.hidden = YES;
+    }];
     [self.timeTextField resignFirstResponder];
 }
 - (void)done {
@@ -86,6 +101,15 @@
     }else{
         _pickerViewStr = _mutableArr[row];
     }
+}
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    [UIView animateWithDuration:0.4 animations:^{
+        self.alpha = 0;
+    } completion:^(BOOL finished) {
+        self.hidden = YES;
+    }];
+    return YES;
 }
 
 /*

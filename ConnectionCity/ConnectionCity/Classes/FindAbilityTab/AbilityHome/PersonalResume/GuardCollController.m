@@ -74,7 +74,7 @@
 }
 //创建日期插件
 -(void)initDate{
-    self.myDatePick = [[LCDatePicker alloc] init];
+    self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
     self.myDatePick.delegate  = self;
     [self.view addSubview:self.myDatePick];
 }

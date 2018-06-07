@@ -141,7 +141,7 @@
 #pragma mark --- 懒加载UI-----
 -(LCPicker *)myPicker{
     if (!_myPicker) {
-        _myPicker = [[LCPicker alloc] init];
+        _myPicker = [[LCPicker alloc] initWithFrame:kScreen];
         _myPicker.mutableArr = [NSMutableArray arrayWithObjects:@"游戏服务",@"王者服务", nil];
         _myPicker.delegate = self;
     }

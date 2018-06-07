@@ -8,7 +8,7 @@
 
 #import "LCDatePicker.h"
 
-@interface LCDatePicker()
+@interface LCDatePicker()<UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *timeTextField;
 @property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) NSString *dateStr;
@@ -17,10 +17,11 @@
 @end
 
 @implementation LCDatePicker
-- (instancetype)init
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super init];
+    self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
         //创建格式化器
         _dateFormatter = [[NSDateFormatter alloc]init];
         [_dateFormatter setDateFormat:@"yyyy-MM-dd"];
@@ -28,12 +29,14 @@
         _dateStr = [_dateFormatter stringFromDate:[NSDate date]];
         //添加子控件
         [self addSubview:self.timeTextField];
+        //隐藏
+        self.hidden = YES;
+        [kWindow addSubview:self];
     }
     return self;
 }
 - (UITextField *)timeTextField {
     if (!_timeTextField) {
-        _timeTextField = [[UITextField alloc] init];
         _datePicker = [[UIDatePicker alloc]init];
         _datePicker.datePickerMode = UIDatePickerModeDate;
         _datePicker.maximumDate = [NSDate date];
@@ -46,15 +49,27 @@
         UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(done)];
         toolBar.items = @[cancelItem,item,doneItem];
         toolBar.frame = CGRectMake(0, 0, 0, 44);
+        _timeTextField = [[UITextField alloc] init];
+        _timeTextField.delegate = self;
         _timeTextField.inputView = _datePicker;
         _timeTextField.inputAccessoryView = toolBar;
     }
     return _timeTextField;
 }
 - (void)animateShow {
+    self.alpha = 0;
+    self.hidden = NO;
+    [UIView animateWithDuration:0.4 animations:^{
+        self.alpha = 1;
+    } completion:nil];
     [self.timeTextField becomeFirstResponder];
 }
 - (void)cancel {
+    [UIView animateWithDuration:0.4 animations:^{
+        self.alpha = 0;
+    } completion:^(BOOL finished) {
+        self.hidden = YES;
+    }];
     [self.timeTextField resignFirstResponder];
 }
 - (void)done {
@@ -65,6 +80,15 @@
 }
 - (void)dateChange:(UIDatePicker *)datePicker {
     _dateStr = [_dateFormatter  stringFromDate:datePicker.date];
+}
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    [UIView animateWithDuration:0.4 animations:^{
+        self.alpha = 0;
+    } completion:^(BOOL finished) {
+        self.hidden = YES;
+    }];
+    return YES;
 }
 
 /*
