@@ -64,4 +64,6 @@ typedef void(^YTHttpUtilNetworkStatusHandler)(void);
                   progress:(YTHttpUtilProgress)progress
                    success:(YTHttpUtilSuccess)success
                    failure:(YTHttpUtilFailure)failure;
+/** 服务器返回是否成功的字段 */
++ (BOOL)isSuccessWithResp:(id)response;
 @end

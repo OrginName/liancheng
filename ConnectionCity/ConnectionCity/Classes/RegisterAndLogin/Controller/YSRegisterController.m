@@ -42,10 +42,14 @@
         [YTAlertUtil showTempInfo:@"请填写正确的手机号码"];
         return;
     }
-    WeakSelf
+    //WeakSelf
     [YSNetworkTool POST:smsVerificationCode params:@{@"mobile": _phoneTF.text} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        [YSTools DaojiShi:btn];
-        
+        if ([YSNetworkTool isSuccessWithResp:responseObject]) {
+            [YSTools DaojiShi:btn];
+            [YTAlertUtil showTempInfo:responseObject[kMessage]];
+        }else{
+            [YTAlertUtil showTempInfo:responseObject[kMessage]];
+        }
     } failure:nil];
 }
 - (IBAction)registerBtnClick:(id)sender {
@@ -62,14 +66,14 @@
         return;
     }
     WeakSelf
-//    [YSNetworkTool POSTData:registerURL params:@{@"phone":_phoneTF.text,@"password":_nwePasswordTF.text,@"pillowid":@"null",@"lasttime":@"null"} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-//        if ([YSTools isNum:responseObject]) {
-//            [YTAlertUtil showTempInfo:@"注册成功"];
-//            [weakSelf.navigationController popViewControllerAnimated:YES];
-//        }else{
-//            [YTAlertUtil showTempInfo:responseObject];
-//        }
-//    } failure:nil];
+    [YSNetworkTool POST:registerUrl params:@{@"mobile":_phoneTF.text,@"password":_nwePasswordTF.text,@"verificationCode":_verificationCodeTF.text} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([YSNetworkTool isSuccessWithResp:responseObject]) {
+            [YTAlertUtil showTempInfo:responseObject[kMessage]];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }else{
+            [YTAlertUtil showTempInfo:responseObject[kMessage]];
+        }
+    } failure:nil];
 }
 - (IBAction)termsOfUseBtnClick:(id)sender {
     

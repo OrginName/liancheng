@@ -111,15 +111,15 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHa-86-rds">
-                                            <rect key="frame" x="24" y="55" width="216" height="56"/>
+                                            <rect key="frame" x="24" y="55" width="226" height="56"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xe2-MC-lG6">
-                                            <rect key="frame" x="245" y="56" width="80" height="55"/>
+                                            <rect key="frame" x="255" y="56" width="70" height="55"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="XeW-Si-G51"/>
+                                                <constraint firstAttribute="width" constant="70" id="XeW-Si-G51"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <state key="normal" title="获取验证码">
@@ -273,7 +273,7 @@
                 <constraint firstItem="pr6-xM-uhV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="N9U-IZ-e5e"/>
                 <constraint firstItem="pr6-xM-uhV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fgb-aB-6Ls"/>
             </constraints>
-            <point key="canvasLocation" x="55.5" y="43.5"/>
+            <point key="canvasLocation" x="-85" y="13"/>
         </view>
     </objects>
     <resources>

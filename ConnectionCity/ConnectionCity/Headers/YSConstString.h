@@ -65,6 +65,12 @@
 #define kAccount           [YSAccountTool account]
 /** 是否登录 */
 #define kIsLogin           [[GlobalManager globalManagerShare]isOrNoLogin]
+/** 响应message */
+#define kMessage           @"message"
+/** 响应data */
+#define kData              @"data"
+/** 响应code */
+#define kCode              @"code"
 /** 服务的UUID */
 #define kServiceUUID              @"FFE0"
 /** 通知特征的UUID */

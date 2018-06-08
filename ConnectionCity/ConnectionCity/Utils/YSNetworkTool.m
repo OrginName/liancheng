@@ -21,6 +21,8 @@ NSString * const YTHttpUtilResponseData = @"Data";
 /** 返回已配置过的AFHTTPSessionManager */
 + (AFHTTPSessionManager *)manager {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:kAccount.token forHTTPHeaderField:@"X-ACCESS-TOKEN"];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain",@"image/gif", nil];
     manager.requestSerializer.timeoutInterval = 10;
     return manager;
@@ -139,6 +141,11 @@ NSString * const YTHttpUtilResponseData = @"Data";
     }];
 }
 #pragma mark - Private method
+/** 服务器返回是否成功的字段 */
++ (BOOL)isSuccessWithResp:(id)response {
+    BOOL isSuccess = [response[kCode] isEqualToString:@"SUCCESS"];
+    return isSuccess;
+}
 /** 处理请求失败 */
 + (void)p_handleRequestFailure:(YTHttpUtilFailure)failure {
     [YTAlertUtil hideHUD];

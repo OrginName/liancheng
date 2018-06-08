@@ -11,6 +11,8 @@
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import "ResumeController.h"
 #import "ShowResumeController.h"
+#import "YSLoginController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -25,9 +27,15 @@
     UIViewController *vc = [[UIViewController alloc]initWithNibName:nil bundle:nil];
     self.window.rootViewController = vc;
     
-    BaseTabBarController *baseTabBar = [[BaseTabBarController alloc]init];
-//    ShowResumeController * baseTabBar = [ShowResumeController new];
-    [self.window setRootViewController:baseTabBar];
+    if (kIsLogin) {
+        BaseTabBarController *baseTabBar = [[BaseTabBarController alloc]init];
+        //    ShowResumeController * baseTabBar = [ShowResumeController new];
+        [self.window setRootViewController:baseTabBar];
+    }else{
+        YSLoginController *loginVC = [[YSLoginController alloc]init];
+        [self.window setRootViewController:loginVC];
+    }
+    
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Receivetag) name:@"TABBAR" object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backWindow) name:@"BACKMAINWINDOW" object:nil];
     //通知键盘弹出状态

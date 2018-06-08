@@ -54,21 +54,21 @@
         [YTAlertUtil showTempInfo:@"请填写正确的手机号码"];
         return;
     }
-    WeakSelf
-//    [YSNetworkTool POST:loginURL params:@{@"phone":_phoneTF.text,@"password":_passwordTF.text} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-//        if (![YSTools dx_isNullOrNilWithObject:responseObject]) {
-//            YSAccount *account = [YSAccount mj_objectWithKeyValues:responseObject];
-//            [YSAccountTool saveAccount:account];
-//            [YTAlertUtil showTempInfo:@"登录成功"];
-//            [weakSelf.navigationController popViewControllerAnimated:YES];
-//        }else{
-//            [YTAlertUtil showTempInfo:@"用户名或密码错误"];
-//        }
-//    } failure:nil];
-    
+    //WeakSelf
+    [YSNetworkTool POST:login params:@{@"loginName":_phoneTF.text,@"password":_passwordTF.text} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([YSNetworkTool isSuccessWithResp:responseObject]) {
+            [YTAlertUtil showTempInfo:responseObject[kMessage]];
+            YSAccount *account = [YSAccount mj_objectWithKeyValues:responseObject[kData]];
+            [YSAccountTool saveAccount:account];
+            BaseTabBarController *baseTabBar = [[BaseTabBarController alloc]init];
+            [kWindow setRootViewController:baseTabBar];
+        }else{
+            [YTAlertUtil showTempInfo:responseObject[kMessage]];
+        }
+    } failure:nil];
 }
 - (IBAction)forgetBtnClick:(id)sender {
-    ChangePasswordController *forgetVC = [[YSRegisterController alloc]init];
+    ChangePasswordController *forgetVC = [[ChangePasswordController alloc]init];
     [self.navigationController pushViewController:forgetVC animated:YES];
 }
 - (IBAction)registerBtnClick:(id)sender {
