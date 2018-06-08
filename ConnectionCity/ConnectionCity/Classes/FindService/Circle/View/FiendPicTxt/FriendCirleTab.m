@@ -33,7 +33,7 @@
 {
     NSMutableArray *commentList;
     for (int i = 0;  i < 10; i ++)  {
-        // 评论
+         // 评论
         commentList = [[NSMutableArray alloc] init];
         int num = arc4random()%5 + 1;
         for (int j = 0; j < num; j ++) {

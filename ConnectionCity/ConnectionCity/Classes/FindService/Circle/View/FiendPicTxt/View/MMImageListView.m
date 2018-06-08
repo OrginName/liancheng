@@ -12,7 +12,7 @@
 #import "Utility.h"
 #import "UIView+Geometry.h"
 #pragma mark - ------------------ 小图List显示视图 ------------------
-
+#define KIMAGEWIDTH  (self.width-kPaddingValue*2)/3
 @interface MMImageListView ()
 
 // 图片视图数组
@@ -28,6 +28,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+       
         // 小图(九宫格)
         _imageViewsArray = [[NSMutableArray alloc] init];
         for (int i = 0; i < 9; i++) {

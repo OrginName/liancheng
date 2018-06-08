@@ -103,6 +103,9 @@
 		72EBB8E220C95F8800F670E9 /* AccountSecurityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8E020C95F8800F670E9 /* AccountSecurityController.xib */; };
 		72EBB8E620C9682A00F670E9 /* AccountOneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8E420C9682A00F670E9 /* AccountOneController.m */; };
 		72EBB8E720C9682A00F670E9 /* AccountOneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8E520C9682A00F670E9 /* AccountOneController.xib */; };
+		72EBB8EC20CAC52600F670E9 /* CollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8EA20CAC52600F670E9 /* CollectionController.m */; };
+		72EBB8ED20CAC52600F670E9 /* CollectionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8EB20CAC52600F670E9 /* CollectionController.xib */; };
+		72EBB8F120CAC66D00F670E9 /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8F020CAC66D00F670E9 /* CollectionCell.m */; };
 		72EC1B5120B6EAB600ACC20B /* SendTreasureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1B4F20B6EAB600ACC20B /* SendTreasureController.m */; };
 		72EC1B5220B6EAB600ACC20B /* SendTreasureController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EC1B5020B6EAB600ACC20B /* SendTreasureController.xib */; };
 		72EC1B5B20B7027000ACC20B /* SwapListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1B5920B7027000ACC20B /* SwapListController.m */; };
@@ -609,6 +612,11 @@
 		72EBB8E320C9682A00F670E9 /* AccountOneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountOneController.h; sourceTree = "<group>"; };
 		72EBB8E420C9682A00F670E9 /* AccountOneController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountOneController.m; sourceTree = "<group>"; };
 		72EBB8E520C9682A00F670E9 /* AccountOneController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountOneController.xib; sourceTree = "<group>"; };
+		72EBB8E920CAC52600F670E9 /* CollectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionController.h; sourceTree = "<group>"; };
+		72EBB8EA20CAC52600F670E9 /* CollectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionController.m; sourceTree = "<group>"; };
+		72EBB8EB20CAC52600F670E9 /* CollectionController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionController.xib; sourceTree = "<group>"; };
+		72EBB8EF20CAC66D00F670E9 /* CollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionCell.h; sourceTree = "<group>"; };
+		72EBB8F020CAC66D00F670E9 /* CollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionCell.m; sourceTree = "<group>"; };
 		72EC1B4E20B6EAB600ACC20B /* SendTreasureController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendTreasureController.h; sourceTree = "<group>"; };
 		72EC1B4F20B6EAB600ACC20B /* SendTreasureController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendTreasureController.m; sourceTree = "<group>"; };
 		72EC1B5020B6EAB600ACC20B /* SendTreasureController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendTreasureController.xib; sourceTree = "<group>"; };
@@ -1587,6 +1595,26 @@
 				72EBB8D820C81CA500F670E9 /* AccountManageCell.h */,
 				72EBB8D920C81CA500F670E9 /* AccountManageCell.m */,
 				72EBB8DA20C81CA500F670E9 /* AccountManageCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		72EBB8E820CAC51A00F670E9 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				72EBB8EE20CAC63100F670E9 /* Cell */,
+				72EBB8E920CAC52600F670E9 /* CollectionController.h */,
+				72EBB8EA20CAC52600F670E9 /* CollectionController.m */,
+				72EBB8EB20CAC52600F670E9 /* CollectionController.xib */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		72EBB8EE20CAC63100F670E9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				72EBB8EF20CAC66D00F670E9 /* CollectionCell.h */,
+				72EBB8F020CAC66D00F670E9 /* CollectionCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2873,6 +2901,7 @@
 		CEC4A54620C3FBE50026EE19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				72EBB8E820CAC51A00F670E9 /* Collection */,
 				8D8E4EC520C9109E00C3D537 /* EditProfile */,
 				72EBB8BE20C8155B00F670E9 /* Set */,
 				72EBB8B820C800C200F670E9 /* Cell */,
@@ -3207,6 +3236,7 @@
 				727418CD20B17F4B001D6BE1 /* ChangeHeadView.xib in Resources */,
 				8D35878D20C6A693008A5E74 /* OurPlayCell.xib in Resources */,
 				8DC17A8020C0E430005D9EE0 /* CircleCell.xib in Resources */,
+				72EBB8ED20CAC52600F670E9 /* CollectionController.xib in Resources */,
 				727418EC20B2AAB9001D6BE1 /* ChangeCell.xib in Resources */,
 				727418C620B17E78001D6BE1 /* ChangePlayController.xib in Resources */,
 				CE5C281720B91B47006A8332 /* WinnerInfoHeadView.xib in Resources */,
@@ -3376,6 +3406,7 @@
 				CEE4B2A620C6CC3F008B8731 /* PersonalCenterController.m in Sources */,
 				72EC1BB920BC4CA100ACC20B /* SendServiceCell.m in Sources */,
 				72EBB8D620C81B4600F670E9 /* AccontManageController.m in Sources */,
+				72EBB8EC20CAC52600F670E9 /* CollectionController.m in Sources */,
 				CE03EDED20B43DC400F07D78 /* FootprintTabbleHeadV.m in Sources */,
 				CEC4A55A20C407500026EE19 /* MemberCenterController.m in Sources */,
 				CE0BA614209D6160004C3C33 /* LifeHallController.m in Sources */,
@@ -3461,6 +3492,7 @@
 				CE03EDFC20B4595600F07D78 /* FirstCustomButton.m in Sources */,
 				8D09E18120BFB49A000F7EBD /* SendTripController.m in Sources */,
 				8DC17AB220C0E7B8005D9EE0 /* FriendVideo.m in Sources */,
+				72EBB8F120CAC66D00F670E9 /* CollectionCell.m in Sources */,
 				CE0BA577209D5004004C3C33 /* main.m in Sources */,
 				8D22C37020C7DC46004DC8F4 /* BindingController.m in Sources */,
 				7294185920AD120E0054B71D /* SearchLayout.m in Sources */,
