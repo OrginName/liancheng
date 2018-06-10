@@ -33,7 +33,8 @@
         [self.window setRootViewController:baseTabBar];
     }else{
         YSLoginController *loginVC = [[YSLoginController alloc]init];
-        [self.window setRootViewController:loginVC];
+        BaseNavigationController * base = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
+        [self.window setRootViewController:base];
     }
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Receivetag) name:@"TABBAR" object:nil];
