@@ -66,6 +66,9 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
         NSLog(@"当前的筛选条件是:%@",[str stringByAppendingString:self.foot.tmpBtn.titleLabel.text]);
     }
 }
+-(void)setFlag_Arr:(NSMutableArray *)flag_Arr{
+    _flag_Arr = flag_Arr;
+}
 -(void)loadData{
     self.dataArr = [[NSMutableArray alloc] init];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"SX" ofType:@"plist"];

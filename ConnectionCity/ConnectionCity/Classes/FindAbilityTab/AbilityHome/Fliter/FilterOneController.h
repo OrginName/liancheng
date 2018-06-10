@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 
 @interface FilterOneController : BaseViewController
+@property (nonatomic,strong)NSMutableArray * flag_Arr;//传进来的数据源数组
 @end
 
 
