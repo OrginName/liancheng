@@ -13,14 +13,14 @@
 #import "FilterOneController.h"
 #import "ShowResumeController.h"
 #import "SearchHistoryController.h"
-
+#import "ServiceHomeNet.h"
 @interface ServiceHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
 @property (weak, nonatomic) IBOutlet UIView *view_fajianli;
 @property (weak, nonatomic) IBOutlet UIView *view_SX;
 @property (nonatomic,strong) CustomMap *cusMap;
-
+@property (nonatomic,strong) NSMutableArray * Arr_SX;
 @end
 
 @implementation ServiceHomeController
@@ -29,7 +29,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setUI];
-    
+    [self loadData];
 }
 //导航条人才类型选择
 -(void)AddressClick:(UIButton *)btn{
@@ -121,5 +121,12 @@
     show.Receive_Type = ENUM_TypeTrval;
     [self.navigationController pushViewController:show animated:YES];
 }
-
+-(void)loadData{
+    self.Arr_SX = [NSMutableArray array];
+    [ServiceHomeNet requstConditions:^(NSDictionary *successDicValue) {
+        
+    } withFailBlock:^(NSString *failValue) {
+        
+    }];
+}
 @end
