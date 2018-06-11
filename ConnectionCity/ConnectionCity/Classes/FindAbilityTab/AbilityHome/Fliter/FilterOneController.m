@@ -10,12 +10,15 @@
 #import "FilterCell.h"
 #import "FilterLayout.h"
 #import "CustomButton.h"
+#import "ServiceHomeNet.h"
+#import "UIView+Geometry.h"
 static NSString *ID = @"cityCollectionViewCell";
 static NSString * collectionCellIndentider = @"collectionCellIndentider";
 @interface FilterOneController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *bollec_bottom;
 @property (nonatomic,strong) NSMutableArray * arrData;
 @property (nonatomic, strong) NSMutableArray * dataArr;
+@property (nonatomic,strong)NSMutableArray * data_Arr;
 @property (nonatomic,strong) FilterLayout * flowLyout;
 @property (nonatomic,strong) FooterView * foot;
 @end
@@ -25,7 +28,21 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    [self loadData];
+    [self initData];
+}
+-(void)initData{
+    if (self.flag_SX ==1) {
+        [ServiceHomeNet requstConditions:^(NSMutableArray *successArrValue) {
+            self.data_Arr = successArrValue;
+            [self loadData:successArrValue];
+        } withFailBlock:^(NSString *failValue) {
+            
+        }];
+    }else{
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"SX" ofType:@"plist"];
+        NSMutableArray * arr = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+        [self loadData:arr];
+    }
 }
 -(void)setUI{
     self.bollec_bottom.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -38,15 +55,14 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     
 }
 -(void)setBotomView{
-    self.bollec_bottom.contentInset = UIEdgeInsetsMake(0, 0, 100, 0);
-    self.foot = [[FooterView alloc] initWithFrame:CGRectMake(0, self.bollec_bottom.height-85, self.bollec_bottom.width, 100)];
+    self.bollec_bottom.contentInset = UIEdgeInsetsMake(0, 0, 81, 0);
+    self.foot = [[FooterView alloc] initWithFrame:CGRectMake(0, self.bollec_bottom.bottom-30, self.bollec_bottom.width, 81)];
     [self.bollec_bottom addSubview:self.foot];
 }
 //底部重置确定按钮点击
 - (IBAction)ResetSureClick:(UIButton *)sender {
-//    NSLog(@"123123");
     if (sender.tag==1) {
-        [self loadData];
+        [self loadData:self.data_Arr];
         self.foot.tmpBtn.selected = NO;
         CustomButton * btn = (CustomButton *)[self.foot viewWithTag:1001];
         btn.selected = YES;
@@ -62,17 +78,15 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
             }
         }];
 //        NSArray * arr = [self.bollec_bottom indexPathsForSelectedItems];
-        
         NSLog(@"当前的筛选条件是:%@",[str stringByAppendingString:self.foot.tmpBtn.titleLabel.text]);
     }
 }
--(void)setFlag_Arr:(NSMutableArray *)flag_Arr{
-    _flag_Arr = flag_Arr;
-}
--(void)loadData{
+
+-(void)loadData:(NSMutableArray *)arr{
     self.dataArr = [[NSMutableArray alloc] init];
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"SX" ofType:@"plist"];
-    self.arrData = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"SX" ofType:@"plist"];
+//    self.arrData = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+    self.arrData = arr;
     for (int i=0; i<self.arrData.count; i++) {
         [self.dataArr addObject:self.arrData[i][@"subname"]];
     }
@@ -83,9 +97,8 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     return [self.arrData[section][@"subname"] count];
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 3;
+    return self.arrData.count;
 }
- 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FilterCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     if (indexPath.row < [self.dataArr[indexPath.section] count]) {
@@ -99,11 +112,11 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray * array = [NSMutableArray arrayWithArray:self.dataArr[indexPath.section]];
     for (int i = 0; i < array.count; i++) {
-        NSMutableDictionary * dic = array[i];
+        NSMutableDictionary * dic = [array[i] mutableCopy];
         if (i == indexPath.row) {
-            [dic setObject:@YES forKey:@"isSelected"];
+            [dic setObject:@"YES" forKey:@"isSelected"];
         } else {
-            [dic setObject:@NO forKey:@"isSelected"];
+            [dic setObject:@"NO" forKey:@"isSelected"];
         }
         [array replaceObjectAtIndex:i withObject:dic];
     }
@@ -163,6 +176,10 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
 }
 @end
 #pragma mark -----FilterCollecRuesuableView尾部-----
+@interface FooterView()
+@property (nonatomic,strong)CustomButton * btn_All;
+@property (nonatomic,strong)CustomButton * btn_onLine;
+@end
 @implementation FooterView
 -(id)initWithFrame:(CGRect)frame{
     self=[super initWithFrame:frame];
@@ -175,22 +192,29 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
  *  进行基本布局操作,根据需求进行.
  */
 -(void)createBasicView{
-    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 20, self.frame.size.width, 1)];
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 10, self.frame.size.width, 1)];
     view.backgroundColor = YSColor(246, 246, 246);
     [self addSubview:view];
-    CustomButton * btn = [[CustomButton alloc] initWithFrame:CGRectMake(self.frame.size.width/2-110, 40, 100, 40)];
+    CustomButton * btn = [[CustomButton alloc] initWithFrame:CGRectZero];
     [btn setTitle:@"全部" forState:UIControlStateNormal];
     btn.selected = NO;
     [btn addTarget:self action:@selector(btnClick1:) forControlEvents:UIControlEventTouchUpInside];
     btn.tag = 1000;
     [self addSubview:btn];
-    CustomButton * btn_online = [[CustomButton alloc] initWithFrame:CGRectMake(btn.x+120, btn.y, 100, 40)];
+    self.btn_All = btn;
+    CustomButton * btn_online = [[CustomButton alloc] initWithFrame:CGRectZero];
     [btn_online setTitle:@"在线" forState:UIControlStateNormal];
     [btn_online addTarget:self action:@selector(btnClick1:) forControlEvents:UIControlEventTouchUpInside];
     btn_online.tag = 1001;
     btn_online.selected = YES;
     _tmpBtn = btn_online;
     [self addSubview:btn_online];
+    self.btn_onLine = btn_online;
+}
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    self.btn_All.frame = CGRectMake((kScreenWidth-20)/2-110, 20, 100, 40);
+    self.btn_onLine.frame = CGRectMake(self.btn_All.x+120, self.btn_All.y, 100, 40);
 }
 -(void)btnClick1:(UIButton *)sender{
     CustomButton * btn2 = (CustomButton *)[self viewWithTag:1001];

@@ -70,6 +70,7 @@
         {
             FilterOneController * filter = [FilterOneController new];
             filter.title = @"筛选条件";
+            filter.flag_SX = 1;
             [self.navigationController pushViewController:filter animated:YES];
         }
             break;
@@ -123,7 +124,7 @@
 }
 -(void)loadData{
     self.Arr_SX = [NSMutableArray array];
-    [ServiceHomeNet requstConditions:^(NSDictionary *successDicValue) {
+    [ServiceHomeNet requstServiceList:^(NSMutableArray *successArrValue) {
         
     } withFailBlock:^(NSString *failValue) {
         

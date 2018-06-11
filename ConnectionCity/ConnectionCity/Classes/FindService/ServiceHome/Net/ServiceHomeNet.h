@@ -21,5 +21,13 @@ typedef void (^FailDicBlock) (NSString * failValue);
  @param sucBloc 成功回调
  @param failBlock 失败回调
  */
-+(void)requstConditions:(SuccessDicBlock) sucBloc withFailBlock:(FailDicBlock)failBlock;
++(void)requstConditions:(SuccessArrBlock) sucBloc withFailBlock:(FailDicBlock)failBlock;
+
+/**
+ 服务首页列表
+
+ @param csucBlock 成功回调
+ @param failBlock 失败回调
+ */
++(void)requstServiceList:(SuccessArrBlock)csucBlock withFailBlock:(FailDicBlock)failBlock;
 @end
