@@ -13,7 +13,8 @@
 #import "JFAreaDataManager.h"
 #import "JFLocation.h"
 #import "JFSearchView.h"
-
+#import "YSNetworkTool.h"
+#import "CityMo.h"
 #define kCurrentCityInfoDefaults [NSUserDefaults standardUserDefaults]
 /** 当前屏幕宽度 */
 #define kScreenWidth       [UIScreen mainScreen].bounds.size.width
@@ -67,31 +68,65 @@ JFSearchViewDelegate,UITextFieldDelegate>
     self.rootTableView.tableHeaderView = self.headerView;
     
     [self backBarButtonItem];
-    [self initWithJFAreaDataManaager];
+//    [self initWithJFAreaDataManaager];
     self.navigationItem.titleView = self.view_Search;
     _indexMutableArray = [NSMutableArray array];
     _sectionMutableArray = [NSMutableArray array];
-    
-    if ([kCurrentCityInfoDefaults objectForKey:@"cityData"]) {
-        self.characterMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"cityData"]];
-        _sectionMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"sectionData"]];
-        [_rootTableView reloadData];
-    }else {
-        //在子线程中异步执行汉字转拼音再转汉字耗时操作
-        dispatch_queue_t serialQueue = dispatch_queue_create("com.city.www", DISPATCH_QUEUE_SERIAL);
-        dispatch_async(serialQueue, ^{
-            [self processData:^(id success) {
-                //回到主线程刷新UI
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [_rootTableView reloadData];
-                    self.locationManager = [[JFLocation alloc] init];
-                    _locationManager.delegate = self;
-                });
-            }];
-        });
-    }
+    _cityMutableArray = [NSMutableArray array];
     
     self.historyCityMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"historyCity"]];
+    [self initData];//加载初始化数据
+}
+
+/**
+ 初始化加载城市数据
+ */
+-(void)initData{
+    
+    //    if ([kCurrentCityInfoDefaults objectForKey:@"cityData"]) {
+    //        self.characterMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"cityData"]];
+    //        _sectionMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"sectionData"]];
+    //        [_rootTableView reloadData];
+    //    }else {
+    //在子线程中异步执行汉字转拼音再转汉字耗时操作
+//    dispatch_queue_t serialQueue = dispatch_queue_create("com.city.www", DISPATCH_QUEUE_SERIAL);
+//    dispatch_async(serialQueue, ^{
+//        [self processData:^(id success) {
+//            //回到主线程刷新UI
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [_rootTableView reloadData];
+//                self.locationManager = [[JFLocation alloc] init];
+//                _locationManager.delegate = self;
+//            });
+//        }];
+//    });
+    //    }
+    [YSNetworkTool POST:dictionaryAreaTreeList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [_cityMutableArray removeAllObjects];
+        for (int i=0; i<[responseObject[@"data"] count]; i++) {
+            CityMo * mo = [CityMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+            mo.ID = responseObject[@"data"][i][@"id"];
+            if (![mo.fullName containsString:@"市"]) {
+//                for (int j=0; j<[mo.childs count]; j++) {
+//                    CityMo * mo1 = [CityMo mj_objectWithKeyValues:mo.childs[j]];
+//                    mo1.ID = mo.childs[j][@"id"];
+//                    [_cityMutableArray addObject:mo1];
+//                }
+            }else{
+                  [_cityMutableArray addObject:mo];
+            }
+        }
+        [self processData:^(id success) {
+            //回到主线程刷新UI
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_rootTableView reloadData];
+                self.locationManager = [[JFLocation alloc] init];
+                _locationManager.delegate = self;
+            });
+        }];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 //搜索按钮
 -(void)search{
@@ -213,56 +248,46 @@ JFSearchViewDelegate,UITextFieldDelegate>
     }
     return _characterMutableArray;
 }
-
 /// 汉字转拼音再转成汉字
--(void)processData:(void (^) (id))success {
-    for (int i = 0; i < _cityMutableArray.count; i ++) {
-        NSString *str = _cityMutableArray[i]; //一开始的内容
-        if (str.length) {  //下面那2个转换的方法一个都不能少
-            NSMutableString *ms = [[NSMutableString alloc] initWithString:str];
-            //汉字转拼音
-            if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformMandarinLatin, NO)) {
-            }
-            //拼音转英文
-            if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformStripDiacritics, NO)) {
-                //字符串截取第一位，并转换成大写字母
-                NSString *firstStr = [[ms substringToIndex:1] uppercaseString];
-                //如果不是字母开头的，转为＃
-                BOOL isLetter = [self matchLetter:firstStr];
-                if (!isLetter)
-                    firstStr = @"#";
-                
-                //如果还没有索引
-                if (_indexMutableArray.count <= 0) {
-                    //保存当前这个做索引
-                    [_indexMutableArray addObject:firstStr];
-                    //用这个字母做字典的key，将当前的标题保存到key对应的数组里面去
-                    NSMutableArray *array = [NSMutableArray arrayWithObject:str];
+-(void)processData:(void (^) (id))success{
+    for (int i=0; i<_cityMutableArray.count; i++) {
+        CityMo * mo = _cityMutableArray[i];
+        if (mo.initial.length) {
+            //字符串截取第一位，并转换成大写字母
+            NSString *firstStr = mo.initial;
+            //如果不是字母开头的，转为＃
+            BOOL isLetter = [self matchLetter:firstStr];
+            if (!isLetter)
+                firstStr = @"#";
+            //如果还没有索引
+            if (_indexMutableArray.count <= 0) {
+                //保存当前这个做索引
+                [_indexMutableArray addObject:firstStr];
+                //用这个字母做字典的key，将当前的标题保存到key对应的数组里面去
+                NSMutableArray *array = [NSMutableArray arrayWithObject:mo];
+                NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:array,firstStr, nil];
+                [_sectionMutableArray addObject:dic];
+            }else{
+                //如果索引里面包含了当前这个字母，直接保存数据
+                if ([_indexMutableArray containsObject:firstStr]) {
+                    //取索引对应的数组，保存当前标题到数组里面
+                    NSMutableArray *array = _sectionMutableArray[0][firstStr];
+                    [array addObject:mo];
+                    //重新保存数据
                     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:array,firstStr, nil];
                     [_sectionMutableArray addObject:dic];
                 }else{
-                    //如果索引里面包含了当前这个字母，直接保存数据
-                    if ([_indexMutableArray containsObject:firstStr]) {
-                        //取索引对应的数组，保存当前标题到数组里面
-                        NSMutableArray *array = _sectionMutableArray[0][firstStr];
-                        [array addObject:str];
-                        //重新保存数据
-                        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:array,firstStr, nil];
-                        [_sectionMutableArray addObject:dic];
-                    }else{
-                        //如果没有包含，说明是新的索引
-                        [_indexMutableArray addObject:firstStr];
-                        //用这个字母做字典的key，将当前的标题保存到key对应的数组里面去
-                        NSMutableArray *array = [NSMutableArray arrayWithObject:str];
-                        NSMutableDictionary *dic = _sectionMutableArray[0];
-                        [dic setObject:array forKey:firstStr];
-                        [_sectionMutableArray addObject:dic];
-                    }
+                    //如果没有包含，说明是新的索引
+                    [_indexMutableArray addObject:firstStr];
+                    //用这个字母做字典的key，将当前的标题保存到key对应的数组里面去
+                    NSMutableArray *array = [NSMutableArray arrayWithObject:mo];
+                    NSMutableDictionary *dic = _sectionMutableArray[0];
+                    [dic setObject:array forKey:firstStr];
+                    [_sectionMutableArray addObject:dic];
                 }
             }
         }
     }
-    
     //将字母排序
     NSArray *compareArray = [[_sectionMutableArray[0] allKeys] sortedArrayUsingSelector:@selector(compare:)];
     _indexMutableArray = [NSMutableArray arrayWithArray:compareArray];
@@ -287,6 +312,79 @@ JFSearchViewDelegate,UITextFieldDelegate>
     [kCurrentCityInfoDefaults setObject:sectionData forKey:@"sectionData"];
     success(@"成功");
 }
+///// 汉字转拼音再转成汉字
+//-(void)processData:(void (^) (id))success {
+//    for (int i = 0; i < _cityMutableArray.count; i ++) {
+//        NSString *str = _cityMutableArray[i]; //一开始的内容
+//        if (str.length) {  //下面那2个转换的方法一个都不能少
+//            NSMutableString *ms = [[NSMutableString alloc] initWithString:str];
+//            //汉字转拼音
+//            if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformMandarinLatin, NO)) {
+//            }
+//            //拼音转英文
+//            if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformStripDiacritics, NO)) {
+//                //字符串截取第一位，并转换成大写字母
+//                NSString *firstStr = [[ms substringToIndex:1] uppercaseString];
+//                //如果不是字母开头的，转为＃
+//                BOOL isLetter = [self matchLetter:firstStr];
+//                if (!isLetter)
+//                    firstStr = @"#";
+//
+//                //如果还没有索引
+//                if (_indexMutableArray.count <= 0) {
+//                    //保存当前这个做索引
+//                    [_indexMutableArray addObject:firstStr];
+//                    //用这个字母做字典的key，将当前的标题保存到key对应的数组里面去
+//                    NSMutableArray *array = [NSMutableArray arrayWithObject:str];
+//                    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:array,firstStr, nil];
+//                    [_sectionMutableArray addObject:dic];
+//                }else{
+//                    //如果索引里面包含了当前这个字母，直接保存数据
+//                    if ([_indexMutableArray containsObject:firstStr]) {
+//                        //取索引对应的数组，保存当前标题到数组里面
+//                        NSMutableArray *array = _sectionMutableArray[0][firstStr];
+//                        [array addObject:str];
+//                        //重新保存数据
+//                        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:array,firstStr, nil];
+//                        [_sectionMutableArray addObject:dic];
+//                    }else{
+//                        //如果没有包含，说明是新的索引
+//                        [_indexMutableArray addObject:firstStr];
+//                        //用这个字母做字典的key，将当前的标题保存到key对应的数组里面去
+//                        NSMutableArray *array = [NSMutableArray arrayWithObject:str];
+//                        NSMutableDictionary *dic = _sectionMutableArray[0];
+//                        [dic setObject:array forKey:firstStr];
+//                        [_sectionMutableArray addObject:dic];
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//    //将字母排序
+//    NSArray *compareArray = [[_sectionMutableArray[0] allKeys] sortedArrayUsingSelector:@selector(compare:)];
+//    _indexMutableArray = [NSMutableArray arrayWithArray:compareArray];
+//
+//    //判断第一个是不是字母，如果不是放到最后一个
+//    BOOL isLetter = [self matchLetter:_indexMutableArray[0]];
+//    if (!isLetter) {
+//        //获取数组的第一个元素
+//        NSString *firstStr = [_indexMutableArray firstObject];
+//        //移除第一项元素
+//        [_indexMutableArray removeObjectAtIndex:0];
+//        //插入到最后一个位置
+//        [_indexMutableArray insertObject:firstStr atIndex:_indexMutableArray.count];
+//    }
+//
+//    [self.characterMutableArray addObjectsFromArray:_indexMutableArray];
+//    NSData *cityData = [NSKeyedArchiver archivedDataWithRootObject:self.characterMutableArray];
+//    NSData *sectionData = [NSKeyedArchiver archivedDataWithRootObject:_sectionMutableArray];
+//
+//    //拼音转换太耗时，这里把第一次转换结果存到单例中
+//    [kCurrentCityInfoDefaults setValue:cityData forKey:@"cityData"];
+//    [kCurrentCityInfoDefaults setObject:sectionData forKey:@"sectionData"];
+//    success(@"成功");
+//}
 
 #pragma mark - 匹配是不是字母开头
 - (BOOL)matchLetter:(NSString *)str {
@@ -349,7 +447,8 @@ JFSearchViewDelegate,UITextFieldDelegate>
     }else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cityNameCell" forIndexPath:indexPath];
         NSArray *currentArray = _sectionMutableArray[0][_characterMutableArray[indexPath.section]];
-        cell.textLabel.text = currentArray[indexPath.row];
+        CityMo * mo = currentArray[indexPath.row];
+        cell.textLabel.text = mo.fullName;
         cell.textLabel.textColor = KFontColor;
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         return cell;

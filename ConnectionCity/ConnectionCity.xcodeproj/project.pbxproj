@@ -264,6 +264,7 @@
 		8DEA451420C11F85001529F1 /* MommentPlayerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DEA451220C11F85001529F1 /* MommentPlayerController.xib */; };
 		8DEA451620C12180001529F1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEA451520C12180001529F1 /* AVFoundation.framework */; };
 		8DEA451A20C12C06001529F1 /* CustomPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEA451920C12C06001529F1 /* CustomPlayer.m */; };
+		8DF7E3C820CF6182009A92D7 /* CityMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7E3C720CF6182009A92D7 /* CityMo.m */; };
 		CE03EDEC20B43DC400F07D78 /* FootprintTabbleHeadV.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE03EDE920B43DC300F07D78 /* FootprintTabbleHeadV.xib */; };
 		CE03EDED20B43DC400F07D78 /* FootprintTabbleHeadV.m in Sources */ = {isa = PBXBuildFile; fileRef = CE03EDEB20B43DC400F07D78 /* FootprintTabbleHeadV.m */; };
 		CE03EDF120B44FB000F07D78 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE03EDEF20B44FB000F07D78 /* FirstTableViewCell.m */; };
@@ -872,6 +873,8 @@
 		8DEA451520C12180001529F1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8DEA451820C12C06001529F1 /* CustomPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPlayer.h; sourceTree = "<group>"; };
 		8DEA451920C12C06001529F1 /* CustomPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPlayer.m; sourceTree = "<group>"; };
+		8DF7E3C620CF6182009A92D7 /* CityMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityMo.h; sourceTree = "<group>"; };
+		8DF7E3C720CF6182009A92D7 /* CityMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityMo.m; sourceTree = "<group>"; };
 		9E9EF5E7637D778FC51741D8 /* Pods-ConnectionCity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectionCity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectionCity/Pods-ConnectionCity.debug.xcconfig"; sourceTree = "<group>"; };
 		C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConnectionCity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE03EDE920B43DC300F07D78 /* FootprintTabbleHeadV.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FootprintTabbleHeadV.xib; sourceTree = "<group>"; };
@@ -1242,6 +1245,8 @@
 				722D253420AA76D400AB3863 /* JFCityViewController.m */,
 				722D253520AA76D400AB3863 /* JFSearchView.h */,
 				722D253620AA76D400AB3863 /* JFSearchView.m */,
+				8DF7E3C620CF6182009A92D7 /* CityMo.h */,
+				8DF7E3C720CF6182009A92D7 /* CityMo.m */,
 			);
 			path = CitySelect;
 			sourceTree = "<group>";
@@ -3551,6 +3556,7 @@
 				722D253A20AA76D400AB3863 /* JFCityTableViewCell.m in Sources */,
 				CE0BA5DE209D5E9B004C3C33 /* YTDataPacket.m in Sources */,
 				CEBEDD8A20B17ED1000F9EE4 /* BidderSectionHeadV.m in Sources */,
+				8DF7E3C820CF6182009A92D7 /* CityMo.m in Sources */,
 				8D09E18620BFC4B8000F7EBD /* AppointmentController.m in Sources */,
 				720263F720B5015500382B2F /* TZImagePickerController.m in Sources */,
 				CE0A99DD20C57C44003A4D91 /* CertificationCenterController.m in Sources */,
