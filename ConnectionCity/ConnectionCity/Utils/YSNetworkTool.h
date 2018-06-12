@@ -64,6 +64,17 @@ typedef void(^YTHttpUtilNetworkStatusHandler)(void);
                   progress:(YTHttpUtilProgress)progress
                    success:(YTHttpUtilSuccess)success
                    failure:(YTHttpUtilFailure)failure;
+/** 开始监听网络状态 */
++ (void)startMonitorNetwork;
+
+/** 停止网络监控 */
++ (void)stopMonitorNetwork;
+
+/** 处理有网络连接和无网络连接 */
++ (void)handleNetworkStatusWithConnected:(YTHttpUtilNetworkStatusHandler)connected
+                              disconnect:(YTHttpUtilNetworkStatusHandler)disconnect;
+/** 显示无网络信息 */
++ (BOOL)connectedAndShowDisconnectInfo;
 /** 服务器返回是否成功的字段 */
 + (BOOL)isSuccessWithResp:(id)response;
 @end

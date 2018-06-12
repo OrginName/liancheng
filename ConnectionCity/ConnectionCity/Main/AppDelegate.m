@@ -39,6 +39,9 @@
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Receivetag) name:@"TABBAR" object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backWindow) name:@"BACKMAINWINDOW" object:nil];
+    
+    //开始监听网络状态
+    [YSNetworkTool startMonitorNetwork];
     //通知键盘弹出状态
     [self notify_addObserver];
     [[AMapServices sharedServices] setEnableHTTPS:YES];

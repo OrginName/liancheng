@@ -8,6 +8,7 @@
 
 #import "YSNetworkTool.h"
 #import "EGOCache.h"
+#import "AppDelegate.h"
 
 /** 请求失败提示 */
 static NSString * const kRequestFalseMessage = @"无网络连接，请稍后重试";
@@ -38,9 +39,12 @@ NSString * const YTHttpUtilResponseData = @"Data";
     AFHTTPSessionManager *manager = [[self class] manager];
     
     NSString *cacheKeyStr = [[self class] getCacheWithWithUrl:url requestDict:params];
-    id cacheData = [[EGOCache globalCache] objectForKey:cacheKeyStr];
-    if (![YSTools dx_isNullOrNilWithObject:cacheData]) {
-        success ? success(nil, cacheData) : nil;
+    if (![[self class] connectedAndShowDisconnectInfo]) {
+        id cacheData = [[EGOCache globalCache] objectForKey:cacheKeyStr];
+        if (![YSTools dx_isNullOrNilWithObject:cacheData]) {
+            success ? success(nil, cacheData) : nil;
+        }
+        return;
     }
     if (showHud) {[YTAlertUtil showHUDWithTitle:nil];}
     [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -142,6 +146,55 @@ NSString * const YTHttpUtilResponseData = @"Data";
     }];
 }
 #pragma mark - Private method
+/** 网络状态监控 */
++ (void)startMonitorNetwork {
+    AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case AFNetworkReachabilityStatusUnknown:
+            case AFNetworkReachabilityStatusNotReachable:
+                appDelegate.networkStatus = AppDelegateNetworkStatusDisconnect;
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+                appDelegate.networkStatus = AppDelegateNetworkStatusConnected;
+                break;
+        }
+    }];
+    [reachabilityManager startMonitoring];
+}
+
++ (void)stopMonitorNetwork {
+    AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
+    [reachabilityManager stopMonitoring];
+}
+
++ (void)handleNetworkStatusWithConnected:(YTHttpUtilNetworkStatusHandler)connected
+                              disconnect:(YTHttpUtilNetworkStatusHandler)disconnect {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppDelegateNetworkStatus networkStatus = appDelegate.networkStatus;
+    switch (networkStatus) {
+        case AppDelegateNetworkStatusDisconnect:
+            disconnect ? disconnect() : nil;
+            break;
+        case AppDelegateNetworkStatusConnected:
+            connected ? connected () : nil;
+            break;
+    }
+}
+
++ (BOOL)connectedAndShowDisconnectInfo {
+    __block BOOL isConnected;
+    [[self class] handleNetworkStatusWithConnected:^{
+        isConnected = YES;
+    } disconnect:^{
+        isConnected = NO;
+        [YTAlertUtil showTempInfo:@"暂无网络连接，请检查网络状态"];
+    }];
+    return isConnected;
+}
+
 /** 服务器返回是否成功的字段 */
 + (BOOL)isSuccessWithResp:(id)response {
     BOOL isSuccess = [response[kCode] isEqualToString:@"SUCCESS"];
