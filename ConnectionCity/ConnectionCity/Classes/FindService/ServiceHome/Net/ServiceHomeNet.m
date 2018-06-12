@@ -7,7 +7,7 @@
 //
 
 #import "ServiceHomeNet.h"
-//#import "YSNetworkTool.h"
+#import "ClassifyMo.h"
 @implementation ServiceHomeNet
 +(void)requstConditions:(SuccessArrBlock) sucBloc withFailBlock:(FailDicBlock)failBlock{
     [YSNetworkTool POST:v1ServiceConditions params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -34,6 +34,30 @@
 +(void)requstServiceList:(SuccessArrBlock)csucBlock withFailBlock:(FailDicBlock)failBlock{
     [YSNetworkTool POST:v1ServiceList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
++(void)requstServiceClass:(SuccessArrBlock)sucBlock{
+    [YSNetworkTool POST:dictionaryServiceCategory params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray * arr = [NSMutableArray array];
+        for (int i=0; i<[responseObject[@"data"] count]; i++) {
+            ClassifyMo * mo = [ClassifyMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+            mo.ID = responseObject[@"data"][i][@"id"];
+            [arr addObject:mo];
+        }
+        sucBlock(arr);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
++(void)requstServiceKeywords:(SuccessArrBlock)sucBlock{
+    [YSNetworkTool POST:keywordServiceKeyword params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray * arr = [NSMutableArray array];
+        for (int i=0; i<[responseObject[@"data"] count]; i++){
+            [arr addObject:responseObject[@"data"][i][@"name"]];
+        }
+        sucBlock(arr);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

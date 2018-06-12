@@ -341,7 +341,21 @@
     
     return format_time;
 }
++(CGFloat)caculateTheWidthOfLableText:(float)font withTitle:(NSString *)title
+{
+    
+    UIFont *font1 = [UIFont systemFontOfSize:font];
+    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:font1,NSFontAttributeName    , nil];
+    CGSize newSize = [title sizeWithAttributes:dic];
+    return newSize.width;
+}
 
++(float)cauculateHeightOfText:(NSString *)text width:(float) width font:(float)font
+{
+    CGRect rect = [text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]} context:nil];
+    CGFloat height = ceilf(rect.size.height);
+    return height;
+}
 @end
 
 

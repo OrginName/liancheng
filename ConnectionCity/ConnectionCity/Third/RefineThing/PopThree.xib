@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PopThree">
+            <rect key="frame" x="0.0" y="0.0" width="289" height="167"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCa-qs-v0T">
+                    <rect key="frame" x="0.0" y="127" width="289" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="U35-zv-r3d"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <state key="normal" title="取消">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="BtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="whu-iF-khT"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aw9-XO-c6d">
+                    <rect key="frame" x="0.0" y="82" width="289" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="g3s-eC-oMj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                    <state key="normal" title="换着玩">
+                        <color key="titleColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="BtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="jrZ-lP-pBl"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dce-DM-lbZ">
+                    <rect key="frame" x="0.0" y="0.0" width="289" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="MjM-0R-KZJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                    <state key="normal" title="找人才">
+                        <color key="titleColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="BtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="UZe-w3-2rH"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndf-Ed-a50">
+                    <rect key="frame" x="0.0" y="41" width="289" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="TJP-a5-Nzv"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                    <state key="normal" title="找服务">
+                        <color key="titleColor" red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="BtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="GHx-b5-HNH"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pR8-BI-FPU">
+                    <rect key="frame" x="0.0" y="81" width="289" height="1"/>
+                    <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="A8a-g3-dsG"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDa-Uy-sNf">
+                    <rect key="frame" x="0.0" y="40" width="289" height="1"/>
+                    <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="esa-mR-OBw"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="aw9-XO-c6d" secondAttribute="trailing" id="3fa-Co-W5I"/>
+                <constraint firstItem="jDa-Uy-sNf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3nm-Wj-DTb"/>
+                <constraint firstItem="RCa-qs-v0T" firstAttribute="top" secondItem="aw9-XO-c6d" secondAttribute="bottom" constant="5" id="4Fw-do-A1F"/>
+                <constraint firstAttribute="trailing" secondItem="pR8-BI-FPU" secondAttribute="trailing" id="8Bm-Al-4b6"/>
+                <constraint firstItem="ndf-Ed-a50" firstAttribute="top" secondItem="jDa-Uy-sNf" secondAttribute="bottom" id="D6z-TY-Ncc"/>
+                <constraint firstItem="RCa-qs-v0T" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Dnz-z3-1b3"/>
+                <constraint firstItem="aw9-XO-c6d" firstAttribute="top" secondItem="pR8-BI-FPU" secondAttribute="bottom" id="Pho-Aq-C8D"/>
+                <constraint firstItem="ndf-Ed-a50" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QOJ-SJ-Vcm"/>
+                <constraint firstItem="pR8-BI-FPU" firstAttribute="top" secondItem="ndf-Ed-a50" secondAttribute="bottom" id="WEa-3p-qtI"/>
+                <constraint firstAttribute="trailing" secondItem="jDa-Uy-sNf" secondAttribute="trailing" id="d40-fT-CXH"/>
+                <constraint firstAttribute="trailing" secondItem="dce-DM-lbZ" secondAttribute="trailing" id="fDh-rA-0YA"/>
+                <constraint firstAttribute="bottom" secondItem="RCa-qs-v0T" secondAttribute="bottom" id="guB-E8-zB1"/>
+                <constraint firstItem="jDa-Uy-sNf" firstAttribute="top" secondItem="dce-DM-lbZ" secondAttribute="bottom" id="hI5-J4-gKa"/>
+                <constraint firstItem="aw9-XO-c6d" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hMT-9V-oU8"/>
+                <constraint firstItem="dce-DM-lbZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="meC-wY-zPU"/>
+                <constraint firstAttribute="trailing" secondItem="RCa-qs-v0T" secondAttribute="trailing" id="qcM-JU-yq8"/>
+                <constraint firstAttribute="trailing" secondItem="ndf-Ed-a50" secondAttribute="trailing" id="sFM-pX-63E"/>
+                <constraint firstItem="pR8-BI-FPU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="y6c-Go-gY1"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-6" y="90"/>
+        </view>
+    </objects>
+</document>

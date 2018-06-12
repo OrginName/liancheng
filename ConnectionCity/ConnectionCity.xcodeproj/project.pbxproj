@@ -265,6 +265,11 @@
 		8DEA451620C12180001529F1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEA451520C12180001529F1 /* AVFoundation.framework */; };
 		8DEA451A20C12C06001529F1 /* CustomPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEA451920C12C06001529F1 /* CustomPlayer.m */; };
 		8DF7E3C820CF6182009A92D7 /* CityMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7E3C720CF6182009A92D7 /* CityMo.m */; };
+		8DF7E3CD20CF994C009A92D7 /* ClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7E3CB20CF994C009A92D7 /* ClassCell.m */; };
+		8DF7E3CE20CF994C009A92D7 /* ClassCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DF7E3CC20CF994C009A92D7 /* ClassCell.xib */; };
+		8DF7E3D220CFAA78009A92D7 /* ClassifyMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7E3D120CFAA78009A92D7 /* ClassifyMo.m */; };
+		8DF7E3D520CFB33F009A92D7 /* PopThree.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7E3D420CFB33F009A92D7 /* PopThree.m */; };
+		8DF7E3D720CFB363009A92D7 /* PopThree.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DF7E3D620CFB363009A92D7 /* PopThree.xib */; };
 		CE03EDEC20B43DC400F07D78 /* FootprintTabbleHeadV.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE03EDE920B43DC300F07D78 /* FootprintTabbleHeadV.xib */; };
 		CE03EDED20B43DC400F07D78 /* FootprintTabbleHeadV.m in Sources */ = {isa = PBXBuildFile; fileRef = CE03EDEB20B43DC400F07D78 /* FootprintTabbleHeadV.m */; };
 		CE03EDF120B44FB000F07D78 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE03EDEF20B44FB000F07D78 /* FirstTableViewCell.m */; };
@@ -875,6 +880,14 @@
 		8DEA451920C12C06001529F1 /* CustomPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPlayer.m; sourceTree = "<group>"; };
 		8DF7E3C620CF6182009A92D7 /* CityMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityMo.h; sourceTree = "<group>"; };
 		8DF7E3C720CF6182009A92D7 /* CityMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityMo.m; sourceTree = "<group>"; };
+		8DF7E3CA20CF994C009A92D7 /* ClassCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassCell.h; sourceTree = "<group>"; };
+		8DF7E3CB20CF994C009A92D7 /* ClassCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassCell.m; sourceTree = "<group>"; };
+		8DF7E3CC20CF994C009A92D7 /* ClassCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassCell.xib; sourceTree = "<group>"; };
+		8DF7E3D020CFAA78009A92D7 /* ClassifyMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassifyMo.h; sourceTree = "<group>"; };
+		8DF7E3D120CFAA78009A92D7 /* ClassifyMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassifyMo.m; sourceTree = "<group>"; };
+		8DF7E3D320CFB33F009A92D7 /* PopThree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopThree.h; sourceTree = "<group>"; };
+		8DF7E3D420CFB33F009A92D7 /* PopThree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopThree.m; sourceTree = "<group>"; };
+		8DF7E3D620CFB363009A92D7 /* PopThree.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopThree.xib; sourceTree = "<group>"; };
 		9E9EF5E7637D778FC51741D8 /* Pods-ConnectionCity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectionCity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectionCity/Pods-ConnectionCity.debug.xcconfig"; sourceTree = "<group>"; };
 		C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConnectionCity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE03EDE920B43DC300F07D78 /* FootprintTabbleHeadV.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FootprintTabbleHeadV.xib; sourceTree = "<group>"; };
@@ -1751,11 +1764,11 @@
 		72EC1B8820BC307E00ACC20B /* ServiceHome */ = {
 			isa = PBXGroup;
 			children = (
+				8DF7E3CF20CFAA20009A92D7 /* Model */,
 				72A2FC6820CD6A8300CD6AAC /* Net */,
 				8D09E18820BFD4F0000F7EBD /* View */,
 				72EC1BB520BC4C8700ACC20B /* Cell */,
 				72EC1B8920BC307E00ACC20B /* Controller */,
-				72EC1B8D20BC307E00ACC20B /* Models */,
 			);
 			path = ServiceHome;
 			sourceTree = "<group>";
@@ -1774,13 +1787,6 @@
 				8D5B3C3720C0143200773105 /* ServiceListController.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		72EC1B8D20BC307E00ACC20B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		72EC1B8F20BC307E00ACC20B /* ServiceStation */ = {
@@ -1961,6 +1967,9 @@
 				8D24A23020A1CB8200F0740D /* FirstTanView.h */,
 				8D24A23120A1CB8200F0740D /* FirstTanView.m */,
 				8D24A23620A1D5BF00F0740D /* FirstTanView.xib */,
+				8DF7E3D320CFB33F009A92D7 /* PopThree.h */,
+				8DF7E3D420CFB33F009A92D7 /* PopThree.m */,
+				8DF7E3D620CFB363009A92D7 /* PopThree.xib */,
 			);
 			path = RefineThing;
 			sourceTree = "<group>";
@@ -1997,6 +2006,7 @@
 		8D2B8B8B20A2DA7A00C3157F /* AbilityHome */ = {
 			isa = PBXGroup;
 			children = (
+				8DF7E3C920CF9935009A92D7 /* Cell */,
 				7294184F20AD119C0054B71D /* HistorySearch */,
 				8DA4990420A6FDCB00968F86 /* PersonalResume */,
 				8DB42FD020A57D5000C4EBF8 /* Fliter */,
@@ -2296,6 +2306,26 @@
 				8DEA451920C12C06001529F1 /* CustomPlayer.m */,
 			);
 			path = CustomPlayer;
+			sourceTree = "<group>";
+		};
+		8DF7E3C920CF9935009A92D7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8DF7E3CA20CF994C009A92D7 /* ClassCell.h */,
+				8DF7E3CB20CF994C009A92D7 /* ClassCell.m */,
+				8DF7E3CC20CF994C009A92D7 /* ClassCell.xib */,
+			);
+			name = Cell;
+			path = ConnectionCity/Classes/FindAbilityTab/Cell;
+			sourceTree = SOURCE_ROOT;
+		};
+		8DF7E3CF20CFAA20009A92D7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8DF7E3D020CFAA78009A92D7 /* ClassifyMo.h */,
+				8DF7E3D120CFAA78009A92D7 /* ClassifyMo.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CE0BA55B209D5004004C3C33 = {
@@ -3178,6 +3208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEC4A54420C3D6FC0026EE19 /* TeamNameCell.xib in Resources */,
+				8DF7E3D720CFB363009A92D7 /* PopThree.xib in Resources */,
 				8D2B8BA120A2DACC00C3157F /* MakeMoneyController.xib in Resources */,
 				CEC4A53020C3D6D10026EE19 /* TeamHeadView.xib in Resources */,
 				727418FD20B3C282001D6BE1 /* SwapHomeCell.xib in Resources */,
@@ -3257,6 +3288,7 @@
 				8D114CBB20CA22BD00637D34 /* AddMyWayController.xib in Resources */,
 				723D376820ABDA62003FD4DF /* ShowResumeCell.xib in Resources */,
 				727418CD20B17F4B001D6BE1 /* ChangeHeadView.xib in Resources */,
+				8DF7E3CE20CF994C009A92D7 /* ClassCell.xib in Resources */,
 				8D35878D20C6A693008A5E74 /* OurPlayCell.xib in Resources */,
 				8DC17A8020C0E430005D9EE0 /* CircleCell.xib in Resources */,
 				72EBB8ED20CAC52600F670E9 /* CollectionController.xib in Resources */,
@@ -3549,6 +3581,7 @@
 				CE0BA5DF209D5E9B004C3C33 /* TakePhoto.m in Sources */,
 				729BA6AF209FEB9B009713FD /* UIButton+ImageTitleSpacing.m in Sources */,
 				8D2B8B8820A2D3B200C3157F /* BaseOneTabController.m in Sources */,
+				8DF7E3CD20CF994C009A92D7 /* ClassCell.m in Sources */,
 				8D50C55620C636560095A824 /* OurResumeController.m in Sources */,
 				720263FA20B5015500382B2F /* TZPhotoPreviewCell.m in Sources */,
 				729BA6D120A01E7F009713FD /* JFLocation.m in Sources */,
@@ -3564,6 +3597,7 @@
 				8DD48CD120A811EA00D6D1E6 /* SDCycleScrollView.m in Sources */,
 				7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */,
 				CE0BA5EB209D5E9B004C3C33 /* SRDownloadManager.m in Sources */,
+				8DF7E3D220CFAA78009A92D7 /* ClassifyMo.m in Sources */,
 				CEC4A56E20C4081F0026EE19 /* WithdrawalController.m in Sources */,
 				723D376B20AC2BC3003FD4DF /* SearchHistoryController.m in Sources */,
 				727418F620B3B37B001D6BE1 /* SwapHeadView.m in Sources */,
@@ -3610,6 +3644,7 @@
 				72EC1B7220BA984400ACC20B /* PlayDouctCell.m in Sources */,
 				727418F020B2DDAC001D6BE1 /* ChangeListController.m in Sources */,
 				CE0BA61A209D6197004C3C33 /* FoundController.m in Sources */,
+				8DF7E3D520CFB33F009A92D7 /* PopThree.m in Sources */,
 				CE6BEC1A20C83740003B36D7 /* LCPicker.m in Sources */,
 				8D09E19C20BFDC16000F7EBD /* ShowTrvalCell.m in Sources */,
 				722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */,

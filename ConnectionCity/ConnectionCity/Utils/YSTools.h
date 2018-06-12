@@ -39,7 +39,10 @@
 + (BOOL)isNum:(NSString *)checkedNumString;
 #pragma mark - 传入秒得到 xx:xx:xx
 + (NSString *)getMMSSFromSS:(NSString *)totalTime;
-
+#pragma mark - 根据文本计算宽度
++(CGFloat)caculateTheWidthOfLableText:(float)font withTitle:(NSString *)title;
+#pragma mark - 根据宽度计算高度
++(float)cauculateHeightOfText:(NSString *)text width:(float) width font:(float)font;
 @end
 
 

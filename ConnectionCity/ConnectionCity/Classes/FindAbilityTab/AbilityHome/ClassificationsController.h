@@ -7,7 +7,11 @@
 //
 
 #import "BaseViewController.h"
+#import "ClassifyMo.h"
 typedef void(^BlockString)(NSString * classifiation);
 @interface ClassificationsController : BaseViewController
 @property (nonatomic, copy) BlockString block;
+@property (nonatomic,strong)NSMutableArray * arr_Data;
 @end
+
+ 

@@ -227,13 +227,13 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nIG-zC-1zA">
-                    <rect key="frame" x="0.0" y="100" width="375" height="503"/>
+                    <rect key="frame" x="0.0" y="100" width="375" height="537"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppw-xu-kOq">
-                            <rect key="frame" x="10" y="443" width="355" height="50"/>
+                            <rect key="frame" x="10" y="492" width="355" height="40"/>
                             <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="Tb3-ei-FJQ"/>
+                                <constraint firstAttribute="height" constant="40" id="Tb3-ei-FJQ"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <inset key="titleEdgeInsets" minX="26" minY="0.0" maxX="3" maxY="0.0"/>
@@ -246,7 +246,7 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A63-DS-CoX">
-                            <rect key="frame" x="10" y="434" width="355" height="4"/>
+                            <rect key="frame" x="10" y="483" width="355" height="4"/>
                             <color key="backgroundColor" red="0.94901960784313721" green="0.59607843137254901" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="4" id="D3T-iq-2WN"/>
@@ -259,7 +259,7 @@
                         <constraint firstItem="ppw-xu-kOq" firstAttribute="top" secondItem="A63-DS-CoX" secondAttribute="bottom" constant="5" id="Gzu-se-qhm"/>
                         <constraint firstItem="A63-DS-CoX" firstAttribute="leading" secondItem="nIG-zC-1zA" secondAttribute="leading" constant="10" id="acj-mJ-JdG"/>
                         <constraint firstItem="ppw-xu-kOq" firstAttribute="leading" secondItem="nIG-zC-1zA" secondAttribute="leading" constant="10" id="bq3-B1-RQf"/>
-                        <constraint firstAttribute="bottom" secondItem="ppw-xu-kOq" secondAttribute="bottom" constant="10" id="jvK-Xm-TwB"/>
+                        <constraint firstAttribute="bottom" secondItem="ppw-xu-kOq" secondAttribute="bottom" constant="5" id="jvK-Xm-TwB"/>
                         <constraint firstAttribute="trailing" secondItem="A63-DS-CoX" secondAttribute="trailing" constant="10" id="xM0-wD-Ln3"/>
                     </constraints>
                 </view>
@@ -272,7 +272,7 @@
                 <constraint firstItem="nIG-zC-1zA" firstAttribute="top" secondItem="sKY-59-JZ0" secondAttribute="bottom" id="ow6-D4-Nw4"/>
                 <constraint firstAttribute="trailing" secondItem="nIG-zC-1zA" secondAttribute="trailing" id="ucw-Hh-KAF"/>
                 <constraint firstItem="sKY-59-JZ0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wXU-8V-rjq"/>
-                <constraint firstAttribute="bottom" secondItem="nIG-zC-1zA" secondAttribute="bottom" constant="64" id="zdf-tO-tkW"/>
+                <constraint firstAttribute="bottom" secondItem="nIG-zC-1zA" secondAttribute="bottom" constant="30" id="zdf-tO-tkW"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>

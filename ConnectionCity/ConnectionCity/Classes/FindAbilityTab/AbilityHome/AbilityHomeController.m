@@ -13,13 +13,17 @@
 #import "FilterOneController.h"
 #import "ShowResumeController.h"
 #import "SearchHistoryController.h"
-@interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate>
+#import "RefineView.h"
+#import "PopThree.h"
+@interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
 @property (weak, nonatomic) IBOutlet UIView *view_fajianli;
 @property (weak, nonatomic) IBOutlet UIView *view_SX;
 @property (nonatomic,strong) CustomMap *cusMap;
- 
+@property (nonatomic,strong) RefineView * refine;
+@property (nonatomic,strong) PopThree * pop;
+@property (nonatomic,assign) NSInteger  flag;
 @end
 
 @implementation AbilityHomeController
@@ -28,23 +32,39 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setUI];
-    
+    _flag = NO;
 }
 //导航条人才类型选择
 -(void)AddressClick:(UIButton *)btn{
-    [YTAlertUtil showTempInfo:@"导航条人才类型选择"];
+    self.pop = [[[NSBundle mainBundle] loadNibNamed:@"PopThree" owner:nil options:nil] lastObject];
+    self.pop.frame = CGRectMake(0, 0, kScreenWidth, 165);
+    self.pop.delegate = self;
+    self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.pop];
+    [self.refine alertSelectViewshow]; 
 }
 //搜索按钮点击
 -(void)SearchClick{
+     _flag=NO;
     SearchHistoryController * search = [SearchHistoryController new];
     [self.navigationController pushViewController:search animated:YES];
 }
+
 //发布简历按钮点击
 - (IBAction)sendResume:(UIButton *)sender {
+    _flag = NO;
     [self.navigationController pushViewController:[self rotateClass:@"ResumeController"] animated:YES];
+}
+//PopThreeDelegate声明协议方法
+- (void)sendValue:(NSInteger )tag{
+    _flag = YES;
+    if (tag==2||tag==3) {
+        NSString * str = tag==2?@"BaseFindServiceTabController":@"BaseChangeTabController";
+        [self.navigationController pushViewController:[super rotateClass:str] animated:YES];
+    }
 }
 //顶部三个筛选按钮的点击
 - (IBAction)btn_SX:(UIButton *)sender {
+    _flag=NO;
     switch (sender.tag) {
         case 1:
         {
@@ -120,5 +140,15 @@
 }
 -(void)currentAnimatinonViewClick:(MAAnnotationView *)view{
     [self.navigationController pushViewController:[ShowResumeController new] animated:YES];
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden= NO;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    if (_flag) {
+        self.navigationController.navigationBar.hidden= YES;
+    }
 }
 @end

@@ -11,12 +11,17 @@
 #import "ChangeHeadView.h"
 #import "ChangeListController.h"
 #import "ShowResumeController.h"
+#import "RefineView.h"
+#import "PopThree.h"
 #define ID @"ChangeCell"
 static NSString * collectionCellIndentider = @"collectionCellIndentider";
-@interface ChangePlayController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface ChangePlayController ()<UICollectionViewDelegate,UICollectionViewDataSource,PopThreeDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *coll_Botom;
 @property (nonatomic,strong) ChangeLayout * flowLyout;
 @property (nonatomic,strong) ChangeHeadView *changeHead;
+@property (nonatomic,strong) RefineView * refine;
+@property (nonatomic,strong) PopThree * pop;
+@property (nonatomic,assign) NSInteger  flag;
 @end
 
 @implementation ChangePlayController
@@ -25,8 +30,26 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     [super viewDidLoad];
     [super setFlag_back:YES];//设置返回按钮
     [self setUI];
+     _flag = NO;
+}
+//导航栏标题点击
+-(void)AddressClick:(UIButton *)btn{
+    self.pop = [[[NSBundle mainBundle] loadNibNamed:@"PopThree" owner:nil options:nil] lastObject];
+    self.pop.frame = CGRectMake(0, 0, kScreenWidth, 165);
+    self.pop.delegate = self;
+    self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.pop];
+    [self.refine alertSelectViewshow];
+}
+//PopThreeDelegate声明协议方法
+- (void)sendValue:(NSInteger )tag{
+    _flag = YES;
+    if (tag==1||tag==2) {
+        NSString * str = tag==1?@"BaseOneTabController":@"BaseFindServiceTabController";
+        [self.navigationController pushViewController:[super rotateClass:str] animated:YES];
+    }
 }
 -(void)setUI{
+    [self initNavi];
     self.coll_Botom.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.flowLyout = [[ChangeLayout alloc] init];
     _coll_Botom.collectionViewLayout = self.flowLyout;
@@ -39,6 +62,7 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     __block ChangePlayController * weakSelf = self;
     _changeHead.block = ^(NSInteger flag){
         NSLog(@"%ld",flag);
+         _flag = NO;
         if (flag==4||flag==5) {
             ChangeListController * change = [ChangeListController new];
             [weakSelf.navigationController pushViewController:change animated:YES];
@@ -61,6 +85,7 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     return cell;
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+     _flag = NO;
     ShowResumeController * show = [ShowResumeController new];
     show.Receive_Type = ENUM_TypeTreasure;
     [self.navigationController pushViewController:show animated:YES];
@@ -73,6 +98,30 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
         reusableview = headerView;
     }
     return reusableview;
+}
+-(void)initNavi{
+    //自定义标题视图
+    UIView * nav_view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+    UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+    btn.tag = 99999;
+    btn.titleLabel.font = [UIFont systemFontOfSize:16];
+    [btn setTitle:@"换着玩" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"Arrow-xia"] forState:UIControlStateNormal];
+    [btn layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleRight imageTitleSpace:5];
+    [btn addTarget:self action:@selector(AddressClick:) forControlEvents:UIControlEventTouchUpInside];
+    [nav_view addSubview:btn];
+    self.navigationItem.titleView = nav_view;
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden= NO;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    if (_flag) {
+        self.navigationController.navigationBar.hidden= YES;
+    }
 }
 @end
 

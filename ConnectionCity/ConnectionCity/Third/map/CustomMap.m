@@ -61,7 +61,7 @@
             // must set to NO, so we can show the custom callout view.
             annotationView.canShowCallout = NO;
 //            annotationView.draggable = YES;
-            annotationView.calloutOffset = CGPointMake(0, -18);
+            annotationView.calloutOffset = CGPointMake(0, 0);
         }
         annotationView.image = [UIImage imageNamed:@"position.png"];
         return annotationView;
