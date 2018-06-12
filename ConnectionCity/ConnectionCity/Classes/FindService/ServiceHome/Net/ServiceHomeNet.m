@@ -10,8 +10,7 @@
 //#import "YSNetworkTool.h"
 @implementation ServiceHomeNet
 +(void)requstConditions:(SuccessArrBlock) sucBloc withFailBlock:(FailDicBlock)failBlock{
-    [YSNetworkTool POST:v1ServiceConditions params:@{} progress:^(NSProgress *progress) {
-    } success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1ServiceConditions params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary * dic = responseObject[@"data"];
         NSArray * arr = @[@"age",@"distance",@"gender",@"validType"];
         NSMutableArray * dataArr= [NSMutableArray array];
@@ -33,9 +32,7 @@
     }];
 }
 +(void)requstServiceList:(SuccessArrBlock)csucBlock withFailBlock:(FailDicBlock)failBlock{
-    [YSNetworkTool POST:v1ServiceList params:@{} progress:^(NSProgress *progress) {
-        
-    } success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1ServiceList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
