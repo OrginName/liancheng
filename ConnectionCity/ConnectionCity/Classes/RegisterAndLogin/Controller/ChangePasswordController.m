@@ -43,7 +43,7 @@
         return;
     }
     WeakSelf
-    [YSNetworkTool POST:smsVerificationCode params:@{@"mobile": _phoneTF.text} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:smsVerificationCode params:@{@"mobile": _phoneTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [YSTools DaojiShi:btn];
         
     } failure:nil];

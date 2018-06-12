@@ -16,12 +16,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupNav];
 
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+#pragma mark - setup
+- (void)setupNav {
+    self.navigationItem.title = @"消息";
 }
 
 #pragma mark - Table view data source

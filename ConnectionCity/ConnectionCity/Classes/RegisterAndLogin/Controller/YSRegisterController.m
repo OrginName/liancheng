@@ -43,7 +43,7 @@
         return;
     }
     //WeakSelf
-    [YSNetworkTool POST:smsVerificationCode params:@{@"mobile": _phoneTF.text} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:smsVerificationCode params:@{@"mobile": _phoneTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([YSNetworkTool isSuccessWithResp:responseObject]) {
             [YSTools DaojiShi:btn];
             [YTAlertUtil showTempInfo:responseObject[kMessage]];
@@ -66,7 +66,7 @@
         return;
     }
     WeakSelf
-    [YSNetworkTool POST:registerUrl params:@{@"mobile":_phoneTF.text,@"password":_nwePasswordTF.text,@"verificationCode":_verificationCodeTF.text} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:registerUrl params:@{@"mobile":_phoneTF.text,@"password":_nwePasswordTF.text,@"verificationCode":_verificationCodeTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([YSNetworkTool isSuccessWithResp:responseObject]) {
             [YTAlertUtil showTempInfo:responseObject[kMessage]];
             [weakSelf.navigationController popViewControllerAnimated:YES];

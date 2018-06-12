@@ -7,6 +7,7 @@
 //
 
 #import "YSNetworkTool.h"
+#import "EGOCache.h"
 
 /** 请求失败提示 */
 static NSString * const kRequestFalseMessage = @"无网络连接，请稍后重试";
@@ -31,17 +32,23 @@ NSString * const YTHttpUtilResponseData = @"Data";
 #pragma mark - POST
 + (void)POST:(NSString *)url
       params:(NSDictionary *)params
-    progress:(YTHttpUtilProgress)progress
+    showHud:(BOOL)showHud
      success:(YTHttpUtilSuccess)success
      failure:(YTHttpUtilFailure)failure {
     AFHTTPSessionManager *manager = [[self class] manager];
     
-    [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
-        progress ? progress(uploadProgress) : nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSString *cacheKeyStr = [[self class] getCacheWithWithUrl:url requestDict:params];
+    id cacheData = [[EGOCache globalCache] objectForKey:cacheKeyStr];
+    if (![YSTools dx_isNullOrNilWithObject:cacheData]) {
+        success ? success(nil, cacheData) : nil;
+    }
+    if (showHud) {[YTAlertUtil showHUDWithTitle:nil];}
+    [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [YTAlertUtil hideHUD];
         [[self class] p_logRequestDataWithURL:url params:params response:responseObject];
         success ? success(task, responseObject) : nil;
+        //缓存
+        [[EGOCache globalCache] setObject:responseObject forKey:cacheKeyStr];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [[self class]p_handleRequestFailure:nil];
         [YTAlertUtil showTempInfo:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
@@ -50,15 +57,13 @@ NSString * const YTHttpUtilResponseData = @"Data";
 }
 + (void)POSTData:(NSString *)url
           params:(NSDictionary *)params
-        progress:(YTHttpUtilProgress)progress
+         showHud:(BOOL)showHud
          success:(YTHttpUtilSuccess)success
          failure:(YTHttpUtilFailure)failure{
     AFHTTPSessionManager *manager = [[self class] manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-
-    [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
-        progress ? progress(uploadProgress) : nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    if (showHud) {[YTAlertUtil showHUDWithTitle:nil];}
+    [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [YTAlertUtil hideHUD];
         [[self class] p_logRequestDataWithURL:url params:params response:responseObject];
         NSString *result = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -72,14 +77,12 @@ NSString * const YTHttpUtilResponseData = @"Data";
 #pragma mark - GET
 + (void)GET:(NSString *)url
      params:(NSDictionary *)params
-   progress:(YTHttpUtilProgress)progress
+    showHud:(BOOL)showHud
     success:(YTHttpUtilSuccess)success
     failure:(YTHttpUtilFailure)failure {
     AFHTTPSessionManager *manager = [[self class]manager];
-    
-    [manager GET:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
-        progress ? progress(uploadProgress) : nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    if (showHud) {[YTAlertUtil showHUDWithTitle:nil];}
+    [manager GET:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [YTAlertUtil hideHUD];
         [[self class]p_logRequestDataWithURL:url params:params response:responseObject];
         success ? success(task, responseObject) : nil;
@@ -91,15 +94,13 @@ NSString * const YTHttpUtilResponseData = @"Data";
 }
 + (void)GETData:(NSString *)url
          params:(NSDictionary *)params
-       progress:(YTHttpUtilProgress)progress
+        showHud:(BOOL)showHud
         success:(YTHttpUtilSuccess)success
         failure:(YTHttpUtilFailure)failure {
     AFHTTPSessionManager *manager = [[self class]manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-
-    [manager GET:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
-        progress ? progress(uploadProgress) : nil;
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    if (showHud) {[YTAlertUtil showHUDWithTitle:nil];}
+    [manager GET:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [YTAlertUtil hideHUD];
         [[self class]p_logRequestDataWithURL:url params:params response:responseObject];
         NSString *result = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -156,5 +157,15 @@ NSString * const YTHttpUtilResponseData = @"Data";
                        response:(id)response {
     YTRLog(@"url:%@\tparams:%@\tresponse:%@", url, params, response);
 }
-
+#pragma mark - 生成缓存键
++ (NSString *)getCacheWithWithUrl:(NSString *)url requestDict:(id)dict {
+    NSArray *dictKeysArray = [dict allKeys];
+    NSString *cacheKeyStr = [[NSMutableString alloc]init];
+    cacheKeyStr = [url stringByAppendingString:cacheKeyStr];
+    for (NSString *dictKey in dictKeysArray) {
+        cacheKeyStr = [cacheKeyStr stringByAppendingString:dictKey];
+        cacheKeyStr = [cacheKeyStr stringByAppendingString:[NSString stringWithFormat:@"%@",[dict objectForKey:dictKey]]];
+    }
+    return cacheKeyStr;
+}
 @end

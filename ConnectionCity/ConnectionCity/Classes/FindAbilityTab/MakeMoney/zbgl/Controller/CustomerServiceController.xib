@@ -24,7 +24,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TxK-ZP-1ny">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="500"/>
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="667"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择要反馈的问题类型(单选)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTU-AI-NCS">
                                     <rect key="frame" x="10" y="10" width="354" height="50"/>
@@ -153,12 +153,26 @@
                                         <constraint firstAttribute="height" constant="130" id="fNF-ZN-C6m"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0e-F2-QTt">
+                                    <rect key="frame" x="0.0" y="553" width="374" height="50"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="Qv8-O7-wrr"/>
+                                    </constraints>
+                                    <state key="normal" title="提交">
+                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="commitBtnClick:" destination="-1" eventType="touchUpInside" id="YFb-08-W7w"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="dTU-AI-NCS" secondAttribute="trailing" constant="10" id="1C7-r9-CZg"/>
+                                <constraint firstAttribute="trailing" secondItem="g0e-F2-QTt" secondAttribute="trailing" id="5mw-an-Aad"/>
                                 <constraint firstItem="lFU-cf-QqH" firstAttribute="top" secondItem="S1J-Zi-rJv" secondAttribute="bottom" constant="10" id="5vJ-NB-sen"/>
-                                <constraint firstAttribute="height" constant="500" id="C7e-dK-Gp9"/>
+                                <constraint firstAttribute="bottom" secondItem="g0e-F2-QTt" secondAttribute="bottom" constant="64" id="BTt-N0-usd"/>
                                 <constraint firstItem="S1J-Zi-rJv" firstAttribute="leading" secondItem="TxK-ZP-1ny" secondAttribute="leading" constant="10" id="COa-ZM-Y8f"/>
                                 <constraint firstAttribute="trailing" secondItem="S1J-Zi-rJv" secondAttribute="trailing" constant="10" id="Jqx-aJ-F2L"/>
                                 <constraint firstItem="dTU-AI-NCS" firstAttribute="top" secondItem="TxK-ZP-1ny" secondAttribute="top" constant="10" id="Oie-xi-iSO"/>
@@ -168,33 +182,19 @@
                                 <constraint firstAttribute="trailing" secondItem="lFU-cf-QqH" secondAttribute="trailing" constant="10" id="cjK-Cp-FqL"/>
                                 <constraint firstItem="dTU-AI-NCS" firstAttribute="leading" secondItem="TxK-ZP-1ny" secondAttribute="leading" constant="10" id="oBC-Vu-Lb0"/>
                                 <constraint firstItem="S1J-Zi-rJv" firstAttribute="top" secondItem="dTU-AI-NCS" secondAttribute="bottom" id="r6U-X8-ytA"/>
+                                <constraint firstItem="g0e-F2-QTt" firstAttribute="leading" secondItem="TxK-ZP-1ny" secondAttribute="leading" id="rYQ-fT-k4Y"/>
                                 <constraint firstItem="lFU-cf-QqH" firstAttribute="leading" secondItem="TxK-ZP-1ny" secondAttribute="leading" constant="10" id="u9d-N4-dA6"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0e-F2-QTt">
-                            <rect key="frame" x="0.0" y="450" width="374" height="50"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="SqC-Vq-SeB"/>
-                            </constraints>
-                            <state key="normal" title="提交">
-                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                            </state>
-                            <connections>
-                                <action selector="commitBtnClick:" destination="-1" eventType="touchUpInside" id="YFb-08-W7w"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="TxK-ZP-1ny" firstAttribute="centerY" secondItem="gp7-Zr-HBC" secondAttribute="centerY" id="ITy-Se-hCY"/>
                         <constraint firstAttribute="trailing" secondItem="TxK-ZP-1ny" secondAttribute="trailing" id="LvB-5f-UJ7"/>
-                        <constraint firstAttribute="bottom" secondItem="g0e-F2-QTt" secondAttribute="bottom" id="NxG-Ub-Vni"/>
                         <constraint firstItem="TxK-ZP-1ny" firstAttribute="top" secondItem="gp7-Zr-HBC" secondAttribute="top" id="PmC-Ju-CMh"/>
                         <constraint firstItem="TxK-ZP-1ny" firstAttribute="centerX" secondItem="gp7-Zr-HBC" secondAttribute="centerX" id="Tn9-fp-KZ0"/>
                         <constraint firstAttribute="bottom" secondItem="TxK-ZP-1ny" secondAttribute="bottom" id="dFQ-9I-NTS"/>
-                        <constraint firstItem="g0e-F2-QTt" firstAttribute="leading" secondItem="gp7-Zr-HBC" secondAttribute="leading" id="rDt-yA-Xgv"/>
                         <constraint firstItem="TxK-ZP-1ny" firstAttribute="leading" secondItem="gp7-Zr-HBC" secondAttribute="leading" id="t5g-XD-pm5"/>
-                        <constraint firstAttribute="trailing" secondItem="g0e-F2-QTt" secondAttribute="trailing" id="upj-yL-gAH"/>
                     </constraints>
                 </scrollView>
             </subviews>

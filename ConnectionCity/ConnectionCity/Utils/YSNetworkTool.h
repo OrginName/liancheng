@@ -36,27 +36,27 @@ typedef void(^YTHttpUtilNetworkStatusHandler)(void);
 /** POST请求,结果为JSON类型*/
 + (void)POST:(NSString *)url
       params:(NSDictionary *)params
-    progress:(YTHttpUtilProgress)progress
+     showHud:(BOOL)showHud
      success:(YTHttpUtilSuccess)success
      failure:(YTHttpUtilFailure)failure;
 /** POST请求,结果为NSData类型*/
 + (void)POSTData:(NSString *)url
-      params:(NSDictionary *)params
-    progress:(YTHttpUtilProgress)progress
-     success:(YTHttpUtilSuccess)success
-     failure:(YTHttpUtilFailure)failure;
+          params:(NSDictionary *)params
+         showHud:(BOOL)showHud
+         success:(YTHttpUtilSuccess)success
+         failure:(YTHttpUtilFailure)failure;
 /** GET请求,结果为JSON类型*/
 + (void)GET:(NSString *)url
      params:(NSDictionary *)params
-   progress:(YTHttpUtilProgress)progress
+    showHud:(BOOL)showHud
     success:(YTHttpUtilSuccess)success
     failure:(YTHttpUtilFailure)failure;
 /** GET请求,结果为NSData类型*/
 + (void)GETData:(NSString *)url
-     params:(NSDictionary *)params
-   progress:(YTHttpUtilProgress)progress
-    success:(YTHttpUtilSuccess)success
-    failure:(YTHttpUtilFailure)failure;
+         params:(NSDictionary *)params
+        showHud:(BOOL)showHud
+        success:(YTHttpUtilSuccess)success
+        failure:(YTHttpUtilFailure)failure;
 /** 上传图片 */
 + (void)uploadImageWithUrl:(NSString *)url
                     params:(NSDictionary *)params

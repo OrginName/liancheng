@@ -55,7 +55,7 @@
         return;
     }
     //WeakSelf
-    [YSNetworkTool POST:login params:@{@"loginName":_phoneTF.text,@"password":_passwordTF.text} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:login params:@{@"loginName":_phoneTF.text,@"password":_passwordTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([YSNetworkTool isSuccessWithResp:responseObject]) {
             [YTAlertUtil showTempInfo:responseObject[kMessage]];
             YSAccount *account = [YSAccount mj_objectWithKeyValues:responseObject[kData]];

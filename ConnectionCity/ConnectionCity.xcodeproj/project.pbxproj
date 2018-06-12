@@ -327,6 +327,7 @@
 		CE0BA637209D68A3004C3C33 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA62D209D68A2004C3C33 /* ChangePasswordController.m */; };
 		CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE0BA62E209D68A2004C3C33 /* YSRegisterController.xib */; };
 		CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA631209D68A2004C3C33 /* YSAccount.m */; };
+		CE24791620CEC9F100D4C396 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE24791520CEC9F100D4C396 /* EGOCache.m */; };
 		CE5C27FA20B8FE0A006A8332 /* BiddInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C27F820B8FE0A006A8332 /* BiddInfoController.m */; };
 		CE5C27FB20B8FE0A006A8332 /* BiddInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C27F920B8FE0A006A8332 /* BiddInfoController.xib */; };
 		CE5C27FE20B8FE3A006A8332 /* BiddInfoHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C27FD20B8FE3A006A8332 /* BiddInfoHeadView.m */; };
@@ -992,6 +993,8 @@
 		CE0BA62E209D68A2004C3C33 /* YSRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YSRegisterController.xib; sourceTree = "<group>"; };
 		CE0BA630209D68A2004C3C33 /* YSAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSAccount.h; sourceTree = "<group>"; };
 		CE0BA631209D68A2004C3C33 /* YSAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSAccount.m; sourceTree = "<group>"; };
+		CE24791420CEC9F100D4C396 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
+		CE24791520CEC9F100D4C396 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
 		CE5C27F720B8FE0A006A8332 /* BiddInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BiddInfoController.h; sourceTree = "<group>"; };
 		CE5C27F820B8FE0A006A8332 /* BiddInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BiddInfoController.m; sourceTree = "<group>"; };
 		CE5C27F920B8FE0A006A8332 /* BiddInfoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BiddInfoController.xib; sourceTree = "<group>"; };
@@ -2399,6 +2402,7 @@
 				CE0BA5C1209D5E9B004C3C33 /* YTSystemUtil.m */,
 				CE0BA5C2209D5E9B004C3C33 /* YTDataPacket.m */,
 				CE0BA5C3209D5E9B004C3C33 /* YSNetworkTool.h */,
+				CE0BA5CE209D5E9B004C3C33 /* YSNetworkTool.m */,
 				CE0BA5C4209D5E9B004C3C33 /* TakePhoto.m */,
 				CE0BA5C5209D5E9B004C3C33 /* DDFileReader.m */,
 				CE0BA5C6209D5E9B004C3C33 /* YSAccountTool.m */,
@@ -2408,7 +2412,6 @@
 				CE0BA5CB209D5E9B004C3C33 /* GlobalManager.h */,
 				CE0BA5CC209D5E9B004C3C33 /* SRDownloadManager.h */,
 				CE0BA5CD209D5E9B004C3C33 /* YSBlutoothTool.h */,
-				CE0BA5CE209D5E9B004C3C33 /* YSNetworkTool.m */,
 				CE0BA5CF209D5E9B004C3C33 /* YTDataPacket.h */,
 				CE0BA5D0209D5E9B004C3C33 /* YTSystemUtil.h */,
 				CE0BA5D2209D5E9B004C3C33 /* YSTools.m */,
@@ -2421,6 +2424,8 @@
 				CE0BA5DA209D5E9B004C3C33 /* SRDownloadModel.h */,
 				CE0BA5DB209D5E9B004C3C33 /* YSBlutoothTool.m */,
 				CE0BA5DC209D5E9B004C3C33 /* SRDownloadManager.m */,
+				CE24791420CEC9F100D4C396 /* EGOCache.h */,
+				CE24791520CEC9F100D4C396 /* EGOCache.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -3657,6 +3662,7 @@
 				CE5C282420B955EA006A8332 /* BidManagerFootV.m in Sources */,
 				8D8E4ECE20C9109E00C3D537 /* EditProfileController.m in Sources */,
 				CE0BA5EA209D5E9B004C3C33 /* YSBlutoothTool.m in Sources */,
+				CE24791620CEC9F100D4C396 /* EGOCache.m in Sources */,
 				72EBB8E120C95F8800F670E9 /* AccountSecurityController.m in Sources */,
 				CE0BA5B7209D5E6B004C3C33 /* NSData+hexString.m in Sources */,
 				CEBEDD8920B17ED1000F9EE4 /* BidderCell.m in Sources */,
