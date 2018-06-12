@@ -185,11 +185,11 @@
     for (int i=0; i<arr.count;i++) {
         float width = [YSTools caculateTheWidthOfLableText:14 withTitle:arr[i]]+10;
         if (width<40) {
-            width=45;
+            width=40;
         }
         UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(i*width, 0, width, 47)];
         btn.tag = i+1;
-        [btn setTitle:@"123" forState:UIControlStateNormal];
+        [btn setTitle:arr[i] forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:14];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [btn setBackgroundColor:[UIColor whiteColor]];

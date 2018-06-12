@@ -15,11 +15,13 @@
 #import "SearchHistoryController.h"
 #import "RefineView.h"
 #import "PopThree.h"
+#import "AbilityNet.h"
 @interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
 @property (weak, nonatomic) IBOutlet UIView *view_fajianli;
 @property (weak, nonatomic) IBOutlet UIView *view_SX;
+@property (weak, nonatomic) IBOutlet UIView *view_keyWords;
 @property (nonatomic,strong) CustomMap *cusMap;
 @property (nonatomic,strong) RefineView * refine;
 @property (nonatomic,strong) PopThree * pop;
@@ -30,8 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     [self setUI];
+    [self initData];
     _flag = NO;
 }
 //导航条人才类型选择
@@ -96,6 +98,20 @@
             break;
     }
 }
+//关键字点击
+-(void)KeyWordsClick:(UIButton *)btn{
+    [YTAlertUtil showTempInfo:@"关键字点击"];
+}
+#pragma mark ----初始化加载数据（开始）------
+-(void)initData{
+//    热门职业加载
+    [AbilityNet requstAbilityKeyWords:^(NSMutableArray *successArrValue) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self loadketBtn:successArrValue];
+        });
+    }];
+}
+#pragma mark ----初始化加载数据（结束）------
 -(void)back{
     [self.tabBarController.navigationController popViewControllerAnimated:YES];
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"BACKMAINWINDOW" object:nil];
@@ -140,6 +156,23 @@
 }
 -(void)currentAnimatinonViewClick:(MAAnnotationView *)view{
     [self.navigationController pushViewController:[ShowResumeController new] animated:YES];
+}
+#pragma mark ---初始化关键字button加载-----
+-(void)loadketBtn:(NSMutableArray *)arr{
+    for (int i=0; i<arr.count;i++) {
+        float width = [YSTools caculateTheWidthOfLableText:14 withTitle:arr[i]]+10;
+        if (width<40) {
+            width=40;
+        }
+        UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(i*width, 0, width, 47)];
+        btn.tag = i+1;
+        [btn setTitle:arr[i] forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn setBackgroundColor:[UIColor whiteColor]];
+        [btn addTarget:self action:@selector(KeyWordsClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view_keyWords addSubview:btn];
+    }
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

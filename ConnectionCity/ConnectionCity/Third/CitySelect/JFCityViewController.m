@@ -82,51 +82,38 @@ JFSearchViewDelegate,UITextFieldDelegate>
  初始化加载城市数据
  */
 -(void)initData{
-    
-    //    if ([kCurrentCityInfoDefaults objectForKey:@"cityData"]) {
-    //        self.characterMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"cityData"]];
-    //        _sectionMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"sectionData"]];
-    //        [_rootTableView reloadData];
-    //    }else {
-    //在子线程中异步执行汉字转拼音再转汉字耗时操作
-//    dispatch_queue_t serialQueue = dispatch_queue_create("com.city.www", DISPATCH_QUEUE_SERIAL);
-//    dispatch_async(serialQueue, ^{
-//        [self processData:^(id success) {
-//            //回到主线程刷新UI
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [_rootTableView reloadData];
-//                self.locationManager = [[JFLocation alloc] init];
-//                _locationManager.delegate = self;
-//            });
-//        }];
-//    });
-    //    }
-    [YSNetworkTool POST:dictionaryAreaTreeList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        [_cityMutableArray removeAllObjects];
-        for (int i=0; i<[responseObject[@"data"] count]; i++) {
-            CityMo * mo = [CityMo mj_objectWithKeyValues:responseObject[@"data"][i]];
-            mo.ID = responseObject[@"data"][i][@"id"];
-            if (![mo.fullName containsString:@"市"]) {
-//                for (int j=0; j<[mo.childs count]; j++) {
-//                    CityMo * mo1 = [CityMo mj_objectWithKeyValues:mo.childs[j]];
-//                    mo1.ID = mo.childs[j][@"id"];
-//                    [_cityMutableArray addObject:mo1];
-//                }
-            }else{
-                  [_cityMutableArray addObject:mo];
-            }
+    if ([kCurrentCityInfoDefaults objectForKey:@"cityData"]) {
+            self.characterMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"cityData"]];
+            _sectionMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"sectionData"]];
+            [_rootTableView reloadData];
+        }else {
+            [YSNetworkTool POST:dictionaryAreaTreeList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+                [_cityMutableArray removeAllObjects];
+                for (int i=0; i<[responseObject[@"data"] count]; i++) {
+                    CityMo * mo = [CityMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+                    mo.ID = responseObject[@"data"][i][@"id"];
+                    if (![mo.fullName containsString:@"市"]) {
+                        for (int j=0; j<[mo.childs count]; j++) {
+                            CityMo * mo1 = [CityMo mj_objectWithKeyValues:mo.childs[j]];
+                            mo1.ID = mo.childs[j][@"id"];
+                            [_cityMutableArray addObject:mo1];
+                        }
+                    }else{
+                        [_cityMutableArray addObject:mo];
+                    }
+                }
+                [self processData:^(id success) {
+                    //回到主线程刷新UI
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [_rootTableView reloadData];
+                        self.locationManager = [[JFLocation alloc] init];
+                        _locationManager.delegate = self;
+                    });
+                }];
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                
+            }];
         }
-        [self processData:^(id success) {
-            //回到主线程刷新UI
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [_rootTableView reloadData];
-                self.locationManager = [[JFLocation alloc] init];
-                _locationManager.delegate = self;
-            });
-        }];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-    }];
 }
 //搜索按钮
 -(void)search{
