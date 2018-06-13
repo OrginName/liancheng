@@ -8,8 +8,7 @@
 
 #import "BaseModel.h"
 
-@interface CityMo : BaseModel
-
+@interface CityMo : BaseModel<NSCoding>
 proStr(ID);//ID
 proStr(parentId);//
 proStr(initial);//首字母

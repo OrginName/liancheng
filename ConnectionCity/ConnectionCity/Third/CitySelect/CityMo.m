@@ -10,4 +10,6 @@
 
 @implementation CityMo
 
+MJCodingImplementation
+
 @end
