@@ -25,10 +25,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYo-X7-Dr9">
-                    <rect key="frame" x="10" y="10" width="355" height="50"/>
+                    <rect key="frame" x="10" y="10" width="355" height="40"/>
                     <subviews>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2m-5S-3yD">
-                            <rect key="frame" x="0.0" y="0.0" width="172.5" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="172.5" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -50,7 +50,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3e-GR-LpM">
-                            <rect key="frame" x="182.5" y="0.0" width="172.5" height="50"/>
+                            <rect key="frame" x="182.5" y="0.0" width="172.5" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -74,7 +74,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="9Pi-K6-qvP"/>
+                        <constraint firstAttribute="height" constant="40" id="9Pi-K6-qvP"/>
                         <constraint firstAttribute="bottom" secondItem="j3e-GR-LpM" secondAttribute="bottom" id="IAT-6n-6rQ"/>
                         <constraint firstItem="A2m-5S-3yD" firstAttribute="leading" secondItem="HYo-X7-Dr9" secondAttribute="leading" id="JTq-ef-Vmf"/>
                         <constraint firstAttribute="trailing" secondItem="j3e-GR-LpM" secondAttribute="trailing" id="QHh-Tl-7CR"/>
@@ -86,20 +86,20 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eoO-en-mft">
-                    <rect key="frame" x="10" y="70" width="355" height="587"/>
+                    <rect key="frame" x="10" y="60" width="355" height="597"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBr-UD-sSo">
-                            <rect key="frame" x="0.0" y="479" width="355" height="4"/>
+                            <rect key="frame" x="0.0" y="499" width="355" height="4"/>
                             <color key="backgroundColor" red="0.94901960780000005" green="0.59607843140000005" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="4" id="3rF-In-GuA"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Od9-0U-5Bq">
-                            <rect key="frame" x="0.0" y="488" width="355" height="50"/>
+                            <rect key="frame" x="0.0" y="508" width="355" height="40"/>
                             <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="mau-hf-n9t"/>
+                                <constraint firstAttribute="height" constant="40" id="mau-hf-n9t"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <inset key="titleEdgeInsets" minX="26" minY="0.0" maxX="3" maxY="0.0"/>
@@ -112,7 +112,7 @@
                             </connections>
                         </button>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="156" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Xv-SW-9fQ">
-                            <rect key="frame" x="0.0" y="0.0" width="355" height="469"/>
+                            <rect key="frame" x="0.0" y="0.0" width="355" height="489"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="QG9-tk-xBx"/>

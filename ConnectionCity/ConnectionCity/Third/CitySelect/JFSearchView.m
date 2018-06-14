@@ -7,7 +7,6 @@
 //
 
 #import "JFSearchView.h"
-
 static NSString *ID = @"searchCell";
 
 @interface JFSearchView ()<UITableViewDelegate, UITableViewDataSource>
@@ -20,6 +19,7 @@ static NSString *ID = @"searchCell";
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
+        self.rootTableView.tableFooterView = [[UIView alloc] init];
     }
     return self;
 }
@@ -47,21 +47,25 @@ static NSString *ID = @"searchCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
-    NSDictionary *dataDic = _resultMutableArray[indexPath.row];
-    NSString *text = [NSString stringWithFormat:@"%@，%@",[dataDic valueForKey:@"city"],[dataDic valueForKey:@"super"]];
-    cell.textLabel.text = text;
+    CityMo * mo = _resultMutableArray[indexPath.row];
+    cell.textLabel.text = mo.fullName;
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *dataDic = _resultMutableArray[indexPath.row];
-    if (![[dataDic valueForKey:@"city"] isEqualToString:@"抱歉"]) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(searchResults:)]) {
-            [self.delegate searchResults:dataDic];
+    CityMo * mo = _resultMutableArray[indexPath.row];
+    if (mo.fullName.length!=0) {
+        if (self.delegate&&[self.delegate respondsToSelector:@selector(serchResultCityMo:)]) {
+            [self.delegate serchResultCityMo:mo];
         }
     }
+//    if (![[dataDic valueForKey:@"city"] isEqualToString:@"抱歉"]) {
+//        if (self.delegate && [self.delegate respondsToSelector:@selector(searchResults:)]) {
+//            [self.delegate searchResults:dataDic];
+//        }
+//    }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

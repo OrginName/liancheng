@@ -54,6 +54,8 @@
 #define AppViewCommonHeight 44
 /** 循环引用弱化self变量 */
 #define WeakSelf __weak typeof(self) weakSelf = self;
+/**存储*/
+#define KUserDefults [NSUserDefaults standardUserDefaults]
 
 /** 主WINDOW */
 #define kWindow            [[UIApplication sharedApplication].windows objectAtIndex:0]
@@ -71,6 +73,10 @@
 #define kData              @"data"
 /** 响应code */
 #define kCode              @"code"
+/** @"UserCity"*/
+#define kUserCity @"UserCity"
+#define kLat @"lat"
+#define KLng @"lng"
 /** 服务的UUID */
 #define kServiceUUID              @"FFE0"
 /** 通知特征的UUID */

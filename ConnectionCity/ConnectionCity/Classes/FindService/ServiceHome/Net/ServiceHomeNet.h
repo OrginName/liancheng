@@ -42,4 +42,10 @@ typedef void (^FailDicBlock) (NSString * failValue);
  @param sucBlock 成功回调
  */
 +(void)requstServiceKeywords:(SuccessArrBlock)sucBlock;
+/**
+ 旅行邀约列表
+ 
+ @param sucBlock 成功回调
+ */
++(void)requstTrvalInvitDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock;
 @end

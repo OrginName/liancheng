@@ -80,6 +80,7 @@
             jf.delegate = self;
             BaseNavigationController * nav = [[BaseNavigationController alloc] initWithRootViewController:jf];
             [self.navigationController presentViewController:nav animated:YES completion:nil];
+            
         }
             break;
         case 2:
@@ -132,7 +133,7 @@
     self.navigationItem.titleView = nav_view;
 }
 -(void)initRightBarItem{
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SearchClick) image:@"search" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SearchClick) image:@"search" title:@"" EdgeInsets:UIEdgeInsetsZero];
 }
 #pragma mark - JFCityViewControllerDelegate
 - (void)cityName:(NSString *)name {

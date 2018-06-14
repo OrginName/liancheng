@@ -83,6 +83,10 @@
 #pragma mark -------CustomLocationDelegate------
 - (void)currentLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location{
     NSLog(@"%@",locationDictionary[@"addRess"]);
+    [KUserDefults setObject:locationDictionary[@"city"] forKey:kUserCity];
+    [KUserDefults setObject:[NSString stringWithFormat:@"%f",location.coordinate.latitude] forKey:kLat];
+    [KUserDefults setObject:[NSString stringWithFormat:@"%f",location.coordinate.longitude] forKey:KLng];
+    [KUserDefults synchronize];
     //获取到定位信息，更新annotation
         if (self.pointAnnotaiton == nil)
         {
@@ -102,7 +106,7 @@
 }
 //定位失败
 - (void)locateFailure:(NSString *)message {
-    
+    [YTAlertUtil showTempInfo:@"定位失败"];
 }
 
 //正在定位
@@ -112,10 +116,8 @@
 
 //用户拒绝定位
 - (void)refuseToUsePositioningSystem:(NSString *)message {
-    
+    [YTAlertUtil showTempInfo:@""];
 }
-
-
 #pragma mark - Initialization
 - (void)initAnnotations
 {

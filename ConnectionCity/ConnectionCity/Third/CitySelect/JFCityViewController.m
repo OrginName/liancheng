@@ -14,7 +14,6 @@
 #import "JFLocation.h"
 #import "JFSearchView.h"
 #import "YSNetworkTool.h"
-#import "CityMo.h"
 #define kCurrentCityInfoDefaults [NSUserDefaults standardUserDefaults]
 /** 当前屏幕宽度 */
 #define kScreenWidth       [UIScreen mainScreen].bounds.size.width
@@ -39,7 +38,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
 @property (nonatomic, strong) JFCityTableViewCell *cell;
 @property (nonatomic, strong) JFCityHeaderView *headerView;
 @property (nonatomic, strong) JFAreaDataManager *manager;
-@property (nonatomic, strong) JFLocation *locationManager;
+//@property (nonatomic, strong) JFLocation *locationManager;
 @property (nonatomic, strong) JFSearchView *searchView;
 /** 最近访问的城市*/
 @property (nonatomic, strong) NSMutableArray *historyCityMutableArray;
@@ -68,7 +67,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
     self.rootTableView.tableHeaderView = self.headerView;
     
     [self backBarButtonItem];
-//    [self initWithJFAreaDataManaager];
+    [self initWithJFAreaDataManaager];
     self.navigationItem.titleView = self.view_Search;
     _indexMutableArray = [NSMutableArray array];
     _sectionMutableArray = [NSMutableArray array];
@@ -85,6 +84,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
     if ([kCurrentCityInfoDefaults objectForKey:@"cityData"]) {
             self.characterMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"cityData"]];
             _sectionMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"sectionData"]];
+        _cityMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"cityData1"]];
             [_rootTableView reloadData];
         }else {
             [YSNetworkTool POST:dictionaryAreaTreeList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -106,8 +106,8 @@ JFSearchViewDelegate,UITextFieldDelegate>
                     //回到主线程刷新UI
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [_rootTableView reloadData];
-                        self.locationManager = [[JFLocation alloc] init];
-                        _locationManager.delegate = self;
+//                        self.locationManager = [[JFLocation alloc] init];
+//                        _locationManager.delegate = self;
                     });
                 }];
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -118,16 +118,19 @@ JFSearchViewDelegate,UITextFieldDelegate>
 //搜索按钮
 -(void)search{
     if (self.search_text.text.length!=0) {
-        [_manager searchCityData:self.search_text.text result:^(NSMutableArray *result) {
+        _manager.dataArr = _cityMutableArray;
+        [_manager searchCityData1:self.search_text.text result:^(NSMutableArray *result) {
             if ([result count] > 0) {
                 _searchView.backgroundColor = [UIColor whiteColor];
                 _searchView.resultMutableArray = result;
+            }else {
+                [YTAlertUtil showTempInfo:@"搜索内容为空，请重新搜索"];
             }
         }];
     }
 }
 - (void)backBarButtonItem {
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(backrootTableViewController) image:@"Arrow-xia" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -20, 0, 0)];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(backrootTableViewController) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -20, 0, 0)];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(search) image:@"search" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, -20)];
 }
 -(void)backrootTableViewController{
@@ -136,15 +139,15 @@ JFSearchViewDelegate,UITextFieldDelegate>
 /// 初始化数据库，获取所有“市”级城市名称
 - (void)initWithJFAreaDataManaager {
     _manager = [JFAreaDataManager shareInstance];
-    [_manager areaSqliteDBData];
-    __weak typeof(self) weakSelf = self;
-    [_manager cityData:^(NSMutableArray *dataArray) {
-        //立刻生成一个strong引用，以保证实例在执行期间持续存活
-        __strong typeof(self) strongSelf = weakSelf;
-        if (strongSelf) {
-            strongSelf.cityMutableArray = dataArray;
-        }
-    }];
+//    [_manager areaSqliteDBData];
+//    __weak typeof(self) weakSelf = self;
+//    [_manager cityData:^(NSMutableArray *dataArray) {
+//        //立刻生成一个strong引用，以保证实例在执行期间持续存活
+//        __strong typeof(self) strongSelf = weakSelf;
+//        if (strongSelf) {
+//            strongSelf.cityMutableArray = dataArray;
+//        }
+//    }];
 }
 
 /// 选择城市时调用通知函数（前提是点击cell的section < 3）
@@ -194,8 +197,10 @@ JFSearchViewDelegate,UITextFieldDelegate>
     if (!_headerView) {
         _headerView = [[JFCityHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
         _headerView.backgroundColor = [UIColor whiteColor];
-        _headerView.buttonTitle = @"选择区县";
-        _headerView.cityName = [kCurrentCityInfoDefaults objectForKey:@"currentCity"] ? [kCurrentCityInfoDefaults objectForKey:@"currentCity"] : [kCurrentCityInfoDefaults objectForKey:@"locationCity"];
+        NSString * str = [KUserDefults objectForKey:kUserCity];
+        _headerView.cityName = str;
+//        _headerView.buttonTitle = @"选择区县";
+//        _headerView.cityName = [kCurrentCityInfoDefaults objectForKey:@"currentCity"] ? [kCurrentCityInfoDefaults objectForKey:@"currentCity"] : [kCurrentCityInfoDefaults objectForKey:@"locationCity"];
     }
     return _headerView;
 }
@@ -293,10 +298,11 @@ JFSearchViewDelegate,UITextFieldDelegate>
     [self.characterMutableArray addObjectsFromArray:_indexMutableArray];
     NSData *cityData = [NSKeyedArchiver archivedDataWithRootObject:self.characterMutableArray];
     NSData *sectionData = [NSKeyedArchiver archivedDataWithRootObject:_sectionMutableArray];
-    
+    NSData * cityData1 = [NSKeyedArchiver archivedDataWithRootObject:self.cityMutableArray];
     //拼音转换太耗时，这里把第一次转换结果存到单例中
     [kCurrentCityInfoDefaults setValue:cityData forKey:@"cityData"];
     [kCurrentCityInfoDefaults setObject:sectionData forKey:@"sectionData"];
+    [kCurrentCityInfoDefaults setObject:cityData1 forKey:@"cityData1"];
     success(@"成功");
 }
 ///// 汉字转拼音再转成汉字
@@ -389,16 +395,18 @@ JFSearchViewDelegate,UITextFieldDelegate>
     if (!_view_Search) {
         _view_Search = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30)];
         _view_Search.backgroundColor = [UIColor whiteColor];
-        _search_text = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-150, 30)];
+        _search_text = [[UITextField alloc] initWithFrame:CGRectMake(15, 0, _view_Search.width-110, 30)];
         _search_text.backgroundColor = [UIColor whiteColor];
-        _search_text.placeholder = @"   请输入城市名称";
+        _search_text.placeholder = @"请输入城市名称";
         _search_text.font = [UIFont systemFontOfSize:14];
+        _search_text.returnKeyType = UIReturnKeySearch;
+        _search_text.clearButtonMode = UITextFieldViewModeWhileEditing;
         _search_text.delegate = self;
         [_view_Search addSubview:_search_text];
-        UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(_search_text.width+20, 10,10, 10)];
-        [btn addTarget:self action:@selector(deleteSearch) forControlEvents:UIControlEventTouchUpInside];
-        [btn setBackgroundImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
-        [_view_Search addSubview:btn];
+//        UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(_search_text.width+20, 10,10, 10)];
+//        [btn addTarget:self action:@selector(deleteSearch) forControlEvents:UIControlEventTouchUpInside];
+//        [btn setBackgroundImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+//        [_view_Search addSubview:btn];
     }
     return _view_Search;
 }
@@ -507,7 +515,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
     return YES;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [_manager searchCityData:textField.text result:^(NSMutableArray *result) {
+    [_manager searchCityData1:textField.text result:^(NSMutableArray *result) {
         if ([result count] > 0) {
             _searchView.backgroundColor = [UIColor whiteColor];
             _searchView.resultMutableArray = result;
@@ -560,7 +568,17 @@ JFSearchViewDelegate,UITextFieldDelegate>
 
 
 #pragma mark - JFSearchViewDelegate
-
+-(void)serchResultCityMo:(CityMo *) mo{
+    [kCurrentCityInfoDefaults setObject:mo.fullName forKey:@"currentCity"];
+    [kCurrentCityInfoDefaults setObject:mo.ID forKey:@"cityNumber"];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cityName:)]) {
+        [self.delegate cityName:mo.fullName];
+    }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cityMo:)]) {
+        [self.delegate cityMo:mo];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (void)searchResults:(NSDictionary *)dic {
     [kCurrentCityInfoDefaults setObject:[dic valueForKey:@"city"] forKey:@"currentCity"];
     [kCurrentCityInfoDefaults setObject:[dic valueForKey:@"city_number"] forKey:@"cityNumber"];

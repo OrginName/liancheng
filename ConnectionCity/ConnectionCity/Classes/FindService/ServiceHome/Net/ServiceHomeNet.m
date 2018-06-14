@@ -41,10 +41,12 @@
 +(void)requstServiceClass:(SuccessArrBlock)sucBlock{
     [YSNetworkTool POST:dictionaryServiceCategory params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray * arr = [NSMutableArray array];
-        for (int i=0; i<[responseObject[@"data"] count]; i++) {
-            ClassifyMo * mo = [ClassifyMo mj_objectWithKeyValues:responseObject[@"data"][i]];
-            mo.ID = responseObject[@"data"][i][@"id"];
-            [arr addObject:mo];
+        if ([responseObject[@"data"] isKindOfClass:[NSArray class]]) {
+            for (int i=0; i<[responseObject[@"data"] count]; i++) {
+                ClassifyMo * mo = [ClassifyMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+                mo.ID = responseObject[@"data"][i][@"id"];
+                [arr addObject:mo];
+            }
         }
         sucBlock(arr);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -58,6 +60,13 @@
             [arr addObject:responseObject[@"data"][i][@"name"]];
         }
         sucBlock(arr);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
++(void)requstTrvalInvitDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock{
+    [YSNetworkTool POST:v1ServiceTravelPage params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

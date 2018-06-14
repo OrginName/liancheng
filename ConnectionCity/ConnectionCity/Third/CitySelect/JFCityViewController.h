@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "CityMo.h"
+
 @protocol JFCityViewControllerDelegate <NSObject>
 
 - (void)cityName:(NSString *)name;
-
+-(void)cityMo:(CityMo *)mo;
 @end
 
 @interface JFCityViewController : BaseViewController

@@ -7,9 +7,8 @@
 //
 
 #import "JFAreaDataManager.h"
-
 #import "FMDB.h"
-
+#import "CityMo.h"
 @interface JFAreaDataManager ()
 
 @property (nonatomic, strong) FMDatabase *db;
@@ -146,5 +145,31 @@ static JFAreaDataManager *manager = nil;
     //返回结果
     result(resultArray);
 }
-
+- (void)searchCityData1:(NSString *)searchObject result:(void (^)(NSMutableArray *result))result{
+    NSMutableArray * arr = [NSMutableArray array];
+        for (int i = 0; i < self.dataArr.count; i ++) {
+//            NSString *str = searchObject; //一开始的内容
+//            if (str.length) {  //下面那2个转换的方法一个都不能少
+//                NSMutableString *ms = [[NSMutableString alloc] initWithString:str];
+//                //汉字转拼音
+//                if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformMandarinLatin, NO)) {
+//                }
+//                //拼音转英文
+//                if (CFStringTransform((__bridge CFMutableStringRef)ms, 0, kCFStringTransformStripDiacritics, NO)) {
+//                    //字符串截取第一位，并转换成大写字母
+//                    NSString *firstStr = [[ms substringToIndex:1] uppercaseString];
+//                    CityMo * mo = self.dataArr[i];
+//                    if ([mo.initial isEqualToString:firstStr]) {
+//                        [arr addObject:mo];
+//                    }
+//                }
+//            }
+            CityMo * mo = self.dataArr[i];
+            if ([mo.fullName containsString:searchObject]) {
+                [arr addObject:mo];
+            }
+        }
+    //返回结果
+    result(arr);
+}
 @end

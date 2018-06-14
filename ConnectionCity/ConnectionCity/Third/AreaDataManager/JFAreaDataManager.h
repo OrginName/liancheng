@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface JFAreaDataManager : NSObject
-
+@property (nonatomic,strong)NSMutableArray * dataArr;
 + (JFAreaDataManager *)shareInstance;
 
 - (void)areaSqliteDBData;
@@ -56,4 +56,9 @@
  @param result 搜索回调结果
  */
 - (void)searchCityData:(NSString *)searchObject result:(void (^)(NSMutableArray *result))result;
+
+/**
+ 使用搜索框，搜索城市
+ */
+- (void)searchCityData1:(NSString *)searchObject result:(void (^)(NSMutableArray *result))result;
 @end

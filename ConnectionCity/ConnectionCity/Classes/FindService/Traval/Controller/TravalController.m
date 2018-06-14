@@ -10,7 +10,10 @@
 #import "CustomButton.h"
 #import "TrvalCell.h"
 #import "TrvalTrip.h"
-@interface TravalController ()<UITableViewDelegate,UITableViewDataSource>
+#import "FilterOneController.h"
+#import "JFCityViewController.h"
+#import "ServiceHomeNet.h"
+@interface TravalController ()<UITableViewDelegate,UITableViewDataSource,JFCityViewControllerDelegate>
 {
     UIButton * _tmpBtn;
 }
@@ -22,16 +25,58 @@
 @property (weak, nonatomic) IBOutlet UIView *view_tab;
 
 @end
-
 @implementation TravalController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    [self initData];
+}
+-(void)initData{
+    NSDictionary * dic1 = @{
+                            @"age": @"string",
+                            @"areaCode": @110101,
+                            @"category": @8,
+                            @"cityCode": @110000,
+                            @"distance": @"string",
+                            @"gender": @0,
+                            @"lat": @39.98941,
+                            @"lng": @116.480881,
+                            @"pageNumber": @1,
+                            @"pageSize": @5,
+                            @"sortField": @"createTime",
+                            @"provinceCode": @110000,
+                            @"sortType": @"desc",
+                            @"userStatus": @0,
+                            @"validType": @"string"
+                            };
+    [self requstLoad:dic1 withDic:@{}];
+    [self.tab_Bottom.mj_header beginRefreshing];
+}
+-(void)requstLoad:(NSDictionary *) dic1 withDic:(NSDictionary *)dic2{
+    self.tab_Bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        if (self.btn_invit.selected) {
+            [ServiceHomeNet requstTrvalInvitDic:dic1 withSuc:^(NSMutableArray *successArrValue) {
+                [self.tab_Bottom.mj_header endRefreshing];
+            }];
+        }else{
+            
+        }
+    } ];
+    self.tab_Bottom.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        if (self.btn_invit.selected) {
+            
+        }else{
+            
+        }
+    }];
 }
 #pragma mark ---按钮点击事件-----
+//筛选
 -(void)SearchClick{
-    [YTAlertUtil showTempInfo:@"筛选"];
+    FilterOneController * filter = [FilterOneController new];
+    filter.title = @"筛选条件";
+    filter.flag_SX = 1;
+    [self.navigationController pushViewController:filter animated:YES];
 }
 - (IBAction)send_invit:(UIButton *)sender {
     NSString * str = @"";
@@ -44,7 +89,15 @@
 }
 //城市更改
 -(void)CityClick{
-    [YTAlertUtil showTempInfo:@"城市更改"];
+    JFCityViewController * jf= [JFCityViewController new];
+    jf.delegate = self;
+    BaseNavigationController * nav = [[BaseNavigationController alloc] initWithRootViewController:jf];
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
+}
+//获取当前选取的城市model
+#pragma mark --- JFCityViewControllerDelegate-----
+-(void)cityMo:(CityMo *)mo{
+    
 }
 -(void)back{
     [self.tabBarController.navigationController popViewControllerAnimated:YES];
@@ -62,7 +115,7 @@
 }
 -(void)initLeftBarButton{
     //为导航栏添加右侧按钮1
-    UIBarButtonItem * left1 = [UIBarButtonItem itemWithRectTarget:self action:@selector(back) image:@"return-f" title:@"" withRect:CGRectMake(0, 0, 10, 10)];
+    UIBarButtonItem * left1 = [UIBarButtonItem itemWithRectTarget:self action:@selector(back) image:@"return-f" title:@"" withRect:CGRectMake(0, 0, 30, 10)];
     UIButton*btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(0, 0, 30, 30);
     btn.titleLabel.font = [UIFont systemFontOfSize:15];

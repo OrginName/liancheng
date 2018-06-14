@@ -32,6 +32,9 @@
 //}
 -(void)setArr_Data:(NSMutableArray *)arr_Data{
     _arr_Data = arr_Data;
+    if (arr_Data.count==0) {
+        return;
+    }
     ClassifyMo * mo = arr_Data[0];
     self.arr_right = mo.childs;
     [self.tab_Left reloadData];

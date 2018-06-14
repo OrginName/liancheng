@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CityMo.h"
 
 @protocol JFSearchViewDelegate <NSObject>
-
+-(void)serchResultCityMo:(CityMo *) mo;
 - (void)searchResults:(NSDictionary *)dic;
 - (void)touchViewToExit;
 @end
