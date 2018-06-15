@@ -23,7 +23,6 @@ NSString * const YTHttpUtilResponseData = @"Data";
 /** 返回已配置过的AFHTTPSessionManager */
 + (AFHTTPSessionManager *)manager {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer setValue:kAccount.token forHTTPHeaderField:@"X-ACCESS-TOKEN"];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain",@"image/gif", nil];
     manager.requestSerializer.timeoutInterval = 10;
@@ -46,6 +45,7 @@ NSString * const YTHttpUtilResponseData = @"Data";
         return;
     }
     if (showHud) {[YTAlertUtil showHUDWithTitle:nil];}
+    [manager.requestSerializer setValue:kAccount.token forHTTPHeaderField:@"X-ACCESS-TOKEN"];
     [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [YTAlertUtil hideHUD];
         [[self class] p_logRequestDataWithURL:url params:params response:responseObject];
@@ -65,6 +65,7 @@ NSString * const YTHttpUtilResponseData = @"Data";
          failure:(YTHttpUtilFailure)failure{
     AFHTTPSessionManager *manager = [[self class] manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager.requestSerializer setValue:kAccount.token forHTTPHeaderField:@"X-ACCESS-TOKEN"];
     if (showHud) {[YTAlertUtil showHUDWithTitle:nil];}
     [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [YTAlertUtil hideHUD];
@@ -84,6 +85,7 @@ NSString * const YTHttpUtilResponseData = @"Data";
     success:(YTHttpUtilSuccess)success
     failure:(YTHttpUtilFailure)failure {
     AFHTTPSessionManager *manager = [[self class]manager];
+    [manager.requestSerializer setValue:kAccount.token forHTTPHeaderField:@"X-ACCESS-TOKEN"];
     if (showHud) {[YTAlertUtil showHUDWithTitle:nil];}
     [manager GET:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [YTAlertUtil hideHUD];
@@ -102,6 +104,7 @@ NSString * const YTHttpUtilResponseData = @"Data";
         failure:(YTHttpUtilFailure)failure {
     AFHTTPSessionManager *manager = [[self class]manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager.requestSerializer setValue:kAccount.token forHTTPHeaderField:@"X-ACCESS-TOKEN"];
     if (showHud) {[YTAlertUtil showHUDWithTitle:nil];}
     [manager GET:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [YTAlertUtil hideHUD];
@@ -124,6 +127,7 @@ NSString * const YTHttpUtilResponseData = @"Data";
     AFHTTPSessionManager *manager = [[self class]manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager.requestSerializer setValue:kAccount.token forHTTPHeaderField:@"X-ACCESS-TOKEN"];
     [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [imageArr enumerateObjectsUsingBlock:^(UIImage * _Nonnull image, NSUInteger idx, BOOL * _Nonnull stop) {
             NSData *data = UIImageJPEGRepresentation(image, 0.7);
