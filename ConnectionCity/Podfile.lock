@@ -24,12 +24,15 @@ PODS:
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
+  - HappyDNS (0.3.14)
   - IQKeyboardManager (6.0.2)
   - Masonry (1.1.0)
   - MBProgressHUD (0.9.2)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.15.3)
   - MLLabel (1.10.5)
+  - Qiniu (7.2.3):
+    - HappyDNS (~> 0.3)
   - RongCloudIM/IMKit (2.8.31):
     - RongCloudIM/IMLib
   - RongCloudIM/IMLib (2.8.31)
@@ -49,6 +52,7 @@ DEPENDENCIES:
   - MJExtension
   - MJRefresh
   - MLLabel
+  - Qiniu (~> 7.1)
   - RongCloudIM/IMKit (~> 2.8.3)
   - RongCloudIM/IMLib (~> 2.8.3)
   - SDWebImage (~> 3.8)
@@ -60,15 +64,17 @@ SPEC CHECKSUMS:
   AMapLocation: 55116a2c8956eab7550cbb56e989aa5cdcc424e3
   AMapSearch: e3f96bd0681abe70abba303709a1a05625a8f76c
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  HappyDNS: dc6a164ee81979093123c241c6353bcf0218add6
   IQKeyboardManager: c49d59e358aeeffaa0280aa305093c2b194d2607
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   MLLabel: d76124055a2205e7f76878e62cd06ba925ba0c97
+  Qiniu: ae0fea1cc379fae1560d8748ac537e0fbeb8626e
   RongCloudIM: dbbf0ff365f1627324cfead498136d75c99cbeac
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: a32ce696efdeb482c07651fb10e8cab86aad1cc4
+PODFILE CHECKSUM: b4db56c66ebc7b7fe0ff441e9c3e19bdd1ca7c73
 
 COCOAPODS: 1.1.1
