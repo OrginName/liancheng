@@ -14,6 +14,6 @@ pod 'FMDB'
 pod 'MLLabel'
 pod 'RongCloudIM/IMLib', '~> 2.8.3'
 pod 'RongCloudIM/IMKit', '~> 2.8.3'
-pod "Qiniu", "~> 7.1"
+pod 'Qiniu', '~> 7.1'
 end
 

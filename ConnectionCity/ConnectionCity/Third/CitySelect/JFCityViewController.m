@@ -505,6 +505,8 @@ JFSearchViewDelegate,UITextFieldDelegate>
     CityMo * mo = _sectionMutableArray[0][_characterMutableArray[indexPath.section]][indexPath.row];
     [KUserDefults setObject:mo.fullName forKey:kUserCity];
     [KUserDefults setObject:mo.ID forKey:kUserCityID];
+    [KUserDefults setObject:mo.lat forKey:kLat];
+    [KUserDefults setObject:mo.lng forKey:KLng];
     _headerView.cityName = cell.textLabel.text;
 //    [kCurrentCityInfoDefaults setObject:cell.textLabel.text forKey:@"currentCity"];
 //    [_manager cityNumberWithCity:cell.textLabel.text cityNumber:^(NSString *cityNumber) {

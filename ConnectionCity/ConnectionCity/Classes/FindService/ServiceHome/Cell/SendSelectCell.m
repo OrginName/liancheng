@@ -87,6 +87,9 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     }
     [_dataArr replaceObjectAtIndex:indexPath.section withObject:array];
     [_bollec_bottom reloadData];
+    if ([self.delegate respondsToSelector:@selector(selectedItemButton:)]) {
+        [self.delegate selectedItemButton:<#(NSMutableArray *)#>]
+    }
     NSLog(@"%@",_dataArr[indexPath.section][indexPath.row]);
 }
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{

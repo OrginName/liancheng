@@ -63,6 +63,8 @@ static NSString *ID = @"searchCell";
     }
     [KUserDefults setObject:mo.fullName forKey:kUserCity];
     [KUserDefults setObject:mo.ID forKey:kUserCityID];
+    [KUserDefults setObject:mo.lat forKey:kLat];
+    [KUserDefults setObject:mo.lng forKey:KLng];
 //    if (![[dataDic valueForKey:@"city"] isEqualToString:@"抱歉"]) {
 //        if (self.delegate && [self.delegate respondsToSelector:@selector(searchResults:)]) {
 //            [self.delegate searchResults:dataDic];

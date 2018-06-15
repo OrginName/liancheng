@@ -26,6 +26,8 @@
 @property (nonatomic,assign) NSInteger section2Num;
 @property (nonatomic,strong) NSArray * arr1;
 @property (nonatomic,strong) NSArray * arr2;
+@property (nonatomic,strong) NSString * str_url;
+@property (nonatomic,strong) NSString * serviceCategoryId;
 @end
 
 @implementation SendServiceController
@@ -34,8 +36,8 @@
     [super viewDidLoad];
     self.navigationItem.title = @"发布服务";
     [self setUI];
-    self.arr1 = @[@{@"isMulitable":@"1",@"name":@"擅长位置",@"subname":@[@{@"isSelected":@YES,@"title":@"坦克"},@{@"isSelected":@NO,@"title":@"射手"},@{@"isSelected":@NO,@"title":@"法师"},@{@"isSelected":@NO,@"title":@"刺客"}]},@{@"isMulitable":@"0",@"name":@"最高段位",@"subname":@[@{@"isSelected":@YES,@"title":@"黄金"},@{@"isSelected":@NO,@"title":@"白银及一下"},@{@"isSelected":@NO,@"title":@"铂金"},@{@"isSelected":@NO,@"title":@"王者"}]}];
-    self.arr2 = @[@{@"isMulitable":@"0",@"name":@"擅长位置",@"subname":@[@{@"isSelected":@YES,@"title":@"坦克"},@{@"isSelected":@NO,@"title":@"射手"},@{@"isSelected":@NO,@"title":@"法师"},@{@"isSelected":@NO,@"title":@"刺客"}]}];
+//    self.arr1 = @[@{@"isMulitable":@"1",@"name":@"擅长位置",@"subname":@[@{@"isSelected":@YES,@"title":@"坦克"},@{@"isSelected":@NO,@"title":@"射手"},@{@"isSelected":@NO,@"title":@"法师"},@{@"isSelected":@NO,@"title":@"刺客"}]},@{@"isMulitable":@"0",@"name":@"最高段位",@"subname":@[@{@"isSelected":@YES,@"title":@"黄金"},@{@"isSelected":@NO,@"title":@"白银及一下"},@{@"isSelected":@NO,@"title":@"铂金"},@{@"isSelected":@NO,@"title":@"王者"}]}];
+//    self.arr2 = @[@{@"isMulitable":@"0",@"name":@"擅长位置",@"subname":@[@{@"isSelected":@YES,@"title":@"坦克"},@{@"isSelected":@NO,@"title":@"射手"},@{@"isSelected":@NO,@"title":@"法师"},@{@"isSelected":@NO,@"title":@"刺客"}]}];
 }
 -(void)setUI{
     itemHeigth = (kScreenWidth-70) / 4+10;
@@ -50,7 +52,39 @@
 }
 #pragma mark ---- 各种按钮点击i-----
 -(void)complete{
-    [YTAlertUtil showTempInfo:@"完成"];
+    for (int i=0; i<4; i++) {
+        SendServiceCell * cell = [SendServiceCell tempTableViewCellWith:self.tab_Bottom indexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        if (cell.txt_Placeholder.text.length==0) {
+            [YTAlertUtil showTempInfo:@"请填写完整"];
+            return;
+        }
+    }
+    SendServiceCell * cell = [SendServiceCell tempTableViewCellWith:self.tab_Bottom indexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    SendServiceCell * cell1 = [SendServiceCell tempTableViewCellWith:self.tab_Bottom indexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+    SendServiceCell * cell2 = [SendServiceCell tempTableViewCellWith:self.tab_Bottom indexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+    NSInteger areaCode = [[KUserDefults objectForKey:kUserCityID] integerValue];
+    NSInteger lat = [[KUserDefults objectForKey:kLat] integerValue];
+    NSInteger lng = [[KUserDefults objectForKey:KLng] integerValue];
+    NSDictionary * dic = @{
+                           @"areaCode": @(areaCode),
+                           @"content": @"我也不知道是啥",
+                           @"images": _str_url,
+                           @"introduce": cell1.txt_Placeholder.text,
+                           @"lat": @(lat),
+                           @"lng": @(lng),
+                           @"price": [cell1.txt_Placeholder.text intValue],
+                           @"properties": [
+                                          0
+                                          ],
+                           @"serviceCategoryId": [serviceCategoryId integerValue],
+                           @"title": cell.txt_Placeholder.text,
+                           @"type": @10
+                           };
+    [YSNetworkTool POST:v1ServiceCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 6;
@@ -112,6 +146,7 @@
             
         };
         class.block1 = ^(NSString *classifiation,NSString *classifiation1){
+            _serviceCategoryId = classifiation;
             [self loadClassAttr:classifiation str:classifiation1];
         };
         [self.navigationController pushViewController:class animated:YES];
@@ -147,6 +182,18 @@
         [self.tab_Bottom setTableHeaderView:headerView];// 关键是这句话
         [self.tab_Bottom endUpdates];
     }
+    _str_url =@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1977804817,1381775671&fm=200&gp=0.jpg;https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528544357416&di=e79bd79f86eea467f4fca6a5bfe35d7d&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dshijue1%252C0%252C0%252C294%252C40%2Fsign%3D0392a2bf17950a7b6138468762b808ac%2F03087bf40ad162d9bd499b951bdfa9ec8b13cd90.jpg";
+//    YSAccount * user = [YSAccountTool account];
+//    NSLog(@"%@",user.token);
+//    NSString *token = user.token;
+//    QNUploadManager *upManager = [[QNUploadManager alloc] init];
+////    NSData *data = UIImageJPEGRepresentation(imageArr[0], 0.7);
+//    NSData *data = [@"Hello, World!" dataUsingEncoding : NSUTF8StringEncoding];
+//    [upManager putData:data key:@"hello" token:token
+//              complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+//                  NSLog(@"%@", info);
+//                  NSLog(@"%@", resp);
+//              } option:nil];
 }
 #pragma mark --- 懒加载UI-----
 -(LCPicker *)myPicker{
