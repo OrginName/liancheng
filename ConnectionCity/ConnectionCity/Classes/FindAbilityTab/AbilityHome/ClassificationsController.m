@@ -111,6 +111,7 @@
         [self.tab_Right reloadData]; 
     }else{
         self.block(self.arr_right[indexPath.row][@"name"]);
+        self.block1(self.arr_right[indexPath.row][@"id"],self.arr_right[indexPath.row][@"name"]);
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

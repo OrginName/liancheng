@@ -9,7 +9,11 @@
 #import "TrvalTrip.h"
 #import "TrvalTripCell.h"
 #import "AppointmentController.h"
+#import "ServiceHomeNet.h"
 @interface TrvalTrip()<UICollectionViewDelegate,UICollectionViewDataSource>
+{
+     NSInteger _page;
+}
 @property (nonatomic,strong) UICollectionView * bollec_bottom;
 @property (nonatomic,strong)TrvalTripLayout * flowLyout;
 @property (nonatomic,strong)UIViewController * control;
@@ -19,9 +23,35 @@
     if (self = [super initWithFrame:frame]) {
         self.control = control;
         [self addSubview:self.bollec_bottom];
+        _page=1;
         [self.bollec_bottom registerNib:[UINib nibWithNibName:@"TrvalTripCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"TripCell"];
+        [self initData];
     }
     return self;
+}
+-(void)initData{
+    NSDictionary * dic1 = @{
+                            @"age": @"string",
+                            @"category": @8,
+                            @"cityCode": @110000,
+                            @"distance": @"string",
+                            @"gender": @0,
+                            @"lat": @39.98941,
+                            @"lng": @116.480881,
+                            @"pageNumber": @(_page),
+                            @"pageSize": @15,
+                            @"sortField": @"createTime",
+                            @"sortType": @"desc",
+                            @"userStatus": @0,
+                            @"validType": @"string"
+                            };
+    [self.bollec_bottom.mj_header beginRefreshing];
+    self.bollec_bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [ServiceHomeNet requstTrvalInvitDic:dic1 withSuc:^(NSMutableArray *successArrValue) {
+            [self.bollec_bottom.mj_header endRefreshing];
+        }];
+    }];
+    
 }
 #pragma mark UICollectionViewDataSource 数据源方法
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
-
+/**
+ *  类型自定义
+ */
+typedef void (^ReturnValueBlock) (NSString *strValue);
 @interface FilterOneController : BaseViewController
 /*
  1.服务页主页
@@ -16,6 +19,7 @@
  4.
  */
 @property (nonatomic,assign)NSInteger  flag_SX;//判断哪个页面跳转
+@property (nonatomic,copy) ReturnValueBlock block;
 @end
 @interface FilterCollecRuesuableView : UICollectionReusableView
 /**

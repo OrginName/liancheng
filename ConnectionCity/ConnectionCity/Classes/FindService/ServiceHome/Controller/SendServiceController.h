@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface SendServiceController : BaseViewController
-
+@property (nonatomic,strong) NSMutableArray * arr_receive;
 @end

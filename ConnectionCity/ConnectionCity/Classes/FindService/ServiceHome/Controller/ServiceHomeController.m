@@ -16,6 +16,7 @@
 #import "ServiceHomeNet.h"
 #import "RefineView.h"
 #import "PopThree.h"
+#import "SendServiceController.h"
 @interface ServiceHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
@@ -68,7 +69,9 @@
 //发布简历按钮点击
 - (IBAction)sendResume:(UIButton *)sender {
     _flag = NO;
-    [self.navigationController pushViewController:[self rotateClass:@"SendServiceController"] animated:YES];
+    SendServiceController * send = [SendServiceController new];
+    send.arr_receive = self.Arr_Classify;
+    [self.navigationController pushViewController:send animated:YES];
 }
 //顶部三个筛选按钮的点击
 - (IBAction)btn_SX:(UIButton *)sender {

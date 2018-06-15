@@ -12,6 +12,8 @@
 #import "LCPicker.h"
 #import "SendSelectCell.h"
 #import "EditAllController.h"
+#import "ClassificationsController.h"
+#import "ServiceHomeNet.h"
 @interface SendServiceController ()<PhotoSelectDelegate,UITableViewDelegate,UITableViewDataSource,LCPickerDelegate>
 {
     CGFloat itemHeigth,layout_Height;
@@ -101,10 +103,18 @@
     }else
         return [[UIView alloc] init];
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{ 
     if (indexPath.section == 1) {
-        [_myPicker animateShow];
+        ClassificationsController * class = [ClassificationsController new];
+        class.title = @"服务分类";
+        class.arr_Data = self.arr_receive;
+        class.block = ^(NSString *classifiation) {
+            
+        };
+        class.block1 = ^(NSString *classifiation,NSString *classifiation1){
+            [self loadClassAttr:classifiation str:classifiation1];
+        };
+        [self.navigationController pushViewController:class animated:YES];
     }else if(indexPath.section!=4&&indexPath.section!=5){
         SendServiceCell * cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section]];
         EditAllController * edit = [EditAllController new];
@@ -152,5 +162,16 @@
         _selectView = [[SendSelectCell alloc] initWithFrame:CGRectMake(0, 0, self.tab_Bottom.width, 300)];
     }
     return _selectView;
+}
+//加载各种数据
+-(void)loadClassAttr:(NSString *)ID str:(NSString *)name{
+    NSDictionary * dic = @{@"id":ID};
+    [ServiceHomeNet requstServiceClassAttrParam:dic succblick:^(NSMutableArray *successArrValue) {
+        SendServiceCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+        [_selectView.arrData removeAllObjects];
+        _selectView.arrData = successArrValue;
+        [self.tab_Bottom reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
+        cell.txt_Placeholder.text = name;
+    }];
 }
 @end

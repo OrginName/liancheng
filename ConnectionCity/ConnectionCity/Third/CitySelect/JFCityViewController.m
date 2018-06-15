@@ -89,13 +89,20 @@ JFSearchViewDelegate,UITextFieldDelegate>
         }else {
             [YSNetworkTool POST:dictionaryAreaTreeList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
                 [_cityMutableArray removeAllObjects];
+                NSString * str = [KUserDefults objectForKey:kUserCity];
                 for (int i=0; i<[responseObject[@"data"] count]; i++) {
                     CityMo * mo = [CityMo mj_objectWithKeyValues:responseObject[@"data"][i]];
                     mo.ID = responseObject[@"data"][i][@"id"];
+                    if ([str isEqualToString:mo.name]) {
+                        [KUserDefults setObject:mo.ID forKey:kUserCityID];
+                    }
                     if (![mo.fullName containsString:@"市"]) {
                         for (int j=0; j<[mo.childs count]; j++) {
                             CityMo * mo1 = [CityMo mj_objectWithKeyValues:mo.childs[j]];
                             mo1.ID = mo.childs[j][@"id"];
+                            if ([str isEqualToString:mo.name]) {
+                                [KUserDefults setObject:mo.ID forKey:kUserCityID];
+                            }
                             [_cityMutableArray addObject:mo1];
                         }
                     }else{
@@ -495,11 +502,14 @@ JFSearchViewDelegate,UITextFieldDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    CityMo * mo = _sectionMutableArray[0][_characterMutableArray[indexPath.section]][indexPath.row];
+    [KUserDefults setObject:mo.fullName forKey:kUserCity];
+    [KUserDefults setObject:mo.ID forKey:kUserCityID];
     _headerView.cityName = cell.textLabel.text;
-    [kCurrentCityInfoDefaults setObject:cell.textLabel.text forKey:@"currentCity"];
-    [_manager cityNumberWithCity:cell.textLabel.text cityNumber:^(NSString *cityNumber) {
-        [kCurrentCityInfoDefaults setObject:cityNumber forKey:@"cityNumber"];
-    }];
+//    [kCurrentCityInfoDefaults setObject:cell.textLabel.text forKey:@"currentCity"];
+//    [_manager cityNumberWithCity:cell.textLabel.text cityNumber:^(NSString *cityNumber) {
+//        [kCurrentCityInfoDefaults setObject:cityNumber forKey:@"cityNumber"];
+//    }];
     if (self.delegate && [self.delegate respondsToSelector:@selector(cityName:)]) {
         [self.delegate cityName:cell.textLabel.text];
     }

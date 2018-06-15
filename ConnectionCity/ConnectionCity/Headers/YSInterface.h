@@ -103,6 +103,7 @@ static NSString * const dictionarySalary = @"/dictionary/salary";
 static NSString * const dictionarySchool = @"/dictionary/school";
 //服务分类
 static NSString * const dictionaryServiceCategory = @"/dictionary/service-category";
+static NSString * const dictionaryServiceCategoryProperties = @"/dictionary/service-category-properties";
 //宝物分类
 static NSString * const dictionaryTreasureCategory = @"/dictionary/treasure-category";
 #pragma mark - 服务

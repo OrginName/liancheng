@@ -75,6 +75,7 @@
 #define kCode              @"code"
 /** @"UserCity"*/
 #define kUserCity @"UserCity"
+#define kUserCityID @"UserCityID"
 #define kLat @"lat"
 #define KLng @"lng"
 /** 服务的UUID */

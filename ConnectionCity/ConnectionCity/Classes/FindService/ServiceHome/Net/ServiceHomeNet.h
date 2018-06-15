@@ -37,6 +37,12 @@ typedef void (^FailDicBlock) (NSString * failValue);
  */
 +(void)requstServiceClass:(SuccessArrBlock)sucBlock;
 /**
+ 服务分类属性
+ 
+ @param sucBlock 成功回调
+ */
++(void)requstServiceClassAttrParam:(NSDictionary *)param succblick:(SuccessArrBlock)sucBlock;
+/**
  服务关键字
  
  @param sucBlock 成功回调

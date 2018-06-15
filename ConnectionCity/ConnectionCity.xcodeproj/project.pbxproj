@@ -205,6 +205,7 @@
 		8D67603620A448CB0027CDEE /* SX.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D67603520A448CB0027CDEE /* SX.plist */; };
 		8D75934F20CA84CA0059C9F6 /* AboutOurController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D75934D20CA84CA0059C9F6 /* AboutOurController.m */; };
 		8D75935020CA84CA0059C9F6 /* AboutOurController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D75934E20CA84CA0059C9F6 /* AboutOurController.xib */; };
+		8D7FF6B020D3A8AB0075B2D5 /* ClassAttrMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7FF6AF20D3A8AB0075B2D5 /* ClassAttrMo.m */; };
 		8D8E4ECC20C9109E00C3D537 /* EditProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E4EC720C9109E00C3D537 /* EditProfileCell.m */; };
 		8D8E4ECD20C9109E00C3D537 /* EditProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D8E4EC820C9109E00C3D537 /* EditProfileCell.xib */; };
 		8D8E4ECE20C9109E00C3D537 /* EditProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E4ECA20C9109E00C3D537 /* EditProfileController.m */; };
@@ -777,6 +778,8 @@
 		8D75934C20CA84CA0059C9F6 /* AboutOurController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutOurController.h; sourceTree = "<group>"; };
 		8D75934D20CA84CA0059C9F6 /* AboutOurController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutOurController.m; sourceTree = "<group>"; };
 		8D75934E20CA84CA0059C9F6 /* AboutOurController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutOurController.xib; sourceTree = "<group>"; };
+		8D7FF6AE20D3A8AB0075B2D5 /* ClassAttrMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassAttrMo.h; sourceTree = "<group>"; };
+		8D7FF6AF20D3A8AB0075B2D5 /* ClassAttrMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassAttrMo.m; sourceTree = "<group>"; };
 		8D8E4EC620C9109E00C3D537 /* EditProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileCell.h; sourceTree = "<group>"; };
 		8D8E4EC720C9109E00C3D537 /* EditProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileCell.m; sourceTree = "<group>"; };
 		8D8E4EC820C9109E00C3D537 /* EditProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileCell.xib; sourceTree = "<group>"; };
@@ -2338,6 +2341,8 @@
 			children = (
 				8DF7E3D020CFAA78009A92D7 /* ClassifyMo.h */,
 				8DF7E3D120CFAA78009A92D7 /* ClassifyMo.m */,
+				8D7FF6AE20D3A8AB0075B2D5 /* ClassAttrMo.h */,
+				8D7FF6AF20D3A8AB0075B2D5 /* ClassAttrMo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3677,6 +3682,7 @@
 				CE0BA5E8209D5E9B004C3C33 /* GlobalManager.m in Sources */,
 				8DC17A7D20C0E430005D9EE0 /* UIView+Geometry.m in Sources */,
 				CEC4A54120C3D6FC0026EE19 /* TeamNameCell.m in Sources */,
+				8D7FF6B020D3A8AB0075B2D5 /* ClassAttrMo.m in Sources */,
 				8DEA450420C10BB7001529F1 /* FindMySelfCell.m in Sources */,
 				72EC1BB320BC386D00ACC20B /* SendServiceController.m in Sources */,
 				7274188620B1474B001D6BE1 /* ConnectionCell.m in Sources */,

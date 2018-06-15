@@ -8,6 +8,7 @@
 
 #import "ServiceHomeNet.h"
 #import "ClassifyMo.h"
+#import "ClassAttrMo.h"
 @implementation ServiceHomeNet
 +(void)requstConditions:(SuccessArrBlock) sucBloc withFailBlock:(FailDicBlock)failBlock{
     [YSNetworkTool POST:v1ServiceConditions params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -67,6 +68,29 @@
 +(void)requstTrvalInvitDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock{
     [YSNetworkTool POST:v1ServiceTravelPage params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
++(void)requstServiceClassAttrParam:(NSDictionary *)param succblick:(SuccessArrBlock)sucBlock{
+    [YSNetworkTool POST:dictionaryServiceCategoryProperties params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray * arr = responseObject[@"data"];
+        NSMutableArray * dataArr = [NSMutableArray array];
+        for (int i=0; i<[arr count]; i++) {
+            NSMutableDictionary * dicItem = [NSMutableDictionary dictionary];
+            NSMutableArray * arrItem = [NSMutableArray array];
+            for (int j=0; j<[arr[i][@"childs"] count]; j++) {
+                NSDictionary * dic1 = @{@"isSelected":j==0?@"YES":@"NO",@"title":arr[i][@"childs"][j][@"name"],@"id":arr[i][@"childs"][j][@"id"]};
+                [arrItem addObject:dic1];
+                if (arrItem.count==[arr[i][@"childs"] count]) {
+                    [dicItem setObject:arrItem forKey:@"subname"];
+                    dicItem[@"isMulitable"] = @"1";
+                    dicItem[@"name"] = i==0?@"擅长位置":i==1?@"最高段位":@"";
+                }
+            }
+            [dataArr addObject:dicItem];
+        }
+        sucBlock(dataArr);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
