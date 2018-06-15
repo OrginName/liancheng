@@ -95,6 +95,9 @@
                 UILabel * btn = (UILabel *)[self.view_SX viewWithTag:2];
                 btn.text = classifiation;
             };
+            class.block1 = ^(NSString *classifiationID, NSString *classifiation) {
+                
+            };
             [self.navigationController pushViewController:class animated:YES];
         }
             break;

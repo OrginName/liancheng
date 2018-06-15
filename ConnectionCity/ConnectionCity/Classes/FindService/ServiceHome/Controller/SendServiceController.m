@@ -14,10 +14,11 @@
 #import "EditAllController.h"
 #import "ClassificationsController.h"
 #import "ServiceHomeNet.h"
-@interface SendServiceController ()<PhotoSelectDelegate,UITableViewDelegate,UITableViewDataSource,LCPickerDelegate>
+@interface SendServiceController ()<PhotoSelectDelegate,UITableViewDelegate,UITableViewDataSource,LCPickerDelegate,SendSelectCellDelegate>
 {
     CGFloat itemHeigth,layout_Height;
     UIButton * _tmpBtn;
+    NSString * _secrviceType;
 }
 @property (nonatomic,strong)SendSelectCell * selectView;
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
@@ -28,6 +29,7 @@
 @property (nonatomic,strong) NSArray * arr2;
 @property (nonatomic,strong) NSString * str_url;
 @property (nonatomic,strong) NSString * serviceCategoryId;
+@property (nonatomic,strong) NSMutableArray * Attr_Arr;
 @end
 
 @implementation SendServiceController
@@ -35,6 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"发布服务";
+    self.Attr_Arr = [NSMutableArray array];
     [self setUI];
 //    self.arr1 = @[@{@"isMulitable":@"1",@"name":@"擅长位置",@"subname":@[@{@"isSelected":@YES,@"title":@"坦克"},@{@"isSelected":@NO,@"title":@"射手"},@{@"isSelected":@NO,@"title":@"法师"},@{@"isSelected":@NO,@"title":@"刺客"}]},@{@"isMulitable":@"0",@"name":@"最高段位",@"subname":@[@{@"isSelected":@YES,@"title":@"黄金"},@{@"isSelected":@NO,@"title":@"白银及一下"},@{@"isSelected":@NO,@"title":@"铂金"},@{@"isSelected":@NO,@"title":@"王者"}]}];
 //    self.arr2 = @[@{@"isMulitable":@"0",@"name":@"擅长位置",@"subname":@[@{@"isSelected":@YES,@"title":@"坦克"},@{@"isSelected":@NO,@"title":@"射手"},@{@"isSelected":@NO,@"title":@"法师"},@{@"isSelected":@NO,@"title":@"刺客"}]}];
@@ -53,30 +56,28 @@
 #pragma mark ---- 各种按钮点击i-----
 -(void)complete{
     for (int i=0; i<4; i++) {
-        SendServiceCell * cell = [SendServiceCell tempTableViewCellWith:self.tab_Bottom indexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        SendServiceCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i]];
         if (cell.txt_Placeholder.text.length==0) {
             [YTAlertUtil showTempInfo:@"请填写完整"];
             return;
         }
     }
-    SendServiceCell * cell = [SendServiceCell tempTableViewCellWith:self.tab_Bottom indexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    SendServiceCell * cell1 = [SendServiceCell tempTableViewCellWith:self.tab_Bottom indexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-    SendServiceCell * cell2 = [SendServiceCell tempTableViewCellWith:self.tab_Bottom indexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+    SendServiceCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    SendServiceCell * cell1 = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
+    SendServiceCell * cell2 = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
     NSInteger areaCode = [[KUserDefults objectForKey:kUserCityID] integerValue];
-    NSInteger lat = [[KUserDefults objectForKey:kLat] integerValue];
-    NSInteger lng = [[KUserDefults objectForKey:KLng] integerValue];
+    float lat = [[KUserDefults objectForKey:kLat] floatValue];
+    float lng = [[KUserDefults objectForKey:KLng] floatValue];
     NSDictionary * dic = @{
                            @"areaCode": @(areaCode),
                            @"content": @"我也不知道是啥",
-                           @"images": _str_url,
+                           @"images": _str_url?_str_url:@"",
                            @"introduce": cell1.txt_Placeholder.text,
                            @"lat": @(lat),
                            @"lng": @(lng),
-                           @"price": [cell1.txt_Placeholder.text intValue],
-                           @"properties": [
-                                          0
-                                          ],
-                           @"serviceCategoryId": [serviceCategoryId integerValue],
+                           @"price": @([cell2.txt_Placeholder.text floatValue]),
+                           @"properties": self.Attr_Arr,
+                           @"serviceCategoryId":@([_secrviceType integerValue]),
                            @"title": cell.txt_Placeholder.text,
                            @"type": @10
                            };
@@ -195,6 +196,10 @@
 //                  NSLog(@"%@", resp);
 //              } option:nil];
 }
+#pragma mark ----SendSelectCellDelegate----
+- (void)selectedItemButton:(NSString *)arr{
+    [self.Attr_Arr addObject:arr];
+}
 #pragma mark --- 懒加载UI-----
 -(LCPicker *)myPicker{
     if (!_myPicker) {
@@ -207,18 +212,26 @@
 -(SendSelectCell *)selectView{
     if (!_selectView) {
         _selectView = [[SendSelectCell alloc] initWithFrame:CGRectMake(0, 0, self.tab_Bottom.width, 300)];
+        _selectView.delegate = self;
     }
     return _selectView;
 }
 //加载各种数据
 -(void)loadClassAttr:(NSString *)ID str:(NSString *)name{
     NSDictionary * dic = @{@"id":ID};
+    _secrviceType = ID;
+    SendServiceCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    cell.txt_Placeholder.text = name;
+    [KUserDefults setObject:name forKey:@"ClassName"];
     [ServiceHomeNet requstServiceClassAttrParam:dic succblick:^(NSMutableArray *successArrValue) {
-        SendServiceCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+        
         [_selectView.arrData removeAllObjects];
         _selectView.arrData = successArrValue;
-        [self.tab_Bottom reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
-        cell.txt_Placeholder.text = name;
+        [self.tab_Bottom reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
     }];
 }
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [KUserDefults removeObjectForKey:@"ClassName"];
+} 
 @end

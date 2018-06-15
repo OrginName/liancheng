@@ -80,7 +80,7 @@
             NSMutableDictionary * dicItem = [NSMutableDictionary dictionary];
             NSMutableArray * arrItem = [NSMutableArray array];
             for (int j=0; j<[arr[i][@"childs"] count]; j++) {
-                NSDictionary * dic1 = @{@"isSelected":j==0?@"YES":@"NO",@"title":arr[i][@"childs"][j][@"name"],@"id":arr[i][@"childs"][j][@"id"]};
+                NSDictionary * dic1 = @{@"isSelected":@"NO",@"title":arr[i][@"childs"][j][@"name"],@"id":arr[i][@"childs"][j][@"id"]};
                 [arrItem addObject:dic1];
                 if (arrItem.count==[arr[i][@"childs"] count]) {
                     [dicItem setObject:arrItem forKey:@"subname"];

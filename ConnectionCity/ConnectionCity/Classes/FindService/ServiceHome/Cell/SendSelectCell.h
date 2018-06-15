@@ -10,7 +10,7 @@
 @protocol SendSelectCellDelegate <NSObject>
 // 由于这里没有任何修饰词所以是默认的代理方法，切记默认的代理方法，如果遵守了协议那就必须实现
 @optional
-- (void)selectedItemButton:(NSMutableArray *)arr;
+- (void)selectedItemButton:(NSString *)arr;
 @end
 
 @interface SendSelectCell : UIView

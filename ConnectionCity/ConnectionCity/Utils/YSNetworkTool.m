@@ -9,7 +9,7 @@
 #import "YSNetworkTool.h"
 #import "EGOCache.h"
 #import "AppDelegate.h"
-
+#import "YSAccount.h"
 /** 请求失败提示 */
 static NSString * const kRequestFalseMessage = @"无网络连接，请稍后重试";
 /** 服务器异常提示信息 */
@@ -36,8 +36,7 @@ NSString * const YTHttpUtilResponseData = @"Data";
     showHud:(BOOL)showHud
      success:(YTHttpUtilSuccess)success
      failure:(YTHttpUtilFailure)failure {
-    AFHTTPSessionManager *manager = [[self class] manager];
-    
+    AFHTTPSessionManager *manager = [[self class] manager]; 
     NSString *cacheKeyStr = [[self class] getCacheWithWithUrl:url requestDict:params];
     if (![[self class] connectedAndShowDisconnectInfo]) {
         id cacheData = [[EGOCache globalCache] objectForKey:cacheKeyStr];

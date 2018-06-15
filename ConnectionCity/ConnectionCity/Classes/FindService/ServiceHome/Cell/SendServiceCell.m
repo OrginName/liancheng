@@ -15,7 +15,7 @@
 @implementation SendServiceCell
 static NSArray * arr_Str;
 +(void)initialize{
-    arr_Str = @[@{@"title":@"服务标题",@"placeholder":@"填写你可以赚钱的服务技能"},@{@"title":@"服务类别",@"placeholder":@"游戏服务/王者荣耀"},@{@"title":@"服务介绍",@"placeholder":@"介绍你自己的服务优势"},@{@"title":@"服务价格",@"placeholder":@"填写价格"}];
+    arr_Str = @[@{@"title":@"服务标题",@"placeholder":@"填写你可以赚钱的服务技能"},@{@"title":@"服务类别",@"placeholder":@"请选择服务类别"},@{@"title":@"服务介绍",@"placeholder":@"介绍你自己的服务优势"},@{@"title":@"服务价格",@"placeholder":@"填写价格"}];
 }
 
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView
@@ -32,9 +32,13 @@ static NSArray * arr_Str;
         identifier = @"SendServiceCell2";
         index = 2;
     }
+    
     SendServiceCell *cell = (SendServiceCell*)[tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"SendServiceCell" owner:self options:nil] objectAtIndex:index];
+    }
+    if (indexPath.section==1&&indexPath.row==0) {
+        cell.txt_Placeholder.text = [KUserDefults objectForKey:@"ClassName"];
     }
     if (indexPath.section!=4&&indexPath.section!=5){
         cell.lab_title.text = arr_Str[indexPath.section][@"title"];

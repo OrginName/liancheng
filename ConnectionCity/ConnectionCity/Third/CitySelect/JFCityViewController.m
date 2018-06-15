@@ -93,14 +93,14 @@ JFSearchViewDelegate,UITextFieldDelegate>
                 for (int i=0; i<[responseObject[@"data"] count]; i++) {
                     CityMo * mo = [CityMo mj_objectWithKeyValues:responseObject[@"data"][i]];
                     mo.ID = responseObject[@"data"][i][@"id"];
-                    if ([str isEqualToString:mo.name]) {
+                    if ([mo.fullName containsString:str]) {
                         [KUserDefults setObject:mo.ID forKey:kUserCityID];
                     }
                     if (![mo.fullName containsString:@"市"]) {
                         for (int j=0; j<[mo.childs count]; j++) {
                             CityMo * mo1 = [CityMo mj_objectWithKeyValues:mo.childs[j]];
                             mo1.ID = mo.childs[j][@"id"];
-                            if ([str isEqualToString:mo.name]) {
+                            if ([mo.fullName containsString:str]) {
                                 [KUserDefults setObject:mo.ID forKey:kUserCityID];
                             }
                             [_cityMutableArray addObject:mo1];

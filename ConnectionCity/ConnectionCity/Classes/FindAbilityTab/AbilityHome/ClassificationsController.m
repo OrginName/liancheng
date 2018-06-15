@@ -110,6 +110,7 @@
         self.arr_right =  class.childs;
         [self.tab_Right reloadData]; 
     }else{
+        NSLog(@"当前row未：%ld",indexPath.row);
         self.block(self.arr_right[indexPath.row][@"name"]);
         self.block1(self.arr_right[indexPath.row][@"id"],self.arr_right[indexPath.row][@"name"]);
         [self.navigationController popViewControllerAnimated:YES];
