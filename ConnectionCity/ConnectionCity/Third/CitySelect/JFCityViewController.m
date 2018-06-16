@@ -89,20 +89,13 @@ JFSearchViewDelegate,UITextFieldDelegate>
         }else {
             [YSNetworkTool POST:dictionaryAreaTreeList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
                 [_cityMutableArray removeAllObjects];
-                NSString * str = [KUserDefults objectForKey:kUserCity];
                 for (int i=0; i<[responseObject[@"data"] count]; i++) {
                     CityMo * mo = [CityMo mj_objectWithKeyValues:responseObject[@"data"][i]];
                     mo.ID = responseObject[@"data"][i][@"id"];
-                    if ([mo.fullName containsString:str]) {
-                        [KUserDefults setObject:mo.ID forKey:kUserCityID];
-                    }
                     if (![mo.fullName containsString:@"市"]) {
                         for (int j=0; j<[mo.childs count]; j++) {
                             CityMo * mo1 = [CityMo mj_objectWithKeyValues:mo.childs[j]];
                             mo1.ID = mo.childs[j][@"id"];
-                            if ([mo.fullName containsString:str]) {
-                                [KUserDefults setObject:mo.ID forKey:kUserCityID];
-                            }
                             [_cityMutableArray addObject:mo1];
                         }
                     }else{
@@ -250,7 +243,12 @@ JFSearchViewDelegate,UITextFieldDelegate>
 /// 汉字转拼音再转成汉字
 -(void)processData:(void (^) (id))success{
     for (int i=0; i<_cityMutableArray.count; i++) {
-        CityMo * mo = _cityMutableArray[i];
+         CityMo * mo = _cityMutableArray[i];
+         NSString * str = [KUserDefults objectForKey:kUserCity];
+        if ([mo.fullName isEqualToString:str]) {
+            [KUserDefults setObject:mo.ID forKey:kUserCityID];
+        }
+       
         if (mo.initial.length) {
             //字符串截取第一位，并转换成大写字母
             NSString *firstStr = mo.initial;

@@ -21,7 +21,8 @@
 #define YTRLog(FORMAT, ...)
 #define YTELog
 #endif
-
+/** 转字符串 */
+#define KString(a,b) [NSString stringWithFormat:a,b]
 /** RGB颜色 */
 #define YSColor(r, g, b)    [UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:1.0]
 /** 通用背景色 */

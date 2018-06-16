@@ -62,6 +62,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btn_agree" destination="g4w-SQ-LCB" id="Xg5-4b-Eg4"/>
                 <outlet property="lab_title" destination="kqj-n1-gcW" id="oqU-OZ-7FQ"/>
                 <outlet property="txt_Placeholder" destination="ZD2-L8-OgU" id="0sl-B0-sdQ"/>
             </connections>
@@ -175,6 +176,9 @@
                     <constraint firstItem="ftn-vN-SzV" firstAttribute="top" secondItem="EGS-cT-JJz" secondAttribute="top" id="qte-Qq-Qcl"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="btn_agree" destination="g4w-SQ-LCB" id="pli-up-SQY"/>
+            </connections>
             <point key="canvasLocation" x="84" y="309"/>
         </tableViewCell>
     </objects>
