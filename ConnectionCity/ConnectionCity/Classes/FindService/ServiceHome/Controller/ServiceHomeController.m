@@ -39,7 +39,9 @@
     // Do any additional setup after loading the view from its nib.
     [self setUI];
     [self loadData];
-    [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
+#warning 记得删除
+    [KUserDefults setValue:@"110000" forKey:kUserCityID];
+    [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
     _flag = NO;
 }
 //导航条人才类型选择
@@ -169,7 +171,7 @@
                             @"age": @"string",
 //                             @"areaCode": @110101,
                             @"category": @8,
-                            @"cityCode": @110000,
+                            @"cityCode":dic[@"cityCode"],
                             @"distance": @"string",
                             @"gender": @0,
                             @"lat": @([dic[@"lat"] floatValue]),

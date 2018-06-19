@@ -37,13 +37,16 @@
 +(void)requstServiceList:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock{
     [YSNetworkTool POST:v1ServiceList params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray * arr = [NSMutableArray array];
-        for (int i=0; i<[responseObject[@"data"] count]; i++) {
-            ServiceListMo * list = [ServiceListMo mj_objectWithKeyValues:responseObject[@"data"][i]];
-            list.ID = responseObject[@"data"][i][@"id"];
-            list.user1 = [UserMo mj_objectWithKeyValues:list.user];
-            list.user1.ID = list.user[@"id"];
-            [arr addObject:list];
-        }
+        if ([responseObject[@"data"] isKindOfClass:[NSArray class]]) {
+            for (int i=0; i<[responseObject[@"data"] count]; i++) {
+                ServiceListMo * list = [ServiceListMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+                list.ID = responseObject[@"data"][i][@"id"];
+                list.user1 = [UserMo mj_objectWithKeyValues:list.user];
+                list.user1.ID = list.user[@"id"];
+                [arr addObject:list];
+            }
+        }else
+            [YTAlertUtil showTempInfo:@"暂无数据"];
         sucBlock(arr);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         

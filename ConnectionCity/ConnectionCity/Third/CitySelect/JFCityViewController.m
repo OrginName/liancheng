@@ -75,8 +75,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
     
     self.historyCityMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"historyCity"]];
     [self initData];//加载初始化数据
-}
-
+} 
 /**
  初始化加载城市数据
  */
@@ -89,6 +88,10 @@ JFSearchViewDelegate,UITextFieldDelegate>
         }else {
             [YSNetworkTool POST:dictionaryAreaTreeList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
                 [_cityMutableArray removeAllObjects];
+                if (![responseObject[@"data"] isKindOfClass:[NSArray class]]) {
+                    [YTAlertUtil showTempInfo:@"暂无数据"];
+                    return;
+                }
                 for (int i=0; i<[responseObject[@"data"] count]; i++) {
                     CityMo * mo = [CityMo mj_objectWithKeyValues:responseObject[@"data"][i]];
                     mo.ID = responseObject[@"data"][i][@"id"];

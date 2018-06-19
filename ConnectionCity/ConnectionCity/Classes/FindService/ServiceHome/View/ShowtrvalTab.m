@@ -103,6 +103,7 @@
 -(void)btnClick:(NSInteger)tag{
     AppointmentController * appoint = [AppointmentController new];
     appoint.str = @"YD";
+    appoint.list = self.listMo;
     [self.control.navigationController pushViewController:appoint animated:YES];
 }
 #pragma mark ---initUI--------

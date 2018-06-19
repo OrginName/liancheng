@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+#import "ServiceListMo.h"
 @interface AppointmentController : BaseViewController
 @property (nonatomic,strong) NSString * str;//YD  PY
+@property (nonatomic,strong)ServiceListMo * list;
 @end

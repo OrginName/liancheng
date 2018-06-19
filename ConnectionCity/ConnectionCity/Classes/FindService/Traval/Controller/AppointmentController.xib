@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AppointmentController">
             <connections>
+                <outlet property="image_head" destination="Tvd-js-Ur3" id="9W5-q3-Rym"/>
+                <outlet property="lab_DY" destination="y2S-3n-NGJ" id="goz-BR-fa3"/>
+                <outlet property="lab_Preson" destination="8Y5-uV-tl4" id="INe-ql-ysK"/>
+                <outlet property="lab_Price" destination="Qek-M9-LaV" id="laf-Ia-1U8"/>
+                <outlet property="lab_Servicetitle" destination="EVn-HY-7z5" id="vfc-GU-oXf"/>
+                <outlet property="lab_Sex" destination="Rhx-r4-Ok0" id="Hrz-I2-Flo"/>
+                <outlet property="lab_age" destination="8Sv-Jm-MJl" id="Ue8-Zo-rwf"/>
+                <outlet property="lab_name" destination="Ij7-Md-rZm" id="KPK-0y-38f"/>
                 <outlet property="lab_title1" destination="xTR-UN-rQn" id="955-RP-77c"/>
                 <outlet property="lab_title2" destination="D9n-36-OQD" id="a3n-qu-ENc"/>
                 <outlet property="lab_title3" destination="UNN-36-3jY" id="6HE-hc-JZq"/>
+                <outlet property="txt_Num" destination="N1Z-ZD-syw" id="OG2-NL-T59"/>
+                <outlet property="txt_Place" destination="tQV-aB-lTQ" id="Xm6-Sa-p6I"/>
+                <outlet property="txt_SumPrice" destination="GjT-Lq-ubM" id="1TE-yc-bzz"/>
+                <outlet property="txt_Time" destination="EFO-86-8cW" id="MHr-a5-cIl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -193,7 +205,7 @@
                                                     <rect key="frame" x="78" y="0.0" width="247" height="49"/>
                                                     <color key="textColor" red="0.94509803921568625" green="0.62352941176470589" blue="0.29019607843137257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YeK-Vn-s1c">
                                                     <rect key="frame" x="0.0" y="49" width="355" height="1"/>
@@ -247,9 +259,18 @@
                                                         <constraint firstAttribute="height" constant="1" id="arV-nM-rkm"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ovv-vh-ArF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="TimeClick:" destination="-1" eventType="touchUpInside" id="cMH-1o-an0"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Ovv-vh-ArF" secondAttribute="trailing" id="9c6-t8-IBQ"/>
+                                                <constraint firstItem="Ovv-vh-ArF" firstAttribute="top" secondItem="Sz2-4v-TNW" secondAttribute="top" id="BA9-98-y5k"/>
                                                 <constraint firstAttribute="height" constant="50" id="QJg-vk-3cs"/>
                                                 <constraint firstAttribute="bottom" secondItem="hf7-HX-AcV" secondAttribute="bottom" id="U07-6T-9xb"/>
                                                 <constraint firstAttribute="bottom" secondItem="EFO-86-8cW" secondAttribute="bottom" constant="1" id="YSv-aM-ubO"/>
@@ -261,6 +282,8 @@
                                                 <constraint firstItem="hf7-HX-AcV" firstAttribute="leading" secondItem="Sz2-4v-TNW" secondAttribute="leading" id="mlR-Kb-hP8"/>
                                                 <constraint firstAttribute="trailing" secondItem="mcI-Lz-9Lq" secondAttribute="trailing" constant="10" id="n7M-7V-Ty9"/>
                                                 <constraint firstItem="EFO-86-8cW" firstAttribute="leading" secondItem="D9n-36-OQD" secondAttribute="trailing" constant="10" id="veZ-x2-NYc"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ovv-vh-ArF" secondAttribute="bottom" id="x4V-3T-z84"/>
+                                                <constraint firstItem="Ovv-vh-ArF" firstAttribute="leading" secondItem="Sz2-4v-TNW" secondAttribute="leading" id="xBl-Jp-28i"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GIL-oY-dvD">
@@ -292,16 +315,27 @@
                                                         <constraint firstAttribute="height" constant="1" id="YMc-A0-kdE"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tM5-Xf-a8G">
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="49"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="TimeClick:" destination="-1" eventType="touchUpInside" id="ouU-hR-to0"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="UNN-36-3jY" firstAttribute="centerY" secondItem="GIL-oY-dvD" secondAttribute="centerY" id="22q-L4-807"/>
                                                 <constraint firstAttribute="trailing" secondItem="IaQ-dd-HDf" secondAttribute="trailing" id="2Ee-5I-kdQ"/>
                                                 <constraint firstAttribute="bottom" secondItem="IaQ-dd-HDf" secondAttribute="bottom" id="4eV-Ja-Zw9"/>
+                                                <constraint firstItem="tM5-Xf-a8G" firstAttribute="top" secondItem="GIL-oY-dvD" secondAttribute="top" id="7rE-Rf-2pk"/>
+                                                <constraint firstItem="tM5-Xf-a8G" firstAttribute="leading" secondItem="GIL-oY-dvD" secondAttribute="leading" id="A55-32-Mvv"/>
                                                 <constraint firstItem="Bve-Jj-hSs" firstAttribute="leading" secondItem="tQV-aB-lTQ" secondAttribute="trailing" constant="10" id="EcM-Wb-ULu"/>
+                                                <constraint firstItem="IaQ-dd-HDf" firstAttribute="top" secondItem="tM5-Xf-a8G" secondAttribute="bottom" id="FnQ-vQ-3fg"/>
                                                 <constraint firstItem="IaQ-dd-HDf" firstAttribute="leading" secondItem="GIL-oY-dvD" secondAttribute="leading" id="GFK-Eb-JEh"/>
                                                 <constraint firstAttribute="trailing" secondItem="Bve-Jj-hSs" secondAttribute="trailing" constant="10" id="GeL-dR-cy1"/>
                                                 <constraint firstItem="tQV-aB-lTQ" firstAttribute="top" secondItem="GIL-oY-dvD" secondAttribute="top" id="Yvz-Tc-eXI"/>
+                                                <constraint firstAttribute="trailing" secondItem="tM5-Xf-a8G" secondAttribute="trailing" id="lFJ-VZ-fyd"/>
                                                 <constraint firstItem="Bve-Jj-hSs" firstAttribute="centerY" secondItem="GIL-oY-dvD" secondAttribute="centerY" id="pgu-Kh-yC7"/>
                                                 <constraint firstAttribute="bottom" secondItem="tQV-aB-lTQ" secondAttribute="bottom" constant="1" id="tZg-jO-x7l"/>
                                                 <constraint firstItem="tQV-aB-lTQ" firstAttribute="leading" secondItem="UNN-36-3jY" secondAttribute="trailing" constant="10" id="vzT-T7-az6"/>
@@ -421,6 +455,9 @@
                                     <integer key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="yuyueClick:" destination="-1" eventType="touchUpInside" id="7s0-sD-ujY"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
