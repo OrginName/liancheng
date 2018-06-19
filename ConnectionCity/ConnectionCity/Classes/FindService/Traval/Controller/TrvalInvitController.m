@@ -47,7 +47,7 @@
  
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     TrvalCell * cell = [[NSBundle mainBundle] loadNibNamed:@"TrvalCell" owner:nil options:nil][1];
-    cell.lab_headTitle.text = section==0?@"我要去哪里":section==1?@"计划安排":section==2?@"计划安排":@"";
+    cell.lab_headTitle.text = section==0?@"我要去哪里":section==1?@"计划安排":section==2?@"计划说明":@"";
     return cell;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{

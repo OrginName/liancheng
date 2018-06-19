@@ -513,6 +513,9 @@ JFSearchViewDelegate,UITextFieldDelegate>
     if (self.delegate && [self.delegate respondsToSelector:@selector(cityName:)]) {
         [self.delegate cityName:cell.textLabel.text];
     }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cityMo:)]) {
+        [self.delegate cityMo:mo];
+    }
     [self historyCity:cell.textLabel.text];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

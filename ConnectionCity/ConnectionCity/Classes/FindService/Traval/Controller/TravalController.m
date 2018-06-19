@@ -24,29 +24,37 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn_invit;
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (weak, nonatomic) IBOutlet UIView *view_tab;
-
+@property (nonatomic,assign) NSInteger page;
+@property (nonatomic,strong) UIButton * backBtn;
 @end
 @implementation TravalController
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
     [self initData];
-//    _page=1;
+    _page=1;
 }
 -(void)initData{
     [self requstLoad:@{}];
     [self.tab_Bottom.mj_header beginRefreshing];
-}
--(void)requstLoad:(NSDictionary *) dic1{
     self.tab_Bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        if (self.btn_invit.selected) {
-            [self.tab_Bottom.mj_header endRefreshing];
-        }
+        [self requstLoad:@{}];
     }];
     self.tab_Bottom.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        if (self.btn_invit.selected) {
-            
-        }
+        _page++;
+        [self requstLoad:@{}];
+    }];
+}
+-(void)requstLoad:(NSDictionary *) dic1{
+    NSDictionary * dic = @{
+                           @"cityCode": @100010,
+                           @"pageNumber": @1,
+                           @"pageSize":@10,
+                           @"sortField": @"createTime",
+                           @"sortType": @"desc"
+                           };
+    [ServiceHomeNet requstTrvalDic:dic withSuc:^(NSMutableArray *successArrValue) {
+        [self.tab_Bottom.mj_header endRefreshing];
     }];
 }
 #pragma mark ---按钮点击事件-----
@@ -76,7 +84,7 @@
 //获取当前选取的城市model
 #pragma mark --- JFCityViewControllerDelegate-----
 -(void)cityMo:(CityMo *)mo{
-    
+    [self.backBtn setTitle:mo.fullName forState:UIControlStateNormal];
 }
 -(void)back{
     [self.tabBarController.navigationController popViewControllerAnimated:YES];
@@ -99,6 +107,7 @@
     btn.frame = CGRectMake(0, 0, 30, 30);
     btn.titleLabel.font = [UIFont systemFontOfSize:15];
     [btn setTitle:@"苏州市" forState:UIControlStateNormal];
+    self.backBtn = btn;
     [btn addTarget:self action:@selector(CityClick) forControlEvents:UIControlEventTouchUpInside];
     [btn setImage:[UIImage imageNamed:@"s-xiala"] forState:UIControlStateNormal];
     btn.imageEdgeInsets = UIEdgeInsetsMake(0, 40, -7, 0);
@@ -127,11 +136,11 @@
         self.tab_Bottom.hidden = YES;
         self.trval.hidden = NO;
         [self.btn_PYYY setTitle:@"发布陪游" forState:UIControlStateNormal];
+       
     }else{
         self.tab_Bottom.hidden = NO;
         self.trval.hidden = YES;
         [self.btn_PYYY setTitle:@"发布邀约" forState:UIControlStateNormal];
-
     }
     if (_tmpBtn == nil){
         sender.selected = YES;

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "trvalMo.h"
 @interface TrvalTripCell : UICollectionViewCell
-
+@property (nonatomic,strong)trvalMo * mo_receive;
 @end

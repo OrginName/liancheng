@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TrvalTrip : UIView
+@property (nonatomic,strong) UICollectionView * bollec_bottom;
 -(instancetype)initWithFrame:(CGRect)frame withControl:(UIViewController *)control;
 @end
 

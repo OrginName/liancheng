@@ -14,9 +14,9 @@
 {
      NSInteger _page;
 }
-@property (nonatomic,strong) UICollectionView * bollec_bottom;
 @property (nonatomic,strong)TrvalTripLayout * flowLyout;
 @property (nonatomic,strong)UIViewController * control;
+@property (nonatomic,strong)NSMutableArray * data_Arr;
 @end
 @implementation TrvalTrip
 -(instancetype)initWithFrame:(CGRect)frame withControl:(UIViewController *)control{
@@ -24,38 +24,48 @@
         self.control = control;
         [self addSubview:self.bollec_bottom];
         _page=1;
+        self.data_Arr = [NSMutableArray array];
         [self.bollec_bottom registerNib:[UINib nibWithNibName:@"TrvalTripCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"TripCell"];
         [self initData];
+        [self.bollec_bottom.mj_header beginRefreshing];
     }
     return self;
 }
 -(void)initData{
+    self.bollec_bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self loadData:@{@"age":@"all",@"page":@"1"}];
+    }];
+    self.bollec_bottom.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [self loadData:@{@"age":@"all",@"page":KString(@"%ld", (long)_page)}];
+    }];
+}
+-(void)loadData:(NSDictionary *)dic{
     NSDictionary * dic1 = @{
-                            @"age": @"string",
+                            @"age": dic[@"age"],
                             @"category": @8,
                             @"cityCode": @110000,
                             @"distance": @"string",
                             @"gender": @0,
                             @"lat": @39.98941,
                             @"lng": @116.480881,
-                            @"pageNumber": @(_page),
+                            @"pageNumber": @1,
                             @"pageSize": @15,
                             @"sortField": @"createTime",
                             @"sortType": @"desc",
                             @"userStatus": @0,
                             @"validType": @"string"
                             };
-    [self.bollec_bottom.mj_header beginRefreshing];
-    self.bollec_bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [ServiceHomeNet requstTrvalInvitDic:dic1 withSuc:^(NSMutableArray *successArrValue) {
-            [self.bollec_bottom.mj_header endRefreshing];
-        }];
+    [ServiceHomeNet requstTrvalInvitDic:dic1 withSuc:^(NSMutableArray *successArrValue) {
+        _page++;
+        self.data_Arr = successArrValue;
+        [self.bollec_bottom reloadData];
+        [self.bollec_bottom.mj_header endRefreshing];
+        [self.bollec_bottom.mj_footer endRefreshing];
     }];
-    
 }
 #pragma mark UICollectionViewDataSource 数据源方法
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 9;
+    return [self.data_Arr count];
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
@@ -63,6 +73,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TrvalTripCell * cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"TripCell" forIndexPath:indexPath];
     cell.contentView.backgroundColor = [UIColor clearColor];
+    cell.mo_receive = self.data_Arr[indexPath.row];
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{

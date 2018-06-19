@@ -87,6 +87,7 @@
 		729BA70120A331E0009713FD /* CustomLocatiom.m in Sources */ = {isa = PBXBuildFile; fileRef = 729BA70020A331E0009713FD /* CustomLocatiom.m */; };
 		72A2FC6B20CD6A9600CD6AAC /* ServiceHomeNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A2FC6A20CD6A9500CD6AAC /* ServiceHomeNet.m */; };
 		72A2FC6F20D00B2E00CD6AAC /* AbilityNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A2FC6E20D00B2E00CD6AAC /* AbilityNet.m */; };
+		72A2FC7320D4B40A00CD6AAC /* trvalMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A2FC7220D4B40A00CD6AAC /* trvalMo.m */; };
 		72BAB42A20B03A8C00496D29 /* BulidTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42820B03A8B00496D29 /* BulidTeamCell.m */; };
 		72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */; };
 		72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */; };
@@ -598,6 +599,8 @@
 		72A2FC6A20CD6A9500CD6AAC /* ServiceHomeNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceHomeNet.m; sourceTree = "<group>"; };
 		72A2FC6D20D00B2E00CD6AAC /* AbilityNet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbilityNet.h; sourceTree = "<group>"; };
 		72A2FC6E20D00B2E00CD6AAC /* AbilityNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AbilityNet.m; sourceTree = "<group>"; };
+		72A2FC7120D4B40A00CD6AAC /* trvalMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = trvalMo.h; sourceTree = "<group>"; };
+		72A2FC7220D4B40A00CD6AAC /* trvalMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = trvalMo.m; sourceTree = "<group>"; };
 		72BAB42720B03A8B00496D29 /* BulidTeamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulidTeamCell.h; sourceTree = "<group>"; };
 		72BAB42820B03A8B00496D29 /* BulidTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulidTeamCell.m; sourceTree = "<group>"; };
 		72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BulidTeamCell.xib; sourceTree = "<group>"; };
@@ -1872,6 +1875,8 @@
 		72EC1B9520BC307E00ACC20B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				72A2FC7120D4B40A00CD6AAC /* trvalMo.h */,
+				72A2FC7220D4B40A00CD6AAC /* trvalMo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3486,6 +3491,7 @@
 				CEC4A55A20C407500026EE19 /* MemberCenterController.m in Sources */,
 				CE0BA614209D6160004C3C33 /* LifeHallController.m in Sources */,
 				CE0BA634209D68A3004C3C33 /* YSRegisterController.m in Sources */,
+				72A2FC7320D4B40A00CD6AAC /* trvalMo.m in Sources */,
 				8DC17A7F20C0E430005D9EE0 /* CircleCell.m in Sources */,
 				8DD48CD220A811EA00D6D1E6 /* UIColor+MyColor.m in Sources */,
 				722D253820AA76D400AB3863 /* JFCityCollectionViewCell.m in Sources */,

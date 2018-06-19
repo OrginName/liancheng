@@ -47,6 +47,11 @@
                 <constraint firstItem="RzH-CT-mws" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rux-aA-UUV"/>
             </constraints>
             <size key="customSize" width="155" height="218"/>
+            <connections>
+                <outlet property="image_head" destination="RzH-CT-mws" id="s3D-N5-i4U"/>
+                <outlet property="lab_ageAndCity" destination="P5u-5a-LsI" id="cAN-yb-cJ8"/>
+                <outlet property="lab_name" destination="8sl-fK-qca" id="dFh-sV-dUn"/>
+            </connections>
             <point key="canvasLocation" x="73.5" y="179"/>
         </collectionViewCell>
     </objects>

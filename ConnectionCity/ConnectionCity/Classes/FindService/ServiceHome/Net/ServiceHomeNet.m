@@ -8,6 +8,7 @@
 
 #import "ServiceHomeNet.h"
 #import "ClassifyMo.h"
+#import "trvalMo.h"
 #import "ClassAttrMo.h"
 @implementation ServiceHomeNet
 +(void)requstConditions:(SuccessArrBlock) sucBloc withFailBlock:(FailDicBlock)failBlock{
@@ -67,7 +68,17 @@
 }
 +(void)requstTrvalInvitDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock{
     [YSNetworkTool POST:v1ServiceTravelPage params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+        NSMutableArray * arr = [NSMutableArray array];
+        if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]]) {
+            for (int i=0; i<[responseObject[@"data"][@"content"] count]; i++) {
+                trvalMo * trval = [trvalMo mj_objectWithKeyValues:responseObject[@"data"][@"content"][i]];
+                trval.ID = responseObject[@"data"][@"content"][i][@"id"];
+                trval.user1 = [userMo mj_objectWithKeyValues:trval.user];
+                trval.user1.ID = trval.user[@"id"];
+                [arr addObject:trval];
+            }
+        } 
+        sucBlock(arr);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
@@ -91,6 +102,13 @@
             [dataArr addObject:dicItem];
         }
         sucBlock(dataArr);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
++(void)requstTrvalDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock{
+    [YSNetworkTool POST:v1ServiceTravelInvitePage params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
