@@ -26,6 +26,7 @@
 @property (nonatomic,strong) RefineView * refine;
 @property (nonatomic,strong) PopThree * pop;
 @property (nonatomic,assign) NSInteger  flag;
+@property (nonatomic,strong) NSMutableArray * arr_Class;
 @end
 
 @implementation AbilityHomeController
@@ -80,9 +81,13 @@
         {
             ClassificationsController * class = [ClassificationsController new];
             class.title = @"职业分类";
+            class.arr_Data = self.arr_Class;
             class.block = ^(NSString *classifiation){
                 UILabel * btn = (UILabel *)[self.view_SX viewWithTag:2];
                 btn.text = classifiation;
+            };
+            class.block1 = ^(NSString *classifiationID, NSString *classifiation) {
+                
             };
             [self.navigationController pushViewController:class animated:YES];
         }
@@ -109,6 +114,10 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self loadketBtn:successArrValue];
         });
+    }];
+    //    加载分类数据
+    [AbilityNet requstAbilityClass:^(NSMutableArray *successArrValue) {
+        self.arr_Class = successArrValue;
     }];
 }
 #pragma mark ----初始化加载数据（结束）------
@@ -174,6 +183,7 @@
         [self.view_keyWords addSubview:btn];
     }
 }
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden= NO;

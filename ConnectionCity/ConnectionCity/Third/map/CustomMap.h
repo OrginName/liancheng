@@ -10,6 +10,7 @@
 #import <MAMapKit/MAMapKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import "CustomLocatiom.h"
+#import "ServiceListMo.h"
 @protocol CustomMapDelegate <NSObject>
 - (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location;
 -(void)currentAnimatinonViewClick:(MAAnnotationView *)view;
@@ -19,4 +20,5 @@
 @property (nonatomic, strong) NSMutableArray *annotations;
 @property (nonatomic, weak) id<CustomMapDelegate> delegate;
 @property (nonatomic, assign) BOOL selectAnimation;//是否默认选中该mark
+@property (nonatomic,strong) NSMutableArray * Arr_Mark;
 @end

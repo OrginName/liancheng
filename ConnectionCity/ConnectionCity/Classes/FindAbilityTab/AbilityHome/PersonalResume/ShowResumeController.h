@@ -16,4 +16,6 @@ typedef enum {
 } Receive_Type;
 @interface ShowResumeController : BaseViewController
 @property(nonatomic,assign) NSInteger  Receive_Type;//接受类型
+@property (nonatomic,strong) NSMutableArray * data_Count;
+@property (nonatomic,assign) NSInteger zIndex;
 @end

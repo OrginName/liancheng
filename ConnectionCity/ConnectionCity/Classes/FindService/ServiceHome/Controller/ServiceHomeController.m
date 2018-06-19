@@ -39,6 +39,7 @@
     // Do any additional setup after loading the view from its nib.
     [self setUI];
     [self loadData];
+    [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
     _flag = NO;
 }
 //导航条人才类型选择
@@ -152,19 +153,39 @@
     btn.text = locationDictionary[@"city"];
 }
 -(void)currentAnimatinonViewClick:(MAAnnotationView *)view{
+    if ([KString(@"%f", view.annotation.coordinate.latitude) isEqualToString:[KUserDefults objectForKey:kLat]]&&[KString(@"%f", view.annotation.coordinate.longitude) isEqualToString:[KUserDefults objectForKey:KLng]]) {
+        [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
+        return;
+    }
     ShowResumeController * show = [ShowResumeController new];
     show.Receive_Type = ENUM_TypeTrval;
+    show.data_Count = self.cusMap.Arr_Mark;
+    show.zIndex = view.zIndex;
     [self.navigationController pushViewController:show animated:YES];
+}
+//加载服务列表数据
+-(void)loadServiceList:(NSDictionary *)dic{
+    NSDictionary * dic1 = @{
+                            @"age": @"string",
+//                             @"areaCode": @110101,
+                            @"category": @8,
+                            @"cityCode": @110000,
+                            @"distance": @"string",
+                            @"gender": @0,
+                            @"lat": @([dic[@"lat"] floatValue]),
+                            @"lng": @([dic[@"lng"] floatValue]),
+                            @"userStatus": @0,
+                            @"validType": @"string"
+                            };
+    //    加载服务列表
+    [ServiceHomeNet requstServiceList:dic1 withSuc:^(NSMutableArray *successArrValue) {
+        self.cusMap.Arr_Mark = successArrValue;
+    }];
 }
 -(void)loadData{
     self.Arr_SX = [NSMutableArray array];
     self.Arr_Classify = [NSMutableArray array];
     self.Arr_keyWords = [NSMutableArray array];
-    [ServiceHomeNet requstServiceList:^(NSMutableArray *successArrValue) {
-        
-    } withFailBlock:^(NSString *failValue) {
-        
-    }];
 //    服务类别列表
     [ServiceHomeNet requstServiceClass:^(NSMutableArray *successArrValue) {
         self.Arr_Classify = successArrValue;

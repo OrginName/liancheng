@@ -50,12 +50,25 @@
     }else if (self.Receive_Type == ENUM_TypeTrval){
 //        [self.view addSubview:self.btn_Like];
 //        [self.view addSubview:self.Save_Like];
-        self.title = @"欧阳姐姐";
+//        self.title = @"欧阳姐姐";
+//        [self loadData:@"7"];
+        NSLog(@"%ld",self.zIndex);
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.zIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     }
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(Share) image:@"share" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, -10)];
     _currentIndex = 0;
 }
-
+//加载列表数据
+-(void)loadData:(NSString *)ID{
+//    加载服务数据
+    if (self.Receive_Type == ENUM_TypeTrval){
+        [YSNetworkTool POST:v1ServiceDetail params:@{@"id":ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+            
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+    }
+}
 #pragma mark --各种点击事件---
 //导航栏完成按钮点击
 -(void)complete{
@@ -75,7 +88,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return _imageArray.count;
+    return self.data_Count.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -93,6 +106,9 @@
         [cell.contentView addSubview:self.showCardTab];
     }else if (self.Receive_Type == ENUM_TypeTrval){
         self.trvaltab = [[ShowtrvalTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight) withControl:self];
+        ServiceListMo * mo = self.data_Count[indexPath.row];
+        self.title = mo.title;
+        self.trvaltab.Mo = mo;
         [cell.contentView addSubview:self.trvaltab];
     }else {
         self.showTreaueTab = [[ShowTreaueTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];
@@ -120,8 +136,8 @@
     //得到每页宽度
     CGFloat pageWidth = scrollView.frame.size.width;
     // 根据当前的x坐标和页宽度计算出当前页数
-    _currentIndex = floor((scrollView.contentOffset.x - pageWidth/2)/pageWidth) + 1;
-    if(_currentIndex == _imageArray.count-1){
+    self.zIndex = floor((scrollView.contentOffset.x - pageWidth/2)/pageWidth) + 1;
+    if(self.zIndex == self.data_Count.count-1){
         
     }
 }
@@ -151,17 +167,19 @@
 - (IBAction)UPDownClick:(UIButton *)sender {
 //    [self layoutIfNeeded];
     if (sender.tag==1) {
-        _currentIndex--;
-        if (_currentIndex<=0) {
-            _currentIndex=0;
+        self.zIndex--;
+        if (self.zIndex<=0) {
+            [YTAlertUtil showTempInfo:@"在往前没有了"];
+            self.zIndex=0;
         }
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_currentIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.zIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }else{
-        _currentIndex++;
-        if (_currentIndex>self.imageArray.count-1) {
-            _currentIndex=self.imageArray.count-1;
+        self.zIndex++;
+        if (self.zIndex>self.data_Count.count-1) {
+            [YTAlertUtil showTempInfo:@"在往后没有了"];
+            self.zIndex=self.data_Count.count-1;
         }
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_currentIndex inSection:0]  atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.zIndex inSection:0]  atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }
 }
 @end

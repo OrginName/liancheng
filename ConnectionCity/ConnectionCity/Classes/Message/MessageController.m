@@ -18,6 +18,7 @@
 #import "CustomMap.h"
 #import "BaseChangeTabController.h"
 #import "BaseFindServiceTabController.h"
+#import "UserMo.h"
 @interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate>
 {
     BOOL flag;
@@ -167,114 +168,6 @@
     UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];
     [btn setTitle:locationDictionary[@"city"] forState:UIControlStateNormal];
 }
-//-(void)initMapView{
-//    ///初始化地图
-//    self.mapView = [[MAMapView alloc] initWithFrame:self.view_Map.bounds];
-//    ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
-////    self.mapView.showsUserLocation = YES;
-////    self.mapView.userTrackingMode = MAUserTrackingModeFollow;
-//    self.mapView.showsCompass= NO;
-//    self.mapView.logoCenter = CGPointMake(CGRectGetWidth(self.view_Map.bounds)-55, CGRectGetHeight(self.view_Map.bounds)+55);
-//    self.mapView.showsScale= NO;  //设置成NO表示不显示比例尺；YES表示显示比例尺
-//    self.mapView.delegate = self;
-//    ///把地图添加至view
-//    [self.view_Map addSubview:self.mapView];
-//    [self configLocationManager];
-//}
-//#pragma mark - Action Handle
-//
-//- (void)configLocationManager
-//{
-//    self.locationManager = [[AMapLocationManager alloc] init];
-//    self.locationManager.delegate = self;
-//    //设置不允许系统暂停定位
-//    [self.locationManager setPausesLocationUpdatesAutomatically:NO];
-//    //设置允许在后台定位
-////    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
-//    //设置允许连续定位逆地理
-//    [self.locationManager setLocatingWithReGeocode:YES];
-//    [self.locationManager startUpdatingLocation];
-////    if ([AMapLocationManager headingAvailable] == YES)
-////    {
-////        [self.locationManager startUpdatingHeading];
-////    }
-//}
-//
-//#pragma mark - AMapLocationManager Delegate
-//
-//- (void)amapLocationManager:(AMapLocationManager *)manager didFailWithError:(NSError *)error
-//{
-//    NSLog(@"%s, amapLocationManager = %@, error = %@", __func__, [manager class], error);
-//}
-//
-//- (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location reGeocode:(AMapLocationReGeocode *)reGeocode
-//{
-//    NSLog(@"location:{lat:%f; lon:%f; accuracy:%f, reGeocode:%@}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy, reGeocode.formattedAddress);
-//    if (reGeocode.formattedAddress.length!=0) {
-//        [self cleanUpAction];
-//    }
-//    //获取到定位信息，更新annotation
-//    if (self.pointAnnotaiton == nil)
-//    {
-//        self.pointAnnotaiton = [[MAPointAnnotation alloc] init];
-//        [self.pointAnnotaiton setCoordinate:location.coordinate];
-//        [self.mapView addAnnotation:self.pointAnnotaiton];
-//    }
-//    [self.mapView selectAnnotation:self.pointAnnotaiton animated:YES];
-//    [self.mapView setCenterCoordinate:location.coordinate];
-//    [self.mapView setZoomLevel:15.1 animated:NO];
-//    self.lab_Location.text =reGeocode.formattedAddress;
-//    UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];
-//    [btn setTitle:reGeocode.city forState:UIControlStateNormal];
-//}
-//
-// //停止定位
-//- (void)cleanUpAction
-//{
-//    [self.locationManager stopUpdatingLocation];
-//    [self.locationManager setDelegate:nil];
-//}
-//- (BOOL)amapLocationManagerShouldDisplayHeadingCalibration:(AMapLocationManager *)manager
-//{
-//    return YES;
-//}
-
-//- (void)amapLocationManager:(AMapLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
-//{
-//    if (_annotationView != nil)
-//    {
-//        CGFloat angle = newHeading.trueHeading*M_PI/180.0f + M_PI - _annotationViewAngle;
-//        NSLog(@"################### heading : %f - %f", newHeading.trueHeading, newHeading.magneticHeading);
-//        _annotationViewAngle = newHeading.trueHeading*M_PI/180.0f + M_PI;
-//        _heading = newHeading;
-//        _annotationView.transform =  CGAffineTransformRotate(_annotationView.transform ,angle);
-//    }
-//}
-
-//#pragma mark - MAMapView Delegate
-//
-//- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
-//{
-//    if ([annotation isKindOfClass:[MAPointAnnotation class]])
-//    {
-//        static NSString *customReuseIndetifier = @"customReuseIndetifier";
-//       CustomAnnotationView *annotationView = (CustomAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
-//
-//        if (annotationView == nil)
-//        {
-//            annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
-//            // must set to NO, so we can show the custom callout view.
-//            annotationView.canShowCallout = NO;
-//            annotationView.draggable = YES;
-//            annotationView.calloutOffset = CGPointMake(0, -10);
-//            annotationView.animatesDrop = YES;
-//        }
-//        annotationView.image = [UIImage imageNamed:@"position"];
-//        return annotationView;
-//    }
-//
-//    return nil;
-//}
 #pragma mark - JFCityViewControllerDelegate
 - (void)cityName:(NSString *)name {
     UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];
@@ -298,16 +191,17 @@
         self.navigationController.navigationBar.hidden= YES;
     }
 }
-//- (void)willMoveToParentViewController:(UIViewController*)parent{
-//    [super willMoveToParentViewController:parent];
-//    NSLog(@"%s,%@",__FUNCTION__,parent);
-//}
-//- (void)didMoveToParentViewController:(UIViewController*)parent{
-//    [super didMoveToParentViewController:parent];
-//    NSLog(@"%s,%@",__FUNCTION__,parent);
-//    //    [self.tabBarController.navigationController popViewControllerAnimated:YES];
-//}
--(void)dealloc{
-//    [self cleanUpAction];
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self initData];
+}
+-(void)initData{
+    [YSNetworkTool POST:v1PrivateUserInfo params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        UserMo * user = [UserMo mj_objectWithKeyValues:responseObject[@"data"]];
+        user.ID = responseObject[@"data"][@"id"];
+//        [YSAccountTool saveAccount:user];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 @end

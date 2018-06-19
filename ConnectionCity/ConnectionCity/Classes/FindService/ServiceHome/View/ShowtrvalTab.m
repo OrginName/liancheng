@@ -23,7 +23,7 @@
     if (self = [super initWithFrame:frame]) {
         self.control = control;
         [self initScroll];
-        [self initData];
+//        [self initData];
         [self addSubview:self.tab_Bottom];
         
     }
@@ -31,6 +31,14 @@
 }
 -(void)initData{
     self.lunArr = [NSMutableArray arrayWithObjects:@"http://img.zcool.cn/community/0381de85949053ca8012193a3339cc5.jpg",@"http://img5.duitang.com/uploads/item/201411/06/20141106104720_WHEe2.jpeg",@"http://i3.17173cdn.com/2fhnvk/YWxqaGBf/outcms/xshCTvblpjznrmb.png",@"http://img.zcool.cn/community/01fd9f578f21a00000018c1b9a11ee.jpg@1280w_1l_2o_100sh.jpg", nil];
+    
+}
+-(void)setMo:(ServiceListMo *)Mo{
+    _Mo = Mo;
+    if (Mo.images.length==0) {
+        self.lunArr = [NSMutableArray arrayWithObject:@"http://img.zcool.cn/community/0381de85949053ca8012193a3339cc5.jpg"];
+    }else
+    self.lunArr = [[Mo.images componentsSeparatedByString:@";"] mutableCopy];
 }
 #pragma mark ---SDCycleScrollViewDelegate-----
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{

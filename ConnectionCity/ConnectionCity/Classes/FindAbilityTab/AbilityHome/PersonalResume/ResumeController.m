@@ -212,7 +212,7 @@
     });
     
     UIButton * EditBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    EditBtn.frame = CGRectMake(self.tab_bottom.width-40, 20, 30, 30);
+    EditBtn.frame = CGRectMake(kScreenWidth-60, 10, 30, 30);
     [EditBtn setBackgroundImage:[UIImage imageNamed:@"edit-people"] forState:UIControlStateNormal];
     [EditBtn addTarget:self action:@selector(EditScroll:) forControlEvents:UIControlEventTouchUpInside];
     [self.tab_bottom.tableHeaderView addSubview:EditBtn];

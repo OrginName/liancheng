@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ServiceListMo.h"
 @interface ShowtrvalTab : UIView
+@property (nonatomic,strong)ServiceListMo *Mo;
 -(instancetype)initWithFrame:(CGRect)frame withControl:(UIViewController *)control;
 @end

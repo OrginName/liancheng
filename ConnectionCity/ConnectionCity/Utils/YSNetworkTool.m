@@ -37,13 +37,13 @@ NSString * const YTHttpUtilResponseData = @"Data";
      failure:(YTHttpUtilFailure)failure {
     AFHTTPSessionManager *manager = [[self class] manager]; 
     NSString *cacheKeyStr = [[self class] getCacheWithWithUrl:url requestDict:params];
-    if (![[self class] connectedAndShowDisconnectInfo]) {
-        id cacheData = [[EGOCache globalCache] objectForKey:cacheKeyStr];
-        if (![YSTools dx_isNullOrNilWithObject:cacheData]) {
-            success ? success(nil, cacheData) : nil;
-        }
-        return;
-    }
+//    if (![[self class] connectedAndShowDisconnectInfo]) {
+//        id cacheData = [[EGOCache globalCache] objectForKey:cacheKeyStr];
+//        if (![YSTools dx_isNullOrNilWithObject:cacheData]) {
+//            success ? success(nil, cacheData) : nil;
+//        }
+//        return;
+//    }
     if (showHud) {[YTAlertUtil showHUDWithTitle:nil];}
     [manager.requestSerializer setValue:kAccount.token forHTTPHeaderField:@"X-ACCESS-TOKEN"];
     [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

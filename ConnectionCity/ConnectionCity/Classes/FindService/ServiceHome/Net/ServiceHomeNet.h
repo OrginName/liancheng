@@ -25,11 +25,8 @@ typedef void (^FailDicBlock) (NSString * failValue);
 
 /**
  服务首页列表
-
- @param csucBlock 成功回调
- @param failBlock 失败回调
  */
-+(void)requstServiceList:(SuccessArrBlock)csucBlock withFailBlock:(FailDicBlock)failBlock;
++(void)requstServiceList:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock;
 /**
  服务分类列表
  

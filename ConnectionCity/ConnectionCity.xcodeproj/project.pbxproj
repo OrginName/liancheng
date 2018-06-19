@@ -154,6 +154,8 @@
 		8D114CBB20CA22BD00637D34 /* AddMyWayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D114CB920CA22BD00637D34 /* AddMyWayController.xib */; };
 		8D114CBF20CA235200637D34 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D114CBE20CA235200637D34 /* AccountView.m */; };
 		8D114CC120CA236900637D34 /* AccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D114CC020CA236900637D34 /* AccountView.xib */; };
+		8D19FF2020D8AC98005F7361 /* UserMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D19FF1F20D8AC98005F7361 /* UserMo.m */; };
+		8D19FF2320D8CFE4005F7361 /* ServiceListMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D19FF2220D8CFE4005F7361 /* ServiceListMo.m */; };
 		8D22C33C20C77B70004DC8F4 /* IdentityAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C33A20C77B70004DC8F4 /* IdentityAuthorController.m */; };
 		8D22C33D20C77B70004DC8F4 /* IdentityAuthorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D22C33B20C77B70004DC8F4 /* IdentityAuthorController.xib */; };
 		8D22C34120C77C0F004DC8F4 /* SkillCertificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C33F20C77C0F004DC8F4 /* SkillCertificationController.m */; };
@@ -703,6 +705,10 @@
 		8D114CBD20CA235200637D34 /* AccountView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountView.h; sourceTree = "<group>"; };
 		8D114CBE20CA235200637D34 /* AccountView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountView.m; sourceTree = "<group>"; };
 		8D114CC020CA236900637D34 /* AccountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountView.xib; sourceTree = "<group>"; };
+		8D19FF1E20D8AC98005F7361 /* UserMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserMo.h; sourceTree = "<group>"; };
+		8D19FF1F20D8AC98005F7361 /* UserMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserMo.m; sourceTree = "<group>"; };
+		8D19FF2120D8CFE4005F7361 /* ServiceListMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceListMo.h; sourceTree = "<group>"; };
+		8D19FF2220D8CFE4005F7361 /* ServiceListMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceListMo.m; sourceTree = "<group>"; };
 		8D22C33920C77B70004DC8F4 /* IdentityAuthorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IdentityAuthorController.h; sourceTree = "<group>"; };
 		8D22C33A20C77B70004DC8F4 /* IdentityAuthorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IdentityAuthorController.m; sourceTree = "<group>"; };
 		8D22C33B20C77B70004DC8F4 /* IdentityAuthorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdentityAuthorController.xib; sourceTree = "<group>"; };
@@ -1939,6 +1945,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		8D19FF1D20D8AC82005F7361 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8D19FF1E20D8AC98005F7361 /* UserMo.h */,
+				8D19FF1F20D8AC98005F7361 /* UserMo.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8D22C34320C7C995004DC8F4 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -2348,6 +2363,8 @@
 				8DF7E3D120CFAA78009A92D7 /* ClassifyMo.m */,
 				8D7FF6AE20D3A8AB0075B2D5 /* ClassAttrMo.h */,
 				8D7FF6AF20D3A8AB0075B2D5 /* ClassAttrMo.m */,
+				8D19FF2120D8CFE4005F7361 /* ServiceListMo.h */,
+				8D19FF2220D8CFE4005F7361 /* ServiceListMo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2552,6 +2569,7 @@
 		CE0BA609209D60DD004C3C33 /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				8D19FF1D20D8AC82005F7361 /* Model */,
 				CE0BA604209D60C3004C3C33 /* MessageController.h */,
 				CE0BA605209D60C3004C3C33 /* MessageController.m */,
 				CE0BA606209D60C3004C3C33 /* MessageController.xib */,
@@ -3667,10 +3685,12 @@
 				CE0BA5FA209D5EBE004C3C33 /* YTBaseTableViewController.m in Sources */,
 				720263F320B5015500382B2F /* TZGifPhotoPreviewController.m in Sources */,
 				8D50C56020C66EAF0095A824 /* OurServiceController.m in Sources */,
+				8D19FF2320D8CFE4005F7361 /* ServiceListMo.m in Sources */,
 				72EC1B7220BA984400ACC20B /* PlayDouctCell.m in Sources */,
 				727418F020B2DDAC001D6BE1 /* ChangeListController.m in Sources */,
 				CE0BA61A209D6197004C3C33 /* FoundController.m in Sources */,
 				8DF7E3D520CFB33F009A92D7 /* PopThree.m in Sources */,
+				8D19FF2020D8AC98005F7361 /* UserMo.m in Sources */,
 				CE6BEC1A20C83740003B36D7 /* LCPicker.m in Sources */,
 				8D09E19C20BFDC16000F7EBD /* ShowTrvalCell.m in Sources */,
 				722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */,

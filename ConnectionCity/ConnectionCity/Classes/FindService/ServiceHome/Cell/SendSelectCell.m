@@ -121,9 +121,7 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     UILabel *titleLabel;
     UILabel * lab_ismulitable;
 }
-
-@end
-
+@end 
 @implementation SendCollecRuesuableView
 -(id)initWithFrame:(CGRect)frame{
     self=[super initWithFrame:frame];

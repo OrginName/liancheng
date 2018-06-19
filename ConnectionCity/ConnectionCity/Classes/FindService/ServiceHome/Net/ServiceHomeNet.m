@@ -10,6 +10,7 @@
 #import "ClassifyMo.h"
 #import "trvalMo.h"
 #import "ClassAttrMo.h"
+#import "ServiceListMo.h"
 @implementation ServiceHomeNet
 +(void)requstConditions:(SuccessArrBlock) sucBloc withFailBlock:(FailDicBlock)failBlock{
     [YSNetworkTool POST:v1ServiceConditions params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -33,9 +34,16 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
     }];
 }
-+(void)requstServiceList:(SuccessArrBlock)csucBlock withFailBlock:(FailDicBlock)failBlock{
-    [YSNetworkTool POST:v1ServiceList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        
++(void)requstServiceList:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock{
+    [YSNetworkTool POST:v1ServiceList params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray * arr = [NSMutableArray array];
+        for (int i=0; i<[responseObject[@"data"] count]; i++) {
+            ServiceListMo * list = [ServiceListMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+            list.ID = responseObject[@"data"][i][@"id"];
+            list.user1 = [userMo mj_objectWithKeyValues:list.user];
+            [arr addObject:list];
+        }
+        sucBlock(arr);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

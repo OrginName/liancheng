@@ -38,7 +38,7 @@
         [btn addTarget:self action:@selector(locationClick) forControlEvents:UIControlEventTouchUpInside];
         self.btn_location = btn;
         [self addSubview:btn];
-        [self initAnnotations];
+//        [self initAnnotations];
     }
     return self;
 }
@@ -64,6 +64,7 @@
             annotationView.calloutOffset = CGPointMake(0, 0);
         }
         annotationView.image = [UIImage imageNamed:@"position.png"];
+        self.annotationView = annotationView;
         return annotationView;
     }
     return nil;
@@ -117,6 +118,18 @@
 //用户拒绝定位
 - (void)refuseToUsePositioningSystem:(NSString *)message {
     [YTAlertUtil showTempInfo:@""];
+}
+-(void)setArr_Mark:(NSMutableArray *)Arr_Mark{
+    _Arr_Mark = Arr_Mark;
+     self.annotations = [NSMutableArray array];
+    [Arr_Mark enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        ServiceListMo * list = (ServiceListMo *)obj;
+        MAPointAnnotation *a1 = [[MAPointAnnotation alloc] init];
+        a1.coordinate = CLLocationCoordinate2DMake([list.lat doubleValue], [list.lng doubleValue]);
+        a1.title = list.ID;
+        self.annotationView.zIndex = idx;
+        [self.annotations addObject:a1];
+    }];
 }
 #pragma mark - Initialization
 - (void)initAnnotations
