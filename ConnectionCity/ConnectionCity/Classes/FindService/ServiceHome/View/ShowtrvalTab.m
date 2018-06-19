@@ -17,6 +17,7 @@
 @property (nonatomic,strong) UIViewController * control;
 @property (nonatomic,strong) UIButton * Save_Like;
 @property (nonatomic,strong) UIButton * btn_Like;
+@property (nonatomic,strong) ServiceListMo * listMo;
 @end
 @implementation ShowtrvalTab
 -(instancetype)initWithFrame:(CGRect)frame withControl:(UIViewController *)control{
@@ -35,10 +36,8 @@
 }
 -(void)setMo:(ServiceListMo *)Mo{
     _Mo = Mo;
-    if (Mo.images.length==0) {
-        self.lunArr = [NSMutableArray arrayWithObject:@"http://img.zcool.cn/community/0381de85949053ca8012193a3339cc5.jpg"];
-    }else
     self.lunArr = [[Mo.images componentsSeparatedByString:@";"] mutableCopy];
+    self.listMo = Mo;
 }
 #pragma mark ---SDCycleScrollViewDelegate-----
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
@@ -72,6 +71,9 @@
     }else
     return 10;
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.001f;
+}
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section==2) {
         ShowTrvalCell * cell = [[NSBundle mainBundle] loadNibNamed:@"ShowTrvalCell" owner:nil options:nil][4];
@@ -82,6 +84,7 @@
         return view;
     }
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *footView = [[UIView alloc] init];
@@ -93,6 +96,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShowTrvalCell *cell = [ShowTrvalCell tempTableViewCellWith:tableView indexPath:indexPath];
     cell.delegate = self;
+    cell.list = self.listMo;
     return cell;
 }
 //ShowTrvalCellDelegate
@@ -126,7 +130,7 @@
 }
 -(UITableView *)tab_Bottom{
     if (!_tab_Bottom) {
-        _tab_Bottom = [[UITableView alloc] init];
+        _tab_Bottom = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tab_Bottom.delegate = self;
         _tab_Bottom.dataSource = self;
         _tab_Bottom.separatorStyle = UITableViewCellSeparatorStyleNone;

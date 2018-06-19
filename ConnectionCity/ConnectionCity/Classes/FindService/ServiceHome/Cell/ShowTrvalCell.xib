@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -103,6 +103,28 @@
                     <constraint firstItem="cKU-cw-OPy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="wZ2-Kv-DFI"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="btn_city" destination="Yzf-qu-Ib3" id="CNI-IQ-ZDn"/>
+                <outlet property="btn_coll" destination="nhf-V4-1gb" id="Xel-7p-aPD"/>
+                <outlet property="btn_height" destination="vPd-3G-1pP" id="qOq-vR-EoD"/>
+                <outlet property="btn_weight" destination="4Zb-g1-Ffl" id="eKs-rS-tfN"/>
+                <outlet property="btn_wight" destination="qli-7f-C0f" id="KtG-Vv-dFf"/>
+                <outlet property="image_sex" destination="O8G-cD-ldE" id="fMv-wa-bIT"/>
+                <outlet property="imgae_Comment" destination="nig-Q1-0lx" id="CTC-5d-eQS"/>
+                <outlet property="lab_Age" destination="H5t-5S-gVH" id="iBr-qV-QQv"/>
+                <outlet property="lab_Comment" destination="WtL-Bd-cbF" id="PgK-Lf-sdk"/>
+                <outlet property="lab_CommentTime" destination="IUx-3v-6O2" id="dqn-Fh-w82"/>
+                <outlet property="lab_DTNum" destination="o0k-oa-21f" id="Q1d-OH-Jka"/>
+                <outlet property="lab_DW" destination="8oF-8I-nWy" id="YfD-cE-LRE"/>
+                <outlet property="lab_Des" destination="UtX-P8-DPh" id="bht-q2-fuo"/>
+                <outlet property="lab_HF" destination="49X-DN-yct" id="emu-vT-Xga"/>
+                <outlet property="lab_LLNum" destination="hGc-VG-Qgt" id="bVw-Hz-S9N"/>
+                <outlet property="lab_PriceDY" destination="S50-NE-1le" id="07Q-iB-PZy"/>
+                <outlet property="lab_ServiceTitle" destination="XMi-99-3Vg" id="RJd-tg-J9B"/>
+                <outlet property="lab_Title" destination="gK4-4I-LyX" id="bS8-Z2-Ei9"/>
+                <outlet property="lab_commentTitle" destination="cfF-Yt-340" id="x3U-X1-tTe"/>
+                <outlet property="lab_price" destination="sy2-GH-Fzm" id="aqS-5Q-rqh"/>
+            </connections>
             <point key="canvasLocation" x="34" y="67"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShowTrvalCell1" rowHeight="106" id="wf7-mz-sCw" customClass="ShowTrvalCell">
@@ -178,6 +200,9 @@
                     <constraint firstItem="o0k-oa-21f" firstAttribute="centerY" secondItem="rOy-we-HLk" secondAttribute="centerY" id="v3F-Ja-4S6"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lab_DTNum" destination="o0k-oa-21f" id="UPN-eq-8Ct"/>
+            </connections>
             <point key="canvasLocation" x="34" y="201"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShowTrvalCell2" rowHeight="166" id="doH-Ym-5db" customClass="ShowTrvalCell">
@@ -271,6 +296,14 @@
                     <constraint firstItem="hGc-VG-Qgt" firstAttribute="top" secondItem="K1A-gv-hFZ" secondAttribute="bottom" constant="10" id="vhf-XU-A4W"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lab_DW" destination="8oF-8I-nWy" id="mLv-fc-EpQ"/>
+                <outlet property="lab_Des" destination="UtX-P8-DPh" id="eHM-gu-TSq"/>
+                <outlet property="lab_LLNum" destination="hGc-VG-Qgt" id="56i-Hw-jhm"/>
+                <outlet property="lab_PriceDY" destination="S50-NE-1le" id="Ooo-Fw-l0o"/>
+                <outlet property="lab_ServiceTitle" destination="XMi-99-3Vg" id="gEu-Hi-4Yc"/>
+                <outlet property="lab_price" destination="sy2-GH-Fzm" id="pqL-ut-Gtk"/>
+            </connections>
             <point key="canvasLocation" x="34" y="387"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShowTrvalCell3" rowHeight="80" id="7cs-AM-hHP" customClass="ShowTrvalCell">
@@ -296,7 +329,6 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="习大大" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfF-Yt-340">
                         <rect key="frame" x="80" y="15" width="34" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服务周到，经验很好" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WtL-Bd-cbF">
@@ -349,6 +381,13 @@
                     <constraint firstAttribute="trailingMargin" secondItem="IUx-3v-6O2" secondAttribute="trailing" id="tnK-AF-mqq"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imgae_Comment" destination="nig-Q1-0lx" id="loM-DZ-FKk"/>
+                <outlet property="lab_Comment" destination="WtL-Bd-cbF" id="3bH-i8-mEY"/>
+                <outlet property="lab_CommentTime" destination="IUx-3v-6O2" id="zab-xF-QDg"/>
+                <outlet property="lab_HF" destination="49X-DN-yct" id="EU1-uk-vXG"/>
+                <outlet property="lab_commentTitle" destination="cfF-Yt-340" id="a0R-pl-IZp"/>
+            </connections>
             <point key="canvasLocation" x="34" y="554"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShowTrvalCell4" rowHeight="56" id="L7N-4M-YKI" customClass="ShowTrvalCell">

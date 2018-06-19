@@ -170,14 +170,14 @@
         self.zIndex--;
         if (self.zIndex<=0) {
             [YTAlertUtil showTempInfo:@"在往前没有了"];
-            self.zIndex=0;
+            return;
         }
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.zIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }else{
         self.zIndex++;
         if (self.zIndex>self.data_Count.count-1) {
             [YTAlertUtil showTempInfo:@"在往后没有了"];
-            self.zIndex=self.data_Count.count-1;
+            return;
         }
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.zIndex inSection:0]  atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }

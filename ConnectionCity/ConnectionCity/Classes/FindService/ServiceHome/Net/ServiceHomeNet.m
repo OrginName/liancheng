@@ -40,7 +40,8 @@
         for (int i=0; i<[responseObject[@"data"] count]; i++) {
             ServiceListMo * list = [ServiceListMo mj_objectWithKeyValues:responseObject[@"data"][i]];
             list.ID = responseObject[@"data"][i][@"id"];
-            list.user1 = [userMo mj_objectWithKeyValues:list.user];
+            list.user1 = [UserMo mj_objectWithKeyValues:list.user];
+            list.user1.ID = list.user[@"id"];
             [arr addObject:list];
         }
         sucBlock(arr);

@@ -8,6 +8,7 @@
 
 #import "BaseModel.h"
 #import "trvalMo.h"
+#import "UserMo.h"
 @interface ServiceListMo : BaseModel
 proStr(ID);
 proStr(images);
@@ -24,6 +25,6 @@ proStr(cityName);
 proStr(cityCode);
 proStr(areaName);
 proStr(areaCode);
-@property (nonatomic,strong) userMo * user1;
+@property (nonatomic,strong) UserMo * user1;
 proDic(user);
 @end
