@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    [self requestData];
 }
 - (IBAction)btnClick:(UIButton *)sender {
     NSArray * arr = @[@"CardAuthorController",@"IdentityAuthorController",@"SkillCertificationController"];
@@ -29,6 +30,10 @@
 -(void)setUI{
     self.navigationItem.title = @"认证中心";
 }
-
+- (void)requestData {
+    [YSNetworkTool POST:myAuthAuth params:nil showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:nil];
+}
 
 @end

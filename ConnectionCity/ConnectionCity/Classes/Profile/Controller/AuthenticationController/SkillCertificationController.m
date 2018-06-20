@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    [self requestData];
+
 }
 -(void)setUI{
     self.navigationItem.title = @"技能认证";
@@ -37,5 +39,10 @@
     UIButton * btn = (UIButton *)[self.view_Bottom viewWithTag:sender.tag-3];
     [btn setBackgroundImage:[UIImage imageNamed:@"jia200-5"] forState:UIControlStateNormal];
     sender.hidden = YES;
+}
+- (void)requestData {
+    [YSNetworkTool POST:myAuthAuth params:nil showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:nil];
 }
 @end

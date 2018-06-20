@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    [self requestData];
+
 }
 -(void)setUI{
     self.navigationItem.title = @"手机号认证";
@@ -37,5 +39,10 @@
     }else if (point.x>217&&point.x<270){
         [YTAlertUtil showTempInfo:@"隐私政策"];
     }
+}
+- (void)requestData {
+    [YSNetworkTool POST:myAuthAuth params:nil showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:nil];
 }
 @end
