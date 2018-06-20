@@ -106,7 +106,7 @@
     UIButton*btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(0, 0, 30, 30);
     btn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [btn setTitle:@"苏州市" forState:UIControlStateNormal];
+    [btn setTitle:[KUserDefults objectForKey:kUserCity] forState:UIControlStateNormal];
     self.backBtn = btn;
     [btn addTarget:self action:@selector(CityClick) forControlEvents:UIControlEventTouchUpInside];
     [btn setImage:[UIImage imageNamed:@"s-xiala"] forState:UIControlStateNormal];

@@ -91,6 +91,8 @@ static NSString * const keywordTalentKeyword = @"/keyword/talent-keyword";
 #pragma mark - 数据字典
 //区域树状列表
 static NSString * const dictionaryAreaTreeList = @"/dictionary/area/tree-list";
+//全部字典
+static NSString * const dictionaryDictionaryAll = @"/dictionary/dictionary/all";
 //学历
 static NSString * const dictionaryEducation = @"/dictionary/education";
 //职业分类

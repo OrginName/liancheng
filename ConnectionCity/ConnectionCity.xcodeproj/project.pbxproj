@@ -75,6 +75,7 @@
 		7274190220B3F60D001D6BE1 /* SendSwapController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7274190020B3F60D001D6BE1 /* SendSwapController.xib */; };
 		7274190C20B402FC001D6BE1 /* LxGridViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274190B20B402FB001D6BE1 /* LxGridViewFlowLayout.m */; };
 		7274190F20B4036E001D6BE1 /* TZTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274190E20B4036E001D6BE1 /* TZTestCell.m */; };
+		727C86D320DAA51100AA2796 /* AllDicMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 727C86D220DAA51100AA2796 /* AllDicMo.m */; };
 		7294185320AD11E00054B71D /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185220AD11E00054B71D /* SearchCell.m */; };
 		7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185520AD11F70054B71D /* SearchCollectionCell.m */; };
 		7294185920AD120E0054B71D /* SearchLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185820AD120E0054B71D /* SearchLayout.m */; };
@@ -577,6 +578,8 @@
 		7274190B20B402FB001D6BE1 /* LxGridViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LxGridViewFlowLayout.m; sourceTree = "<group>"; };
 		7274190D20B4036E001D6BE1 /* TZTestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZTestCell.h; sourceTree = "<group>"; };
 		7274190E20B4036E001D6BE1 /* TZTestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZTestCell.m; sourceTree = "<group>"; };
+		727C86D120DAA51100AA2796 /* AllDicMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllDicMo.h; sourceTree = "<group>"; };
+		727C86D220DAA51100AA2796 /* AllDicMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllDicMo.m; sourceTree = "<group>"; };
 		7294185120AD11E00054B71D /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		7294185220AD11E00054B71D /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		7294185420AD11F70054B71D /* SearchCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCollectionCell.h; sourceTree = "<group>"; };
@@ -1883,6 +1886,8 @@
 			children = (
 				72A2FC7120D4B40A00CD6AAC /* trvalMo.h */,
 				72A2FC7220D4B40A00CD6AAC /* trvalMo.m */,
+				727C86D120DAA51100AA2796 /* AllDicMo.h */,
+				727C86D220DAA51100AA2796 /* AllDicMo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3636,6 +3641,7 @@
 				8DF7E3C820CF6182009A92D7 /* CityMo.m in Sources */,
 				8D09E18620BFC4B8000F7EBD /* AppointmentController.m in Sources */,
 				720263F720B5015500382B2F /* TZImagePickerController.m in Sources */,
+				727C86D320DAA51100AA2796 /* AllDicMo.m in Sources */,
 				CE0A99DD20C57C44003A4D91 /* CertificationCenterController.m in Sources */,
 				727418C020B17536001D6BE1 /* CustomTabr.m in Sources */,
 				8DD48CD120A811EA00D6D1E6 /* SDCycleScrollView.m in Sources */,

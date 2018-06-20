@@ -39,7 +39,7 @@
     // Do any additional setup after loading the view from its nib.
     [self setUI];
     [self loadData];
-    if ([[KUserDefults objectForKey:kUserCityID] length]!=0) {
+    if ([KUserDefults objectForKey:kUserCityID]!=nil) {
          [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
     }
     _flag = NO;
@@ -97,9 +97,10 @@
             class.block = ^(NSString *classifiation){
                 UILabel * btn = (UILabel *)[self.view_SX viewWithTag:2];
                 btn.text = classifiation;
+                
             };
             class.block1 = ^(NSString *classifiationID, NSString *classifiation) {
-                
+                [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID],@"category":classifiationID}];
             };
             [self.navigationController pushViewController:class animated:YES];
         }
@@ -183,7 +184,7 @@
                             @"age": @"",
                             @"areaCode": @"",
                             @"provinceCode": @"",
-                            @"category": @8,
+                            @"category": dic[@"category"]?dic[@"category"]:@"",
                             @"cityCode":dic[@"cityCode"],
                             @"distance": @"",
                             @"gender": @0,
@@ -242,8 +243,8 @@
     }
 }
 -(void)loadCityData{
-    if ([[KUserDefults objectForKey:kUserCityID] length]!=0) {
-        NSString * str = [KUserDefults objectForKey:kUserCityID];
+    if ([KUserDefults objectForKey:kUserCityID]!=nil) {
+//        NSString * str = [KUserDefults objectForKey:kUserCityID];
         return;
     }
     [YSNetworkTool POST:dictionaryAreaTreeList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {

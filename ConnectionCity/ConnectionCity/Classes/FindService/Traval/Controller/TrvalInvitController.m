@@ -10,7 +10,7 @@
 #import "TrvalCell.h"
 @interface TrvalInvitController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
-
+@property (nonatomic,strong) NSMutableArray * Arr_Dic;
 @end
 
 @implementation TrvalInvitController
@@ -18,6 +18,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    [self initData];
+    self.Arr_Dic = [NSMutableArray array];
+}
+-(void)initData{
+    [YSNetworkTool POST:dictionaryDictionaryAll params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        self.Arr_Dic = responseObject[@"data"];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 -(void)SearchClick{
     [YTAlertUtil showTempInfo:@"旅行邀约发布"];
@@ -44,7 +53,13 @@
     cell.txt_View.placeholderColor = YSColor(166, 166, 166);
     return cell;
 }
- 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ((indexPath.section==0&&indexPath.row==1)||indexPath.section==1) {
+        NSArray * arr = self.Arr_Dic[17+indexPath.row][@"content"];
+         
+    }
+   
+}
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     TrvalCell * cell = [[NSBundle mainBundle] loadNibNamed:@"TrvalCell" owner:nil options:nil][1];
     cell.lab_headTitle.text = section==0?@"我要去哪里":section==1?@"计划安排":section==2?@"计划说明":@"";
