@@ -9,13 +9,16 @@
 #import "ReleaseTenderController.h"
 #import "ReleaseTenderCell.h"
 #import "ReleaseTenderAdditionalCell.h"
+#import "EditAllController.h"
+#import "LCDatePicker.h"
 
-@interface ReleaseTenderController ()
+@interface ReleaseTenderController ()<LCDatePickerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 /** 发票cell title数据源数组 */
 @property (nonatomic, copy) NSArray<NSString *> *cellTitles;
 /** 发票cell TextField placeHold数据源数组 */
 @property (nonatomic, strong) NSMutableArray<NSString *> *cellPlaceHolds;
+@property (nonatomic,strong) LCDatePicker * myDatePick;
 
 @end
 
@@ -38,6 +41,7 @@
     self.navigationItem.title = @"发布招标";
     _cellTitles = @[@"项目标题", @"项目单位", @"招标所在地", @"开标地点", @"招标内容", @"",@"报名/投标时间",@"投标截止时间",@"招标金额",@"联系人",@"联系电话"];
     _cellPlaceHolds = [NSMutableArray arrayWithArray:@[@"简单描述招标需求", @"海通物业管理有限公司", @"点选择所在地", @"线上", @"填写招标内容",@"", @"选择开始时间",@"选择截止间",@"填写金额 万元",@"填写联系人姓名",@"填写联系电话"]];
+    [self initDate];
 }
 - (void)setTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"ReleaseTenderCell" bundle:nil] forCellReuseIdentifier:@"ReleaseTenderCell"];
@@ -53,6 +57,12 @@
     [btn addTarget:self action:@selector(nextBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:btn];
     self.tableView.tableFooterView = footView;
+}
+//创建日期插件
+-(void)initDate{
+    self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
+    self.myDatePick.delegate  = self;
+    [self.view addSubview:self.myDatePick];
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -71,6 +81,19 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(indexPath.row!=5){
+        ReleaseTenderCell * cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section]];
+        EditAllController * edit = [EditAllController new];
+        WeakSelf
+        edit.block = ^(NSString * str){
+            cell.detailLab.text = str;
+            weakSelf.cellPlaceHolds[indexPath.row] = str;
+            [weakSelf.tableView reloadData];
+//            [self.Dic2 setValue:str forKey:[NSString stringWithFormat:@"%ld",indexPath.section]];
+        };
+        [self.navigationController pushViewController:edit animated:YES];
+
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 1) {
@@ -104,10 +127,15 @@
     }
     return headerView;
 }
+#pragma mark ---LCDatePickerDelegate-----
+- (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
+    YTLog(@"%@",str);
+}
 #pragma mark - 点击事件
 - (void)nextBtnClick:(UIButton *)btn {
     
 }
+
 /*
 #pragma mark - Navigation
 

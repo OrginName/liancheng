@@ -33,6 +33,7 @@
 + (BOOL)dx_isNullOrNilWithObject:(id)object;
 #pragma mark 解析字符串
 + (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
++ (NSArray *)stringToJSON:(NSString *)jsonStr;
 #pragma mark 产生随机字符串
 + (NSString *)getRandomStr;
 #pragma mark 是否为纯数字

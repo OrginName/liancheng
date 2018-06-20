@@ -8,6 +8,8 @@
 
 #import "AccontManageController.h"
 #import "AccountManageCell.h"
+#import "YSLoginController.h"
+
 @interface AccontManageController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,assign)NSInteger  selectRow;
@@ -76,7 +78,11 @@
         AccountManageCell *newCell = (AccountManageCell *)[tableView cellForRowAtIndexPath:indexPath];
         newCell.image_onLine.selected = !newCell.image_onLine.selected;
     }else if (indexPath.section==1&&indexPath.row==1){
-        [YTAlertUtil showTempInfo:@"退出登录"];
+//        [YTAlertUtil showTempInfo:@"退出登录"];
+        [YSAccountTool deleteAccount];
+        YSLoginController *loginVC = [[YSLoginController alloc]init];
+        BaseNavigationController * base = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
+        [kWindow setRootViewController:base];
     }
 }
 @end
