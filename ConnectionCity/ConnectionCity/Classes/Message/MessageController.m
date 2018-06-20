@@ -51,7 +51,9 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self setUI];
     flag = NO;
+     
 }
+
 //导航左按钮我的点击
 -(void)MyselfClick{
     [YTAlertUtil showTempInfo:@"正在认真开发..."];
@@ -184,6 +186,7 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     [self.navigationController.navigationBar setBackgroundImage:
      [UIImage createImageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
+   
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
