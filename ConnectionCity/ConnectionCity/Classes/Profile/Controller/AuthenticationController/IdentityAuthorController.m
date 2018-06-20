@@ -43,7 +43,7 @@
     sender.hidden = YES;
 }
 - (void)requestData {
-    [YSNetworkTool POST:myAuthAuth params:nil showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:myAuthUserIdentityAuthCreate params:nil showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         
     } failure:nil];
 }

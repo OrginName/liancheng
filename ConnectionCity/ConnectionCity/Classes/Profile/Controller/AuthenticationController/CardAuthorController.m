@@ -41,7 +41,7 @@
     }
 }
 - (void)requestData {
-    [YSNetworkTool POST:myAuthAuth params:nil showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:myAuthAuthMobile params:nil showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         
     } failure:nil];
 }
