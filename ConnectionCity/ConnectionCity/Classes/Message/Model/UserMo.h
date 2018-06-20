@@ -31,4 +31,5 @@ proStr(occupationCategoryId);
 proStr(status);
 proStr(weight);
 proStr(realName);
+proStr(marriage);
 @end

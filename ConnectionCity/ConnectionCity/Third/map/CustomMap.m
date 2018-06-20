@@ -46,6 +46,9 @@
 -(void)locationClick{
     [self.mapView setCenterCoordinate:self.pointAnnotaiton.coordinate];
     [self.mapView setZoomLevel:15.1 animated:NO];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(currentLocationClick)]) {
+        [self.delegate currentLocationClick];
+    }
 }
 #pragma mark - MAMapView Delegate
 

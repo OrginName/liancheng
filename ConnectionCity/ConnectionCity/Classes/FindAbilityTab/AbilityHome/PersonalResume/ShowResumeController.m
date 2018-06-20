@@ -167,6 +167,7 @@
     if (sender.tag==1) {
         self.zIndex--;
         if (self.zIndex<=0) {
+            self.zIndex = 0;
             [YTAlertUtil showTempInfo:@"在往前没有了"];
             return;
         }
@@ -174,6 +175,7 @@
     }else{
         self.zIndex++;
         if (self.zIndex>self.data_Count.count-1) {
+            self.zIndex = self.data_Count.count-1;
             [YTAlertUtil showTempInfo:@"在往后没有了"];
             return;
         }

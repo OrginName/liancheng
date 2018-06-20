@@ -25,6 +25,7 @@ proStr(cityName);
 proStr(cityCode);
 proStr(areaName);
 proStr(areaCode);
+proStr(typeName);
 @property (nonatomic,strong) UserMo * user1;
 proDic(user);
 @end

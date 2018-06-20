@@ -14,6 +14,7 @@
 @protocol CustomMapDelegate <NSObject>
 - (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location;
 -(void)currentAnimatinonViewClick:(MAAnnotationView *)view;
+-(void)currentLocationClick;
 @end
 @interface CustomMap : UIView
 @property (nonatomic,strong) MAMapView * mapView;

@@ -60,7 +60,7 @@
         }else
             return 86;
     }else if (indexPath.section==1){
-        return 136;
+        return 166;
     }else{
         return 80;
     }
@@ -163,7 +163,16 @@
 }
 //点赞按钮点击
 -(void)likeClick:(UIButton *)sender{
-    sender.selected = !sender.selected;
+    if (sender.selected) {
+        [YTAlertUtil showTempInfo:@"您已点赞不能重复点赞"];
+        return;
+    }
+    [YSNetworkTool POST:v1ServiceAddLike  params:@{@"id":@([self.listMo.ID integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        sender.selected = YES;
+        [sender setTitle:[NSString stringWithFormat:@"%@",responseObject[@"data"]] forState:UIControlStateNormal];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 //收藏按钮点击
 -(void)SaveClick:(UIButton *)sender{
@@ -177,7 +186,7 @@
         [_btn_Like setImage:[UIImage imageNamed:@"s-praise"] forState:UIControlStateNormal];
         [_btn_Like setImage:[UIImage imageNamed:@"s-praise1"] forState:UIControlStateSelected];
         _btn_Like.titleLabel.font = [UIFont systemFontOfSize:13];
-        [_btn_Like setTitle:@"12" forState:UIControlStateNormal];
+        [_btn_Like setTitle:@"1" forState:UIControlStateNormal];
         [_btn_Like setTitleColor:YSColor(181, 181, 181) forState:UIControlStateNormal];
         [_btn_Like setTitleColor:YSColor(251, 159, 14) forState:UIControlStateSelected];
         [_btn_Like addTarget:self action:@selector(likeClick:) forControlEvents:UIControlEventTouchUpInside];

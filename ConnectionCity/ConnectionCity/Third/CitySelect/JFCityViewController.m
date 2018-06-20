@@ -504,11 +504,11 @@ JFSearchViewDelegate,UITextFieldDelegate>
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     CityMo * mo = _sectionMutableArray[0][_characterMutableArray[indexPath.section]][indexPath.row];
-    [KUserDefults setObject:mo.fullName forKey:kUserCity];
-    [KUserDefults setObject:mo.ID forKey:kUserCityID];
-    [KUserDefults setObject:mo.lat forKey:kLat];
-    [KUserDefults setObject:mo.lng forKey:KLng];
-    _headerView.cityName = cell.textLabel.text;
+//    [KUserDefults setObject:mo.fullName forKey:kUserCity];
+//    [KUserDefults setObject:mo.ID forKey:kUserCityID];
+//    [KUserDefults setObject:mo.lat forKey:kLat];
+//    [KUserDefults setObject:mo.lng forKey:KLng];
+//    _headerView.cityName = cell.textLabel.text;
 //    [kCurrentCityInfoDefaults setObject:cell.textLabel.text forKey:@"currentCity"];
 //    [_manager cityNumberWithCity:cell.textLabel.text cityNumber:^(NSString *cityNumber) {
 //        [kCurrentCityInfoDefaults setObject:cityNumber forKey:@"cityNumber"];
@@ -519,7 +519,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
     if (self.delegate && [self.delegate respondsToSelector:@selector(cityMo:)]) {
         [self.delegate cityMo:mo];
     }
-    [self historyCity:cell.textLabel.text];
+//    [self historyCity:cell.textLabel.text];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark --- UITextFieldDelegate

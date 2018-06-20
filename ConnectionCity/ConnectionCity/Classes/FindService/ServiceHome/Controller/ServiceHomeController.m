@@ -33,13 +33,37 @@
 @end
 
 @implementation ServiceHomeController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setUI];
     [self loadData];
-    [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
+    [YSNetworkTool POST:dictionaryAreaTreeList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (![responseObject[@"data"] isKindOfClass:[NSArray class]]) {
+            [YTAlertUtil showTempInfo:@"暂无数据"];
+            return;
+        }
+        NSString * city = [KUserDefults objectForKey:kUserCity];
+        for (int i=0; i<[responseObject[@"data"] count]; i++) {
+            CityMo * mo = [CityMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+            if ([mo.fullName isEqualToString:city]) {
+                NSLog(@"324231421342342134213");
+            }
+            if (![mo.fullName containsString:@"市"]) {
+                for (int j=0; j<[mo.childs count]; j++) {
+                    CityMo * mo1 = [CityMo mj_objectWithKeyValues:mo.childs[j]];
+                    if ([mo1.fullName isEqualToString:city]) {
+                        NSLog(@"dfasdsdsdasdasdasdas");
+                    }
+                }
+            }else{
+                
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+//    [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
     _flag = NO;
 }
 //导航条人才类型选择
@@ -146,11 +170,23 @@
 - (void)cityName:(NSString *)name {
     UILabel * btn = (UILabel *)[self.view_SX viewWithTag:1];
     btn.text = name;
+    
+}
+-(void)cityMo:(CityMo *)mo{
+    [self loadServiceList:@{@"lat":mo.lat,@"lng":mo.lng,@"cityCode":mo.ID}];
+    [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([mo.lat floatValue], [mo.lng floatValue])];
+    [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
 }
 #pragma mark - CustomMapDelegate
 - (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location{
     UILabel * btn = (UILabel *)[self.view_SX viewWithTag:1];
     btn.text = locationDictionary[@"city"];
+}
+//回到当前位置的按钮点击
+-(void)currentLocationClick{
+   [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
+    [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([[KUserDefults objectForKey:kLat] floatValue], [[KUserDefults objectForKey:KLng] floatValue])];
+    [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
 }
 -(void)currentAnimatinonViewClick:(MAAnnotationView *)view{
     if ([KString(@"%f", view.annotation.coordinate.latitude) isEqualToString:[KUserDefults objectForKey:kLat]]&&[KString(@"%f", view.annotation.coordinate.longitude) isEqualToString:[KUserDefults objectForKey:KLng]]) {
@@ -166,16 +202,17 @@
 //加载服务列表数据
 -(void)loadServiceList:(NSDictionary *)dic{
     NSDictionary * dic1 = @{
-                            @"age": @"string",
-//                            @"areaCode": @110101,
+                            @"age": @"",
+                            @"areaCode": @"",
+                            @"provinceCode": @"",
                             @"category": @8,
                             @"cityCode":dic[@"cityCode"],
-                            @"distance": @"string",
+                            @"distance": @"",
                             @"gender": @0,
                             @"lat": @([dic[@"lat"] floatValue]),
                             @"lng": @([dic[@"lng"] floatValue]),
                             @"userStatus": @0,
-                            @"validType": @"string"
+                            @"validType": @""
                             };
     //    加载服务列表
     [ServiceHomeNet requstServiceList:dic1 withSuc:^(NSMutableArray *successArrValue) {

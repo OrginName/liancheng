@@ -70,6 +70,7 @@
     float lat = [[KUserDefults objectForKey:kLat] floatValue];
     float lng = [[KUserDefults objectForKey:KLng] floatValue];
     NSDictionary * dic = @{
+                           @"cityCode": @0,
                            @"areaCode": @(areaCode),
                            @"content": @"",
                            @"images": _str_url?_str_url:@"",

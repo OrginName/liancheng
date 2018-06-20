@@ -107,8 +107,12 @@ static NSString * const dictionaryServiceCategoryProperties = @"/dictionary/serv
 //宝物分类
 static NSString * const dictionaryTreasureCategory = @"/dictionary/treasure-category";
 #pragma mark - 服务
+//添加点赞
+static NSString * const v1ServiceAddLike = @"/v1/service/add-like";
 //添加浏览次数
 static NSString * const v1ServiceServiceIdAddBrowseTimes = @"/v1/service/{serviceId}/add-browse-times";
+//服务约单
+static NSString * const v1ServiceCreateOrder = @"/v1/service/create-order";
 //筛选条件
 static NSString * const v1ServiceConditions = @"/v1/service/conditions";
 //新增服务
