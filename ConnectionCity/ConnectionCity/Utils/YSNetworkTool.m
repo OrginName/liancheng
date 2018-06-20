@@ -49,9 +49,14 @@ NSString * const YTHttpUtilResponseData = @"Data";
     [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [YTAlertUtil hideHUD];
         [[self class] p_logRequestDataWithURL:url params:params response:responseObject];
-        success ? success(task, responseObject) : nil;
-        //缓存
-        [[EGOCache globalCache] setObject:responseObject forKey:cacheKeyStr];
+        //如果成功再返回请求结果
+        if ([[self class] isSuccessWithResp:responseObject]) {
+            success ? success(task, responseObject) : nil;
+            //缓存
+            [[EGOCache globalCache] setObject:responseObject forKey:cacheKeyStr];
+        }else{
+            [YTAlertUtil showTempInfo:responseObject[kMessage]];
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [[self class]p_handleRequestFailure:nil];
         [YTAlertUtil showTempInfo:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
