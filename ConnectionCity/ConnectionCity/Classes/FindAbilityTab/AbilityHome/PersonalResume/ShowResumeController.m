@@ -161,9 +161,7 @@
         _collectionView.contentOffset = CGPointMake(0, 0);
     }
     return _collectionView;
-}
-
-
+} 
 - (IBAction)UPDownClick:(UIButton *)sender {
 //    [self layoutIfNeeded];
     if (sender.tag==1) {

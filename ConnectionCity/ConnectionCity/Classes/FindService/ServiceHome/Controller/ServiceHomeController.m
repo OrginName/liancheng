@@ -39,8 +39,6 @@
     // Do any additional setup after loading the view from its nib.
     [self setUI];
     [self loadData];
-#warning 记得删除
-    [KUserDefults setValue:@"110000" forKey:kUserCityID];
     [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
     _flag = NO;
 }
@@ -169,7 +167,7 @@
 -(void)loadServiceList:(NSDictionary *)dic{
     NSDictionary * dic1 = @{
                             @"age": @"string",
-//                             @"areaCode": @110101,
+//                            @"areaCode": @110101,
                             @"category": @8,
                             @"cityCode":dic[@"cityCode"],
                             @"distance": @"string",

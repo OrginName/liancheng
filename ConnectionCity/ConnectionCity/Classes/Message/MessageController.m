@@ -93,27 +93,31 @@
     }
     flag = YES;
     [UIView animateWithDuration:0.5 animations:^{
-        self.view_line.x = sender.x-20;
+        self.view_line.x = sender.x;
     }];
     switch (sender.tag) {
         case 1:
         {
-            BaseOneTabController * one = [[BaseOneTabController alloc] init];
-            [self.navigationController pushViewController:one animated:YES];
+            BaseFindServiceTabController * base = [BaseFindServiceTabController new];
+            [self.navigationController pushViewController:base animated:YES];
+//            BaseOneTabController * one = [[BaseOneTabController alloc] init];
+//            [self.navigationController pushViewController:one animated:YES];
 //            [[NSNotificationCenter defaultCenter] postNotificationName:@"TABBAR" object:nil];
 //
         } 
             break;
         case 2:
         {
-            BaseFindServiceTabController * base = [BaseFindServiceTabController new];
-            [self.navigationController pushViewController:base animated:YES];
+//            BaseFindServiceTabController * base = [BaseFindServiceTabController new];
+//            [self.navigationController pushViewController:base animated:YES];
         }
             break;
         case 3:
         {
-            BaseChangeTabController * one = [[BaseChangeTabController alloc] init];
+            BaseOneTabController * one = [[BaseOneTabController alloc] init];
             [self.navigationController pushViewController:one animated:YES];
+//            BaseChangeTabController * one = [[BaseChangeTabController alloc] init];
+//            [self.navigationController pushViewController:one animated:YES];
         }
             break;
         default:
@@ -197,8 +201,10 @@
 }
 -(void)initData{
     [YSNetworkTool POST:v1PrivateUserInfo params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        UserMo * user = [UserMo mj_objectWithKeyValues:responseObject[@"data"]];
-        user.ID = responseObject[@"data"][@"id"];
+        if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]]) {
+            UserMo * user = [UserMo mj_objectWithKeyValues:responseObject[@"data"]];
+            user.ID = responseObject[@"data"][@"id"];
+        } 
 //        [YSAccountTool saveAccount:user];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
