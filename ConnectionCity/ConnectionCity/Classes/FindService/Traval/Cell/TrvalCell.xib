@@ -230,11 +230,12 @@
             <connections>
                 <outlet property="lab_headTitle" destination="3mR-1Z-rbH" id="2cA-P8-rKF"/>
                 <outlet property="lab_title" destination="aug-a8-BHG" id="BZM-9s-hvY"/>
+                <outlet property="txt_Edit" destination="jxN-hL-1Gq" id="Ovw-k5-Jtu"/>
                 <outlet property="txt_View" destination="Jtv-ZB-dph" id="mMc-Zi-aPe"/>
             </connections>
             <point key="canvasLocation" x="142" y="-36"/>
         </tableViewCell>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrvalCell1" rowHeight="50" id="k32-hG-FAI" customClass="TrvalCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TrvalCell1" rowHeight="50" id="k32-hG-FAI" customClass="TrvalCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k32-hG-FAI" id="Nm0-U4-Pnw">
@@ -284,7 +285,7 @@
             </connections>
             <point key="canvasLocation" x="142" y="111"/>
         </tableViewCell>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrvalCell2" rowHeight="50" id="gaH-3w-Vbs" customClass="TrvalCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TrvalCell2" rowHeight="50" id="gaH-3w-Vbs" customClass="TrvalCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gaH-3w-Vbs" id="lMV-nR-V6S">
@@ -334,10 +335,11 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="lab_title" destination="aug-a8-BHG" id="6qO-f2-1ns"/>
+                <outlet property="txt_Edit" destination="jxN-hL-1Gq" id="BBP-MT-jO6"/>
             </connections>
             <point key="canvasLocation" x="142" y="207"/>
         </tableViewCell>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrvalCell3" rowHeight="96" id="jpa-uc-1vp" customClass="TrvalCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TrvalCell3" rowHeight="96" id="jpa-uc-1vp" customClass="TrvalCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jpa-uc-1vp" id="7KC-Mz-nkl">

@@ -8,9 +8,11 @@
 
 #import "TrvalInvitController.h"
 #import "TrvalCell.h"
-@interface TrvalInvitController ()<UITableViewDataSource,UITableViewDelegate>
+#import "JFCityViewController.h"
+@interface TrvalInvitController ()<UITableViewDataSource,UITableViewDelegate,JFCityViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * Arr_Dic;
+@property (nonatomic,strong) NSMutableDictionary * Dic;
 @end
 
 @implementation TrvalInvitController
@@ -20,6 +22,7 @@
     [self setUI];
     [self initData];
     self.Arr_Dic = [NSMutableArray array];
+    self.Dic = [NSMutableDictionary dictionary];
 }
 -(void)initData{
     [YSNetworkTool POST:dictionaryDictionaryAll params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -50,15 +53,60 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TrvalCell * cell = [TrvalCell tempTableViewCellWith:tableView indexPath:indexPath];
     cell.txt_View.placeholder = @"简单说说您对报名人的要求、旅行计划的安排说明";
+    NSString * str = [NSString stringWithFormat:@"%ld%ld",indexPath.section,indexPath.row];
+    NSArray * arr = [self.Dic allKeys];
+    if ([arr containsObject:str]) {
+        cell.txt_Edit.text = self.Dic[str][@"name"];
+    }
     cell.txt_View.placeholderColor = YSColor(166, 166, 166);
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    TrvalCell * cell = [tableView cellForRowAtIndexPath:indexPath];
     if ((indexPath.section==0&&indexPath.row==1)||indexPath.section==1) {
-        NSArray * arr = self.Arr_Dic[17+indexPath.row][@"content"];
-         
+        NSArray * arr = [NSArray array];
+        NSString * str = @"";
+        if (indexPath.section==0&&indexPath.row==1) {
+            str = @"18";
+        }
+        if (indexPath.section==1) {
+            if (indexPath.row==0) {
+                str = @"19";
+            }else if (indexPath.row==1){
+                str = @"20";
+            }else if (indexPath.row==2){
+                str = @"21";
+            }else
+                str = @"22";
+        }
+        for (int i=0; i<self.Arr_Dic.count; i++) {
+            if ([[self.Arr_Dic[i][@"id"] stringValue] isEqualToString:str]) {
+                arr = [YSTools stringToJSON:self.Arr_Dic[i][@"content"]];
+            }
+        }
+        NSMutableArray * title = [NSMutableArray array];
+        for (int i=0; i<arr.count; i++) {
+            [title addObject:arr[i][@"description"]];
+        }
+        [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:title multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
+            cell.txt_Edit.text = title[idx];
+            [self.Dic setObject:@{@"name":title[idx],@"ID":arr[idx][@"value"]} forKey:[NSString stringWithFormat:@"%ld%ld",indexPath.section,indexPath.row]];
+        } cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
+            
+        } completion:nil];
     }
-   
+    if (indexPath.section==0&&indexPath.row==0) {
+        JFCityViewController * jf= [JFCityViewController new];
+        jf.delegate = self;
+        BaseNavigationController * nav = [[BaseNavigationController alloc] initWithRootViewController:jf];
+        [self.navigationController presentViewController:nav animated:YES completion:nil];
+    }
+}
+#define mark------JFCityViewControllerDelegate---
+-(void)cityMo:(CityMo *)mo{
+    TrvalCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    cell.txt_Edit.text = mo.fullName;
+    [self.Dic setObject:@{@"name":mo.fullName,@"ID":mo.ID} forKey:@"00"];
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     TrvalCell * cell = [[NSBundle mainBundle] loadNibNamed:@"TrvalCell" owner:nil options:nil][1];

@@ -15,7 +15,7 @@ static NSArray * arr_title;
 @implementation TrvalCell
 +(void)initialize{
     [super initialize];
-    arr_title = @[@"旅行去哪",@"邀约对象",@"出发时间",@"旅行时长",@"出行方式",@"旅行话费"];
+    arr_title = @[@"旅行去哪",@"邀约对象",@"出发时间",@"旅行时长",@"出行方式",@"旅行花费"];
 }
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView
                             indexPath:(NSIndexPath *)indexPath {

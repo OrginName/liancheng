@@ -11,8 +11,9 @@
 #import "CityMo.h"
 
 @protocol JFCityViewControllerDelegate <NSObject>
-
+@optional
 - (void)cityName:(NSString *)name;
+@optional
 -(void)cityMo:(CityMo *)mo;
 @end
 

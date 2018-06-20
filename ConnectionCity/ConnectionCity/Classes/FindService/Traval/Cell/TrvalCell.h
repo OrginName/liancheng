@@ -11,6 +11,7 @@
 @interface TrvalCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet CustomtextView *txt_View;
 @property (weak, nonatomic) IBOutlet UILabel *lab_headTitle;
+@property (weak, nonatomic) IBOutlet UITextField *txt_Edit;
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView
                             indexPath:(NSIndexPath *)indexPath;
 @end
