@@ -155,6 +155,21 @@ static NSString * const v1ServiceStationRelationToMeList = @"/v1/service/station
 static NSString * const v1ServiceStationSign = @"/v1/service/station/sign";
 //退出服务站
 static NSString * const v1ServiceStationSignOut = @"/v1/service/station/sign-out";
+#pragma mark - 个人中心-认证中心
+//个人中心-认证中心
+static NSString * const myAuthAuth = @"/my/auth/auth";
+//个人中心-认证中心-证书认证
+static NSString * const myAuthAuthCertificate = @"/my/auth/auth/certificate";
+//个人中心-认证中心-身份认证
+static NSString * const myAuthAuthIdCard = @"/my/auth/auth/id-card";
+//个人中心-认证中心-认证手机
+static NSString * const myAuthAuthMobile = @"/my/auth/auth/mobile";
+//个人中心-身份认证
+static NSString * const myAuthUserIdentityAuthCreate = @"/my/auth/user-identity-auth/create";
+//个人中心-技能认证
+static NSString * const myAuthUserSkillAuthCreate = @"/my/auth/user-skill-auth/create";
+
+
 
 
 
