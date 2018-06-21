@@ -10,6 +10,7 @@
 #import "BulidTeamCell.h"
 #import "BulidTeamSectionHead.h"
 #import "YSButton.h"
+#import "CreatGroupController.h"
 @interface ServiceStationController ()
 {
     BOOL _isOpen[10000]; //== @[NO, NO, NO];
@@ -91,7 +92,11 @@
 #pragma mark - response method
 //创建团队
 - (void)headerBtnClick:(UIButton *)btn {
-    
+    CreatGroupController * creat = [CreatGroupController new];
+    creat.block = ^{
+        
+    };
+    [self.navigationController pushViewController:creat animated:YES];
 }
 #pragma mark - profile method
 - (void)p_initDataSource {

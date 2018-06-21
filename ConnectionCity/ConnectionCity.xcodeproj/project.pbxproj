@@ -76,6 +76,8 @@
 		7274190C20B402FC001D6BE1 /* LxGridViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274190B20B402FB001D6BE1 /* LxGridViewFlowLayout.m */; };
 		7274190F20B4036E001D6BE1 /* TZTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274190E20B4036E001D6BE1 /* TZTestCell.m */; };
 		727C86D320DAA51100AA2796 /* AllDicMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 727C86D220DAA51100AA2796 /* AllDicMo.m */; };
+		727C86D720DBE11D00AA2796 /* CreatGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727C86D520DBE11D00AA2796 /* CreatGroupController.m */; };
+		727C86D820DBE11D00AA2796 /* CreatGroupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727C86D620DBE11D00AA2796 /* CreatGroupController.xib */; };
 		7294185320AD11E00054B71D /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185220AD11E00054B71D /* SearchCell.m */; };
 		7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185520AD11F70054B71D /* SearchCollectionCell.m */; };
 		7294185920AD120E0054B71D /* SearchLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185820AD120E0054B71D /* SearchLayout.m */; };
@@ -580,6 +582,9 @@
 		7274190E20B4036E001D6BE1 /* TZTestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZTestCell.m; sourceTree = "<group>"; };
 		727C86D120DAA51100AA2796 /* AllDicMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllDicMo.h; sourceTree = "<group>"; };
 		727C86D220DAA51100AA2796 /* AllDicMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllDicMo.m; sourceTree = "<group>"; };
+		727C86D420DBE11D00AA2796 /* CreatGroupController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreatGroupController.h; sourceTree = "<group>"; };
+		727C86D520DBE11D00AA2796 /* CreatGroupController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreatGroupController.m; sourceTree = "<group>"; };
+		727C86D620DBE11D00AA2796 /* CreatGroupController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatGroupController.xib; sourceTree = "<group>"; };
 		7294185120AD11E00054B71D /* SearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
 		7294185220AD11E00054B71D /* SearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		7294185420AD11F70054B71D /* SearchCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCollectionCell.h; sourceTree = "<group>"; };
@@ -1833,6 +1838,9 @@
 				72EC1BA320BC349600ACC20B /* ServiceStationController.h */,
 				72EC1BA420BC349600ACC20B /* ServiceStationController.m */,
 				72EC1BA520BC349600ACC20B /* ServiceStationController.xib */,
+				727C86D420DBE11D00AA2796 /* CreatGroupController.h */,
+				727C86D520DBE11D00AA2796 /* CreatGroupController.m */,
+				727C86D620DBE11D00AA2796 /* CreatGroupController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3379,6 +3387,7 @@
 				8D8E4ECD20C9109E00C3D537 /* EditProfileCell.xib in Resources */,
 				72EBB8D720C81B4600F670E9 /* AccontManageController.xib in Resources */,
 				72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */,
+				727C86D820DBE11D00AA2796 /* CreatGroupController.xib in Resources */,
 				CE5C283020B9733A006A8332 /* ConsultativeNegotiationCell.xib in Resources */,
 				8D67603620A448CB0027CDEE /* SX.plist in Resources */,
 				CEC4A56A20C407EB0026EE19 /* TopUpController.xib in Resources */,
@@ -3568,6 +3577,7 @@
 				727418DE20B290BF001D6BE1 /* EnthusiastsControll.m in Sources */,
 				727418E720B291B6001D6BE1 /* BaseChangeTabController.m in Sources */,
 				720263F020B5015500382B2F /* NSBundle+TZImagePicker.m in Sources */,
+				727C86D720DBE11D00AA2796 /* CreatGroupController.m in Sources */,
 				CEC4A54B20C3FC180026EE19 /* ProfileCell.m in Sources */,
 				8D2B8B9B20A2DABD00C3157F /* ConnectionController.m in Sources */,
 				CE0BA5B6209D5E6B004C3C33 /* NSObject+YTGetObject.m in Sources */,
