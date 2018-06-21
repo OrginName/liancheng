@@ -10,6 +10,9 @@
 
 @interface TrvalTrip : UIView
 @property (nonatomic,strong) UICollectionView * bollec_bottom;
+@property (nonatomic,strong) NSString * cityID;
+@property (nonatomic,strong)NSMutableArray * data_Arr;
+@property (nonatomic,assign) NSInteger page;
 -(instancetype)initWithFrame:(CGRect)frame withControl:(UIViewController *)control;
 @end
 

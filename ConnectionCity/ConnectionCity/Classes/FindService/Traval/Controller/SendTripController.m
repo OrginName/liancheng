@@ -61,6 +61,7 @@
     [YSNetworkTool POST:v1ServiceTravelCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [self.navigationController popViewControllerAnimated:YES];
         [YTAlertUtil showTempInfo:responseObject[@"message"]];
+        self.block();
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

@@ -13,10 +13,13 @@
 #import "FilterOneController.h"
 #import "JFCityViewController.h"
 #import "ServiceHomeNet.h"
+#import "TrvalInvitController.h"
+#import "SendTripController.h"
 @interface TravalController ()<UITableViewDelegate,UITableViewDataSource,JFCityViewControllerDelegate>
 {
     UIButton * _tmpBtn;
-   
+    NSInteger  _page;
+    NSString * _cityID;
 }
 @property (weak, nonatomic) IBOutlet UIButton *btn_PYYY;
 @property (nonatomic,strong)TrvalTrip * trval;
@@ -24,37 +27,40 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn_invit;
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (weak, nonatomic) IBOutlet UIView *view_tab;
-@property (nonatomic,assign) NSInteger page;
 @property (nonatomic,strong) UIButton * backBtn;
+@property (nonatomic,strong) NSMutableArray * data_Arr;
 @end
 @implementation TravalController
 - (void)viewDidLoad {
     [super viewDidLoad];
+     _page=1;
+    _cityID = [KUserDefults objectForKey:kUserCityID];
     [self setUI];
     [self initData];
-    _page=1;
 }
 -(void)initData{
-    [self requstLoad:@{}];
-    [self.tab_Bottom.mj_header beginRefreshing];
+    self.data_Arr = [NSMutableArray array];
     self.tab_Bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self requstLoad:@{}];
+        _page=1;
+        [self requstLoad:@{@"cityID":_cityID}];
     }];
-    self.tab_Bottom.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        _page++;
-        [self requstLoad:@{}];
+    self.tab_Bottom.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [self requstLoad:@{@"cityID":_cityID}];
     }];
+    [self.tab_Bottom.mj_header beginRefreshing];
 }
 -(void)requstLoad:(NSDictionary *) dic1{
     NSDictionary * dic = @{
-                           @"cityCode": @100010,
-                           @"pageNumber": @1,
-                           @"pageSize":@10,
-                           @"sortField": @"createTime",
-                           @"sortType": @"desc"
+                           @"cityCode": @([dic1[@"cityID"] integerValue]),
+                           @"pageNumber": @(_page),
+                           @"pageSize":@15,
                            };
-    [ServiceHomeNet requstTrvalDic:dic withSuc:^(NSMutableArray *successArrValue) {
+    [ServiceHomeNet requstTrvalDic:dic withSuc:^(NSMutableArray *successArrValue){
+        _page++;
         [self.tab_Bottom.mj_header endRefreshing];
+        [self.tab_Bottom.mj_footer endRefreshing];
+        [self.data_Arr addObjectsFromArray:successArrValue];
+        [self.tab_Bottom reloadData];
     }];
 }
 #pragma mark ---按钮点击事件-----
@@ -72,7 +78,20 @@
     } else {
         str = @"TrvalInvitController";
     }
-    [self.navigationController pushViewController:[super rotateClass:str] animated:YES];
+    UIViewController * controller = [super rotateClass:str];
+    if ([controller isKindOfClass:[TrvalInvitController class]]) {
+        TrvalInvitController * invit = (TrvalInvitController *)controller;
+        invit.block = ^{
+            [self.tab_Bottom.mj_header beginRefreshing];
+        };
+    }
+    if ([controller isKindOfClass:[SendTripController class]]) {
+        SendTripController * invit = (SendTripController *)controller;
+        invit.block = ^{
+            [self.trval.bollec_bottom.mj_header beginRefreshing];
+        };
+    }
+    [self.navigationController pushViewController:controller animated:YES];
 }
 //城市更改
 -(void)CityClick{
@@ -85,6 +104,14 @@
 #pragma mark --- JFCityViewControllerDelegate-----
 -(void)cityMo:(CityMo *)mo{
     [self.backBtn setTitle:mo.fullName forState:UIControlStateNormal];
+    [self.data_Arr removeAllObjects];
+    _cityID = mo.ID;
+    _page = 1;
+    [self.tab_Bottom.mj_header beginRefreshing];
+    self.trval.page=1;
+    self.trval.cityID = mo.ID;
+    [self.trval.data_Arr removeAllObjects];
+    [self.trval.bollec_bottom.mj_header beginRefreshing];
 }
 -(void)back{
     [self.tabBarController.navigationController popViewControllerAnimated:YES];
@@ -118,13 +145,14 @@
 }
 #pragma mark ---- UITableviewDelegate------
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.data_Arr.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TrvalCell * cell = [tableView dequeueReusableCellWithIdentifier:@"TrvalCell0"];
     if (!cell) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"TrvalCell" owner:nil options:nil][0];
     }
+    cell.receive_Mo = self.data_Arr[indexPath.row];
     return cell;
 }
 - (IBAction)btnClick:(UIButton *)sender {

@@ -32,7 +32,33 @@
     }];
 }
 -(void)SearchClick{
-    [YTAlertUtil showTempInfo:@"旅行邀约发布"];
+    NSArray * arr=  [self.Dic allKeys];
+    TrvalCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
+    if (![arr containsObject:@"00"]||![arr containsObject:@"01"]||![arr containsObject:@"10"]||![arr containsObject:@"11"]||![arr containsObject:@"12"]||![arr containsObject:@"13"]) {
+        [YTAlertUtil showTempInfo:@"请填写完整"];
+        return;
+    }
+    if (cell.txt_View.text.length==0) {
+        [YTAlertUtil showTempInfo:@"请输入计划说明"];
+        return;
+    }
+    NSDictionary * dic = @{
+                           @"cityCode": @([self.Dic[@"00"][@"ID"] integerValue]),
+                           @"departTime": self.Dic[@"10"][@"ID"],
+                           @"description": cell.txt_View.text,
+                           @"inviteObject": self.Dic[@"01"][@"ID"],
+                           @"longTime": self.Dic[@"11"][@"ID"],
+//                           @"placeTravel": self.Dic[@"00"][@"ID"],
+                           @"travelFee": self.Dic[@"13"][@"ID"],
+                           @"travelMode": self.Dic[@"12"][@"ID"]
+                           };
+    [YSNetworkTool POST:v1ServiceTravelInviteCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTAlertUtil showTempInfo:@"发布成功"];
+        self.block();
+        [self.navigationController popViewControllerAnimated:YES];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 -(void)setUI{
     self.navigationItem.title = @"旅行邀约";

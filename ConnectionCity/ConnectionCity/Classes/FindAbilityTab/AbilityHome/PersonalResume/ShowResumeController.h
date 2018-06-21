@@ -18,4 +18,5 @@ typedef enum {
 @property(nonatomic,assign) NSInteger  Receive_Type;//接受类型
 @property (nonatomic,strong) NSMutableArray * data_Count;
 @property (nonatomic,assign) NSInteger zIndex;
+@property (nonatomic,strong) NSString * str;//判断传进来的是哪个
 @end

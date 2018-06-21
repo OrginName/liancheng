@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "ServiceListMo.h"
+#import "trvalMo.h"
 @protocol ShowTrvalCellDelegate <NSObject>
 @optional;
 -(void)btnClick:(NSInteger)tag;
 @end
 @interface ShowTrvalCell : UITableViewCell
 @property (nonatomic,strong)ServiceListMo * list;
+@property (nonatomic,strong)trvalMo * trval;
 @property (weak, nonatomic) IBOutlet UIButton *btn_wight;//婚姻
 @property (weak, nonatomic) IBOutlet UIButton *btn_weight;
 @property (weak, nonatomic) IBOutlet UIImageView *image_sex;
@@ -34,6 +36,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab_Comment;
 @property (weak, nonatomic) IBOutlet UILabel *lab_HF;//回复
 @property (weak, nonatomic) IBOutlet UILabel *lab_CommentTime;
+@property (weak, nonatomic) IBOutlet UILabel *lab_TrvalPrice;
+@property (weak, nonatomic) IBOutlet UILabel *lab_TrvalDY;
+@property (weak, nonatomic) IBOutlet UILabel *lab_TrvalDes;
 
 @property(nonatomic,assign) id<ShowTrvalCellDelegate>delegate;
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView

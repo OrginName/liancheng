@@ -33,7 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = self.list.title;
+    
     [self setUI];
     [self initDate];
 }
@@ -42,19 +42,35 @@
         self.lab_title1.text = @"服务价格";
         self.lab_title2.text = @"服务时间";
         self.lab_title3.text = @"服务地点";
+        self.navigationItem.title = self.list.title;
+        [self.image_head sd_setImageWithURL:[NSURL URLWithString:self.list.user1.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+        self.lab_name.text = self.list.user1.nickName;
+        self.lab_Sex.image = [UIImage imageNamed:[self.list.user1.gender isEqualToString:@"0"]?@"men":@"weomen"];
+        self.lab_age.text = self.list.user1.age?self.list.user1.age:@"";
+        self.lab_Preson.text = [NSString stringWithFormat:@"%@ %@ %@ %@",self.list.user1.height?self.list.user1.height:@"",self.list.user1.weight?self.list.user1.weight:@"",self.list.user1.educationId?self.list.user1.educationId:@"",self.list.user1.marriage?self.list.user1.marriage:@""];
+        self.lab_Servicetitle.text = self.list.title;
+        self.lab_Price.text = self.list.price;
+        self.lab_DY.text = self.list.typeName;
+    }else{
+        self.navigationItem.title = self.trval.user1.realName;
+        [self.image_head sd_setImageWithURL:[NSURL URLWithString:self.trval.user1.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+        self.lab_name.text = self.trval.user1.realName;
+        self.lab_Sex.image = [UIImage imageNamed:[self.trval.user1.gender isEqualToString:@"0"]?@"men":@"weomen"];
+        self.lab_age.text = self.trval.user1.age?self.trval.user1.age:@"";
+        self.lab_Preson.text = [NSString stringWithFormat:@"%@ %@ %@ %@",self.trval.user1.height?self.trval.user1.height:@"",self.trval.user1.weight?self.trval.user1.weight:@"",self.trval.user1.educationId?self.trval.user1.educationId:@"",self.trval.user1.marriage?self.trval.user1.marriage:@""];
+        self.lab_Servicetitle.text = self.trval.introduce;
+        self.lab_Price.text = self.trval.price;
+        self.lab_DY.text = @"暂无";
     }
-    [self.image_head sd_setImageWithURL:[NSURL URLWithString:self.list.user1.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
-    self.lab_name.text = self.list.user1.nickName;
-    self.lab_Sex.image = [UIImage imageNamed:[self.list.user1.gender isEqualToString:@"0"]?@"men":@"weomen"];
-    self.lab_age.text = self.list.user1.age?self.list.user1.age:@"";
-    self.lab_Preson.text = [NSString stringWithFormat:@"%@ %@ %@ %@",self.list.user1.height?self.list.user1.height:@"",self.list.user1.weight?self.list.user1.weight:@"",self.list.user1.educationId?self.list.user1.educationId:@"",self.list.user1.marriage?self.list.user1.marriage:@""];
-    self.lab_Servicetitle.text = self.list.title;
-    self.lab_Price.text = self.list.price;
-    self.lab_DY.text = self.list.typeName;
+    
 }
 #define mark -----UITextFieldDelegate------
 - (void)textFieldDidEndEditing:(UITextField *)textField{
-    self.txt_SumPrice.text = [NSString stringWithFormat:@"¥%.2f",[self.list.price floatValue]*[textField.text floatValue]];
+    if ([self.str isEqualToString:@"YD"]){
+        self.txt_SumPrice.text = [NSString stringWithFormat:@"¥%.2f",[self.list.price floatValue]*[textField.text floatValue]];
+    }else
+        self.txt_SumPrice.text = [NSString stringWithFormat:@"¥%.2f",[self.trval.price floatValue]*[textField.text floatValue]];
+    
 }
 //创建日期插件
 -(void)initDate{
@@ -63,17 +79,25 @@
     [self.view addSubview:self.myDatePick];
 }
 - (IBAction)yuyueClick:(UIButton *)sender {
+    NSInteger flag;
+    NSString * str=@"";
     if ([self.str isEqualToString:@"YD"]){
+        flag = 0;
+        str = v1ServiceCreateOrder;
+    }else{
+        flag = 1;
+        str = v1ServiceTravelOrderCreate;
+    }
         if (self.txt_Num.text.length==0) {
             [YTAlertUtil showTempInfo:@"请输入数量"];
             return;
         }
         if (self.txt_Time.text.length==0) {
-            [YTAlertUtil showTempInfo:@"请选择服务时间"];
+            [YTAlertUtil showTempInfo:flag==0?@"请选择服务时间":@"请选择陪游时间"];
             return;
         }
         if (self.txt_Place.text.length==0) {
-            [YTAlertUtil showTempInfo:@"请输入服务地点"];
+            [YTAlertUtil showTempInfo:flag==0?@"请输入服务地点":@"请选择陪游地点"];
             return;
         }
         NSDictionary * dic = @{
@@ -82,7 +106,7 @@
                                @"serviceId": @([self.list.ID integerValue]),
                                @"serviceTime": self.txt_Time.text
                                };
-        [YSNetworkTool POST:v1ServiceCreateOrder params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YSNetworkTool POST:str params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
             if ([responseObject[@"code"] isEqualToString:@"FAIL"]) {
                 [YTAlertUtil showTempInfo:responseObject[@"message"]];
                 return;
@@ -91,7 +115,7 @@
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
-    }
+    
 }
 - (IBAction)TimeClick:(id)sender {
     UIButton * btn = (UIButton *)sender;

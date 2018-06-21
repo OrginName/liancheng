@@ -11,6 +11,7 @@
 #import "ShowCardTab.h"
 #import "ShowTreaueTab.h"
 #import "ShowtrvalTab.h"
+#import "trvalMo.h"
 #define identifier @"ScrollCell"
 #define TabHeight kScreenHeight-185
 @interface ShowResumeController ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -106,10 +107,17 @@
         [cell.contentView addSubview:self.showCardTab];
     }else if (self.Receive_Type == ENUM_TypeTrval){
         self.trvaltab = [[ShowtrvalTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight) withControl:self];
-        ServiceListMo * mo = self.data_Count[indexPath.row];
-        self.title = mo.title;
-        self.trvaltab.Mo = mo;
+        if ([self.str isEqualToString:@"TrvalTrip"]) {
+            trvalMo * mo = self.data_Count[indexPath.row];
+            self.title = mo.user1.realName;
+            self.trvaltab.MoTrval = mo;
+        }else{
+            ServiceListMo * mo = self.data_Count[indexPath.row];
+            self.title = mo.title;
+            self.trvaltab.Mo = mo; 
+        }
         [cell.contentView addSubview:self.trvaltab];
+        
     }else {
         self.showTreaueTab = [[ShowTreaueTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];
         [cell.contentView addSubview:self.showTreaueTab];

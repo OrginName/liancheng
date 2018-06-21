@@ -11,3 +11,10 @@
 @interface ServiceStationController : BaseViewController
 
 @end
+
+//新建自定义类 扩充tagId属性 记录区号
+@interface ZYButton : UIButton
+
+@property (assign, nonatomic) NSInteger tagId;
+
+@end

@@ -18,26 +18,27 @@
 @property (nonatomic,strong) UIButton * Save_Like;
 @property (nonatomic,strong) UIButton * btn_Like;
 @property (nonatomic,strong) ServiceListMo * listMo;
+@property (nonatomic,assign) NSInteger flag;
 @end
 @implementation ShowtrvalTab
 -(instancetype)initWithFrame:(CGRect)frame withControl:(UIViewController *)control{
     if (self = [super initWithFrame:frame]) {
         self.control = control;
         [self initScroll];
-//        [self initData];
         [self addSubview:self.tab_Bottom];
-        
     }
     return self;
-}
--(void)initData{
-    self.lunArr = [NSMutableArray arrayWithObjects:@"http://img.zcool.cn/community/0381de85949053ca8012193a3339cc5.jpg",@"http://img5.duitang.com/uploads/item/201411/06/20141106104720_WHEe2.jpeg",@"http://i3.17173cdn.com/2fhnvk/YWxqaGBf/outcms/xshCTvblpjznrmb.png",@"http://img.zcool.cn/community/01fd9f578f21a00000018c1b9a11ee.jpg@1280w_1l_2o_100sh.jpg", nil];
-    
 }
 -(void)setMo:(ServiceListMo *)Mo{
     _Mo = Mo;
     self.lunArr = [[Mo.images componentsSeparatedByString:@";"] mutableCopy];
     self.listMo = Mo;
+    _flag = 0;
+}
+-(void)setMoTrval:(trvalMo *)MoTrval{
+    _MoTrval  = MoTrval;
+    self.lunArr = [[MoTrval.images componentsSeparatedByString:@";"] mutableCopy];
+    _flag = 1;
 }
 #pragma mark ---SDCycleScrollViewDelegate-----
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
@@ -97,13 +98,15 @@
     ShowTrvalCell *cell = [ShowTrvalCell tempTableViewCellWith:tableView indexPath:indexPath];
     cell.delegate = self;
     cell.list = self.listMo;
+    cell.trval = self.MoTrval;
     return cell;
 }
 //ShowTrvalCellDelegate
 -(void)btnClick:(NSInteger)tag{
     AppointmentController * appoint = [AppointmentController new];
-    appoint.str = @"YD";
+    appoint.str =_flag==0?@"YD":@"trval";
     appoint.list = self.listMo;
+    appoint.trval = self.MoTrval;
     [self.control.navigationController pushViewController:appoint animated:YES];
 }
 #pragma mark ---initUI--------

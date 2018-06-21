@@ -85,7 +85,7 @@
             for (int i=0; i<[responseObject[@"data"][@"content"] count]; i++) {
                 trvalMo * trval = [trvalMo mj_objectWithKeyValues:responseObject[@"data"][@"content"][i]];
                 trval.ID = responseObject[@"data"][@"content"][i][@"id"];
-                trval.user1 = [userMo mj_objectWithKeyValues:trval.user];
+                trval.user1 = [UserMo mj_objectWithKeyValues:trval.user];
                 trval.user1.ID = trval.user[@"id"];
                 [arr addObject:trval];
             }
@@ -120,7 +120,15 @@
 }
 +(void)requstTrvalDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock{
     [YSNetworkTool POST:v1ServiceTravelInvitePage params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+        NSMutableArray * arr = [NSMutableArray array];
+        for (int i=0; i<[responseObject[@"data"][@"content"] count]; i++) {
+            trvalMo * mo = [trvalMo mj_objectWithKeyValues:responseObject[@"data"][@"content"][i]];
+            mo.ID = responseObject[@"data"][@"content"][i][@"id"];
+            mo.description1 = responseObject[@"data"][@"content"][i][@"description"];
+            mo.user1 = [UserMo mj_objectWithKeyValues:mo.user];
+            [arr addObject:mo];
+        }
+        sucBlock(arr);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

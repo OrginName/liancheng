@@ -7,7 +7,7 @@
 //
 
 #import "BaseModel.h"
-@class userMo;
+#import "UserMo.h"
 @interface trvalMo : BaseModel
 proStr(ID);
 proStr(userId);
@@ -19,19 +19,13 @@ proStr(price);
 proStr(type);
 proStr(comments);
 proDic(user);
-@property (nonatomic,strong) userMo * user1;
+proStr(departTimeName);//出发时间
+proStr(description1);//旅行说明
+proStr(inviteObjectName);//邀约对象
+proStr(longTimeName);//旅行时长
+proStr(placeTravel);//旅行去哪
+proStr(travelFeeName);//旅行话费
+proStr(travelModeName);//出行方式
+@property (nonatomic,strong) UserMo * user1;
 @end
 
-@interface userMo : BaseModel
-proStr(ID);
-proStr(mobile);
-proStr(realName);
-proStr(nickName);
-proStr(headImage);
-proStr(age);
-proStr(status);
-proStr(gender);
-proStr(lng);
-proStr(lat);
-proStr(cityCode);
-@end

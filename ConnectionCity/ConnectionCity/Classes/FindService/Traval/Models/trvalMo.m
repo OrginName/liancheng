@@ -11,6 +11,4 @@
 @implementation trvalMo
 
 @end
-@implementation userMo
-
-@end
+ 

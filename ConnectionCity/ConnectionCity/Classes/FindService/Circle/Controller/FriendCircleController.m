@@ -16,6 +16,9 @@ static NSInteger i;//判断当前返回按钮点击次数
 {
     UIButton * _tmpBtn;
 }
+@property (weak, nonatomic) IBOutlet CustomButton *btn_video;
+@property (weak, nonatomic) IBOutlet CustomButton *btn_picTxt;
+@property (weak, nonatomic) IBOutlet CustomButton *btn_My;
 @property (nonatomic,strong)FriendCirleTab * frendTab;
 @property (nonatomic,strong)FriendVideo * frendVedio;
 @property (nonatomic,strong)FriendMyselfTab * frendMyselfTab;
@@ -25,7 +28,9 @@ static NSInteger i;//判断当前返回按钮点击次数
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
-     i=0;
+    i=0;
+    
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,10 +41,10 @@ static NSInteger i;//判断当前返回按钮点击次数
     [self.navigationController pushViewController:[super rotateClass:@"SendMomentController"] animated:YES];
 }
 - (IBAction)tagSelectClick:(CustomButton *)sender {
-    UIButton * btn = [self.view viewWithTag:1];
-    if (sender.tag!=1) {
-        btn.selected= NO;
-        
+    if ([self.tabBarItem.title isEqualToString:@"圈子"]&&sender.tag!=1) {
+        self.btn_picTxt.selected= NO;
+    }else if ([self.tabBarItem.title isEqualToString:@"我的"]&&sender.tag!=3) {
+        self.btn_My.selected= NO;
     }
     if (sender.tag==2) {
         self.navigationItem.title = @"服务圈视频";
@@ -71,13 +76,20 @@ static NSInteger i;//判断当前返回按钮点击次数
 }
 
 -(void)setUI{
-    UIButton * btn = [self.view viewWithTag:1];
-    btn.selected = YES;
+//    UIButton * btn = [self.view viewWithTag:1];
+//    btn.selected = YES;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
     [self.view addSubview:self.frendTab];
     [self.view addSubview:self.frendVedio];
     [self.view addSubview:self.frendMyselfTab];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SendFriend) image:@"" title:@"发布" EdgeInsets:UIEdgeInsetsZero];
+    if ([self.tabBarItem.title isEqualToString:@"我的"]) {
+        self.btn_picTxt.selected = NO;
+        self.btn_My.selected = YES;
+    }else{
+        self.btn_picTxt.selected = YES;
+        self.btn_My.selected = NO;
+    }
 }
 //图文
 -(FriendCirleTab *)frendTab{
@@ -108,9 +120,9 @@ static NSInteger i;//判断当前返回按钮点击次数
         i++;
         if (i==1) {
             self.tabBarController.tabBar.hidden = NO;
+            self.tabBarController.selectedIndex = 0;
         }else{
             [self.tabBarController.navigationController popViewControllerAnimated:YES];
-            self.tabBarController.tabBar.selectedItem = 0;
         }
     }else{
         [self.tabBarController.navigationController popViewControllerAnimated:YES];

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -65,7 +65,7 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aN-op-DFc">
-                        <rect key="frame" x="272" y="35" width="40" height="22"/>
+                        <rect key="frame" x="270" y="35" width="40" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="jtI-gs-yfX"/>
                         </constraints>
@@ -204,6 +204,7 @@
                     <constraint firstItem="sIF-K8-0FF" firstAttribute="top" secondItem="hWx-Xp-x9X" secondAttribute="bottom" constant="10" id="9cH-T5-X0i"/>
                     <constraint firstItem="FX9-wk-Wl3" firstAttribute="leading" secondItem="sIF-K8-0FF" secondAttribute="trailing" id="9ge-dI-z3n"/>
                     <constraint firstAttribute="bottom" secondItem="FX9-wk-Wl3" secondAttribute="bottom" constant="1" id="9r9-J3-zZA"/>
+                    <constraint firstItem="7aN-op-DFc" firstAttribute="trailing" secondItem="TFO-Id-Iak" secondAttribute="trailing" id="DRL-fR-fdf"/>
                     <constraint firstItem="vdh-DN-faf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Eim-zV-HsC"/>
                     <constraint firstAttribute="trailing" secondItem="vdh-DN-faf" secondAttribute="trailing" id="Ez2-1x-9gO"/>
                     <constraint firstItem="Jah-rO-Syh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-5" id="F1w-YA-wHJ"/>
@@ -217,7 +218,6 @@
                     <constraint firstItem="hWx-Xp-x9X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="UgF-32-ySk"/>
                     <constraint firstItem="0hZ-CH-LpZ" firstAttribute="top" secondItem="Jah-rO-Syh" secondAttribute="top" id="VmI-D0-hmw"/>
                     <constraint firstItem="3H7-6o-fuF" firstAttribute="centerY" secondItem="arc-tB-RWT" secondAttribute="centerY" id="X4t-9y-Mw1"/>
-                    <constraint firstItem="7aN-op-DFc" firstAttribute="leading" secondItem="72z-uY-WVD" secondAttribute="leading" id="X6m-01-ZFb"/>
                     <constraint firstAttribute="trailing" secondItem="FX9-wk-Wl3" secondAttribute="trailing" constant="15" id="Yw4-ov-Glr"/>
                     <constraint firstAttribute="bottom" secondItem="sIF-K8-0FF" secondAttribute="bottom" constant="1" id="bk3-Jy-wla"/>
                     <constraint firstAttribute="bottom" secondItem="vdh-DN-faf" secondAttribute="bottom" id="dzi-bm-4vX"/>
@@ -228,6 +228,17 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="image_Head" destination="Jah-rO-Syh" id="OT6-Xj-Kp0"/>
+                <outlet property="image_Sex" destination="72z-uY-WVD" id="uFe-m8-Uuk"/>
+                <outlet property="lab_Age" destination="TFO-Id-Iak" id="1Cv-8h-zbI"/>
+                <outlet property="lab_DX" destination="arc-tB-RWT" id="DAl-yB-rts"/>
+                <outlet property="lab_Money" destination="Oxg-HO-Icg" id="ghb-Th-KZv"/>
+                <outlet property="lab_Name" destination="0hZ-CH-LpZ" id="KUw-7W-jXp"/>
+                <outlet property="lab_Time" destination="gW5-kf-ZZo" id="oCw-hx-B0A"/>
+                <outlet property="lab_TrvalGoTime" destination="FJ2-L7-D7V" id="zZA-AV-X8C"/>
+                <outlet property="lab_TrvalPlace" destination="Het-7p-cZn" id="Fvc-nC-jby"/>
+                <outlet property="lab_TrvalWay" destination="HoN-uk-oTW" id="iBA-g4-ojn"/>
+                <outlet property="lab_Trvaltime" destination="cRV-Db-2V1" id="ZIc-ec-HFB"/>
                 <outlet property="lab_headTitle" destination="3mR-1Z-rbH" id="2cA-P8-rKF"/>
                 <outlet property="lab_title" destination="aug-a8-BHG" id="BZM-9s-hvY"/>
                 <outlet property="txt_Edit" destination="jxN-hL-1Gq" id="Ovw-k5-Jtu"/>

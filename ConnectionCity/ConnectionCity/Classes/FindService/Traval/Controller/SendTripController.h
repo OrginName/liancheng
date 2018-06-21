@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+typedef void (^TrvalBlock)(void);
 @interface SendTripController : BaseViewController
-
+@property (nonatomic,copy) TrvalBlock block;
 @end

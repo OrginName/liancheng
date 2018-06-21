@@ -34,9 +34,41 @@
     }
     return cell;
 }
+-(void)setTrval:(trvalMo *)trval{
+    _trval = trval;
+    self.lab_ServiceTitle.hidden=YES;
+    self.lab_DW.hidden = YES;
+    self.lab_PriceDY.hidden = YES;
+    self.lab_price.hidden=YES;
+    self.lab_Des.hidden = YES;
+    self.lab_TrvalDY.hidden = NO;
+    self.lab_TrvalDes.hidden = NO;
+    self.lab_TrvalPrice.hidden = NO;
+    self.lab_Title.text = trval.user1.realName;
+    if (trval.cityName.length!=0) {
+        [self.btn_city setTitle:trval.cityName forState:UIControlStateNormal];
+    }
+    [self.btn_height setTitle:trval.user1.height?trval.user1.height:@"无" forState:UIControlStateNormal];
+    [self.btn_coll setTitle:trval.user1.educationId?trval.user1.educationId:@"无" forState:UIControlStateNormal];
+    [self.btn_wight setTitle:trval.user1.marriage?trval.user1.marriage:@"无" forState:UIControlStateNormal];
+    self.lab_Age.text = trval.user1.age?trval.user1.age:@"无";
+    [self.btn_weight setTitle:trval.user1.weight?trval.user1.weight:@"无" forState:UIControlStateNormal];
+    self.lab_price.text = [NSString stringWithFormat:@"¥%@",trval.price];
+    self.lab_PriceDY.text = @"暂无";//单位暂无
+    self.lab_TrvalDes.text = trval.introduce;
+//  trval.comments 评论咱不知道怎么写
+}
 -(void)setList:(ServiceListMo *)list{
     _list = list;
-    self.lab_Title.text = list.title;
+    self.lab_ServiceTitle.hidden=NO;
+    self.lab_DW.hidden = NO;
+    self.lab_PriceDY.hidden = NO;
+    self.lab_price.hidden=NO;
+    self.lab_Des.hidden = NO;
+    self.lab_TrvalDY.hidden = YES;
+    self.lab_TrvalDes.hidden = YES;
+    self.lab_TrvalPrice.hidden = YES;
+    self.lab_Title.text = list.user1.realName;
     if (list.cityName.length!=0) {
         [self.btn_city setTitle:list.cityName forState:UIControlStateNormal];
     }
@@ -44,6 +76,8 @@
     [self.btn_coll setTitle:list.user1.educationId?list.user1.educationId:@"无" forState:UIControlStateNormal];
     [self.btn_wight setTitle:list.user1.marriage?list.user1.marriage:@"无" forState:UIControlStateNormal];
     self.lab_Age.text = list.user1.age?list.user1.age:@"无";
+    self.lab_price.text = [NSString stringWithFormat:@"¥%@",list.price];
+    self.lab_PriceDY.text = list.typeName;
     [self.btn_weight setTitle:list.user1.weight?list.user1.weight:@"无" forState:UIControlStateNormal];
     self.lab_ServiceTitle.text = list.content?list.content:@"无";
     self.lab_Des.text = list.introduce?list.introduce:@"无";

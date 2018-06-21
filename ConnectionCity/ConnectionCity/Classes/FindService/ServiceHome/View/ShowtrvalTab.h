@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ServiceListMo.h"
+#import "trvalMo.h"
 @interface ShowtrvalTab : UIView
 @property (nonatomic,strong)ServiceListMo *Mo;
+@property (nonatomic,strong)trvalMo * MoTrval;
 -(instancetype)initWithFrame:(CGRect)frame withControl:(UIViewController *)control;
 @end
