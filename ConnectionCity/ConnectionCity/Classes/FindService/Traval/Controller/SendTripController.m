@@ -10,6 +10,7 @@
 #import "PhotoSelect.h"
 #import "JFCityViewController.h"
 #import "EditAllController.h"
+#import "QiniuUploader.h"
 @interface SendTripController ()<JFCityViewControllerDelegate,PhotoSelectDelegate>
 {
     CGFloat itemHeigth;
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txt_City;
 @property (weak, nonatomic) IBOutlet UITextField *txt_Des;
 @property (weak, nonatomic) IBOutlet UIView *view_Btn;
+@property (nonatomic,strong) NSMutableArray * Arr_Url;
 @end
 
 @implementation SendTripController
@@ -33,6 +35,7 @@
     [super viewDidLoad];
     [self setUI];
     self.dictionary = [NSMutableDictionary dictionary];
+    self.Arr_Url = [NSMutableArray array];
     priceTag = 10;
 }
 //完成
@@ -49,9 +52,15 @@
         [YTAlertUtil showTempInfo:@"请输入陪游价格"];
         return;
     }
+    NSString * urlStr = @"";
+    if (self.Arr_Url.count!=0) {
+        for (int i=0; i<self.Arr_Url.count; i++) {
+            urlStr = [NSString stringWithFormat:@"%@;%@",self.Arr_Url[i],urlStr];
+        }
+    }
     NSDictionary * dic = @{
                            @"cityCode": @([self.dictionary[@"cityCode"] floatValue]),
-                           @"images": _urlStr,
+                           @"images": urlStr,
                            @"introduce": self.txt_Des.text,
                            @"lat": @([self.dictionary[@"lat"] floatValue]),
                            @"lng": @([self.dictionary[@"lng"] floatValue]),
@@ -120,12 +129,39 @@
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(complete) image:@"" title:@"完成" EdgeInsets:UIEdgeInsetsZero];
     [self.view_Select addSubview:self.photo];
 }
+
 #pragma mark ----PhotoSelectDelegate-----
 -(void)selectImageArr:(NSArray *)imageArr{
     NSLog(@"%lu",(unsigned long)imageArr.count);
-    if (imageArr.count>4) {
-        self.photo.height=self.layout_select.constant= itemHeigth*2; 
+    __block int flag=1;
+    if (imageArr.count>=4) {
+        self.photo.height=self.layout_select.constant= itemHeigth*2;
     }
-    _urlStr =@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1977804817,1381775671&fm=200&gp=0.jpg;https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528544357416&di=e79bd79f86eea467f4fca6a5bfe35d7d&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dshijue1%252C0%252C0%252C294%252C40%2Fsign%3D0392a2bf17950a7b6138468762b808ac%2F03087bf40ad162d9bd499b951bdfa9ec8b13cd90.jpg";
+    [YTAlertUtil showHUDWithTitle:@"正在上传"];
+    for (int i=0; i<imageArr.count; i++) {
+        [[QiniuUploader defaultUploader] uploadImageToQNFilePath:imageArr[i] withBlock:^(NSDictionary *url) {
+            flag++;
+            [self.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
+            if (flag == imageArr.count) {
+                [YTAlertUtil hideHUD];
+            }
+        }];
+    }
+}
+-(void)selectImage:(UIImage *) image arr:(NSArray *)imageArr{
+    if (imageArr.count>=4) {
+        self.photo.height=self.layout_select.constant= itemHeigth*2;
+    }
+    [YTAlertUtil showHUDWithTitle:@"正在上传"];
+    [[QiniuUploader defaultUploader] uploadImageToQNFilePath:image withBlock:^(NSDictionary *url) {
+        [YTAlertUtil hideHUD];
+        [self.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
+    }];
+}
+-(void)deleteImage:(NSInteger) tag arr:(NSArray *)imageArr{
+    if (imageArr.count<=4) {
+        self.photo.height=self.layout_select.constant= itemHeigth;
+    }
+    [self.Arr_Url removeObjectAtIndex:tag];
 }
 @end

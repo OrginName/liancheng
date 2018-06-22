@@ -81,12 +81,25 @@
 - (IBAction)yuyueClick:(UIButton *)sender {
     NSInteger flag;
     NSString * str=@"";
+    NSDictionary * dic;
     if ([self.str isEqualToString:@"YD"]){
         flag = 0;
         str = v1ServiceCreateOrder;
+        dic = @{
+                @"address": self.txt_Place.text,
+                @"number": @([self.txt_Num.text integerValue]),
+                @"serviceId": @([self.list.ID integerValue]),
+                @"serviceTime": self.txt_Time.text
+                };
     }else{
         flag = 1;
         str = v1ServiceTravelOrderCreate;
+        dic = @{
+                @"address": self.txt_Place.text,
+                @"num": @([self.txt_Num.text integerValue]),
+                @"travelId": @([self.trval.ID integerValue]),
+                @"startTime": self.txt_Time.text
+                };
     }
         if (self.txt_Num.text.length==0) {
             [YTAlertUtil showTempInfo:@"请输入数量"];
@@ -100,12 +113,7 @@
             [YTAlertUtil showTempInfo:flag==0?@"请输入服务地点":@"请选择陪游地点"];
             return;
         }
-        NSDictionary * dic = @{
-                               @"address": self.txt_Place.text,
-                               @"number": @([self.txt_Num.text integerValue]),
-                               @"serviceId": @([self.list.ID integerValue]),
-                               @"serviceTime": self.txt_Time.text
-                               };
+    
         [YSNetworkTool POST:str params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
             if ([responseObject[@"code"] isEqualToString:@"FAIL"]) {
                 [YTAlertUtil showTempInfo:responseObject[@"message"]];
