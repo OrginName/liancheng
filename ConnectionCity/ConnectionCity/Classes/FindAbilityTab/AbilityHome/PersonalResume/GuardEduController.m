@@ -9,6 +9,7 @@
 #import "GuardEduController.h"
 #import "EditAllController.h"
 #import "LCDatePicker.h"
+#import "AbilityNet.h"
 @interface GuardEduController ()<UITextViewDelegate,LCDatePickerDelegate>
 {
     NSInteger currtenTag;
@@ -28,10 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-}
-//完成按钮点击
--(void)complete{
-    [self btn_Save:nil];
 }
 //保存按钮点击
 - (IBAction)btn_Save:(UIButton *)sender {
@@ -66,7 +63,7 @@
 -(void)setUI{
     self.textView_Indro.placeholder = @"请输入工作描述";
     self.textView_Indro.placeholderColor = [UIColor hexColorWithString:@"#bbbbbb"];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(complete) image:@"" title:@"完成" EdgeInsets:UIEdgeInsetsZero];
+    
     [self initDate];
 }
 #pragma mark ---LCDatePickerDelegate-----

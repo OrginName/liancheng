@@ -8,6 +8,7 @@
 
 #import "CustomMap.h"
 #import "CustomAnnotationView.h"
+#import "AbilttyMo.h"
 @interface CustomMap()<MAMapViewDelegate,CustomLocationDelegate,UITextFieldDelegate>
 @property (nonatomic,assign) id controller;
 @property (nonatomic,strong) CustomLocatiom * location;
@@ -126,10 +127,18 @@
     _Arr_Mark = Arr_Mark;
      self.annotations = [NSMutableArray array];
     [Arr_Mark enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        ServiceListMo * list = (ServiceListMo *)obj;
-        MAPointAnnotation *a1 = [[MAPointAnnotation alloc] init];
-        a1.coordinate = CLLocationCoordinate2DMake([list.lat doubleValue], [list.lng doubleValue]);
-        a1.title = list.ID;
+        MAPointAnnotation *a1;
+        if ([obj isKindOfClass:[ServiceListMo class]]) {
+            ServiceListMo * list = (ServiceListMo *)obj;
+            a1 = [[MAPointAnnotation alloc] init];
+            a1.coordinate = CLLocationCoordinate2DMake([list.lat doubleValue], [list.lng doubleValue]);
+            a1.title = list.ID;
+        }else if ([obj isKindOfClass:[AbilttyMo class]]){
+            AbilttyMo * abilt = (AbilttyMo *)obj;
+            a1 = [[MAPointAnnotation alloc] init];
+            a1.coordinate = CLLocationCoordinate2DMake([abilt.lat doubleValue], [abilt.lng doubleValue]);
+            a1.title = abilt.ID;
+        }   
         self.annotationView.zIndex = idx;
         [self.annotations addObject:a1];
     }];

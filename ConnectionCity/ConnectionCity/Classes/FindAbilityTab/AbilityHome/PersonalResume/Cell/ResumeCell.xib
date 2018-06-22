@@ -111,7 +111,7 @@
                             <constraint firstAttribute="width" constant="10" id="rRI-kI-kJv"/>
                         </constraints>
                     </imageView>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择年薪" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97u-j9-o4E">
+                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择年薪" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97u-j9-o4E">
                         <rect key="frame" x="210.5" y="0.0" width="75.5" height="49.5"/>
                         <color key="textColor" red="0.78823529411764703" green="0.78823529411764703" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>

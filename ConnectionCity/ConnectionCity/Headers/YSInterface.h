@@ -50,6 +50,8 @@ static NSString * const v1TalentConnectionOccupationPage = @"/v1/talent/connecti
 #pragma mark - 人才-简历
 //筛选条件
 static NSString * const v1TalentResumeConditions = @"/v1/talent/resume/conditions";
+//简历列表
+static NSString * const v1TalentResumeList = @"/v1/talent/resume/list";
 //新增简历
 static NSString * const v1TalentResumeCreate = @"/v1/talent/resume/create";
 //新增简历-教育经历
@@ -108,6 +110,13 @@ static NSString * const dictionaryServiceCategory = @"/dictionary/service-catego
 static NSString * const dictionaryServiceCategoryProperties = @"/dictionary/service-category-properties";
 //宝物分类
 static NSString * const dictionaryTreasureCategory = @"/dictionary/treasure-category";
+#pragma mark - 服务圈子
+//服务发布圈子
+static NSString * const v1ServiceCircleCreate = @"/v1/service-circle/create";
+//服务圈子详情
+static NSString * const v1ServiceCircleInfo = @"/v1/service-circle/info";
+//服务圈列表分页
+static NSString * const v1ServiceCirclePage = @"/v1/service-circle/page";
 #pragma mark - 服务
 //添加点赞
 static NSString * const v1ServiceAddLike = @"/v1/service/add-like";

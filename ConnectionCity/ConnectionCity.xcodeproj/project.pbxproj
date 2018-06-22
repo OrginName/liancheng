@@ -144,6 +144,9 @@
 		72EC1BBD20BDA25200ACC20B /* SendSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1BBC20BDA25200ACC20B /* SendSelectCell.m */; };
 		72EC1BC220BDB10500ACC20B /* SelectLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1BC120BDB10400ACC20B /* SelectLayout.m */; };
 		8817A720716E5B61344D714A /* libPods-ConnectionCity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */; };
+		8D07D75E20DCC8AB0073807C /* AbilttyMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D07D75D20DCC8AB0073807C /* AbilttyMo.m */; };
+		8D07D76820DCE0370073807C /* QiniuUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D07D76720DCE0370073807C /* QiniuUploader.m */; };
+		8D07D76C20DCE1E40073807C /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D07D76920DCE1E30073807C /* GTMBase64.m */; };
 		8D09426620C14AF200C45E2B /* EvaluationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D09426420C14AF200C45E2B /* EvaluationController.m */; };
 		8D09426720C14AF200C45E2B /* EvaluationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D09426520C14AF200C45E2B /* EvaluationController.xib */; };
 		8D09E18120BFB49A000F7EBD /* SendTripController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E17F20BFB49A000F7EBD /* SendTripController.m */; };
@@ -693,6 +696,13 @@
 		72EC1BBC20BDA25200ACC20B /* SendSelectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendSelectCell.m; sourceTree = "<group>"; };
 		72EC1BC020BDB10400ACC20B /* SelectLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLayout.h; sourceTree = "<group>"; };
 		72EC1BC120BDB10400ACC20B /* SelectLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLayout.m; sourceTree = "<group>"; };
+		8D07D75C20DCC8AB0073807C /* AbilttyMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbilttyMo.h; sourceTree = "<group>"; };
+		8D07D75D20DCC8AB0073807C /* AbilttyMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AbilttyMo.m; sourceTree = "<group>"; };
+		8D07D76620DCE0370073807C /* QiniuUploader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiniuUploader.h; sourceTree = "<group>"; };
+		8D07D76720DCE0370073807C /* QiniuUploader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiniuUploader.m; sourceTree = "<group>"; };
+		8D07D76920DCE1E30073807C /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		8D07D76A20DCE1E30073807C /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		8D07D76B20DCE1E30073807C /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		8D09426320C14AF200C45E2B /* EvaluationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EvaluationController.h; sourceTree = "<group>"; };
 		8D09426420C14AF200C45E2B /* EvaluationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EvaluationController.m; sourceTree = "<group>"; };
 		8D09426520C14AF200C45E2B /* EvaluationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EvaluationController.xib; sourceTree = "<group>"; };
@@ -1505,6 +1515,7 @@
 		729BA6B120A01E7F009713FD /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				8D07D75F20DCDF490073807C /* QinNiu */,
 				720263D220B5015500382B2F /* TZImagePickerController */,
 				7274187820B13CB6001D6BE1 /* MLMSegmentPageView */,
 				722D252A20AA76D400AB3863 /* CitySelect */,
@@ -1939,6 +1950,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8D07D75B20DCC88E0073807C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8D07D75C20DCC8AB0073807C /* AbilttyMo.h */,
+				8D07D75D20DCC8AB0073807C /* AbilttyMo.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8D07D75F20DCDF490073807C /* QinNiu */ = {
+			isa = PBXGroup;
+			children = (
+				8D07D76B20DCE1E30073807C /* GTMBase64.h */,
+				8D07D76920DCE1E30073807C /* GTMBase64.m */,
+				8D07D76A20DCE1E30073807C /* GTMDefines.h */,
+				8D07D76620DCE0370073807C /* QiniuUploader.h */,
+				8D07D76720DCE0370073807C /* QiniuUploader.m */,
+			);
+			path = QinNiu;
+			sourceTree = "<group>";
+		};
 		8D09E18820BFD4F0000F7EBD /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2055,6 +2087,7 @@
 		8D2B8B8B20A2DA7A00C3157F /* AbilityHome */ = {
 			isa = PBXGroup;
 			children = (
+				8D07D75B20DCC88E0073807C /* Model */,
 				72A2FC6C20D00B1900CD6AAC /* Net */,
 				8DF7E3C920CF9935009A92D7 /* Cell */,
 				7294184F20AD119C0054B71D /* HistorySearch */,
@@ -3536,6 +3569,7 @@
 				723F4FA620BEDE6000AF8268 /* TrvalInvitController.m in Sources */,
 				7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */,
 				CEBEDD9920B17F40000F9EE4 /* BulidTeamController.m in Sources */,
+				8D07D76820DCE0370073807C /* QiniuUploader.m in Sources */,
 				8D5B3C3D20C0147A00773105 /* ServiceListCell.m in Sources */,
 				723D376120ABBEB4003FD4DF /* ShowResumeTab.m in Sources */,
 				8DD48CCB20A811EA00D6D1E6 /* NSData+SDDataCache.m in Sources */,
@@ -3591,6 +3625,7 @@
 				72EC1B6720B8465D00ACC20B /* ShowTreaueTab.m in Sources */,
 				CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */,
 				CE0BA5B3209D5E6B004C3C33 /* UIView+YSCategory.m in Sources */,
+				8D07D75E20DCC8AB0073807C /* AbilttyMo.m in Sources */,
 				CE5C280C20B91AD8006A8332 /* WinnerInfoController.m in Sources */,
 				CE97DBFA20B5AE9F003E46BD /* ReleaseTenderAdditionalCell.m in Sources */,
 				8DD48CCC20A811EA00D6D1E6 /* TAAbstractDotView.m in Sources */,
@@ -3700,6 +3735,7 @@
 				8DEA44D620C0E9ED001529F1 /* FriendVideoCell.m in Sources */,
 				CE0BA5FA209D5EBE004C3C33 /* YTBaseTableViewController.m in Sources */,
 				720263F320B5015500382B2F /* TZGifPhotoPreviewController.m in Sources */,
+				8D07D76C20DCE1E40073807C /* GTMBase64.m in Sources */,
 				8D50C56020C66EAF0095A824 /* OurServiceController.m in Sources */,
 				8D19FF2320D8CFE4005F7361 /* ServiceListMo.m in Sources */,
 				72EC1B7220BA984400ACC20B /* PlayDouctCell.m in Sources */,

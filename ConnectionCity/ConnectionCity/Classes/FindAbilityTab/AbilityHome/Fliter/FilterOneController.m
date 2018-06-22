@@ -12,6 +12,7 @@
 #import "CustomButton.h"
 #import "ServiceHomeNet.h"
 #import "UIView+Geometry.h"
+#import "AbilityNet.h"
 static NSString *ID = @"cityCollectionViewCell";
 static NSString * collectionCellIndentider = @"collectionCellIndentider";
 @interface FilterOneController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -38,6 +39,12 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
         } withFailBlock:^(NSString *failValue) {
             
         }];
+    }else if (self.flag_SX ==2){
+        //    加载筛选条件数据
+        [AbilityNet requstAbilityConditions:^(NSMutableArray *successArrValue) {
+            self.data_Arr = successArrValue;
+            [self loadData:successArrValue];
+        }];
     }else{
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"SX" ofType:@"plist"];
         NSMutableArray * arr = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
@@ -46,6 +53,7 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
 }
 -(void)setUI{
     self.bollec_bottom.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.bollec_bottom.contentInset = UIEdgeInsetsMake(0, 0, 81, 0);
     self.flowLyout = [[FilterLayout alloc] init];
     _bollec_bottom.collectionViewLayout = self.flowLyout;
     [_bollec_bottom registerClass:[FilterCell class] forCellWithReuseIdentifier:ID];
@@ -55,8 +63,7 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     
 }
 -(void)setBotomView{
-    self.bollec_bottom.contentInset = UIEdgeInsetsMake(0, 0, 81, 0);
-    self.foot = [[FooterView alloc] initWithFrame:CGRectMake(0, self.bollec_bottom.bottom-30, self.bollec_bottom.width, 81)];
+    self.foot = [[FooterView alloc] initWithFrame:CGRectMake(0, self.bollec_bottom.bottom-(self.flag_SX ==1?31:81), self.bollec_bottom.width, 81)];
     [self.bollec_bottom addSubview:self.foot];
 }
 //底部重置确定按钮点击
@@ -64,7 +71,7 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     if (sender.tag==1) {
         [self loadData:self.data_Arr];
         self.foot.tmpBtn.selected = NO;
-        CustomButton * btn = (CustomButton *)[self.foot viewWithTag:1001];
+        CustomButton * btn = (CustomButton *)[self.foot viewWithTag:1000];
         btn.selected = YES;
         self.foot.tmpBtn = btn;
     }else{
@@ -192,22 +199,23 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
  *  进行基本布局操作,根据需求进行.
  */
 -(void)createBasicView{
+//    1在线 0离线
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 10, self.frame.size.width, 1)];
     view.backgroundColor = YSColor(246, 246, 246);
     [self addSubview:view];
     CustomButton * btn = [[CustomButton alloc] initWithFrame:CGRectZero];
-    [btn setTitle:@"全部" forState:UIControlStateNormal];
-    btn.selected = NO;
+    [btn setTitle:@"在线" forState:UIControlStateNormal];
+    btn.selected = YES;
+    _tmpBtn = btn;
     [btn addTarget:self action:@selector(btnClick1:) forControlEvents:UIControlEventTouchUpInside];
     btn.tag = 1000;
     [self addSubview:btn];
     self.btn_All = btn;
     CustomButton * btn_online = [[CustomButton alloc] initWithFrame:CGRectZero];
-    [btn_online setTitle:@"在线" forState:UIControlStateNormal];
+    [btn_online setTitle:@"离线" forState:UIControlStateNormal];
     [btn_online addTarget:self action:@selector(btnClick1:) forControlEvents:UIControlEventTouchUpInside];
     btn_online.tag = 1001;
-    btn_online.selected = YES;
-    _tmpBtn = btn_online;
+    btn_online.selected = NO;
     [self addSubview:btn_online];
     self.btn_onLine = btn_online;
 }
@@ -217,8 +225,8 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     self.btn_onLine.frame = CGRectMake(self.btn_All.x+120, self.btn_All.y, 100, 40);
 }
 -(void)btnClick1:(UIButton *)sender{
-    CustomButton * btn2 = (CustomButton *)[self viewWithTag:1001];
-    if (sender.tag!=1001) {
+    CustomButton * btn2 = (CustomButton *)[self viewWithTag:1000];
+    if (sender.tag!=1000) {
         btn2.selected = NO;
     }
     if (_tmpBtn == nil){

@@ -10,7 +10,15 @@
  
 
 @implementation CustomtextView
-
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    // 设置默认字体
+    self.font = [UIFont systemFontOfSize:15];
+    // 设置默认颜色
+    self.placeholderColor = [UIColor grayColor];
+    // 使用通知监听文字改变
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange:) name:UITextViewTextDidChangeNotification object:self];
+}
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
@@ -19,8 +27,7 @@
         // 设置默认颜色
         self.placeholderColor = [UIColor grayColor];
         // 使用通知监听文字改变
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange:) name:UITextViewTextDidChangeNotification object:self];
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange:) name:UITextViewTextDidChangeNotification object:self]; 
         
     }
     return self;

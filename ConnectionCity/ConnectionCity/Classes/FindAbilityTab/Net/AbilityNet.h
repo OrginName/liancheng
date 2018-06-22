@@ -27,4 +27,26 @@ typedef void (^FailDicBlock) (NSString * failValue);
  @param block 成功返回
  */
 +(void)requstAbilityClass:(SuccessArrBlock)block;
+/**
+ 职业筛选
+ 
+ @param block 成功返回
+ */
++(void)requstAbilityConditions:(SuccessArrBlock)block;
+
+
+/**
+ 简历-附近列表
+
+ @param param 字典
+ @param block 成功数组
+ */
++(void)requstAbilityConditions:(NSDictionary *)param withBlock:(SuccessArrBlock)block;
+/**
+新增工作经历
+ 
+ @param param 字典
+ @param block 成功数组
+ */
++(void)requstAddWord:(NSDictionary *)param withBlock:(SuccessArrBlock)block;
 @end

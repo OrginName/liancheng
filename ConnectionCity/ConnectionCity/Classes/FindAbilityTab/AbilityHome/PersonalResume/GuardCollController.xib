@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -46,8 +46,9 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57c-s8-z4v">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57c-s8-z4v">
                             <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.95082598920000005" green="0.56077027319999995" blue="0.16638627650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="保存">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,14 +61,10 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="tsx-yK-7Sm" firstAttribute="leading" secondItem="e6h-5b-W3e" secondAttribute="leading" id="019-zl-PJ4"/>
-                        <constraint firstAttribute="bottom" secondItem="57c-s8-z4v" secondAttribute="bottom" id="Cw4-yp-ccx"/>
-                        <constraint firstItem="57c-s8-z4v" firstAttribute="top" secondItem="e6h-5b-W3e" secondAttribute="top" id="EFn-yd-LAY"/>
-                        <constraint firstItem="57c-s8-z4v" firstAttribute="leading" secondItem="e6h-5b-W3e" secondAttribute="leading" id="ElE-cM-JAc"/>
                         <constraint firstAttribute="height" constant="50" id="Ma1-Uk-ZT6"/>
                         <constraint firstItem="tsx-yK-7Sm" firstAttribute="top" secondItem="e6h-5b-W3e" secondAttribute="top" id="N5X-R5-rUW"/>
                         <constraint firstAttribute="bottom" secondItem="tsx-yK-7Sm" secondAttribute="bottom" id="VSa-WY-eno"/>
                         <constraint firstItem="jpo-b5-HM8" firstAttribute="leading" secondItem="tsx-yK-7Sm" secondAttribute="trailing" id="VT7-PK-4M0"/>
-                        <constraint firstAttribute="trailing" secondItem="57c-s8-z4v" secondAttribute="trailing" id="iHy-uC-QOW"/>
                         <constraint firstAttribute="trailing" secondItem="jpo-b5-HM8" secondAttribute="trailing" id="kO6-G2-gsL"/>
                         <constraint firstItem="jpo-b5-HM8" firstAttribute="top" secondItem="e6h-5b-W3e" secondAttribute="top" id="s3I-vm-42P"/>
                         <constraint firstItem="jpo-b5-HM8" firstAttribute="width" secondItem="tsx-yK-7Sm" secondAttribute="width" id="tRF-CD-MEf"/>

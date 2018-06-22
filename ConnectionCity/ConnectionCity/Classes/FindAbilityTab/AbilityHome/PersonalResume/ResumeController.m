@@ -23,6 +23,7 @@
 @property (nonatomic,strong) NSMutableArray * EduArr;//教育经历
 @property (nonatomic,strong) NSMutableArray * lunArr;//轮播图数组
 @property (nonatomic,strong) UIButton * MaskBtn;
+@property (nonatomic,strong) NSMutableArray * Arr_Dic;//选择项数组
 @end
 
 @implementation ResumeController
@@ -39,9 +40,15 @@
     [self initRightItem];
     [self initScroll];
 }
+
 -(void)initData{
     self.CollArr = [[NSMutableArray alloc] init];
     self.EduArr = [[NSMutableArray alloc] init];
+    [YSNetworkTool POST:dictionaryDictionaryAll params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        self.Arr_Dic = responseObject[@"data"];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 #pragma mark --各种点击事件---
 -(void)NOPicClick{
@@ -89,7 +96,7 @@
 }
 #pragma mark - tableView 数据源代理方法 -
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section!=3&&section!=4) {
+    if (section!=4&&section!=5) {
         return 1;
     }else if(section==3){
         return self.CollArr.count+2;
@@ -98,14 +105,14 @@
     }
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 6;
+    return 7;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
         return 100;
-    }else if (indexPath.section ==1||indexPath.section==5||indexPath.section==2){
+    }else if (indexPath.section ==1||indexPath.section==6||indexPath.section==2||indexPath.section==3){
         return 50;
-    }else if(indexPath.section==3){
+    }else if(indexPath.section==4){
         if (indexPath.row==0||indexPath.row==self.CollArr.count+1) {
             return 45;
         }else{
@@ -124,16 +131,16 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ResumeCell *cell = [ResumeCell tempTableViewCellWith:tableView indexPath:indexPath withCollArr:self.CollArr withEduArr:self.EduArr];
-    if (indexPath.section==4&&indexPath.row!=0&&indexPath.row!=self.EduArr.count+1) {
+    if (indexPath.section==5&&indexPath.row!=0&&indexPath.row!=self.EduArr.count+1) {
         cell.Mo = self.EduArr[indexPath.row-1];
     }
-    if (indexPath.section==3&&indexPath.row!=0&&indexPath.row!=self.CollArr.count+1) {
+    if (indexPath.section==4&&indexPath.row!=0&&indexPath.row!=self.CollArr.count+1) {
         cell.Mo = self.CollArr[indexPath.row-1];
     }    return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     __block ResumeController * weakSelf  = self;
-    if ((indexPath.section==3&&indexPath.row==self.CollArr.count+1)) {
+    if ((indexPath.section==4&&indexPath.row==self.CollArr.count+1)) {
         GuardCollController * guard = [GuardCollController new];
         guard.title = @"新增工作经历";
         guard.block = ^(ResumeMo * mo){
@@ -141,7 +148,7 @@
             [weakSelf.tab_bottom reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationNone];
         };
         [self.navigationController pushViewController:guard animated:YES];
-    }else if((indexPath.section==4&&indexPath.row==self.EduArr.count+1)){
+    }else if((indexPath.section==5&&indexPath.row==self.EduArr.count+1)){
         GuardEduController * guard = [GuardEduController new];
         guard.title = @"新增教育经历";
         guard.block = ^(ResumeMo * mo){
@@ -149,14 +156,25 @@
             [weakSelf.tab_bottom reloadSections:[NSIndexSet indexSetWithIndex:4] withRowAnimation:UITableViewRowAnimationNone];
         };
         [self.navigationController pushViewController:guard animated:YES];
-    }if (indexPath.section==5) {
-         ResumeCell * cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:5]];
-        EditAllController * edit = [EditAllController new];
-        edit.block= ^(NSString *EditStr){
-            cell.lab_MyselfProW.text = EditStr;
-        };
-        edit.receiveTxt = cell.lab_MyselfProW.text;
-        [self.navigationController pushViewController:edit animated:YES];
+    }else if(indexPath.section==2||indexPath.section==1||indexPath.section==3){
+        ResumeCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+        NSString * str = indexPath.section==1?@"17":indexPath.section==2?@"1":@"16";
+        NSArray * arr = [NSArray array];
+        for (int i=0; i<self.Arr_Dic.count; i++) {
+            if ([[self.Arr_Dic[i][@"id"] stringValue] isEqualToString:str]) {
+                arr = [YSTools stringToJSON:self.Arr_Dic[i][@"content"]];
+            }
+        }
+        NSMutableArray * title = [NSMutableArray array];
+        for (int i=0; i<arr.count; i++) {
+            [title addObject:arr[i][@"description"]];
+        }
+        [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:title multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
+            cell.txt_salWay.text = title[idx];
+//            [self.Dic setObject:@{@"name":title[idx],@"ID":arr[idx][@"value"]} forKey:[NSString stringWithFormat:@"%ld%ld",indexPath.section,indexPath.row]];
+        } cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
+            
+        } completion:nil];
     }
 }
 #pragma mark ---SDCycleScrollViewDelegate-----

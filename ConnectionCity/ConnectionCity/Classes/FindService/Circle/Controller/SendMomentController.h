@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+typedef void (^SendMomentBlock)(void);
 @interface SendMomentController : BaseViewController
+@property (nonatomic,copy) SendMomentBlock block;
 
 @end

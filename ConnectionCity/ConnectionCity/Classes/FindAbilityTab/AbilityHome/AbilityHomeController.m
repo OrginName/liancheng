@@ -96,6 +96,7 @@
         {
             FilterOneController * filter = [FilterOneController new];
             filter.title = @"筛选条件";
+            filter.flag_SX = 2;
             [self.navigationController pushViewController:filter animated:YES];
         }
             break;
@@ -109,6 +110,7 @@
 }
 #pragma mark ----初始化加载数据（开始）------
 -(void)initData{
+    [self loadServiceList:@{@"cityID":[KUserDefults objectForKey:kUserCityID],@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
 //    热门职业加载
     [AbilityNet requstAbilityKeyWords:^(NSMutableArray *successArrValue) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -118,6 +120,25 @@
     //    加载分类数据
     [AbilityNet requstAbilityClass:^(NSMutableArray *successArrValue) {
         self.arr_Class = successArrValue;
+    }];
+
+}
+//加载简历列表数据
+-(void)loadServiceList:(NSDictionary *)dic{
+    NSDictionary * dic1 = @{
+                            @"lat": @([dic[@"lat"] floatValue]),
+                            @"lng": @([dic[@"lng"] floatValue]),
+                            @"areaCode": @"",
+                            @"provinceCode": @"",
+                            @"category": @"",
+                            @"cityCode":dic[@"cityID"],
+                            @"salary": @0,
+                            @"education": @0,
+                            @"work": @0
+                            };
+    //    加载服务列表
+    [AbilityNet requstAbilityConditions:dic1 withBlock:^(NSMutableArray *successArrValue) {
+        self.cusMap.Arr_Mark = successArrValue;
     }];
 }
 #pragma mark ----初始化加载数据（结束）------

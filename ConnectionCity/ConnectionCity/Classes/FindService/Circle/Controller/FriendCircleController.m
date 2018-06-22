@@ -11,6 +11,7 @@
 #import "FriendCirleTab.h"
 #import "FriendVideo.h"
 #import "FriendMyselfTab.h"
+#import "SendMomentController.h"
 static NSInteger i;//判断当前返回按钮点击次数
 @interface FriendCircleController ()
 {
@@ -28,9 +29,7 @@ static NSInteger i;//判断当前返回按钮点击次数
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
-    i=0;
-    
-    
+    i=0; 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,7 +37,11 @@ static NSInteger i;//判断当前返回按钮点击次数
 }
 //发布朋友圈
 -(void)SendFriend{
-    [self.navigationController pushViewController:[super rotateClass:@"SendMomentController"] animated:YES];
+    SendMomentController * send = [SendMomentController new];
+    send.block = ^{
+        
+    };
+    [self.navigationController pushViewController:send animated:YES];
 }
 - (IBAction)tagSelectClick:(CustomButton *)sender {
     if ([self.tabBarItem.title isEqualToString:@"圈子"]&&sender.tag!=1) {

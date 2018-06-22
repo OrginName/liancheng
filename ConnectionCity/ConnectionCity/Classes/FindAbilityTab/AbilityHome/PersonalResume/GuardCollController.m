@@ -9,6 +9,7 @@
 #import "GuardCollController.h"
 #import "LCDatePicker.h"
 #import "EditAllController.h"
+#import "AbilityNet.h"
 @interface GuardCollController ()<UITextViewDelegate,LCDatePickerDelegate>
 {
     NSInteger  currentTag;
@@ -28,15 +29,22 @@
     [super viewDidLoad];
     [self setUI];
 }
-//完成按钮点击
--(void)complete{
-    [self btn_Save:nil];
-}
 - (IBAction)btn_Save:(UIButton *)sender {
     if (self.txt_Company.text.length==0||self.txt_pro.text.length==0||self.textView_Indro.text.length==0||self.start_time.text.length==02||self.end_Time.text.length==0) {
         [YTAlertUtil showTempInfo:@"请查看是否输入完整"];
         return;
     }
+    NSDictionary * dic = @{
+                           @"companyName": @"string",
+                           @"description": @"string",
+                           @"endDate": @"2018-06-22T07:00:16.968Z",
+                           @"occupationCategoryId": @0,
+                           @"resumeId": @0,
+                           @"startDate": @"2018-06-22T07:00:16.968Z"
+                           };
+    [AbilityNet requstAddWord:dic withBlock:^(NSMutableArray *successArrValue) {
+        
+    }];
     ResumeMo * mo = [[ResumeMo alloc] init];
     mo.collAndcompany = self.txt_Company.text;
     mo.proAndPro = self.txt_pro.text;
@@ -63,7 +71,6 @@
 -(void)setUI{
     self.textView_Indro.placeholder = @"请输入工作描述";
     self.textView_Indro.placeholderColor = [UIColor hexColorWithString:@"#bbbbbb"];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(complete) image:@"" title:@"完成" EdgeInsets:UIEdgeInsetsZero];
     [self initDate];
     
 }

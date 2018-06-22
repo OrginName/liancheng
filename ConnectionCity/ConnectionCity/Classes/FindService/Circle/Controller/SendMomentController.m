@@ -16,18 +16,29 @@
 @property (weak, nonatomic) IBOutlet UIView *view_Photo;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_photoSlect;
 @property (nonatomic,strong)PhotoSelect * photo;
-
 @end
-
 @implementation SendMomentController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
 }
 //完成
 -(void)complete{
-    [YTAlertUtil showTempInfo:@"发布"];
+    NSDictionary * dic = @{
+                           @"areaCode":@([[KUserDefults objectForKey:kUserCityID]integerValue]),
+                           @"cityCode": @([[KUserDefults objectForKey:kUserCityID]integerValue]),
+                           @"containsImage": @1,
+                           @"containsVideo": @1,
+                           @"content": self.txt_Moment.text,
+                           @"images": @"http://img5.imgtn.bdimg.com/it/u=974328080,785294559&fm=27&gp=0.jpg;http://img4.imgtn.bdimg.com/it/u=3947090186,1008283992&fm=27&gp=0.jpg",
+                           @"videos": @"http://mp4.vjshi.com/2018-02-23/5e982007de347d14152cc722cdc7fb2d.mp4;http://mp4.vjshi.com/2014-10-03/1412345605895_747.mp4"
+                           };
+    [YSNetworkTool POST:v1ServiceCircleCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        self.block();
+        [self.navigationController popViewControllerAnimated:YES];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 -(void)setUI{
     self.txt_Moment.placeholder = @"   对圈子内的朋友说点什么...";

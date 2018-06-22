@@ -10,7 +10,7 @@
 
 @interface CustomtextView : UITextView
 /** 占位文字 */
-@property (nonatomic, copy) NSString *placeholder;
+@property (nonatomic, copy)IBInspectable  NSString *placeholder;
 /** 占位文字颜色 */
-@property (nonatomic, strong) UIColor *placeholderColor;
+@property (nonatomic, strong)IBInspectable  UIColor *placeholderColor;
 @end
