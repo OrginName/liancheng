@@ -23,6 +23,12 @@ static NSString * const registerUrl = @"/register";
 //登录
 static NSString * const login = @"/login";
 #pragma mark - 用户接口
+//获取svip套餐详情
+static NSString * const membershipSvipInfo = @"/membership/svip/info";
+//rechargeVip
+static NSString * const membershipSvipRecharge = @"/membership/svip/recharge";
+//用户svip详情
+static NSString * const membershipUserSvip = @"/membership/user/svip";
 //修改密码
 static NSString * const v1PrivateUserChangePassword = @"/v1/private/user/change-password";
 //获取用户信息
@@ -177,6 +183,8 @@ static NSString * const myAuthAuthMobile = @"/my/auth/auth/mobile";
 static NSString * const myAuthUserIdentityAuthCreate = @"/my/auth/user-identity-auth/create";
 //个人中心-技能认证
 static NSString * const myAuthUserSkillAuthCreate = @"/my/auth/user-skill-auth/create";
+
+
 
 
 
