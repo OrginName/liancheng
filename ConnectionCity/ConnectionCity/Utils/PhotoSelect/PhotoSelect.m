@@ -310,7 +310,11 @@
         [self->_collectionView deleteItemsAtIndexPaths:@[indexPath]];
     } completion:^(BOOL finished) {
         [self->_collectionView reloadData];
+        if (self.PhotoDelegate&&[self.PhotoDelegate respondsToSelector:@selector(deleteImage:arr:)]) {
+            [self.PhotoDelegate deleteImage:sender.tag arr:_selectedPhotos];
+        }
     }];
+    
 }
 #pragma mark - UIActionSheetDelegate
 
@@ -435,6 +439,9 @@
     if ([asset isKindOfClass:[PHAsset class]]) {
         PHAsset *phAsset = asset;
         NSLog(@"location:%@",phAsset.location);
+    }
+    if (self.PhotoDelegate&&[self.PhotoDelegate respondsToSelector:@selector(selectImage:arr:)]) {
+        [self.PhotoDelegate selectImage:image arr:_selectedPhotos];
     }
 }
 

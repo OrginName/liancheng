@@ -28,9 +28,9 @@
 @property (nonatomic,assign) NSInteger section2Num;
 @property (nonatomic,strong) NSArray * arr1;
 @property (nonatomic,strong) NSMutableDictionary * Dic2;
-@property (nonatomic,strong) NSString * str_url;
 @property (nonatomic,strong) NSString * serviceCategoryId;
 @property (nonatomic,strong) NSMutableArray * Attr_Arr;
+@property (nonatomic,strong) NSMutableArray * Arr_Url;//选择的图片路径
 @end
 
 @implementation SendServiceController
@@ -40,9 +40,8 @@
     self.navigationItem.title = @"发布服务";
     self.Attr_Arr = [NSMutableArray array];
     self.Dic2 = [NSMutableDictionary dictionary];
+    self.Arr_Url = [NSMutableArray array];
     [self setUI];
-//    self.arr1 = @[@{@"isMulitable":@"1",@"name":@"擅长位置",@"subname":@[@{@"isSelected":@YES,@"title":@"坦克"},@{@"isSelected":@NO,@"title":@"射手"},@{@"isSelected":@NO,@"title":@"法师"},@{@"isSelected":@NO,@"title":@"刺客"}]},@{@"isMulitable":@"0",@"name":@"最高段位",@"subname":@[@{@"isSelected":@YES,@"title":@"黄金"},@{@"isSelected":@NO,@"title":@"白银及一下"},@{@"isSelected":@NO,@"title":@"铂金"},@{@"isSelected":@NO,@"title":@"王者"}]}];
-//    self.arr2 = @[@{@"isMulitable":@"0",@"name":@"擅长位置",@"subname":@[@{@"isSelected":@YES,@"title":@"坦克"},@{@"isSelected":@NO,@"title":@"射手"},@{@"isSelected":@NO,@"title":@"法师"},@{@"isSelected":@NO,@"title":@"刺客"}]}];
 }
 -(void)setUI{
     itemHeigth = (kScreenWidth-70) / 4+10;
@@ -70,11 +69,18 @@
     NSInteger areaCode = [[KUserDefults objectForKey:kUserCityID] integerValue];
     float lat = [[KUserDefults objectForKey:kLat] floatValue];
     float lng = [[KUserDefults objectForKey:KLng] floatValue];
+    NSString * urlStr = @"";
+    if (self.Arr_Url.count!=0) {
+        for (int i=0; i<self.Arr_Url.count; i++) {
+            urlStr = [NSString stringWithFormat:@"%@;%@",self.Arr_Url[i],urlStr];
+        }
+    }
+    
     NSDictionary * dic = @{
                            @"cityCode": @0,
                            @"areaCode": @(areaCode),
                            @"content": @"",
-                           @"images": _str_url?_str_url:@"",
+                           @"images": urlStr,
                            @"introduce": self.Dic2[KString(@"%d", 2)],
                            @"lat": @(lat),
                            @"lng": @(lng),
@@ -179,7 +185,8 @@
 #pragma mark ----PhotoSelectDelegate-----
 -(void)selectImageArr:(NSArray *)imageArr{
     NSLog(@"%lu",(unsigned long)imageArr.count);
-    if (imageArr.count>4) {
+    __block int flag=1;
+    if (imageArr.count>=4) {
         self.photo.height = itemHeigth*2;
         UIView *headerView = self.tab_Bottom.tableHeaderView;
         headerView.height = self.photo.height;
@@ -187,15 +194,42 @@
         [self.tab_Bottom setTableHeaderView:headerView];// 关键是这句话
         [self.tab_Bottom endUpdates];
     }
-    _str_url =@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1977804817,1381775671&fm=200&gp=0.jpg;https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528544357416&di=e79bd79f86eea467f4fca6a5bfe35d7d&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dshijue1%252C0%252C0%252C294%252C40%2Fsign%3D0392a2bf17950a7b6138468762b808ac%2F03087bf40ad162d9bd499b951bdfa9ec8b13cd90.jpg";
-    [[QiniuUploader defaultUploader] uploadImageToQNFilePath:imageArr[0] withBlock:^(NSDictionary *url) {
-        //        resp ===== {
-//        hash = "FqejJo8139YO70Zri_2OcpfzrADD";
-//        key = "FqejJo8139YO70Zri_2OcpfzrADD";
-//    }
-        
+    [YTAlertUtil showHUDWithTitle:@"正在上传"];
+    for (int i=0; i<imageArr.count; i++) {
+        [[QiniuUploader defaultUploader] uploadImageToQNFilePath:imageArr[i] withBlock:^(NSDictionary *url) {
+            flag++;
+            [self.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
+            if (flag == imageArr.count) {
+                [YTAlertUtil hideHUD];
+            }
+        }];
+    } 
+}
+-(void)selectImage:(UIImage *) image arr:(NSArray *)imageArr{
+    if (imageArr.count>=4) {
+        self.photo.height = itemHeigth*2;
+        UIView *headerView = self.tab_Bottom.tableHeaderView;
+        headerView.height = self.photo.height;
+        [self.tab_Bottom beginUpdates];
+        [self.tab_Bottom setTableHeaderView:headerView];// 关键是这句话
+        [self.tab_Bottom endUpdates];
+    }
+    [YTAlertUtil showHUDWithTitle:@"正在上传"];
+    [[QiniuUploader defaultUploader] uploadImageToQNFilePath:image withBlock:^(NSDictionary *url) {
+        [YTAlertUtil hideHUD];
+        [self.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
     }];
-    
+}
+-(void)deleteImage:(NSInteger) tag arr:(NSArray *)imageArr{
+    if (imageArr.count<=4) {
+        self.photo.height = itemHeigth;
+        UIView *headerView = self.tab_Bottom.tableHeaderView;
+        headerView.height = self.photo.height;
+        [self.tab_Bottom beginUpdates];
+        [self.tab_Bottom setTableHeaderView:headerView];// 关键是这句话
+        [self.tab_Bottom endUpdates];
+    }
+    [self.Arr_Url removeObjectAtIndex:tag];
 }
 #pragma mark ----SendSelectCellDelegate----
 - (void)selectedItemButton:(NSString *)arr{

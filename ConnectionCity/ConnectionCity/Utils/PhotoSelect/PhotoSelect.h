@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 @protocol PhotoSelectDelegate <NSObject>
 @optional
+-(void)deleteImage:(NSInteger) tag arr:(NSArray *)imageArr;
+@optional
+-(void)selectImage:(UIImage *) image arr:(NSArray *)imageArr;
+@optional
 -(void)selectImageArr:(NSArray *)imageArr;
 @end
 

@@ -217,7 +217,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden= NO;
-    [self loadCityData];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -242,44 +241,5 @@
         [self.view_KeyWords addSubview:btn];
     }
 }
--(void)loadCityData{
-    if ([KUserDefults objectForKey:kUserCityID]!=nil) {
-//        NSString * str = [KUserDefults objectForKey:kUserCityID];
-        return;
-    }
-    [YSNetworkTool POST:dictionaryAreaTreeList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        if (![responseObject[@"data"] isKindOfClass:[NSArray class]]) {
-            [YTAlertUtil showTempInfo:@"暂无数据"];
-            return;
-        }
-        NSString * city = [KUserDefults objectForKey:kUserCity];
-        for (int i=0; i<[responseObject[@"data"] count]; i++) {
-            CityMo * mo = [CityMo mj_objectWithKeyValues:responseObject[@"data"][i]];
-            mo.ID = responseObject[@"data"][i][@"id"];
-            if ([mo.fullName isEqualToString:city]) {
-                NSLog(@"324231421342342134213");
-                [KUserDefults setValue:mo.ID forKey:kUserCityID];
-                
-                [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
-                return;
-            }
-            if (![mo.fullName containsString:@"市"]) {
-                for (int j=0; j<[mo.childs count]; j++) {
-                    CityMo * mo1 = [CityMo mj_objectWithKeyValues:mo.childs[j]];
-                    mo1.ID = responseObject[@"data"][j][@"id"];
-                    if ([mo1.fullName isEqualToString:city]) {
-                        NSLog(@"1qweqweqweqwe");
-                        [KUserDefults setValue:mo1.ID forKey:kUserCityID];
-                        [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
-                        return;
-                    }
-                }
-            }else{
-                
-            }
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-    }];
-}
+
 @end

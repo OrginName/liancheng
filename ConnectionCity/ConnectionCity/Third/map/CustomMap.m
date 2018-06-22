@@ -9,6 +9,7 @@
 #import "CustomMap.h"
 #import "CustomAnnotationView.h"
 #import "AbilttyMo.h"
+#import "CityMo.h"
 @interface CustomMap()<MAMapViewDelegate,CustomLocationDelegate,UITextFieldDelegate>
 @property (nonatomic,assign) id controller;
 @property (nonatomic,strong) CustomLocatiom * location;
@@ -92,6 +93,7 @@
     [KUserDefults setObject:[NSString stringWithFormat:@"%f",location.coordinate.latitude] forKey:kLat];
     [KUserDefults setObject:[NSString stringWithFormat:@"%f",location.coordinate.longitude] forKey:KLng];
     [KUserDefults synchronize];
+    [self loadCityData];
     //获取到定位信息，更新annotation
         if (self.pointAnnotaiton == nil)
         {
@@ -108,6 +110,44 @@
     if ([self.delegate respondsToSelector:@selector(currentMapLocation:location:)]) {
         [self.delegate currentMapLocation:locationDictionary location:location];
         }
+}
+-(void)loadCityData{
+    if ([KUserDefults objectForKey:kUserCityID]!=nil) {
+        //        NSString * str = [KUserDefults objectForKey:kUserCityID];
+        return;
+    }
+    [YSNetworkTool POST:dictionaryAreaTreeList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (![responseObject[@"data"] isKindOfClass:[NSArray class]]) {
+            [YTAlertUtil showTempInfo:@"暂无数据"];
+            return;
+        }
+        NSString * city = [KUserDefults objectForKey:kUserCity];
+        for (int i=0; i<[responseObject[@"data"] count]; i++) {
+            CityMo * mo = [CityMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+            mo.ID = responseObject[@"data"][i][@"id"];
+            if ([mo.fullName isEqualToString:city]) {
+                NSLog(@"324231421342342134213");
+                [KUserDefults setValue:mo.ID forKey:kUserCityID];
+                return;
+            }
+            if (![mo.fullName containsString:@"市"]) {
+                for (int j=0; j<[mo.childs count]; j++) {
+                    CityMo * mo1 = [CityMo mj_objectWithKeyValues:mo.childs[j]];
+                    mo1.ID = responseObject[@"data"][j][@"id"];
+                    if ([mo1.fullName isEqualToString:city]) {
+                        NSLog(@"1qweqweqweqwe");
+                        [KUserDefults setValue:mo1.ID forKey:kUserCityID];
+                        
+                        return;
+                    }
+                }
+            }else{
+                
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 //定位失败
 - (void)locateFailure:(NSString *)message {

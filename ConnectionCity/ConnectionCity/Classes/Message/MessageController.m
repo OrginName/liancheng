@@ -51,7 +51,6 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self setUI];
     flag = NO;
-     
 }
 
 //导航左按钮我的点击
