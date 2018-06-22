@@ -14,6 +14,7 @@
 #import "EditAllController.h"
 #import "ClassificationsController.h"
 #import "ServiceHomeNet.h"
+#import "QiniuUploader.h"
 @interface SendServiceController ()<PhotoSelectDelegate,UITableViewDelegate,UITableViewDataSource,SendSelectCellDelegate,SendServiceCellDelegate>
 {
     CGFloat itemHeigth,layout_Height;
@@ -187,17 +188,14 @@
         [self.tab_Bottom endUpdates];
     }
     _str_url =@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1977804817,1381775671&fm=200&gp=0.jpg;https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528544357416&di=e79bd79f86eea467f4fca6a5bfe35d7d&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dshijue1%252C0%252C0%252C294%252C40%2Fsign%3D0392a2bf17950a7b6138468762b808ac%2F03087bf40ad162d9bd499b951bdfa9ec8b13cd90.jpg";
-//    YSAccount * user = [YSAccountTool account];
-//    NSLog(@"%@",user.token);
-//    NSString *token = user.token;
-//    QNUploadManager *upManager = [[QNUploadManager alloc] init];
-////    NSData *data = UIImageJPEGRepresentation(imageArr[0], 0.7);
-//    NSData *data = [@"Hello, World!" dataUsingEncoding : NSUTF8StringEncoding];
-//    [upManager putData:data key:@"hello" token:token
-//              complete: ^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-//                  NSLog(@"%@", info);
-//                  NSLog(@"%@", resp);
-//              } option:nil];
+    [[QiniuUploader defaultUploader] uploadImageToQNFilePath:imageArr[0] withBlock:^(NSDictionary *url) {
+        //        resp ===== {
+//        hash = "FqejJo8139YO70Zri_2OcpfzrADD";
+//        key = "FqejJo8139YO70Zri_2OcpfzrADD";
+//    }
+        
+    }];
+    
 }
 #pragma mark ----SendSelectCellDelegate----
 - (void)selectedItemButton:(NSString *)arr{

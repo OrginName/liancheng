@@ -29,169 +29,49 @@
     });
     return uploader;
 }
-- (void)uploadDataWithFileUrl:(NSURL *)fileUrl
-                      withKey:(NSString *)key
-                        token:(NSString *)token{
-    [self uploadObject:fileUrl withKey:key token:token];
+-(void)uploadImageToQNFilePath:(UIImage *)image withBlock:(QiniuBlock)block{
+    
+    NSString * filePath = [self getImagePath:image];
+    QNUploadManager *upManager = [[QNUploadManager alloc] init];
+    QNUploadOption *uploadOption = [[QNUploadOption alloc] initWithMime:nil progressHandler:^(NSString *key, float percent) {
+        NSLog(@"percent == %.2f", percent);
+    }
+                                                                 params:nil
+                                                               checkCrc:NO
+                                                     cancellationSignal:nil];
+    [upManager putFile:filePath key:nil token:self.token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+        NSLog(@"info ===== %@", info);
+        NSLog(@"resp ===== %@", resp);
+        block(resp);
+    }
+                option:uploadOption];
     
 }
-
-- (void)uploadObject:(NSURL*)fileurl
-             withKey:(NSString *)key
-               token:(NSString *)token{
-    
-    [self.flagDic setValue:@(0) forKey:fileurl.path];
-    //option
-    QNUploadOption *opt = [[QNUploadOption alloc] initWithMime:nil progressHandler: ^(NSString *key, float percent) {
-        [self.uploadingTaskDic setObject:@(percent) forKey:fileurl.path];
-        if (percent >= 1) {
-            [self.flagDic setValue:@(1) forKey:fileurl.path];
-            [self.flagDic removeObjectForKey:fileurl.path];
-//            [self remo  veTaskWithFileurl:fileurl];
-            //[self.uploadingTaskDic removeObjectForKey:fileurl.path];
-            
-            if ([self.delegate respondsToSelector:@selector(uploadFinish)]) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.delegate uploadFinish];
-                });
-            }else{
-                NSLog(@"WORNING: 代理方法：(uploadFinish)未实现");
-            }
-        }
-        // NSLog(@"---***---上传进度：%f-----*",percent);
-        if ([self.delegate respondsToSelector:@selector(uploadingProgress:fileUrl:)]) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate uploadingProgress:percent fileUrl:fileurl];
-            });
-        }else{
-            NSLog(@"WORNING: 代理方法：(uploadingProgress:fileUrl:)未实现");
-        }
-        
-    } params:nil checkCrc:NO cancellationSignal: ^BOOL () {
-        return [[self.flagDic objectForKey:fileurl.path]boolValue];
-    }];
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    
-    if ([fileurl isKindOfClass:[NSURL class]]) {
-        
-        [self.upmanager putFile:[(NSURL*)fileurl path]
-                            key:key
-                          token:token
-                       complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-                           [self uploadWithQNResponseInfo:info key:key resp:resp fileUrl:fileurl];
-                       } option:opt];
-    }
-}
-
-- (void)uploadWithQNResponseInfo:(QNResponseInfo*)info key:(NSString *)key resp:(NSDictionary *)resp fileUrl:url{
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    
-    if ([self.delegate respondsToSelector:@selector(uploadWithQNResponseInfo:fileUrl:resp:)]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate uploadWithQNResponseInfo:info
-                                            fileUrl:url
-                                               resp:resp];
-        });
-        
-    }else{
-        NSLog(@"WORNING: 代理方法：(uploadWithQNResponseInfo:fileUrl:resp:)未实现");
-    }
-}
-
-//lazy upmanager
--(QNUploadManager *)upmanager{
-    if (_upmanager==nil) {
-        NSError *error = nil;
-        QNFileRecorder *recorder = [QNFileRecorder fileRecorderWithFolder:[NSTemporaryDirectory() stringByAppendingString:@"RAYUploadFileRecord"] error:&error];
-        _upmanager = [[QNUploadManager alloc]initWithRecorder:recorder];
-    }
-    return _upmanager;
-}
-
--(NSMutableDictionary *)flagDic{
-    if (_flagDic == nil) {
-        _flagDic = [[NSMutableDictionary alloc]init];
-    }
-    return _flagDic;
-}
-
--(NSMutableArray *)uploadTaskArr{
-    if (_uploadTaskArr == nil) {
-        _uploadTaskArr = [[NSMutableArray alloc]init];
-    }
-    return _uploadTaskArr;
-}
-
--(NSMutableDictionary *)uploadingTaskDic{
-    if (_uploadingTaskDic == nil) {
-        _uploadingTaskDic = [[NSMutableDictionary alloc]init];
-    }
-    return _uploadingTaskDic;
-}
-
-//取消上传
-- (void)cancelUploadWithFileUrl:(NSURL *)url{
-    [self.flagDic setObject:@1 forKey:url.path];
-}
-
-//取消所有上传
-- (void)cancelAllTask{
-    for (NSString *key in self.flagDic.allKeys) {
-        [self.flagDic setObject:@1 forKey:key];
+//照片获取本地路径转换
+- (NSString *)getImagePath:(UIImage *)Image {
+    NSString *filePath = nil;
+    NSData *data = nil;
+    if (UIImagePNGRepresentation(Image) == nil) {
+        data = UIImageJPEGRepresentation(Image, 1.0);
+    } else {
+        data = UIImagePNGRepresentation(Image);
     }
     
-}
-
-//继续上传
-//- (void)continueUploadWithFileUrl:(NSURL *)url{
-//    [self.flagDic setObject:@0 forKey:url.path];
-//    RAYUploadFile *file = [self fileWithFileUrl:url];
-//    if (file == nil) {
-//        return;
-//    }
-//    NSLog(@"继续上传%@,%@",file.key,file.token);
-//    [self uploadObject:file.fileurl withKey:file.key token:file.token];
-//}
-
-- (void)continueAllTask{
-    for (NSString *key in self.flagDic.allKeys) {
-        NSURL *url = [NSURL fileURLWithPath:key];
-        [self continueUploadWithFileUrl:url];
-    }
+    //图片保存的路径
+    //这里将图片放在沙盒的documents文件夹中
+    NSString *DocumentsPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     
-}
-
-//- (RAYUploadFile*)fileWithFileUrl:(NSURL*)url{
-//
-//    for (RAYUploadFile *file in self.uploadTaskArr) {
-//        if ([file.fileurl isEqual:url]) {
-//            return file;
-//        }
-//    }
-//    NSLog(@"Error：任务不存在或已经结束");
-//    return nil;
-//}
-
-//- (void)removeTaskWithFileurl:(NSURL *)url{
-//    RAYUploadFile *file = [self fileWithFileUrl:url];
-//    if (file == nil) {
-//        return;
-//    }
-//    [self.uploadTaskArr removeObject:file];
-//}
-
-- (float)uploadPersentOfFileUrl:(NSURL *)fileUrl{
-    NSNumber *persent = [self.uploadingTaskDic objectForKey:fileUrl.path];
-    return persent.floatValue;
-}
-
-- (BOOL)isUploadingOfFileurl:(NSURL *)fileUrl{
-    if ([[self.flagDic objectForKey:fileUrl.path] isEqual:@0]) {
-        return YES;
-    }
-    return NO;
+    //文件管理器
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    //把刚刚图片转换的data对象拷贝至沙盒中
+    [fileManager createDirectoryAtPath:DocumentsPath withIntermediateDirectories:YES attributes:nil error:nil];
+    NSString *ImagePath = [[NSString alloc] initWithFormat:@"/theFirstImage.png"];
+    [fileManager createFileAtPath:[DocumentsPath stringByAppendingString:ImagePath] contents:data attributes:nil];
+    
+    //得到选择后沙盒中图片的完整路径
+    filePath = [[NSString alloc] initWithFormat:@"%@%@", DocumentsPath, ImagePath];
+    return filePath;
 }
 - (NSString *)makeToken
 {

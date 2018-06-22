@@ -13,7 +13,7 @@
 //主机地址
 //#define HOSTURL @"https://api.lc.test.cn-apps.com:8080"
 #define HOSTURL @"http://210.16.185.211:8080"
-
+#define QINIUURL @"http://panixgsjz.bkt.clouddn.com/"
 
 #pragma mark - 登录、注册、短信验证
 //短信验证
