@@ -24,14 +24,19 @@
                             indexPath:(NSIndexPath *)indexPath withCollArr:(NSMutableArray * )arr withEduArr:(NSMutableArray * )EduArr {
     NSString *identifier = @"";//对应xib中设置的identifier
     NSInteger index = 0; //xib中第几个Cell
-    if (indexPath.section != 4 && indexPath.section != 5) {
-        identifier = [NSString stringWithFormat:@"ResumeCell%ld",(long)indexPath.section];
+    if (indexPath.section != 4 && indexPath.section != 5) { 
         if (indexPath.section==6) {
             index = 5;
+            identifier = @"ResumeCell5";
         }else if (indexPath.section==0){
             index = 0;
+            identifier = @"ResumeCell0";
         } else
-        index = 1;
+        {
+            index = 1;
+            identifier = @"ResumeCell1";
+        }
+        
     }else{
         if (indexPath.row==0){
             identifier = [NSString stringWithFormat:@"ResumeCell%d",2];

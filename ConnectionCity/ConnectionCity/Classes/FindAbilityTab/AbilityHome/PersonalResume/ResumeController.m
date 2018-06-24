@@ -159,9 +159,18 @@
     if (section!=4&&section!=5) {
         return 1;
     }else if(section==4){
+        if ([self.isOpen[@"40"] isEqualToString:@"NO"]&&self.CollArr.count!=0) {
+            return 3;
+        }else
         return self.CollArr.count+2;
-    }else {
+        
+    }else if(section==5){
+        if ([self.isOpen[@"50"] isEqualToString:@"NO"]&&self.EduArr.count!=0) {
+            return 3;
+        }else
         return self.EduArr.count+2;
+    }else{
+        return 0;
     }
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -192,12 +201,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ResumeCell *cell = [ResumeCell tempTableViewCellWith:tableView indexPath:indexPath withCollArr:self.CollArr withEduArr:self.EduArr];
     if (indexPath.section==5&&indexPath.row!=0&&indexPath.row!=self.EduArr.count+1) {
+        if ([self.isOpen[@"50"] isEqualToString:@"NO"]&&self.EduArr.count!=0) {
             cell.Mo = self.EduArr[indexPath.row-1];
+            cell.imageISNo.transform = CGAffineTransformIdentity;
+        }else
+        {
+            cell.Mo = self.EduArr[indexPath.row-1];
+            cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2);
+        }
+       
     }
    else if (indexPath.section==4&&indexPath.row!=0&&indexPath.row!=self.CollArr.count+1) {
- 
-       cell.Mo = self.CollArr[indexPath.row-1];
- 
+        if ([self.isOpen[@"40"] isEqualToString:@"NO"]&&self.CollArr.count!=0) {
+            cell.Mo = self.CollArr[indexPath.row-1];
+            cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2);
+        }else{
+            cell.Mo = self.CollArr[0];
+            cell.imageISNo.transform = CGAffineTransformIdentity;
+           
+        }
     }
     NSArray * arr = [self.Data_Dic allKeys];
     if ([arr containsObject:[NSString stringWithFormat:@"%ld0",(long)indexPath.section]]) {
@@ -210,7 +232,33 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ResumeCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSMutableDictionary * dic = [self.isOpen mutableCopy];
     __block ResumeController * weakSelf  = self;
+    if (indexPath.section==4&&indexPath.row==0) {
+        if ([self.isOpen[@"40"] isEqualToString:@"NO"]) {
+            dic[@"40"] = @"YES";
+            cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2);
+            [self.CollArr removeAllObjects];
+            [self.CollArr addObject:self.data_ArrWork[0]];
+        }else{
+            [self.CollArr removeAllObjects];
+            [self.CollArr addObjectsFromArray:[self.data_ArrWork copy]];
+            dic[@"40"] = @"NO";
+            cell.imageISNo.transform = CGAffineTransformIdentity;
+        }
+         [self.tab_bottom reloadSections:[NSIndexSet indexSetWithIndex:4] withRowAnimation:UITableViewRowAnimationNone];
+    }
+    if (indexPath.section==5&&indexPath.row==0) {
+        if ([self.isOpen[@"50"] isEqualToString:@"NO"]) {
+            dic[@"50"] = @"YES";
+             cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2);
+        }else{
+             dic[@"50"] = @"NO";
+            cell.imageISNo.transform = CGAffineTransformIdentity;
+        }
+        [self.tab_bottom reloadSections:[NSIndexSet indexSetWithIndex:5] withRowAnimation:UITableViewRowAnimationNone];
+    }
+    self.isOpen = [dic copy];
     if ((indexPath.section==4&&indexPath.row==self.CollArr.count+1)) {
         if (resumeID.length==0) {
             return [YTAlertUtil showTempInfo:@"请先点击完成新增简历在添加工作经历"];
@@ -218,7 +266,11 @@
         GuardCollController * guard = [GuardCollController new];
         guard.title = @"新增工作经历";
         guard.block = ^(ResumeMo * mo){
-            [weakSelf.CollArr addObject:mo];
+            [weakSelf.data_ArrWork addObject:mo];
+            [self.isOpen mutableCopy][@"40"] = @"NO";
+            cell.imageISNo.transform = CGAffineTransformIdentity;
+            [weakSelf.CollArr removeAllObjects];
+            [weakSelf.CollArr addObject:weakSelf.data_ArrWork[0]];
             [weakSelf.tab_bottom reloadSections:[NSIndexSet indexSetWithIndex:4] withRowAnimation:UITableViewRowAnimationNone];
         };
         guard.resumeID = resumeID;
