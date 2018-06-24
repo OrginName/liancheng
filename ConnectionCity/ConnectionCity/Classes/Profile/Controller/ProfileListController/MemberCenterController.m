@@ -100,10 +100,12 @@
     WeakSelf
     [YSNetworkTool POST:v1PrivateUserInfo params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         weakSelf.userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
+        //weakSelf.tableHeadV.mmmmodel = weakSelf.userInfoModel;
+
         //通知主线程刷新
         dispatch_async(dispatch_get_main_queue(), ^{
             //回调或者说是通知主线程刷新，
-            weakSelf.tableHeadV.model = weakSelf.userInfoModel;
+            weakSelf.tableHeadV.mmmmodel = weakSelf.userInfoModel;
         });
     } failure:nil];
 }

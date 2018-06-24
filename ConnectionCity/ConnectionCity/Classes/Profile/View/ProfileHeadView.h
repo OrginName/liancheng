@@ -35,6 +35,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *twoNickName;
 @property (weak, nonatomic) IBOutlet UILabel *twoSvipTimeLab;
 
-@property (nonatomic, strong) privateUserInfoModel *model;
+@property (nonatomic, strong) privateUserInfoModel *mmmmodel;
 
 @end

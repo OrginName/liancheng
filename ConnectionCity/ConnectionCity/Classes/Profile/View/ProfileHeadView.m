@@ -13,7 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.model = _model;
+    
+    self.mmmmodel = _mmmmodel;
     _headImage.layer.cornerRadius = 27;
     _headImage.clipsToBounds = YES;
 }
@@ -29,14 +30,14 @@
         [_delegate profileHeadView:self xfBtnClick:(UIButton *)sender];
     }
 }
-
-- (void)setModel:(privateUserInfoModel *)model{
-    _model = model;
-    [self.twoBackgroundImage sd_setImageWithURL:[NSURL URLWithString:model.backgroundImage] placeholderImage:[UIImage imageNamed:@"1"]];
-    [self.twoHeadImage sd_setImageWithURL:[NSURL URLWithString:model.headImage]];
-    self.twoNickName.text = model.realName;
+- (void)setMmmmodel:(privateUserInfoModel *)mmmmodel{
+    _mmmmodel = mmmmodel;
+    [self.twoBackgroundImage sd_setImageWithURL:[NSURL URLWithString:mmmmodel.backgroundImage] placeholderImage:[UIImage imageNamed:@"1"]];
+    [self.twoHeadImage sd_setImageWithURL:[NSURL URLWithString:mmmmodel.headImage]];
+    self.twoNickName.text = mmmmodel.realName;
     self.twoSvipTimeLab.text = @"xxxx.xx.xx";
 }
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

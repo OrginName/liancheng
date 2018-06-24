@@ -149,10 +149,10 @@
                 <outlet property="headImage" destination="k30-U3-4pb" id="7jr-F4-Eqo"/>
                 <outlet property="nickName" destination="mXO-cg-aGE" id="Y8g-Z3-DaQ"/>
                 <outlet property="svipTimeLab" destination="Zx3-u3-IcN" id="PRr-gX-9Np"/>
-                <outlet property="twoBackgroundImage" destination="iYE-KN-yMI" id="taC-2n-SCv"/>
-                <outlet property="twoHeadImage" destination="IHX-nw-sXe" id="OVo-ao-JO4"/>
-                <outlet property="twoNickName" destination="oId-6Z-dIz" id="511-hj-TM3"/>
-                <outlet property="twoSvipTimeLab" destination="ToW-30-1eG" id="50w-cf-hoF"/>
+                <outlet property="twoBackgroundImage" destination="iYE-KN-yMI" id="2gx-Ss-USF"/>
+                <outlet property="twoHeadImage" destination="IHX-nw-sXe" id="5Ml-Hn-Yqz"/>
+                <outlet property="twoNickName" destination="oId-6Z-dIz" id="BVP-u5-9RA"/>
+                <outlet property="twoSvipTimeLab" destination="ToW-30-1eG" id="3pZ-Os-0oB"/>
             </connections>
             <point key="canvasLocation" x="21.5" y="-164.5"/>
         </view>
