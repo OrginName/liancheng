@@ -160,10 +160,8 @@
         return 1;
     }else if(section==4){
         return self.CollArr.count+2;
-    }else if(section==5){
+    }else {
         return self.EduArr.count+2;
-    }else{
-        return 0;
     }
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
