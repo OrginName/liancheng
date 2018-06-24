@@ -64,8 +64,10 @@
 #define kVerison           [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 /** 轻量级数据存储 */
 #define kDefaults          [NSUserDefaults standardUserDefaults]
-/** 用户信息 */
+/** 用户登录信息 */
 #define kAccount           [YSAccountTool account]
+/** 用户个人信息 */
+#define kUserinfo          [YSAccountTool userInfo]
 /** 是否登录 */
 #define kIsLogin           [[GlobalManager globalManagerShare]isOrNoLogin]
 /** 响应message */

@@ -9,6 +9,11 @@
 #import "EditProfileHeadView.h"
 
 @implementation EditProfileHeadView
+- (void)awakeFromNib{
+    [super awakeFromNib];
+    _headImage.layer.cornerRadius = 27;
+    _headImage.clipsToBounds = YES;
+}
 - (IBAction)photoBtnClick:(id)sender {
     if (_delegate && [_delegate respondsToSelector:@selector(profileHeadView:photoBtnClick:)]) {
         [_delegate profileHeadView:self photoBtnClick:(UIButton *)sender];

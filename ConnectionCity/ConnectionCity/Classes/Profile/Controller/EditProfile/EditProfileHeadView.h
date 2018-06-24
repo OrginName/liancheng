@@ -18,5 +18,7 @@
 
 @interface EditProfileHeadView : UIView
 @property (nonatomic, weak) id<EditProfileHeadViewDelegate>delegate;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
+@property (weak, nonatomic) IBOutlet UIButton *headImage;
 
 @end

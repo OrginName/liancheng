@@ -14,6 +14,8 @@
     [super awakeFromNib];
     // Initialization code
     self.model = _model;
+    _headImage.layer.cornerRadius = 27;
+    _headImage.clipsToBounds = YES;
 }
 
 #pragma mark - 点击事件

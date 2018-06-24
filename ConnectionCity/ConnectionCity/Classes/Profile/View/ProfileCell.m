@@ -11,6 +11,9 @@
 @implementation ProfileCell
 - (void)awakeFromNib {
     [super awakeFromNib];
+    if (_resumeModel) {
+        self.resumeModel = _resumeModel;
+    }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -25,10 +28,15 @@
     return cell;
 }
 - (IBAction)btn_Click:(UIButton *)sender {
-    
     if ([self.delegate respondsToSelector:@selector(selectedItemButton:)]) {
         [self.delegate selectedItemButton:sender.tag];
     }
+}
+- (void)setResumeModel:(OurResumeMo *)resumeModel {
+    _resumeModel = resumeModel;
+    self.resumetitleLab.text = resumeModel.introduce;
+    self.resumeDescribLab.text = resumeModel.cityName;
+    self.industryAndTimeLab.text = resumeModel.createTime;
 }
 
 @end

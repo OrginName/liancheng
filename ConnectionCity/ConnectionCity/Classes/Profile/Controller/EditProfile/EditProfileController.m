@@ -10,10 +10,16 @@
 #import "EditProfileCell.h"
 #import "EditProfileHeadView.h"
 #import "EditAllController.h"
+#import "QiniuUploader.h"
+#import "TakePhoto.h"
+#import "privateUserInfoModel.h"
+#import "OccupationCategoryNameModel.h"
 
 @interface EditProfileController ()<EditProfileHeadViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) EditProfileHeadView *tableHeadV;
 @property (nonatomic, strong) NSArray *titleDataArr;
+@property (nonatomic, strong) NSArray *parmeDataArr;
 @property (nonatomic, strong) NSMutableArray *contentDataArr;
 
 @end
@@ -40,6 +46,8 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]forBarMetrics:UIBarMetricsDefault];
     //去掉导航栏底部的黑线
     self.navigationController.navigationBar.shadowImage = [UIImage new];
+    //请求用户信息
+    [self requestV1PrivateUserInfo];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -60,15 +68,16 @@
 - (void)registerCell {
     [self.tableView registerNib:[UINib nibWithNibName:@"EditProfileCell" bundle:nil] forCellReuseIdentifier:@"EditProfileCell"];
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"UITableViewHeaderFooterView"];
-    EditProfileHeadView *tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"EditProfileHeadView" owner:nil options:nil] firstObject];
-    tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 220 + 64);
-    tableHeadV.delegate = self;
-    self.tableView.tableHeaderView = tableHeadV;
+    _tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"EditProfileHeadView" owner:nil options:nil] firstObject];
+    _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 220 + 64);
+    _tableHeadV.delegate = self;
+    self.tableView.tableHeaderView = _tableHeadV;
 }
 #pragma mark - setter and getter
 - (NSArray *)titleDataArr{
     if (!_titleDataArr) {
         _titleDataArr = @[@[@"昵称",@"姓名",@"年龄",@"性别",@"所在地区"],@[@"身高",@"体重",@"婚姻",@"学历",@"签名"]];
+        _parmeDataArr = @[@[@"nickName",@"realName",@"age",@"genderName",@"areaName"],@[@"height",@"weight",@"marriageName",@"educationName",@"sign"]];
     }
     return _titleDataArr;
 }
@@ -116,6 +125,7 @@
     EditAllController * edit = [EditAllController new];
     WeakSelf
     edit.block = ^(NSString * str){
+        [weakSelf requestPrivateUserUpdateWithDic:@{_parmeDataArr[indexPath.section][indexPath.row]: str?str:@""}];
         weakSelf.contentDataArr[indexPath.section][indexPath.row] = str;
         [weakSelf.tableView reloadData];
     };
@@ -137,11 +147,49 @@
 }
 #pragma mark - EditProfileHeadViewDelegate
 - (void)profileHeadView:(EditProfileHeadView *)view photoBtnClick:(UIButton *)btn {
-    
+    WeakSelf
+    [[TakePhoto sharedPhoto] sharePicture:^(UIImage *image) {
+        [YTAlertUtil showHUDWithTitle:nil];
+        [[QiniuUploader defaultUploader] uploadImageToQNFilePath:image withBlock:^(NSDictionary *url) {
+            [YTAlertUtil hideHUD];
+            [weakSelf requestPrivateUserUpdateWithDic:@{@"headImage": [NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]}];
+        }];
+    }];
 }
 - (void)profileHeadView:(EditProfileHeadView *)view refreshBtnClick:(UIButton *)btn {
-    
+    WeakSelf
+    [[TakePhoto sharedPhoto] sharePicture:^(UIImage *image) {
+        [YTAlertUtil showHUDWithTitle:nil];
+        [[QiniuUploader defaultUploader] uploadImageToQNFilePath:image withBlock:^(NSDictionary *url) {
+            [YTAlertUtil hideHUD];
+            [weakSelf requestPrivateUserUpdateWithDic:@{@"backgroundImage": [NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]}];
+        }];
+    }];
 }
+
+#pragma mark - 数据请求
+- (void)requestV1PrivateUserInfo {
+    //获取用户信息
+    WeakSelf
+    [YSNetworkTool POST:v1PrivateUserInfo params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
+        [YSAccountTool saveUserinfo:userInfoModel];
+        
+        NSMutableArray *firstMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.nickName?userInfoModel.nickName:@"",userInfoModel.realName?userInfoModel.realName:@"",userInfoModel.age?userInfoModel.age:@"",userInfoModel.genderName?userInfoModel.genderName:@"",userInfoModel.areaName?userInfoModel.areaName:@""]];
+        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.height?userInfoModel.height:@"",userInfoModel.weight?userInfoModel.weight:@"",userInfoModel.marriageName?userInfoModel.marriageName:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.sign?userInfoModel.sign:@""]];
+        weakSelf.contentDataArr = [[NSMutableArray alloc]initWithArray:@[firstMutArr,secondMutArr]];
+        [weakSelf.tableHeadV.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"1"]];
+        [weakSelf.tableHeadV.headImage sd_setBackgroundImageWithURL:[NSURL URLWithString:userInfoModel.headImage] forState:UIControlStateNormal];
+        [weakSelf.tableView reloadData];
+    } failure:nil];
+}
+- (void)requestPrivateUserUpdateWithDic:(NSDictionary *)dic{
+    WeakSelf
+    [YSNetworkTool POST:v1PrivateUserUpdate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [weakSelf requestV1PrivateUserInfo];
+    } failure:nil];
+}
+
 /*
 #pragma mark - Navigation
 

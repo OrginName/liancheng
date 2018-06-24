@@ -72,6 +72,10 @@
                 <constraint firstItem="wLS-An-dIm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zKK-WV-15f"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="backgroundImage" destination="vAW-S8-1HF" id="P58-CL-vVv"/>
+                <outlet property="headImage" destination="nfB-Ks-QDG" id="DyN-uN-hsd"/>
+            </connections>
             <point key="canvasLocation" x="48.5" y="-112"/>
         </view>
     </objects>

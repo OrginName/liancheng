@@ -8,8 +8,16 @@
 
 #import "OurResumeController.h"
 #import "ProfileCell.h"
+#import "OurResumeMo.h"
+#import "WorkExperienceListModel.h"
+#import "educationExperienceListModel.h"
+#import "privateUserInfoModel.h"
+#import "OccupationCategoryNameModel.h"
+
 @interface OurResumeController ()<UITableViewDelegate,UITableViewDataSource,profileCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
+//简历数组
+@property (nonatomic, strong) NSArray *resumedataArr;
 
 @end
 
@@ -18,12 +26,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    [self requestMyTreasurePage];
+    //发布宝物
+    //[self requestMyTreasurePage];
+    //发布简历
+    [self requestMyResumePage];
 }
 -(void)setUI{
     self.navigationItem.title = [NSString stringWithFormat:@"我的发布-%@",self.receive_Mo.mTitle];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (self.index == 2) {
+        return _resumedataArr.count;
+    }
     return 10;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -37,6 +51,9 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ProfileCell * cell = [ProfileCell tempTableViewCellWith:tableView indexPath:indexPath currentTag:self.index];
     cell.delegate = self;
+    if (self.index ==2) {
+        cell.resumeModel = self.resumedataArr[indexPath.row];
+    }
     return cell;
 }
 #pragma mark -----profileCellDelegate-----
@@ -51,5 +68,13 @@
         
     } failure:nil];
 }
-
+//我的发布-简历
+- (void)requestMyResumePage {
+    WeakSelf
+    [YSNetworkTool POST:v1MyResumePage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        weakSelf.resumedataArr = [OurResumeMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+        [weakSelf.tab_Bottom reloadData];
+        
+    } failure:nil];
+}
 @end

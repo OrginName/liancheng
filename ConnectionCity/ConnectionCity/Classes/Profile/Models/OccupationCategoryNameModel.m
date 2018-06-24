@@ -9,5 +9,6 @@
 #import "OccupationCategoryNameModel.h"
 
 @implementation OccupationCategoryNameModel
+MJCodingImplementation
 
 @end

@@ -64,6 +64,8 @@
     self.coinBgView.layer.cornerRadius = 5;
     self.coinBgView.layer.borderColor = YSColor(242,242,242).CGColor;
     self.coinBgView.layer.borderWidth = 0.5;
+    self.headImage.layer.cornerRadius = 27;
+    self.headImage.clipsToBounds = YES;
 }
 #pragma mark - 点击事件
 - (IBAction)membershipRenewalBtnClick:(id)sender {

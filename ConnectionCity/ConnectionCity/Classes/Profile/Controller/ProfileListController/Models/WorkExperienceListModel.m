@@ -1,19 +1,19 @@
 //
-//  privateUserInfoModel.m
+//  WorkExperienceListModel.m
 //  ConnectionCity
 //
-//  Created by YanShuang Jiang on 2018/6/22.
+//  Created by YanShuang Jiang on 2018/6/24.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
 //
 
-#import "privateUserInfoModel.h"
+#import "WorkExperienceListModel.h"
 
-@implementation privateUserInfoModel
+@implementation WorkExperienceListModel
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
-    return @{@"modelId":@"id"};
+    return @{@"modelId":@"id",@"descriptions":@"description"};
 }
 + (NSDictionary *)mj_objectClassInArray {
     return @{@"occupationCategoryName":[OccupationCategoryNameModel class]};
 }
-MJCodingImplementation
+
 @end

@@ -8,7 +8,7 @@
 
 #import "BaseModel.h"
 
-@interface OccupationCategoryNameModel : BaseModel
+@interface OccupationCategoryNameModel : BaseModel<NSCoding>
 /** <#name描述#> */
 @property (nonatomic, copy) NSString *name;
 /** <#parentName描述#> */

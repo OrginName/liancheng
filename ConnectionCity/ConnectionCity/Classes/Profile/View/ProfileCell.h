@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OurResumeMo.h"
 
 @protocol profileCellDelegate <NSObject>
 @optional
@@ -16,7 +17,12 @@
 @interface ProfileCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *iconImgV;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
+@property (weak, nonatomic) IBOutlet UILabel *resumetitleLab;
+@property (weak, nonatomic) IBOutlet UILabel *resumeDescribLab;
+@property (weak, nonatomic) IBOutlet UILabel *industryAndTimeLab;
+@property (nonatomic, strong) OurResumeMo *resumeModel;
 @property (nonatomic,assign) id<profileCellDelegate>delegate;
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView
                             indexPath:(NSIndexPath *)indexPath currentTag:(NSInteger)tag;
+
 @end

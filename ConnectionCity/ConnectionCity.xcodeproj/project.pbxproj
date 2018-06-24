@@ -349,6 +349,9 @@
 		CE21F0DD20DD38A700478482 /* NSDictionary+SafeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F0DC20DD38A700478482 /* NSDictionary+SafeValue.m */; };
 		CE21F0E020DDF00F00478482 /* MemberRenewalM.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F0DF20DDF00F00478482 /* MemberRenewalM.m */; };
 		CE21F0E320DDF04C00478482 /* MembershipMealModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F0E220DDF04C00478482 /* MembershipMealModel.m */; };
+		CE21F0EC20DF945300478482 /* OurResumeMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F0EB20DF945300478482 /* OurResumeMo.m */; };
+		CE21F0EF20DF94A800478482 /* WorkExperienceListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F0EE20DF94A800478482 /* WorkExperienceListModel.m */; };
+		CE21F0F220DF963400478482 /* educationExperienceListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F0F120DF963400478482 /* educationExperienceListModel.m */; };
 		CE24791620CEC9F100D4C396 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE24791520CEC9F100D4C396 /* EGOCache.m */; };
 		CE5C27FA20B8FE0A006A8332 /* BiddInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C27F820B8FE0A006A8332 /* BiddInfoController.m */; };
 		CE5C27FB20B8FE0A006A8332 /* BiddInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C27F920B8FE0A006A8332 /* BiddInfoController.xib */; };
@@ -1057,6 +1060,12 @@
 		CE21F0DF20DDF00F00478482 /* MemberRenewalM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberRenewalM.m; sourceTree = "<group>"; };
 		CE21F0E120DDF04C00478482 /* MembershipMealModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MembershipMealModel.h; sourceTree = "<group>"; };
 		CE21F0E220DDF04C00478482 /* MembershipMealModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MembershipMealModel.m; sourceTree = "<group>"; };
+		CE21F0EA20DF945300478482 /* OurResumeMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurResumeMo.h; sourceTree = "<group>"; };
+		CE21F0EB20DF945300478482 /* OurResumeMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurResumeMo.m; sourceTree = "<group>"; };
+		CE21F0ED20DF94A800478482 /* WorkExperienceListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkExperienceListModel.h; sourceTree = "<group>"; };
+		CE21F0EE20DF94A800478482 /* WorkExperienceListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkExperienceListModel.m; sourceTree = "<group>"; };
+		CE21F0F020DF963400478482 /* educationExperienceListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = educationExperienceListModel.h; sourceTree = "<group>"; };
+		CE21F0F120DF963400478482 /* educationExperienceListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = educationExperienceListModel.m; sourceTree = "<group>"; };
 		CE24791420CEC9F100D4C396 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
 		CE24791520CEC9F100D4C396 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
 		CE5C27F720B8FE0A006A8332 /* BiddInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BiddInfoController.h; sourceTree = "<group>"; };
@@ -2158,6 +2167,7 @@
 		8D50C54D20C631CF0095A824 /* ProfileListController */ = {
 			isa = PBXGroup;
 			children = (
+				CE21F0E920DF92BC00478482 /* Models */,
 				8D35878320C692EB008A5E74 /* View */,
 				8D50C56220C67BBB0095A824 /* Cell */,
 				CEC4A55720C407500026EE19 /* MemberCenterController.h */,
@@ -2723,6 +2733,19 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CE21F0E920DF92BC00478482 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE21F0EA20DF945300478482 /* OurResumeMo.h */,
+				CE21F0EB20DF945300478482 /* OurResumeMo.m */,
+				CE21F0ED20DF94A800478482 /* WorkExperienceListModel.h */,
+				CE21F0EE20DF94A800478482 /* WorkExperienceListModel.m */,
+				CE21F0F020DF963400478482 /* educationExperienceListModel.h */,
+				CE21F0F120DF963400478482 /* educationExperienceListModel.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		CE5C27F320B8FDA6006A8332 /* zbxx */ = {
@@ -3645,6 +3668,7 @@
 				8D2B8B9120A2DA9F00C3157F /* AbilityHomeController.m in Sources */,
 				CE5C283820B99441006A8332 /* PayOrderController.m in Sources */,
 				722D254020AAA64C00AB3863 /* ShowResumeController.m in Sources */,
+				CE21F0F220DF963400478482 /* educationExperienceListModel.m in Sources */,
 				727418E320B290D1001D6BE1 /* SwapController.m in Sources */,
 				8D22C35120C7CDA1004DC8F4 /* ExchangeController.m in Sources */,
 				8DD48CE820A8367100D6D1E6 /* GuardEduController.m in Sources */,
@@ -3690,6 +3714,7 @@
 				CE21F0E020DDF00F00478482 /* MemberRenewalM.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
 				CEBEDD7D20B17ED1000F9EE4 /* WinningBidderCell.m in Sources */,
+				CE21F0EF20DF94A800478482 /* WorkExperienceListModel.m in Sources */,
 				CE6BEC2C20C970C1003B36D7 /* EditProfileHeadView.m in Sources */,
 				72EC1B5120B6EAB600ACC20B /* SendTreasureController.m in Sources */,
 				CE0BA60E209D6126004C3C33 /* AddressBookController.m in Sources */,
@@ -3764,6 +3789,7 @@
 				CE0BA5FA209D5EBE004C3C33 /* YTBaseTableViewController.m in Sources */,
 				720263F320B5015500382B2F /* TZGifPhotoPreviewController.m in Sources */,
 				8D07D76C20DCE1E40073807C /* GTMBase64.m in Sources */,
+				CE21F0EC20DF945300478482 /* OurResumeMo.m in Sources */,
 				CE21F0DA20DD380900478482 /* OccupationCategoryNameModel.m in Sources */,
 				8D50C56020C66EAF0095A824 /* OurServiceController.m in Sources */,
 				8D19FF2320D8CFE4005F7361 /* ServiceListMo.m in Sources */,
@@ -3983,7 +4009,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";
@@ -4005,7 +4031,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";

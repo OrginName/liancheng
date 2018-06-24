@@ -9,7 +9,7 @@
 #import "BaseModel.h"
 #import "OccupationCategoryNameModel.h"
 
-@interface privateUserInfoModel : BaseModel
+@interface privateUserInfoModel : BaseModel<NSCoding>
 /** <#id描述#> */
 @property (nonatomic, copy) NSString *modelId;
 /** <#mobile描述#> */
