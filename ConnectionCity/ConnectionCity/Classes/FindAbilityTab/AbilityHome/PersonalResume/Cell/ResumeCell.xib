@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -65,6 +65,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnAgree" destination="owL-zm-5vy" id="KGh-A1-QtQ"/>
                 <outlet property="lab_MyselfProW" destination="lgR-NB-e91" id="rNs-1M-tiy"/>
                 <outlet property="lab_comAndCollege" destination="jUg-oI-1H9" id="NWx-su-0RM"/>
                 <outlet property="lab_pro" destination="lBl-Ug-7o5" id="w5Y-3v-Td7"/>
@@ -183,7 +184,7 @@
             <connections>
                 <outlet property="lab_workEdu" destination="CZU-ER-lZo" id="FbA-ea-DaY"/>
             </connections>
-            <point key="canvasLocation" x="25" y="236"/>
+            <point key="canvasLocation" x="25" y="235.5"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResumeCell3" rowHeight="45" id="51H-6U-tMb" customClass="ResumeCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
@@ -278,27 +279,36 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bid" translatesAutoresizingMaskIntoConstraints="NO" id="ewQ-57-Q5g">
-                        <rect key="frame" x="16" y="15" width="15" height="15"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="15" id="bwt-Jh-sr2"/>
-                            <constraint firstAttribute="height" constant="15" id="jJK-s2-r39"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阅读并同意找人才发布规则" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKe-pm-4Bn">
-                        <rect key="frame" x="36" y="14" width="171.5" height="17"/>
+                        <rect key="frame" x="41" y="14" width="171.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.29019607843137257" green="0.29019607843137257" blue="0.29019607843137257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owL-zm-5vy">
+                        <rect key="frame" x="16" y="15" width="15" height="15"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="5je-bf-270"/>
+                            <constraint firstAttribute="width" constant="15" id="yQ7-Qr-5V7"/>
+                        </constraints>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <state key="normal" backgroundImage="w-xuanhzong">
+                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="selected" backgroundImage="xuanzhong"/>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="XKe-pm-4Bn" firstAttribute="leading" secondItem="ewQ-57-Q5g" secondAttribute="trailing" constant="5" id="3HM-Af-Lcj"/>
-                    <constraint firstItem="ewQ-57-Q5g" firstAttribute="centerY" secondItem="Me1-U2-cxN" secondAttribute="centerY" id="Jd7-i0-AiF"/>
-                    <constraint firstItem="ewQ-57-Q5g" firstAttribute="leading" secondItem="Me1-U2-cxN" secondAttribute="leading" constant="16" id="Jmg-4d-3V0"/>
-                    <constraint firstItem="XKe-pm-4Bn" firstAttribute="centerY" secondItem="ewQ-57-Q5g" secondAttribute="centerY" id="Ljb-tu-qEf"/>
+                    <constraint firstItem="owL-zm-5vy" firstAttribute="leading" secondItem="Me1-U2-cxN" secondAttribute="leading" constant="16" id="1CA-PC-c0U"/>
+                    <constraint firstItem="XKe-pm-4Bn" firstAttribute="centerY" secondItem="owL-zm-5vy" secondAttribute="centerY" id="3bM-gS-BN0"/>
+                    <constraint firstItem="owL-zm-5vy" firstAttribute="centerY" secondItem="Me1-U2-cxN" secondAttribute="centerY" id="Edj-ga-m4h"/>
+                    <constraint firstItem="XKe-pm-4Bn" firstAttribute="leading" secondItem="owL-zm-5vy" secondAttribute="trailing" constant="10" id="shx-cN-TpP"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="btnAgree" destination="owL-zm-5vy" id="EzN-iN-xBX"/>
+            </connections>
             <point key="canvasLocation" x="25" y="429"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResumeCell6" rowHeight="90" id="UM7-8v-24J" customClass="ResumeCell">
@@ -397,9 +407,10 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Bid" width="19" height="16"/>
         <image name="arraw-right" width="9" height="15"/>
         <image name="edit" width="14" height="13"/>
         <image name="men" width="13" height="13"/>
+        <image name="w-xuanhzong" width="14" height="14"/>
+        <image name="xuanzhong" width="14" height="14"/>
     </resources>
 </document>

@@ -13,6 +13,7 @@
 @interface GuardEduController ()<UITextViewDelegate,LCDatePickerDelegate>
 {
     NSInteger currtenTag;
+    NSString * _EduID;
 }
 @property (nonatomic,strong) LCDatePicker * myDatePick;
 @property (weak, nonatomic) IBOutlet CustomtextView *textView_Indro;
@@ -29,33 +30,68 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    _EduID = @"";
 }
 //保存按钮点击
 - (IBAction)btn_Save:(UIButton *)sender {
-    if (self.text_Coll.text.length==0||self.text_Pro.text.length==0||self.text_XL.text.length==0||self.Start_time.text.length==02||self.end_Time.text.length==0) {
-        [YTAlertUtil showTempInfo:@"请查看是否输入完整"];
-        return;
+    if (sender.tag==30) {
+        if (self.text_Coll.text.length==0||self.text_Pro.text.length==0||self.text_XL.text.length==0||self.Start_time.text.length==02||self.end_Time.text.length==0) {
+            [YTAlertUtil showTempInfo:@"请查看是否输入完整"];
+            return;
+        }
+        if ([YSTools initTimerCompare:self.Start_time.text withEndTime:self.end_Time.text]!=2) {
+            [YTAlertUtil showTempInfo:@"结束日期不能小于开始日期"];
+            return;
+        }
+        NSDictionary * dic =@{
+                              @"description": self.textView_Indro.text,
+                              @"educationId": @([_EduID integerValue]),
+                              @"endDate": self.end_Time.text,
+                              @"professionalId": @0,
+                              @"resumeId": @([self.resumeID integerValue]),
+                              @"schoolId": @0,
+                              @"startDate": self.Start_time.text
+                              };
+        [AbilityNet requstAddEdu:dic withBlock:^(NSDictionary *successDicValue) {
+            ResumeMo * mo = [[ResumeMo alloc] init];
+            mo.collAndcompany = self.text_Coll.text;
+            mo.proAndPro = self.text_Pro.text;
+            mo.XLAndIntro = self.text_XL.text;
+            mo.satrtTime = self.Start_time.text;
+            mo.endTime = self.end_Time.text;
+            self.block(mo);
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        
+    }else{
+        
     }
-    ResumeMo * mo = [[ResumeMo alloc] init];
-    mo.collAndcompany = self.text_Coll.text;
-    mo.proAndPro = self.text_Pro.text;
-    mo.XLAndIntro = self.text_XL.text;
-    mo.satrtTime = self.Start_time.text;
-    mo.endTime = self.end_Time.text;
-    self.block(mo);
-    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 //各个编辑按钮点击
 - (IBAction)btn_Click:(UIButton *)sender {
-    NSArray * arr = @[self.text_Coll,self.text_Pro,self.text_XL];
-    if (sender.tag<4) {
+    NSArray * arr = @[self.text_Coll,self.text_Pro];
+    if (sender.tag<3) {
         EditAllController * edit = [EditAllController new];
         edit.block = ^(NSString * str){
             UITextField * text = (UITextField *)arr[sender.tag-1];
             text.text = str;
         };
         [self.navigationController pushViewController:edit animated:YES];
-    }else{
+    }
+    else if (sender.tag==3) {
+        NSMutableArray * title = [NSMutableArray array];
+        for (int i=0; i<self.eduArr.count; i++) {
+            [title addObject:self.eduArr[i][@"description"]];
+        }
+        [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:title multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
+            self.text_XL.text = title[idx];
+            _EduID = self.eduArr[idx][@"value"];
+        } cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
+            
+        } completion:nil];
+    }
+    else{
         currtenTag = sender.tag;
         [self.myDatePick animateShow];
     }

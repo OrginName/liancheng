@@ -11,4 +11,5 @@
 typedef void(^ResumeBlock)(ResumeMo * Mo);
 @interface GuardCollController : BaseViewController
 @property (nonatomic, copy) ResumeBlock block;
+@property (nonatomic,strong) NSString * resumeID;//简历ID
 @end

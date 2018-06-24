@@ -12,7 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GuardEduController">
             <connections>
                 <outlet property="Start_time" destination="o59-1m-b5Z" id="fy5-tO-XhP"/>
-                <outlet property="btn_Save" destination="Gly-Wl-Cco" id="lCs-E3-hhz"/>
                 <outlet property="end_Time" destination="CFZ-04-lyh" id="APC-2U-K5o"/>
                 <outlet property="textView_Indro" destination="8mu-DR-ndk" id="Pcc-gA-bil"/>
                 <outlet property="text_Coll" destination="Xzn-oh-Cbd" id="DgZ-w6-HpT"/>
@@ -29,7 +28,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNe-OI-pzL">
                     <rect key="frame" x="10" y="607" width="355" height="50"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Np-Hg-XBQ">
+                        <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Np-Hg-XBQ">
                             <rect key="frame" x="0.0" y="0.0" width="177.5" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -37,8 +36,11 @@
                             <state key="normal" title="删  除">
                                 <color key="titleColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="btn_Save:" destination="-1" eventType="touchUpInside" id="k0T-ka-Ovh"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHG-Ko-7ct">
+                        <button opaque="NO" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHG-Ko-7ct">
                             <rect key="frame" x="177.5" y="0.0" width="177.5" height="50"/>
                             <color key="backgroundColor" red="0.92549019610000005" green="0.5450980392" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -46,15 +48,8 @@
                             <state key="normal" title="保  存">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gly-Wl-Cco">
-                            <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
-                            <color key="backgroundColor" red="0.95082598920000005" green="0.56077027319999995" blue="0.16638627650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" title="保存">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
                             <connections>
-                                <action selector="btn_Save:" destination="-1" eventType="touchUpInside" id="Xbh-Dy-p1z"/>
+                                <action selector="btn_Save:" destination="-1" eventType="touchUpInside" id="K4j-tF-k9J"/>
                             </connections>
                         </button>
                     </subviews>
@@ -65,14 +60,10 @@
                         <constraint firstItem="OHG-Ko-7ct" firstAttribute="top" secondItem="JNe-OI-pzL" secondAttribute="top" id="JbU-sK-ZTu"/>
                         <constraint firstAttribute="bottom" secondItem="8Np-Hg-XBQ" secondAttribute="bottom" id="NNu-rf-dRa"/>
                         <constraint firstItem="8Np-Hg-XBQ" firstAttribute="top" secondItem="JNe-OI-pzL" secondAttribute="top" id="T4A-OB-jOw"/>
-                        <constraint firstAttribute="trailing" secondItem="Gly-Wl-Cco" secondAttribute="trailing" id="ZP7-Sq-GkJ"/>
-                        <constraint firstItem="Gly-Wl-Cco" firstAttribute="leading" secondItem="JNe-OI-pzL" secondAttribute="leading" id="a7e-e2-pKX"/>
                         <constraint firstAttribute="trailing" secondItem="OHG-Ko-7ct" secondAttribute="trailing" id="imN-qT-Iqg"/>
-                        <constraint firstItem="Gly-Wl-Cco" firstAttribute="top" secondItem="JNe-OI-pzL" secondAttribute="top" id="kR8-Yf-9u3"/>
                         <constraint firstItem="OHG-Ko-7ct" firstAttribute="width" secondItem="8Np-Hg-XBQ" secondAttribute="width" id="nZo-0Q-LZ3"/>
                         <constraint firstAttribute="height" constant="50" id="nmX-Nd-ZJf"/>
                         <constraint firstItem="8Np-Hg-XBQ" firstAttribute="leading" secondItem="JNe-OI-pzL" secondAttribute="leading" id="ub1-J4-7nl"/>
-                        <constraint firstAttribute="bottom" secondItem="Gly-Wl-Cco" secondAttribute="bottom" id="x2K-FE-wvr"/>
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oRg-7h-cpS">

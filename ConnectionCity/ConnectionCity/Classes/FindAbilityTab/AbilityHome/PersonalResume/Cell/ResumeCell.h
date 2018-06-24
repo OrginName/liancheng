@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ResumeMo.h"
+typedef void (^blockClick)(void);
 @interface ResumeCell : UITableViewCell
+@property (nonatomic,copy)blockClick block;
 @property (weak, nonatomic) IBOutlet UILabel *lab_workEdu;//工作和教育标题
 @property (weak, nonatomic) IBOutlet UILabel *lab_proOrXL;//职业和学历
 @property (weak, nonatomic) IBOutlet UILabel *lab_pro;//描述
@@ -21,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab_MyselfProW;//自我介绍
 @property (nonatomic,strong)ResumeMo * Mo;
 @property (weak, nonatomic) IBOutlet UILabel *lab_salaryAndJY;
+@property (weak, nonatomic) IBOutlet UIButton *btnAgree;
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView
                             indexPath:(NSIndexPath *)indexPath withCollArr:(NSMutableArray * )arr withEduArr:(NSMutableArray * )EduArr;
 @end

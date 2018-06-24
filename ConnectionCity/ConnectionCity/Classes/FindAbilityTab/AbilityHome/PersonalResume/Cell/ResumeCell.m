@@ -12,8 +12,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
-     
 }
 -(void)setMo:(ResumeMo *)Mo{
     _Mo = Mo;
@@ -58,7 +56,7 @@
     cell.lab_salaryAndJY.text = indexPath.section == 1?@"薪资":indexPath.section == 2?@"学历":@"工作经验";
     cell.txt_salWay.placeholder = indexPath.section==1?@"请选择薪资":indexPath.section==2?@"学历":@"请选择工作经验";
     return cell;
-}
+} 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 }

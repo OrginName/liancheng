@@ -10,9 +10,11 @@
 #import "LCDatePicker.h"
 #import "EditAllController.h"
 #import "AbilityNet.h"
+#import "ClassificationsController.h"
 @interface GuardCollController ()<UITextViewDelegate,LCDatePickerDelegate>
 {
     NSInteger  currentTag;
+    NSString * _proID;
 }
 @property (nonatomic,strong) LCDatePicker * myDatePick;
 @property (weak, nonatomic) IBOutlet CustomtextView *textView_Indro;
@@ -21,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txt_pro;
 @property (weak, nonatomic) IBOutlet UITextField *end_Time;
 @property (weak, nonatomic) IBOutlet UITextField *start_time;
+@property (nonatomic,strong) NSMutableArray * arr_Class;
 @end
 
 @implementation GuardCollController
@@ -28,34 +31,65 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    [self initData];
+}
+-(void)initData{
+    _proID = @"";
+    //    加载分类数据
+    [AbilityNet requstAbilityClass:^(NSMutableArray *successArrValue) {
+        self.arr_Class = successArrValue;
+    }];
+}
+- (IBAction)btn_SelectProfess:(UIButton *)sender {
+    ClassificationsController * class = [ClassificationsController new];
+    class.title = @"职业分类";
+    class.arr_Data = self.arr_Class;
+    class.block = ^(NSString *classifiation){
+    };
+    class.block1 = ^(NSString *classifiationID, NSString *classifiation) {
+        self.txt_pro.text = classifiation;
+        _proID = classifiationID;
+    };
+    [self.navigationController pushViewController:class animated:YES];
+    
 }
 - (IBAction)btn_Save:(UIButton *)sender {
-    if (self.txt_Company.text.length==0||self.txt_pro.text.length==0||self.textView_Indro.text.length==0||self.start_time.text.length==02||self.end_Time.text.length==0) {
-        [YTAlertUtil showTempInfo:@"请查看是否输入完整"];
-        return;
+    if (sender.tag==30) {
+        if (self.txt_Company.text.length==0||self.txt_pro.text.length==0||self.textView_Indro.text.length==0||self.start_time.text.length==02||self.end_Time.text.length==0) {
+            [YTAlertUtil showTempInfo:@"请查看是否输入完整"];
+            return;
+        }
+        if ([YSTools initTimerCompare:self.start_time.text withEndTime:self.end_Time.text]!=2) {
+            [YTAlertUtil showTempInfo:@"结束日期不能小于开始日期"];
+            return;
+        }
+        NSDictionary * dic = @{
+                               @"companyName": self.txt_Company.text,
+                               @"description": self.textView_Indro.text,
+                               @"endDate": self.start_time.text,
+                               @"occupationCategoryId": @([_proID integerValue]),
+                               @"resumeId": @([self.resumeID integerValue]),
+                               @"startDate": self.end_Time.text
+                               };
+        [AbilityNet requstAddWord:dic withBlock:^(NSDictionary *successArrValue) {
+            ResumeMo * mo = [[ResumeMo alloc] init];
+            mo.collAndcompany = self.txt_Company.text;
+            mo.proAndPro = self.txt_pro.text;
+            mo.XLAndIntro = self.textView_Indro.text;
+            mo.satrtTime = self.start_time.text;
+            mo.endTime = self.end_Time.text;
+            self.block(mo);
+            [self.navigationController popViewControllerAnimated:YES];
+            [YTAlertUtil showTempInfo:successArrValue[@"message"]];
+        }];
+    }else{
+        [YTAlertUtil showTempInfo:@"删除"];
     }
-    NSDictionary * dic = @{
-                           @"companyName": @"string",
-                           @"description": @"string",
-                           @"endDate": @"2018-06-22T07:00:16.968Z",
-                           @"occupationCategoryId": @0,
-                           @"resumeId": @0,
-                           @"startDate": @"2018-06-22T07:00:16.968Z"
-                           };
-    [AbilityNet requstAddWord:dic withBlock:^(NSMutableArray *successArrValue) {
-        
-    }];
-    ResumeMo * mo = [[ResumeMo alloc] init];
-    mo.collAndcompany = self.txt_Company.text;
-    mo.proAndPro = self.txt_pro.text;
-    mo.XLAndIntro = self.textView_Indro.text;
-    mo.satrtTime = self.start_time.text;
-    mo.endTime = self.end_Time.text;
-    self.block(mo);
-    [self.navigationController popViewControllerAnimated:YES];
+    
+   
 }
 - (IBAction)btn_Click:(UIButton *)sender {
-    if (sender.tag<3) {
+    if (sender.tag==1) {
         NSArray * arr = @[self.txt_Company,self.txt_pro];
         EditAllController * edit = [EditAllController new];
         edit.block = ^(NSString * str){
@@ -63,7 +97,7 @@
             text.text = str;
         };
         [self.navigationController pushViewController:edit animated:YES];
-    }else{
+    }else if(sender.tag==3||sender.tag==4){
         currentTag = sender.tag;
         [self.myDatePick animateShow];
     }

@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GuardCollController">
             <connections>
-                <outlet property="bttn_Save" destination="57c-s8-z4v" id="H7g-Bz-9b2"/>
                 <outlet property="end_Time" destination="RTi-Le-ayb" id="D5W-JE-u9T"/>
                 <outlet property="start_time" destination="shz-Za-wMN" id="fiu-cS-IjA"/>
                 <outlet property="textView_Indro" destination="18a-wg-dLC" id="zQY-fV-89r"/>
@@ -28,7 +27,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6h-5b-W3e">
                     <rect key="frame" x="10" y="607" width="355" height="50"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsx-yK-7Sm">
+                        <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsx-yK-7Sm">
                             <rect key="frame" x="0.0" y="0.0" width="177.5" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -36,8 +35,11 @@
                             <state key="normal" title="删  除">
                                 <color key="titleColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="btn_Save:" destination="-1" eventType="touchUpInside" id="Ijt-GH-uW2"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpo-b5-HM8">
+                        <button opaque="NO" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpo-b5-HM8">
                             <rect key="frame" x="177.5" y="0.0" width="177.5" height="50"/>
                             <color key="backgroundColor" red="0.92549019607843142" green="0.54509803921568623" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -45,16 +47,8 @@
                             <state key="normal" title="保  存">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57c-s8-z4v">
-                            <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.95082598920000005" green="0.56077027319999995" blue="0.16638627650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" title="保存">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
                             <connections>
-                                <action selector="btn_Save:" destination="-1" eventType="touchUpInside" id="392-1J-kMZ"/>
+                                <action selector="btn_Save:" destination="-1" eventType="touchUpInside" id="gqX-XH-2zh"/>
                             </connections>
                         </button>
                     </subviews>
@@ -247,9 +241,17 @@
                                                 <action selector="btn_Click:" destination="-1" eventType="touchUpInside" id="7r1-Gq-0tg"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBL-Jy-wdJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="btn_SelectProfess:" destination="-1" eventType="touchUpInside" id="eyV-oR-2aK"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="KBL-Jy-wdJ" firstAttribute="top" secondItem="bnt-ne-SFc" secondAttribute="top" id="6ts-BU-zwr"/>
                                         <constraint firstAttribute="bottom" secondItem="p7l-21-Qnk" secondAttribute="bottom" id="J6M-Jw-gLh"/>
                                         <constraint firstItem="T4e-qJ-rWs" firstAttribute="centerY" secondItem="bnt-ne-SFc" secondAttribute="centerY" id="MuK-xB-2Vk"/>
                                         <constraint firstItem="p7l-21-Qnk" firstAttribute="leading" secondItem="bnt-ne-SFc" secondAttribute="leading" id="Nv7-45-2rh"/>
@@ -259,7 +261,10 @@
                                         <constraint firstItem="mGD-4N-9vo" firstAttribute="top" secondItem="bnt-ne-SFc" secondAttribute="top" id="RMl-cE-lyj"/>
                                         <constraint firstAttribute="bottom" secondItem="mGD-4N-9vo" secondAttribute="bottom" id="TR2-zp-0nc"/>
                                         <constraint firstAttribute="height" constant="50" id="eog-dy-cYk"/>
+                                        <constraint firstAttribute="bottom" secondItem="KBL-Jy-wdJ" secondAttribute="bottom" id="fHZ-2P-WDU"/>
+                                        <constraint firstItem="KBL-Jy-wdJ" firstAttribute="leading" secondItem="bnt-ne-SFc" secondAttribute="leading" id="gfE-TR-tDo"/>
                                         <constraint firstItem="dZg-wx-o3Z" firstAttribute="leading" secondItem="bnt-ne-SFc" secondAttribute="leading" id="o1J-ZU-NP4"/>
+                                        <constraint firstAttribute="trailing" secondItem="KBL-Jy-wdJ" secondAttribute="trailing" id="oL1-cR-w4a"/>
                                         <constraint firstAttribute="bottom" secondItem="dZg-wx-o3Z" secondAttribute="bottom" id="rIN-Yn-gPv"/>
                                         <constraint firstAttribute="trailing" secondItem="p7l-21-Qnk" secondAttribute="trailing" id="rhS-xh-i3G"/>
                                         <constraint firstAttribute="trailing" secondItem="7Na-z8-nbJ" secondAttribute="trailing" constant="10" id="vTN-M9-Y2S"/>

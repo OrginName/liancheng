@@ -380,6 +380,27 @@
     CGFloat height = ceilf(rect.size.height);
     return height;
 }
++(NSInteger)initTimerCompare:(NSString *)startTime withEndTime:(NSString *)endTime
+{
+    BOOL result = [startTime compare:endTime] == NSOrderedSame;
+    
+    NSLog(@"result:%d",result);
+    if (result==1) {
+    
+        return 0;
+    }
+    BOOL result1 = [startTime compare:endTime]==NSOrderedDescending;
+    NSLog(@"result1:%d",result1);
+    if (result1==1) { 
+        return 1;
+    }
+    BOOL result2 = [startTime compare:endTime]==NSOrderedAscending;
+    if (result2==1) {
+        
+        return 2;
+    }
+    return -1;
+}
 @end
 
 

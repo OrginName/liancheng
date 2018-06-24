@@ -43,10 +43,24 @@ typedef void (^FailDicBlock) (NSString * failValue);
  */
 +(void)requstAbilityConditions:(NSDictionary *)param withBlock:(SuccessArrBlock)block;
 /**
+ 新增简历
+ 
+ @param param 字典
+ @param block 成功数组
+ */
++(void)requstAddResume:(NSDictionary *)param withBlock:(SuccessDicBlock)block;
+/**
 新增工作经历
  
  @param param 字典
  @param block 成功数组
  */
-+(void)requstAddWord:(NSDictionary *)param withBlock:(SuccessArrBlock)block;
++(void)requstAddWord:(NSDictionary *)param withBlock:(SuccessDicBlock)block;
+/**
+ 新增教育经历
+ 
+ @param param 字典
+ @param block 成功数组
+ */
++(void)requstAddEdu:(NSDictionary *)param withBlock:(SuccessDicBlock)block;
 @end

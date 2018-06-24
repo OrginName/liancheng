@@ -86,11 +86,14 @@
                 mo.workMo.ID = mo.workExperienceList[j][@"id"];
                 mo.workMo.description1 = mo.workExperienceList[j][@"description"];
             }
-            for (int k=0; k<mo.workExperienceList.count; k++) {
-                mo.educationMo = [AbilttyEducationMo mj_objectWithKeyValues:mo.educationExperienceList[k]];
-                mo.educationMo.ID = mo.educationExperienceList[k][@"id"];
-                mo.educationMo.description1 = mo.educationExperienceList[k][@"description"];
+            if (mo.educationExperienceList.count!=0) {
+                for (int k=0; k<mo.educationExperienceList.count; k++) {
+                    mo.educationMo = [AbilttyEducationMo mj_objectWithKeyValues:mo.educationExperienceList[k]];
+                    mo.educationMo.ID = mo.educationExperienceList[k][@"id"];
+                    mo.educationMo.description1 = mo.educationExperienceList[k][@"description"];
+                }
             }
+            
             [arr addObject:mo];
         }
         block(arr);
@@ -104,9 +107,30 @@
  @param param 字典
  @param block 成功数组
  */
-+(void)requstAddWord:(NSDictionary *)param withBlock:(SuccessArrBlock)block{
++(void)requstAddWord:(NSDictionary *)param withBlock:(SuccessDicBlock)block{
     [YSNetworkTool POST:v1TalentResumeWorkCreate params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        block(responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
+    }];
+}
++(void)requstAddEdu:(NSDictionary *)param withBlock:(SuccessDicBlock)block{
+    [YSNetworkTool POST:v1TalentResumeEducationCreate params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        block(responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+/**
+ 新增简历
+ 
+ @param param 字典
+ @param block 成功数组
+ */
++(void)requstAddResume:(NSDictionary *)param withBlock:(SuccessDicBlock)block{
+    [YSNetworkTool POST:v1TalentResumeCreate params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTAlertUtil showTempInfo:responseObject[@"message"]];
+        block(responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
