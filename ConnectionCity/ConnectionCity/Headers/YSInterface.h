@@ -185,19 +185,33 @@ static NSString * const myAuthUserIdentityAuthCreate = @"/my/auth/user-identity-
 static NSString * const myAuthUserSkillAuthCreate = @"/my/auth/user-skill-auth/create";
 #pragma mark - 我的 - My Controller
 //个人中心-服务评价
+static NSString * const v1MyCommentPage = @"/v1/my/comment/page";
 //我的-通讯录
+static NSString * const v1MyContacts = @"/v1/my/contacts";
 //个人中心-我的玩家-我和别人换
+static NSString * const v1MyExchangePage = @"/v1/my/exchange/page";
 //个人中心-我的关注
+static NSString * const v1MyFollowPage = @"/v1/my/follow/page";
 //个人中心-我的发布-身份互换
+static NSString * const v1MyIdentityPage = @"/v1/my/identity/page";
 //个人中心-我的玩家-别人和我换
+static NSString * const v1MyOrthersExchangePage = @"/v1/my/orthers/exchange/page";
 //个人中心-我的发布-简历
+static NSString * const v1MyResumePage = @"/v1/my/resume/page";
 //个人中心-我下单的服务
+static NSString * const v1MySerivceOrderRequiredPage = @"/v1/my/serivce-order/required/page";
 //个人中心-我发布的服务
+static NSString * const v1MyServiceOrderPublishedPage = @"/v1/my/service-order/published/page";
 //个人中心-我的发布-服务
+static NSString * const v1MyServicePage = @"/v1/my/service/page";
 //个人中心-我的发布-邀约
+static NSString * const v1MyTravelInvitePage = @"/v1/my/travel-invite/page";
 //个人中心-我发布的旅游
+static NSString * const v1MyTravelOrderPublishedPage = @"/v1/my/travel-order/published/page";
 //个人中心-我下单的旅游
+static NSString * const v1MyTravelOrderRequiredPage = @"/v1/my/travel-order/required/page";
 //个人中心-我的发布-旅行
+static NSString * const v1MyTravelPage = @"/v1/my/travel/page";
 //个人中心-我的发布-宝物
 static NSString * const v1MyTreasurePage = @"/v1/my/treasure/page";
 

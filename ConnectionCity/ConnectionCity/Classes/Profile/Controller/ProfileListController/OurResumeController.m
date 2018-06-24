@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    [self requestMyTreasurePage];
 }
 -(void)setUI{
     self.navigationItem.title = [NSString stringWithFormat:@"我的发布-%@",self.receive_Mo.mTitle];
@@ -42,4 +43,13 @@
 - (void)selectedItemButton:(NSInteger)index{
     NSLog(@"%ld",index);
 }
+#pragma mark - 数据请求
+//我的发布-宝物
+- (void)requestMyTreasurePage {
+    WeakSelf
+    [YSNetworkTool POST:v1MyTreasurePage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:nil];
+}
+
 @end
