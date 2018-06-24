@@ -216,6 +216,12 @@
                 <constraint firstItem="PEh-1c-LCn" firstAttribute="leading" secondItem="olY-B0-hn9" secondAttribute="leading" id="tWs-DK-CE2"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="twoBackgroundImage" destination="iYE-KN-yMI" id="4Nl-nW-XNq"/>
+                <outlet property="twoHeadImage" destination="IHX-nw-sXe" id="bFx-fH-WT8"/>
+                <outlet property="twoNickName" destination="oId-6Z-dIz" id="Srn-Wm-t94"/>
+                <outlet property="twoSvipTimeLab" destination="ToW-30-1eG" id="INI-YN-atS"/>
+            </connections>
             <point key="canvasLocation" x="-52" y="312"/>
         </view>
     </objects>
