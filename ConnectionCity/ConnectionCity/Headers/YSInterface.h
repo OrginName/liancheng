@@ -183,6 +183,26 @@ static NSString * const myAuthAuthMobile = @"/my/auth/auth/mobile";
 static NSString * const myAuthUserIdentityAuthCreate = @"/my/auth/user-identity-auth/create";
 //个人中心-技能认证
 static NSString * const myAuthUserSkillAuthCreate = @"/my/auth/user-skill-auth/create";
+#pragma mark - 我的 - My Controller
+//个人中心-服务评价
+//我的-通讯录
+//个人中心-我的玩家-我和别人换
+//个人中心-我的关注
+//个人中心-我的发布-身份互换
+//个人中心-我的玩家-别人和我换
+//个人中心-我的发布-简历
+//个人中心-我下单的服务
+//个人中心-我发布的服务
+//个人中心-我的发布-服务
+//个人中心-我的发布-邀约
+//个人中心-我发布的旅游
+//个人中心-我下单的旅游
+//个人中心-我的发布-旅行
+//个人中心-我的发布-宝物
+static NSString * const v1MyTreasurePage = @"/v1/my/treasure/page";
+
+
+
 
 
 
