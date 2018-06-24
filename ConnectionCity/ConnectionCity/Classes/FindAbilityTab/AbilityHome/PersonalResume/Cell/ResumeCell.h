@@ -11,6 +11,7 @@
 typedef void (^blockClick)(void);
 @interface ResumeCell : UITableViewCell
 @property (nonatomic,copy)blockClick block;
+@property (weak, nonatomic) IBOutlet UIImageView *imageISNo;
 @property (weak, nonatomic) IBOutlet UILabel *lab_workEdu;//工作和教育标题
 @property (weak, nonatomic) IBOutlet UILabel *lab_proOrXL;//职业和学历
 @property (weak, nonatomic) IBOutlet UILabel *lab_pro;//描述

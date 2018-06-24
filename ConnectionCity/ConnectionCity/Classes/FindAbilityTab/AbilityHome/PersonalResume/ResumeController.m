@@ -30,6 +30,8 @@
 @property (nonatomic,strong) UIButton * MaskBtn;
 @property (nonatomic,strong) NSMutableArray * Arr_Dic;//选择项数组
 @property (nonatomic,strong) NSMutableDictionary * Data_Dic;//填写过的字典
+@property (nonatomic,strong) NSDictionary * isOpen;//判断显示一行还是多行
+@property (nonatomic,strong) NSMutableArray * data_ArrWork;
 @end
 
 @implementation ResumeController
@@ -45,18 +47,20 @@
 -(void)setUI{
     [self initRightItem];
     [self initScroll];
-    resumeID = @"";
+    resumeID = @"26";
 }
 
 -(void)initData{
     self.Data_Dic = [NSMutableDictionary dictionary];
     self.CollArr = [[NSMutableArray alloc] init];
     self.EduArr = [[NSMutableArray alloc] init];
+    self.data_ArrWork = [[NSMutableArray alloc] init];
     [YSNetworkTool POST:dictionaryDictionaryAll params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         self.Arr_Dic = responseObject[@"data"];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    self.isOpen = @{@"40":@"NO",@"50":@"NO"};
 }
 #pragma mark --各种点击事件---
 -(void)NOPicClick{
@@ -70,7 +74,6 @@
 //导航栏完成按钮点击
 -(void)complete{
     NSArray * arr = [self.Data_Dic allKeys];
-    ResumeCell * cell = [self.tab_bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:6]];
     if (![arr containsObject:@"10"]) {
         return [YTAlertUtil showTempInfo:@"请选择薪资"];
     }
@@ -80,7 +83,7 @@
     if (![arr containsObject:@"30"]) {
         return [YTAlertUtil showTempInfo:@"请选择工作经验"];
     }
-    if (!cell.btnAgree.selected) {
+    if (![arr containsObject:@"60"]||([arr containsObject:@"60"]&&![self.Data_Dic[@"60"] isEqualToString:@"1"])) {
         return [YTAlertUtil showTempInfo:@"请同意发布规则"];
     }
     __block NSString * str = @"";
@@ -93,27 +96,32 @@
                 str = [NSString stringWithFormat:@"%@;%@",url[@"hash"],str];
                 if (flag==self.lunArr.count) {
                     [YTAlertUtil hideHUD];
-                    NSDictionary * dic = @{
-                                           //                           @"areaCode": @0,
-                                           @"avatar": str,
-                                           @"cityCode": @([[KUserDefults objectForKey:kUserCityID]integerValue]),
-                                           @"educationId": @([self.Data_Dic[@"20"][@"ID"] integerValue]),
-                                           @"introduce": @"string",
-                                           @"lat": @([[KUserDefults objectForKey:kLat]floatValue]),
-                                           @"lng": @([[KUserDefults objectForKey:KLng]floatValue]),
-                                           //                           @"provinceCode": @0,
-                                           @"salaryId": @([self.Data_Dic[@"10"][@"ID"] integerValue]),
-                                           @"workingId": @([self.Data_Dic[@"30"][@"ID"] integerValue])
-                                           };
-                    [AbilityNet requstAddResume:dic withBlock:^(NSDictionary *successDicValue) {
-                        resumeID = KString(@"%@", successDicValue[@"data"]);
-                    }];
-                    
+                   
+                    [self loadData:str];
                 }
             }];
         }
+    }else{
+        [self loadData:@""];
     }
    
+}
+-(void)loadData:(NSString *)str{
+    NSDictionary * dic = @{
+                           //                           @"areaCode": @0,
+                           @"avatar": str,
+                           @"cityCode": @([[KUserDefults objectForKey:kUserCityID]integerValue]),
+                           @"educationId": @([self.Data_Dic[@"20"][@"ID"] integerValue]),
+                           @"introduce": @"string",
+                           @"lat": @([[KUserDefults objectForKey:kLat]floatValue]),
+                           @"lng": @([[KUserDefults objectForKey:KLng]floatValue]),
+                           //                           @"provinceCode": @0,
+                           @"salaryId": @([self.Data_Dic[@"10"][@"ID"] integerValue]),
+                           @"workingId": @([self.Data_Dic[@"30"][@"ID"] integerValue])
+                           };
+    [AbilityNet requstAddResume:dic withBlock:^(NSDictionary *successDicValue) {
+        resumeID = KString(@"%@", successDicValue[@"data"]);
+    }];
 }
 //编辑轮播图
 -(void)EditScroll:(UIButton *)sender{
@@ -152,8 +160,10 @@
         return 1;
     }else if(section==4){
         return self.CollArr.count+2;
-    }else{
+    }else if(section==5){
         return self.EduArr.count+2;
+    }else{
+        return 0;
     }
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -184,29 +194,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ResumeCell *cell = [ResumeCell tempTableViewCellWith:tableView indexPath:indexPath withCollArr:self.CollArr withEduArr:self.EduArr];
     if (indexPath.section==5&&indexPath.row!=0&&indexPath.row!=self.EduArr.count+1) {
-        cell.Mo = self.EduArr[indexPath.row-1];
+            cell.Mo = self.EduArr[indexPath.row-1];
     }
-    if (indexPath.section==4&&indexPath.row!=0&&indexPath.row!=self.CollArr.count+1) {
-        cell.Mo = self.CollArr[indexPath.row-1];
+   else if (indexPath.section==4&&indexPath.row!=0&&indexPath.row!=self.CollArr.count+1) {
+ 
+       cell.Mo = self.CollArr[indexPath.row-1];
+ 
     }
     NSArray * arr = [self.Data_Dic allKeys];
     if ([arr containsObject:[NSString stringWithFormat:@"%ld0",(long)indexPath.section]]) {
-        if ([KString(@"%d0", 6) isEqualToString:@"60"]) {
+        if ([arr containsObject:@"60"]) {
             cell.btnAgree.selected = [self.Data_Dic[@"60"] integerValue];
         }
-        cell.txt_salWay.text = self.Data_Dic[[NSString stringWithFormat:@"%ld0",(long)indexPath.section]];
+        cell.txt_salWay.text = self.Data_Dic[KString(@"%ld", indexPath.section)][@"name"];
     }
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ResumeCell * cell = [tableView cellForRowAtIndexPath:indexPath];
     __block ResumeController * weakSelf  = self;
-    if (indexPath.section==4&&indexPath.row==0) {
-        
-    }
-    if (indexPath.section==5&&indexPath.row==0) {
-        
-    }
     if ((indexPath.section==4&&indexPath.row==self.CollArr.count+1)) {
         if (resumeID.length==0) {
             return [YTAlertUtil showTempInfo:@"请先点击完成新增简历在添加工作经历"];

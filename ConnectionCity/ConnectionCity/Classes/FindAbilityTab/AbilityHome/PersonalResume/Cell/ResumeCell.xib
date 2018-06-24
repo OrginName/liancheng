@@ -66,6 +66,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnAgree" destination="owL-zm-5vy" id="KGh-A1-QtQ"/>
+                <outlet property="imageISNo" destination="tNn-iS-xgj" id="0aX-gy-kgc"/>
                 <outlet property="lab_MyselfProW" destination="lgR-NB-e91" id="rNs-1M-tiy"/>
                 <outlet property="lab_comAndCollege" destination="jUg-oI-1H9" id="NWx-su-0RM"/>
                 <outlet property="lab_pro" destination="lBl-Ug-7o5" id="w5Y-3v-Td7"/>
@@ -170,11 +171,20 @@
                             <constraint firstAttribute="height" constant="1" id="6RA-dX-mJK"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arraw-right" translatesAutoresizingMaskIntoConstraints="NO" id="tNn-iS-xgj">
+                        <rect key="frame" x="294" y="17" width="10" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="10" id="E0C-Jg-3B1"/>
+                            <constraint firstAttribute="height" constant="15" id="vyr-su-HSP"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="CZU-ER-lZo" firstAttribute="centerY" secondItem="3R7-kz-dMY" secondAttribute="centerY" id="8UA-dC-4I1"/>
+                    <constraint firstItem="tNn-iS-xgj" firstAttribute="centerY" secondItem="CZU-ER-lZo" secondAttribute="centerY" id="ENd-nG-o6W"/>
                     <constraint firstAttribute="bottom" secondItem="sMY-yd-Zwy" secondAttribute="bottom" id="Jxw-rV-NaI"/>
                     <constraint firstItem="3R7-kz-dMY" firstAttribute="leading" secondItem="dcW-mR-Rx8" secondAttribute="leadingMargin" id="Kj3-qn-dLU"/>
+                    <constraint firstItem="tNn-iS-xgj" firstAttribute="trailing" secondItem="dcW-mR-Rx8" secondAttribute="trailingMargin" id="OIg-Ds-PLU"/>
                     <constraint firstItem="3R7-kz-dMY" firstAttribute="centerY" secondItem="dcW-mR-Rx8" secondAttribute="centerY" id="aVU-GC-8Py"/>
                     <constraint firstAttribute="trailing" secondItem="sMY-yd-Zwy" secondAttribute="trailing" constant="16" id="eoW-ny-i0X"/>
                     <constraint firstItem="CZU-ER-lZo" firstAttribute="leading" secondItem="3R7-kz-dMY" secondAttribute="trailing" constant="10" id="jDC-qt-fh4"/>
@@ -182,6 +192,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imageISNo" destination="tNn-iS-xgj" id="gUn-Rk-LAc"/>
                 <outlet property="lab_workEdu" destination="CZU-ER-lZo" id="FbA-ea-DaY"/>
             </connections>
             <point key="canvasLocation" x="25" y="235.5"/>
