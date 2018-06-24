@@ -12,8 +12,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonalCenterController">
             <connections>
                 <outlet property="activityBgView" destination="PsW-Vc-L9R" id="JNY-hd-R9x"/>
+                <outlet property="backgroundImage" destination="nsL-ov-9Jj" id="yDU-XA-XoK"/>
                 <outlet property="coinBgView" destination="Fxt-ve-NlC" id="UwI-7C-Qda"/>
                 <outlet property="functionBgView" destination="Ue3-RT-Z9P" id="ec8-dS-odz"/>
+                <outlet property="headImage" destination="p5y-ki-SHH" id="IDr-5Z-Iol"/>
+                <outlet property="nickName" destination="4J5-hr-J2O" id="r4X-lT-TGb"/>
+                <outlet property="svipTimeLab" destination="Odk-LH-an2" id="7jP-q1-ckB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yearBgView" destination="4RS-0Y-s6H" id="9yf-Oy-Qsv"/>
             </connections>

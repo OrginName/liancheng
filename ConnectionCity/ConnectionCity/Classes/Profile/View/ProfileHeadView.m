@@ -9,6 +9,13 @@
 #import "ProfileHeadView.h"
 
 @implementation ProfileHeadView
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+    self.model = _model;
+}
+
 #pragma mark - 点击事件
 - (IBAction)editBtnClick:(id)sender {
     if (_delegate && [_delegate respondsToSelector:@selector(profileHeadView:editBtnClick:)]) {
@@ -21,7 +28,13 @@
     }
 }
 
-
+- (void)setModel:(privateUserInfoModel *)model{
+    _model = model;
+    [self.twoBackgroundImage sd_setImageWithURL:[NSURL URLWithString:model.backgroundImage] placeholderImage:[UIImage imageNamed:@"1"]];
+    [self.twoHeadImage sd_setImageWithURL:[NSURL URLWithString:model.headImage]];
+    self.twoNickName.text = model.realName;
+    self.twoSvipTimeLab.text = @"xxxx.xx.xx";
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

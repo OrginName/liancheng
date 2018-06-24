@@ -48,8 +48,25 @@
         account.str = @"AccountTwo";
         [self.navigationController pushViewController:account animated:YES];
     }else if (sender.tag==8){
-        [YTAlertUtil showTempInfo:@"确定"];
+        //[YTAlertUtil showTempInfo:@"确定"];
+        if ([YSTools dx_isNullOrNilWithObject:_txt_oldPassword.text] || [YSTools dx_isNullOrNilWithObject:_txt_NewPass.text] || [YSTools dx_isNullOrNilWithObject:_txt_newPassAgain.text]) {
+            [YTAlertUtil showTempInfo:@"请将信息填写完整"];
+            return;
+        }
+        if (![_txt_NewPass.text isEqualToString:_txt_newPassAgain.text]) {
+            [YTAlertUtil showTempInfo:@"两次密码输入不一致"];
+            return;
+        }
+        [self requestPrivateUserChangePassword];
     }
  
+}
+#pragma mark - 数据请求
+//修改密码
+- (void)requestPrivateUserChangePassword {
+    WeakSelf
+    [YSNetworkTool POST:v1PrivateUserChangePassword params:@{@"newPassword": _txt_NewPass.text,@"oldPassword": _txt_oldPassword.text} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:nil];
 }
 @end

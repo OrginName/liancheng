@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "privateUserInfoModel.h"
+#import "OccupationCategoryNameModel.h"
 
 @class ProfileHeadView;
 
@@ -20,5 +22,19 @@
 
 @interface ProfileHeadView : UIView
 @property (nonatomic, weak) id<ProfileHeadViewDelegate>delegate;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
+@property (weak, nonatomic) IBOutlet UIImageView *headImage;
+@property (weak, nonatomic) IBOutlet UILabel *nickName;
+@property (weak, nonatomic) IBOutlet UILabel *genderName;
+@property (weak, nonatomic) IBOutlet UILabel *age;
+@property (weak, nonatomic) IBOutlet UILabel *centerLab;
+@property (weak, nonatomic) IBOutlet UILabel *svipTimeLab;
+
+@property (weak, nonatomic) IBOutlet UIImageView *twoBackgroundImage;
+@property (weak, nonatomic) IBOutlet UIImageView *twoHeadImage;
+@property (weak, nonatomic) IBOutlet UILabel *twoNickName;
+@property (weak, nonatomic) IBOutlet UILabel *twoSvipTimeLab;
+
+@property (nonatomic, strong) privateUserInfoModel *model;
 
 @end

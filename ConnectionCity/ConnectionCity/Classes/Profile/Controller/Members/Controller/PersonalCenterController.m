@@ -8,12 +8,18 @@
 
 #import "PersonalCenterController.h"
 #import "MemberRenewalController.h"
+#import "privateUserInfoModel.h"
+#import "OccupationCategoryNameModel.h"
 
 @interface PersonalCenterController ()
 @property (weak, nonatomic) IBOutlet UIView *yearBgView;
 @property (weak, nonatomic) IBOutlet UIView *functionBgView;
 @property (weak, nonatomic) IBOutlet UIView *activityBgView;
 @property (weak, nonatomic) IBOutlet UIView *coinBgView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
+@property (weak, nonatomic) IBOutlet UIImageView *headImage;
+@property (weak, nonatomic) IBOutlet UILabel *nickName;
+@property (weak, nonatomic) IBOutlet UILabel *svipTimeLab;
 
 @end
 
@@ -22,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    [self requestV1PrivateUserInfo];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -62,6 +69,18 @@
 - (IBAction)membershipRenewalBtnClick:(id)sender {
     MemberRenewalController *xfVC = [[MemberRenewalController alloc]init];
     [self.navigationController pushViewController:xfVC animated:YES];
+}
+#pragma mark - 数据请求
+- (void)requestV1PrivateUserInfo {
+    //获取用户信息
+    WeakSelf
+    [YSNetworkTool POST:v1PrivateUserInfo params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
+        [weakSelf.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"1"]];
+        [weakSelf.headImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage]];
+        weakSelf.nickName.text = userInfoModel.nickName;
+        weakSelf.svipTimeLab.text = @"xxxx.xx.xx到期";
+    } failure:nil];
 }
 
 /*

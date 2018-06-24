@@ -31,6 +31,7 @@
 #import "UIColor+Extension.h"
 #import "UIView+YSCategory.h"
 #import "NSDate+Extend.h"
+#import "NSDictionary+SafeValue.h"
 /**常用工具类*/
 #import "SRDownloadManager.h"
 #import "GlobalManager.h"

@@ -344,6 +344,11 @@
 		CE0BA637209D68A3004C3C33 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA62D209D68A2004C3C33 /* ChangePasswordController.m */; };
 		CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE0BA62E209D68A2004C3C33 /* YSRegisterController.xib */; };
 		CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA631209D68A2004C3C33 /* YSAccount.m */; };
+		CE21F0D720DD345F00478482 /* privateUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F0D620DD345F00478482 /* privateUserInfoModel.m */; };
+		CE21F0DA20DD380900478482 /* OccupationCategoryNameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F0D920DD380900478482 /* OccupationCategoryNameModel.m */; };
+		CE21F0DD20DD38A700478482 /* NSDictionary+SafeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F0DC20DD38A700478482 /* NSDictionary+SafeValue.m */; };
+		CE21F0E020DDF00F00478482 /* MemberRenewalM.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F0DF20DDF00F00478482 /* MemberRenewalM.m */; };
+		CE21F0E320DDF04C00478482 /* MembershipMealModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F0E220DDF04C00478482 /* MembershipMealModel.m */; };
 		CE24791620CEC9F100D4C396 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE24791520CEC9F100D4C396 /* EGOCache.m */; };
 		CE5C27FA20B8FE0A006A8332 /* BiddInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C27F820B8FE0A006A8332 /* BiddInfoController.m */; };
 		CE5C27FB20B8FE0A006A8332 /* BiddInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C27F920B8FE0A006A8332 /* BiddInfoController.xib */; };
@@ -1042,6 +1047,16 @@
 		CE0BA62E209D68A2004C3C33 /* YSRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YSRegisterController.xib; sourceTree = "<group>"; };
 		CE0BA630209D68A2004C3C33 /* YSAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSAccount.h; sourceTree = "<group>"; };
 		CE0BA631209D68A2004C3C33 /* YSAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSAccount.m; sourceTree = "<group>"; };
+		CE21F0D520DD345F00478482 /* privateUserInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = privateUserInfoModel.h; sourceTree = "<group>"; };
+		CE21F0D620DD345F00478482 /* privateUserInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = privateUserInfoModel.m; sourceTree = "<group>"; };
+		CE21F0D820DD380900478482 /* OccupationCategoryNameModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OccupationCategoryNameModel.h; sourceTree = "<group>"; };
+		CE21F0D920DD380900478482 /* OccupationCategoryNameModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OccupationCategoryNameModel.m; sourceTree = "<group>"; };
+		CE21F0DB20DD38A700478482 /* NSDictionary+SafeValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SafeValue.h"; sourceTree = "<group>"; };
+		CE21F0DC20DD38A700478482 /* NSDictionary+SafeValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SafeValue.m"; sourceTree = "<group>"; };
+		CE21F0DE20DDF00F00478482 /* MemberRenewalM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberRenewalM.h; sourceTree = "<group>"; };
+		CE21F0DF20DDF00F00478482 /* MemberRenewalM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberRenewalM.m; sourceTree = "<group>"; };
+		CE21F0E120DDF04C00478482 /* MembershipMealModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MembershipMealModel.h; sourceTree = "<group>"; };
+		CE21F0E220DDF04C00478482 /* MembershipMealModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MembershipMealModel.m; sourceTree = "<group>"; };
 		CE24791420CEC9F100D4C396 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
 		CE24791520CEC9F100D4C396 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
 		CE5C27F720B8FE0A006A8332 /* BiddInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BiddInfoController.h; sourceTree = "<group>"; };
@@ -2145,6 +2160,9 @@
 			children = (
 				8D35878320C692EB008A5E74 /* View */,
 				8D50C56220C67BBB0095A824 /* Cell */,
+				CEC4A55720C407500026EE19 /* MemberCenterController.h */,
+				CEC4A55820C407500026EE19 /* MemberCenterController.m */,
+				CEC4A55920C407500026EE19 /* MemberCenterController.xib */,
 				8D50C55D20C66EAF0095A824 /* OurServiceController.h */,
 				8D50C55E20C66EAF0095A824 /* OurServiceController.m */,
 				8D50C55F20C66EAF0095A824 /* OurServiceController.xib */,
@@ -2473,6 +2491,8 @@
 		CE0BA599209D5E6A004C3C33 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				CE21F0DB20DD38A700478482 /* NSDictionary+SafeValue.h */,
+				CE21F0DC20DD38A700478482 /* NSDictionary+SafeValue.m */,
 				8D8E4ED520C937D200C3D537 /* NKColorSwitch.h */,
 				8D8E4ED620C937D200C3D537 /* NKColorSwitch.m */,
 				8DEA44FF20C0ECB6001529F1 /* CustomButton.h */,
@@ -3035,6 +3055,10 @@
 			children = (
 				CEC4A55020C3FF4F0026EE19 /* YTSideMenuModel.h */,
 				CEC4A54F20C3FF4F0026EE19 /* YTSideMenuModel.m */,
+				CE21F0D520DD345F00478482 /* privateUserInfoModel.h */,
+				CE21F0D620DD345F00478482 /* privateUserInfoModel.m */,
+				CE21F0D820DD380900478482 /* OccupationCategoryNameModel.h */,
+				CE21F0D920DD380900478482 /* OccupationCategoryNameModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3053,9 +3077,6 @@
 				CE0BA61D209D61C0004C3C33 /* ProfileController.h */,
 				CE0BA61E209D61C0004C3C33 /* ProfileController.m */,
 				CE0BA61F209D61C0004C3C33 /* ProfileController.xib */,
-				CEC4A55720C407500026EE19 /* MemberCenterController.h */,
-				CEC4A55820C407500026EE19 /* MemberCenterController.m */,
-				CEC4A55920C407500026EE19 /* MemberCenterController.xib */,
 				CE0A99DA20C57C44003A4D91 /* CertificationCenterController.h */,
 				CE0A99DB20C57C44003A4D91 /* CertificationCenterController.m */,
 				CE0A99DC20C57C44003A4D91 /* CertificationCenterController.xib */,
@@ -3145,6 +3166,10 @@
 		CEE4B2A920C6D8F9008B8731 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CE21F0DE20DDF00F00478482 /* MemberRenewalM.h */,
+				CE21F0DF20DDF00F00478482 /* MemberRenewalM.m */,
+				CE21F0E120DDF04C00478482 /* MembershipMealModel.h */,
+				CE21F0E220DDF04C00478482 /* MembershipMealModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3535,6 +3560,7 @@
 				7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */,
 				CEBEDD8B20B17ED1000F9EE4 /* BountyHostingController.m in Sources */,
 				72EBB8B620C6DB5900F670E9 /* CardAuthorController.m in Sources */,
+				CE21F0D720DD345F00478482 /* privateUserInfoModel.m in Sources */,
 				8D114CBF20CA235200637D34 /* AccountView.m in Sources */,
 				8D8E4ECC20C9109E00C3D537 /* EditProfileCell.m in Sources */,
 				72A2FC6F20D00B2E00CD6AAC /* AbilityNet.m in Sources */,
@@ -3570,6 +3596,7 @@
 				7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */,
 				CEBEDD9920B17F40000F9EE4 /* BulidTeamController.m in Sources */,
 				8D07D76820DCE0370073807C /* QiniuUploader.m in Sources */,
+				CE21F0E320DDF04C00478482 /* MembershipMealModel.m in Sources */,
 				8D5B3C3D20C0147A00773105 /* ServiceListCell.m in Sources */,
 				723D376120ABBEB4003FD4DF /* ShowResumeTab.m in Sources */,
 				8DD48CCB20A811EA00D6D1E6 /* NSData+SDDataCache.m in Sources */,
@@ -3660,6 +3687,7 @@
 				CEC4A56920C407EB0026EE19 /* TopUpController.m in Sources */,
 				72EC1BBD20BDA25200ACC20B /* SendSelectCell.m in Sources */,
 				CE5C27FE20B8FE3A006A8332 /* BiddInfoHeadView.m in Sources */,
+				CE21F0E020DDF00F00478482 /* MemberRenewalM.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
 				CEBEDD7D20B17ED1000F9EE4 /* WinningBidderCell.m in Sources */,
 				CE6BEC2C20C970C1003B36D7 /* EditProfileHeadView.m in Sources */,
@@ -3736,6 +3764,7 @@
 				CE0BA5FA209D5EBE004C3C33 /* YTBaseTableViewController.m in Sources */,
 				720263F320B5015500382B2F /* TZGifPhotoPreviewController.m in Sources */,
 				8D07D76C20DCE1E40073807C /* GTMBase64.m in Sources */,
+				CE21F0DA20DD380900478482 /* OccupationCategoryNameModel.m in Sources */,
 				8D50C56020C66EAF0095A824 /* OurServiceController.m in Sources */,
 				8D19FF2320D8CFE4005F7361 /* ServiceListMo.m in Sources */,
 				72EC1B7220BA984400ACC20B /* PlayDouctCell.m in Sources */,
@@ -3780,6 +3809,7 @@
 				8D114CBA20CA22BD00637D34 /* AddMyWayController.m in Sources */,
 				CEE4B29120C6B17C008B8731 /* FoundCell.m in Sources */,
 				CE97DBF520B5A2C1003E46BD /* ReleaseTenderCell.m in Sources */,
+				CE21F0DD20DD38A700478482 /* NSDictionary+SafeValue.m in Sources */,
 				CE5C27FA20B8FE0A006A8332 /* BiddInfoController.m in Sources */,
 				CEE4B29C20C6B67A008B8731 /* NearManCell.m in Sources */,
 				72EC1BC220BDB10500ACC20B /* SelectLayout.m in Sources */,

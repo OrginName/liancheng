@@ -12,10 +12,13 @@
 #import "ProfileHeadView.h"
 #import "MemberRenewalController.h"
 #import "EditProfileController.h"
+#import "privateUserInfoModel.h"
+#import "OccupationCategoryNameModel.h"
 
 @interface ProfileController ()<ProfileHeadViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, copy) NSArray <YTSideMenuModel *> *menuModels;
+@property (nonatomic, strong) ProfileHeadView *tableHeadV;
 
 @end
 
@@ -41,6 +44,8 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]forBarMetrics:UIBarMetricsDefault];
     //去掉导航栏底部的黑线
     self.navigationController.navigationBar.shadowImage = [UIImage new];
+    //获取用户信息
+    [self requestV1PrivateUserInfo];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -60,10 +65,10 @@
 }
 - (void)registerCell {
 //    [self.tableView registerNib:[UINib nibWithNibName:@"ProfileCell" bundle:nil] forCellReuseIdentifier:@"ProfileCell0"];
-    ProfileHeadView *tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"ProfileHeadView" owner:nil options:nil] firstObject];
-    tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 250 + 64);
-    tableHeadV.delegate = self;
-    self.tableView.tableHeaderView = tableHeadV;
+    _tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"ProfileHeadView" owner:nil options:nil] firstObject];
+    _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 250 + 64);
+    _tableHeadV.delegate = self;
+    self.tableView.tableHeaderView = _tableHeadV;
 }
 #pragma mark - setter and getter
 - (NSArray<YTSideMenuModel *> *)menuModels {
@@ -118,6 +123,22 @@
 #pragma mark - 点击事件
 - (void)rightBarClick {
     
+}
+
+#pragma mark - 数据请求
+- (void)requestV1PrivateUserInfo {
+    //获取用户信息
+    WeakSelf
+    [YSNetworkTool POST:v1PrivateUserInfo params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
+        [weakSelf.tableHeadV.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"1"]];
+        [weakSelf.tableHeadV.headImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage]];
+        weakSelf.tableHeadV.nickName.text = userInfoModel.nickName;
+        weakSelf.tableHeadV.genderName.text = userInfoModel.genderName;
+        weakSelf.tableHeadV.age.text = userInfoModel.age;
+        weakSelf.tableHeadV.centerLab.text = [NSString stringWithFormat:@"%@%@%@%@%@",userInfoModel.cityName,userInfoModel.height,userInfoModel.weight,userInfoModel.educationName,userInfoModel.marriageName];
+        weakSelf.tableHeadV.svipTimeLab.text = @"xxxx.xx.xx到期";
+    } failure:nil];
 }
 /*
 #pragma mark - Navigation

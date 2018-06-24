@@ -141,6 +141,19 @@
                 <constraint firstItem="CRV-wf-20O" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pgc-bq-wvX"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="age" destination="Iga-dI-MYH" id="bz4-Pl-aTd"/>
+                <outlet property="backgroundImage" destination="rta-ti-fu8" id="EWY-0z-Fz3"/>
+                <outlet property="centerLab" destination="uuh-50-UY6" id="nyI-Y6-1g9"/>
+                <outlet property="genderName" destination="NOR-in-AU6" id="jXl-Xm-LmS"/>
+                <outlet property="headImage" destination="k30-U3-4pb" id="7jr-F4-Eqo"/>
+                <outlet property="nickName" destination="mXO-cg-aGE" id="Y8g-Z3-DaQ"/>
+                <outlet property="svipTimeLab" destination="Zx3-u3-IcN" id="PRr-gX-9Np"/>
+                <outlet property="twoBackgroundImage" destination="iYE-KN-yMI" id="taC-2n-SCv"/>
+                <outlet property="twoHeadImage" destination="IHX-nw-sXe" id="OVo-ao-JO4"/>
+                <outlet property="twoNickName" destination="oId-6Z-dIz" id="511-hj-TM3"/>
+                <outlet property="twoSvipTimeLab" destination="ToW-30-1eG" id="50w-cf-hoF"/>
+            </connections>
             <point key="canvasLocation" x="21.5" y="-164.5"/>
         </view>
         <view contentMode="scaleToFill" id="olY-B0-hn9" customClass="ProfileHeadView">
@@ -203,7 +216,7 @@
                 <constraint firstItem="PEh-1c-LCn" firstAttribute="leading" secondItem="olY-B0-hn9" secondAttribute="leading" id="tWs-DK-CE2"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="22" y="312"/>
+            <point key="canvasLocation" x="-52" y="312"/>
         </view>
     </objects>
     <resources>
