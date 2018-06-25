@@ -25,12 +25,15 @@
     NSString *identifier = @"";//对应xib中设置的identifier
     NSInteger index = 0; //xib中第几个Cell
     if (indexPath.section != 4 && indexPath.section != 5) { 
-        if (indexPath.section==6) {
+        if (indexPath.section==7) {
             index = 5;
             identifier = @"ResumeCell5";
         }else if (indexPath.section==0){
             index = 0;
             identifier = @"ResumeCell0";
+        }else if (indexPath.section==6){
+            index = 4;
+            identifier = @"ResumeCell4";
         } else
         {
             index = 1;

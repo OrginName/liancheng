@@ -195,6 +195,8 @@
 		8D35878820C6A544008A5E74 /* OurPlayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D35878620C6A544008A5E74 /* OurPlayController.xib */; };
 		8D35878C20C6A693008A5E74 /* OurPlayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D35878A20C6A693008A5E74 /* OurPlayCell.m */; };
 		8D35878D20C6A693008A5E74 /* OurPlayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D35878B20C6A693008A5E74 /* OurPlayCell.xib */; };
+		8D41D87520E0DA5600ACC0A0 /* ShowResume.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D41D87420E0DA5600ACC0A0 /* ShowResume.m */; };
+		8D41D87720E0DA6500ACC0A0 /* ShowResume.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D41D87620E0DA6500ACC0A0 /* ShowResume.xib */; };
 		8D50C55120C632090095A824 /* OurSendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D50C54F20C632090095A824 /* OurSendController.m */; };
 		8D50C55220C632090095A824 /* OurSendController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D50C55020C632090095A824 /* OurSendController.xib */; };
 		8D50C55620C636560095A824 /* OurResumeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D50C55420C636560095A824 /* OurResumeController.m */; };
@@ -785,6 +787,9 @@
 		8D35878920C6A693008A5E74 /* OurPlayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurPlayCell.h; sourceTree = "<group>"; };
 		8D35878A20C6A693008A5E74 /* OurPlayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurPlayCell.m; sourceTree = "<group>"; };
 		8D35878B20C6A693008A5E74 /* OurPlayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OurPlayCell.xib; sourceTree = "<group>"; };
+		8D41D87320E0DA5500ACC0A0 /* ShowResume.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowResume.h; sourceTree = "<group>"; };
+		8D41D87420E0DA5600ACC0A0 /* ShowResume.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowResume.m; sourceTree = "<group>"; };
+		8D41D87620E0DA6500ACC0A0 /* ShowResume.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowResume.xib; sourceTree = "<group>"; };
 		8D50C54E20C632090095A824 /* OurSendController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurSendController.h; sourceTree = "<group>"; };
 		8D50C54F20C632090095A824 /* OurSendController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurSendController.m; sourceTree = "<group>"; };
 		8D50C55020C632090095A824 /* OurSendController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OurSendController.xib; sourceTree = "<group>"; };
@@ -1335,6 +1340,9 @@
 			children = (
 				723D375F20ABBEB4003FD4DF /* ShowResumeTab.h */,
 				723D376020ABBEB4003FD4DF /* ShowResumeTab.m */,
+				8D41D87320E0DA5500ACC0A0 /* ShowResume.h */,
+				8D41D87420E0DA5600ACC0A0 /* ShowResume.m */,
+				8D41D87620E0DA6500ACC0A0 /* ShowResume.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3471,6 +3479,7 @@
 				727C86D820DBE11D00AA2796 /* CreatGroupController.xib in Resources */,
 				CE5C283020B9733A006A8332 /* ConsultativeNegotiationCell.xib in Resources */,
 				8D67603620A448CB0027CDEE /* SX.plist in Resources */,
+				8D41D87720E0DA6500ACC0A0 /* ShowResume.xib in Resources */,
 				CEC4A56A20C407EB0026EE19 /* TopUpController.xib in Resources */,
 				8D5B3C3920C0143200773105 /* ServiceListController.xib in Resources */,
 				8DC17A8420C0E598005D9EE0 /* FriendCircleController.xib in Resources */,
@@ -3832,6 +3841,7 @@
 				CE0BA5B9209D5E6B004C3C33 /* UIAlertView+Blocks.m in Sources */,
 				8DC17AB620C0E7E5005D9EE0 /* FriendMyselfTab.m in Sources */,
 				CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */,
+				8D41D87520E0DA5600ACC0A0 /* ShowResume.m in Sources */,
 				8D114CBA20CA22BD00637D34 /* AddMyWayController.m in Sources */,
 				CEE4B29120C6B17C008B8731 /* FoundCell.m in Sources */,
 				CE97DBF520B5A2C1003E46BD /* ReleaseTenderCell.m in Sources */,

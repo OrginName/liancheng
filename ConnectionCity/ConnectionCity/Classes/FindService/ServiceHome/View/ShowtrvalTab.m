@@ -147,23 +147,23 @@
     }
     return _lunArr;
 }
-#warning 收藏按钮选中和未选中图片记得更换
--(UIButton *)Save_Like{
-    if (!_Save_Like) {
-        _Save_Like = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-60, 60, 30, 40)];
-        _Save_Like.backgroundColor = [UIColor whiteColor];
-        _Save_Like.layer.cornerRadius = 5;
-        [_Save_Like setImage:[UIImage imageNamed:@"s-praise"] forState:UIControlStateNormal];
-        [_Save_Like setImage:[UIImage imageNamed:@"s-praise1"] forState:UIControlStateSelected];
-        _Save_Like.titleLabel.font = [UIFont systemFontOfSize:13];
-        [_Save_Like setTitle:@"12" forState:UIControlStateNormal];
-        [_Save_Like setTitleColor:YSColor(181, 181, 181) forState:UIControlStateNormal];
-        [_Save_Like setTitleColor:YSColor(251, 159, 14) forState:UIControlStateSelected];
-        [_Save_Like addTarget:self action:@selector(SaveClick:) forControlEvents:UIControlEventTouchUpInside];
-        [_Save_Like layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleTop imageTitleSpace:2];
-    }
-    return _Save_Like;
-}
+//#warning 收藏按钮选中和未选中图片记得更换
+//-(UIButton *)Save_Like{
+//    if (!_Save_Like) {
+//        _Save_Like = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-60, 60, 30, 40)];
+//        _Save_Like.backgroundColor = [UIColor whiteColor];
+//        _Save_Like.layer.cornerRadius = 5;
+//        [_Save_Like setImage:[UIImage imageNamed:@"s-praise"] forState:UIControlStateNormal];
+//        [_Save_Like setImage:[UIImage imageNamed:@"s-praise1"] forState:UIControlStateSelected];
+//        _Save_Like.titleLabel.font = [UIFont systemFontOfSize:13];
+//        [_Save_Like setTitle:@"12" forState:UIControlStateNormal];
+//        [_Save_Like setTitleColor:YSColor(181, 181, 181) forState:UIControlStateNormal];
+//        [_Save_Like setTitleColor:YSColor(251, 159, 14) forState:UIControlStateSelected];
+//        [_Save_Like addTarget:self action:@selector(SaveClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [_Save_Like layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleTop imageTitleSpace:2];
+//    }
+//    return _Save_Like;
+//}
 //点赞按钮点击
 -(void)likeClick:(UIButton *)sender{
     if (sender.selected) {
@@ -178,9 +178,9 @@
     }];
 }
 //收藏按钮点击
--(void)SaveClick:(UIButton *)sender{
-    sender.selected = !sender.selected;
-}
+//-(void)SaveClick:(UIButton *)sender{
+//    sender.selected = !sender.selected;
+//}
 -(UIButton *)btn_Like{
     if (!_btn_Like) {
         _btn_Like = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-60, 10, 30, 40)];

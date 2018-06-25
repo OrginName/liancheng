@@ -7,11 +7,15 @@
 #import "ShowResumeTab.h"
 #import "SDCycleScrollView.h"
 #import "ShowResumeCell.h"
+#import "ShowResume.h"
 #define SHOWCELL @"SHOWCELL"
 @interface ShowResumeTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) SDCycleScrollView * cycleScrollView;
 @property (nonatomic,strong) NSMutableArray * lunArr;//轮播图数组
 @property (nonatomic,strong) UITableView * tab_Bottom;
+@property (nonatomic,strong) NSMutableDictionary * dict;
+@property (nonatomic,strong) NSMutableArray * data_Arr;
+@property (nonatomic,strong) ShowResume * resume;
 @end
 @implementation ShowResumeTab
 -(instancetype)initWithFrame:(CGRect)frame{
@@ -23,7 +27,12 @@
     return self;
 }
 -(void)initData{
-    self.lunArr = [NSMutableArray arrayWithObjects:@"http://img.zcool.cn/community/0381de85949053ca8012193a3339cc5.jpg",@"http://img5.duitang.com/uploads/item/201411/06/20141106104720_WHEe2.jpeg",@"http://i3.17173cdn.com/2fhnvk/YWxqaGBf/outcms/xshCTvblpjznrmb.png",@"http://img.zcool.cn/community/01fd9f578f21a00000018c1b9a11ee.jpg@1280w_1l_2o_100sh.jpg", nil];
+    self.data_Arr = [NSMutableArray array];
+    self.dict =[[NSMutableDictionary alloc] initWithDictionary:@{@"1":@"NO",@"2":@"NO"}];
+}
+-(void)setAbilttyMo:(AbilttyMo *)abilttyMo{
+    _abilttyMo = abilttyMo;
+    self.lunArr = [[abilttyMo.userMo.headImage componentsSeparatedByString:@";"] mutableCopy];
 }
 #pragma mark ---SDCycleScrollViewDelegate-----
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
@@ -34,9 +43,15 @@
     if (section==0) {
         return 2;
     }else if (section==1){
-        return 1;
+        if ([self.dict[@"1"] isEqualToString:@"NO"]) {
+            return self.abilttyMo.workExperienceList.count>0?1:0;
+        }
+        return self.abilttyMo.workExperienceList.count;
     }else if (section==2){
-        return 1;
+        if ([self.dict[@"2"] isEqualToString:@"NO"]) {
+            return self.abilttyMo.educationExperienceList.count>0?1:0;
+        }
+        return self.abilttyMo.educationExperienceList.count;
     }else{
         return 1;
     }
@@ -64,12 +79,53 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShowResumeCell *cell = [ShowResumeCell tempTableViewCellWith:tableView indexPath:indexPath];
+    cell.ability = self.abilttyMo;
+    if (indexPath.section==1) {
+        if ([self.dict[@"1"] isEqualToString:@"YES"]) {
+            cell.work = self.abilttyMo.WorArr[indexPath.row];
+            NSLog(@"%@",self.resume.lab_nametitle.text);
+            self.resume.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
+        }else{
+            cell.work = self.abilttyMo.WorArr[0];
+            self.resume.imageTurn.transform = CGAffineTransformIdentity;
+        }
+    }
+    if (indexPath.section==2) {
+        if ([self.dict[@"2"] isEqualToString:@"YES"]) {
+            cell.edu = self.abilttyMo.EduArr[indexPath.row];
+             self.resume.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
+        }else{
+            cell.edu = self.abilttyMo.EduArr[0];
+             self.resume.imageTurn.transform = CGAffineTransformIdentity;
+        }
+    }
     return cell;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    ShowResumeCell * cell = [[[NSBundle mainBundle] loadNibNamed:@"ShowResumeCell" owner:nil options:nil] lastObject];
-    cell.lab_EduAndWork.text = section==2?@"教育经历":@"工作经历";
-    return cell.contentView;
+    ShowResume * view = [[[NSBundle mainBundle] loadNibNamed:@"ShowResume" owner:nil options:nil] lastObject];
+    view.lab_nametitle.text = section==2?@"教育经历":@"工作经历";
+    self.resume = view;
+    __block ShowResume * weakSelf = view;
+    view.block = ^{
+        if (section==1) {
+            if ([self.dict[@"1"] isEqualToString:@"NO"]) {
+                self.dict[@"1"] = @"YES";
+                weakSelf.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
+            }else{
+                self.dict[@"1"] = @"NO";
+                weakSelf.imageTurn.transform = CGAffineTransformIdentity;
+            }
+        }else if (section==2){
+            if ([self.dict[@"2"] isEqualToString:@"NO"]) {
+                self.dict[@"2"] = @"YES";
+                weakSelf.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
+            }else
+                self.dict[@"2"] = @"NO";
+                weakSelf.imageTurn.transform = CGAffineTransformIdentity;
+        }
+        [self.tab_Bottom reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationNone];
+    };
+    return view;
 }
 #pragma mark ---initUI--------
 -(void)initScroll{

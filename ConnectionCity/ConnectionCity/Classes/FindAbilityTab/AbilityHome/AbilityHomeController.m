@@ -185,7 +185,11 @@
     btn.text = locationDictionary[@"city"];
 }
 -(void)currentAnimatinonViewClick:(MAAnnotationView *)view{
-    [self.navigationController pushViewController:[ShowResumeController new] animated:YES];
+    ShowResumeController * resume = [ShowResumeController new];
+    resume.Receive_Type = ENUM_TypeResume;
+    resume.data_Count = self.cusMap.Arr_Mark;
+    resume.zIndex = view.zIndex;
+    [self.navigationController pushViewController:resume animated:YES];
 }
 #pragma mark ---初始化关键字button加载-----
 -(void)loadketBtn:(NSMutableArray *)arr{

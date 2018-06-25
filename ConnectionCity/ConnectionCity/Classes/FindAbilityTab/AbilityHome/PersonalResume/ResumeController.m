@@ -31,7 +31,8 @@
 @property (nonatomic,strong) NSMutableArray * Arr_Dic;//选择项数组
 @property (nonatomic,strong) NSMutableDictionary * Data_Dic;//填写过的字典
 @property (nonatomic,strong) NSDictionary * isOpen;//判断显示一行还是多行
-@property (nonatomic,strong) NSMutableArray * data_ArrWork;
+@property (nonatomic,strong) NSMutableArray * data_ArrWork;//工作经历数值
+@property (nonatomic,strong) NSMutableArray * data_ArrWdu;//教育经历数值
 @end
 
 @implementation ResumeController
@@ -55,6 +56,7 @@
     self.CollArr = [[NSMutableArray alloc] init];
     self.EduArr = [[NSMutableArray alloc] init];
     self.data_ArrWork = [[NSMutableArray alloc] init];
+    self.data_ArrWdu = [NSMutableArray array];
     [YSNetworkTool POST:dictionaryDictionaryAll params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         self.Arr_Dic = responseObject[@"data"];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -83,11 +85,14 @@
     if (![arr containsObject:@"30"]) {
         return [YTAlertUtil showTempInfo:@"请选择工作经验"];
     }
-    if (![arr containsObject:@"60"]||([arr containsObject:@"60"]&&![self.Data_Dic[@"60"] isEqualToString:@"1"])) {
+    if (![arr containsObject:@"70"]||([arr containsObject:@"70"]&&![self.Data_Dic[@"70"] isEqualToString:@"1"])) {
         return [YTAlertUtil showTempInfo:@"请同意发布规则"];
     }
+    if (![arr containsObject:@"60"]) {
+        return [YTAlertUtil showTempInfo:@"请输入自我介绍"];
+    }
     __block NSString * str = @"";
-     __block NSInteger flag=0;
+    __block NSInteger flag=0;
     if (self.lunArr.count!=0) {
         [YTAlertUtil showHUDWithTitle:@"正在上传照片"];
         for (int i=0; i<self.lunArr.count; i++) {
@@ -112,7 +117,7 @@
                            @"avatar": str,
                            @"cityCode": @([[KUserDefults objectForKey:kUserCityID]integerValue]),
                            @"educationId": @([self.Data_Dic[@"20"][@"ID"] integerValue]),
-                           @"introduce": @"string",
+                           @"introduce": self.Data_Dic[@"60"],
                            @"lat": @([[KUserDefults objectForKey:kLat]floatValue]),
                            @"lng": @([[KUserDefults objectForKey:KLng]floatValue]),
                            //                           @"provinceCode": @0,
@@ -174,12 +179,12 @@
     }
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 7;
+    return 8;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
         return 100;
-    }else if (indexPath.section ==1||indexPath.section==6||indexPath.section==2||indexPath.section==3){
+    }else if (indexPath.section ==1||indexPath.section==6||indexPath.section==2||indexPath.section==3||indexPath.section==7){
         return 50;
     }else if(indexPath.section==4){
         if (indexPath.row==0||indexPath.row==self.CollArr.count+1) {
@@ -203,28 +208,29 @@
     if (indexPath.section==5&&indexPath.row!=0&&indexPath.row!=self.EduArr.count+1) {
         if ([self.isOpen[@"50"] isEqualToString:@"NO"]&&self.EduArr.count!=0) {
             cell.Mo = self.EduArr[indexPath.row-1];
-            cell.imageISNo.transform = CGAffineTransformIdentity;
+            cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2);
         }else
         {
-            cell.Mo = self.EduArr[indexPath.row-1];
-            cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2);
-        }
-       
+            cell.Mo = self.EduArr[0];
+            cell.imageISNo.transform = CGAffineTransformIdentity;
+        } 
     }
    else if (indexPath.section==4&&indexPath.row!=0&&indexPath.row!=self.CollArr.count+1) {
         if ([self.isOpen[@"40"] isEqualToString:@"NO"]&&self.CollArr.count!=0) {
-            cell.Mo = self.CollArr[indexPath.row-1];
-            cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2);
-        }else{
             cell.Mo = self.CollArr[0];
             cell.imageISNo.transform = CGAffineTransformIdentity;
-           
+        }else{
+            cell.Mo = self.CollArr[indexPath.row-1];
+            cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2); 
         }
     }
     NSArray * arr = [self.Data_Dic allKeys];
     if ([arr containsObject:[NSString stringWithFormat:@"%ld0",(long)indexPath.section]]) {
+        if ([arr containsObject:@"70"]) {
+            cell.btnAgree.selected = [self.Data_Dic[@"70"] integerValue];
+        }
         if ([arr containsObject:@"60"]) {
-            cell.btnAgree.selected = [self.Data_Dic[@"60"] integerValue];
+            cell.lab_MyselfProW.text = self.Data_Dic[@"60"];
         }
         cell.txt_salWay.text = self.Data_Dic[KString(@"%ld", indexPath.section)][@"name"];
     }
@@ -251,14 +257,18 @@
     if (indexPath.section==5&&indexPath.row==0) {
         if ([self.isOpen[@"50"] isEqualToString:@"NO"]) {
             dic[@"50"] = @"YES";
-             cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2);
+            cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2);
+            [self.EduArr removeAllObjects];
+            [self.EduArr addObject:self.data_ArrWdu[0]];
         }else{
              dic[@"50"] = @"NO";
             cell.imageISNo.transform = CGAffineTransformIdentity;
+            [self.EduArr removeAllObjects];
+            [self.EduArr addObjectsFromArray:[self.data_ArrWdu copy]];
         }
         [self.tab_bottom reloadSections:[NSIndexSet indexSetWithIndex:5] withRowAnimation:UITableViewRowAnimationNone];
     }
-    self.isOpen = [dic copy];
+     self.isOpen = [dic copy];
     if ((indexPath.section==4&&indexPath.row==self.CollArr.count+1)) {
         if (resumeID.length==0) {
             return [YTAlertUtil showTempInfo:@"请先点击完成新增简历在添加工作经历"];
@@ -283,7 +293,10 @@
         guard.eduArr = [YSTools stringToJSON:self.Arr_Dic[0][@"content"]];
         guard.title = @"新增教育经历";
         guard.block = ^(ResumeMo * mo){
-            [weakSelf.EduArr addObject:mo];
+            [weakSelf.data_ArrWdu addObject:mo];
+            [self.isOpen mutableCopy][@"50"] = @"NO";
+            cell.imageISNo.transform = CGAffineTransformIdentity;
+            [weakSelf.EduArr addObject:weakSelf.data_ArrWdu[0]];
             [weakSelf.tab_bottom reloadSections:[NSIndexSet indexSetWithIndex:5] withRowAnimation:UITableViewRowAnimationNone];
         };
         [self.navigationController pushViewController:guard animated:YES];
@@ -305,9 +318,16 @@
         } cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
             
         } completion:nil];
-    }else if (indexPath.section==6){
+    }else if (indexPath.section==7){
         cell.btnAgree.selected = !cell.btnAgree.selected;
-        [self.Data_Dic setValue:[NSString stringWithFormat:@"%d",cell.btnAgree.selected] forKey:[NSString stringWithFormat:@"%d0",6]];
+        [self.Data_Dic setValue:[NSString stringWithFormat:@"%d",cell.btnAgree.selected] forKey:@"70"];
+    }else if (indexPath.section==6){
+        EditAllController * edit  = [EditAllController new];
+        edit.block = ^(NSString *EditStr) {
+            cell.lab_MyselfProW.text = EditStr;
+            [self.Data_Dic setObject:EditStr forKey:@"60"];
+        };
+        [self.navigationController pushViewController:edit animated:YES];
     }
 }
 #pragma mark ---SDCycleScrollViewDelegate-----

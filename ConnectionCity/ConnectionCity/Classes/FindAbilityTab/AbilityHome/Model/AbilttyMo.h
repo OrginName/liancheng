@@ -26,10 +26,12 @@ proStr(salaryId);
 proArr(workExperienceList);//工作经历
 proStr(workingId);
 proStr(workingName);
-proArr(user);
+proDic(user);
+ProMutArr(WorArr);//工作model
+ProMutArr(EduArr);//教育model
 @property (nonatomic,strong) AbilttyWorkMo * workMo;
 @property (nonatomic,strong) AbilttyEducationMo * educationMo;
-@property (nonatomic,strong) UserMo * UserMo;
+@property (nonatomic,strong) UserMo * userMo;
 @end
 @interface AbilttyEducationMo : BaseModel
 proStr(description1);
@@ -47,7 +49,7 @@ proStr(status);
 @end
 @interface AbilttyWorkMo : BaseModel
 proStr(companyName);
-proArr(description1);
+proStr(description1);
 proStr(endDate);
 proStr(ID);
 proStr(occupationCategoryId);

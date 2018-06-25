@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AbilttyMo.h"
 @interface ShowResumeCell : UITableViewCell
+@property (nonatomic,strong)AbilttyMo * ability;
+@property (nonatomic,strong)AbilttyWorkMo * work;
+@property (nonatomic,strong)AbilttyEducationMo* edu;
+@property (weak, nonatomic) IBOutlet UIImageView *image_sex;
 @property (weak, nonatomic) IBOutlet UILabel *lab_introTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lab_ProTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lab_Name;

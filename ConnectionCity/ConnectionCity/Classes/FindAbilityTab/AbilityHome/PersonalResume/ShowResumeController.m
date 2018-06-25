@@ -44,7 +44,7 @@
     if(self.Receive_Type == ENUM_TypeCard){
         self.title = @"互换身份";
     }else if (self.Receive_Type == ENUM_TypeResume){
-       self.title = @"个人简历";
+       [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.zIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     }else if (self.Receive_Type == ENUM_TypeTreasure){
         self.title = @"互换宝物";
         [self.btn_sayAndChange setTitle:@"我想换" forState:UIControlStateNormal];
@@ -100,6 +100,9 @@
     }
     if (self.Receive_Type == ENUM_TypeResume) {
         self.showTab = [[ShowResumeTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];
+        AbilttyMo * resume = self.data_Count[indexPath.row];
+        self.showTab.abilttyMo = resume;
+        self.title = resume.userMo.nickName;
         NSLog(@"indexPath.row ====>%ld",(long)indexPath.row);
         [cell.contentView addSubview:self.showTab];
     }else if(self.Receive_Type == ENUM_TypeCard){
@@ -109,7 +112,7 @@
         self.trvaltab = [[ShowtrvalTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight) withControl:self];
         if ([self.str isEqualToString:@"TrvalTrip"]) {
             trvalMo * mo = self.data_Count[indexPath.row];
-            self.title = mo.user1.realName;
+            self.title = mo.user1.nickName;
             self.trvaltab.MoTrval = mo;
         }else{
             ServiceListMo * mo = self.data_Count[indexPath.row];

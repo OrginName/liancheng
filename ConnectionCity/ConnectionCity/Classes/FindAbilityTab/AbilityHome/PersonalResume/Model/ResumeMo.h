@@ -7,7 +7,8 @@
 //
 
 #import "BaseModel.h"
-
+#import "UserMo.h"
+@class WorkMo;
 @interface ResumeMo : BaseModel
 proStr(collAndcompany);//学校
 proStr(proAndPro);//专业职业
@@ -17,3 +18,4 @@ proStr(endTime);//结束时间
 proArr(EditArr);
 proArr(CollArr);
 @end
+

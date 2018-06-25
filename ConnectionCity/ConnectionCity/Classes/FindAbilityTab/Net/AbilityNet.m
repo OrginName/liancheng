@@ -78,22 +78,29 @@
             return;
         }
         NSMutableArray * arr = [NSMutableArray array];
+        NSMutableArray * arr1 = [NSMutableArray array];
+        NSMutableArray * arr2 = [NSMutableArray array];
         for (int i=0; i<[responseObject[@"data"] count]; i++) {
             AbilttyMo * mo = [AbilttyMo mj_objectWithKeyValues:responseObject[@"data"][i]];
             mo.ID = responseObject[@"data"][i][@"id"];
+            mo.userMo = [UserMo mj_objectWithKeyValues:mo.user];
+            mo.userMo.ID = mo.user[@"id"];
             for (int j=0; j<mo.workExperienceList.count; j++) {
-                mo.workMo = [AbilttyWorkMo mj_objectWithKeyValues:mo.workExperienceList[j]];
-                mo.workMo.ID = mo.workExperienceList[j][@"id"];
-                mo.workMo.description1 = mo.workExperienceList[j][@"description"];
+                AbilttyWorkMo * workMo = [AbilttyWorkMo mj_objectWithKeyValues:mo.workExperienceList[j]];
+                workMo.ID = mo.workExperienceList[j][@"id"];
+                workMo.description1 = mo.workExperienceList[j][@"description"];
+                [arr1 addObject:workMo];
             }
             if (mo.educationExperienceList.count!=0) {
                 for (int k=0; k<mo.educationExperienceList.count; k++) {
-                    mo.educationMo = [AbilttyEducationMo mj_objectWithKeyValues:mo.educationExperienceList[k]];
-                    mo.educationMo.ID = mo.educationExperienceList[k][@"id"];
-                    mo.educationMo.description1 = mo.educationExperienceList[k][@"description"];
+                    AbilttyEducationMo * educationMo = [AbilttyEducationMo mj_objectWithKeyValues:mo.educationExperienceList[k]];
+                    educationMo.ID = mo.educationExperienceList[k][@"id"];
+                    educationMo.description1 = mo.educationExperienceList[k][@"description"];
+                    [arr2 addObject:educationMo];
                 }
             }
-            
+            mo.WorArr = arr1;
+            mo.EduArr = arr2;
             [arr addObject:mo];
         }
         block(arr);
