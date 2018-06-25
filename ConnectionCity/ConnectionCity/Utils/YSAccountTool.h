@@ -10,7 +10,8 @@
 @class YSAccount;
 @class privateUserInfoModel;
 @class OccupationCategoryNameModel;
-
+@class AllDicMo;
+@class AllContentMo;
 @interface YSAccountTool : NSObject
 /** 取出当前账号 */
 + (YSAccount *)account;
@@ -25,4 +26,6 @@
 + (void)saveUserinfo:(privateUserInfoModel *)userInfo;
 /** 删除用户信息 */
 + (void)deleteUserinfo;
+
+ 
 @end

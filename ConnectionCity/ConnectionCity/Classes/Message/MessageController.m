@@ -19,6 +19,7 @@
 #import "BaseChangeTabController.h"
 #import "BaseFindServiceTabController.h"
 #import "UserMo.h"
+#import "AllDicMo.h"
 @interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate>
 {
     BOOL flag;
@@ -202,12 +203,22 @@
     [self initData];
 }
 -(void)initData{
-    [YSNetworkTool POST:v1PrivateUserInfo params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]]) {
-            UserMo * user = [UserMo mj_objectWithKeyValues:responseObject[@"data"]];
-            user.ID = responseObject[@"data"][@"id"];
-        } 
-//        [YSAccountTool saveAccount:user];
+    [YSNetworkTool POST:dictionaryDictionaryAll params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray * arr1 = [NSMutableArray array];
+        for (int i=0; i<[responseObject[@"data"] count]; i++) {
+            NSMutableArray * arrContent= [NSMutableArray array];
+            AllDicMo * Mo = [AllDicMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+            Mo.ID = responseObject[@"data"][i][@"id"];
+            NSArray * arr= [YSTools stringToJSON:Mo.content];
+            for (int j=0; j<[arr count]; j++) {
+                AllContentMo * content = [AllContentMo mj_objectWithKeyValues:arr[j]];
+                content.description1 = arr[j][@"description"];
+                [arrContent addObject:content];
+            }
+            Mo.contentArr = arrContent;
+            [arr1 addObject:Mo];
+        }
+        [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:arr1] forKey:KAllDic];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

@@ -16,6 +16,8 @@
 #define YSAccountFile [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"account.data"]
 #define YSUserinfoFile [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"userInfo.data"]
 
+#define YSDicinfoFile [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"DicInfo.data"]
+
 @implementation YSAccountTool
 + (YSAccount *)account {
     //取出账号
@@ -60,5 +62,5 @@
         [fileManager removeItemAtPath:YSUserinfoFile error:nil];
     }
 }
-
+ 
 @end

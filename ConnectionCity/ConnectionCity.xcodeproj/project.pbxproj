@@ -75,7 +75,6 @@
 		7274190220B3F60D001D6BE1 /* SendSwapController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7274190020B3F60D001D6BE1 /* SendSwapController.xib */; };
 		7274190C20B402FC001D6BE1 /* LxGridViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274190B20B402FB001D6BE1 /* LxGridViewFlowLayout.m */; };
 		7274190F20B4036E001D6BE1 /* TZTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274190E20B4036E001D6BE1 /* TZTestCell.m */; };
-		727C86D320DAA51100AA2796 /* AllDicMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 727C86D220DAA51100AA2796 /* AllDicMo.m */; };
 		727C86D720DBE11D00AA2796 /* CreatGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727C86D520DBE11D00AA2796 /* CreatGroupController.m */; };
 		727C86D820DBE11D00AA2796 /* CreatGroupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727C86D620DBE11D00AA2796 /* CreatGroupController.xib */; };
 		7294185320AD11E00054B71D /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7294185220AD11E00054B71D /* SearchCell.m */; };
@@ -91,6 +90,7 @@
 		72A2FC6B20CD6A9600CD6AAC /* ServiceHomeNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A2FC6A20CD6A9500CD6AAC /* ServiceHomeNet.m */; };
 		72A2FC6F20D00B2E00CD6AAC /* AbilityNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A2FC6E20D00B2E00CD6AAC /* AbilityNet.m */; };
 		72A2FC7320D4B40A00CD6AAC /* trvalMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A2FC7220D4B40A00CD6AAC /* trvalMo.m */; };
+		72A3F48620E12EF8005BA873 /* AllDicMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A3F48520E12EF8005BA873 /* AllDicMo.m */; };
 		72BAB42A20B03A8C00496D29 /* BulidTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42820B03A8B00496D29 /* BulidTeamCell.m */; };
 		72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */; };
 		72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */; };
@@ -593,8 +593,6 @@
 		7274190B20B402FB001D6BE1 /* LxGridViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LxGridViewFlowLayout.m; sourceTree = "<group>"; };
 		7274190D20B4036E001D6BE1 /* TZTestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZTestCell.h; sourceTree = "<group>"; };
 		7274190E20B4036E001D6BE1 /* TZTestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZTestCell.m; sourceTree = "<group>"; };
-		727C86D120DAA51100AA2796 /* AllDicMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllDicMo.h; sourceTree = "<group>"; };
-		727C86D220DAA51100AA2796 /* AllDicMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllDicMo.m; sourceTree = "<group>"; };
 		727C86D420DBE11D00AA2796 /* CreatGroupController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreatGroupController.h; sourceTree = "<group>"; };
 		727C86D520DBE11D00AA2796 /* CreatGroupController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreatGroupController.m; sourceTree = "<group>"; };
 		727C86D620DBE11D00AA2796 /* CreatGroupController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatGroupController.xib; sourceTree = "<group>"; };
@@ -624,6 +622,8 @@
 		72A2FC6E20D00B2E00CD6AAC /* AbilityNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AbilityNet.m; sourceTree = "<group>"; };
 		72A2FC7120D4B40A00CD6AAC /* trvalMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = trvalMo.h; sourceTree = "<group>"; };
 		72A2FC7220D4B40A00CD6AAC /* trvalMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = trvalMo.m; sourceTree = "<group>"; };
+		72A3F48420E12EF8005BA873 /* AllDicMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllDicMo.h; sourceTree = "<group>"; };
+		72A3F48520E12EF8005BA873 /* AllDicMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllDicMo.m; sourceTree = "<group>"; };
 		72BAB42720B03A8B00496D29 /* BulidTeamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulidTeamCell.h; sourceTree = "<group>"; };
 		72BAB42820B03A8B00496D29 /* BulidTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulidTeamCell.m; sourceTree = "<group>"; };
 		72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BulidTeamCell.xib; sourceTree = "<group>"; };
@@ -1937,8 +1937,6 @@
 			children = (
 				72A2FC7120D4B40A00CD6AAC /* trvalMo.h */,
 				72A2FC7220D4B40A00CD6AAC /* trvalMo.m */,
-				727C86D120DAA51100AA2796 /* AllDicMo.h */,
-				727C86D220DAA51100AA2796 /* AllDicMo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2027,6 +2025,8 @@
 			children = (
 				8D19FF1E20D8AC98005F7361 /* UserMo.h */,
 				8D19FF1F20D8AC98005F7361 /* UserMo.m */,
+				72A3F48420E12EF8005BA873 /* AllDicMo.h */,
+				72A3F48520E12EF8005BA873 /* AllDicMo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3743,12 +3743,12 @@
 				729BA6D120A01E7F009713FD /* JFLocation.m in Sources */,
 				8DB42FD420A57D6E00C4EBF8 /* FilterOneController.m in Sources */,
 				722D253A20AA76D400AB3863 /* JFCityTableViewCell.m in Sources */,
+				72A3F48620E12EF8005BA873 /* AllDicMo.m in Sources */,
 				CE0BA5DE209D5E9B004C3C33 /* YTDataPacket.m in Sources */,
 				CEBEDD8A20B17ED1000F9EE4 /* BidderSectionHeadV.m in Sources */,
 				8DF7E3C820CF6182009A92D7 /* CityMo.m in Sources */,
 				8D09E18620BFC4B8000F7EBD /* AppointmentController.m in Sources */,
 				720263F720B5015500382B2F /* TZImagePickerController.m in Sources */,
-				727C86D320DAA51100AA2796 /* AllDicMo.m in Sources */,
 				CE0A99DD20C57C44003A4D91 /* CertificationCenterController.m in Sources */,
 				727418C020B17536001D6BE1 /* CustomTabr.m in Sources */,
 				8DD48CD120A811EA00D6D1E6 /* SDCycleScrollView.m in Sources */,
@@ -4019,7 +4019,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";
@@ -4041,7 +4041,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";

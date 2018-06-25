@@ -12,6 +12,7 @@
 #import "ShowTreaueTab.h"
 #import "ShowtrvalTab.h"
 #import "trvalMo.h"
+#import "AllDicMo.h"
 #define identifier @"ScrollCell"
 #define TabHeight kScreenHeight-185
 @interface ShowResumeController ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -80,7 +81,19 @@
 - (IBAction)callAndChangeClick:(UIButton *)sender {
     if (sender.tag==4&&self.Receive_Type == ENUM_TypeTreasure) {
         [self.navigationController pushViewController:[super rotateClass:@"DouctChangeController"] animated:YES];
+    }if (sender.tag==4&&self.Receive_Type == ENUM_TypeTrval&&[self.str isEqualToString:@"TrvalTrip"]) {
+        trvalMo * mo = self.data_Count[self.zIndex];
+        [self GZLoadData:mo.ID];
     }
+}
+-(void)GZLoadData:(NSString *)type{
+    NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+    AllContentMo * mo = [arr[5] contentArr][1];
+    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":@([type integerValue]),@"type":@([mo.value integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTAlertUtil showTempInfo:responseObject[@"message"]];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -148,9 +161,6 @@
     CGFloat pageWidth = scrollView.frame.size.width;
     // 根据当前的x坐标和页宽度计算出当前页数
     self.zIndex = floor((scrollView.contentOffset.x - pageWidth/2)/pageWidth) + 1;
-    if(self.zIndex == self.data_Count.count-1){
-        
-    }
 }
 
 -(UICollectionView *)collectionView{

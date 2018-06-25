@@ -44,7 +44,7 @@
     self.lab_TrvalDY.hidden = NO;
     self.lab_TrvalDes.hidden = NO;
     self.lab_TrvalPrice.hidden = NO;
-    self.lab_Title.text = trval.user1.realName;
+    self.lab_Title.text = trval.user1.nickName;
     if (trval.cityName.length!=0) {
         [self.btn_city setTitle:trval.cityName forState:UIControlStateNormal];
     }

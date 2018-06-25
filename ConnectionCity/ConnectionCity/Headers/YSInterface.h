@@ -125,7 +125,7 @@ static NSString * const v1ServiceCircleInfo = @"/v1/service-circle/info";
 static NSString * const v1ServiceCirclePage = @"/v1/service-circle/page";
 #pragma mark - 服务
 //添加点赞
-static NSString * const v1ServiceAddLike = @"/v1/service/add-like";
+static NSString * const v1CommonCommentAddlike = @"/v1/common/comment/add-like";
 //添加浏览次数
 static NSString * const v1ServiceServiceIdAddBrowseTimes = @"/v1/service/{serviceId}/add-browse-times";
 //服务约单
@@ -227,8 +227,10 @@ static NSString * const v1MyAuthUserskillAuthCreate = @"/v1/my/auth/user-skill-a
 static NSString * const v1MyAuthUserskillAuthList = @"/v1/my/auth/user-skill-auth/list";
 
 
+//公工接口
+//关注
 
-
+static NSString * const v1CommonFollowCreate = @"/v1/common/follow/create";
 
 
 

@@ -87,7 +87,7 @@
                 btn.text = classifiation;
             };
             class.block1 = ^(NSString *classifiationID, NSString *classifiation) {
-                
+                [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityID":[KUserDefults objectForKey:kUserCityID],@"category":classifiationID}];
             };
             [self.navigationController pushViewController:class animated:YES];
         }
@@ -130,7 +130,7 @@
                             @"lng": @([dic[@"lng"] floatValue]),
                             @"areaCode": @"",
                             @"provinceCode": @"",
-                            @"category": @"",
+                            @"category": dic[@"category"]?dic[@"category"]:@"",
                             @"cityCode":dic[@"cityID"],
                             @"salary": @0,
                             @"education": @0,
@@ -141,6 +141,7 @@
         self.cusMap.Arr_Mark = successArrValue;
     }];
 }
+
 #pragma mark ----初始化加载数据（结束）------
 -(void)back{
     [self.tabBarController.navigationController popViewControllerAnimated:YES];
@@ -185,11 +186,26 @@
     btn.text = locationDictionary[@"city"];
 }
 -(void)currentAnimatinonViewClick:(MAAnnotationView *)view{
+    if ([KString(@"%f", view.annotation.coordinate.latitude) isEqualToString:[KUserDefults objectForKey:kLat]]&&[KString(@"%f", view.annotation.coordinate.longitude) isEqualToString:[KUserDefults objectForKey:KLng]]) {
+        [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
+        return;
+    }
     ShowResumeController * resume = [ShowResumeController new];
     resume.Receive_Type = ENUM_TypeResume;
     resume.data_Count = self.cusMap.Arr_Mark;
     resume.zIndex = view.zIndex;
     [self.navigationController pushViewController:resume animated:YES];
+}
+//回到当前位置的按钮点击
+-(void)currentLocationClick{
+    [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityID":[KUserDefults objectForKey:kUserCityID]}];
+    [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([[KUserDefults objectForKey:kLat] floatValue], [[KUserDefults objectForKey:KLng] floatValue])];
+    [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
+}
+-(void)cityMo:(CityMo *)mo{
+    [self loadServiceList:@{@"lat":mo.lat,@"lng":mo.lng,@"cityID":mo.ID}];
+    [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([mo.lat floatValue], [mo.lng floatValue])];
+    [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
 }
 #pragma mark ---初始化关键字button加载-----
 -(void)loadketBtn:(NSMutableArray *)arr{

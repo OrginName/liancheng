@@ -10,6 +10,7 @@
 #import "SDCycleScrollView.h"
 #import "ShowTrvalCell.h"
 #import "AppointmentController.h"
+#import "AllDicMo.h"
 @interface ShowtrvalTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ShowTrvalCellDelegate>
 @property (nonatomic,strong) SDCycleScrollView * cycleScrollView;
 @property (nonatomic,strong) NSMutableArray * lunArr;//轮播图数组
@@ -170,9 +171,12 @@
         [YTAlertUtil showTempInfo:@"您已点赞不能重复点赞"];
         return;
     }
-    [YSNetworkTool POST:v1ServiceAddLike  params:@{@"id":@([self.listMo.ID integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+    AllContentMo * mo = [arr[5] contentArr][1];
+    [YSNetworkTool POST:v1CommonCommentAddlike  params:@{@"id":@([self.listMo.ID integerValue]),@"type":@([mo.value integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         sender.selected = YES;
         [sender setTitle:[NSString stringWithFormat:@"%@",responseObject[@"data"]] forState:UIControlStateNormal];
+        [YTAlertUtil showTempInfo:@"点赞成功"];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

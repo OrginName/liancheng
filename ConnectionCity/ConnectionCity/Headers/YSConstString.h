@@ -81,6 +81,7 @@
 #define kUserCityID @"UserCityID"
 #define kLat @"lat"
 #define KLng @"lng"
+#define KAllDic @"kAllDic"
 /** 服务的UUID */
 #define kServiceUUID              @"FFE0"
 /** 通知特征的UUID */
