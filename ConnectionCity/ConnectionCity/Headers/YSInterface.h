@@ -214,6 +214,19 @@ static NSString * const v1MyTravelOrderRequiredPage = @"/v1/my/travel-order/requ
 static NSString * const v1MyTravelPage = @"/v1/my/travel/page";
 //个人中心-我的发布-宝物
 static NSString * const v1MyTreasurePage = @"/v1/my/treasure/page";
+#pragma mark - 个人中心-认证中心
+//个人中心-认证中心
+static NSString * const v1MyAuthInfo = @"/v1/my/auth/info";
+//个人中心-身份认证
+static NSString * const v1MyAuthUseridentityAuthCreate = @"/v1/my/auth/user-identity-auth/create";
+//个人中心-认证中心-认证手机
+static NSString * const v1MyAuthUsermobileAuthCreate = @"/v1/my/auth/user-mobile-auth/create";
+//个人中心-认证中心-发起技能认证
+static NSString * const v1MyAuthUserskillAuthCreate = @"/v1/my/auth/user-skill-auth/create";
+//个人中心-认证中心-认证技能列表
+static NSString * const v1MyAuthUserskillAuthList = @"/v1/my/auth/user-skill-auth/list";
+
+
 
 
 
