@@ -9,10 +9,13 @@
 #import "TrvalInvitController.h"
 #import "TrvalCell.h"
 #import "JFCityViewController.h"
-@interface TrvalInvitController ()<UITableViewDataSource,UITableViewDelegate,JFCityViewControllerDelegate>
+#import "LCDatePicker.h"
+@interface TrvalInvitController ()<UITableViewDataSource,UITableViewDelegate,JFCityViewControllerDelegate,LCDatePickerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * Arr_Dic;
 @property (nonatomic,strong) NSMutableDictionary * Dic;
+@property (nonatomic,strong) LCDatePicker * myDatePick;
+
 @end
 
 @implementation TrvalInvitController
@@ -21,6 +24,7 @@
     [super viewDidLoad];
     [self setUI];
     [self initData];
+    [self initDate];
     self.Arr_Dic = [NSMutableArray array];
     self.Dic = [NSMutableDictionary dictionary];
 }
@@ -44,11 +48,11 @@
     }
     NSDictionary * dic = @{
                            @"cityCode": @([self.Dic[@"00"][@"ID"] integerValue]),
-                           @"departTime": self.Dic[@"10"][@"ID"],
+//                           @"departTime": self.Dic[@"10"][@"ID"],
                            @"description": cell.txt_View.text,
                            @"inviteObject": self.Dic[@"01"][@"ID"],
                            @"longTime": self.Dic[@"11"][@"ID"],
-//                           @"placeTravel": self.Dic[@"00"][@"ID"],
+                           @"startTime": self.Dic[@"10"],
                            @"travelFee": self.Dic[@"13"][@"ID"],
                            @"travelMode": self.Dic[@"12"][@"ID"]
                            };
@@ -89,16 +93,14 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     TrvalCell * cell = [tableView cellForRowAtIndexPath:indexPath];
-    if ((indexPath.section==0&&indexPath.row==1)||indexPath.section==1) {
+    if ((indexPath.section==0&&indexPath.row==1)||(indexPath.section==1&&indexPath.row>0)) {
         NSArray * arr = [NSArray array];
         NSString * str = @"";
         if (indexPath.section==0&&indexPath.row==1) {
             str = @"18";
         }
         if (indexPath.section==1) {
-            if (indexPath.row==0) {
-                str = @"19";
-            }else if (indexPath.row==1){
+            if (indexPath.row==1){
                 str = @"20";
             }else if (indexPath.row==2){
                 str = @"21";
@@ -121,12 +123,21 @@
             
         } completion:nil];
     }
+    if (indexPath.section==1&&indexPath.row==0) {
+        [self.myDatePick animateShow];
+    }
     if (indexPath.section==0&&indexPath.row==0) {
         JFCityViewController * jf= [JFCityViewController new];
         jf.delegate = self;
         BaseNavigationController * nav = [[BaseNavigationController alloc] initWithRootViewController:jf];
         [self.navigationController presentViewController:nav animated:YES completion:nil];
     }
+}
+#pragma mark ---LCDatePickerDelegate-----
+- (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
+    TrvalCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    cell.txt_Edit.text = str;
+    [self.Dic setObject:str forKey:@"10"];
 }
 #define mark------JFCityViewControllerDelegate---
 -(void)cityMo:(CityMo *)mo{
@@ -161,5 +172,11 @@
         return 96;
     }else
         return 50;
+}
+//创建日期插件
+-(void)initDate{
+    self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
+    self.myDatePick.delegate  = self;
+    [self.view addSubview:self.myDatePick];
 }
 @end

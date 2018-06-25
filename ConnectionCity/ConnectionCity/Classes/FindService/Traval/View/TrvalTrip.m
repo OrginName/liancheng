@@ -31,6 +31,8 @@
 }
 -(void)initData{
     self.bollec_bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        _page=1;
+        [self.data_Arr removeAllObjects];
         [self loadData:@{@"age":@"all",@"page":@"1",@"cityID":self.cityID}];
     }];
     self.bollec_bottom.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
@@ -43,18 +45,17 @@
                             @"category": @8,
                             @"cityCode": @([dic[@"cityID"] integerValue]),
                             @"distance": @"",
-                            @"gender": @0,
+                            @"gender": @"",
                             @"lat": @([[KUserDefults objectForKey:kLat]floatValue]),
                             @"lng": @([[KUserDefults objectForKey:KLng]floatValue]),
-                            @"pageNumber": @1,
+                            @"pageNumber": @(_page),
                             @"pageSize": @15,
-                            @"userStatus": @0,
+                            @"userStatus": @"",
                             @"validType": @""
                             };
     [ServiceHomeNet requstTrvalInvitDic:dic1 withSuc:^(NSMutableArray *successArrValue) {
         _page++;
 #warning 暂时先这样写不知道返回的数据一脸懵逼
-        [self.data_Arr removeAllObjects];
         [self.data_Arr addObjectsFromArray:successArrValue];
         [self.bollec_bottom reloadData];
         [self.bollec_bottom.mj_header endRefreshing];

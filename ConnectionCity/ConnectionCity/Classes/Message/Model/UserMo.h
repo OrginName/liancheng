@@ -35,4 +35,5 @@ proStr(status);
 proStr(weight);
 proStr(realName);
 proStr(marriage);
+proStr(marriageName);
 @end

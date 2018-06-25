@@ -14,6 +14,7 @@ proStr(userId);
 proStr(images);//图片
 proStr(cityCode);
 proStr(cityName);
+proStr(createTime);
 proStr(introduce);
 proStr(price);
 proStr(type);
@@ -26,6 +27,8 @@ proStr(longTimeName);//旅行时长
 proStr(placeTravel);//旅行去哪
 proStr(travelFeeName);//旅行话费
 proStr(travelModeName);//出行方式
+proStr(browseTimes);
+proStr(priceUnit);
 @property (nonatomic,strong) UserMo * user1;
 @end
 

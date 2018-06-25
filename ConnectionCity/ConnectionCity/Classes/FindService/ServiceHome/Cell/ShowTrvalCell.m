@@ -48,14 +48,15 @@
     if (trval.cityName.length!=0) {
         [self.btn_city setTitle:trval.cityName forState:UIControlStateNormal];
     }
-    [self.btn_height setTitle:trval.user1.height?trval.user1.height:@"无" forState:UIControlStateNormal];
-    [self.btn_coll setTitle:trval.user1.educationId?trval.user1.educationId:@"无" forState:UIControlStateNormal];
-    [self.btn_wight setTitle:trval.user1.marriage?trval.user1.marriage:@"无" forState:UIControlStateNormal];
+    [self.btn_height setTitle:[NSString stringWithFormat:@"%@cm",trval.user1.height?trval.user1.height:@"180"] forState:UIControlStateNormal];
+    [self.btn_coll setTitle:trval.user1.educationName?trval.user1.educationName:@"无" forState:UIControlStateNormal];
+    [self.btn_wight setTitle:trval.user1.marriageName?trval.user1.marriageName:@"无" forState:UIControlStateNormal];
     self.lab_Age.text = trval.user1.age?trval.user1.age:@"无";
-    [self.btn_weight setTitle:trval.user1.weight?trval.user1.weight:@"无" forState:UIControlStateNormal];
+    [self.btn_weight setTitle:[NSString stringWithFormat:@"%@kg",trval.user1.weight?trval.user1.weight:@"60"] forState:UIControlStateNormal];
     self.lab_price.text = [NSString stringWithFormat:@"¥%@",trval.price];
-    self.lab_PriceDY.text = @"暂无";//单位暂无
+    self.lab_TrvalDY.text = trval.priceUnit;//单位暂无
     self.lab_TrvalDes.text = trval.introduce;
+    self.lab_LLNum.text = [NSString stringWithFormat:@"浏览%@次",trval.browseTimes?trval.browseTimes:@"999+"];
 //  trval.comments 评论咱不知道怎么写
 }
 -(void)setList:(ServiceListMo *)list{
