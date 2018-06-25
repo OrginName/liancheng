@@ -104,26 +104,45 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     ShowResume * view = [[[NSBundle mainBundle] loadNibNamed:@"ShowResume" owner:nil options:nil] lastObject];
     view.lab_nametitle.text = section==2?@"教育经历":@"工作经历";
-    self.resume = view;
-    __block ShowResume * weakSelf = view;
+    if (section==1) {
+        if ([self.dict[@"1"] isEqualToString:@"NO"]) {
+//            self.dict[@"1"] = @"YES";
+            view.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
+        }else{
+//            self.dict[@"1"] = @"NO";
+            view.imageTurn.transform = CGAffineTransformIdentity;
+        }
+    }else if (section==2){
+        if ([self.dict[@"2"] isEqualToString:@"NO"]) {
+//            self.dict[@"2"] = @"YES";
+            view.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
+        }else
+//            self.dict[@"2"] = @"NO";
+        view.imageTurn.transform = CGAffineTransformIdentity;
+    }
+
+//    self.resume = view;
+//    __block ShowResume * weakSelf = view;
+    WeakSelf
     view.block = ^{
         if (section==1) {
-            if ([self.dict[@"1"] isEqualToString:@"NO"]) {
-                self.dict[@"1"] = @"YES";
-                weakSelf.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
+            if ([weakSelf.dict[@"1"] isEqualToString:@"NO"]) {
+                weakSelf.dict[@"1"] = @"YES";
+//                weakSelf.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
             }else{
-                self.dict[@"1"] = @"NO";
-                weakSelf.imageTurn.transform = CGAffineTransformIdentity;
+                weakSelf.dict[@"1"] = @"NO";
+//                weakSelf.imageTurn.transform = CGAffineTransformIdentity;
             }
         }else if (section==2){
-            if ([self.dict[@"2"] isEqualToString:@"NO"]) {
-                self.dict[@"2"] = @"YES";
-                weakSelf.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
+            if ([weakSelf.dict[@"2"] isEqualToString:@"NO"]) {
+                weakSelf.dict[@"2"] = @"YES";
+//                weakSelf.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
             }else
-                self.dict[@"2"] = @"NO";
-                weakSelf.imageTurn.transform = CGAffineTransformIdentity;
+                weakSelf.dict[@"2"] = @"NO";
+//                weakSelf.imageTurn.transform = CGAffineTransformIdentity;
         }
-        [self.tab_Bottom reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationNone];
+        [weakSelf.tab_Bottom reloadData];
+//        [weakSelf.tab_Bottom reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationNone];
     };
     return view;
 }

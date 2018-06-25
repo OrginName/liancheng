@@ -10,6 +10,8 @@
 
 @interface CardAuthorController ()
 @property (weak, nonatomic) IBOutlet UILabel *lab_tips;
+@property (weak, nonatomic) IBOutlet UITextField *phoneTF;
+@property (weak, nonatomic) IBOutlet UITextField *verificationCodeTF;
 
 @end
 
@@ -18,8 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    [self requestData];
-
 }
 -(void)setUI{
     self.navigationItem.title = @"手机号认证";
@@ -40,9 +40,39 @@
         [YTAlertUtil showTempInfo:@"隐私政策"];
     }
 }
+- (IBAction)getVerificationCodeBtnClick:(id)sender {
+    UIButton *btn = (UIButton *)sender;
+    if (![YSTools isRightPhoneNumberFormat:_phoneTF.text]) {
+        [YTAlertUtil showTempInfo:@"请填写正确的手机号码"];
+        return;
+    }
+    //WeakSelf
+    [YSNetworkTool POST:smsVerificationCode params:@{@"mobile": _phoneTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([YSNetworkTool isSuccessWithResp:responseObject]) {
+            [YSTools DaojiShi:btn];
+            [YTAlertUtil showTempInfo:responseObject[kMessage]];
+        }else{
+            [YTAlertUtil showTempInfo:responseObject[kMessage]];
+        }
+    } failure:nil];
+}
+- (IBAction)bindBtnClick:(id)sender {
+    if ([YSTools dx_isNullOrNilWithObject:_phoneTF.text] || [YSTools dx_isNullOrNilWithObject:_verificationCodeTF.text]) {
+        [YTAlertUtil showTempInfo:@"请将信息填写完整"];
+        return;
+    }
+    if (![YSTools isRightPhoneNumberFormat:_phoneTF.text]) {
+        [YTAlertUtil showTempInfo:@"请填写正确的手机号码"];
+        return;
+    }
+    [self requestData];
+}
 - (void)requestData {
-    [YSNetworkTool POST:myAuthAuthMobile params:nil showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+    WeakSelf
+    [YSNetworkTool POST:v1MyAuthUsermobileAuthCreate params:@{@"mobile": _phoneTF.text,@"code": _verificationCodeTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } completion:nil];
     } failure:nil];
 }
 @end

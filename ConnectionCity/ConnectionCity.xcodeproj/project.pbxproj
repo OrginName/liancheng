@@ -383,6 +383,7 @@
 		CE6BEC1D20C83769003B36D7 /* LCDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC1C20C83769003B36D7 /* LCDatePicker.m */; };
 		CE6BEC2C20C970C1003B36D7 /* EditProfileHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC2B20C970C1003B36D7 /* EditProfileHeadView.m */; };
 		CE6BEC2E20C970D1003B36D7 /* EditProfileHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6BEC2D20C970D1003B36D7 /* EditProfileHeadView.xib */; };
+		CE81AD7920E10AC20042E50D /* CertificationCenterMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE81AD7820E10AC20042E50D /* CertificationCenterMo.m */; };
 		CE97DBF520B5A2C1003E46BD /* ReleaseTenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97DBF320B5A2C1003E46BD /* ReleaseTenderCell.m */; };
 		CE97DBF620B5A2C1003E46BD /* ReleaseTenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE97DBF420B5A2C1003E46BD /* ReleaseTenderCell.xib */; };
 		CE97DBFA20B5AE9F003E46BD /* ReleaseTenderAdditionalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97DBF820B5AE9F003E46BD /* ReleaseTenderAdditionalCell.m */; };
@@ -1119,6 +1120,8 @@
 		CE6BEC2A20C970C1003B36D7 /* EditProfileHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileHeadView.h; sourceTree = "<group>"; };
 		CE6BEC2B20C970C1003B36D7 /* EditProfileHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileHeadView.m; sourceTree = "<group>"; };
 		CE6BEC2D20C970D1003B36D7 /* EditProfileHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileHeadView.xib; sourceTree = "<group>"; };
+		CE81AD7720E10AC20042E50D /* CertificationCenterMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CertificationCenterMo.h; sourceTree = "<group>"; };
+		CE81AD7820E10AC20042E50D /* CertificationCenterMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertificationCenterMo.m; sourceTree = "<group>"; };
 		CE97DBF220B5A2C1003E46BD /* ReleaseTenderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReleaseTenderCell.h; sourceTree = "<group>"; };
 		CE97DBF320B5A2C1003E46BD /* ReleaseTenderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReleaseTenderCell.m; sourceTree = "<group>"; };
 		CE97DBF420B5A2C1003E46BD /* ReleaseTenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReleaseTenderCell.xib; sourceTree = "<group>"; };
@@ -1644,6 +1647,7 @@
 		72EBB8B220C6DB3600F670E9 /* AuthenticationController */ = {
 			isa = PBXGroup;
 			children = (
+				CE81AD7620E10A960042E50D /* Models */,
 				72EBB8B320C6DB5900F670E9 /* CardAuthorController.h */,
 				72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */,
 				72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */,
@@ -1653,6 +1657,9 @@
 				8D22C33E20C77C0F004DC8F4 /* SkillCertificationController.h */,
 				8D22C33F20C77C0F004DC8F4 /* SkillCertificationController.m */,
 				8D22C34020C77C0F004DC8F4 /* SkillCertificationController.xib */,
+				CE0A99DA20C57C44003A4D91 /* CertificationCenterController.h */,
+				CE0A99DB20C57C44003A4D91 /* CertificationCenterController.m */,
+				CE0A99DC20C57C44003A4D91 /* CertificationCenterController.xib */,
 			);
 			path = AuthenticationController;
 			sourceTree = "<group>";
@@ -2898,6 +2905,15 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		CE81AD7620E10A960042E50D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE81AD7720E10AC20042E50D /* CertificationCenterMo.h */,
+				CE81AD7820E10AC20042E50D /* CertificationCenterMo.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		CE97DBFC20B5B161003E46BD /* fbzb */ = {
 			isa = PBXGroup;
 			children = (
@@ -3108,9 +3124,6 @@
 				CE0BA61D209D61C0004C3C33 /* ProfileController.h */,
 				CE0BA61E209D61C0004C3C33 /* ProfileController.m */,
 				CE0BA61F209D61C0004C3C33 /* ProfileController.xib */,
-				CE0A99DA20C57C44003A4D91 /* CertificationCenterController.h */,
-				CE0A99DB20C57C44003A4D91 /* CertificationCenterController.m */,
-				CE0A99DC20C57C44003A4D91 /* CertificationCenterController.xib */,
 				CEC4A56120C407BF0026EE19 /* WalletController.h */,
 				CEC4A56220C407BF0026EE19 /* WalletController.m */,
 				CEC4A56320C407BF0026EE19 /* WalletController.xib */,
@@ -3868,6 +3881,7 @@
 				CE5C282420B955EA006A8332 /* BidManagerFootV.m in Sources */,
 				8D8E4ECE20C9109E00C3D537 /* EditProfileController.m in Sources */,
 				CE0BA5EA209D5E9B004C3C33 /* YSBlutoothTool.m in Sources */,
+				CE81AD7920E10AC20042E50D /* CertificationCenterMo.m in Sources */,
 				CE24791620CEC9F100D4C396 /* EGOCache.m in Sources */,
 				72EBB8E120C95F8800F670E9 /* AccountSecurityController.m in Sources */,
 				CE0BA5B7209D5E6B004C3C33 /* NSData+hexString.m in Sources */,

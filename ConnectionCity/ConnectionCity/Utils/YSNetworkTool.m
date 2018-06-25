@@ -47,7 +47,7 @@ NSString * const YTHttpUtilResponseData = @"Data";
     if (showHud) {[YTAlertUtil showHUDWithTitle:nil];}
     [manager.requestSerializer setValue:kAccount.token forHTTPHeaderField:@"X-ACCESS-TOKEN"];
     [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        YTLog(@"token:%@",kAccount.token);
+        YTLog(@"X-ACCESS-TOKEN:%@",kAccount.token);
         [YTAlertUtil hideHUD];
         [[self class] p_logRequestDataWithURL:url params:params response:responseObject];
         //如果成功再返回请求结果
