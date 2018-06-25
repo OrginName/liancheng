@@ -20,12 +20,13 @@
         for (int i=0; i<arr.count; i++) {
             NSMutableDictionary * dicItem = [NSMutableDictionary dictionary];
             NSMutableArray * arrItem = [NSMutableArray array];
-            for (int j=0; j<[dic[arr[i]] count]; j++) {
-                NSDictionary * dic1 = @{@"isSelected":j==0?@"YES":@"NO",@"title":dic[arr[i]][j][@"description"],@"ID":dic[arr[i]][j][@"value"]};
+            NSArray * selectArr = [YSTools stringToJSON:dic[arr[i]][@"content"]];
+            for (int j=0; j<[selectArr count]; j++) {
+                NSDictionary * dic1 = @{@"isSelected":j==0?@"YES":@"NO",@"title":selectArr[j][@"description"],@"ID":selectArr[j][@"value"]};
                 [arrItem addObject:dic1];
-                if (arrItem.count==[dic[arr[i]] count]) {
+                if (arrItem.count==[selectArr count]) {
                     [dicItem setObject:arrItem forKey:@"subname"];
-                     dicItem[@"name"] = i==0?@"年龄":i==1?@"距离":i==2?@"性别":i==3?@"认证类型":@"";
+                     dicItem[@"name"] = dic[arr[i]][@"name"];
                 }
             }
             [dataArr addObject:dicItem];
