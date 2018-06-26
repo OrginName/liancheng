@@ -122,7 +122,7 @@
         cell.gifLable.hidden = YES;
     } else if((indexPath.item != _selectedPhotos.count)&&_selectedPhotos.count<=8) {
         cell.imageView.image = _selectedPhotos[indexPath.item];
-        cell.asset = _selectedAssets[indexPath.item];
+//        cell.asset = _selectedAssets[indexPath.item];
         cell.deleteBtn.hidden = NO;
     }else{
         cell.imageView.image = [UIImage imageNamed:@""];
@@ -489,19 +489,29 @@
     return img;
     
 }
+//获取视频第一帧图片
+- (UIImage *)thumbnailOfAVAsset:(NSURL *)url {
+    AVURLAsset *asset = [AVURLAsset assetWithURL:url];
+    AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    generator.appliesPreferredTrackTransform = YES;
+    NSError *err = NULL;
+    CMTime time = CMTimeMake(0, 2);
+    CGImageRef oneRef = [generator copyCGImageAtTime:time actualTime:NULL error:&err];
+    UIImage *one = [[UIImage alloc] initWithCGImage:oneRef];// [UIImage imageWithCGImage:oneRef];
+    return one;
+}
 - (void)refreshCollectionViewUrl:(NSURL *)sourceURL{
-    
     // Get center frame image asyncly
     NSLog(@"%@",[NSString stringWithFormat:@"%f s", [self getVideoLength:sourceURL]]);
     NSLog(@"%@", [NSString stringWithFormat:@"%.2f kb", [self getFileSize:[sourceURL path]]]);
-    _selectedPhotos = [NSMutableArray arrayWithArray:@[[self getVideoPreViewImage:[sourceURL path]]]];
+    //_selectedPhotos = [NSMutableArray arrayWithArray:@[[self getVideoPreViewImage:[sourceURL path]]]];
+    _selectedPhotos = [NSMutableArray arrayWithArray:@[[self thumbnailOfAVAsset:sourceURL]]];
     NSURL *newVideoUrl ; //一般.mp4
     NSDateFormatter *formater = [[NSDateFormatter alloc] init];//用时间给文件全名，以免重复，在测试的时候其实可以判断文件是否存在若存在，则删除，重新生成文件即可
     [formater setDateFormat:@"yyyy-MM-dd-HH:mm:ss"];
     newVideoUrl = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingFormat:@"/Documents/output-%@.mp4", [formater stringFromDate:[NSDate date]]]] ;//这个是保存在app自己的沙盒路径里，后面可以选择是否在上传后删除掉。我建议删除掉，免得占空间。
     [self convertVideoQuailtyWithInputURL:sourceURL outputURL:newVideoUrl completeHandler:nil];
     [_collectionView reloadData];
-   
 }
 - (void) convertVideoQuailtyWithInputURL:(NSURL*)inputURL
                                outputURL:(NSURL*)outputURL
