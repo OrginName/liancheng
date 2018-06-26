@@ -7,18 +7,24 @@
 //
 
 #import "ResumeCell.h"
-
+#import "privateUserInfoModel.h"
 @implementation ResumeCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    privateUserInfoModel * Info = [YSAccountTool userInfo];
+    self.lab_UserName.text = Info.nickName;
+    self.lab_UserCity.text = Info.cityName?Info.cityName:@"无";
+    self.lab_Sign.text = Info.sign;
+    self.image_sex.image = [UIImage imageNamed:[Info.age isEqualToString:@"0"]?@"men":@"women"];
 }
 -(void)setMo:(ResumeMo *)Mo{
     _Mo = Mo;
     self.lab_comAndCollege.text = Mo.collAndcompany;
     self.lab_proAndCollW.text = Mo.proAndPro;
     self.lab_proW.text = Mo.XLAndIntro;
-    self.lab_time.text = [NSString stringWithFormat:@"%@-%@",Mo.satrtTime,Mo.endTime];
+    self.lab_time.text = [NSString stringWithFormat:@"%@-%@",Mo.satrtTime,Mo.endTime]; 
+    
 }
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView
                             indexPath:(NSIndexPath *)indexPath withCollArr:(NSMutableArray * )arr withEduArr:(NSMutableArray * )EduArr {

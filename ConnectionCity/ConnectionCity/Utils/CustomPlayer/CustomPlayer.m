@@ -458,8 +458,7 @@
 #pragma mark - 销毁 release
 - (void)dealloc
 {
-    NSLog(@"--- %@ --- 销毁了",[self class]);
-    
+    NSLog(@"--- %@ --- 销毁了",[self class]); 
     [self removeNotification];
     [self removePlayerObserver];
     [self removeObserverWithPlayItem:self.player.currentItem];

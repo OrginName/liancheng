@@ -86,9 +86,12 @@
     self.allowPickingGifSwitch = NO;
     self.allowPickingOriginalPhotoSwitch = YES;
     self.showSheetSwitch = YES;
+    self.allowTakeVideo = YES;
+    self.allowTakePicture = YES;
     self.maxCountTF =8;
     self.columnNumberTF = 4;
     self.needCircleCropSwitch = NO;
+    self.allowPickingMuitlpleVideoSwitch = NO;
 }
 - (void)configCollectionView {
     // 如不需要长按排序效果，将LxGridViewFlowLayout类改成UICollectionViewFlowLayout即可
@@ -136,7 +139,6 @@
     [self endEditing:YES];
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (indexPath.item == _selectedPhotos.count) {
         BOOL showSheet = self.showSheetSwitch;
         if (showSheet) {
@@ -232,8 +234,8 @@
     
     // 3. Set allow picking video & photo & originalPhoto or not
     // 3. 设置是否可以选择视频/图片/原图
-    imagePickerVc.allowPickingVideo = self.allowPickingVideoSwitch;
-    imagePickerVc.allowPickingImage = self.allowPickingImageSwitch;
+    imagePickerVc.allowPickingVideo = YES;
+    imagePickerVc.allowPickingImage = YES;
     imagePickerVc.allowPickingOriginalPhoto = self.allowPickingOriginalPhotoSwitch;
     imagePickerVc.allowPickingGif = self.allowPickingGifSwitch;
     imagePickerVc.allowPickingMultipleVideo = self.allowPickingMuitlpleVideoSwitch; // 是否可以多选视频
@@ -382,17 +384,37 @@
     }];
     
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
-    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+    if ([UIImagePickerController isSourceTypeAvailable: sourceType]) {
+ 
         self.imagePickerVc.sourceType = sourceType;
-        if(iOS8Later) {
+        NSMutableArray *mediaTypes = [NSMutableArray array];
+        if (self.allowTakePicture) {
+            [mediaTypes addObject:(NSString *)kUTTypeImage];
+        }
+        if (self.allowTakeVideo) {
+            [mediaTypes addObject:(NSString *)kUTTypeMovie];
+            self.imagePickerVc.videoMaximumDuration = 1*60;
+        }
+        self.imagePickerVc.mediaTypes= mediaTypes;
+        if (iOS8Later) {
             _imagePickerVc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
         }
+//         if (_imagePickerVc.uiImagePickerControllerSettingBlock) {
+//            _imagePickerVc.uiImagePickerControllerSettingBlock(_imagePickerVc);
+//        }
         [self.controll presentViewController:_imagePickerVc animated:YES completion:nil];
-    } else {
+    }
+//    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+//        self.imagePickerVc.sourceType = sourceType;
+//        if(iOS8Later) {
+//            _imagePickerVc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+//        }
+//        [self.controll presentViewController:_imagePickerVc animated:YES completion:nil];
+//    }
+    else {
         NSLog(@"模拟器中无法打开照相机,请在真机中使用");
     }
 }
-
 - (void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [picker dismissViewControllerAnimated:YES completion:nil];
     NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
@@ -429,7 +451,60 @@
                 }];
             }
         }];
+    }else if([type isEqualToString:@"public.movie"]){
+        TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
+        [imagePickerVc showProgressHUD];
+        NSURL *videoUrl = [info objectForKey:UIImagePickerControllerMediaURL];
+        if (videoUrl) {
+            [[TZImageManager manager] saveVideoWithUrl:videoUrl location:self.location completion:^(NSError *error) {
+                if (!error) {
+                    [[TZImageManager manager] getCameraRollAlbum:NO allowPickingImage:YES needFetchAssets:NO completion:^(TZAlbumModel *model) {
+                        [[TZImageManager manager] getAssetsFromFetchResult:model.result allowPickingVideo:NO allowPickingImage:YES completion:^(NSArray<TZAssetModel *> *models) {
+                            [imagePickerVc hideProgressHUD];
+                            TZAssetModel *assetModel = [models firstObject];
+                            if (imagePickerVc.sortAscendingByModificationDate) {
+                                assetModel = [models lastObject];
+                            }
+                            [self refreshCollectionView:assetModel.asset url:videoUrl];
+                        }];
+                    }];
+                }else{
+                    [imagePickerVc hideProgressHUD];
+                    NSLog(@"图片保存失败 %@",error);
+                }
+            }];
+            self.location = nil;
+        }
     }
+}
+- (void)refreshCollectionView:(id)asset url:(NSURL *)imageUrl{
+    _selectedPhotos = [NSMutableArray arrayWithArray:@[[self getVideoPreViewImage:imageUrl]]];
+    _selectedAssets = [NSMutableArray arrayWithArray:@[asset]];
+    // open this code to send video / 打开这段代码发送视频
+    [[TZImageManager manager] getVideoOutputPathWithAsset:asset presetName:AVAssetExportPreset640x480 success:^(NSString *outputPath) {
+        NSLog(@"视频导出到本地完成,沙盒路径为:%@",outputPath);
+        // Export completed, send video here, send by outputPath or NSData
+        // 导出完成，在这里写上传代码，通过路径或者通过NSData上传
+        
+    } failure:^(NSString *errorMessage, NSError *error) {
+        NSLog(@"视频导出失败:%@,error:%@",errorMessage, error);
+    }];
+    [_collectionView reloadData];
+}
+//获取视频第一帧图片
+- (UIImage*) getVideoPreViewImage:(NSURL *)videoURL
+{
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoURL options:nil];
+    AVAssetImageGenerator *gen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    gen.appliesPreferredTrackTransform = YES;
+    CMTime time = CMTimeMake(1, 1000);
+    NSError *error = nil;
+    CMTime actualTime;
+    CGImageRef image = [gen copyCGImageAtTime:time actualTime:&actualTime error:&error];
+    UIImage *img = [[UIImage alloc] initWithCGImage:image];
+    CGImageRelease(image);
+    return img;
+    
 }
 - (void)refreshCollectionViewWithAddedAsset:(id)asset image:(UIImage *)image {
     [_selectedAssets addObject:asset];
@@ -519,6 +594,7 @@
         NSLog(@"视频导出到本地完成,沙盒路径为:%@",outputPath);
         // Export completed, send video here, send by outputPath or NSData
         // 导出完成，在这里写上传代码，通过路径或者通过NSData上传
+        
     } failure:^(NSString *errorMessage, NSError *error) {
         NSLog(@"视频导出失败:%@,error:%@",errorMessage, error);
     }];
@@ -550,48 +626,47 @@
 // Decide asset show or not't
 // 决定asset显示与否
 - (BOOL)isAssetCanSelect:(id)asset {
-    /*
-     if (iOS8Later) {
-     PHAsset *phAsset = asset;
-     switch (phAsset.mediaType) {
-     case PHAssetMediaTypeVideo: {
-     // 视频时长
-     // NSTimeInterval duration = phAsset.duration;
-     return NO;
-     } break;
-     case PHAssetMediaTypeImage: {
-     // 图片尺寸
-     if (phAsset.pixelWidth > 3000 || phAsset.pixelHeight > 3000) {
-     // return NO;
-     }
-     return YES;
-     } break;
-     case PHAssetMediaTypeAudio:
-     return NO;
-     break;
-     case PHAssetMediaTypeUnknown:
-     return NO;
-     break;
-     default: break;
-     }
-     } else {
-     ALAsset *alAsset = asset;
-     NSString *alAssetType = [[alAsset valueForProperty:ALAssetPropertyType] stringValue];
-     if ([alAssetType isEqualToString:ALAssetTypeVideo]) {
-     // 视频时长
-     // NSTimeInterval duration = [[alAsset valueForProperty:ALAssetPropertyDuration] doubleValue];
-     return NO;
-     } else if ([alAssetType isEqualToString:ALAssetTypePhoto]) {
-     // 图片尺寸
-     CGSize imageSize = alAsset.defaultRepresentation.dimensions;
-     if (imageSize.width > 3000) {
-     // return NO;
-     }
-     return YES;
-     } else if ([alAssetType isEqualToString:ALAssetTypeUnknown]) {
-     return NO;
-     }
-     }*/
+//     if (iOS8Later) {
+//     PHAsset *phAsset = asset;
+//     switch (phAsset.mediaType) {
+//     case PHAssetMediaTypeVideo: {
+//     // 视频时长
+//     // NSTimeInterval duration = phAsset.duration;
+//     return NO;
+//     } break;
+//     case PHAssetMediaTypeImage: {
+//     // 图片尺寸
+//     if (phAsset.pixelWidth > 3000 || phAsset.pixelHeight > 3000) {
+//     // return NO;
+//     }
+//     return YES;
+//     } break;
+//     case PHAssetMediaTypeAudio:
+//     return NO;
+//     break;
+//     case PHAssetMediaTypeUnknown:
+//     return NO;
+//     break;
+//     default: break;
+//     }
+//     } else {
+//     ALAsset *alAsset = asset;
+//     NSString *alAssetType = [[alAsset valueForProperty:ALAssetPropertyType] stringValue];
+//     if ([alAssetType isEqualToString:ALAssetTypeVideo]) {
+//     // 视频时长
+//     // NSTimeInterval duration = [[alAsset valueForProperty:ALAssetPropertyDuration] doubleValue];
+//     return NO;
+//     } else if ([alAssetType isEqualToString:ALAssetTypePhoto]) {
+//     // 图片尺寸
+//     CGSize imageSize = alAsset.defaultRepresentation.dimensions;
+//     if (imageSize.width > 3000) {
+//     // return NO;
+//     }
+//     return YES;
+//     } else if ([alAssetType isEqualToString:ALAssetTypeUnknown]) {
+//     return NO;
+//     }
+//     }
     return YES;
 }
 #pragma mark - Private

@@ -10,7 +10,11 @@
 #import "ResumeMo.h"
 typedef void (^blockClick)(void);
 @interface ResumeCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *image_sex;
+@property (weak, nonatomic) IBOutlet UILabel *lab_Sign;
+@property (weak, nonatomic) IBOutlet UILabel *lab_UserCity;
 @property (nonatomic,copy)blockClick block;
+@property (weak, nonatomic) IBOutlet UILabel *lab_UserName;
 @property (weak, nonatomic) IBOutlet UIImageView *imageISNo;
 @property (weak, nonatomic) IBOutlet UILabel *lab_workEdu;//工作和教育标题
 @property (weak, nonatomic) IBOutlet UILabel *lab_proOrXL;//职业和学历

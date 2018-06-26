@@ -49,8 +49,10 @@
                               @"endDate": self.end_Time.text,
                               @"professionalId": @0,
                               @"resumeId": @([self.resumeID integerValue]),
-                              @"schoolId": @0,
-                              @"startDate": self.Start_time.text
+                              @"schoolId": @0,//****
+                              @"startDate": self.Start_time.text,
+                              @"professinalName":self.text_Pro.text,//专业名称
+                              @"schoolName":self.text_Coll.text//学校名称
                               };
         [AbilityNet requstAddEdu:dic withBlock:^(NSDictionary *successDicValue) {
             ResumeMo * mo = [[ResumeMo alloc] init];
@@ -64,18 +66,16 @@
         }];
         
     }else{
-        
+        [YTAlertUtil showTempInfo:@"删除按钮"];
     }
     
 }
 //各个编辑按钮点击
 - (IBAction)btn_Click:(UIButton *)sender {
-    NSArray * arr = @[self.text_Coll,self.text_Pro];
-    if (sender.tag<3) {
+     if (sender.tag==2||sender.tag==1) {
         EditAllController * edit = [EditAllController new];
         edit.block = ^(NSString * str){
-            UITextField * text = (UITextField *)arr[sender.tag-1];
-            text.text = str;
+            sender.tag==2?(self.text_Pro.text = str):(self.text_Coll.text=str);
         };
         [self.navigationController pushViewController:edit animated:YES];
     }

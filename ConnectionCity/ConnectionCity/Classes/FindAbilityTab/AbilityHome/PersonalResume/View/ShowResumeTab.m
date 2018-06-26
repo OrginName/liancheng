@@ -106,40 +106,29 @@
     view.lab_nametitle.text = section==2?@"教育经历":@"工作经历";
     if (section==1) {
         if ([self.dict[@"1"] isEqualToString:@"NO"]) {
-//            self.dict[@"1"] = @"YES";
             view.imageTurn.transform = CGAffineTransformIdentity;
         }else{
-//            self.dict[@"1"] = @"NO";
              view.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
         }
     }else if (section==2){
         if ([self.dict[@"2"] isEqualToString:@"NO"]) {
-//            self.dict[@"2"] = @"YES";
             view.imageTurn.transform = CGAffineTransformIdentity;
         }else
              view.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
-//            self.dict[@"2"] = @"NO";
     }
-
-//    self.resume = view;
-//    __block ShowResume * weakSelf = view;
     WeakSelf
     view.block = ^{
         if (section==1) {
             if ([weakSelf.dict[@"1"] isEqualToString:@"NO"]) {
                 weakSelf.dict[@"1"] = @"YES";
-//                weakSelf.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
             }else{
                 weakSelf.dict[@"1"] = @"NO";
-//                weakSelf.imageTurn.transform = CGAffineTransformIdentity;
             }
         }else if (section==2){
             if ([weakSelf.dict[@"2"] isEqualToString:@"NO"]) {
                 weakSelf.dict[@"2"] = @"YES";
-//                weakSelf.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
             }else
                 weakSelf.dict[@"2"] = @"NO";
-//                weakSelf.imageTurn.transform = CGAffineTransformIdentity;
         }
         [weakSelf.tab_Bottom reloadData]; 
     };

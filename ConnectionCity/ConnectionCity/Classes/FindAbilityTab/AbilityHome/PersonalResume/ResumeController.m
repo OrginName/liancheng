@@ -30,7 +30,7 @@
 @property (nonatomic,strong) UIButton * MaskBtn;
 @property (nonatomic,strong) NSMutableArray * Arr_Dic;//选择项数组
 @property (nonatomic,strong) NSMutableDictionary * Data_Dic;//填写过的字典
-@property (nonatomic,strong) NSDictionary * isOpen;//判断显示一行还是多行
+@property (nonatomic,strong) NSMutableDictionary * isOpen;//判断显示一行还是多行
 @property (nonatomic,strong) NSMutableArray * data_ArrWork;//工作经历数值
 @property (nonatomic,strong) NSMutableArray * data_ArrWdu;//教育经历数值
 @end
@@ -43,7 +43,6 @@
     [self setUI];
     [self initData];
 }
-
 //添加UI
 -(void)setUI{
     [self initRightItem];
@@ -62,7 +61,7 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    self.isOpen = @{@"40":@"NO",@"50":@"NO"};
+    self.isOpen = [[NSMutableDictionary alloc] initWithDictionary:@{@"40":@"NO",@"50":@"NO"}];
 }
 #pragma mark --各种点击事件---
 -(void)NOPicClick{
@@ -164,14 +163,14 @@
     if (section!=4&&section!=5) {
         return 1;
     }else if(section==4){
-        if ([self.isOpen[@"40"] isEqualToString:@"NO"]&&self.CollArr.count!=0) {
-            return 3;
+        if ([self.isOpen[@"40"] isEqualToString:@"NO"]) {
+            return self.CollArr.count>0?3:2;
         }else
         return self.CollArr.count+2;
         
     }else if(section==5){
-        if ([self.isOpen[@"50"] isEqualToString:@"NO"]&&self.EduArr.count!=0) {
-            return 3;
+        if ([self.isOpen[@"50"] isEqualToString:@"NO"]) {
+            return self.EduArr.count>0?3:2;
         }else
         return self.EduArr.count+2;
     }else{
@@ -205,19 +204,24 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ResumeCell *cell = [ResumeCell tempTableViewCellWith:tableView indexPath:indexPath withCollArr:self.CollArr withEduArr:self.EduArr];
+    
     if (indexPath.section==5&&indexPath.row!=0&&indexPath.row!=self.EduArr.count+1) {
         if ([self.isOpen[@"50"] isEqualToString:@"NO"]&&self.EduArr.count!=0) {
-            cell.Mo = self.EduArr[indexPath.row-1];
-            cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2);
+            if (self.EduArr.count>0) {
+                cell.Mo = self.EduArr[0];
+            }
+            cell.imageISNo.transform = CGAffineTransformIdentity;
         }else
         {
-            cell.Mo = self.EduArr[0];
-            cell.imageISNo.transform = CGAffineTransformIdentity;
+            cell.Mo = self.EduArr[indexPath.row-1];
+            cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2);
         } 
     }
    else if (indexPath.section==4&&indexPath.row!=0&&indexPath.row!=self.CollArr.count+1) {
         if ([self.isOpen[@"40"] isEqualToString:@"NO"]&&self.CollArr.count!=0) {
-            cell.Mo = self.CollArr[0];
+            if (self.CollArr.count>0) {
+                 cell.Mo = self.CollArr[0];
+            }   
             cell.imageISNo.transform = CGAffineTransformIdentity;
         }else{
             cell.Mo = self.CollArr[indexPath.row-1];
@@ -225,50 +229,49 @@
         }
     }
     NSArray * arr = [self.Data_Dic allKeys];
+    NSString * idnex = [NSString stringWithFormat:@"%ld%ld",indexPath.section,indexPath.row];
     if ([arr containsObject:[NSString stringWithFormat:@"%ld0",(long)indexPath.section]]) {
         if ([arr containsObject:@"70"]) {
             cell.btnAgree.selected = [self.Data_Dic[@"70"] integerValue];
         }
-        if ([arr containsObject:@"60"]) {
+        else if ([arr containsObject:@"60"]) {
             cell.lab_MyselfProW.text = self.Data_Dic[@"60"];
-        }
-        cell.txt_salWay.text = self.Data_Dic[KString(@"%ld", indexPath.section)][@"name"];
+        }else
+        cell.txt_salWay.text = self.Data_Dic[idnex][@"name"];
     }
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ResumeCell * cell = [tableView cellForRowAtIndexPath:indexPath];
-    NSMutableDictionary * dic = [self.isOpen mutableCopy];
-    __block ResumeController * weakSelf  = self;
+    WeakSelf
     if (indexPath.section==4&&indexPath.row==0) {
         if ([self.isOpen[@"40"] isEqualToString:@"NO"]) {
-            dic[@"40"] = @"YES";
+            self.isOpen[@"40"] = @"YES";
             cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2);
             [self.CollArr removeAllObjects];
-            [self.CollArr addObject:self.data_ArrWork[0]];
-        }else{
-            [self.CollArr removeAllObjects];
             [self.CollArr addObjectsFromArray:[self.data_ArrWork copy]];
-            dic[@"40"] = @"NO";
+        }else{
+            self.isOpen[@"40"] = @"NO";
+            [self.CollArr removeAllObjects];
+            [self.CollArr addObject:self.data_ArrWork[0]];
             cell.imageISNo.transform = CGAffineTransformIdentity;
         }
-         [self.tab_bottom reloadSections:[NSIndexSet indexSetWithIndex:4] withRowAnimation:UITableViewRowAnimationNone];
+         [self.tab_bottom reloadData];
     }
     if (indexPath.section==5&&indexPath.row==0) {
         if ([self.isOpen[@"50"] isEqualToString:@"NO"]) {
-            dic[@"50"] = @"YES";
+            self.isOpen[@"50"] = @"YES";
             cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2);
             [self.EduArr removeAllObjects];
-            [self.EduArr addObject:self.data_ArrWdu[0]];
+            [self.EduArr addObjectsFromArray:[self.data_ArrWdu copy]];
         }else{
-             dic[@"50"] = @"NO";
+             self.isOpen[@"50"] = @"NO";
             cell.imageISNo.transform = CGAffineTransformIdentity;
             [self.EduArr removeAllObjects];
-            [self.EduArr addObjectsFromArray:[self.data_ArrWdu copy]];
+            [self.EduArr addObject:self.data_ArrWdu[0]]; 
         }
-        [self.tab_bottom reloadSections:[NSIndexSet indexSetWithIndex:5] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tab_bottom reloadData];
     }
-     self.isOpen = [dic copy];
     if ((indexPath.section==4&&indexPath.row==self.CollArr.count+1)) {
         if (resumeID.length==0) {
             return [YTAlertUtil showTempInfo:@"请先点击完成新增简历在添加工作经历"];
@@ -277,11 +280,10 @@
         guard.title = @"新增工作经历";
         guard.block = ^(ResumeMo * mo){
             [weakSelf.data_ArrWork addObject:mo];
-            [self.isOpen mutableCopy][@"40"] = @"NO";
-            cell.imageISNo.transform = CGAffineTransformIdentity;
             [weakSelf.CollArr removeAllObjects];
-            [weakSelf.CollArr addObject:weakSelf.data_ArrWork[0]];
-            [weakSelf.tab_bottom reloadSections:[NSIndexSet indexSetWithIndex:4] withRowAnimation:UITableViewRowAnimationNone];
+            [weakSelf.CollArr  addObjectsFromArray:[weakSelf.data_ArrWork copy]];
+            weakSelf.isOpen[@"40"] = @"YES";
+            [weakSelf.tab_bottom reloadData];
         };
         guard.resumeID = resumeID;
         [self.navigationController pushViewController:guard animated:YES];
@@ -294,10 +296,10 @@
         guard.title = @"新增教育经历";
         guard.block = ^(ResumeMo * mo){
             [weakSelf.data_ArrWdu addObject:mo];
-            [self.isOpen mutableCopy][@"50"] = @"NO";
-            cell.imageISNo.transform = CGAffineTransformIdentity;
-            [weakSelf.EduArr addObject:weakSelf.data_ArrWdu[0]];
-            [weakSelf.tab_bottom reloadSections:[NSIndexSet indexSetWithIndex:5] withRowAnimation:UITableViewRowAnimationNone];
+            [weakSelf.EduArr removeAllObjects];
+            [weakSelf.EduArr  addObjectsFromArray:[weakSelf.data_ArrWdu copy]];
+            weakSelf.isOpen[@"50"] = @"YES";
+            [weakSelf.tab_bottom reloadData];
         };
         [self.navigationController pushViewController:guard animated:YES];
     }else if(indexPath.section==2||indexPath.section==1||indexPath.section==3){

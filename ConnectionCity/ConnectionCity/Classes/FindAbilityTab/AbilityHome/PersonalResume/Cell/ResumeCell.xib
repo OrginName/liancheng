@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,7 +67,11 @@
             <connections>
                 <outlet property="btnAgree" destination="owL-zm-5vy" id="KGh-A1-QtQ"/>
                 <outlet property="imageISNo" destination="tNn-iS-xgj" id="0aX-gy-kgc"/>
+                <outlet property="image_sex" destination="FYX-z7-ykN" id="a4e-se-AWc"/>
                 <outlet property="lab_MyselfProW" destination="lgR-NB-e91" id="rNs-1M-tiy"/>
+                <outlet property="lab_Sign" destination="eIs-FX-jQZ" id="tsY-b1-KZ4"/>
+                <outlet property="lab_UserCity" destination="Kpe-TF-GX1" id="NO5-3S-r0x"/>
+                <outlet property="lab_UserName" destination="7Uu-OV-Lpn" id="thF-Xn-tvw"/>
                 <outlet property="lab_comAndCollege" destination="jUg-oI-1H9" id="NWx-su-0RM"/>
                 <outlet property="lab_pro" destination="lBl-Ug-7o5" id="w5Y-3v-Td7"/>
                 <outlet property="lab_proAndCollW" destination="Y5t-p3-rry" id="73h-Zr-ZOR"/>
@@ -252,8 +256,8 @@
                         <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="吃饭睡觉打豆豆" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgR-NB-e91">
-                        <rect key="frame" x="107.5" y="16.5" width="178.5" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgR-NB-e91">
+                        <rect key="frame" x="107.5" y="25" width="178.5" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.7725490196" green="0.7725490196" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>

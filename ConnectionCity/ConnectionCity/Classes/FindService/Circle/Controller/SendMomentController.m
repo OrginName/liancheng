@@ -46,6 +46,9 @@
     self.navigationItem.title = @"服务圈";
     itemHeigth = (self.view_Photo.width - 50) / 4+10;
     self.photo = [[PhotoSelect alloc] initWithFrame:CGRectMake(0, 0, self.view_Photo.width, itemHeigth) withController:self];
+    self.photo.showTakePhotoBtnSwitch = NO;
+    self.photo.showTakeVideoBtnSwitch=NO;
+    self.photo.allowPickingImageSwitch = YES;//是否允许选取照片
     self.photo.allowPickingVideoSwitch = YES;
     self.photo.backgroundColor = [UIColor whiteColor];
     self.photo.PhotoDelegate = self;

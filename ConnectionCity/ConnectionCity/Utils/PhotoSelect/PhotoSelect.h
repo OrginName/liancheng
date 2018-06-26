@@ -14,9 +14,17 @@
 -(void)selectImage:(UIImage *) image arr:(NSArray *)imageArr;
 @optional
 -(void)selectImageArr:(NSArray *)imageArr;
+@optional
+-(void)selectVideo:(NSString *)VideoUrl;
 @end
 
 @interface PhotoSelect : UIView
+/// 默认为YES，如果设置为NO, 用户将不能拍摄照片
+@property(nonatomic, assign) BOOL allowTakePicture;
+
+/// Default is YES, if set NO, user can't take video.
+/// 默认为YES，如果设置为NO, 用户将不能拍摄视频
+@property(nonatomic, assign) BOOL allowTakeVideo;
 // 设置开关
 @property (assign, nonatomic) BOOL showTakePhotoBtnSwitch;  ///< 在内部显示拍照按钮
 @property (assign, nonatomic) BOOL showTakeVideoBtnSwitch;  ///< 在内部显示拍视频按钮
