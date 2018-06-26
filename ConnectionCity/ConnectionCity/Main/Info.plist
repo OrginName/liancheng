@@ -56,5 +56,7 @@
 	<string>App需要您的同意,才能录音</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>APP</string>
 </dict>
 </plist>

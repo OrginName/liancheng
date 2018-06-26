@@ -461,35 +461,23 @@
                         [[TZImageManager manager] getAssetsFromFetchResult:model.result allowPickingVideo:NO allowPickingImage:YES completion:^(NSArray<TZAssetModel *> *models) {
                             [imagePickerVc hideProgressHUD];
                             TZAssetModel *assetModel = [models firstObject];
-                            [self refreshCollectionView:assetModel.asset url:videoUrl];
+                           _selectedAssets = [NSMutableArray arrayWithArray:@[assetModel]];
                         }];
                     }];
+                    
                 }else{
                     NSLog(@"图片保存失败 %@",error);
                 }
             }];
+             [self refreshCollectionViewUrl:videoUrl];
             self.location = nil;
         }
     }
 }
-- (void)refreshCollectionView:(id)asset url:(NSURL *)imageUrl{
-    _selectedPhotos = [NSMutableArray arrayWithArray:@[[self getVideoPreViewImage:imageUrl]]];
-    _selectedAssets = [NSMutableArray arrayWithArray:@[asset]];
-    // open this code to send video / 打开这段代码发送视频
-    [[TZImageManager manager] getVideoOutputPathWithAsset:asset presetName:AVAssetExportPreset640x480 success:^(NSString *outputPath) {
-        NSLog(@"视频导出到本地完成,沙盒路径为:%@",outputPath);
-        // Export completed, send video here, send by outputPath or NSData
-        // 导出完成，在这里写上传代码，通过路径或者通过NSData上传
-        
-    } failure:^(NSString *errorMessage, NSError *error) {
-        NSLog(@"视频导出失败:%@,error:%@",errorMessage, error);
-    }];
-    [_collectionView reloadData];
-}
 //获取视频第一帧图片
-- (UIImage*) getVideoPreViewImage:(NSURL *)videoURL
+- (UIImage*) getVideoPreViewImage:(NSString *)videoURL
 {
-    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoURL options:nil];
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:[NSURL URLWithString:videoURL] options:nil];
     AVAssetImageGenerator *gen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
     gen.appliesPreferredTrackTransform = YES;
     CMTime time = CMTimeMake(1, 1000);
@@ -501,6 +489,144 @@
     return img;
     
 }
+- (void)refreshCollectionViewUrl:(NSURL *)sourceURL{
+    
+    // Get center frame image asyncly
+    NSLog(@"%@",[NSString stringWithFormat:@"%f s", [self getVideoLength:sourceURL]]);
+    NSLog(@"%@", [NSString stringWithFormat:@"%.2f kb", [self getFileSize:[sourceURL path]]]);
+    _selectedPhotos = [NSMutableArray arrayWithArray:@[[self getVideoPreViewImage:[sourceURL path]]]];
+    NSURL *newVideoUrl ; //一般.mp4
+    NSDateFormatter *formater = [[NSDateFormatter alloc] init];//用时间给文件全名，以免重复，在测试的时候其实可以判断文件是否存在若存在，则删除，重新生成文件即可
+    [formater setDateFormat:@"yyyy-MM-dd-HH:mm:ss"];
+    newVideoUrl = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingFormat:@"/Documents/output-%@.mp4", [formater stringFromDate:[NSDate date]]]] ;//这个是保存在app自己的沙盒路径里，后面可以选择是否在上传后删除掉。我建议删除掉，免得占空间。
+    [self convertVideoQuailtyWithInputURL:sourceURL outputURL:newVideoUrl completeHandler:nil];
+    [_collectionView reloadData];
+   
+}
+- (void) convertVideoQuailtyWithInputURL:(NSURL*)inputURL
+                               outputURL:(NSURL*)outputURL
+                         completeHandler:(void (^)(AVAssetExportSession*))handler
+{
+    AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:inputURL options:nil];
+    
+    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:avAsset presetName:AVAssetExportPresetMediumQuality];
+    //  NSLog(resultPath);
+    exportSession.outputURL = outputURL;
+    exportSession.outputFileType = AVFileTypeMPEG4;
+    exportSession.shouldOptimizeForNetworkUse= YES;
+    [exportSession exportAsynchronouslyWithCompletionHandler:^(void)
+     {
+         switch (exportSession.status) {
+             case AVAssetExportSessionStatusCancelled:
+                 NSLog(@"AVAssetExportSessionStatusCancelled");
+                 break;
+             case AVAssetExportSessionStatusUnknown:
+                 NSLog(@"AVAssetExportSessionStatusUnknown");
+                 break;
+             case AVAssetExportSessionStatusWaiting:
+                 NSLog(@"AVAssetExportSessionStatusWaiting");
+                 break;
+             case AVAssetExportSessionStatusExporting:
+                 NSLog(@"AVAssetExportSessionStatusExporting");
+                 break;
+             case AVAssetExportSessionStatusCompleted:
+                 NSLog(@"AVAssetExportSessionStatusCompleted");
+                 NSLog(@"%@",[NSString stringWithFormat:@"%f s", [self getVideoLength:outputURL]]);
+                 NSLog(@"%@", [NSString stringWithFormat:@"%.2f kb", [self getFileSize:[outputURL path]]]);
+                 
+                 //UISaveVideoAtPathToSavedPhotosAlbum([outputURL path], self, nil, NULL);//这个是保存到手机相册
+                 
+                 [self alertUploadVideo:outputURL];
+                 break;
+             case AVAssetExportSessionStatusFailed:
+                 NSLog(@"AVAssetExportSessionStatusFailed");
+                 break;
+         }
+         
+     }];
+    
+}
+-(void)alertUploadVideo:(NSURL*)URL{
+    CGFloat size = [self getFileSize:[URL path]];
+    NSString *message;
+    NSString *sizeString;
+    CGFloat sizemb= size/1024;
+    if(size<=1024){
+        sizeString = [NSString stringWithFormat:@"%.2fKB",size];
+    }else{
+        sizeString = [NSString stringWithFormat:@"%.2fMB",sizemb];
+    }
+    
+    
+    
+    
+    if(sizemb<2){
+//        [self uploadVideo:URL];
+    }
+    
+    else if(sizemb<=5){
+        message = [NSString stringWithFormat:@"视频%@，大于2MB会有点慢，确定上传吗?", sizeString];
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle: nil
+                                                                                  message: message
+                                                                           preferredStyle:UIAlertControllerStyleAlert];
+        
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshwebpages" object:nil userInfo:nil];
+            [[NSFileManager defaultManager] removeItemAtPath:[URL path] error:nil];//取消之后就删除，以免占用手机硬盘空间（沙盒）
+            
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            
+            
+//            [self uploadVideo:URL];
+            
+            
+            
+            
+        }]];
+        [self.controll presentViewController:alertController animated:YES completion:nil];
+        
+        
+    }else if(sizemb>5){
+        message = [NSString stringWithFormat:@"视频%@，超过5MB，不能上传，抱歉。", sizeString];
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle: nil
+                                                                                  message: message
+                                                                           preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshwebpages" object:nil userInfo:nil];
+            [[NSFileManager defaultManager] removeItemAtPath:[URL path] error:nil];//取消之后就删除，以免占用手机硬盘空间
+            
+        }]];
+        [self.controll presentViewController:alertController animated:YES completion:nil];
+        
+    }
+    
+    
+}
+- (CGFloat) getFileSize:(NSString *)path
+{
+    NSLog(@"%@",path);
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    float filesize = -1.0;
+    if ([fileManager fileExistsAtPath:path]) {
+        NSDictionary *fileDic = [fileManager attributesOfItemAtPath:path error:nil];//获取文件的属性
+        unsigned long long size = [[fileDic objectForKey:NSFileSize] longLongValue];
+        filesize = 1.0*size/1024;
+    }else{
+        NSLog(@"找不到文件");
+    }
+    return filesize;
+}//此方法可以获取文件的大小，返回的是单位是KB。
+- (CGFloat) getVideoLength:(NSURL *)URL
+{
+    
+    AVURLAsset *avUrl = [AVURLAsset assetWithURL:URL];
+    CMTime time = [avUrl duration];
+    int second = ceil(time.value/time.timescale);
+    return second;
+}//此方法可以获取视频文件的时长。
 - (void)refreshCollectionViewWithAddedAsset:(id)asset image:(UIImage *)image {
     [_selectedAssets addObject:asset];
     [_selectedPhotos addObject:image];
