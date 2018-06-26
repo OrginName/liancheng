@@ -319,7 +319,6 @@
     
 }
 #pragma mark - UIActionSheetDelegate
-
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) { // take photo / 去拍照
         [self takePhoto];
@@ -452,53 +451,12 @@
             }
         }];
     }else if([type isEqualToString:@"public.movie"]){
-        TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
         NSURL *videoUrl = [info objectForKey:UIImagePickerControllerMediaURL];
         if (videoUrl) {
-            [[TZImageManager manager] saveVideoWithUrl:videoUrl location:self.location completion:^(NSError *error) {
-                if (!error) {
-                    [[TZImageManager manager] getCameraRollAlbum:NO allowPickingImage:YES needFetchAssets:NO completion:^(TZAlbumModel *model) {
-                        [[TZImageManager manager] getAssetsFromFetchResult:model.result allowPickingVideo:NO allowPickingImage:YES completion:^(NSArray<TZAssetModel *> *models) {
-                            [imagePickerVc hideProgressHUD];
-                            TZAssetModel *assetModel = [models firstObject];
-                           _selectedAssets = [NSMutableArray arrayWithArray:@[assetModel]];
-                        }];
-                    }];
-                    
-                }else{
-                    NSLog(@"图片保存失败 %@",error);
-                }
-            }];
-             [self refreshCollectionViewUrl:videoUrl];
+            [self refreshCollectionViewUrl:videoUrl];
             self.location = nil;
         }
     }
-}
-//获取视频第一帧图片
-- (UIImage*) getVideoPreViewImage:(NSString *)videoURL
-{
-    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:[NSURL URLWithString:videoURL] options:nil];
-    AVAssetImageGenerator *gen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
-    gen.appliesPreferredTrackTransform = YES;
-    CMTime time = CMTimeMake(1, 1000);
-    NSError *error = nil;
-    CMTime actualTime;
-    CGImageRef image = [gen copyCGImageAtTime:time actualTime:&actualTime error:&error];
-    UIImage *img = [[UIImage alloc] initWithCGImage:image];
-    CGImageRelease(image);
-    return img;
-    
-}
-//获取视频第一帧图片
-- (UIImage *)thumbnailOfAVAsset:(NSURL *)url {
-    AVURLAsset *asset = [AVURLAsset assetWithURL:url];
-    AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
-    generator.appliesPreferredTrackTransform = YES;
-    NSError *err = NULL;
-    CMTime time = CMTimeMake(0, 2);
-    CGImageRef oneRef = [generator copyCGImageAtTime:time actualTime:NULL error:&err];
-    UIImage *one = [[UIImage alloc] initWithCGImage:oneRef];// [UIImage imageWithCGImage:oneRef];
-    return one;
 }
 - (void)refreshCollectionViewUrl:(NSURL *)sourceURL{
     // Get center frame image asyncly
@@ -511,7 +469,42 @@
     [formater setDateFormat:@"yyyy-MM-dd-HH:mm:ss"];
     newVideoUrl = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingFormat:@"/Documents/output-%@.mp4", [formater stringFromDate:[NSDate date]]]] ;//这个是保存在app自己的沙盒路径里，后面可以选择是否在上传后删除掉。我建议删除掉，免得占空间。
     [self convertVideoQuailtyWithInputURL:sourceURL outputURL:newVideoUrl completeHandler:nil];
-    [_collectionView reloadData];
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
+    [[TZImageManager manager] saveVideoWithUrl:sourceURL location:self.location completion:^(NSError *error) {
+        if (!error) {
+            [[TZImageManager manager] getCameraRollAlbum:NO allowPickingImage:NO needFetchAssets:NO completion:^(TZAlbumModel *model) {
+                [[TZImageManager manager] getAssetsFromFetchResult:model.result allowPickingVideo:YES allowPickingImage:NO completion:^(NSArray<TZAssetModel *> *models) {
+                    [imagePickerVc hideProgressHUD];
+                    TZAssetModel *assetModel = [models lastObject];
+                    [_selectedAssets addObject:assetModel.asset];
+                    [_collectionView reloadData];
+                }];
+            }];
+
+        }else{
+            NSLog(@"图片保存失败 %@",error);
+        }
+    }];
+    
+//    [[TZImageManager manager] getCameraRollAlbum:YES allowPickingImage:YES needFetchAssets:NO completion:^(TZAlbumModel *model) {
+//        [[TZImageManager manager] getAssetsFromFetchResult:model.result allowPickingVideo:YES allowPickingImage:NO completion:^(NSArray<TZAssetModel *> *models) {
+//            TZAssetModel *assetModel = [models firstObject];
+//            [_selectedAssets addObject:assetModel.asset];
+//            [_collectionView reloadData];
+//
+//        }];
+//    }];
+}
+//获取视频第一帧图片
+- (UIImage *)thumbnailOfAVAsset:(NSURL *)url {
+    AVURLAsset *asset = [AVURLAsset assetWithURL:url];
+    AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    generator.appliesPreferredTrackTransform = YES;
+    NSError *err = NULL;
+    CMTime time = CMTimeMake(0, 2);
+    CGImageRef oneRef = [generator copyCGImageAtTime:time actualTime:NULL error:&err];
+    UIImage *one = [[UIImage alloc] initWithCGImage:oneRef];// [UIImage imageWithCGImage:oneRef];
+    return one;
 }
 - (void) convertVideoQuailtyWithInputURL:(NSURL*)inputURL
                                outputURL:(NSURL*)outputURL
