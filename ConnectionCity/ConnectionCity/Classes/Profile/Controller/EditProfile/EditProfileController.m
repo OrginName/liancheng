@@ -14,8 +14,10 @@
 #import "TakePhoto.h"
 #import "privateUserInfoModel.h"
 #import "OccupationCategoryNameModel.h"
+#import "JFCityViewController.h"
+#import "CityMo.h"
 
-@interface EditProfileController ()<EditProfileHeadViewDelegate>
+@interface EditProfileController ()<EditProfileHeadViewDelegate,JFCityViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) EditProfileHeadView *tableHeadV;
 @property (nonatomic, strong) NSArray *titleDataArr;
@@ -30,6 +32,8 @@
     [super viewDidLoad];
     [self setUI];
     [self setupTableView];
+    //请求用户信息
+    [self requestV1PrivateUserInfo];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -46,8 +50,6 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]forBarMetrics:UIBarMetricsDefault];
     //去掉导航栏底部的黑线
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-    //请求用户信息
-    [self requestV1PrivateUserInfo];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -77,7 +79,7 @@
 - (NSArray *)titleDataArr{
     if (!_titleDataArr) {
         _titleDataArr = @[@[@"昵称",@"姓名",@"年龄",@"性别",@"所在地区"],@[@"身高",@"体重",@"婚姻",@"学历",@"签名"]];
-        _parmeDataArr = @[@[@"nickName",@"realName",@"age",@"genderName",@"areaName"],@[@"height",@"weight",@"marriageName",@"educationName",@"sign"]];
+        _parmeDataArr = @[@[@"nickName",@"realName",@"age",@"gender",@"cityCode"],@[@"height",@"weight",@"marriage",@"educationId",@"sign"]];
     }
     return _titleDataArr;
 }
@@ -122,14 +124,21 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    EditAllController * edit = [EditAllController new];
-    WeakSelf
-    edit.block = ^(NSString * str){
-        [weakSelf requestPrivateUserUpdateWithDic:@{_parmeDataArr[indexPath.section][indexPath.row]: str?str:@""}];
-        weakSelf.contentDataArr[indexPath.section][indexPath.row] = str;
-        [weakSelf.tableView reloadData];
-    };
-    [self.navigationController pushViewController:edit animated:YES];
+    if (indexPath.section==0&&indexPath.row==4) {
+        JFCityViewController * jf= [JFCityViewController new];
+        jf.delegate = self;
+        BaseNavigationController * nav = [[BaseNavigationController alloc] initWithRootViewController:jf];
+        [self.navigationController presentViewController:nav animated:YES completion:nil];
+    }else{
+        EditAllController * edit = [EditAllController new];
+        WeakSelf
+        edit.block = ^(NSString * str){
+            [weakSelf requestPrivateUserUpdateWithDic:@{_parmeDataArr[indexPath.section][indexPath.row]: str?str:@""}];
+            weakSelf.contentDataArr[indexPath.section][indexPath.row] = str;
+            [weakSelf.tableView reloadData];
+        };
+        [self.navigationController pushViewController:edit animated:YES];
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 1) {
@@ -166,7 +175,13 @@
         }];
     }];
 }
-
+#pragma mark - JFCityViewControllerDelegate
+- (void)cityName:(NSString *)name {
+    
+}
+-(void)cityMo:(CityMo *)mo{
+    [self requestPrivateUserUpdateWithDic:@{@"cityCode": mo.ID}];
+}
 #pragma mark - 数据请求
 - (void)requestV1PrivateUserInfo {
     //获取用户信息
@@ -175,7 +190,7 @@
         privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
         [YSAccountTool saveUserinfo:userInfoModel];
         
-        NSMutableArray *firstMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.nickName?userInfoModel.nickName:@"",userInfoModel.realName?userInfoModel.realName:@"",userInfoModel.age?userInfoModel.age:@"",userInfoModel.genderName?userInfoModel.genderName:@"",userInfoModel.areaName?userInfoModel.areaName:@""]];
+        NSMutableArray *firstMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.nickName?userInfoModel.nickName:@"",userInfoModel.realName?userInfoModel.realName:@"",userInfoModel.age?userInfoModel.age:@"",userInfoModel.genderName?userInfoModel.genderName:@"",userInfoModel.cityName?userInfoModel.cityName:@""]];
         NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.height?userInfoModel.height:@"",userInfoModel.weight?userInfoModel.weight:@"",userInfoModel.marriageName?userInfoModel.marriageName:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.sign?userInfoModel.sign:@""]];
         weakSelf.contentDataArr = [[NSMutableArray alloc]initWithArray:@[firstMutArr,secondMutArr]];
         [weakSelf.tableHeadV.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"1"]];

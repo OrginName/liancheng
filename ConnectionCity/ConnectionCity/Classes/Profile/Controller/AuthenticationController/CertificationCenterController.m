@@ -23,12 +23,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self requestData];
 }
 - (IBAction)btnClick:(UIButton *)sender {
     NSArray * arr = @[@"CardAuthorController",@"IdentityAuthorController",@"SkillCertificationController"];
     [self.navigationController pushViewController:[super rotateClass:arr[sender.tag-1]] animated:YES];
-    
 }
 -(void)setUI{
     self.navigationItem.title = @"认证中心";

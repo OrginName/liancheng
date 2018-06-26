@@ -17,6 +17,8 @@
     self.mmmmodel = _mmmmodel;
     _headImage.layer.cornerRadius = 27;
     _headImage.clipsToBounds = YES;
+    _twoHeadImage.layer.cornerRadius = 27;
+    _twoHeadImage.clipsToBounds = YES;
 }
 
 #pragma mark - 点击事件
