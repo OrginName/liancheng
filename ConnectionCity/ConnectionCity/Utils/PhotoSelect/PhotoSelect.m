@@ -453,7 +453,6 @@
         }];
     }else if([type isEqualToString:@"public.movie"]){
         TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
-        [imagePickerVc showProgressHUD];
         NSURL *videoUrl = [info objectForKey:UIImagePickerControllerMediaURL];
         if (videoUrl) {
             [[TZImageManager manager] saveVideoWithUrl:videoUrl location:self.location completion:^(NSError *error) {
@@ -462,14 +461,10 @@
                         [[TZImageManager manager] getAssetsFromFetchResult:model.result allowPickingVideo:NO allowPickingImage:YES completion:^(NSArray<TZAssetModel *> *models) {
                             [imagePickerVc hideProgressHUD];
                             TZAssetModel *assetModel = [models firstObject];
-                            if (imagePickerVc.sortAscendingByModificationDate) {
-                                assetModel = [models lastObject];
-                            }
                             [self refreshCollectionView:assetModel.asset url:videoUrl];
                         }];
                     }];
                 }else{
-                    [imagePickerVc hideProgressHUD];
                     NSLog(@"图片保存失败 %@",error);
                 }
             }];
