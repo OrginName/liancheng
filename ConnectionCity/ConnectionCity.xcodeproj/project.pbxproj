@@ -91,6 +91,7 @@
 		72A2FC6F20D00B2E00CD6AAC /* AbilityNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A2FC6E20D00B2E00CD6AAC /* AbilityNet.m */; };
 		72A2FC7320D4B40A00CD6AAC /* trvalMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A2FC7220D4B40A00CD6AAC /* trvalMo.m */; };
 		72A3F48620E12EF8005BA873 /* AllDicMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A3F48520E12EF8005BA873 /* AllDicMo.m */; };
+		72A3F48B20E3BA32005BA873 /* CircleNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A3F48A20E3BA32005BA873 /* CircleNet.m */; };
 		72BAB42A20B03A8C00496D29 /* BulidTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42820B03A8B00496D29 /* BulidTeamCell.m */; };
 		72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */; };
 		72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */; };
@@ -625,6 +626,8 @@
 		72A2FC7220D4B40A00CD6AAC /* trvalMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = trvalMo.m; sourceTree = "<group>"; };
 		72A3F48420E12EF8005BA873 /* AllDicMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllDicMo.h; sourceTree = "<group>"; };
 		72A3F48520E12EF8005BA873 /* AllDicMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllDicMo.m; sourceTree = "<group>"; };
+		72A3F48920E3BA32005BA873 /* CircleNet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleNet.h; sourceTree = "<group>"; };
+		72A3F48A20E3BA32005BA873 /* CircleNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleNet.m; sourceTree = "<group>"; };
 		72BAB42720B03A8B00496D29 /* BulidTeamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulidTeamCell.h; sourceTree = "<group>"; };
 		72BAB42820B03A8B00496D29 /* BulidTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulidTeamCell.m; sourceTree = "<group>"; };
 		72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BulidTeamCell.xib; sourceTree = "<group>"; };
@@ -1610,6 +1613,15 @@
 			path = ConnectionCity/Classes/FindAbilityTab/Net;
 			sourceTree = SOURCE_ROOT;
 		};
+		72A3F48820E3BA21005BA873 /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				72A3F48920E3BA32005BA873 /* CircleNet.h */,
+				72A3F48A20E3BA32005BA873 /* CircleNet.m */,
+			);
+			path = Net;
+			sourceTree = "<group>";
+		};
 		72BAB42520B03A7B00496D29 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1782,6 +1794,7 @@
 		72EC1B8020BC307E00ACC20B /* Circle */ = {
 			isa = PBXGroup;
 			children = (
+				72A3F48820E3BA21005BA873 /* Net */,
 				8DC17A7220C0E430005D9EE0 /* Cell */,
 				8DC17A5B20C0E430005D9EE0 /* View */,
 				72EC1B8120BC307E00ACC20B /* Controller */,
@@ -3662,6 +3675,7 @@
 				720263FD20B5015500382B2F /* TZVideoPlayerController.m in Sources */,
 				72EC1B5B20B7027000ACC20B /* SwapListController.m in Sources */,
 				8D22C33C20C77B70004DC8F4 /* IdentityAuthorController.m in Sources */,
+				72A3F48B20E3BA32005BA873 /* CircleNet.m in Sources */,
 				CE5C282F20B9733A006A8332 /* ConsultativeNegotiationCell.m in Sources */,
 				8DC17A7820C0E430005D9EE0 /* Moment.m in Sources */,
 				723F4FAF20BEE8FF00AF8268 /* TrvalTrip.m in Sources */,

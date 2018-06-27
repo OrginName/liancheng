@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,6 +45,9 @@
                         <rect key="frame" x="158" y="278" width="50" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <state key="normal" title="115赞" image="s-praise"/>
+                        <connections>
+                            <action selector="btnClick:" destination="gTV-IL-0wX" eventType="touchUpInside" id="vB6-L6-Zok"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一个人的自由行，上海自由行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhF-tU-1DA">
                         <rect key="frame" x="10" y="252" width="198" height="16"/>
@@ -71,7 +74,14 @@
                 <constraint firstItem="Bch-W5-zY8" firstAttribute="leading" secondItem="LM5-Zh-tQt" secondAttribute="trailing" constant="5" id="zcG-Do-L4d"/>
             </constraints>
             <size key="customSize" width="218" height="313"/>
-            <point key="canvasLocation" x="0.0" y="59.5"/>
+            <connections>
+                <outlet property="btn_Zan" destination="PF5-Y3-R2A" id="Nof-nW-2Pv"/>
+                <outlet property="image_User" destination="LM5-Zh-tQt" id="H4V-4G-WCB"/>
+                <outlet property="image_cover" destination="Qfq-EI-BbG" id="FOa-sw-ndo"/>
+                <outlet property="lab_User" destination="Bch-W5-zY8" id="DS0-no-KGl"/>
+                <outlet property="lab_content" destination="XhF-tU-1DA" id="La9-ck-r4v"/>
+            </connections>
+            <point key="canvasLocation" x="-45" y="-37"/>
         </collectionViewCell>
     </objects>
     <resources>

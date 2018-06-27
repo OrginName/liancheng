@@ -812,11 +812,9 @@
     UIImage *image = _selectedPhotos[sourceIndexPath.item];
     [_selectedPhotos removeObjectAtIndex:sourceIndexPath.item];
     [_selectedPhotos insertObject:image atIndex:destinationIndexPath.item];
-    
     id asset = _selectedAssets[sourceIndexPath.item];
     [_selectedAssets removeObjectAtIndex:sourceIndexPath.item];
     [_selectedAssets insertObject:asset atIndex:destinationIndexPath.item];
-    
     [_collectionView reloadData];
 }
 

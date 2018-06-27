@@ -70,6 +70,7 @@
 - (void)setMoment:(Moment *)moment
 {
     _moment = moment;
+    NSArray * imageArr = [moment.images componentsSeparatedByString:@";"];
     for (MMImageView *imageView in _imageViewsArray) {
         imageView.hidden = YES;
     }
@@ -108,7 +109,7 @@
         imageView = [self viewWithTag:1000+i];
         imageView.hidden = NO;
         imageView.frame = frame;
-        imageView.image = [UIImage imageNamed:@"1"];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:imageArr[i]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     }
     self.width = kTextWidth;
     self.height = imageView.bottom;

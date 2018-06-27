@@ -46,6 +46,8 @@
 +(float)cauculateHeightOfText:(NSString *)text width:(float) width font:(float)font;
 #pragma mark ---比较开始和结束日期0相等1开始小于结束2开始大于结束
 +(NSInteger)initTimerCompare:(NSString *)startTime withEndTime:(NSString *)endTime;
+#pragma mark -------- 时间戳
++(NSString *)cTimestampFromString:(NSString *)theTime;
 @end
 
 

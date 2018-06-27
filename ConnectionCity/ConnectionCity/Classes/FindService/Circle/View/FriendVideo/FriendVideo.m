@@ -9,16 +9,22 @@
 #import "FriendVideo.h"
 #import "FriendVideoCell.h"
 #import "MommentPlayerController.h"
+#import "CircleNet.h"
+#import "MommentPlayerController.h"
 @interface FriendVideo()<UICollectionViewDelegate,UICollectionViewDataSource>
 {
     NSInteger _page;
 }
+@property (nonatomic,strong) NSMutableArray * data_Arr;
 @property (nonatomic,strong) UIViewController * controller;
 @end
 @implementation FriendVideo
 -(instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout withController:(UIViewController *)controller{
     if (self=[super initWithFrame:frame collectionViewLayout:layout]) {
         self.controller = controller;
+        self.data_Arr = [NSMutableArray array];
+        self.showsHorizontalScrollIndicator = NO;
+        self.showsVerticalScrollIndicator = NO;
         self.backgroundColor = [UIColor clearColor];
         self.collectionViewLayout = [[FriendVideoLayout alloc] init];
         [self registerNib:[UINib nibWithNibName:@"FriendVideoCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"VideoCell"];
@@ -33,11 +39,13 @@
 -(void)initData{
     self.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         _page=1;
+        [self.data_Arr removeAllObjects];
         [self loadDataFriendList];
     }];
     self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        
+        [self loadDataFriendList];
     }];
+    [self.mj_header beginRefreshing];
 }
 //加载朋友圈列表
 -(void)loadDataFriendList{
@@ -47,17 +55,17 @@
                            @"pageNumber": @(_page),
                            @"pageSize": @15
                            };
-    [YSNetworkTool POST:v1ServiceCirclePage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [CircleNet requstCirclelDic:dic withSuc:^(NSMutableArray *successArrValue) {
         _page++;
         [self.mj_header endRefreshing];
         [self.mj_footer endRefreshing];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+        [self.data_Arr addObjectsFromArray:successArrValue];
+        [self reloadData];
     }];
 }
 #pragma mark UICollectionViewDataSource 数据源方法
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 9;
+    return self.data_Arr.count;
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
@@ -65,10 +73,13 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FriendVideoCell * cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"VideoCell" forIndexPath:indexPath];
     cell.contentView.backgroundColor = [UIColor clearColor];
+    cell.moment = self.data_Arr[indexPath.row];
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self.controller.navigationController pushViewController:[MommentPlayerController new] animated:YES];
+    MommentPlayerController * moment = [MommentPlayerController new];
+    moment.moment = self.data_Arr[indexPath.row];
+    [self.controller.navigationController pushViewController:moment animated:YES];
 }
 @end
 @implementation FriendVideoLayout

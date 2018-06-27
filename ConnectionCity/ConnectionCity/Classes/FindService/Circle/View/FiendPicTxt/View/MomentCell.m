@@ -168,8 +168,9 @@ CGFloat maxLimitHeight = 0;
     }
     // 位置
     _locationLab.frame = CGRectMake(_nameLab.left, bottom, _nameLab.width, kTimeLabelH);
-    _timeLab.text = [NSString stringWithFormat:@"%@",[Utility getDateFormatByTimestamp:moment.time]];
-    _timeLab.text = [YSTools jitianqian:moment.createTime];
+    long long a = [[YSTools cTimestampFromString:moment.createTime] floatValue];
+    _timeLab.text = [NSString stringWithFormat:@"%@",[Utility getDateFormatByTimestamp:a]];
+//    _timeLab.text = [YSTools jitianqian:moment.createTime];
     CGFloat textW = [_timeLab.text boundingRectWithSize:CGSizeMake(200, kTimeLabelH)
                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                              attributes:@{NSFontAttributeName:_timeLab.font}
@@ -246,10 +247,10 @@ CGFloat maxLimitHeight = 0;
     // 名字
     height += kNameLabelH+kPaddingValue;
     // 正文
-    if (moment.text.length) {
+    if (moment.content.length) {
         MLLinkLabel *linkLab = kMLLinkLabel();
         linkLab.font = kTextFont;
-        linkLab.text =  moment.text;
+        linkLab.text =  moment.content;
         CGFloat labH = [linkLab preferredSizeWithMaxWidth:kTextWidth].height;
         BOOL isHide = YES;
         if (labH > maxLimitHeight) {
@@ -267,7 +268,7 @@ CGFloat maxLimitHeight = 0;
     // 图片
     height += [MMImageListView imageListHeightForMoment:moment]+kPaddingValue;
     // 地理位置
-    if ([moment.location length]) {
+    if ([moment.cityName length]) {
         height += kTimeLabelH+kPaddingValue;
     }
     // 时间

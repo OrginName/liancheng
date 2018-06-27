@@ -58,4 +58,5 @@ typedef void (^FailDicBlock) (NSString * failValue);
  */
 +(void)requstTrvalDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock;
 
+
 @end

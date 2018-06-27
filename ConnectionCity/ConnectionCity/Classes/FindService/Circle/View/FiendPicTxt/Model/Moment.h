@@ -43,6 +43,10 @@ proStr(content);
 proStr(cityName);
 proStr(cityCode);
 proStr(createTime);
+proStr(videos);
+proStr(likeCount);//点赞数
+proStr(images);//图片
 proArr(comments);//不知道是不是评价先放着
+@property (nonatomic,strong)UIImage * coverImage;
 @property (nonatomic,strong) UserMo * userMo;
 @end

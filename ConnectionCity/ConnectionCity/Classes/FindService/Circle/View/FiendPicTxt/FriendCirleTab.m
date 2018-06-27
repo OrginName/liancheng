@@ -11,6 +11,8 @@
 #import "Moment.h"
 #import "Comment.h"
 #import "MomentDetailController.h"
+#import "CircleNet.h"
+#import "privateUserInfoModel.h"
 @interface FriendCirleTab()<UITableViewDelegate,UITableViewDataSource,MomentCellDelegate>
 {
     NSInteger _page;
@@ -23,6 +25,8 @@
 -(instancetype)initWithFrame:(CGRect)frame withControll:(UIViewController *)control{
     if (self = [super initWithFrame:frame]) {
         self.controller = control;
+        self.showsHorizontalScrollIndicator = NO;
+        self.showsVerticalScrollIndicator = NO;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.delegate = self;
         self.dataSource = self;
@@ -37,10 +41,11 @@
 {
     self.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         _page=1;
+        [self.momentList removeAllObjects];
         [self loadDataFriendList];
     }];
     self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        
+        [self loadDataFriendList];
     }];
     [self.mj_header beginRefreshing];
 //    NSMutableArray *commentList;
@@ -92,28 +97,13 @@
                            @"pageNumber": @(_page),
                            @"pageSize": @15
                            };
-    [YSNetworkTool POST:v1ServiceCirclePage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [CircleNet requstCirclelDic:dic withSuc:^(NSMutableArray *successArrValue) {
+        _page++;
         [self.mj_header endRefreshing];
         [self.mj_footer endRefreshing];
-        [self jsonData:responseObject[@"data"][@"content"]];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-    }];
-}
--(void)jsonData:(NSArray *)Arr{
-    if (Arr.count==0) {
-        [YTAlertUtil showHUDWithTitle:@"暂无数据"];
-    }else{
-        for (int i=0; i<Arr.count; i++) {
-            Moment * moment = [Moment  mj_objectWithKeyValues:Arr[i]];
-            moment.ID = Arr[i][@"id"];
-            moment.userMo = [UserMo mj_objectWithKeyValues:Arr[i][@"obj"][@"user"]];
-            moment.singleWidth = 500;
-            moment.singleHeight = 315;
-            [self.momentList addObject:moment];
-        }
+        [self.momentList addObjectsFromArray:successArrValue];
         [self reloadData];
-    }
+    }]; 
 }
 - (NSMutableArray *)momentList
 {
@@ -207,14 +197,15 @@
 -(UIImageView *)headImage{
     if (!_headImage) {
         _headImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, 250)];
-        _headImage.image = [UIImage imageNamed:@"1"];
+        privateUserInfoModel * userInfo = [YSAccountTool userInfo];
+        [_headImage sd_setImageWithURL:[NSURL URLWithString:userInfo.backgroundImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
         UIImageView * image1 = [[UIImageView alloc] initWithFrame:CGRectMake(_headImage.width-70, _headImage.height-25, 50, 50)];
-        image1.image = [UIImage imageNamed:@"1"];
+        [image1 sd_setImageWithURL:[NSURL URLWithString:userInfo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
         image1.layer.cornerRadius = 25;
         image1.layer.masksToBounds = YES;
         [_headImage addSubview:image1];
         UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(image1.x-40, image1.y, 100, 25)];
-        lab.text = @"菲菲二";
+        lab.text = userInfo.nickName;
         lab.textColor = YSColor(55, 21, 17);
         lab.font = [UIFont systemFontOfSize:14];
         [_headImage addSubview:lab];

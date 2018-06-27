@@ -80,13 +80,13 @@
 -(void)setReceiveMo:(Moment *)receiveMo{
     _receiveMo =receiveMo;
     // 头像
-    _headImage.image = [UIImage imageNamed:@"moment_head"];
+    [_headImage sd_setImageWithURL:[NSURL URLWithString:receiveMo.userMo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     // 昵称
-    _headTitleLab.text = receiveMo.userName;
+    _headTitleLab.text = receiveMo.userMo.nickName;
     CGFloat bottom = _headTitleLab.bottom + kPaddingValue;
-    if ([receiveMo.text length]) {
-        _labDes.text = receiveMo.text;
-         CGFloat labH = [self calculateRowHeight:receiveMo.text fontSize:15];
+    if ([receiveMo.content length]) {
+        _labDes.text = receiveMo.content;
+         CGFloat labH = [self calculateRowHeight:receiveMo.content fontSize:15];
         _labDes.frame = CGRectMake(_headTitleLab.left, bottom, kScreenWidth-90, labH);
         bottom = _labDes.bottom + kPaddingValue;
     }
@@ -96,7 +96,8 @@
         _listView.origin = CGPointMake(_headTitleLab.left, bottom);
         bottom = _listView.bottom + kPaddingValue;
     }
-    _timelab.text = [NSString stringWithFormat:@"%@",[Utility getDateFormatByTimestamp:receiveMo.time]];
+    long long a = [[YSTools cTimestampFromString:receiveMo.createTime] floatValue];
+    _timelab.text = [NSString stringWithFormat:@"%@",[Utility getDateFormatByTimestamp:a]];
     CGFloat textW = [_timelab.text boundingRectWithSize:CGSizeMake(200, kTimeLabelH)
                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                              attributes:@{NSFontAttributeName:_timelab.font}

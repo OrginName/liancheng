@@ -91,4 +91,6 @@
 
 #pragma mark - Blur
 - (UIImage *)blurryImage:(UIImage *)image withBlurLevel:(CGFloat)blur;
+//获取第一帧头像
++(UIImage *)thumbnailOfAVAsset:(NSURL *)url;
 @end

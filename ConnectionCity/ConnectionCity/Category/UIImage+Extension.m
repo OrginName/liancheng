@@ -7,6 +7,7 @@
 //
 
 #import "UIImage+Extension.h"
+#import <AVFoundation/AVFoundation.h>
 @import Accelerate;
 
 static UIImage *_img = nil;
@@ -454,7 +455,17 @@ static UIImage *_img = nil;
     }
     return [self blurredImageWithSize:CGSizeMake(20, 20) tintColor:effectColor saturationDeltaFactor:-1.0 maskImage:nil];
 }
-
+//获取视频第一帧图片
++ (UIImage *)thumbnailOfAVAsset:(NSURL *)url {
+    AVURLAsset *asset = [AVURLAsset assetWithURL:url];
+    AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    generator.appliesPreferredTrackTransform = YES;
+    NSError *err = NULL;
+    CMTime time = CMTimeMake(0, 2);
+    CGImageRef oneRef = [generator copyCGImageAtTime:time actualTime:NULL error:&err];
+    UIImage *one = [[UIImage alloc] initWithCGImage:oneRef];// [UIImage imageWithCGImage:oneRef];
+    return one;
+}
 
 //| ----------------------------------------------------------------------------
 - (UIImage *)blurredImageWithRadius:(CGFloat)blurRadius

@@ -401,6 +401,22 @@
     }
     return -1;
 }
+//字符串时间——时间戳
++(NSString *)cTimestampFromString:(NSString *)theTime{
+    //theTime __@"%04d-%02d-%02d %02d:%02d:00"
+    
+    //装换为时间戳
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+    //        NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
+    //        [formatter setTimeZone:timeZone];
+    NSDate* dateTodo = [formatter dateFromString:theTime];
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[dateTodo timeIntervalSince1970]];
+    
+    return timeSp;
+}
 @end
 
 

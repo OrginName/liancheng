@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Moment.h"
 @interface FriendVideoCell : UICollectionViewCell
-
+@property (nonatomic,strong)Moment * moment;
 @end

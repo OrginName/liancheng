@@ -39,7 +39,8 @@ static NSInteger i;//判断当前返回按钮点击次数
 -(void)SendFriend{
     SendMomentController * send = [SendMomentController new];
     send.block = ^{
-        
+        [self.frendTab.mj_header beginRefreshing];
+        [self.frendVedio.mj_header beginRefreshing];
     };
     [self.navigationController pushViewController:send animated:YES];
 }
