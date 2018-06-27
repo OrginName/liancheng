@@ -47,7 +47,7 @@
 -(void)setUI{
     [self initRightItem];
     [self initScroll];
-    resumeID = @"26";
+    resumeID = @"";
 }
 
 -(void)initData{
@@ -92,15 +92,13 @@
     }
     __block NSString * str = @"";
     __block NSInteger flag=0;
+    [YTAlertUtil showHUDWithTitle:@"正在创建简历"];
     if (self.lunArr.count!=0) {
-        [YTAlertUtil showHUDWithTitle:@"正在上传照片"];
         for (int i=0; i<self.lunArr.count; i++) {
             [[QiniuUploader defaultUploader] uploadImageToQNFilePath:self.lunArr[i] withBlock:^(NSDictionary *url) {
                 flag++;
-                str = [NSString stringWithFormat:@"%@;%@",url[@"hash"],str];
+                str = [NSString stringWithFormat:@"%@%@;%@",QINIUURL,url[@"hash"],str];
                 if (flag==self.lunArr.count) {
-                    [YTAlertUtil hideHUD];
-                   
                     [self loadData:str];
                 }
             }];
@@ -124,6 +122,8 @@
                            @"workingId": @([self.Data_Dic[@"30"][@"ID"] integerValue])
                            };
     [AbilityNet requstAddResume:dic withBlock:^(NSDictionary *successDicValue) {
+        [YTAlertUtil hideHUD];
+        [YTAlertUtil showHUDWithTitle:@"简历创建成功"];
         resumeID = KString(@"%@", successDicValue[@"data"]);
     }];
 }

@@ -10,6 +10,9 @@
 #import "FriendVideoCell.h"
 #import "MommentPlayerController.h"
 @interface FriendVideo()<UICollectionViewDelegate,UICollectionViewDataSource>
+{
+    NSInteger _page;
+}
 @property (nonatomic,strong) UIViewController * controller;
 @end
 @implementation FriendVideo
@@ -21,16 +24,37 @@
         [self registerNib:[UINib nibWithNibName:@"FriendVideoCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"VideoCell"];
         self.delegate = self;
         self.dataSource = self;
+        [self initData];
+        _page = 1;
     }
     return self;
 }
-//-(instancetype)initWithFrame:(CGRect)frame{
-//    if(self=[super initWithFrame:frame]){
-//
-//
-//    }
-//    return self;
-//}
+//初始化数据
+-(void)initData{
+    self.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        _page=1;
+        [self loadDataFriendList];
+    }];
+    self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        
+    }];
+}
+//加载朋友圈列表
+-(void)loadDataFriendList{
+    NSDictionary * dic = @{
+                           @"containsImage": @0,
+                           @"containsVideo": @1,
+                           @"pageNumber": @(_page),
+                           @"pageSize": @15
+                           };
+    [YSNetworkTool POST:v1ServiceCirclePage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        _page++;
+        [self.mj_header endRefreshing];
+        [self.mj_footer endRefreshing];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
 #pragma mark UICollectionViewDataSource 数据源方法
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 9;

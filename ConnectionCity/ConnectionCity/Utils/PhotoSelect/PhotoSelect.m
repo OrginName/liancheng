@@ -140,6 +140,10 @@
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.item == _selectedPhotos.count) {
+        if (self.maxCountTF==1) {
+            [YTAlertUtil showTempInfo:@"视频暂只能选择一个"];
+            return;
+        }
         BOOL showSheet = self.showSheetSwitch;
         if (showSheet) {
             UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"去相册选择", nil];
@@ -485,15 +489,6 @@
             NSLog(@"图片保存失败 %@",error);
         }
     }];
-    
-//    [[TZImageManager manager] getCameraRollAlbum:YES allowPickingImage:YES needFetchAssets:NO completion:^(TZAlbumModel *model) {
-//        [[TZImageManager manager] getAssetsFromFetchResult:model.result allowPickingVideo:YES allowPickingImage:NO completion:^(NSArray<TZAssetModel *> *models) {
-//            TZAssetModel *assetModel = [models firstObject];
-//            [_selectedAssets addObject:assetModel.asset];
-//            [_collectionView reloadData];
-//
-//        }];
-//    }];
 }
 //获取视频第一帧图片
 - (UIImage *)thumbnailOfAVAsset:(NSURL *)url {
@@ -536,18 +531,14 @@
                  NSLog(@"AVAssetExportSessionStatusCompleted");
                  NSLog(@"%@",[NSString stringWithFormat:@"%f s", [self getVideoLength:outputURL]]);
                  NSLog(@"%@", [NSString stringWithFormat:@"%.2f kb", [self getFileSize:[outputURL path]]]);
-                 
                  //UISaveVideoAtPathToSavedPhotosAlbum([outputURL path], self, nil, NULL);//这个是保存到手机相册
-                 
                  [self alertUploadVideo:outputURL];
                  break;
              case AVAssetExportSessionStatusFailed:
                  NSLog(@"AVAssetExportSessionStatusFailed");
                  break;
          }
-         
      }];
-    
 }
 -(void)alertUploadVideo:(NSURL*)URL{
     CGFloat size = [self getFileSize:[URL path]];
@@ -559,15 +550,11 @@
     }else{
         sizeString = [NSString stringWithFormat:@"%.2fMB",sizemb];
     }
-    
-    
-    
-    
     if(sizemb<2){
-//        [self uploadVideo:URL];
-    }
-    
-    else if(sizemb<=5){
+        if (self.PhotoDelegate&&[self.PhotoDelegate respondsToSelector:@selector(selectVideo:)]) {
+            [self.PhotoDelegate selectVideo:[URL path]];
+        }
+    }else if(sizemb<=5){
         message = [NSString stringWithFormat:@"视频%@，大于2MB会有点慢，确定上传吗?", sizeString];
         UIAlertController * alertController = [UIAlertController alertControllerWithTitle: nil
                                                                                   message: message
@@ -583,10 +570,9 @@
             
             
 //            [self uploadVideo:URL];
-            
-            
-            
-            
+            if (self.PhotoDelegate&&[self.PhotoDelegate respondsToSelector:@selector(selectVideo:)]) {
+                [self.PhotoDelegate selectVideo:[URL path]];
+            }
         }]];
         [self.controll presentViewController:alertController animated:YES completion:nil];
         
@@ -603,10 +589,7 @@
             
         }]];
         [self.controll presentViewController:alertController animated:YES completion:nil];
-        
     }
-    
-    
 }
 - (CGFloat) getFileSize:(NSString *)path
 {
@@ -714,11 +697,15 @@
     _selectedPhotos = [NSMutableArray arrayWithArray:@[coverImage]];
     _selectedAssets = [NSMutableArray arrayWithArray:@[asset]];
     // open this code to send video / 打开这段代码发送视频
+    [picker showProgressHUD];
     [[TZImageManager manager] getVideoOutputPathWithAsset:asset presetName:AVAssetExportPreset640x480 success:^(NSString *outputPath) {
         NSLog(@"视频导出到本地完成,沙盒路径为:%@",outputPath);
         // Export completed, send video here, send by outputPath or NSData
         // 导出完成，在这里写上传代码，通过路径或者通过NSData上传
-        
+        if (self.PhotoDelegate&&[self.PhotoDelegate respondsToSelector:@selector(selectVideo:)]) {
+            [self.PhotoDelegate selectVideo:outputPath];
+        }
+       [picker hideProgressHUD];
     } failure:^(NSString *errorMessage, NSError *error) {
         NSLog(@"视频导出失败:%@,error:%@",errorMessage, error);
     }];

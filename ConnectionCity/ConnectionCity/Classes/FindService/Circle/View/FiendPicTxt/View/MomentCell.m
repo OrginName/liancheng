@@ -130,16 +130,16 @@ CGFloat maxLimitHeight = 0;
 {
     _moment = moment;
     // 头像
-    _headImageView.image = [UIImage imageNamed:@"moment_head"];
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:moment.userMo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     // 昵称
-    _nameLab.text = moment.userName;
+    _nameLab.text = moment.userMo.nickName;
     // 正文
     _showAllBtn.hidden = YES;
     _linkLabel.hidden = YES;
     CGFloat bottom = _nameLab.bottom + kPaddingValue;
-    if ([moment.text length]) {
+    if ([moment.content length]) {
         _linkLabel.hidden = NO;
-        _linkLabel.text = moment.text;
+        _linkLabel.text = moment.content;
         // 判断显示'全文'/'收起'
         CGSize attrStrSize = [_linkLabel preferredSizeWithMaxWidth:kTextWidth];
         CGFloat labH = attrStrSize.height;
@@ -169,13 +169,14 @@ CGFloat maxLimitHeight = 0;
     // 位置
     _locationLab.frame = CGRectMake(_nameLab.left, bottom, _nameLab.width, kTimeLabelH);
     _timeLab.text = [NSString stringWithFormat:@"%@",[Utility getDateFormatByTimestamp:moment.time]];
+    _timeLab.text = [YSTools jitianqian:moment.createTime];
     CGFloat textW = [_timeLab.text boundingRectWithSize:CGSizeMake(200, kTimeLabelH)
                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                              attributes:@{NSFontAttributeName:_timeLab.font}
                                                 context:nil].size.width;
-    if ([moment.location length]) {
+    if ([moment.cityName length]) {
         _locationLab.hidden = NO;
-        _locationLab.text = moment.location;
+        _locationLab.text = moment.cityName;
         _timeLab.frame = CGRectMake(_nameLab.left, _locationLab.bottom+kPaddingValue, textW, kTimeLabelH);
     } else {
         _locationLab.hidden = YES;

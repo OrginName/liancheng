@@ -48,6 +48,7 @@
     self.photo = [[PhotoSelect alloc] initWithFrame:CGRectMake(0, 0, self.tab_Bottom.width, itemHeigth) withController:self];
     self.photo.backgroundColor = [UIColor whiteColor];
     self.photo.PhotoDelegate = self;
+    self.photo.allowTakeVideo = NO;
     self.tab_Bottom.tableHeaderView = self.photo;
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(complete) image:@"" title:@"完成" EdgeInsets:UIEdgeInsetsZero];
     [self.view addSubview:self.myPicker];
@@ -66,19 +67,31 @@
         [YTAlertUtil showTempInfo:@"请阅读并同意找服务发布规则"];
         return;
     }
+    __block NSInteger flag = 0;
+    __block NSString * str = @"";//网址图片
+    [YTAlertUtil showHUDWithTitle:@"正在发布"];
+    if (self.Arr_Url.count!=0) {
+        for (int i=0; i<self.Arr_Url.count; i++) {
+            [[QiniuUploader defaultUploader] uploadImageToQNFilePath:self.Arr_Url[i] withBlock:^(NSDictionary *url) {
+                flag++;
+                str = [NSString stringWithFormat:@"%@%@;%@",QINIUURL,url[@"hash"],str];
+                if (flag==self.Arr_Url.count) {
+                    [self loadData:str];
+                }
+            }];
+        }
+    }else{
+        
+        [self loadData:@""];
+    }
+}
+-(void)loadData:(NSString *)urlStr{
     NSInteger areaCode = [[KUserDefults objectForKey:kUserCityID] integerValue];
     float lat = [[KUserDefults objectForKey:kLat] floatValue];
     float lng = [[KUserDefults objectForKey:KLng] floatValue];
-    NSString * urlStr = @"";
-    if (self.Arr_Url.count!=0) {
-        for (int i=0; i<self.Arr_Url.count; i++) {
-            urlStr = [NSString stringWithFormat:@"%@;%@",self.Arr_Url[i],urlStr];
-        }
-    }
-    
     NSDictionary * dic = @{
-                           @"cityCode": @0,
-                           @"areaCode": @(areaCode),
+                           @"cityCode": @(areaCode),
+                           //                           @"areaCode": @(areaCode),
                            @"content": @"",
                            @"images": urlStr,
                            @"introduce": self.Dic2[KString(@"%d", 2)],
@@ -88,9 +101,10 @@
                            @"properties": self.Attr_Arr,
                            @"serviceCategoryId":@([_secrviceType integerValue]),
                            @"title": self.Dic2[KString(@"%d", 0)],
-                           @"type": @10
+                           @"type": self.Dic2[KString(@"%d", 4)]
                            };
-    [YSNetworkTool POST:v1ServiceCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1ServiceCreate params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTAlertUtil hideHUD];
         [YTAlertUtil showTempInfo:responseObject[@"message"]];
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -185,7 +199,7 @@
 #pragma mark ----PhotoSelectDelegate-----
 -(void)selectImageArr:(NSArray *)imageArr{
     NSLog(@"%lu",(unsigned long)imageArr.count);
-    __block int flag=1;
+//    __block int flag=0;
     if (imageArr.count>=4) {
         self.photo.height = itemHeigth*2;
         UIView *headerView = self.tab_Bottom.tableHeaderView;
@@ -194,16 +208,17 @@
         [self.tab_Bottom setTableHeaderView:headerView];// 关键是这句话
         [self.tab_Bottom endUpdates];
     }
-    [YTAlertUtil showHUDWithTitle:@"正在上传"];
-    for (int i=0; i<imageArr.count; i++) {
-        [[QiniuUploader defaultUploader] uploadImageToQNFilePath:imageArr[i] withBlock:^(NSDictionary *url) {
-            flag++;
-            [self.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
-            if (flag == imageArr.count) {
-                [YTAlertUtil hideHUD];
-            }
-        }];
-    } 
+    [self.Arr_Url addObjectsFromArray:imageArr];
+//    [YTAlertUtil showHUDWithTitle:@"正在上传"];
+//    for (int i=0; i<imageArr.count; i++) {
+//        [[QiniuUploader defaultUploader] uploadImageToQNFilePath:imageArr[i] withBlock:^(NSDictionary *url) {
+//            flag++;
+//            [self.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
+//            if (flag == imageArr.count) {
+//                [YTAlertUtil hideHUD];
+//            }
+//        }];
+//    }
 }
 -(void)selectImage:(UIImage *) image arr:(NSArray *)imageArr{
     if (imageArr.count>=4) {
@@ -214,11 +229,12 @@
         [self.tab_Bottom setTableHeaderView:headerView];// 关键是这句话
         [self.tab_Bottom endUpdates];
     }
-    [YTAlertUtil showHUDWithTitle:@"正在上传"];
-    [[QiniuUploader defaultUploader] uploadImageToQNFilePath:image withBlock:^(NSDictionary *url) {
-        [YTAlertUtil hideHUD];
-        [self.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
-    }];
+    [self.Arr_Url addObjectsFromArray:imageArr];
+//    [YTAlertUtil showHUDWithTitle:@"正在上传"];
+//    [[QiniuUploader defaultUploader] uploadImageToQNFilePath:image withBlock:^(NSDictionary *url) {
+//        [YTAlertUtil hideHUD];
+//        [self.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
+//    }];
 }
 -(void)deleteImage:(NSInteger) tag arr:(NSArray *)imageArr{
     if (imageArr.count<=4) {

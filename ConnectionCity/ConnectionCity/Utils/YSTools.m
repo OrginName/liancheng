@@ -163,26 +163,26 @@
     long temp = 0;
     NSString *result;
     if (timeInterval < 60) {
-        result = [NSString stringWithFormat:@"刚刚测评过"];
+        result = [NSString stringWithFormat:@"刚刚"];
     }
     else if((temp = timeInterval/60) <60){
-        result = [NSString stringWithFormat:@"测于%d分钟前",(int)temp];
+        result = [NSString stringWithFormat:@"%d分钟前",(int)temp];
     }
     
     else if((temp = temp/60) <24){
-        result = [NSString stringWithFormat:@"测于%d小时前",(int)temp];
+        result = [NSString stringWithFormat:@"%d小时前",(int)temp];
     }
     
     else if((temp = temp/24) <30){
-        result = [NSString stringWithFormat:@"测于%d天前",(int)temp];
+        result = [NSString stringWithFormat:@"%d天前",(int)temp];
     }
     
     else if((temp = temp/30) <12){
-        result = [NSString stringWithFormat:@"测于%d月前",(int)temp];
+        result = [NSString stringWithFormat:@"%d月前",(int)temp];
     }
     else{
         temp = temp/12;
-        result = [NSString stringWithFormat:@"测于%d年前",(int)temp];
+        result = [NSString stringWithFormat:@"%d年前",(int)temp];
     }
     return  result;
 }

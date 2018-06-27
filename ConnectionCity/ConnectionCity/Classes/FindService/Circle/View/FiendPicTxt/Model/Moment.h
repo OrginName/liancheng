@@ -9,8 +9,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface Moment : NSObject
+#import "UserMo.h"
+@interface Moment : BaseModel
 
 // 正文
 @property (nonatomic,copy) NSString *text;
@@ -37,4 +37,12 @@
 
 @property (nonatomic,assign) CGFloat cellHeight;
 
+proStr(userId);
+proStr(ID);
+proStr(content);
+proStr(cityName);
+proStr(cityCode);
+proStr(createTime);
+proArr(comments);//不知道是不是评价先放着
+@property (nonatomic,strong) UserMo * userMo;
 @end

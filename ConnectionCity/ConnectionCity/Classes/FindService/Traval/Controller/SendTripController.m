@@ -125,6 +125,7 @@
     self.photo = [[PhotoSelect alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, itemHeigth) withController:self];
     self.photo.backgroundColor = [UIColor whiteColor];
     self.photo.PhotoDelegate = self;
+    self.photo.allowTakeVideo = NO;
     self.layout_select.constant = itemHeigth;
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(complete) image:@"" title:@"完成" EdgeInsets:UIEdgeInsetsZero];
     [self.view_Select addSubview:self.photo];

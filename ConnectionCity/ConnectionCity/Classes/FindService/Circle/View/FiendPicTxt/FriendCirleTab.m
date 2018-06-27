@@ -12,6 +12,9 @@
 #import "Comment.h"
 #import "MomentDetailController.h"
 @interface FriendCirleTab()<UITableViewDelegate,UITableViewDataSource,MomentCellDelegate>
+{
+    NSInteger _page;
+}
 @property (nonatomic,strong)UIImageView * headImage;
 @property (nonatomic,strong) NSMutableArray *momentList;
 @property (nonatomic,strong) UIViewController * controller;
@@ -25,51 +28,91 @@
         self.dataSource = self;
         self.tableHeaderView = self.headImage;
         [self initTestInfo];
+        _page=1;
     }
     return self;
 }
 #pragma mark - 测试数据
 - (void)initTestInfo
 {
-    NSMutableArray *commentList;
-    for (int i = 0;  i < 10; i ++)  {
-         // 评论
-        commentList = [[NSMutableArray alloc] init];
-        int num = arc4random()%5 + 1;
-        for (int j = 0; j < num; j ++) {
-            Comment *comment = [[Comment alloc] init];
-            comment.userName = @"胡一菲";
-            comment.text = @"天界大乱，九州屠戮，当初被推下地狱的她已经浴火归来.";
-            comment.time = 6487649503;
-            comment.pk = j;
-            [commentList addObject:comment];
-        }
+    self.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        _page=1;
+        [self loadDataFriendList];
+    }];
+    self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         
-        Moment *moment = [[Moment alloc] init];
-        moment.commentList = commentList;
-        moment.praiseNameList = @"";
-        moment.userName = @"Jeanne";
-        moment.location = @"江苏 苏州";
-        moment.time = 1487649403;
-        moment.singleWidth = 500;
-        moment.singleHeight = 315;
-        if (i == 0) {
-            moment.commentList = nil;
-            moment.praiseNameList = nil;
-            moment.location = @"";
-            moment.text = @"蜀绣又名“川绣”，是在丝绸或其他织物上采用蚕丝线绣出花纹图案的中国传统工艺，18107891687主要指以四川成都为中心的川西平原一带的刺绣。😁蜀绣最早见于西汉的记载，当时的工艺已相当成熟，同时传承了图案配色鲜艳、常用红绿颜色的特点。😁蜀绣又名“川绣”，是在丝绸或其他织物上采用蚕丝线绣出花纹图案的中国传统工艺，https://www.baidu.com，主要指以四川成都为中心的川西平原一带的刺绣。蜀绣最早见于西汉的记载，当时的工艺已相当成熟，同时传承了图案配色鲜艳、常用红绿颜色的特点。";
-            moment.fileCount = 1;
-        } else if (i == 1) {
-            moment.text = @"天界大乱，九州屠戮，当初被推下地狱的她已经浴火归来 😭😭剑指仙界'你们杀了他，我便覆了你的天，毁了你的界，永世不得超生又如何！'👍👍 ";
-            moment.fileCount = arc4random()%10;
-            moment.praiseNameList = nil;
-        } else if (i == 2) {
-            moment.fileCount = 9;
-        } else {
-            moment.text = @"天界大乱，九州屠戮，当初被推下地狱cheerylau@126.com的她已经浴火归来，😭😭剑指仙界'你们杀了他，我便覆了你的天，毁了你的界，永世不得超生又如何！'👍👍";
-            moment.fileCount = arc4random()%10;
+    }];
+    [self.mj_header beginRefreshing];
+//    NSMutableArray *commentList;
+//    for (int i = 0;  i < 10; i ++)  {
+//         // 评论
+//        commentList = [[NSMutableArray alloc] init];
+//        int num = arc4random()%5 + 1;
+//        for (int j = 0; j < num; j ++) {
+//            Comment *comment = [[Comment alloc] init];
+//            comment.userName = @"胡一菲";
+//            comment.text = @"天界大乱，九州屠戮，当初被推下地狱的她已经浴火归来.";
+//            comment.time = 6487649503;
+//            comment.pk = j;
+//            [commentList addObject:comment];
+//        }
+//
+//        Moment *moment = [[Moment alloc] init];
+//        moment.commentList = commentList;
+//        moment.praiseNameList = @"";
+//        moment.userName = @"Jeanne";
+//        moment.location = @"江苏 苏州";
+//        moment.time = 1487649403;
+//        moment.singleWidth = 500;
+//        moment.singleHeight = 315;
+//        if (i == 0) {
+//            moment.commentList = nil;
+//            moment.praiseNameList = nil;
+//            moment.location = @"";
+//            moment.text = @"蜀绣又名“川绣”，是在丝绸或其他织物上采用蚕丝线绣出花纹图案的中国传统工艺，18107891687主要指以四川成都为中心的川西平原一带的刺绣。😁蜀绣最早见于西汉的记载，当时的工艺已相当成熟，同时传承了图案配色鲜艳、常用红绿颜色的特点。😁蜀绣又名“川绣”，是在丝绸或其他织物上采用蚕丝线绣出花纹图案的中国传统工艺，https://www.baidu.com，主要指以四川成都为中心的川西平原一带的刺绣。蜀绣最早见于西汉的记载，当时的工艺已相当成熟，同时传承了图案配色鲜艳、常用红绿颜色的特点。";
+//            moment.fileCount = 1;
+//        } else if (i == 1) {
+//            moment.text = @"天界大乱，九州屠戮，当初被推下地狱的她已经浴火归来 😭😭剑指仙界'你们杀了他，我便覆了你的天，毁了你的界，永世不得超生又如何！'👍👍 ";
+//            moment.fileCount = arc4random()%10;
+//            moment.praiseNameList = nil;
+//        } else if (i == 2) {
+//            moment.fileCount = 9;
+//        } else {
+//            moment.text = @"天界大乱，九州屠戮，当初被推下地狱cheerylau@126.com的她已经浴火归来，😭😭剑指仙界'你们杀了他，我便覆了你的天，毁了你的界，永世不得超生又如何！'👍👍";
+//            moment.fileCount = arc4random()%10;
+//        }
+//        [self.momentList addObject:moment];
+//    }
+}
+//加载朋友圈列表
+-(void)loadDataFriendList{
+    NSDictionary * dic = @{
+                           @"containsImage": @1,
+                           @"containsVideo": @0,
+                           @"pageNumber": @(_page),
+                           @"pageSize": @15
+                           };
+    [YSNetworkTool POST:v1ServiceCirclePage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        [self.mj_header endRefreshing];
+        [self.mj_footer endRefreshing];
+        [self jsonData:responseObject[@"data"][@"content"]];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+-(void)jsonData:(NSArray *)Arr{
+    if (Arr.count==0) {
+        [YTAlertUtil showHUDWithTitle:@"暂无数据"];
+    }else{
+        for (int i=0; i<Arr.count; i++) {
+            Moment * moment = [Moment  mj_objectWithKeyValues:Arr[i]];
+            moment.ID = Arr[i][@"id"];
+            moment.userMo = [UserMo mj_objectWithKeyValues:Arr[i][@"obj"][@"user"]];
+            moment.singleWidth = 500;
+            moment.singleHeight = 315;
+            [self.momentList addObject:moment];
         }
-        [self.momentList addObject:moment];
+        [self reloadData];
     }
 }
 - (NSMutableArray *)momentList

@@ -29,20 +29,37 @@
     });
     return uploader;
 }
--(void)uploadImageToQNFilePath:(UIImage *)image withBlock:(QiniuBlock)block{
+-(void)uploadImageToQNFilePath:(UIImage *)image withBlock:(QiniuBlock)block1{
     
     NSString * filePath = [self getImagePath:image];
     QNUploadManager *upManager = [[QNUploadManager alloc] init];
     QNUploadOption *uploadOption = [[QNUploadOption alloc] initWithMime:nil progressHandler:^(NSString *key, float percent) {
-        NSLog(@"percent == %.2f", percent);
+        NSLog(@"Ipercent == %.2f", percent);
     }
                                                                  params:nil
                                                                checkCrc:NO
                                                      cancellationSignal:nil];
     [upManager putFile:filePath key:nil token:self.token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
-        NSLog(@"info ===== %@", info);
-        NSLog(@"resp ===== %@", resp);
-        block(resp);
+        NSLog(@"Iinfo ===== %@", info);
+        NSLog(@"Iresp ===== %@", resp);
+        block1(resp);
+    }
+                option:uploadOption];
+    
+}
+-(void)uploadVideoToQNFilePath:(NSString *)videoStr withBlock:(QiniuBlock)block1{
+    
+    QNUploadManager *upManager = [[QNUploadManager alloc] init];
+    QNUploadOption *uploadOption = [[QNUploadOption alloc] initWithMime:nil progressHandler:^(NSString *key, float percent) {
+        NSLog(@"Vpercent == %.2f", percent);
+    }
+                                                                 params:nil
+                                                               checkCrc:NO
+                                                     cancellationSignal:nil];
+    [upManager putFile:videoStr key:nil token:self.token complete:^(QNResponseInfo *info, NSString *key, NSDictionary *resp) {
+        NSLog(@"Vinfo ===== %@", info);
+        NSLog(@"Vresp ===== %@", resp);
+        block1(resp);
     }
                 option:uploadOption];
     
