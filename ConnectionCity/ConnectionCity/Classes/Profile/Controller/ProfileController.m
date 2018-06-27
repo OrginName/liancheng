@@ -139,7 +139,7 @@
         weakSelf.tableHeadV.nickName.text = userInfoModel.nickName;
         weakSelf.tableHeadV.genderName.text = userInfoModel.genderName;
         weakSelf.tableHeadV.age.text = userInfoModel.age;
-        weakSelf.tableHeadV.centerLab.text = [NSString stringWithFormat:@"%@%@%@%@%@",userInfoModel.cityName,userInfoModel.height,userInfoModel.weight,userInfoModel.educationName,userInfoModel.marriageName];
+        weakSelf.tableHeadV.centerLab.text = [NSString stringWithFormat:@"%@  %@CM  %@KG  %@  %@",userInfoModel.cityName,userInfoModel.height,userInfoModel.weight,userInfoModel.educationName,userInfoModel.marriageName];
         weakSelf.tableHeadV.svipTimeLab.text = @"xxxx.xx.xx到期";
     } failure:nil];
 }

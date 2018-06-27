@@ -16,6 +16,7 @@
 #import "OccupationCategoryNameModel.h"
 #import "JFCityViewController.h"
 #import "CityMo.h"
+#import "AllDicMo.h"
 
 @interface EditProfileController ()<EditProfileHeadViewDelegate,JFCityViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -79,7 +80,7 @@
 - (NSArray *)titleDataArr{
     if (!_titleDataArr) {
         _titleDataArr = @[@[@"昵称",@"姓名",@"年龄",@"性别",@"所在地区"],@[@"身高",@"体重",@"婚姻",@"学历",@"签名"]];
-        _parmeDataArr = @[@[@"nickName",@"realName",@"age",@"gender",@"cityCode"],@[@"height",@"weight",@"marriage",@"educationId",@"sign"]];
+        _parmeDataArr = @[@[@"nickName",@"realName",@"age",@"gender",@"areaCode"],@[@"height",@"weight",@"marriage",@"educationId",@"sign"]];
     }
     return _titleDataArr;
 }
@@ -124,11 +125,59 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section==0&&indexPath.row==4) {
+    if (indexPath.section==0&&indexPath.row==3) {
+        NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+        NSArray *contentArr = [arr[7] contentArr];
+        NSMutableArray *title = [NSMutableArray array];
+        for (int i=0; i < contentArr.count; i++) {
+            AllContentMo * mo = contentArr[i];
+            [title addObject:mo.description1];
+            YTLog(@"%@",mo.description1);
+            YTLog(@"%@",mo.value);
+        }
+        WeakSelf
+        [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:title multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
+            AllContentMo * mo = contentArr[idx];
+            NSDictionary *dic = @{@"gender": mo.value};
+            [weakSelf requestPrivateUserUpdateWithDic:dic];
+        } cancelTitle:@"取消" cancelHandler:nil completion:nil];
+    }else if(indexPath.section==0&&indexPath.row==4){
         JFCityViewController * jf= [JFCityViewController new];
         jf.delegate = self;
         BaseNavigationController * nav = [[BaseNavigationController alloc] initWithRootViewController:jf];
         [self.navigationController presentViewController:nav animated:YES completion:nil];
+    }else if (indexPath.section==1&&indexPath.row==2){
+        NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+        NSArray *contentArr = [arr[22] contentArr];
+        NSMutableArray *title = [NSMutableArray array];
+        for (int i=0; i < contentArr.count; i++) {
+            AllContentMo * mo = contentArr[i];
+            [title addObject:mo.description1];
+            YTLog(@"%@",mo.description1);
+            YTLog(@"%@",mo.value);
+        }
+        WeakSelf
+        [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:title multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
+            AllContentMo * mo = contentArr[idx];
+            NSDictionary *dic = @{@"marriage": mo.value};
+            [weakSelf requestPrivateUserUpdateWithDic:dic];
+        } cancelTitle:@"取消" cancelHandler:nil completion:nil];
+    }else if (indexPath.section==1&&indexPath.row==3){
+        NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+        NSArray *contentArr = [arr[0] contentArr];
+        NSMutableArray *title = [NSMutableArray array];
+        for (int i=0; i < contentArr.count; i++) {
+            AllContentMo * mo = contentArr[i];
+            [title addObject:mo.description1];
+            YTLog(@"%@",mo.description1);
+            YTLog(@"%@",mo.value);
+        }
+        WeakSelf
+        [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:title multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
+            AllContentMo * mo = contentArr[idx];
+            NSDictionary *dic = @{@"educationId": mo.value};
+            [weakSelf requestPrivateUserUpdateWithDic:dic];
+        } cancelTitle:@"取消" cancelHandler:nil completion:nil];
     }else{
         EditAllController * edit = [EditAllController new];
         WeakSelf
@@ -180,7 +229,7 @@
     
 }
 -(void)cityMo:(CityMo *)mo{
-    [self requestPrivateUserUpdateWithDic:@{@"cityCode": mo.ID}];
+    [self requestPrivateUserUpdateWithDic:@{@"areaCode": mo.ID}];
 }
 #pragma mark - 数据请求
 - (void)requestV1PrivateUserInfo {
@@ -201,7 +250,15 @@
 - (void)requestPrivateUserUpdateWithDic:(NSDictionary *)dic{
     WeakSelf
     [YSNetworkTool POST:v1PrivateUserUpdate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        [weakSelf requestV1PrivateUserInfo];
+        privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
+        [YSAccountTool saveUserinfo:userInfoModel];
+        
+        NSMutableArray *firstMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.nickName?userInfoModel.nickName:@"",userInfoModel.realName?userInfoModel.realName:@"",userInfoModel.age?userInfoModel.age:@"",userInfoModel.genderName?userInfoModel.genderName:@"",userInfoModel.cityName?userInfoModel.cityName:@""]];
+        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.height?userInfoModel.height:@"",userInfoModel.weight?userInfoModel.weight:@"",userInfoModel.marriageName?userInfoModel.marriageName:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.sign?userInfoModel.sign:@""]];
+        weakSelf.contentDataArr = [[NSMutableArray alloc]initWithArray:@[firstMutArr,secondMutArr]];
+        [weakSelf.tableHeadV.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"1"]];
+        [weakSelf.tableHeadV.headImage sd_setBackgroundImageWithURL:[NSURL URLWithString:userInfoModel.headImage] forState:UIControlStateNormal];
+        [weakSelf.tableView reloadData];
     } failure:nil];
 }
 

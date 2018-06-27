@@ -25,9 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    [self requestMembershipSvipInfo];
+//    [self requestMembershipSvipInfo];
 //    [self requestMembershipSvipRecharge];
-//    [self requestMembershipUserSvip];
+    [self requestMembershipUserSvip];
     
     // Do any additional setup after loading the view from its nib.
 }

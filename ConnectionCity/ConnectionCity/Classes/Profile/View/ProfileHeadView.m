@@ -36,7 +36,7 @@
     _mmmmodel = mmmmodel;
     [self.twoBackgroundImage sd_setImageWithURL:[NSURL URLWithString:mmmmodel.backgroundImage] placeholderImage:[UIImage imageNamed:@"1"]];
     [self.twoHeadImage sd_setImageWithURL:[NSURL URLWithString:mmmmodel.headImage]];
-    self.twoNickName.text = mmmmodel.realName;
+    self.twoNickName.text = mmmmodel.nickName;
     self.twoSvipTimeLab.text = @"xxxx.xx.xx";
 }
 
