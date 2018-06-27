@@ -35,7 +35,8 @@
 @property (assign, nonatomic) BOOL allowPickingOriginalPhotoSwitch; ///< 允许选择原图
 @property (assign, nonatomic) BOOL showSheetSwitch; ///< 显示一个sheet,把拍照按钮放在外面
 @property (assign, nonatomic) NSInteger maxCountTF;  ///< 照片最大可选张数，设置为1即为单选模式
-@property (assign, nonatomic) NSInteger columnNumberTF;//一行显示几张
+@property (assign, nonatomic) NSInteger maxCountForRow;  ///<界面上一行最多显示几张
+@property (assign, nonatomic) NSInteger columnNumberTF;  ///<选择相册里图片时一行显示几张
 @property (assign, nonatomic) BOOL allowCropSwitch;
 @property (assign, nonatomic) BOOL needCircleCropSwitch;//圆型裁剪
 @property (assign, nonatomic) BOOL allowPickingMuitlpleVideoSwitch;

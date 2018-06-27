@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ReleaseTenderAdditionalCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIView *photoBgView;
 
 @end

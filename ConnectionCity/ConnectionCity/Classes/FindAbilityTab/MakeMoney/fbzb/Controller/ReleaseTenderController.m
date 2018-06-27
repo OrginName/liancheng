@@ -11,14 +11,22 @@
 #import "ReleaseTenderAdditionalCell.h"
 #import "EditAllController.h"
 #import "LCDatePicker.h"
+#import "JFCityViewController.h"
+#import "PhotoSelect.h"
 
-@interface ReleaseTenderController ()<LCDatePickerDelegate>
+@interface ReleaseTenderController ()<LCDatePickerDelegate,JFCityViewControllerDelegate,PhotoSelectDelegate>
+{
+    NSInteger currtenTag;
+    CGFloat itemHeigth;
+}
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 /** 发票cell title数据源数组 */
 @property (nonatomic, copy) NSArray<NSString *> *cellTitles;
 /** 发票cell TextField placeHold数据源数组 */
 @property (nonatomic, strong) NSMutableArray<NSString *> *cellPlaceHolds;
 @property (nonatomic,strong) LCDatePicker * myDatePick;
+@property (nonatomic,strong) PhotoSelect * photo;
 
 @end
 
@@ -43,6 +51,14 @@
     _cellPlaceHolds = [NSMutableArray arrayWithArray:@[@"简单描述招标需求", @"海通物业管理有限公司", @"点选择所在地", @"线上", @"填写招标内容",@"", @"选择开始时间",@"选择截止间",@"填写金额 万元",@"填写联系人姓名",@"填写联系电话"]];
     [self initDate];
 }
+//-(void)setUI{
+//    itemHeigth = (kScreenWidth-70) / 4+10;
+//    self.photo = [[PhotoSelect alloc] initWithFrame:CGRectMake(0, 0, self.tab_Bottom.width, itemHeigth) withController:self];
+//    self.photo.backgroundColor = [UIColor whiteColor];
+//    self.photo.PhotoDelegate = self;
+//    self.photo.allowTakeVideo = NO;
+//    self.tab_Bottom.tableHeaderView = self.photo;
+//}
 - (void)setTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"ReleaseTenderCell" bundle:nil] forCellReuseIdentifier:@"ReleaseTenderCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ReleaseTenderAdditionalCell" bundle:nil] forCellReuseIdentifier:@"ReleaseTenderAdditionalCell"];
@@ -70,8 +86,17 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ReleaseTenderCell *cell1 = [tableView dequeueReusableCellWithIdentifier:@"ReleaseTenderCell"];
-    ReleaseTenderCell *cell2 = [tableView dequeueReusableCellWithIdentifier:@"ReleaseTenderAdditionalCell"];
+    ReleaseTenderAdditionalCell *cell2 = [tableView dequeueReusableCellWithIdentifier:@"ReleaseTenderAdditionalCell"];
     if (indexPath.row == 5) {
+        itemHeigth = (kScreenWidth-70) / 3+10;
+        self.photo = [[PhotoSelect alloc] initWithFrame:CGRectMake(0, 0, cell2.photoBgView.width, cell2.photoBgView.height) withController:self];
+        self.photo.backgroundColor = [UIColor whiteColor];
+        self.photo.PhotoDelegate = self;
+        self.photo.allowTakeVideo = YES;
+        self.photo.maxCountTF = 3;
+        self.photo.maxCountForRow = 3;
+//        self.photo.backgroundColor = [UIColor redColor];
+        [cell2.photoBgView addSubview: self.photo];
         return cell2;
     }else{
         cell1.titleLab.text = _cellTitles[indexPath.row];
@@ -81,12 +106,28 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(indexPath.row==2){
+        JFCityViewController * jf= [JFCityViewController new];
+        jf.delegate = self;
+        BaseNavigationController * nav = [[BaseNavigationController alloc] initWithRootViewController:jf];
+        [self.navigationController presentViewController:nav animated:YES completion:nil];
+        return;
+    }else if (indexPath.row==6){
+        currtenTag = indexPath.row;
+        [self.myDatePick animateShow];
+        return;
+    }else if (indexPath.row==7){
+        currtenTag = indexPath.row;
+        [self.myDatePick animateShow];
+        return;
+    }
+    
     if(indexPath.row!=5){
-        ReleaseTenderCell * cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section]];
+//        ReleaseTenderCell * cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section]];
         EditAllController * edit = [EditAllController new];
         WeakSelf
         edit.block = ^(NSString * str){
-            cell.detailLab.text = str;
+//            cell.detailLab.text = str;
             weakSelf.cellPlaceHolds[indexPath.row] = str;
             [weakSelf.tableView reloadData];
 //            [self.Dic2 setValue:str forKey:[NSString stringWithFormat:@"%ld",indexPath.section]];
@@ -97,7 +138,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 1) {
-        return 50;
+        return 60;
     }else{
         return 10;
     }
@@ -107,7 +148,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     if (indexPath.row == 5) {
-        return 165;
+        return 185;
     }else{
         return 50;
     }
@@ -129,12 +170,88 @@
 }
 #pragma mark ---LCDatePickerDelegate-----
 - (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
-    YTLog(@"%@",str);
+    self.cellPlaceHolds[currtenTag] = str;
+    [self.tableView reloadData];
+}
+#pragma mark - JFCityViewControllerDelegate
+- (void)cityName:(NSString *)name {
+    self.cellPlaceHolds[2] = name;
+    [self.tableView reloadData];
+}
+-(void)cityMo:(CityMo *)mo{
+    
+//    [self requestPrivateUserUpdateWithDic:@{@"areaCode": mo.ID}];
+}
+#pragma mark ----PhotoSelectDelegate-----
+-(void)selectImageArr:(NSArray *)imageArr{
+    NSLog(@"%lu",(unsigned long)imageArr.count);
+    //    __block int flag=0;
+//    if (imageArr.count>=4) {
+//        self.photo.height = itemHeigth*2;
+//        UIView *headerView = self.tab_Bottom.tableHeaderView;
+//        headerView.height = self.photo.height;
+//        [self.tab_Bottom beginUpdates];
+//        [self.tab_Bottom setTableHeaderView:headerView];// 关键是这句话
+//        [self.tab_Bottom endUpdates];
+//    }
+//    [self.Arr_Url addObjectsFromArray:imageArr];
+    //    [YTAlertUtil showHUDWithTitle:@"正在上传"];
+    //    for (int i=0; i<imageArr.count; i++) {
+    //        [[QiniuUploader defaultUploader] uploadImageToQNFilePath:imageArr[i] withBlock:^(NSDictionary *url) {
+    //            flag++;
+    //            [self.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
+    //            if (flag == imageArr.count) {
+    //                [YTAlertUtil hideHUD];
+    //            }
+    //        }];
+    //    }
+}
+-(void)selectImage:(UIImage *) image arr:(NSArray *)imageArr{
+    
+//    if (imageArr.count>=4) {
+//        self.photo.height = itemHeigth*2;
+//        UIView *headerView = self.tab_Bottom.tableHeaderView;
+//        headerView.height = self.photo.height;
+//        [self.tab_Bottom beginUpdates];
+//        [self.tab_Bottom setTableHeaderView:headerView];// 关键是这句话
+//        [self.tab_Bottom endUpdates];
+//    }
+//    [self.Arr_Url addObjectsFromArray:imageArr];
+    //    [YTAlertUtil showHUDWithTitle:@"正在上传"];
+    //    [[QiniuUploader defaultUploader] uploadImageToQNFilePath:image withBlock:^(NSDictionary *url) {
+    //        [YTAlertUtil hideHUD];
+    //        [self.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
+    //    }];
+}
+-(void)deleteImage:(NSInteger) tag arr:(NSArray *)imageArr{
+    
+//    if (imageArr.count<=4) {
+//        self.photo.height = itemHeigth;
+//        UIView *headerView = self.tab_Bottom.tableHeaderView;
+//        headerView.height = self.photo.height;
+//        [self.tab_Bottom beginUpdates];
+//        [self.tab_Bottom setTableHeaderView:headerView];// 关键是这句话
+//        [self.tab_Bottom endUpdates];
+//    }
+//    [self.Arr_Url removeObjectAtIndex:tag];
 }
 #pragma mark - 点击事件
 - (void)nextBtnClick:(UIButton *)btn {
     
 }
+
+#pragma mark - 接口请求
+- (void)v1TalentTenderCreate{
+    NSInteger areaCode = [[KUserDefults objectForKey:kUserCityID] integerValue];
+    float lat = [[KUserDefults objectForKey:kLat] floatValue];
+    float lng = [[KUserDefults objectForKey:KLng] floatValue];
+
+    [YSNetworkTool POST:v1TalentTenderCreate params:nil showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:nil];
+}
+
+
 
 /*
 #pragma mark - Navigation

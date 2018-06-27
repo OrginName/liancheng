@@ -89,6 +89,7 @@
     self.allowTakeVideo = YES;
     self.allowTakePicture = YES;
     self.maxCountTF =8;
+    self.maxCountForRow = 4;
     self.columnNumberTF = 4;
     self.needCircleCropSwitch = NO;
     self.allowPickingMuitlpleVideoSwitch = NO;
@@ -822,7 +823,7 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     _margin = 5;
-    _itemWH = (self.tz_width - _margin*10) / 4;
+    _itemWH = (self.tz_width - _margin*10) / _maxCountForRow;
     _layout.itemSize = CGSizeMake(_itemWH, _itemWH);
     _layout.minimumInteritemSpacing = 10;
     _layout.minimumLineSpacing = 10;
