@@ -75,18 +75,26 @@ static NSString * const v1TalentResumeWorkUpdate = @"/v1/talent/resume/work/upda
 #pragma mark - 人才-赚外快
 //评论
 static NSString * const v1TalentTenderCommentCreate = @"/v1/talent/tender/comment/create";
+//关注招标
+static NSString * const v1TalentTenderFollowCreate = @"/v1/talent/tender/follow/create";
 //招标发布
 static NSString * const v1TalentTenderCreate = @"/v1/talent/tender/create";
+//赚外快-删除招标
+static NSString * const v1TalentTenderDelete = @"/v1/talent/tender/delete";
 //赚外快-保证金
 static NSString * const v1TalentTenderDepositList = @"/v1/talent/tender/deposit/list";
 //招标详情
 static NSString * const v1TalentTenderDetail = @"/v1/talent/tender/detail";
-//关注招标
-static NSString * const v1TalentTenderFollowCreate = @"/v1/talent/tender/follow/create";
+//赚外快-创建订单（支付全额/分期/保证金）
+static NSString * const v1TalentTenderorderCreate = @"/v1/talent/tender/order/create";
+//赚外快（分页）
+static NSString * const v1TalentTenderPage = @"/v1/talent/tender/page";
 //赚外快-投标
 static NSString * const v1TalentTenderRecordCreate = @"/v1/talent/tender/record/create";
 //赚外快-投标人
 static NSString * const v1TalentTenderRecordList = @"/v1/talent/tender/record/list";
+//赚外快-赏金托管
+static NSString * const v1TalentTenderRewardList = @"/v1/talent/tender/reward/list";
 //赚外快-中标人
 static NSString * const v1TalentTenderWinRecordList = @"/v1/talent/tender/win-record/list";
 #pragma mark - 关键字信息
@@ -225,6 +233,7 @@ static NSString * const v1MyAuthUsermobileAuthCreate = @"/v1/my/auth/user-mobile
 static NSString * const v1MyAuthUserskillAuthCreate = @"/v1/my/auth/user-skill-auth/create";
 //个人中心-认证中心-认证技能列表
 static NSString * const v1MyAuthUserskillAuthList = @"/v1/my/auth/user-skill-auth/list";
+
 
 
 //公工接口

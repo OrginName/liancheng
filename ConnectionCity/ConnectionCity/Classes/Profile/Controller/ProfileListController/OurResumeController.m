@@ -26,10 +26,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    //发布宝物
-    //[self requestMyTreasurePage];
-    //发布简历
-    [self requestMyResumePage];
+    //我的发布-简历
+//    [self requestMyResumePage];
+    //我的发布-服务
+//    [self v1MyServicePage];
+    //我的发布-旅行
+//    [self v1MyTravelPage];
+    //我的发布-邀约
+//    [self v1MyTravelInvitePage];
+    //我的发布-宝物
+//    [self requestMyTreasurePage];
+    //我的发布-身份互换
+//    [self v1MyIdentityPage];
+    
 }
 -(void)setUI{
     self.navigationItem.title = [NSString stringWithFormat:@"我的发布-%@",self.receive_Mo.mTitle];
@@ -61,6 +70,35 @@
     NSLog(@"%ld",index);
 }
 #pragma mark - 数据请求
+//我的发布-简历
+- (void)requestMyResumePage {
+    WeakSelf
+    [YSNetworkTool POST:v1MyResumePage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        weakSelf.resumedataArr = [OurResumeMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+        [weakSelf.tab_Bottom reloadData];
+    } failure:nil];
+}
+//我的发布-服务
+- (void)v1MyServicePage {
+    WeakSelf
+    [YSNetworkTool POST:v1MyServicePage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+
+    } failure:nil];
+}
+//我的发布-旅行
+- (void)v1MyTravelPage {
+    WeakSelf
+    [YSNetworkTool POST:v1MyTravelPage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:nil];
+}
+//我的发布-邀约
+- (void)v1MyTravelInvitePage {
+    WeakSelf
+    [YSNetworkTool POST:v1MyTravelInvitePage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:nil];
+}
 //我的发布-宝物
 - (void)requestMyTreasurePage {
     WeakSelf
@@ -68,12 +106,10 @@
         
     } failure:nil];
 }
-//我的发布-简历
-- (void)requestMyResumePage {
+//我的发布-身份互换
+- (void)v1MyIdentityPage {
     WeakSelf
-    [YSNetworkTool POST:v1MyResumePage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        weakSelf.resumedataArr = [OurResumeMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
-        [weakSelf.tab_Bottom reloadData];
+    [YSNetworkTool POST:v1MyIdentityPage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         
     } failure:nil];
 }
