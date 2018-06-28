@@ -20,5 +20,12 @@
 
     // Configure the view for the selected state
 }
-
+-(void)setMoment:(Comment *)moment{
+    _moment = moment;
+    [self.image_Head sd_setImageWithURL:[NSURL URLWithString:moment.user[@"headImage"]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    self.lab_name.text = moment.user[@"nickName"];
+    self.lab_Content.text = moment.content;
+    self.lab_time.text = [moment.createTime componentsSeparatedByString:@" "][0];
+    self.lab_HF.text = @"未知回复";
+}
 @end

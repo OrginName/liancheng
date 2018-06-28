@@ -9,9 +9,10 @@
 #import "EvaluationController.h"
 #import "CircleCell.h"
 #import "CircleNet.h"
+#import "Moment.h"
 @interface EvaluationController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tab_bottom;
-
+@property (nonatomic,strong)NSMutableArray * array;
 @end
 
 @implementation EvaluationController
@@ -23,11 +24,13 @@
     [self initData];
 }
 -(void)setUI{
+    self.array = [NSMutableArray array];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(ClearAll) image:@"" title:@"清空" EdgeInsets:UIEdgeInsetsZero];
 }
 -(void)initData{
     [CircleNet requstCircleDetail:@{@"id":self.moment.ID} withSuc:^(NSMutableArray *successArrValue) {
-        
+        self.array = successArrValue;
+        [self.tab_bottom reloadData];
     }];
 }
 -(void)ClearAll{
@@ -37,13 +40,14 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.array.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CircleCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CircleCell0"];
     if (!cell) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"CircleCell" owner:nil options:nil][0];
     }
+    cell.moment = self.array[indexPath.row];
     return cell;
 }
 @end

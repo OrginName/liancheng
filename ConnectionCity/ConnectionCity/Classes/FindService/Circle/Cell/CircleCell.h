@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Comment.h"
 @interface CircleCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UIImageView *image_Head;
+@property (weak, nonatomic) IBOutlet UILabel *lab_name;
+@property (weak, nonatomic) IBOutlet UILabel *lab_Content;
+@property (weak, nonatomic) IBOutlet UILabel *lab_HF;
+@property (weak, nonatomic) IBOutlet UILabel *lab_time;
+@property (nonatomic,strong)Comment * moment;
 @end

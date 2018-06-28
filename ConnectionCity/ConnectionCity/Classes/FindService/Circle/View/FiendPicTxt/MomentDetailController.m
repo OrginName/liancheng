@@ -12,6 +12,7 @@
 #import "MMImageListView.h"
 #import "Utility.h"
 #import "CircleCell.h"
+#import "privateUserInfoModel.h"
 @interface MomentDetailController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,strong) MomentDetailView * momment;
@@ -28,7 +29,9 @@
 }
 -(void)setUI{
     self.navigationItem.title = @"详情";
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(ClearAll) image:@"" title:@"清空" EdgeInsets:UIEdgeInsetsZero];
+    if ([self.receiveMo.userId isEqualToString:[[YSAccountTool userInfo]ID]]) {
+         self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(ClearAll) image:@"" title:@"清空" EdgeInsets:UIEdgeInsetsZero];
+    } 
     self.momment = [[MomentDetailView alloc] initWithFrame:CGRectZero];
     self.momment.receiveMo = self.receiveMo;
     self.tab_Bottom.tableHeaderView = self.momment;
@@ -36,18 +39,20 @@
     self.momment.Btnblock = ^{
         [YTAlertUtil showTempInfo:@"我是删除"];
     };
+    [self.tab_Bottom reloadData];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.receiveMo.comments.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CircleCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CircleCell1"];
     if (!cell) {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"CircleCell" owner:nil options:nil][1];
+        cell = [[NSBundle mainBundle] loadNibNamed:@"CircleCell" owner:nil options:nil][0];
     }
+    cell.moment =self.receiveMo.comments[indexPath.row];
     return cell;
 }
 @end

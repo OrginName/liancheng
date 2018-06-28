@@ -133,9 +133,9 @@ CGFloat maxLimitHeight = 0;
     _moment = moment;
     // 头像
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:moment.userMo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
-    if ([moment.isDJ isEqualToString:@"1"]) {
-        self.praiseBtn.selected = YES;
-    }
+//    if ([moment isEqualToString:@"1"]) {
+//        self.praiseBtn.selected = YES;
+//    }
     // 昵称
     _nameLab.text = moment.userMo.nickName;
     // 正文

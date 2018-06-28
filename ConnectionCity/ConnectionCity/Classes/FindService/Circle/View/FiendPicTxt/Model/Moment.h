@@ -45,6 +45,7 @@ proStr(cityName);
 proStr(cityCode);
 proStr(createTime);
 proStr(videos);
+proStr(isLike);
 proStr(likeCount);//点赞数
 proStr(images);//图片
 proStr(commentCount);//评论数

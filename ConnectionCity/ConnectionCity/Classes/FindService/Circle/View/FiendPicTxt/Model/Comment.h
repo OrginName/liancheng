@@ -25,4 +25,6 @@ proStr(content);
 proStr(ID);
 proStr(typeName);
 proArr(replyList);
+proStr(createTime);
+proDic(user);
 @end

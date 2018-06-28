@@ -222,9 +222,8 @@
     NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[5] contentArr][4];
     [CircleNet requstCircleDZ:@{@"id":[self.momentList[cell.tag] ID],@"type":mo.value} withSuc:^(NSDictionary *successDicValue) {
-        cell.praiseBtn.selected = YES;
+//        cell.praiseBtn.selected = YES;
         Moment * momet = self.momentList[cell.tag];
-        momet.isDJ = @"1";
         momet.likeCount = [NSString stringWithFormat:@"%ld",[momet.likeCount integerValue]+1];
         [self.momentList replaceObjectAtIndex:cell.tag withObject:momet];
         [self reloadData];

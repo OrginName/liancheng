@@ -77,7 +77,7 @@
                            };
     [CircleNet requstSendPL:dic withSuc:^(NSDictionary *successDicValue) {
         [txt resignFirstResponder];
-        
+        [self.btn_PL setTitle:KString(@"%ld", [self.moment.commentCount integerValue]+1) forState:UIControlStateNormal];
     }];
 }
 - (IBAction)TanClick:(UIButton *)sender {
@@ -119,7 +119,7 @@
 //    long long a = [[YSTools cTimestampFromString:moment.createTime] floatValue];
     self.lab_time.text = [YSTools compareCurrentTime:moment.createTime];
 //    [self.btn_Zan setTitle:KString(@"%@", moment.likeCount) forState:UIControlStateNormal];
-    [self.btn_PL setTitle:KString(@"%@", moment.commentCount) forState:UIControlStateNormal];
+    [self.btn_PL setTitle:KString(@"评论(%@)", moment.commentCount) forState:UIControlStateNormal];
     self.lab_Zan.text = KString(@"%@", moment.likeCount);
     self.like_Zan.text = KString(@"%@", moment.likeCount);
 }

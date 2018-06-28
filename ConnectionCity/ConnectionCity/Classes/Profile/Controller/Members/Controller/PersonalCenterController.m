@@ -78,6 +78,7 @@
     WeakSelf
     [YSNetworkTool POST:v1PrivateUserInfo params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
+        userInfoModel.ID = responseObject[@"data"][@"id"];
         [weakSelf.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"1"]];
         [weakSelf.headImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage]];
         weakSelf.nickName.text = userInfoModel.nickName;

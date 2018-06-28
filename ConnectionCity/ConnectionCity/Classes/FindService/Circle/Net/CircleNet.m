@@ -31,6 +31,7 @@
                     comment.ID = Arr[i][@"obj"][@"comments"][j][@"id"];
                     [commentArr addObject:comment];
                 }
+//                moment.isLike = Arr[i][@"obj"][@"likeCount"]
                 moment.singleWidth = 500;
                 moment.singleHeight = 315;
                 moment.comments = commentArr;
@@ -71,7 +72,17 @@
  */
 +(void)requstCircleDetail:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock{
     [YSNetworkTool POST:v1ServiceCircleInfo params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+        NSMutableArray * arr1 = [NSMutableArray array];
+        Moment * momet = [Moment mj_objectWithKeyValues:responseObject[@"data"]];
+        momet.ID = responseObject[@"data"][@"id"];
+        momet.commentCount = responseObject[@"data"][@"obj"][@"commentCount"];
+        momet.likeCount = responseObject[@"data"][@"obj"][@"likeCount"];
+        NSArray * arr = responseObject[@"data"][@"obj"][@"comments"];
+        for (int i=0; i<arr.count; i++) {
+            Comment * comment = [Comment mj_objectWithKeyValues:arr[i]];
+            [arr1 addObject:comment];
+        }
+        sucBlock(arr1);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

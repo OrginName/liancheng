@@ -92,5 +92,5 @@
 @property (nonatomic, copy) NSString *marriageName;
 /** <#occupationCategoryName描述#> */
 @property (nonatomic, strong) OccupationCategoryNameModel *occupationCategoryName;
-
+proStr(ID);
 @end
