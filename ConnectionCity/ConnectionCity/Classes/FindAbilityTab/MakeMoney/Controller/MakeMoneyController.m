@@ -83,6 +83,15 @@
     self.navigationItem.title = _titleArr[index];
     _currentIndex = index;
 }
+#pragma mark - 接口请求
+- (void)v1TalentTenderCreate:(NSDictionary *)dic{
+    WeakSelf
+    [YSNetworkTool POST:v1TalentTenderPage params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确认" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } completion:nil];
+    } failure:nil];
+}
 
 @end
 

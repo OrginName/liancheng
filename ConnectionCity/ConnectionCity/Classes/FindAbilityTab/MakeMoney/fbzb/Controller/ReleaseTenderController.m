@@ -13,6 +13,8 @@
 #import "LCDatePicker.h"
 #import "JFCityViewController.h"
 #import "PhotoSelect.h"
+#import "QiniuUploader.h"
+#import "ZBJFViewController.h"
 
 @interface ReleaseTenderController ()<LCDatePickerDelegate,JFCityViewControllerDelegate,PhotoSelectDelegate>
 {
@@ -25,8 +27,10 @@
 @property (nonatomic, copy) NSArray<NSString *> *cellTitles;
 /** 发票cell TextField placeHold数据源数组 */
 @property (nonatomic, strong) NSMutableArray<NSString *> *cellPlaceHolds;
-@property (nonatomic,strong) LCDatePicker * myDatePick;
-@property (nonatomic,strong) PhotoSelect * photo;
+@property (nonatomic, strong) LCDatePicker * myDatePick;
+@property (nonatomic, strong) PhotoSelect * photo;
+@property (nonatomic, strong) NSArray *imageArr;
+@property (nonatomic, strong) NSMutableArray *Arr_Url;
 
 @end
 
@@ -51,14 +55,6 @@
     _cellPlaceHolds = [NSMutableArray arrayWithArray:@[@"简单描述招标需求", @"海通物业管理有限公司", @"点选择所在地", @"线上", @"填写招标内容",@"", @"选择开始时间",@"选择截止间",@"填写金额 万元",@"填写联系人姓名",@"填写联系电话"]];
     [self initDate];
 }
-//-(void)setUI{
-//    itemHeigth = (kScreenWidth-70) / 4+10;
-//    self.photo = [[PhotoSelect alloc] initWithFrame:CGRectMake(0, 0, self.tab_Bottom.width, itemHeigth) withController:self];
-//    self.photo.backgroundColor = [UIColor whiteColor];
-//    self.photo.PhotoDelegate = self;
-//    self.photo.allowTakeVideo = NO;
-//    self.tab_Bottom.tableHeaderView = self.photo;
-//}
 - (void)setTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"ReleaseTenderCell" bundle:nil] forCellReuseIdentifier:@"ReleaseTenderCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ReleaseTenderAdditionalCell" bundle:nil] forCellReuseIdentifier:@"ReleaseTenderAdditionalCell"];
@@ -79,6 +75,7 @@
     self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
     self.myDatePick.delegate  = self;
     [self.view addSubview:self.myDatePick];
+    self.Arr_Url = [NSMutableArray array];
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -123,14 +120,11 @@
     }
     
     if(indexPath.row!=5){
-//        ReleaseTenderCell * cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section]];
         EditAllController * edit = [EditAllController new];
         WeakSelf
         edit.block = ^(NSString * str){
-//            cell.detailLab.text = str;
             weakSelf.cellPlaceHolds[indexPath.row] = str;
-            [weakSelf.tableView reloadData];
-//            [self.Dic2 setValue:str forKey:[NSString stringWithFormat:@"%ld",indexPath.section]];
+            [weakSelf.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
         };
         [self.navigationController pushViewController:edit animated:YES];
 
@@ -171,83 +165,78 @@
 #pragma mark ---LCDatePickerDelegate-----
 - (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
     self.cellPlaceHolds[currtenTag] = str;
-    [self.tableView reloadData];
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:currtenTag inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
 }
 #pragma mark - JFCityViewControllerDelegate
 - (void)cityName:(NSString *)name {
     self.cellPlaceHolds[2] = name;
-    [self.tableView reloadData];
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:2 inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
 }
 -(void)cityMo:(CityMo *)mo{
-    
 //    [self requestPrivateUserUpdateWithDic:@{@"areaCode": mo.ID}];
 }
 #pragma mark ----PhotoSelectDelegate-----
 -(void)selectImageArr:(NSArray *)imageArr{
     NSLog(@"%lu",(unsigned long)imageArr.count);
-    //    __block int flag=0;
-//    if (imageArr.count>=4) {
-//        self.photo.height = itemHeigth*2;
-//        UIView *headerView = self.tab_Bottom.tableHeaderView;
-//        headerView.height = self.photo.height;
-//        [self.tab_Bottom beginUpdates];
-//        [self.tab_Bottom setTableHeaderView:headerView];// 关键是这句话
-//        [self.tab_Bottom endUpdates];
-//    }
-//    [self.Arr_Url addObjectsFromArray:imageArr];
-    //    [YTAlertUtil showHUDWithTitle:@"正在上传"];
-    //    for (int i=0; i<imageArr.count; i++) {
-    //        [[QiniuUploader defaultUploader] uploadImageToQNFilePath:imageArr[i] withBlock:^(NSDictionary *url) {
-    //            flag++;
-    //            [self.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
-    //            if (flag == imageArr.count) {
-    //                [YTAlertUtil hideHUD];
-    //            }
-    //        }];
-    //    }
+    self.imageArr = imageArr;
+
 }
 -(void)selectImage:(UIImage *) image arr:(NSArray *)imageArr{
+    NSLog(@"%lu",(unsigned long)imageArr.count);
+    self.imageArr = imageArr;
     
-//    if (imageArr.count>=4) {
-//        self.photo.height = itemHeigth*2;
-//        UIView *headerView = self.tab_Bottom.tableHeaderView;
-//        headerView.height = self.photo.height;
-//        [self.tab_Bottom beginUpdates];
-//        [self.tab_Bottom setTableHeaderView:headerView];// 关键是这句话
-//        [self.tab_Bottom endUpdates];
-//    }
-//    [self.Arr_Url addObjectsFromArray:imageArr];
-    //    [YTAlertUtil showHUDWithTitle:@"正在上传"];
-    //    [[QiniuUploader defaultUploader] uploadImageToQNFilePath:image withBlock:^(NSDictionary *url) {
-    //        [YTAlertUtil hideHUD];
-    //        [self.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
-    //    }];
 }
 -(void)deleteImage:(NSInteger) tag arr:(NSArray *)imageArr{
-    
-//    if (imageArr.count<=4) {
-//        self.photo.height = itemHeigth;
-//        UIView *headerView = self.tab_Bottom.tableHeaderView;
-//        headerView.height = self.photo.height;
-//        [self.tab_Bottom beginUpdates];
-//        [self.tab_Bottom setTableHeaderView:headerView];// 关键是这句话
-//        [self.tab_Bottom endUpdates];
-//    }
-//    [self.Arr_Url removeObjectAtIndex:tag];
+    NSLog(@"%lu",(unsigned long)imageArr.count);
+    self.imageArr = imageArr;
 }
 #pragma mark - 点击事件
 - (void)nextBtnClick:(UIButton *)btn {
+    ZBJFViewController *zbjfVC = [[ZBJFViewController alloc]init];
+    [self.navigationController pushViewController:zbjfVC animated:YES];
     
+    if (self.imageArr.count!=0) {
+        [YTAlertUtil showHUDWithTitle:@"正在上传"];
+    }
+    __block int flag = 0;
+    WeakSelf
+    for (int i=0; i<self.imageArr.count; i++) {
+        [[QiniuUploader defaultUploader] uploadImageToQNFilePath:self.imageArr[i] withBlock:^(NSDictionary *url) {
+            flag++;
+            [weakSelf.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
+            if (flag == weakSelf.imageArr.count) {
+                [YTAlertUtil hideHUD];
+                /*
+                NSDictionary *dic = @{
+                                      @"areaCode": [KUserDefults objectForKey:kUserCityID],
+                                      @"company": weakSelf.cellPlaceHolds[1],
+                                      @"contactMobile": weakSelf.cellPlaceHolds[10],
+                                      @"contactName": weakSelf.cellPlaceHolds[9],
+                                      @"content": weakSelf.cellPlaceHolds[4],
+                                      @"depositAmount": weakSelf.cellPlaceHolds[8],
+                                      @"lat": [KUserDefults objectForKey:kLat],
+                                      @"lng": [KUserDefults objectForKey:KLng],
+                                      @"tenderAddress": weakSelf.cellPlaceHolds[3],
+                                      @"tenderEndDate": weakSelf.cellPlaceHolds[7],
+                                      @"tenderImages": [weakSelf.Arr_Url componentsJoinedByString:@","],
+                                      @"tenderStartDate": weakSelf.cellPlaceHolds[6],
+                                      @"title": weakSelf.cellPlaceHolds[0]
+                                      };
+                [weakSelf v1TalentTenderCreate:dic];
+                 */
+            }
+        }];
+    }
 }
-
 #pragma mark - 接口请求
-- (void)v1TalentTenderCreate{
-    NSInteger areaCode = [[KUserDefults objectForKey:kUserCityID] integerValue];
-    float lat = [[KUserDefults objectForKey:kLat] floatValue];
-    float lng = [[KUserDefults objectForKey:KLng] floatValue];
-
-    [YSNetworkTool POST:v1TalentTenderCreate params:nil showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+- (void)v1TalentTenderCreate:(NSDictionary *)dic{
+    WeakSelf
+    [YSNetworkTool POST:v1TalentTenderCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确认" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } completion:nil];
     } failure:nil];
 }
 

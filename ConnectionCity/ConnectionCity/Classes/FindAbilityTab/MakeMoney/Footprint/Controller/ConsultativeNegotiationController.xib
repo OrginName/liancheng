@@ -22,37 +22,47 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Kvb-x8-Hwb">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="590"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="hjN-Xq-DD2"/>
                         <outlet property="delegate" destination="-1" id="YMT-AW-E6R"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0J-Jl-x0U">
-                    <rect key="frame" x="28" y="600" width="319" height="33"/>
-                    <color key="backgroundColor" red="0.99866181610000004" green="0.30638954039999999" blue="0.3146980405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHG-Xj-qVD">
+                    <rect key="frame" x="10" y="607" width="355" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0J-Jl-x0U">
+                            <rect key="frame" x="28" y="9" width="299" height="32"/>
+                            <color key="backgroundColor" red="0.99866181610000004" green="0.30638954039999999" blue="0.3146980405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" title="提   交">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="commitBtnClick:" destination="-1" eventType="touchUpInside" id="6Ig-8C-Kft"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="33" id="KYS-bN-uTx"/>
+                        <constraint firstAttribute="height" constant="50" id="CaQ-8w-5DQ"/>
+                        <constraint firstItem="a0J-Jl-x0U" firstAttribute="leading" secondItem="iHG-Xj-qVD" secondAttribute="leading" constant="28" id="WOk-j6-lUB"/>
+                        <constraint firstAttribute="trailing" secondItem="a0J-Jl-x0U" secondAttribute="trailing" constant="28" id="d4w-8e-1ew"/>
+                        <constraint firstAttribute="bottom" secondItem="a0J-Jl-x0U" secondAttribute="bottom" constant="9" id="n4v-wc-Wb5"/>
+                        <constraint firstItem="a0J-Jl-x0U" firstAttribute="top" secondItem="iHG-Xj-qVD" secondAttribute="top" constant="9" id="ykc-uR-l2C"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <state key="normal" title="提   交">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="commitBtnClick:" destination="-1" eventType="touchUpInside" id="6Ig-8C-Kft"/>
-                    </connections>
-                </button>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="a0J-Jl-x0U" firstAttribute="top" secondItem="Kvb-x8-Hwb" secondAttribute="bottom" constant="10" id="2gn-Fw-cpn"/>
                 <constraint firstItem="Kvb-x8-Hwb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="LB5-wb-38P"/>
-                <constraint firstAttribute="bottom" secondItem="a0J-Jl-x0U" secondAttribute="bottom" constant="34" id="LEo-kG-3xP"/>
-                <constraint firstItem="a0J-Jl-x0U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="28" id="Z9e-62-xrc"/>
-                <constraint firstAttribute="trailing" secondItem="a0J-Jl-x0U" secondAttribute="trailing" constant="28" id="mwL-k1-Rex"/>
+                <constraint firstAttribute="trailing" secondItem="iHG-Xj-qVD" secondAttribute="trailing" constant="10" id="TSu-88-fAQ"/>
+                <constraint firstAttribute="bottom" secondItem="iHG-Xj-qVD" secondAttribute="bottom" constant="10" id="b8Q-yt-CWu"/>
+                <constraint firstItem="iHG-Xj-qVD" firstAttribute="top" secondItem="Kvb-x8-Hwb" secondAttribute="bottom" constant="10" id="kJN-tu-ynV"/>
                 <constraint firstAttribute="trailing" secondItem="Kvb-x8-Hwb" secondAttribute="trailing" id="tWx-N3-pKq"/>
                 <constraint firstItem="Kvb-x8-Hwb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ucV-40-ZUP"/>
+                <constraint firstItem="iHG-Xj-qVD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="yZu-xb-6uC"/>
             </constraints>
             <point key="canvasLocation" x="32.5" y="101.5"/>
         </view>

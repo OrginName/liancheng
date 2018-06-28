@@ -391,6 +391,8 @@
 		CE97DBFB20B5AE9F003E46BD /* ReleaseTenderAdditionalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE97DBF920B5AE9F003E46BD /* ReleaseTenderAdditionalCell.xib */; };
 		CE97DC0720B5B1CA003E46BD /* BidManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97DC0520B5B1CA003E46BD /* BidManageController.m */; };
 		CE97DC0820B5B1CA003E46BD /* BidManageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE97DC0620B5B1CA003E46BD /* BidManageController.xib */; };
+		CE9B9A4620E533B5005C47B2 /* ZBJFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B9A4420E533B5005C47B2 /* ZBJFViewController.m */; };
+		CE9B9A4720E533B5005C47B2 /* ZBJFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9B9A4520E533B5005C47B2 /* ZBJFViewController.xib */; };
 		CEBEDD7D20B17ED1000F9EE4 /* WinningBidderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBEDD5920B17ED0000F9EE4 /* WinningBidderCell.m */; };
 		CEBEDD7E20B17ED1000F9EE4 /* WinningBidderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBEDD5A20B17ED0000F9EE4 /* WinningBidderController.xib */; };
 		CEBEDD7F20B17ED1000F9EE4 /* WinningBidderController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBEDD5B20B17ED0000F9EE4 /* WinningBidderController.m */; };
@@ -1134,6 +1136,9 @@
 		CE97DC0420B5B1CA003E46BD /* BidManageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidManageController.h; sourceTree = "<group>"; };
 		CE97DC0520B5B1CA003E46BD /* BidManageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidManageController.m; sourceTree = "<group>"; };
 		CE97DC0620B5B1CA003E46BD /* BidManageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BidManageController.xib; sourceTree = "<group>"; };
+		CE9B9A4320E533B5005C47B2 /* ZBJFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBJFViewController.h; sourceTree = "<group>"; };
+		CE9B9A4420E533B5005C47B2 /* ZBJFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBJFViewController.m; sourceTree = "<group>"; };
+		CE9B9A4520E533B5005C47B2 /* ZBJFViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZBJFViewController.xib; sourceTree = "<group>"; };
 		CEBEDD5820B17ED0000F9EE4 /* WinningBidderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinningBidderController.h; sourceTree = "<group>"; };
 		CEBEDD5920B17ED0000F9EE4 /* WinningBidderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WinningBidderCell.m; sourceTree = "<group>"; };
 		CEBEDD5A20B17ED0000F9EE4 /* WinningBidderController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WinningBidderController.xib; sourceTree = "<group>"; };
@@ -2942,6 +2947,9 @@
 				CE03EDFD20B467EC00F07D78 /* ReleaseTenderController.h */,
 				CE03EDFE20B467EC00F07D78 /* ReleaseTenderController.m */,
 				CE03EDFF20B467EC00F07D78 /* ReleaseTenderController.xib */,
+				CE9B9A4320E533B5005C47B2 /* ZBJFViewController.h */,
+				CE9B9A4420E533B5005C47B2 /* ZBJFViewController.m */,
+				CE9B9A4520E533B5005C47B2 /* ZBJFViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3459,6 +3467,7 @@
 				CE5C281720B91B47006A8332 /* WinnerInfoHeadView.xib in Resources */,
 				CEC4A52B20C3D6AE0026EE19 /* TeamInfoController.xib in Resources */,
 				8D50C56120C66EAF0095A824 /* OurServiceController.xib in Resources */,
+				CE9B9A4720E533B5005C47B2 /* ZBJFViewController.xib in Resources */,
 				8D22C34220C77C0F004DC8F4 /* SkillCertificationController.xib in Resources */,
 				8D09E18220BFB49A000F7EBD /* SendTripController.xib in Resources */,
 				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
@@ -3744,6 +3753,7 @@
 				CEBEDD7D20B17ED1000F9EE4 /* WinningBidderCell.m in Sources */,
 				CE21F0EF20DF94A800478482 /* WorkExperienceListModel.m in Sources */,
 				CE6BEC2C20C970C1003B36D7 /* EditProfileHeadView.m in Sources */,
+				CE9B9A4620E533B5005C47B2 /* ZBJFViewController.m in Sources */,
 				72EC1B5120B6EAB600ACC20B /* SendTreasureController.m in Sources */,
 				CE0BA60E209D6126004C3C33 /* AddressBookController.m in Sources */,
 				7274190F20B4036E001D6BE1 /* TZTestCell.m in Sources */,
@@ -4039,7 +4049,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";
@@ -4061,7 +4071,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";
