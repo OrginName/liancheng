@@ -114,7 +114,7 @@ static NSInteger i;//判断当前返回按钮点击次数
 //我的
 -(FriendMyselfTab *)frendMyselfTab{
     if (!_frendMyselfTab) {
-        _frendMyselfTab = [[FriendMyselfTab alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth-20, kScreenHeight-134) style:UITableViewStyleGrouped];
+        _frendMyselfTab = [[FriendMyselfTab alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth-20, kScreenHeight-134) style:UITableViewStyleGrouped withControll:self];
         _frendMyselfTab.hidden = YES;
     }
     return _frendMyselfTab;

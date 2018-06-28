@@ -36,7 +36,7 @@
                         <rect key="frame" x="59" y="15.5" width="63" height="51"/>
                     </imageView>
                 </subviews>
-                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="u5J-ft-ZwJ" secondAttribute="trailing" id="2Dz-aK-y7I"/>
                     <constraint firstItem="KPp-Cf-i9P" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="7Y5-Js-3yK"/>
@@ -47,6 +47,8 @@
                     <constraint firstAttribute="bottom" secondItem="u5J-ft-ZwJ" secondAttribute="bottom" id="wGg-Rq-IFA"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="image_photo" destination="88A-bE-7ur" id="W6p-4v-ubU"/>
                 <outlet property="lab_Time" destination="KPp-Cf-i9P" id="UWM-qq-XWO"/>

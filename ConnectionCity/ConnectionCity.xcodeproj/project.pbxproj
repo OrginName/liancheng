@@ -1798,7 +1798,6 @@
 				8DC17A7220C0E430005D9EE0 /* Cell */,
 				8DC17A5B20C0E430005D9EE0 /* View */,
 				72EC1B8120BC307E00ACC20B /* Controller */,
-				72EC1B8220BC307E00ACC20B /* Models */,
 			);
 			path = Circle;
 			sourceTree = "<group>";
@@ -1814,13 +1813,6 @@
 				8DEA450820C1148C001529F1 /* SendMomentController.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		72EC1B8220BC307E00ACC20B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		72EC1B8420BC307E00ACC20B /* Profile */ = {
@@ -2579,6 +2571,7 @@
 				72BAB43720B047F500496D29 /* YSButton.h */,
 				72BAB43820B047F500496D29 /* YSButton.m */,
 				CE0BA5BF209D5E9B004C3C33 /* YSTools.h */,
+				CE0BA5D2209D5E9B004C3C33 /* YSTools.m */,
 				CE0BA5C1209D5E9B004C3C33 /* YTSystemUtil.m */,
 				CE0BA5C2209D5E9B004C3C33 /* YTDataPacket.m */,
 				CE0BA5C3209D5E9B004C3C33 /* YSNetworkTool.h */,
@@ -2593,7 +2586,6 @@
 				CE0BA5CD209D5E9B004C3C33 /* YSBlutoothTool.h */,
 				CE0BA5CF209D5E9B004C3C33 /* YTDataPacket.h */,
 				CE0BA5D0209D5E9B004C3C33 /* YTSystemUtil.h */,
-				CE0BA5D2209D5E9B004C3C33 /* YSTools.m */,
 				CE0BA5D3209D5E9B004C3C33 /* YSAccountTool.h */,
 				CE0BA5D4209D5E9B004C3C33 /* DDFileReader.h */,
 				CE0BA5D5209D5E9B004C3C33 /* TakePhoto.h */,
@@ -2613,12 +2605,12 @@
 		CE0BA5EC209D5EBD004C3C33 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				CE0BA5ED209D5EBD004C3C33 /* BaseViewController.m */,
 				CE0BA5F5209D5EBD004C3C33 /* BaseViewController.h */,
+				CE0BA5ED209D5EBD004C3C33 /* BaseViewController.m */,
+				CE0BA5F2209D5EBD004C3C33 /* BaseModel.h */,
 				CE0BA5F0209D5EBD004C3C33 /* BaseModel.m */,
 				CE0BA5F6209D5EBD004C3C33 /* YTBaseTableViewController.h */,
 				CE0BA5F1209D5EBD004C3C33 /* YTBaseTableViewController.m */,
-				CE0BA5F2209D5EBD004C3C33 /* BaseModel.h */,
 				CE0BA5F3209D5EBD004C3C33 /* BaseNavigationController.h */,
 				CE0BA5EF209D5EBD004C3C33 /* BaseNavigationController.m */,
 				CE0BA5EE209D5EBD004C3C33 /* BaseTabBarController.h */,

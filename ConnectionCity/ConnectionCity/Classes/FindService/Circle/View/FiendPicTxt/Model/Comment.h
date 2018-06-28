@@ -10,7 +10,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Comment : NSObject
+@interface Comment : BaseModel<NSCoding>
 
 // 正文
 @property (nonatomic,copy) NSString *text;
@@ -21,4 +21,8 @@
 // 关联动态的PK
 @property (nonatomic,assign) int pk;
 
+proStr(content);
+proStr(ID);
+proStr(typeName);
+proArr(replyList);
 @end

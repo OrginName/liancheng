@@ -33,6 +33,7 @@ CGFloat maxLimitHeight = 0;
 
 - (void)setUpUI
 {
+    
     // 头像视图
     _headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, kBlank, kFaceWidth, kFaceWidth)];
     _headImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -81,15 +82,16 @@ CGFloat maxLimitHeight = 0;
     _praiseBtn = [[UIButton alloc] init];
     _praiseBtn.titleLabel.font = [UIFont systemFontOfSize:12.0f];
     _praiseBtn.backgroundColor = [UIColor clearColor];
-    [_praiseBtn setTitle:@"点赞(222)" forState:UIControlStateNormal];
+    [_praiseBtn setTitle:@"点赞(999+)" forState:UIControlStateNormal];
     [_praiseBtn setTitleColor:TitleColor forState:UIControlStateNormal];
+    [_praiseBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
     [_praiseBtn addTarget:self action:@selector(priseMoment:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_praiseBtn];
     //评论
     _commentBtn = [[UIButton alloc] init];
     _commentBtn.titleLabel.font = [UIFont systemFontOfSize:12.0f];
     _commentBtn.backgroundColor = [UIColor clearColor];
-    [_commentBtn setTitle:@"评论(22)" forState:UIControlStateNormal];
+    [_commentBtn setTitle:@"评论(999+)" forState:UIControlStateNormal];
     [_commentBtn setTitleColor:TitleColor forState:UIControlStateNormal];
     [_commentBtn addTarget:self action:@selector(commentMoment:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_commentBtn];
@@ -131,6 +133,9 @@ CGFloat maxLimitHeight = 0;
     _moment = moment;
     // 头像
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:moment.userMo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    if ([moment.isDJ isEqualToString:@"1"]) {
+        self.praiseBtn.selected = YES;
+    }
     // 昵称
     _nameLab.text = moment.userMo.nickName;
     // 正文
@@ -168,9 +173,8 @@ CGFloat maxLimitHeight = 0;
     }
     // 位置
     _locationLab.frame = CGRectMake(_nameLab.left, bottom, _nameLab.width, kTimeLabelH);
-    long long a = [[YSTools cTimestampFromString:moment.createTime] floatValue];
-    _timeLab.text = [NSString stringWithFormat:@"%@",[Utility getDateFormatByTimestamp:a]];
-//    _timeLab.text = [YSTools jitianqian:moment.createTime];
+//    long long a = [[YSTools cTimestampFromString:moment.createTime] floatValue];
+    _timeLab.text = [YSTools compareCurrentTime:moment.createTime];
     CGFloat textW = [_timeLab.text boundingRectWithSize:CGSizeMake(200, kTimeLabelH)
                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                              attributes:@{NSFontAttributeName:_timeLab.font}
@@ -183,12 +187,14 @@ CGFloat maxLimitHeight = 0;
         _locationLab.hidden = YES;
         _timeLab.frame = CGRectMake(_nameLab.left, bottom, textW, kTimeLabelH);
     }
+    [_praiseBtn setTitle:[NSString stringWithFormat:@"点赞(%@)",moment.likeCount?moment.likeCount:@"999+"] forState:UIControlStateNormal];
+    [_commentBtn setTitle:[NSString stringWithFormat:@"评论(%@)",moment.commentCount?moment.commentCount:@"999+"] forState:UIControlStateNormal];
     _praiseBtn.frame = CGRectMake(_timeLab.right+1, _timeLab.top, 60, kTimeLabelH);
     _commentBtn.frame = CGRectMake(_praiseBtn.right+1, _timeLab.top, 60, kTimeLabelH);
     _shareBtn.frame = CGRectMake(_commentBtn.right+1, _timeLab.top, 40, kTimeLabelH);
     _letterBtn.frame = CGRectMake(_shareBtn.right+1, _timeLab.top, 40, kTimeLabelH);
+    
     bottom = _timeLab.bottom + kPaddingValue;
-     
     // 处理评论/赞
     _commentView.frame = CGRectZero;
     _bgImageView.frame = CGRectZero;
@@ -212,11 +218,11 @@ CGFloat maxLimitHeight = 0;
         top = attrStrSize.height + 15;
     }
     // 处理评论
-    NSInteger count = [moment.commentList count];
+    NSInteger count = [moment.comments count];
     if (count > 0) {
         for (NSInteger i = 0; i < count; i ++) {
             CommentLabel *label = [[CommentLabel alloc] initWithFrame:CGRectMake(0, top, width, 0)];
-            label.comment = [moment.commentList objectAtIndex:i];
+            label.comment = [moment.comments objectAtIndex:i];
             [label setDidClickText:^(Comment *comment) {
                 if ([self.delegate respondsToSelector:@selector(didSelectComment:)]) {
                     [self.delegate didSelectComment:comment];
@@ -283,12 +289,12 @@ CGFloat maxLimitHeight = 0;
         height += [linkLab preferredSizeWithMaxWidth:kTextWidth].height + 15;
     }
     // 评论
-    NSInteger count = [moment.commentList count];
+    NSInteger count = [moment.comments count];
     if (count > 0) {
         addH = kArrowHeight;
         MLLinkLabel *linkLab = kMLLinkLabel();
         for (NSInteger i = 0; i < count; i ++) {
-            linkLab.attributedText = kMLLinkLabelAttributedText([moment.commentList objectAtIndex:i]);
+            linkLab.attributedText = kMLLinkLabelAttributedText([moment.comments objectAtIndex:i]);
             CGFloat commentH = [linkLab preferredSizeWithMaxWidth:kTextWidth].height + 5;
             height += commentH;
         }

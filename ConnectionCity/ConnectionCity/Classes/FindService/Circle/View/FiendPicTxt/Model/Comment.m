@@ -9,5 +9,5 @@
 #import "Comment.h"
 
 @implementation Comment
-
+MJCodingImplementation
 @end

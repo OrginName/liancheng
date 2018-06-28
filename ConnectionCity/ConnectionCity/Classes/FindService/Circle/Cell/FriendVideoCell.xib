@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,10 +41,15 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PF5-Y3-R2A">
-                        <rect key="frame" x="158" y="278" width="50" height="16"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PF5-Y3-R2A">
+                        <rect key="frame" x="144" y="278" width="64" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="Amj-Aj-Q6d"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <state key="normal" title="115赞" image="s-praise"/>
+                        <inset key="titleEdgeInsets" minX="1" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="99赞" image="s-praise"/>
+                        <state key="selected" image="s-praise1"/>
                         <connections>
                             <action selector="btnClick:" destination="gTV-IL-0wX" eventType="touchUpInside" id="vB6-L6-Zok"/>
                         </connections>
@@ -81,12 +86,13 @@
                 <outlet property="lab_User" destination="Bch-W5-zY8" id="DS0-no-KGl"/>
                 <outlet property="lab_content" destination="XhF-tU-1DA" id="La9-ck-r4v"/>
             </connections>
-            <point key="canvasLocation" x="-45" y="-37"/>
+            <point key="canvasLocation" x="-45" y="-37.5"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="1" width="639" height="512"/>
         <image name="button" width="51" height="51"/>
         <image name="s-praise" width="16" height="16"/>
+        <image name="s-praise1" width="16" height="16"/>
     </resources>
 </document>

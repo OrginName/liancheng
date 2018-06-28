@@ -29,7 +29,7 @@ NSMutableAttributedString *kMLLinkLabelAttributedText(id object)
     if ([object isKindOfClass:[Comment class]])
     {
         Comment *comment = (Comment *)object;
-        if (comment.pk % 2 == 0) {
+        if (comment.pk > 0) {
             NSString *likeString  = [NSString stringWithFormat:@"Jeanne回复%@：%@",comment.userName,comment.text];
             attributedText = [[NSMutableAttributedString alloc] initWithString:likeString];
             [attributedText setAttributes:@{NSFontAttributeName:kComHLTextFont,NSLinkAttributeName:@"Jeanne"}
@@ -37,10 +37,10 @@ NSMutableAttributedString *kMLLinkLabelAttributedText(id object)
             [attributedText setAttributes:@{NSFontAttributeName:kComHLTextFont,NSLinkAttributeName:comment.userName}
                                     range:[likeString rangeOfString:comment.userName]];
         } else {
-            NSString *likeString  = [NSString stringWithFormat:@"%@：%@",comment.userName,comment.text];
+            NSString *likeString  = [NSString stringWithFormat:@"%@：%@",comment.typeName,comment.content];
             attributedText = [[NSMutableAttributedString alloc] initWithString:likeString];
-            [attributedText setAttributes:@{NSFontAttributeName:kComHLTextFont,NSLinkAttributeName:comment.userName}
-                                    range:[likeString rangeOfString:comment.userName]];
+            [attributedText setAttributes:@{NSFontAttributeName:kComHLTextFont,NSLinkAttributeName:comment.typeName,NSStrokeColorAttributeName:[UIColor lightGrayColor]}
+                                    range:[likeString rangeOfString:comment.typeName]];
         }
     }
     if ([object isKindOfClass:[NSString class]])

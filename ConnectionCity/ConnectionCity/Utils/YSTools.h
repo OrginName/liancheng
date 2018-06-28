@@ -20,7 +20,7 @@
 #pragma mark 功能暂未开通提示框
 + (void)gongNengZanWeiKaiTongTiShiKuangWithVC:(UIViewController *)vc;
 #pragma mark 判断时间是几天前几月前几年前
-+ (NSString *)jitianqian:(NSString *)str;
++ (NSString *) compareCurrentTime:(NSString *)str;
 #pragma mark 设置颜色的渐变
 - (CAGradientLayer *)shadowAsInverse;
 #pragma mark 弹簧效果

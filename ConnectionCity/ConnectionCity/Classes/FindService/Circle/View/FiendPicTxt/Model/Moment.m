@@ -10,4 +10,6 @@
 
 @implementation Moment
 
+MJCodingImplementation
+
 @end

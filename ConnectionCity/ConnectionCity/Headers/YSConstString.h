@@ -57,7 +57,7 @@
 #define WeakSelf __weak typeof(self) weakSelf = self;
 /**存储*/
 #define KUserDefults [NSUserDefaults standardUserDefaults]
-
+#define KWindowView [[UIApplication sharedApplication].keyWindow.rootViewController view]
 /** 主WINDOW */
 #define kWindow            [[UIApplication sharedApplication].windows objectAtIndex:0]
 /** 获取版本 */

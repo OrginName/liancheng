@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "Moment.h"
 @interface EvaluationController : BaseViewController
-
+@property (nonatomic,strong)Moment * moment;
 @end

@@ -14,7 +14,7 @@
  
  @param sucBlock 成功回调
  */
-+(void)requstCirclelDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock{
++(void)requstCirclelDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock FailErrBlock:(FailErrBlock)failErrBlock{
     [YSNetworkTool POST:v1ServiceCirclePage params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray * arr = [NSMutableArray array];
         NSArray * Arr = responseObject[@"data"][@"content"];
@@ -25,22 +25,66 @@
                 Moment * moment = [Moment  mj_objectWithKeyValues:Arr[i]];
                 moment.ID = Arr[i][@"id"];
                 moment.userMo = [UserMo mj_objectWithKeyValues:Arr[i][@"obj"][@"user"]];
+                NSMutableArray * commentArr = [NSMutableArray array];
+                for (int j=0; j<[Arr[i][@"obj"][@"comments"] count]; j++) {
+                    Comment * comment = [Comment mj_objectWithKeyValues:Arr[i][@"obj"][@"comments"][j]];
+                    comment.ID = Arr[i][@"obj"][@"comments"][j][@"id"];
+                    [commentArr addObject:comment];
+                }
+                moment.singleWidth = 500;
+                moment.singleHeight = 315;
+                moment.comments = commentArr;
                 moment.likeCount = Arr[i][@"obj"][@"likeCount"];
+                moment.commentCount = Arr[i][@"obj"][@"commentCount"];
                 if (moment.videos.length!=0&&[moment.videos containsString:@"http"]) {
                     moment.coverImage = [UIImage thumbnailOfAVAsset:[NSURL URLWithString:moment.videos]];
-                }else
+                }else{
                     moment.coverImage = [UIImage imageNamed:@"no-pic"];
-                //            moment.singleWidth = 500;
-                NSMutableArray * imageArr = [[moment.images componentsSeparatedByString:@";"] mutableCopy];
-                [imageArr removeLastObject];
-                moment.fileCount = [imageArr count];
-                //            moment.singleHeight = 315;
+                    NSMutableArray * imageArr = [[moment.images componentsSeparatedByString:@";"] mutableCopy];
+                    [imageArr removeLastObject];
+                    moment.fileCount = [imageArr count];
+                }
                 [arr addObject:moment];
             }
+            
         }
         sucBlock(arr);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failErrBlock(error);
+    }];
+}
+/**
+ 评论发送列表
+ 
+ @param sucBlock 成功回调
+ */
++(void)requstSendPL:(NSDictionary *) param withSuc:(SuccessDicBlock)sucBlock{
+    [YSNetworkTool POST:v1CommonCommentCreate params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        sucBlock(responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-} 
+}
+/**
+ 圈子详情
+ @param sucBlock 成功回调
+ */
++(void)requstCircleDetail:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock{
+    [YSNetworkTool POST:v1ServiceCircleInfo params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+/**
+ 点赞接口
+ @param sucBlock 成功回调
+ */
++(void)requstCircleDZ:(NSDictionary *) param withSuc:(SuccessDicBlock)sucBlock{
+    [YSNetworkTool POST:v1CommonCommentAddlike params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        sucBlock(responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
 @end

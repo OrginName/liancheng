@@ -8,6 +8,7 @@
 
 #import "EvaluationController.h"
 #import "CircleCell.h"
+#import "CircleNet.h"
 @interface EvaluationController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tab_bottom;
 
@@ -19,9 +20,15 @@
     [super viewDidLoad];
     self.navigationItem.title = @"评论";
     [self setUI];
+    [self initData];
 }
 -(void)setUI{
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(ClearAll) image:@"" title:@"清空" EdgeInsets:UIEdgeInsetsZero];
+}
+-(void)initData{
+    [CircleNet requstCircleDetail:@{@"id":self.moment.ID} withSuc:^(NSMutableArray *successArrValue) {
+        
+    }];
 }
 -(void)ClearAll{
     [YTAlertUtil showTempInfo:@"清空"];

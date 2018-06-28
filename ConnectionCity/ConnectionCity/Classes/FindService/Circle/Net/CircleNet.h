@@ -12,7 +12,7 @@
  */
 typedef void (^SuccessArrBlock) (NSMutableArray * successArrValue);
 typedef void (^SuccessDicBlock) (NSDictionary * successDicValue);
-typedef void (^FailDicBlock) (NSString * failValue);
+typedef void (^FailErrBlock) (NSError * failValue);
 
 @interface CircleNet : NSObject
 /**
@@ -20,6 +20,22 @@ typedef void (^FailDicBlock) (NSString * failValue);
  
  @param sucBlock 成功回调
  */
-+(void)requstCirclelDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock;
++(void)requstCirclelDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock FailErrBlock:(FailErrBlock)failErrBlock;
+/**
+ 评论发送列表
+ 
+ @param sucBlock 成功回调
+ */
++(void)requstSendPL:(NSDictionary *) param withSuc:(SuccessDicBlock)sucBlock;
+/**
+ 评论发送列表
+ @param sucBlock 成功回调
+ */
++(void)requstCircleDetail:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock;
+/**
+ 点赞接口
+ @param sucBlock 成功回调
+ */
++(void)requstCircleDZ:(NSDictionary *) param withSuc:(SuccessDicBlock)sucBlock;
 
 @end

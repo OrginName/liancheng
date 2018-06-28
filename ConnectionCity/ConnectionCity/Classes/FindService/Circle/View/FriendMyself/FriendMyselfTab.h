@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FriendMyselfTab : UITableView
-
+-(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style withControll:(UIViewController *)control;
 @end

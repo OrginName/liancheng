@@ -30,16 +30,24 @@
         [self registerNib:[UINib nibWithNibName:@"FriendVideoCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"VideoCell"];
         self.delegate = self;
         self.dataSource = self;
+        
+        NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"VIDEO"]];
+        [self defultData:arr];
         [self initData];
         _page = 1;
     }
     return self;
 }
+-(void)defultData:(NSArray *)arr{
+    if (arr.count!=0) {
+        [self.data_Arr addObjectsFromArray:arr];
+        [self reloadData];
+    }
+}
 //初始化数据
 -(void)initData{
     self.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         _page=1;
-        [self.data_Arr removeAllObjects];
         [self loadDataFriendList];
     }];
     self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
@@ -56,11 +64,18 @@
                            @"pageSize": @15
                            };
     [CircleNet requstCirclelDic:dic withSuc:^(NSMutableArray *successArrValue) {
+        if (_page==1) {
+            [self.data_Arr removeAllObjects];
+        }
         _page++;
         [self.mj_header endRefreshing];
         [self.mj_footer endRefreshing];
         [self.data_Arr addObjectsFromArray:successArrValue];
+        [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:self.data_Arr] forKey:@"VIDEO"];
         [self reloadData];
+    }FailErrBlock:^(NSError *failValue) {
+        [self.mj_header endRefreshing];
+        [self.mj_footer endRefreshing];
     }];
 }
 #pragma mark UICollectionViewDataSource 数据源方法

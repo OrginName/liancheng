@@ -10,8 +10,8 @@
 
 #import <Foundation/Foundation.h>
 #import "UserMo.h"
-@interface Moment : BaseModel
-
+#import "Comment.h"
+@interface Moment : BaseModel<NSCoding>
 // 正文
 @property (nonatomic,copy) NSString *text;
 // 发布位置
@@ -37,6 +37,7 @@
 
 @property (nonatomic,assign) CGFloat cellHeight;
 
+proStr(isDJ);//是否点赞
 proStr(userId);
 proStr(ID);
 proStr(content);
@@ -46,7 +47,8 @@ proStr(createTime);
 proStr(videos);
 proStr(likeCount);//点赞数
 proStr(images);//图片
-proArr(comments);//不知道是不是评价先放着
+proStr(commentCount);//评论数
+ProMutArr(comments);//不知道是不是评价先放着
 @property (nonatomic,strong)UIImage * coverImage;
 @property (nonatomic,strong) UserMo * userMo;
 @end

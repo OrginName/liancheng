@@ -16,7 +16,7 @@
 #define proNumb(numb)     @property (nonatomic, strong) NSNumber *numb;
 #define proInt(integer)   @property(nonatomic,assign) NSUInteger integer;
 #define proDoub(doub)     @property (nonatomic, assign) double doub;
-
+#define proBool(a)        @property (nonatomic,assign)BOOL boolA;
 @interface BaseModel : NSObject<NSCoding>
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key;
 

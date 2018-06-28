@@ -13,10 +13,13 @@
 #import "MomentDetailController.h"
 #import "CircleNet.h"
 #import "privateUserInfoModel.h"
+#import "AllDicMo.h"
 @interface FriendCirleTab()<UITableViewDelegate,UITableViewDataSource,MomentCellDelegate>
 {
     NSInteger _page;
+    NSInteger _CurrentTag;
 }
+@property (nonatomic,strong) UIView * mainView;
 @property (nonatomic,strong)UIImageView * headImage;
 @property (nonatomic,strong) NSMutableArray *momentList;
 @property (nonatomic,strong) UIViewController * controller;
@@ -25,16 +28,71 @@
 -(instancetype)initWithFrame:(CGRect)frame withControll:(UIViewController *)control{
     if (self = [super initWithFrame:frame]) {
         self.controller = control;
-        self.showsHorizontalScrollIndicator = NO;
-        self.showsVerticalScrollIndicator = NO;
-        self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.delegate = self;
-        self.dataSource = self;
-        self.tableHeaderView = self.headImage;
-        [self initTestInfo];
+        [self setUI];
+        NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"PICTXT"]];
+        [self defultData:arr];
+        [self initTestInfo]; 
         _page=1;
+        _CurrentTag= 0;
     }
     return self;
+}
+-(void)setUI{
+    self.showsHorizontalScrollIndicator = NO;
+    self.showsVerticalScrollIndicator = NO;
+    self.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.delegate = self;
+    self.dataSource = self;
+    self.tableHeaderView = self.headImage;
+    self.mainView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 40)];
+    self.mainView.backgroundColor =[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    [KWindowView addSubview:self.mainView];
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 5, self.mainView.width-65, self.mainView.height-10)];
+    textField.tag=10;
+    textField.font = [UIFont systemFontOfSize:14];
+    textField.placeholder = @"请输入评论内容";
+    textField.borderStyle = UITextBorderStyleRoundedRect;
+    [self.mainView addSubview:textField];
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-50, 0, 40, self.mainView.height)];
+    [btn setTitle:@"发送" forState:UIControlStateNormal];
+    btn.backgroundColor = [UIColor clearColor];
+    [btn addTarget:self action:@selector(btnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.mainView addSubview:btn];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeContentViewPoint:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissKeyBoard:) name:UIKeyboardWillHideNotification object:nil];
+}
+#pragma mark----发送-------
+-(void)btnClicked{
+    NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+    UITextField * txt  = (UITextField*)[self.mainView viewWithTag:10];
+    if (txt.text.length==0) {
+        [YTAlertUtil showTempInfo:@"请输入评论内容"];
+        return;
+    }
+    AllContentMo * mo = [arr[5] contentArr][4];
+    NSDictionary * dic = @{
+                           @"content": txt.text,
+                           @"score": @0,
+                           @"type": @([mo.value integerValue]),
+                           @"typeId": @([[self.momentList[_CurrentTag] ID] integerValue])
+                           };
+    [CircleNet requstSendPL:dic withSuc:^(NSDictionary *successDicValue) {
+        [txt resignFirstResponder];
+        Moment * momet = self.momentList[_CurrentTag];
+        momet.commentCount = [NSString stringWithFormat:@"%ld",[momet.commentCount integerValue]+1];
+        Comment * comment = [Comment new];
+        comment.content = txt.text;
+        comment.typeName = [[YSAccountTool userInfo] nickName];
+        [momet.comments addObject:comment];
+        [self.momentList replaceObjectAtIndex:_CurrentTag withObject:momet];
+        [self reloadData];
+    }];
+}
+-(void)defultData:(NSArray *)arr{
+    if (arr.count!=0) {
+        [self.momentList addObjectsFromArray:arr];
+        [self reloadData];
+    }
 }
 #pragma mark - 测试数据
 - (void)initTestInfo
@@ -102,8 +160,12 @@
         [self.mj_header endRefreshing];
         [self.mj_footer endRefreshing];
         [self.momentList addObjectsFromArray:successArrValue];
+        [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:self.momentList] forKey:@"PICTXT"];
         [self reloadData];
-    }]; 
+    } FailErrBlock:^(NSError *failValue) {
+        [self.mj_header endRefreshing];
+        [self.mj_footer endRefreshing];
+    }];
 }
 - (NSMutableArray *)momentList
 {
@@ -152,17 +214,21 @@
 // 点击用户头像
 - (void)didClickHead:(MomentCell *)cell
 {
-    NSLog(@"击用户头像");
+    NSLog(@"击用户头像%ld",(long)cell.tag);
 }
 // 赞
-- (void)didLikeMoment:(MomentCell *)cell
-{
-    NSLog(@"点赞");
-}
-// 评论
-- (void)didAddComment:(MomentCell *)cell
-{
-    NSLog(@"评论");
+-(void)didPraiseMoment:(MomentCell *)cell{
+    NSLog(@"点赞%ld",(long)cell.tag);
+    NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+    AllContentMo * mo = [arr[5] contentArr][4];
+    [CircleNet requstCircleDZ:@{@"id":[self.momentList[cell.tag] ID],@"type":mo.value} withSuc:^(NSDictionary *successDicValue) {
+        cell.praiseBtn.selected = YES;
+        Moment * momet = self.momentList[cell.tag];
+        momet.isDJ = @"1";
+        momet.likeCount = [NSString stringWithFormat:@"%ld",[momet.likeCount integerValue]+1];
+        [self.momentList replaceObjectAtIndex:cell.tag withObject:momet];
+        [self reloadData];
+    }];
 }
 // 查看全文/收起
 - (void)didSelectFullText:(MomentCell *)cell
@@ -179,6 +245,10 @@
 //评论
 -(void)didCommentMoment:(MomentCell *)cell{
     NSLog(@"%ld",(long)cell.tag);
+    UITextField * txt  = (UITextField*)[self.mainView viewWithTag:10];
+    txt.text = @"";
+    [txt becomeFirstResponder];
+    _CurrentTag = cell.tag;
 }
 //分享
 -(void)didShareMoment:(MomentCell *)cell{
@@ -211,5 +281,28 @@
         [_headImage addSubview:lab];
     }
     return _headImage;
+}
+// 收缩键盘
+-(void)dismissKeyBoard:(NSNotification *)notification
+{
+    [self kebordY:notification];
+}
+// 根据键盘状态，调整_mainView的位置
+- (void) changeContentViewPoint:(NSNotification *)notification{
+    [self kebordY:notification];
+}
+-(void)kebordY:(NSNotification *)notification{
+    NSDictionary *userInfo = [notification userInfo];
+    NSValue *value = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGFloat keyBoardEndY = value.CGRectValue.origin.y;  // 得到键盘弹出后的键盘视图所在y坐标
+    NSNumber *duration = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSNumber *curve = [userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
+    // 添加移动动画，使视图跟随键盘移动
+    [UIView animateWithDuration:duration.doubleValue animations:^{
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        [UIView setAnimationCurve:[curve intValue]];
+        _mainView.center = CGPointMake(_mainView.center.x, keyBoardEndY+20);   // keyBoardEndY的坐标包括了状态栏的高度，要减去
+        
+    }];
 }
 @end

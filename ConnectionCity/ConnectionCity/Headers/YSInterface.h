@@ -132,6 +132,10 @@ static NSString * const v1ServiceCircleInfo = @"/v1/service-circle/info";
 //服务圈列表分页
 static NSString * const v1ServiceCirclePage = @"/v1/service-circle/page";
 #pragma mark - 服务
+//添加评论
+static NSString * const v1CommonCommentCreate = @"/v1/common/comment/create";
+//添加收藏
+static NSString * const v1CommonCollectCreate = @"/v1/common/collect/create";
 //添加点赞
 static NSString * const v1CommonCommentAddlike = @"/v1/common/comment/add-like";
 //添加浏览次数

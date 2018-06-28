@@ -7,6 +7,7 @@
 //
 
 #import "FriendVideoCell.h"
+#import "AllDicMo.h"
 @interface FriendVideoCell()
 @property (weak, nonatomic) IBOutlet UILabel *lab_content;
 @property (weak, nonatomic) IBOutlet UILabel *lab_User;
@@ -26,8 +27,20 @@
     self.lab_content.text = moment.content;
     self.image_cover.image = moment.coverImage;
     [self.image_User sd_setImageWithURL:[NSURL URLWithString:moment.userMo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
-    [self.btn_Zan setTitle:KString(@"%@", moment.likeCount) forState:UIControlStateNormal];
+    [self.btn_Zan setTitle:[NSString stringWithFormat:@"%@ 赞",KString(@"%@", moment.likeCount)] forState:UIControlStateNormal];
 }
 - (IBAction)btnClick:(UIButton *)sender {
+    if (self.btn_Zan.selected) {
+        return;
+    }
+    NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+    AllContentMo * mo = [arr[5] contentArr][4];
+    [YSNetworkTool POST:v1CommonCommentAddlike params:@{@"id":self.moment.ID,@"type":mo.value} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        self.btn_Zan.selected = YES;
+        [self.btn_Zan setTitle:[NSString stringWithFormat:@"%@ 赞",KString(@"%@", responseObject[@"data"])] forState:UIControlStateNormal];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+    
 }
 @end
