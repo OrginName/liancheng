@@ -116,12 +116,12 @@
     [self.image_head sd_setImageWithURL:[NSURL URLWithString:moment.userMo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     self.lab_title.text = moment.userMo.nickName;
     self.lab_SubTitle.text = moment.content;
-    long long a = [[YSTools cTimestampFromString:moment.createTime] floatValue];
-    self.lab_time.text = [NSString stringWithFormat:@"%@",[Utility getDateFormatByTimestamp:a]];
-    [self.btn_Zan setTitle:KString(@"%@", moment.likeCount) forState:UIControlStateNormal];
-    [self.btn_PL setTitle:moment.commentCount forState:UIControlStateNormal];
-    self.lab_Zan.text = moment.likeCount;
-    self.like_Zan.text = moment.likeCount;
+//    long long a = [[YSTools cTimestampFromString:moment.createTime] floatValue];
+    self.lab_time.text = [YSTools compareCurrentTime:moment.createTime];
+//    [self.btn_Zan setTitle:KString(@"%@", moment.likeCount) forState:UIControlStateNormal];
+    [self.btn_PL setTitle:KString(@"%@", moment.commentCount) forState:UIControlStateNormal];
+    self.lab_Zan.text = KString(@"%@", moment.likeCount);
+    self.like_Zan.text = KString(@"%@", moment.likeCount);
 }
 //分享
 -(void)ShareBtn{
