@@ -133,7 +133,13 @@
 //        [self.navigationController pushViewController:[super rotateClass:arr[sender.tag-3]] animated:YES];
 //    }
     if (sender.tag==4) {
+        if ([self.moment.commentCount integerValue]==0) {
+            return [YTAlertUtil showTempInfo:@"暂无评论信息"];
+        }
         EvaluationController * ev = [EvaluationController new];
+        ev.block = ^{
+            self.block();
+        };
         ev.moment = self.moment;
         [self.navigationController pushViewController:ev animated:YES];
     }

@@ -8,6 +8,9 @@
 
 #import "BaseViewController.h"
 #import "Moment.h"
+typedef void(^BtnDeleteBlock)(void);
 @interface EvaluationController : BaseViewController
 @property (nonatomic,strong)Moment * moment;
+@property (nonatomic,copy)BtnDeleteBlock block;
+
 @end

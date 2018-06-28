@@ -202,6 +202,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MomentDetailController * mom = [MomentDetailController new];
     mom.receiveMo = self.momentList[indexPath.row];
+    mom.block = ^{
+        [self.momentList removeObjectAtIndex:indexPath.row];
+        [self reloadData];
+    };
     [self.controller.navigationController pushViewController:mom animated:YES];
 }
 #pragma mark - UITableViewDelegate

@@ -26,18 +26,26 @@
 }
 -(void)ClearAll{
     [YTAlertUtil showTempInfo:@"清空"];
+    [YSNetworkTool POST:v1ServiceCircleDelete params:@{@"id":self.receiveMo.ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        self.block();
+        [self.navigationController popViewControllerAnimated:YES];
+        [YTAlertUtil showTempInfo:@"删除成功"];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 -(void)setUI{
     self.navigationItem.title = @"详情";
-    if ([self.receiveMo.userId isEqualToString:[[YSAccountTool userInfo]ID]]) {
+//    if ([self.receiveMo.userId isEqualToString:[[YSAccountTool userInfo]ID]]) {
          self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(ClearAll) image:@"" title:@"清空" EdgeInsets:UIEdgeInsetsZero];
-    } 
+//    } 
     self.momment = [[MomentDetailView alloc] initWithFrame:CGRectZero];
     self.momment.receiveMo = self.receiveMo;
     self.tab_Bottom.tableHeaderView = self.momment;
     self.tab_Bottom.tableHeaderView.height = self.receiveMo.cellHeight;
+    __block MomentDetailController * weakSelf = self;
     self.momment.Btnblock = ^{
-        [YTAlertUtil showTempInfo:@"我是删除"];
+        [weakSelf ClearAll];
     };
     [self.tab_Bottom reloadData];
 }

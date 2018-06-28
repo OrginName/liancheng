@@ -94,6 +94,10 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     MommentPlayerController * moment = [MommentPlayerController new];
     moment.moment = self.data_Arr[indexPath.row];
+    moment.block = ^{
+        [self.data_Arr removeObjectAtIndex:indexPath.row];
+        [self reloadData];
+    };
     [self.controller.navigationController pushViewController:moment animated:YES];
 }
 @end

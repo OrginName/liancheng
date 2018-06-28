@@ -34,7 +34,15 @@
     }];
 }
 -(void)ClearAll{
-    [YTAlertUtil showTempInfo:@"清空"];
+//    [YTAlertUtil showTempInfo:@"清空"];
+    [YSNetworkTool POST:v1ServiceCircleDelete params:@{@"id":self.moment.ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        self.block();
+        [YTAlertUtil showTempInfo:@"删除成功"];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+    
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;

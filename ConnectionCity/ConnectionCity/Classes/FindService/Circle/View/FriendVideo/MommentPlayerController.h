@@ -8,6 +8,9 @@
 
 #import "BaseViewController.h"
 #import "Moment.h"
+typedef void(^MommentDeleteBlock)(void);
+
 @interface MommentPlayerController : BaseViewController
+@property (nonatomic,copy) MommentDeleteBlock block;
 @property (nonatomic,strong)Moment * moment;
 @end

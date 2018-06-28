@@ -129,6 +129,8 @@ static NSString * const dictionaryTreasureCategory = @"/dictionary/treasure-cate
 static NSString * const v1ServiceCircleCreate = @"/v1/service-circle/create";
 //服务圈子详情
 static NSString * const v1ServiceCircleInfo = @"/v1/service-circle/info";
+//服务圈子删除
+static NSString * const v1ServiceCircleDelete = @"/v1/service-circle/delete";
 //服务圈列表分页
 static NSString * const v1ServiceCirclePage = @"/v1/service-circle/page";
 #pragma mark - 服务
