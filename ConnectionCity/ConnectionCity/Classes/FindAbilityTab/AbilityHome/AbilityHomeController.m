@@ -186,7 +186,7 @@
     UILabel * btn = (UILabel *)[self.view_SX viewWithTag:1];
     btn.text = locationDictionary[@"city"];
 }
--(void)currentAnimatinonViewClick:(MAAnnotationView *)view{
+-(void)currentAnimatinonViewClick:(MAAnnotationView *)view index:(NSInteger)indexView{
     if ([KString(@"%f", view.annotation.coordinate.latitude) isEqualToString:[KUserDefults objectForKey:kLat]]&&[KString(@"%f", view.annotation.coordinate.longitude) isEqualToString:[KUserDefults objectForKey:KLng]]) {
         [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
         return;
@@ -194,7 +194,7 @@
     ShowResumeController * resume = [ShowResumeController new];
     resume.Receive_Type = ENUM_TypeResume;
     resume.data_Count = self.cusMap.Arr_Mark;
-    resume.zIndex = view.zIndex;
+    resume.zIndex = indexView;
     [self.navigationController pushViewController:resume animated:YES];
 }
 //回到当前位置的按钮点击

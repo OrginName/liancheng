@@ -13,7 +13,7 @@
 #import "ServiceListMo.h"
 @protocol CustomMapDelegate <NSObject>
 - (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location;
--(void)currentAnimatinonViewClick:(MAAnnotationView *)view;
+-(void)currentAnimatinonViewClick:(MAAnnotationView *)view index:(NSInteger)indexView;
 -(void)currentLocationClick;
 @end
 @interface CustomMap : UIView

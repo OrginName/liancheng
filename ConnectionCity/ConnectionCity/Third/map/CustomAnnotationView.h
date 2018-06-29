@@ -7,7 +7,6 @@
 //
 
 #import <MAMapKit/MAMapKit.h>
-
 @interface CustomAnnotationView : MAPinAnnotationView
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, strong) UIView *calloutView;

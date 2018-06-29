@@ -13,7 +13,7 @@
 @interface CustomMap()<MAMapViewDelegate,CustomLocationDelegate,UITextFieldDelegate>
 @property (nonatomic,assign) id controller;
 @property (nonatomic,strong) CustomLocatiom * location;
-@property (nonatomic, strong) MAPinAnnotationView * annotationView;
+@property (nonatomic, strong) CustomAnnotationView * annotationView;
 @property (nonatomic, strong) MAPointAnnotation * pointAnnotaiton;
 @property (nonatomic,strong) UIButton * btn_location;
 @end
@@ -90,8 +90,14 @@
  @param view view description
  */
 - (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view{
-    if ([self.delegate respondsToSelector:@selector(currentAnimatinonViewClick:)]) {
-        [self.delegate currentAnimatinonViewClick:view];
+    NSInteger annotationIndex = 0;
+    for (int i=0; i<self.mapView.annotations.count; i++) {
+        if (view.annotation == self.mapView.annotations[i]) {
+            annotationIndex = i;
+        }
+    }
+    if ([self.delegate respondsToSelector:@selector(currentAnimatinonViewClick:index:)]) {
+        [self.delegate currentAnimatinonViewClick:view index:annotationIndex];
     }
 }
 #pragma mark -------CustomLocationDelegate------
@@ -186,8 +192,7 @@
             a1 = [[MAPointAnnotation alloc] init];
             a1.coordinate = CLLocationCoordinate2DMake([abilt.lat doubleValue], [abilt.lng doubleValue]);
             a1.title = abilt.ID;
-        }   
-        self.annotationView.zIndex = idx;
+        }
         [self.annotations addObject:a1];
     }];
 }

@@ -18,6 +18,7 @@
 #import "PopThree.h"
 #import "SendServiceController.h"
 #import "CustomScro.h"
+#import "CustomAnnotationView.h"
 @interface ServiceHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate,CustomScroDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
@@ -168,7 +169,7 @@
     [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([[KUserDefults objectForKey:kLat] floatValue], [[KUserDefults objectForKey:KLng] floatValue])];
     [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
 }
--(void)currentAnimatinonViewClick:(MAAnnotationView *)view{
+-(void)currentAnimatinonViewClick:(MAAnnotationView *)view index:(NSInteger)indexView{
     if ([KString(@"%f", view.annotation.coordinate.latitude) isEqualToString:[KUserDefults objectForKey:kLat]]&&[KString(@"%f", view.annotation.coordinate.longitude) isEqualToString:[KUserDefults objectForKey:KLng]]) {
         [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
         return;
@@ -176,8 +177,8 @@
     ShowResumeController * show = [ShowResumeController new];
     show.Receive_Type = ENUM_TypeTrval;
     show.data_Count = self.cusMap.Arr_Mark;
-    show.zIndex = view.zIndex;
-    NSLog(@"当前zindex为：%ld",view.zIndex);
+    show.zIndex = indexView;
+    NSLog(@"当前zindex为：%ld",indexView);
     [self.navigationController pushViewController:show animated:YES];
 }
 //加载服务列表数据
