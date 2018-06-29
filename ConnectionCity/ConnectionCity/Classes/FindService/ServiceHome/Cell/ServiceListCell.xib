@@ -73,6 +73,11 @@
                     <constraint firstItem="Rij-Tl-6Dj" firstAttribute="leading" secondItem="D3d-ji-4yy" secondAttribute="trailing" constant="10" id="vHb-AY-Mdn"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="image_head" destination="D3d-ji-4yy" id="hMO-Li-ls7"/>
+                <outlet property="lab_des" destination="Rij-Tl-6Dj" id="5ta-dm-RaA"/>
+                <outlet property="lab_name" destination="HXl-bc-ODf" id="85D-Wj-P5I"/>
+            </connections>
             <point key="canvasLocation" x="34" y="67"/>
         </tableViewCell>
     </objects>

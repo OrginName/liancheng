@@ -19,6 +19,8 @@
 @end
 
 @interface PhotoSelect : UIView
+@property (nonatomic,strong)NSMutableArray * selectedPhotos;
+@property (nonatomic,strong)NSMutableArray * selectedAssets;
 /// 默认为YES，如果设置为NO, 用户将不能拍摄照片
 @property(nonatomic, assign) BOOL allowTakePicture;
 

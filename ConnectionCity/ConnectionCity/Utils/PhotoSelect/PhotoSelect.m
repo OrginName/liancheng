@@ -21,8 +21,6 @@
 
 @interface PhotoSelect()<TZImagePickerControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UINavigationControllerDelegate>
 {
-    NSMutableArray *_selectedPhotos;
-    NSMutableArray *_selectedAssets;
     BOOL _isSelectOriginalPhoto;
     CGFloat _itemWH;
     CGFloat _margin;
@@ -43,6 +41,10 @@
         [self defultFlag];
     }
     return self;
+}
+-(void)setSelectedPhotos:(NSMutableArray *)selectedPhotos{
+    _selectedPhotos = selectedPhotos;
+    [self.collectionView reloadData];
 }
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
@@ -122,6 +124,9 @@
         cell.deleteBtn.hidden = YES;
         cell.gifLable.hidden = YES;
     } else if((indexPath.item != _selectedPhotos.count)&&_selectedPhotos.count<=8) {
+        if ([_selectedPhotos[indexPath.item] isKindOfClass:[NSString class]]&&[_selectedPhotos[indexPath.item] containsString:@"http"]) {
+            [cell.imageView sd_setImageWithURL:[NSURL URLWithString:_selectedPhotos[indexPath.item]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+        }else
         cell.imageView.image = _selectedPhotos[indexPath.item];
 //        cell.asset = _selectedAssets[indexPath.item];
         cell.deleteBtn.hidden = NO;

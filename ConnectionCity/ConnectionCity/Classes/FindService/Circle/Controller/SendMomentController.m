@@ -15,6 +15,7 @@
     NSString * _videoUrl;
     int _isPic;//是否包含图片
     int _isVideo;//是否包含视频
+    NSString * _imageURL;
 }
 @property (weak, nonatomic) IBOutlet CustomtextView *txt_Moment;
 @property (weak, nonatomic) IBOutlet UIView *view_Photo;
@@ -29,9 +30,32 @@
     _isPic = 0;
     _isVideo = 0;
     self.Arr_images = [NSMutableArray array];
+    if ([self.receive_flag isEqualToString:@"EDIT"]) {
+        [self initData];
+    }
+}
+-(void)initData{
+    self.txt_Moment.text = self.receive_Moment.content;
+    if ([KString(@"%@", self.receive_Moment.containsImage) isEqualToString:@"1"]) {
+        _isPic = 1;
+        _imageURL = self.receive_Moment.images;
+        self.photo.selectedPhotos = [[self.receive_Moment.images componentsSeparatedByString:@";"] mutableCopy];
+        self.photo.selectedAssets = self.photo.selectedPhotos;
+    }
+    if ([KString(@"%@", self.receive_Moment.containsVideo) isEqualToString:@"1"]) {
+        _isVideo = 1;
+        _videoUrl = self.receive_Moment.videos;
+        self.photo.selectedPhotos = [NSMutableArray arrayWithObject:self.receive_Moment.videos];
+        self.photo.selectedAssets = self.photo.selectedPhotos;
+
+    }
 }
 //完成
 -(void)complete{
+    if ([self.receive_flag isEqualToString:@"EDIT"]) {
+        [YTAlertUtil showTempInfo:@"编辑完成"];
+        return;
+    }
     if (self.txt_Moment.text.length==0) {
         return [YTAlertUtil showHUDWithTitle:@"对圈子内的朋友说点什么..."];
     }

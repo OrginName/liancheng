@@ -161,6 +161,9 @@
 		8D114CBB20CA22BD00637D34 /* AddMyWayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D114CB920CA22BD00637D34 /* AddMyWayController.xib */; };
 		8D114CBF20CA235200637D34 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D114CBE20CA235200637D34 /* AccountView.m */; };
 		8D114CC120CA236900637D34 /* AccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D114CC020CA236900637D34 /* AccountView.xib */; };
+		8D12931220E5F16D0008BD6F /* EditCircleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D12931020E5F16D0008BD6F /* EditCircleController.m */; };
+		8D12931320E5F16D0008BD6F /* EditCircleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D12931120E5F16D0008BD6F /* EditCircleController.xib */; };
+		8D12931620E616670008BD6F /* CustomScro.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D12931520E616670008BD6F /* CustomScro.m */; };
 		8D19FF2020D8AC98005F7361 /* UserMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D19FF1F20D8AC98005F7361 /* UserMo.m */; };
 		8D19FF2320D8CFE4005F7361 /* ServiceListMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D19FF2220D8CFE4005F7361 /* ServiceListMo.m */; };
 		8D22C33C20C77B70004DC8F4 /* IdentityAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C33A20C77B70004DC8F4 /* IdentityAuthorController.m */; };
@@ -739,6 +742,11 @@
 		8D114CBD20CA235200637D34 /* AccountView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountView.h; sourceTree = "<group>"; };
 		8D114CBE20CA235200637D34 /* AccountView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountView.m; sourceTree = "<group>"; };
 		8D114CC020CA236900637D34 /* AccountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountView.xib; sourceTree = "<group>"; };
+		8D12930F20E5F16D0008BD6F /* EditCircleController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditCircleController.h; sourceTree = "<group>"; };
+		8D12931020E5F16D0008BD6F /* EditCircleController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditCircleController.m; sourceTree = "<group>"; };
+		8D12931120E5F16D0008BD6F /* EditCircleController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCircleController.xib; sourceTree = "<group>"; };
+		8D12931420E616670008BD6F /* CustomScro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomScro.h; sourceTree = "<group>"; };
+		8D12931520E616670008BD6F /* CustomScro.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomScro.m; sourceTree = "<group>"; };
 		8D19FF1E20D8AC98005F7361 /* UserMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserMo.h; sourceTree = "<group>"; };
 		8D19FF1F20D8AC98005F7361 /* UserMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserMo.m; sourceTree = "<group>"; };
 		8D19FF2120D8CFE4005F7361 /* ServiceListMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceListMo.h; sourceTree = "<group>"; };
@@ -1816,6 +1824,9 @@
 				8DEA450620C1148C001529F1 /* SendMomentController.h */,
 				8DEA450720C1148C001529F1 /* SendMomentController.m */,
 				8DEA450820C1148C001529F1 /* SendMomentController.xib */,
+				8D12930F20E5F16D0008BD6F /* EditCircleController.h */,
+				8D12931020E5F16D0008BD6F /* EditCircleController.m */,
+				8D12931120E5F16D0008BD6F /* EditCircleController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2023,6 +2034,8 @@
 			children = (
 				8D09E18C20BFD52E000F7EBD /* ShowtrvalTab.h */,
 				8D09E18D20BFD52E000F7EBD /* ShowtrvalTab.m */,
+				8D12931420E616670008BD6F /* CustomScro.h */,
+				8D12931520E616670008BD6F /* CustomScro.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3402,6 +3415,7 @@
 				CE97DBF620B5A2C1003E46BD /* ReleaseTenderCell.xib in Resources */,
 				CEC4A54E20C3FE070026EE19 /* MenuIcons.plist in Resources */,
 				CEE4B29D20C6B67A008B8731 /* NearManCell.xib in Resources */,
+				8D12931320E5F16D0008BD6F /* EditCircleController.xib in Resources */,
 				CE0A99DE20C57C44003A4D91 /* CertificationCenterController.xib in Resources */,
 				CEBEDD8C20B17ED1000F9EE4 /* BountyHostingController.xib in Resources */,
 				8DEA450A20C1148C001529F1 /* SendMomentController.xib in Resources */,
@@ -3633,6 +3647,7 @@
 				CE5C281F20B953C1006A8332 /* BidManagerHeadV.m in Sources */,
 				CEC4A52F20C3D6D10026EE19 /* TeamHeadView.m in Sources */,
 				CE6BEC1D20C83769003B36D7 /* LCDatePicker.m in Sources */,
+				8D12931620E616670008BD6F /* CustomScro.m in Sources */,
 				CEE4B2A620C6CC3F008B8731 /* PersonalCenterController.m in Sources */,
 				72EC1BB920BC4CA100ACC20B /* SendServiceCell.m in Sources */,
 				72EBB8D620C81B4600F670E9 /* AccontManageController.m in Sources */,
@@ -3872,6 +3887,7 @@
 				CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */,
 				8D41D87520E0DA5600ACC0A0 /* ShowResume.m in Sources */,
 				8D114CBA20CA22BD00637D34 /* AddMyWayController.m in Sources */,
+				8D12931220E5F16D0008BD6F /* EditCircleController.m in Sources */,
 				CEE4B29120C6B17C008B8731 /* FoundCell.m in Sources */,
 				CE97DBF520B5A2C1003E46BD /* ReleaseTenderCell.m in Sources */,
 				CE21F0DD20DD38A700478482 /* NSDictionary+SafeValue.m in Sources */,
@@ -4049,7 +4065,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";
@@ -4071,7 +4087,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";

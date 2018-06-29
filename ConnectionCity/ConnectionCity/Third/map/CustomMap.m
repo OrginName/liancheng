@@ -66,10 +66,18 @@
             // must set to NO, so we can show the custom callout view.
             annotationView.canShowCallout = NO;
 //            annotationView.draggable = YES;
-            annotationView.calloutOffset = CGPointMake(0, 0);
+//            annotationView.calloutOffset = CGPointMake(0, 0);
         }
-        annotationView.image = [UIImage imageNamed:@"position.png"];
-        self.annotationView = annotationView;
+         self.annotationView = annotationView;
+//        annotationView.portraitImageView.image = [UIImage imageNamed:@"1"];
+        NSString * url = @"";
+        if ([self.Arr_Mark[annotationView.zIndex] isKindOfClass:[ServiceListMo class]]) {
+            url = [[self.Arr_Mark[annotationView.zIndex] user1] headImage];
+        }else{
+            url = [[self.Arr_Mark[annotationView.zIndex] userMo] headImage];
+        }
+        [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+       
         return annotationView;
     }
     return nil;

@@ -10,35 +10,124 @@
 #import "FindMySelfCell.h"
 #import "privateUserInfoModel.h"
 #import "SendMomentController.h"
+#import "CircleNet.h"
+#import "Moment.h"
 @interface FriendMyselfTab()<UITableViewDelegate,UITableViewDataSource>
+{
+    NSInteger _page;
+}
 @property (nonatomic,strong)UIImageView * headImage;
 @property (nonatomic,strong) UIViewController * controller;
+@property (nonatomic,strong) NSMutableArray * data_Arr;
 @end
 @implementation FriendMyselfTab
 -(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style withControll:(UIViewController *)control{
     if (self = [super initWithFrame:frame style:style]) {
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.data_Arr = [NSMutableArray array];
         self.delegate = self;
         self.dataSource = self;
         self.tableHeaderView = self.headImage;
         self.rowHeight = 86;
         self.controller = control;
+        [self initData];
+         _page = 1;
     }
     return self;
+}
+//初始化数据
+-(void)initData{
+    self.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        _page=1;
+        [self loadDataFriendList];
+    }];
+    self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [self loadDataFriendList];
+    }];
+    [self.mj_header beginRefreshing];
+}
+//加载朋友圈列表
+-(void)loadDataFriendList{
+    NSDictionary * dic = @{
+                           @"containsImage": @0,
+                           @"containsVideo": @0,
+                           @"pageNumber": @(_page),
+                           @"pageSize": @15
+                           };
+    [CircleNet requstCirclelDic:dic withSuc:^(NSMutableArray *successArrValue) {
+        if (_page==1) {
+            [self.data_Arr removeAllObjects];
+        }
+        _page++;
+        [self.mj_header endRefreshing];
+        [self.mj_footer endRefreshing];
+//        [self.data_Arr addObjectsFromArray:successArrValue];
+        [self jsonDataArr:successArrValue];
+//        [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:self.data_Arr] forKey:@"VIDEO"];
+//        [self reloadData];
+    }FailErrBlock:^(NSError *failValue) {
+        [self.mj_header endRefreshing];
+        [self.mj_footer endRefreshing];
+    }];
+}
+-(void)jsonDataArr:(NSMutableArray *)arr{
+    NSMutableArray * data = [NSMutableArray array];
+    // 获取代表公历的NSCalendar对象
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    // 获取当前日期
+    NSDate* dt = [NSDate date];
+    // 定义一个时间字段的旗标，指定将会获取指定年、月、日、时、分、秒的信息
+    unsigned unitFlags = NSCalendarUnitYear;
+    // 获取不同时间字段的信息
+    NSDateComponents* comp = [gregorian components: unitFlags
+                                          fromDate:dt];
+    // 获取各时间字段的数值
+    NSLog(@"现在是%ld年" , comp.year);
+    for (int i=0; i<arr.count; i++) {
+        Moment * moment = arr[i];
+        NSString * year = [moment.createTime componentsSeparatedByString:@"-"][0];
+        if (data&&data.count!=0) {
+            for (int j=0; j<data.count; j++) {
+                if ([data[j] isKindOfClass:[NSDictionary class]]&&[[data[j] allKeys][0] isEqualToString:year]) {
+                    [data[j][year] addObject:moment];
+                }else{
+                    NSMutableArray * arr3 = [NSMutableArray array];
+                    [arr3 addObject:moment];
+                    NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithObject:arr3 forKey:year];
+                    [data addObject:dic];
+                }
+            }
+        }else{
+            NSMutableArray * arr3 = [NSMutableArray array];
+            NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithObject:arr3 forKey:year];
+            [data addObject:dic];
+        }
+    }
+    [self.data_Arr addObjectsFromArray:[data copy]];
+    [self reloadData];
+    NSLog(@"%lu",(unsigned long)data.count);
 }
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return self.data_Arr.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    NSDictionary * dic = self.data_Arr[section]; 
+    return [dic[[dic allKeys][0]] count];
+}
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    FindMySelfCell * cell1 = (FindMySelfCell *)cell;
+    
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FindMySelfCell * cell = [FindMySelfCell tempTableViewCellWith:tableView indexPath:indexPath];
     [self bringSubviewToFront:[self.tableHeaderView viewWithTag:11111111]];
+    NSDictionary * dic = self.data_Arr[indexPath.section];
+    cell.moment = dic[[dic allKeys][0]][indexPath.row];
     return cell;
 }
 
@@ -58,15 +147,21 @@
     [btn addTarget:self action:@selector(SectionClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell addSubview:btn];
     if (section!=0) {
+         NSDictionary * dic = self.data_Arr[section];
         cell.image_photo.hidden = YES;
-        cell.lab_Time.text = @"2100";
+        cell.lab_Time.text = [dic allKeys][0];
         cell.lab_Time.font = [UIFont systemFontOfSize:20];
         cell.lab_Time.textColor = [UIColor blackColor];
     }
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    SendMomentController * send = [SendMomentController new];
+    send.title = @"编辑";
+    send.receive_flag = @"EDIT";
+    NSDictionary * dic = self.data_Arr[indexPath.section];
+    send.receive_Moment = dic[[dic allKeys][0]][indexPath.row];
+    [self.controller.navigationController pushViewController:send animated:YES];
 }
 #pragma mark ----SectionClick-----
 -(void)SectionClick:(UIButton *)btn{

@@ -128,10 +128,10 @@
     [YTAlertUtil showTempInfo:@"分享"];
 }
 - (IBAction)BtnClcik:(UIButton *)sender {
-//    NSArray * arr = @[@"ServiceListController",@"EvaluationController",@"ServiceListController"];
-//    if (sender.tag>=3) {
-//        [self.navigationController pushViewController:[super rotateClass:arr[sender.tag-3]] animated:YES];
-//    }
+    NSArray * arr = @[@"ServiceListController",@"EvaluationController",@"ServiceListController"];
+    if (sender.tag==5) {
+        [self.navigationController pushViewController:[super rotateClass:arr[0]] animated:YES];
+    }
     if (sender.tag==4) {
         if ([self.moment.commentCount integerValue]==0) {
             return [YTAlertUtil showTempInfo:@"暂无评论信息"];

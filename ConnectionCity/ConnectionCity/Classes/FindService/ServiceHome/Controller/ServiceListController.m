@@ -8,8 +8,12 @@
 
 #import "ServiceListController.h"
 #import "ServiceListCell.h"
+#import "ServiceHomeNet.h"
+#import "privateUserInfoModel.h"
+#import "ShowResumeController.h"
 @interface ServiceListController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
+@property (nonatomic,strong) NSMutableArray * arr_data;
 
 @end
 
@@ -18,18 +22,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"服务约单";
+    self.arr_data = [NSMutableArray array];
+    [self loadServiceList];
+}
+//加载服务列表数据
+-(void)loadServiceList{
+    NSDictionary * dic1 = @{
+                            @"cityCode":[KUserDefults objectForKey:kUserCityID],
+                            @"lat": @([[KUserDefults objectForKey:kLat] floatValue]),
+                            @"lng": @([[KUserDefults objectForKey:KLng] floatValue]),
+                            @"userId":[[YSAccountTool userInfo] modelId]
+                            };
+    //    加载服务列表
+    [ServiceHomeNet requstServiceList:dic1 withSuc:^(NSMutableArray *successArrValue) {
+        if (successArrValue.count!=0) {
+            [YTAlertUtil showTempInfo:@"暂无数据"];
+            return;
+        }
+        self.arr_data = successArrValue;
+        [self.tab_Bottom reloadData];
+    }];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.arr_data.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ServiceListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ServiceListCell"];
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ServiceListCell" owner:nil options:nil] lastObject];
     }
+    cell.list = self.arr_data[indexPath.row];
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ShowResumeController * show = [ShowResumeController new];
+    show.Receive_Type = ENUM_TypeTrval;
+    show.data_Count = self.arr_data;
+    show.zIndex = indexPath.row;
+    [self.navigationController pushViewController:show animated:YES];
 }
 @end

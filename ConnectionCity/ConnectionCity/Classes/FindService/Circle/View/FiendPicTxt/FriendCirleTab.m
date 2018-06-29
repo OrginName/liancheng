@@ -184,7 +184,10 @@
 {
     return [self.momentList count];
 }
-
+//-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    MomentCell * cell1 = (MomentCell *)cell;
+//    
+//}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"MomentCell";

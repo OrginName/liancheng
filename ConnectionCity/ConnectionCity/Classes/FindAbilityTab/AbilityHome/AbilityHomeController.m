@@ -16,7 +16,8 @@
 #import "RefineView.h"
 #import "PopThree.h"
 #import "AbilityNet.h"
-@interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate>
+#import "CustomScro.h"
+@interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate,CustomScroDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
 @property (weak, nonatomic) IBOutlet UIView *view_fajianli;
@@ -209,22 +210,27 @@
 }
 #pragma mark ---初始化关键字button加载-----
 -(void)loadketBtn:(NSMutableArray *)arr{
-    for (int i=0; i<arr.count;i++) {
-        float width = [YSTools caculateTheWidthOfLableText:14 withTitle:arr[i]]+10;
-        if (width<40) {
-            width=40;
-        }
-        UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(i*width, 0, width, 47)];
-        btn.tag = i+1;
-        [btn setTitle:arr[i] forState:UIControlStateNormal];
-        btn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [btn setBackgroundColor:[UIColor whiteColor]];
-        [btn addTarget:self action:@selector(KeyWordsClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view_keyWords addSubview:btn];
-    }
+//    for (int i=0; i<arr.count;i++) {
+//        float width = [YSTools caculateTheWidthOfLableText:14 withTitle:arr[i]]+10;
+//        if (width<40) {
+//            width=40;
+//        }
+//        UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(i*width, 0, width, 47)];
+//        btn.tag = i+1;
+//        [btn setTitle:arr[i] forState:UIControlStateNormal];
+//        btn.titleLabel.font = [UIFont systemFontOfSize:14];
+//        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        [btn setBackgroundColor:[UIColor whiteColor]];
+//        [btn addTarget:self action:@selector(KeyWordsClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [self.view_keyWords addSubview:btn];
+//    }
+    CustomScro * cus = [[CustomScro alloc] initWithFrame:CGRectMake(103, 51, kScreenWidth-113, 47) arr:[arr copy]];
+    cus.delegate = self;
+    [self.view addSubview:cus];
 }
-
+-(void)btnClick:(NSInteger)tag{
+    [YTAlertUtil showTempInfo:@"热门职业点击"];
+}
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden= NO;

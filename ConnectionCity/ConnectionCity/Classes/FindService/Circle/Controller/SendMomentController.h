@@ -7,8 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "Moment.h"
 typedef void (^SendMomentBlock)(void);
 @interface SendMomentController : BaseViewController
 @property (nonatomic,copy) SendMomentBlock block;
-
+@property (nonatomic,strong) NSString * receive_flag;
+@property (nonatomic,strong) Moment * receive_Moment;
 @end

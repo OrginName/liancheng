@@ -8,7 +8,10 @@
 
 #import "CustomAnnotationView.h"
 #import "CustomCalloutView.h"
- 
+
+#define kWidth  60.f
+#define kHeight 60.f
+
 #define kHoriMargin 5.f
 #define kVertMargin 5.f
 
@@ -85,11 +88,23 @@
     
     return inside;
 }
-//#pragma mark - Life Cycle
-//
-//- (id)initWithAnnotation:(id<MAAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
-//{
-//    self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
-//    return self;
-//}
+#pragma mark - Life Cycle
+
+- (id)initWithAnnotation:(id<MAAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
+    
+    if (self)
+    {
+        self.bounds = CGRectMake(0.f, 0.f, kPortraitWidth, kPortraitHeight);
+        self.layer.cornerRadius = kPortraitHeight/2;
+        self.clipsToBounds = YES;
+        self.backgroundColor = [UIColor clearColor];
+        /* Create portrait image view and add to view hierarchy. */
+        self.portraitImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kPortraitWidth, kPortraitHeight)];
+        [self addSubview:self.portraitImageView];
+    }
+    
+    return self;
+}
 @end

@@ -133,6 +133,8 @@ static NSString * const v1ServiceCircleInfo = @"/v1/service-circle/info";
 static NSString * const v1ServiceCircleDelete = @"/v1/service-circle/delete";
 //服务圈列表分页
 static NSString * const v1ServiceCirclePage = @"/v1/service-circle/page";
+//服务圈列表编辑
+static NSString * const v1ServiceCircleUpdate = @"/v1/service-circle/update";
 #pragma mark - 服务
 //添加评论
 static NSString * const v1CommonCommentCreate = @"/v1/common/comment/create";

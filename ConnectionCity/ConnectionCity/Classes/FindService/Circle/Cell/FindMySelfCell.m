@@ -17,5 +17,17 @@
     }
     return cell;
 }
-
+-(void)setMoment:(Moment *)moment{
+    _moment = moment;
+    if ([KString(@"%@", moment.containsVideo) isEqualToString:@"1"]) {
+        self.image_first.image = moment.coverImage  ;
+    }else
+       [self.image_first sd_setImageWithURL:[NSURL URLWithString:[moment.images componentsSeparatedByString:@";"][0]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    NSString * strFirst = [moment.createTime componentsSeparatedByString:@" "][0];
+    self.lab_Month.text = KString(@"%@月", [moment.createTime componentsSeparatedByString:@"-"][1]);
+    self.lab_date.text = [strFirst componentsSeparatedByString:@"-"][2];
+    self.lab_city.text = moment.cityName;
+    self.lab_content.text = moment.content;
+    
+}
 @end
