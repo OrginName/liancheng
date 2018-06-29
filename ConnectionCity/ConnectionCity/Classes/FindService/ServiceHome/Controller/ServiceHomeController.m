@@ -243,7 +243,7 @@
 //        [btn addTarget:self action:@selector(KeyWordsClick:) forControlEvents:UIControlEventTouchUpInside];
 //        [self.view_KeyWords addSubview:btn];
 //    }
-    CustomScro * cus = [[CustomScro alloc] initWithFrame:CGRectMake(103, 51, kScreenWidth-113, 47) arr:[arr copy]];
+    CustomScro * cus = [[CustomScro alloc] initWithFrame:CGRectMake(103, 52, kScreenWidth-113, 47) arr:[arr copy]];
     cus.delegate = self;
     [self.view addSubview:cus];
 }

@@ -9,6 +9,7 @@
 #import "SendMomentController.h"
 #import "PhotoSelect.h"
 #import "QiniuUploader.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 @interface SendMomentController ()<PhotoSelectDelegate>
 {
     CGFloat itemHeigth;
@@ -39,8 +40,15 @@
     if ([KString(@"%@", self.receive_Moment.containsImage) isEqualToString:@"1"]) {
         _isPic = 1;
         _imageURL = self.receive_Moment.images;
-        self.photo.selectedPhotos = [[self.receive_Moment.images componentsSeparatedByString:@";"] mutableCopy];
-        self.photo.selectedAssets = self.photo.selectedPhotos;
+        NSArray * arr = [self.receive_Moment.images componentsSeparatedByString:@";"];
+        for (int i=0; i<arr.count; i++) {
+            if ([arr[i] length]!=0) {
+                [self.photo.selectedPhotos addObject:arr[i]];
+                [self.photo.selectedAssets addObject:@{@"name":arr[i],@"filename":@"image"}];
+//                setProperty:ALAssetTypeVideo forKey:ALAssetPropertyType
+//                [self.photo.selectedAssets[i] setvalueforpr];
+            }
+        }
     }
     if ([KString(@"%@", self.receive_Moment.containsVideo) isEqualToString:@"1"]) {
         _isVideo = 1;
@@ -141,12 +149,14 @@
     [self.Arr_images addObjectsFromArray:imageArr];
 }
 -(void)deleteImage:(NSInteger) tag arr:(NSArray *)imageArr{
+    [self.Arr_images removeAllObjects];
+    [self.Arr_images addObjectsFromArray:imageArr];
     if (imageArr.count<=4) {
         self.photo.height=self.layout_photoSlect.constant = itemHeigth;
     }
-    if (self.photo.maxCountTF!=1) {
-        [self.Arr_images removeObjectAtIndex:tag];
-    }
+//    if (self.photo.maxCountTF!=1) {
+//        [self.Arr_images removeObjectAtIndex:tag];
+//    }
     if (imageArr.count==0) {
         self.photo.allowTakeVideo = 1;
         _isPic = 0;

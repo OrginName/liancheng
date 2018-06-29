@@ -42,10 +42,10 @@
     }
     return self;
 }
--(void)setSelectedPhotos:(NSMutableArray *)selectedPhotos{
-    _selectedPhotos = selectedPhotos;
-    [self.collectionView reloadData];
-}
+//-(void)setSelectedPhotos:(NSMutableArray *)selectedPhotos{
+//    _selectedPhotos = selectedPhotos;
+//    [self.collectionView reloadData];
+//}
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (UIImagePickerController *)imagePickerVc {
@@ -316,7 +316,6 @@
 - (void)deleteBtnClik:(UIButton *)sender {
     [_selectedPhotos removeObjectAtIndex:sender.tag];
     [_selectedAssets removeObjectAtIndex:sender.tag];
-    
     [_collectionView performBatchUpdates:^{
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:sender.tag inSection:0];
         [self->_collectionView deleteItemsAtIndexPaths:@[indexPath]];

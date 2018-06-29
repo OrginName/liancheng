@@ -91,7 +91,8 @@
  */
 - (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view{
     NSInteger annotationIndex = 0;
-    for (int i=0; i<self.mapView.annotations.count; i++) {
+    [[self.mapView.annotations mutableCopy] removeObject:@""];
+    for (int i=0; i<self.Arr_Mark.count; i++) {
         if (view.annotation == self.mapView.annotations[i]) {
             annotationIndex = i;
         }
