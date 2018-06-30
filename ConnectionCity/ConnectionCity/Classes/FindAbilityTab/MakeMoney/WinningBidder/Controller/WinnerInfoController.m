@@ -9,9 +9,12 @@
 #import "WinnerInfoController.h"
 #import "WinnerInfoCell.h"
 #import "WinnerInfoHeadView.h"
+#import "FirstControllerMo.h"
 
 @interface WinnerInfoController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) WinnerInfoHeadView *tableHeadV;
+@property (nonatomic, strong) FirstControllerMo *mo;
 
 @end
 
@@ -21,6 +24,7 @@
     [super viewDidLoad];
     [self setUI];
     [self setTableView];
+    [self v1TalentTenderDetail];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -35,9 +39,9 @@
 }
 - (void)setTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"WinnerInfoCell" bundle:nil] forCellReuseIdentifier:@"WinnerInfoCell"];
-    WinnerInfoHeadView *tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"WinnerInfoHeadView" owner:nil options:nil] firstObject];
-    tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 363 + 64);
-    self.tableView.tableHeaderView = tableHeadV;
+    _tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"WinnerInfoHeadView" owner:nil options:nil] firstObject];
+    _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 363 + 64);
+    self.tableView.tableHeaderView = _tableHeadV;
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -56,7 +60,18 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.1;
 }
-
+#pragma mark - 接口请求
+- (void)v1TalentTenderDetail{
+    WeakSelf
+    [YSNetworkTool POST:v1TalentTenderDetail params:@{@"id": self.bidid} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        FirstControllerMo *model = [FirstControllerMo mj_objectWithKeyValues:responseObject[kData]];
+        weakSelf.mo = model;
+        weakSelf.tableHeadV.model = model;
+//        [weakSelf.dataArr removeAllObjects];
+//        [weakSelf.dataArr addObjectsFromArray:@[model.amount?model.amount:@"",model.tenderStartDate?model.tenderStartDate:@"",model.tenderEndDate?model.tenderEndDate:@"",model.contactName?model.contactName:@"",model.contactMobile?model.contactMobile:@""]];
+        [weakSelf.tableView reloadData];
+    } failure:nil];
+}
 /*
 #pragma mark - Navigation
 

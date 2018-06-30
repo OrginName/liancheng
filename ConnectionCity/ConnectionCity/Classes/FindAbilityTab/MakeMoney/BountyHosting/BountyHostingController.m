@@ -47,11 +47,11 @@
     return _dataArr.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    FirstControllerMo *mo = _dataArr[section];
-    return mo.tenderRecords.count;
+    return 5;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MarginCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MarginCell"];
+    
     cell.titleLab.text = [NSString stringWithFormat:@"赏金%ld期",(long)indexPath.row];
     return cell;
 }
@@ -67,6 +67,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     //重用区头视图
     MarginSectionHeadV *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"MarginSectionHeadV"];
+    headerView.model = _dataArr[section];
     //返回区头视图
     return headerView;
 }

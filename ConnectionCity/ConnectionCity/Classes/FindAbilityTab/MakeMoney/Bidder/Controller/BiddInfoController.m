@@ -114,7 +114,7 @@
         weakSelf.mo = model;
         weakSelf.tableHeadV.model = model;
         [weakSelf.dataArr removeAllObjects];
-        [weakSelf.dataArr addObjectsFromArray:@[model.amount,model.tenderStartDate,model.tenderEndDate,model.contactName,model.contactMobile]];
+        [weakSelf.dataArr addObjectsFromArray:@[model.amount?model.amount:@"",model.tenderStartDate?model.tenderStartDate:@"",model.tenderEndDate?model.tenderEndDate:@"",model.contactName?model.contactName:@"",model.contactMobile?model.contactMobile:@""]];
         [weakSelf.tableView reloadData];
     } failure:nil];
 }
@@ -133,7 +133,6 @@
         [YTAlertUtil showTempInfo:responseObject[@"message"]];
     } failure:nil];
 }
-
 
 /*
 #pragma mark - Navigation

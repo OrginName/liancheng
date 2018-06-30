@@ -47,13 +47,12 @@
     return _dataArr.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    FirstControllerMo *mo = _dataArr[section];
-    return mo.tenderRecords.count;
+    return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MarginCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MarginCell"];
     FirstControllerMo *mo = _dataArr[indexPath.section];
-    cell.model = mo.tenderRecords[indexPath.row];
+    cell.model = mo;
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

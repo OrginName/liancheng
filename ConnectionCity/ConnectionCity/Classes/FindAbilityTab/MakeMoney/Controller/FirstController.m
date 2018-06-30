@@ -11,7 +11,6 @@
 #import "FirstSectionHeadV.h"
 #import "ReleaseTenderController.h"
 #import "BiddInfoController.h"
-#import "WinnerInfoController.h"
 #import "BidManageController.h"
 #import "JFCityViewController.h"
 #import "ClassificationsController.h"
@@ -86,6 +85,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 100;
@@ -121,8 +121,6 @@
     [self.navigationController pushViewController:fbVC animated:YES];
 }
 - (void)firstSectionHeadV:(FirstSectionHeadV *)view zbglBtnClick:(UIButton *)btn {
-//    WinnerInfoController *winnerInfoVC = [[WinnerInfoController alloc]init];
-//    [self.navigationController pushViewController:winnerInfoVC animated:YES];
     BidManageController *bidManageVC = [[BidManageController alloc]init];
     [self.navigationController pushViewController:bidManageVC animated:YES];
 }

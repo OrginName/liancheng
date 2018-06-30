@@ -36,7 +36,8 @@
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1a-Ak-eoL">
                             <rect key="frame" x="14" y="50" width="327" height="62"/>
-                            <string key="text">北京兴业集团公司北京 朝阳区前门大街永辉大厦11层</string>
+                            <string key="text">北京兴业集团公司
+北京 朝阳区前门大街永辉大厦11层</string>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -89,7 +90,16 @@
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZ1-ax-Tc3">
                             <rect key="frame" x="14" y="55" width="327" height="158"/>
-                            <string key="text">项目单位：***招标代理机构：***招标内容：一、工程概况：　　*、项目名称：格拉斯小镇泛光照明工程　　*、建设地点：通州区宋庄镇　　*、招标内容：泛光照明工程　　*、资金来源：自筹资金投标申请人资格要求：二、对潜在投标人的资质要求：　　*、投标人应具有独立法人资格；　　*、投标人必须具备城市及道路照明工程专业承包二级及以上资质。投......</string>
+                            <string key="text">项目单位：***招标代理机构：***
+招标内容：
+一、工程概况：　　
+*、项目名称：格拉斯小镇泛光照明工程　　
+*、建设地点：通州区宋庄镇　　
+*、招标内容：泛光照明工程　　
+*、资金来源：自筹资金投标申请人资格要求：
+二、对潜在投标人的资质要求：　　
+*、投标人应具有独立法人资格；　
+　*、投标人必须具备城市及道路照明工程专业承包二级及以上资质。投......</string>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -122,6 +132,11 @@
                 <constraint firstItem="OeI-3t-695" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="gEk-df-zgY"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="companeyAndAddressLab" destination="c1a-Ak-eoL" id="xvr-19-IhI"/>
+                <outlet property="contentLab" destination="DZ1-ax-Tc3" id="OqL-83-TzQ"/>
+                <outlet property="titleLab" destination="Iq6-T7-S8R" id="h5N-Vz-zAX"/>
+            </connections>
             <point key="canvasLocation" x="39.5" y="-88"/>
         </view>
     </objects>

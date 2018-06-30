@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "TenderRecordsMo.h"
 #import "privateUserInfoModel.h"
+#import "OccupationCategoryNameModel.h"
+
 @class WinningBidderCell;
 
 @protocol WinningBidderCellDelegate <NSObject>

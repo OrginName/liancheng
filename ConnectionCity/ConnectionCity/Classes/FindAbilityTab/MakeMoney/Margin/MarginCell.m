@@ -14,9 +14,9 @@
     [super awakeFromNib];
     // Initialization code
 }
-- (void)setModel:(TenderRecordsMo *)model {
+- (void)setModel:(FirstControllerMo *)model {
     _model = model;
-//    _marginMoneyLab.text = model.amount;
+    _marginMoneyLab.text = model.depositAmount;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -9,7 +9,12 @@
 #import "WinnerInfoHeadView.h"
 
 @implementation WinnerInfoHeadView
-
+- (void)setModel:(FirstControllerMo *)model {
+    _model = model;
+    _titleLab.text = model.title;
+    _companeyAndAddressLab.text = [NSString stringWithFormat:@"%@\n%@",model.company,model.tenderAddress];
+    _contentLab.text = model.content;
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

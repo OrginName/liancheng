@@ -28,6 +28,7 @@
     privateUserInfoModel *userinfomo = model.user;
     [_headerImgView sd_setImageWithURL:[NSURL URLWithString:userinfomo.headImage]];
     _nameLab.text = userinfomo.nickName;
+    _detailLab.text = userinfomo.occupationCategoryName.name;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

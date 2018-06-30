@@ -7,6 +7,7 @@
 //
 
 #import "WinningBidderController.h"
+#import "WinnerInfoController.h"
 #import "WinningBidderCell.h"
 #import "BidderSectionHeadV.h"
 #import "FirstControllerMo.h"
@@ -60,6 +61,10 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    WinnerInfoController *winnerInfoVC = [[WinnerInfoController alloc]init];
+    FirstControllerMo *mo = self.dataArr[indexPath.row];
+    winnerInfoVC.bidid = mo.modelId;
+    [self.navigationController pushViewController:winnerInfoVC animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 93;
