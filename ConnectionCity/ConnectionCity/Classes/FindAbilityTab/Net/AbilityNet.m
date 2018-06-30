@@ -66,6 +66,26 @@
     }];
 }
 /**
+ 赚外快 - 行业类型
+ 
+ @param block 成功返回
+ */
++(void)requstMakeMoneyClass:(SuccessArrBlock)block{
+    [YSNetworkTool POST:dictionaryIndustryCategory params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray * arr = [NSMutableArray array];
+        if ([responseObject[@"data"] isKindOfClass:[NSArray class]]) {
+            for (int i=0; i<[responseObject[@"data"] count]; i++) {
+                ClassifyMo * mo = [ClassifyMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+                mo.ID = responseObject[@"data"][i][@"id"];
+                [arr addObject:mo];
+            }
+        }
+        block(arr);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+/**
  简历-附近列表
  
  @param param 字典

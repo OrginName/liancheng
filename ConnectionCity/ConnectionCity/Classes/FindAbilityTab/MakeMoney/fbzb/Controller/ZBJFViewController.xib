@@ -24,6 +24,10 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dfV-w4-MiC">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="kuF-ic-3MR"/>
+                        <outlet property="delegate" destination="-1" id="RAA-3i-5oU"/>
+                    </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Wr-OH-9h9">
                     <rect key="frame" x="10" y="607" width="355" height="50"/>

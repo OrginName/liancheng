@@ -8,10 +8,12 @@
 
 #import "ZBJFViewController.h"
 #import "ConsultativeNegotiationCell.h"
+#import "InstallmentMo.h"
 
-@interface ZBJFViewController ()
+@interface ZBJFViewController ()<ConsultativeNegotiationCellDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *commitBtn;
+@property (nonatomic, strong) NSMutableArray *dataArr;
 
 @end
 
@@ -31,8 +33,38 @@
 }
 #pragma mark - setup
 - (void)setUI {
-    self.navigationItem.title = @"发布招标";
+    self.navigationItem.title = @"招标缴费";
     self.commitBtn.layer.cornerRadius = 3;
+    
+    InstallmentMo *mo00 = [[InstallmentMo alloc]init];
+    mo00.bbb = YES;
+    mo00.title = @"招标金额";
+    mo00.data = self.zbjeStr;
+    InstallmentMo *mo10 = [[InstallmentMo alloc]init];
+    mo10.bbb = YES;
+    mo10.title = @"一期";
+    mo10.data = self.zbjeStr;
+    InstallmentMo *mo11 = [[InstallmentMo alloc]init];
+    mo11.bbb = NO;
+    mo11.title = @"二期";
+    mo11.data = @"0";
+    InstallmentMo *mo12 = [[InstallmentMo alloc]init];
+    mo12.bbb = NO;
+    mo12.title = @"三期";
+    mo12.data = @"0";
+    InstallmentMo *mo13 = [[InstallmentMo alloc]init];
+    mo13.bbb = NO;
+    mo13.title = @"四期";
+    mo13.data = @"0";
+    InstallmentMo *mo14 = [[InstallmentMo alloc]init];
+    mo14.bbb = NO;
+    mo14.title = @"五期";
+    mo14.data = @"0";
+    InstallmentMo *mo20 = [[InstallmentMo alloc]init];
+    mo20.bbb = NO;
+    mo20.title = @"保证金";
+    mo20.data = [NSString stringWithFormat:@"%.2f",[self.zbjeStr intValue]/10.0];
+    self.dataArr = [NSMutableArray arrayWithArray:@[@[mo00],@[mo10,mo11,mo12,mo13,mo14],@[mo20]]];
 }
 - (void)setTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"ConsultativeNegotiationCell" bundle:nil] forCellReuseIdentifier:@"ConsultativeNegotiationCell"];
@@ -40,33 +72,45 @@
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return self.dataArr.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return 1;
-    }else{
-        return 3;
-    }
+    return [self.dataArr[section] count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ConsultativeNegotiationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ConsultativeNegotiationCell"];
+    cell.delegate = self;
+    cell.dataTF.delegate = self;
+    cell.dataTF.tag = 1000+indexPath.row;
+    cell.dataTF.keyboardType = UIKeyboardTypeDecimalPad;
+    InstallmentMo *mo = self.dataArr[indexPath.section][indexPath.row];
+    cell.model = mo;
+    if (indexPath.section!=1) {
+        cell.dataTF.userInteractionEnabled = NO;
+    }else{
+        cell.dataTF.userInteractionEnabled = YES;
+    }
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 1) {
+    if (section == 1 || section == 2) {
         return 40;
     }else{
         return 10;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0.1;
+    if (section==2) {
+        return 40;
+    }else{
+        return 0.1;
+    }
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    /*
     //重用区头视图
     UITableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"UITableViewHeaderFooterView"];
     if (headerView.subviews.count == 1 && section == 1) {
@@ -76,15 +120,143 @@
         sectinLab.font = [UIFont systemFontOfSize:15];
         sectinLab.text = @"+分  期";
         [headerView addSubview:sectinLab];
+    }else if (headerView.subviews.count == 1 && section == 2) {
+        UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, kScreenWidth - 20, 50)];
+        lab.text = @"如暂不支付招标金额，必须缴纳保证金。";
+        lab.font = [UIFont systemFontOfSize:12];
+        lab.textColor = [UIColor darkGrayColor];
+        lab.textAlignment = NSTextAlignmentLeft;
+        lab.numberOfLines = 0;
+        [headerView addSubview:lab];
+    }else{
+        [headerView.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     }
     //返回区头视图
     return headerView;
+     */
+    if (section==1) {
+        UILabel *sectinLab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
+        sectinLab.textAlignment = NSTextAlignmentCenter;
+        sectinLab.textColor = [UIColor orangeColor];
+        sectinLab.font = [UIFont systemFontOfSize:15];
+        sectinLab.text = @"+分  期";
+        return sectinLab;
+    }else if (section==2){
+        UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 50)];
+        UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, kScreenWidth - 20, 50)];
+        lab.text = @"如暂不支付招标金额，必须缴纳保证金。";
+        lab.font = [UIFont systemFontOfSize:12];
+        lab.textColor = [UIColor darkGrayColor];
+        lab.textAlignment = NSTextAlignmentLeft;
+        lab.numberOfLines = 0;
+        [bgview addSubview:lab];
+        return bgview;
+    }else{
+        return nil;
+    }
 }
-
+- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    /*
+    //重用区头视图
+    UITableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"UITableViewHeaderFooterView"];
+    if (headerView.subviews.count == 1 && section == 2) {
+        UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, kScreenWidth - 20, 50)];
+        lab.text = @"招标金额的10%由平台上托管，以保证招标双方权益，交易完成后退还。";
+        lab.font = [UIFont systemFontOfSize:12];
+        lab.textColor = [UIColor darkGrayColor];
+        lab.textAlignment = NSTextAlignmentLeft;
+        lab.numberOfLines = 0;
+        [headerView addSubview:lab];
+    }else{
+        [headerView.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    }
+    //返回区头视图
+    return headerView;
+    */
+    if (section == 2) {
+        UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 50)];
+        UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, kScreenWidth - 20, 50)];
+        lab.text = @"招标金额的10%由平台上托管，以保证招标双方权益，交易完成后退还。";
+        lab.font = [UIFont systemFontOfSize:12];
+        lab.textColor = [UIColor darkGrayColor];
+        lab.textAlignment = NSTextAlignmentLeft;
+        lab.numberOfLines = 0;
+        [bgview addSubview:lab];
+        return bgview;
+    }else{
+        return nil;
+    }
+}
+#pragma mark - ConsultativeNegotiationCellDelegate
+- (void)consultativeNegotiationCell:(ConsultativeNegotiationCell *)cell selectedBtn:(UIButton *)btn {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    InstallmentMo *mo = self.dataArr[indexPath.section][indexPath.row];
+    mo.bbb = !mo.bbb;
+    [self.tableView reloadData];
+}
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    YTLog(@"%@",textField);
+    InstallmentMo *mo = _dataArr[1][textField.tag-1000];
+    mo.data = textField.text;
+    [self.tableView reloadData];
+    
+    return YES;
+}
 #pragma mark - 点击事件
 - (IBAction)commitBtnClick:(id)sender {
     
+    InstallmentMo *mo0 = self.dataArr[1][0];
+    InstallmentMo *mo1 = self.dataArr[1][1];
+    InstallmentMo *mo2 = self.dataArr[1][2];
+    InstallmentMo *mo3 = self.dataArr[1][3];
+    InstallmentMo *mo4 = self.dataArr[1][4];
+
+     NSDictionary *dic = @{
+     @"amount": @"0",
+     @"areaCode": self.mo?self.mo.ID:@"",
+     @"company": self.cellPlaceHolds[1],
+     @"contactMobile": self.cellPlaceHolds[10],
+     @"contactName": self.cellPlaceHolds[9],
+     @"content": self.cellPlaceHolds[4],
+     @"depositAmount": self.cellPlaceHolds[8],
+     @"industryCategoryId": @"0",
+     @"industryCategoryName": @"string",
+     @"industryCategoryParentId": @"0",
+     @"industryCategoryParentName": @"string",
+     @"lat": self.mo?self.mo.lat:@"",
+     @"lng": self.mo?self.mo.lng:@"",
+     @"periodAmount1": @"1",
+     @"periodAmount2": @"2",
+     @"periodAmount3": @"3",
+     @"periodAmount4": @"4",
+     @"periodAmount5": @"5",
+     @"rewardAmount1": mo0.data,
+     @"rewardAmount2": mo1.data,
+     @"rewardAmount3": mo2.data,
+     @"rewardAmount4": mo3.data,
+     @"rewardAmount5": mo4.data,
+     @"tenderAddress": self.cellPlaceHolds[3],
+     @"tenderEndDate": self.cellPlaceHolds[7],
+     @"tenderImages": self.cellPlaceHolds[5],
+     @"tenderStartDate": self.cellPlaceHolds[6],
+     @"title": self.cellPlaceHolds[0],
+     };
+     [self v1TalentTenderCreate:dic];
+    
 }
+
+#pragma mark - 接口请求
+- (void)v1TalentTenderCreate:(NSDictionary *)dic{
+    WeakSelf
+    [YSNetworkTool POST:v1TalentTenderCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确认" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        } completion:nil];
+    } failure:nil];
+}
+
+
 /*
 #pragma mark - Navigation
 

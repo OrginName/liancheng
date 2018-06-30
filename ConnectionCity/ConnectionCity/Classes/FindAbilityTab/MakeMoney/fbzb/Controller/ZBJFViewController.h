@@ -7,7 +7,11 @@
 //
 
 #import "BaseViewController.h"
+#import "CityMo.h"
 
 @interface ZBJFViewController : BaseViewController
+@property (nonatomic, strong) NSMutableArray *cellPlaceHolds;
+@property (nonatomic, strong) NSString *zbjeStr;
+@property (nonatomic, strong) CityMo *mo;
 
 @end

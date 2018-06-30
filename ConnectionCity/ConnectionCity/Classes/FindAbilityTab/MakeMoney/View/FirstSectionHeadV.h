@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FirstCustomButton.h"
 
 @class FirstSectionHeadV;
 
@@ -22,5 +23,8 @@
 
 @interface FirstSectionHeadV : UIView
 @property (nonatomic, weak) id<FirstSectionHeadVDelegate>delegate;
+@property (weak, nonatomic) IBOutlet FirstCustomButton *cityBtn;
+@property (weak, nonatomic) IBOutlet FirstCustomButton *typeBtn;
+@property (weak, nonatomic) IBOutlet FirstCustomButton *timeBtn;
 
 @end

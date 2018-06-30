@@ -396,6 +396,7 @@
 		CE97DC0820B5B1CA003E46BD /* BidManageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE97DC0620B5B1CA003E46BD /* BidManageController.xib */; };
 		CE9B9A4620E533B5005C47B2 /* ZBJFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B9A4420E533B5005C47B2 /* ZBJFViewController.m */; };
 		CE9B9A4720E533B5005C47B2 /* ZBJFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9B9A4520E533B5005C47B2 /* ZBJFViewController.xib */; };
+		CE9B9A4D20E6761E005C47B2 /* InstallmentMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B9A4C20E6761D005C47B2 /* InstallmentMo.m */; };
 		CEBEDD7D20B17ED1000F9EE4 /* WinningBidderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBEDD5920B17ED0000F9EE4 /* WinningBidderCell.m */; };
 		CEBEDD7E20B17ED1000F9EE4 /* WinningBidderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBEDD5A20B17ED0000F9EE4 /* WinningBidderController.xib */; };
 		CEBEDD7F20B17ED1000F9EE4 /* WinningBidderController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBEDD5B20B17ED0000F9EE4 /* WinningBidderController.m */; };
@@ -1147,6 +1148,8 @@
 		CE9B9A4320E533B5005C47B2 /* ZBJFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBJFViewController.h; sourceTree = "<group>"; };
 		CE9B9A4420E533B5005C47B2 /* ZBJFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBJFViewController.m; sourceTree = "<group>"; };
 		CE9B9A4520E533B5005C47B2 /* ZBJFViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZBJFViewController.xib; sourceTree = "<group>"; };
+		CE9B9A4B20E6761D005C47B2 /* InstallmentMo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallmentMo.h; sourceTree = "<group>"; };
+		CE9B9A4C20E6761D005C47B2 /* InstallmentMo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallmentMo.m; sourceTree = "<group>"; };
 		CEBEDD5820B17ED0000F9EE4 /* WinningBidderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinningBidderController.h; sourceTree = "<group>"; };
 		CEBEDD5920B17ED0000F9EE4 /* WinningBidderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WinningBidderCell.m; sourceTree = "<group>"; };
 		CEBEDD5A20B17ED0000F9EE4 /* WinningBidderController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WinningBidderController.xib; sourceTree = "<group>"; };
@@ -2950,6 +2953,8 @@
 		CE97DBFD20B5B16A003E46BD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CE9B9A4B20E6761D005C47B2 /* InstallmentMo.h */,
+				CE9B9A4C20E6761D005C47B2 /* InstallmentMo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3795,6 +3800,7 @@
 				720263F720B5015500382B2F /* TZImagePickerController.m in Sources */,
 				CE0A99DD20C57C44003A4D91 /* CertificationCenterController.m in Sources */,
 				727418C020B17536001D6BE1 /* CustomTabr.m in Sources */,
+				CE9B9A4D20E6761E005C47B2 /* InstallmentMo.m in Sources */,
 				8DD48CD120A811EA00D6D1E6 /* SDCycleScrollView.m in Sources */,
 				7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */,
 				CE0BA5EB209D5E9B004C3C33 /* SRDownloadManager.m in Sources */,
@@ -4065,7 +4071,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";
@@ -4087,7 +4093,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";

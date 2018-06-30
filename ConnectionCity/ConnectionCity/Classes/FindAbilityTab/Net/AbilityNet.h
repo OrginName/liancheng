@@ -33,8 +33,12 @@ typedef void (^FailDicBlock) (NSString * failValue);
  @param block 成功返回
  */
 +(void)requstAbilityConditions:(SuccessArrBlock)block;
-
-
+/**
+ 赚外快 - 行业类型
+ 
+ @param block 成功返回
+ */
++(void)requstMakeMoneyClass:(SuccessArrBlock)block;
 /**
  简历-附近列表
 

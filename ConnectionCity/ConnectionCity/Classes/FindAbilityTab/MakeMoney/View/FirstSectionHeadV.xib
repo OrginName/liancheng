@@ -72,7 +72,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXS-I3-0Tb" customClass="FirstCustomButton">
-                            <rect key="frame" x="121" y="0.0" width="121.5" height="39"/>
+                            <rect key="frame" x="124.5" y="0.0" width="113.5" height="39"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="行业类型" image="Arrow-xia1">
@@ -83,7 +83,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0d-53-hhe" customClass="FirstCustomButton">
-                            <rect key="frame" x="0.0" y="0.0" width="121" height="39"/>
+                            <rect key="frame" x="5" y="0.0" width="114.5" height="39"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="苏州市" image="Arrow-xia1">
@@ -94,7 +94,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckY-Hm-cbJ" customClass="FirstCustomButton">
-                            <rect key="frame" x="242.5" y="0.0" width="113.5" height="39"/>
+                            <rect key="frame" x="243" y="0.0" width="107" height="39"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="时间" image="Arrow-xia1">
@@ -110,18 +110,18 @@
                         <constraint firstItem="a0d-53-hhe" firstAttribute="width" secondItem="qXS-I3-0Tb" secondAttribute="width" id="3Qk-pK-thb"/>
                         <constraint firstItem="dUE-S5-bXJ" firstAttribute="leading" secondItem="vZL-xq-UNV" secondAttribute="leading" id="88W-QT-uPn"/>
                         <constraint firstItem="dUE-S5-bXJ" firstAttribute="top" secondItem="qXS-I3-0Tb" secondAttribute="bottom" id="9wp-GD-1qf"/>
-                        <constraint firstItem="qXS-I3-0Tb" firstAttribute="leading" secondItem="a0d-53-hhe" secondAttribute="trailing" id="CLi-KX-YOs"/>
+                        <constraint firstItem="qXS-I3-0Tb" firstAttribute="leading" secondItem="a0d-53-hhe" secondAttribute="trailing" constant="5" id="CLi-KX-YOs"/>
                         <constraint firstItem="dUE-S5-bXJ" firstAttribute="top" secondItem="a0d-53-hhe" secondAttribute="bottom" id="JZk-jt-mF5"/>
-                        <constraint firstAttribute="trailing" secondItem="ckY-Hm-cbJ" secondAttribute="trailing" constant="-1" id="JiI-Xl-Z8R"/>
+                        <constraint firstAttribute="trailing" secondItem="ckY-Hm-cbJ" secondAttribute="trailing" constant="5" id="JiI-Xl-Z8R"/>
                         <constraint firstItem="a0d-53-hhe" firstAttribute="top" secondItem="vZL-xq-UNV" secondAttribute="top" id="RZg-kF-R01"/>
                         <constraint firstItem="qXS-I3-0Tb" firstAttribute="top" secondItem="vZL-xq-UNV" secondAttribute="top" id="W10-Cb-4LS"/>
                         <constraint firstItem="qXS-I3-0Tb" firstAttribute="width" secondItem="ckY-Hm-cbJ" secondAttribute="width" constant="7.5" id="WLW-qi-YDR"/>
                         <constraint firstItem="ckY-Hm-cbJ" firstAttribute="top" secondItem="vZL-xq-UNV" secondAttribute="top" id="Z9r-ul-HEY"/>
                         <constraint firstItem="dUE-S5-bXJ" firstAttribute="top" secondItem="ckY-Hm-cbJ" secondAttribute="bottom" id="eCI-mb-X6I"/>
-                        <constraint firstItem="ckY-Hm-cbJ" firstAttribute="leading" secondItem="qXS-I3-0Tb" secondAttribute="trailing" id="eSi-NY-Klc"/>
+                        <constraint firstItem="ckY-Hm-cbJ" firstAttribute="leading" secondItem="qXS-I3-0Tb" secondAttribute="trailing" constant="5" id="eSi-NY-Klc"/>
                         <constraint firstAttribute="bottom" secondItem="dUE-S5-bXJ" secondAttribute="bottom" id="fGV-bO-lhw"/>
                         <constraint firstAttribute="trailing" secondItem="dUE-S5-bXJ" secondAttribute="trailing" id="ioR-5O-wJg"/>
-                        <constraint firstItem="a0d-53-hhe" firstAttribute="leading" secondItem="vZL-xq-UNV" secondAttribute="leading" id="tkI-aM-LuU"/>
+                        <constraint firstItem="a0d-53-hhe" firstAttribute="leading" secondItem="vZL-xq-UNV" secondAttribute="leading" constant="5" id="tkI-aM-LuU"/>
                     </constraints>
                 </view>
             </subviews>
@@ -139,6 +139,11 @@
                 <constraint firstItem="aoU-cx-nuJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="qbE-OH-cip"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cityBtn" destination="a0d-53-hhe" id="crZ-xr-rLa"/>
+                <outlet property="timeBtn" destination="ckY-Hm-cbJ" id="HaP-qV-2UD"/>
+                <outlet property="typeBtn" destination="qXS-I3-0Tb" id="njg-Ib-lzw"/>
+            </connections>
             <point key="canvasLocation" x="51.5" y="-324"/>
         </view>
     </objects>

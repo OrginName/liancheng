@@ -69,6 +69,23 @@
     [self.tabBarController.navigationController popViewControllerAnimated:YES];
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"BACKMAINWINDOW" object:nil];
 }
+#pragma mark - 接口请求
+- (void)v1TalentTenderPage{
+    NSDictionary * dic = @{
+//                           @"cityCode":_areaCode?_areaCode:@"",
+//                           @"industryCategoryId":_industryCategoryId?_industryCategoryId:@"",
+//                           @"maxDate":_timeStr?_timeStr:[NSDate date],
+//                           @"minDate":_timeStr?_timeStr:[NSDate date],
+//                           @"pageNumber": @"1",
+//                           @"pageSize":@"10"
+                           };
+    WeakSelf
+    [YSNetworkTool POST:v1TalentTenderRecordList params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        
+        
+    } failure:nil];
+}
 
 
 /*

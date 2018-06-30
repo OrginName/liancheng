@@ -15,6 +15,7 @@
 #import "PhotoSelect.h"
 #import "QiniuUploader.h"
 #import "ZBJFViewController.h"
+#import "CityMo.h"
 
 @interface ReleaseTenderController ()<LCDatePickerDelegate,JFCityViewControllerDelegate,PhotoSelectDelegate>
 {
@@ -31,6 +32,7 @@
 @property (nonatomic, strong) PhotoSelect * photo;
 @property (nonatomic, strong) NSArray *imageArr;
 @property (nonatomic, strong) NSMutableArray *Arr_Url;
+@property (nonatomic, strong) CityMo *citymo;
 
 @end
 
@@ -59,7 +61,10 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"ReleaseTenderCell" bundle:nil] forCellReuseIdentifier:@"ReleaseTenderCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ReleaseTenderAdditionalCell" bundle:nil] forCellReuseIdentifier:@"ReleaseTenderAdditionalCell"];
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"UITableViewHeaderFooterView"];
-    UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 50)];
+    UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 70)];
+    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(10, 10, kScreenWidth-20, 50)];
+    bgView.backgroundColor = [UIColor whiteColor];
+    [footView addSubview:bgView];
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(38, 9, kScreenWidth - 38*2, 50 - 9*2);
     btn.layer.cornerRadius = 3;
@@ -67,7 +72,7 @@
     [btn setBackgroundColor:YSColor(236,95,90)];
     [btn setTitle:@"下一步" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(nextBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [footView addSubview:btn];
+    [bgView addSubview:btn];
     self.tableView.tableFooterView = footView;
 }
 //创建日期插件
@@ -76,6 +81,7 @@
     self.myDatePick.delegate  = self;
     [self.view addSubview:self.myDatePick];
     self.Arr_Url = [NSMutableArray array];
+    self.citymo = [KUserDefults objectForKey:kUserCity];
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -92,7 +98,6 @@
         self.photo.allowTakeVideo = YES;
         self.photo.maxCountTF = 3;
         self.photo.maxCountForRow = 3;
-//        self.photo.backgroundColor = [UIColor redColor];
         [cell2.photoBgView addSubview: self.photo];
         return cell2;
     }else{
@@ -123,11 +128,13 @@
         EditAllController * edit = [EditAllController new];
         WeakSelf
         edit.block = ^(NSString * str){
+            if (indexPath.row==8) {
+                str = [NSString stringWithFormat:@"%.2f",[str floatValue]];
+            }
             weakSelf.cellPlaceHolds[indexPath.row] = str;
             [weakSelf.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
         };
         [self.navigationController pushViewController:edit animated:YES];
-
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -175,7 +182,7 @@
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
 }
 -(void)cityMo:(CityMo *)mo{
-//    [self requestPrivateUserUpdateWithDic:@{@"areaCode": mo.ID}];
+    self.citymo = mo;
 }
 #pragma mark ----PhotoSelectDelegate-----
 -(void)selectImageArr:(NSArray *)imageArr{
@@ -194,11 +201,11 @@
 }
 #pragma mark - 点击事件
 - (void)nextBtnClick:(UIButton *)btn {
-    ZBJFViewController *zbjfVC = [[ZBJFViewController alloc]init];
-    [self.navigationController pushViewController:zbjfVC animated:YES];
-    
     if (self.imageArr.count!=0) {
         [YTAlertUtil showHUDWithTitle:@"正在上传"];
+    }else{
+        [YTAlertUtil showTempInfo:@"请上传招标附件"];
+        return;
     }
     __block int flag = 0;
     WeakSelf
@@ -208,38 +215,23 @@
             [weakSelf.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
             if (flag == weakSelf.imageArr.count) {
                 [YTAlertUtil hideHUD];
-                /*
-                NSDictionary *dic = @{
-                                      @"areaCode": [KUserDefults objectForKey:kUserCityID],
-                                      @"company": weakSelf.cellPlaceHolds[1],
-                                      @"contactMobile": weakSelf.cellPlaceHolds[10],
-                                      @"contactName": weakSelf.cellPlaceHolds[9],
-                                      @"content": weakSelf.cellPlaceHolds[4],
-                                      @"depositAmount": weakSelf.cellPlaceHolds[8],
-                                      @"lat": [KUserDefults objectForKey:kLat],
-                                      @"lng": [KUserDefults objectForKey:KLng],
-                                      @"tenderAddress": weakSelf.cellPlaceHolds[3],
-                                      @"tenderEndDate": weakSelf.cellPlaceHolds[7],
-                                      @"tenderImages": [weakSelf.Arr_Url componentsJoinedByString:@","],
-                                      @"tenderStartDate": weakSelf.cellPlaceHolds[6],
-                                      @"title": weakSelf.cellPlaceHolds[0]
-                                      };
-                [weakSelf v1TalentTenderCreate:dic];
-                 */
+                weakSelf.cellPlaceHolds[5] = [weakSelf.Arr_Url componentsJoinedByString:@","];
+                for (int i=0; i<weakSelf.cellPlaceHolds.count; i++) {
+                    NSString *str = weakSelf.cellPlaceHolds[i];
+                    if ([YSTools dx_isNullOrNilWithObject:str]) {
+                        [YTAlertUtil showHUDWithTitle:@"请将信息填写完整"];
+                        return;
+                    }
+                }
+                ZBJFViewController *zbjfVC = [[ZBJFViewController alloc]init];
+                zbjfVC.cellPlaceHolds = weakSelf.cellPlaceHolds;
+                zbjfVC.zbjeStr = weakSelf.cellPlaceHolds[8];
+                zbjfVC.mo = weakSelf.citymo;
+                [weakSelf.navigationController pushViewController:zbjfVC animated:YES];
             }
         }];
     }
 }
-#pragma mark - 接口请求
-- (void)v1TalentTenderCreate:(NSDictionary *)dic{
-    WeakSelf
-    [YSNetworkTool POST:v1TalentTenderCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确认" defaultHandler:^(UIAlertAction *action) {
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        } completion:nil];
-    } failure:nil];
-}
-
 
 
 /*
