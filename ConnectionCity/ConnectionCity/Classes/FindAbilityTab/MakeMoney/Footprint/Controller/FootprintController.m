@@ -11,9 +11,12 @@
 #import "FootSectionHeadV.h"
 #import "FootprintCell.h"
 #import "MarginCell.h"
+#import "FirstControllerMo.h"
 
 @interface FootprintController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, assign) NSInteger page;
 
 @end
 
@@ -21,7 +24,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initdata];
     [self setTableView];
+    [self addHeaderRefresh];
+    [self addFooterRefresh];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -36,24 +42,26 @@
     // Dispose of any resources that can be recreated.
 }
 #pragma mark - setup
-
+- (void)initdata {
+    self.dataArr = [[NSMutableArray alloc]init];
+}
 - (void)setTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"MarginCell" bundle:nil] forCellReuseIdentifier:@"MarginCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"FootprintCell" bundle:nil] forCellReuseIdentifier:@"FootprintCell"];
     [self.tableView registerClass:[FootSectionHeadV class] forHeaderFooterViewReuseIdentifier:@"FootSectionHeadV"];
 }
-- (void)viewWillLayoutSubviews {
-}
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 5;
+    return _dataArr.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    FirstControllerMo *mo = _dataArr[section];
+    return mo.tenderRecords.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MarginCell *biddercell = [tableView dequeueReusableCellWithIdentifier:@"MarginCell"];
     FootprintCell *winnercell = [tableView dequeueReusableCellWithIdentifier:@"FootprintCell"];
+    
     if (indexPath.section % 2) {
         return biddercell;
     }else{
@@ -88,21 +96,67 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"BACKMAINWINDOW" object:nil];
 }
 #pragma mark - 接口请求
-- (void)v1TalentTenderPage{
-    NSDictionary * dic = @{
-//                           @"cityCode":_areaCode?_areaCode:@"",
-//                           @"industryCategoryId":_industryCategoryId?_industryCategoryId:@"",
-//                           @"maxDate":_timeStr?_timeStr:[NSDate date],
-//                           @"minDate":_timeStr?_timeStr:[NSDate date],
-//                           @"pageNumber": @"1",
-//                           @"pageSize":@"10"
-                           };
+- (void)addHeaderRefresh {
+    __weak typeof(self) weakSelf = self;
+    [YSRefreshTool addRefreshHeaderWithView:self.tableView refreshingBlock:^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.page = 1;
+        [strongSelf getHeaderData];
+    }];
+    [YSRefreshTool beginRefreshingWithView:self.tableView];
+}
+- (void)addFooterRefresh {
+    __weak typeof(self) weakSelf = self;
+    [YSRefreshTool addRefreshFooterWithView:self.tableView refreshingBlock:^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.page ++;
+        [strongSelf getFooterData];
+    }];
+}
+- (void)getHeaderData {
+    NSDictionary *dic = @{
+                          @"areaCode": @"",
+                          @"cityCode": @"",
+                          @"industryCategoryId":@0,
+                          @"maxDate": @"",
+                          @"minDate": @"",
+                          @"pageNumber": [NSString stringWithFormat:@"%ld",(long)_page],
+                          @"pageSize": @"10",
+                          @"provinceCode": @""
+                          };
+    
     WeakSelf
-    [YSNetworkTool POST:v1TalentTenderPage params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        
-        
-        
-    } failure:nil];
+    [YSNetworkTool POST:v1TalentTenderPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        [weakSelf.dataArr removeAllObjects];
+        weakSelf.dataArr = [FirstControllerMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"content"]];
+        [weakSelf.tableView reloadData];
+        [YSRefreshTool endRefreshingWithView:self.tableView];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [YSRefreshTool endRefreshingWithView:self.tableView];
+    }];
+}
+- (void)getFooterData {
+    NSDictionary *dic = @{
+                          @"areaCode": @"",
+                          @"cityCode": @"",
+                          @"industryCategoryId":@0,
+                          @"maxDate": @"",
+                          @"minDate": @"",
+                          @"pageNumber": [NSString stringWithFormat:@"%ld",(long)_page],
+                          @"pageSize": @"10",
+                          @"provinceCode": @""
+                          };
+    
+    WeakSelf
+    [YSNetworkTool POST:v1TalentTenderPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        for (FirstControllerMo *mo in [FirstControllerMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"content"]]) {
+            [weakSelf.dataArr addObject:mo];
+        }
+        [weakSelf.tableView reloadData];
+        [YSRefreshTool endRefreshingWithView:self.tableView];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [YSRefreshTool endRefreshingWithView:self.tableView];
+    }];
 }
 
 /*

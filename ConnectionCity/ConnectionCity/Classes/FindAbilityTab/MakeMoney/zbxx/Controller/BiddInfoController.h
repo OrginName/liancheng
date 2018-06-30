@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface BiddInfoController : BaseViewController
+@property (nonatomic, strong) NSString *bidid;
 
 @end

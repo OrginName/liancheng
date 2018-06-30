@@ -96,7 +96,8 @@
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pw1-45-v09">
                             <rect key="frame" x="14" y="50" width="327" height="62"/>
-                            <string key="text">北京兴业集团公司北京 朝阳区前门大街永辉大厦11层</string>
+                            <string key="text">北京兴业集团公司
+北京 朝阳区前门大街永辉大厦11层</string>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -149,7 +150,16 @@
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4I-B8-jIA">
                             <rect key="frame" x="14" y="55" width="327" height="158"/>
-                            <string key="text">项目单位：***招标代理机构：***招标内容：一、工程概况：　　*、项目名称：格拉斯小镇泛光照明工程　　*、建设地点：通州区宋庄镇　　*、招标内容：泛光照明工程　　*、资金来源：自筹资金投标申请人资格要求：二、对潜在投标人的资质要求：　　*、投标人应具有独立法人资格；　　*、投标人必须具备城市及道路照明工程专业承包二级及以上资质。投......</string>
+                            <string key="text">项目单位：***招标代理机构：***
+招标内容：
+一、工程概况：　　
+*、项目名称：格拉斯小镇泛光照明工程　　
+*、建设地点：通州区宋庄镇　　
+*、招标内容：泛光照明工程　　
+*、资金来源：自筹资金投标申请人资格要求：
+二、对潜在投标人的资质要求：　　
+*、投标人应具有独立法人资格；　
+　*、投标人必须具备城市及道路照明工程专业承包二级及以上资质。投......</string>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -171,7 +181,7 @@
                         <constraint firstItem="rMU-dH-fnG" firstAttribute="top" secondItem="VaW-H4-XgF" secondAttribute="top" id="vwT-8g-lCW"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Heu-Gc-qtq">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Heu-Gc-qtq">
                     <rect key="frame" x="10" y="466" width="355" height="89"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="招标内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16u-Pu-vVn">
@@ -247,6 +257,14 @@
                 <constraint firstItem="XVi-d6-aPw" firstAttribute="top" secondItem="gMu-V4-oAB" secondAttribute="bottom" constant="10" id="ygc-zN-7AF"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="companeyAndAddressLab" destination="pw1-45-v09" id="lGn-s8-imz"/>
+                <outlet property="contentLab" destination="G4I-B8-jIA" id="riG-eQ-UOg"/>
+                <outlet property="headImgV" destination="XiW-Pd-ZX5" id="fg7-Q8-Lza"/>
+                <outlet property="industryLab" destination="J79-R4-dag" id="5aZ-HK-3dg"/>
+                <outlet property="nameLab" destination="aK4-7e-mMg" id="Otn-WE-Qbg"/>
+                <outlet property="titleLab" destination="8xv-Jn-tWN" id="WgD-tU-Nhq"/>
+            </connections>
             <point key="canvasLocation" x="-0.5" y="235.5"/>
         </view>
     </objects>

@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TenderRecordsMo.h"
+#import "privateUserInfoModel.h"
 
 @interface MarginCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *marginMoneyLab;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
+@property (nonatomic, strong) TenderRecordsMo *model;
 
 @end

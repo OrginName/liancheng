@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FirstControllerMo.h"
 
 @interface BidderSectionHeadV : UITableViewHeaderFooterView
 @property (nonatomic, strong) UILabel *titleLab;
 @property (nonatomic, strong) UIImageView *headerImgV;
 @property (nonatomic, strong) UILabel *bidderLab;
+@property (nonatomic, strong) FirstControllerMo *model;
 
 @end

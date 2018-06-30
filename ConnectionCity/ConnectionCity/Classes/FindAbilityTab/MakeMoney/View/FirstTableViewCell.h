@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FirstControllerMo.h"
 
 @class FirstTableViewCell;
 
@@ -17,7 +18,12 @@
 @end
 
 @interface FirstTableViewCell : UITableViewCell
+@property (nonatomic, strong) FirstControllerMo *model;
 @property (nonatomic, weak) id<FirstTableViewCellDelegate>delegate;
+@property (weak, nonatomic) IBOutlet UILabel *nameLab;
 @property (weak, nonatomic) IBOutlet UIButton *bidBtn;
+@property (weak, nonatomic) IBOutlet UILabel *moneyLab;
+@property (weak, nonatomic) IBOutlet UILabel *binderOrWinnerLab;
+@property (weak, nonatomic) IBOutlet UIImageView *binderOrWinnerImgV;
 
 @end

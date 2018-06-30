@@ -14,7 +14,10 @@
     [super awakeFromNib];
     // Initialization code
 }
-
+- (void)setModel:(TenderRecordsMo *)model {
+    _model = model;
+//    _marginMoneyLab.text = model.amount;
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

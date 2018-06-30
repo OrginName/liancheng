@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FirstControllerMo.h"
 
 @interface MarginSectionHeadV : UITableViewHeaderFooterView
 @property (nonatomic, strong) UILabel *titleLab;
+@property (nonatomic, strong) FirstControllerMo *model;
 
 @end

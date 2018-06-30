@@ -63,7 +63,7 @@
     InstallmentMo *mo20 = [[InstallmentMo alloc]init];
     mo20.bbb = NO;
     mo20.title = @"保证金";
-    mo20.data = [NSString stringWithFormat:@"%.2f",[self.zbjeStr intValue]/10.0];
+    mo20.data = [NSString stringWithFormat:@"%.2f",[self.zbjeStr intValue] * 0.1];
     self.dataArr = [NSMutableArray arrayWithArray:@[@[mo00],@[mo10,mo11,mo12,mo13,mo14],@[mo20]]];
 }
 - (void)setTableView {
@@ -211,15 +211,17 @@
     InstallmentMo *mo2 = self.dataArr[1][2];
     InstallmentMo *mo3 = self.dataArr[1][3];
     InstallmentMo *mo4 = self.dataArr[1][4];
+    InstallmentMo *mo20 = self.dataArr[2][0];
+
 
      NSDictionary *dic = @{
-     @"amount": @"0",
+     @"amount": self.cellPlaceHolds[8],
      @"areaCode": self.mo?self.mo.ID:@"",
      @"company": self.cellPlaceHolds[1],
      @"contactMobile": self.cellPlaceHolds[10],
      @"contactName": self.cellPlaceHolds[9],
      @"content": self.cellPlaceHolds[4],
-     @"depositAmount": self.cellPlaceHolds[8],
+     @"depositAmount": mo20.data,
      @"industryCategoryId": @"0",
      @"industryCategoryName": @"string",
      @"industryCategoryParentId": @"0",

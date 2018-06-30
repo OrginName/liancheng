@@ -29,6 +29,9 @@
                             <state key="normal" title="对  话">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="dialogueBtnClick:" destination="-1" eventType="touchUpInside" id="84s-Gc-z25"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHr-3N-NhE">
                             <rect key="frame" x="177.5" y="0.0" width="177.5" height="40"/>
@@ -37,6 +40,9 @@
                             <state key="normal" title="关  注">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="focusOnBtnClick:" destination="-1" eventType="touchUpInside" id="W9h-bc-5S9"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

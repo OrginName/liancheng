@@ -20,10 +20,16 @@
 
     // Configure the view for the selected state
 }
+- (void)setModel:(FirstControllerMo *)model {
+    _model = model;
+    _nameLab.text = model.company;
+    _moneyLab.text = model.amount;
+}
 - (IBAction)bidBtnClick:(id)sender {
     if (_delegate && [_delegate respondsToSelector:@selector(firstTableViewCell:bidBtnClick:)]) {
         [_delegate firstTableViewCell:self bidBtnClick:(UIButton *)sender];
     }
 }
+
 
 @end

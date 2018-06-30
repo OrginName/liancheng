@@ -397,6 +397,8 @@
 		CE9B9A4620E533B5005C47B2 /* ZBJFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B9A4420E533B5005C47B2 /* ZBJFViewController.m */; };
 		CE9B9A4720E533B5005C47B2 /* ZBJFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9B9A4520E533B5005C47B2 /* ZBJFViewController.xib */; };
 		CE9B9A4D20E6761E005C47B2 /* InstallmentMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B9A4C20E6761D005C47B2 /* InstallmentMo.m */; };
+		CE9B9A5320E76D14005C47B2 /* FirstControllerMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B9A5220E76D14005C47B2 /* FirstControllerMo.m */; };
+		CE9B9A5620E7A952005C47B2 /* TenderRecordsMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B9A5520E7A952005C47B2 /* TenderRecordsMo.m */; };
 		CEBEDD7D20B17ED1000F9EE4 /* WinningBidderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBEDD5920B17ED0000F9EE4 /* WinningBidderCell.m */; };
 		CEBEDD7E20B17ED1000F9EE4 /* WinningBidderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBEDD5A20B17ED0000F9EE4 /* WinningBidderController.xib */; };
 		CEBEDD7F20B17ED1000F9EE4 /* WinningBidderController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBEDD5B20B17ED0000F9EE4 /* WinningBidderController.m */; };
@@ -1150,6 +1152,10 @@
 		CE9B9A4520E533B5005C47B2 /* ZBJFViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZBJFViewController.xib; sourceTree = "<group>"; };
 		CE9B9A4B20E6761D005C47B2 /* InstallmentMo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallmentMo.h; sourceTree = "<group>"; };
 		CE9B9A4C20E6761D005C47B2 /* InstallmentMo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallmentMo.m; sourceTree = "<group>"; };
+		CE9B9A5120E76D14005C47B2 /* FirstControllerMo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstControllerMo.h; sourceTree = "<group>"; };
+		CE9B9A5220E76D14005C47B2 /* FirstControllerMo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstControllerMo.m; sourceTree = "<group>"; };
+		CE9B9A5420E7A952005C47B2 /* TenderRecordsMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TenderRecordsMo.h; sourceTree = "<group>"; };
+		CE9B9A5520E7A952005C47B2 /* TenderRecordsMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TenderRecordsMo.m; sourceTree = "<group>"; };
 		CEBEDD5820B17ED0000F9EE4 /* WinningBidderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinningBidderController.h; sourceTree = "<group>"; };
 		CEBEDD5920B17ED0000F9EE4 /* WinningBidderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WinningBidderCell.m; sourceTree = "<group>"; };
 		CEBEDD5A20B17ED0000F9EE4 /* WinningBidderController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WinningBidderController.xib; sourceTree = "<group>"; };
@@ -3031,6 +3037,10 @@
 		CE97DC0920B5B221003E46BD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CE9B9A5120E76D14005C47B2 /* FirstControllerMo.h */,
+				CE9B9A5220E76D14005C47B2 /* FirstControllerMo.m */,
+				CE9B9A5420E7A952005C47B2 /* TenderRecordsMo.h */,
+				CE9B9A5520E7A952005C47B2 /* TenderRecordsMo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3670,6 +3680,7 @@
 				8DC17A7620C0E430005D9EE0 /* FriendCirleTab.m in Sources */,
 				CEBEDD9120B17ED1000F9EE4 /* FootprintController.m in Sources */,
 				CEBEDD8120B17ED1000F9EE4 /* MarginController.m in Sources */,
+				CE9B9A5620E7A952005C47B2 /* TenderRecordsMo.m in Sources */,
 				CEC4A57C20C41D540026EE19 /* ProfileHeadView.m in Sources */,
 				723F4FA620BEDE6000AF8268 /* TrvalInvitController.m in Sources */,
 				7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */,
@@ -3920,6 +3931,7 @@
 				8D8E4ECE20C9109E00C3D537 /* EditProfileController.m in Sources */,
 				CE0BA5EA209D5E9B004C3C33 /* YSBlutoothTool.m in Sources */,
 				CE81AD7920E10AC20042E50D /* CertificationCenterMo.m in Sources */,
+				CE9B9A5320E76D14005C47B2 /* FirstControllerMo.m in Sources */,
 				CE24791620CEC9F100D4C396 /* EGOCache.m in Sources */,
 				72EBB8E120C95F8800F670E9 /* AccountSecurityController.m in Sources */,
 				CE0BA5B7209D5E6B004C3C33 /* NSData+hexString.m in Sources */,

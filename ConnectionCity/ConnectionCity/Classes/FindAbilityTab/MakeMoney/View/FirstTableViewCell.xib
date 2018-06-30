@@ -142,8 +142,12 @@
             <color key="backgroundColor" red="0.94869428870000005" green="0.95688086750000001" blue="0.96092218159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
                 <outlet property="bidBtn" destination="IfH-jU-Ujg" id="Mh8-JX-4Jo"/>
+                <outlet property="binderOrWinnerImgV" destination="FGZ-It-LY2" id="6gl-jV-13W"/>
+                <outlet property="binderOrWinnerLab" destination="qH1-Za-lMY" id="Qqe-jL-CmM"/>
+                <outlet property="moneyLab" destination="5HN-d1-t2u" id="0jt-R5-mLp"/>
+                <outlet property="nameLab" destination="gGQ-gh-c7J" id="6p2-oe-o0A"/>
             </connections>
-            <point key="canvasLocation" x="25" y="-13.5"/>
+            <point key="canvasLocation" x="-64" y="-60"/>
         </tableViewCell>
     </objects>
     <resources>

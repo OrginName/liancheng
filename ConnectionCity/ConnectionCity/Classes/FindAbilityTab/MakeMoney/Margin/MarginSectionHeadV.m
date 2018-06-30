@@ -50,7 +50,10 @@
     self.backgroundColor = [UIColor redColor];
     return self;
 }
-
+- (void)setModel:(FirstControllerMo *)model {
+    _model = model;
+    self.titleLab.text = model.title;
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
