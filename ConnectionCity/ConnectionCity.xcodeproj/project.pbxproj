@@ -403,6 +403,7 @@
 		CE9B9A6F20E9168D005C47B2 /* AgreementController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B9A6D20E9168D005C47B2 /* AgreementController.m */; };
 		CE9B9A7020E9168D005C47B2 /* AgreementController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9B9A6E20E9168D005C47B2 /* AgreementController.xib */; };
 		CE9B9A7320E9177F005C47B2 /* AgreementMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B9A7220E9177F005C47B2 /* AgreementMo.m */; };
+		CE9B9A7620E920C6005C47B2 /* OurConcernMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B9A7520E920C6005C47B2 /* OurConcernMo.m */; };
 		CEBEDD7D20B17ED1000F9EE4 /* WinningBidderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBEDD5920B17ED0000F9EE4 /* WinningBidderCell.m */; };
 		CEBEDD7E20B17ED1000F9EE4 /* WinningBidderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBEDD5A20B17ED0000F9EE4 /* WinningBidderController.xib */; };
 		CEBEDD7F20B17ED1000F9EE4 /* WinningBidderController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBEDD5B20B17ED0000F9EE4 /* WinningBidderController.m */; };
@@ -1167,6 +1168,8 @@
 		CE9B9A6E20E9168D005C47B2 /* AgreementController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgreementController.xib; sourceTree = "<group>"; };
 		CE9B9A7120E9177F005C47B2 /* AgreementMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AgreementMo.h; sourceTree = "<group>"; };
 		CE9B9A7220E9177F005C47B2 /* AgreementMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgreementMo.m; sourceTree = "<group>"; };
+		CE9B9A7420E920C6005C47B2 /* OurConcernMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurConcernMo.h; sourceTree = "<group>"; };
+		CE9B9A7520E920C6005C47B2 /* OurConcernMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurConcernMo.m; sourceTree = "<group>"; };
 		CEBEDD5820B17ED0000F9EE4 /* WinningBidderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinningBidderController.h; sourceTree = "<group>"; };
 		CEBEDD5920B17ED0000F9EE4 /* WinningBidderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WinningBidderCell.m; sourceTree = "<group>"; };
 		CEBEDD5A20B17ED0000F9EE4 /* WinningBidderController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WinningBidderController.xib; sourceTree = "<group>"; };
@@ -2798,6 +2801,8 @@
 			children = (
 				CE21F0EA20DF945300478482 /* OurResumeMo.h */,
 				CE21F0EB20DF945300478482 /* OurResumeMo.m */,
+				CE9B9A7420E920C6005C47B2 /* OurConcernMo.h */,
+				CE9B9A7520E920C6005C47B2 /* OurConcernMo.m */,
 				CE21F0ED20DF94A800478482 /* WorkExperienceListModel.h */,
 				CE21F0EE20DF94A800478482 /* WorkExperienceListModel.m */,
 				CE21F0F020DF963400478482 /* educationExperienceListModel.h */,
@@ -3706,6 +3711,7 @@
 				CE5C281F20B953C1006A8332 /* BidManagerHeadV.m in Sources */,
 				CEC4A52F20C3D6D10026EE19 /* TeamHeadView.m in Sources */,
 				CE6BEC1D20C83769003B36D7 /* LCDatePicker.m in Sources */,
+				CE9B9A7620E920C6005C47B2 /* OurConcernMo.m in Sources */,
 				8D12931620E616670008BD6F /* CustomScro.m in Sources */,
 				CEE4B2A620C6CC3F008B8731 /* PersonalCenterController.m in Sources */,
 				72EC1BB920BC4CA100ACC20B /* SendServiceCell.m in Sources */,

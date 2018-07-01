@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "OurResumeMo.h"
+#import "OurConcernMo.h"
 
 @protocol profileCellDelegate <NSObject>
 @optional
@@ -21,6 +22,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *resumeDescribLab;
 @property (weak, nonatomic) IBOutlet UILabel *industryAndTimeLab;
 @property (nonatomic, strong) OurResumeMo *resumeModel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *headerImgV;
+@property (weak, nonatomic) IBOutlet UILabel *concernTitleLab;
+@property (weak, nonatomic) IBOutlet UILabel *concernTimeLab;
+@property (weak, nonatomic) IBOutlet UILabel *concernContentLab;
+@property (weak, nonatomic) IBOutlet UILabel *concernPriceLab;
+@property (weak, nonatomic) IBOutlet UIButton *cancelConcerBtn;
+@property (nonatomic, strong) OurConcernMo *concernModel;
+
 @property (nonatomic,assign) id<profileCellDelegate>delegate;
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView
                             indexPath:(NSIndexPath *)indexPath currentTag:(NSInteger)tag;

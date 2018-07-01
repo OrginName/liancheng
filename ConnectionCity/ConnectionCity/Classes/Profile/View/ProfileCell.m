@@ -38,5 +38,11 @@
     self.resumeDescribLab.text = resumeModel.cityName;
     self.industryAndTimeLab.text = resumeModel.createTime;
 }
+- (void)setConcernModel:(OurConcernMo *)concernModel {
+    _concernModel = concernModel;
+    _concernTitleLab.text = concernModel.typeName;
+    _concernTimeLab.text = concernModel.createTime;
+    _concernContentLab.text = concernModel.typeName;
+}
 
 @end
