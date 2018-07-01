@@ -101,5 +101,7 @@
 @property (nonatomic, copy) NSString *rewardAmount2;
 /** <#amount描述#> */
 @property (nonatomic, copy) NSString *amount;
+/** amount描述 */
+@property (nonatomic, copy) NSString *isWin;
 
 @end

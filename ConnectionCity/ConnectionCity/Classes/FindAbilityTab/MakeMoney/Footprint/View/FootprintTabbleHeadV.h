@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FootprintTabbleHeadV : UIView
+@property (weak, nonatomic) IBOutlet UILabel *totalAmountLab;
+@property (weak, nonatomic) IBOutlet UILabel *todayAmountLab;
 
 @end

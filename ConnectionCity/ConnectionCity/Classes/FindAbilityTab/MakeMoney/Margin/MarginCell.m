@@ -16,7 +16,13 @@
 }
 - (void)setModel:(FirstControllerMo *)model {
     _model = model;
+    _titleLab.text = @"保证金";
     _marginMoneyLab.text = model.depositAmount;
+}
+- (void)setFootModel:(FirstControllerMo *)footModel {
+    _footModel = footModel;
+    _titleLab.text = @"招标金额";
+    _marginMoneyLab.text = footModel.amount;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

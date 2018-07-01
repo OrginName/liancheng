@@ -17,6 +17,7 @@
 #import "AbilityNet.h"
 #import "LCDatePicker.h"
 #import "FirstControllerMo.h"
+#import "WinnerInfoController.h"
 
 @interface FirstController ()<FirstSectionHeadVDelegate,FirstTableViewCellDelegate,JFCityViewControllerDelegate,LCDatePickerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -85,7 +86,12 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    FirstControllerMo *mo = self.dataArr[indexPath.row];
+    if ([mo.isWin isEqualToString:@"1"]) {
+        WinnerInfoController *winnerInfoVC = [[WinnerInfoController alloc]init];
+        winnerInfoVC.bidid = mo.modelId;
+        [self.navigationController pushViewController:winnerInfoVC animated:YES];
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 100;
@@ -184,7 +190,7 @@
     NSDictionary *dic = @{
                           @"areaCode": @"",
                           @"cityCode": @"",
-                          @"industryCategoryId":@0,
+                          @"industryCategoryId":@"",
                           @"maxDate": @"",
                           @"minDate": @"",
                           @"pageNumber": [NSString stringWithFormat:@"%ld",(long)_page],
@@ -206,7 +212,7 @@
     NSDictionary *dic = @{
                           @"areaCode": @"",
                           @"cityCode": @"",
-                          @"industryCategoryId":@0,
+                          @"industryCategoryId":@"",
                           @"maxDate": @"",
                           @"minDate": @"",
                           @"pageNumber": [NSString stringWithFormat:@"%ld",(long)_page],
@@ -227,17 +233,6 @@
 }
 - (void)v1TalentTenderPage{
     [YSRefreshTool beginRefreshingWithView:self.tableView];
-
-    /*
-    NSDictionary * dic = @{
-                            @"cityCode":_areaCode?_areaCode:@"",
-                            @"industryCategoryId":_industryCategoryId?_industryCategoryId:@"",
-                            @"maxDate":_timeStr?_timeStr:[NSDate date],
-                            @"minDate":_timeStr?_timeStr:[NSDate date],
-                            @"pageNumber": @"1",
-                            @"pageSize":@"10"
-                            };
-    */
 }
 
 /*

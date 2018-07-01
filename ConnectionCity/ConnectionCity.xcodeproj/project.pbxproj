@@ -399,6 +399,10 @@
 		CE9B9A5C20E7DC69005C47B2 /* FirstControllerMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B9A5820E7DC68005C47B2 /* FirstControllerMo.m */; };
 		CE9B9A5D20E7DC69005C47B2 /* TenderRecordsMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B9A5920E7DC68005C47B2 /* TenderRecordsMo.m */; };
 		CE9B9A6720E7DDC9005C47B2 /* InstallmentMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B9A6520E7DDC9005C47B2 /* InstallmentMo.m */; };
+		CE9B9A6B20E91655005C47B2 /* Agreement.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B9A6A20E91655005C47B2 /* Agreement.m */; };
+		CE9B9A6F20E9168D005C47B2 /* AgreementController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B9A6D20E9168D005C47B2 /* AgreementController.m */; };
+		CE9B9A7020E9168D005C47B2 /* AgreementController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9B9A6E20E9168D005C47B2 /* AgreementController.xib */; };
+		CE9B9A7320E9177F005C47B2 /* AgreementMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B9A7220E9177F005C47B2 /* AgreementMo.m */; };
 		CEBEDD7D20B17ED1000F9EE4 /* WinningBidderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBEDD5920B17ED0000F9EE4 /* WinningBidderCell.m */; };
 		CEBEDD7E20B17ED1000F9EE4 /* WinningBidderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBEDD5A20B17ED0000F9EE4 /* WinningBidderController.xib */; };
 		CEBEDD7F20B17ED1000F9EE4 /* WinningBidderController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBEDD5B20B17ED0000F9EE4 /* WinningBidderController.m */; };
@@ -1156,6 +1160,13 @@
 		CE9B9A5B20E7DC68005C47B2 /* TenderRecordsMo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TenderRecordsMo.h; sourceTree = "<group>"; };
 		CE9B9A6520E7DDC9005C47B2 /* InstallmentMo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallmentMo.m; sourceTree = "<group>"; };
 		CE9B9A6620E7DDC9005C47B2 /* InstallmentMo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallmentMo.h; sourceTree = "<group>"; };
+		CE9B9A6920E91655005C47B2 /* Agreement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Agreement.h; sourceTree = "<group>"; };
+		CE9B9A6A20E91655005C47B2 /* Agreement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Agreement.m; sourceTree = "<group>"; };
+		CE9B9A6C20E9168D005C47B2 /* AgreementController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AgreementController.h; sourceTree = "<group>"; };
+		CE9B9A6D20E9168D005C47B2 /* AgreementController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgreementController.m; sourceTree = "<group>"; };
+		CE9B9A6E20E9168D005C47B2 /* AgreementController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgreementController.xib; sourceTree = "<group>"; };
+		CE9B9A7120E9177F005C47B2 /* AgreementMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AgreementMo.h; sourceTree = "<group>"; };
+		CE9B9A7220E9177F005C47B2 /* AgreementMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgreementMo.m; sourceTree = "<group>"; };
 		CEBEDD5820B17ED0000F9EE4 /* WinningBidderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinningBidderController.h; sourceTree = "<group>"; };
 		CEBEDD5920B17ED0000F9EE4 /* WinningBidderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WinningBidderCell.m; sourceTree = "<group>"; };
 		CEBEDD5A20B17ED0000F9EE4 /* WinningBidderController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WinningBidderController.xib; sourceTree = "<group>"; };
@@ -2742,6 +2753,7 @@
 		CE0BA624209D68A2004C3C33 /* RegisterAndLogin */ = {
 			isa = PBXGroup;
 			children = (
+				CE9B9A6820E91642005C47B2 /* agreement */,
 				CE0BA625209D68A2004C3C33 /* Controller */,
 				CE0BA62F209D68A2004C3C33 /* Model */,
 				CE0BA632209D68A2004C3C33 /* View */,
@@ -3097,6 +3109,20 @@
 				CE9B9A6620E7DDC9005C47B2 /* InstallmentMo.h */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CE9B9A6820E91642005C47B2 /* agreement */ = {
+			isa = PBXGroup;
+			children = (
+				CE9B9A6920E91655005C47B2 /* Agreement.h */,
+				CE9B9A6A20E91655005C47B2 /* Agreement.m */,
+				CE9B9A6C20E9168D005C47B2 /* AgreementController.h */,
+				CE9B9A6D20E9168D005C47B2 /* AgreementController.m */,
+				CE9B9A6E20E9168D005C47B2 /* AgreementController.xib */,
+				CE9B9A7120E9177F005C47B2 /* AgreementMo.h */,
+				CE9B9A7220E9177F005C47B2 /* AgreementMo.m */,
+			);
+			path = agreement;
 			sourceTree = "<group>";
 		};
 		CEBEDD5720B17ED0000F9EE4 /* WinningBidder */ = {
@@ -3489,6 +3515,7 @@
 				8DEA451420C11F85001529F1 /* MommentPlayerController.xib in Resources */,
 				72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */,
 				8D22C34D20C7CD68004DC8F4 /* ExpressiveController.xib in Resources */,
+				CE9B9A7020E9168D005C47B2 /* AgreementController.xib in Resources */,
 				CEE4B29820C6B5A2008B8731 /* NearManController.xib in Resources */,
 				8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */,
 				CEE4B29220C6B17C008B8731 /* FoundCell.xib in Resources */,
@@ -3798,6 +3825,7 @@
 				CE5C27FE20B8FE3A006A8332 /* BiddInfoHeadView.m in Sources */,
 				CE21F0E020DDF00F00478482 /* MemberRenewalM.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
+				CE9B9A6F20E9168D005C47B2 /* AgreementController.m in Sources */,
 				CEBEDD7D20B17ED1000F9EE4 /* WinningBidderCell.m in Sources */,
 				CE21F0EF20DF94A800478482 /* WorkExperienceListModel.m in Sources */,
 				CE6BEC2C20C970C1003B36D7 /* EditProfileHeadView.m in Sources */,
@@ -3834,6 +3862,7 @@
 				8DF7E3D220CFAA78009A92D7 /* ClassifyMo.m in Sources */,
 				CEC4A56E20C4081F0026EE19 /* WithdrawalController.m in Sources */,
 				723D376B20AC2BC3003FD4DF /* SearchHistoryController.m in Sources */,
+				CE9B9A6B20E91655005C47B2 /* Agreement.m in Sources */,
 				727418F620B3B37B001D6BE1 /* SwapHeadView.m in Sources */,
 				72EC1B5F20B8341900ACC20B /* ShowCardTab.m in Sources */,
 				72EC1B6B20B8475100ACC20B /* ShowtreaureCell.m in Sources */,
@@ -3857,6 +3886,7 @@
 				8D5B3C3820C0143200773105 /* ServiceListController.m in Sources */,
 				72EC1B9720BC307E00ACC20B /* ServiceHomeController.m in Sources */,
 				CEBEDD9420B17EDA000F9EE4 /* BaseMakeMoneyTabController.m in Sources */,
+				CE9B9A7320E9177F005C47B2 /* AgreementMo.m in Sources */,
 				CE0BA636209D68A3004C3C33 /* YSLoginController.m in Sources */,
 				8DD48CCE20A811EA00D6D1E6 /* TADotView.m in Sources */,
 				CEBEDD8D20B17ED1000F9EE4 /* FootSectionHeadV.m in Sources */,

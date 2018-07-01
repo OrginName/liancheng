@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FirstControllerMo.h"
 
 @class BidManagerCell;
 
@@ -19,9 +20,16 @@
 @end
 
 @interface BidManagerCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *bidcountLab;
+@property (weak, nonatomic) IBOutlet UILabel *titleLab;
+@property (weak, nonatomic) IBOutlet UILabel *amountLab;
+@property (weak, nonatomic) IBOutlet UILabel *firstLab;
+@property (weak, nonatomic) IBOutlet UILabel *secondLab;
+@property (weak, nonatomic) IBOutlet UILabel *thridLab;
 @property (weak, nonatomic) IBOutlet UIButton *changeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
 @property (weak, nonatomic) IBOutlet UIButton *negotiationBtn;
 @property (nonatomic, weak) id<BidManagerCellDelegate>delegate;
+@property (nonatomic, strong) FirstControllerMo *model;
 
 @end

@@ -23,5 +23,8 @@
 
     // Configure the view for the selected state
 }
-
+- (void)setModel:(FirstControllerMo *)model {
+    _model = model;
+    
+}
 @end

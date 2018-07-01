@@ -7,6 +7,7 @@
 //
 
 #import "YSRegisterController.h"
+#import "AgreementController.h"
 
 @interface YSRegisterController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
@@ -76,10 +77,14 @@
     } failure:nil];
 }
 - (IBAction)termsOfUseBtnClick:(id)sender {
-    
+    AgreementController *agreementVC = [[AgreementController alloc]init];
+    agreementVC.alias = useAgreement;
+    [self.navigationController pushViewController:agreementVC animated:YES];
 }
 - (IBAction)privacyPolicyBtnClick:(id)sender {
-    
+    AgreementController *agreementVC = [[AgreementController alloc]init];
+    agreementVC.alias = privacyAgreement;
+    [self.navigationController pushViewController:agreementVC animated:YES];
 }
 /*
 #pragma mark - Navigation

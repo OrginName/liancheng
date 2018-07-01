@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "FirstControllerMo.h"
 #import "privateUserInfoModel.h"
+@class BiddInfoHeadView;
+
+@protocol BiddInfoHeadViewDelegate <NSObject>
+- (void)biddInfoHeadView:(BiddInfoHeadView *)view expandBtnClick:(UIButton *)btn;
+
+@end
 
 @interface BiddInfoHeadView : UIView
 @property (weak, nonatomic) IBOutlet UIImageView *headImgV;
@@ -18,5 +24,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *companeyAndAddressLab;
 @property (weak, nonatomic) IBOutlet UILabel *contentLab;
 @property (nonatomic, strong) FirstControllerMo *model;
+@property (nonatomic, weak) id<BiddInfoHeadViewDelegate>delegate;
 
 @end

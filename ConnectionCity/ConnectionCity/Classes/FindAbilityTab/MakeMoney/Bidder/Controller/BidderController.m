@@ -119,7 +119,7 @@
     WeakSelf
     [YSNetworkTool POST:v1TalentTenderRecordList params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         [weakSelf.dataArr removeAllObjects];
-        weakSelf.dataArr = [FirstControllerMo mj_objectArrayWithKeyValuesArray:responseObject[kData]];
+        weakSelf.dataArr = [FirstControllerMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"content"]];
         [weakSelf.tableView reloadData];
         [YSRefreshTool endRefreshingWithView:self.tableView];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -138,7 +138,7 @@
     
     WeakSelf
     [YSNetworkTool POST:v1TalentTenderRecordList params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        for (FirstControllerMo *mo in [FirstControllerMo mj_objectArrayWithKeyValuesArray:responseObject[kData]]) {
+        for (FirstControllerMo *mo in [FirstControllerMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"content"]]) {
             [weakSelf.dataArr addObject:mo];
         }
         [weakSelf.tableView reloadData];

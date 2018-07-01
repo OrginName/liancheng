@@ -40,7 +40,7 @@
 - (void)setTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"WinnerInfoCell" bundle:nil] forCellReuseIdentifier:@"WinnerInfoCell"];
     _tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"WinnerInfoHeadView" owner:nil options:nil] firstObject];
-    _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 363 + 64);
+    _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 180);
     self.tableView.tableHeaderView = _tableHeadV;
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
@@ -49,6 +49,11 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WinnerInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WinnerInfoCell"];
+    if (indexPath.row==0) {
+        cell.onemodel = self.mo;
+    }else{
+        cell.twomodel = self.mo;
+    }
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -67,8 +72,6 @@
         FirstControllerMo *model = [FirstControllerMo mj_objectWithKeyValues:responseObject[kData]];
         weakSelf.mo = model;
         weakSelf.tableHeadV.model = model;
-//        [weakSelf.dataArr removeAllObjects];
-//        [weakSelf.dataArr addObjectsFromArray:@[model.amount?model.amount:@"",model.tenderStartDate?model.tenderStartDate:@"",model.tenderEndDate?model.tenderEndDate:@"",model.contactName?model.contactName:@"",model.contactMobile?model.contactMobile:@""]];
         [weakSelf.tableView reloadData];
     } failure:nil];
 }

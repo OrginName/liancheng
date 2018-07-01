@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *marginMoneyLab;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (nonatomic, strong) FirstControllerMo *model;
+@property (nonatomic, strong) FirstControllerMo *footModel;
 
 @end

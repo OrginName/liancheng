@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface BidManagerHeadV : UIView
+@property (weak, nonatomic) IBOutlet UIImageView *headImgV;
 
 @end

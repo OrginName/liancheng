@@ -15,6 +15,9 @@
 
 @interface FootprintController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) FootprintTabbleHeadV *tableHeadV;
+@property (nonatomic, strong) NSString *totalAmount;
+@property (nonatomic, strong) NSString *todayAmount;
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, assign) NSInteger page;
 
@@ -28,14 +31,19 @@
     [self setTableView];
     [self addHeaderRefresh];
     [self addFooterRefresh];
+    [self v1TalentTenderFootPrintPage];
     
     // Do any additional setup after loading the view from its nib.
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    FootprintTabbleHeadV *tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"FootprintTabbleHeadV" owner:nil options:nil] firstObject];
-    tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 110);
-    self.tableView.tableHeaderView = tableHeadV;
+    if (!_tableHeadV) {
+        _tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"FootprintTabbleHeadV" owner:nil options:nil] firstObject];
+        _tableHeadV.totalAmountLab.text = self.totalAmount?self.totalAmount:@"0";
+        _tableHeadV.todayAmountLab.text = self.todayAmount?self.todayAmount:@"0";
+        _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 110);
+        self.tableView.tableHeaderView = _tableHeadV;
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -56,16 +64,22 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     FirstControllerMo *mo = _dataArr[section];
-    return mo.tenderRecords.count;
+    if ([mo.isWin isEqualToString:@"1"]) {
+        return 5;
+    }else{
+        return 1;
+    }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MarginCell *biddercell = [tableView dequeueReusableCellWithIdentifier:@"MarginCell"];
     FootprintCell *winnercell = [tableView dequeueReusableCellWithIdentifier:@"FootprintCell"];
-    
-    if (indexPath.section % 2) {
-        return biddercell;
-    }else{
+    FirstControllerMo *mo = _dataArr[indexPath.section];
+    if ([mo.isWin isEqualToString:@"1"]) {
+        winnercell.model = mo;
         return winnercell;
+    }else{
+        biddercell.footModel = mo;
+        return biddercell;
     }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -80,13 +94,8 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     //重用区头视图
     FootSectionHeadV *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"FootSectionHeadV"];
-    if (section % 2) {
-        headerView.headerImgV.image = [UIImage imageNamed:@"Bid"];
-        headerView.bidderLab.text = @"投标";
-    }else{
-        headerView.headerImgV.image = [UIImage imageNamed:@"Win"];
-        headerView.bidderLab.text = @"中标";
-    }
+    FirstControllerMo *mo = _dataArr[section];
+    headerView.model = mo;
     //返回区头视图
     return headerView;
 }
@@ -156,6 +165,25 @@
         [YSRefreshTool endRefreshingWithView:self.tableView];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [YSRefreshTool endRefreshingWithView:self.tableView];
+    }];
+}
+- (void)v1TalentTenderFootPrintPage{
+    NSDictionary *dic = @{
+                          @"areaCode": @"",
+                          @"cityCode": @"",
+                          @"industryCategoryId":@"",
+                          @"maxDate": @"",
+                          @"minDate": @"",
+                          @"pageNumber": @"1",
+                          @"pageSize": @"10",
+                          @"provinceCode": @""
+                          };
+    WeakSelf
+    [YSNetworkTool POST:v1TalentTenderFootPrintPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        weakSelf.todayAmount = responseObject[kData][@"totalAmount"];
+        weakSelf.totalAmount = responseObject[kData][@"todayAmount"];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+
     }];
 }
 

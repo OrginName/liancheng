@@ -45,5 +45,13 @@
         [_delegate bidManagerCell:self negotiationBtnClick:(UIButton *)sender];
     }
 }
+- (void)setModel:(FirstControllerMo *)model {
+    _model = model;
+    _titleLab.text = model.title;
+    _amountLab.text = model.amount;
+    _firstLab.text = model.periodAmount1;
+    _secondLab.text = model.periodAmount2;
+    _thridLab.text = model.periodAmount3;
+}
 
 @end

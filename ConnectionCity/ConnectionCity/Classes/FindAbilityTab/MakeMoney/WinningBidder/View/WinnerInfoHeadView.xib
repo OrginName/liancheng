@@ -18,7 +18,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OeI-3t-695">
                     <rect key="frame" x="10" y="10" width="355" height="112"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京海港房地产开发有限公司项目招标专题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iq6-T7-S8R">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iq6-T7-S8R">
                             <rect key="frame" x="14" y="0.0" width="327" height="49"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="49" id="DY3-EX-LCz"/>
@@ -34,10 +34,8 @@
                                 <constraint firstAttribute="height" constant="1" id="PRF-FA-GRO"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1a-Ak-eoL">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1a-Ak-eoL">
                             <rect key="frame" x="14" y="50" width="327" height="62"/>
-                            <string key="text">北京兴业集团公司
-北京 朝阳区前门大街永辉大厦11层</string>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -59,7 +57,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Fn-rJ-IJ0">
-                    <rect key="frame" x="10" y="132" width="355" height="231"/>
+                    <rect key="frame" x="10" y="132" width="355" height="241"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="招标内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fb-ka-mkZ">
                             <rect key="frame" x="14" y="0.0" width="282" height="49"/>
@@ -80,6 +78,9 @@
                             <state key="normal" title="展开">
                                 <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="expandBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="d3u-0b-EqQ"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5lK-gN-Dzf">
                             <rect key="frame" x="14" y="49" width="327" height="1"/>
@@ -88,18 +89,8 @@
                                 <constraint firstAttribute="height" constant="1" id="dfW-4Z-eBw"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZ1-ax-Tc3">
-                            <rect key="frame" x="14" y="55" width="327" height="158"/>
-                            <string key="text">项目单位：***招标代理机构：***
-招标内容：
-一、工程概况：　　
-*、项目名称：格拉斯小镇泛光照明工程　　
-*、建设地点：通州区宋庄镇　　
-*、招标内容：泛光照明工程　　
-*、资金来源：自筹资金投标申请人资格要求：
-二、对潜在投标人的资质要求：　　
-*、投标人应具有独立法人资格；　
-　*、投标人必须具备城市及道路照明工程专业承包二级及以上资质。投......</string>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZ1-ax-Tc3">
+                            <rect key="frame" x="14" y="60" width="327" height="171"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -108,10 +99,10 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="DZ1-ax-Tc3" firstAttribute="leading" secondItem="3Fn-rJ-IJ0" secondAttribute="leading" constant="14" id="2bd-EX-kgN"/>
-                        <constraint firstItem="DZ1-ax-Tc3" firstAttribute="top" secondItem="5lK-gN-Dzf" secondAttribute="bottom" constant="5" id="4ZJ-yC-EnT"/>
-                        <constraint firstAttribute="height" constant="231" id="7ZN-cr-lKa"/>
+                        <constraint firstItem="DZ1-ax-Tc3" firstAttribute="top" secondItem="5lK-gN-Dzf" secondAttribute="bottom" constant="10" id="4ZJ-yC-EnT"/>
                         <constraint firstAttribute="trailing" secondItem="DZ1-ax-Tc3" secondAttribute="trailing" constant="14" id="LJ9-In-eHA"/>
                         <constraint firstAttribute="trailing" secondItem="iYb-Nf-89o" secondAttribute="trailing" constant="14" id="OOH-h2-Yzi"/>
+                        <constraint firstAttribute="bottom" secondItem="DZ1-ax-Tc3" secondAttribute="bottom" constant="10" id="OWh-Fe-GZs"/>
                         <constraint firstItem="7Fb-ka-mkZ" firstAttribute="leading" secondItem="3Fn-rJ-IJ0" secondAttribute="leading" constant="14" id="dZ1-Zp-rnn"/>
                         <constraint firstItem="iYb-Nf-89o" firstAttribute="leading" secondItem="7Fb-ka-mkZ" secondAttribute="trailing" constant="5" id="kw6-fe-Srs"/>
                         <constraint firstItem="5lK-gN-Dzf" firstAttribute="leading" secondItem="3Fn-rJ-IJ0" secondAttribute="leading" constant="14" id="lNU-Xv-bFW"/>
@@ -130,6 +121,7 @@
                 <constraint firstItem="3Fn-rJ-IJ0" firstAttribute="top" secondItem="OeI-3t-695" secondAttribute="bottom" constant="10" id="TKa-xr-8O3"/>
                 <constraint firstAttribute="trailing" secondItem="3Fn-rJ-IJ0" secondAttribute="trailing" constant="10" id="dCj-U6-Lko"/>
                 <constraint firstItem="OeI-3t-695" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="gEk-df-zgY"/>
+                <constraint firstAttribute="bottom" secondItem="3Fn-rJ-IJ0" secondAttribute="bottom" id="nzx-WP-GAv"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -137,7 +129,7 @@
                 <outlet property="contentLab" destination="DZ1-ax-Tc3" id="OqL-83-TzQ"/>
                 <outlet property="titleLab" destination="Iq6-T7-S8R" id="h5N-Vz-zAX"/>
             </connections>
-            <point key="canvasLocation" x="39.5" y="-88"/>
+            <point key="canvasLocation" x="39.5" y="-88.5"/>
         </view>
     </objects>
 </document>

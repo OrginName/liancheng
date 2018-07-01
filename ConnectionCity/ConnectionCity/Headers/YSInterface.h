@@ -22,6 +22,27 @@ static NSString * const smsVerificationCode = @"/sms/verification-code";
 static NSString * const registerUrl = @"/register";
 //登录
 static NSString * const login = @"/login";
+#pragma mark - 协议条款
+//协议条款
+static NSString * const pageInfo = @"/page/info";
+//关于我们
+static NSString * const about = @"about";
+//连程使用协议
+static NSString * const useAgreement = @"use-agreement";
+//连程用户行为规范
+static NSString * const userBehaviorStandard = @"user-behavior-standard";
+//连程服务协议
+static NSString * const serviceAgreement = @"service-agreement";
+//连程会员服务协议
+static NSString * const userServiceAgreement = @"user-service-agreement";
+//连程充值协议
+static NSString * const rechargeAgreement = @"recharge-agreement";
+//连程服务保障
+static NSString * const serviceGuarantee = @"service-guarantee";
+//连程审核规范
+static NSString * const auditStandards = @"audit-standards";
+//连程隐私协议
+static NSString * const privacyAgreement = @"privacy-agreement";
 #pragma mark - 用户接口
 //获取svip套餐详情
 static NSString * const membershipSvipInfo = @"/membership/svip/info";
@@ -82,7 +103,7 @@ static NSString * const v1TalentTenderCreate = @"/v1/talent/tender/create";
 //赚外快-删除招标
 static NSString * const v1TalentTenderDelete = @"/v1/talent/tender/delete";
 //赚外快-保证金
-static NSString * const v1TalentTenderDepositList = @"/v1/talent/tender/deposit/list";
+static NSString * const v1TalentTenderDepositList = @"/v1/talent/tender/deposit/page";
 //招标详情
 static NSString * const v1TalentTenderDetail = @"/v1/talent/tender/detail";
 //赚外快-创建订单（支付全额/分期/保证金）
@@ -92,11 +113,13 @@ static NSString * const v1TalentTenderPage = @"/v1/talent/tender/page";
 //赚外快-投标
 static NSString * const v1TalentTenderRecordCreate = @"/v1/talent/tender/record/create";
 //赚外快-投标人
-static NSString * const v1TalentTenderRecordList = @"/v1/talent/tender/record/list";
+static NSString * const v1TalentTenderRecordList = @"/v1/talent/tender/record/page";
 //赚外快-赏金托管
-static NSString * const v1TalentTenderRewardList = @"/v1/talent/tender/reward/list";
+static NSString * const v1TalentTenderRewardList = @"/v1/talent/tender/reward/page";
 //赚外快-中标人
-static NSString * const v1TalentTenderWinRecordList = @"/v1/talent/tender/win-record/list";
+static NSString * const v1TalentTenderWinRecordList = @"/v1/talent/tender/win-record/page";
+//赚外快-足迹
+static NSString * const v1TalentTenderFootPrintPage = @"/v1/talent/tender/foot-print/page";
 #pragma mark - 关键字信息
 //换着玩关键字
 static NSString * const keywordPlayKeyword = @"/keyword/play-keyword";
@@ -245,14 +268,9 @@ static NSString * const v1MyAuthUserskillAuthCreate = @"/v1/my/auth/user-skill-a
 static NSString * const v1MyAuthUserskillAuthList = @"/v1/my/auth/user-skill-auth/list";
 
 
-
 //公工接口
 //关注
-
 static NSString * const v1CommonFollowCreate = @"/v1/common/follow/create";
-
-
-
 
 
 

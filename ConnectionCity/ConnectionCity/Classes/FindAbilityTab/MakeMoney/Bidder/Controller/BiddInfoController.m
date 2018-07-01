@@ -48,7 +48,7 @@
 - (void)setTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"BiddInfoCell" bundle:nil] forCellReuseIdentifier:@"BiddInfoCell"];
     _tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"BiddInfoHeadView" owner:nil options:nil] firstObject];
-    _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 565 + 64);
+    _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 440);
     self.tableView.tableHeaderView = _tableHeadV;
     UIView *tableFootV = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 60)];
     tableFootV.backgroundColor = kCommonBGColor;

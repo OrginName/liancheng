@@ -23,6 +23,22 @@
     // Drawing code
 }
 */
+- (IBAction)expandBtnClick:(id)sender {
+    if (_delegate && [_delegate respondsToSelector:@selector(biddInfoHeadView:expandBtnClick:)]) {
+        [_delegate biddInfoHeadView:self expandBtnClick:(UIButton *)sender];
+    }
+    UIButton *btn = (UIButton *)sender;
+    if ([btn.titleLabel.text isEqualToString:@"展开"]) {
+        [btn setTitle:@"收起" forState:UIControlStateNormal];
+        _contentLab.numberOfLines = 0;
+        CGSize contentSize = [_model.content boundingRectWithSize:CGSizeMake(self.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]} context:nil].size;
+        self.height = 230 + 50 + contentSize.height + 20 + 110;
+    }else{
+        [btn setTitle:@"展开" forState:UIControlStateNormal];
+        _contentLab.numberOfLines = 1;
+        self.height = 230 + 50 + 15 + 20 + 110;
+    }
+}
 - (void)setModel:(FirstControllerMo *)model {
     _model = model;
     privateUserInfoModel *userinfomo = model.user;
@@ -32,6 +48,7 @@
     _titleLab.text = model.title;
     _companeyAndAddressLab.text = [NSString stringWithFormat:@"%@\n%@",model.company,model.tenderAddress];
     _contentLab.text = model.content;
+    self.height = 230 + 50 + 15 + 20 + 110;
 }
 @end
 

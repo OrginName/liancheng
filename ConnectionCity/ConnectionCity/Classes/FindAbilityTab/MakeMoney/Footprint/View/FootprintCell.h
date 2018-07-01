@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FirstControllerMo.h"
 
 @interface FootprintCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *stateFinishLab;
+@property (nonatomic, strong) FirstControllerMo *model;
 
 @end

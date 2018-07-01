@@ -82,6 +82,19 @@
     return self;
 }
 
+- (void)setModel:(FirstControllerMo *)model{
+    _model = model;
+    self.titleLab.text = model.title;
+    if ([model.isWin isEqualToString:@"1"]) {
+        self.headerImgV.image = [UIImage imageNamed:@"Win"];
+        self.bidderLab.text = @"中标";
+        self.winNumbersLab.hidden = NO;
+    }else{
+        self.headerImgV.image = [UIImage imageNamed:@"Bid"];
+        self.bidderLab.text = @"投标";
+        self.winNumbersLab.hidden = YES;
+    }
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

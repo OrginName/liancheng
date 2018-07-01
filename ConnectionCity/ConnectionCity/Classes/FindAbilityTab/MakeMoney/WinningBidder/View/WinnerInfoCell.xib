@@ -163,35 +163,35 @@
                                             <constraint firstAttribute="height" constant="1" id="w1H-64-74M"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="s-sc" translatesAutoresizingMaskIntoConstraints="NO" id="wYU-3R-6X3">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sc-2" translatesAutoresizingMaskIntoConstraints="NO" id="wYU-3R-6X3">
                                         <rect key="frame" x="271" y="12" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="bws-14-pev"/>
                                             <constraint firstAttribute="width" constant="15" id="fC2-A4-Pg0"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="s-sc" translatesAutoresizingMaskIntoConstraints="NO" id="apb-w7-PK9">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sc-2" translatesAutoresizingMaskIntoConstraints="NO" id="apb-w7-PK9">
                                         <rect key="frame" x="251" y="13" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="d0Y-sa-qHF"/>
                                             <constraint firstAttribute="width" constant="15" id="sc0-Zp-Hhv"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="s-sc" translatesAutoresizingMaskIntoConstraints="NO" id="6G9-tu-wlq">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sc-2" translatesAutoresizingMaskIntoConstraints="NO" id="6G9-tu-wlq">
                                         <rect key="frame" x="231" y="13" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="QJp-ka-u9W"/>
                                             <constraint firstAttribute="width" constant="15" id="ijc-wa-Yh6"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="s-sc" translatesAutoresizingMaskIntoConstraints="NO" id="kC6-aU-7JN">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sc-1" translatesAutoresizingMaskIntoConstraints="NO" id="kC6-aU-7JN">
                                         <rect key="frame" x="211" y="12" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="15" id="H0a-pl-tEi"/>
                                             <constraint firstAttribute="height" constant="15" id="rSi-A4-rbN"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="s-sc" translatesAutoresizingMaskIntoConstraints="NO" id="YF4-AD-RML">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sc-1" translatesAutoresizingMaskIntoConstraints="NO" id="YF4-AD-RML">
                                         <rect key="frame" x="191" y="12.5" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="M2X-Bs-y8k"/>
@@ -278,10 +278,20 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="47" y="74"/>
+            <connections>
+                <outlet property="amountLab" destination="j8L-xX-Xb1" id="Sv2-Ih-lSk"/>
+                <outlet property="biderOrWinnerLab" destination="wSw-Og-HVe" id="roB-Hn-Thu"/>
+                <outlet property="moneyLab" destination="bLa-ts-6W3" id="72Z-uQ-V6S"/>
+                <outlet property="nameLab" destination="lau-Lg-8qe" id="GRH-kN-l55"/>
+                <outlet property="peopleLab" destination="pMX-lL-Ue6" id="MbK-bp-0Bs"/>
+                <outlet property="phoneLab" destination="xKE-re-ddx" id="A7T-wI-b0G"/>
+                <outlet property="pointLab" destination="88I-jO-P1E" id="b5R-kC-f2J"/>
+            </connections>
+            <point key="canvasLocation" x="-136" y="-8"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="s-sc" width="30" height="29"/>
+        <image name="sc-1" width="18" height="17"/>
+        <image name="sc-2" width="18" height="17"/>
     </resources>
 </document>
