@@ -9,6 +9,8 @@
 #import "RechargeController.h"
 
 @interface RechargeController ()
+@property (weak, nonatomic) IBOutlet UITextField *amountTF;
+@property (weak, nonatomic) IBOutlet UILabel *balanceLab;
 
 @end
 
@@ -20,5 +22,15 @@
 }
 -(void)setUI{
     self.navigationItem.title = @"充值";
+    self.balanceLab.text = self.balanceStr;
 }
+- (IBAction)confirmBtnClick:(id)sender {
+    if(![YSTools dx_isNullOrNilWithObject:_amountTF.text]){
+        [YTAlertUtil showTempInfo:@"请填写充值金额"];
+    }
+    [YSNetworkTool POST:v1UserWalletRecharge params:@{@"amount": _amountTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:nil];
+}
+
 @end

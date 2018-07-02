@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface RechargeController : BaseViewController
+@property (nonatomic, strong) NSString *balanceStr;
 
 @end
