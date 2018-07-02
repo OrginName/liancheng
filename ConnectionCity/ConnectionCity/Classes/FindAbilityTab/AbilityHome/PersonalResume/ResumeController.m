@@ -123,7 +123,7 @@
                            };
     [AbilityNet requstAddResume:dic withBlock:^(NSDictionary *successDicValue) {
         [YTAlertUtil hideHUD];
-        [YTAlertUtil showHUDWithTitle:@"简历创建成功"];
+        [YTAlertUtil showTempInfo:@"简历创建成功"];
         resumeID = KString(@"%@", successDicValue[@"data"]);
     }];
 }

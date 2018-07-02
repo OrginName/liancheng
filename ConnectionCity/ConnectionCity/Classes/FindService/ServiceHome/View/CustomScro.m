@@ -32,7 +32,7 @@
 }
 -(void)btnClick:(UIButton *)btn{
     if (self.delegate&&[self.delegate respondsToSelector:@selector(btnClick:)]) {
-        [self.delegate btnClick:btn.tag];
+        [self.delegate btnClick:btn];
     }
 }
 -(UIScrollView *)scrollView{

@@ -10,7 +10,7 @@
 /**
  *  类型自定义
  */
-typedef void (^ReturnValueBlock) (NSString *strValue);
+typedef void (^ReturnValueBlock) (NSDictionary *strDic);
 @interface FilterOneController : BaseViewController
 /*
  1.服务页主页

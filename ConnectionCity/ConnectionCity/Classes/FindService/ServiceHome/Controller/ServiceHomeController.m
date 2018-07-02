@@ -112,6 +112,16 @@
             FilterOneController * filter = [FilterOneController new];
             filter.title = @"筛选条件";
             filter.flag_SX = 1;
+            filter.block = ^(NSDictionary *strDic) {
+                [self loadServiceList:@{
+                                        @"age":strDic[@"0"],
+                                        @"distance":strDic[@"1"],
+                                        @"gender":strDic[@"2"],
+                                        @"userStatus":strDic[@"10"],
+                                        @"validType":strDic[@"3"],
+                                          @"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]
+                                        }];
+            };
             [self.navigationController pushViewController:filter animated:YES];
         }
             break;
@@ -184,17 +194,15 @@
 //加载服务列表数据
 -(void)loadServiceList:(NSDictionary *)dic{
     NSDictionary * dic1 = @{
-                            @"age": @"",
-                            @"areaCode": @"",
-                            @"provinceCode": @"",
+                            @"age": dic[@"age"]?dic[@"age"]:@"",
                             @"category": dic[@"category"]?dic[@"category"]:@"",
                             @"cityCode":dic[@"cityCode"],
-                            @"distance": @"",
-                            @"gender": @0,
+                            @"distance": dic[@"distance"]?dic[@"distance"]:@"",
+                            @"gender": @([dic[@"gender"]?dic[@"gender"]:@"" integerValue]),
                             @"lat": @([dic[@"lat"] floatValue]),
                             @"lng": @([dic[@"lng"] floatValue]),
-                            @"userStatus": @0,
-                            @"validType": @""
+                            @"userStatus": @([dic[@"userStatus"]?dic[@"userStatus"]:@"" integerValue]),
+                            @"validType": dic[@"validType"]?dic[@"validType"]:@""
                             };
     //    加载服务列表
     [ServiceHomeNet requstServiceList:dic1 withSuc:^(NSMutableArray *successArrValue) {
@@ -247,7 +255,8 @@
     cus.delegate = self;
     [self.view addSubview:cus];
 }
--(void)btnClick:(NSInteger)tag{
-    [YTAlertUtil showTempInfo:@"热门职业点击"];
+-(void)btnClick:(UIButton *)tag{
+//    [YTAlertUtil showTempInfo:@"热门职业点击"];
+    [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID],@"keyword":tag.titleLabel.text}];
 }
 @end

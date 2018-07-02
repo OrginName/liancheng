@@ -155,7 +155,7 @@
  @param block 成功数组
  */
 +(void)requstAddResume:(NSDictionary *)param withBlock:(SuccessDicBlock)block{
-    [YSNetworkTool POST:v1TalentResumeCreate params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1TalentResumeCreate params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         [YTAlertUtil showTempInfo:responseObject[@"message"]];
         block(responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

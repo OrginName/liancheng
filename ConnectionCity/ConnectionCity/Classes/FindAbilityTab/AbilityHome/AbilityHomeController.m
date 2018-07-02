@@ -98,6 +98,13 @@
             FilterOneController * filter = [FilterOneController new];
             filter.title = @"筛选条件";
             filter.flag_SX = 2;
+            filter.block = ^(NSDictionary *strDic) {
+                [self loadServiceList:@{@"cityID":[KUserDefults objectForKey:kUserCityID],@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],
+                                        @"salary":strDic[@"2"],
+                                        @"education":strDic[@"1"],
+                                        @"work":strDic[@"0"]
+                                        }];
+            };
             [self.navigationController pushViewController:filter animated:YES];
         }
             break;
@@ -108,6 +115,7 @@
 //关键字点击
 -(void)KeyWordsClick:(UIButton *)btn{
     [YTAlertUtil showTempInfo:@"关键字点击"];
+    
 }
 #pragma mark ----初始化加载数据（开始）------
 -(void)initData{
@@ -129,13 +137,11 @@
     NSDictionary * dic1 = @{
                             @"lat": @([dic[@"lat"] floatValue]),
                             @"lng": @([dic[@"lng"] floatValue]),
-                            @"areaCode": @"",
-                            @"provinceCode": @"",
                             @"category": dic[@"category"]?dic[@"category"]:@"",
                             @"cityCode":dic[@"cityID"],
-                            @"salary": @0,
-                            @"education": @0,
-                            @"work": @0
+                            @"salary": @([dic[@"salary"]?dic[@"salary"]:@"" integerValue]),
+                            @"education": @([dic[@"education"]?dic[@"education"]:@"" integerValue]),
+                            @"work": @([dic[@"work"]?dic[@"work"]:@"" integerValue])
                             };
     //    加载服务列表
     [AbilityNet requstAbilityConditions:dic1 withBlock:^(NSMutableArray *successArrValue) {
@@ -228,8 +234,9 @@
     cus.delegate = self;
     [self.view addSubview:cus];
 }
--(void)btnClick:(NSInteger)tag{
-    [YTAlertUtil showTempInfo:@"热门职业点击"];
+-(void)btnClick:(UIButton *)tag{
+//    [YTAlertUtil showTempInfo:@"热门职业点击"];
+    [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityID":[KUserDefults objectForKey:kUserCityID],@"keyword":tag.titleLabel.text}];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

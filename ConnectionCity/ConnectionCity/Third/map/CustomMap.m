@@ -69,6 +69,7 @@
     self.annotationView = annotationView;
     if ([annotation isKindOfClass:[MAUserLocation class]]) {
         [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:[[YSAccountTool userInfo]headImage]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+//        annotationView.portraitImageView = [UIImage imageNamed:@"index-dw"];
     }else{
         NSString * url = @"";
         if (self.Arr_Mark.count!=0) {
@@ -184,6 +185,8 @@
 }
 -(void)setArr_Mark:(NSMutableArray *)Arr_Mark{
     _Arr_Mark = Arr_Mark;
+    [self.mapView removeAnnotations:[self.annotations copy]];
+    [self.annotations removeAllObjects];
      self.annotations = [NSMutableArray array];
     [Arr_Mark enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         MAPointAnnotation *a1;
@@ -200,6 +203,7 @@
         }
         [self.annotations addObject:a1];
     }];
+    
 }
 #pragma mark - Initialization
 - (void)initAnnotations

@@ -22,6 +22,7 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
 @property (nonatomic,strong)NSMutableArray * data_Arr;
 @property (nonatomic,strong) FilterLayout * flowLyout;
 @property (nonatomic,strong) FooterView * foot;
+@property (nonatomic,strong) NSMutableDictionary * dic;
 @end
 
 @implementation FilterOneController
@@ -30,12 +31,14 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     [super viewDidLoad];
     [self setUI];
     [self initData];
+    self.dic = [NSMutableDictionary dictionary];
 }
 -(void)initData{
     if (self.flag_SX ==1) {
         [ServiceHomeNet requstConditions:^(NSMutableArray *successArrValue) {
             self.data_Arr = successArrValue;
             [self loadData:successArrValue];
+            self.dic = [[NSMutableDictionary alloc] initWithDictionary:@{@"0":@"all",@"1":@"0",@"2":@"0",@"3":@"0",@"10":@"0"}];
         } withFailBlock:^(NSString *failValue) {
             
         }];
@@ -44,6 +47,7 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
         [AbilityNet requstAbilityConditions:^(NSMutableArray *successArrValue) {
             self.data_Arr = successArrValue;
             [self loadData:successArrValue];
+            self.dic = [[NSMutableDictionary alloc] initWithDictionary:@{@"0":@"1",@"1":@"0",@"2":@"1",@"3":@"1"}];
         }];
     }else{
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"SX" ofType:@"plist"];
@@ -75,17 +79,27 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
         btn.selected = YES;
         self.foot.tmpBtn = btn;
     }else{
-       __block NSString * str = @"";
+
         [[self.bollec_bottom subviews] enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj isKindOfClass:[UICollectionViewCell class]]) {
                 FilterCell * cell = (FilterCell *)obj;
+                NSIndexPath * index = [self.bollec_bottom indexPathForCell:cell];
+                NSDictionary * dic = _dataArr[index.section][index.row];
                 if (cell.selected) {
-                    str = [str stringByAppendingString:cell.lab_title.text];
+                    [self.dic setObject:dic[@"ID"] forKey:KString(@"%ld", index.section)];
                 }
             }
         }];
+        if (self.foot.tmpBtn.tag==1000) {
+            [self.dic setObject:KString(@"%d", 1) forKey:KString(@"%d", 10)];
+        }else if (self.foot.tmpBtn.tag==1001){
+            [self.dic setObject:KString(@"%d", 0) forKey:KString(@"%d", 10)];
+        }
 //        NSArray * arr = [self.bollec_bottom indexPathsForSelectedItems];
-        NSLog(@"当前的筛选条件是:%@",[str stringByAppendingString:self.foot.tmpBtn.titleLabel.text]);
+        NSLog(@"当前的筛选条件是:%@",self.dic);
+        self.block(self.dic);
+        [self.navigationController popViewControllerAnimated:YES];
+       
     }
 }
 
