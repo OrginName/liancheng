@@ -266,6 +266,23 @@ static NSString * const v1MyAuthUsermobileAuthCreate = @"/v1/my/auth/user-mobile
 static NSString * const v1MyAuthUserskillAuthCreate = @"/v1/my/auth/user-skill-auth/create";
 //个人中心-认证中心-认证技能列表
 static NSString * const v1MyAuthUserskillAuthList = @"/v1/my/auth/user-skill-auth/list";
+#pragma mark - 我的钱包
+//兑换服币
+static NSString * const v1UserWalletExchange = @"/v1/user/wallet/exchange";
+//钱包首页-详情
+static NSString * const v1UserWalletInfo = @"/v1/user/wallet/info";
+//钱包-流水
+static NSString * const v1UserWalletPaymentPage = @"/v1/user/wallet/payment/page";
+//钱包-充值
+static NSString * const v1UserWalletRecharge = @"/v1/user/wallet/recharge";
+//钱包-提现
+static NSString * const v1UserWalletWithdraw = @"/v1/user/wallet/withdraw";
+//钱包-提现管理-添加提现方式
+static NSString * const v1UserWalletWithdrawAccountAdd = @"/v1/user/wallet/withdraw/account/add";
+//钱包-提现管理-提现账户列表
+static NSString * const v1UserWalletWithdrawAccountPage = @"/v1/user/wallet/withdraw/account/page";
+
+
 
 
 //公工接口
