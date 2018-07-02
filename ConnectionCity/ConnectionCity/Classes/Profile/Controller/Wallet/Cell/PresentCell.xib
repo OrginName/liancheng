@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -75,7 +74,7 @@
                 <outlet property="lab_Settitle" destination="8ol-gM-Iao" id="vuC-Vt-RUv"/>
                 <outlet property="lab_title" destination="9QJ-6Y-WV3" id="oKf-Tl-kTT"/>
             </connections>
-            <point key="canvasLocation" x="35" y="57"/>
+            <point key="canvasLocation" x="25" y="-11"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PresentCell1" id="gWk-4x-fNo" customClass="PresentCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -106,7 +105,10 @@
                     <constraint firstItem="ts4-mc-Dtl" firstAttribute="leading" secondItem="Gn7-Nu-e6h" secondAttribute="leadingMargin" constant="40" id="x2K-hL-SqU"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="35" y="146"/>
+            <connections>
+                <outlet property="cellNameLab" destination="ts4-mc-Dtl" id="fFu-u9-9mi"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="116"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PresentCell2" rowHeight="66" id="ocH-Qw-MAT" customClass="PresentCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
@@ -153,7 +155,7 @@
                     <constraint firstItem="n4Z-l5-za5" firstAttribute="top" secondItem="E81-vn-ceT" secondAttribute="bottom" constant="8" id="t2k-YE-V2k"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="35" y="243"/>
+            <point key="canvasLocation" x="25" y="235"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PresentCell3" rowHeight="40" id="NEX-bC-IgI" customClass="PresentCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>

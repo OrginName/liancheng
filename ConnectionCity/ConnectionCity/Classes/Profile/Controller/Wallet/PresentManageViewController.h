@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 
 @interface PresentManageViewController : BaseViewController
+@property (nonatomic, copy) void(^accountBlock)(NSString *);
 
 @end
 

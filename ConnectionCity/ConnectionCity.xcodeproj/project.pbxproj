@@ -468,6 +468,7 @@
 		CEE4B2A720C6CC3F008B8731 /* PersonalCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE4B2A520C6CC3F008B8731 /* PersonalCenterController.xib */; };
 		CEE4B2AF20C6D948008B8731 /* MemberRenewalController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B2AD20C6D948008B8731 /* MemberRenewalController.m */; };
 		CEE4B2B020C6D948008B8731 /* MemberRenewalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE4B2AE20C6D948008B8731 /* MemberRenewalController.xib */; };
+		CEF041CE20EA6EFD00C00314 /* AccountPageMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF041CD20EA6EFD00C00314 /* AccountPageMo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1272,6 +1273,8 @@
 		CEE4B2AC20C6D948008B8731 /* MemberRenewalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberRenewalController.h; sourceTree = "<group>"; };
 		CEE4B2AD20C6D948008B8731 /* MemberRenewalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberRenewalController.m; sourceTree = "<group>"; };
 		CEE4B2AE20C6D948008B8731 /* MemberRenewalController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberRenewalController.xib; sourceTree = "<group>"; };
+		CEF041CC20EA6EFD00C00314 /* AccountPageMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountPageMo.h; sourceTree = "<group>"; };
+		CEF041CD20EA6EFD00C00314 /* AccountPageMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountPageMo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2087,6 +2090,7 @@
 		8D22C34320C7C995004DC8F4 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				CEF041CB20EA6EDA00C00314 /* Models */,
 				CE6BEC1220C80DA0003B36D7 /* Cell */,
 				8D22C34420C7C9CC004DC8F4 /* RechargeController.h */,
 				8D22C34520C7C9CC004DC8F4 /* RechargeController.m */,
@@ -3326,6 +3330,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		CEF041CB20EA6EDA00C00314 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CEF041CC20EA6EFD00C00314 /* AccountPageMo.h */,
+				CEF041CD20EA6EFD00C00314 /* AccountPageMo.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FED23FC9B0FA87A13AD43642 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -3880,6 +3893,7 @@
 				CE0BA5F9209D5EBE004C3C33 /* BaseModel.m in Sources */,
 				CE0BA5E1209D5E9B004C3C33 /* YSAccountTool.m in Sources */,
 				727418BF20B17536001D6BE1 /* CustomPage.m in Sources */,
+				CEF041CE20EA6EFD00C00314 /* AccountPageMo.m in Sources */,
 				CE0BA5B8209D5E6B004C3C33 /* UIColor+Extension.m in Sources */,
 				CE03EE0020B467EC00F07D78 /* ReleaseTenderController.m in Sources */,
 				8D35878720C6A544008A5E74 /* OurPlayController.m in Sources */,

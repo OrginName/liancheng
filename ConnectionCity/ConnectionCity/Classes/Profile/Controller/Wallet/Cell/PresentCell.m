@@ -49,4 +49,8 @@
     }
     return cell;
 }
+- (void)setModel:(AccountPageMo *)model {
+    _model = model;
+    _cellNameLab.text = [NSString stringWithFormat:@"%@(%@)",model.accountType,model.accountNumber];
+}
 @end

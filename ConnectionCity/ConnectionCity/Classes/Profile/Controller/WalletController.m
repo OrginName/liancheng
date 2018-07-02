@@ -36,10 +36,12 @@
         return;
     }else if (sender.tag == 2){
         ExpressiveController *vc = [[ExpressiveController alloc]init];
+        vc.balanceStr = _balanceLab.text;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }else if (sender.tag == 3){
         ExchangeController *vc = [[ExchangeController alloc]init];
+        vc.balanceStr = _balanceLab.text;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }else if (sender.tag == 4){
@@ -52,8 +54,6 @@
         [YTAlertUtil showTempInfo:@"待开发"];
         return;
     }
-    NSArray * arr = @[@"RechargeController",@"ExpressiveController",@"ExchangeController",@"TransactionRecordController"];
-    [self.navigationController pushViewController:[super rotateClass:arr[sender.tag-1]] animated:YES];
 }
 #pragma mark - 数据请求
 - (void)v1UserWalletInfo {

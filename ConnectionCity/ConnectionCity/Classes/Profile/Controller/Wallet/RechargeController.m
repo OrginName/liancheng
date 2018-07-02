@@ -25,11 +25,15 @@
     self.balanceLab.text = self.balanceStr;
 }
 - (IBAction)confirmBtnClick:(id)sender {
-    if(![YSTools dx_isNullOrNilWithObject:_amountTF.text]){
+    if([YSTools dx_isNullOrNilWithObject:_amountTF.text]){
         [YTAlertUtil showTempInfo:@"请填写充值金额"];
+        return;
     }
+    WeakSelf
     [YSNetworkTool POST:v1UserWalletRecharge params:@{@"amount": _amountTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } completion:nil];
     } failure:nil];
 }
 

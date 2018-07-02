@@ -42,10 +42,9 @@
         [YTAlertUtil showTempInfo:@"请填写正确的手机号码"];
         return;
     }
-    WeakSelf
     [YSNetworkTool POST:smsVerificationCode params:@{@"mobile": _phoneTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [YSTools DaojiShi:btn];
-        
+        [YTAlertUtil showTempInfo:responseObject[kMessage]];
     } failure:nil];
 }
 - (IBAction)changePSBtnClick:(id)sender {
@@ -62,14 +61,10 @@
         return;
     }
     WeakSelf
-//    [YSNetworkTool POSTData:updatepassword params:@{@"userid":userid ,@"newPassword":_nwePasswordTF.text,@"oldpPassword":_currentPasswordTF.text} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-//        if ([responseObject isEqualToString:@"OK"]) {
-//            [YTAlertUtil showTempInfo:@"修改成功"];
-//            [weakSelf.navigationController popViewControllerAnimated:YES];
-//        }else{
-//            [YTAlertUtil showTempInfo:responseObject];
-//        }
-//    } failure:nil];
+    [YSNetworkTool POST:passwordForget params:@{@"code":_verificationCodeTF.text ,@"mobile":_phoneTF.text,@"password":_confirmPasswordTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTAlertUtil showTempInfo:responseObject[kMessage]];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    } failure:nil];
 }
 
 /*

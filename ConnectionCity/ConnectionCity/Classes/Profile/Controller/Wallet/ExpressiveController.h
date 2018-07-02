@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface ExpressiveController : BaseViewController
+@property (nonatomic, strong) NSString *balanceStr;
 
 @end

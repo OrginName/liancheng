@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface ExchangeController : BaseViewController
+@property (nonatomic, strong) NSString *balanceStr;
 
 @end
