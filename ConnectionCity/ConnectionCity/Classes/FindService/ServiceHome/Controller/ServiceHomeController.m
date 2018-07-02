@@ -170,10 +170,10 @@
     [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
 }
 -(void)currentAnimatinonViewClick:(MAAnnotationView *)view index:(NSInteger)indexView{
-    if ([KString(@"%f", view.annotation.coordinate.latitude) isEqualToString:[KUserDefults objectForKey:kLat]]&&[KString(@"%f", view.annotation.coordinate.longitude) isEqualToString:[KUserDefults objectForKey:KLng]]) {
-        [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
-        return;
-    }
+//    if ([KString(@"%f", view.annotation.coordinate.latitude) isEqualToString:[KUserDefults objectForKey:kLat]]&&[KString(@"%f", view.annotation.coordinate.longitude) isEqualToString:[KUserDefults objectForKey:KLng]]) {
+//        [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
+//        return;
+//    }
     ShowResumeController * show = [ShowResumeController new];
     show.Receive_Type = ENUM_TypeTrval;
     show.data_Count = self.cusMap.Arr_Mark;

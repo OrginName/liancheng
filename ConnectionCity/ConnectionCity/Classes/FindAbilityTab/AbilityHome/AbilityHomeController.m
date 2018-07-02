@@ -187,10 +187,10 @@
     btn.text = locationDictionary[@"city"];
 }
 -(void)currentAnimatinonViewClick:(MAAnnotationView *)view index:(NSInteger)indexView{
-    if ([KString(@"%f", view.annotation.coordinate.latitude) isEqualToString:[KUserDefults objectForKey:kLat]]&&[KString(@"%f", view.annotation.coordinate.longitude) isEqualToString:[KUserDefults objectForKey:KLng]]) {
-        [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
-        return;
-    }
+//    if ([KString(@"%f", view.annotation.coordinate.latitude) isEqualToString:[KUserDefults objectForKey:kLat]]&&[KString(@"%f", view.annotation.coordinate.longitude) isEqualToString:[KUserDefults objectForKey:KLng]]) {
+//        [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
+//        return;
+//    }
     ShowResumeController * resume = [ShowResumeController new];
     resume.Receive_Type = ENUM_TypeResume;
     resume.data_Count = self.cusMap.Arr_Mark;

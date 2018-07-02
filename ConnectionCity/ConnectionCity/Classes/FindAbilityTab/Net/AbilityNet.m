@@ -159,7 +159,7 @@
         [YTAlertUtil showTempInfo:responseObject[@"message"]];
         block(responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+        [YTAlertUtil hideHUD];
     }];
 }
 @end

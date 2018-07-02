@@ -10,6 +10,7 @@
 #import "CustomAnnotationView.h"
 #import "AbilttyMo.h"
 #import "CityMo.h"
+#import "privateUserInfoModel.h"
 @interface CustomMap()<MAMapViewDelegate,CustomLocationDelegate,UITextFieldDelegate>
 @property (nonatomic,assign) id controller;
 @property (nonatomic,strong) CustomLocatiom * location;
@@ -24,7 +25,7 @@
         ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
         
         MAMapView * map = [[MAMapView alloc] init];
-//        map.showsUserLocation = YES;
+        map.showsUserLocation = YES;
 //        map.userTrackingMode = MAUserTrackingModeFollow;
         map.showsCompass= NO;
         map.showsScale= NO;  //设置成NO表示不显示比例尺；YES表示显示比例尺
@@ -53,34 +54,33 @@
     }
 }
 #pragma mark - MAMapView Delegate
-
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
 {
-    if ([annotation isKindOfClass:[MAPointAnnotation class]])
+    static NSString *customReuseIndetifier = @"customReuseIndetifier";
+    CustomAnnotationView *annotationView = (CustomAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+    if (annotationView == nil)
     {
-        static NSString *customReuseIndetifier = @"customReuseIndetifier";
-        CustomAnnotationView *annotationView = (CustomAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
-        if (annotationView == nil)
-        {
-            annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
-            // must set to NO, so we can show the custom callout view.
-            annotationView.canShowCallout = NO;
-//            annotationView.draggable = YES;
-//            annotationView.calloutOffset = CGPointMake(0, 0);
-        }
-         self.annotationView = annotationView;
-//        annotationView.portraitImageView.image = [UIImage imageNamed:@"1"];
-        NSString * url = @"";
-        if ([self.Arr_Mark[annotationView.zIndex] isKindOfClass:[ServiceListMo class]]) {
-            url = [[self.Arr_Mark[annotationView.zIndex] user1] headImage];
-        }else{
-            url = [[self.Arr_Mark[annotationView.zIndex] userMo] headImage];
-        }
-        [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"no-pic"]];
-       
-        return annotationView;
+        annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
+        // must set to NO, so we can show the custom callout view.
+        annotationView.canShowCallout = NO;
+        //            annotationView.draggable = YES;
+        //            annotationView.calloutOffset = CGPointMake(0, 0);
     }
-    return nil;
+    self.annotationView = annotationView;
+    if ([annotation isKindOfClass:[MAUserLocation class]]) {
+        [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:[[YSAccountTool userInfo]headImage]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    }else{
+        NSString * url = @"";
+        if (self.Arr_Mark.count!=0) {
+            if ([self.Arr_Mark[annotationView.zIndex] isKindOfClass:[ServiceListMo class]]) {
+                url = [[self.Arr_Mark[annotationView.zIndex] user1] headImage];
+            }else{
+                url = [[self.Arr_Mark[annotationView.zIndex] userMo] headImage];
+            }
+            [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+        }
+    }
+    return annotationView;
 }
 
 /**
@@ -92,6 +92,10 @@
 - (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view{
     NSInteger annotationIndex = 0;
     [[self.mapView.annotations mutableCopy] removeObject:@""];
+    if ([KString(@"%f", view.annotation.coordinate.latitude) isEqualToString:[KUserDefults objectForKey:kLat]]&&[KString(@"%f", view.annotation.coordinate.longitude) isEqualToString:[KUserDefults objectForKey:KLng]]) {
+        [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
+        return;
+    }
     for (int i=0; i<self.Arr_Mark.count; i++) {
         if (view.annotation == self.mapView.annotations[i]) {
             annotationIndex = i;
