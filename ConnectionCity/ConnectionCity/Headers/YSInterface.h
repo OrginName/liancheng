@@ -22,6 +22,8 @@ static NSString * const smsVerificationCode = @"/sms/verification-code";
 static NSString * const registerUrl = @"/register";
 //登录
 static NSString * const login = @"/login";
+//找回密码
+static NSString * const passwordForget = @"/password/forget";
 #pragma mark - 协议条款
 //协议条款
 static NSString * const pageInfo = @"/page/info";
