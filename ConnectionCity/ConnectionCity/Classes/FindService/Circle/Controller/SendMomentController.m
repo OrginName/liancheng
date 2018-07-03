@@ -105,7 +105,9 @@
                            @"videos": videoUrl
                            };
     [YSNetworkTool POST:v1ServiceCircleCreate params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        self.block();
+        if (self.block) {
+            self.block();
+        }
         [self.navigationController popViewControllerAnimated:YES];
         [YTAlertUtil showHUDWithTitle:@"发布成功"];
         [YTAlertUtil hideHUD];

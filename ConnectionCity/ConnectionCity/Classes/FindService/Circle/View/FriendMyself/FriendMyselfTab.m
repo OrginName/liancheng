@@ -158,6 +158,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     SendMomentController * send = [SendMomentController new];
     send.title = @"编辑";
+    send.block = ^{
+        [self.mj_header beginRefreshing];
+    };
     send.receive_flag = @"EDIT";
     NSDictionary * dic = self.data_Arr[indexPath.section];
     send.receive_Moment = dic[[dic allKeys][0]][indexPath.row];
@@ -168,6 +171,9 @@
     if (btn.tag==0) {
         SendMomentController * send = [SendMomentController new];
         send.title = @"服务圈";
+        send.block = ^{
+            [self.mj_header beginRefreshing];
+        };
         [self.controller.navigationController pushViewController:send animated:YES];
     }
 }
