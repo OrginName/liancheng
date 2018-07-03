@@ -7,7 +7,7 @@
 //
 
 #import "AddressBookController.h"
-
+#import "UITabBar+badge.h"
 @interface AddressBookController ()
 @property(nonatomic, strong) RCConversationModel *tempModel;
 @property(nonatomic, assign) NSUInteger index;
@@ -69,5 +69,21 @@
         [self setCollectionConversationType:@[ @(ConversationType_SYSTEM) ]];
     }
     return self;
+}
+- (void)updateBadgeValueForTabBarItem {
+    __weak typeof(self) __weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        int count = [[RCIMClient sharedRCIMClient] getUnreadCount:__weakSelf.displayConversationTypeArray];
+        if (count > 0) {
+            //      __weakSelf.tabBarItem.badgeValue =
+            //          [[NSString alloc] initWithFormat:@"%d", count];
+            [__weakSelf.tabBarController.tabBar showBadgeOnItemIndex:0 badgeValue:count];
+            
+        } else {
+            //      __weakSelf.tabBarItem.badgeValue = nil;
+            [__weakSelf.tabBarController.tabBar hideBadgeOnItemIndex:0];
+        }
+        
+    });
 }
 @end

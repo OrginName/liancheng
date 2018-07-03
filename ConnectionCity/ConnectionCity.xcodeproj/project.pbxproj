@@ -164,6 +164,9 @@
 		8D12931220E5F16D0008BD6F /* EditCircleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D12931020E5F16D0008BD6F /* EditCircleController.m */; };
 		8D12931320E5F16D0008BD6F /* EditCircleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D12931120E5F16D0008BD6F /* EditCircleController.xib */; };
 		8D12931620E616670008BD6F /* CustomScro.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D12931520E616670008BD6F /* CustomScro.m */; };
+		8D14FDEB20EB0C000013A9DF /* RCDTabBarBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14FDE620EB0C000013A9DF /* RCDTabBarBtn.m */; };
+		8D14FDEC20EB0C000013A9DF /* UIColor+RCColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14FDE820EB0C000013A9DF /* UIColor+RCColor.m */; };
+		8D14FDED20EB0C000013A9DF /* UITabBar+badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D14FDEA20EB0C000013A9DF /* UITabBar+badge.m */; };
 		8D19FF2020D8AC98005F7361 /* UserMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D19FF1F20D8AC98005F7361 /* UserMo.m */; };
 		8D19FF2320D8CFE4005F7361 /* ServiceListMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D19FF2220D8CFE4005F7361 /* ServiceListMo.m */; };
 		8D22C33C20C77B70004DC8F4 /* IdentityAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D22C33A20C77B70004DC8F4 /* IdentityAuthorController.m */; };
@@ -756,6 +759,12 @@
 		8D12931120E5F16D0008BD6F /* EditCircleController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCircleController.xib; sourceTree = "<group>"; };
 		8D12931420E616670008BD6F /* CustomScro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomScro.h; sourceTree = "<group>"; };
 		8D12931520E616670008BD6F /* CustomScro.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomScro.m; sourceTree = "<group>"; };
+		8D14FDE520EB0C000013A9DF /* RCDTabBarBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDTabBarBtn.h; sourceTree = "<group>"; };
+		8D14FDE620EB0C000013A9DF /* RCDTabBarBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDTabBarBtn.m; sourceTree = "<group>"; };
+		8D14FDE720EB0C000013A9DF /* UIColor+RCColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RCColor.h"; sourceTree = "<group>"; };
+		8D14FDE820EB0C000013A9DF /* UIColor+RCColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RCColor.m"; sourceTree = "<group>"; };
+		8D14FDE920EB0C000013A9DF /* UITabBar+badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+badge.h"; sourceTree = "<group>"; };
+		8D14FDEA20EB0C000013A9DF /* UITabBar+badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+badge.m"; sourceTree = "<group>"; };
 		8D19FF1E20D8AC98005F7361 /* UserMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserMo.h; sourceTree = "<group>"; };
 		8D19FF1F20D8AC98005F7361 /* UserMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserMo.m; sourceTree = "<group>"; };
 		8D19FF2120D8CFE4005F7361 /* ServiceListMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceListMo.h; sourceTree = "<group>"; };
@@ -1592,6 +1601,7 @@
 		729BA6B120A01E7F009713FD /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				8D14FDE320EB0BAA0013A9DF /* RcloudMessage */,
 				8D07D75F20DCDF490073807C /* QinNiu */,
 				720263D220B5015500382B2F /* TZImagePickerController */,
 				7274187820B13CB6001D6BE1 /* MLMSegmentPageView */,
@@ -2074,6 +2084,27 @@
 				8D114CC020CA236900637D34 /* AccountView.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8D14FDE320EB0BAA0013A9DF /* RcloudMessage */ = {
+			isa = PBXGroup;
+			children = (
+				8D14FDE420EB0C000013A9DF /* Utilites */,
+			);
+			path = RcloudMessage;
+			sourceTree = "<group>";
+		};
+		8D14FDE420EB0C000013A9DF /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+				8D14FDE520EB0C000013A9DF /* RCDTabBarBtn.h */,
+				8D14FDE620EB0C000013A9DF /* RCDTabBarBtn.m */,
+				8D14FDE720EB0C000013A9DF /* UIColor+RCColor.h */,
+				8D14FDE820EB0C000013A9DF /* UIColor+RCColor.m */,
+				8D14FDE920EB0C000013A9DF /* UITabBar+badge.h */,
+				8D14FDEA20EB0C000013A9DF /* UITabBar+badge.m */,
+			);
+			path = Utilites;
 			sourceTree = "<group>";
 		};
 		8D19FF1D20D8AC82005F7361 /* Model */ = {
@@ -3740,6 +3771,7 @@
 				722D253820AA76D400AB3863 /* JFCityCollectionViewCell.m in Sources */,
 				CE0BA5BB209D5E6B004C3C33 /* UIBarButtonItem+Extension.m in Sources */,
 				72EBB8E620C9682A00F670E9 /* AccountOneController.m in Sources */,
+				8D14FDEC20EB0C000013A9DF /* UIColor+RCColor.m in Sources */,
 				8DC17A7620C0E430005D9EE0 /* FriendCirleTab.m in Sources */,
 				CEBEDD9120B17ED1000F9EE4 /* FootprintController.m in Sources */,
 				CEBEDD8120B17ED1000F9EE4 /* MarginController.m in Sources */,
@@ -3781,6 +3813,7 @@
 				CEC4A54320C3D6FC0026EE19 /* TeamHeadCell.m in Sources */,
 				727418EB20B2AAB9001D6BE1 /* ChangeCell.m in Sources */,
 				CE0BA5E5209D5E9B004C3C33 /* YSNetworkTool.m in Sources */,
+				8D14FDEB20EB0C000013A9DF /* RCDTabBarBtn.m in Sources */,
 				CE97DC0720B5B1CA003E46BD /* BidManageController.m in Sources */,
 				CEC4A56420C407BF0026EE19 /* WalletController.m in Sources */,
 				72BAB43920B047F500496D29 /* YSButton.m in Sources */,
@@ -3880,6 +3913,7 @@
 				CE0BA5EB209D5E9B004C3C33 /* SRDownloadManager.m in Sources */,
 				8DF7E3D220CFAA78009A92D7 /* ClassifyMo.m in Sources */,
 				CEC4A56E20C4081F0026EE19 /* WithdrawalController.m in Sources */,
+				8D14FDED20EB0C000013A9DF /* UITabBar+badge.m in Sources */,
 				723D376B20AC2BC3003FD4DF /* SearchHistoryController.m in Sources */,
 				CE9B9A6B20E91655005C47B2 /* Agreement.m in Sources */,
 				727418F620B3B37B001D6BE1 /* SwapHeadView.m in Sources */,

@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 #import <RongIMKit/RongIMKit.h>
 @interface AddressBookController : RCConversationListViewController
-
+- (void)updateBadgeValueForTabBarItem;
 @end

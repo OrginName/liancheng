@@ -13,20 +13,39 @@
 #import "LifeHallController.h"
 #import "FoundController.h"
 #import "ProfileController.h"
-
+#import <RongIMKit/RongIMKit.h>
 @interface BaseTabBarController ()<UITabBarControllerDelegate>
-
+@property NSUInteger previousIndex;
 @end
 
 @implementation BaseTabBarController
-
++ (BaseTabBarController *)shareInstance {
+    static BaseTabBarController *instance = nil;
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+        instance = [[[self class] alloc] init];
+    });
+    return instance;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addItems];
     [self changeItemTextColourAndFont];
     self.delegate = self;
-
-    // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(changeSelectedIndex:)
+                                                 name:@"ChangeTabBarIndex"
+                                               object:nil];
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.viewControllers
+     enumerateObjectsUsingBlock:^(__kindof UIViewController *_Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
+         if ([obj isKindOfClass:[AddressBookController class]]) {
+             AddressBookController *chatListVC = (AddressBookController *)obj;
+             [chatListVC updateBadgeValueForTabBarItem];
+         }
+     }];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -71,19 +90,42 @@
     }
     return YES;
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)tabBarController:(UITabBarController *)tabBarController
+ didSelectViewController:(UIViewController *)viewController {
+    NSUInteger index = tabBarController.selectedIndex;
+    [BaseTabBarController shareInstance].selectedTabBarIndex = index;
+    switch (index) {
+        case 0: {
+            if (self.previousIndex == index) {
+                //判断如果有未读数存在，发出定位到未读数会话的通知
+                if ([[RCIMClient sharedRCIMClient] getTotalUnreadCount] > 0) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"GotoNextCoversation" object:nil];
+                }
+                self.previousIndex = index;
+            }
+            self.previousIndex = index;
+        } break;
+            
+        case 1:
+            self.previousIndex = index;
+            break;
+            
+        case 2:
+            self.previousIndex = index;
+            break;
+            
+        case 3:
+            self.previousIndex = index;
+            break;
+            
+        default:
+            break;
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)changeSelectedIndex:(NSNotification *)notify {
+    NSInteger index = [notify.object integerValue];
+    self.selectedIndex = index;
 }
-*/
 
 @end

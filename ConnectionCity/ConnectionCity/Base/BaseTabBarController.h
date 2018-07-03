@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface BaseTabBarController : UITabBarController
-
+@property(nonatomic, assign) NSUInteger selectedTabBarIndex;
++ (BaseTabBarController *)shareInstance;
 @end
