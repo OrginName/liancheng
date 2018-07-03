@@ -9,14 +9,18 @@
 #import "TransactionRecordController.h"
 #import "CustomButton.h"
 #import "PresentCell.h"
+#import "AllDicMo.h"
+
 @interface TransactionRecordController ()<UITableViewDelegate,UITableViewDataSource>
 {
     CustomButton * _tmpBtn;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (weak, nonatomic) IBOutlet CustomButton *btn_All;
+@property (weak, nonatomic) IBOutlet UIButton *inandoutBtn;
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, assign) NSInteger page;
+@property (nonatomic, assign) NSInteger tagFlag;
 
 @end
 
@@ -49,6 +53,7 @@
     return cell;
 }
 - (IBAction)BtnSelectClick:(CustomButton *)sender {
+    self.tagFlag = sender.tag - 100;
     if (sender.tag!=1) {
         self.btn_All.selected = NO;
     }
@@ -59,6 +64,8 @@
         sender.selected = YES;
         _tmpBtn = sender;
     }
+    
+    [YSRefreshTool beginRefreshingWithView:self.tab_Bottom];
 }
 #pragma mark - 接口请求
 - (void)addHeaderRefresh {
@@ -79,19 +86,16 @@
     }];
 }
 - (void)getHeaderData {
+    NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+    AllContentMo * mo = [arr[25] contentArr][self.tagFlag];
     NSDictionary *dic = @{
-                          @"areaCode": @"",
-                          @"cityCode": @"",
-                          @"industryCategoryId":@"",
-                          @"maxDate": @"",
-                          @"minDate": @"",
                           @"pageNumber": [NSString stringWithFormat:@"%ld",(long)_page],
                           @"pageSize": @"10",
-                          @"provinceCode": @""
+                          @"type": mo.value
                           };
     
     WeakSelf
-    [YSNetworkTool POST:v1TalentTenderPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1UserWalletPaymentPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         [weakSelf.dataArr removeAllObjects];
 //        weakSelf.dataArr = [FirstControllerMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"content"]];
         [weakSelf.tab_Bottom reloadData];
@@ -101,19 +105,15 @@
     }];
 }
 - (void)getFooterData {
+    NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+    AllContentMo * mo = [arr[25] contentArr][self.tagFlag];
     NSDictionary *dic = @{
-                          @"areaCode": @"",
-                          @"cityCode": @"",
-                          @"industryCategoryId":@"",
-                          @"maxDate": @"",
-                          @"minDate": @"",
                           @"pageNumber": [NSString stringWithFormat:@"%ld",(long)_page],
                           @"pageSize": @"10",
-                          @"provinceCode": @""
+                          @"type": mo.value
                           };
-    
     WeakSelf
-    [YSNetworkTool POST:v1TalentTenderPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1UserWalletPaymentPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
 //        for (FirstControllerMo *mo in [FirstControllerMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"content"]]) {
 //            [weakSelf.dataArr addObject:mo];
 //        }

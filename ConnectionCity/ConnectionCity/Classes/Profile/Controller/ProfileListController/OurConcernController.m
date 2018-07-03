@@ -38,6 +38,7 @@
     if (!cell) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"ProfileCell" owner:nil options:nil][1];
     }
+    cell.cancelConcerBtn.tag = indexPath.row + 100;
     cell.concernModel = _dataArr[indexPath.row];
     cell.delegate = self;
     return cell;
@@ -45,6 +46,11 @@
 #pragma mark ---profileCellDelegate ----
 - (void)selectedItemButton:(NSInteger)index{
     [YTAlertUtil showTempInfo:@"取消关注"];
+    OurConcernMo *mo = self.dataArr[index-100];
+    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":@(mo.typeId),@"type":@(mo.type)} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YSRefreshTool beginRefreshingWithView:self.tab_Bottom];
+        [YTAlertUtil showTempInfo:responseObject[@"message"]];
+    } failure:nil];
 }
 #pragma mark - 接口请求
 - (void)addHeaderRefresh {

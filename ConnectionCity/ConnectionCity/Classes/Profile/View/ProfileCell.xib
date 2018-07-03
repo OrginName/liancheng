@@ -83,12 +83,6 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
-                <outlet property="cancelConcerBtn" destination="YaJ-Iz-j3q" id="MdX-a2-CHM"/>
-                <outlet property="concernContentLab" destination="8wF-6U-J5p" id="yLb-zc-vSH"/>
-                <outlet property="concernPriceLab" destination="QfO-bB-uqi" id="d0Z-6P-sxR"/>
-                <outlet property="concernTimeLab" destination="dsA-Bo-zY0" id="wVz-Vw-1Je"/>
-                <outlet property="concernTitleLab" destination="eFC-nR-C1d" id="wER-lh-rxv"/>
-                <outlet property="headerImgV" destination="ARY-1v-fsA" id="OPE-wv-7rh"/>
                 <outlet property="iconImgV" destination="Nsf-kK-I4f" id="xdt-cm-AYa"/>
                 <outlet property="industryAndTimeLab" destination="meS-lU-jSO" id="5Il-Xe-fgV"/>
                 <outlet property="resumeDescribLab" destination="6ff-7D-kmD" id="xkj-Cd-iz8"/>
@@ -191,7 +185,15 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="35" y="65"/>
+            <connections>
+                <outlet property="cancelConcerBtn" destination="YaJ-Iz-j3q" id="JXW-os-dWz"/>
+                <outlet property="concernContentLab" destination="8wF-6U-J5p" id="rpi-V3-MHG"/>
+                <outlet property="concernPriceLab" destination="QfO-bB-uqi" id="8xd-Fy-ujU"/>
+                <outlet property="concernTimeLab" destination="dsA-Bo-zY0" id="uP0-Yh-Bmm"/>
+                <outlet property="concernTitleLab" destination="eFC-nR-C1d" id="EES-lf-8Kb"/>
+                <outlet property="headerImgV" destination="ARY-1v-fsA" id="BoU-Y3-Xvj"/>
+            </connections>
+            <point key="canvasLocation" x="-128" y="70"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileCell2" rowHeight="87" id="KGk-i7-Jjw" customClass="ProfileCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
