@@ -8,20 +8,28 @@
 
 #import "CollectionController.h"
 #import "CollectionCell.h"
+#import "CollectionMo.h"
 #import "Moment.h"
+
 @interface CollectionController ()<UITableViewDelegate,UITableViewDataSource,CollectionCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,strong)NSMutableArray * momentList;
+@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, assign) NSInteger page;
+
 @end
 @implementation CollectionController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.momentList = [NSMutableArray array];
-    [self initTestInfo];
     [self setUI];
+    [self initTestInfo];
+    [self addHeaderRefresh];
+    [self addFooterRefresh];
 }
 -(void)setUI{
     self.navigationItem.title = @"收藏";
+    self.momentList = [NSMutableArray array];
+    self.dataArr = [[NSMutableArray alloc]init];
 }
 #pragma mark - 测试数据
 - (void)initTestInfo
@@ -40,7 +48,7 @@
     [self.tab_Bottom reloadData];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.momentList.count;
+    return self.dataArr.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [self.momentList[indexPath.row] cellHeight];
@@ -61,4 +69,56 @@
     NSIndexPath * index = [self.tab_Bottom indexPathForCell:cell];
     [self.tab_Bottom reloadRowsAtIndexPaths:[NSArray arrayWithObject:index] withRowAnimation:UITableViewRowAnimationTop];
 }
+#pragma mark - 接口请求
+- (void)addHeaderRefresh {
+    __weak typeof(self) weakSelf = self;
+    [YSRefreshTool addRefreshHeaderWithView:self.tab_Bottom refreshingBlock:^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.page = 1;
+        [strongSelf getHeaderData];
+    }];
+    [YSRefreshTool beginRefreshingWithView:self.tab_Bottom];
+}
+- (void)addFooterRefresh {
+    __weak typeof(self) weakSelf = self;
+    [YSRefreshTool addRefreshFooterWithView:self.tab_Bottom refreshingBlock:^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        strongSelf.page ++;
+        [strongSelf getFooterData];
+    }];
+}
+- (void)getHeaderData {
+    NSDictionary *dic = @{
+                          @"pageNumber": [NSString stringWithFormat:@"%ld",(long)_page],
+                          @"pageSize": @"10",
+                          };
+    
+    WeakSelf
+    [YSNetworkTool POST:v1MyCollectPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        [weakSelf.dataArr removeAllObjects];
+        weakSelf.dataArr = [CollectionMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"content"]];
+        [weakSelf.tab_Bottom reloadData];
+        [YSRefreshTool endRefreshingWithView:self.tab_Bottom];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [YSRefreshTool endRefreshingWithView:self.tab_Bottom];
+    }];
+}
+- (void)getFooterData {
+    NSDictionary *dic = @{
+                          @"pageNumber": [NSString stringWithFormat:@"%ld",(long)_page],
+                          @"pageSize": @"10",
+                          };
+    
+    WeakSelf
+    [YSNetworkTool POST:v1MyCollectPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        for (CollectionMo *mo in [CollectionMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"content"]]) {
+            [weakSelf.dataArr addObject:mo];
+        }
+        [weakSelf.tab_Bottom reloadData];
+        [YSRefreshTool endRefreshingWithView:self.tab_Bottom];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [YSRefreshTool endRefreshingWithView:self.tab_Bottom];
+    }];
+}
+
 @end

@@ -228,7 +228,7 @@
                         </constraints>
                         <state key="normal" image="our-edit-9"/>
                         <connections>
-                            <action selector="btn_Click:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PXo-Mw-Ya4"/>
+                            <action selector="resumeeditBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Lmh-Oi-xFc"/>
                         </connections>
                     </button>
                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7c-XJ-Fu0">
@@ -239,7 +239,7 @@
                         </constraints>
                         <state key="normal" image="our-del"/>
                         <connections>
-                            <action selector="btn_Click:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Kf4-1X-ab1"/>
+                            <action selector="resumeedeleteBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hdf-Zi-nhQ"/>
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tsp-Z6-fZD">
@@ -271,9 +271,11 @@
             <connections>
                 <outlet property="industryAndTimeLab" destination="meS-lU-jSO" id="fQQ-gl-VAL"/>
                 <outlet property="resumeDescribLab" destination="6ff-7D-kmD" id="rh6-d3-Slw"/>
+                <outlet property="resumeedeleteBtn" destination="S7c-XJ-Fu0" id="7qY-pw-tOp"/>
+                <outlet property="resumeeditBtn" destination="irP-QF-2gj" id="XdG-Ii-2W9"/>
                 <outlet property="resumetitleLab" destination="YKb-y8-lrx" id="JGt-i5-6G9"/>
             </connections>
-            <point key="canvasLocation" x="35" y="206"/>
+            <point key="canvasLocation" x="-128" y="213"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileCell3" rowHeight="85" id="Glg-RK-c2c" customClass="ProfileCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>

@@ -194,7 +194,7 @@
 -(void)likeClick{
     NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[4] contentArr][1];
-    [YSNetworkTool POST:v1CommonCollectCreate params:@{@"type":@([self.moment.ID integerValue]),@"typeId":mo.value} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1CommonCollectCreate params:@{@"type":mo.value,@"typeId":@([self.moment.ID integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [YTAlertUtil showTempInfo:responseObject[@"message"]];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         

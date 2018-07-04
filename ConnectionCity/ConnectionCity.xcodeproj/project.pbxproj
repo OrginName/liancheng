@@ -465,6 +465,8 @@
 		CEE4B2A720C6CC3F008B8731 /* PersonalCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE4B2A520C6CC3F008B8731 /* PersonalCenterController.xib */; };
 		CEE4B2AF20C6D948008B8731 /* MemberRenewalController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B2AD20C6D948008B8731 /* MemberRenewalController.m */; };
 		CEE4B2B020C6D948008B8731 /* MemberRenewalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE4B2AE20C6D948008B8731 /* MemberRenewalController.xib */; };
+		CEE68C3D20EC8F5E00233AE3 /* CollectionMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C3C20EC8F5E00233AE3 /* CollectionMo.m */; };
+		CEE68C4020EC965200233AE3 /* CollectionObjMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C3F20EC965200233AE3 /* CollectionObjMo.m */; };
 		CEF041CE20EA6EFD00C00314 /* AccountPageMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF041CD20EA6EFD00C00314 /* AccountPageMo.m */; };
 /* End PBXBuildFile section */
 
@@ -1267,6 +1269,10 @@
 		CEE4B2AC20C6D948008B8731 /* MemberRenewalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberRenewalController.h; sourceTree = "<group>"; };
 		CEE4B2AD20C6D948008B8731 /* MemberRenewalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberRenewalController.m; sourceTree = "<group>"; };
 		CEE4B2AE20C6D948008B8731 /* MemberRenewalController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberRenewalController.xib; sourceTree = "<group>"; };
+		CEE68C3B20EC8F5E00233AE3 /* CollectionMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionMo.h; sourceTree = "<group>"; };
+		CEE68C3C20EC8F5E00233AE3 /* CollectionMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionMo.m; sourceTree = "<group>"; };
+		CEE68C3E20EC965200233AE3 /* CollectionObjMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionObjMo.h; sourceTree = "<group>"; };
+		CEE68C3F20EC965200233AE3 /* CollectionObjMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionObjMo.m; sourceTree = "<group>"; };
 		CEF041CC20EA6EFD00C00314 /* AccountPageMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountPageMo.h; sourceTree = "<group>"; };
 		CEF041CD20EA6EFD00C00314 /* AccountPageMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountPageMo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1764,6 +1770,7 @@
 		72EBB8E820CAC51A00F670E9 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
+				CEE68C3A20EC8F5000233AE3 /* Models */,
 				72EBB8EE20CAC63100F670E9 /* Cell */,
 				72EBB8E920CAC52600F670E9 /* CollectionController.h */,
 				72EBB8EA20CAC52600F670E9 /* CollectionController.m */,
@@ -3337,6 +3344,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		CEE68C3A20EC8F5000233AE3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CEE68C3B20EC8F5E00233AE3 /* CollectionMo.h */,
+				CEE68C3C20EC8F5E00233AE3 /* CollectionMo.m */,
+				CEE68C3E20EC965200233AE3 /* CollectionObjMo.h */,
+				CEE68C3F20EC965200233AE3 /* CollectionObjMo.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		CEF041CB20EA6EDA00C00314 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -3873,6 +3891,7 @@
 				722D253A20AA76D400AB3863 /* JFCityTableViewCell.m in Sources */,
 				72A3F48620E12EF8005BA873 /* AllDicMo.m in Sources */,
 				CE0BA5DE209D5E9B004C3C33 /* YTDataPacket.m in Sources */,
+				CEE68C4020EC965200233AE3 /* CollectionObjMo.m in Sources */,
 				CEBEDD8A20B17ED1000F9EE4 /* BidderSectionHeadV.m in Sources */,
 				8DF7E3C820CF6182009A92D7 /* CityMo.m in Sources */,
 				8D09E18620BFC4B8000F7EBD /* AppointmentController.m in Sources */,
@@ -3880,6 +3899,7 @@
 				CE0A99DD20C57C44003A4D91 /* CertificationCenterController.m in Sources */,
 				727418C020B17536001D6BE1 /* CustomTabr.m in Sources */,
 				8DD48CD120A811EA00D6D1E6 /* SDCycleScrollView.m in Sources */,
+				CEE68C3D20EC8F5E00233AE3 /* CollectionMo.m in Sources */,
 				7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */,
 				CE0BA5EB209D5E9B004C3C33 /* SRDownloadManager.m in Sources */,
 				8DF7E3D220CFAA78009A92D7 /* ClassifyMo.m in Sources */,

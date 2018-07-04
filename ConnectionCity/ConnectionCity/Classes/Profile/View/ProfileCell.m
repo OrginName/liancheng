@@ -32,6 +32,16 @@
         [self.delegate selectedItemButton:sender.tag];
     }
 }
+- (IBAction)resumeeditBtnClick:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(resumeeditBtn:)]) {
+        [self.delegate resumeeditBtn:sender];
+    }
+}
+- (IBAction)resumeedeleteBtnClick:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(resumeedeleteBtn:)]) {
+        [self.delegate resumeedeleteBtn:sender];
+    }
+}
 - (void)setResumeModel:(OurResumeMo *)resumeModel {
     _resumeModel = resumeModel;
     self.resumetitleLab.text = resumeModel.introduce;

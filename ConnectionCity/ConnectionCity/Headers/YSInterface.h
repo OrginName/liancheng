@@ -83,6 +83,8 @@ static NSString * const v1TalentResumeConditions = @"/v1/talent/resume/condition
 static NSString * const v1TalentResumeList = @"/v1/talent/resume/list";
 //新增简历
 static NSString * const v1TalentResumeCreate = @"/v1/talent/resume/create";
+//删除简历
+static NSString * const v1TalentResumeDelete = @"/v1/talent/resume/delete";
 //新增简历-教育经历
 static NSString * const v1TalentResumeEducationCreate = @"/v1/talent/resume/education/create";
 //修改简历-教育经历
@@ -235,6 +237,8 @@ static NSString * const v1MyContacts = @"/v1/my/contacts";
 static NSString * const v1MyExchangePage = @"/v1/my/exchange/page";
 //个人中心-我的关注
 static NSString * const v1MyFollowPage = @"/v1/my/follow/page";
+//个人中心-我的收藏
+static NSString * const v1MyCollectPage = @"/v1/my/collect/page";
 //个人中心-我的发布-身份互换
 static NSString * const v1MyIdentityPage = @"/v1/my/identity/page";
 //个人中心-我的玩家-别人和我换

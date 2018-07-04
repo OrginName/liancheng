@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Moment.h"
+#import "CollectionMo.h"
+
 @class CollectionCell;
 @protocol CollectionCellDelegate <NSObject>
 @optional
@@ -16,5 +18,6 @@
 @end
 @interface CollectionCell : UITableViewCell
 @property (nonatomic,strong)Moment * receive_Mo;
+@property (nonatomic,strong)CollectionMo *model;
 @property (nonatomic, assign) id<CollectionCellDelegate> delegate;
 @end
