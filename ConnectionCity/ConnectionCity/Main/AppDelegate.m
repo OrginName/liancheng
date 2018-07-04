@@ -12,7 +12,10 @@
 #import "ResumeController.h"
 #import "ShowResumeController.h"
 #import "YSLoginController.h"
-
+#import <AudioToolbox/AudioToolbox.h>
+//#import <RongCallKit/RongCallKit.h>
+//#import <RongContactCard/RongContactCard.h>
+#import <RongIMKit/RongIMKit.h>
 @interface AppDelegate ()
 
 @end
