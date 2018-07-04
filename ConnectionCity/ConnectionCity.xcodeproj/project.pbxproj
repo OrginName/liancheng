@@ -466,6 +466,12 @@
 		CEE4B2A720C6CC3F008B8731 /* PersonalCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE4B2A520C6CC3F008B8731 /* PersonalCenterController.xib */; };
 		CEE4B2AF20C6D948008B8731 /* MemberRenewalController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B2AD20C6D948008B8731 /* MemberRenewalController.m */; };
 		CEE4B2B020C6D948008B8731 /* MemberRenewalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE4B2AE20C6D948008B8731 /* MemberRenewalController.xib */; };
+		CEE68C3D20EC8F5E00233AE3 /* CollectionMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C3C20EC8F5E00233AE3 /* CollectionMo.m */; };
+		CEE68C4020EC965200233AE3 /* CollectionObjMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C3F20EC965200233AE3 /* CollectionObjMo.m */; };
+		CEE68C4320ECF50A00233AE3 /* ServiceMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4220ECF50A00233AE3 /* ServiceMo.m */; };
+		CEE68C4620ECF55A00233AE3 /* ServiceCategoryNameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4520ECF55A00233AE3 /* ServiceCategoryNameModel.m */; };
+		CEE68C4920ECFAFC00233AE3 /* TravelInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4820ECFAFC00233AE3 /* TravelInvite.m */; };
+		CEE68C4C20ED23B800233AE3 /* tourismMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4B20ED23B800233AE3 /* tourismMo.m */; };
 		CEF041CE20EA6EFD00C00314 /* AccountPageMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF041CD20EA6EFD00C00314 /* AccountPageMo.m */; };
 /* End PBXBuildFile section */
 
@@ -1271,6 +1277,18 @@
 		CEE4B2AC20C6D948008B8731 /* MemberRenewalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberRenewalController.h; sourceTree = "<group>"; };
 		CEE4B2AD20C6D948008B8731 /* MemberRenewalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberRenewalController.m; sourceTree = "<group>"; };
 		CEE4B2AE20C6D948008B8731 /* MemberRenewalController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberRenewalController.xib; sourceTree = "<group>"; };
+		CEE68C3B20EC8F5E00233AE3 /* CollectionMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionMo.h; sourceTree = "<group>"; };
+		CEE68C3C20EC8F5E00233AE3 /* CollectionMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionMo.m; sourceTree = "<group>"; };
+		CEE68C3E20EC965200233AE3 /* CollectionObjMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionObjMo.h; sourceTree = "<group>"; };
+		CEE68C3F20EC965200233AE3 /* CollectionObjMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionObjMo.m; sourceTree = "<group>"; };
+		CEE68C4120ECF50A00233AE3 /* ServiceMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceMo.h; sourceTree = "<group>"; };
+		CEE68C4220ECF50A00233AE3 /* ServiceMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceMo.m; sourceTree = "<group>"; };
+		CEE68C4420ECF55A00233AE3 /* ServiceCategoryNameModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceCategoryNameModel.h; sourceTree = "<group>"; };
+		CEE68C4520ECF55A00233AE3 /* ServiceCategoryNameModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceCategoryNameModel.m; sourceTree = "<group>"; };
+		CEE68C4720ECFAFC00233AE3 /* TravelInvite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TravelInvite.h; sourceTree = "<group>"; };
+		CEE68C4820ECFAFC00233AE3 /* TravelInvite.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TravelInvite.m; sourceTree = "<group>"; };
+		CEE68C4A20ED23B800233AE3 /* tourismMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tourismMo.h; sourceTree = "<group>"; };
+		CEE68C4B20ED23B800233AE3 /* tourismMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tourismMo.m; sourceTree = "<group>"; };
 		CEF041CC20EA6EFD00C00314 /* AccountPageMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountPageMo.h; sourceTree = "<group>"; };
 		CEF041CD20EA6EFD00C00314 /* AccountPageMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountPageMo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2846,6 +2864,14 @@
 				CE21F0EE20DF94A800478482 /* WorkExperienceListModel.m */,
 				CE21F0F020DF963400478482 /* educationExperienceListModel.h */,
 				CE21F0F120DF963400478482 /* educationExperienceListModel.m */,
+				CEE68C4120ECF50A00233AE3 /* ServiceMo.h */,
+				CEE68C4220ECF50A00233AE3 /* ServiceMo.m */,
+				CEE68C4420ECF55A00233AE3 /* ServiceCategoryNameModel.h */,
+				CEE68C4520ECF55A00233AE3 /* ServiceCategoryNameModel.m */,
+				CEE68C4720ECFAFC00233AE3 /* TravelInvite.h */,
+				CEE68C4820ECFAFC00233AE3 /* TravelInvite.m */,
+				CEE68C4A20ED23B800233AE3 /* tourismMo.h */,
+				CEE68C4B20ED23B800233AE3 /* tourismMo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3781,6 +3807,7 @@
 				8DB42FDC20A57DBC00C4EBF8 /* FilterCell.m in Sources */,
 				8DEA451A20C12C06001529F1 /* CustomPlayer.m in Sources */,
 				8DC17A7C20C0E430005D9EE0 /* MomentCell.m in Sources */,
+				CEE68C4920ECFAFC00233AE3 /* TravelInvite.m in Sources */,
 				CEC4A55120C3FF4F0026EE19 /* YTSideMenuModel.m in Sources */,
 				8DD48CCF20A811EA00D6D1E6 /* TAPageControl.m in Sources */,
 				CE0BA5E7209D5E9B004C3C33 /* YSTools.m in Sources */,
@@ -3834,7 +3861,9 @@
 				CE97DBFA20B5AE9F003E46BD /* ReleaseTenderAdditionalCell.m in Sources */,
 				8DD48CCC20A811EA00D6D1E6 /* TAAbstractDotView.m in Sources */,
 				CEBEDD8420B17ED1000F9EE4 /* MarginCell.m in Sources */,
+				CEE68C4C20ED23B800233AE3 /* tourismMo.m in Sources */,
 				CEC4A54020C3D6FC0026EE19 /* TeamSwitchCell.m in Sources */,
+				CEE68C4620ECF55A00233AE3 /* ServiceCategoryNameModel.m in Sources */,
 				8D09426620C14AF200C45E2B /* EvaluationController.m in Sources */,
 				8D24A22B20A1B66B00F0740D /* CustomAnnotationView.m in Sources */,
 				CE5C282A20B972B9006A8332 /* ConsultativeNegotiationController.m in Sources */,
@@ -3928,6 +3957,7 @@
 				CEBEDD9420B17EDA000F9EE4 /* BaseMakeMoneyTabController.m in Sources */,
 				CE9B9A7320E9177F005C47B2 /* AgreementMo.m in Sources */,
 				CE0BA636209D68A3004C3C33 /* YSLoginController.m in Sources */,
+				CEE68C4320ECF50A00233AE3 /* ServiceMo.m in Sources */,
 				8DD48CCE20A811EA00D6D1E6 /* TADotView.m in Sources */,
 				CEBEDD8D20B17ED1000F9EE4 /* FootSectionHeadV.m in Sources */,
 				CE0BA5E9209D5E9B004C3C33 /* YSRefreshTool.m in Sources */,

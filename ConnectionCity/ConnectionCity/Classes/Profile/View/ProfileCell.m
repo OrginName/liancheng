@@ -45,4 +45,24 @@
     _concernContentLab.text = concernModel.typeName;
 }
 
+- (void)setServiceModel:(ServiceMo *)serviceModel{
+    _serviceModel = serviceModel;
+    _serviceTitleLab.text = serviceModel.title;
+    _servicepriceLab.text = [NSString stringWithFormat:@"￥%@%@",serviceModel.price,serviceModel.typeName];
+    _serviceContentLab.text = [NSString stringWithFormat:@"￥%@/%@",serviceModel.serviceCategoryName.parentName,serviceModel.serviceCategoryName.name];
+    _serviceTimeLab.text = serviceModel.createTime;
+}
+- (void)setTourismModel:(tourismMo *)tourismModel {
+    _tourismModel = tourismModel;
+    _tourismTitleLab.text = tourismModel.introduce;
+    _tourismPriceLab.text = [NSString stringWithFormat:@"￥%@%@",tourismModel.price,tourismModel.priceUnit];
+    _tourismAddressLab.text = tourismModel.cityName;
+    _tourismTimeLab.text = tourismModel.createTime;
+}
+- (void)setTravelInviteModel:(TravelInvite *)travelInviteModel{
+    _travelInviteModel = travelInviteModel;
+    _travelInviteTitleLab.text = travelInviteModel.placeTravel;
+    _travelInviteObjectLab.text = travelInviteModel.inviteObjectName;
+    _travelInviteTimeLab.text = travelInviteModel.startTime;
+}
 @end

@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "OurResumeMo.h"
 #import "OurConcernMo.h"
+#import "ServiceMo.h"
+#import "ServiceCategoryNameModel.h"
+#import "TravelInvite.h"
+#import "tourismMo.h"
 
 @protocol profileCellDelegate <NSObject>
 @optional
@@ -16,6 +20,11 @@
 @end
 
 @interface ProfileCell : UITableViewCell
+<<<<<<< HEAD
+=======
+@property (weak, nonatomic) IBOutlet UIButton *resumeeditBtn;
+@property (weak, nonatomic) IBOutlet UIButton *resumeedeleteBtn;
+>>>>>>> fe7a2fdade5d0c8cdbf985cfa133deb45eb31555
 @property (weak, nonatomic) IBOutlet UIImageView *iconImgV;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UILabel *resumetitleLab;
@@ -30,6 +39,24 @@
 @property (weak, nonatomic) IBOutlet UILabel *concernPriceLab;
 @property (weak, nonatomic) IBOutlet UIButton *cancelConcerBtn;
 @property (nonatomic, strong) OurConcernMo *concernModel;
+
+@property (weak, nonatomic) IBOutlet UILabel *serviceTitleLab;
+@property (weak, nonatomic) IBOutlet UILabel *servicepriceLab;
+@property (weak, nonatomic) IBOutlet UILabel *serviceContentLab;
+@property (weak, nonatomic) IBOutlet UILabel *serviceTimeLab;
+@property (nonatomic, strong) ServiceMo *serviceModel;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *tourismTitleLab;
+@property (weak, nonatomic) IBOutlet UILabel *tourismPriceLab;
+@property (weak, nonatomic) IBOutlet UILabel *tourismAddressLab;
+@property (weak, nonatomic) IBOutlet UILabel *tourismTimeLab;
+@property (nonatomic, strong) tourismMo *tourismModel;
+
+@property (weak, nonatomic) IBOutlet UILabel *travelInviteTitleLab;
+@property (weak, nonatomic) IBOutlet UILabel *travelInviteObjectLab;
+@property (weak, nonatomic) IBOutlet UILabel *travelInviteTimeLab;
+@property (nonatomic, strong) TravelInvite *travelInviteModel;
 
 @property (nonatomic,assign) id<profileCellDelegate>delegate;
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView
