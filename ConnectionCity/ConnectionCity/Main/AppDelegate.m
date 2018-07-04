@@ -14,9 +14,10 @@
 #import "YSLoginController.h"
 #import <AudioToolbox/AudioToolbox.h>
 //#import <RongCallKit/RongCallKit.h>
-//#import <RongContactCard/RongContactCard.h>
 #import <RongIMKit/RongIMKit.h>
+#import <RongContactCard/RongContactCard.h>
 #import "MobClick.h"
+#import "RCDSettingUserDefaults.h"
 #define RONGCLOUD_IM_APPKEY @"e5t4ouvptdu3a" // online key
 #define UMENG_APPKEY @"571edc9b67e58e362e001101"
 @interface AppDelegate ()
@@ -42,7 +43,67 @@
     [self umengTrack];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Receivetag) name:@"TABBAR" object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backWindow) name:@"BACKMAINWINDOW" object:nil];
+    //非debug模式初始化sdk
+    [[RCIM sharedRCIM] initWithAppKey:RONGCLOUD_IM_APPKEY];
+    // 注册自定义测试消息
+//    [[RCIM sharedRCIM] registerMessageType:[RCDTestMessage class]];
     
+    //设置会话列表头像和会话页面头像
+    
+    [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
+    
+    [RCIM sharedRCIM].globalConversationPortraitSize = CGSizeMake(46, 46);
+    //    [RCIM sharedRCIM].portraitImageViewCornerRadius = 10;
+    //开启用户信息和群组信息的持久化
+    [RCIM sharedRCIM].enablePersistentUserInfoCache = YES;
+    //设置用户信息源和群组信息源
+//    [RCIM sharedRCIM].userInfoDataSource = RCDDataSource;
+//    [RCIM sharedRCIM].groupInfoDataSource = RCDDataSource;
+    //设置名片消息功能中联系人信息源和群组信息源
+//    [RCContactCardKit shareInstance].contactsDataSource = RCDDataSource;
+//    [RCContactCardKit shareInstance].groupDataSource = RCDDataSource;
+    
+    //设置群组内用户信息源。如果不使用群名片功能，可以不设置
+    //  [RCIM sharedRCIM].groupUserInfoDataSource = RCDDataSource;
+    //  [RCIM sharedRCIM].enableMessageAttachUserInfo = YES;
+    //设置接收消息代理
+    [RCIM sharedRCIM].receiveMessageDelegate = self;
+    //    [RCIM sharedRCIM].globalMessagePortraitSize = CGSizeMake(46, 46);
+    //开启输入状态监听
+    [RCIM sharedRCIM].enableTypingStatus = YES;
+    
+    //开启发送已读回执
+    [RCIM sharedRCIM].enabledReadReceiptConversationTypeList =
+    @[ @(ConversationType_PRIVATE), @(ConversationType_DISCUSSION), @(ConversationType_GROUP) ];
+    
+    //开启多端未读状态同步
+    [RCIM sharedRCIM].enableSyncReadStatus = YES;
+    
+    //设置显示未注册的消息
+    //如：新版本增加了某种自定义消息，但是老版本不能识别，开发者可以在旧版本中预先自定义这种未识别的消息的显示
+    [RCIM sharedRCIM].showUnkownMessage = YES;
+    [RCIM sharedRCIM].showUnkownMessageNotificaiton = YES;
+    
+    //群成员数据源
+//    [RCIM sharedRCIM].groupMemberDataSource = RCDDataSource;
+    
+    //开启消息@功能（只支持群聊和讨论组, App需要实现群成员数据源groupMemberDataSource）
+    [RCIM sharedRCIM].enableMessageMentioned = YES;
+    
+    //开启消息撤回功能
+    [RCIM sharedRCIM].enableMessageRecall = YES;
+    
+    //  设置头像为圆形
+    //  [RCIM sharedRCIM].globalMessageAvatarStyle = RC_USER_AVATAR_CYCLE;
+    //  [RCIM sharedRCIM].globalConversationAvatarStyle = RC_USER_AVATAR_CYCLE;
+    //   设置优先使用WebView打开URL
+    //  [RCIM sharedRCIM].embeddedWebViewPreferred = YES;
+    
+    //  设置通话视频分辨率
+    //  [[RCCallClient sharedRCCallClient] setVideoProfile:RC_VIDEO_PROFILE_480P];
+    
+    //设置Log级别，开发阶段打印详细log
+    [RCIMClient sharedRCIMClient].logLevel = RC_Log_Level_Info;
     //开始监听网络状态
     [YSNetworkTool startMonitorNetwork];
     //通知键盘弹出状态
@@ -79,6 +140,7 @@
                                              selector:@selector(onlineConfigCallBack:)
                                                  name:UMOnlineConfigDidFinishedNotification
                                                object:nil];
+    
 }
 - (void)onlineConfigCallBack:(NSNotification *)note {
     

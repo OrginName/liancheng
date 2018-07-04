@@ -44,6 +44,12 @@
 		723F4FB320BEEA8D00AF8268 /* TrvalTripCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FB120BEEA8D00AF8268 /* TrvalTripCell.m */; };
 		723F4FB420BEEA8D00AF8268 /* TrvalTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723F4FB220BEEA8D00AF8268 /* TrvalTripCell.xib */; };
 		72626F2F20ECF295001B807D /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72626F2C20ECF295001B807D /* libMobClickLibrary.a */; };
+		72626F3220ECF66E001B807D /* RCDSettingUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 72626F3120ECF66E001B807D /* RCDSettingUserDefaults.m */; };
+		72626F3F20ECFBE9001B807D /* RongContactCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72626F3E20ECFBE9001B807D /* RongContactCard.framework */; };
+		72626F5A20ED03BC001B807D /* RCDGroupInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72626F5220ED03BB001B807D /* RCDGroupInfo.m */; };
+		72626F5B20ED03BC001B807D /* RCDTestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 72626F5320ED03BB001B807D /* RCDTestMessage.m */; };
+		72626F5C20ED03BC001B807D /* RCDChatRoomInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72626F5620ED03BB001B807D /* RCDChatRoomInfo.m */; };
+		72626F5D20ED03BC001B807D /* RCDUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72626F5920ED03BC001B807D /* RCDUserInfo.m */; };
 		7274188020B13CB6001D6BE1 /* MLMSegmentHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */; };
 		7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187C20B13CB6001D6BE1 /* MLMSegmentPage.m */; };
 		7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187F20B13CB6001D6BE1 /* UIView+ViewController.m */; };
@@ -561,6 +567,18 @@
 		72626F2C20ECF295001B807D /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		72626F2D20ECF295001B807D /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		72626F2E20ECF295001B807D /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
+		72626F3020ECF66D001B807D /* RCDSettingUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDSettingUserDefaults.h; sourceTree = "<group>"; };
+		72626F3120ECF66E001B807D /* RCDSettingUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDSettingUserDefaults.m; sourceTree = "<group>"; };
+		72626F3E20ECFBE9001B807D /* RongContactCard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RongContactCard.framework; sourceTree = "<group>"; };
+		72626F5220ED03BB001B807D /* RCDGroupInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDGroupInfo.m; sourceTree = "<group>"; };
+		72626F5320ED03BB001B807D /* RCDTestMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDTestMessage.m; sourceTree = "<group>"; };
+		72626F5420ED03BB001B807D /* RCDTestMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDTestMessage.h; sourceTree = "<group>"; };
+		72626F5520ED03BB001B807D /* RCDChatRoomInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDChatRoomInfo.h; sourceTree = "<group>"; };
+		72626F5620ED03BB001B807D /* RCDChatRoomInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDChatRoomInfo.m; sourceTree = "<group>"; };
+		72626F5720ED03BB001B807D /* RCDUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDUserInfo.h; sourceTree = "<group>"; };
+		72626F5820ED03BB001B807D /* RCDGroupInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDGroupInfo.h; sourceTree = "<group>"; };
+		72626F5920ED03BC001B807D /* RCDUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDUserInfo.m; sourceTree = "<group>"; };
+		72626F6B20ED1D8C001B807D /* RCloudMessage.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = RCloudMessage.entitlements; sourceTree = "<group>"; };
 		7274187920B13CB6001D6BE1 /* MLMSegmentHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentHead.h; sourceTree = "<group>"; };
 		7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLMSegmentHead.m; sourceTree = "<group>"; };
 		7274187B20B13CB6001D6BE1 /* MLMSegmentPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentPage.h; sourceTree = "<group>"; };
@@ -1294,6 +1312,7 @@
 			files = (
 				8DEA451620C12180001529F1 /* AVFoundation.framework in Frameworks */,
 				8D24A22720A19C8F00F0740D /* MapKit.framework in Frameworks */,
+				72626F3F20ECFBE9001B807D /* RongContactCard.framework in Frameworks */,
 				8817A720716E5B61344D714A /* libPods-ConnectionCity.a in Frameworks */,
 				72626F2F20ECF295001B807D /* libMobClickLibrary.a in Frameworks */,
 			);
@@ -1424,6 +1443,28 @@
 				72626F2E20ECF295001B807D /* MobClickSocialAnalytics.h */,
 			);
 			path = UMAnalytics;
+			sourceTree = "<group>";
+		};
+		72626F4320ED024F001B807D /* rcCloudStore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = rcCloudStore;
+			sourceTree = "<group>";
+		};
+		72626F5120ED03A4001B807D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				72626F5520ED03BB001B807D /* RCDChatRoomInfo.h */,
+				72626F5620ED03BB001B807D /* RCDChatRoomInfo.m */,
+				72626F5820ED03BB001B807D /* RCDGroupInfo.h */,
+				72626F5220ED03BB001B807D /* RCDGroupInfo.m */,
+				72626F5420ED03BB001B807D /* RCDTestMessage.h */,
+				72626F5320ED03BB001B807D /* RCDTestMessage.m */,
+				72626F5720ED03BB001B807D /* RCDUserInfo.h */,
+				72626F5920ED03BC001B807D /* RCDUserInfo.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7274187820B13CB6001D6BE1 /* MLMSegmentPageView */ = {
@@ -2049,6 +2090,7 @@
 		8B7BE3068BAA237F55FD6962 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				72626F3E20ECFBE9001B807D /* RongContactCard.framework */,
 				8DEA451520C12180001529F1 /* AVFoundation.framework */,
 				729BA6D820A04BE7009713FD /* MapKit.framework */,
 				C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */,
@@ -2101,6 +2143,10 @@
 		8D14FDE320EB0BAA0013A9DF /* RcloudMessage */ = {
 			isa = PBXGroup;
 			children = (
+				72626F5120ED03A4001B807D /* Models */,
+				72626F4320ED024F001B807D /* rcCloudStore */,
+				72626F3020ECF66D001B807D /* RCDSettingUserDefaults.h */,
+				72626F3120ECF66E001B807D /* RCDSettingUserDefaults.m */,
 				8D14FDE420EB0C000013A9DF /* Utilites */,
 			);
 			path = RcloudMessage;
@@ -2726,6 +2772,7 @@
 		CE0BA601209D5F26004C3C33 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				72626F6B20ED1D8C001B807D /* RCloudMessage.entitlements */,
 				CE0BA567209D5004004C3C33 /* AppDelegate.h */,
 				CE0BA568209D5004004C3C33 /* AppDelegate.m */,
 				CE0BA570209D5004004C3C33 /* Assets.xcassets */,
@@ -3744,6 +3791,7 @@
 				CE0BA637209D68A3004C3C33 /* ChangePasswordController.m in Sources */,
 				CE0BA5F8209D5EBE004C3C33 /* BaseNavigationController.m in Sources */,
 				72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */,
+				72626F5B20ED03BC001B807D /* RCDTestMessage.m in Sources */,
 				CE0BA5F7209D5EBE004C3C33 /* BaseViewController.m in Sources */,
 				8DC17A7E20C0E430005D9EE0 /* Utility.m in Sources */,
 				7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */,
@@ -3817,12 +3865,14 @@
 				8DC17A7820C0E430005D9EE0 /* Moment.m in Sources */,
 				723F4FAF20BEE8FF00AF8268 /* TrvalTrip.m in Sources */,
 				722D252920AA769600AB3863 /* FKGPopOption.m in Sources */,
+				72626F5D20ED03BC001B807D /* RCDUserInfo.m in Sources */,
 				CE0BA5E2209D5E9B004C3C33 /* SRDownloadModel.m in Sources */,
 				8D24A23520A1D5A700F0740D /* RefineView.m in Sources */,
 				720263F120B5015500382B2F /* TZAssetCell.m in Sources */,
 				CEC4A54320C3D6FC0026EE19 /* TeamHeadCell.m in Sources */,
 				727418EB20B2AAB9001D6BE1 /* ChangeCell.m in Sources */,
 				CE0BA5E5209D5E9B004C3C33 /* YSNetworkTool.m in Sources */,
+				72626F5A20ED03BC001B807D /* RCDGroupInfo.m in Sources */,
 				8D14FDEB20EB0C000013A9DF /* RCDTabBarBtn.m in Sources */,
 				CE97DC0720B5B1CA003E46BD /* BidManageController.m in Sources */,
 				CEC4A56420C407BF0026EE19 /* WalletController.m in Sources */,
@@ -3889,6 +3939,7 @@
 				CE21F0E020DDF00F00478482 /* MemberRenewalM.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
 				CE9B9A6F20E9168D005C47B2 /* AgreementController.m in Sources */,
+				72626F5C20ED03BC001B807D /* RCDChatRoomInfo.m in Sources */,
 				CEBEDD7D20B17ED1000F9EE4 /* WinningBidderCell.m in Sources */,
 				CE21F0EF20DF94A800478482 /* WorkExperienceListModel.m in Sources */,
 				CE6BEC2C20C970C1003B36D7 /* EditProfileHeadView.m in Sources */,
@@ -3952,6 +4003,7 @@
 				CE9B9A7320E9177F005C47B2 /* AgreementMo.m in Sources */,
 				CE0BA636209D68A3004C3C33 /* YSLoginController.m in Sources */,
 				CEE68C4320ECF50A00233AE3 /* ServiceMo.m in Sources */,
+				72626F3220ECF66E001B807D /* RCDSettingUserDefaults.m in Sources */,
 				8DD48CCE20A811EA00D6D1E6 /* TADotView.m in Sources */,
 				CEBEDD8D20B17ED1000F9EE4 /* FootSectionHeadV.m in Sources */,
 				CE0BA5E9209D5E9B004C3C33 /* YSRefreshTool.m in Sources */,
@@ -4194,6 +4246,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WVUAE7KCP3;
+
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ConnectionCity/Third/RcloudMessage/framework",
+					"$(PROJECT_DIR)",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";
@@ -4220,6 +4278,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WVUAE7KCP3;
+
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ConnectionCity/Third/RcloudMessage/framework",
+					"$(PROJECT_DIR)",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -541,9 +541,15 @@
 		3A702AA7C62C0E82A1C2F2261F263FB3 /* IQBarButtonItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQBarButtonItem.h; path = IQKeyboardManager/IQToolbar/IQBarButtonItem.h; sourceTree = "<group>"; };
 		3AE1C758532D58389E9981AC1ED9F7B4 /* MJRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefresh.h; path = MJRefresh/MJRefresh.h; sourceTree = "<group>"; };
 		3BB90CAFB8454E3ECA905A6AC596FCDB /* MLLinkLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MLLinkLabel.m; path = Classes/MLLinkLabel.m; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		3C910E08B2BBEA62E826F4275EED3974 /* libMJRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMJRefresh.a; path = libMJRefresh.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CFDA200B68A85A8C6EE3D9D1AA78361 /* QNRecorderDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QNRecorderDelegate.h; path = QiniuSDK/Recorder/QNRecorderDelegate.h; sourceTree = "<group>"; };
 		3D1FC440279AAA019BEF8DA7C098244D /* libFMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFMDB.a; path = libFMDB.a; sourceTree = BUILT_PRODUCTS_DIR; };
+=======
+		3C910E08B2BBEA62E826F4275EED3974 /* libMJRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMJRefresh.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CFDA200B68A85A8C6EE3D9D1AA78361 /* QNRecorderDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QNRecorderDelegate.h; path = QiniuSDK/Recorder/QNRecorderDelegate.h; sourceTree = "<group>"; };
+		3D1FC440279AAA019BEF8DA7C098244D /* libFMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFMDB.a; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> Stashed changes
 		3DD721C55D548A29B35898A30D2B3353 /* Masonry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Masonry.h; path = Masonry/Masonry.h; sourceTree = "<group>"; };
 		3ED12246179B7F90451EEF8012C0FA5D /* AMapServices.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapServices.h; path = AMapFoundationKit.framework/Headers/AMapServices.h; sourceTree = "<group>"; };
 		402109948B575544D676CFB90E9134A8 /* QNPHAssetResource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QNPHAssetResource.h; path = QiniuSDK/Common/QNPHAssetResource.h; sourceTree = "<group>"; };
@@ -565,7 +571,11 @@
 		4C157349700DA76BA39F497260DDC878 /* AFCompatibilityMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFCompatibilityMacros.h; path = AFNetworking/AFCompatibilityMacros.h; sourceTree = "<group>"; };
 		4C2550E779BD225311B3EB17A09854B8 /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
 		4C6DB98EABEBCC9ACBC8E5C539CC3F28 /* MAMapView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAMapView.h; path = MAMapKit.framework/Headers/MAMapView.h; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		4CDEED1390A545622873D6CF728E955B /* libQiniu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libQiniu.a; path = libQiniu.a; sourceTree = BUILT_PRODUCTS_DIR; };
+=======
+		4CDEED1390A545622873D6CF728E955B /* libQiniu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libQiniu.a; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> Stashed changes
 		4D0ED7657C47B5AFEE959E9993C8813D /* FMDB.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = src/fmdb/FMDB.h; sourceTree = "<group>"; };
 		4E93A73B7C0EAF6F124A8A16D70E7B2B /* AMapCommonObj.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapCommonObj.h; path = AMapSearchKit.framework/Headers/AMapCommonObj.h; sourceTree = "<group>"; };
 		4EA794A5CDB26D3B03787127BADC9D82 /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
@@ -668,12 +678,20 @@
 		82148C9C741E97F3DD935FC6065DE044 /* SDWebImage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SDWebImage-dummy.m"; sourceTree = "<group>"; };
 		826D0034B11CFE30EFDB7EE71179C6D6 /* SDWebImageManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageManager.m; path = SDWebImage/SDWebImageManager.m; sourceTree = "<group>"; };
 		82B76F59AF3556AA29AB6F9A145D7FC2 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		855BF009A6638365F7140A7AB0F24A70 /* libMLLabel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMLLabel.a; path = libMLLabel.a; sourceTree = BUILT_PRODUCTS_DIR; };
+=======
+		855BF009A6638365F7140A7AB0F24A70 /* libMLLabel.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMLLabel.a; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> Stashed changes
 		8597F5F3A0FDE3ED51FB9A7382B37835 /* QNDnspodEnterprise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QNDnspodEnterprise.m; path = HappyDNS/Http/QNDnspodEnterprise.m; sourceTree = "<group>"; };
 		85B4B243AC13D195D4166BA4D7EADB94 /* SDWebImage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SDWebImage.xcconfig; sourceTree = "<group>"; };
 		85CCA45D4CF527C1426FA22840D09D2C /* FMResultSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = src/fmdb/FMResultSet.h; sourceTree = "<group>"; };
 		85D88C0340310767D9DAD4F071AB0BBB /* Masonry-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		85F4340FB4CD97419E4AC3B5B63AC872 /* libPods-ConnectionCity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-ConnectionCity.a"; path = "libPods-ConnectionCity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+=======
+		85F4340FB4CD97419E4AC3B5B63AC872 /* libPods-ConnectionCity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ConnectionCity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> Stashed changes
 		860DE0B2FD1F82596A36F2DAC9CD41D2 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+ImageContentType.h"; path = "SDWebImage/NSData+ImageContentType.h"; sourceTree = "<group>"; };
 		8612E675ABB718BCC63010FA8A32DB55 /* AMapSearchAPI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapSearchAPI.h; path = AMapSearchKit.framework/Headers/AMapSearchAPI.h; sourceTree = "<group>"; };
 		862DE2D1EF10E297142AB5169FF06314 /* View+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASAdditions.h"; path = "Masonry/View+MASAdditions.h"; sourceTree = "<group>"; };
@@ -702,8 +720,13 @@
 		91F15E4317E6C9A386E0935D4195B4E5 /* Qiniu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Qiniu-prefix.pch"; sourceTree = "<group>"; };
 		9257A08CFF8EE6944A1E4E764152C6F1 /* MLLabel+Override.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MLLabel+Override.h"; path = "Classes/Helper/MLLabel+Override.h"; sourceTree = "<group>"; };
 		937CCD2ED887DAE7557CEF45BAC3996F /* MATileOverlayView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MATileOverlayView.h; path = MAMapKit.framework/Headers/MATileOverlayView.h; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		941C2F8D6C575F097A11BFBBE62D0F8C /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAFNetworking.a; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+=======
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		941C2F8D6C575F097A11BFBBE62D0F8C /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> Stashed changes
 		94A82CA74E59D0921169FE23854490C6 /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
 		94F6A0C74F28F75E56BF61D5E078A498 /* MAPinAnnotationView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAPinAnnotationView.h; path = MAMapKit.framework/Headers/MAPinAnnotationView.h; sourceTree = "<group>"; };
 		9711F575E9C97E0FF81B1964F8B5EA24 /* UIImage+MultiFormat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MultiFormat.m"; path = "SDWebImage/UIImage+MultiFormat.m"; sourceTree = "<group>"; };
@@ -743,7 +766,11 @@
 		ACB5EC28F1769DB32C5C5DD2BA48B028 /* MASConstraint+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MASConstraint+Private.h"; path = "Masonry/MASConstraint+Private.h"; sourceTree = "<group>"; };
 		AE0FDCD979BF34BBE30F05075DE6F6D9 /* MAHeatMapTileOverlay.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAHeatMapTileOverlay.h; path = MAMapKit.framework/Headers/MAHeatMapTileOverlay.h; sourceTree = "<group>"; };
 		AE281461191A12E42C475883DE1CE5DD /* AMapGeoFenceRegionObj.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapGeoFenceRegionObj.h; path = AMapLocationKit.framework/Headers/AMapGeoFenceRegionObj.h; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		AF73D5FA93093D1F50D12668E3E69EED /* libMBProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMBProgressHUD.a; path = libMBProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
+=======
+		AF73D5FA93093D1F50D12668E3E69EED /* libMBProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMBProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> Stashed changes
 		B13372C04B61CD1C1E47CA7F9AB321D0 /* SDWebImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloader.h; path = SDWebImage/SDWebImageDownloader.h; sourceTree = "<group>"; };
 		B152D2B8AB55363A60A7E7939622FD7A /* FMDB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FMDB-dummy.m"; sourceTree = "<group>"; };
 		B196EC2C275A07A13AE13F7302B182FD /* MJRefreshStateHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshStateHeader.h; path = MJRefresh/Custom/Header/MJRefreshStateHeader.h; sourceTree = "<group>"; };
@@ -757,7 +784,11 @@
 		B3F7CC5C220986FAD1FDD55B6CD60261 /* AMapLocationVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapLocationVersion.h; path = AMapLocationKit.framework/Headers/AMapLocationVersion.h; sourceTree = "<group>"; };
 		B414AAF804FA3755B626899FBECAF803 /* QNResolver.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QNResolver.m; path = HappyDNS/Local/QNResolver.m; sourceTree = "<group>"; };
 		B664EEDB5CA24BC894B273E6C2A5E5CC /* NSAttributedString+MLLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+MLLabel.m"; path = "Classes/Category/NSAttributedString+MLLabel.m"; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		B68757DBE3700580AF93D97738EE97B5 /* libIQKeyboardManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libIQKeyboardManager.a; path = libIQKeyboardManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
+=======
+		B68757DBE3700580AF93D97738EE97B5 /* libIQKeyboardManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIQKeyboardManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> Stashed changes
 		B71D645E4278EAA4DC772A8B99FA079F /* QNDnsManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QNDnsManager.h; path = HappyDNS/Common/QNDnsManager.h; sourceTree = "<group>"; };
 		B8CF1A54B42270D098FF2B65AA964036 /* MJRefreshBackGifFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackGifFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackGifFooter.m; sourceTree = "<group>"; };
 		B948D0D13FCFA62D3E9AD777589D6CEB /* IQKeyboardManager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IQKeyboardManager.xcconfig; sourceTree = "<group>"; };
@@ -770,13 +801,21 @@
 		BB92EC904FA8BAD987746CEE90805ABD /* QNEtag.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QNEtag.h; path = QiniuSDK/Common/QNEtag.h; sourceTree = "<group>"; };
 		BBAF416C6548F7D156732ED80EA1F6F5 /* IQNSArray+Sort.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "IQNSArray+Sort.m"; path = "IQKeyboardManager/Categories/IQNSArray+Sort.m"; sourceTree = "<group>"; };
 		BC2ECFC2AD8B8D9D91DF8387B77D11F3 /* MJRefreshConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshConst.h; path = MJRefresh/MJRefreshConst.h; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		BDE6220F88767D6B76CB2303FEF8BF7B /* libMJExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMJExtension.a; path = libMJExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
+=======
+		BDE6220F88767D6B76CB2303FEF8BF7B /* libMJExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMJExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> Stashed changes
 		BF2003FC804B4CC6A3C0CE05CAE224EC /* Emoji.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Emoji.plist; path = RongCloudIM/Emoji.plist; sourceTree = "<group>"; };
 		BF8B9ECF578F83C10A94DAF743C08468 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASShorthandAdditions.h"; path = "Masonry/View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		BF94E324A5D2066FE1F25D56590050AC /* QN_GTM_Base64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QN_GTM_Base64.h; path = QiniuSDK/Common/QN_GTM_Base64.h; sourceTree = "<group>"; };
 		BFD69D09E9E56325A88E14DEC5D7B04D /* MAUserLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAUserLocation.h; path = MAMapKit.framework/Headers/MAUserLocation.h; sourceTree = "<group>"; };
 		C02DCA59724C19DA870FFF9575011D6D /* MAAnnotationView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MAAnnotationView.h; path = MAMapKit.framework/Headers/MAAnnotationView.h; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		C2C2A6F53A633E87709BCFFD5B73339F /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMasonry.a; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
+=======
+		C2C2A6F53A633E87709BCFFD5B73339F /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> Stashed changes
 		C2D6EE963C736BA120223C545ED9A9F9 /* AMapSearchVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapSearchVersion.h; path = AMapSearchKit.framework/Headers/AMapSearchVersion.h; sourceTree = "<group>"; };
 		C3747A2466D829C84154E5713F691551 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+MASDebugAdditions.m"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
 		C3E8B7CADB910CDF19E05F32196E92EE /* MLLabel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MLLabel.xcconfig; sourceTree = "<group>"; };
@@ -806,7 +845,11 @@
 		D301C7FBEFDA2FFB62CDEFE997E47553 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
 		D42A6E4D8B2CFB356A5F9E9F385DBE72 /* IQKeyboardReturnKeyHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQKeyboardReturnKeyHandler.m; path = IQKeyboardManager/IQKeyboardReturnKeyHandler.m; sourceTree = "<group>"; };
 		D4D86AA021FF8BF7C75D68C8F3452ED1 /* QNFormUpload.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QNFormUpload.m; path = QiniuSDK/Storage/QNFormUpload.m; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		D5F4DF3A3FEC3C9AA3BD518EF17B635D /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = en.lproj; path = RongCloudIM/en.lproj; sourceTree = "<group>"; };
+=======
+		D5F4DF3A3FEC3C9AA3BD518EF17B635D /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = en.lproj; path = RongCloudIM/en.lproj; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 		D668229702A603DF06B25B3596792155 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		D8D3A42DF3C1084622C2E7AFA34AC1FC /* AMapLocationRegionObj.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AMapLocationRegionObj.h; path = AMapLocationKit.framework/Headers/AMapLocationRegionObj.h; sourceTree = "<group>"; };
 		D90CBFB8C22E0C58726485E426B8C20A /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
@@ -818,7 +861,11 @@
 		DC498932452EBF126DBB7B582F852A5D /* FMDB.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FMDB.xcconfig; sourceTree = "<group>"; };
 		DD9CD1EC91A62AB14CC59369D6DAD0BB /* MJRefreshFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshFooter.h; path = MJRefresh/Base/MJRefreshFooter.h; sourceTree = "<group>"; };
 		DDCD1C070D5253B00B46897850815B85 /* SDWebImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDownloader.m; path = SDWebImage/SDWebImageDownloader.m; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		DE4A36B6E5519EF5A4DA6A210FDD8E50 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSDWebImage.a; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+=======
+		DE4A36B6E5519EF5A4DA6A210FDD8E50 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> Stashed changes
 		DECBDDC5931704604C1DB3188C51F925 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		DFF9C676E38FC5BF6E5E763A379AEC21 /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIRefreshControl+AFNetworking.h"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
 		E04623DBE8C3833949EC4A090C65EA44 /* Pods-ConnectionCity-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ConnectionCity-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -828,14 +875,22 @@
 		E19FD3117BA8011C712C796F0A666534 /* QNUserAgent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QNUserAgent.h; path = QiniuSDK/Http/QNUserAgent.h; sourceTree = "<group>"; };
 		E1A1290BD81E1E58954107DC3A1323C5 /* QNConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QNConfiguration.m; path = QiniuSDK/Storage/QNConfiguration.m; sourceTree = "<group>"; };
 		E26292B9A58C9FD1FDAEE74609A8C307 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MASAdditions.m"; path = "Masonry/NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		E32C7A23616D21D124D1874820F36970 /* libHappyDNS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libHappyDNS.a; path = libHappyDNS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+=======
+		E32C7A23616D21D124D1874820F36970 /* libHappyDNS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHappyDNS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> Stashed changes
 		E340388AECA05B1329E185BFC02FF2CC /* AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-prefix.pch"; sourceTree = "<group>"; };
 		E3A0126A4C862E41C2AF88576449C73F /* QNUserAgent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QNUserAgent.m; path = QiniuSDK/Http/QNUserAgent.m; sourceTree = "<group>"; };
 		E5C3E5F77F093356A3AD8E6637158DEE /* SDWebImageDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDecoder.m; path = SDWebImage/SDWebImageDecoder.m; sourceTree = "<group>"; };
 		E65971DB2CE24AF9848EB7159957BC1B /* QNResponseInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QNResponseInfo.h; path = QiniuSDK/Http/QNResponseInfo.h; sourceTree = "<group>"; };
 		E6CA8A14A7AD3548AA9259719CAA3D24 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		E6D4E2E97C4910696E5821763D982FFA /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		E71A317A5AF96DBF8E81A8F5C9FE7C27 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hans.lproj"; path = "RongCloudIM/zh-Hans.lproj"; sourceTree = "<group>"; };
+=======
+		E71A317A5AF96DBF8E81A8F5C9FE7C27 /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = "zh-Hans.lproj"; path = "RongCloudIM/zh-Hans.lproj"; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 		E767065ADE94CC6FFEF3171CEEB0231E /* FMDatabase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = src/fmdb/FMDatabase.m; sourceTree = "<group>"; };
 		E788213A3DA3C3EF68CC867E7B9765BF /* MJPropertyKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJPropertyKey.h; path = MJExtension/MJPropertyKey.h; sourceTree = "<group>"; };
 		E7C52026BC307E0BED4DBD1E178B639C /* SDWebImageDownloaderOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderOperation.h; path = SDWebImage/SDWebImageDownloaderOperation.h; sourceTree = "<group>"; };
@@ -1049,7 +1104,10 @@
 				BF2A44608286A2242E19A04FE77A94D0 /* standard */,
 				4B7F688F8BF7EED615E079C035D212C8 /* Support Files */,
 			);
+<<<<<<< Updated upstream
 			name = FMDB;
+=======
+>>>>>>> Stashed changes
 			path = FMDB;
 			sourceTree = "<group>";
 		};
@@ -1087,7 +1145,10 @@
 				64ECF7F65CAD615DD62091058FDB9736 /* Resources */,
 				7900405C2A70FD0E4FA6FB3E057115A9 /* Support Files */,
 			);
+<<<<<<< Updated upstream
 			name = IQKeyboardManager;
+=======
+>>>>>>> Stashed changes
 			path = IQKeyboardManager;
 			sourceTree = "<group>";
 		};
@@ -1097,7 +1158,10 @@
 				E9A0380295B21D1DE848AC9E5FF10634 /* IMKit */,
 				318771A277AE5496CB9FFC824FA056DC /* IMLib */,
 			);
+<<<<<<< Updated upstream
 			name = RongCloudIM;
+=======
+>>>>>>> Stashed changes
 			path = RongCloudIM;
 			sourceTree = "<group>";
 		};
@@ -1108,7 +1172,6 @@
 				39F7C1C5956E668DF9629C2AB947C4E4 /* MBProgressHUD.m */,
 				918AC9325168CB5661AE299682F74483 /* Support Files */,
 			);
-			name = MBProgressHUD;
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -1178,7 +1241,10 @@
 				D52F0978F3F52D256FC3087F8A6A964E /* Core */,
 				6C92DAFDD96D92A232F883E3E52F6823 /* Support Files */,
 			);
+<<<<<<< Updated upstream
 			name = SDWebImage;
+=======
+>>>>>>> Stashed changes
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -1262,7 +1328,10 @@
 				AB165F9B55BCFA0B2FD88D5614A53796 /* NSObject+AMapJsonSerialization.h */,
 				43986CEC0EDA6D743C9F4D0EB530F601 /* Frameworks */,
 			);
+<<<<<<< Updated upstream
 			name = AMapFoundation;
+=======
+>>>>>>> Stashed changes
 			path = AMapFoundation;
 			sourceTree = "<group>";
 		};
@@ -1277,7 +1346,10 @@
 				37D45B2E00D5286A8AEE8C3D6EDD1FF1 /* Support Files */,
 				D51276A8B891DCB8D3A1A2B040616085 /* UIKit */,
 			);
+<<<<<<< Updated upstream
 			name = AFNetworking;
+=======
+>>>>>>> Stashed changes
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
@@ -1341,7 +1413,10 @@
 				DECBDDC5931704604C1DB3188C51F925 /* ViewController+MASAdditions.m */,
 				60289601657F4CFC643E08F456932937 /* Support Files */,
 			);
+<<<<<<< Updated upstream
 			name = Masonry;
+=======
+>>>>>>> Stashed changes
 			path = Masonry;
 			sourceTree = "<group>";
 		};
@@ -1371,7 +1446,10 @@
 				08D5F37A974C5711C73CCEAE2CCF995C /* NSString+MLLabel.m */,
 				22CBA537C76FDEEC33F25C81392868AE /* Support Files */,
 			);
+<<<<<<< Updated upstream
 			name = MLLabel;
+=======
+>>>>>>> Stashed changes
 			path = MLLabel;
 			sourceTree = "<group>";
 		};
@@ -1500,6 +1578,7 @@
 				9BF556A2B97C323257C7C548B80FAE97 /* MAUserLocationRepresentation.h */,
 				8B312865EEE45C6A03F2C44CB0BA312F /* Frameworks */,
 				8D07B3B95EAF6FB7152FD1D3B566BCF2 /* Resources */,
+<<<<<<< Updated upstream
 			);
 			name = AMap2DMap;
 			path = AMap2DMap;
@@ -1527,6 +1606,33 @@
 			children = (
 				AAF72BDC91C25EABB547AC5B24FCB81A /* RCConfig.plist */,
 			);
+=======
+			);
+			path = AMap2DMap;
+			sourceTree = "<group>";
+		};
+		BBDF78648C562D74CE81E482A023F872 /* AMapLocation */ = {
+			isa = PBXGroup;
+			children = (
+				CB70537FF8FAEC0F78911F2DDA80E672 /* AMapGeoFenceError.h */,
+				75AD748E7BBA6E0410FD673BA3CE2BC9 /* AMapGeoFenceManager.h */,
+				AE281461191A12E42C475883DE1CE5DD /* AMapGeoFenceRegionObj.h */,
+				07F49FB003D5AC8994FA3129289715C3 /* AMapLocationCommonObj.h */,
+				5C44480C6501DE83D12C89DDAB5A7261 /* AMapLocationKit.h */,
+				8C6FA914841847762DB859E662ABA977 /* AMapLocationManager.h */,
+				D8D3A42DF3C1084622C2E7AFA34AC1FC /* AMapLocationRegionObj.h */,
+				B3F7CC5C220986FAD1FDD55B6CD60261 /* AMapLocationVersion.h */,
+				66445F826F993EBDC6489788F2DFF1AE /* Frameworks */,
+			);
+			path = AMapLocation;
+			sourceTree = "<group>";
+		};
+		BDB4EC4860C7865577A511FD73B212D1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AAF72BDC91C25EABB547AC5B24FCB81A /* RCConfig.plist */,
+			);
+>>>>>>> Stashed changes
 			name = Resources;
 			sourceTree = "<group>";
 		};
@@ -1613,7 +1719,10 @@
 				5AADCCA6B4FB0E88E75114A147A929D3 /* Resources */,
 				C94462035943455EAE465A69708AA45F /* Support Files */,
 			);
+<<<<<<< Updated upstream
 			name = MJRefresh;
+=======
+>>>>>>> Stashed changes
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
@@ -1666,7 +1775,10 @@
 				65B0D2FD477A1AC341F8CE8B02802080 /* QNTxtResolver.m */,
 				DD88A3B4DBA4ACF5B4DF17289FAD9F91 /* Support Files */,
 			);
+<<<<<<< Updated upstream
 			name = HappyDNS;
+=======
+>>>>>>> Stashed changes
 			path = HappyDNS;
 			sourceTree = "<group>";
 		};
@@ -1696,7 +1808,10 @@
 				336696C06D6F9468DB8709FD406DEF01 /* NSString+MJExtension.m */,
 				6FD9AACF8FC210CF7E1FD65E0C75F4F0 /* Support Files */,
 			);
+<<<<<<< Updated upstream
 			name = MJExtension;
+=======
+>>>>>>> Stashed changes
 			path = MJExtension;
 			sourceTree = "<group>";
 		};
@@ -1816,7 +1931,10 @@
 				36409662EA3CBCC18986AD4FB4C459EF /* QNVersion.h */,
 				865FF23235DA09901EC5D148571B894C /* Support Files */,
 			);
+<<<<<<< Updated upstream
 			name = Qiniu;
+=======
+>>>>>>> Stashed changes
 			path = Qiniu;
 			sourceTree = "<group>";
 		};
@@ -1833,7 +1951,10 @@
 				C2D6EE963C736BA120223C545ED9A9F9 /* AMapSearchVersion.h */,
 				A7B62B0421F694B01A68D763CF74991B /* Frameworks */,
 			);
+<<<<<<< Updated upstream
 			name = AMapSearch;
+=======
+>>>>>>> Stashed changes
 			path = AMapSearch;
 			sourceTree = "<group>";
 		};
@@ -3018,6 +3139,10 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACH_O_TYPE = staticlib;
@@ -3317,6 +3442,10 @@
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACH_O_TYPE = staticlib;
