@@ -20,11 +20,8 @@
 @end
 
 @interface ProfileCell : UITableViewCell
-<<<<<<< HEAD
-=======
 @property (weak, nonatomic) IBOutlet UIButton *resumeeditBtn;
 @property (weak, nonatomic) IBOutlet UIButton *resumeedeleteBtn;
->>>>>>> fe7a2fdade5d0c8cdbf985cfa133deb45eb31555
 @property (weak, nonatomic) IBOutlet UIImageView *iconImgV;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UILabel *resumetitleLab;

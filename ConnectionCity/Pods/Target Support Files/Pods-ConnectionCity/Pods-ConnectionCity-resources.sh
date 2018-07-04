@@ -82,7 +82,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "RongCloudIM/RongCloudIM/zh-Hans.lproj"
   install_resource "RongCloudIM/RongCloudIM/Emoji.plist"
   install_resource "RongCloudIM/RongCloudIM/RCConfig.plist"
-  install_resource "UMCShare/UMShare/UMSocialUI/UMSocialSDKResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "AMap2DMap/MAMapKit.framework/AMap.bundle"
@@ -93,7 +92,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "RongCloudIM/RongCloudIM/zh-Hans.lproj"
   install_resource "RongCloudIM/RongCloudIM/Emoji.plist"
   install_resource "RongCloudIM/RongCloudIM/RCConfig.plist"
-  install_resource "UMCShare/UMShare/UMSocialUI/UMSocialSDKResources.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

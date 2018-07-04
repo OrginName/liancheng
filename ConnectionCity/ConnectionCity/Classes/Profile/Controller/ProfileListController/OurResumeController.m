@@ -40,7 +40,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-<<<<<<< HEAD
     //我的发布-简历
 //    [self requestMyResumePage];
     //我的发布-服务
@@ -53,9 +52,6 @@
 //    [self requestMyTreasurePage];
     //我的发布-身份互换
 //    [self v1MyIdentityPage];
-=======
->>>>>>> fe7a2fdade5d0c8cdbf985cfa133deb45eb31555
-    
     if(self.index==2){
         //我的发布-简历
         [self requestMyResumePage];
@@ -108,8 +104,6 @@
     cell.delegate = self;
     if (self.index ==2) {
         cell.resumeModel = self.resumedataArr[indexPath.row];
-<<<<<<< HEAD
-=======
         cell.resumeeditBtn.tag = 1000+indexPath.row;
         cell.resumeedeleteBtn.tag = 10000+indexPath.row;
     }else if (self.index == 3){
@@ -122,7 +116,6 @@
         cell.serviceModel = self.servicedataArr[indexPath.row];
     }else if (self.index == 7){
         cell.serviceModel = self.servicedataArr[indexPath.row];
->>>>>>> fe7a2fdade5d0c8cdbf985cfa133deb45eb31555
     }
     return cell;
 }
@@ -132,8 +125,6 @@
 #pragma mark -----profileCellDelegate-----
 - (void)selectedItemButton:(NSInteger)index{
     NSLog(@"%ld",index);
-<<<<<<< HEAD
-=======
 }
 //编辑简历
 - (void)resumeeditBtn:(UIButton *)btn {
@@ -146,7 +137,6 @@
     [YSNetworkTool POST:v1TalentResumeDelete params:@{@"id": mo.modelId} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [weakSelf requestMyResumePage];
     } failure:nil];
->>>>>>> fe7a2fdade5d0c8cdbf985cfa133deb45eb31555
 }
 
 #pragma mark - 数据请求

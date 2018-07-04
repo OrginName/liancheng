@@ -15,12 +15,5 @@ pod 'MLLabel'
 pod 'RongCloudIM/IMLib', '~> 2.8.3'
 pod 'RongCloudIM/IMKit', '~> 2.8.3'
 pod 'Qiniu', '~> 7.1'
-pod 'UMCCommon'
-pod 'UMCSecurityPlugins'
-pod 'UMCPush'
-pod 'UMCShare/UI'
-pod 'UMCShare/Social/WeChat'
-pod 'UMCShare/Social/ReducedQQ'
-pod 'UMCAnalytics'
 end
 

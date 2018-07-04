@@ -466,8 +466,6 @@
 		CEE4B2A720C6CC3F008B8731 /* PersonalCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE4B2A520C6CC3F008B8731 /* PersonalCenterController.xib */; };
 		CEE4B2AF20C6D948008B8731 /* MemberRenewalController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B2AD20C6D948008B8731 /* MemberRenewalController.m */; };
 		CEE4B2B020C6D948008B8731 /* MemberRenewalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE4B2AE20C6D948008B8731 /* MemberRenewalController.xib */; };
-		CEE68C3D20EC8F5E00233AE3 /* CollectionMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C3C20EC8F5E00233AE3 /* CollectionMo.m */; };
-		CEE68C4020EC965200233AE3 /* CollectionObjMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C3F20EC965200233AE3 /* CollectionObjMo.m */; };
 		CEE68C4320ECF50A00233AE3 /* ServiceMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4220ECF50A00233AE3 /* ServiceMo.m */; };
 		CEE68C4620ECF55A00233AE3 /* ServiceCategoryNameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4520ECF55A00233AE3 /* ServiceCategoryNameModel.m */; };
 		CEE68C4920ECFAFC00233AE3 /* TravelInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4820ECFAFC00233AE3 /* TravelInvite.m */; };
@@ -1277,10 +1275,6 @@
 		CEE4B2AC20C6D948008B8731 /* MemberRenewalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberRenewalController.h; sourceTree = "<group>"; };
 		CEE4B2AD20C6D948008B8731 /* MemberRenewalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberRenewalController.m; sourceTree = "<group>"; };
 		CEE4B2AE20C6D948008B8731 /* MemberRenewalController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberRenewalController.xib; sourceTree = "<group>"; };
-		CEE68C3B20EC8F5E00233AE3 /* CollectionMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionMo.h; sourceTree = "<group>"; };
-		CEE68C3C20EC8F5E00233AE3 /* CollectionMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionMo.m; sourceTree = "<group>"; };
-		CEE68C3E20EC965200233AE3 /* CollectionObjMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionObjMo.h; sourceTree = "<group>"; };
-		CEE68C3F20EC965200233AE3 /* CollectionObjMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionObjMo.m; sourceTree = "<group>"; };
 		CEE68C4120ECF50A00233AE3 /* ServiceMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceMo.h; sourceTree = "<group>"; };
 		CEE68C4220ECF50A00233AE3 /* ServiceMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceMo.m; sourceTree = "<group>"; };
 		CEE68C4420ECF55A00233AE3 /* ServiceCategoryNameModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceCategoryNameModel.h; sourceTree = "<group>"; };
@@ -4199,7 +4193,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";
@@ -4225,7 +4219,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";

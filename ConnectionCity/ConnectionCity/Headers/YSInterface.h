@@ -95,6 +95,9 @@ static NSString * const v1TalentResumeUpdate = @"/v1/talent/resume/update";
 static NSString * const v1TalentResumeWorkCreate = @"/v1/talent/resume/work/create";
 //修改简历-工作经历
 static NSString * const v1TalentResumeWorkUpdate = @"/v1/talent/resume/work/update";
+//删除简历-工作经历
+static NSString * const v1TalentResumeDelete = @"/v1/talent/resume/delete";
+
 #pragma mark - 人才-赚外快
 //评论
 static NSString * const v1TalentTenderCommentCreate = @"/v1/talent/tender/comment/create";

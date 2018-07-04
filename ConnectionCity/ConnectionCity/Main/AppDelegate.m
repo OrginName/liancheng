@@ -16,7 +16,6 @@
 //#import <RongCallKit/RongCallKit.h>
 //#import <RongContactCard/RongContactCard.h>
 #import <RongIMKit/RongIMKit.h>
-#import <UMCommon/UMCommon.h>
 #import "MobClick.h"
 #define RONGCLOUD_IM_APPKEY @"e5t4ouvptdu3a" // online key
 #define UMENG_APPKEY @"571edc9b67e58e362e001101"
