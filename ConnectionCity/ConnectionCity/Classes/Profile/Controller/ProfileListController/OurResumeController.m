@@ -27,7 +27,7 @@
     [super viewDidLoad];
     [self setUI];
     //我的发布-简历
-    [self requestMyResumePage];
+//    [self requestMyResumePage];
     //我的发布-服务
 //    [self v1MyServicePage];
     //我的发布-旅行
@@ -62,25 +62,12 @@
     cell.delegate = self;
     if (self.index ==2) {
         cell.resumeModel = self.resumedataArr[indexPath.row];
-        cell.resumeeditBtn.tag = 1000+indexPath.row;
-        cell.resumeedeleteBtn.tag = 10000+indexPath.row;
     }
     return cell;
 }
 #pragma mark -----profileCellDelegate-----
 - (void)selectedItemButton:(NSInteger)index{
     NSLog(@"%ld",index);
-
-}
-//编辑简历
-- (void)resumeeditBtn:(UIButton *)btn {
-    OurResumeMo *mo = self.resumedataArr[btn.tag - 1000];
-    
-}
-//删除简历
-- (void)resumeedeleteBtn:(UIButton *)btn {
-    OurResumeMo *mo = self.resumedataArr[btn.tag - 10000];
-
 }
 #pragma mark - 数据请求
 //我的发布-简历

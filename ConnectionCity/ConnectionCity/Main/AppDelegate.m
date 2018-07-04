@@ -16,13 +16,14 @@
 //#import <RongCallKit/RongCallKit.h>
 //#import <RongContactCard/RongContactCard.h>
 #import <RongIMKit/RongIMKit.h>
+#import <UMCommon/UMCommon.h>
+#import "MobClick.h"
+#define RONGCLOUD_IM_APPKEY @"e5t4ouvptdu3a" // online key
+#define UMENG_APPKEY @"571edc9b67e58e362e001101"
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -39,7 +40,7 @@
         BaseNavigationController * base = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
         [self.window setRootViewController:base];
     }
-    
+    [self umengTrack];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Receivetag) name:@"TABBAR" object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backWindow) name:@"BACKMAINWINDOW" object:nil];
     
@@ -59,7 +60,31 @@
 //    BaseOneTabController * baseOneTabBar = [[BaseOneTabController alloc] init];
 //    [self.window setRootViewController:baseOneTabBar];
 //}
-
+//友盟设置
+- (void)umengTrack {
+    //    [MobClick setCrashReportEnabled:NO]; // 如果不需要捕捉异常，注释掉此行
+    [MobClick setLogEnabled:YES]; // 打开友盟sdk调试，注意Release发布时需要注释掉此行,减少io消耗
+    [MobClick setAppVersion:XcodeAppVersion]; //参数为NSString *
+    //类型,自定义app版本信息，如果不设置，默认从CFBundleVersion里取
+    //
+    [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:(ReportPolicy)REALTIME channelId:nil];
+    //   reportPolicy为枚举类型,可以为 REALTIME, BATCH,SENDDAILY,SENDWIFIONLY几种
+    //   channelId 为NSString * 类型，channelId 为nil或@""时,默认会被被当作@"App
+    //   Store"渠道
+    
+    [MobClick updateOnlineConfig]; //在线参数配置
+    
+    //    1.6.8之前的初始化方法
+    //    [MobClick setDelegate:self reportPolicy:REALTIME];  //建议使用新方法
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onlineConfigCallBack:)
+                                                 name:UMOnlineConfigDidFinishedNotification
+                                               object:nil];
+}
+- (void)onlineConfigCallBack:(NSNotification *)note {
+    
+    NSLog(@"online config has fininshed and note = %@", note.userInfo);
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

@@ -13,16 +13,9 @@
 @protocol profileCellDelegate <NSObject>
 @optional
 - (void)selectedItemButton:(NSInteger)index;
-- (void)resumeeditBtn:(UIButton *)btn;
-- (void)resumeedeleteBtn:(UIButton *)btn;
-
 @end
 
 @interface ProfileCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIButton *resumeeditBtn;
-@property (weak, nonatomic) IBOutlet UIButton *resumeedeleteBtn;
-
-
 @property (weak, nonatomic) IBOutlet UIImageView *iconImgV;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UILabel *resumetitleLab;
