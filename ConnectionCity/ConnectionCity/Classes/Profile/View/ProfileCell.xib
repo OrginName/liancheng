@@ -341,7 +341,13 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="35" y="339.5"/>
+            <connections>
+                <outlet property="serviceContentLab" destination="Ifm-c5-Lso" id="fpe-tD-tDO"/>
+                <outlet property="serviceTimeLab" destination="B2u-Eb-MMJ" id="MVL-3V-kjz"/>
+                <outlet property="serviceTitleLab" destination="qSG-iz-xxp" id="6HK-Og-9hM"/>
+                <outlet property="servicepriceLab" destination="URV-4H-BUa" id="weP-8d-QRy"/>
+            </connections>
+            <point key="canvasLocation" x="-308" y="353"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileCell4" rowHeight="79" id="nlq-CY-aqF" customClass="ProfileCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
@@ -407,7 +413,13 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="35" y="456"/>
+            <connections>
+                <outlet property="tourismAddressLab" destination="mur-Vf-g8H" id="tvX-nf-OmZ"/>
+                <outlet property="tourismPriceLab" destination="urd-US-JEm" id="ddp-Tz-ldP"/>
+                <outlet property="tourismTimeLab" destination="O5F-mU-bxw" id="aHA-i9-h8x"/>
+                <outlet property="tourismTitleLab" destination="iUa-Ra-7Rf" id="WAS-Mh-9ea"/>
+            </connections>
+            <point key="canvasLocation" x="0.0" y="464"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileCell5" rowHeight="79" id="0GW-bo-nFD" customClass="ProfileCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
@@ -481,7 +493,12 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="35" y="582"/>
+            <connections>
+                <outlet property="travelInviteObjectLab" destination="5Wp-ov-2xH" id="sNl-zK-ogs"/>
+                <outlet property="travelInviteTimeLab" destination="xrf-z0-j8y" id="B82-cp-mqF"/>
+                <outlet property="travelInviteTitleLab" destination="BqF-GW-DKh" id="ecm-Ii-cRh"/>
+            </connections>
+            <point key="canvasLocation" x="-434" y="535"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileCell6" rowHeight="79" id="cBl-yT-5m6" userLabel="ProfileCell6" customClass="ProfileCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>

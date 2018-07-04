@@ -134,7 +134,7 @@
 #pragma mark ----PhotoSelectDelegate-----
 -(void)selectImageArr:(NSArray *)imageArr{
     NSLog(@"%lu",(unsigned long)imageArr.count);
-    __block int flag=1;
+    __block int flag=0;
     if (imageArr.count>=4) {
         self.photo.height=self.layout_select.constant= itemHeigth*2;
     }

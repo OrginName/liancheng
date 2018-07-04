@@ -13,7 +13,7 @@
 
 @interface OurResumeMo : BaseModel
 /** <#id描述#> */
-@property (nonatomic, assign) NSInteger modelId;
+@property (nonatomic, copy) NSString *modelId;
 /** <#user描述#> */
 @property (nonatomic, strong) privateUserInfoModel *user;
 /** <#lng描述#> */
