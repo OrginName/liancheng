@@ -85,12 +85,14 @@
     [self.audioCallBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.audioCallBtn addTarget:self action:@selector(btnVoIP:) forControlEvents:UIControlEventTouchUpInside];
     self.audioCallBtn.translatesAutoresizingMaskIntoConstraints = NO;
+    self.audioCallBtn.hidden = YES;
     [self.view addSubview:self.audioCallBtn];
 
     self.videoCallBtn = [[UIButton alloc] init];
     self.videoCallBtn.backgroundColor = [UIColor whiteColor];
     [self.videoCallBtn setTitle:@"视频通话" forState:UIControlStateNormal];
     [self.videoCallBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.videoCallBtn.hidden = YES;
     [self.videoCallBtn addTarget:self action:@selector(btnVideoCall:) forControlEvents:UIControlEventTouchUpInside];
     self.videoCallBtn.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.videoCallBtn];
@@ -195,7 +197,7 @@
         }
     }
     chatViewController.title = title;
-    chatViewController.needPopToRootView = YES;
+    chatViewController.needPopToRootView = NO;
     chatViewController.displayUserNameInCell = NO;
     [self.navigationController pushViewController:chatViewController animated:YES];
 }

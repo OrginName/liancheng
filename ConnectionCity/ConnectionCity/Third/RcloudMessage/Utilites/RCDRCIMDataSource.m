@@ -15,7 +15,7 @@
 #import "RCDUtilities.h"
 #import "RCDataBaseManager.h"
 #import <RongIMLib/RongIMLib.h>
-
+#import "RCDHttpTool.h"
 @interface RCDRCIMDataSource ()
 
 @end
@@ -50,20 +50,10 @@
 }
 
 - (void)syncFriendList:(NSString *)userId complete:(void (^)(NSMutableArray *friends))completion {
-    [YSNetworkTool POST:v1MyContacts params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSMutableArray * arr = [NSMutableArray array];
-        for (int i=0; i<[responseObject[@"data"] count]; i++) {
-            [arr addObject:responseObject[@"data"][i]];
-        }
-        completion(arr);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+    [RCDHTTPTOOL getFriendscomplete:^(NSMutableArray *result) {
+        completion(result);
     }];
-//    [RCDHTTPTOOL getFriendscomplete:^(NSMutableArray *result) {
-//        completion(result);
-//    }];
 }
-
 #pragma mark - GroupInfoFetcherDelegate
 - (void)getGroupInfoWithGroupId:(NSString *)groupId completion:(void (^)(RCGroup *))completion {
     if ([groupId length] == 0)

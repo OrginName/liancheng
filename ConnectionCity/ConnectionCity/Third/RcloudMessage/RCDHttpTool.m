@@ -408,7 +408,77 @@
 
 - (void)getFriendscomplete:(void (^)(NSMutableArray *))friendList {
     NSMutableArray *list = [NSMutableArray new];
-
+    
+    [YSNetworkTool POST:v1MyContacts params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (((NSArray *)responseObject[@"data"]).count == 0) {
+            friendList(nil);
+            return;
+        }
+        NSString *code = [NSString stringWithFormat:@"%@", responseObject[@"code"]];
+        if (friendList) {
+            if ([code isEqualToString:@"SUCCESS"]) {
+                [_allFriends removeAllObjects];
+                NSArray *regDataArray = responseObject[@"data"];
+                [[RCDataBaseManager shareInstance] clearFriendsData];
+                NSMutableArray *userInfoList = [NSMutableArray new];
+                NSMutableArray *friendInfoList = [NSMutableArray new];
+                for (int i = 0; i < regDataArray.count; i++) {
+                    NSDictionary *dic = [regDataArray objectAtIndex:i];
+                    if ([dic isKindOfClass:[NSDictionary class]] &&
+                        ![KString(@"%@", dic[@"id"]) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
+                        RCDUserInfo *userInfo = [RCDUserInfo new];
+                        userInfo.userId = dic[@"id"];
+                        userInfo.name = dic[@"nickName"];
+                        userInfo.portraitUri = dic[@"headImage"];
+                        userInfo.displayName = dic[@"nickName"];
+                        if (!userInfo.portraitUri || userInfo.portraitUri <= 0) {
+                            userInfo.portraitUri = [RCDUtilities defaultUserPortrait:userInfo];
+                        }
+                        userInfo.status = [NSString stringWithFormat:@"%@", [dic objectForKey:@"status"]];
+                        userInfo.updatedAt = [NSString stringWithFormat:@"%@", [dic objectForKey:@"updatedAt"]];
+                        [list addObject:userInfo];
+                        [_allFriends addObject:userInfo];
+                        
+                        RCUserInfo *user = [RCUserInfo new];
+                        user.userId = dic[@"id"];
+                        user.name = dic[@"nickName"];
+                        user.portraitUri = dic[@"headImage"];
+                        if (!user.portraitUri || user.portraitUri <= 0) {
+                            user.portraitUri = [RCDUtilities defaultUserPortrait:user];
+                        }
+                        [userInfoList addObject:user];
+                        [friendInfoList addObject:userInfo];
+                    }
+                }
+                [[RCDataBaseManager shareInstance] insertUserListToDB:userInfoList
+                                                             complete:^(BOOL result){
+                                                                 
+                                                             }];
+                [[RCDataBaseManager shareInstance]
+                 insertFriendListToDB:friendInfoList
+                 complete:^(BOOL result) {
+                     if (result == YES) {
+                         dispatch_async(dispatch_get_main_queue(), ^(void) {
+                             friendList(list);
+                         });
+                     }
+                 }];
+            } else {
+                friendList(list);
+            }
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (friendList) {
+            NSMutableArray *cacheList =
+            [[NSMutableArray alloc] initWithArray:[[RCDataBaseManager shareInstance] getAllFriends]];
+            for (RCDUserInfo *userInfo in cacheList) {
+                if (!userInfo.portraitUri || userInfo.portraitUri <= 0) {
+                    userInfo.portraitUri = [RCDUtilities defaultUserPortrait:userInfo];
+                }
+            }
+            friendList(cacheList);
+        }
+    }];
 //    [AFHttpTool getFriendListFromServerSuccess:^(id response) {
 //        if (((NSArray *)response[@"result"]).count == 0) {
 //            friendList(nil);

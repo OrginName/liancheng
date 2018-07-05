@@ -370,9 +370,9 @@
     userInfo.portraitUri = user.portraitUri;
     userInfo.name = user.name;
 
-//    RCDPersonDetailViewController *detailViewController = [[RCDPersonDetailViewController alloc] init];
-//    detailViewController.userId = user.userId;
-//    [self.navigationController pushViewController:detailViewController animated:YES];
+    RCDPersonDetailViewController *detailViewController = [[RCDPersonDetailViewController alloc] init];
+    detailViewController.userId = user.userId;
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -433,15 +433,15 @@
     NSMutableArray *friendList = [[NSMutableArray alloc] init];
     NSMutableArray *userInfoList = [NSMutableArray arrayWithArray:[[RCDataBaseManager shareInstance] getAllFriends]];
     for (RCDUserInfo *user in userInfoList) {
-        if ([user.status isEqualToString:@"20"]) {
+//        if ([user.status isEqualToString:@"20"]) {
             [friendList addObject:user];
-        }
+//        }
     }
     if (friendList.count <= 0 && !self.hasSyncFriendList) {
         [RCDDataSource syncFriendList:[RCIM sharedRCIM].currentUserInfo.userId
                              complete:^(NSMutableArray *result) {
                                  self.hasSyncFriendList = YES;
-                                 [self sortAndRefreshWithList:[self getAllFriendList]];
+                                 [self sortAndRefreshWithList:result];
                              }];
     }
     //如有好友备注，则显示备注

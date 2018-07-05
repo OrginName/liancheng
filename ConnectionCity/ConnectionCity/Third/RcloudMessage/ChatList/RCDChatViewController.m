@@ -89,8 +89,8 @@ NSMutableDictionary *userInputStatus;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.enableSaveNewPhotoToLocalSystem = YES;
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    self.enableSaveNewPhotoToLocalSystem = NO;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
     if (self.conversationType != ConversationType_CHATROOM) {
         if (self.conversationType == ConversationType_DISCUSSION) {
