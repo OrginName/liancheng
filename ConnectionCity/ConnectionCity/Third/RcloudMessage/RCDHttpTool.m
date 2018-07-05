@@ -555,7 +555,31 @@
 }
 
 - (void)searchUserByPhone:(NSString *)phone complete:(void (^)(NSMutableArray *))userList {
-    NSMutableArray *list = [NSMutableArray new];
+    NSMutableArray *list = [NSMutableArray new]; 
+    [YSNetworkTool POST:v1PrivateUserSearch params:@{@"keyword":KString(@"%@", phone)} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (userList && [responseObject[@"code"] isEqualToString:@"SUCCESS"]){
+            id result = responseObject[@"data"];
+            if ([result respondsToSelector:@selector(intValue)])
+                return;
+            if ([result respondsToSelector:@selector(objectForKey:)]) {
+                RCDUserInfo *userInfo = [RCDUserInfo new];
+                userInfo.userId = [result objectForKey:@"id"];
+                userInfo.name = [result objectForKey:@"nickname"];
+                userInfo.portraitUri = [result objectForKey:@"portraitUri"];
+                if (!userInfo.portraitUri || userInfo.portraitUri <= 0) {
+                    userInfo.portraitUri = [RCDUtilities defaultUserPortrait:userInfo];
+                }
+                [list addObject:userInfo];
+                dispatch_async(dispatch_get_main_queue(), ^(void) {
+                    userList(list);
+                });
+            }
+        } else if (userList) {
+            userList(nil);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        userList(nil);
+    }];
 //    [AFHttpTool findUserByPhone:phone
 //        success:^(id response) {
 //            if (userList && [response[@"code"] intValue] == 200) {

@@ -175,7 +175,7 @@
     [_searchResult removeAllObjects];
     if ([searchText length] == 11) {
         [RCDHTTPTOOL
-            searchUserByPhone:searchText
+            searchUserByPhone:searchText 
                      complete:^(NSMutableArray *result) {
                          if (result) {
                              for (RCDUserInfo *user in result) {

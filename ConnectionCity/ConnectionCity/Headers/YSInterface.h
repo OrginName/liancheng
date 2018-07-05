@@ -15,6 +15,8 @@
 #define HOSTURL @"http://210.16.185.211:8080"
 #define QINIUURL @"http://panixgsjz.bkt.clouddn.com/"
 
+//查找用户
+static NSString * const v1PrivateUserSearch = @"/v1/private/user/search";
 #pragma mark - 登录、注册、短信验证
 //短信验证
 static NSString * const smsVerificationCode = @"/sms/verification-code";
