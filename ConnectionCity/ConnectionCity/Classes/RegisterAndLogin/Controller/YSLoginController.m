@@ -101,8 +101,8 @@
         userInfoModel.ID = responseObject[@"data"][@"id"];
         self.nickName = userInfoModel.nickName;
         self.ID = userInfoModel.modelId;
-//        userInfoModel.rongyunToken
-        self.token = @"R0hvDbH4WGkk+qt8ej2Bn3K9AADAU4+r6iSdYaDnk8tob8MeYA09lk3huiLBSVzcBGD9GK4Pe6Vw7otzQA/QKLGhY0/h5klQ";
+//        @"R0hvDbH4WGkk+qt8ej2Bn3K9AADAU4+r6iSdYaDnk8tob8MeYA09lk3huiLBSVzcBGD9GK4Pe6Vw7otzQA/QKLGhY0/h5klQ";
+        self.token = userInfoModel.rongyunToken;
         [YSAccountTool saveUserinfo:userInfoModel];
         RCUserInfo * user = [[RCUserInfo alloc] initWithUserId:userInfoModel.modelId name:userInfoModel.nickName portrait:userInfoModel.headImage]; 
         if (!user.portraitUri || user.portraitUri.length <= 0) {

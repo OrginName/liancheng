@@ -14,6 +14,7 @@
 #import "FoundController.h"
 #import "ProfileController.h"
 #import <RongIMKit/RongIMKit.h>
+#import "RCDContactViewController.h"
 @interface BaseTabBarController ()<UITabBarControllerDelegate>
 @property NSUInteger previousIndex;
 @end
@@ -53,7 +54,7 @@
 - (void)addItems {
     MessageController *messageVC = [[MessageController alloc]init];
     AddressBookController *addressVC = [[AddressBookController alloc]init];
-    LifeHallController *lifeVC = [[LifeHallController alloc]init];
+    RCDContactViewController *lifeVC = [[RCDContactViewController alloc]init];
     FoundController *foundVC = [[FoundController alloc]init];
     ProfileController *profileVC = [[ProfileController alloc]init];
 

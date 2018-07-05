@@ -22,7 +22,7 @@
 #import "RCDRCIMDataSource.h"
 #import "RCWKNotifier.h"
 #import "RCWKRequestHandler.h"
-#define RONGCLOUD_IM_APPKEY @"e5t4ouvptdu3a" // online key
+#define RONGCLOUD_IM_APPKEY @"3argexb63m7xe"// online key
 #define UMENG_APPKEY @"571edc9b67e58e362e001101"
 #define LOG_EXPIRE_TIME -7 * 24 * 60 * 60
 @interface AppDelegate ()<RCIMReceiveMessageDelegate,RCIMConnectionStatusDelegate,RCWKAppInfoProvider>

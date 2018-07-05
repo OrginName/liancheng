@@ -115,72 +115,70 @@
 - (void)getUserInfoByUserID:(NSString *)userID completion:(void (^)(RCUserInfo *user))completion {
     RCUserInfo *userInfo = [[RCDataBaseManager shareInstance] getUserByUserId:userID];
     if (!userInfo) {
-//        [AFHttpTool getUserInfo:userID
-//            success:^(id response) {
-//                if (response) {
-//                    NSString *code = [NSString stringWithFormat:@"%@", response[@"code"]];
-//                    if ([code isEqualToString:@"200"]) {
-//                        NSDictionary *dic = response[@"result"];
-//                        RCUserInfo *user = [RCUserInfo new];
-//                        user.userId = dic[@"id"];
-//                        user.name = [dic objectForKey:@"nickname"];
-//                        user.portraitUri = [dic objectForKey:@"portraitUri"];
-//                        if (!user.portraitUri || user.portraitUri.length <= 0) {
-//                            user.portraitUri = [RCDUtilities defaultUserPortrait:user];
-//                        }
-//                        [[RCDataBaseManager shareInstance] insertUserToDB:user];
-//                        if (completion) {
-//                            dispatch_async(dispatch_get_main_queue(), ^{
-//                                completion(user);
-//                            });
-//                        }
-//                    } else {
-//                        RCUserInfo *user = [RCUserInfo new];
-//                        user.userId = userID;
-//                        user.name = [NSString stringWithFormat:@"name%@", userID];
-//                        user.portraitUri = [RCDUtilities defaultUserPortrait:user];
-//
-//                        if (completion) {
-//                            dispatch_async(dispatch_get_main_queue(), ^{
-//                                completion(user);
-//                            });
-//                        }
-//                    }
-//                } else {
-//                    RCUserInfo *user = [RCUserInfo new];
-//                    user.userId = userID;
-//                    user.name = [NSString stringWithFormat:@"name%@", userID];
-//                    user.portraitUri = [RCDUtilities defaultUserPortrait:user];
-//
-//                    if (completion) {
-//                        dispatch_async(dispatch_get_main_queue(), ^{
-//                            completion(user);
-//                        });
-//                    }
-//                }
-//            }
-//            failure:^(NSError *err) {
-//                NSLog(@"getUserInfoByUserID error");
-//                if (completion) {
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        RCUserInfo *user = [RCUserInfo new];
-//                        user.userId = userID;
-//                        user.name = [NSString stringWithFormat:@"name%@", userID];
-//                        user.portraitUri = [RCDUtilities defaultUserPortrait:user];
-//
-//                        completion(user);
-//                    });
-//                }
-//            }];
-//    } else {
-//        if (completion) {
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                if (!userInfo.portraitUri || userInfo.portraitUri.length <= 0) {
-//                    userInfo.portraitUri = [RCDUtilities defaultUserPortrait:userInfo];
-//                }
-//                completion(userInfo);
-//            });
-//        }
+        [YSNetworkTool POST:v1PrivateUserUpdate params:@{@"userId":userID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+            if (responseObject) {
+                NSString *code = [NSString stringWithFormat:@"%@", responseObject[@"code"]];
+                if ([code isEqualToString:@"SUCCESS"]) {
+                    NSDictionary *dic = responseObject[@"data"];
+                    RCUserInfo *user = [RCUserInfo new];
+                    user.userId = dic[@"id"];
+                    user.name = [dic objectForKey:@"nickname"];
+                    user.portraitUri = [dic objectForKey:@"headImage"];
+                    if (!user.portraitUri || user.portraitUri.length <= 0) {
+                        user.portraitUri = [RCDUtilities defaultUserPortrait:user];
+                    }
+                    [[RCDataBaseManager shareInstance] insertUserToDB:user];
+                    if (completion) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            completion(user);
+                        });
+                    }
+                } else {
+                    RCUserInfo *user = [RCUserInfo new];
+                    user.userId = userID;
+                    user.name = [NSString stringWithFormat:@"name%@", userID];
+                    user.portraitUri = [RCDUtilities defaultUserPortrait:user];
+                    
+                    if (completion) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            completion(user);
+                        });
+                    }
+                }
+            } else {
+                RCUserInfo *user = [RCUserInfo new];
+                user.userId = userID;
+                user.name = [NSString stringWithFormat:@"name%@", userID];
+                user.portraitUri = [RCDUtilities defaultUserPortrait:user];
+                
+                if (completion) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completion(user);
+                    });
+                }
+            }
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            NSLog(@"getUserInfoByUserID error");
+            if (completion) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    RCUserInfo *user = [RCUserInfo new];
+                    user.userId = userID;
+                    user.name = [NSString stringWithFormat:@"name%@", userID];
+                    user.portraitUri = [RCDUtilities defaultUserPortrait:user];
+                    
+                    completion(user);
+                });
+            }
+        }];
+    }else {
+        if (completion) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (!userInfo.portraitUri || userInfo.portraitUri.length <= 0) {
+                    userInfo.portraitUri = [RCDUtilities defaultUserPortrait:userInfo];
+                }
+                completion(userInfo);
+            });
+        }
     }
 }
 

@@ -245,6 +245,23 @@ typedef NS_ENUM(NSUInteger, RCCustomerServiceStatus) {
  */
 @property(nonatomic, assign) int defaultHistoryMessageCountOfChatRoom;
 
+
+/*!
+ 已经选择的所有消息
+ @discussion 只有在 allowsMessageCellSelection 为 YES,才会有有效值
+ */
+@property(nonatomic, strong, readonly) NSArray<RCMessageModel *> *selectedMessages;
+
+/*!
+ 会话页面消息是否可编辑选择,如果为 YES,消息 cell 会变为多选样式,如果为 NO，页面恢复初始状态。
+ */
+@property(nonatomic, assign) BOOL allowsMessageCellSelection;
+
+/*!
+ 消息编辑选择的状态下页面底部出现的工具视图
+ */
+@property(nonatomic, strong) UIToolbar *messageSelectionToolbar;
+
 /*!
  提示用户信息并推出当前会话界面
 

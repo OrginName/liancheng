@@ -50,6 +50,15 @@
 }
 
 - (void)syncFriendList:(NSString *)userId complete:(void (^)(NSMutableArray *friends))completion {
+    [YSNetworkTool POST:v1MyContacts params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray * arr = [NSMutableArray array];
+        for (int i=0; i<[responseObject[@"data"] count]; i++) {
+            [arr addObject:responseObject[@"data"][i]];
+        }
+        completion(arr);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 //    [RCDHTTPTOOL getFriendscomplete:^(NSMutableArray *result) {
 //        completion(result);
 //    }];

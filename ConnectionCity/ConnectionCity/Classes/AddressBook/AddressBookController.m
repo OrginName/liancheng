@@ -10,6 +10,11 @@
 #import "UITabBar+badge.h"
 #import "RCDUserInfo.h"
 #import "RCDChatListCell.h"
+#import "RCDHttpTool.h"
+#import "RCDChatViewController.h"
+#import "RCDAddressBookViewController.h"
+#import "RCDContactSelectedTableViewController.h"
+#import "RCDSearchFriendViewController.h"
 @interface AddressBookController ()
 @property(nonatomic, strong) RCConversationModel *tempModel;
 @property(nonatomic, assign) NSUInteger index;
@@ -31,15 +36,24 @@
         switch (idx) {
             case 0:
                 {
-                    
+                    RCDContactSelectedTableViewController *contactSelectedVC = [[RCDContactSelectedTableViewController alloc] init];
+                    //    contactSelectedVC.forCreatingDiscussionGroup = YES;
+                    contactSelectedVC.isAllowsMultipleSelection = NO;
+                    contactSelectedVC.titleStr = @"发起聊天";
+                    [self.navigationController pushViewController:contactSelectedVC animated:YES];
                 }
             case 1:
             {
-                
+                RCDContactSelectedTableViewController *contactSelectedVC = [[RCDContactSelectedTableViewController alloc] init];
+                contactSelectedVC.forCreatingGroup = YES;
+                contactSelectedVC.isAllowsMultipleSelection = YES;
+                contactSelectedVC.titleStr = @"选择联系人";
+                [self.navigationController pushViewController:contactSelectedVC animated:YES];
             }
             case 2:
             {
-                
+                RCDSearchFriendViewController *searchFirendVC = [RCDSearchFriendViewController searchFriendViewController];
+                [self.navigationController pushViewController:searchFirendVC animated:YES];
             }
                 break;
                 
@@ -114,18 +128,6 @@
                                                     name:@"kRCNeedReloadDiscussionListNotification"
                                                   object:nil];
 }
-/**
- *  点击进入会话页面
- *
- *  @param conversationModelType 会话类型
- *  @param model                 会话数据
- *  @param indexPath             indexPath description
- */
-- (void)onSelectedTableRow:(RCConversationModelType)conversationModelType
-         conversationModel:(RCConversationModel *)model
-               atIndexPath:(NSIndexPath *)indexPath {
-    
-}
 //*********************插入自定义Cell*********************//
 
 //插入自定义会话model
@@ -172,6 +174,80 @@
 - (CGFloat)rcConversationListTableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 67.0f;
 }
+/**
+ *  点击进入会话页面
+ *
+ *  @param conversationModelType 会话类型
+ *  @param model                 会话数据
+ *  @param indexPath             indexPath description
+ */
+- (void)onSelectedTableRow:(RCConversationModelType)conversationModelType
+         conversationModel:(RCConversationModel *)model
+               atIndexPath:(NSIndexPath *)indexPath {
+    
+    if (_isClick) {
+        _isClick = NO;
+        if (model.conversationModelType == RC_CONVERSATION_MODEL_TYPE_PUBLIC_SERVICE) {
+            RCDChatViewController *_conversationVC = [[RCDChatViewController alloc] init];
+            _conversationVC.conversationType = model.conversationType;
+            _conversationVC.targetId = model.targetId;
+            _conversationVC.userName = model.conversationTitle;
+            _conversationVC.title = model.conversationTitle;
+            _conversationVC.conversation = model;
+            [self.navigationController pushViewController:_conversationVC animated:YES];
+        }
+        
+        if (conversationModelType == RC_CONVERSATION_MODEL_TYPE_NORMAL) {
+            RCDChatViewController *_conversationVC = [[RCDChatViewController alloc] init];
+            _conversationVC.conversationType = model.conversationType;
+            _conversationVC.targetId = model.targetId;
+            _conversationVC.userName = model.conversationTitle;
+            _conversationVC.title = model.conversationTitle;
+            _conversationVC.conversation = model;
+            _conversationVC.unReadMessage = model.unreadMessageCount;
+            _conversationVC.enableNewComingMessageIcon = YES; //开启消息提醒
+            _conversationVC.enableUnreadMessageIcon = YES;
+            if (model.conversationType == ConversationType_SYSTEM) {
+                _conversationVC.userName = @"系统消息";
+                _conversationVC.title = @"系统消息";
+            }
+            if ([model.objectName isEqualToString:@"RC:ContactNtf"]) {
+                RCDAddressBookViewController *addressBookVC = [RCDAddressBookViewController addressBookViewController];
+                addressBookVC.needSyncFriendList = YES;
+                
+                [self.navigationController pushViewController:addressBookVC animated:YES];
+                return;
+            }
+            //如果是单聊，不显示发送方昵称
+            if (model.conversationType == ConversationType_PRIVATE) {
+                _conversationVC.displayUserNameInCell = NO;
+            }
+            [self.navigationController pushViewController:_conversationVC animated:YES];
+        }
+        
+        //聚合会话类型，此处自定设置。
+        if (conversationModelType == RC_CONVERSATION_MODEL_TYPE_COLLECTION) {
+            
+            AddressBookController *temp = [[AddressBookController alloc] init];
+            NSArray *array = [NSArray arrayWithObject:[NSNumber numberWithInt:model.conversationType]];
+            [temp setDisplayConversationTypes:array];
+            [temp setCollectionConversationType:nil];
+            temp.isEnteredToCollectionViewController = YES;
+            [self.navigationController pushViewController:temp animated:YES];
+        }
+        
+        //自定义会话类型
+        if (conversationModelType == RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION) {
+            RCConversationModel *model = self.conversationListDataSource[indexPath.row];
+            
+            if ([model.objectName isEqualToString:@"RC:ContactNtf"]) {
+                RCDAddressBookViewController *addressBookVC = [RCDAddressBookViewController addressBookViewController];
+                [self.navigationController pushViewController:addressBookVC animated:YES];
+            }
+        }
+    }
+}
+
 //自定义cell
 - (RCConversationBaseCell *)rcConversationListTableView:(UITableView *)tableView
                                   cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -205,36 +281,31 @@
                 NSDictionary *emptyDic = @{};
                 [[NSUserDefaults standardUserDefaults] setObject:emptyDic forKey:_contactNotificationMsg.sourceUserId];
                 [[NSUserDefaults standardUserDefaults] synchronize];
-//                [YSNetworkTool POST:v1PrivateUserInfo params:@{@"userId":_contactNotificationMsg.sourceUserId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-//
-//                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//                    
-//                }];
                 
-//                [RCDHTTPTOOL
-//                 getUserInfoByUserID:_contactNotificationMsg.sourceUserId
-//                 completion:^(RCUserInfo *user) {
-//                     if (user == nil) {
-//                         return;
-//                     }
-//                     RCDUserInfo *rcduserinfo_ = [RCDUserInfo new];
-//                     rcduserinfo_.name = user.name;
-//                     rcduserinfo_.userId = user.userId;
-//                     rcduserinfo_.portraitUri = user.portraitUri;
-//
-//                     model.extend = rcduserinfo_;
-//
-//                     // local cache for userInfo
-//                     NSDictionary *userinfoDic =
-//                     @{@"username" : rcduserinfo_.name, @"portraitUri" : rcduserinfo_.portraitUri};
-//                     [[NSUserDefaults standardUserDefaults] setObject:userinfoDic
-//                                                               forKey:_contactNotificationMsg.sourceUserId];
-//                     [[NSUserDefaults standardUserDefaults] synchronize];
-//
-//                     [weakSelf.conversationListTableView
-//                      reloadRowsAtIndexPaths:@[ indexPath ]
-//                      withRowAnimation:UITableViewRowAnimationAutomatic];
-//                 }];
+                [RCDHTTPTOOL
+                 getUserInfoByUserID:_contactNotificationMsg.sourceUserId
+                 completion:^(RCUserInfo *user) {
+                     if (user == nil) {
+                         return;
+                     }
+                     RCDUserInfo *rcduserinfo_ = [RCDUserInfo new];
+                     rcduserinfo_.name = user.name;
+                     rcduserinfo_.userId = user.userId;
+                     rcduserinfo_.portraitUri = user.portraitUri;
+
+                     model.extend = rcduserinfo_;
+
+                     // local cache for userInfo
+                     NSDictionary *userinfoDic =
+                     @{@"username" : rcduserinfo_.name, @"portraitUri" : rcduserinfo_.portraitUri};
+                     [[NSUserDefaults standardUserDefaults] setObject:userinfoDic
+                                                               forKey:_contactNotificationMsg.sourceUserId];
+                     [[NSUserDefaults standardUserDefaults] synchronize];
+
+                     [weakSelf.conversationListTableView
+                      reloadRowsAtIndexPaths:@[ indexPath ]
+                      withRowAnimation:UITableViewRowAnimationAutomatic];
+                 }];
             }
         }
         
@@ -279,45 +350,45 @@
             return;
         }
         //该接口需要替换为从消息体获取好友请求的用户信息
-//        [RCDHTTPTOOL getUserInfoByUserID:_contactNotificationMsg.sourceUserId
-//                              completion:^(RCUserInfo *user) {
-//                                  RCDUserInfo *rcduserinfo_ = [RCDUserInfo new];
-//                                  rcduserinfo_.name = user.name;
-//                                  rcduserinfo_.userId = user.userId;
-//                                  rcduserinfo_.portraitUri = user.portraitUri;
-//
-//                                  RCConversationModel *customModel = [RCConversationModel new];
-//                                  customModel.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
-//                                  customModel.extend = rcduserinfo_;
-//                                  customModel.conversationType = message.conversationType;
-//                                  customModel.targetId = message.targetId;
-//                                  customModel.sentTime = message.sentTime;
-//                                  customModel.receivedTime = message.receivedTime;
-//                                  customModel.senderUserId = message.senderUserId;
-//                                  customModel.lastestMessage = _contactNotificationMsg;
-//                                  //[_myDataSource insertObject:customModel atIndex:0];
-//
-//                                  // local cache for userInfo
-//                                  NSDictionary *userinfoDic =
-//                                  @{@"username" : rcduserinfo_.name, @"portraitUri" : rcduserinfo_.portraitUri};
-//                                  [[NSUserDefaults standardUserDefaults]
-//                                   setObject:userinfoDic
-//                                   forKey:_contactNotificationMsg.sourceUserId];
-//                                  [[NSUserDefaults standardUserDefaults] synchronize];
-//
-//                                  dispatch_async(dispatch_get_main_queue(), ^{
-//                                      //调用父类刷新未读消息数
-//                                      [blockSelf_ refreshConversationTableViewWithConversationModel:customModel];
-//                                      [blockSelf_ notifyUpdateUnreadMessageCount];
-//
-//                                      //当消息为RCContactNotificationMessage时，没有调用super，如果是最后一条消息，可能需要刷新一下整个列表。
-//                                      //原因请查看super didReceiveMessageNotification的注释。
-//                                      NSNumber *left = [notification.userInfo objectForKey:@"left"];
-//                                      if (0 == left.integerValue) {
-//                                          [super refreshConversationTableViewIfNeeded];
-//                                      }
-//                                  });
-//                              }];
+        [RCDHTTPTOOL getUserInfoByUserID:_contactNotificationMsg.sourceUserId
+                              completion:^(RCUserInfo *user) {
+                                  RCDUserInfo *rcduserinfo_ = [RCDUserInfo new];
+                                  rcduserinfo_.name = user.name;
+                                  rcduserinfo_.userId = user.userId;
+                                  rcduserinfo_.portraitUri = user.portraitUri;
+
+                                  RCConversationModel *customModel = [RCConversationModel new];
+                                  customModel.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
+                                  customModel.extend = rcduserinfo_;
+                                  customModel.conversationType = message.conversationType;
+                                  customModel.targetId = message.targetId;
+                                  customModel.sentTime = message.sentTime;
+                                  customModel.receivedTime = message.receivedTime;
+                                  customModel.senderUserId = message.senderUserId;
+                                  customModel.lastestMessage = _contactNotificationMsg;
+                                  //[_myDataSource insertObject:customModel atIndex:0];
+
+                                  // local cache for userInfo
+                                  NSDictionary *userinfoDic =
+                                  @{@"username" : rcduserinfo_.name, @"portraitUri" : rcduserinfo_.portraitUri};
+                                  [[NSUserDefaults standardUserDefaults]
+                                   setObject:userinfoDic
+                                   forKey:_contactNotificationMsg.sourceUserId];
+                                  [[NSUserDefaults standardUserDefaults] synchronize];
+
+                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                      //调用父类刷新未读消息数
+                                      [blockSelf_ refreshConversationTableViewWithConversationModel:customModel];
+                                      [blockSelf_ notifyUpdateUnreadMessageCount];
+
+                                      //当消息为RCContactNotificationMessage时，没有调用super，如果是最后一条消息，可能需要刷新一下整个列表。
+                                      //原因请查看super didReceiveMessageNotification的注释。
+                                      NSNumber *left = [notification.userInfo objectForKey:@"left"];
+                                      if (0 == left.integerValue) {
+                                          [super refreshConversationTableViewIfNeeded];
+                                      }
+                                  });
+                              }];
     } else {
         //调用父类刷新未读消息数
         [super didReceiveMessageNotification:notification];
@@ -325,62 +396,61 @@
 }
 - (void)didTapCellPortrait:(RCConversationModel *)model {
     if (model.conversationModelType == RC_CONVERSATION_MODEL_TYPE_PUBLIC_SERVICE) {
-//        RCDChatViewController *_conversationVC = [[RCDChatViewController alloc] init];
-//        _conversationVC.conversationType = model.conversationType;
-//        _conversationVC.targetId = model.targetId;
-//        _conversationVC.userName = model.conversationTitle;
-//        _conversationVC.title = model.conversationTitle;
-//        _conversationVC.conversation = model;
-//        _conversationVC.unReadMessage = model.unreadMessageCount;
-//        [self.navigationController pushViewController:_conversationVC animated:YES];
+        RCDChatViewController *_conversationVC = [[RCDChatViewController alloc] init];
+        _conversationVC.conversationType = model.conversationType;
+        _conversationVC.targetId = model.targetId;
+        _conversationVC.userName = model.conversationTitle;
+        _conversationVC.title = model.conversationTitle;
+        _conversationVC.conversation = model;
+        _conversationVC.unReadMessage = model.unreadMessageCount;
+        [self.navigationController pushViewController:_conversationVC animated:YES];
     }
     
     if (model.conversationModelType == RC_CONVERSATION_MODEL_TYPE_NORMAL) {
-//        RCDChatViewController *_conversationVC = [[RCDChatViewController alloc] init];
-//        _conversationVC.conversationType = model.conversationType;
-//        _conversationVC.targetId = model.targetId;
-//        _conversationVC.userName = model.conversationTitle;
-//        _conversationVC.title = model.conversationTitle;
-//        _conversationVC.conversation = model;
-//        _conversationVC.unReadMessage = model.unreadMessageCount;
-//        _conversationVC.enableNewComingMessageIcon = YES; //开启消息提醒
-//        _conversationVC.enableUnreadMessageIcon = YES;
-//        if (model.conversationType == ConversationType_SYSTEM) {
-//            _conversationVC.userName = @"系统消息";
-//            _conversationVC.title = @"系统消息";
-//        }
-//        if ([model.objectName isEqualToString:@"RC:ContactNtf"]) {
-//            RCDAddressBookViewController *addressBookVC = [RCDAddressBookViewController addressBookViewController];
-//            addressBookVC.needSyncFriendList = YES;
-//            [self.navigationController pushViewController:addressBookVC animated:YES];
-//            return;
-//        }
-//        //如果是单聊，不显示发送方昵称
-//        if (model.conversationType == ConversationType_PRIVATE) {
-//            _conversationVC.displayUserNameInCell = NO;
-//        }
-//        [self.navigationController pushViewController:_conversationVC animated:YES];
+        RCDChatViewController *_conversationVC = [[RCDChatViewController alloc] init];
+        _conversationVC.conversationType = model.conversationType;
+        _conversationVC.targetId = model.targetId;
+        _conversationVC.userName = model.conversationTitle;
+        _conversationVC.title = model.conversationTitle;
+        _conversationVC.conversation = model;
+        _conversationVC.unReadMessage = model.unreadMessageCount;
+        _conversationVC.enableNewComingMessageIcon = YES; //开启消息提醒
+        _conversationVC.enableUnreadMessageIcon = YES;
+        if (model.conversationType == ConversationType_SYSTEM) {
+            _conversationVC.userName = @"系统消息";
+            _conversationVC.title = @"系统消息";
+        }
+        if ([model.objectName isEqualToString:@"RC:ContactNtf"]) {
+            RCDAddressBookViewController *addressBookVC = [RCDAddressBookViewController addressBookViewController];
+            addressBookVC.needSyncFriendList = YES;
+            [self.navigationController pushViewController:addressBookVC animated:YES];
+            return;
+        }
+        //如果是单聊，不显示发送方昵称
+        if (model.conversationType == ConversationType_PRIVATE) {
+            _conversationVC.displayUserNameInCell = NO;
+        }
+        [self.navigationController pushViewController:_conversationVC animated:YES];
     }
     
     //聚合会话类型，此处自定设置。
     if (model.conversationModelType == RC_CONVERSATION_MODEL_TYPE_COLLECTION) {
         
-//        RCDChatListViewController *temp = [[RCDChatListViewController alloc] init];
-//        NSArray *array = [NSArray arrayWithObject:[NSNumber numberWithInt:model.conversationType]];
-//        [temp setDisplayConversationTypes:array];
-//        [temp setCollectionConversationType:nil];
-//        temp.isEnteredToCollectionViewController = YES;
-//        [self.navigationController pushViewController:temp animated:YES];
+        AddressBookController *temp = [[AddressBookController alloc] init];
+        NSArray *array = [NSArray arrayWithObject:[NSNumber numberWithInt:model.conversationType]];
+        [temp setDisplayConversationTypes:array];
+        [temp setCollectionConversationType:nil];
+        temp.isEnteredToCollectionViewController = YES;
+        [self.navigationController pushViewController:temp animated:YES];
     }
     
     //自定义会话类型
     if (model.conversationModelType == RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION) {
-        //        RCConversationModel *model =
-        //        self.conversationListDataSource[indexPath.row];
-        
+//        RCConversationModel *model =
+//        self.conversationListDataSource[indexPath.row];
         if ([model.objectName isEqualToString:@"RC:ContactNtf"]) {
-//            RCDAddressBookViewController *addressBookVC = [RCDAddressBookViewController addressBookViewController];
-//            [self.navigationController pushViewController:addressBookVC animated:YES];
+            RCDAddressBookViewController *addressBookVC = [RCDAddressBookViewController addressBookViewController];
+            [self.navigationController pushViewController:addressBookVC animated:YES];
         }
     }
 }
