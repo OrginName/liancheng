@@ -90,6 +90,9 @@
 @property (nonatomic, copy) NSString *statusName;
 /** <#marriageName描述#> */
 @property (nonatomic, copy) NSString *marriageName;
+
+proStr(rongyunToken);//融云token
+
 /** <#occupationCategoryName描述#> */
 @property (nonatomic, strong) OccupationCategoryNameModel *occupationCategoryName;
 proStr(ID);

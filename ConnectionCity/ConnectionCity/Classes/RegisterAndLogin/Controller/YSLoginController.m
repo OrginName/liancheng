@@ -12,6 +12,9 @@
 #import "AgreementController.h"
 #import <RongIMKit/RongIMKit.h>
 #import "privateUserInfoModel.h"
+#import "RCDUtilities.h"
+#import "RCDataBaseManager.h"
+#import "RCDRCIMDataSource.h"
 @interface YSLoginController ()<RCIMConnectionStatusDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
@@ -98,27 +101,24 @@
         userInfoModel.ID = responseObject[@"data"][@"id"];
         self.nickName = userInfoModel.nickName;
         self.ID = userInfoModel.modelId;
+//        userInfoModel.rongyunToken
         self.token = @"R0hvDbH4WGkk+qt8ej2Bn3K9AADAU4+r6iSdYaDnk8tob8MeYA09lk3huiLBSVzcBGD9GK4Pe6Vw7otzQA/QKLGhY0/h5klQ";
         [YSAccountTool saveUserinfo:userInfoModel];
-//        BaseTabBarController *baseTabBar = [[BaseTabBarController alloc]init];
-//        [kWindow setRootViewController:baseTabBar];
+        RCUserInfo * user = [[RCUserInfo alloc] initWithUserId:userInfoModel.modelId name:userInfoModel.nickName portrait:userInfoModel.headImage]; 
+        if (!user.portraitUri || user.portraitUri.length <= 0) {
+            user.portraitUri = [RCDUtilities defaultUserPortrait:user];
+        }
+        [[RCDataBaseManager shareInstance] insertUserToDB:user];
+        [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:userInfoModel.modelId];
+        [RCIM sharedRCIM].currentUserInfo = user;
+        [KUserDefults setObject:user.portraitUri forKey:@"userPortraitUri"];
+        [KUserDefults setObject:user.name forKey:@"userNickName"];
+        [KUserDefults synchronize];
         [self loginRongCloud:userInfoModel.nickName userId:userInfoModel.modelId token:self.token password:self.passwordTF.text];
-//        [self getToken:userInfoModel.modelId name:userInfoModel.nickName img:userInfoModel.headImage];
        
     } failure:nil];
 }
-//-(void)getToken:(NSString *)userId name:(NSString *)name img:(NSString *)headImage{
-//    AFHTTPSessionManager * manage = [AFHTTPSessionManager manager];
-//    [manage POST:@"http://api.cn.ronghub.com/user/getToken" parameters:@{@"userId":userId,@"name":name,@"portraitUri":headImage} constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-//
-//    } progress:^(NSProgress * _Nonnull uploadProgress) {
-//
-//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//
-//    }];
-//}
+
 /**
  *  登录融云服务器
  *
@@ -134,10 +134,8 @@
     [[RCIM sharedRCIM] connectWithToken:token
                                 success:^(NSString *userId) {
                                     NSLog([NSString stringWithFormat:@"token is %@  userId is %@", token, userId], nil);
-                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                        BaseTabBarController *mainTabBarVC = [[BaseTabBarController alloc] init];
-                                        kWindow.rootViewController = mainTabBarVC;
-                                    });
+                                    [self loginSuccess:userName userId:userId token:token password:password];
+                                    
                                 }
                                   error:^(RCConnectErrorCode status) {
                                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -154,6 +152,32 @@
                              NSLog(@"IncorrectToken");
                              
                          }];
+}
+- (void)loginSuccess:(NSString *)userName
+              userId:(NSString *)userId
+               token:(NSString *)token
+            password:(NSString *)password {
+    [self invalidateRetryTime];
+    //保存默认用户
+    [KUserDefults setObject:userName forKey:@"userName"];
+    [KUserDefults setObject:password forKey:@"userPwd"];
+    [KUserDefults setObject:token forKey:@"userToken"];
+    [KUserDefults setObject:userId forKey:@"userId"];
+    [KUserDefults synchronize];
+    //保存“发现”的信息
+//    [RCDHTTPTOOL getSquareInfoCompletion:^(NSMutableArray *result) {
+//        [DEFAULTS setObject:result forKey:@"SquareInfoList"];
+//        [DEFAULTS synchronize];
+//    }];
+    //同步群组
+    [RCDDataSource syncGroups];
+//    [RCDDataSource syncFriendList:userId
+//                         complete:^(NSMutableArray *friends){
+//                         }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        BaseTabBarController *mainTabBarVC = [[BaseTabBarController alloc] init];
+        kWindow.rootViewController = mainTabBarVC;
+    });
 }
 - (void)onRCIMConnectionStatusChanged:(RCConnectionStatus)status {
     dispatch_async(dispatch_get_main_queue(), ^{

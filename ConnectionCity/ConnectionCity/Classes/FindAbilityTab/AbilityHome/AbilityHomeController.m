@@ -115,7 +115,6 @@
 //关键字点击
 -(void)KeyWordsClick:(UIButton *)btn{
     [YTAlertUtil showTempInfo:@"关键字点击"];
-    
 }
 #pragma mark ----初始化加载数据（开始）------
 -(void)initData{
