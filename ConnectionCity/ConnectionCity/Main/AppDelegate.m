@@ -138,6 +138,9 @@
                                             RCUserInfo * user = [[RCUserInfo alloc] initWithUserId:userInfoModel.modelId name:userInfoModel.nickName portrait:userInfoModel.headImage];
                                             //登录demoserver成功之后才能调demo 的接口
                                             [RCDDataSource syncGroups];
+                                            [RCDDataSource syncFriendList:userId
+                                                                 complete:^(NSMutableArray *result){
+                                                                 }];
                                             [KUserDefults setObject:user.portraitUri forKey:@"userPortraitUri"];
                                             [KUserDefults setObject:user.name forKey:@"userNickName"];
                                             [KUserDefults synchronize];

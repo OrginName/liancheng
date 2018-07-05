@@ -731,14 +731,14 @@ MBProgressHUD *hud;
 - (void)dealWithFriendList {
     for (int i = 0; i < _friends.count; i++) {
         RCDUserInfo *user = _friends[i];
-        if ([user.status isEqualToString:@"20"]) {
+//        if ([user.status isEqualToString:@"20"]) {
             RCUserInfo *friend = [[RCDUserInfoManager shareInstance] getFriendInfoFromDB:user.userId];
             if (friend == nil) {
                 friend = [[RCDUserInfoManager shareInstance] generateDefaultUserInfo:user.userId];
             }
             [_friendsArr addObject:friend];
         }
-    }
+//    }
     if (_friendsArr.count < 1) {
         CGRect frame = CGRectMake(0, 0, RCDscreenWidth, RCDscreenHeight - 64);
         self.noFriendView = [[RCDNoFriendView alloc] initWithFrame:frame];

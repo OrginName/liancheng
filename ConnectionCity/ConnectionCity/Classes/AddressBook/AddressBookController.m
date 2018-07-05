@@ -33,15 +33,17 @@
 //更多按钮创建
 -(void)more{
     [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:@[@"发起聊天",@"创建群组",@"添加好友"] multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
+        
         switch (idx) {
             case 0:
                 {
                     RCDContactSelectedTableViewController *contactSelectedVC = [[RCDContactSelectedTableViewController alloc] init];
-                    //    contactSelectedVC.forCreatingDiscussionGroup = YES;
+                    contactSelectedVC.forCreatingGroup = NO;
                     contactSelectedVC.isAllowsMultipleSelection = NO;
                     contactSelectedVC.titleStr = @"发起聊天";
                     [self.navigationController pushViewController:contactSelectedVC animated:YES];
                 }
+                break;
             case 1:
             {
                 RCDContactSelectedTableViewController *contactSelectedVC = [[RCDContactSelectedTableViewController alloc] init];
@@ -50,6 +52,7 @@
                 contactSelectedVC.titleStr = @"选择联系人";
                 [self.navigationController pushViewController:contactSelectedVC animated:YES];
             }
+                break;
             case 2:
             {
                 RCDSearchFriendViewController *searchFirendVC = [RCDSearchFriendViewController searchFriendViewController];

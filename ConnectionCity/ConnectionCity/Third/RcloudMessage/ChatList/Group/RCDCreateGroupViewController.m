@@ -45,19 +45,17 @@
 + (instancetype)createGroupViewController {
     return [[[self class] alloc] init];
 }
-
 - (instancetype)init {
     self = [super init];
     if (self) {
         self.view.backgroundColor = [UIColor whiteColor];
         [self initSubViews];
+        self.title = @"创建群组";
     }
     return self;
 }
-
 - (void)initSubViews {
     self.DoneBtn.hidden = YES;
-
     //群组头像的UIImageView
     CGFloat groupPortraitWidth = 100;
     CGFloat groupPortraitHeight = groupPortraitWidth;
@@ -248,17 +246,17 @@ preparation before navigation
 
     //群组名称需要大于2位
     if ([nameStr length] == 0) {
-        [self Alert:@"群组名称不能为空"];
+        [YTAlertUtil showTempInfo:@"群组名称不能为空"];
         self.navigationItem.rightBarButtonItem.enabled = YES;
     }
     //群组名称需要大于2个字
     else if ([nameStr length] < 2) {
-        [self Alert:@"群组名称过短"];
+        [YTAlertUtil showTempInfo:@"群组名称过短"];
         self.navigationItem.rightBarButtonItem.enabled = YES;
     }
     //群组名称需要小于10个字
     else if ([nameStr length] > 10) {
-        [self Alert:@"群组名称不能超过10个字"];
+        [YTAlertUtil showTempInfo:@"群组名称不能超过10个字"];
         self.navigationItem.rightBarButtonItem.enabled = YES;
     } else {
         BOOL isAddedcurrentUserID = false;

@@ -9,7 +9,7 @@
 #import "AccontManageController.h"
 #import "AccountManageCell.h"
 #import "YSLoginController.h"
-
+#import "RCDataBaseManager.h"
 @interface AccontManageController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,assign)NSInteger  selectRow;
@@ -80,6 +80,17 @@
     }else if (indexPath.section==1&&indexPath.row==1){
 //        [YTAlertUtil showTempInfo:@"退出登录"];
         [YSAccountTool deleteAccount];
+        [KUserDefults removeObjectForKey:@"userToken"];
+        [KUserDefults removeObjectForKey:@"userCookie"];
+        [KUserDefults removeObjectForKey:@"isLogin"];
+        [KUserDefults synchronize];
+        [[RCDataBaseManager shareInstance] closeDBForDisconnect];
+        [[RCIMClient sharedRCIMClient] logout];
+        //[[RCIMClient sharedRCIMClient]disconnect:NO];
+        
+        NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cn.rongcloud.im.share"];
+        [userDefaults removeObjectForKey:@"Cookie"];
+        [userDefaults synchronize];
         YSLoginController *loginVC = [[YSLoginController alloc]init];
         BaseNavigationController * base = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
         [kWindow setRootViewController:base];

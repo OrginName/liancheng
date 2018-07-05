@@ -19,12 +19,12 @@
 #import "RCDUserInfoManager.h"
 #import "RCDataBaseManager.h"
 #import "UIImageView+WebCache.h"
-
+#import "RCDSearchBar.h"
 @interface RCDSearchFriendViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate,
                                              UISearchDisplayDelegate, UISearchControllerDelegate>
 
 @property(strong, nonatomic) NSMutableArray *searchResult;
-@property(nonatomic, strong) UISearchBar *searchBar;
+@property(nonatomic, strong) RCDSearchBar *searchBar;
 @property(nonatomic, strong) UISearchDisplayController *searchDisplayController;
 
 @end
@@ -33,10 +33,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.searchBar = [[UISearchBar alloc] init];
+    self.searchBar = [[RCDSearchBar alloc] init];
     self.searchBar.delegate = self;
-    [self.searchBar setAutocapitalizationType:UITextAutocapitalizationTypeNone];
-    [self.searchBar sizeToFit];
+//    [self.searchBar setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+//    [self.searchBar sizeToFit];
 
     UIColor *color = self.navigationController.navigationBar.barTintColor;
     [self.navigationController.view setBackgroundColor:color];
