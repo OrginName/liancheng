@@ -276,7 +276,7 @@ static NSString *const groupMemberTableName = @"GROUPMEMBERTABLE";
 }
 //存储群组信息
 - (void)insertGroupToDB:(RCDGroupInfo *)group {
-    if (group == nil || [group.groupId length] < 1)
+    if (group == nil || [KString(@"%@", group.groupId) length] < 1)
         return;
 
     NSString *insertSql = @"REPLACE INTO GROUPTABLEV2 (groupId, "

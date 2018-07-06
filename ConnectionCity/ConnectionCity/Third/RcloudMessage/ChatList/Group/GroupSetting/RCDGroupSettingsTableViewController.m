@@ -99,9 +99,6 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     // bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     numberOfSections = 0;
-    RCDUIBarButtonItem *leftButton = [[RCDUIBarButtonItem alloc] initWithLeftBarButton:@"返回" target:self action:@selector(backBarButtonItemClicked:)];
-    [self.navigationItem setLeftBarButtonItem:leftButton];
-
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(didReceiveMessageNotification:)
                                                  name:RCKitDispatchMessageNotification
@@ -159,9 +156,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     [[RCIMClient sharedRCIMClient] setConversationToTop:ConversationType_GROUP targetId:groupId isTop:swch.on];
 }
 
-- (void)backBarButtonItemClicked:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 
 - (void)startLoad {
     currentConversation = [[RCIMClient sharedRCIMClient] getConversation:ConversationType_GROUP targetId:groupId];

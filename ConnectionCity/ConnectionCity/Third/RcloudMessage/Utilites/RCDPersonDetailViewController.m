@@ -253,6 +253,7 @@
                         [hud hide:YES];
                     });
                     [[RCDataBaseManager shareInstance] insertBlackListToDB:weakSelf.friendInfo];
+                    [self AddBlackList:self.friendInfo.userId];
 
                 }
                 error:^(RCErrorCode status) {
@@ -276,8 +277,8 @@
                         [hud hide:YES];
                     });
                     [[RCDataBaseManager shareInstance] removeBlackList:weakSelf.userId];
-
                     weakSelf.inBlackList = NO;
+                    [self AddBlackList:self.friendInfo.userId];
                 }
                 error:^(RCErrorCode status) {
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -297,7 +298,14 @@
     } break;
     }
 }
-
+//系统加入黑名单
+-(void)AddBlackList:(NSString *)userID{
+    [YSNetworkTool POST:v1MyBlackCreate params:@{@"blackUserId":userID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
 - (void)setLayout {
     self.subViews = NSDictionaryOfVariableBindings(_ivAva, _lblName);
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_ivAva(65)]"

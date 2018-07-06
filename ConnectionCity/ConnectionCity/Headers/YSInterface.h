@@ -16,6 +16,9 @@
 #define QINIUURL @"http://panixgsjz.bkt.clouddn.com/"
 
 #pragma mark ----我的-------
+//加入黑名单
+static NSString * const v1MyBlackCreate
+= @"/v1/my/black/create";
 //添加好友
 static NSString * const v1MyAdd = @"/v1/my/add";
 //查找用户
@@ -91,6 +94,8 @@ static NSString * const v1TalentTeamNearbyList = @"/v1/talent/team/nearby/list";
 static NSString * const v1TalentTeamMyList = @"/v1/talent/team/my/list";
 //我加入的团队列表
 static NSString * const v1TalentTeamJoinList = @"/v1/talent/team/join/list";
+//我加入的团队列表
+static NSString * const v1TalentTeamCreate = @"/v1/talent/team/create";
 #pragma mark - 人才-简历
 //筛选条件
 static NSString * const v1TalentResumeConditions = @"/v1/talent/resume/conditions";
