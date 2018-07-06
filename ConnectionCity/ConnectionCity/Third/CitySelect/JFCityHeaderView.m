@@ -7,10 +7,11 @@
 //
 
 #import "JFCityHeaderView.h"
-
+#import "CityMo.h"
 #import "Masonry.h"
 
 #define JFRGBAColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(r)/255.0 blue:(r)/255.0 alpha:a]
+NSString * const JFCityTableViewCellDidChangeCityNotification = @"JFCityTableViewCellDidChangeCityNotification";
 
 @interface JFCityHeaderView ()<UISearchBarDelegate>
 
@@ -80,6 +81,24 @@
         make.left.equalTo(currentLabel.mas_right).offset(0);
         make.bottom.equalTo(self.mas_bottom).offset(-10);
     }];
+    UIButton * btn = [[UIButton alloc] init];
+    [btn addTarget:self action:@selector(NowCityClick) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:btn];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(currentLabel.mas_top);
+        make.bottom.equalTo(currentLabel.mas_bottom);
+        make.left.equalTo(currentLabel.mas_left);
+        make.right.equalTo(_currentCityLabel.mas_right);
+    }];
+}
+-(void)NowCityClick{
+    CityMo * mo =  [CityMo new];
+    mo.name = _currentCityLabel.text;
+    mo.ID = [KUserDefults objectForKey:kUserCityID];
+    mo.lat = [KUserDefults objectForKey:kLat];
+    mo.lng = [KUserDefults objectForKey:KLng];
+    NSDictionary *cityNameDic = @{@"cityName":mo.name,@"ID":mo.ID,@"lat":mo.lat,@"lng":mo.lng};
+    [[NSNotificationCenter defaultCenter] postNotificationName:JFCityTableViewCellDidChangeCityNotification object:self userInfo:cityNameDic];
 }
 #pragma mark --- UISearchBarDelegate
 //// searchBar开始编辑时调用
@@ -89,7 +108,6 @@
         [self.delegate beginSearch];
     }
 }
-
 // searchBar文本改变时即调用
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchBar.text.length > 0) {

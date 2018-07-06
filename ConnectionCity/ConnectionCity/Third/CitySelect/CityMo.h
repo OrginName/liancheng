@@ -10,6 +10,7 @@
 
 @interface CityMo : BaseModel<NSCoding>
 proStr(ID);//ID
+proStr(isHot);
 proStr(parentId);//
 proStr(initial);//首字母
 proStr(name);//城市
@@ -19,4 +20,5 @@ proStr(lng);//纬度
 proStr(pinyin);//拼音
 proStr(cidx);
 proArr(childs);//区县数组
+ProMutArr(hotCity);//热门城市
 @end

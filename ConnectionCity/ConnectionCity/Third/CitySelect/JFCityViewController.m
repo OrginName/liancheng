@@ -42,6 +42,8 @@ JFSearchViewDelegate,UITextFieldDelegate>
 @property (nonatomic, strong) JFSearchView *searchView;
 /** 最近访问的城市*/
 @property (nonatomic, strong) NSMutableArray *historyCityMutableArray;
+@property (nonatomic, strong) NSMutableArray *hotCity_Arr;
+
 /** 热门城市*/
 @property (nonatomic, strong) NSArray *hotCityArray;
 /** 字母索引*/
@@ -72,7 +74,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
     _indexMutableArray = [NSMutableArray array];
     _sectionMutableArray = [NSMutableArray array];
     _cityMutableArray = [NSMutableArray array];
-    
+    self.hotCity_Arr = [NSMutableArray array];
     self.historyCityMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"historyCity"]];
     [self initData];//加载初始化数据
 } 
@@ -84,6 +86,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
             self.characterMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"cityData"]];
             _sectionMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"sectionData"]];
         _cityMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"cityData1"]];
+        _hotCity_Arr = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"hotCityData"]];
             [_rootTableView reloadData];
         }else {
             [YSNetworkTool POST:dictionaryAreaTreeList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -157,10 +160,11 @@ JFSearchViewDelegate,UITextFieldDelegate>
 - (void)chooseCityWithName:(NSNotification *)info {
     NSDictionary *cityDic = info.userInfo;
     NSString *cityName = [[NSString alloc] init];
+    NSString *ID = [[NSString alloc] init];
     if ([[cityDic valueForKey:@"cityName"] isEqualToString:@"全城"]) {
         __weak typeof(self) weakSelf = self;
         [_manager currentCity:[kCurrentCityInfoDefaults objectForKey:@"cityNumber"] currentCityName:^(NSString *name) {
-            [kCurrentCityInfoDefaults setObject:name forKey:@"currentCity"];
+//            [kCurrentCityInfoDefaults setObject:name forKey:@"currentCity"];
             __strong typeof(self) strongSelf = weakSelf;
             if (strongSelf) {
                 strongSelf.headerView.cityName = name;
@@ -172,10 +176,11 @@ JFSearchViewDelegate,UITextFieldDelegate>
         }];
     }else {
         cityName = [cityDic valueForKey:@"cityName"];
+        ID = [cityDic valueForKey:@"ID"];
         _headerView.cityName = cityName;
-        [kCurrentCityInfoDefaults setObject:[cityDic valueForKey:@"cityName"] forKey:@"currentCity"];
-        if (self.delegate && [self.delegate respondsToSelector:@selector(cityName:)]) {
-            [self.delegate cityName:cityName];
+//        [kCurrentCityInfoDefaults setObject:[cityDic valueForKey:@"cityName"] forKey:@"currentCity"];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(city:ID:lat:lng:)]) {
+            [self.delegate city:cityName ID:ID lat:[cityDic valueForKey:@"lat"] lng:[cityDic valueForKey:@"lng"]];
         }
         [_manager cityNumberWithCity:[cityDic valueForKey:@"cityName"] cityNumber:^(NSString *cityNumber) {
             [kCurrentCityInfoDefaults setObject:cityNumber forKey:@"cityNumber"];
@@ -251,7 +256,9 @@ JFSearchViewDelegate,UITextFieldDelegate>
         if ([mo.fullName isEqualToString:str]) {
             [KUserDefults setObject:mo.ID forKey:kUserCityID];
         }
-       
+        if ([KString(@"%@", mo.isHot) isEqualToString:@"1"]) {
+            [self.hotCity_Arr addObject:mo];
+        }
         if (mo.initial.length) {
             //字符串截取第一位，并转换成大写字母
             NSString *firstStr = mo.initial;
@@ -307,10 +314,12 @@ JFSearchViewDelegate,UITextFieldDelegate>
     NSData *cityData = [NSKeyedArchiver archivedDataWithRootObject:self.characterMutableArray];
     NSData *sectionData = [NSKeyedArchiver archivedDataWithRootObject:_sectionMutableArray];
     NSData * cityData1 = [NSKeyedArchiver archivedDataWithRootObject:self.cityMutableArray];
+    NSData * hotCityData = [NSKeyedArchiver archivedDataWithRootObject:self.hotCity_Arr];
     //拼音转换太耗时，这里把第一次转换结果存到单例中
     [kCurrentCityInfoDefaults setValue:cityData forKey:@"cityData"];
     [kCurrentCityInfoDefaults setObject:sectionData forKey:@"sectionData"];
     [kCurrentCityInfoDefaults setObject:cityData1 forKey:@"cityData1"];
+    [kCurrentCityInfoDefaults setObject:hotCityData forKey:@"hotCityData"];
     success(@"成功");
 }
 ///// 汉字转拼音再转成汉字
@@ -444,7 +453,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
     if (indexPath.section < _HeaderSectionTotal) {
         self.cell = [tableView dequeueReusableCellWithIdentifier:@"cityCell" forIndexPath:indexPath];
         if (indexPath.section == _HeaderSectionTotal - 1) {
-            _cell.cityNameArray = self.hotCityArray;
+            _cell.cityNameArray = self.hotCity_Arr;
         }
     return _cell;
     }else {
@@ -462,7 +471,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
     if (_HeaderSectionTotal == 4 && indexPath.section == 0) {
         return _cellHeight;
     }else {
-        return indexPath.section == (_HeaderSectionTotal - 1) ? _hotCityArray.count/3==0?_hotCityArray.count/3*38:(_hotCityArray.count/3+1)*38 : 44;
+        return indexPath.section == (_HeaderSectionTotal - 1) ? self.hotCity_Arr.count/3==0?self.hotCity_Arr.count/3*40:(self.hotCity_Arr.count/3+1)*40 : 44;
     }
 }
 
@@ -502,6 +511,9 @@ JFSearchViewDelegate,UITextFieldDelegate>
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section==0) {
+        return;
+    }
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     CityMo * mo = _sectionMutableArray[0][_characterMutableArray[indexPath.section]][indexPath.row];
 //    [KUserDefults setObject:mo.fullName forKey:kUserCity];

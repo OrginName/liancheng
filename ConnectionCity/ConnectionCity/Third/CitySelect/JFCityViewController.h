@@ -15,6 +15,8 @@
 - (void)cityName:(NSString *)name;
 @optional
 -(void)cityMo:(CityMo *)mo;
+@optional
+-(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng;
 @end
 
 @interface JFCityViewController : BaseViewController

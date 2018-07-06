@@ -21,17 +21,16 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         UILabel *label = [[UILabel alloc] initWithFrame:self.bounds];
-        label.backgroundColor = [UIColor whiteColor];
+//        label.backgroundColor = [UIColor whiteColor];
         label.textColor = [UIColor hexColorWithString:@"#282828"];
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [UIFont systemFontOfSize:14];
         [self addSubview:label];
         self.label = label;
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor redColor];
     }
     return self;    
 }
-
 /// 设置collectionView cell的border
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -40,7 +39,6 @@
     self.layer.borderColor = JFRGBAColor(155, 155, 165, 0.5).CGColor;
     self.layer.masksToBounds = YES;
 }
-
 - (void)setTitle:(NSString *)title {
     self.label.text = title;
 }

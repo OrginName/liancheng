@@ -7,19 +7,13 @@
 //
 
 #import "JFCityTableViewCell.h"
-
+#import "CityMo.h"
 #import "Masonry.h"
 #import "JFCityCollectionFlowLayout.h"
 #import "JFCityCollectionViewCell.h"
-
 #define JFRGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
-
-NSString * const JFCityTableViewCellDidChangeCityNotification = @"JFCityTableViewCellDidChangeCityNotification";
-
 static NSString *ID = @"cityCollectionViewCell";
-
 @interface JFCityTableViewCell ()<UICollectionViewDelegate, UICollectionViewDataSource>
-
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @end
@@ -28,13 +22,13 @@ static NSString *ID = @"cityCollectionViewCell";
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self addSubview:self.collectionView];
     }
     return self;
 }
 
 - (void)layoutSubviews {
-    [super layoutSubviews];
-    [self addSubview:self.collectionView];
+    [super layoutSubviews]; 
 }
 
 - (UICollectionView *)collectionView {
@@ -48,7 +42,7 @@ static NSString *ID = @"cityCollectionViewCell";
     return _collectionView;
 }
 
-- (void)setCityNameArray:(NSArray *)cityNameArray {
+- (void)setCityNameArray:(NSMutableArray *)cityNameArray {
     _cityNameArray = cityNameArray;
     [_collectionView reloadData];
 }
@@ -60,15 +54,16 @@ static NSString *ID = @"cityCollectionViewCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     JFCityCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
-    cell.title = _cityNameArray[indexPath.row];
+    CityMo * mo = _cityNameArray[indexPath.row];
+    cell.title = mo.name;
     cell.contentView.backgroundColor = [UIColor whiteColor];
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cityName = _cityNameArray[indexPath.row];
-    NSDictionary *cityNameDic = @{@"cityName":cityName};
-    [[NSNotificationCenter defaultCenter] postNotificationName:JFCityTableViewCellDidChangeCityNotification object:self userInfo:cityNameDic];
+    CityMo * mo = _cityNameArray[indexPath.row];
+    NSDictionary *cityNameDic = @{@"cityName":mo.name,@"ID":mo.ID,@"lat":mo.lat,@"lng":mo.lng};
+    [[NSNotificationCenter defaultCenter] postNotificationName:JFCityTableViewCellDidChangeCityNotification1 object:self userInfo:cityNameDic];
 }
 
 

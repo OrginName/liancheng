@@ -186,6 +186,13 @@
     UILabel * btn = (UILabel *)[self.view_SX viewWithTag:1];
     btn.text = name;
 }
+-(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng{
+    UILabel * btn = (UILabel *)[self.view_SX viewWithTag:1];
+    btn.text = name;
+    [self loadServiceList:@{@"lat":lat,@"lng":lng,@"cityCode":ID}];
+    [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([lat floatValue], [lng floatValue])];
+    [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
+}
 #pragma mark - CustomMapDelegate
 - (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location{
     UILabel * btn = (UILabel *)[self.view_SX viewWithTag:1];
