@@ -65,6 +65,8 @@ static NSString * const v1PrivateUserInfo = @"/v1/private/user/info";
 static NSString * const v1PrivateUserNearbyList = @"/v1/private/user/nearby/list";
 //用户更新
 static NSString * const v1PrivateUserUpdate = @"/v1/private/user/update";
+//查找用户信息
+static NSString * const v1PrivateUserUserinfo = @"/v1/private/user/user-info";
 #pragma mark - 用户-关注
 //添加关注
 static NSString * const v1UserFollowAdd = @"/v1/user/follow/add";

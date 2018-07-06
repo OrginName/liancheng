@@ -156,7 +156,7 @@
 }
 
 - (void)setNavigationButtons {
-    RCDUIBarButtonItem *leftButton = [[RCDUIBarButtonItem alloc] initWithLeftBarButton:@"返回" target:self action:@selector(clickBackBtn:)];
+//    RCDUIBarButtonItem *leftButton = [[RCDUIBarButtonItem alloc] initWithLeftBarButton:@"返回" target:self action:@selector(clickBackBtn:)];
     self.navigationItem.title = @"详细资料";
 }
 
@@ -360,7 +360,7 @@
     [remarksView addSubview:rightArrow];
 
     self.navigationItem.rightBarButtonItem =
-        [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"config"]
+        [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"our-more"]
                                          style:UIBarButtonItemStylePlain
                                         target:self
                                         action:@selector(rightBarButtonItemClicked:)];
@@ -616,27 +616,25 @@
     self.phoneNumberLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *clickPhoneNumber =
         [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doCall:)];
-//    [AFHttpTool getFriendDetailsByID:self.friendInfo.userId
-//                             success:^(id response) {
-//                                 if ([response[@"code"] integerValue] == 200) {
-//                                     NSDictionary *dic = response[@"result"];
-//                                     NSDictionary *infoDic = dic[@"user"];
-//                                     self.phoneNumberLabel.text =
-//                                         [NSString stringWithFormat:@"手机号: %@", [infoDic objectForKey:@"phone"]];
-//                                     //创建 NSMutableAttributedString
-//                                     NSMutableAttributedString *attributedStr =
-//                                         [[NSMutableAttributedString alloc] initWithString:self.phoneNumberLabel.text];
-//                                     [attributedStr addAttribute:NSForegroundColorAttributeName
-//                                                           value:[UIColor colorWithHexString:@"0099ff" alpha:1.f]
-//                                                           range:NSMakeRange(5, 11)];
-//                                     self.phoneNumberLabel.attributedText = attributedStr;
-//                                     self.phonenumber =
-//                                         [NSString stringWithFormat:@"%@", [infoDic objectForKey:@"phone"]];
-//                                     [self.phoneNumberLabel addGestureRecognizer:clickPhoneNumber];
-//                                 }
-//                             }
-//                             failure:^(NSError *err){
-//                             }];
+    [YSNetworkTool POST:v1PrivateUserUserinfo params:@{@"id":self.friendInfo.userId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]) {
+            NSDictionary *dic = responseObject[@"data"];
+            self.phoneNumberLabel.text =
+            [NSString stringWithFormat:@"手机号: %@", [dic objectForKey:@"mobile"]];
+            //创建 NSMutableAttributedString
+            NSMutableAttributedString *attributedStr =
+            [[NSMutableAttributedString alloc] initWithString:self.phoneNumberLabel.text];
+            [attributedStr addAttribute:NSForegroundColorAttributeName
+                                  value:[UIColor colorWithHexString:@"0099ff" alpha:1.f]
+                                  range:NSMakeRange(5, 11)];
+            self.phoneNumberLabel.attributedText = attributedStr;
+            self.phonenumber =
+            [NSString stringWithFormat:@"%@", [dic objectForKey:@"phone"]];
+            [self.phoneNumberLabel addGestureRecognizer:clickPhoneNumber];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 
 - (void)gotoRemarksView:(id)sender {
@@ -682,10 +680,9 @@
 }
 
 - (void)doCall:(id)sender {
-    NSMutableString *str = [[NSMutableString alloc] initWithFormat:@"tel:%@", self.phonenumber];
+    NSMutableString *str = [[NSMutableString alloc] initWithFormat:@"tel:%@", self.phoneNumberLabel.text];
     UIWebView *callWebview = [[UIWebView alloc] init];
     [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
     [self.view addSubview:callWebview];
 }
-
 @end

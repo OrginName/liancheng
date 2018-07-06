@@ -120,14 +120,14 @@
 - (void)getUserInfoByUserID:(NSString *)userID completion:(void (^)(RCUserInfo *user))completion {
     RCUserInfo *userInfo = [[RCDataBaseManager shareInstance] getUserByUserId:userID];
     if (!userInfo) {
-        [YSNetworkTool POST:v1PrivateUserUpdate params:@{@"userId":userID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YSNetworkTool POST:v1PrivateUserUserinfo params:@{@"id":userID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
             if (responseObject) {
                 NSString *code = [NSString stringWithFormat:@"%@", responseObject[@"code"]];
                 if ([code isEqualToString:@"SUCCESS"]) {
                     NSDictionary *dic = responseObject[@"data"];
                     RCUserInfo *user = [RCUserInfo new];
                     user.userId = dic[@"id"];
-                    user.name = dic[@"nickname"];
+                    user.name = dic[@"nickName"];
                     user.portraitUri = dic[@"headImage"];
                     if (!user.portraitUri || user.portraitUri.length <= 0) {
                         user.portraitUri = [RCDUtilities defaultUserPortrait:user];
@@ -576,9 +576,7 @@
                     userInfo.portraitUri = [RCDUtilities defaultUserPortrait:userInfo];
                 }
                 [list addObject:userInfo];
-                dispatch_async(dispatch_get_main_queue(), ^(void) {
-                    userList(list);
-                });
+                userList(list);
             }
         } else if (userList) {
             userList(nil);
@@ -630,7 +628,7 @@
 //                result(NO);
 //            }
 //        }];
-    [YSNetworkTool POST:v1MyAdd params:@{@"friend":userId} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1MyAdd params:@{@"friendId":userId} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             result(YES);
         });

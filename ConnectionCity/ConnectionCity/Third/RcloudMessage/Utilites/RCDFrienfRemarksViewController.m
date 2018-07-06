@@ -52,7 +52,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 - (void)setNavigationButtons {
     self.rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 34)];
     self.rightLabel = [[UILabel alloc] initWithFrame:CGRectMake(22.5, 0, 50, 34)];
@@ -63,11 +62,7 @@
     [self.rightLabel setTextColor:[UIColor colorWithHexString:@"9fcdfd" alpha:1.0]];
     self.rightBtn.userInteractionEnabled = NO;
     self.navigationItem.rightBarButtonItem = rightButton;
-
-    RCDUIBarButtonItem *leftButton = [[RCDUIBarButtonItem alloc] initWithLeftBarButton:@"返回" target:self action:@selector(clickBackBtn:)];
-    [self.navigationItem setLeftBarButtonItem:leftButton];
 }
-
 - (void)clickRightBtn:(id)sender {
     self.rightBtn.userInteractionEnabled = NO;
     [self.remarks resignFirstResponder];

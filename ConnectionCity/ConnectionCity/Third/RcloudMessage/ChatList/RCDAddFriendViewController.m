@@ -162,8 +162,9 @@
     NSMutableArray *cacheList =
         [[NSMutableArray alloc] initWithArray:[[RCDataBaseManager shareInstance] getAllFriends]];
     BOOL isFriend = NO;
+//     && [user.status isEqualToString:@"20"]
     for (RCDUserInfo *user in cacheList) {
-        if ([user.userId isEqualToString:self.targetUserInfo.userId] && [user.status isEqualToString:@"20"]) {
+        if ([user.userId isEqualToString:self.targetUserInfo.userId]) {
             isFriend = YES;
             break;
         }
@@ -194,17 +195,11 @@
             [RCDHTTPTOOL requestFriend:_targetUserInfo.userId
                               complete:^(BOOL result) {
                                   if (result) {
-//                                      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
-//                                                                                          message:@"请求已发送"
-//                                                                                         delegate:nil
-//                                                                                cancelButtonTitle:@"确定"
-//                                                                                otherButtonTitles:nil, nil];
                                       [YTAlertUtil showTempInfo:@"添加成功"];
                                       [RCDHTTPTOOL getFriendscomplete:^(NSMutableArray *result){
-                                      }];
-//                                      [alertView show];
+                                      }];                                      [self.navigationController popToRootViewControllerAnimated:YES];
                                   } else {
-                                      [YTAlertUtil showTempInfo:@"添加失败"];
+                                      [YTAlertUtil showTempInfo:@"添加失败,请重新添加"];
 //                                      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
 //                                                                                          message:@"请求失败，请重试"
 //                                                                                         delegate:nil
