@@ -290,7 +290,6 @@
 		8DE465CE20EDEED9009730F7 /* RCDUIBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE465CD20EDEED9009730F7 /* RCDUIBarButtonItem.m */; };
 		8DE465D120EDEF86009730F7 /* RCDChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE465CF20EDEF85009730F7 /* RCDChatViewController.m */; };
 		8DE465D420EDEFBE009730F7 /* RCDNoFriendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE465D320EDEFBE009730F7 /* RCDNoFriendView.m */; };
-		8DE465D720EDF05B009730F7 /* RCDAddressBookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE465D620EDF05A009730F7 /* RCDAddressBookTableViewCell.m */; };
 		8DE465DA20EDF0A0009730F7 /* RCDAddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE465D920EDF0A0009730F7 /* RCDAddFriendViewController.m */; };
 		8DE465DD20EDF0C4009730F7 /* RCDContactSelectedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE465DC20EDF0C4009730F7 /* RCDContactSelectedTableViewController.m */; };
 		8DE465E120EDF0FF009730F7 /* RCDCustomerEmoticonTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE465E020EDF0FF009730F7 /* RCDCustomerEmoticonTab.m */; };
@@ -449,6 +448,8 @@
 		CE21F0EF20DF94A800478482 /* WorkExperienceListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F0EE20DF94A800478482 /* WorkExperienceListModel.m */; };
 		CE21F0F220DF963400478482 /* educationExperienceListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F0F120DF963400478482 /* educationExperienceListModel.m */; };
 		CE24791620CEC9F100D4C396 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE24791520CEC9F100D4C396 /* EGOCache.m */; };
+		CE2C401620EF87E700D33B17 /* RCDAddressBookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2C401420EF87E600D33B17 /* RCDAddressBookTableViewCell.m */; };
+		CE2C401920EF925000D33B17 /* ZWCustomPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2C401820EF925000D33B17 /* ZWCustomPointAnnotation.m */; };
 		CE5C27FA20B8FE0A006A8332 /* BiddInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C27F820B8FE0A006A8332 /* BiddInfoController.m */; };
 		CE5C27FB20B8FE0A006A8332 /* BiddInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C27F920B8FE0A006A8332 /* BiddInfoController.xib */; };
 		CE5C27FE20B8FE3A006A8332 /* BiddInfoHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C27FD20B8FE3A006A8332 /* BiddInfoHeadView.m */; };
@@ -1060,8 +1061,6 @@
 		8DE465D020EDEF86009730F7 /* RCDChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDChatViewController.h; sourceTree = "<group>"; };
 		8DE465D220EDEFBD009730F7 /* RCDNoFriendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDNoFriendView.h; sourceTree = "<group>"; };
 		8DE465D320EDEFBE009730F7 /* RCDNoFriendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDNoFriendView.m; sourceTree = "<group>"; };
-		8DE465D520EDF05A009730F7 /* RCDAddressBookTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCDAddressBookTableViewCell.h; path = "../../../../../../sealtalk-ios-master/ios-rongimdemo/RCloudMessage/RCDAddressBookTableViewCell.h"; sourceTree = "<group>"; };
-		8DE465D620EDF05A009730F7 /* RCDAddressBookTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCDAddressBookTableViewCell.m; path = "../../../../../../sealtalk-ios-master/ios-rongimdemo/RCloudMessage/RCDAddressBookTableViewCell.m"; sourceTree = "<group>"; };
 		8DE465D820EDF09F009730F7 /* RCDAddFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDAddFriendViewController.h; sourceTree = "<group>"; };
 		8DE465D920EDF0A0009730F7 /* RCDAddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDAddFriendViewController.m; sourceTree = "<group>"; };
 		8DE465DB20EDF0C4009730F7 /* RCDContactSelectedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDContactSelectedTableViewController.h; sourceTree = "<group>"; };
@@ -1370,6 +1369,10 @@
 		CE21F0F120DF963400478482 /* educationExperienceListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = educationExperienceListModel.m; sourceTree = "<group>"; };
 		CE24791420CEC9F100D4C396 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
 		CE24791520CEC9F100D4C396 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
+		CE2C401420EF87E600D33B17 /* RCDAddressBookTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDAddressBookTableViewCell.m; sourceTree = "<group>"; };
+		CE2C401520EF87E600D33B17 /* RCDAddressBookTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDAddressBookTableViewCell.h; sourceTree = "<group>"; };
+		CE2C401720EF924F00D33B17 /* ZWCustomPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWCustomPointAnnotation.h; sourceTree = "<group>"; };
+		CE2C401820EF925000D33B17 /* ZWCustomPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWCustomPointAnnotation.m; sourceTree = "<group>"; };
 		CE5C27F720B8FE0A006A8332 /* BiddInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BiddInfoController.h; sourceTree = "<group>"; };
 		CE5C27F820B8FE0A006A8332 /* BiddInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BiddInfoController.m; sourceTree = "<group>"; };
 		CE5C27F920B8FE0A006A8332 /* BiddInfoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BiddInfoController.xib; sourceTree = "<group>"; };
@@ -2490,6 +2493,8 @@
 				729BA6FD20A32F0B009713FD /* CustomMap.m */,
 				729BA6FF20A331E0009713FD /* CustomLocatiom.h */,
 				729BA70020A331E0009713FD /* CustomLocatiom.m */,
+				CE2C401720EF924F00D33B17 /* ZWCustomPointAnnotation.h */,
+				CE2C401820EF925000D33B17 /* ZWCustomPointAnnotation.m */,
 			);
 			path = map;
 			sourceTree = "<group>";
@@ -3082,8 +3087,8 @@
 				8DE465DC20EDF0C4009730F7 /* RCDContactSelectedTableViewController.m */,
 				8DE465D820EDF09F009730F7 /* RCDAddFriendViewController.h */,
 				8DE465D920EDF0A0009730F7 /* RCDAddFriendViewController.m */,
-				8DE465D520EDF05A009730F7 /* RCDAddressBookTableViewCell.h */,
-				8DE465D620EDF05A009730F7 /* RCDAddressBookTableViewCell.m */,
+				CE2C401520EF87E600D33B17 /* RCDAddressBookTableViewCell.h */,
+				CE2C401420EF87E600D33B17 /* RCDAddressBookTableViewCell.m */,
 				8DE465BB20EDECC1009730F7 /* RCDContactViewController.h */,
 				8DE465BA20EDECC1009730F7 /* RCDContactViewController.m */,
 				8DE465C320EDED57009730F7 /* RCDAddressBookViewController.h */,
@@ -4603,6 +4608,7 @@
 				CE6BEC1A20C83740003B36D7 /* LCPicker.m in Sources */,
 				8D09E19C20BFDC16000F7EBD /* ShowTrvalCell.m in Sources */,
 				8DE4665020EDFB6B009730F7 /* RCDFrienfRemarksViewController.m in Sources */,
+				CE2C401620EF87E700D33B17 /* RCDAddressBookTableViewCell.m in Sources */,
 				722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */,
 				8DB277B720EF53F500B3D747 /* RCDSearchMoreViewCell.m in Sources */,
 				727418D920B290AE001D6BE1 /* PlayPoductController.m in Sources */,
@@ -4638,6 +4644,7 @@
 				72EC1BAF20BC350D00ACC20B /* BaseFindServiceTabController.m in Sources */,
 				8DFA325220EDAFEA0086423A /* RCDataBaseManager.m in Sources */,
 				CE5C281B20B94D84006A8332 /* BidManagerCell.m in Sources */,
+				CE2C401920EF925000D33B17 /* ZWCustomPointAnnotation.m in Sources */,
 				8DE4662D20EDF586009730F7 /* RCDRoomSettingViewController.m in Sources */,
 				8D2B8BA020A2DACC00C3157F /* MakeMoneyController.m in Sources */,
 				CE0BA5B9209D5E6B004C3C33 /* UIAlertView+Blocks.m in Sources */,
@@ -4662,7 +4669,6 @@
 				7274190120B3F60D001D6BE1 /* SendSwapController.m in Sources */,
 				8D22C36020C7D18E004DC8F4 /* PresentManageViewController.m in Sources */,
 				CE0BA5E0209D5E9B004C3C33 /* DDFileReader.m in Sources */,
-				8DE465D720EDF05B009730F7 /* RCDAddressBookTableViewCell.m in Sources */,
 				72EC1BAB20BC34AA00ACC20B /* TravalController.m in Sources */,
 				8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */,
 				8DE465CE20EDEED9009730F7 /* RCDUIBarButtonItem.m in Sources */,
@@ -4832,7 +4838,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4866,7 +4872,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

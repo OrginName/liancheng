@@ -55,11 +55,11 @@ static NSString * const auditStandards = @"audit-standards";
 static NSString * const privacyAgreement = @"privacy-agreement";
 #pragma mark - 用户接口
 //获取svip套餐详情
-static NSString * const membershipSvipInfo = @"/membership/svip/info";
+static NSString * const v1MembershipSvipInfo = @"/v1/membership/svip/info";
 //rechargeVip
-static NSString * const membershipSvipRecharge = @"/membership/svip/recharge";
+static NSString * const v1MembershipSvipRecharge = @"/v1/membership/svip/recharge";
 //用户svip详情
-static NSString * const membershipUserSvip = @"/membership/user/svip";
+static NSString * const v1MembershipUserSvip = @"/v1/membership/user/svip";
 //修改密码
 static NSString * const v1PrivateUserChangePassword = @"/v1/private/user/change-password";
 //获取用户信息

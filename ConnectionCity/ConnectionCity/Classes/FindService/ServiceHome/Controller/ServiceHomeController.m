@@ -185,17 +185,25 @@
     [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([[KUserDefults objectForKey:kLat] floatValue], [[KUserDefults objectForKey:KLng] floatValue])];
     [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
 }
--(void)currentAnimatinonViewClick:(MAAnnotationView *)view index:(NSInteger)indexView{
-//    if ([KString(@"%f", view.annotation.coordinate.latitude) isEqualToString:[KUserDefults objectForKey:kLat]]&&[KString(@"%f", view.annotation.coordinate.longitude) isEqualToString:[KUserDefults objectForKey:KLng]]) {
-//        [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
-//        return;
-//    }
-    ShowResumeController * show = [ShowResumeController new];
-    show.Receive_Type = ENUM_TypeTrval;
-    show.data_Count = self.cusMap.Arr_Mark;
-    show.zIndex = indexView;
-    NSLog(@"当前zindex为：%ld",indexView);
-    [self.navigationController pushViewController:show animated:YES];
+-(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
+    if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
+        ShowResumeController * show = [ShowResumeController new];
+        show.Receive_Type = ENUM_TypeTrval;
+        show.data_Count = self.cusMap.Arr_Mark;
+        __block NSUInteger index = 0;
+        [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            ServiceListMo * list = (ServiceListMo *)obj;
+            if (annotation.title == list.ID) {
+                index = idx;
+                *stop = YES;
+            }
+        }];
+        show.zIndex = index;
+        NSLog(@"当前zindex为：%ld",index);
+        [self.navigationController pushViewController:show animated:YES];
+    }else{
+        [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
+    }
 }
 //加载服务列表数据
 -(void)loadServiceList:(NSDictionary *)dic{

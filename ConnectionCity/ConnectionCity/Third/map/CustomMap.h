@@ -11,9 +11,12 @@
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import "CustomLocatiom.h"
 #import "ServiceListMo.h"
+#import "CustomAnnotationView.h"
+#import "ZWCustomPointAnnotation.h"
+
 @protocol CustomMapDelegate <NSObject>
 - (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location;
--(void)currentAnimatinonViewClick:(MAAnnotationView *)view index:(NSInteger)indexView;
+-(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation;
 -(void)currentLocationClick;
 @end
 @interface CustomMap : UIView

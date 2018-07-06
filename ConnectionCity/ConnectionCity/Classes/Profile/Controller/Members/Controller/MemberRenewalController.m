@@ -25,8 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-//    [self requestMembershipSvipInfo];
-//    [self requestMembershipSvipRecharge];
+//    [self requestv1MembershipSvipInfo];
+//    [self requestv1MembershipSvipRecharge];
     [self requestMembershipUserSvip];
     
     // Do any additional setup after loading the view from its nib.
@@ -42,9 +42,9 @@
 }
 #pragma mark - 数据请求
 //获取svip套餐详情
-- (void)requestMembershipSvipInfo {
+- (void)requestv1MembershipSvipInfo {
     WeakSelf
-    [YSNetworkTool POST:membershipSvipInfo params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1MembershipSvipInfo params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         weakSelf.model = [MemberRenewalM mj_objectWithKeyValues:responseObject[@"data"]];
         [self.logo sd_setImageWithURL:[NSURL URLWithString:weakSelf.model.logo]];
         self.name.text = weakSelf.model.name;
@@ -90,16 +90,16 @@
 }
 
 //开通套餐rechargeVip
-- (void)requestMembershipSvipRecharge:(NSString *)ID {
+- (void)requestv1MembershipSvipRecharge:(NSString *)ID {
     WeakSelf
-    [YSNetworkTool POST:membershipSvipRecharge params:@{@"id": ID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1MembershipSvipRecharge params:@{@"id": ID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
 
     } failure:nil];
 }
 //用户svip详情
 - (void)requestMembershipUserSvip {
     WeakSelf
-    [YSNetworkTool POST:membershipUserSvip params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1MembershipUserSvip params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         
     } failure:nil];
 }
@@ -115,7 +115,7 @@
     self.price.text = [NSString stringWithFormat:@"￥%@",self.selectedmd.price];
 }
 - (IBAction)ImmediatelyOpeneBtnClick:(id)sender {
-    [self requestMembershipSvipRecharge:self.selectedmd.modelId];
+    [self requestv1MembershipSvipRecharge:self.selectedmd.modelId];
 }
 /*
 #pragma mark - Navigation

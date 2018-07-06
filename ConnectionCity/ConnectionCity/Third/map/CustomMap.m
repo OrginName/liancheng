@@ -8,6 +8,7 @@
 
 #import "CustomMap.h"
 #import "CustomAnnotationView.h"
+#import "ZWCustomPointAnnotation.h"
 #import "AbilttyMo.h"
 #import "CityMo.h"
 #import "privateUserInfoModel.h"
@@ -65,14 +66,14 @@
         annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
         // must set to NO, so we can show the custom callout view.
         annotationView.canShowCallout = NO;
-        //            annotationView.draggable = YES;
-        //            annotationView.calloutOffset = CGPointMake(0, 0);
+//            annotationView.draggable = YES;
+//            annotationView.calloutOffset = CGPointMake(0, 0);
     }
     self.annotationView = annotationView;
     if ([annotation isKindOfClass:[MAUserLocation class]]) {
         [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:[[YSAccountTool userInfo]headImage]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
-//        annotationView.portraitImageView = [UIImage imageNamed:@"index-dw"];
     }else{
+        /*
         NSString * url = @"";
         if (self.Arr_Mark.count!=0) {
             for (int i=0; i<self.Arr_Mark.count; i++) {
@@ -92,6 +93,12 @@
                 }
             }
             [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+         */
+        if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
+            ZWCustomPointAnnotation *pointAnnotation = (ZWCustomPointAnnotation*)annotation;
+            //在这里,直接将请求回来的商户图片地址复制给calloutview的imageview
+            //关键是需要拿到弹出视图的iamge对象,我才可以对其进行赋值
+            [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:pointAnnotation.storImageUrl] placeholderImage:[UIImage imageNamed:@"no-pic"]];
         }
     }
     return annotationView;
@@ -104,19 +111,16 @@
  @param view view description
  */
 - (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view{
-//    NSInteger annotationIndex = 0;
     NSLog(@"%f",view.annotation.coordinate.latitude);
     if ([self.annotationView isKindOfClass:[MAUserLocation class]]) {
         [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
         return;
     }
-//    for (int i=0; i<self.Arr_Mark.count; i++) {
-//        if (view.annotation == self.mapView.annotations[i]) {
-//            annotationIndex = i;
-//        }
-//    }
-    if ([self.delegate respondsToSelector:@selector(currentAnimatinonViewClick:index:)]) {
-        [self.delegate currentAnimatinonViewClick:view index:self.annotationView.zIndex];
+    
+    if ([view isKindOfClass:[CustomAnnotationView class]]) {
+        if (_delegate && [_delegate respondsToSelector:@selector(currentAnimatinonViewClick:annotation:)] ) {
+            [_delegate currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)view.annotation];
+        }
     }
 }
 #pragma mark -------CustomLocationDelegate------
@@ -202,6 +206,7 @@
     [self.annotations removeAllObjects];
     self.annotations = [NSMutableArray array];
     [Arr_Mark enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        /*
         MAPointAnnotation *a1 = [[MAPointAnnotation alloc] init];
         if ([obj isKindOfClass:[ServiceListMo class]]) {
             ServiceListMo * list = (ServiceListMo *)obj;
@@ -215,9 +220,30 @@
         NSLog(@"%ld",(long)self.annotationView.zIndex);
         [self.annotations addObject:a1];
         self.annotationView.zIndex = idx;
-    }]; 
+         */
+        
+        ZWCustomPointAnnotation *pointAnnotation = [[ZWCustomPointAnnotation alloc] init];
+        if ([obj isKindOfClass:[ServiceListMo class]]) {
+            ServiceListMo * list = (ServiceListMo *)obj;
+            CLLocationCoordinate2D coor ;
+            coor.latitude = [list.lat doubleValue];
+            coor.longitude = [list.lng doubleValue];
+            pointAnnotation.coordinate = coor;
+            pointAnnotation.title = list.ID;
+            pointAnnotation.storImageUrl = list.user1.headImage;
+        }else if ([obj isKindOfClass:[AbilttyMo class]]){
+            AbilttyMo * abilt = (AbilttyMo *)obj;
+            CLLocationCoordinate2D coor ;
+            coor.latitude = [abilt.lat doubleValue];
+            coor.longitude = [abilt.lng doubleValue];
+            pointAnnotation.coordinate = coor;
+            pointAnnotation.title = abilt.ID;
+            pointAnnotation.storImageUrl = abilt.userMo.headImage;
+        }
+        [self.annotations addObject:pointAnnotation];
+        self.annotationView.zIndex = idx;
+    }];
     [self.mapView addAnnotations:self.annotations];
-    
 }
 #pragma mark - Initialization
 - (void)initAnnotations

@@ -17,6 +17,8 @@
 #import "PopThree.h"
 #import "AbilityNet.h"
 #import "CustomScro.h"
+#import "AbilttyMo.h"
+
 @interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate,CustomScroDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
@@ -198,16 +200,25 @@
     UILabel * btn = (UILabel *)[self.view_SX viewWithTag:1];
     btn.text = locationDictionary[@"city"];
 }
--(void)currentAnimatinonViewClick:(MAAnnotationView *)view index:(NSInteger)indexView{
-//    if ([KString(@"%f", view.annotation.coordinate.latitude) isEqualToString:[KUserDefults objectForKey:kLat]]&&[KString(@"%f", view.annotation.coordinate.longitude) isEqualToString:[KUserDefults objectForKey:KLng]]) {
-//        [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
-//        return;
-//    }
-    ShowResumeController * resume = [ShowResumeController new];
-    resume.Receive_Type = ENUM_TypeResume;
-    resume.data_Count = self.cusMap.Arr_Mark;
-    resume.zIndex = indexView;
-    [self.navigationController pushViewController:resume animated:YES];
+-(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
+    if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
+        ShowResumeController * show = [ShowResumeController new];
+        show.Receive_Type = ENUM_TypeResume;
+        show.data_Count = self.cusMap.Arr_Mark;
+        __block NSUInteger index = 0;
+        [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            AbilttyMo * abilt = (AbilttyMo *)obj;
+            if (annotation.title == abilt.ID) {
+                index = idx;
+                *stop = YES;
+            }
+        }];
+        show.zIndex = index;
+        NSLog(@"当前zindex为：%ld",index);
+        [self.navigationController pushViewController:show animated:YES];
+    }else{
+        [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
+    }
 }
 //回到当前位置的按钮点击
 -(void)currentLocationClick{
