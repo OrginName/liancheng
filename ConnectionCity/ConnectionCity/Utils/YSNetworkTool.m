@@ -37,6 +37,7 @@ NSString * const YTHttpUtilResponseData = @"Data";
      failure:(YTHttpUtilFailure)failure {
     AFHTTPSessionManager *manager = [[self class] manager]; 
     NSString *cacheKeyStr = [[self class] getCacheWithWithUrl:url requestDict:params];
+   
 //    if (![[self class] connectedAndShowDisconnectInfo]) {
 //        id cacheData = [[EGOCache globalCache] objectForKey:cacheKeyStr];
 //        if (![YSTools dx_isNullOrNilWithObject:cacheData]) {
@@ -51,6 +52,10 @@ NSString * const YTHttpUtilResponseData = @"Data";
         [YTAlertUtil hideHUD];
         [[self class] p_logRequestDataWithURL:url params:params response:responseObject];
         //如果成功再返回请求结果
+        if ([YSTools dx_isNullOrNilWithObject:responseObject[@"data"]]) {
+            [YTAlertUtil showTempInfo:responseObject[kMessage]];
+            return;
+        }
         if ([[self class] isSuccessWithResp:responseObject]) {
             success ? success(task, responseObject) : nil;
             //缓存

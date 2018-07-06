@@ -15,9 +15,11 @@
 #import "RCDAddressBookViewController.h"
 #import "RCDContactSelectedTableViewController.h"
 #import "RCDSearchFriendViewController.h"
+#import "RCDSearchViewController.h"
 @interface AddressBookController ()
 @property(nonatomic, strong) RCConversationModel *tempModel;
 @property(nonatomic, assign) NSUInteger index;
+@property(nonatomic, strong) UINavigationController *searchNavigationController;
 
 @property(nonatomic, assign) BOOL isClick;
 - (void)updateBadgeValueForTabBarItem;
@@ -194,7 +196,7 @@
             RCDChatViewController *_conversationVC = [[RCDChatViewController alloc] init];
             _conversationVC.conversationType = model.conversationType;
             _conversationVC.targetId = model.targetId;
-            _conversationVC.userName = model.conversationTitle;
+//            _conversationVC.userName = model.conversationTitle;
             _conversationVC.title = model.conversationTitle;
             _conversationVC.conversation = model;
             [self.navigationController pushViewController:_conversationVC animated:YES];
@@ -204,14 +206,14 @@
             RCDChatViewController *_conversationVC = [[RCDChatViewController alloc] init];
             _conversationVC.conversationType = model.conversationType;
             _conversationVC.targetId = model.targetId;
-            _conversationVC.userName = model.conversationTitle;
+//            _conversationVC.userName = model.conversationTitle;
             _conversationVC.title = model.conversationTitle;
             _conversationVC.conversation = model;
             _conversationVC.unReadMessage = model.unreadMessageCount;
             _conversationVC.enableNewComingMessageIcon = YES; //开启消息提醒
             _conversationVC.enableUnreadMessageIcon = YES;
             if (model.conversationType == ConversationType_SYSTEM) {
-                _conversationVC.userName = @"系统消息";
+//                _conversationVC.userName = @"系统消息";
                 _conversationVC.title = @"系统消息";
             }
             if ([model.objectName isEqualToString:@"RC:ContactNtf"]) {
@@ -259,7 +261,6 @@
     __block NSString *userName = nil;
     __block NSString *portraitUri = nil;
     RCContactNotificationMessage *_contactNotificationMsg = nil;
-    
     __weak AddressBookController *weakSelf = self;
     //此处需要添加根据userid来获取用户信息的逻辑，extend字段不存在于DB中，当数据来自db时没有extend字段内容，只有userid
     if (nil == model.extend) {
@@ -501,6 +502,22 @@
             }
         }
     }
+}
+
+#pragma mark - UISearchBarDelegate
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    RCDSearchViewController *searchViewController = [[RCDSearchViewController alloc] init];
+    self.searchNavigationController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+    searchViewController.delegate = self;
+    [self.navigationController.view addSubview:self.searchNavigationController.view];
+}
+
+- (void)onSearchCancelClick {
+    [self.searchNavigationController.view removeFromSuperview];
+    [self.searchNavigationController removeFromParentViewController];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self refreshConversationTableViewIfNeeded];
 }
 - (void)updateForSharedMessageInsertSuccess {
     [self refreshConversationTableViewIfNeeded];

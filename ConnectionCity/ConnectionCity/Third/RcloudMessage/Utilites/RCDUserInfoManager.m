@@ -11,7 +11,7 @@
 #import "RCDRCIMDataSource.h"
 #import "RCDUtilities.h"
 #import "RCDataBaseManager.h"
-
+#import "RCDHttpTool.h"
 @implementation RCDUserInfoManager
 
 + (RCDUserInfoManager *)shareInstance {
@@ -25,24 +25,38 @@
 
 //通过自己的userId获取自己的用户信息
 - (void)getUserInfo:(NSString *)userId completion:(void (^)(RCUserInfo *))completion {
-//    [RCDHTTPTOOL getUserInfoByUserID:userId
-//                          completion:^(RCUserInfo *user) {
-//                              if (user) {
-//                                  completion(user);
-//                                  return;
-//                              } else {
-//                                  user = [[RCDataBaseManager shareInstance] getUserByUserId:userId];
-//                                  if (user == nil) {
-//                                      user = [self generateDefaultUserInfo:userId];
-//                                      completion(user);
-//                                      return;
-//                                  }
-//                              }
-//                          }];
+    [RCDHTTPTOOL getUserInfoByUserID:userId
+                          completion:^(RCUserInfo *user) {
+                              if (user) {
+                                  completion(user);
+                                  return;
+                              } else {
+                                  user = [[RCDataBaseManager shareInstance] getUserByUserId:userId];
+                                  if (user == nil) {
+                                      user = [self generateDefaultUserInfo:userId];
+                                      completion(user);
+                                      return;
+                                  }
+                              }
+                          }];
 }
 //通过好友详细信息或好友Id获取好友信息
 - (void)getFriendInfo:(NSString *)friendId completion:(void (^)(RCUserInfo *))completion {
     __block RCUserInfo *resultInfo;
+    [RCDHTTPTOOL getUserInfoByUserID:friendId
+                          completion:^(RCUserInfo *user) {
+                              if (user) {
+                                  completion(user);
+                                  return;
+                              } else {
+                                  user = [[RCDataBaseManager shareInstance] getUserByUserId:friendId];
+                                  if (user == nil) {
+                                      user = [self generateDefaultUserInfo:friendId];
+                                      completion(user);
+                                      return;
+                                  }
+                              }
+                          }];
 //    [RCDHTTPTOOL getFriendDetailsWithFriendId:friendId
 //        success:^(RCDUserInfo *user) {
 //            resultInfo = [self getRCUserInfoByRCDUserInfo:user];

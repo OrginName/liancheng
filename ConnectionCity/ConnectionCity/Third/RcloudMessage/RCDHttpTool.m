@@ -65,6 +65,11 @@
 
 //根据id获取单个群组
 - (void)getGroupByID:(NSString *)groupID successCompletion:(void (^)(RCDGroupInfo *group))completion {
+    [YSNetworkTool POST:v1ServiceStationInfo params:@{@"id": groupID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 //    [AFHttpTool getGroupByID:groupID
 //        success:^(id response) {
 //            NSString *code = [NSString stringWithFormat:@"%@", response[@"code"]];
@@ -122,8 +127,8 @@
                     NSDictionary *dic = responseObject[@"data"];
                     RCUserInfo *user = [RCUserInfo new];
                     user.userId = dic[@"id"];
-                    user.name = [dic objectForKey:@"nickname"];
-                    user.portraitUri = [dic objectForKey:@"headImage"];
+                    user.name = dic[@"nickname"];
+                    user.portraitUri = dic[@"headImage"];
                     if (!user.portraitUri || user.portraitUri.length <= 0) {
                         user.portraitUri = [RCDUtilities defaultUserPortrait:user];
                     }
@@ -199,6 +204,7 @@
 
 //获取当前用户所在的所有群组信息
 - (void)getMyGroupsWithBlock:(void (^)(NSMutableArray *result))block {
+   
 //    [AFHttpTool getMyGroupsSuccess:^(id response) {
 //        NSArray *allGroups = response[@"result"];
 //        NSMutableArray *tempArr = [NSMutableArray new];
@@ -563,9 +569,9 @@
                 return;
             if ([result respondsToSelector:@selector(objectForKey:)]) {
                 RCDUserInfo *userInfo = [RCDUserInfo new];
-                userInfo.userId = [result objectForKey:@"id"];
-                userInfo.name = [result objectForKey:@"nickname"];
-                userInfo.portraitUri = [result objectForKey:@"portraitUri"];
+                userInfo.userId =KString(@"%@", result[@"id"]);
+                userInfo.name = result[@"nickName"];
+                userInfo.portraitUri = result[@"headImage"];
                 if (!userInfo.portraitUri || userInfo.portraitUri <= 0) {
                     userInfo.portraitUri = [RCDUtilities defaultUserPortrait:userInfo];
                 }
@@ -624,6 +630,15 @@
 //                result(NO);
 //            }
 //        }];
+    [YSNetworkTool POST:v1MyAdd params:@{@"friend":userId} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            result(YES);
+        });
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (result) {
+            result(NO);
+        }
+    }];
 }
 
 - (void)processInviteFriendRequest:(NSString *)userId complete:(void (^)(BOOL))result {

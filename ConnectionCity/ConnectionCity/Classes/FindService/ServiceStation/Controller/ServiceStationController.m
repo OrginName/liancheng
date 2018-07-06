@@ -11,13 +11,18 @@
 #import "BulidTeamSectionHead.h"
 #import "YSButton.h"
 #import "CreatGroupController.h"
-@interface ServiceStationController ()
+#import "groupMo.h"
+#import "RCDGroupInfo.h"
+#import <RongIMKit/RongIMKit.h>
+#import "RCDChatViewController.h"
+#import "RCDForwardAlertView.h"
+@interface ServiceStationController ()<BulidTeamSectionHeadDelegate>
 {
     BOOL _isOpen[10000]; //== @[NO, NO, NO];
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataSourceArr;
-
+@property (nonatomic,strong) NSMutableArray * data_Arr;
 @end
 @implementation ServiceStationController
 - (void)viewDidLoad {
@@ -29,14 +34,15 @@
 - (void)setUI {
     [super setFlag_back:YES];//设置返回按钮
     [self p_initTableView];
+    self.data_Arr = [NSMutableArray array];
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return _dataSourceArr.count;
+    return _data_Arr.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //从成员列表中取出 该分组下的成员列表
-    NSArray *arr = _dataSourceArr[section];
+    NSArray *arr = _data_Arr[section][KString(@"%ld", section+1)];
     //从BOOL数组中取出值进行判断 YES表示开 NO表示合
     if (_isOpen[section]) {
         return arr.count;
@@ -46,12 +52,40 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BulidTeamCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BulidTeamCell"];
-    NSArray *arr = _dataSourceArr[indexPath.section];
-    cell.titleLab = arr[indexPath.row];
+    NSArray * arr = _data_Arr[indexPath.section][KString(@"%ld", indexPath.section+1)];
+    groupMo * mo = arr.count!=0?arr[indexPath.row]:[groupMo new];
+//    NSArray *arr = _dataSourceArr[indexPath.section];
+    cell.titleLab.text = mo.name?mo.name:@"";
+    if ([mo.userList isKindOfClass:[NSArray class]]) {
+        cell.peopleNumbersLab.text = KString(@"%lu", (unsigned long)mo.userList.count);
+    }else
+        cell.peopleNumbersLab.text = @"0";
+    
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSArray * arr = _data_Arr[indexPath.section][KString(@"%ld", indexPath.section+1)];
+    groupMo * mo = arr.count!=0?arr[indexPath.row]:[groupMo new];
+    RCDGroupInfo *groupInfo = [RCDGroupInfo new];
+    groupInfo.introduce = mo.notice;
+    groupInfo.groupName = mo.name;
+    groupInfo.groupId = mo.ID;
+    groupInfo.number = [mo.userList isKindOfClass:[NSArray class]]?KString(@"%lu", (unsigned long)mo.userList.count):0;
+    if ([RCDForwardMananer shareInstance].isForward) {
+        RCConversation *conver = [[RCConversation alloc] init];
+        conver.targetId = groupInfo.groupId;
+        conver.conversationType = ConversationType_GROUP;
+        [RCDForwardMananer shareInstance].toConversation = conver;
+        [[RCDForwardMananer shareInstance] showForwardAlertViewInViewController:self];
+        return;
+    }
+    RCDChatViewController *temp = [[RCDChatViewController alloc] init];
+    temp.targetId = groupInfo.groupId;
+    temp.conversationType = ConversationType_GROUP;
+//    temp.userName = groupInfo.groupName;
+    temp.title = [NSString stringWithFormat:@"%@(%@)",groupInfo.groupName,groupInfo.number];
+    [self.navigationController pushViewController:temp animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 60;
@@ -72,12 +106,8 @@
     //CGAffineTransformIdentity设置回归原始位置
     imageView.transform = _isOpen[section]?CGAffineTransformMakeRotation(M_PI_2):CGAffineTransformIdentity;
     //设置区头标题
-    if (section==0) {
-        headerView.titleLab.text = @"我的团队";
-    }else{
-        headerView.titleLab.text = @"加入的团队";
-    }
-    NSArray *arr = _dataSourceArr[section];
+    headerView.titleLab.text = section==0?@"附近的站":section==1?@"我的站":@"加入的站";
+    NSArray *arr = _data_Arr[section][KString(@"%ld", section+1)];
     headerView.teamNumbers.text = [NSString stringWithFormat:@"%lu",(unsigned long)arr.count];
     //返回区头视图
     return headerView;
@@ -93,14 +123,46 @@
 //创建团队
 - (void)headerBtnClick:(UIButton *)btn {
     CreatGroupController * creat = [CreatGroupController new];
+    creat.flag_str = 0;
     creat.block = ^{
-        
+        [self.data_Arr removeAllObjects];
+        [self p_initDataSource];
     };
     [self.navigationController pushViewController:creat animated:YES];
 }
 #pragma mark - profile method
 - (void)p_initDataSource {
-    self.dataSourceArr = @[@[@"1",@"2",@"3"],@[@"1",@"2",@"3",@"4",@"5"]];
+    NSMutableArray * arr = [NSMutableArray array];
+    NSMutableArray * arr1 = [NSMutableArray array];
+    NSMutableArray * arr2 = [NSMutableArray array];
+    [YSNetworkTool POST:v1ServiceStationNearbyList params:@{@"areaCode":[KUserDefults objectForKey:kUserCityID]} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        for (int i=0; i<[responseObject[@"data"] count]; i++) {
+            groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+            [arr addObject:mo];
+        }
+        [YSNetworkTool POST:v1ServiceStationMyList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+            for (int i=0; i<[responseObject[@"data"] count]; i++) {
+                groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+                [arr1 addObject:mo];
+            }
+            [YSNetworkTool POST:v1ServiceStationJoinList params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+                for (int i=0; i<[responseObject[@"data"] count]; i++) {
+                    groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+                    [arr2 addObject:mo];
+                }
+                [self.data_Arr addObject:@{@"1":arr}];
+                [self.data_Arr addObject:@{@"2":arr1}];
+                [self.data_Arr addObject:@{@"3":arr2}];
+                [self.tableView reloadData];
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                
+            }];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 - (void)p_initTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"BulidTeamCell" bundle:nil] forCellReuseIdentifier:@"BulidTeamCell"];

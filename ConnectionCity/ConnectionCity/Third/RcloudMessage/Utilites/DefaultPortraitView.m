@@ -28,8 +28,7 @@
 
 - (void)setColorAndLabel:(NSString *)userId Nickname:(NSString *)nickname {
     //设置背景色
-
-    userId = [userId uppercaseString]; //设置为大写
+    userId = [KString(@"%@", userId) uppercaseString]; //设置为大写
     int asciiCode = [userId characterAtIndex:0];
     int colorIndex = asciiCode % 5;
     NSArray *colorList =

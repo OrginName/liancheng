@@ -61,7 +61,7 @@
     NSArray *arrVC = @[messageVC,addressVC,lifeVC,foundVC,profileVC];
     NSArray *titleArr = @[@"首页",@"消息",@"通讯录",@"发现",@"我的"];
     NSArray *picArr = @[@"index-nav",@"nav-new",@"nav-tel",@"nav-fond",@"nav-our"];
-    NSArray *picSelectArr = @[@"index-nav1",@"nav-new1",@"nav-tel1",@"nav-fond1",@"nav-our1"];
+    NSArray *picSelectArr = @[@"index-nav1",@"nav-new1",@"nav-te1",@"nav-fond1",@"nav-our1"];
 
     for (int i = 0; i < 5; i++) {
         [self addChildViewController:arrVC[i] title:titleArr[i] image:picArr[i] selectedImage:picSelectArr[i]];

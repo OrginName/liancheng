@@ -20,6 +20,8 @@
 #import "BaseFindServiceTabController.h"
 #import "UserMo.h"
 #import "AllDicMo.h"
+#import "SendServiceController.h"
+
 @interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate>
 {
     BOOL flag;
@@ -56,12 +58,11 @@
 
 //导航左按钮我的点击
 -(void)MyselfClick{
-    [YTAlertUtil showTempInfo:@"正在认真开发..."];
+    [self.navigationController pushViewController:[super rotateClass:@"ProfileController"] animated:YES];
 }
 //导航右侧按钮点击
 -(void)MessageClick{
     [YTAlertUtil showTempInfo:@"正在认真开发..."];
-
 }
 //天生我才必有用的按钮点击
 - (IBAction)btn_TS:(UIButton *)sender {

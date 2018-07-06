@@ -11,6 +11,7 @@
 #import "AbilttyMo.h"
 #import "CityMo.h"
 #import "privateUserInfoModel.h"
+#import "AbilttyMo.h"
 @interface CustomMap()<MAMapViewDelegate,CustomLocationDelegate,UITextFieldDelegate>
 @property (nonatomic,assign) id controller;
 @property (nonatomic,strong) CustomLocatiom * location;
@@ -42,6 +43,7 @@
         self.btn_location = btn;
         [self addSubview:btn];
 //        [self initAnnotations];
+//        [self setArr_Mark:self.Arr_Mark];
     }
     return self;
 }
@@ -73,10 +75,21 @@
     }else{
         NSString * url = @"";
         if (self.Arr_Mark.count!=0) {
-            if ([self.Arr_Mark[annotationView.zIndex] isKindOfClass:[ServiceListMo class]]) {
-                url = [[self.Arr_Mark[annotationView.zIndex] user1] headImage];
-            }else{
-                url = [[self.Arr_Mark[annotationView.zIndex] userMo] headImage];
+            for (int i=0; i<self.Arr_Mark.count; i++) {
+                if ([self.Arr_Mark[i] isKindOfClass:[ServiceListMo class]]) {
+                    ServiceListMo * list = self.Arr_Mark[i];
+                    NSLog(@"当前为：%@-%f",list.lat,annotation.coordinate.latitude);
+                    NSString * lat = [NSString stringWithFormat:@"%.4f",[list.lat floatValue]];
+                    NSString * lng = [NSString stringWithFormat:@"%.4f",[list.lng floatValue]];
+                    if ([lat isEqualToString:KString(@"%f", annotation.coordinate.latitude)]&&[lng isEqualToString:KString(@"%f", annotation.coordinate.longitude)]) {
+                        url = list.user1.headImage;
+                    }
+                }else{
+                    AbilttyMo * mo = self.Arr_Mark[i];
+                    if ([mo.lat floatValue]==annotation.coordinate.latitude&&[mo.lng floatValue]==annotation.coordinate.longitude) {
+                        url = mo.userMo.headImage;
+                    }
+                }
             }
             [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"no-pic"]];
         }
@@ -91,19 +104,19 @@
  @param view view description
  */
 - (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view{
-    NSInteger annotationIndex = 0;
-    [[self.mapView.annotations mutableCopy] removeObject:@""];
-    if ([KString(@"%f", view.annotation.coordinate.latitude) isEqualToString:[KUserDefults objectForKey:kLat]]&&[KString(@"%f", view.annotation.coordinate.longitude) isEqualToString:[KUserDefults objectForKey:KLng]]) {
+//    NSInteger annotationIndex = 0;
+    NSLog(@"%f",view.annotation.coordinate.latitude);
+    if ([self.annotationView isKindOfClass:[MAUserLocation class]]) {
         [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
         return;
     }
-    for (int i=0; i<self.Arr_Mark.count; i++) {
-        if (view.annotation == self.mapView.annotations[i]) {
-            annotationIndex = i;
-        }
-    }
+//    for (int i=0; i<self.Arr_Mark.count; i++) {
+//        if (view.annotation == self.mapView.annotations[i]) {
+//            annotationIndex = i;
+//        }
+//    }
     if ([self.delegate respondsToSelector:@selector(currentAnimatinonViewClick:index:)]) {
-        [self.delegate currentAnimatinonViewClick:view index:annotationIndex];
+        [self.delegate currentAnimatinonViewClick:view index:self.annotationView.zIndex];
     }
 }
 #pragma mark -------CustomLocationDelegate------
@@ -187,22 +200,23 @@
     _Arr_Mark = Arr_Mark;
     [self.mapView removeAnnotations:[self.annotations copy]];
     [self.annotations removeAllObjects];
-     self.annotations = [NSMutableArray array];
+    self.annotations = [NSMutableArray array];
     [Arr_Mark enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        MAPointAnnotation *a1;
+        MAPointAnnotation *a1 = [[MAPointAnnotation alloc] init];
         if ([obj isKindOfClass:[ServiceListMo class]]) {
             ServiceListMo * list = (ServiceListMo *)obj;
-            a1 = [[MAPointAnnotation alloc] init];
             a1.coordinate = CLLocationCoordinate2DMake([list.lat doubleValue], [list.lng doubleValue]);
             a1.title = list.ID;
         }else if ([obj isKindOfClass:[AbilttyMo class]]){
             AbilttyMo * abilt = (AbilttyMo *)obj;
-            a1 = [[MAPointAnnotation alloc] init];
             a1.coordinate = CLLocationCoordinate2DMake([abilt.lat doubleValue], [abilt.lng doubleValue]);
             a1.title = abilt.ID;
         }
+        NSLog(@"%ld",(long)self.annotationView.zIndex);
         [self.annotations addObject:a1];
-    }];
+        self.annotationView.zIndex = idx;
+    }]; 
+    [self.mapView addAnnotations:self.annotations];
     
 }
 #pragma mark - Initialization

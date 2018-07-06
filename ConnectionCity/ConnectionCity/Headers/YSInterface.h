@@ -15,6 +15,9 @@
 #define HOSTURL @"http://210.16.185.211:8080"
 #define QINIUURL @"http://panixgsjz.bkt.clouddn.com/"
 
+#pragma mark ----我的-------
+//添加好友
+static NSString * const v1MyAdd = @"/v1/my/add";
 //查找用户
 static NSString * const v1PrivateUserSearch = @"/v1/private/user/search";
 #pragma mark - 登录、注册、短信验证
@@ -78,6 +81,14 @@ static NSString * const v1TalentConnectionCityPage = @"/v1/talent/connection/cit
 static NSString * const v1TalentConnectionEducationPage = @"/v1/talent/connection/education/page";
 //人脉-同行好友列表（分页）
 static NSString * const v1TalentConnectionOccupationPage = @"/v1/talent/connection/occupation/page";
+
+#pragma mark --人才-团队之家------
+//附近的团队
+static NSString * const v1TalentTeamNearbyList = @"/v1/talent/team/nearby/list";
+//我创建的团队列表
+static NSString * const v1TalentTeamMyList = @"/v1/talent/team/my/list";
+//我加入的团队列表
+static NSString * const v1TalentTeamJoinList = @"/v1/talent/team/join/list";
 #pragma mark - 人才-简历
 //筛选条件
 static NSString * const v1TalentResumeConditions = @"/v1/talent/resume/conditions";

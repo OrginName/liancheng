@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreatGroupController">
             <connections>
+                <outlet property="lab_class" destination="ezH-BG-Y6S" id="UmJ-HI-9i0"/>
+                <outlet property="lab_name" destination="yy2-od-ZBC" id="qsK-e7-dMe"/>
+                <outlet property="lab_notice" destination="exe-Gm-uVq" id="7TF-dX-luY"/>
                 <outlet property="txt_Notice" destination="F5K-4D-Ci0" id="eB1-C0-uDG"/>
                 <outlet property="txt_class" destination="9Yo-mt-zgu" id="NLk-tG-x0p"/>
                 <outlet property="txt_name" destination="kfP-hv-h9P" id="66I-x3-xnq"/>

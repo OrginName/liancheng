@@ -370,16 +370,16 @@ NSMutableDictionary *userInputStatus;
 - (void)rightBarButtonItemClicked:(id)sender {
     if (self.conversationType == ConversationType_PRIVATE) {
         RCDUserInfo *friendInfo = [[RCDataBaseManager shareInstance] getFriendInfo:self.targetId];
-        if (![friendInfo.status isEqualToString:@"20"]) {
-            RCDAddFriendViewController *vc = [[RCDAddFriendViewController alloc] init];
-            vc.targetUserInfo = friendInfo;
-            [self.navigationController pushViewController:vc animated:YES];
-        } else {
+//        if (![friendInfo.status isEqualToString:@"20"]) {
+//            RCDAddFriendViewController *vc = [[RCDAddFriendViewController alloc] init];
+//            vc.targetUserInfo = friendInfo;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        } else {
             RCDPrivateSettingsTableViewController *settingsVC =
                 [RCDPrivateSettingsTableViewController privateSettingsTableViewController];
             settingsVC.userId = self.targetId;
             [self.navigationController pushViewController:settingsVC animated:YES];
-        }
+//        }
     } else if (self.conversationType == ConversationType_DISCUSSION) {
         RCDDiscussGroupSettingViewController *settingVC = [[RCDDiscussGroupSettingViewController alloc] init];
         settingVC.conversationType = self.conversationType;
@@ -923,15 +923,15 @@ NSMutableDictionary *userInputStatus;
 }
 
 - (void)refreshTitle {
-    if (self.userName == nil) {
-        return;
-    }
-    int count = [[[RCDataBaseManager shareInstance] getGroupByGroupId:self.targetId].number intValue];
-    if (self.conversationType == ConversationType_GROUP && count > 0) {
-        self.title = [NSString stringWithFormat:@"%@(%d)", self.userName, count];
-    } else {
-        self.title = self.userName;
-    }
+//    if (self.userName == nil) {
+//        return;
+//    }
+//    int count = [[[RCDataBaseManager shareInstance] getGroupByGroupId:self.targetId].number intValue];
+//    if (self.conversationType == ConversationType_GROUP && count > 0) {
+//        self.title = [NSString stringWithFormat:@"%@(%d)", self.userName, count];
+//    } else {
+//        self.title = self.userName;
+//    }
 }
 
 - (void)didTapReceiptCountView:(RCMessageModel *)model {

@@ -194,21 +194,23 @@
             [RCDHTTPTOOL requestFriend:_targetUserInfo.userId
                               complete:^(BOOL result) {
                                   if (result) {
-                                      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
-                                                                                          message:@"请求已发送"
-                                                                                         delegate:nil
-                                                                                cancelButtonTitle:@"确定"
-                                                                                otherButtonTitles:nil, nil];
+//                                      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+//                                                                                          message:@"请求已发送"
+//                                                                                         delegate:nil
+//                                                                                cancelButtonTitle:@"确定"
+//                                                                                otherButtonTitles:nil, nil];
+                                      [YTAlertUtil showTempInfo:@"添加成功"];
                                       [RCDHTTPTOOL getFriendscomplete:^(NSMutableArray *result){
                                       }];
-                                      [alertView show];
+//                                      [alertView show];
                                   } else {
-                                      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
-                                                                                          message:@"请求失败，请重试"
-                                                                                         delegate:nil
-                                                                                cancelButtonTitle:@"确定"
-                                                                                otherButtonTitles:nil, nil];
-                                      [alertView show];
+                                      [YTAlertUtil showTempInfo:@"添加失败"];
+//                                      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+//                                                                                          message:@"请求失败，请重试"
+//                                                                                         delegate:nil
+//                                                                                cancelButtonTitle:@"确定"
+//                                                                                otherButtonTitles:nil, nil];
+//                                      [alertView show];
                                   }
                               }];
         }

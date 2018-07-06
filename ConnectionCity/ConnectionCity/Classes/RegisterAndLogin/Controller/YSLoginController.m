@@ -103,6 +103,7 @@
         self.ID = userInfoModel.modelId;
         self.token = userInfoModel.rongyunToken;
         [YSAccountTool saveUserinfo:userInfoModel];
+        [self loginRongCloud:userInfoModel.nickName userId:userInfoModel.modelId token:self.token password:self.passwordTF.text];
         RCUserInfo * user = [[RCUserInfo alloc] initWithUserId:userInfoModel.modelId name:userInfoModel.nickName portrait:userInfoModel.headImage]; 
         if (!user.portraitUri || user.portraitUri.length <= 0) {
             user.portraitUri = [RCDUtilities defaultUserPortrait:user];
@@ -113,7 +114,7 @@
         [KUserDefults setObject:user.portraitUri forKey:@"userPortraitUri"];
         [KUserDefults setObject:user.name forKey:@"userNickName"];
         [KUserDefults synchronize];
-        [self loginRongCloud:userInfoModel.nickName userId:userInfoModel.modelId token:self.token password:self.passwordTF.text];
+        
        
     } failure:nil];
 }

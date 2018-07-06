@@ -135,7 +135,7 @@
     userInfo.name = user.name;
     userInfo.portraitUri = user.portraitUri;
 
-    if ([userInfo.userId isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
+    if ([KString(@"%@", userInfo.userId) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
                                                         message:@"你不能添加自己到通讯录"
                                                        delegate:nil

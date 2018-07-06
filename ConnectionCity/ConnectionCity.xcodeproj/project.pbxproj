@@ -242,6 +242,10 @@
 		8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA4990720A6FDEB00968F86 /* ResumeController.xib */; };
 		8DA4990D20A7063E00968F86 /* ResumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990B20A7063E00968F86 /* ResumeCell.m */; };
 		8DA4990E20A7063E00968F86 /* ResumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA4990C20A7063E00968F86 /* ResumeCell.xib */; };
+		8DB277AE20EF34C400B3D747 /* groupMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB277AD20EF34C400B3D747 /* groupMo.m */; };
+		8DB277B120EF53B900B3D747 /* RCDSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB277AF20EF53B800B3D747 /* RCDSearchViewController.m */; };
+		8DB277B420EF53E100B3D747 /* RCDSearchMoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB277B320EF53E100B3D747 /* RCDSearchMoreController.m */; };
+		8DB277B720EF53F500B3D747 /* RCDSearchMoreViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB277B620EF53F500B3D747 /* RCDSearchMoreViewCell.m */; };
 		8DB42FD420A57D6E00C4EBF8 /* FilterOneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB42FD220A57D6D00C4EBF8 /* FilterOneController.m */; };
 		8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DB42FD320A57D6E00C4EBF8 /* FilterOneController.xib */; };
 		8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB42FD720A57D9900C4EBF8 /* FilterLayout.m */; };
@@ -965,6 +969,14 @@
 		8DA4990A20A7063E00968F86 /* ResumeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeCell.h; sourceTree = "<group>"; };
 		8DA4990B20A7063E00968F86 /* ResumeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeCell.m; sourceTree = "<group>"; };
 		8DA4990C20A7063E00968F86 /* ResumeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeCell.xib; sourceTree = "<group>"; };
+		8DB277AC20EF34C400B3D747 /* groupMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = groupMo.h; sourceTree = "<group>"; };
+		8DB277AD20EF34C400B3D747 /* groupMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = groupMo.m; sourceTree = "<group>"; };
+		8DB277AF20EF53B800B3D747 /* RCDSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDSearchViewController.m; sourceTree = "<group>"; };
+		8DB277B020EF53B900B3D747 /* RCDSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDSearchViewController.h; sourceTree = "<group>"; };
+		8DB277B220EF53E000B3D747 /* RCDSearchMoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDSearchMoreController.h; sourceTree = "<group>"; };
+		8DB277B320EF53E100B3D747 /* RCDSearchMoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDSearchMoreController.m; sourceTree = "<group>"; };
+		8DB277B520EF53F500B3D747 /* RCDSearchMoreViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDSearchMoreViewCell.h; sourceTree = "<group>"; };
+		8DB277B620EF53F500B3D747 /* RCDSearchMoreViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDSearchMoreViewCell.m; sourceTree = "<group>"; };
 		8DB42FD120A57D6D00C4EBF8 /* FilterOneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterOneController.h; sourceTree = "<group>"; };
 		8DB42FD220A57D6D00C4EBF8 /* FilterOneController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterOneController.m; sourceTree = "<group>"; };
 		8DB42FD320A57D6E00C4EBF8 /* FilterOneController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterOneController.xib; sourceTree = "<group>"; };
@@ -2211,9 +2223,8 @@
 		72EC1B8F20BC307E00ACC20B /* ServiceStation */ = {
 			isa = PBXGroup;
 			children = (
+				8DB277AB20EF349E00B3D747 /* Model */,
 				72EC1B9020BC307E00ACC20B /* Controller */,
-				72EC1B9120BC307E00ACC20B /* Models */,
-				72EC1B9220BC307E00ACC20B /* View */,
 			);
 			path = ServiceStation;
 			sourceTree = "<group>";
@@ -2229,20 +2240,6 @@
 				727C86D620DBE11D00AA2796 /* CreatGroupController.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		72EC1B9120BC307E00ACC20B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		72EC1B9220BC307E00ACC20B /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		72EC1B9320BC307E00ACC20B /* Traval */ = {
@@ -2678,6 +2675,15 @@
 			path = PersonalResume;
 			sourceTree = "<group>";
 		};
+		8DB277AB20EF349E00B3D747 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8DB277AC20EF34C400B3D747 /* groupMo.h */,
+				8DB277AD20EF34C400B3D747 /* groupMo.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8DB42FD020A57D5000C4EBF8 /* Fliter */ = {
 			isa = PBXGroup;
 			children = (
@@ -3004,6 +3010,12 @@
 		8DE4668420EE05B2009730F7 /* SearchFiend */ = {
 			isa = PBXGroup;
 			children = (
+				8DB277B520EF53F500B3D747 /* RCDSearchMoreViewCell.h */,
+				8DB277B620EF53F500B3D747 /* RCDSearchMoreViewCell.m */,
+				8DB277B220EF53E000B3D747 /* RCDSearchMoreController.h */,
+				8DB277B320EF53E100B3D747 /* RCDSearchMoreController.m */,
+				8DB277B020EF53B900B3D747 /* RCDSearchViewController.h */,
+				8DB277AF20EF53B800B3D747 /* RCDSearchViewController.m */,
 				8DE4668520EE05B2009730F7 /* RCDSearchFriendViewController.h */,
 				8DE4668620EE05B2009730F7 /* RCDSearchFriendViewController.m */,
 				8DE4668720EE05B2009730F7 /* RCDSearchResultTableViewCell.h */,
@@ -4513,6 +4525,7 @@
 				8D14FDED20EB0C000013A9DF /* UITabBar+badge.m in Sources */,
 				723D376B20AC2BC3003FD4DF /* SearchHistoryController.m in Sources */,
 				CE9B9A6B20E91655005C47B2 /* Agreement.m in Sources */,
+				8DB277AE20EF34C400B3D747 /* groupMo.m in Sources */,
 				727418F620B3B37B001D6BE1 /* SwapHeadView.m in Sources */,
 				8DE4663620EDF5EB009730F7 /* RealTimeLocationStartCell.m in Sources */,
 				72EC1B5F20B8341900ACC20B /* ShowCardTab.m in Sources */,
@@ -4530,6 +4543,7 @@
 				CE0BA5E1209D5E9B004C3C33 /* YSAccountTool.m in Sources */,
 				727418BF20B17536001D6BE1 /* CustomPage.m in Sources */,
 				CEF041CE20EA6EFD00C00314 /* AccountPageMo.m in Sources */,
+				8DB277B120EF53B900B3D747 /* RCDSearchViewController.m in Sources */,
 				8DE4660620EDF2CE009730F7 /* RCDConversationSettingTableViewHeaderItem.m in Sources */,
 				CE0BA5B8209D5E6B004C3C33 /* UIColor+Extension.m in Sources */,
 				CE03EE0020B467EC00F07D78 /* ReleaseTenderController.m in Sources */,
@@ -4582,6 +4596,7 @@
 				8D19FF2320D8CFE4005F7361 /* ServiceListMo.m in Sources */,
 				72EC1B7220BA984400ACC20B /* PlayDouctCell.m in Sources */,
 				727418F020B2DDAC001D6BE1 /* ChangeListController.m in Sources */,
+				8DB277B420EF53E100B3D747 /* RCDSearchMoreController.m in Sources */,
 				CE0BA61A209D6197004C3C33 /* FoundController.m in Sources */,
 				8DF7E3D520CFB33F009A92D7 /* PopThree.m in Sources */,
 				8D19FF2020D8AC98005F7361 /* UserMo.m in Sources */,
@@ -4589,6 +4604,7 @@
 				8D09E19C20BFDC16000F7EBD /* ShowTrvalCell.m in Sources */,
 				8DE4665020EDFB6B009730F7 /* RCDFrienfRemarksViewController.m in Sources */,
 				722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */,
+				8DB277B720EF53F500B3D747 /* RCDSearchMoreViewCell.m in Sources */,
 				727418D920B290AE001D6BE1 /* PlayPoductController.m in Sources */,
 				CE03EDF120B44FB000F07D78 /* FirstTableViewCell.m in Sources */,
 				8D22C34C20C7CD68004DC8F4 /* ExpressiveController.m in Sources */,

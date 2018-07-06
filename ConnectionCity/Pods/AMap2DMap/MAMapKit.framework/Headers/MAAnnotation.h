@@ -24,6 +24,7 @@
 ///获取annotation副标题
 @property (nonatomic, readonly, copy) NSString *subtitle;
 
+@property (nonatomic,assign) NSInteger Yindex;
 /**
  * @brief 设置标注的坐标，在拖拽时会被调用
  * @param newCoordinate 新的坐标值

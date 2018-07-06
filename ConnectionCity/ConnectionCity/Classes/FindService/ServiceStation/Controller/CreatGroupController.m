@@ -15,6 +15,9 @@
 {
     NSString * _ID;//服务ID
 }
+@property (weak, nonatomic) IBOutlet UILabel *lab_name;
+@property (weak, nonatomic) IBOutlet UILabel *lab_class;
+@property (weak, nonatomic) IBOutlet UILabel *lab_notice;
 @property (weak, nonatomic) IBOutlet UITextField *txt_name;
 @property (weak, nonatomic) IBOutlet UITextField *txt_class;
 @property (weak, nonatomic) IBOutlet UITextField *txt_Notice;

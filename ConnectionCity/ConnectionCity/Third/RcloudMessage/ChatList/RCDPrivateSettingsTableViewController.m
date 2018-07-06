@@ -53,10 +53,9 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    RCDUIBarButtonItem *leftButton = [[RCDUIBarButtonItem alloc] initWithLeftBarButton:@"返回" target:self                action:@selector(leftBarButtonItemPressed:)];
-    [self.navigationItem setLeftBarButtonItem:leftButton];
+//    RCDUIBarButtonItem *leftButton = [[RCDUIBarButtonItem alloc] initWithLeftBarButton:@"返回" target:self                action:@selector(leftBarButtonItemPressed:)];
+//    [self.navigationItem setLeftBarButtonItem:leftButton];
     self.title = @"聊天详情";
-
     self.tableView.tableFooterView = [UIView new];
     self.tableView.backgroundColor = HEXCOLOR(0xf0f0f6);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -65,7 +64,6 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 - (void)leftBarButtonItemPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -78,7 +76,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger rows;
+    NSInteger rows = 0;
     switch (section) {
     case 0:
         rows = 1;
