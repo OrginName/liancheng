@@ -15,7 +15,15 @@
 #import "RCDUtilities.h"
 #import "RCDataBaseManager.h"
 #import "RCDRCIMDataSource.h"
-@interface YSLoginController ()<RCIMConnectionStatusDelegate>
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+//腾讯开放平台（对应QQ和QQ空间）SDK头文件
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+//微信SDK头文件
+#import <WXApi.h>
+
+@interface YSLoginController ()<RCIMConnectionStatusDelegate,WXApiDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -33,6 +41,17 @@
     [self initUI];
     
     // Do any additional setup after loading the view from its nib.
+}
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    //添加微信授权通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weixinAuthSuccess:) name:NOTI_WEI_XIN_AUTH_SUCCESS object:nil];
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    //移除通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_WEI_XIN_AUTH_SUCCESS object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,14 +103,14 @@
                                                     selector:@selector(retryConnectionFailed)
                                                     userInfo:nil
                                                      repeats:NO];
-    //WeakSelf
+    WeakSelf
     [YSNetworkTool POST:login params:@{@"loginName":_phoneTF.text,@"password":_passwordTF.text} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([YSNetworkTool isSuccessWithResp:responseObject]) {
             YSAccount *account = [YSAccount mj_objectWithKeyValues:responseObject[kData]];
             [YSAccountTool saveAccount:account];
-            [self loadUserInfo];
+            [weakSelf loadUserInfo];
         }else{
-//            [YTAlertUtil showTempInfo:responseObject[kMessage]];
+            [YTAlertUtil showTempInfo:responseObject[kMessage]];
         }
     } failure:nil];
 }
@@ -233,8 +252,31 @@
 }
 - (IBAction)wxBtnClick:(id)sender {
     [YTAlertUtil showTempInfo:@"微信登录"];
+    //调起微信客户端请求授权
+    SendAuthReq *req = [[SendAuthReq alloc] init];
+    req.scope = @"snsapi_userinfo";
+    req.state = @"App";
+    [WXApi sendAuthReq:req viewController:self delegate:self];
 }
 - (IBAction)qqBtnClick:(id)sender {
     [YTAlertUtil showTempInfo:@"QQ登录"];
+    [ShareSDK getUserInfo:SSDKPlatformTypeQQ onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
+        [ShareSDK cancelAuthorize:SSDKPlatformTypeQQ];
+        if (state == SSDKResponseStateSuccess) {
+
+        }else{
+            [UIAlertView showAlertViewWithTitle:@"提示" message:@"授权失败" cancelButtonTitle:@"确定" otherButtonTitles:nil onDismiss:^(long buttonIndex) {
+                
+            } onCancel:^{
+                
+            }];
+        }
+    }];
+}
+#pragma mark - 通知
+//微信授权成功
+- (void)weixinAuthSuccess:(NSNotification*)dic {
+    NSDictionary *dictionary = dic.userInfo;
+
 }
 @end

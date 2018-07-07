@@ -109,6 +109,11 @@ static NSString * const NOTI_DISCOVER_PERIPHERAL_SERVICE_CHARACTERISTIC = @"Disc
 /** 蓝牙采样率(每秒发送的数据个数) */
 static double  const NUM_PER_SEC = 22;
 
+/** 微信授权成功 */
+static NSString * const NOTI_WEI_XIN_AUTH_SUCCESS = @"WeiXinAuthSuccess";
+/** 微信支付成功 */
+static NSString * const NOTI_WEI_XIN_PAY_SUCCESS = @"WeiXinPaySuccess";
+
 #endif /* YSConstString_h */
 
 

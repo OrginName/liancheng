@@ -15,6 +15,9 @@ pod 'RongCloudIM/IMLib', '~> 2.8.3'
 pod 'RongCloudIM/IMKit', '~> 2.8.3'
 pod 'Qiniu', '~> 7.1'
 pod 'FMDB'
+pod 'ShareSDK3',:git => ‘https://github.com/MobClub/ShareSDK-for-iOS-Spec.git'
+pod 'ShareSDK3/ShareSDKPlatforms/QQ',:git => ‘https://github.com/MobClub/ShareSDK-for-iOS-Spec.git'
+pod 'ShareSDK3/ShareSDKPlatforms/WeChat',:git => ‘https://github.com/MobClub/ShareSDK-for-iOS-Spec.git'
 
 end
 

@@ -22,10 +22,21 @@
 #import "RCDRCIMDataSource.h"
 #import "RCWKNotifier.h"
 #import "RCWKRequestHandler.h"
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+//腾讯开放平台（对应QQ和QQ空间）SDK头文件
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+//微信SDK头文件
+#import <WXApi.h>
+#define QQ_APPID @"1106473725"
+#define QQ_APPKEY @"dTrtNRCsVY79nCwC"
+#define APPID_WEIXIN @"wxb773a629b959a9f9"
+#define APPSECRET_WEIXIN @"b5b4abb0a4367ec6fdbd8851e3d86bc5"
 #define RONGCLOUD_IM_APPKEY @"3argexb63m7xe"// online key
 #define UMENG_APPKEY @"571edc9b67e58e362e001101"
 #define LOG_EXPIRE_TIME -7 * 24 * 60 * 60
-@interface AppDelegate ()<RCIMReceiveMessageDelegate,RCIMConnectionStatusDelegate,RCWKAppInfoProvider>
+@interface AppDelegate ()<RCIMReceiveMessageDelegate,RCIMConnectionStatusDelegate,RCWKAppInfoProvider,WXApiDelegate>
 @end
 
 @implementation AppDelegate
@@ -189,7 +200,51 @@
     } else {
         NSLog(@"该启动事件不包含来自融云的推送服务");
     }
-    
+    /**初始化ShareSDK应用
+     
+     @param activePlatforms
+     使用的分享平台集合
+     @param importHandler (onImport)
+     导入回调处理，当某个平台的功能需要依赖原平台提供的SDK支持时，需要在此方法中对原平台SDK进行导入操作
+     @param configurationHandler (onConfiguration)
+     配置回调处理，在此方法中根据设置的platformType来填充应用配置信息
+     */
+    [ShareSDK registerActivePlatforms:@[
+                                        @(SSDKPlatformTypeWechat),
+                                        @(SSDKPlatformTypeQQ),
+                                        ]
+                             onImport:^(SSDKPlatformType platformType)
+     {
+         switch (platformType)
+         {
+             case SSDKPlatformTypeWechat:
+                 [ShareSDKConnector connectWeChat:[WXApi class]];
+                 break;
+             case SSDKPlatformTypeQQ:
+                 [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
+                 break;
+             default:
+                 break;
+         }
+     }
+                      onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo)
+     {
+         
+         switch (platformType)
+         {
+             case SSDKPlatformTypeWechat:
+                 [appInfo SSDKSetupWeChatByAppId:APPID_WEIXIN
+                                       appSecret:APPSECRET_WEIXIN];
+                 break;
+             case SSDKPlatformTypeQQ:
+                 [appInfo SSDKSetupQQByAppId:QQ_APPID
+                                      appKey:QQ_APPKEY
+                                    authType:SSDKAuthTypeBoth];
+                 break;
+                                                 default:
+                   break;
+                   }
+                   }];
     //开始监听网络状态
     [YSNetworkTool startMonitorNetwork];
     //通知键盘弹出状态
@@ -389,6 +444,24 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Restart any tasks that were paused (or not yet started) while the
     // application was inactive. If the application was previously in the
     // background, optionally refresh the user interface.
+}
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [WXApi handleOpenURL:url delegate:self];
+    });
+    return YES;
+}
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [WXApi handleOpenURL:url delegate:self];
+    });
+    return YES;
+}
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [WXApi handleOpenURL:url delegate:self];
+    });
+    return YES;
 }
 //插入分享消息
 - (void)insertSharedMessageIfNeed {
@@ -617,6 +690,79 @@ handleWatchKitExtensionRequest:(NSDictionary *)userInfo
         self.window.rootViewController = _navi;
         
     });
+}
+#pragma mark -- 发送一个sendReq后，收到微信的回应
+- (void)onResp:(BaseResp *)resp {
+    //WXSuccess           = 0,    /**< 成功    */
+    //WXErrCodeCommon     = -1,   /**< 普通错误类型    */
+    //WXErrCodeUserCancel = -2,   /**< 用户点击取消并返回    */
+    //WXErrCodeSentFail   = -3,   /**< 发送失败    */
+    //WXErrCodeAuthDeny   = -4,   /**< 授权失败    */
+    //WXErrCodeUnsupport  = -5,   /**< 微信不支持    */
+    //支付返回结果，实际支付结果需要去微信服务器端查询
+    //发送媒体消息结果[resp isKindOfClass:[SendMessageToWXResp class]]
+    //支付结果[resp isKindOfClass:[PayResp class]]
+    //判断是否第三方登录[resp isKindOfClass:[SendAuthResp class]]
+    
+    // 向微信请求授权后,得到响应结果code
+    if ([resp isKindOfClass:[SendAuthResp class]]) {
+        if (resp.errCode == 0) {
+            SendAuthResp *temp = (SendAuthResp *)resp;
+            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+            manager.responseSerializer = [AFJSONResponseSerializer serializer];
+            manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html",@"text/plain", nil];
+            NSString *accessUrlStr = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",APPID_WEIXIN,APPSECRET_WEIXIN,temp.code];
+            
+            //通过code、appid、secret获取access_token、openid-----------------
+            [manager GET:accessUrlStr parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                //NSLog(@"请求access的response = %@", responseObject);
+                NSDictionary *accessDict = [NSDictionary dictionaryWithDictionary:responseObject];
+                NSString *userUrlStr = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@", [accessDict objectForKey:@"access_token"], [accessDict objectForKey:@"openid"]];
+                
+                //通过access_token、openid获取userInfo----------------
+                [manager GET:userUrlStr parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    NSMutableDictionary *userInfoDict = [NSMutableDictionary dictionaryWithDictionary:responseObject];
+                    [userInfoDict removeObjectForKey:@"privilege"];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_WEI_XIN_AUTH_SUCCESS object:nil userInfo:userInfoDict];
+                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    
+                }];
+                
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                
+            }];
+        }else{
+            [UIAlertView showAlertViewWithTitle:@"提示" message:@"授权失败" cancelButtonTitle:@"确定" otherButtonTitles:nil onDismiss:^(long buttonIndex) {
+                
+            } onCancel:^{
+                
+            }];
+        }
+    }
+    
+    // 向微信请求支付后,得到响应结果
+    if([resp isKindOfClass:[PayResp class]]) {
+        switch (resp.errCode) {
+            case WXSuccess:
+            {
+                //支付成功请求后台接口查询结果
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_WEI_XIN_PAY_SUCCESS object:nil userInfo:@{@"status":@"success"}];
+                break;
+            }
+            case WXErrCodeUserCancel:
+            {
+                //用户点击取消并返回
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_WEI_XIN_PAY_SUCCESS object:nil userInfo:@{@"status":@"failure"}];
+                break;
+            }
+            default:
+            {
+                //支付失败其他状态
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_WEI_XIN_PAY_SUCCESS object:nil userInfo:@{@"status":@"failure"}];
+                break;
+            }
+        }
+    }
 }
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:RCKitDispatchMessageNotification object:nil];
