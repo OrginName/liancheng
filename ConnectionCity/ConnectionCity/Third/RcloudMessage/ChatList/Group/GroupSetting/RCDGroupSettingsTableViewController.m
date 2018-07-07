@@ -215,7 +215,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                                                       stringWithFormat:@"全部群成员(%lu)", (unsigned long)result.count];
                                               });
                                               collectionViewResource = [NSMutableArray new];
-                                              NSMutableArray *tempArray = result;
+                                            NSMutableArray *tempArray = result;
                                               tempArray = [weakSelf moveCreator:tempArray];
                                               NSArray *resultList =
                                                   [[RCDUserInfoManager shareInstance] getFriendInfoList:tempArray];
@@ -229,7 +229,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 
                                                                                               }];
                                               for (RCDUserInfo *user in result) {
-                                                  [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:user.userId];
+                                                  [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:KString(@"%@", user.userId)];
                                               }
                                           }
                                       }];
@@ -819,7 +819,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         }
         if (![collectionViewResource[indexPath.row] isKindOfClass:[UIImage class]]) {
             RCUserInfo *user = collectionViewResource[indexPath.row];
-            if ([user.userId isEqualToString:[RCIMClient sharedRCIMClient].currentUserInfo.userId]) {
+            if ([KString(@"%@", user.userId) isEqualToString:[RCIMClient sharedRCIMClient].currentUserInfo.userId]) {
                 [cell.btnImg setHidden:YES];
             }
             [cell setUserModel:user];
@@ -887,13 +887,14 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         }
     }
     RCUserInfo *selectedUser = [collectionViewResource objectAtIndex:indexPath.row];
-    BOOL isFriend = NO;
-    NSArray *friendList = [[RCDataBaseManager shareInstance] getAllFriends];
-    for (RCDUserInfo *friend in friendList) {
-        if ([selectedUser.userId isEqualToString:friend.userId] && [friend.status isEqualToString:@"20"]) {
-            isFriend = YES;
-        }
-    }
+    BOOL isFriend = YES;
+#warning mark-----判断好友状态--------
+//    NSArray *friendList = [[RCDataBaseManager shareInstance] getAllFriends];
+//    for (RCDUserInfo *friend in friendList) {
+//        if ([selectedUser.userId isEqualToString:friend.userId] && [friend.status isEqualToString:@"20"]) {
+//            isFriend = YES;
+//        }
+//    }
     if (isFriend == YES || [selectedUser.userId isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
         RCDPersonDetailViewController *detailViewController = [[RCDPersonDetailViewController alloc] init];
         [self.navigationController pushViewController:detailViewController animated:YES];
@@ -990,8 +991,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     RCUserInfo *creator;
     for (int i = 0; i < [temp count]; i++) {
         RCUserInfo *user = [temp objectAtIndex:i];
-
-        if ([creatorId isEqualToString:user.userId]) {
+        if ([creatorId isEqualToString:KString(@"%@", user.userId)]) {
             index = i;
             creator = user;
             break;

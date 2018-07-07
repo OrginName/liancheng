@@ -195,7 +195,7 @@
         if (model.conversationModelType == RC_CONVERSATION_MODEL_TYPE_PUBLIC_SERVICE) {
             RCDChatViewController *_conversationVC = [[RCDChatViewController alloc] init];
             _conversationVC.conversationType = model.conversationType;
-            _conversationVC.targetId = model.targetId;
+            _conversationVC.targetId = KString(@"%@", model.targetId);
 //            _conversationVC.userName = model.conversationTitle;
             _conversationVC.title = model.conversationTitle;
             _conversationVC.conversation = model;
@@ -205,7 +205,7 @@
         if (conversationModelType == RC_CONVERSATION_MODEL_TYPE_NORMAL) {
             RCDChatViewController *_conversationVC = [[RCDChatViewController alloc] init];
             _conversationVC.conversationType = model.conversationType;
-            _conversationVC.targetId = model.targetId;
+            _conversationVC.targetId = KString(@"%@", model.targetId);;
 //            _conversationVC.userName = model.conversationTitle;
             _conversationVC.title = model.conversationTitle;
             _conversationVC.conversation = model;
@@ -257,7 +257,6 @@
 - (RCConversationBaseCell *)rcConversationListTableView:(UITableView *)tableView
                                   cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RCConversationModel *model = self.conversationListDataSource[indexPath.row];
-    
     __block NSString *userName = nil;
     __block NSString *portraitUri = nil;
     RCContactNotificationMessage *_contactNotificationMsg = nil;

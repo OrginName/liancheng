@@ -43,41 +43,33 @@
 //通过好友详细信息或好友Id获取好友信息
 - (void)getFriendInfo:(NSString *)friendId completion:(void (^)(RCUserInfo *))completion {
     __block RCUserInfo *resultInfo;
-    [RCDHTTPTOOL getUserInfoByUserID:friendId
-                          completion:^(RCUserInfo *user) {
-                              if (user) {
-                                  completion(user);
-                                  return;
-                              } else {
-                                  user = [[RCDataBaseManager shareInstance] getUserByUserId:friendId];
-                                  if (user == nil) {
-                                      user = [self generateDefaultUserInfo:friendId];
-                                      completion(user);
-                                      return;
-                                  }
-                              }
-                          }];
-//    [RCDHTTPTOOL getFriendDetailsWithFriendId:friendId
-//        success:^(RCDUserInfo *user) {
-//            resultInfo = [self getRCUserInfoByRCDUserInfo:user];
-//            completion(resultInfo);
-//            return;
-//        }
-//        failure:^(NSError *err) {
-//            RCDUserInfo *friendInfo = [[RCDataBaseManager shareInstance] getFriendInfo:friendId];
-//            if (friendInfo != nil) {
-//                resultInfo = [self getRCUserInfoByRCDUserInfo:friendInfo];
-//                completion(resultInfo);
-//                return;
-//            } else {
-//                [self getUserInfo:friendId
-//                       completion:^(RCUserInfo *user) {
-//                           resultInfo = user;
-//                           completion(resultInfo);
-//                           return;
-//                       }];
-//            }
-//        }];
+//    [RCDHTTPTOOL getUserInfoByUserID:friendId
+//                          completion:^(RCUserInfo *user) {
+//                              resultInfo = [self getRCUserInfoByRCDUserInfo:user];
+//                            completion(resultInfo);
+//                            return;
+//                          }];
+    [RCDHTTPTOOL getFriendDetailsWithFriendId:friendId
+        success:^(RCDUserInfo *user) {
+            resultInfo = [self getRCUserInfoByRCDUserInfo:user];
+            completion(resultInfo);
+            return;
+        }
+        failure:^(NSError *err) {
+            RCDUserInfo *friendInfo = [[RCDataBaseManager shareInstance] getFriendInfo:friendId];
+            if (friendInfo != nil) {
+                resultInfo = [self getRCUserInfoByRCDUserInfo:friendInfo];
+                completion(resultInfo);
+                return;
+            } else {
+                [self getUserInfo:friendId
+                       completion:^(RCUserInfo *user) {
+                           resultInfo = user;
+                           completion(resultInfo);
+                           return;
+                       }];
+            }
+        }];
 }
 
 - (RCUserInfo *)getFriendInfoFromDB:(NSString *)friendId {

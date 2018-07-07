@@ -101,7 +101,7 @@
     [self setLayout];
 
     NSString *portraitUri;
-    if (![self.userId isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
+    if (![KString(@"%@", self.userId) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
         self.friendInfo = [[RCDataBaseManager shareInstance] getFriendInfo:self.userId];
         portraitUri = self.friendInfo.portraitUri;
         [self setLayoutForFriend];
@@ -169,7 +169,7 @@
 
     [self displayOnlineStatus];
 
-    if (![self.userId isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
+    if (![KString(@"%@", self.userId) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
         NSString *remarks = self.friendInfo.displayName;
         if (remarks != nil && ![remarks isEqualToString:@""]) {
             [self setLayoutIsHaveRemarks:YES];
@@ -184,10 +184,9 @@
     //创建会话
     RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
     chatViewController.conversationType = ConversationType_PRIVATE;
-
-    chatViewController.targetId = self.userId;
+    chatViewController.targetId = KString(@"%@", self.userId);
     NSString *title;
-    if ([self.userId isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
+    if ([KString(@"%@", self.userId) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
         title = [RCIM sharedRCIM].currentUserInfo.name;
     } else {
         if (self.friendInfo.displayName.length > 0) {

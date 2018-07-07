@@ -849,8 +849,7 @@ NSMutableDictionary *userInputStatus;
 }
 
 - (void)refreshUserInfoOrGroupInfo {
-    //打开单聊强制从demo server 获取用户信息更新本地数据库
-
+    //打开单聊强制从demo server 获取用户信息更新本地数据库 
     if (self.conversationType == ConversationType_PRIVATE) {
         if (![self.targetId isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
             __weak typeof(self) weakSelf = self;
@@ -923,15 +922,15 @@ NSMutableDictionary *userInputStatus;
 }
 
 - (void)refreshTitle {
-    if (self.userName == nil) {
-        return;
-    }
-    int count = [[[RCDataBaseManager shareInstance] getGroupByGroupId:self.targetId].number intValue];
-    if (self.conversationType == ConversationType_GROUP && count > 0) {
-        self.title = [NSString stringWithFormat:@"%@(%d)", self.userName, count];
-    } else {
-        self.title = self.userName;
-    }
+//    if (self.userName == nil) {
+//        return;
+//    }
+//    int count = [[[RCDataBaseManager shareInstance] getGroupByGroupId:self.targetId].number intValue];
+//    if (self.conversationType == ConversationType_GROUP && count > 0) {
+//        self.title = [NSString stringWithFormat:@"%@(%d)", self.userName, count];
+//    } else {
+//        self.title = self.userName;
+//    }
 }
 
 - (void)didTapReceiptCountView:(RCMessageModel *)model {

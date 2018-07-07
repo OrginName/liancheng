@@ -94,7 +94,7 @@
         };
         class.block = ^(NSString *classifiation) {
             
-        };
+        }; 
         [self.navigationController pushViewController:class animated:YES];
     }else if (sender.tag==1) {
         [[TakePhoto sharedPhoto] sharePicture:^(UIImage *image) {
