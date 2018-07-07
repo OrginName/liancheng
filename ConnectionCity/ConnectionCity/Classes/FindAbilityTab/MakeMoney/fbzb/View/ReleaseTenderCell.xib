@@ -37,12 +37,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="海通物业管理有限公司" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0Q-C3-2ep">
-                                <rect key="frame" x="120" y="0.0" width="192" height="43.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vu1-IN-TiA">
                                 <rect key="frame" x="0.0" y="43" width="343" height="1"/>
                                 <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -50,20 +44,26 @@
                                     <constraint firstAttribute="height" constant="1" id="sJO-x4-eLC"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xqO-Ks-qjL">
+                                <rect key="frame" x="120" y="0.0" width="192" height="43"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="a0Q-C3-2ep" firstAttribute="top" secondItem="rjA-lt-qUi" secondAttribute="top" id="0BL-MY-dla"/>
-                            <constraint firstAttribute="bottom" secondItem="a0Q-C3-2ep" secondAttribute="bottom" id="4Q4-lb-P9E"/>
                             <constraint firstAttribute="bottom" secondItem="vu1-IN-TiA" secondAttribute="bottom" id="BNf-HI-O6h"/>
+                            <constraint firstItem="vu1-IN-TiA" firstAttribute="top" secondItem="xqO-Ks-qjL" secondAttribute="bottom" id="BeA-dq-c6g"/>
+                            <constraint firstItem="xqO-Ks-qjL" firstAttribute="leading" secondItem="Z0J-Rp-uNG" secondAttribute="trailing" constant="5" id="IJs-fL-EZl"/>
                             <constraint firstItem="Z0J-Rp-uNG" firstAttribute="leading" secondItem="rjA-lt-qUi" secondAttribute="leading" constant="15" id="KYK-FE-RhD"/>
                             <constraint firstItem="Z0J-Rp-uNG" firstAttribute="top" secondItem="rjA-lt-qUi" secondAttribute="top" id="LRT-p1-3vI"/>
+                            <constraint firstItem="xqO-Ks-qjL" firstAttribute="top" secondItem="rjA-lt-qUi" secondAttribute="top" id="b5Q-hV-G3W"/>
                             <constraint firstItem="vu1-IN-TiA" firstAttribute="leading" secondItem="rjA-lt-qUi" secondAttribute="leading" id="d0g-Ur-n58"/>
-                            <constraint firstItem="oMX-J1-cfE" firstAttribute="leading" secondItem="a0Q-C3-2ep" secondAttribute="trailing" constant="5" id="huE-QX-zK0"/>
                             <constraint firstAttribute="trailing" secondItem="vu1-IN-TiA" secondAttribute="trailing" id="jtn-Eo-fI1"/>
-                            <constraint firstItem="a0Q-C3-2ep" firstAttribute="leading" secondItem="Z0J-Rp-uNG" secondAttribute="trailing" constant="5" id="kWl-30-gHs"/>
                             <constraint firstAttribute="trailing" secondItem="oMX-J1-cfE" secondAttribute="trailing" constant="17" id="lWi-3y-THE"/>
                             <constraint firstAttribute="bottom" secondItem="Z0J-Rp-uNG" secondAttribute="bottom" id="m2v-6e-0TD"/>
+                            <constraint firstItem="oMX-J1-cfE" firstAttribute="leading" secondItem="xqO-Ks-qjL" secondAttribute="trailing" constant="5" id="uV0-Cv-97r"/>
                             <constraint firstItem="oMX-J1-cfE" firstAttribute="centerY" secondItem="rjA-lt-qUi" secondAttribute="centerY" id="y5T-h9-rsI"/>
                         </constraints>
                     </view>
@@ -77,10 +77,10 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
-                <outlet property="detailLab" destination="a0Q-C3-2ep" id="XVk-Oy-fve"/>
+                <outlet property="detailLab" destination="xqO-Ks-qjL" id="fn0-vl-geu"/>
                 <outlet property="titleLab" destination="Z0J-Rp-uNG" id="2Fa-Z3-vNo"/>
             </connections>
-            <point key="canvasLocation" x="61.5" y="41"/>
+            <point key="canvasLocation" x="28" y="35"/>
         </tableViewCell>
     </objects>
     <resources>

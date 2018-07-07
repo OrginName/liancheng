@@ -45,7 +45,7 @@
 //获取svip套餐详情
 - (void)requestv1MembershipSvipInfo {
     WeakSelf
-    [YSNetworkTool POST:v1MembershipSvipInfo params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1MembershipSvipInfo params:nil showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         weakSelf.model = [MemberRenewalM mj_objectWithKeyValues:responseObject[@"data"]];
         [self.logo sd_setImageWithURL:[NSURL URLWithString:weakSelf.model.logo]];
         self.name.text = weakSelf.model.name;
@@ -93,14 +93,14 @@
 //开通套餐rechargeVip
 - (void)requestv1MembershipSvipRecharge:(NSString *)ID {
     WeakSelf
-    [YSNetworkTool POST:v1MembershipSvipRecharge params:@{@"id": ID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1MembershipSvipRecharge params:@{@"id": ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
 
     } failure:nil];
 }
 //用户svip详情
 - (void)requestMembershipUserSvip {
     WeakSelf
-    [YSNetworkTool POST:v1MembershipUserSvip params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1MembershipUserSvip params:nil showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         
     } failure:nil];
 }

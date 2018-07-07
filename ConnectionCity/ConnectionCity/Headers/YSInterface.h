@@ -30,6 +30,8 @@ static NSString * const smsVerificationCode = @"/sms/verification-code";
 static NSString * const registerUrl = @"/register";
 //登录
 static NSString * const login = @"/login";
+//微信QQ授权登陆接口
+static NSString * const auth = @"/auth";
 //找回密码
 static NSString * const passwordForget = @"/password/forget";
 #pragma mark - 协议条款
@@ -135,6 +137,8 @@ static NSString * const v1TalentTenderDetail = @"/v1/talent/tender/detail";
 static NSString * const v1TalentTenderorderCreate = @"/v1/talent/tender/order/create";
 //赚外快（分页）
 static NSString * const v1TalentTenderPage = @"/v1/talent/tender/page";
+//赚外快-招标管理（分页）
+static NSString * const v1TalentTenderMyPage = @"/v1/talent/tender/my/page";
 //赚外快-投标
 static NSString * const v1TalentTenderRecordCreate = @"/v1/talent/tender/record/create";
 //赚外快-投标人

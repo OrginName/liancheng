@@ -85,11 +85,12 @@
         trvalMo * mo = self.data_Count[self.zIndex];
         [self GZLoadData:mo.ID];
     }
+    
 }
 -(void)GZLoadData:(NSString *)type{
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[5] contentArr][1];
-    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":@([type integerValue]),@"type":@([mo.value integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":@([mo.value integerValue]),@"type":@([type integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [YTAlertUtil showTempInfo:responseObject[@"message"]];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         

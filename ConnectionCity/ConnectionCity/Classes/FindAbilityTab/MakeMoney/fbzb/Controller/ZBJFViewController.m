@@ -213,14 +213,13 @@
     InstallmentMo *mo4 = self.dataArr[1][4];
     InstallmentMo *mo20 = self.dataArr[2][0];
 
-
      NSDictionary *dic = @{
-     @"amount": self.cellPlaceHolds[8],
+     @"amount": self.cellCntentText[8],
      @"areaCode": self.mo?self.mo.ID:@"",
-     @"company": self.cellPlaceHolds[1],
-     @"contactMobile": self.cellPlaceHolds[10],
-     @"contactName": self.cellPlaceHolds[9],
-     @"content": self.cellPlaceHolds[4],
+     @"company": self.cellCntentText[1],
+     @"contactMobile": self.cellCntentText[10],
+     @"contactName": self.cellCntentText[9],
+     @"content": self.cellCntentText[4],
      @"depositAmount": mo20.data,
      @"industryCategoryId": @"0",
      @"industryCategoryName": @"string",
@@ -238,11 +237,11 @@
      @"rewardAmount3": mo2.data,
      @"rewardAmount4": mo3.data,
      @"rewardAmount5": mo4.data,
-     @"tenderAddress": self.cellPlaceHolds[3],
-     @"tenderEndDate": self.cellPlaceHolds[7],
-     @"tenderImages": self.cellPlaceHolds[5],
-     @"tenderStartDate": self.cellPlaceHolds[6],
-     @"title": self.cellPlaceHolds[0],
+     @"tenderAddress": self.cellCntentText[3],
+     @"tenderEndDate": self.cellCntentText[7],
+     @"tenderImages": self.cellCntentText[5],
+     @"tenderStartDate": self.cellCntentText[6],
+     @"title": self.cellCntentText[0],
      };
      [self v1TalentTenderCreate:dic];
     

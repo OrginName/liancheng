@@ -12,13 +12,13 @@
 
 @interface ServiceMo : BaseModel
 /** <#id描述#> */
-@property (nonatomic, assign) NSInteger Id;
+@property (nonatomic, copy) NSString *Id;
 /** <#images描述#> */
 @property (nonatomic, copy) NSString *images;
 /** <#title描述#> */
 @property (nonatomic, copy) NSString *title;
 /** <#serviceCategoryId描述#> */
-@property (nonatomic, assign) NSInteger serviceCategoryId;
+@property (nonatomic, copy) NSString *serviceCategoryId;
 /** <#property描述#> */
 @property (nonatomic, copy) NSString *property;
 /** <#introduce描述#> */
@@ -26,17 +26,17 @@
 /** <#price描述#> */
 @property (nonatomic, copy) NSString *price;
 /** <#type描述#> */
-@property (nonatomic, assign) NSInteger type;
+@property (nonatomic, copy) NSString *type;
 /** <#content描述#> */
 @property (nonatomic, copy) NSString *content;
 /** <#likeCount描述#> */
-@property (nonatomic, assign) NSInteger likeCount;
+@property (nonatomic, copy) NSString *likeCount;
 /** <#browseTimes描述#> */
-@property (nonatomic, assign) NSInteger browseTimes;
+@property (nonatomic, copy) NSString *browseTimes;
 /** <#lng描述#> */
-@property (nonatomic, assign) CGFloat lng;
+@property (nonatomic, copy) NSString *lng;
 /** <#lat描述#> */
-@property (nonatomic, assign) CGFloat lat;
+@property (nonatomic, copy) NSString *lat;
 /** <#provinceName描述#> */
 @property (nonatomic, copy) NSString *provinceName;
 /** <#provinceCode描述#> */
@@ -58,7 +58,7 @@
 /** <#serviceCircleList描述#> */
 @property (nonatomic, copy) NSString *serviceCircleList;
 /** <#score描述#> */
-@property (nonatomic, assign) NSInteger score;
+@property (nonatomic, copy) NSString *score;
 /** <#commentList描述#> */
 @property (nonatomic, copy) NSString *commentList;
 /** <#like描述#> */

@@ -16,7 +16,9 @@
 #import "educationExperienceListModel.h"
 #import "privateUserInfoModel.h"
 #import "OccupationCategoryNameModel.h"
-
+#import "ShowResumeController.h"
+#import "ServiceListMo.h"
+#import "trvalMo.h"
 
 @interface OurResumeController ()<UITableViewDelegate,UITableViewDataSource,profileCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
@@ -40,18 +42,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    //我的发布-简历
-//    [self requestMyResumePage];
-    //我的发布-服务
-//    [self v1MyServicePage];
-    //我的发布-旅行
-//    [self v1MyTravelPage];
-    //我的发布-邀约
-//    [self v1MyTravelInvitePage];
-    //我的发布-宝物
-//    [self requestMyTreasurePage];
-    //我的发布-身份互换
-//    [self v1MyIdentityPage];
     if(self.index==2){
         //我的发布-简历
         [self requestMyResumePage];
@@ -120,25 +110,134 @@
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (self.index==3) {
+        NSMutableArray *mutArr = [NSMutableArray array];
+        __block ServiceMo *model = self.servicedataArr[indexPath.row];
+        __block NSUInteger index = 0;
+        [self.servicedataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            ServiceMo * mo = (ServiceMo *)obj;
+            ServiceListMo *listMo = [[ServiceListMo alloc]init];
+            listMo.ID = mo.Id;
+            listMo.images = mo.images;
+            listMo.title = mo.title;
+            listMo.serviceCategoryId = mo.serviceCategoryId;
+            listMo.property = mo.property;
+            listMo.introduce = mo.introduce;
+            listMo.price = mo.price;
+            listMo.type = mo.type;
+            listMo.content = mo.content;
+            listMo.lng = mo.lng;
+            listMo.lat = mo.lat;
+            listMo.cityName = mo.cityName;
+            listMo.cityCode = mo.cityCode;
+            listMo.areaName = mo.areaName;
+            listMo.areaCode = mo.areaCode;
+            listMo.typeName = mo.typeName;
+            listMo.user1 = (UserMo *)mo.user;
+            [mutArr addObject:listMo];
+            if (mo.Id == model.Id) {
+                index = idx;
+            }
+        }];
+        ShowResumeController * show = [ShowResumeController new];
+        show.Receive_Type = ENUM_TypeTrval;
+        show.data_Count = mutArr;
+        show.zIndex = index;
+        NSLog(@"当前zindex为：%ld",index);
+        [self.navigationController pushViewController:show animated:YES];
+    }else if (self.index==4){
+        NSMutableArray *mutArr = [NSMutableArray array];
+        __block tourismMo *model = self.tourismdataArr[indexPath.row];
+        __block NSUInteger index = 0;
+        [self.tourismdataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            tourismMo * mo = (tourismMo *)obj;
+            trvalMo *listMo = [[trvalMo alloc]init];
+            listMo.ID = mo.Id;
+            listMo.images = mo.images;
+            listMo.cityName = mo.cityName;
+            listMo.cityCode = mo.cityCode;
+            listMo.createTime = mo.createTime;
+            listMo.introduce = mo.introduce;
+            listMo.price = mo.price;
+            listMo.type = mo.type;
+            listMo.comments = mo.comments;
+//            proStr(departTimeName);//出发时间
+//            proStr(description1);//旅行说明
+//            proStr(inviteObjectName);//邀约对象
+//            proStr(longTimeName);//旅行时长
+//            proStr(placeTravel);//旅行去哪
+//            proStr(travelFeeName);//旅行话费
+//            proStr(travelModeName);//出行方式
+            listMo.browseTimes = mo.browseTimes;
+            listMo.priceUnit = mo.priceUnit;
+            listMo.user1 = (UserMo *)mo.user;
+            [mutArr addObject:listMo];
+            if (mo.Id == model.Id) {
+                index = idx;
+            }
+        }];
+        ShowResumeController * show = [ShowResumeController new];
+        show.Receive_Type = ENUM_TypeTrval;
+        show.data_Count = mutArr;
+        show.zIndex = index;
+        show.str = @"TrvalTrip";
+        NSLog(@"当前zindex为：%ld",index);
+        [self.navigationController pushViewController:show animated:YES];
+    }else if (self.index==5){
+        NSMutableArray *mutArr = [NSMutableArray array];
+        __block TravelInvite *model = self.invitationdataArr[indexPath.row];
+        __block NSUInteger index = 0;
+        [self.invitationdataArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            TravelInvite * mo = (TravelInvite *)obj;
+            trvalMo *listMo = [[trvalMo alloc]init];
+//            listMo.ID = mo.Id;
+//            listMo.images = mo.images;
+//            listMo.cityName = mo.cityName;
+//            listMo.cityCode = mo.cityCode;
+//            listMo.createTime = mo.createTime;
+//            listMo.introduce = mo.introduce;
+//            listMo.price = mo.price;
+//            listMo.type = mo.type;
+//            listMo.comments = mo.comments;
+//            //            proStr(departTimeName);//出发时间
+//            //            proStr(description1);//旅行说明
+//            //            proStr(inviteObjectName);//邀约对象
+//            //            proStr(longTimeName);//旅行时长
+//            //            proStr(placeTravel);//旅行去哪
+//            //            proStr(travelFeeName);//旅行话费
+//            //            proStr(travelModeName);//出行方式
+//            listMo.browseTimes = mo.browseTimes;
+//            listMo.priceUnit = mo.priceUnit;
+//            listMo.user1 = (UserMo *)mo.user;
+            [mutArr addObject:listMo];
+            if (mo.Id == model.Id) {
+                index = idx;
+            }
+        }];
+        ShowResumeController * show = [ShowResumeController new];
+        show.Receive_Type = ENUM_TypeTrval;
+        show.data_Count = mutArr;
+        show.zIndex = index;
+        show.str = @"TrvalTrip";
+        NSLog(@"当前zindex为：%ld",index);
+        [self.navigationController pushViewController:show animated:YES];
+    }
 }
 #pragma mark -----profileCellDelegate-----
-- (void)selectedItemButton:(NSInteger)index{
+- (void)selectedItemButton:(UIButton *)btn index:(NSInteger)index {
     NSLog(@"%ld",index);
-}
-//编辑简历
-- (void)resumeeditBtn:(UIButton *)btn {
-    OurResumeMo *mo = self.resumedataArr[btn.tag - 1000];
-}
-//删除简历
-- (void)resumeedeleteBtn:(UIButton *)btn {
-    OurResumeMo *mo = self.resumedataArr[btn.tag - 10000];
-    WeakSelf
-    [YSNetworkTool POST:v1TalentResumeDelete params:@{@"id": mo.modelId} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        [weakSelf requestMyResumePage];
-    } failure:nil];
-}
+    //简历1编辑2删除
+    if (index==1) {
+        OurResumeMo *mo = self.resumedataArr[btn.tag - 1000];
 
+    }else if (index==2){
+        OurResumeMo *mo = self.resumedataArr[btn.tag - 10000];
+        WeakSelf
+        [YSNetworkTool POST:v1TalentResumeDelete params:@{@"id": mo.modelId} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+            [weakSelf requestMyResumePage];
+        } failure:nil];
+    }
+}
 #pragma mark - 数据请求
 //我的发布-简历
 - (void)requestMyResumePage {

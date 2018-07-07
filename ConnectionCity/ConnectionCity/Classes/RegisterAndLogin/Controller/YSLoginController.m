@@ -251,7 +251,6 @@
     [self.navigationController pushViewController:registerVC animated:YES];
 }
 - (IBAction)wxBtnClick:(id)sender {
-    [YTAlertUtil showTempInfo:@"微信登录"];
     //调起微信客户端请求授权
     SendAuthReq *req = [[SendAuthReq alloc] init];
     req.scope = @"snsapi_userinfo";
@@ -259,24 +258,35 @@
     [WXApi sendAuthReq:req viewController:self delegate:self];
 }
 - (IBAction)qqBtnClick:(id)sender {
-    [YTAlertUtil showTempInfo:@"QQ登录"];
+    WeakSelf
     [ShareSDK getUserInfo:SSDKPlatformTypeQQ onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
         [ShareSDK cancelAuthorize:SSDKPlatformTypeQQ];
         if (state == SSDKResponseStateSuccess) {
-
+            NSDictionary *dic = @{@"headImageUrl": user.icon,@"identifier":user.uid,@"loginType":@"qq",@"nickName":user.nickname};
+            [weakSelf auth:dic];
         }else{
-            [UIAlertView showAlertViewWithTitle:@"提示" message:@"授权失败" cancelButtonTitle:@"确定" otherButtonTitles:nil onDismiss:^(long buttonIndex) {
-                
-            } onCancel:^{
-                
-            }];
+            [YTAlertUtil alertSingleWithTitle:@"提示" message:@"授权失败" defaultTitle:@"确定" defaultHandler:nil completion:nil];
         }
     }];
 }
 #pragma mark - 通知
 //微信授权成功
 - (void)weixinAuthSuccess:(NSNotification*)dic {
-    NSDictionary *dictionary = dic.userInfo;
-
+    NSDictionary *dd = dic.userInfo;
+    NSDictionary *dict = @{@"headImageUrl": dd[@"headimgurl"],@"identifier":dd[@"unionid"],@"loginType":@"wechat",@"nickName":dd[@"nickname"]};
+    [self auth:dict];
+}
+#pragma mark - 请求数据
+- (void)auth:(NSDictionary *)dic {
+    WeakSelf
+    [YSNetworkTool POST:auth params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([YSNetworkTool isSuccessWithResp:responseObject]) {
+            YSAccount *account = [YSAccount mj_objectWithKeyValues:responseObject[kData]];
+            [YSAccountTool saveAccount:account];
+            [weakSelf loadUserInfo];
+        }else{
+            [YTAlertUtil showTempInfo:responseObject[kMessage]];
+        }
+    } failure:nil];
 }
 @end

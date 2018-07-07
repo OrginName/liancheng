@@ -10,6 +10,6 @@
 
 @interface ReleaseTenderCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
-@property (weak, nonatomic) IBOutlet UILabel *detailLab;
+@property (weak, nonatomic) IBOutlet UITextField *detailLab;
 
 @end

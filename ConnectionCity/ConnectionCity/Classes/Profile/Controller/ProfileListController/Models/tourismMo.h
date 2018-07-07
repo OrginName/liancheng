@@ -12,13 +12,13 @@
 
 @interface tourismMo : BaseModel
 /** <#id描述#> */
-@property (nonatomic, assign) NSInteger Id;
+@property (nonatomic, copy) NSString * Id;
 /** <#userId描述#> */
-@property (nonatomic, assign) NSInteger userId;
+@property (nonatomic, copy) NSString * userId;
 /** <#images描述#> */
 @property (nonatomic, copy) NSString *images;
 /** <#cityCode描述#> */
-@property (nonatomic, assign) NSInteger cityCode;
+@property (nonatomic, copy) NSString * cityCode;
 /** <#cityName描述#> */
 @property (nonatomic, copy) NSString *cityName;
 /** <#introduce描述#> */
@@ -26,7 +26,7 @@
 /** <#price描述#> */
 @property (nonatomic, copy) NSString *price;
 /** <#type描述#> */
-@property (nonatomic, assign) NSInteger type;
+@property (nonatomic, copy) NSString * type;
 /** <#createTime描述#> */
 @property (nonatomic, copy) NSString *createTime;
 /** <#comments描述#> */
@@ -34,21 +34,21 @@
 /** <#user描述#> */
 @property (nonatomic, strong) privateUserInfoModel *user;
 /** <#lng描述#> */
-@property (nonatomic, assign) CGFloat lng;
+@property (nonatomic, copy) NSString * lng;
 /** <#lat描述#> */
-@property (nonatomic, assign) CGFloat lat;
+@property (nonatomic, copy) NSString * lat;
 /** <#browseTimes描述#> */
-@property (nonatomic, assign) NSInteger browseTimes;
+@property (nonatomic, copy) NSString * browseTimes;
 /** <#serviceCircleList描述#> */
 @property (nonatomic, copy) NSString *serviceCircleList;
 /** <#score描述#> */
-@property (nonatomic, assign) NSInteger score;
+@property (nonatomic, copy) NSString * score;
 /** <#like描述#> */
 @property (nonatomic, copy) NSString *like;
 /** <#follow描述#> */
 @property (nonatomic, copy) NSString *follow;
 /** <#likeCount描述#> */
-@property (nonatomic, assign) NSInteger likeCount;
+@property (nonatomic, copy) NSString * likeCount;
 /** <#priceUnit描述#> */
 @property (nonatomic, copy) NSString *priceUnit;
 

@@ -732,11 +732,7 @@ handleWatchKitExtensionRequest:(NSDictionary *)userInfo
                 
             }];
         }else{
-            [UIAlertView showAlertViewWithTitle:@"提示" message:@"授权失败" cancelButtonTitle:@"确定" otherButtonTitles:nil onDismiss:^(long buttonIndex) {
-                
-            } onCancel:^{
-                
-            }];
+            [YTAlertUtil alertSingleWithTitle:@"提示" message:@"授权失败" defaultTitle:@"确定" defaultHandler:nil completion:nil];
         }
     }
     

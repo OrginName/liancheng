@@ -110,7 +110,7 @@
                           };
     
     WeakSelf
-    [YSNetworkTool POST:v1TalentTenderPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1TalentTenderMyPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         [weakSelf.dataArr removeAllObjects];
         weakSelf.dataArr = [FirstControllerMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"content"]];
         [weakSelf.tableView reloadData];
@@ -132,7 +132,7 @@
                           };
     
     WeakSelf
-    [YSNetworkTool POST:v1TalentTenderPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1TalentTenderMyPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         for (FirstControllerMo *mo in [FirstControllerMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"content"]]) {
             [weakSelf.dataArr addObject:mo];
         }

@@ -129,7 +129,7 @@
 - (void)v1CommonFollowCreate{
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[6] contentArr][0];
-    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":self.bidid,@"type":@([mo.value integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":@([mo.value integerValue]),@"type":self.bidid} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [YTAlertUtil showTempInfo:responseObject[@"message"]];
     } failure:nil];
 }

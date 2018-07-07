@@ -28,6 +28,7 @@
 @property (nonatomic, copy) NSArray<NSString *> *cellTitles;
 /** 发票cell TextField placeHold数据源数组 */
 @property (nonatomic, strong) NSMutableArray<NSString *> *cellPlaceHolds;
+@property (nonatomic, strong) NSMutableArray *cellCntentText;
 @property (nonatomic, strong) LCDatePicker * myDatePick;
 @property (nonatomic, strong) PhotoSelect * photo;
 @property (nonatomic, strong) NSArray *imageArr;
@@ -55,6 +56,7 @@
     self.navigationItem.title = @"发布招标";
     _cellTitles = @[@"项目标题", @"项目单位", @"招标所在地", @"开标地点", @"招标内容", @"",@"报名/投标时间",@"投标截止时间",@"招标金额",@"联系人",@"联系电话"];
     _cellPlaceHolds = [NSMutableArray arrayWithArray:@[@"请填写项目标题", @"请填写项目单位", @"请选择所在地", @"请填写开标地点", @"请填写招标内容",@"", @"请选择开始时间",@"请选择截止时间",@"请填写金额万元",@"请填写联系人姓名",@"请填写联系电话"]];
+    _cellCntentText = [NSMutableArray arrayWithArray:@[@"", @"", @"", @"", @"",@"", @"",@"",@"",@"",@""]];
     [self initDate];
 }
 - (void)setTableView {
@@ -102,7 +104,8 @@
         return cell2;
     }else{
         cell1.titleLab.text = _cellTitles[indexPath.row];
-        cell1.detailLab.text = _cellPlaceHolds[indexPath.row];
+        cell1.detailLab.placeholder = _cellPlaceHolds[indexPath.row];
+        cell1.detailLab.text = _cellCntentText[indexPath.row];
         return cell1;
     }
 }
@@ -131,7 +134,7 @@
             if (indexPath.row==8) {
                 str = [NSString stringWithFormat:@"%.2f",[str floatValue]];
             }
-            weakSelf.cellPlaceHolds[indexPath.row] = str;
+            weakSelf.cellCntentText[indexPath.row] = str;
             [weakSelf.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
         };
         [self.navigationController pushViewController:edit animated:YES];
@@ -171,13 +174,13 @@
 }
 #pragma mark ---LCDatePickerDelegate-----
 - (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
-    self.cellPlaceHolds[currtenTag] = str;
+    self.cellCntentText[currtenTag] = str;
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:currtenTag inSection:0];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
 }
 #pragma mark - JFCityViewControllerDelegate
 - (void)cityName:(NSString *)name {
-    self.cellPlaceHolds[2] = name;
+    self.cellCntentText[2] = name;
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:2 inSection:0];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
 }
@@ -201,6 +204,13 @@
 }
 #pragma mark - 点击事件
 - (void)nextBtnClick:(UIButton *)btn {
+    for (int i=0; i<self.cellCntentText.count; i++) {
+        NSString *str = self.cellCntentText[i];
+        if ([YSTools dx_isNullOrNilWithObject:str] && i!=5) {
+            [YTAlertUtil showTempInfo:@"请将信息填写完整"];
+            return;
+        }
+    }
     if (self.imageArr.count!=0) {
         [YTAlertUtil showHUDWithTitle:@"正在上传"];
     }else{
@@ -215,17 +225,10 @@
             [weakSelf.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
             if (flag == weakSelf.imageArr.count) {
                 [YTAlertUtil hideHUD];
-                weakSelf.cellPlaceHolds[5] = [weakSelf.Arr_Url componentsJoinedByString:@","];
-                for (int i=0; i<weakSelf.cellPlaceHolds.count; i++) {
-                    NSString *str = weakSelf.cellPlaceHolds[i];
-                    if ([YSTools dx_isNullOrNilWithObject:str]) {
-                        [YTAlertUtil showHUDWithTitle:@"请将信息填写完整"];
-                        return;
-                    }
-                }
+                weakSelf.cellCntentText[5] = [weakSelf.Arr_Url componentsJoinedByString:@","];
                 ZBJFViewController *zbjfVC = [[ZBJFViewController alloc]init];
-                zbjfVC.cellPlaceHolds = weakSelf.cellPlaceHolds;
-                zbjfVC.zbjeStr = weakSelf.cellPlaceHolds[8];
+                zbjfVC.cellCntentText = weakSelf.cellCntentText;
+                zbjfVC.zbjeStr = weakSelf.cellCntentText[8];
                 zbjfVC.mo = weakSelf.citymo;
                 [weakSelf.navigationController pushViewController:zbjfVC animated:YES];
             }

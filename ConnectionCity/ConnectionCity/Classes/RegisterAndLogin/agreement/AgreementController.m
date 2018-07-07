@@ -10,6 +10,7 @@
 #import "AgreementMo.h"
 
 @interface AgreementController ()
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
@@ -32,6 +33,7 @@
     [YSNetworkTool POST:pageInfo params:@{@"alias": self.alias} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         AgreementMo *mo = [AgreementMo mj_objectWithKeyValues:responseObject[kData]];
         weakSelf.navigationItem.title = mo.title;
+        [weakSelf.webView loadHTMLString:mo.content baseURL:nil];
     } failure:nil];
 }
 /*

@@ -28,10 +28,21 @@
     return cell;
 }
 - (IBAction)btn_Click:(UIButton *)sender {
-    if ([self.delegate respondsToSelector:@selector(selectedItemButton:)]) {
-        [self.delegate selectedItemButton:sender.tag];
+    if (_delegate && [_delegate respondsToSelector:@selector(selectedItemButton:index:)]) {
+        [_delegate selectedItemButton:(UIButton *)sender index:sender.tag];
     }
 }
+- (IBAction)resumeeditBtn:(id)sender {
+    if (_delegate && [_delegate respondsToSelector:@selector(selectedItemButton:index:)]) {
+        [_delegate selectedItemButton:(UIButton *)sender index:1];
+    }
+}
+- (IBAction)resumeedeleteBtn:(id)sender {
+    if (_delegate && [_delegate respondsToSelector:@selector(selectedItemButton:index:)]) {
+        [_delegate selectedItemButton:(UIButton *)sender index:2];
+    }
+}
+
 - (void)setResumeModel:(OurResumeMo *)resumeModel {
     _resumeModel = resumeModel;
     self.resumetitleLab.text = resumeModel.introduce;

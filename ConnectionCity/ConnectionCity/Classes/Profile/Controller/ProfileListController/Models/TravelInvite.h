@@ -11,9 +11,9 @@
 
 @interface TravelInvite : BaseModel
 /** <#id描述#> */
-@property (nonatomic, assign) NSInteger Id;
+@property (nonatomic, copy) NSString *Id;
 /** <#userId描述#> */
-@property (nonatomic, assign) NSInteger userId;
+@property (nonatomic, copy) NSString *userId;
 /** <#placeTravel描述#> */
 @property (nonatomic, copy) NSString *placeTravel;
 /** <#startTime描述#> */
@@ -21,7 +21,7 @@
 /** <#description描述#> */
 @property (nonatomic, copy) NSString *descriptionS;
 /** <#cityCode描述#> */
-@property (nonatomic, assign) NSInteger cityCode;
+@property (nonatomic, copy) NSString *cityCode;
 /** <#cityName描述#> */
 @property (nonatomic, copy) NSString *cityName;
 /** <#inviteObject描述#> */

@@ -44,7 +44,7 @@
     return cell;
 }
 #pragma mark ---profileCellDelegate ----
-- (void)selectedItemButton:(NSInteger)index{
+- (void)selectedItemButton:(UIButton *)btn index:(NSInteger)index {
     [YTAlertUtil showTempInfo:@"取消关注"];
     OurConcernMo *mo = self.dataArr[index-100];
     [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":@(mo.typeId),@"type":@(mo.type)} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {

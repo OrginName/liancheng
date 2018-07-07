@@ -16,7 +16,7 @@
 
 @protocol profileCellDelegate <NSObject>
 @optional
-- (void)selectedItemButton:(NSInteger)index;
+- (void)selectedItemButton:(UIButton *)btn index:(NSInteger)index;
 @end
 
 @interface ProfileCell : UITableViewCell
