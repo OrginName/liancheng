@@ -54,7 +54,7 @@ NSString * const YTHttpUtilResponseData = @"Data";
         //如果成功再返回请求结果
         if ([YSTools dx_isNullOrNilWithObject:responseObject[@"data"]]) {
             [YTAlertUtil showTempInfo:responseObject[kMessage]];
-            return;
+//            return;
         }
         if ([[self class] isSuccessWithResp:responseObject]) {
             success ? success(task, responseObject) : nil;

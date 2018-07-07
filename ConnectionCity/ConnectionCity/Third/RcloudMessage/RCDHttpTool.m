@@ -70,7 +70,7 @@
         NSDictionary *result = responseObject[@"data"];
         if (result && [code isEqualToString:@"SUCCESS"]) {
             RCDGroupInfo *group = [[RCDGroupInfo alloc] init];
-            group.groupId = [result objectForKey:@"id"];
+            group.groupId = result[@"id"];
             group.groupName = [result objectForKey:@"name"];
             group.portraitUri = [result objectForKey:@"logo"];
             if (!group.portraitUri || group.portraitUri.length <= 0) {
@@ -81,15 +81,16 @@
             if (!group.introduce) {
                 group.introduce = @"";
             }
+//            group.isJoin = YES;
             NSArray * arr = result[@"userList"];
             group.number = KString(@"%lu", (unsigned long)[arr count]);
             group.maxNumber = [result objectForKey:@"max_number"]?[result objectForKey:@"max_number"]:@"1000";
             group.creatorTime = [result objectForKey:@"createTime"];
-            if (![[result objectForKey:@"deletedAt"] isKindOfClass:[NSNull class]]) {
-                group.isDismiss = @"YES";
-            } else {
+//            if (![[result objectForKey:@"deletedAt"] isKindOfClass:[NSNull class]]) {
+//                group.isDismiss = @"YES";
+//            } else {
                 group.isDismiss = @"NO";
-            }
+//            }
             [[RCDataBaseManager shareInstance] insertGroupToDB:group];
             if ([KString(@"%@", group.groupId) isEqualToString:groupID] && completion) {
                 completion(group);
@@ -121,6 +122,9 @@
                     NSDictionary *dic = responseObject[@"data"];
                     RCUserInfo *user = [RCUserInfo new];
                     user.userId = dic[@"id"];
+//                    if ([user.userId isKindOfClass:[NSNumber class]]) {
+//                        NSLog(@"杀寇决慧点科技阿三奥克斯店哈健康稍等哈手机壳大还是大家卡上");
+//                    }
                     user.name = dic[@"nickName"];
                     user.portraitUri = dic[@"headImage"];
                     if (!user.portraitUri || user.portraitUri.length <= 0) {
@@ -314,7 +318,14 @@
 
 //添加群组成员
 - (void)addUsersIntoGroup:(NSString *)groupID usersId:(NSMutableArray *)usersId complete:(void (^)(BOOL))result {
-    
+    [YSNetworkTool POST:v1ServiceStationBatchsign params:@{@"groupId":groupID,@"userIds":usersId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]) {
+            result(YES);
+        }else
+            result(NO);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        result(NO);
+    }];
 //    [AFHttpTool addUsersIntoGroup:groupID
 //        usersId:usersId
 //        success:^(id response) {
@@ -362,6 +373,15 @@
 
 //解散群组
 - (void)dismissGroupWithGroupId:(NSString *)groupID complete:(void (^)(BOOL))result {
+    [YSNetworkTool POST:v1ServiceStationDelete params:@{@"id":groupID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]) {
+            result(YES);
+        }else{
+            result(NO);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        result(NO);
+    }];
 //    [AFHttpTool dismissGroupWithGroupId:groupID
 //        success:^(id response) {
 //            if ([response[@"code"] integerValue] == 200) {

@@ -303,8 +303,8 @@ preparation before navigation
                                                                            [[RCIM sharedRCIM]
                                                                                refreshGroupInfoCache:groupInfo
                                                                                          withGroupId:groupId];
-                                                                           if (result == YES) {
-                                                                               [self gotoChatView:groupInfo.groupId
+                                                if (result == YES) {
+            [self gotoChatView:groupInfo.groupId
                                                                                         groupName:groupInfo.groupName];
                                                                                //关闭HUD
                                                                                [hud hide:YES];

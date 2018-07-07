@@ -220,6 +220,10 @@ static NSString * const v1ServiceTravelOrderCreate = @"/v1/service/travel/order/
 //服务-旅游列表（分页）
 static NSString * const v1ServiceTravelPage = @"/v1/service/travel/page";
 #pragma mark - 服务-服务站
+//删除服务站
+static NSString * const v1ServiceStationDelete= @"/v1/service/station/delete";
+//加入服务站
+static NSString * const v1ServiceStationBatchsign = @"/v1/service/station/batch-sign";
 //创建服务站
 static NSString * const v1ServiceStationCreate = @"/v1/service/station/create";
 //服务站详情

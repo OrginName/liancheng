@@ -9,6 +9,7 @@
 #import "BaseModel.h"
 
 @interface groupMo : BaseModel
+//@property (nonatomic,assign) NSNumber * ID;
 proStr(ID);
 proStr(name);
 proStr(userId);

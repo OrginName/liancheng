@@ -29,6 +29,10 @@
     [super viewDidLoad];
     [self setUI];
     [self p_initDataSource];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteSuccess) name:@"DELETETEAM" object:nil];
+}
+-(void)deleteSuccess{
+    [self p_initDataSource];
 }
 #pragma mark - setup
 - (void)setUI {
@@ -60,7 +64,7 @@
         cell.peopleNumbersLab.text = KString(@"%lu", (unsigned long)mo.userList.count);
     }else
         cell.peopleNumbersLab.text = @"0";
-    
+    [cell.headerImgeView sd_setImageWithURL:[NSURL URLWithString:mo.logo] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -125,13 +129,13 @@
     CreatGroupController * creat = [CreatGroupController new];
     creat.flag_str = 0;
     creat.block = ^{
-        [self.data_Arr removeAllObjects];
         [self p_initDataSource];
     };
     [self.navigationController pushViewController:creat animated:YES];
 }
 #pragma mark - profile method
 - (void)p_initDataSource {
+    [self.data_Arr removeAllObjects];
     NSMutableArray * arr = [NSMutableArray array];
     NSMutableArray * arr1 = [NSMutableArray array];
     NSMutableArray * arr2 = [NSMutableArray array];

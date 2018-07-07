@@ -13,6 +13,10 @@
 #import "ServiceHomeNet.h"
 #import "QiniuUploader.h"
 #import "AbilityNet.h"
+#import "RCDHttpTool.h"
+#import <RongIMKit/RongIMKit.h>
+#import "RCDHttpTool.h"
+#import "RCDataBaseManager.h"
 @interface CreatGroupController ()
 {
     NSString * _ID;//服务ID
@@ -64,11 +68,26 @@
                            @"type": _ID
                            };
     [YSNetworkTool POST:self.flag_str==1?v1TalentTeamCreate: v1ServiceStationCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        self.block();
-        [self.navigationController popViewControllerAnimated:YES];
-        [YTAlertUtil showTempInfo:responseObject[@"message"]];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [RCDHTTPTOOL getGroupMembersWithGroupId:responseObject[@"data"]
+                                          Block:^(NSMutableArray *result){
+                                              //更新本地数据库中群组成员的信息
+                                          }];
+        RCGroup *groupInfo = [RCGroup new];
+        groupInfo.portraitUri = self.qun_Url;
+        groupInfo.groupId = responseObject[@"data"];
+        groupInfo.groupName = self.txt_name.text;
+        [[RCIM sharedRCIM]refreshGroupInfoCache:groupInfo withGroupId:responseObject[@"data"]];
+        [RCDHTTPTOOL getGroupByID:responseObject[@"data"] successCompletion:^(RCDGroupInfo *group) {
+            [[RCDataBaseManager
+              shareInstance]
+             insertGroupToDB:group];
+            self.block();
+            [self.navigationController popViewControllerAnimated:YES];
+            [YTAlertUtil showTempInfo:responseObject[@"message"]];
+        }];
         
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+
     }];
 }
 -(void)initData{

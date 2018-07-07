@@ -228,7 +228,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                                                                                               complete:^(BOOL results){
 
                                                                                               }];
-                                              for (RCDUserInfo *user in result) {
+                                              for (RCDUserInfo *user in result) { 
                                                   [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:KString(@"%@", user.userId)];
                                               }
                                           }
@@ -619,6 +619,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                                                                                     targetId:groupId];
                                            [[RCDataBaseManager shareInstance] deleteGroupToDB:groupId];
                                            [self.navigationController popToRootViewControllerAnimated:YES];
+                                           [[NSNotificationCenter defaultCenter] postNotificationName:@"DELETETEAM" object:nil];
                                        } else {
                                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
                                                                                                message:@"解散群组失败！"
