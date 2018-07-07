@@ -100,13 +100,17 @@
     WeakSelf
     [YSNetworkTool POST:v1PrivateUserInfo params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         weakSelf.userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
-        //weakSelf.tableHeadV.mmmmodel = weakSelf.userInfoModel;
-
-        //通知主线程刷新
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //回调或者说是通知主线程刷新，
-            weakSelf.tableHeadV.mmmmodel = weakSelf.userInfoModel;
-        });
+            [weakSelf.tableHeadV.twoBackgroundImage sd_setImageWithURL:[NSURL URLWithString:weakSelf.userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
+            [weakSelf.tableHeadV.twoHeadImage sd_setImageWithURL:[NSURL URLWithString:weakSelf.userInfoModel.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
+            weakSelf.tableHeadV.twoNickName.text = weakSelf.userInfoModel.nickName;
+    } failure:nil];
+}
+//用户svip详情
+- (void)requestMembershipUserSvip {
+    WeakSelf
+    [YSNetworkTool POST:v1MembershipUserSvip params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        weakSelf.tableHeadV.twoSvipBtn.hidden = NO;
+        weakSelf.tableHeadV.twoSvipTimeLab.text = @"xxxx.xx.xx";
     } failure:nil];
 }
 

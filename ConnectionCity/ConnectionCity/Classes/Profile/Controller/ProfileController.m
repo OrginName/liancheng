@@ -47,6 +47,8 @@
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     //获取用户信息
     [self requestV1PrivateUserInfo];
+    //用户svip详情
+    [self requestMembershipUserSvip];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -134,15 +136,24 @@
         privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
         [YSAccountTool saveUserinfo:userInfoModel];
         
-        [weakSelf.tableHeadV.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"1"]];
-        [weakSelf.tableHeadV.headImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage]];
+        [weakSelf.tableHeadV.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
+        [weakSelf.tableHeadV.headImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
         weakSelf.tableHeadV.nickName.text = userInfoModel.nickName;
         weakSelf.tableHeadV.genderName.text = userInfoModel.genderName;
-        weakSelf.tableHeadV.age.text = userInfoModel.age;
+        weakSelf.tableHeadV.age.text = [NSString stringWithFormat:@"%@岁",userInfoModel.age];
         weakSelf.tableHeadV.centerLab.text = [NSString stringWithFormat:@"%@  %@CM  %@KG  %@  %@",userInfoModel.cityName,userInfoModel.height,userInfoModel.weight,userInfoModel.educationName,userInfoModel.marriageName];
+    } failure:nil];
+}
+//用户svip详情
+- (void)requestMembershipUserSvip {
+    WeakSelf
+    [YSNetworkTool POST:v1MembershipUserSvip params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        weakSelf.tableHeadV.svipLogoBtn.hidden = NO;
+        weakSelf.tableHeadV.svipxfBtn.hidden = NO;
         weakSelf.tableHeadV.svipTimeLab.text = @"xxxx.xx.xx到期";
     } failure:nil];
 }
+
 /*
 #pragma mark - Navigation
 

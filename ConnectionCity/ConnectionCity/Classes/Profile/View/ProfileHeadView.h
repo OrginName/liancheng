@@ -28,13 +28,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *genderName;
 @property (weak, nonatomic) IBOutlet UILabel *age;
 @property (weak, nonatomic) IBOutlet UILabel *centerLab;
+@property (weak, nonatomic) IBOutlet UIButton *svipLogoBtn;
 @property (weak, nonatomic) IBOutlet UILabel *svipTimeLab;
-
+@property (weak, nonatomic) IBOutlet UIButton *svipxfBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *twoBackgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *twoHeadImage;
 @property (weak, nonatomic) IBOutlet UILabel *twoNickName;
 @property (weak, nonatomic) IBOutlet UILabel *twoSvipTimeLab;
-
-@property (nonatomic, strong) privateUserInfoModel *mmmmodel;
+@property (weak, nonatomic) IBOutlet UIButton *twoSvipBtn;
 
 @end

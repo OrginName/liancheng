@@ -29,6 +29,7 @@
     [super viewDidLoad];
     [self setUI];
     [self requestV1PrivateUserInfo];
+    [self requestMembershipUserSvip];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -79,9 +80,15 @@
     [YSNetworkTool POST:v1PrivateUserInfo params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
         userInfoModel.ID = responseObject[@"data"][@"id"];
-        [weakSelf.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"1"]];
-        [weakSelf.headImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage]];
+        [weakSelf.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
+        [weakSelf.headImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
         weakSelf.nickName.text = userInfoModel.nickName;
+    } failure:nil];
+}
+//用户svip详情
+- (void)requestMembershipUserSvip {
+    WeakSelf
+    [YSNetworkTool POST:v1MembershipUserSvip params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         weakSelf.svipTimeLab.text = @"xxxx.xx.xx到期";
     } failure:nil];
 }

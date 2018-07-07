@@ -18,10 +18,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLS-An-dIm">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="vAW-S8-1HF">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="vAW-S8-1HF">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ch-02-h" translatesAutoresizingMaskIntoConstraints="NO" id="ISS-C6-JWx">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="our-center-1" translatesAutoresizingMaskIntoConstraints="NO" id="ISS-C6-JWx">
                             <rect key="frame" x="160.5" y="70" width="54" height="54"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="54" id="Dz2-IN-TgS"/>
@@ -40,8 +40,8 @@
                                 <action selector="refreshBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="H2I-rP-YZk"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfB-Ks-QDG">
-                            <rect key="frame" x="160.5" y="70" width="53.5" height="54"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfB-Ks-QDG">
+                            <rect key="frame" x="160.5" y="70" width="54" height="54"/>
                             <connections>
                                 <action selector="photoBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="lka-2N-2lT"/>
                             </connections>
@@ -80,8 +80,8 @@
         </view>
     </objects>
     <resources>
-        <image name="1" width="639" height="512"/>
-        <image name="ch-02-h" width="20" height="20"/>
+        <image name="2" width="600" height="366"/>
+        <image name="our-center-1" width="22" height="22"/>
         <image name="our-change005" width="24" height="24"/>
     </resources>
 </document>

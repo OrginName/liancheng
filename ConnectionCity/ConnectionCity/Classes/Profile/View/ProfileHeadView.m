@@ -14,7 +14,6 @@
     [super awakeFromNib];
     // Initialization code
     
-    self.mmmmodel = _mmmmodel;
     _headImage.layer.cornerRadius = 27;
     _headImage.clipsToBounds = YES;
     _twoHeadImage.layer.cornerRadius = 27;
@@ -31,13 +30,6 @@
     if (_delegate && [_delegate respondsToSelector:@selector(profileHeadView:xfBtnClick:)]) {
         [_delegate profileHeadView:self xfBtnClick:(UIButton *)sender];
     }
-}
-- (void)setMmmmodel:(privateUserInfoModel *)mmmmodel{
-    _mmmmodel = mmmmodel;
-    [self.twoBackgroundImage sd_setImageWithURL:[NSURL URLWithString:mmmmodel.backgroundImage] placeholderImage:[UIImage imageNamed:@"1"]];
-    [self.twoHeadImage sd_setImageWithURL:[NSURL URLWithString:mmmmodel.headImage]];
-    self.twoNickName.text = mmmmodel.nickName;
-    self.twoSvipTimeLab.text = @"xxxx.xx.xx";
 }
 
 /*

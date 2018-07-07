@@ -25,9 +25,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-//    [self requestv1MembershipSvipInfo];
-//    [self requestv1MembershipSvipRecharge];
-    [self requestMembershipUserSvip];
+    //获取svip套餐详情
+    [self requestv1MembershipSvipInfo];
+    //用户svip详情
+//    [self requestMembershipUserSvip];
     
     // Do any additional setup after loading the view from its nib.
 }

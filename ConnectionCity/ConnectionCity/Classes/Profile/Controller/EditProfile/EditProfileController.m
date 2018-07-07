@@ -240,9 +240,9 @@
         [YSAccountTool saveUserinfo:userInfoModel];
         
         NSMutableArray *firstMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.nickName?userInfoModel.nickName:@"",userInfoModel.realName?userInfoModel.realName:@"",userInfoModel.age?userInfoModel.age:@"",userInfoModel.genderName?userInfoModel.genderName:@"",userInfoModel.cityName?userInfoModel.cityName:@""]];
-        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.height?userInfoModel.height:@"",userInfoModel.weight?userInfoModel.weight:@"",userInfoModel.marriageName?userInfoModel.marriageName:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.sign?userInfoModel.sign:@""]];
+        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.height?[NSString stringWithFormat:@"%@CM",userInfoModel.height]:@"",userInfoModel.weight?[NSString stringWithFormat:@"%@KG",userInfoModel.weight]:@"",userInfoModel.marriageName?userInfoModel.marriageName:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.sign?userInfoModel.sign:@""]];
         weakSelf.contentDataArr = [[NSMutableArray alloc]initWithArray:@[firstMutArr,secondMutArr]];
-        [weakSelf.tableHeadV.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"1"]];
+        [weakSelf.tableHeadV.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
         [weakSelf.tableHeadV.headImage sd_setBackgroundImageWithURL:[NSURL URLWithString:userInfoModel.headImage] forState:UIControlStateNormal];
         [weakSelf.tableView reloadData];
     } failure:nil];
@@ -254,10 +254,10 @@
         [YSAccountTool saveUserinfo:userInfoModel];
         
         NSMutableArray *firstMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.nickName?userInfoModel.nickName:@"",userInfoModel.realName?userInfoModel.realName:@"",userInfoModel.age?userInfoModel.age:@"",userInfoModel.genderName?userInfoModel.genderName:@"",userInfoModel.cityName?userInfoModel.cityName:@""]];
-        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.height?userInfoModel.height:@"",userInfoModel.weight?userInfoModel.weight:@"",userInfoModel.marriageName?userInfoModel.marriageName:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.sign?userInfoModel.sign:@""]];
+        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.height?[NSString stringWithFormat:@"%@CM",userInfoModel.height]:@"",userInfoModel.weight?[NSString stringWithFormat:@"%@KG",userInfoModel.weight]:@"",userInfoModel.marriageName?userInfoModel.marriageName:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.sign?userInfoModel.sign:@""]];
         weakSelf.contentDataArr = [[NSMutableArray alloc]initWithArray:@[firstMutArr,secondMutArr]];
-        [weakSelf.tableHeadV.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"1"]];
-        [weakSelf.tableHeadV.headImage sd_setBackgroundImageWithURL:[NSURL URLWithString:userInfoModel.headImage] forState:UIControlStateNormal];
+        [weakSelf.tableHeadV.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
+        [weakSelf.tableHeadV.headImage sd_setBackgroundImageWithURL:[NSURL URLWithString:userInfoModel.headImage] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"our-center-1"]];
         [weakSelf.tableView reloadData];
     } failure:nil];
 }

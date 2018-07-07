@@ -18,18 +18,18 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRV-wf-20O">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="247"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="rta-ti-fu8">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="rta-ti-fu8">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="247"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ch-02-h" translatesAutoresizingMaskIntoConstraints="NO" id="k30-U3-4pb">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="our-center-1" translatesAutoresizingMaskIntoConstraints="NO" id="k30-U3-4pb">
                             <rect key="frame" x="160.5" y="70" width="54" height="54"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="54" id="BUm-w2-pu6"/>
                                 <constraint firstAttribute="height" constant="54" id="v4g-hx-LWy"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="女" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOR-in-AU6">
-                            <rect key="frame" x="182" y="135" width="11.5" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOR-in-AU6">
+                            <rect key="frame" x="188" y="135" width="0.0" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="M6L-iT-A36"/>
                             </constraints>
@@ -37,8 +37,8 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iga-dI-MYH">
-                            <rect key="frame" x="198.5" y="135" width="14" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iga-dI-MYH">
+                            <rect key="frame" x="193" y="135" width="0.0" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="Sow-Q8-bbm"/>
                             </constraints>
@@ -46,14 +46,14 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高圆圆" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXO-cg-aGE">
-                            <rect key="frame" x="10" y="135" width="167" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXO-cg-aGE">
+                            <rect key="frame" x="10" y="135" width="173" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9x-qj-u3n">
-                            <rect key="frame" x="217.5" y="135" width="21" height="21"/>
+                            <rect key="frame" x="198" y="135" width="21" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="21" id="LEq-Ur-kLz"/>
                             </constraints>
@@ -62,7 +62,7 @@
                                 <action selector="editBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="kfN-W9-yHf"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国 江苏 苏州  170cm  50kg  硕士  未婚" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuh-50-UY6">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuh-50-UY6">
                             <rect key="frame" x="18" y="164" width="339" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="Sfi-3F-eHv"/>
@@ -71,8 +71,8 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018.04.28到期" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zx3-u3-IcN">
-                            <rect key="frame" x="150.5" y="185" width="75" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zx3-u3-IcN">
+                            <rect key="frame" x="188" y="185" width="0.0" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="dGo-Ay-wBM"/>
                             </constraints>
@@ -80,15 +80,15 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMQ-S0-P5L">
-                            <rect key="frame" x="107.5" y="185" width="38" height="21"/>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMQ-S0-P5L">
+                            <rect key="frame" x="145" y="185" width="38" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="tMw-Q6-Q3Q"/>
                             </constraints>
                             <state key="normal" image="svip"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOB-8t-lYe">
-                            <rect key="frame" x="230.5" y="185" width="30" height="21"/>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOB-8t-lYe">
+                            <rect key="frame" x="193" y="185" width="30" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="N5E-ok-Z49"/>
                             </constraints>
@@ -148,11 +148,9 @@
                 <outlet property="genderName" destination="NOR-in-AU6" id="jXl-Xm-LmS"/>
                 <outlet property="headImage" destination="k30-U3-4pb" id="7jr-F4-Eqo"/>
                 <outlet property="nickName" destination="mXO-cg-aGE" id="Y8g-Z3-DaQ"/>
+                <outlet property="svipLogoBtn" destination="qMQ-S0-P5L" id="tfc-4B-7RJ"/>
                 <outlet property="svipTimeLab" destination="Zx3-u3-IcN" id="PRr-gX-9Np"/>
-                <outlet property="twoBackgroundImage" destination="iYE-KN-yMI" id="2gx-Ss-USF"/>
-                <outlet property="twoHeadImage" destination="IHX-nw-sXe" id="5Ml-Hn-Yqz"/>
-                <outlet property="twoNickName" destination="oId-6Z-dIz" id="BVP-u5-9RA"/>
-                <outlet property="twoSvipTimeLab" destination="ToW-30-1eG" id="3pZ-Os-0oB"/>
+                <outlet property="svipxfBtn" destination="gOB-8t-lYe" id="eQh-EM-ql3"/>
             </connections>
             <point key="canvasLocation" x="21.5" y="-164.5"/>
         </view>
@@ -166,27 +164,27 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="iYE-KN-yMI">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="362"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ch-02-h" translatesAutoresizingMaskIntoConstraints="NO" id="IHX-nw-sXe">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="our-center-1" translatesAutoresizingMaskIntoConstraints="NO" id="IHX-nw-sXe">
                             <rect key="frame" x="160.5" y="154" width="54" height="54"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="54" id="A8T-HV-jdA"/>
                                 <constraint firstAttribute="height" constant="54" id="C8G-jM-8oF"/>
                             </constraints>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCa-Yq-XWe">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tCa-Yq-XWe">
                             <rect key="frame" x="168" y="193" width="38" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="zEc-a0-4pH"/>
                             </constraints>
                             <state key="normal" image="svip"/>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高圆圆" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oId-6Z-dIz">
-                            <rect key="frame" x="160" y="224" width="55.5" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oId-6Z-dIz">
+                            <rect key="frame" x="188" y="224" width="0.0" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018.24.28" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToW-30-1eG">
-                            <rect key="frame" x="156" y="250" width="64" height="14.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToW-30-1eG">
+                            <rect key="frame" x="188" y="229" width="0.0" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -220,16 +218,16 @@
                 <outlet property="twoBackgroundImage" destination="iYE-KN-yMI" id="4Nl-nW-XNq"/>
                 <outlet property="twoHeadImage" destination="IHX-nw-sXe" id="bFx-fH-WT8"/>
                 <outlet property="twoNickName" destination="oId-6Z-dIz" id="Srn-Wm-t94"/>
+                <outlet property="twoSvipBtn" destination="tCa-Yq-XWe" id="SJC-Jr-tXB"/>
                 <outlet property="twoSvipTimeLab" destination="ToW-30-1eG" id="INI-YN-atS"/>
             </connections>
-            <point key="canvasLocation" x="-52" y="312"/>
+            <point key="canvasLocation" x="-52.5" y="312"/>
         </view>
     </objects>
     <resources>
-        <image name="1" width="639" height="512"/>
         <image name="2" width="600" height="366"/>
-        <image name="ch-02-h" width="20" height="20"/>
         <image name="edit-people1" width="17" height="17"/>
+        <image name="our-center-1" width="22" height="22"/>
         <image name="svip" width="38" height="14"/>
     </resources>
 </document>

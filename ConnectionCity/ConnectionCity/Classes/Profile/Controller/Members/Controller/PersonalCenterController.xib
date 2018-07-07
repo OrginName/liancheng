@@ -30,17 +30,17 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tL1-0d-zGd">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="nsL-ov-9Jj">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="nsL-ov-9Jj">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ch-02-h" translatesAutoresizingMaskIntoConstraints="NO" id="p5y-ki-SHH">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="our-center-1" translatesAutoresizingMaskIntoConstraints="NO" id="p5y-ki-SHH">
                             <rect key="frame" x="160.5" y="70" width="54" height="54"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="54" id="DF7-Uu-oOW"/>
                                 <constraint firstAttribute="width" constant="54" id="K9q-X0-abx"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高圆圆" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4J5-hr-J2O">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4J5-hr-J2O">
                             <rect key="frame" x="5" y="129" width="365" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="fBa-gB-85S"/>
@@ -49,8 +49,8 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018.04.28到期" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odk-LH-an2">
-                            <rect key="frame" x="150.5" y="155" width="75" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odk-LH-an2">
+                            <rect key="frame" x="188" y="155" width="0.0" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="nTW-mE-APV"/>
                             </constraints>
@@ -350,10 +350,10 @@
         </view>
     </objects>
     <resources>
-        <image name="1" width="639" height="512"/>
-        <image name="ch-02-h" width="20" height="20"/>
+        <image name="2" width="600" height="366"/>
         <image name="kaidazhong" width="104" height="60"/>
         <image name="our-bbb" width="22" height="22"/>
+        <image name="our-center-1" width="22" height="22"/>
         <image name="our-menu" width="22" height="22"/>
         <image name="our-nianfei" width="23" height="23"/>
         <image name="our-vip001" width="23" height="23"/>
