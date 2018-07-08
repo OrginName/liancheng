@@ -88,6 +88,31 @@
                                                               ]];
     ReleaseTenderController *releasevc = [[ReleaseTenderController alloc]init];
     releasevc.cellCntentText = mutArr;
+//    releasevc.imageArr = [mo.tenderImages componentsSeparatedByString:@","];
+    NSArray *arr = [mo.tenderImages componentsSeparatedByString:@","];
+    releasevc.Arr_Url = [NSMutableArray arrayWithArray:arr];
+//    for (int i=0; i<arr.count; i++) {
+//        if ([arr[i] length]!=0) {
+//            [releasevc.photo.selectedPhotos addObject:arr[i]];
+//            [releasevc.photo.selectedAssets addObject:@{@"name":arr[i],@"filename":@"image"}];
+//        }
+//    }
+    
+//    {
+//        _isPic = 1;
+//        _imageURL = self.receive_Moment.images;
+//        NSArray * arr = [self.receive_Moment.images componentsSeparatedByString:@";"];
+//        for (int i=0; i<arr.count; i++) {
+//            if ([arr[i] length]!=0) {
+//                [self.photo.selectedPhotos addObject:arr[i]];
+//                [self.photo.selectedAssets addObject:@{@"name":arr[i],@"filename":@"image"}];
+//                //                setProperty:ALAssetTypeVideo forKey:ALAssetPropertyType
+//                //                [self.photo.selectedAssets[i] setvalueforpr];
+//            }
+//        }
+//    }
+    
+    
     CityMo *cityMo = [[CityMo alloc]init];
     cityMo.ID = mo.areaCode;
     cityMo.name = mo.cityName;

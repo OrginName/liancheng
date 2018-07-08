@@ -18,6 +18,7 @@
 #import "LCDatePicker.h"
 #import "FirstControllerMo.h"
 #import "WinnerInfoController.h"
+#import "DubTimeSlectorController.h"
 
 @interface FirstController ()<FirstSectionHeadVDelegate,FirstTableViewCellDelegate,JFCityViewControllerDelegate,LCDatePickerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -29,6 +30,8 @@
 @property (nonatomic, strong) NSString *industryCategoryId;
 @property (nonatomic, strong) NSString *industryCategoryName;
 @property (nonatomic, strong) NSString *timeStr;
+@property (nonatomic, strong) NSString *startTime;
+@property (nonatomic, strong) NSString *endTime;
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, assign) NSInteger page;
 
@@ -147,26 +150,35 @@
     class.block1 = ^(NSString *classifiationID, NSString *classifiation) {
         weakSelf.industryCategoryId = classifiationID;
         weakSelf.industryCategoryName = classifiation;
-        [weakSelf v1TalentTenderPage];
+        [YSRefreshTool beginRefreshingWithView:weakSelf.tableView];
     };
     [self.navigationController pushViewController:class animated:YES];
 }
 - (void)firstSectionHeadV:(FirstSectionHeadV *)view timeBtnClick:(UIButton *)btn {
-    [self.myDatePick animateShow];
+    //[self.myDatePick animateShow];
+    DubTimeSlectorController *timevc = [[DubTimeSlectorController alloc]init];
+    WeakSelf
+    timevc.timeBlock = ^(NSString *startTime, NSString *endTime) {
+        NSLog(@"startTime:%@,endTime:%@",startTime,endTime);
+        weakSelf.startTime = startTime;
+        weakSelf.endTime = endTime;
+        [YSRefreshTool beginRefreshingWithView:weakSelf.tableView];
+    };
+    [self.navigationController pushViewController:timevc animated:YES];
 }
 #pragma mark - JFCityViewControllerDelegate
 - (void)cityName:(NSString *)name {
-    
+    YTLog(@"%@",name);
 }
 -(void)cityMo:(CityMo *)mo{
     self.areaName = mo.name;
     self.areaCode = mo.ID;
-    [self v1TalentTenderPage];
+    [YSRefreshTool beginRefreshingWithView:self.tableView];
 }
 #pragma mark ---LCDatePickerDelegate-----
 - (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
     self.timeStr = str;
-    [self v1TalentTenderPage];
+    [YSRefreshTool beginRefreshingWithView:self.tableView];
 }
 #pragma mark - 接口请求
 - (void)addHeaderRefresh {
@@ -230,9 +242,6 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [YSRefreshTool endRefreshingWithView:self.tableView];
     }];
-}
-- (void)v1TalentTenderPage{
-    [YSRefreshTool beginRefreshingWithView:self.tableView];
 }
 
 /*

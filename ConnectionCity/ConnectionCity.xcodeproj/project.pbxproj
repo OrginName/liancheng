@@ -452,6 +452,8 @@
 		CE24791620CEC9F100D4C396 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE24791520CEC9F100D4C396 /* EGOCache.m */; };
 		CE2C401620EF87E700D33B17 /* RCDAddressBookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2C401420EF87E600D33B17 /* RCDAddressBookTableViewCell.m */; };
 		CE2C401920EF925000D33B17 /* ZWCustomPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2C401820EF925000D33B17 /* ZWCustomPointAnnotation.m */; };
+		CE2C401D20F1EAF100D33B17 /* DubTimeSlectorController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2C401B20F1EAF100D33B17 /* DubTimeSlectorController.m */; };
+		CE2C401E20F1EAF100D33B17 /* DubTimeSlectorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2C401C20F1EAF100D33B17 /* DubTimeSlectorController.xib */; };
 		CE5C27FA20B8FE0A006A8332 /* BiddInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C27F820B8FE0A006A8332 /* BiddInfoController.m */; };
 		CE5C27FB20B8FE0A006A8332 /* BiddInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C27F920B8FE0A006A8332 /* BiddInfoController.xib */; };
 		CE5C27FE20B8FE3A006A8332 /* BiddInfoHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C27FD20B8FE3A006A8332 /* BiddInfoHeadView.m */; };
@@ -1378,6 +1380,9 @@
 		CE2C401520EF87E600D33B17 /* RCDAddressBookTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDAddressBookTableViewCell.h; sourceTree = "<group>"; };
 		CE2C401720EF924F00D33B17 /* ZWCustomPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZWCustomPointAnnotation.h; sourceTree = "<group>"; };
 		CE2C401820EF925000D33B17 /* ZWCustomPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZWCustomPointAnnotation.m; sourceTree = "<group>"; };
+		CE2C401A20F1EAF100D33B17 /* DubTimeSlectorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DubTimeSlectorController.h; sourceTree = "<group>"; };
+		CE2C401B20F1EAF100D33B17 /* DubTimeSlectorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DubTimeSlectorController.m; sourceTree = "<group>"; };
+		CE2C401C20F1EAF100D33B17 /* DubTimeSlectorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DubTimeSlectorController.xib; sourceTree = "<group>"; };
 		CE5C27F720B8FE0A006A8332 /* BiddInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BiddInfoController.h; sourceTree = "<group>"; };
 		CE5C27F820B8FE0A006A8332 /* BiddInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BiddInfoController.m; sourceTree = "<group>"; };
 		CE5C27F920B8FE0A006A8332 /* BiddInfoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BiddInfoController.xib; sourceTree = "<group>"; };
@@ -3618,6 +3623,9 @@
 				727418CE20B1A058001D6BE1 /* FirstController.h */,
 				727418CF20B1A058001D6BE1 /* FirstController.m */,
 				727418D020B1A058001D6BE1 /* FirstController.xib */,
+				CE2C401A20F1EAF100D33B17 /* DubTimeSlectorController.h */,
+				CE2C401B20F1EAF100D33B17 /* DubTimeSlectorController.m */,
+				CE2C401C20F1EAF100D33B17 /* DubTimeSlectorController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4093,6 +4101,7 @@
 				723F4FA220BED37800AF8268 /* TrvalCell.xib in Resources */,
 				72EC1B5C20B7027000ACC20B /* SwapListController.xib in Resources */,
 				CE97DBF620B5A2C1003E46BD /* ReleaseTenderCell.xib in Resources */,
+				CE2C401E20F1EAF100D33B17 /* DubTimeSlectorController.xib in Resources */,
 				CEC4A54E20C3FE070026EE19 /* MenuIcons.plist in Resources */,
 				CEE4B29D20C6B67A008B8731 /* NearManCell.xib in Resources */,
 				8D12931320E5F16D0008BD6F /* EditCircleController.xib in Resources */,
@@ -4690,6 +4699,7 @@
 				8DE4662720EDF51C009730F7 /* RCDPrivateSettingsTableViewController.m in Sources */,
 				8D22C37520C7E54D004DC8F4 /* TransactionRecordController.m in Sources */,
 				72EBB8D120C8184700F670E9 /* SetController.m in Sources */,
+				CE2C401D20F1EAF100D33B17 /* DubTimeSlectorController.m in Sources */,
 				8DE4662420EDF4F0009730F7 /* RCDPrivateSettingViewController.m in Sources */,
 				8DE4664C20EDF71B009730F7 /* RCLocationConvert.m in Sources */,
 				7294185320AD11E00054B71D /* SearchCell.m in Sources */,

@@ -12,7 +12,6 @@
 #import "EditAllController.h"
 #import "LCDatePicker.h"
 #import "JFCityViewController.h"
-#import "PhotoSelect.h"
 #import "QiniuUploader.h"
 #import "ZBJFViewController.h"
 
@@ -28,9 +27,6 @@
 /** 发票cell TextField placeHold数据源数组 */
 @property (nonatomic, strong) NSMutableArray<NSString *> *cellPlaceHolds;
 @property (nonatomic, strong) LCDatePicker * myDatePick;
-@property (nonatomic, strong) PhotoSelect * photo;
-@property (nonatomic, strong) NSArray *imageArr;
-@property (nonatomic, strong) NSMutableArray *Arr_Url;
 
 @end
 
@@ -81,7 +77,9 @@
     self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
     self.myDatePick.delegate  = self;
     [self.view addSubview:self.myDatePick];
-    self.Arr_Url = [NSMutableArray array];
+    if (!_Arr_Url) {
+        self.Arr_Url = [NSMutableArray array];
+    }
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -99,6 +97,17 @@
         self.photo.maxCountTF = 3;
         self.photo.maxCountForRow = 3;
         [cell2.photoBgView addSubview: self.photo];
+        
+        
+        for (int i=0; i<self.Arr_Url.count; i++) {
+            if ([self.Arr_Url[i] length]!=0) {
+                [self.photo.selectedPhotos addObject:self.Arr_Url[i]];
+                [self.photo.selectedAssets addObject:@{@"name":self.Arr_Url[i],@"filename":@"image"}];
+            }
+        }
+        
+        
+        
         return cell2;
     }else{
         cell1.titleLab.text = _cellTitles[indexPath.row];
