@@ -63,7 +63,7 @@
                            @"pageNumber": @(_page),
                            @"pageSize": @15
                            };
-    [CircleNet requstCirclelDic:dic withSuc:^(NSMutableArray *successArrValue) {
+    [CircleNet requstCirclelDic:dic flag:@"Friend" withSuc:^(NSMutableArray *successArrValue) {
         if (_page==1) {
             [self.data_Arr removeAllObjects];
         }

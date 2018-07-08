@@ -60,6 +60,7 @@
         cell.peopleNumbersLab.text = KString(@"%lu", (unsigned long)mo.userList.count);
     }else
         cell.peopleNumbersLab.text = @"0";
+    [cell.headerImgeView sd_setImageWithURL:[NSURL URLWithString:mo.logo] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

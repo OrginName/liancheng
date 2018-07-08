@@ -26,7 +26,8 @@
 }
 -(void)ClearAll{
     [YTAlertUtil showTempInfo:@"清空"];
-    [YSNetworkTool POST:v1ServiceCircleDelete params:@{@"id":self.receiveMo.ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSString * url = [self.flagStr isEqualToString:@"HomeSend"]?v1FriendCircleDelete:v1ServiceCircleDelete;
+    [YSNetworkTool POST:url params:@{@"id":self.receiveMo.ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         self.block();
         [self.navigationController popViewControllerAnimated:YES];
         [YTAlertUtil showTempInfo:@"删除成功"];

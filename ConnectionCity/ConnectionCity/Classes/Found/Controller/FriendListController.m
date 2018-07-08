@@ -11,6 +11,7 @@
 #import "FriendMyselfTab.h"
 #import "CustomButton.h"
 #import "SendMomentController.h"
+#define HOMESEND @"HomeSend"
 @interface FriendListController ()
 {
     int i;
@@ -34,6 +35,7 @@
     self.tabBarController.tabBar.hidden = YES;
 }
 -(void)setUI{
+    self.title = @"朋友圈";
     //    UIButton * btn = [self.view viewWithTag:1];
     //    btn.selected = YES;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
@@ -51,17 +53,16 @@
 //发布朋友圈
 -(void)SendFriend{
     SendMomentController * send = [SendMomentController new];
-    send.flagStr = @"HomeSend";
+    send.flagStr = HOMESEND;
     send.block = ^{
-//        [self.frendTab.mj_header beginRefreshing];
-//        [self.frendVedio.mj_header beginRefreshing];
+        [self.frendTab.mj_header beginRefreshing];
     };
     [self.navigationController pushViewController:send animated:YES];
 }
 - (IBAction)tagSelectClick:(CustomButton *)sender {
     if ([self.tabBarItem.title isEqualToString:@"圈子"]&&sender.tag!=1) {
         self.btn_picTxt.selected= NO;
-    }else if ([self.tabBarItem.title isEqualToString:@"我的"]&&sender.tag!=3) {
+    }else if ([self.tabBarItem.title isEqualToString:@"我的"]&&sender.tag!=2) {
         self.btn_My.selected= NO;
     }
      if(sender.tag==2){
@@ -69,7 +70,7 @@
         self.frendMyselfTab.hidden = NO;
         self.navigationItem.title = @"我的";
     }else{
-        self.navigationItem.title = @"圈子";
+        self.navigationItem.title = @"朋友圈";
         self.frendTab.hidden = NO;
         self.frendMyselfTab.hidden = YES;
     }
@@ -90,6 +91,7 @@
     if (!_frendTab) {
         _frendTab = [[FriendCirleTab alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth-20, kScreenHeight-134) withControll:self];
         _frendTab.hidden = NO;
+        _frendTab.flagStr = HOMESEND;
     }
     return _frendTab;
 }
@@ -98,6 +100,7 @@
     if (!_frendMyselfTab) {
         _frendMyselfTab = [[FriendMyselfTab alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth-20, kScreenHeight-134) style:UITableViewStyleGrouped withControll:self];
         _frendMyselfTab.hidden = YES;
+        _frendTab.flagStr = HOMESEND;
     }
     return _frendMyselfTab;
 }

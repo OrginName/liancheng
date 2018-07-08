@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FriendMyselfTab : UITableView
+@property (nonatomic,strong)NSString * flagStr;
 -(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style withControll:(UIViewController *)control;
 @end

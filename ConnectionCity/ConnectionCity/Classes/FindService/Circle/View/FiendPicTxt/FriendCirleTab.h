@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FriendCirleTab : UITableView
+@property (nonatomic,strong)NSString * flagStr;
 -(instancetype)initWithFrame:(CGRect)frame withControll:(UIViewController *)control;
 @end

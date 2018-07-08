@@ -10,6 +10,7 @@
 #import "Moment.h"
 typedef void(^BtnDeleteBlock)(void);
 @interface MomentDetailController : BaseViewController
+@property (nonatomic,strong) NSString * flagStr;
 @property (nonatomic,strong)Moment * receiveMo;
 @property (nonatomic,copy)BtnDeleteBlock block;
 @end

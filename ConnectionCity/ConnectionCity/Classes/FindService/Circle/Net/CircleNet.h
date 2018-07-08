@@ -20,7 +20,7 @@ typedef void (^FailErrBlock) (NSError * failValue);
  
  @param sucBlock 成功回调
  */
-+(void)requstCirclelDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock FailErrBlock:(FailErrBlock)failErrBlock;
++(void)requstCirclelDic:(NSDictionary *) param flag:(NSString *)flag withSuc:(SuccessArrBlock)sucBlock FailErrBlock:(FailErrBlock)failErrBlock;
 /**
  评论发送列表
  

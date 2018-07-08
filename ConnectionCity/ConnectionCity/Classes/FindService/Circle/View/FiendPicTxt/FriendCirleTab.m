@@ -14,6 +14,7 @@
 #import "CircleNet.h"
 #import "privateUserInfoModel.h"
 #import "AllDicMo.h"
+#import <IQKeyboardManager.h>
 @interface FriendCirleTab()<UITableViewDelegate,UITableViewDataSource,MomentCellDelegate>
 {
     NSInteger _page;
@@ -69,7 +70,12 @@
         [YTAlertUtil showTempInfo:@"请输入评论内容"];
         return;
     }
-    AllContentMo * mo = [arr[5] contentArr][4];
+    AllContentMo * mo;
+    if ([self.flagStr isEqualToString:@"HomeSend"]){
+        mo = [arr[5] contentArr][5];
+    }else{
+       mo = [arr[5] contentArr][4];
+    }
     NSDictionary * dic = @{
                            @"content": txt.text,
                            @"score": @0,
@@ -149,13 +155,21 @@
 }
 //加载朋友圈列表
 -(void)loadDataFriendList{
-    NSDictionary * dic = @{
-                           @"containsImage": @1,
-                           @"containsVideo": @0,
-                           @"pageNumber": @(_page),
-                           @"pageSize": @15
-                           };
-    [CircleNet requstCirclelDic:dic withSuc:^(NSMutableArray *successArrValue) {
+    NSDictionary * dic = @{};
+    if ([self.flagStr isEqualToString:@"HomeSend"]) {
+        dic = @{
+                @"pageNumber": @(_page),
+                @"pageSize": @15
+                };
+    }else{
+        dic = @{
+                @"containsImage": @1,
+                @"containsVideo": @0,
+                @"pageNumber": @(_page),
+                @"pageSize": @15
+                };
+    } 
+    [CircleNet requstCirclelDic:dic flag:self.flagStr withSuc:^(NSMutableArray *successArrValue) {
         _page++;
         [self.mj_header endRefreshing];
         [self.mj_footer endRefreshing];
@@ -204,6 +218,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MomentDetailController * mom = [MomentDetailController new];
+    mom.flagStr = @"HomeSend";
     mom.receiveMo = self.momentList[indexPath.row];
     mom.block = ^{
         [self.momentList removeObjectAtIndex:indexPath.row];
@@ -227,8 +242,13 @@
 -(void)didPraiseMoment:(MomentCell *)cell{
     NSLog(@"点赞%ld",(long)cell.tag);
     NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
-    AllContentMo * mo = [arr[5] contentArr][4];
-    [CircleNet requstCircleDZ:@{@"id":[self.momentList[cell.tag] ID],@"type":mo.value} withSuc:^(NSDictionary *successDicValue) {
+    AllContentMo * mo;
+    if ([self.flagStr isEqualToString:@"HomeSend"]) {
+        mo = [arr[5] contentArr][5];
+    }else{
+       mo = [arr[5] contentArr][4];
+    }
+    [CircleNet requstCircleDZ:@{@"typeId":[self.momentList[cell.tag] ID],@"type":mo.value} withSuc:^(NSDictionary *successDicValue) {
 //        cell.praiseBtn.selected = YES;
         Moment * momet = self.momentList[cell.tag];
         momet.likeCount = [NSString stringWithFormat:@"%ld",[momet.likeCount integerValue]+1];

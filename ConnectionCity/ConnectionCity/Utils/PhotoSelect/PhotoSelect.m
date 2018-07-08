@@ -214,6 +214,7 @@
     }
     imagePickerVc.allowTakePicture = self.showTakePhotoBtnSwitch; // 在内部显示拍照按钮
     imagePickerVc.allowTakeVideo = self.showTakeVideoBtnSwitch;   // 在内部显示拍视频按
+    
     imagePickerVc.videoMaximumDuration = 10; // 视频最大拍摄时间
     [imagePickerVc setUiImagePickerControllerSettingBlock:^(UIImagePickerController *imagePickerController) {
         imagePickerController.videoQuality = UIImagePickerControllerQualityTypeHigh;
@@ -244,7 +245,7 @@
     
     // 3. Set allow picking video & photo & originalPhoto or not
     // 3. 设置是否可以选择视频/图片/原图
-    imagePickerVc.allowPickingVideo = YES;
+    imagePickerVc.allowPickingVideo = self.allowPickingVideoSwitch;
     imagePickerVc.allowPickingImage = YES;
     imagePickerVc.allowPickingOriginalPhoto = self.allowPickingOriginalPhotoSwitch;
     imagePickerVc.allowPickingGif = self.allowPickingGifSwitch;

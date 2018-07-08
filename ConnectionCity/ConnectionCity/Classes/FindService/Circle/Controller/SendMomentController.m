@@ -164,7 +164,7 @@
 //    if (self.photo.maxCountTF!=1) {
 //        [self.Arr_images removeObjectAtIndex:tag];
 //    }
-    if (imageArr.count==0) {
+    if (imageArr.count==0&&[self.flagStr isEqualToString:@"HomeSend"]) {
         self.photo.allowTakeVideo = 1;
         _isPic = 0;
     }

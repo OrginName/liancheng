@@ -11,11 +11,11 @@
 @implementation CircleNet
 /**
  旅行旅游列表
- 
  @param sucBlock 成功回调
  */
-+(void)requstCirclelDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock FailErrBlock:(FailErrBlock)failErrBlock{
-    [YSNetworkTool POST:v1ServiceCirclePage params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
++(void)requstCirclelDic:(NSDictionary *) param flag:(NSString *)flag withSuc:(SuccessArrBlock)sucBlock FailErrBlock:(FailErrBlock)failErrBlock{
+    NSString * url = [flag isEqualToString:@"HomeSend"]?v1FriendCirclePage:v1ServiceCirclePage;
+    [YSNetworkTool POST:url params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray * arr = [NSMutableArray array];
         NSArray * Arr = responseObject[@"data"][@"content"];
         if (Arr.count==0) {
