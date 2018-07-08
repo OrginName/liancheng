@@ -64,13 +64,14 @@
 }
 
 //根据id获取单个群组
-- (void)getGroupByID:(NSString *)groupID successCompletion:(void (^)(RCDGroupInfo *group))completion {
-    [YSNetworkTool POST:v1ServiceStationInfo params:@{@"id": groupID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+- (void)getGroupByID:(NSString *)groupID flag:(int)flag successCompletion:(void (^)(RCDGroupInfo *group))completion {
+    NSString * str = flag==1?v1TalentTeamInfo:flag==2?v1ServiceStationInfo:@"";    [YSNetworkTool POST:str params:@{@"id": groupID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *code = [NSString stringWithFormat:@"%@", responseObject[@"code"]];
         NSDictionary *result = responseObject[@"data"];
         if (result && [code isEqualToString:@"SUCCESS"]) {
             RCDGroupInfo *group = [[RCDGroupInfo alloc] init];
-            group.groupId = result[@"id"];
+            group.groupId = [result[@"id"] description];
+            group.groupType = flag;
             group.groupName = [result objectForKey:@"name"];
             group.portraitUri = [result objectForKey:@"logo"];
             if (!group.portraitUri || group.portraitUri.length <= 0) {
@@ -121,10 +122,10 @@
                 if ([code isEqualToString:@"SUCCESS"]) {
                     NSDictionary *dic = responseObject[@"data"];
                     RCUserInfo *user = [RCUserInfo new];
-                    user.userId = dic[@"id"];
-//                    if ([user.userId isKindOfClass:[NSNumber class]]) {
-//                        NSLog(@"杀寇决慧点科技阿三奥克斯店哈健康稍等哈手机壳大还是大家卡上");
-//                    }
+                    user.userId = [dic[@"id"] description];
+                    if ([user.userId isKindOfClass:[NSNumber class]]) {
+                        NSLog(@"杀寇决慧点科技阿三奥克斯店哈健康稍等哈手机壳大还是大家卡上");
+                    }
                     user.name = dic[@"nickName"];
                     user.portraitUri = dic[@"headImage"];
                     if (!user.portraitUri || user.portraitUri.length <= 0) {
@@ -263,15 +264,16 @@
 }
 
 //根据groupId获取群组成员信息
-- (void)getGroupMembersWithGroupId:(NSString *)groupId Block:(void (^)(NSMutableArray *result))block {
+- (void)getGroupMembersWithGroupId:(NSString *)groupId flag:(int)flag Block:(void (^)(NSMutableArray *result))block {
     __block NSMutableArray *tempArr = [NSMutableArray new];
-    [YSNetworkTool POST:v1ServiceStationInfo params:@{@"id":groupId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSString * str = flag==1?v1TalentTeamInfo:flag==2?v1ServiceStationInfo:@"";
+    [YSNetworkTool POST:str params:@{@"id":groupId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]) {
             NSDictionary * members = responseObject[@"data"];
             for (int i=0; i<[members[@"userList"] count]; i++) {
                 NSDictionary * dic = members[@"userList"][i];
                 RCDUserInfo *member = [[RCDUserInfo alloc] init];
-                member.userId = dic[@"userId"];
+                member.userId = [dic[@"userId"] description];
                 member.name = dic[@"nickname"]?dic[@"nickname"]:@"等接口";
                 member.portraitUri = dic[@"headImage"]?dic[@"headImage"]:@"http://panixgsjz.bkt.clouddn.com/FoDvruYhYiUKPPIL80-oMpRtJvDN";
                 member.updatedAt = dic[@"createdAt"]?dic[@"createdAt"]:@"等接口";
@@ -445,7 +447,7 @@
                     if ([dic isKindOfClass:[NSDictionary class]] &&
                         ![KString(@"%@", dic[@"id"]) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
                         RCDUserInfo *userInfo = [RCDUserInfo new];
-                        userInfo.userId = dic[@"id"];
+                        userInfo.userId = [dic[@"id"] description];
                         userInfo.name = dic[@"nickName"];
                         userInfo.portraitUri = dic[@"headImage"];
                         userInfo.displayName = dic[@"nickName"];
@@ -458,7 +460,7 @@
                         [_allFriends addObject:userInfo];
                         
                         RCUserInfo *user = [RCUserInfo new];
-                        user.userId = dic[@"id"];
+                        user.userId = userInfo.userId;
                         user.name = dic[@"nickName"];
                         user.portraitUri = dic[@"headImage"];
                         if (!user.portraitUri || user.portraitUri <= 0) {
@@ -508,7 +510,7 @@
                 return;
             if ([result respondsToSelector:@selector(objectForKey:)]) {
                 RCDUserInfo *userInfo = [RCDUserInfo new];
-                userInfo.userId =KString(@"%@", result[@"id"]);
+                userInfo.userId =[result[@"id"] description];
                 userInfo.name = result[@"nickName"];
                 userInfo.portraitUri = result[@"headImage"];
                 if (!userInfo.portraitUri || userInfo.portraitUri <= 0) {
@@ -623,7 +625,7 @@
         if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]) {
             NSDictionary *dic = responseObject[@"data"];
             RCUserInfo *user = [RCUserInfo new];
-            user.userId = dic[@"id"];
+            user.userId = [dic[@"id"] description];
             user.name = [dic objectForKey:@"nickName"];
             NSString *portraitUri = [dic objectForKey:@"headImage"];
             if (!portraitUri || portraitUri.length <= 0) {
@@ -745,7 +747,7 @@
         if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]) {
             NSDictionary * dic = responseObject[@"data"];
             RCUserInfo *user = [RCUserInfo new];
-            user.userId = dic[@"id"];
+            user.userId = [dic[@"id"] description];
             user.name = [dic objectForKey:@"nickName"];
             NSString *portraitUri = [dic objectForKey:@"headImage"];
             if (!portraitUri || portraitUri.length <= 0) {

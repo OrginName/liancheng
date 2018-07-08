@@ -202,7 +202,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         // });
     }
     __weak typeof(self) weakSelf = self;
-    [RCDHTTPTOOL getGroupMembersWithGroupId:groupId
+    [RCDHTTPTOOL getGroupMembersWithGroupId:groupId flag:2
                                       Block:^(NSMutableArray *result) {
                                           if ([result count] > 0) {
                                               dispatch_async(dispatch_get_main_queue(), ^{
@@ -229,7 +229,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 
                                                                                               }];
                                               for (RCDUserInfo *user in result) { 
-                                                  [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:KString(@"%@", user.userId)];
+                                                  [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:[user.userId description]];
                                               }
                                           }
                                       }];
@@ -924,7 +924,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                    [groupNotification.operation isEqualToString:@"Add"] ||
                    [groupNotification.operation isEqualToString:@"Kicked"]) {
             [RCDHTTPTOOL
-                getGroupMembersWithGroupId:message.targetId
+                getGroupMembersWithGroupId:message.targetId flag:2
                                      Block:^(NSMutableArray *result) {
                                          [[RCDataBaseManager shareInstance]
                                              insertGroupMemberToDB:result
@@ -948,7 +948,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 }
 
 - (void)refreshTabelViewInfo {
-    [RCDHTTPTOOL getGroupByID:groupId
+    [RCDHTTPTOOL getGroupByID:groupId flag:2
             successCompletion:^(RCDGroupInfo *group) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     _Group = group;

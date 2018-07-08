@@ -10,5 +10,5 @@
 typedef void (^CreatGroupBlock)(void);
 @interface CreatGroupController : BaseViewController
 @property (nonatomic,copy) CreatGroupBlock block;
-@property (nonatomic,assign)NSInteger flag_str;//标志哪个地方跳出来的
+@property (nonatomic,assign)int flag_str;//标志哪个地方跳出来的
 @end

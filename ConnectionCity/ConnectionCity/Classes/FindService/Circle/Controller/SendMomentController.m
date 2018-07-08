@@ -95,8 +95,7 @@
 }
 //发布朋友圈
 -(void)loadData:(NSString *)urlStr urlVideo:(NSString *)videoUrl{
-    NSDictionary * dic = @{
-//                           @"areaCode":@,
+    NSDictionary * dic = @{ 
                            @"cityCode": @([[KUserDefults objectForKey:kUserCityID]integerValue]),
                            @"containsImage": @(_isPic),
                            @"containsVideo": @(_isVideo),
@@ -104,7 +103,8 @@
                            @"images": urlStr,
                            @"videos": videoUrl
                            };
-    [YSNetworkTool POST:v1ServiceCircleCreate params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSString * url = [self.flagStr isEqualToString:@"HomeSend"]?v1FriendCircleCreate:v1ServiceCircleCreate;
+    [YSNetworkTool POST:url params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if (self.block) {
             self.block();
         }
@@ -123,8 +123,13 @@
     self.photo = [[PhotoSelect alloc] initWithFrame:CGRectMake(0, 0, self.view_Photo.width, itemHeigth) withController:self];
     self.photo.showTakePhotoBtnSwitch = NO;
     self.photo.showTakeVideoBtnSwitch=NO;
+    if ([self.flagStr isEqualToString:@"HomeSend"]) {
+        self.photo.allowTakeVideo = NO;
+        self.photo.allowPickingVideoSwitch = NO;
+    }else{
+        self.photo.allowPickingVideoSwitch = YES;
+    }
     self.photo.allowPickingImageSwitch = YES;//是否允许选取照片
-    self.photo.allowPickingVideoSwitch = YES;
     self.photo.showSelectedIndexSwitch = NO;
     self.photo.backgroundColor = [UIColor whiteColor];
     self.photo.PhotoDelegate = self;

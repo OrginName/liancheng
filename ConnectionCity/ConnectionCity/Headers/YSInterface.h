@@ -15,6 +15,16 @@
 #define HOSTURL @"http://210.16.185.211:8080"
 #define QINIUURL @"http://panixgsjz.bkt.clouddn.com/"
 
+#pragma mark ----- 首页-------
+
+//发现 -发布朋友圈
+static NSString * const v1FriendCircleCreate = @"/v1/friend-circle/create";
+//发现 -删除朋友圈
+static NSString * const v1FriendCircleDelete = @"/v1/friend-circle/delete";
+//发现 -朋友圈详情
+static NSString * const v1FriendCircleInfo = @"/v1/friend-circle/info";
+//发现 -朋友圈详情
+static NSString * const v1FriendCirclePage = @"/v1/friend-circle/page";
 #pragma mark ----我的-------
 //加入黑名单
 static NSString * const v1MyBlackCreate
@@ -90,6 +100,8 @@ static NSString * const v1TalentConnectionEducationPage = @"/v1/talent/connectio
 static NSString * const v1TalentConnectionOccupationPage = @"/v1/talent/connection/occupation/page";
 
 #pragma mark --人才-团队之家------
+//团队详情
+static NSString * const v1TalentTeamInfo = @"/v1/talent/team/info";
 //附近的团队
 static NSString * const v1TalentTeamNearbyList = @"/v1/talent/team/nearby/list";
 //我创建的团队列表

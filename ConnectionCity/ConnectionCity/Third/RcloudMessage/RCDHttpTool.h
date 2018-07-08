@@ -40,10 +40,10 @@
 - (void)getMyGroupsWithBlock:(void (^)(NSMutableArray *result))block;
 
 //根据id获取单个群组
-- (void)getGroupByID:(NSString *)groupID successCompletion:(void (^)(RCDGroupInfo *group))completion;
+- (void)getGroupByID:(NSString *)groupID flag:(int)flag successCompletion:(void (^)(RCDGroupInfo *group))completion;
 
 //获取群组成员列表
-- (void)getGroupMembersWithGroupId:(NSString *)groupId Block:(void (^)(NSMutableArray *result))block;
+- (void)getGroupMembersWithGroupId:(NSString *)groupId flag:(int)flag Block:(void (^)(NSMutableArray *result))block;
 
 //加入群组
 - (void)joinGroupWithGroupId:(NSString *)groupID complete:(void (^)(BOOL))result;

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FriendListController">
+            <connections>
+                <outlet property="btn_My" destination="wn8-RO-Bjm" id="5B4-58-63U"/>
+                <outlet property="btn_picTxt" destination="9Z9-z3-bFX" id="8pR-wt-8vB"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="suJ-ya-YXN">
+                    <rect key="frame" x="10" y="617" width="355" height="40"/>
+                    <subviews>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Z9-z3-bFX" customClass="CustomButton">
+                            <rect key="frame" x="0.0" y="0.0" width="177.5" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="图文">
+                                <color key="titleColor" red="0.43917000290000002" green="0.43923890589999998" blue="0.43916058540000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="selectBackColor">
+                                    <color key="value" red="0.91910606620000002" green="0.36992591619999998" blue="0.35516113040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="NOselectBackColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="NoSelectTitleColor">
+                                    <color key="value" red="0.64222505659999995" green="0.64858372050000002" blue="0.64858372050000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="tagSelectClick:" destination="-1" eventType="touchUpInside" id="POR-cG-Vq1"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wn8-RO-Bjm" customClass="CustomButton">
+                            <rect key="frame" x="177.5" y="0.0" width="177.5" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="动态管理">
+                                <color key="titleColor" red="0.43917000290000002" green="0.43923890589999998" blue="0.43916058540000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="selectBackColor">
+                                    <color key="value" red="0.91910606620000002" green="0.36992591619999998" blue="0.35516113040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="NOselectBackColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="selectTitleColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="NoSelectTitleColor">
+                                    <color key="value" red="0.64222505659999995" green="0.64858372050000002" blue="0.64858372050000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="tagSelectClick:" destination="-1" eventType="touchUpInside" id="kJz-fB-mSF"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="wn8-RO-Bjm" secondAttribute="trailing" id="CQ3-Di-NvR"/>
+                        <constraint firstAttribute="bottom" secondItem="wn8-RO-Bjm" secondAttribute="bottom" id="EIw-1k-Tye"/>
+                        <constraint firstItem="9Z9-z3-bFX" firstAttribute="top" secondItem="suJ-ya-YXN" secondAttribute="top" id="Hkn-Nj-yWF"/>
+                        <constraint firstAttribute="bottom" secondItem="9Z9-z3-bFX" secondAttribute="bottom" id="ML5-w4-KNX"/>
+                        <constraint firstItem="wn8-RO-Bjm" firstAttribute="leading" secondItem="9Z9-z3-bFX" secondAttribute="trailing" id="NTi-BJ-7gf"/>
+                        <constraint firstItem="wn8-RO-Bjm" firstAttribute="width" secondItem="9Z9-z3-bFX" secondAttribute="width" id="gQg-tt-9fd"/>
+                        <constraint firstItem="9Z9-z3-bFX" firstAttribute="leading" secondItem="suJ-ya-YXN" secondAttribute="leading" id="h6i-WV-8Oy"/>
+                        <constraint firstAttribute="height" constant="40" id="kpc-dN-b8V"/>
+                        <constraint firstItem="wn8-RO-Bjm" firstAttribute="top" secondItem="suJ-ya-YXN" secondAttribute="top" id="nkl-CD-a0j"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="suJ-ya-YXN" secondAttribute="bottom" constant="10" id="0sv-UV-kUH"/>
+                <constraint firstAttribute="trailing" secondItem="suJ-ya-YXN" secondAttribute="trailing" constant="10" id="Xqz-TJ-ltw"/>
+                <constraint firstItem="suJ-ya-YXN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="xen-AQ-5f7"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

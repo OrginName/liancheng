@@ -623,8 +623,9 @@ NSMutableDictionary *userInputStatus;
 - (void)gotoNextPage:(RCUserInfo *)user {
     NSArray *friendList = [[RCDataBaseManager shareInstance] getAllFriends];
     BOOL isGotoDetailView = NO;
+//    && [friend.status isEqualToString:@"20"]
     for (RCDUserInfo *friend in friendList) {
-        if ([KString(@"%@", user.userId) isEqualToString:friend.userId] && [friend.status isEqualToString:@"20"]) {
+        if ([KString(@"%@", user.userId) isEqualToString:friend.userId]) {
             isGotoDetailView = YES;
         } else if ([KString(@"%@", user.userId) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
             isGotoDetailView = YES;
@@ -880,18 +881,18 @@ NSMutableDictionary *userInputStatus;
     //刷新自己头像昵称
     [[RCDUserInfoManager shareInstance] getUserInfo:[RCIM sharedRCIM].currentUserInfo.userId
                                          completion:^(RCUserInfo *user) {
-                                             [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:KString(@"%@", user.userId)];
+                                             [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:[user.userId description]];
                                          }];
 
     //打开群聊强制从demo server 获取群组信息更新本地数据库
     if (self.conversationType == ConversationType_GROUP) {
         __weak typeof(self) weakSelf = self;
-        [RCDHTTPTOOL getGroupByID:self.targetId
+        [RCDHTTPTOOL getGroupByID:self.targetId flag:2
                 successCompletion:^(RCDGroupInfo *group) {
                     RCGroup *Group = [[RCGroup alloc] initWithGroupId:weakSelf.targetId
                                                             groupName:group.groupName
                                                           portraitUri:group.portraitUri];
-                    [[RCIM sharedRCIM] refreshGroupInfoCache:Group withGroupId:KString(@"%@", group.groupId)];
+                    [[RCIM sharedRCIM] refreshGroupInfoCache:Group withGroupId:[group.groupId description]];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [weakSelf refreshTitle];
                     });
@@ -916,7 +917,7 @@ NSMutableDictionary *userInputStatus;
                     user.portraitUri = [RCDUtilities defaultUserPortrait:user];
                 }
             }
-            [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:KString(@"%@", user.userId)];
+            [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:user.userId];
         }
     });
 }

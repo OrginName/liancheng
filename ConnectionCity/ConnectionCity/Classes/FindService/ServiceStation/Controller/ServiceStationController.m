@@ -71,24 +71,24 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSArray * arr = _data_Arr[indexPath.section][KString(@"%ld", indexPath.section+1)];
     groupMo * mo = arr.count!=0?arr[indexPath.row]:[groupMo new];
-    RCDGroupInfo *groupInfo = [RCDGroupInfo new];
-    groupInfo.introduce = mo.notice;
-    groupInfo.groupName = mo.name;
-    groupInfo.groupId = mo.ID;
-    groupInfo.number = [mo.userList isKindOfClass:[NSArray class]]?KString(@"%lu", (unsigned long)mo.userList.count):0;
-    if ([RCDForwardMananer shareInstance].isForward) {
-        RCConversation *conver = [[RCConversation alloc] init];
-        conver.targetId = groupInfo.groupId;
-        conver.conversationType = ConversationType_GROUP;
-        [RCDForwardMananer shareInstance].toConversation = conver;
-        [[RCDForwardMananer shareInstance] showForwardAlertViewInViewController:self];
-        return;
-    }
+//    RCDGroupInfo *groupInfo = [RCDGroupInfo new];
+//    groupInfo.introduce = mo.notice;
+//    groupInfo.groupName = mo.name;
+//    groupInfo.groupId = [mo.ID description];
+//    groupInfo.number = [mo.userList isKindOfClass:[NSArray class]]?KString(@"%lu", (unsigned long)mo.userList.count):0;
+//    if ([RCDForwardMananer shareInstance].isForward) {
+//        RCConversation *conver = [[RCConversation alloc] init];
+//        conver.targetId = groupInfo.groupId;
+//        conver.conversationType = ConversationType_GROUP;
+//        [RCDForwardMananer shareInstance].toConversation = conver;
+//        [[RCDForwardMananer shareInstance] showForwardAlertViewInViewController:self];
+//        return;
+//    }
     RCDChatViewController *temp = [[RCDChatViewController alloc] init];
-    temp.targetId = groupInfo.groupId;
+    temp.targetId = mo.ID;
     temp.conversationType = ConversationType_GROUP;
 //    temp.userName = groupInfo.groupName;
-    temp.title = [NSString stringWithFormat:@"%@(%@)",groupInfo.groupName,groupInfo.number];
+    temp.title = [NSString stringWithFormat:@"%@(%@)",mo.name,[mo.userList isKindOfClass:[NSArray class]]?KString(@"%lu", (unsigned long)mo.userList.count):0];
     [self.navigationController pushViewController:temp animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -127,7 +127,7 @@
 //创建团队
 - (void)headerBtnClick:(UIButton *)btn {
     CreatGroupController * creat = [CreatGroupController new];
-    creat.flag_str = 0;
+    creat.flag_str = 2;
     creat.block = ^{
         [self p_initDataSource];
     };

@@ -9,7 +9,7 @@
 #import "FoundController.h"
 #import "FoundCell.h"
 #import "NearManController.h"
-
+#import "FriendListController.h"
 @interface FoundController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -63,12 +63,13 @@
     switch (indexPath.row) {
         case 0:
         {
-
+            FriendListController * list = [FriendListController new];
+            [self.navigationController pushViewController:list animated:YES];
             break;
         }
         case 1:
         {
-
+            [YTAlertUtil showTempInfo:@"扫一扫不知道干嘛"];
             break;
         }
         case 2:

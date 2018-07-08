@@ -282,7 +282,7 @@ preparation before navigation
                             complete:^(NSString *groupId) {
 
                                 if (groupId) {
-                                    [RCDHTTPTOOL getGroupMembersWithGroupId:groupId
+                                    [RCDHTTPTOOL getGroupMembersWithGroupId:groupId flag:2
                                                                       Block:^(NSMutableArray *result){
                                                                           //更新本地数据库中群组成员的信息
                                                                       }];
@@ -309,7 +309,7 @@ preparation before navigation
                                                                                //关闭HUD
                                                                                [hud hide:YES];
                                                                                [RCDHTTPTOOL
-                                                                                        getGroupByID:groupInfo.groupId
+                                                                                        getGroupByID:groupInfo.groupId flag:2
                                                                                    successCompletion:^(
                                                                                        RCDGroupInfo *group) {
                                                                                        [[RCDataBaseManager
@@ -346,7 +346,7 @@ preparation before navigation
                                         groupInfo.groupId = groupId;
                                         groupInfo.groupName = nameStr;
                                         [[RCIM sharedRCIM] refreshGroupInfoCache:groupInfo withGroupId:groupId];
-                                        [RCDHTTPTOOL getGroupByID:groupInfo.groupId
+                                        [RCDHTTPTOOL getGroupByID:groupInfo.groupId flag:2
                                                 successCompletion:^(RCDGroupInfo *group) {
                                                     [[RCDataBaseManager shareInstance] insertGroupToDB:group];
                                                 }];

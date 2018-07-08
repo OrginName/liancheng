@@ -22,6 +22,8 @@
 		720263FC20B5015500382B2F /* TZProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 720263EB20B5015500382B2F /* TZProgressView.m */; };
 		720263FD20B5015500382B2F /* TZVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 720263ED20B5015500382B2F /* TZVideoPlayerController.m */; };
 		720263FE20B5015500382B2F /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 720263EF20B5015500382B2F /* UIView+Layout.m */; };
+		721DAE0120F20EBC006F141F /* FriendListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721DADFF20F20EBC006F141F /* FriendListController.m */; };
+		721DAE0220F20EBC006F141F /* FriendListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 721DAE0020F20EBC006F141F /* FriendListController.xib */; };
 		722D252920AA769600AB3863 /* FKGPopOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D252820AA769600AB3863 /* FKGPopOption.m */; };
 		722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D252C20AA76D400AB3863 /* JFCityCollectionFlowLayout.m */; };
 		722D253820AA76D400AB3863 /* JFCityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D252E20AA76D400AB3863 /* JFCityCollectionViewCell.m */; };
@@ -608,6 +610,9 @@
 		720263ED20B5015500382B2F /* TZVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZVideoPlayerController.m; sourceTree = "<group>"; };
 		720263EE20B5015500382B2F /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
 		720263EF20B5015500382B2F /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		721DADFE20F20EBC006F141F /* FriendListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendListController.h; sourceTree = "<group>"; };
+		721DADFF20F20EBC006F141F /* FriendListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendListController.m; sourceTree = "<group>"; };
+		721DAE0020F20EBC006F141F /* FriendListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendListController.xib; sourceTree = "<group>"; };
 		722D252720AA769600AB3863 /* FKGPopOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKGPopOption.h; sourceTree = "<group>"; };
 		722D252820AA769600AB3863 /* FKGPopOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKGPopOption.m; sourceTree = "<group>"; };
 		722D252B20AA76D400AB3863 /* JFCityCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityCollectionFlowLayout.h; sourceTree = "<group>"; };
@@ -3879,6 +3884,9 @@
 				CEE4B29420C6B5A2008B8731 /* NearManController.h */,
 				CEE4B29520C6B5A2008B8731 /* NearManController.m */,
 				CEE4B29620C6B5A2008B8731 /* NearManController.xib */,
+				721DADFE20F20EBC006F141F /* FriendListController.h */,
+				721DADFF20F20EBC006F141F /* FriendListController.m */,
+				721DAE0020F20EBC006F141F /* FriendListController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4175,6 +4183,7 @@
 				72EC1BB420BC386D00ACC20B /* SendServiceController.xib in Resources */,
 				7274190220B3F60D001D6BE1 /* SendSwapController.xib in Resources */,
 				8D50C55220C632090095A824 /* OurSendController.xib in Resources */,
+				721DAE0220F20EBC006F141F /* FriendListController.xib in Resources */,
 				723F4FB420BEEA8D00AF8268 /* TrvalTripCell.xib in Resources */,
 				CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */,
 				CE0BA60F209D6126004C3C33 /* AddressBookController.xib in Resources */,
@@ -4346,6 +4355,7 @@
 				CE03EDED20B43DC400F07D78 /* FootprintTabbleHeadV.m in Sources */,
 				CEC4A55A20C407500026EE19 /* MemberCenterController.m in Sources */,
 				CE0BA614209D6160004C3C33 /* LifeHallController.m in Sources */,
+				721DAE0120F20EBC006F141F /* FriendListController.m in Sources */,
 				CE0BA634209D68A3004C3C33 /* YSRegisterController.m in Sources */,
 				8DFA325920EDB67E0086423A /* RCDUserInfoManager.m in Sources */,
 				72A2FC7320D4B40A00CD6AAC /* trvalMo.m in Sources */,
@@ -4839,7 +4849,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4873,7 +4883,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

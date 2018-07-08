@@ -26,4 +26,5 @@
 /** 是否解散 */
 @property(nonatomic, strong) NSString *isDismiss;
 
+@property (nonatomic,assign) int groupType;
 @end
