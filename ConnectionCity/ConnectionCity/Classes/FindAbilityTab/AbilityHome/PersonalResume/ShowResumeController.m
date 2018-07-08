@@ -85,7 +85,15 @@
         trvalMo * mo = self.data_Count[self.zIndex];
         [self GZLoadData:mo.ID];
     }
-    
+    if (sender.tag==4) {
+        if ([self.data_Count[self.zIndex] isKindOfClass:[trvalMo class]]) {
+            trvalMo * mo = self.data_Count[self.zIndex];
+            [self GZLoadData:mo.ID];
+        }else if ([self.data_Count[self.zIndex] isKindOfClass:[ServiceListMo class]]){
+            ServiceListMo * mo = self.data_Count[self.zIndex];
+            [self GZLoadData:mo.ID];
+        }
+    }
 }
 -(void)GZLoadData:(NSString *)type{
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];

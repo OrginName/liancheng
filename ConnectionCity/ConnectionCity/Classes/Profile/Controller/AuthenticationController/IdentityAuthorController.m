@@ -9,10 +9,12 @@
 #import "IdentityAuthorController.h"
 #import "TakePhoto.h"
 #import "QiniuUploader.h"
+#import "AllDicMo.h"
 
 @interface IdentityAuthorController ()
 @property (weak, nonatomic) IBOutlet UIButton *btn_select1;
 @property (weak, nonatomic) IBOutlet UIButton *btn_select2;
+@property (weak, nonatomic) IBOutlet UITextField *idtyypTF;
 @property (weak, nonatomic) IBOutlet UIView *view_Bottom;
 @property (weak, nonatomic) IBOutlet UITextField *idTF;
 @property (nonatomic, strong) NSString *frontImgStr;
@@ -65,6 +67,22 @@
     if (sender.tag==6) {
         self.backgroundImgStr = nil;
     }
+}
+- (IBAction)idTypeSlectedBtnClick:(id)sender {
+    NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+    NSArray *contentArr = [arr[3] contentArr];
+    NSMutableArray *title = [NSMutableArray array];
+    for (int i=0; i < contentArr.count; i++) {
+        AllContentMo * mo = contentArr[i];
+        [title addObject:mo.description1];
+        YTLog(@"%@",mo.description1);
+        YTLog(@"%@",mo.value);
+    }
+    WeakSelf
+    [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:title multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
+        AllContentMo * mo = contentArr[idx];
+        weakSelf.idtyypTF.text = mo.description1;
+    } cancelTitle:@"取消" cancelHandler:nil completion:nil];
 }
 - (void)requestData {
     NSDictionary *dic = @{@"certNo": _idTF.text,@"image":[NSString stringWithFormat:@"%@;%@",self.frontImgStr,self.backgroundImgStr],@"type":@"0"};

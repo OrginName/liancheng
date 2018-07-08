@@ -7,6 +7,7 @@
 //
 
 #import "CardAuthorController.h"
+#import "AgreementController.h"
 
 @interface CardAuthorController ()
 @property (weak, nonatomic) IBOutlet UILabel *lab_tips;
@@ -35,9 +36,13 @@
     //取得所点击的点的坐标
     CGPoint point = [tap locationInView:self.lab_tips];
     if (point.x>147&&point.x<197) {
-        [YTAlertUtil showTempInfo:@"使用条款"];
+        AgreementController *agreementVC = [[AgreementController alloc]init];
+        agreementVC.alias = useAgreement;
+        [self.navigationController pushViewController:agreementVC animated:YES];
     }else if (point.x>217&&point.x<270){
-        [YTAlertUtil showTempInfo:@"隐私政策"];
+        AgreementController *agreementVC = [[AgreementController alloc]init];
+        agreementVC.alias = privacyAgreement;
+        [self.navigationController pushViewController:agreementVC animated:YES];
     }
 }
 - (IBAction)getVerificationCodeBtnClick:(id)sender {

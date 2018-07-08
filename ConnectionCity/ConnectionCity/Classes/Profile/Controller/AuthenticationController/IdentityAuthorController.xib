@@ -14,6 +14,7 @@
                 <outlet property="btn_select1" destination="SGS-Ud-TXf" id="WPJ-xO-q0M"/>
                 <outlet property="btn_select2" destination="I8v-Bf-xo6" id="HgD-Oe-FJq"/>
                 <outlet property="idTF" destination="vLi-QM-gsC" id="yVP-nM-Bp2"/>
+                <outlet property="idtyypTF" destination="6vC-mn-zUk" id="23N-ue-nSs"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="view_Bottom" destination="Xpz-Wt-bix" id="4tk-Nu-QzH"/>
             </connections>
@@ -48,7 +49,7 @@
                                                     <color key="textColor" red="0.28627450980392155" green="0.28627450980392155" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="身份证" placeholder="请选择证件类型" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6vC-mn-zUk">
+                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择证件类型" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6vC-mn-zUk">
                                                     <rect key="frame" x="101.5" y="0.0" width="213.5" height="49"/>
                                                     <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -61,16 +62,27 @@
                                                         <constraint firstAttribute="width" constant="15" id="bmN-vh-Yz3"/>
                                                     </constraints>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="So2-yg-wVg">
+                                                    <rect key="frame" x="91.5" y="0.0" width="263.5" height="49"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="idTypeSlectedBtnClick:" destination="-1" eventType="touchUpInside" id="cmv-gC-zmx"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="naJ-nW-Vbj" firstAttribute="leading" secondItem="6vC-mn-zUk" secondAttribute="trailing" constant="10" id="0T5-Xi-Aut"/>
+                                                <constraint firstAttribute="trailing" secondItem="So2-yg-wVg" secondAttribute="trailing" id="7Bx-qC-a4v"/>
                                                 <constraint firstAttribute="bottom" secondItem="jGp-Qa-iT9" secondAttribute="bottom" id="9BW-lE-ffr"/>
                                                 <constraint firstItem="XN5-de-Xs8" firstAttribute="leading" secondItem="K26-Vd-Aq2" secondAttribute="leading" constant="15" id="Bwp-xF-OtI"/>
+                                                <constraint firstItem="jGp-Qa-iT9" firstAttribute="top" secondItem="So2-yg-wVg" secondAttribute="bottom" id="DTH-8J-dkk"/>
+                                                <constraint firstItem="So2-yg-wVg" firstAttribute="leading" secondItem="XN5-de-Xs8" secondAttribute="trailing" id="EdE-Z6-WvH"/>
                                                 <constraint firstItem="6vC-mn-zUk" firstAttribute="top" secondItem="K26-Vd-Aq2" secondAttribute="top" id="K7k-pb-P8S"/>
                                                 <constraint firstItem="XN5-de-Xs8" firstAttribute="centerY" secondItem="K26-Vd-Aq2" secondAttribute="centerY" id="a4q-Ma-QRq"/>
                                                 <constraint firstItem="naJ-nW-Vbj" firstAttribute="centerY" secondItem="K26-Vd-Aq2" secondAttribute="centerY" id="eQW-Vt-l8i"/>
+                                                <constraint firstItem="So2-yg-wVg" firstAttribute="top" secondItem="K26-Vd-Aq2" secondAttribute="top" id="g7t-mS-OQW"/>
                                                 <constraint firstAttribute="trailing" secondItem="jGp-Qa-iT9" secondAttribute="trailing" id="orT-9B-KP7"/>
                                                 <constraint firstItem="jGp-Qa-iT9" firstAttribute="leading" secondItem="K26-Vd-Aq2" secondAttribute="leading" id="p5p-Mb-D9M"/>
                                                 <constraint firstAttribute="trailing" secondItem="naJ-nW-Vbj" secondAttribute="trailing" constant="15" id="qCV-gk-J0H"/>

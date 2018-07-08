@@ -15,7 +15,6 @@
 #import "PhotoSelect.h"
 #import "QiniuUploader.h"
 #import "ZBJFViewController.h"
-#import "CityMo.h"
 
 @interface ReleaseTenderController ()<LCDatePickerDelegate,JFCityViewControllerDelegate,PhotoSelectDelegate>
 {
@@ -28,12 +27,10 @@
 @property (nonatomic, copy) NSArray<NSString *> *cellTitles;
 /** 发票cell TextField placeHold数据源数组 */
 @property (nonatomic, strong) NSMutableArray<NSString *> *cellPlaceHolds;
-@property (nonatomic, strong) NSMutableArray *cellCntentText;
 @property (nonatomic, strong) LCDatePicker * myDatePick;
 @property (nonatomic, strong) PhotoSelect * photo;
 @property (nonatomic, strong) NSArray *imageArr;
 @property (nonatomic, strong) NSMutableArray *Arr_Url;
-@property (nonatomic, strong) CityMo *citymo;
 
 @end
 
@@ -56,7 +53,9 @@
     self.navigationItem.title = @"发布招标";
     _cellTitles = @[@"项目标题", @"项目单位", @"招标所在地", @"开标地点", @"招标内容", @"",@"报名/投标时间",@"投标截止时间",@"招标金额",@"联系人",@"联系电话"];
     _cellPlaceHolds = [NSMutableArray arrayWithArray:@[@"请填写项目标题", @"请填写项目单位", @"请选择所在地", @"请填写开标地点", @"请填写招标内容",@"", @"请选择开始时间",@"请选择截止时间",@"请填写金额万元",@"请填写联系人姓名",@"请填写联系电话"]];
-    _cellCntentText = [NSMutableArray arrayWithArray:@[@"", @"", @"", @"", @"",@"", @"",@"",@"",@"",@""]];
+    if (!_cellCntentText) {
+        _cellCntentText = [NSMutableArray arrayWithArray:@[@"", @"", @"", @"", @"",@"", @"",@"",@"",@"",@""]];
+    }
     [self initDate];
 }
 - (void)setTableView {
@@ -83,7 +82,6 @@
     self.myDatePick.delegate  = self;
     [self.view addSubview:self.myDatePick];
     self.Arr_Url = [NSMutableArray array];
-    self.citymo = [KUserDefults objectForKey:kUserCity];
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -29,6 +29,9 @@
     [self requestData];
 }
 - (IBAction)btnClick:(UIButton *)sender {
+    
+    
+    
     NSArray * arr = @[@"CardAuthorController",@"IdentityAuthorController",@"SkillCertificationController"];
     [self.navigationController pushViewController:[super rotateClass:arr[sender.tag-1]] animated:YES];
 }

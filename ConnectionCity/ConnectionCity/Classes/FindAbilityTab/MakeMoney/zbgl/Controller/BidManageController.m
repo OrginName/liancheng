@@ -12,6 +12,8 @@
 #import "BidManagerHeadV.h"
 #import "ConsultativeNegotiationController.h"
 #import "FirstControllerMo.h"
+#import "ReleaseTenderController.h"
+#import "CityMo.h"
 
 @interface BidManageController ()<BidManagerCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -69,6 +71,63 @@
 #pragma mark - BidManagerCellDelegate
 - (void)bidManagerCell:(BidManagerCell *)view changeBtnClick:(UIButton *)btn {
     [YTAlertUtil showTempInfo:@"修改"];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:view];
+    FirstControllerMo *mo = _dataArr[indexPath.row];
+    NSMutableArray *mutArr = [NSMutableArray arrayWithArray:@[
+                                                              mo.title,
+                                                              mo.company,
+                                                              mo.cityName,
+                                                              mo.tenderAddress,
+                                                              mo.content,
+                                                              mo.tenderImages,
+                                                              mo.tenderStartDate,
+                                                              mo.tenderEndDate,
+                                                              mo.amount,
+                                                              mo.contactName,
+                                                              mo.contactMobile
+                                                              ]];
+    ReleaseTenderController *releasevc = [[ReleaseTenderController alloc]init];
+    releasevc.cellCntentText = mutArr;
+    CityMo *cityMo = [[CityMo alloc]init];
+    cityMo.ID = mo.areaCode;
+    cityMo.name = mo.cityName;
+    cityMo.lat = mo.lat;
+    cityMo.lng = mo.lng;
+    releasevc.citymo = cityMo;
+    [self.navigationController pushViewController:releasevc animated:YES];
+    
+//    NSDictionary *dic = @{
+//                          @"amount": self.cellCntentText[8],
+//                          @"areaCode": self.mo?self.mo.ID:@"",
+//                          @"company": self.cellCntentText[1],
+//                          @"contactMobile": self.cellCntentText[10],
+//                          @"contactName": self.cellCntentText[9],
+//                          @"content": self.cellCntentText[4],
+//                          @"depositAmount": mo20.data,
+//                          @"industryCategoryId": @"0",
+//                          @"industryCategoryName": @"string",
+//                          @"industryCategoryParentId": @"0",
+//                          @"industryCategoryParentName": @"string",
+//                          @"lat": self.mo?self.mo.lat:@"",
+//                          @"lng": self.mo?self.mo.lng:@"",
+//                          @"periodAmount1": mo0.data,
+//                          @"periodAmount2": mo1.data,
+//                          @"periodAmount3": mo2.data,
+//                          @"periodAmount4": mo3.data,
+//                          @"periodAmount5": mo4.data,
+//                          @"rewardAmount1": mo0.data,
+//                          @"rewardAmount2": mo1.data,
+//                          @"rewardAmount3": mo2.data,
+//                          @"rewardAmount4": mo3.data,
+//                          @"rewardAmount5": mo4.data,
+//                          @"tenderAddress": self.cellCntentText[3],
+//                          @"tenderEndDate": self.cellCntentText[7],
+//                          @"tenderImages": self.cellCntentText[5],
+//                          @"tenderStartDate": self.cellCntentText[6],
+//                          @"title": self.cellCntentText[0],
+//                          };
+//    _cellPlaceHolds = [NSMutableArray arrayWithArray:@[@"请填写项目标题", @"请填写项目单位", @"请选择所在地", @"请填写开标地点", @"请填写招标内容",@"", @"请选择开始时间",@"请选择截止时间",@"请填写金额万元",@"请填写联系人姓名",@"请填写联系电话"]];
+
 }
 - (void)bidManagerCell:(BidManagerCell *)view deleteBtnClick:(UIButton *)btn {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:view];

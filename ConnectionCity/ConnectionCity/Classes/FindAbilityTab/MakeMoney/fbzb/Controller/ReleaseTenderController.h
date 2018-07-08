@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "CityMo.h"
 
 @interface ReleaseTenderController : BaseViewController
+@property (nonatomic, strong) NSMutableArray *cellCntentText;
+@property (nonatomic, strong) CityMo *citymo;
 
 @end
