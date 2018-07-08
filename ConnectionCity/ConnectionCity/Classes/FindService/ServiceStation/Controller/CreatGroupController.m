@@ -44,15 +44,15 @@
 //完成按钮
 -(void)Complete{
     if (self.txt_name.text.length==0) {
-        [YTAlertUtil showTempInfo:self.flag_str==1?@"请输入团队名称":@"请输入服务站名称"];
+        [YTAlertUtil showTempInfo:self.flag_str==1?@"请输入团队名称":self.flag_str==2?@"请输入服务站名称":@"请输入群名称"];
         return;
     }
     if (self.txt_class.text.length==0) {
-        [YTAlertUtil showTempInfo:self.flag_str==1?@"请选择职业分类":@"请选择服务类别"];
+        [YTAlertUtil showTempInfo:self.flag_str==1?@"请选择职业分类":self.flag_str==2?@"请选择服务类别":@"请输入群类别"];
         return;
     }
     if (self.txt_Notice.text.length==0) {
-        [YTAlertUtil showTempInfo:self.flag_str==1?@"请输入团队公告":@"请输入服务站公告"];
+        [YTAlertUtil showTempInfo:self.flag_str==1?@"请输入团队公告":self.flag_str==2?@"请选择服务公告":@"请输入群公告"];
         return;
     }
     if (self.qun_Url.length==0) {
@@ -67,7 +67,8 @@
                            @"notice": self.txt_Notice.text,
                            @"type": _ID
                            };
-    [YSNetworkTool POST:self.flag_str==1?v1TalentTeamCreate: v1ServiceStationCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+//
+    [YSNetworkTool POST:self.flag_str==1?v1TalentTeamCreate:self.flag_str==2?v1ServiceStationCreate:v1UserGroupCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [RCDHTTPTOOL getGroupMembersWithGroupId:responseObject[@"data"] flag:self.flag_str Block:^(NSMutableArray *result) {
             //更新本地数据库中群组成员的信息
         }]; 

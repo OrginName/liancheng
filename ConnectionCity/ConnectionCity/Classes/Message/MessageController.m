@@ -21,7 +21,6 @@
 #import "UserMo.h"
 #import "AllDicMo.h"
 #import "SendServiceController.h"
-
 @interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate>
 {
     BOOL flag;

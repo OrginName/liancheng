@@ -49,7 +49,7 @@
 - (void)joinGroupWithGroupId:(NSString *)groupID complete:(void (^)(BOOL))result;
 
 //添加群组成员
-- (void)addUsersIntoGroup:(NSString *)groupID usersId:(NSMutableArray *)usersId complete:(void (^)(BOOL))result;
+- (void)addUsersIntoGroup:(NSString *)groupID flag:(int)flag usersId:(NSMutableArray *)usersId complete:(void (^)(BOOL))result;
 
 //将用户踢出群组
 - (void)kickUsersOutOfGroup:(NSString *)groupID usersId:(NSMutableArray *)usersId complete:(void (^)(BOOL))result;
@@ -57,7 +57,7 @@
 - (void)quitGroupWithGroupId:(NSString *)groupID complete:(void (^)(BOOL result))quitResult;
 
 //解散群组
-- (void)dismissGroupWithGroupId:(NSString *)groupID complete:(void (^)(BOOL result))quitResult;
+- (void)dismissGroupWithGroupId:(NSString *)groupID flag:(int)flag complete:(void (^)(BOOL))result;
 
 //修改群组名称
 - (void)renameGroupWithGoupId:(NSString *)groupID groupName:(NSString *)groupName complete:(void (^)(BOOL))result;

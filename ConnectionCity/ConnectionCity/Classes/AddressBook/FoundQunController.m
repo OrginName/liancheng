@@ -5,7 +5,7 @@
 //  Created by umbrella on 2018/5/9.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
 //
-#import "BulidTeamController.h"
+#import "FoundQunController.h"
 #import "BulidTeamCell.h"
 #import "BulidTeamSectionHead.h"
 #import "YSButton.h"
@@ -16,7 +16,7 @@
 #import "RCDChatViewController.h"
 #import "RCDForwardAlertView.h"
 #import "CreatGroupController.h"
-@interface BulidTeamController ()<BulidTeamSectionHeadDelegate>
+@interface FoundQunController ()<BulidTeamSectionHeadDelegate>
 {
     BOOL _isOpen[10000]; //== @[NO, NO, NO];
 }
@@ -25,17 +25,12 @@
 @property (nonatomic,strong) NSMutableArray * data_Arr;
 @end
 
-@implementation BulidTeamController
+@implementation FoundQunController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUI];
     [self p_initDataSource];
     [self p_initTableView];
-}
-#pragma mark - setup
-- (void)setUI {
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(p_back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -56,8 +51,8 @@
     NSArray *arr = _data_Arr[indexPath.section][KString(@"%ld", indexPath.section+1)];
     groupMo * mo = arr.count!=0?arr[indexPath.row]:[groupMo new];
     cell.titleLab.text = mo.name;
-    if ([mo.userList isKindOfClass:[NSArray class]]) {
-        cell.peopleNumbersLab.text = KString(@"%lu", (unsigned long)mo.userList.count);
+    if ([mo.userGroupFriends isKindOfClass:[NSArray class]]) {
+        cell.peopleNumbersLab.text = KString(@"%lu", (unsigned long)mo.userGroupFriends.count);
     }else
         cell.peopleNumbersLab.text = @"0";
     [cell.headerImgeView sd_setImageWithURL:[NSURL URLWithString:mo.logo] placeholderImage:[UIImage imageNamed:@"no-pic"]];
@@ -74,7 +69,7 @@
     groupInfo.introduce = mo.notice;
     groupInfo.groupName = mo.name;
     groupInfo.groupId = mo.ID;
-    groupInfo.number = [mo.userList isKindOfClass:[NSArray class]]?KString(@"%lu", (unsigned long)mo.userList.count):0;
+    groupInfo.number = [mo.userGroupFriends isKindOfClass:[NSArray class]]?KString(@"%lu", (unsigned long)mo.userGroupFriends.count):0;
     if ([RCDForwardMananer shareInstance].isForward) {
         RCConversation *conver = [[RCConversation alloc] init];
         conver.targetId = groupInfo.groupId;
@@ -84,7 +79,7 @@
         return;
     }
     RCDChatViewController *temp = [[RCDChatViewController alloc] init];
-    temp.flagStr = 1;
+    temp.flagStr = 3;
     temp.targetId = groupInfo.groupId;
     temp.conversationType = ConversationType_GROUP;
 //    temp.userName = groupInfo.groupName;
@@ -110,7 +105,7 @@
     //CGAffineTransformIdentity设置回归原始位置
     imageView.transform = _isOpen[section]?CGAffineTransformMakeRotation(M_PI_2):CGAffineTransformIdentity;
     //设置区头标题
-     headerView.titleLab.text = section==0?@"附近的团队":section==1?@"我的团队":@"加入的团队";
+     headerView.titleLab.text = section==0?@"附近的群":section==1?@"我的群":@"加入的群";
     NSArray *arr = _data_Arr[section][KString(@"%ld", section+1)];
     headerView.teamNumbers.text = [NSString stringWithFormat:@"%lu",(unsigned long)arr.count];
     //返回区头视图
@@ -140,17 +135,17 @@
     NSMutableArray * arr = [NSMutableArray array];
     NSMutableArray * arr1 = [NSMutableArray array];
     NSMutableArray * arr2 = [NSMutableArray array];
-    [YSNetworkTool POST:v1TalentTeamNearbyList params:@{@"areaCode":[KUserDefults objectForKey:kUserCityID]} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1UserGroupNearbyList params:@{@"areaCode":[KUserDefults objectForKey:kUserCityID]} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         for (int i=0; i<[responseObject[@"data"] count]; i++) {
             groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
             [arr addObject:mo];
         }
-        [YSNetworkTool POST:v1TalentTeamMyList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YSNetworkTool POST:v1UserGroupMyList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
             for (int i=0; i<[responseObject[@"data"] count]; i++) {
                 groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
                 [arr1 addObject:mo];
             }
-            [YSNetworkTool POST:v1TalentTeamJoinList params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+            [YSNetworkTool POST:v1UserGroupJoinList params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
                 for (int i=0; i<[responseObject[@"data"] count]; i++) {
                     groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
                     [arr2 addObject:mo];
@@ -186,8 +181,5 @@
     [headerView addSubview:headerBtn];
     self.tableView.tableHeaderView = headerView;
 }
-- (void)p_back{
-    [self.tabBarController.navigationController popViewControllerAnimated:YES];
-    //    [[NSNotificationCenter defaultCenter] postNotificationName:@"BACKMAINWINDOW" object:nil];
-}
+
 @end

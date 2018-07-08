@@ -24,6 +24,10 @@
 		720263FE20B5015500382B2F /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 720263EF20B5015500382B2F /* UIView+Layout.m */; };
 		721DAE0120F20EBC006F141F /* FriendListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721DADFF20F20EBC006F141F /* FriendListController.m */; };
 		721DAE0220F20EBC006F141F /* FriendListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 721DAE0020F20EBC006F141F /* FriendListController.xib */; };
+		721DAE0520F2421A006F141F /* SortCollProController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721DAE0420F2421A006F141F /* SortCollProController.m */; };
+		721DAE0820F24302006F141F /* ShoolOREduMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 721DAE0720F24302006F141F /* ShoolOREduMo.m */; };
+		721DAE1120F272BA006F141F /* FoundQunController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721DAE0F20F272BA006F141F /* FoundQunController.m */; };
+		721DAE1220F272BA006F141F /* FoundQunController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 721DAE1020F272BA006F141F /* FoundQunController.xib */; };
 		722D252920AA769600AB3863 /* FKGPopOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D252820AA769600AB3863 /* FKGPopOption.m */; };
 		722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D252C20AA76D400AB3863 /* JFCityCollectionFlowLayout.m */; };
 		722D253820AA76D400AB3863 /* JFCityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 722D252E20AA76D400AB3863 /* JFCityCollectionViewCell.m */; };
@@ -615,6 +619,13 @@
 		721DADFE20F20EBC006F141F /* FriendListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendListController.h; sourceTree = "<group>"; };
 		721DADFF20F20EBC006F141F /* FriendListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendListController.m; sourceTree = "<group>"; };
 		721DAE0020F20EBC006F141F /* FriendListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendListController.xib; sourceTree = "<group>"; };
+		721DAE0320F2421A006F141F /* SortCollProController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortCollProController.h; sourceTree = "<group>"; };
+		721DAE0420F2421A006F141F /* SortCollProController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortCollProController.m; sourceTree = "<group>"; };
+		721DAE0620F24302006F141F /* ShoolOREduMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShoolOREduMo.h; sourceTree = "<group>"; };
+		721DAE0720F24302006F141F /* ShoolOREduMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoolOREduMo.m; sourceTree = "<group>"; };
+		721DAE0E20F272BA006F141F /* FoundQunController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundQunController.h; sourceTree = "<group>"; };
+		721DAE0F20F272BA006F141F /* FoundQunController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoundQunController.m; sourceTree = "<group>"; };
+		721DAE1020F272BA006F141F /* FoundQunController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoundQunController.xib; sourceTree = "<group>"; };
 		722D252720AA769600AB3863 /* FKGPopOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKGPopOption.h; sourceTree = "<group>"; };
 		722D252820AA769600AB3863 /* FKGPopOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKGPopOption.m; sourceTree = "<group>"; };
 		722D252B20AA76D400AB3863 /* JFCityCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityCollectionFlowLayout.h; sourceTree = "<group>"; };
@@ -2686,6 +2697,8 @@
 				722D253D20AAA64C00AB3863 /* ShowResumeController.h */,
 				722D253E20AAA64C00AB3863 /* ShowResumeController.m */,
 				722D253F20AAA64C00AB3863 /* ShowResumeController.xib */,
+				721DAE0320F2421A006F141F /* SortCollProController.h */,
+				721DAE0420F2421A006F141F /* SortCollProController.m */,
 			);
 			path = PersonalResume;
 			sourceTree = "<group>";
@@ -2846,6 +2859,8 @@
 			children = (
 				8DD48CDA20A8202800D6D1E6 /* ResumeMo.h */,
 				8DD48CDB20A8202800D6D1E6 /* ResumeMo.m */,
+				721DAE0620F24302006F141F /* ShoolOREduMo.h */,
+				721DAE0720F24302006F141F /* ShoolOREduMo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3331,6 +3346,9 @@
 				CE0BA60B209D6126004C3C33 /* AddressBookController.h */,
 				CE0BA60C209D6126004C3C33 /* AddressBookController.m */,
 				CE0BA60D209D6126004C3C33 /* AddressBookController.xib */,
+				721DAE0E20F272BA006F141F /* FoundQunController.h */,
+				721DAE0F20F272BA006F141F /* FoundQunController.m */,
+				721DAE1020F272BA006F141F /* FoundQunController.xib */,
 			);
 			path = AddressBook;
 			sourceTree = "<group>";
@@ -4188,6 +4206,7 @@
 				CE03EE0120B467EC00F07D78 /* ReleaseTenderController.xib in Resources */,
 				CEBEDD7E20B17ED1000F9EE4 /* WinningBidderController.xib in Resources */,
 				CE5C283920B99441006A8332 /* PayOrderController.xib in Resources */,
+				721DAE1220F272BA006F141F /* FoundQunController.xib in Resources */,
 				8D50C55C20C669020095A824 /* OurConcernController.xib in Resources */,
 				72EC1BB420BC386D00ACC20B /* SendServiceController.xib in Resources */,
 				7274190220B3F60D001D6BE1 /* SendSwapController.xib in Resources */,
@@ -4457,6 +4476,7 @@
 				8DFA326D20EDDC0A0086423A /* RCDHttpTool.m in Sources */,
 				8DD48CE820A8367100D6D1E6 /* GuardEduController.m in Sources */,
 				8DD48CD320A811EA00D6D1E6 /* UIView+SDExtension.m in Sources */,
+				721DAE1120F272BA006F141F /* FoundQunController.m in Sources */,
 				72EC1B6720B8465D00ACC20B /* ShowTreaueTab.m in Sources */,
 				CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */,
 				CE0BA5B3209D5E6B004C3C33 /* UIView+YSCategory.m in Sources */,
@@ -4534,6 +4554,7 @@
 				8DB42FD420A57D6E00C4EBF8 /* FilterOneController.m in Sources */,
 				722D253A20AA76D400AB3863 /* JFCityTableViewCell.m in Sources */,
 				8DE465E720EDF175009730F7 /* RCDContactSelectedTableViewCell.m in Sources */,
+				721DAE0820F24302006F141F /* ShoolOREduMo.m in Sources */,
 				72A3F48620E12EF8005BA873 /* AllDicMo.m in Sources */,
 				8DE4668320EDFF79009730F7 /* RCDPrivateSettingsUserInfoCell.m in Sources */,
 				CE0BA5DE209D5E9B004C3C33 /* YTDataPacket.m in Sources */,
@@ -4694,6 +4715,7 @@
 				8DE465CE20EDEED9009730F7 /* RCDUIBarButtonItem.m in Sources */,
 				8DFA324820EDAF330086423A /* RCDUtilities.m in Sources */,
 				8DC17A8520C0E598005D9EE0 /* FriendCircleController.m in Sources */,
+				721DAE0520F2421A006F141F /* SortCollProController.m in Sources */,
 				722D253C20AA76D400AB3863 /* JFSearchView.m in Sources */,
 				8DE465F520EDF29B009730F7 /* RCDConversationSettingBaseViewController.m in Sources */,
 				8DE4662720EDF51C009730F7 /* RCDPrivateSettingsTableViewController.m in Sources */,

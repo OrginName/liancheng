@@ -33,6 +33,25 @@ static NSString * const v1MyBlackCreate
 static NSString * const v1MyAdd = @"/v1/my/add";
 //查找用户
 static NSString * const v1PrivateUserSearch = @"/v1/private/user/search";
+
+//首页  创建群
+static NSString * const v1UserGroupCreate = @"/v1/user/group/create";
+//首页  批量加入群
+static NSString * const v1UserGroupBatchSign = @"/v1/user/group/batch-sign";
+//首页  解散群
+static NSString * const v1UserGroupDelete = @"/v1/user/group/delete";
+//首页  群详情
+static NSString * const v1UserGroupInfo = @"/v1/user/group/info";
+//首页  我加入的群
+static NSString * const v1UserGroupJoinList = @"/v1/user/group/join/list";
+//首页  我的群
+static NSString * const v1UserGroupMyList = @"/v1/user/group/my/list";
+//首页  附近的群
+static NSString * const v1UserGroupNearbyList = @"/v1/user/group/nearby/list";
+//首页  加入群
+static NSString * const v1UserGroupSign = @"/v1/user/group/sign";
+//首页  退出群
+static NSString * const v1UserGroupSignout = @"/v1/user/group/sign-out";
 #pragma mark - 登录、注册、短信验证
 //短信验证
 static NSString * const smsVerificationCode = @"/sms/verification-code";
@@ -106,10 +125,14 @@ static NSString * const v1TalentTeamInfo = @"/v1/talent/team/info";
 static NSString * const v1TalentTeamNearbyList = @"/v1/talent/team/nearby/list";
 //我创建的团队列表
 static NSString * const v1TalentTeamMyList = @"/v1/talent/team/my/list";
+//我创建的团队解散
+static NSString * const v1TalentTeamDelete = @"/v1/talent/team/delete";
 //我加入的团队列表
 static NSString * const v1TalentTeamJoinList = @"/v1/talent/team/join/list";
 //我加入的团队列表
 static NSString * const v1TalentTeamCreate = @"/v1/talent/team/create";
+//批量加入团队成员
+static NSString * const v1TalentTeamBatchSign = @"/v1/talent/team/batch-sign";
 #pragma mark - 人才-简历
 //筛选条件
 static NSString * const v1TalentResumeConditions = @"/v1/talent/resume/conditions";

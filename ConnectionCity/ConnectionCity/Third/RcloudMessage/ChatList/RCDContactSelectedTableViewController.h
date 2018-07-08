@@ -12,6 +12,9 @@
 @interface RCDContactSelectedTableViewController
     : UIViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate>
 
+
+@property (nonatomic,assign)int flagStr;
+
 @property(nonatomic, strong) NSArray *keys;
 
 @property(nonatomic, strong) NSMutableDictionary *allFriends;

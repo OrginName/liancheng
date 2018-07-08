@@ -293,7 +293,7 @@ MBProgressHUD *hud;
         }
 
         if (_addGroupMembers.count > 0) {
-            [RCDHTTPTOOL addUsersIntoGroup:_groupId
+            [RCDHTTPTOOL addUsersIntoGroup:_groupId flag:self.flagStr
                                    usersId:seletedUsersId
                                   complete:^(BOOL result) {
                                       if (result == YES) {

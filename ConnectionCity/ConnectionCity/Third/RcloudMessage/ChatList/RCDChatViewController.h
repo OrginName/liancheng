@@ -9,6 +9,7 @@
 #import <RongIMKit/RongIMKit.h>
 
 @interface RCDChatViewController : RCConversationViewController
+@property (nonatomic,assign) int flagStr;
 @property(nonatomic, copy) NSString *groupName;
 /**
  *  会话数据模型

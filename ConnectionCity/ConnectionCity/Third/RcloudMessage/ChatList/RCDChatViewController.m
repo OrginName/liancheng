@@ -406,6 +406,7 @@ NSMutableDictionary *userInputStatus;
     else if (self.conversationType == ConversationType_GROUP) {
         RCDGroupSettingsTableViewController *settingsVC =
             [RCDGroupSettingsTableViewController groupSettingsTableViewController];
+        settingsVC.flagStr = self.flagStr;
         if (_groupInfo == nil) {
             settingsVC.Group = [[RCDataBaseManager shareInstance] getGroupByGroupId:self.targetId];
         } else {
@@ -887,7 +888,7 @@ NSMutableDictionary *userInputStatus;
     //打开群聊强制从demo server 获取群组信息更新本地数据库
     if (self.conversationType == ConversationType_GROUP) {
         __weak typeof(self) weakSelf = self;
-        [RCDHTTPTOOL getGroupByID:self.targetId flag:2
+        [RCDHTTPTOOL getGroupByID:self.targetId flag:self.flagStr
                 successCompletion:^(RCDGroupInfo *group) {
                     RCGroup *Group = [[RCGroup alloc] initWithGroupId:weakSelf.targetId
                                                             groupName:group.groupName

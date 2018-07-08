@@ -17,6 +17,7 @@
                               UINavigationControllerDelegate, UIImagePickerControllerDelegate,
                               RCDBaseSettingTableViewCellDelegate>
 
+@property (nonatomic,assign)int flagStr;
 + (instancetype)groupSettingsTableViewController;
 
 @property(nonatomic, strong) RCDGroupInfo *Group;

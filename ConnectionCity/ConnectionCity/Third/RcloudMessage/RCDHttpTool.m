@@ -65,7 +65,8 @@
 
 //根据id获取单个群组
 - (void)getGroupByID:(NSString *)groupID flag:(int)flag successCompletion:(void (^)(RCDGroupInfo *group))completion {
-    NSString * str = flag==1?v1TalentTeamInfo:flag==2?v1ServiceStationInfo:@"";    [YSNetworkTool POST:str params:@{@"id": groupID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSString * str = flag==1?v1TalentTeamInfo:flag==2?v1ServiceStationInfo:v1UserGroupInfo;
+    [YSNetworkTool POST:str params:@{@"id": groupID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *code = [NSString stringWithFormat:@"%@", responseObject[@"code"]];
         NSDictionary *result = responseObject[@"data"];
         if (result && [code isEqualToString:@"SUCCESS"]) {
@@ -83,7 +84,11 @@
                 group.introduce = @"";
             }
 //            group.isJoin = YES;
-            NSArray * arr = result[@"userList"];
+            NSArray * arr = @[];
+            if (flag==3) {
+                arr = result[@"userGroupFriends"];
+            }else
+            arr = result[@"userList"];
             group.number = KString(@"%lu", (unsigned long)[arr count]);
             group.maxNumber = [result objectForKey:@"max_number"]?[result objectForKey:@"max_number"]:@"1000";
             group.creatorTime = [result objectForKey:@"createTime"];
@@ -266,12 +271,17 @@
 //根据groupId获取群组成员信息
 - (void)getGroupMembersWithGroupId:(NSString *)groupId flag:(int)flag Block:(void (^)(NSMutableArray *result))block {
     __block NSMutableArray *tempArr = [NSMutableArray new];
-    NSString * str = flag==1?v1TalentTeamInfo:flag==2?v1ServiceStationInfo:@"";
+    NSString * str = flag==1?v1TalentTeamInfo:flag==2?v1ServiceStationInfo:v1UserGroupInfo;
     [YSNetworkTool POST:str params:@{@"id":groupId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]) {
             NSDictionary * members = responseObject[@"data"];
-            for (int i=0; i<[members[@"userList"] count]; i++) {
-                NSDictionary * dic = members[@"userList"][i];
+            NSArray * arr = @[];
+            if (flag==3) {
+                arr = members[@"userGroupFriends"];
+            }else
+                arr = members[@"userList"];
+            for (int i=0; i<[arr count]; i++) {
+                NSDictionary * dic = arr[i];
                 RCDUserInfo *member = [[RCDUserInfo alloc] init];
                 member.userId = [dic[@"userId"] description];
                 member.name = dic[@"nickname"]?dic[@"nickname"]:@"等接口";
@@ -319,8 +329,9 @@
 }
 
 //添加群组成员
-- (void)addUsersIntoGroup:(NSString *)groupID usersId:(NSMutableArray *)usersId complete:(void (^)(BOOL))result {
-    [YSNetworkTool POST:v1ServiceStationBatchsign params:@{@"groupId":groupID,@"userIds":usersId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+- (void)addUsersIntoGroup:(NSString *)groupID flag:(int)flag usersId:(NSMutableArray *)usersId complete:(void (^)(BOOL))result {
+    NSString * url = flag==1?v1TalentTeamBatchSign:flag==2?v1ServiceStationBatchsign:v1UserGroupBatchSign;
+    [YSNetworkTool POST:url params:@{@"groupId":groupID,@"userIds":usersId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]) {
             result(YES);
         }else
@@ -374,8 +385,9 @@
 }
 
 //解散群组
-- (void)dismissGroupWithGroupId:(NSString *)groupID complete:(void (^)(BOOL))result {
-    [YSNetworkTool POST:v1ServiceStationDelete params:@{@"id":groupID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+- (void)dismissGroupWithGroupId:(NSString *)groupID flag:(int)flag complete:(void (^)(BOOL))result {
+    NSString * url = flag ==1?v1TalentTeamDelete:flag==2?v1ServiceStationDelete:v1UserGroupDelete;
+    [YSNetworkTool POST:url params:@{@"id":groupID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]) {
             result(YES);
         }else{

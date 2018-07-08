@@ -16,6 +16,8 @@
 #import "RCDContactSelectedTableViewController.h"
 #import "RCDSearchFriendViewController.h"
 #import "RCDSearchViewController.h"
+#import "CreatGroupController.h"
+
 @interface AddressBookController ()
 @property(nonatomic, strong) RCConversationModel *tempModel;
 @property(nonatomic, assign) NSUInteger index;
@@ -48,11 +50,17 @@
                 break;
             case 1:
             {
-                RCDContactSelectedTableViewController *contactSelectedVC = [[RCDContactSelectedTableViewController alloc] init];
-                contactSelectedVC.forCreatingGroup = YES;
-                contactSelectedVC.isAllowsMultipleSelection = YES;
-                contactSelectedVC.titleStr = @"选择联系人";
-                [self.navigationController pushViewController:contactSelectedVC animated:YES];
+                CreatGroupController * creat = [CreatGroupController new];
+                creat.flag_str = 3;
+                creat.block = ^{
+
+                };
+                [self.navigationController pushViewController:creat animated:YES];
+//                RCDContactSelectedTableViewController *contactSelectedVC = [[RCDContactSelectedTableViewController alloc] init];
+//                contactSelectedVC.forCreatingGroup = YES;
+//                contactSelectedVC.isAllowsMultipleSelection = YES;
+//                contactSelectedVC.titleStr = @"选择联系人";
+//                [self.navigationController pushViewController:contactSelectedVC animated:YES];
             }
                 break;
             case 2:

@@ -18,7 +18,7 @@
 #import "UIColor+RCColor.h"
 #import "UIImageView+WebCache.h"
 #import <RongIMKit/RongIMKit.h>
-
+#import "QiniuUploader.h"
 // 是否iPhone5
 #define isiPhone5                                                                                                      \
     ([UIScreen instancesRespondToSelector:@selector(currentMode)]                                                      \
@@ -258,6 +258,8 @@ preparation before navigation
     else if ([nameStr length] > 10) {
         [YTAlertUtil showTempInfo:@"群组名称不能超过10个字"];
         self.navigationItem.rightBarButtonItem.enabled = YES;
+    }else if (image==nil){
+        [YTAlertUtil showTempInfo:@"请上传群图片"];
     } else {
         BOOL isAddedcurrentUserID = false;
         for (NSString *userId in _GroupMemberIdList) {
@@ -275,7 +277,12 @@ preparation before navigation
         hud.color = [UIColor colorWithHexString:@"343637" alpha:0.5];
         hud.labelText = @"创建中...";
         [hud show:YES];
-
+        
+//        [[QiniuUploader defaultUploader] uploadImageToQNFilePath:image withBlock:^(NSDictionary *url) {
+//            NSString * url1 = [NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]];
+//            [YSNetworkTool POST:v1UserGroupCreate params:<#(NSDictionary *)#> showHud:<#(BOOL)#> success:<#^(NSURLSessionDataTask *task, id responseObject)success#> failure:<#^(NSURLSessionDataTask *task, NSError *error)failure#> ]
+//
+//        }];
         [[RCDHttpTool shareInstance]
             createGroupWithGroupName:nameStr
                      GroupMemberList:_GroupMemberIdList

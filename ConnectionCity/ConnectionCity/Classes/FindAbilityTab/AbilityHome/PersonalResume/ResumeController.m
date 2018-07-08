@@ -288,6 +288,7 @@
         guard.resumeID = resumeID;
         [self.navigationController pushViewController:guard animated:YES];
     }else if((indexPath.section==5&&indexPath.row==self.EduArr.count+1)){
+//        resumeID = @"18";
         if (resumeID.length==0) {
             return [YTAlertUtil showTempInfo:@"请先点击完成新增简历在添加教育经历"];
         }
@@ -301,6 +302,7 @@
             weakSelf.isOpen[@"50"] = @"YES";
             [weakSelf.tab_bottom reloadData];
         };
+        guard.resumeID = resumeID;
         [self.navigationController pushViewController:guard animated:YES];
     }else if(indexPath.section==2||indexPath.section==1||indexPath.section==3){
         NSString * str = indexPath.section==1?@"17":indexPath.section==2?@"1":@"16";

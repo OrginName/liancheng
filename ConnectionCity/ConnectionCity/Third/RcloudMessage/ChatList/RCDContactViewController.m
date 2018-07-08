@@ -26,6 +26,7 @@
 #import "RCDUserInfoManager.h"
 #import "RCDUtilities.h"
 #import "RCDForwardAlertView.h"
+#import "FoundQunController.h"
 @interface RCDContactViewController ()
 @property(strong, nonatomic) NSMutableArray *matchFriendList;
 @property(strong, nonatomic) NSArray *defaultCellsTitle;
@@ -317,8 +318,11 @@
         } break;
 
         case 1: {
-            RCDGroupViewController *groupVC = [[RCDGroupViewController alloc] init];
-            [self.navigationController pushViewController:groupVC animated:YES];
+            FoundQunController * foun = [FoundQunController new];
+            foun.title = @"群";
+            [self.navigationController pushViewController:foun animated:YES];
+//            RCDGroupViewController *groupVC = [[RCDGroupViewController alloc] init];
+//            [self.navigationController pushViewController:groupVC animated:YES];
             return;
 
         } break;

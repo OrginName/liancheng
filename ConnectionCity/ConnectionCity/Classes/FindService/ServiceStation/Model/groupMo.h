@@ -22,4 +22,5 @@ proStr(lat);
 proArr(userList);
 proStr(cityName);
 proStr(cityCode);
+proArr(userGroupFriends);
 @end

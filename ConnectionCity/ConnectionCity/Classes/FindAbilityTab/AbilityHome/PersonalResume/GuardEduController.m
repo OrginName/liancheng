@@ -10,10 +10,13 @@
 #import "EditAllController.h"
 #import "LCDatePicker.h"
 #import "AbilityNet.h"
+#import "SortCollProController.h"
 @interface GuardEduController ()<UITextViewDelegate,LCDatePickerDelegate>
 {
     NSInteger currtenTag;
     NSString * _EduID;
+    NSString * _collID;
+    NSString * _proID;
 }
 @property (nonatomic,strong) LCDatePicker * myDatePick;
 @property (weak, nonatomic) IBOutlet CustomtextView *textView_Indro;
@@ -31,6 +34,8 @@
     [super viewDidLoad];
     [self setUI];
     _EduID = @"";
+    _collID = @"";
+    _proID = @"";
 }
 //保存按钮点击
 - (IBAction)btn_Save:(UIButton *)sender {
@@ -47,9 +52,9 @@
                               @"description": self.textView_Indro.text,
                               @"educationId": @([_EduID integerValue]),
                               @"endDate": self.end_Time.text,
-                              @"professionalId": @0,
+                              @"professionalId": @([_proID integerValue]),
                               @"resumeId": @([self.resumeID integerValue]),
-                              @"schoolId": @0,//****
+                              @"schoolId": @([_collID integerValue]),//****
                               @"startDate": self.Start_time.text,
                               @"professinalName":self.text_Pro.text,//专业名称
                               @"schoolName":self.text_Coll.text//学校名称
@@ -72,12 +77,29 @@
 }
 //各个编辑按钮点击
 - (IBAction)btn_Click:(UIButton *)sender {
-     if (sender.tag==2||sender.tag==1) {
-        EditAllController * edit = [EditAllController new];
-        edit.block = ^(NSString * str){
-            sender.tag==2?(self.text_Pro.text = str):(self.text_Coll.text=str);
+    if (sender.tag==1) {
+        SortCollProController * sort = [SortCollProController new];
+        sort.title = @"学校";
+        sort.url = dictionarySchool;
+        sort.block = ^(ShoolOREduMo *mo) {
+            self.text_Coll.text = mo.name;
+            _collID = mo.ID;
         };
-        [self.navigationController pushViewController:edit animated:YES];
+        [self.navigationController pushViewController:sort animated:YES];
+    }else if (sender.tag==2) {
+        SortCollProController * sort = [SortCollProController new];
+        sort.title = @"专业";
+        sort.url = dictionaryProfessional;
+        sort.block = ^(ShoolOREduMo *mo) {
+            self.text_Pro.text = mo.name;
+            _proID = mo.ID;
+        };
+        [self.navigationController pushViewController:sort animated:YES];
+//        EditAllController * edit = [EditAllController new];
+//        edit.block = ^(NSString * str){
+//            sender.tag==2?(self.text_Pro.text = str):(self.text_Coll.text=str);
+//        };
+//        [self.navigationController pushViewController:edit animated:YES];
     }
     else if (sender.tag==3) {
         NSMutableArray * title = [NSMutableArray array];

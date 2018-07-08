@@ -86,6 +86,7 @@
 //    }
     RCDChatViewController *temp = [[RCDChatViewController alloc] init];
     temp.targetId = mo.ID;
+    temp.flagStr = 2;
     temp.conversationType = ConversationType_GROUP;
 //    temp.userName = groupInfo.groupName;
     temp.title = [NSString stringWithFormat:@"%@(%@)",mo.name,[mo.userList isKindOfClass:[NSArray class]]?KString(@"%lu", (unsigned long)mo.userList.count):0];

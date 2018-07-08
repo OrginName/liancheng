@@ -202,7 +202,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         // });
     }
     __weak typeof(self) weakSelf = self;
-    [RCDHTTPTOOL getGroupMembersWithGroupId:groupId flag:2
+    [RCDHTTPTOOL getGroupMembersWithGroupId:groupId flag:self.flagStr
                                       Block:^(NSMutableArray *result) {
                                           if ([result count] > 0) {
                                               dispatch_async(dispatch_get_main_queue(), ^{
@@ -598,10 +598,10 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     if (actionSheet.tag == 102) {
         if (buttonIndex == 0) {
             [RCDHTTPTOOL
-                dismissGroupWithGroupId:groupId
+                dismissGroupWithGroupId:groupId flag:self.flagStr
                                complete:^(BOOL isOk) {
 
-                                   dispatch_async(dispatch_get_main_queue(), ^{
+                dispatch_async(dispatch_get_main_queue(), ^{
                                        if (isOk) {
                                            NSArray *latestMessages = [[RCIMClient sharedRCIMClient] getLatestMessages:ConversationType_GROUP targetId:groupId count:1];
                                            if (latestMessages.count > 0) {
@@ -841,6 +841,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     RCDContactSelectedTableViewController *contactSelectedVC = [[RCDContactSelectedTableViewController alloc] init];
+    contactSelectedVC.flagStr = self.flagStr;
     contactSelectedVC.groupId = _Group.groupId;
     contactSelectedVC.isAllowsMultipleSelection = YES;
     NSMutableArray *membersId = [NSMutableArray new];
@@ -924,7 +925,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                    [groupNotification.operation isEqualToString:@"Add"] ||
                    [groupNotification.operation isEqualToString:@"Kicked"]) {
             [RCDHTTPTOOL
-                getGroupMembersWithGroupId:message.targetId flag:2
+                getGroupMembersWithGroupId:message.targetId flag:self.flagStr
                                      Block:^(NSMutableArray *result) {
                                          [[RCDataBaseManager shareInstance]
                                              insertGroupMemberToDB:result
@@ -948,7 +949,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 }
 
 - (void)refreshTabelViewInfo {
-    [RCDHTTPTOOL getGroupByID:groupId flag:2
+    [RCDHTTPTOOL getGroupByID:groupId flag:self.flagStr
             successCompletion:^(RCDGroupInfo *group) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     _Group = group;
