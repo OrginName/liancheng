@@ -194,6 +194,15 @@
 -(void)cityMo:(CityMo *)mo{
     self.citymo = mo;
 }
+-(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng {
+    CityMo *mo = [[CityMo alloc]init];
+    mo.name = name;
+    mo.ID = ID;
+    mo.lat = lat;
+    mo.lng = lng;
+    self.citymo = mo;
+}
+
 #pragma mark ----PhotoSelectDelegate-----
 -(void)selectImageArr:(NSArray *)imageArr{
     NSLog(@"%lu",(unsigned long)imageArr.count);

@@ -231,6 +231,10 @@
 -(void)cityMo:(CityMo *)mo{
     [self requestPrivateUserUpdateWithDic:@{@"areaCode": mo.ID}];
 }
+-(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng {
+    [self requestPrivateUserUpdateWithDic:@{@"areaCode": ID}];
+}
+
 #pragma mark - 数据请求
 - (void)requestV1PrivateUserInfo {
     //获取用户信息

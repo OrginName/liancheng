@@ -55,6 +55,15 @@
     _section2Num = 1;
     [self.view addSubview:self.selectView];
     [self.Dic2 setValue:@"10" forKey:KString(@"%d", 4)];
+    [self.Dic2 setValue:@"1" forKey:KString(@"%d", 5)];
+    if (!self.arr_receive) {
+        self.arr_receive = [NSMutableArray array];
+        //    服务类别列表
+        WeakSelf
+        [ServiceHomeNet requstServiceClass:^(NSMutableArray *successArrValue) {
+            weakSelf.arr_receive = successArrValue;
+        }];
+    }
 }
 #pragma mark ---- 各种按钮点击i-----
 -(void)complete{

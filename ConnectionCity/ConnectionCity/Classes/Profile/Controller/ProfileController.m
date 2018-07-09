@@ -148,9 +148,11 @@
 - (void)requestMembershipUserSvip {
     WeakSelf
     [YSNetworkTool POST:v1MembershipUserSvip params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        weakSelf.tableHeadV.svipLogoBtn.hidden = NO;
-        weakSelf.tableHeadV.svipxfBtn.hidden = NO;
-        weakSelf.tableHeadV.svipTimeLab.text = @"xxxx.xx.xx到期";
+        if (![YSTools dx_isNullOrNilWithObject:responseObject[kData]]) {
+            weakSelf.tableHeadV.svipLogoBtn.hidden = NO;
+            weakSelf.tableHeadV.svipxfBtn.hidden = NO;
+            weakSelf.tableHeadV.svipTimeLab.text = @"xxxx.xx.xx到期";
+        }
     } failure:nil];
 }
 

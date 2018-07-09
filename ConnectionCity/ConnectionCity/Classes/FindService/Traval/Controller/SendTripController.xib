@@ -234,10 +234,10 @@
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="9" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="-11" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="元/单" image="men">
+                            <state key="normal" title="元/单" image="w-xuanhzong">
                                 <color key="titleColor" red="0.79332336110000001" green="0.80117804780000001" blue="0.80117804780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
-                            <state key="selected" image="women"/>
+                            <state key="selected" image="xuanzhong"/>
                             <connections>
                                 <action selector="btn_priceSelect:" destination="-1" eventType="touchUpInside" id="LqR-rl-Vqe"/>
                             </connections>
@@ -250,10 +250,10 @@
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="9" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="-11" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="元/小时" image="men">
+                            <state key="normal" title="元/小时" image="w-xuanhzong">
                                 <color key="titleColor" red="0.79332336110000001" green="0.80117804780000001" blue="0.80117804780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
-                            <state key="selected" image="women"/>
+                            <state key="selected" image="xuanzhong"/>
                             <connections>
                                 <action selector="btn_priceSelect:" destination="-1" eventType="touchUpInside" id="AIK-bL-EcU"/>
                             </connections>
@@ -266,10 +266,10 @@
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="9" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="-11" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="元/天" image="men">
+                            <state key="normal" title="元/天" image="w-xuanhzong">
                                 <color key="titleColor" red="0.79332336110000001" green="0.80117804780000001" blue="0.80117804780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
-                            <state key="selected" image="women"/>
+                            <state key="selected" image="xuanzhong"/>
                             <connections>
                                 <action selector="btn_priceSelect:" destination="-1" eventType="touchUpInside" id="FCG-wH-4Q3"/>
                             </connections>
@@ -308,7 +308,7 @@
     </objects>
     <resources>
         <image name="arraw-right" width="9" height="15"/>
-        <image name="men" width="13" height="13"/>
-        <image name="women" width="13" height="13"/>
+        <image name="w-xuanhzong" width="14" height="14"/>
+        <image name="xuanzhong" width="14" height="14"/>
     </resources>
 </document>

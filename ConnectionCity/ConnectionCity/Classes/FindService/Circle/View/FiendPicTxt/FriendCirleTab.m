@@ -82,16 +82,17 @@
                            @"type": @([mo.value integerValue]),
                            @"typeId": @([[self.momentList[_CurrentTag] ID] integerValue])
                            };
+    WeakSelf
     [CircleNet requstSendPL:dic withSuc:^(NSDictionary *successDicValue) {
         [txt resignFirstResponder];
-        Moment * momet = self.momentList[_CurrentTag];
+        Moment * momet = weakSelf.momentList[_CurrentTag];
         momet.commentCount = [NSString stringWithFormat:@"%ld",[momet.commentCount integerValue]+1];
         Comment * comment = [Comment new];
         comment.content = txt.text;
         comment.typeName = [[YSAccountTool userInfo] nickName];
         [momet.comments addObject:comment];
-        [self.momentList replaceObjectAtIndex:_CurrentTag withObject:momet];
-        [self reloadData];
+        [weakSelf.momentList replaceObjectAtIndex:_CurrentTag withObject:momet];
+        [weakSelf reloadData];
     }];
 }
 -(void)defultData:(NSArray *)arr{
@@ -103,13 +104,13 @@
 #pragma mark - 测试数据
 - (void)initTestInfo
 {
+    WeakSelf
     self.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         _page=1;
-        [self.momentList removeAllObjects];
-        [self loadDataFriendList];
+        [weakSelf loadDataFriendList];
     }];
     self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [self loadDataFriendList];
+        [weakSelf loadDataFriendList];
     }];
     [self.mj_header beginRefreshing];
 //    NSMutableArray *commentList;
@@ -168,17 +169,21 @@
                 @"pageNumber": @(_page),
                 @"pageSize": @15
                 };
-    } 
+    }
+    WeakSelf
     [CircleNet requstCirclelDic:dic flag:self.flagStr withSuc:^(NSMutableArray *successArrValue) {
+        if (_page==1) {
+            [weakSelf.momentList removeAllObjects];
+        }
         _page++;
-        [self.mj_header endRefreshing];
-        [self.mj_footer endRefreshing];
-        [self.momentList addObjectsFromArray:successArrValue];
-        [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:self.momentList] forKey:@"PICTXT"];
-        [self reloadData];
+        [weakSelf.mj_header endRefreshing];
+        [weakSelf.mj_footer endRefreshing];
+        [weakSelf.momentList addObjectsFromArray:successArrValue];
+        [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:weakSelf.momentList] forKey:@"PICTXT"];
+        [weakSelf reloadData];
     } FailErrBlock:^(NSError *failValue) {
-        [self.mj_header endRefreshing];
-        [self.mj_footer endRefreshing];
+        [weakSelf.mj_header endRefreshing];
+        [weakSelf.mj_footer endRefreshing];
     }];
 }
 - (NSMutableArray *)momentList
@@ -220,9 +225,10 @@
     MomentDetailController * mom = [MomentDetailController new];
     mom.flagStr = @"HomeSend";
     mom.receiveMo = self.momentList[indexPath.row];
+    WeakSelf
     mom.block = ^{
-        [self.momentList removeObjectAtIndex:indexPath.row];
-        [self reloadData];
+        [weakSelf.momentList removeObjectAtIndex:indexPath.row];
+        [weakSelf reloadData];
     };
     [self.controller.navigationController pushViewController:mom animated:YES];
 }
@@ -248,12 +254,13 @@
     }else{
        mo = [arr[5] contentArr][4];
     }
+    WeakSelf
     [CircleNet requstCircleDZ:@{@"typeId":[self.momentList[cell.tag] ID],@"type":mo.value} withSuc:^(NSDictionary *successDicValue) {
 //        cell.praiseBtn.selected = YES;
-        Moment * momet = self.momentList[cell.tag];
+        Moment * momet = weakSelf.momentList[cell.tag];
         momet.likeCount = [NSString stringWithFormat:@"%ld",[momet.likeCount integerValue]+1];
-        [self.momentList replaceObjectAtIndex:cell.tag withObject:momet];
-        [self reloadData];
+        [weakSelf.momentList replaceObjectAtIndex:cell.tag withObject:momet];
+        [weakSelf reloadData];
     }];
 }
 // 查看全文/收起
@@ -324,10 +331,11 @@
     NSNumber *duration = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
     NSNumber *curve = [userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
     // 添加移动动画，使视图跟随键盘移动
+    WeakSelf
     [UIView animateWithDuration:duration.doubleValue animations:^{
         [UIView setAnimationBeginsFromCurrentState:YES];
         [UIView setAnimationCurve:[curve intValue]];
-        _mainView.center = CGPointMake(_mainView.center.x, keyBoardEndY+20);   // keyBoardEndY的坐标包括了状态栏的高度，要减去
+        weakSelf.mainView.center = CGPointMake(weakSelf.mainView.center.x, keyBoardEndY+20);   // keyBoardEndY的坐标包括了状态栏的高度，要减去
         
     }];
 }
