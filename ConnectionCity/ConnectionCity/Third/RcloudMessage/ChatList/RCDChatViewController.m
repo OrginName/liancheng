@@ -54,6 +54,7 @@ NSMutableDictionary *userInputStatus;
 @implementation RCDChatViewController
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+   
     NSString *userInputStatusKey =
         [NSString stringWithFormat:@"%lu--%@", (unsigned long)self.conversationType, self.targetId];
     if (userInputStatus && [userInputStatus.allKeys containsObject:userInputStatusKey]) {
@@ -91,7 +92,6 @@ NSMutableDictionary *userInputStatus;
     [super viewDidLoad];
     self.enableSaveNewPhotoToLocalSystem = NO;
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-
     if (self.conversationType != ConversationType_CHATROOM) {
         if (self.conversationType == ConversationType_DISCUSSION) {
             [[RCIMClient sharedRCIMClient]
@@ -206,7 +206,7 @@ NSMutableDictionary *userInputStatus;
         }
         [self appendAndDisplayMessage:savedMsg];
     */
-    //    self.enableContinuousReadUnreadVoice = YES;//开启语音连读功能
+    self.enableContinuousReadUnreadVoice = YES;//开启语音连读功能
     if (self.conversationType == ConversationType_PRIVATE || self.conversationType == ConversationType_GROUP) {
     }
 
@@ -384,7 +384,7 @@ NSMutableDictionary *userInputStatus;
         RCDDiscussGroupSettingViewController *settingVC = [[RCDDiscussGroupSettingViewController alloc] init];
         settingVC.conversationType = self.conversationType;
         settingVC.targetId = self.targetId;
-        settingVC.conversationTitle = self.userName;
+//        settingVC.conversationTitle = self.userName;
         //设置讨论组标题时，改变当前会话页面的标题
         settingVC.setDiscussTitleCompletion = ^(NSString *discussTitle) {
             self.title = discussTitle;

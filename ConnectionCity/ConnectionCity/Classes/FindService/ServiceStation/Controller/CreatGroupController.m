@@ -21,6 +21,7 @@
 {
     NSString * _ID;//服务ID
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lay_out;
 @property (weak, nonatomic) IBOutlet UILabel *lab_name;
 @property (weak, nonatomic) IBOutlet UILabel *lab_class;
 @property (weak, nonatomic) IBOutlet UILabel *lab_notice;
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txt_class;
 @property (weak, nonatomic) IBOutlet UITextField *txt_Notice;
 @property (nonatomic,copy) NSString * qun_Url;
+@property (weak, nonatomic) IBOutlet UIView *view_Class;
 @property (nonatomic,strong)NSMutableArray * Arr_Classify;
 @end
 
@@ -35,7 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"创建服务站";
+    self.title = self.flag_str==1?@"创建团队":self.flag_str==2?@"创建服务站":@"创建群";
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(Complete) image:nil title:@"完成" EdgeInsets:UIEdgeInsetsZero];
     [self initData];
     self.qun_Url = @"";
@@ -47,9 +49,11 @@
         [YTAlertUtil showTempInfo:self.flag_str==1?@"请输入团队名称":self.flag_str==2?@"请输入服务站名称":@"请输入群名称"];
         return;
     }
-    if (self.txt_class.text.length==0) {
-        [YTAlertUtil showTempInfo:self.flag_str==1?@"请选择职业分类":self.flag_str==2?@"请选择服务类别":@"请输入群类别"];
-        return;
+    if (self.flag_str!=3) {
+        if (self.txt_class.text.length==0) {
+            [YTAlertUtil showTempInfo:self.flag_str==1?@"请选择职业分类":@"请选择服务类别"];
+            return;
+        }
     }
     if (self.txt_Notice.text.length==0) {
         [YTAlertUtil showTempInfo:self.flag_str==1?@"请输入团队公告":self.flag_str==2?@"请选择服务公告":@"请输入群公告"];
@@ -65,7 +69,7 @@
                            @"logo": self.qun_Url,
                            @"name": self.txt_name.text,
                            @"notice": self.txt_Notice.text,
-                           @"type": _ID
+                           @"type": _ID?_ID:@""
                            };
 //
     [YSNetworkTool POST:self.flag_str==1?v1TalentTeamCreate:self.flag_str==2?v1ServiceStationCreate:v1UserGroupCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -141,6 +145,11 @@
         self.lab_class.text = @"团队分类";
         self.lab_notice.text = @"团队公告";
         self.title = @"创建团队";
+    }else if (self.flag_str==3){
+        self.lab_name.text = @"群名称";
+        self.view_Class.hidden = YES;
+        self.lab_notice.text = @"群公告";
+        self.lay_out.constant = 0;
     }
 }
 @end

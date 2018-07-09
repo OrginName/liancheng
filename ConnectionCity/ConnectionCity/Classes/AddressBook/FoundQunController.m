@@ -122,7 +122,7 @@
 //创建团队
 - (void)headerBtnClick:(UIButton *)btn {
     CreatGroupController * creat = [CreatGroupController new];
-    creat.flag_str = 1;
+    creat.flag_str = 3;
     creat.block = ^{
         [self.data_Arr removeAllObjects];
         [self p_initDataSource];
@@ -174,7 +174,7 @@
     headerBtn.frame = CGRectMake(0, 10, kScreenWidth, 50);
     headerBtn.backgroundColor = [UIColor whiteColor];
     headerBtn.layer.cornerRadius = 5;
-    [headerBtn setTitle:@"  创建团队" forState: UIControlStateNormal];
+    [headerBtn setTitle:@"  创建群" forState: UIControlStateNormal];
     [headerBtn setImage:[UIImage imageNamed:@"jia-team"] forState:UIControlStateNormal];
     [headerBtn setTintColor:[UIColor orangeColor]];
     [headerBtn addTarget:self action:@selector(headerBtnClick:) forControlEvents:UIControlEventTouchUpInside];

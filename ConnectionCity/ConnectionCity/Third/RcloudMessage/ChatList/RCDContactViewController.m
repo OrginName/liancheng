@@ -444,6 +444,7 @@
     if (friendList.count <= 0 && !self.hasSyncFriendList) {
         [RCDDataSource syncFriendList:[RCIM sharedRCIM].currentUserInfo.userId
                              complete:^(NSMutableArray *result) {
+                                 [result removeAllObjects];
                                  self.hasSyncFriendList = YES;
                                  [self sortAndRefreshWithList:result];
                              }];

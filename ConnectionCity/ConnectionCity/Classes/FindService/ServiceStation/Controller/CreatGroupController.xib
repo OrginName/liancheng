@@ -12,12 +12,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreatGroupController">
             <connections>
                 <outlet property="lab_class" destination="ezH-BG-Y6S" id="UmJ-HI-9i0"/>
-                <outlet property="lab_name" destination="yy2-od-ZBC" id="qsK-e7-dMe"/>
+                <outlet property="lab_name" destination="yy2-od-ZBC" id="btN-Ak-2z0"/>
                 <outlet property="lab_notice" destination="exe-Gm-uVq" id="7TF-dX-luY"/>
+                <outlet property="lay_out" destination="9uH-0b-ph5" id="z6B-8e-OwI"/>
                 <outlet property="txt_Notice" destination="F5K-4D-Ci0" id="eB1-C0-uDG"/>
                 <outlet property="txt_class" destination="9Yo-mt-zgu" id="NLk-tG-x0p"/>
                 <outlet property="txt_name" destination="kfP-hv-h9P" id="66I-x3-xnq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view_Class" destination="CV1-Ol-PRO" id="OfH-4H-hep"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

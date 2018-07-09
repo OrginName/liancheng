@@ -297,6 +297,7 @@ MBProgressHUD *hud;
                                    usersId:seletedUsersId
                                   complete:^(BOOL result) {
                                       if (result == YES) {
+                                          [hud hide:YES];
                                           [self.navigationController popViewControllerAnimated:YES];
                                       } else {
                                           [hud hide:YES];

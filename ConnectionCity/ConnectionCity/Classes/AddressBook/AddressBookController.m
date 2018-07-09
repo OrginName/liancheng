@@ -17,7 +17,6 @@
 #import "RCDSearchFriendViewController.h"
 #import "RCDSearchViewController.h"
 #import "CreatGroupController.h"
-
 @interface AddressBookController ()
 @property(nonatomic, strong) RCConversationModel *tempModel;
 @property(nonatomic, assign) NSUInteger index;
@@ -142,7 +141,6 @@
                                                   object:nil];
 }
 //*********************插入自定义Cell*********************//
-
 //插入自定义会话model
 - (NSMutableArray *)willReloadTableData:(NSMutableArray *)dataSource {
     
@@ -153,6 +151,7 @@
             [model.lastestMessage isMemberOfClass:[RCContactNotificationMessage class]]) {
             model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
         }
+        
         if ([model.lastestMessage isKindOfClass:[RCGroupNotificationMessage class]]) {
             RCGroupNotificationMessage *groupNotification = (RCGroupNotificationMessage *)model.lastestMessage;
             if ([groupNotification.operation isEqualToString:@"Quit"]) {
@@ -170,7 +169,6 @@
             }
         }
     }
-    
     return dataSource;
 }
 //左滑删除
@@ -212,6 +210,7 @@
         
         if (conversationModelType == RC_CONVERSATION_MODEL_TYPE_NORMAL) {
             RCDChatViewController *_conversationVC = [[RCDChatViewController alloc] init];
+            _conversationVC.flagStr = 2;
             _conversationVC.conversationType = model.conversationType;
             _conversationVC.targetId = KString(@"%@", model.targetId);;
 //            _conversationVC.userName = model.conversationTitle;
@@ -260,7 +259,7 @@
         }
     }
 }
-
+ 
 //自定义cell
 - (RCConversationBaseCell *)rcConversationListTableView:(UITableView *)tableView
                                   cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -410,7 +409,7 @@
         RCDChatViewController *_conversationVC = [[RCDChatViewController alloc] init];
         _conversationVC.conversationType = model.conversationType;
         _conversationVC.targetId = model.targetId;
-        _conversationVC.userName = model.conversationTitle;
+//        _conversationVC.userName = model.conversationTitle;
         _conversationVC.title = model.conversationTitle;
         _conversationVC.conversation = model;
         _conversationVC.unReadMessage = model.unreadMessageCount;
@@ -421,14 +420,14 @@
         RCDChatViewController *_conversationVC = [[RCDChatViewController alloc] init];
         _conversationVC.conversationType = model.conversationType;
         _conversationVC.targetId = model.targetId;
-        _conversationVC.userName = model.conversationTitle;
+//        _conversationVC.userName = model.conversationTitle;
         _conversationVC.title = model.conversationTitle;
         _conversationVC.conversation = model;
         _conversationVC.unReadMessage = model.unreadMessageCount;
         _conversationVC.enableNewComingMessageIcon = YES; //开启消息提醒
         _conversationVC.enableUnreadMessageIcon = YES;
         if (model.conversationType == ConversationType_SYSTEM) {
-            _conversationVC.userName = @"系统消息";
+//            _conversationVC.userName = @"系统消息";
             _conversationVC.title = @"系统消息";
         }
         if ([model.objectName isEqualToString:@"RC:ContactNtf"]) {
@@ -446,7 +445,6 @@
     
     //聚合会话类型，此处自定设置。
     if (model.conversationModelType == RC_CONVERSATION_MODEL_TYPE_COLLECTION) {
-        
         AddressBookController *temp = [[AddressBookController alloc] init];
         NSArray *array = [NSArray arrayWithObject:[NSNumber numberWithInt:model.conversationType]];
         [temp setDisplayConversationTypes:array];

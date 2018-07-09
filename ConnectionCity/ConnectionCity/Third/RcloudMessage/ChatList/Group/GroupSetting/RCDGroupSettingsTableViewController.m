@@ -184,15 +184,15 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     groupMemberList = [self moveCreator:groupMemberList];
     NSArray *resultList = [[RCDUserInfoManager shareInstance] getFriendInfoList:groupMemberList];
     groupMemberList = [[NSMutableArray alloc] initWithArray:resultList];
-    for (RCUserInfo *user in groupMemberList) {
-        [[RCDUserInfoManager shareInstance] getFriendInfo:user.userId
-                                               completion:^(RCUserInfo *user) {
-                                                   [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:user.userId];
-                                                   dispatch_async(dispatch_get_main_queue(), ^{
-                                                       [self.tableView reloadData];
-                                                   });
-                                               }];
-    }
+//    for (RCUserInfo *user in groupMemberList) {
+//        [[RCDUserInfoManager shareInstance] getFriendInfo:user.userId
+//                                               completion:^(RCUserInfo *user) {
+//                                                   [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:user.userId];
+//                                                   dispatch_async(dispatch_get_main_queue(), ^{
+//                                                       [self.tableView reloadData];
+//                                                   });
+//                                               }];
+//    }
 
     if ([groupMemberList count] > 0) {
         /******************添加headerview*******************/
@@ -228,7 +228,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                                                                                               complete:^(BOOL results){
 
                                                                                               }];
-                                              for (RCDUserInfo *user in result) { 
+                                              for (RCDUserInfo *user in result) {
                                                   [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:[user.userId description]];
                                               }
                                           }

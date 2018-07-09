@@ -2,7 +2,7 @@
 //  ZWCustomPointAnnotation.m
 //  Bracelet
 //
-//  Created by 张威威 on 2017/11/17.
+//  Created by on 2017/11/17.
 //  Copyright © 2017年 ShYangMiStepZhang. All rights reserved.
 //
 

@@ -54,9 +54,13 @@ NSString * const YTHttpUtilResponseData = @"Data";
         //如果成功再返回请求结果
         if ([[self class] isSuccessWithResp:responseObject]) {
             if ([YSTools dx_isNullOrNilWithObject:responseObject[@"data"]]) {
-                [YTAlertUtil showTempInfo:responseObject[kMessage]];
-                return;
-            }
+//                [YTAlertUtil showTempInfo:responseObject[kMessage]];
+//                return;
+                NSArray * arr= [NSArray array];
+                if ([[responseObject allKeys] containsObject:@"data"]) {
+                    [[responseObject mutableCopy] setObject:arr forKey:@"data"];
+                }
+            } 
             success ? success(task, responseObject) : nil;
             //缓存
             [[EGOCache globalCache] setObject:responseObject forKey:cacheKeyStr];

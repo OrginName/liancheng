@@ -128,9 +128,6 @@
                     NSDictionary *dic = responseObject[@"data"];
                     RCUserInfo *user = [RCUserInfo new];
                     user.userId = [dic[@"id"] description];
-                    if ([user.userId isKindOfClass:[NSNumber class]]) {
-                        NSLog(@"杀寇决慧点科技阿三奥克斯店哈健康稍等哈手机壳大还是大家卡上");
-                    }
                     user.name = dic[@"nickName"];
                     user.portraitUri = dic[@"headImage"];
                     if (!user.portraitUri || user.portraitUri.length <= 0) {
@@ -284,10 +281,10 @@
                 NSDictionary * dic = arr[i];
                 RCDUserInfo *member = [[RCDUserInfo alloc] init];
                 member.userId = [dic[@"userId"] description];
-                member.name = dic[@"nickname"]?dic[@"nickname"]:@"等接口";
+                member.name = dic[@"nickName"]?dic[@"nickName"]:@"等接口";
                 member.portraitUri = dic[@"headImage"]?dic[@"headImage"]:@"http://panixgsjz.bkt.clouddn.com/FoDvruYhYiUKPPIL80-oMpRtJvDN";
                 member.updatedAt = dic[@"createdAt"]?dic[@"createdAt"]:@"等接口";
-                member.displayName = dic[@"displayName"]?dic[@"displayName"]:@"等接口";
+                member.displayName = dic[@"nickName"]?dic[@"nickName"]:@"等接口";
                 if (!member.portraitUri || member.portraitUri <= 0) {
                     member.portraitUri = [RCDUtilities defaultUserPortrait:member];
                 }

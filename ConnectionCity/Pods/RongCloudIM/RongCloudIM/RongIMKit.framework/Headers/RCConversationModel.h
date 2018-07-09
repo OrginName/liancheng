@@ -45,7 +45,6 @@ typedef NS_ENUM(NSUInteger, RCConversationModelType) {
  用户自定义的扩展数据
  */
 @property(nonatomic, strong) id extend;
-
 /*!
  会话类型
  */

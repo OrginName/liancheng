@@ -25,7 +25,6 @@
     if (self = [super initWithFrame:frame]) {
         ///初始化地图
         ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
-        
         MAMapView * map = [[MAMapView alloc] init];
         map.showsUserLocation = YES;
 //        map.userTrackingMode = MAUserTrackingModeFollow;
@@ -163,7 +162,6 @@
             CityMo * mo = [CityMo mj_objectWithKeyValues:responseObject[@"data"][i]];
             mo.ID = responseObject[@"data"][i][@"id"];
             if ([mo.fullName isEqualToString:city]) {
-                NSLog(@"324231421342342134213");
                 [KUserDefults setValue:mo.ID forKey:kUserCityID];
                 return;
             }
