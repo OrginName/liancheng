@@ -113,6 +113,11 @@ static double  const NUM_PER_SEC = 22;
 static NSString * const NOTI_WEI_XIN_AUTH_SUCCESS = @"WeiXinAuthSuccess";
 /** 微信支付成功 */
 static NSString * const NOTI_WEI_XIN_PAY_SUCCESS = @"WeiXinPaySuccess";
+/** 支付宝支付成功 */
+static NSString * const NOTI_ALI_PAY_SUCCESS = @"AlipaySuccess";
+/** 支付宝支付失败 */
+static NSString * const NOTI_ALI_PAY_FAIL = @"AlipayFail";
+
 
 #endif /* YSConstString_h */
 

@@ -29,6 +29,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 //微信SDK头文件
 #import <WXApi.h>
+#import <AlipaySDK/AlipaySDK.h>
 #define QQ_APPID @"1106473725"
 #define QQ_APPKEY @"dTrtNRCsVY79nCwC"
 #define APPID_WEIXIN @"wxb773a629b959a9f9"
@@ -446,20 +447,27 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // background, optionally refresh the user interface.
 }
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    WeakSelf
     dispatch_async(dispatch_get_main_queue(), ^{
-        [WXApi handleOpenURL:url delegate:self];
+        [WXApi handleOpenURL:url delegate:weakSelf];
+        [weakSelf alipayWithURL:url];
     });
+    
     return YES;
 }
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    WeakSelf
     dispatch_async(dispatch_get_main_queue(), ^{
-        [WXApi handleOpenURL:url delegate:self];
+        [WXApi handleOpenURL:url delegate:weakSelf];
+        [weakSelf alipayWithURL:url];
     });
     return YES;
 }
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
+    WeakSelf
     dispatch_async(dispatch_get_main_queue(), ^{
-        [WXApi handleOpenURL:url delegate:self];
+        [WXApi handleOpenURL:url delegate:weakSelf];
+        [weakSelf alipayWithURL:url];
     });
     return YES;
 }
@@ -738,6 +746,12 @@ handleWatchKitExtensionRequest:(NSDictionary *)userInfo
     
     // 向微信请求支付后,得到响应结果
     if([resp isKindOfClass:[PayResp class]]) {
+//        WXSuccess           = 0,    /**< 成功    */
+//        WXErrCodeCommon     = -1,   /**< 普通错误类型    */
+//        WXErrCodeUserCancel = -2,   /**< 用户点击取消并返回    */
+//        WXErrCodeSentFail   = -3,   /**< 发送失败    */
+//        WXErrCodeAuthDeny   = -4,   /**< 授权失败    */
+//        WXErrCodeUnsupport  = -5,   /**< 微信不支持    */
         switch (resp.errCode) {
             case WXSuccess:
             {
@@ -760,6 +774,33 @@ handleWatchKitExtensionRequest:(NSDictionary *)userInfo
         }
     }
 }
+- (void)alipayWithURL:(NSURL *)url {
+    if ([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+//            9000 订单支付成功
+//            8000 正在处理中
+//            4000 订单支付失败
+//            6001 用户中途取消
+//            6002 网络连接出错
+            switch ([resultDic[@"resultStatus"]integerValue]) {
+                case 9000:
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ALI_PAY_SUCCESS object:nil userInfo:resultDic[@"result"]];
+                    break;
+                case 6001:
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ALI_PAY_FAIL object:nil userInfo:resultDic[@"result"]];
+                    break;
+                case 4000:
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ALI_PAY_FAIL object:nil userInfo:resultDic[@"result"]];
+                    break;
+                default:
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ALI_PAY_FAIL object:nil userInfo:resultDic[@"result"]];
+                    break;
+            }
+        }];
+    }
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:RCKitDispatchMessageNotification object:nil];
 }

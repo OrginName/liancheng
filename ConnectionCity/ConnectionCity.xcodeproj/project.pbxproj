@@ -445,6 +445,14 @@
 		CE0BA637209D68A3004C3C33 /* ChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA62D209D68A2004C3C33 /* ChangePasswordController.m */; };
 		CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE0BA62E209D68A2004C3C33 /* YSRegisterController.xib */; };
 		CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA631209D68A2004C3C33 /* YSAccount.m */; };
+		CE14BD6620F3780E00F85C49 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE14BD0F20F3780E00F85C49 /* libcrypto.a */; };
+		CE14BD6720F3780E00F85C49 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CE14BD1020F3780E00F85C49 /* AlipaySDK.bundle */; };
+		CE14BD6820F3780E00F85C49 /* APOrderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE14BD1120F3780E00F85C49 /* APOrderInfo.m */; };
+		CE14BD6920F3780E00F85C49 /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE14BD1320F3780E00F85C49 /* openssl_wrapper.m */; };
+		CE14BD6A20F3780E00F85C49 /* APRSASigner.m in Sources */ = {isa = PBXBuildFile; fileRef = CE14BD1620F3780E00F85C49 /* APRSASigner.m */; };
+		CE14BD6B20F3780E00F85C49 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE14BD1820F3780E00F85C49 /* libssl.a */; };
+		CE14BD6C20F3780F00F85C49 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE14BD6520F3780E00F85C49 /* AlipaySDK.framework */; };
+		CE14BD6F20F3794000F85C49 /* YTThirdPartyPay.m in Sources */ = {isa = PBXBuildFile; fileRef = CE14BD6E20F3794000F85C49 /* YTThirdPartyPay.m */; };
 		CE21F0D720DD345F00478482 /* privateUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F0D620DD345F00478482 /* privateUserInfoModel.m */; };
 		CE21F0DA20DD380900478482 /* OccupationCategoryNameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F0D920DD380900478482 /* OccupationCategoryNameModel.m */; };
 		CE21F0DD20DD38A700478482 /* NSDictionary+SafeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = CE21F0DC20DD38A700478482 /* NSDictionary+SafeValue.m */; };
@@ -1369,6 +1377,93 @@
 		CE0BA62E209D68A2004C3C33 /* YSRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YSRegisterController.xib; sourceTree = "<group>"; };
 		CE0BA630209D68A2004C3C33 /* YSAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSAccount.h; sourceTree = "<group>"; };
 		CE0BA631209D68A2004C3C33 /* YSAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSAccount.m; sourceTree = "<group>"; };
+		CE14BD0F20F3780E00F85C49 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		CE14BD1020F3780E00F85C49 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		CE14BD1120F3780E00F85C49 /* APOrderInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APOrderInfo.m; sourceTree = "<group>"; };
+		CE14BD1320F3780E00F85C49 /* openssl_wrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = openssl_wrapper.m; sourceTree = "<group>"; };
+		CE14BD1420F3780E00F85C49 /* APRSASigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APRSASigner.h; sourceTree = "<group>"; };
+		CE14BD1520F3780E00F85C49 /* openssl_wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openssl_wrapper.h; sourceTree = "<group>"; };
+		CE14BD1620F3780E00F85C49 /* APRSASigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APRSASigner.m; sourceTree = "<group>"; };
+		CE14BD1720F3780E00F85C49 /* APOrderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APOrderInfo.h; sourceTree = "<group>"; };
+		CE14BD1820F3780E00F85C49 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		CE14BD1A20F3780E00F85C49 /* pem2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pem2.h; sourceTree = "<group>"; };
+		CE14BD1B20F3780E00F85C49 /* pem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pem.h; sourceTree = "<group>"; };
+		CE14BD1C20F3780E00F85C49 /* ssl3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssl3.h; sourceTree = "<group>"; };
+		CE14BD1D20F3780E00F85C49 /* ossl_typ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ossl_typ.h; sourceTree = "<group>"; };
+		CE14BD1E20F3780E00F85C49 /* dtls1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dtls1.h; sourceTree = "<group>"; };
+		CE14BD1F20F3780E00F85C49 /* err.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = err.h; sourceTree = "<group>"; };
+		CE14BD2020F3780E00F85C49 /* bn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bn.h; sourceTree = "<group>"; };
+		CE14BD2120F3780E00F85C49 /* blowfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = blowfish.h; sourceTree = "<group>"; };
+		CE14BD2220F3780E00F85C49 /* cms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cms.h; sourceTree = "<group>"; };
+		CE14BD2320F3780E00F85C49 /* engine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = engine.h; sourceTree = "<group>"; };
+		CE14BD2420F3780E00F85C49 /* conf_api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = conf_api.h; sourceTree = "<group>"; };
+		CE14BD2520F3780E00F85C49 /* x509.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509.h; sourceTree = "<group>"; };
+		CE14BD2620F3780E00F85C49 /* asn1_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1_mac.h; sourceTree = "<group>"; };
+		CE14BD2720F3780E00F85C49 /* ui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ui.h; sourceTree = "<group>"; };
+		CE14BD2820F3780E00F85C49 /* kssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kssl.h; sourceTree = "<group>"; };
+		CE14BD2920F3780E00F85C49 /* sha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha.h; sourceTree = "<group>"; };
+		CE14BD2A20F3780E00F85C49 /* symhacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = symhacks.h; sourceTree = "<group>"; };
+		CE14BD2B20F3780E00F85C49 /* asn1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1.h; sourceTree = "<group>"; };
+		CE14BD2C20F3780E00F85C49 /* opensslconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opensslconf.h; sourceTree = "<group>"; };
+		CE14BD2D20F3780E00F85C49 /* bio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bio.h; sourceTree = "<group>"; };
+		CE14BD2E20F3780E00F85C49 /* rc2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rc2.h; sourceTree = "<group>"; };
+		CE14BD2F20F3780E00F85C49 /* dh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dh.h; sourceTree = "<group>"; };
+		CE14BD3020F3780E00F85C49 /* ui_compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ui_compat.h; sourceTree = "<group>"; };
+		CE14BD3120F3780E00F85C49 /* x509v3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509v3.h; sourceTree = "<group>"; };
+		CE14BD3220F3780E00F85C49 /* ssl23.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssl23.h; sourceTree = "<group>"; };
+		CE14BD3320F3780E00F85C49 /* conf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = conf.h; sourceTree = "<group>"; };
+		CE14BD3420F3780E00F85C49 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		CE14BD3520F3780E00F85C49 /* x509_vfy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509_vfy.h; sourceTree = "<group>"; };
+		CE14BD3620F3780E00F85C49 /* txt_db.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = txt_db.h; sourceTree = "<group>"; };
+		CE14BD3720F3780E00F85C49 /* safestack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = safestack.h; sourceTree = "<group>"; };
+		CE14BD3820F3780E00F85C49 /* ecdsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ecdsa.h; sourceTree = "<group>"; };
+		CE14BD3920F3780E00F85C49 /* objects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = objects.h; sourceTree = "<group>"; };
+		CE14BD3A20F3780E00F85C49 /* pkcs12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkcs12.h; sourceTree = "<group>"; };
+		CE14BD3B20F3780E00F85C49 /* crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypto.h; sourceTree = "<group>"; };
+		CE14BD3C20F3780E00F85C49 /* opensslv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opensslv.h; sourceTree = "<group>"; };
+		CE14BD3D20F3780E00F85C49 /* pkcs7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkcs7.h; sourceTree = "<group>"; };
+		CE14BD3E20F3780E00F85C49 /* obj_mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = obj_mac.h; sourceTree = "<group>"; };
+		CE14BD3F20F3780E00F85C49 /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffer.h; sourceTree = "<group>"; };
+		CE14BD4020F3780E00F85C49 /* ssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssl.h; sourceTree = "<group>"; };
+		CE14BD4120F3780E00F85C49 /* srp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = srp.h; sourceTree = "<group>"; };
+		CE14BD4220F3780E00F85C49 /* camellia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camellia.h; sourceTree = "<group>"; };
+		CE14BD4320F3780E00F85C49 /* evp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = evp.h; sourceTree = "<group>"; };
+		CE14BD4420F3780E00F85C49 /* e_os2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = e_os2.h; sourceTree = "<group>"; };
+		CE14BD4520F3780E00F85C49 /* md4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md4.h; sourceTree = "<group>"; };
+		CE14BD4620F3780E00F85C49 /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
+		CE14BD4720F3780E00F85C49 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
+		CE14BD4820F3780E00F85C49 /* comp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = comp.h; sourceTree = "<group>"; };
+		CE14BD4920F3780E00F85C49 /* cast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cast.h; sourceTree = "<group>"; };
+		CE14BD4A20F3780E00F85C49 /* rc4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rc4.h; sourceTree = "<group>"; };
+		CE14BD4B20F3780E00F85C49 /* stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
+		CE14BD4C20F3780E00F85C49 /* des.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = des.h; sourceTree = "<group>"; };
+		CE14BD4D20F3780E00F85C49 /* ocsp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ocsp.h; sourceTree = "<group>"; };
+		CE14BD4E20F3780E00F85C49 /* ec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ec.h; sourceTree = "<group>"; };
+		CE14BD4F20F3780E00F85C49 /* ecdh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ecdh.h; sourceTree = "<group>"; };
+		CE14BD5020F3780E00F85C49 /* rand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rand.h; sourceTree = "<group>"; };
+		CE14BD5120F3780E00F85C49 /* ts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ts.h; sourceTree = "<group>"; };
+		CE14BD5220F3780E00F85C49 /* pqueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pqueue.h; sourceTree = "<group>"; };
+		CE14BD5320F3780E00F85C49 /* dso.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dso.h; sourceTree = "<group>"; };
+		CE14BD5420F3780E00F85C49 /* seed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = seed.h; sourceTree = "<group>"; };
+		CE14BD5520F3780E00F85C49 /* modes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = modes.h; sourceTree = "<group>"; };
+		CE14BD5620F3780E00F85C49 /* ssl2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ssl2.h; sourceTree = "<group>"; };
+		CE14BD5720F3780E00F85C49 /* rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rsa.h; sourceTree = "<group>"; };
+		CE14BD5820F3780E00F85C49 /* krb5_asn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = krb5_asn.h; sourceTree = "<group>"; };
+		CE14BD5920F3780E00F85C49 /* des_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = des_old.h; sourceTree = "<group>"; };
+		CE14BD5A20F3780E00F85C49 /* ripemd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ripemd.h; sourceTree = "<group>"; };
+		CE14BD5B20F3780E00F85C49 /* whrlpool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = whrlpool.h; sourceTree = "<group>"; };
+		CE14BD5C20F3780E00F85C49 /* tls1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tls1.h; sourceTree = "<group>"; };
+		CE14BD5D20F3780E00F85C49 /* mdc2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mdc2.h; sourceTree = "<group>"; };
+		CE14BD5E20F3780E00F85C49 /* dsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dsa.h; sourceTree = "<group>"; };
+		CE14BD5F20F3780E00F85C49 /* srtp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = srtp.h; sourceTree = "<group>"; };
+		CE14BD6020F3780E00F85C49 /* asn1t.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1t.h; sourceTree = "<group>"; };
+		CE14BD6120F3780E00F85C49 /* cmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cmac.h; sourceTree = "<group>"; };
+		CE14BD6220F3780E00F85C49 /* ebcdic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ebcdic.h; sourceTree = "<group>"; };
+		CE14BD6320F3780E00F85C49 /* idea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = idea.h; sourceTree = "<group>"; };
+		CE14BD6420F3780E00F85C49 /* lhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lhash.h; sourceTree = "<group>"; };
+		CE14BD6520F3780E00F85C49 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		CE14BD6D20F3794000F85C49 /* YTThirdPartyPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTThirdPartyPay.h; sourceTree = "<group>"; };
+		CE14BD6E20F3794000F85C49 /* YTThirdPartyPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTThirdPartyPay.m; sourceTree = "<group>"; };
 		CE21F0D520DD345F00478482 /* privateUserInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = privateUserInfoModel.h; sourceTree = "<group>"; };
 		CE21F0D620DD345F00478482 /* privateUserInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = privateUserInfoModel.m; sourceTree = "<group>"; };
 		CE21F0D820DD380900478482 /* OccupationCategoryNameModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OccupationCategoryNameModel.h; sourceTree = "<group>"; };
@@ -1580,7 +1675,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DEA451620C12180001529F1 /* AVFoundation.framework in Frameworks */,
+				CE14BD6C20F3780F00F85C49 /* AlipaySDK.framework in Frameworks */,
 				8D24A22720A19C8F00F0740D /* MapKit.framework in Frameworks */,
+				CE14BD6B20F3780E00F85C49 /* libssl.a in Frameworks */,
+				CE14BD6620F3780E00F85C49 /* libcrypto.a in Frameworks */,
 				72626F3F20ECFBE9001B807D /* RongContactCard.framework in Frameworks */,
 				8817A720716E5B61344D714A /* libPods-ConnectionCity.a in Frameworks */,
 				72626F2F20ECF295001B807D /* libMobClickLibrary.a in Frameworks */,
@@ -1916,6 +2014,7 @@
 		729BA6B120A01E7F009713FD /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				CE14BD0E20F3780E00F85C49 /* Alipay */,
 				8D14FDE320EB0BAA0013A9DF /* RcloudMessage */,
 				8D07D75F20DCDF490073807C /* QinNiu */,
 				720263D220B5015500382B2F /* TZImagePickerController */,
@@ -3236,6 +3335,8 @@
 				727418BA20B17536001D6BE1 /* CusTabBar */,
 				72BAB43720B047F500496D29 /* YSButton.h */,
 				72BAB43820B047F500496D29 /* YSButton.m */,
+				CE14BD6D20F3794000F85C49 /* YTThirdPartyPay.h */,
+				CE14BD6E20F3794000F85C49 /* YTThirdPartyPay.m */,
 				CE0BA5BF209D5E9B004C3C33 /* YSTools.h */,
 				CE0BA5D2209D5E9B004C3C33 /* YSTools.m */,
 				CE0BA5C1209D5E9B004C3C33 /* YTSystemUtil.m */,
@@ -3424,6 +3525,114 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CE14BD0E20F3780E00F85C49 /* Alipay */ = {
+			isa = PBXGroup;
+			children = (
+				CE14BD0F20F3780E00F85C49 /* libcrypto.a */,
+				CE14BD1020F3780E00F85C49 /* AlipaySDK.bundle */,
+				CE14BD1120F3780E00F85C49 /* APOrderInfo.m */,
+				CE14BD1220F3780E00F85C49 /* Utils */,
+				CE14BD1720F3780E00F85C49 /* APOrderInfo.h */,
+				CE14BD1820F3780E00F85C49 /* libssl.a */,
+				CE14BD1920F3780E00F85C49 /* openssl */,
+				CE14BD6520F3780E00F85C49 /* AlipaySDK.framework */,
+			);
+			path = Alipay;
+			sourceTree = "<group>";
+		};
+		CE14BD1220F3780E00F85C49 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CE14BD1320F3780E00F85C49 /* openssl_wrapper.m */,
+				CE14BD1420F3780E00F85C49 /* APRSASigner.h */,
+				CE14BD1520F3780E00F85C49 /* openssl_wrapper.h */,
+				CE14BD1620F3780E00F85C49 /* APRSASigner.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CE14BD1920F3780E00F85C49 /* openssl */ = {
+			isa = PBXGroup;
+			children = (
+				CE14BD1A20F3780E00F85C49 /* pem2.h */,
+				CE14BD1B20F3780E00F85C49 /* pem.h */,
+				CE14BD1C20F3780E00F85C49 /* ssl3.h */,
+				CE14BD1D20F3780E00F85C49 /* ossl_typ.h */,
+				CE14BD1E20F3780E00F85C49 /* dtls1.h */,
+				CE14BD1F20F3780E00F85C49 /* err.h */,
+				CE14BD2020F3780E00F85C49 /* bn.h */,
+				CE14BD2120F3780E00F85C49 /* blowfish.h */,
+				CE14BD2220F3780E00F85C49 /* cms.h */,
+				CE14BD2320F3780E00F85C49 /* engine.h */,
+				CE14BD2420F3780E00F85C49 /* conf_api.h */,
+				CE14BD2520F3780E00F85C49 /* x509.h */,
+				CE14BD2620F3780E00F85C49 /* asn1_mac.h */,
+				CE14BD2720F3780E00F85C49 /* ui.h */,
+				CE14BD2820F3780E00F85C49 /* kssl.h */,
+				CE14BD2920F3780E00F85C49 /* sha.h */,
+				CE14BD2A20F3780E00F85C49 /* symhacks.h */,
+				CE14BD2B20F3780E00F85C49 /* asn1.h */,
+				CE14BD2C20F3780E00F85C49 /* opensslconf.h */,
+				CE14BD2D20F3780E00F85C49 /* bio.h */,
+				CE14BD2E20F3780E00F85C49 /* rc2.h */,
+				CE14BD2F20F3780E00F85C49 /* dh.h */,
+				CE14BD3020F3780E00F85C49 /* ui_compat.h */,
+				CE14BD3120F3780E00F85C49 /* x509v3.h */,
+				CE14BD3220F3780E00F85C49 /* ssl23.h */,
+				CE14BD3320F3780E00F85C49 /* conf.h */,
+				CE14BD3420F3780E00F85C49 /* md5.h */,
+				CE14BD3520F3780E00F85C49 /* x509_vfy.h */,
+				CE14BD3620F3780E00F85C49 /* txt_db.h */,
+				CE14BD3720F3780E00F85C49 /* safestack.h */,
+				CE14BD3820F3780E00F85C49 /* ecdsa.h */,
+				CE14BD3920F3780E00F85C49 /* objects.h */,
+				CE14BD3A20F3780E00F85C49 /* pkcs12.h */,
+				CE14BD3B20F3780E00F85C49 /* crypto.h */,
+				CE14BD3C20F3780E00F85C49 /* opensslv.h */,
+				CE14BD3D20F3780E00F85C49 /* pkcs7.h */,
+				CE14BD3E20F3780E00F85C49 /* obj_mac.h */,
+				CE14BD3F20F3780E00F85C49 /* buffer.h */,
+				CE14BD4020F3780E00F85C49 /* ssl.h */,
+				CE14BD4120F3780E00F85C49 /* srp.h */,
+				CE14BD4220F3780E00F85C49 /* camellia.h */,
+				CE14BD4320F3780E00F85C49 /* evp.h */,
+				CE14BD4420F3780E00F85C49 /* e_os2.h */,
+				CE14BD4520F3780E00F85C49 /* md4.h */,
+				CE14BD4620F3780E00F85C49 /* hmac.h */,
+				CE14BD4720F3780E00F85C49 /* aes.h */,
+				CE14BD4820F3780E00F85C49 /* comp.h */,
+				CE14BD4920F3780E00F85C49 /* cast.h */,
+				CE14BD4A20F3780E00F85C49 /* rc4.h */,
+				CE14BD4B20F3780E00F85C49 /* stack.h */,
+				CE14BD4C20F3780E00F85C49 /* des.h */,
+				CE14BD4D20F3780E00F85C49 /* ocsp.h */,
+				CE14BD4E20F3780E00F85C49 /* ec.h */,
+				CE14BD4F20F3780E00F85C49 /* ecdh.h */,
+				CE14BD5020F3780E00F85C49 /* rand.h */,
+				CE14BD5120F3780E00F85C49 /* ts.h */,
+				CE14BD5220F3780E00F85C49 /* pqueue.h */,
+				CE14BD5320F3780E00F85C49 /* dso.h */,
+				CE14BD5420F3780E00F85C49 /* seed.h */,
+				CE14BD5520F3780E00F85C49 /* modes.h */,
+				CE14BD5620F3780E00F85C49 /* ssl2.h */,
+				CE14BD5720F3780E00F85C49 /* rsa.h */,
+				CE14BD5820F3780E00F85C49 /* krb5_asn.h */,
+				CE14BD5920F3780E00F85C49 /* des_old.h */,
+				CE14BD5A20F3780E00F85C49 /* ripemd.h */,
+				CE14BD5B20F3780E00F85C49 /* whrlpool.h */,
+				CE14BD5C20F3780E00F85C49 /* tls1.h */,
+				CE14BD5D20F3780E00F85C49 /* mdc2.h */,
+				CE14BD5E20F3780E00F85C49 /* dsa.h */,
+				CE14BD5F20F3780E00F85C49 /* srtp.h */,
+				CE14BD6020F3780E00F85C49 /* asn1t.h */,
+				CE14BD6120F3780E00F85C49 /* cmac.h */,
+				CE14BD6220F3780E00F85C49 /* ebcdic.h */,
+				CE14BD6320F3780E00F85C49 /* idea.h */,
+				CE14BD6420F3780E00F85C49 /* lhash.h */,
+			);
+			path = openssl;
 			sourceTree = "<group>";
 		};
 		CE21F0E920DF92BC00478482 /* Models */ = {
@@ -4236,6 +4445,7 @@
 				CEE4B2B020C6D948008B8731 /* MemberRenewalController.xib in Resources */,
 				727418DF20B290BF001D6BE1 /* EnthusiastsControll.xib in Resources */,
 				72EC1BAC20BC34AA00ACC20B /* TravalController.xib in Resources */,
+				CE14BD6720F3780E00F85C49 /* AlipaySDK.bundle in Resources */,
 				72EC1BA220BC347D00ACC20B /* ProfileServiceController.xib in Resources */,
 				8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */,
 				8DEA450520C10BB7001529F1 /* FindMySelfCell.xib in Resources */,
@@ -4362,6 +4572,7 @@
 				72A2FC6F20D00B2E00CD6AAC /* AbilityNet.m in Sources */,
 				CE0BA5DD209D5E9B004C3C33 /* YTSystemUtil.m in Sources */,
 				723F4FA120BED37800AF8268 /* TrvalCell.m in Sources */,
+				CE14BD6F20F3794000F85C49 /* YTThirdPartyPay.m in Sources */,
 				CE03EDF520B4544700F07D78 /* FirstSectionHeadV.m in Sources */,
 				8D50C55120C632090095A824 /* OurSendController.m in Sources */,
 				CE0BA5E3209D5E9B004C3C33 /* YTAlertUtil.m in Sources */,
@@ -4398,6 +4609,7 @@
 				CEBEDD9120B17ED1000F9EE4 /* FootprintController.m in Sources */,
 				CEBEDD8120B17ED1000F9EE4 /* MarginController.m in Sources */,
 				CE9B9A5D20E7DC69005C47B2 /* TenderRecordsMo.m in Sources */,
+				CE14BD6820F3780E00F85C49 /* APOrderInfo.m in Sources */,
 				CEC4A57C20C41D540026EE19 /* ProfileHeadView.m in Sources */,
 				723F4FA620BEDE6000AF8268 /* TrvalInvitController.m in Sources */,
 				7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */,
@@ -4591,6 +4803,7 @@
 				CEF041CE20EA6EFD00C00314 /* AccountPageMo.m in Sources */,
 				8DB277B120EF53B900B3D747 /* RCDSearchViewController.m in Sources */,
 				8DE4660620EDF2CE009730F7 /* RCDConversationSettingTableViewHeaderItem.m in Sources */,
+				CE14BD6920F3780E00F85C49 /* openssl_wrapper.m in Sources */,
 				CE0BA5B8209D5E6B004C3C33 /* UIColor+Extension.m in Sources */,
 				CE03EE0020B467EC00F07D78 /* ReleaseTenderController.m in Sources */,
 				8D35878720C6A544008A5E74 /* OurPlayController.m in Sources */,
@@ -4663,6 +4876,7 @@
 				CE5C280420B90473006A8332 /* BiddInfoCell.m in Sources */,
 				8D09E18E20BFD52E000F7EBD /* ShowtrvalTab.m in Sources */,
 				CE0BA607209D60C3004C3C33 /* MessageController.m in Sources */,
+				CE14BD6A20F3780E00F85C49 /* APRSASigner.m in Sources */,
 				8DE4661E20EDF425009730F7 /* RCDTableViewController.m in Sources */,
 				CE0BA5E8209D5E9B004C3C33 /* GlobalManager.m in Sources */,
 				8DC17A7D20C0E430005D9EE0 /* UIView+Geometry.m in Sources */,
@@ -4881,23 +5095,48 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ConnectionCity/Third/RcloudMessage/framework",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ConnectionCity/Third/Alipay",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/AMap2DMap\"",
+					"\"${PODS_ROOT}/Headers/Public/AMapFoundation\"",
+					"\"${PODS_ROOT}/Headers/Public/AMapLocation\"",
+					"\"${PODS_ROOT}/Headers/Public/AMapSearch\"",
+					"\"${PODS_ROOT}/Headers/Public/FMDB\"",
+					"\"${PODS_ROOT}/Headers/Public/HappyDNS\"",
+					"\"${PODS_ROOT}/Headers/Public/IQKeyboardManager\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/MJExtension\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/MLLabel\"",
+					"\"${PODS_ROOT}/Headers/Public/MOBFoundation\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/Qiniu\"",
+					"\"${PODS_ROOT}/Headers/Public/RongCloudIM\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/ShareSDK3\"",
+					"\"$(SRCROOT)/ConnectionCity/Third/Alipay\"",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ConnectionCity/Third/RcloudMessage/Utilites/UMAnalytics",
+					"$(PROJECT_DIR)/ConnectionCity/Third/Alipay",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LC.CC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4915,22 +5154,47 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ConnectionCity/Third/RcloudMessage/framework",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/ConnectionCity/Third/Alipay",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ConnectionCity/Headers/YSPrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/AMap2DMap\"",
+					"\"${PODS_ROOT}/Headers/Public/AMapFoundation\"",
+					"\"${PODS_ROOT}/Headers/Public/AMapLocation\"",
+					"\"${PODS_ROOT}/Headers/Public/AMapSearch\"",
+					"\"${PODS_ROOT}/Headers/Public/FMDB\"",
+					"\"${PODS_ROOT}/Headers/Public/HappyDNS\"",
+					"\"${PODS_ROOT}/Headers/Public/IQKeyboardManager\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/MJExtension\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/MLLabel\"",
+					"\"${PODS_ROOT}/Headers/Public/MOBFoundation\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/Qiniu\"",
+					"\"${PODS_ROOT}/Headers/Public/RongCloudIM\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/ShareSDK3\"",
+					"\"$(SRCROOT)/ConnectionCity/Third/Alipay\"",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ConnectionCity/Third/RcloudMessage/Utilites/UMAnalytics",
+					"$(PROJECT_DIR)/ConnectionCity/Third/Alipay",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LC.CC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
