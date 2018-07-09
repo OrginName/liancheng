@@ -369,7 +369,7 @@ NSMutableDictionary *userInputStatus;
  */
 - (void)rightBarButtonItemClicked:(id)sender {
     if (self.conversationType == ConversationType_PRIVATE) {
-        RCDUserInfo *friendInfo = [[RCDataBaseManager shareInstance] getFriendInfo:self.targetId];
+//        RCDUserInfo *friendInfo = [[RCDataBaseManager shareInstance] getFriendInfo:self.targetId];
 //        if (![friendInfo.status isEqualToString:@"20"]) {
 //            RCDAddFriendViewController *vc = [[RCDAddFriendViewController alloc] init];
 //            vc.targetUserInfo = friendInfo;
@@ -407,10 +407,10 @@ NSMutableDictionary *userInputStatus;
         RCDGroupSettingsTableViewController *settingsVC =
             [RCDGroupSettingsTableViewController groupSettingsTableViewController];
         settingsVC.flagStr = self.flagStr;
-        if (_groupInfo == nil) {
+        if (self.groupInfo == nil) {
             settingsVC.Group = [[RCDataBaseManager shareInstance] getGroupByGroupId:self.targetId];
         } else {
-            settingsVC.Group = _groupInfo;
+            settingsVC.Group = self.groupInfo;
         }
         [self.navigationController pushViewController:settingsVC animated:YES];
     }
@@ -890,6 +890,7 @@ NSMutableDictionary *userInputStatus;
         __weak typeof(self) weakSelf = self;
         [RCDHTTPTOOL getGroupByID:self.targetId flag:self.flagStr
                 successCompletion:^(RCDGroupInfo *group) {
+//                    self.groupInfo = group;
                     RCGroup *Group = [[RCGroup alloc] initWithGroupId:weakSelf.targetId
                                                             groupName:group.groupName
                                                           portraitUri:group.portraitUri];

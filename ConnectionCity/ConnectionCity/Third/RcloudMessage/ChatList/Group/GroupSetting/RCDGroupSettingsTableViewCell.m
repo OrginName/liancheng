@@ -54,6 +54,7 @@
         case 2:
             [self setCellStyle:DefaultStyle];
             self.leftLabel.text = @"群公告";
+                self.rightLabel.text = groupInfo.introduce;
             break;
         default:
             break;

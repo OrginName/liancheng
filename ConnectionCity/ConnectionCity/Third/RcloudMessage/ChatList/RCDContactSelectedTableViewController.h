@@ -9,10 +9,13 @@
 #import <RongIMLib/RongIMLib.h>
 #import <UIKit/UIKit.h>
 
+@protocol RCDContactDelegate <NSObject>
+@optional
+- (void)optionalFouction;
+@end
 @interface RCDContactSelectedTableViewController
     : UIViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate>
-
-
+@property (nonatomic,assign) id<RCDContactDelegate>delegate;
 @property (nonatomic,assign)int flagStr;
 
 @property(nonatomic, strong) NSArray *keys;

@@ -11,6 +11,7 @@
 
 @interface RCDEditGroupNameViewController : UIViewController <UITextFieldDelegate>
 
+@property (nonatomic,assign)int flagStr;
 /**
  *  修改群名称页面的初始化方法
  *

@@ -34,7 +34,7 @@
                         complete:(void (^)(NSString *))userId;
 
 //设置群组头像
-- (void)setGroupPortraitUri:(NSString *)portraitUri groupId:(NSString *)groupId complete:(void (^)(BOOL))result;
+- (void)setGroupPortraitUri:(NSString *)portraitUri groupId:(NSString *)groupId flag:(int)flag name:(NSString *)name notice:(NSString *)notice complete:(void (^)(BOOL))result;
 
 //获取我的群组
 - (void)getMyGroupsWithBlock:(void (^)(NSMutableArray *result))block;
@@ -52,7 +52,7 @@
 - (void)addUsersIntoGroup:(NSString *)groupID flag:(int)flag usersId:(NSMutableArray *)usersId complete:(void (^)(BOOL))result;
 
 //将用户踢出群组
-- (void)kickUsersOutOfGroup:(NSString *)groupID usersId:(NSMutableArray *)usersId complete:(void (^)(BOOL))result;
+- (void)kickUsersOutOfGroup:(NSString *)groupID flag:(int)flag usersId:(NSMutableArray *)usersId complete:(void (^)(BOOL))result;
 //退出群组
 - (void)quitGroupWithGroupId:(NSString *)groupID complete:(void (^)(BOOL result))quitResult;
 

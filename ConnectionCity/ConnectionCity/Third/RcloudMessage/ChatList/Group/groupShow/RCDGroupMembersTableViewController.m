@@ -36,10 +36,6 @@
     self.tableView.tableFooterView = [UIView new];
 
     self.title = [NSString stringWithFormat:@"群组成员(%lu)", (unsigned long)[_GroupMembers count]];
-
-    
-    self.leftBtn = [[RCDUIBarButtonItem alloc] initWithLeftBarButton:@"返回" target:self action:@selector(clickBackBtn)];
-    self.navigationItem.leftBarButtonItem = self.leftBtn;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,9 +106,4 @@
         [self.navigationController pushViewController:addViewController animated:YES];
     }
 }
-
-- (void)clickBackBtn {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 @end

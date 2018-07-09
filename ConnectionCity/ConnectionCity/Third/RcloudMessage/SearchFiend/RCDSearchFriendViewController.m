@@ -143,15 +143,23 @@
                                               otherButtonTitles:nil];
         [alert show];
     } else if (user && tableView == self.searchDisplayController.searchResultsTableView) {
-        NSMutableArray *cacheList =
-            [[NSMutableArray alloc] initWithArray:[[RCDataBaseManager shareInstance] getAllFriends]];
-        BOOL isFriend = NO;
-        for (RCDUserInfo *tempInfo in cacheList) {
-            if ([tempInfo.userId isEqualToString:user.userId] && [tempInfo.status isEqualToString:@"20"]) {
-                isFriend = YES;
-                break;
+//        NSMutableArray *cacheList =
+//            [[NSMutableArray alloc] initWithArray:[[RCDataBaseManager shareInstance] getAllFriends]];
+        __block BOOL isFriend = NO;
+        [RCDHTTPTOOL getFriendscomplete:^(NSMutableArray *arr) {
+            for (int i=0;i<arr.count;i++) {
+                if ([[arr[i] userId] isEqualToString:user.userId]) {
+                    isFriend = YES;
+                    break;
+                }
             }
-        }
+        }];
+//        for (int i=0;i<cacheList.count;i++) {
+//            if ([[cacheList[i] userId] isEqualToString:user.userId]) {
+//                isFriend = YES;
+//                break;
+//            }
+//        }
         if (isFriend == YES) {
             RCDPersonDetailViewController *detailViewController = [[RCDPersonDetailViewController alloc] init];
             detailViewController.userId = user.userId;

@@ -43,12 +43,6 @@
 //通过好友详细信息或好友Id获取好友信息
 - (void)getFriendInfo:(NSString *)friendId completion:(void (^)(RCUserInfo *))completion {
     __block RCUserInfo *resultInfo;
-//    [RCDHTTPTOOL getUserInfoByUserID:friendId
-//                          completion:^(RCUserInfo *user) {
-//                              resultInfo = [self getRCUserInfoByRCDUserInfo:user];
-//                            completion(resultInfo);
-//                            return;
-//                          }];
     [RCDHTTPTOOL getFriendDetailsWithFriendId:friendId
         success:^(RCDUserInfo *user) {
             resultInfo = [self getRCUserInfoByRCDUserInfo:user];

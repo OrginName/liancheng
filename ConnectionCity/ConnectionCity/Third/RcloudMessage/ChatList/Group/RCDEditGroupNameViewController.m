@@ -100,27 +100,43 @@
         [self Alert:@"群组名称不能超过10个字"];
         return;
     }
-
-    [RCDHTTPTOOL
-        renameGroupWithGoupId:_groupInfo.groupId
-                    groupName:nameStr
-                     complete:^(BOOL result) {
-                         if (result == YES) {
-                             RCGroup *groupInfo = [RCGroup new];
-                             groupInfo.groupId = _groupInfo.groupId;
-                             groupInfo.groupName = nameStr;
-                             groupInfo.portraitUri = _groupInfo.portraitUri;
-                             [[RCIM sharedRCIM] refreshGroupInfoCache:groupInfo withGroupId:_groupInfo.groupId];
-                             RCDGroupInfo *tempGroupInfo =
-                                 [[RCDataBaseManager shareInstance] getGroupByGroupId:groupInfo.groupId];
-                             tempGroupInfo.groupName = nameStr;
-                             [[RCDataBaseManager shareInstance] insertGroupToDB:tempGroupInfo];
-                             [self.navigationController popViewControllerAnimated:YES];
-                         }
-                         if (result == NO) {
-                             [self Alert:@"群组名称修改失败"];
-                         }
-                     }];
+    [RCDHTTPTOOL setGroupPortraitUri:@"" groupId:_groupInfo.groupId flag:self.flagStr name:nameStr notice:@"" complete:^(BOOL result) {
+        if (result == YES) {
+            RCGroup *groupInfo = [RCGroup new];
+            groupInfo.groupId = _groupInfo.groupId;
+            groupInfo.groupName = nameStr;
+            groupInfo.portraitUri = _groupInfo.portraitUri;
+            [[RCIM sharedRCIM] refreshGroupInfoCache:groupInfo withGroupId:_groupInfo.groupId];
+            RCDGroupInfo *tempGroupInfo =
+            [[RCDataBaseManager shareInstance] getGroupByGroupId:groupInfo.groupId];
+            tempGroupInfo.groupName = nameStr;
+            [[RCDataBaseManager shareInstance] insertGroupToDB:tempGroupInfo];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        if (result == NO) {
+            [self Alert:@"群组名称修改失败"];
+        }
+    }];
+//    [RCDHTTPTOOL
+//        renameGroupWithGoupId:_groupInfo.groupId
+//                    groupName:nameStr
+//                     complete:^(BOOL result) {
+//                         if (result == YES) {
+//                             RCGroup *groupInfo = [RCGroup new];
+//                             groupInfo.groupId = _groupInfo.groupId;
+//                             groupInfo.groupName = nameStr;
+//                             groupInfo.portraitUri = _groupInfo.portraitUri;
+//                             [[RCIM sharedRCIM] refreshGroupInfoCache:groupInfo withGroupId:_groupInfo.groupId];
+//                             RCDGroupInfo *tempGroupInfo =
+//                                 [[RCDataBaseManager shareInstance] getGroupByGroupId:groupInfo.groupId];
+//                             tempGroupInfo.groupName = nameStr;
+//                             [[RCDataBaseManager shareInstance] insertGroupToDB:tempGroupInfo];
+//                             [self.navigationController popViewControllerAnimated:YES];
+//                         }
+//                         if (result == NO) {
+//                             [self Alert:@"群组名称修改失败"];
+//                         }
+//                     }];
 }
 
 - (void)Alert:(NSString *)alertContent {

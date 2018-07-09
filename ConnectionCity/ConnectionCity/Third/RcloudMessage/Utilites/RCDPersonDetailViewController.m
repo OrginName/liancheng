@@ -69,8 +69,8 @@
     [self.view addSubview:self.bottomLine];
 
     self.conversationBtn = [[UIButton alloc] init];
-    self.conversationBtn.backgroundColor = [UIColor colorWithHexString:@"0099ff" alpha:1.f];
-    self.conversationBtn.translatesAutoresizingMaskIntoConstraints = NO;
+    self.conversationBtn.backgroundColor = [UIColor orangeColor];
+self.conversationBtn.translatesAutoresizingMaskIntoConstraints = NO;
     [self.conversationBtn setTitle:@"发起会话" forState:UIControlStateNormal];
     [self.conversationBtn addTarget:self
                              action:@selector(btnConversation:)

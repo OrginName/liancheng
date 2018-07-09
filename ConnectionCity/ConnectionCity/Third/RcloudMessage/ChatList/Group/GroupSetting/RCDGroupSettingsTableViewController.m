@@ -27,9 +27,10 @@
 #import "UIImageView+WebCache.h"
 #import <RongIMLib/RongIMLib.h>
 #import "RCDUIBarButtonItem.h"
+#import "QiniuUploader.h"
 static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 
-@interface RCDGroupSettingsTableViewController ()
+@interface RCDGroupSettingsTableViewController ()<RCDContactDelegate>
 //开始会话
 @property(strong, nonatomic) UIButton *btChat;
 //加入或退出群组
@@ -56,7 +57,11 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 + (instancetype)groupSettingsTableViewController {
     return [[[self class] alloc] init];
 }
-
+#pragma mark ---RCDContactDelegate-----
+- (void)optionalFouction
+{
+    [self startLoad];
+}
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -349,66 +354,45 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     hud.labelText = @"上传头像中...";
     [hud show:YES];
     __weak typeof(self) weakSelf = self;
-    [RCDHTTPTOOL uploadImageToQiNiu:[RCIM sharedRCIM].currentUserInfo.userId
-        ImageData:data
-        success:^(NSString *url) {
-            RCGroup *groupInfo = [RCGroup new];
-            groupInfo.groupId = weakSelf.Group.groupId;
-            groupInfo.portraitUri = url;
-            groupInfo.groupName = weakSelf.Group.groupName;
-            weakSelf.Group.portraitUri = url;
-            [[RCIM sharedRCIM] refreshGroupInfoCache:groupInfo withGroupId:groupInfo.groupId];
-            if (url) {
-                [RCDHTTPTOOL
-                    setGroupPortraitUri:url
-                                groupId:weakSelf.Group.groupId
-                               complete:^(BOOL result) {
-                                   if (result == YES) {
-                                       dispatch_async(dispatch_get_main_queue(), ^{
-                                           RCDBaseSettingTableViewCell *cell =
-                                               (RCDBaseSettingTableViewCell *)[weakSelf.tableView viewWithTag:1000];
-                                           [cell.rightImageView
-                                               sd_setImageWithURL:[NSURL URLWithString:weakSelf.Group.portraitUri]];
-                                           //在修改群组头像成功后，更新本地数据库。
-                                           [[RCDataBaseManager shareInstance] insertGroupToDB:weakSelf.Group];
-                                           //                                      cell.PortraitImg.image = image;
-                                           //关闭HUD
-                                           [hud hide:YES];
-                                       });
-                                   }
-                                   if (result == NO) {
-                                       //关闭HUD
-                                       [hud hide:YES];
-                                       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-                                                                                       message:@"上传头像失败"
-                                                                                      delegate:weakSelf
-                                                                             cancelButtonTitle:@"确定"
-                                                                             otherButtonTitles:nil];
-                                       [alert show];
-                                   }
-                               }];
-
-            } else {
-                //关闭HUD
-                [hud hide:YES];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-                                                                message:@"上传头像失败"
-                                                               delegate:weakSelf
-                                                      cancelButtonTitle:@"确定"
-                                                      otherButtonTitles:nil];
-                [alert show];
-            }
+    [[QiniuUploader defaultUploader] uploadImageToQNFilePath:image withBlock:^(NSDictionary *url) {
+        RCGroup *groupInfo = [RCGroup new];
+        groupInfo.groupId = weakSelf.Group.groupId;
+        groupInfo.portraitUri = [NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]];
+        groupInfo.groupName = weakSelf.Group.groupName;
+        weakSelf.Group.portraitUri = groupInfo.portraitUri;
+        [[RCIM sharedRCIM] refreshGroupInfoCache:groupInfo withGroupId:groupInfo.groupId];
+        if (url) {
+            [RCDHTTPTOOL
+             setGroupPortraitUri:groupInfo.portraitUri
+             groupId:weakSelf.Group.groupId flag:self.flagStr name:groupInfo.groupName notice:weakSelf.Group.introduce
+             complete:^(BOOL result) {
+                 if (result == YES) {
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         RCDBaseSettingTableViewCell *cell =
+                         (RCDBaseSettingTableViewCell *)[weakSelf.tableView viewWithTag:1000];
+                         [cell.rightImageView
+                          sd_setImageWithURL:[NSURL URLWithString:weakSelf.Group.portraitUri]];
+                         //在修改群组头像成功后，更新本地数据库。
+                         [[RCDataBaseManager shareInstance] insertGroupToDB:weakSelf.Group];
+                         //                                      cell.PortraitImg.image = image;
+                         //关闭HUD
+                         [hud hide:YES];
+                     });
+                 }
+                 if (result == NO) {
+                     //关闭HUD
+                     [hud hide:YES];
+                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                                     message:@"上传头像失败"
+                                                                    delegate:weakSelf
+                                                           cancelButtonTitle:@"确定"
+                                                           otherButtonTitles:nil];
+                     [alert show];
+                 }
+             }];
         }
-        failure:^(NSError *err) {
-            //关闭HUD
-            [hud hide:YES];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-                                                            message:@"上传头像失败"
-                                                           delegate:weakSelf
-                                                  cancelButtonTitle:@"确定"
-                                                  otherButtonTitles:nil];
-            [alert show];
-        }];
+    }];
+ 
     dispatch_async(dispatch_get_main_queue(), ^{
         RCDBaseSettingTableViewCell *cell =
             (RCDBaseSettingTableViewCell *)[self.tableView viewWithTag:RCDGroupSettingsTableViewCellGroupPortraitTag];
@@ -721,6 +705,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                 //如果是创建者，进入修改群名称页面
                 RCDEditGroupNameViewController *editGroupNameVC =
                     [RCDEditGroupNameViewController editGroupNameViewController];
+                editGroupNameVC.flagStr = self.flagStr;
                 editGroupNameVC.groupInfo = _Group;
                 [self.navigationController pushViewController:editGroupNameVC animated:YES];
             } else {
@@ -844,6 +829,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     contactSelectedVC.flagStr = self.flagStr;
     contactSelectedVC.groupId = _Group.groupId;
     contactSelectedVC.isAllowsMultipleSelection = YES;
+    contactSelectedVC.delegate = self;
     NSMutableArray *membersId = [NSMutableArray new];
     NSMutableArray *groupMemberList = [[RCDataBaseManager shareInstance] getGroupMember:_Group.groupId];
     for (id user in groupMemberList) {
@@ -884,6 +870,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
             NSLog(@"点加号");
             contactSelectedVC.titleStr = @"选择联系人";
             contactSelectedVC.addGroupMembers = membersId;
+            
             [self.navigationController pushViewController:contactSelectedVC animated:YES];
             return;
         }

@@ -34,10 +34,15 @@ static NSString * const v1MyAdd = @"/v1/my/add";
 //查找用户
 static NSString * const v1PrivateUserSearch = @"/v1/private/user/search";
 
+
+//首页  更新群
+static NSString * const v1UserGroupUpdate = @"/v1/user/group/update";
 //首页  创建群
 static NSString * const v1UserGroupCreate = @"/v1/user/group/create";
 //首页  批量加入群
 static NSString * const v1UserGroupBatchSign = @"/v1/user/group/batch-sign";
+//首页  批量退出
+static NSString * const v1UserGroupBatchSignOut = @"/v1/user/group/batch-sign-out";
 //首页  解散群
 static NSString * const v1UserGroupDelete = @"/v1/user/group/delete";
 //首页  群详情
@@ -133,6 +138,12 @@ static NSString * const v1TalentTeamJoinList = @"/v1/talent/team/join/list";
 static NSString * const v1TalentTeamCreate = @"/v1/talent/team/create";
 //批量加入团队成员
 static NSString * const v1TalentTeamBatchSign = @"/v1/talent/team/batch-sign";
+//批量退出
+static NSString * const v1TalentTeamBatchSignOut = @"v1/talent/team/batch-sign-out";
+//更新团队
+static NSString * const v1TalentTeamUpdate = @"/v1/talent/team/update";
+//退出团队
+static NSString * const v1TalentTeamSignOut = @"v1/talent/team/sign-out";
 #pragma mark - 人才-简历
 //筛选条件
 static NSString * const v1TalentResumeConditions = @"/v1/talent/resume/conditions";
@@ -259,6 +270,10 @@ static NSString * const v1ServiceTravelOrderCreate = @"/v1/service/travel/order/
 //服务-旅游列表（分页）
 static NSString * const v1ServiceTravelPage = @"/v1/service/travel/page";
 #pragma mark - 服务-服务站
+//更新群信息
+static NSString * const v1ServiceStationUpdate= @"/v1/service/station/update";
+//批量删除成员
+static NSString * const v1ServiceStationBatchSignOut= @"/v1/service/station/batch-sign-out";
 //删除服务站
 static NSString * const v1ServiceStationDelete= @"/v1/service/station/delete";
 //加入服务站

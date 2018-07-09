@@ -298,7 +298,9 @@ MBProgressHUD *hud;
                                   complete:^(BOOL result) {
                                       if (result == YES) {
                                           [hud hide:YES];
-                                          [self.navigationController popViewControllerAnimated:YES];
+                                          if (self.delegate&&[self.delegate respondsToSelector:@selector(optionalFouction)]) {
+                                              [self.delegate optionalFouction];
+                                          } [self.navigationController popViewControllerAnimated:YES];
                                       } else {
                                           [hud hide:YES];
                                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"添加成员失败"
@@ -315,11 +317,14 @@ MBProgressHUD *hud;
             return;
         }
         if (_delGroupMembers.count > 0) {
-            [RCDHTTPTOOL kickUsersOutOfGroup:_groupId
+            [RCDHTTPTOOL kickUsersOutOfGroup:_groupId flag:self.flagStr
                                      usersId:seletedUsersId
                                     complete:^(BOOL result) {
                                         if (result == YES) {
-                                            [self.navigationController popViewControllerAnimated:YES];
+                                            [hud hide:YES];
+                                            if (self.delegate&&[self.delegate respondsToSelector:@selector(optionalFouction)]) {
+                                                [self.delegate optionalFouction];
+                                            } [self.navigationController popViewControllerAnimated:YES];
                                         } else {
                                             [hud hide:YES];
                                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"删除成员失败"

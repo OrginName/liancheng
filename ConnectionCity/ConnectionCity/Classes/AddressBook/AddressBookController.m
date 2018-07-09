@@ -32,11 +32,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    
 }
 //更多按钮创建
 -(void)more{
     [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:@[@"发起聊天",@"创建群组",@"添加好友"] multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
-        
         switch (idx) {
             case 0:
                 {
@@ -103,7 +103,7 @@
                                              selector:@selector(refreshCell:)
                                                  name:@"RefreshConversationList"
                                                object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCell:) name:@"DELETETEAM" object:nil];
 //    [self checkVersion];
 }
 - (id)init {

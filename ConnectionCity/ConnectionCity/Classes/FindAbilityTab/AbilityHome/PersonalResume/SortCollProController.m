@@ -154,7 +154,6 @@
     [self sortAndRefreshWithList:[arr copy]];
     self.hasSyncFriendList = YES;
 }
-
 - (void)sortAndRefreshWithList:(NSArray *)friendList {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         self.resultDic = [self sortedArrayWithPinYinDic:friendList];
@@ -223,9 +222,7 @@
     NSMutableDictionary *infoDic = [NSMutableDictionary new];
     NSMutableArray *_tempOtherArr = [NSMutableArray new];
     BOOL isReturn = NO;
-    
     for (NSString *key in _keys) {
-        
         if ([_tempOtherArr count]) {
             isReturn = YES;
         }
@@ -328,7 +325,6 @@
         
     }];
 }
-
 - (UISearchBar *)searchFriendsBar {
     if (!_searchFriendsBar) {
         _searchFriendsBar = [[UISearchBar alloc] initWithFrame:CGRectMake(2, 0, kScreenWidth - 4, 28)];

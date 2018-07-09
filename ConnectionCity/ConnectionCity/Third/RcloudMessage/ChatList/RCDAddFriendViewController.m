@@ -99,7 +99,7 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 500)];
 
     self.addFriendBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 30, self.view.bounds.size.width, 86)];
-    [self.addFriendBtn setBackgroundColor:[UIColor colorWithHexString:@"0099ff" alpha:1.0]];
+    [self.addFriendBtn setBackgroundColor:[UIColor orangeColor]];
     self.addFriendBtn.layer.masksToBounds = YES;
     self.addFriendBtn.layer.cornerRadius = 5.f;
     [self.addFriendBtn setTitle:@"添加好友" forState:UIControlStateNormal];
@@ -110,7 +110,7 @@
     self.startChat = [[UIButton alloc] initWithFrame:CGRectMake(10, 30, self.view.bounds.size.width, 86)];
     [self.startChat setTitle:@"发起会话" forState:UIControlStateNormal];
     [self.startChat setTintColor:[UIColor blackColor]];
-    [self.startChat setBackgroundColor:[UIColor colorWithHexString:@"0099ff" alpha:1.0]];
+    [self.startChat setBackgroundColor:[UIColor orangeColor]];
     self.startChat.layer.masksToBounds = YES;
     self.startChat.layer.cornerRadius = 5.f;
 
@@ -159,16 +159,23 @@
                                                                  metrics:nil
                                                                    views:views2]];
 
-    NSMutableArray *cacheList =
-        [[NSMutableArray alloc] initWithArray:[[RCDataBaseManager shareInstance] getAllFriends]];
-    BOOL isFriend = NO;
-//     && [user.status isEqualToString:@"20"]
-    for (RCDUserInfo *user in cacheList) {
-        if ([user.userId isEqualToString:self.targetUserInfo.userId]) {
-            isFriend = YES;
-            break;
+//    NSMutableArray *cacheList =
+//        [[NSMutableArray alloc] initWithArray:[[RCDataBaseManager shareInstance] getAllFriends]];
+    __block BOOL isFriend = NO;
+    [RCDHTTPTOOL getFriendscomplete:^(NSMutableArray *arr) {
+        for (int i=0;i<arr.count;i++) {
+            if ([[arr[i] userId] isEqualToString:self.targetUserInfo.userId]) {
+                isFriend = YES;
+                break;
+            }
         }
-    }
+    }];
+//    for (RCDUserInfo *user in cacheList) {
+//        if ([user.userId isEqualToString:self.targetUserInfo.userId]) {
+//            isFriend = YES;
+//            break;
+//        }
+//    }
     if (isFriend == YES) {
         _addFriendBtn.hidden = YES;
     } else {
