@@ -6,12 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GuardCollController">
             <connections>
                 <outlet property="end_Time" destination="RTi-Le-ayb" id="D5W-JE-u9T"/>
+                <outlet property="layout" destination="Gce-ZI-icV" id="YzP-Po-zNc"/>
                 <outlet property="start_time" destination="shz-Za-wMN" id="fiu-cS-IjA"/>
                 <outlet property="textView_Indro" destination="18a-wg-dLC" id="zQY-fV-89r"/>
                 <outlet property="txt_Company" destination="EDK-qM-zHx" id="rbo-kx-YkW"/>
@@ -40,7 +42,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpo-b5-HM8">
-                            <rect key="frame" x="177.5" y="0.0" width="177.5" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
                             <color key="backgroundColor" red="0.92549019607843142" green="0.54509803921568623" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -54,15 +56,15 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="tsx-yK-7Sm" firstAttribute="leading" secondItem="e6h-5b-W3e" secondAttribute="leading" id="019-zl-PJ4"/>
+                        <constraint firstItem="tsx-yK-7Sm" firstAttribute="width" secondItem="e6h-5b-W3e" secondAttribute="width" multiplier="0.5" id="6MC-XO-0hK"/>
+                        <constraint firstItem="tsx-yK-7Sm" firstAttribute="leading" secondItem="e6h-5b-W3e" secondAttribute="leading" id="8u3-ZJ-rO9"/>
+                        <constraint firstItem="jpo-b5-HM8" firstAttribute="top" secondItem="e6h-5b-W3e" secondAttribute="top" id="CFv-e6-Efu"/>
+                        <constraint firstItem="jpo-b5-HM8" firstAttribute="leading" secondItem="e6h-5b-W3e" secondAttribute="leading" id="Gce-ZI-icV"/>
+                        <constraint firstItem="tsx-yK-7Sm" firstAttribute="top" secondItem="e6h-5b-W3e" secondAttribute="top" id="Gh7-UC-xZQ"/>
                         <constraint firstAttribute="height" constant="50" id="Ma1-Uk-ZT6"/>
-                        <constraint firstItem="tsx-yK-7Sm" firstAttribute="top" secondItem="e6h-5b-W3e" secondAttribute="top" id="N5X-R5-rUW"/>
-                        <constraint firstAttribute="bottom" secondItem="tsx-yK-7Sm" secondAttribute="bottom" id="VSa-WY-eno"/>
-                        <constraint firstItem="jpo-b5-HM8" firstAttribute="leading" secondItem="tsx-yK-7Sm" secondAttribute="trailing" id="VT7-PK-4M0"/>
-                        <constraint firstAttribute="trailing" secondItem="jpo-b5-HM8" secondAttribute="trailing" id="kO6-G2-gsL"/>
-                        <constraint firstItem="jpo-b5-HM8" firstAttribute="top" secondItem="e6h-5b-W3e" secondAttribute="top" id="s3I-vm-42P"/>
-                        <constraint firstItem="jpo-b5-HM8" firstAttribute="width" secondItem="tsx-yK-7Sm" secondAttribute="width" id="tRF-CD-MEf"/>
-                        <constraint firstAttribute="bottom" secondItem="jpo-b5-HM8" secondAttribute="bottom" id="uXc-rJ-xmm"/>
+                        <constraint firstAttribute="bottom" secondItem="jpo-b5-HM8" secondAttribute="bottom" id="Ov3-nx-Nb1"/>
+                        <constraint firstAttribute="bottom" secondItem="tsx-yK-7Sm" secondAttribute="bottom" id="cDV-Ab-SDN"/>
+                        <constraint firstAttribute="trailing" secondItem="jpo-b5-HM8" secondAttribute="trailing" id="s5A-I1-un5"/>
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wS-bu-dz9">

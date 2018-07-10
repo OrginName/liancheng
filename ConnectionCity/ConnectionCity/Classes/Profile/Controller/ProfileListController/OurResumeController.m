@@ -19,7 +19,7 @@
 #import "ShowResumeController.h"
 #import "ServiceListMo.h"
 #import "trvalMo.h"
-
+#import "ResumeController.h"
 @interface OurResumeController ()<UITableViewDelegate,UITableViewDataSource,profileCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 //简历数组
@@ -229,6 +229,9 @@
     //简历1编辑2删除
     if (index==1) {
         OurResumeMo *mo = self.resumedataArr[btn.tag - 1000];
+        ResumeController * resume = [ResumeController new];
+        resume.resume = mo;
+        [self.navigationController pushViewController:resume animated:YES];
 
     }else if (index==2){
         OurResumeMo *mo = self.resumedataArr[btn.tag - 10000];

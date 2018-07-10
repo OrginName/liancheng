@@ -39,7 +39,6 @@
     //    UIButton * btn = [self.view viewWithTag:1];
     //    btn.selected = YES;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
-    self.frendTab.flagStr = @"HomeMySelf";
     [self.view addSubview:self.frendTab];
     [self.view addSubview:self.frendMyselfTab];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SendFriend) image:@"" title:@"发布" EdgeInsets:UIEdgeInsetsZero];
@@ -101,6 +100,7 @@
     if (!_frendMyselfTab) {
         _frendMyselfTab = [[FriendMyselfTab alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth-20, kScreenHeight-134) style:UITableViewStyleGrouped withControll:self];
         _frendMyselfTab.hidden = YES;
+        _frendMyselfTab.flagStr = @"HomeMySelf";
         _frendTab.flagStr = HOMESEND;
     }
     return _frendMyselfTab;

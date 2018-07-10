@@ -17,5 +17,6 @@ proStr(satrtTime);//开始时间
 proStr(endTime);//结束时间
 proArr(EditArr);
 proArr(CollArr);
+proStr(ID);
 @end
 

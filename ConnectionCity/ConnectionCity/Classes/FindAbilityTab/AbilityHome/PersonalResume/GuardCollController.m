@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txt_pro;
 @property (weak, nonatomic) IBOutlet UITextField *end_Time;
 @property (weak, nonatomic) IBOutlet UITextField *start_time;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout;
 @property (nonatomic,strong) NSMutableArray * arr_Class;
 @end
 
@@ -32,6 +33,16 @@
     [super viewDidLoad];
     [self setUI];
     [self initData];
+    [self setMo:self.mo];
+}
+-(void)setMo:(ResumeMo *)mo{
+    _mo = mo;
+    self.txt_Company.text = mo.collAndcompany;
+    self.txt_pro.text = mo.proAndPro;
+    self.start_time.text = mo.satrtTime;
+    self.end_Time.text = mo.endTime;
+    self.textView_Indro.text = @"暂无";
+    self.layout.constant = (kScreenWidth-20)/2;
 }
 -(void)initData{
     _proID = @"";
@@ -71,22 +82,36 @@
                                @"resumeId": @([self.resumeID integerValue]),
                                @"startDate": self.end_Time.text
                                };
-        [AbilityNet requstAddWord:dic withBlock:^(NSDictionary *successArrValue) {
-            ResumeMo * mo = [[ResumeMo alloc] init];
-            mo.collAndcompany = self.txt_Company.text;
-            mo.proAndPro = self.txt_pro.text;
-            mo.XLAndIntro = self.textView_Indro.text;
-            mo.satrtTime = self.start_time.text;
-            mo.endTime = self.end_Time.text;
-            self.block(mo);
-            [self.navigationController popViewControllerAnimated:YES];
-            [YTAlertUtil showTempInfo:successArrValue[@"message"]];
-        }];
+        if (self.mo!=nil) {
+            [YSNetworkTool POST:v1TalentResumeWorkUpdate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+                [self reloadData:2];
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                
+            }];
+        }else{
+            [AbilityNet requstAddWord:dic withBlock:^(NSDictionary *successArrValue) {
+                [self reloadData:1];
+            }];
+        }
     }else{
-        [YTAlertUtil showTempInfo:@"删除"];
+        [YSNetworkTool POST:v1TalentResumeWorkDelete params:@{@"id":self.mo.ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+            self.block2();
+            [self.navigationController popViewControllerAnimated:YES];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
     }
-    
-   
+}
+-(void)reloadData:(int)a{
+    ResumeMo * mo = [[ResumeMo alloc] init];
+    mo.collAndcompany = self.txt_Company.text;
+    mo.proAndPro = self.txt_pro.text;
+    mo.XLAndIntro = self.textView_Indro.text;
+    mo.satrtTime = self.start_time.text;
+    mo.endTime = self.end_Time.text;
+    a==1?self.block(mo):self.block1(mo);
+    [self.navigationController popViewControllerAnimated:YES];
+    [YTAlertUtil showTempInfo:@"操作成功"];
 }
 - (IBAction)btn_Click:(UIButton *)sender {
     if (sender.tag==1) {

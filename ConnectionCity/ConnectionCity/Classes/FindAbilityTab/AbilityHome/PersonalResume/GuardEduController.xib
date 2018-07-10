@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,6 +14,7 @@
             <connections>
                 <outlet property="Start_time" destination="o59-1m-b5Z" id="fy5-tO-XhP"/>
                 <outlet property="end_Time" destination="CFZ-04-lyh" id="APC-2U-K5o"/>
+                <outlet property="layout" destination="1fO-A0-qQr" id="thn-XF-ZVb"/>
                 <outlet property="textView_Indro" destination="8mu-DR-ndk" id="Pcc-gA-bil"/>
                 <outlet property="text_Coll" destination="Xzn-oh-Cbd" id="DgZ-w6-HpT"/>
                 <outlet property="text_Pro" destination="1sw-kK-Ef3" id="haX-Qb-6za"/>
@@ -41,7 +43,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHG-Ko-7ct">
-                            <rect key="frame" x="177.5" y="0.0" width="177.5" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
                             <color key="backgroundColor" red="0.92549019610000005" green="0.5450980392" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,15 +57,15 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="OHG-Ko-7ct" secondAttribute="bottom" id="95U-DE-mz0"/>
-                        <constraint firstItem="OHG-Ko-7ct" firstAttribute="leading" secondItem="8Np-Hg-XBQ" secondAttribute="trailing" id="FRg-0i-aAU"/>
-                        <constraint firstItem="OHG-Ko-7ct" firstAttribute="top" secondItem="JNe-OI-pzL" secondAttribute="top" id="JbU-sK-ZTu"/>
-                        <constraint firstAttribute="bottom" secondItem="8Np-Hg-XBQ" secondAttribute="bottom" id="NNu-rf-dRa"/>
-                        <constraint firstItem="8Np-Hg-XBQ" firstAttribute="top" secondItem="JNe-OI-pzL" secondAttribute="top" id="T4A-OB-jOw"/>
-                        <constraint firstAttribute="trailing" secondItem="OHG-Ko-7ct" secondAttribute="trailing" id="imN-qT-Iqg"/>
-                        <constraint firstItem="OHG-Ko-7ct" firstAttribute="width" secondItem="8Np-Hg-XBQ" secondAttribute="width" id="nZo-0Q-LZ3"/>
+                        <constraint firstItem="OHG-Ko-7ct" firstAttribute="leading" secondItem="JNe-OI-pzL" secondAttribute="leading" id="1fO-A0-qQr"/>
+                        <constraint firstItem="OHG-Ko-7ct" firstAttribute="top" secondItem="JNe-OI-pzL" secondAttribute="top" id="2QM-QA-H89"/>
+                        <constraint firstItem="8Np-Hg-XBQ" firstAttribute="width" secondItem="JNe-OI-pzL" secondAttribute="width" multiplier="0.5" id="6za-Q8-uVh"/>
+                        <constraint firstItem="8Np-Hg-XBQ" firstAttribute="top" secondItem="JNe-OI-pzL" secondAttribute="top" id="GP4-jG-Vu6"/>
+                        <constraint firstAttribute="bottom" secondItem="OHG-Ko-7ct" secondAttribute="bottom" id="VP2-9L-hAM"/>
+                        <constraint firstAttribute="bottom" secondItem="8Np-Hg-XBQ" secondAttribute="bottom" id="g8R-yd-fmk"/>
+                        <constraint firstItem="8Np-Hg-XBQ" firstAttribute="leading" secondItem="JNe-OI-pzL" secondAttribute="leading" id="kQD-11-Bkz"/>
+                        <constraint firstAttribute="trailing" secondItem="OHG-Ko-7ct" secondAttribute="trailing" id="mTh-HL-ZVc"/>
                         <constraint firstAttribute="height" constant="50" id="nmX-Nd-ZJf"/>
-                        <constraint firstItem="8Np-Hg-XBQ" firstAttribute="leading" secondItem="JNe-OI-pzL" secondAttribute="leading" id="ub1-J4-7nl"/>
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oRg-7h-cpS">

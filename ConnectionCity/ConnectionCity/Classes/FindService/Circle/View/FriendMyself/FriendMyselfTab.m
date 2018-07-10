@@ -55,9 +55,16 @@
                                @"pageSize": @15
                                };
         [CircleNet requstHomeCirclelDic:dic withSuc:^(NSMutableArray *successArrValue) {
-            
+            if (_page==1) {
+                [self.data_Arr removeAllObjects];
+            }
+            _page++;
+            [self.mj_header endRefreshing];
+            [self.mj_footer endRefreshing];
+            [self jsonDataArr:successArrValue];
         } FailErrBlock:^(NSError *failValue) {
-            
+            [self.mj_header endRefreshing];
+            [self.mj_footer endRefreshing];
         }];
         return;
     }
@@ -113,6 +120,7 @@
             }
         }else{
             NSMutableArray * arr3 = [NSMutableArray array];
+            [arr3 addObject:moment];
             NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithObject:arr3 forKey:year];
             [data addObject:dic];
         }
@@ -184,6 +192,7 @@
     if (btn.tag==0) {
         SendMomentController * send = [SendMomentController new];
         send.title = @"服务圈";
+        send.flagStr = @"HomeSend";
         send.block = ^{
             [self.mj_header beginRefreshing];
         };

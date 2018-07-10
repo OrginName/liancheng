@@ -152,10 +152,15 @@ static NSString * const v1TalentTeamSignOut = @"v1/talent/team/sign-out";
 static NSString * const v1TalentResumeConditions = @"/v1/talent/resume/conditions";
 //简历列表
 static NSString * const v1TalentResumeList = @"/v1/talent/resume/list";
+//删除教育简历
+static NSString * const v1TalentResumeEducationDelete = @"/v1/talent/resume/education/delete";
 //新增简历
 static NSString * const v1TalentResumeCreate = @"/v1/talent/resume/create";
 //新增简历-教育经历
 static NSString * const v1TalentResumeEducationCreate = @"/v1/talent/resume/education/create";
+
+//删除教育经历
+static NSString * const v1TalentResumeWorkDelete = @"/v1/talent/resume/work/delete";
 //修改简历-教育经历
 static NSString * const v1TalentResumeEducationUpdate = @"/v1/talent/resume/education/update";
 //简历详情

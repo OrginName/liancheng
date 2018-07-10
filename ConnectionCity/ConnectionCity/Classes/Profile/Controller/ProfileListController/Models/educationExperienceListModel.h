@@ -9,5 +9,13 @@
 #import "BaseModel.h"
 
 @interface educationExperienceListModel : BaseModel
-
+proStr(endDate);
+proStr(startDate);
+proStr(professionalName);
+proStr(resumeId);
+proStr(schoolName);
+proStr(status);
+proStr(id);
+proStr(educationName);
+proStr(description);
 @end

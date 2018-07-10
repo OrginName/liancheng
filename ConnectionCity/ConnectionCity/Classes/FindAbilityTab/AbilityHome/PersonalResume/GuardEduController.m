@@ -18,6 +18,7 @@
     NSString * _collID;
     NSString * _proID;
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout;
 @property (nonatomic,strong) LCDatePicker * myDatePick;
 @property (weak, nonatomic) IBOutlet CustomtextView *textView_Indro;
 @property (weak, nonatomic) IBOutlet UITextField *text_Coll;
@@ -36,6 +37,17 @@
     _EduID = @"";
     _collID = @"";
     _proID = @"";
+    [self setMo:self.mo];
+}
+-(void)setMo:(ResumeMo *)mo{
+    _mo = mo;
+    self.text_Coll.text = mo.collAndcompany;
+    self.text_Pro.text = mo.proAndPro;
+    self.text_XL.text = mo.XLAndIntro;
+    self.Start_time.text = mo.satrtTime;
+    self.end_Time.text = mo.endTime;
+    self.textView_Indro.text = @"暂无";
+    self.layout.constant = (kScreenWidth-20)/2;
 }
 //保存按钮点击
 - (IBAction)btn_Save:(UIButton *)sender {
@@ -59,21 +71,36 @@
                               @"professinalName":self.text_Pro.text,//专业名称
                               @"schoolName":self.text_Coll.text//学校名称
                               };
-        [AbilityNet requstAddEdu:dic withBlock:^(NSDictionary *successDicValue) {
-            ResumeMo * mo = [[ResumeMo alloc] init];
-            mo.collAndcompany = self.text_Coll.text;
-            mo.proAndPro = self.text_Pro.text;
-            mo.XLAndIntro = self.text_XL.text;
-            mo.satrtTime = self.Start_time.text;
-            mo.endTime = self.end_Time.text;
-            self.block(mo);
-            [self.navigationController popViewControllerAnimated:YES];
-        }];
-        
+        if (self.mo!=nil) {
+            [YSNetworkTool POST:v1TalentResumeEducationUpdate params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+                [self backReload:2];
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                
+            }];
+        }else{
+            [AbilityNet requstAddEdu:dic withBlock:^(NSDictionary *successDicValue) {
+                [self backReload:1];
+            }];
+        }
     }else{
-        [YTAlertUtil showTempInfo:@"删除按钮"];
+        [YSNetworkTool POST:v1TalentResumeEducationDelete params:@{@"id":self.mo.ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+            self.block2();
+            [self.navigationController popViewControllerAnimated:YES];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
     }
     
+}
+-(void)backReload:(int)a{
+    ResumeMo * mo = [[ResumeMo alloc] init];
+    mo.collAndcompany = self.text_Coll.text;
+    mo.proAndPro = self.text_Pro.text;
+    mo.XLAndIntro = self.text_XL.text;
+    mo.satrtTime = self.Start_time.text;
+    mo.endTime = self.end_Time.text;
+    a==1?self.block(mo):self.block1(mo);
+    [self.navigationController popViewControllerAnimated:YES];
 }
 //各个编辑按钮点击
 - (IBAction)btn_Click:(UIButton *)sender {

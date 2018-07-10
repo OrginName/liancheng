@@ -21,6 +21,7 @@
 @interface ResumeController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 {
     NSString * resumeID;//简历ID
+    NSInteger _currtIndexRow;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tab_bottom;
 @property (nonatomic,strong) SDCycleScrollView * cycleScrollView;
@@ -48,8 +49,8 @@
     [self initRightItem];
     [self initScroll];
     resumeID = @"";
+    _currtIndexRow = 0;
 }
-
 -(void)initData{
     self.Data_Dic = [NSMutableDictionary dictionary];
     self.CollArr = [[NSMutableArray alloc] init];
@@ -62,6 +63,51 @@
         
     }];
     self.isOpen = [[NSMutableDictionary alloc] initWithDictionary:@{@"40":@"NO",@"50":@"NO"}];
+    if (self.resume!=nil) {
+        resumeID = self.resume.modelId;
+        for (educationExperienceListModel * model in self.resume.educationExperienceList) {
+            ResumeMo * mo = [ResumeMo new];
+            mo.collAndcompany = model.schoolName;
+            mo.proAndPro = model.professionalName;
+            mo.XLAndIntro = model.educationName;
+            mo.satrtTime = model.startDate;
+            mo.endTime = model.endDate;
+            mo.ID = model.id;
+            [self.data_ArrWdu addObject:mo]; 
+        }
+        for (WorkExperienceListModel * model in self.resume.workExperienceList) {
+            ResumeMo * mo = [ResumeMo new];
+            mo.collAndcompany = model.companyName;
+            mo.proAndPro = model.occupationCategoryName.parentName;
+            mo.ID = KString(@"%ld", model.modelId);
+            mo.satrtTime = model.startDate;
+            mo.endTime = model.endDate;
+            [self.data_ArrWork addObject:mo];
+        }
+        if (self.data_ArrWdu.count!=0) {
+            [self.EduArr addObject:self.data_ArrWdu[0]];
+        }
+        if (self.data_ArrWork.count!=0) {
+            [self.CollArr addObject:self.data_ArrWork[0]];
+        }
+        for (NSString * str in [self.resume.avatar componentsSeparatedByString:@";"]) {
+            if (str.length!=0) {
+                [self.lunArr addObject:str];
+            }
+        }
+        if (self.lunArr.count!=0) {
+            [[self.tab_bottom.tableHeaderView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            [self initScroll];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                self.cycleScrollView.imageURLStringsGroup = self.lunArr;
+            });
+        }
+       [self.Data_Dic setObject:@{@"name":self.resume.salaryName,@"ID":KString(@"%ld", self.resume.salaryId)} forKey:@"10"];
+        [self.Data_Dic setObject:@{@"name":self.resume.educationName,@"ID":KString(@"%ld", self.resume.educationId)} forKey:@"30"];
+        [self.Data_Dic setObject:@{@"name":self.resume.workingName,@"ID":KString(@"%ld", (long)self.resume.workingId)} forKey:@"20"];
+        [self.Data_Dic setObject:self.resume.introduce forKey:@"60"];
+        [self.tab_bottom reloadData];
+    }
 }
 #pragma mark --各种点击事件---
 -(void)NOPicClick{
@@ -92,16 +138,24 @@
     }
     __block NSString * str = @"";
     __block NSInteger flag=0;
-    [YTAlertUtil showHUDWithTitle:@"正在创建简历"];
+    [YTAlertUtil showHUDWithTitle:self.resume!=nil?@"正在更新简历": @"正在创建简历"];
     if (self.lunArr.count!=0) {
         for (int i=0; i<self.lunArr.count; i++) {
-            [[QiniuUploader defaultUploader] uploadImageToQNFilePath:self.lunArr[i] withBlock:^(NSDictionary *url) {
+            if ([self.lunArr[i] containsString:@"http"]) {
                 flag++;
-                str = [NSString stringWithFormat:@"%@%@;%@",QINIUURL,url[@"hash"],str];
+                str = [NSString stringWithFormat:@"%@%@",self.lunArr[i],str];
                 if (flag==self.lunArr.count) {
                     [self loadData:str];
                 }
-            }];
+            }else{
+                [[QiniuUploader defaultUploader] uploadImageToQNFilePath:self.lunArr[i] withBlock:^(NSDictionary *url) {
+                    flag++;
+                    str = [NSString stringWithFormat:@"%@%@;%@",QINIUURL,url[@"hash"],str];
+                    if (flag==self.lunArr.count) {
+                        [self loadData:str];
+                    }
+                }];
+            }
         }
     }else{
         [self loadData:@""];
@@ -110,22 +164,31 @@
 }
 -(void)loadData:(NSString *)str{
     NSDictionary * dic = @{
-                           //                           @"areaCode": @0,
                            @"avatar": str,
                            @"cityCode": @([[KUserDefults objectForKey:kUserCityID]integerValue]),
                            @"educationId": @([self.Data_Dic[@"20"][@"ID"] integerValue]),
                            @"introduce": self.Data_Dic[@"60"],
                            @"lat": @([[KUserDefults objectForKey:kLat]floatValue]),
                            @"lng": @([[KUserDefults objectForKey:KLng]floatValue]),
-                           //                           @"provinceCode": @0,
                            @"salaryId": @([self.Data_Dic[@"10"][@"ID"] integerValue]),
-                           @"workingId": @([self.Data_Dic[@"30"][@"ID"] integerValue])
+                           @"workingId": @([self.Data_Dic[@"30"][@"ID"] integerValue]),
+                           @"resumeId":resumeID
                            };
-    [AbilityNet requstAddResume:dic withBlock:^(NSDictionary *successDicValue) {
-        [YTAlertUtil hideHUD];
-        [YTAlertUtil showTempInfo:@"简历创建成功"];
-        resumeID = KString(@"%@", successDicValue[@"data"]);
-    }];
+    if (self.resume!=nil) {
+        [YSNetworkTool POST:v1TalentResumeUpdate params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+            [YTAlertUtil hideHUD];
+            [YTAlertUtil showTempInfo:@"简历更新成功"];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+    }else{
+        [AbilityNet requstAddResume:dic  withBlock:^(NSDictionary *successDicValue) {
+            [YTAlertUtil hideHUD];
+            [YTAlertUtil showTempInfo:@"简历创建成功"];
+            resumeID = KString(@"%@", successDicValue[@"data"]);
+        }];
+    }
+    
 }
 //编辑轮播图
 -(void)EditScroll:(UIButton *)sender{
@@ -228,16 +291,20 @@
             cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2); 
         }
     }
+    if (_resume!=nil) {
+        cell.image_edit.hidden = NO;
+    }
     NSArray * arr = [self.Data_Dic allKeys];
     NSString * idnex = [NSString stringWithFormat:@"%ld%ld",indexPath.section,indexPath.row];
     if ([arr containsObject:[NSString stringWithFormat:@"%ld0",(long)indexPath.section]]) {
-        if ([arr containsObject:@"70"]) {
+        if ([idnex isEqualToString:@"70"]) {
             cell.btnAgree.selected = [self.Data_Dic[@"70"] integerValue];
         }
-        else if ([arr containsObject:@"60"]) {
+        else if ([idnex isEqualToString:@"60"]) {
             cell.lab_MyselfProW.text = self.Data_Dic[@"60"];
-        }else
-        cell.txt_salWay.text = self.Data_Dic[idnex][@"name"];
+        }else{
+            cell.txt_salWay.text = self.Data_Dic[idnex][@"name"];
+        }
     }
     return cell;
 }
@@ -297,10 +364,7 @@
         guard.title = @"新增教育经历";
         guard.block = ^(ResumeMo * mo){
             [weakSelf.data_ArrWdu addObject:mo];
-            [weakSelf.EduArr removeAllObjects];
-            [weakSelf.EduArr  addObjectsFromArray:[weakSelf.data_ArrWdu copy]];
-            weakSelf.isOpen[@"50"] = @"YES";
-            [weakSelf.tab_bottom reloadData];
+            [self loadArr];
         };
         guard.resumeID = resumeID;
         [self.navigationController pushViewController:guard animated:YES];
@@ -332,7 +396,52 @@
             [self.Data_Dic setObject:EditStr forKey:@"60"];
         };
         [self.navigationController pushViewController:edit animated:YES];
+    }else if (indexPath.section==4&&indexPath.row!=0&&indexPath.row!=self.CollArr.count+1){
+        GuardCollController * guard = [GuardCollController new];
+        guard.mo = self.CollArr[indexPath.row-1];
+        guard.resumeID=resumeID;
+        guard.block2 = ^{
+            [weakSelf.data_ArrWork removeObjectAtIndex:(_currtIndexRow-1)];
+            [self loadArr1];
+        };
+        guard.block1 = ^(ResumeMo *Mo) {
+            [weakSelf.data_ArrWork replaceObjectAtIndex:(_currtIndexRow-1) withObject:Mo];
+            [self loadArr1];
+        };
+        guard.title = @"编辑工作经历";
+        _currtIndexRow = indexPath.row;
+        [self.navigationController pushViewController:guard animated:YES];
+        
+    }else if (indexPath.section==5&&indexPath.row!=0&&indexPath.row!=self.EduArr.count+1){
+        GuardEduController * guard = [GuardEduController new];
+        guard.mo = self.EduArr[indexPath.row-1];
+        guard.title = @"编辑教育经历";
+        guard.resumeID =resumeID;
+        guard.block2 = ^{
+            [weakSelf.data_ArrWdu removeObjectAtIndex:(_currtIndexRow-1)];
+            [self loadArr];
+        };
+        guard.block1 = ^(ResumeMo *Mo) {
+            [weakSelf.data_ArrWdu replaceObjectAtIndex:(_currtIndexRow-1) withObject:Mo];
+            [self loadArr];
+        };
+        _currtIndexRow = indexPath.row;
+        [self.navigationController pushViewController:guard animated:YES];
     }
+}
+-(void)loadArr1{
+    WeakSelf
+    [weakSelf.CollArr removeAllObjects];
+    [weakSelf.CollArr  addObjectsFromArray:[weakSelf.data_ArrWdu copy]];
+    weakSelf.isOpen[@"40"] = @"YES";
+    [weakSelf.tab_bottom reloadData];
+}
+-(void)loadArr{
+    WeakSelf
+    [weakSelf.EduArr removeAllObjects];
+    [weakSelf.EduArr  addObjectsFromArray:[weakSelf.data_ArrWdu copy]];
+    weakSelf.isOpen[@"50"] = @"YES";
+    [weakSelf.tab_bottom reloadData];
 }
 #pragma mark ---SDCycleScrollViewDelegate-----
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{

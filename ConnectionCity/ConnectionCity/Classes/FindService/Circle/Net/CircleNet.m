@@ -28,8 +28,9 @@
                 NSMutableArray * commentArr = [NSMutableArray array];
                 for (int j=0; j<[Arr[i][@"obj"][@"comments"] count]; j++) {
                     Comment * comment = [Comment mj_objectWithKeyValues:Arr[i][@"obj"][@"comments"][j]];
-                    comment.userMo = [UserMo mj_objectWithKeyValues:Arr[i][@"obj"][@"comments"][j][@"user"]];
-                    comment.ID = Arr[i][@"obj"][@"comments"][j][@"id"];
+//                    comment.userMo = [UserMo mj_objectWithKeyValues:Arr[i][@"obj"][@"comments"][j][@"user"]];
+//                    comment.ID = Arr[i][@"obj"][@"comments"][j][@"id"];
+                    comment.typeName = Arr[i][@"obj"][@"comments"][j][@"user"][@"nickName"];
                     [commentArr addObject:comment];
                 }
                 moment.singleWidth = 500;
@@ -60,10 +61,16 @@
  @param sucBlock 成功回调
  */
 +(void)requstHomeCirclelDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock FailErrBlock:(FailErrBlock)failErrBlock{
+    NSMutableArray * arr = [NSMutableArray array];
     [YSNetworkTool POST:v1FriendCircleMyPage params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+        for (int i=0; i<[responseObject[@"data"][@"content"] count]; i++) {
+            Moment * mo = [Moment mj_objectWithKeyValues:responseObject[@"data"][@"content"][i]];
+            mo.ID = responseObject[@"data"][@"content"][i][@"id"];
+            [arr addObject:mo];
+        }
+        sucBlock(arr);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+        failErrBlock(error);
     }];
 }
 
