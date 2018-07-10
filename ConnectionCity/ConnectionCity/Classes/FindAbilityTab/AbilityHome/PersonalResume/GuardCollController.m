@@ -37,12 +37,14 @@
 }
 -(void)setMo:(ResumeMo *)mo{
     _mo = mo;
-    self.txt_Company.text = mo.collAndcompany;
-    self.txt_pro.text = mo.proAndPro;
-    self.start_time.text = mo.satrtTime;
-    self.end_Time.text = mo.endTime;
-    self.textView_Indro.text = @"暂无";
-    self.layout.constant = (kScreenWidth-20)/2;
+    if (self.mo!=nil) {
+        self.txt_Company.text = mo.collAndcompany;
+        self.txt_pro.text = mo.proAndPro;
+        self.start_time.text = mo.satrtTime;
+        self.end_Time.text = mo.endTime;
+        self.textView_Indro.text = @"暂无";
+        self.layout.constant = (kScreenWidth-20)/2;
+    }
 }
 -(void)initData{
     _proID = @"";

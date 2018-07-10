@@ -41,13 +41,15 @@
 }
 -(void)setMo:(ResumeMo *)mo{
     _mo = mo;
-    self.text_Coll.text = mo.collAndcompany;
-    self.text_Pro.text = mo.proAndPro;
-    self.text_XL.text = mo.XLAndIntro;
-    self.Start_time.text = mo.satrtTime;
-    self.end_Time.text = mo.endTime;
-    self.textView_Indro.text = @"暂无";
-    self.layout.constant = (kScreenWidth-20)/2;
+    if (self.mo!=nil) {
+        self.text_Coll.text = mo.collAndcompany;
+        self.text_Pro.text = mo.proAndPro;
+        self.text_XL.text = mo.XLAndIntro;
+        self.Start_time.text = mo.satrtTime;
+        self.end_Time.text = mo.endTime;
+        self.textView_Indro.text = @"暂无";
+        self.layout.constant = (kScreenWidth-20)/2;
+    }
 }
 //保存按钮点击
 - (IBAction)btn_Save:(UIButton *)sender {
