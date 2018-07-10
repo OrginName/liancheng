@@ -175,6 +175,11 @@
     self.areaCode = mo.ID;
     [YSRefreshTool beginRefreshingWithView:self.tableView];
 }
+-(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng {
+    self.areaName = name;
+    self.areaCode = ID;
+    [YSRefreshTool beginRefreshingWithView:self.tableView];
+}
 #pragma mark ---LCDatePickerDelegate-----
 - (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
     self.timeStr = str;

@@ -195,6 +195,10 @@
     self.citymo = mo;
 }
 -(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng {
+    self.cellCntentText[2] = name;
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:2 inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+
     CityMo *mo = [[CityMo alloc]init];
     mo.name = name;
     mo.ID = ID;
@@ -207,12 +211,10 @@
 -(void)selectImageArr:(NSArray *)imageArr{
     NSLog(@"%lu",(unsigned long)imageArr.count);
     self.imageArr = imageArr;
-
 }
 -(void)selectImage:(UIImage *) image arr:(NSArray *)imageArr{
     NSLog(@"%lu",(unsigned long)imageArr.count);
     self.imageArr = imageArr;
-    
 }
 -(void)deleteImage:(NSInteger) tag arr:(NSArray *)imageArr{
     NSLog(@"%lu",(unsigned long)imageArr.count);

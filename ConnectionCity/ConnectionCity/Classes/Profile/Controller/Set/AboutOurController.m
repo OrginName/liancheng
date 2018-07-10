@@ -7,6 +7,7 @@
 //
 
 #import "AboutOurController.h"
+#import "AgreementController.h"
 
 @interface AboutOurController ()
 
@@ -27,12 +28,16 @@
             break;
         case 2://许可协议
         {
-            
+            AgreementController *agreementVC = [[AgreementController alloc]init];
+            agreementVC.alias = useAgreement;
+            [self.navigationController pushViewController:agreementVC animated:YES];
         }
             break;
         case 3://隐私条款
         {
-            
+            AgreementController *agreementVC = [[AgreementController alloc]init];
+            agreementVC.alias = privacyAgreement;
+            [self.navigationController pushViewController:agreementVC animated:YES];
         }
             break;
         case 4://联系我们

@@ -82,6 +82,19 @@
     [self.navigationController pushViewController:agreementVC animated:YES];
 }
 - (IBAction)loginBtnClick:(id)sender {
+    [KUserDefults removeObjectForKey:@"userToken"];
+    [KUserDefults removeObjectForKey:@"userCookie"];
+    [KUserDefults removeObjectForKey:@"isLogin"];
+    [KUserDefults synchronize];
+    [[RCDataBaseManager shareInstance] closeDBForDisconnect];
+    [[RCIMClient sharedRCIMClient] logout];
+    //[[RCIMClient sharedRCIMClient]disconnect:NO];
+    
+    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cn.rongcloud.im.share"];
+    [userDefaults removeObjectForKey:@"Cookie"];
+    [userDefaults synchronize];
+    
+    
     if ([YSTools dx_isNullOrNilWithObject:_phoneTF.text] || [YSTools dx_isNullOrNilWithObject:_passwordTF.text]) {
         [YTAlertUtil showTempInfo:@"请将信息填写完整"];
         return;
@@ -194,8 +207,9 @@
 //                         complete:^(NSMutableArray *friends){
 //                         }];
     dispatch_async(dispatch_get_main_queue(), ^{
+        UIWindow *win = [[UIApplication sharedApplication].windows objectAtIndex:0];
         BaseTabBarController *mainTabBarVC = [[BaseTabBarController alloc] init];
-        kWindow.rootViewController = mainTabBarVC;
+        win.rootViewController = mainTabBarVC;
     });
 }
 - (void)onRCIMConnectionStatusChanged:(RCConnectionStatus)status {
@@ -251,6 +265,19 @@
     [self.navigationController pushViewController:registerVC animated:YES];
 }
 - (IBAction)wxBtnClick:(id)sender {
+    [KUserDefults removeObjectForKey:@"userToken"];
+    [KUserDefults removeObjectForKey:@"userCookie"];
+    [KUserDefults removeObjectForKey:@"isLogin"];
+    [KUserDefults synchronize];
+    [[RCDataBaseManager shareInstance] closeDBForDisconnect];
+    [[RCIMClient sharedRCIMClient] logout];
+    //[[RCIMClient sharedRCIMClient]disconnect:NO];
+    
+    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cn.rongcloud.im.share"];
+    [userDefaults removeObjectForKey:@"Cookie"];
+    [userDefaults synchronize];
+    
+    
     //调起微信客户端请求授权
     SendAuthReq *req = [[SendAuthReq alloc] init];
     req.scope = @"snsapi_userinfo";
@@ -258,6 +285,19 @@
     [WXApi sendAuthReq:req viewController:self delegate:self];
 }
 - (IBAction)qqBtnClick:(id)sender {
+    [KUserDefults removeObjectForKey:@"userToken"];
+    [KUserDefults removeObjectForKey:@"userCookie"];
+    [KUserDefults removeObjectForKey:@"isLogin"];
+    [KUserDefults synchronize];
+    [[RCDataBaseManager shareInstance] closeDBForDisconnect];
+    [[RCIMClient sharedRCIMClient] logout];
+    //[[RCIMClient sharedRCIMClient]disconnect:NO];
+    
+    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cn.rongcloud.im.share"];
+    [userDefaults removeObjectForKey:@"Cookie"];
+    [userDefaults synchronize];
+    
+    
     WeakSelf
     [ShareSDK getUserInfo:SSDKPlatformTypeQQ onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
         [ShareSDK cancelAuthorize:SSDKPlatformTypeQQ];

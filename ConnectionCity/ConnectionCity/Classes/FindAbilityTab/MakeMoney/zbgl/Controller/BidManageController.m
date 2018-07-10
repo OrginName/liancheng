@@ -114,7 +114,7 @@
     
     
     CityMo *cityMo = [[CityMo alloc]init];
-    cityMo.ID = mo.areaCode;
+    cityMo.ID = mo.cityCode;
     cityMo.name = mo.cityName;
     cityMo.lat = mo.lat;
     cityMo.lng = mo.lng;
