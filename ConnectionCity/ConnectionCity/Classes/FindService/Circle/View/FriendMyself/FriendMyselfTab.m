@@ -48,6 +48,19 @@
 }
 //加载朋友圈列表
 -(void)loadDataFriendList{
+    if ([self.flagStr isEqualToString:@"HomeMySelf"]) {
+        
+        NSDictionary * dic = @{
+                               @"pageNumber": @(_page),
+                               @"pageSize": @15
+                               };
+        [CircleNet requstHomeCirclelDic:dic withSuc:^(NSMutableArray *successArrValue) {
+            
+        } FailErrBlock:^(NSError *failValue) {
+            
+        }];
+        return;
+    }
     NSDictionary * dic = @{
                            @"containsImage": @0,
                            @"containsVideo": @0,

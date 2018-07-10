@@ -12,11 +12,8 @@
 #import "FriendListController.h"
 @interface FoundController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @end
-
 @implementation FoundController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupTableView];

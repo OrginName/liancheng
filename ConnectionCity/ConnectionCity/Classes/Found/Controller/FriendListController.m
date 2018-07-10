@@ -39,6 +39,7 @@
     //    UIButton * btn = [self.view viewWithTag:1];
     //    btn.selected = YES;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    self.frendTab.flagStr = @"HomeMySelf";
     [self.view addSubview:self.frendTab];
     [self.view addSubview:self.frendMyselfTab];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SendFriend) image:@"" title:@"发布" EdgeInsets:UIEdgeInsetsZero];
@@ -60,7 +61,7 @@
     [self.navigationController pushViewController:send animated:YES];
 }
 - (IBAction)tagSelectClick:(CustomButton *)sender {
-    if ([self.tabBarItem.title isEqualToString:@"圈子"]&&sender.tag!=1) {
+    if ([self.tabBarItem.title isEqualToString:@"朋友圈"]&&sender.tag!=1) {
         self.btn_picTxt.selected= NO;
     }else if ([self.tabBarItem.title isEqualToString:@"我的"]&&sender.tag!=2) {
         self.btn_My.selected= NO;

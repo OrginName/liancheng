@@ -25,6 +25,9 @@ static NSString * const v1FriendCircleDelete = @"/v1/friend-circle/delete";
 static NSString * const v1FriendCircleInfo = @"/v1/friend-circle/info";
 //发现 -朋友圈列表
 static NSString * const v1FriendCirclePage = @"/v1/friend-circle/page";
+//发现 -朋友圈我的
+static NSString * const v1FriendCircleMyPage = @"/v1/friend-circle/my/page";
+
 #pragma mark ----我的-------
 //加入黑名单
 static NSString * const v1MyBlackCreate

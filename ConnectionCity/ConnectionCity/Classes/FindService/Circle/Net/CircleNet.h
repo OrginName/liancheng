@@ -22,6 +22,12 @@ typedef void (^FailErrBlock) (NSError * failValue);
  */
 +(void)requstCirclelDic:(NSDictionary *) param flag:(NSString *)flag withSuc:(SuccessArrBlock)sucBlock FailErrBlock:(FailErrBlock)failErrBlock;
 /**
+ 首页朋友圈我的
+ 
+ @param sucBlock 成功回调
+ */
++(void)requstHomeCirclelDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock FailErrBlock:(FailErrBlock)failErrBlock;
+/**
  评论发送列表
  
  @param sucBlock 成功回调

@@ -34,7 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      _page=1;
-    _cityID = [KUserDefults objectForKey:kUserCityID];
+//    [KUserDefults objectForKey:kUserCityID]
+    _cityID = @"";
     [self setUI];
     [self initData];
 }
@@ -49,13 +50,23 @@
     }];
     [self.tab_Bottom.mj_header beginRefreshing];
 }
--(void)requstLoad:(NSDictionary *) dic1{
-    NSDictionary * dic = @{
-                           @"cityCode": @"",
+-(void)requstLoad:(NSDictionary *) dic{
+    NSDictionary * dic1 = @{
+                           @"age": dic[@"age"]?dic[@"age"]:@"",
+                           @"cityCode": dic[@"cityID"],
+                           @"distance": dic[@"distance"]?dic[@"distance"]:@"",
+                           @"gender": dic[@"gender"]?dic[@"gender"]:@"",
+                           @"lat": @([[KUserDefults objectForKey:kLat]floatValue]),
+                           @"lng": @([[KUserDefults objectForKey:KLng]floatValue]),
                            @"pageNumber": @(_page),
-                           @"pageSize":@15,
+                           @"pageSize": @15,
+                           @"userStatus": dic[@"userStatus"]?dic[@"userStatus"]:@"",
+                           @"validType": dic[@"validType"]?dic[@"validType"]:@""
                            };
-    [ServiceHomeNet requstTrvalDic:dic withSuc:^(NSMutableArray *successArrValue){
+    [ServiceHomeNet requstTrvalDic:dic1 withSuc:^(NSMutableArray *successArrValue){
+        if (_page==1) {
+            [self.data_Arr removeAllObjects];
+        }
         _page++;
         [self.tab_Bottom.mj_header endRefreshing];
         [self.tab_Bottom.mj_footer endRefreshing];
@@ -71,6 +82,14 @@
     filter.flag_SX = 1;
     filter.block = ^(NSDictionary *strDic) {
         self.trval.dic = strDic;
+        [self requstLoad:@{
+                         @"cityID":_cityID,
+                         @"age":strDic[@"0"],
+                         @"distance":strDic[@"1"],
+                         @"gender":strDic[@"2"],
+                         @"userStatus":strDic[@"10"],
+                         @"validType":strDic[@"3"]
+                         }];
     };
     [self.navigationController pushViewController:filter animated:YES];
 }
@@ -106,6 +125,16 @@
 //获取当前选取的城市model
 #pragma mark --- JFCityViewControllerDelegate-----
 -(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng{
+    [self loadData:ID name:name];
+    _cityID = ID;
+    [self.tab_Bottom.mj_header beginRefreshing];
+}
+-(void)cityMo:(CityMo *)mo{
+    [self loadData:mo.ID name:mo.name];
+    _cityID = mo.ID;
+    [self.tab_Bottom.mj_header beginRefreshing];
+}
+-(void)loadData:(NSString *)ID name:(NSString *)name{
     [self.backBtn setTitle:name forState:UIControlStateNormal];
     [self.data_Arr removeAllObjects];
     _cityID = ID;
@@ -113,17 +142,6 @@
     [self.tab_Bottom.mj_header beginRefreshing];
     self.trval.page=1;
     self.trval.cityID = ID;
-    [self.trval.data_Arr removeAllObjects];
-    [self.trval.bollec_bottom.mj_header beginRefreshing];
-}
--(void)cityMo:(CityMo *)mo{
-    [self.backBtn setTitle:mo.fullName forState:UIControlStateNormal];
-    [self.data_Arr removeAllObjects];
-    _cityID = mo.ID;
-    _page = 1;
-    [self.tab_Bottom.mj_header beginRefreshing];
-    self.trval.page=1;
-    self.trval.cityID = mo.ID;
     [self.trval.data_Arr removeAllObjects];
     [self.trval.bollec_bottom.mj_header beginRefreshing];
 }

@@ -9,7 +9,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "UserMo.h"
 @interface Comment : BaseModel<NSCoding>
 
 // 正文
@@ -20,7 +20,7 @@
 @property (nonatomic,assign) long long time;
 // 关联动态的PK
 @property (nonatomic,assign) int pk;
-
+@property (nonatomic,strong) UserMo * userMo;
 proStr(content);
 proStr(ID);
 proStr(typeName);

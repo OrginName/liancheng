@@ -28,10 +28,10 @@
                 NSMutableArray * commentArr = [NSMutableArray array];
                 for (int j=0; j<[Arr[i][@"obj"][@"comments"] count]; j++) {
                     Comment * comment = [Comment mj_objectWithKeyValues:Arr[i][@"obj"][@"comments"][j]];
+                    comment.userMo = [UserMo mj_objectWithKeyValues:Arr[i][@"obj"][@"comments"][j][@"user"]];
                     comment.ID = Arr[i][@"obj"][@"comments"][j][@"id"];
                     [commentArr addObject:comment];
                 }
-//                moment.isLike = Arr[i][@"obj"][@"likeCount"]
                 moment.singleWidth = 500;
                 moment.singleHeight = 315;
                 moment.comments = commentArr;
@@ -54,6 +54,20 @@
         failErrBlock(error);
     }];
 }
+/**
+ 首页朋友圈我的
+ 
+ @param sucBlock 成功回调
+ */
++(void)requstHomeCirclelDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock FailErrBlock:(FailErrBlock)failErrBlock{
+    [YSNetworkTool POST:v1FriendCircleMyPage params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+
+
 /**
  评论发送列表
  
@@ -98,6 +112,8 @@
         
     }];
 }
+
+
 /**
  *  根据图片url获取图片尺寸
  */
