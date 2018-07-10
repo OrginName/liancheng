@@ -360,7 +360,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         groupInfo.portraitUri = [NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]];
         groupInfo.groupName = weakSelf.Group.groupName;
         weakSelf.Group.portraitUri = groupInfo.portraitUri;
-        [[RCIM sharedRCIM] refreshGroupInfoCache:groupInfo withGroupId:groupInfo.groupId];
+        [[RCIM sharedRCIM] refreshGroupInfoCache:groupInfo withGroupId:[weakSelf.Group.groupId description]];
         if (url) {
             [RCDHTTPTOOL
              setGroupPortraitUri:groupInfo.portraitUri
@@ -695,7 +695,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
             if (isCreator == YES) {
                 [self chosePortrait];
             } else {
-                [self showAlert:@"只有群主可以修改群组头像"];
+                [YTAlertUtil showTempInfo:@"只有群主可以修改群组头像"];
             }
         } break;
 
@@ -709,25 +709,26 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                 editGroupNameVC.groupInfo = _Group;
                 [self.navigationController pushViewController:editGroupNameVC animated:YES];
             } else {
-                [self showAlert:@"只有群主可以修改群组名称"];
+                [YTAlertUtil showTempInfo:@"只有群主可以修改群组名称"];
             }
         } break;
 
         case 2: {
-            RCDGroupAnnouncementViewController *vc = [[RCDGroupAnnouncementViewController alloc] init];
-            vc.GroupId = _Group.groupId;
-            [self.navigationController pushViewController:vc animated:YES];
-            /*
+//            RCDGroupAnnouncementViewController *vc = [[RCDGroupAnnouncementViewController alloc] init];
+//            vc.GroupId = _Group.groupId;
+//            [self.navigationController pushViewController:vc animated:YES];
+            
             if (isCreator == YES) {
               RCDGroupAnnouncementViewController *vc = [[RCDGroupAnnouncementViewController alloc] init];
               vc.GroupId = _Group.groupId;
+                vc.flagStr = self.flagStr;
+                vc.name = _Group.groupName;
               [self.navigationController pushViewController:vc animated:YES];
             }
             else
             {
-              [self showAlert:@"只有群主可以发布群公告"];
+              [YTAlertUtil showTempInfo:@"只有群主可以发布群公告"];
             }
-             */
         } break;
 
         default:

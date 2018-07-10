@@ -51,19 +51,20 @@ NSString * const YTHttpUtilResponseData = @"Data";
         YTLog(@"X-ACCESS-TOKEN:%@",kAccount.token);
         [YTAlertUtil hideHUD];
         [[self class] p_logRequestDataWithURL:url params:params response:responseObject];
+        NSMutableDictionary * dic1 = [responseObject mutableCopy];
         //如果成功再返回请求结果
         if ([[self class] isSuccessWithResp:responseObject]) {
             if ([YSTools dx_isNullOrNilWithObject:responseObject[@"data"]]) {
 //                [YTAlertUtil showTempInfo:responseObject[kMessage]];
 //                return;
                 NSArray * arr= [NSArray array];
-                if ([[responseObject allKeys] containsObject:@"data"]) {
-                    [[responseObject mutableCopy] setObject:arr forKey:@"data"];
+                if ([[dic1 allKeys] containsObject:@"data"]) {
+                    [dic1 setObject:arr forKey:@"data"];
                 }
             } 
-            success ? success(task, responseObject) : nil;
+            success ? success(task, dic1) : nil;
             //缓存
-            [[EGOCache globalCache] setObject:responseObject forKey:cacheKeyStr];
+            [[EGOCache globalCache] setObject:dic1 forKey:cacheKeyStr];
         }else{
             [YTAlertUtil showTempInfo:responseObject[kMessage]];
         }

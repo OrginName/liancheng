@@ -56,8 +56,8 @@
     NSArray *arr = _data_Arr[indexPath.section][KString(@"%ld", indexPath.section+1)];
     groupMo * mo = arr.count!=0?arr[indexPath.row]:[groupMo new];
     cell.titleLab.text = mo.name;
-    if ([mo.userList isKindOfClass:[NSArray class]]) {
-        cell.peopleNumbersLab.text = KString(@"%lu", (unsigned long)mo.userList.count);
+    if ([mo.teamUsers isKindOfClass:[NSArray class]]) {
+        cell.peopleNumbersLab.text = KString(@"%lu", (unsigned long)mo.teamUsers.count);
     }else
         cell.peopleNumbersLab.text = @"0";
     [cell.headerImgeView sd_setImageWithURL:[NSURL URLWithString:mo.logo] placeholderImage:[UIImage imageNamed:@"no-pic"]];
@@ -70,25 +70,11 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSArray * arr = _data_Arr[indexPath.section][KString(@"%ld", indexPath.section+1)];
     groupMo * mo = arr.count!=0?arr[indexPath.row]:[groupMo new];
-    RCDGroupInfo *groupInfo = [RCDGroupInfo new];
-    groupInfo.introduce = mo.notice;
-    groupInfo.groupName = mo.name;
-    groupInfo.groupId = mo.ID;
-    groupInfo.number = [mo.userList isKindOfClass:[NSArray class]]?KString(@"%lu", (unsigned long)mo.userList.count):0;
-    if ([RCDForwardMananer shareInstance].isForward) {
-        RCConversation *conver = [[RCConversation alloc] init];
-        conver.targetId = groupInfo.groupId;
-        conver.conversationType = ConversationType_GROUP;
-        [RCDForwardMananer shareInstance].toConversation = conver;
-        [[RCDForwardMananer shareInstance] showForwardAlertViewInViewController:self];
-        return;
-    }
     RCDChatViewController *temp = [[RCDChatViewController alloc] init];
     temp.flagStr = 1;
-    temp.targetId = groupInfo.groupId;
+    temp.targetId = KString(@"team_%@", mo.ID);
     temp.conversationType = ConversationType_GROUP;
-//    temp.userName = groupInfo.groupName;
-    temp.title = [NSString stringWithFormat:@"%@(%@)",groupInfo.groupName,groupInfo.number];
+    temp.title = [NSString stringWithFormat:@"%@(%@)",mo.name,[mo.teamUsers isKindOfClass:[NSArray class]]?KString(@"%lu", (unsigned long)mo.teamUsers.count):0];
     [self.navigationController pushViewController:temp animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -140,35 +126,26 @@
     NSMutableArray * arr = [NSMutableArray array];
     NSMutableArray * arr1 = [NSMutableArray array];
     NSMutableArray * arr2 = [NSMutableArray array];
-    [YSNetworkTool POST:v1TalentTeamNearbyList params:@{@"areaCode":[KUserDefults objectForKey:kUserCityID]} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        for (int i=0; i<[responseObject[@"data"] count]; i++) {
-            groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+    [YSNetworkTool POST:@"/v1/talent/team/relation-to-me/list" params:@{@"areaCode":[KUserDefults objectForKey:kUserCityID]} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        for (int i=0; i<[responseObject[@"data"][@"nearby"] count]; i++) {
+            groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][@"nearby"][i]];
             [arr addObject:mo];
         }
-        [YSNetworkTool POST:v1TalentTeamMyList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-            for (int i=0; i<[responseObject[@"data"] count]; i++) {
-                groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
-                [arr1 addObject:mo];
-            }
-            [YSNetworkTool POST:v1TalentTeamJoinList params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-                for (int i=0; i<[responseObject[@"data"] count]; i++) {
-                    groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
-                    [arr2 addObject:mo];
-                }
-                [self.data_Arr addObject:@{@"1":arr}];
-                [self.data_Arr addObject:@{@"2":arr1}];
-                [self.data_Arr addObject:@{@"3":arr2}];
-                [self.tableView reloadData];
-            } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                
-            }];
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            
-        }];
+        for (int i=0; i<[responseObject[@"data"][@"my"] count]; i++) {
+            groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][@"my"][i]];
+            [arr1 addObject:mo];
+        }
+        for (int i=0; i<[responseObject[@"data"][@"join"] count]; i++) {
+            groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][@"join"][i]];
+            [arr2 addObject:mo];
+        }
+        [self.data_Arr addObject:@{@"1":arr}];
+        [self.data_Arr addObject:@{@"2":arr1}];
+        [self.data_Arr addObject:@{@"3":arr2}];
+        [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    self.dataSourceArr = @[@[@"1",@"2",@"3"],@[@"1",@"2",@"3"],@[@"1",@"2",@"3",@"4",@"5"]];
 }
 - (void)p_initTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"BulidTeamCell" bundle:nil] forCellReuseIdentifier:@"BulidTeamCell"];

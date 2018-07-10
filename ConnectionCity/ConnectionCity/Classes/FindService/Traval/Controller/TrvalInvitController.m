@@ -47,8 +47,7 @@
         return;
     }
     NSDictionary * dic = @{
-                           @"cityCode": @([self.Dic[@"00"][@"ID"] integerValue]),
-//                           @"departTime": self.Dic[@"10"][@"ID"],
+                           @"cityCode": @([self.Dic[@"00"][@"ID"] integerValue]), 
                            @"description": cell.txt_View.text,
                            @"inviteObject": self.Dic[@"01"][@"ID"],
                            @"longTime": self.Dic[@"11"][@"ID"],

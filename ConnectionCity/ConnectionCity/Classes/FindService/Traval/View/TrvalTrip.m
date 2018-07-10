@@ -32,30 +32,42 @@
 -(void)initData{
     self.bollec_bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         _page=1;
-        [self.data_Arr removeAllObjects];
-        [self loadData:@{@"age":@"all",@"page":@"1",@"cityID":self.cityID}];
+        [self loadData:@{@"cityID":self.cityID}];
     }];
     self.bollec_bottom.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [self loadData:@{@"age":@"all",@"page":KString(@"%ld", (long)_page),@"cityID":self.cityID}];
+        [self loadData:@{@"cityID":self.cityID}];
     }];
+}
+-(void)setDic:(NSDictionary *)dic{
+    _dic = dic;
+    _page=1;
+    [self loadData:@{
+                     @"cityID":self.cityID,
+                     @"age":dic[@"0"],
+                     @"distance":dic[@"1"],
+                     @"gender":dic[@"2"],
+                     @"userStatus":dic[@"10"],
+                     @"validType":dic[@"3"]
+                     }];
 }
 -(void)loadData:(NSDictionary *)dic{
     NSDictionary * dic1 = @{
-                            @"age": dic[@"age"],
-                            @"category": @8,
+                            @"age": dic[@"age"]?dic[@"age"]:@"",
                             @"cityCode": @([dic[@"cityID"] integerValue]),
-                            @"distance": @"",
-                            @"gender": @"",
+                            @"distance": dic[@"distance"]?dic[@"distance"]:@"",
+                            @"gender": dic[@"gender"]?dic[@"gender"]:@"",
                             @"lat": @([[KUserDefults objectForKey:kLat]floatValue]),
                             @"lng": @([[KUserDefults objectForKey:KLng]floatValue]),
                             @"pageNumber": @(_page),
                             @"pageSize": @15,
-                            @"userStatus": @"",
-                            @"validType": @""
+                            @"userStatus": dic[@"userStatus"]?dic[@"userStatus"]:@"",
+                            @"validType": dic[@"validType"]?dic[@"validType"]:@""
                             };
     [ServiceHomeNet requstTrvalInvitDic:dic1 withSuc:^(NSMutableArray *successArrValue) {
+        if (_page==1) {
+            [self.data_Arr removeAllObjects];
+        }
         _page++;
-#warning 暂时先这样写不知道返回的数据一脸懵逼
         [self.data_Arr addObjectsFromArray:successArrValue];
         [self.bollec_bottom reloadData];
         [self.bollec_bottom.mj_header endRefreshing];

@@ -251,26 +251,11 @@
 }
 #pragma mark ---初始化关键字button加载-----
 -(void)loadketBtn:(NSMutableArray *)arr{
-//    for (int i=0; i<arr.count;i++) {
-//        float width = [YSTools caculateTheWidthOfLableText:14 withTitle:arr[i]]+10;
-//        if (width<40) {
-//            width=40;
-//        }
-//        UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(i*width, 0, width, 47)];
-//        btn.tag = i+1;
-//        [btn setTitle:arr[i] forState:UIControlStateNormal];
-//        btn.titleLabel.font = [UIFont systemFontOfSize:14];
-//        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//        [btn setBackgroundColor:[UIColor whiteColor]];
-//        [btn addTarget:self action:@selector(KeyWordsClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [self.view_KeyWords addSubview:btn];
-//    }
     CustomScro * cus = [[CustomScro alloc] initWithFrame:CGRectMake(103, 52, kScreenWidth-113, 47) arr:[arr copy]];
     cus.delegate = self;
     [self.view addSubview:cus];
 }
 -(void)btnClick:(UIButton *)tag{
-//    [YTAlertUtil showTempInfo:@"热门职业点击"];
     [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID],@"keyword":tag.titleLabel.text}];
 }
 @end

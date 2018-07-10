@@ -51,7 +51,7 @@
 }
 -(void)requstLoad:(NSDictionary *) dic1{
     NSDictionary * dic = @{
-                           @"cityCode": @([dic1[@"cityID"] integerValue]),
+                           @"cityCode": @"",
                            @"pageNumber": @(_page),
                            @"pageSize":@15,
                            };
@@ -69,6 +69,9 @@
     FilterOneController * filter = [FilterOneController new];
     filter.title = @"筛选条件";
     filter.flag_SX = 1;
+    filter.block = ^(NSDictionary *strDic) {
+        self.trval.dic = strDic;
+    };
     [self.navigationController pushViewController:filter animated:YES];
 }
 - (IBAction)send_invit:(UIButton *)sender {
@@ -102,6 +105,17 @@
 }
 //获取当前选取的城市model
 #pragma mark --- JFCityViewControllerDelegate-----
+-(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng{
+    [self.backBtn setTitle:name forState:UIControlStateNormal];
+    [self.data_Arr removeAllObjects];
+    _cityID = ID;
+    _page = 1;
+    [self.tab_Bottom.mj_header beginRefreshing];
+    self.trval.page=1;
+    self.trval.cityID = ID;
+    [self.trval.data_Arr removeAllObjects];
+    [self.trval.bollec_bottom.mj_header beginRefreshing];
+}
 -(void)cityMo:(CityMo *)mo{
     [self.backBtn setTitle:mo.fullName forState:UIControlStateNormal];
     [self.data_Arr removeAllObjects];

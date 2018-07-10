@@ -52,9 +52,9 @@
             self.rightLabel.text = groupInfo.groupName;
             break;
         case 2:
-            [self setCellStyle:DefaultStyle];
+            [self setCellStyle:DefaultStyle_RightLabel];
             self.leftLabel.text = @"群公告";
-                self.rightLabel.text = groupInfo.introduce;
+//            self.rightLabel.text = groupInfo.introduce;
             break;
         default:
             break;

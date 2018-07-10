@@ -15,4 +15,7 @@
 
 @property(nonatomic, strong) NSString *GroupId;
 
+@property (nonatomic,assign) int flagStr;
+
+@property (nonatomic,copy) NSString * name;
 @end

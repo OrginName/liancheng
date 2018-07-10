@@ -72,7 +72,7 @@
                            @"type": _ID?_ID:@""
                            };
     [YSNetworkTool POST:self.flag_str==1?v1TalentTeamCreate:self.flag_str==2?v1ServiceStationCreate:v1UserGroupCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        [RCDHTTPTOOL getGroupMembersWithGroupId:[responseObject[@"data"] componentsSeparatedByString:@"_"][1] flag:self.flag_str Block:^(NSMutableArray *result) {
+        [RCDHTTPTOOL getGroupMembersWithGroupId:responseObject[@"data"] flag:self.flag_str Block:^(NSMutableArray *result) {
             //更新本地数据库中群组成员的信息
         }]; 
         RCGroup *groupInfo = [RCGroup new];
@@ -80,7 +80,7 @@
         groupInfo.groupId = [responseObject[@"data"] description];
         groupInfo.groupName = self.txt_name.text;
         [[RCIM sharedRCIM]refreshGroupInfoCache:groupInfo withGroupId:responseObject[@"data"]];
-        [RCDHTTPTOOL getGroupByID:[groupInfo.groupId componentsSeparatedByString:@"_"][1] flag:self.flag_str  successCompletion:^(RCDGroupInfo *group) {
+        [RCDHTTPTOOL getGroupByID:groupInfo.groupId flag:self.flag_str  successCompletion:^(RCDGroupInfo *group) {
             [[RCDataBaseManager
               shareInstance]
              insertGroupToDB:group];

@@ -10,7 +10,8 @@
 #import "MBProgressHUD.h"
 #import "UIColor+RCColor.h"
 #import <RongIMKit/RongIMKit.h>
-
+#import "RCDHttpTool.h"
+#import <IQKeyboardManager.h>
 @interface RCDGroupAnnouncementViewController ()
 
 @property(nonatomic, strong) UIButton *rightBtn;
@@ -30,6 +31,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        [IQKeyboardManager sharedManager].enable = NO;
         self.AnnouncementContent = [[UITextViewAndPlaceholder alloc] initWithFrame:CGRectZero];
         self.AnnouncementContent.delegate = self;
         self.AnnouncementContent.font = [UIFont systemFontOfSize:16.f];
@@ -59,15 +61,18 @@
     self.navigationItem.rightBarButtonItem = rightButton;
 
     self.leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 34)];
-    UILabel *leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(-6.5, 0, 50, 34)];
-    leftLabel.text = @"取消";
-    [self.leftBtn addSubview:leftLabel];
-    [leftLabel setTextColor:[UIColor whiteColor]];
-    [self.leftBtn addTarget:self action:@selector(clickLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:self.leftBtn];
-    [self.leftBtn setTintColor:[UIColor whiteColor]];
-    self.navigationItem.leftBarButtonItem = leftButton;
+//    UILabel *leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(-6.5, 0, 50, 34)];
+//    leftLabel.text = @"取消";
+//    [self.leftBtn addSubview:leftLabel];
+//    [leftLabel setTextColor:[UIColor whiteColor]];
+//    [self.leftBtn addTarget:self action:@selector(clickLeftBtn:) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:self.leftBtn];
+//    [self.leftBtn setTintColor:[UIColor whiteColor]];
+//    self.navigationItem.leftBarButtonItem = leftButton;
 
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(clickLeftBtn:) image:@"return-f" title:nil EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    
+    
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.navigationItem.title = @"群公告";
@@ -139,7 +144,6 @@
         self.rightBtn.userInteractionEnabled = YES;
     }
 }
-
 - (void)clickLeftBtn:(id)sender {
     [self navigationButtonIsCanClick:NO];
     if (self.AnnouncementContent.text.length > 0) {
@@ -258,16 +262,14 @@
                                                           [self.navigationController popViewControllerAnimated:YES];
                                                       });
                                    });
+//                    [RCDHTTPTOOL setGroupPortraitUri:nil groupId:self.GroupId flag:self.flagStr name:_name notice:self.AnnouncementContent.text complete:^(BOOL result) {
+//                        
+//                    }];
                 }
                 error:^(RCErrorCode nErrorCode, long messageId) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.hud hide:YES];
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-                                                                        message:@"群公告发送失败"
-                                                                       delegate:nil
-                                                              cancelButtonTitle:@"确定"
-                                                              otherButtonTitles:nil];
-                        [alert show];
+                        [YTAlertUtil showTempInfo:@"群公告发送失败"];
                     });
                 }];
 

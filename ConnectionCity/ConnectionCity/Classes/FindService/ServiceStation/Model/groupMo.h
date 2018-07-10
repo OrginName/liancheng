@@ -23,4 +23,5 @@ proArr(userList);
 proStr(cityName);
 proStr(cityCode);
 proArr(userGroupFriends);
+proArr(teamUsers);
 @end

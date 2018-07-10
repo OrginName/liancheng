@@ -17,11 +17,11 @@
 #import "RCDSearchFriendViewController.h"
 #import "RCDSearchViewController.h"
 #import "CreatGroupController.h"
-@interface AddressBookController ()
+@interface AddressBookController ()<RCDSearchViewDelegate>
 @property(nonatomic, strong) RCConversationModel *tempModel;
 @property(nonatomic, assign) NSUInteger index;
 @property(nonatomic, strong) UINavigationController *searchNavigationController;
-
+@property (nonatomic,strong) NSMutableArray * arr_AllGroup;
 @property(nonatomic, assign) BOOL isClick;
 - (void)updateBadgeValueForTabBarItem;
 @property(nonatomic) BOOL isLoading;
@@ -32,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    
+    self.arr_AllGroup = [NSMutableArray array];
 }
 //更多按钮创建
 -(void)more{
@@ -123,15 +123,15 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.translucent = NO;
-    
     _isClick = YES;
-    //  [self notifyUpdateUnreadMessageCount];
+//    [self notifyUpdateUnreadMessageCount];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receiveNeedRefreshNotification:)
                                                  name:@"kRCNeedReloadDiscussionListNotification"
                                                object:nil];
     RCUserInfo *groupNotify = [[RCUserInfo alloc] initWithUserId:@"__system__" name:@"" portrait:nil];
     [[RCIM sharedRCIM] refreshUserInfoCache:groupNotify withUserId:@"__system__"];
+    
 }
 //由于demo使用了tabbarcontroller，当切换到其它tab时，不能更改tabbarcontroller的标题。
 - (void)viewWillDisappear:(BOOL)animated {
@@ -143,7 +143,6 @@
 //*********************插入自定义Cell*********************//
 //插入自定义会话model
 - (NSMutableArray *)willReloadTableData:(NSMutableArray *)dataSource {
-    
     for (int i = 0; i < dataSource.count; i++) {
         RCConversationModel *model = dataSource[i];
         //筛选请求添加好友的系统消息，用于生成自定义会话类型的cell
@@ -151,7 +150,6 @@
             [model.lastestMessage isMemberOfClass:[RCContactNotificationMessage class]]) {
             model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
         }
-        
         if ([model.lastestMessage isKindOfClass:[RCGroupNotificationMessage class]]) {
             RCGroupNotificationMessage *groupNotification = (RCGroupNotificationMessage *)model.lastestMessage;
             if ([groupNotification.operation isEqualToString:@"Quit"]) {
@@ -170,6 +168,19 @@
         }
     }
     return dataSource;
+}
+/*!
+ 
+ 即将显示Cell的回调
+ @param cell        即将显示的Cell
+ @param indexPath   该Cell对应的会话Cell数据模型在数据源中的索引值
+ 这个方法可以自定义一些cell 的属性
+ @discussion 您可以在此回调中修改Cell的一些显示属性。
+ */
+- (void)willDisplayConversationTableCell:(RCConversationBaseCell *)cell
+
+                             atIndexPath:(NSIndexPath *)indexPath{
+  
 }
 //左滑删除
 - (void)rcConversationListTableView:(UITableView *)tableView
@@ -195,7 +206,6 @@
 - (void)onSelectedTableRow:(RCConversationModelType)conversationModelType
          conversationModel:(RCConversationModel *)model
                atIndexPath:(NSIndexPath *)indexPath {
-    
     if (_isClick) {
         _isClick = NO;
         if (model.conversationModelType == RC_CONVERSATION_MODEL_TYPE_PUBLIC_SERVICE) {
@@ -210,17 +220,23 @@
         
         if (conversationModelType == RC_CONVERSATION_MODEL_TYPE_NORMAL) {
             RCDChatViewController *_conversationVC = [[RCDChatViewController alloc] init];
-            _conversationVC.flagStr = 2;
+            int a;
+            if ([model.targetId containsString:@"_"]) {
+                if ([[model.targetId componentsSeparatedByString:@"_"][0] isEqualToString:@"station"]) {
+                    a = 2;
+                }else
+                    a = 1;
+            }else
+                a=3;
+            _conversationVC.flagStr = a;
             _conversationVC.conversationType = model.conversationType;
             _conversationVC.targetId = KString(@"%@", model.targetId);;
-//            _conversationVC.userName = model.conversationTitle;
             _conversationVC.title = model.conversationTitle;
             _conversationVC.conversation = model;
             _conversationVC.unReadMessage = model.unreadMessageCount;
             _conversationVC.enableNewComingMessageIcon = YES; //开启消息提醒
             _conversationVC.enableUnreadMessageIcon = YES;
             if (model.conversationType == ConversationType_SYSTEM) {
-//                _conversationVC.userName = @"系统消息";
                 _conversationVC.title = @"系统消息";
             }
             if ([model.objectName isEqualToString:@"RC:ContactNtf"]) {
@@ -251,7 +267,6 @@
         //自定义会话类型
         if (conversationModelType == RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION) {
             RCConversationModel *model = self.conversationListDataSource[indexPath.row];
-            
             if ([model.objectName isEqualToString:@"RC:ContactNtf"]) {
                 RCDAddressBookViewController *addressBookVC = [RCDAddressBookViewController addressBookViewController];
                 [self.navigationController pushViewController:addressBookVC animated:YES];
@@ -259,7 +274,6 @@
         }
     }
 }
- 
 //自定义cell
 - (RCConversationBaseCell *)rcConversationListTableView:(UITableView *)tableView
                                   cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -302,10 +316,7 @@
                      rcduserinfo_.name = user.name;
                      rcduserinfo_.userId = user.userId;
                      rcduserinfo_.portraitUri = user.portraitUri;
-
                      model.extend = rcduserinfo_;
-
-                     // local cache for userInfo
                      NSDictionary *userinfoDic =
                      @{@"username" : rcduserinfo_.name, @"portraitUri" : rcduserinfo_.portraitUri};
                      [[NSUserDefaults standardUserDefaults] setObject:userinfoDic
@@ -319,7 +330,9 @@
             }
         }
         
-    } else {
+    }else if (model.conversationType == ConversationType_GROUP){
+        
+    }else {
         RCDUserInfo *user = (RCDUserInfo *)model.extend;
         userName = user.name;
         portraitUri = user.portraitUri;
@@ -341,7 +354,6 @@
     return cell;
 }
 //*********************插入自定义Cell*********************//
-
 #pragma mark - 收到消息监听
 - (void)didReceiveMessageNotification:(NSNotification *)notification {
     __weak typeof(&*self) blockSelf_ = self;

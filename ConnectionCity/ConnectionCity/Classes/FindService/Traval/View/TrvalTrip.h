@@ -13,6 +13,7 @@
 @property (nonatomic,strong) NSString * cityID;
 @property (nonatomic,strong)NSMutableArray * data_Arr;
 @property (nonatomic,assign) NSInteger page;
+@property (nonatomic,strong) NSDictionary * dic;
 -(instancetype)initWithFrame:(CGRect)frame withControl:(UIViewController *)control;
 @end
 

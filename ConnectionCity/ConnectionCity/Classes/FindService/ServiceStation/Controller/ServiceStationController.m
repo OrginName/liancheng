@@ -126,34 +126,54 @@
     NSMutableArray * arr = [NSMutableArray array];
     NSMutableArray * arr1 = [NSMutableArray array];
     NSMutableArray * arr2 = [NSMutableArray array];
-    [YSNetworkTool POST:v1ServiceStationNearbyList params:@{@"areaCode":[KUserDefults objectForKey:kUserCityID]} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        for (int i=0; i<[responseObject[@"data"] count]; i++) {
-            groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+    [YSNetworkTool POST:@"/v1/service/station/relation-to-me/list" params:@{@"areaCode":[KUserDefults objectForKey:kUserCityID]} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        for (int i=0; i<[responseObject[@"data"][@"nearby"] count]; i++) {
+            groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][@"nearby"][i]];
             [arr addObject:mo];
         }
-        [YSNetworkTool POST:v1ServiceStationMyList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-            for (int i=0; i<[responseObject[@"data"] count]; i++) {
-                groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
-                [arr1 addObject:mo];
-            }
-            [YSNetworkTool POST:v1ServiceStationJoinList params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-                for (int i=0; i<[responseObject[@"data"] count]; i++) {
-                    groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
-                    [arr2 addObject:mo];
-                }
-                [self.data_Arr addObject:@{@"1":arr}];
-                [self.data_Arr addObject:@{@"2":arr1}];
-                [self.data_Arr addObject:@{@"3":arr2}];
-                [self.tableView reloadData];
-            } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                
-            }];
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            
-        }];
+        for (int i=0; i<[responseObject[@"data"][@"my"] count]; i++) {
+            groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][@"my"][i]];
+            [arr1 addObject:mo];
+        }
+        for (int i=0; i<[responseObject[@"data"][@"join"] count]; i++) {
+            groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][@"join"][i]];
+            [arr2 addObject:mo];
+        }
+        [self.data_Arr addObject:@{@"1":arr}];
+        [self.data_Arr addObject:@{@"2":arr1}];
+        [self.data_Arr addObject:@{@"3":arr2}];
+        [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+//    [YSNetworkTool POST:v1ServiceStationNearbyList params:@{@"areaCode":[KUserDefults objectForKey:kUserCityID]} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+//        for (int i=0; i<[responseObject[@"data"] count]; i++) {
+//            groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+//            [arr addObject:mo];
+//        }
+//        [YSNetworkTool POST:v1ServiceStationMyList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+//            for (int i=0; i<[responseObject[@"data"] count]; i++) {
+//                groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+//                [arr1 addObject:mo];
+//            }
+//            [YSNetworkTool POST:v1ServiceStationJoinList params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+//                for (int i=0; i<[responseObject[@"data"] count]; i++) {
+//                    groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+//                    [arr2 addObject:mo];
+//                }
+//                [self.data_Arr addObject:@{@"1":arr}];
+//                [self.data_Arr addObject:@{@"2":arr1}];
+//                [self.data_Arr addObject:@{@"3":arr2}];
+//                [self.tableView reloadData];
+//            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//
+//            }];
+//        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//
+//        }];
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//
+//    }];
 }
 - (void)p_initTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"BulidTeamCell" bundle:nil] forCellReuseIdentifier:@"BulidTeamCell"];

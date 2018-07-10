@@ -162,13 +162,27 @@
 //    NSMutableArray *cacheList =
 //        [[NSMutableArray alloc] initWithArray:[[RCDataBaseManager shareInstance] getAllFriends]];
     __block BOOL isFriend = NO;
-    [RCDHTTPTOOL getFriendscomplete:^(NSMutableArray *arr) {
-        for (int i=0;i<arr.count;i++) {
-            if ([[arr[i] userId] isEqualToString:self.targetUserInfo.userId]) {
-                isFriend = YES;
-                break;
-            }
+    [YSNetworkTool POST:v1MyContacts params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (((NSArray *)responseObject[@"data"]).count == 0) {
+            _startChat.hidden = YES;
+            return;
         }
+        NSString *code = [NSString stringWithFormat:@"%@", responseObject[@"code"]];
+            if ([code isEqualToString:@"SUCCESS"]) {
+                for (int i=0; i<[responseObject[@"data"] count]; i++) {
+                    if ([[responseObject[@"data"][i][@"id"] description] isEqualToString:self.targetUserInfo.userId]) {
+                        isFriend = YES;
+                        break;
+                    }
+                }
+                if (isFriend == YES) {
+                    _addFriendBtn.hidden = YES;
+                } else {
+                    _startChat.hidden = YES;
+                }
+            }
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                
     }];
 //    for (RCDUserInfo *user in cacheList) {
 //        if ([user.userId isEqualToString:self.targetUserInfo.userId]) {
@@ -176,13 +190,7 @@
 //            break;
 //        }
 //    }
-    if (isFriend == YES) {
-        _addFriendBtn.hidden = YES;
-    } else {
-        _startChat.hidden = YES;
-    }
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

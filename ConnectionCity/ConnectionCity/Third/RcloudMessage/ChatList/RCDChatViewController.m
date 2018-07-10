@@ -34,6 +34,7 @@
 #import <RongIMKit/RongIMKit.h>
 #import "RCDContactViewController.h"
 #import "RCDForwardAlertView.h"
+#import <IQKeyboardManager.h>
 @interface RCDChatViewController () <UIActionSheetDelegate, RCRealTimeLocationObserver,
                                      RealTimeLocationStatusViewDelegate, UIAlertViewDelegate, RCMessageCellDelegate>
 @property(nonatomic, weak) id<RCRealTimeLocationProxy> realTimeLocation;
@@ -54,7 +55,6 @@ NSMutableDictionary *userInputStatus;
 @implementation RCDChatViewController
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-   
     NSString *userInputStatusKey =
         [NSString stringWithFormat:@"%lu--%@", (unsigned long)self.conversationType, self.targetId];
     if (userInputStatus && [userInputStatus.allKeys containsObject:userInputStatusKey]) {
@@ -90,6 +90,7 @@ NSMutableDictionary *userInputStatus;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [IQKeyboardManager sharedManager].enable = NO;
     self.enableSaveNewPhotoToLocalSystem = NO;
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     if (self.conversationType != ConversationType_CHATROOM) {

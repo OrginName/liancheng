@@ -50,14 +50,15 @@
 //设置群组头像
 - (void)setGroupPortraitUri:(NSString *)portraitUri groupId:(NSString *)groupId flag:(int)flag name:(NSString *)name notice:(NSString *)notice complete:(void (^)(BOOL))result {
     NSString * str = flag==1?v1TalentTeamUpdate:flag==2?v1ServiceStationUpdate:v1UserGroupUpdate;
+    NSString * str1 = groupId;
     if (flag>0&&flag<3) {
-        groupId = [groupId componentsSeparatedByString:@"_"][1];
+        str1 = [groupId componentsSeparatedByString:@"_"][1];
     }
     NSDictionary * dic = @{};
     if (portraitUri.length!=0) {
         dic = @{
                 @"areaCode": @([[KUserDefults objectForKey:kUserCityID] integerValue]),
-                @"id": @([groupId integerValue]),
+                @"id": @([str1 integerValue]),
                 @"lat": @([[KUserDefults objectForKey:kLat] integerValue]),
                 @"lng": @([[KUserDefults objectForKey:KLng] integerValue]),
                 @"logo": portraitUri,
@@ -66,7 +67,7 @@
     }else if (name.length!=0){
         dic = @{
                 @"areaCode": @([[KUserDefults objectForKey:kUserCityID] integerValue]),
-                @"id": @([groupId integerValue]),
+                @"id": @([str1 integerValue]),
                 @"lat": @([[KUserDefults objectForKey:kLat] integerValue]),
                 @"lng": @([[KUserDefults objectForKey:KLng] integerValue]),
                 @"name": name
@@ -74,7 +75,7 @@
     }else if (notice.length!=0){
         dic = @{
                 @"areaCode": @([[KUserDefults objectForKey:kUserCityID] integerValue]),
-                @"id": @([groupId integerValue]),
+                @"id": @([str1 integerValue]),
                 @"lat": @([[KUserDefults objectForKey:kLat] integerValue]),
                 @"lng": @([[KUserDefults objectForKey:KLng] integerValue]),
                 @"name": name,
@@ -95,10 +96,11 @@
 //根据id获取单个群组
 - (void)getGroupByID:(NSString *)groupID flag:(int)flag successCompletion:(void (^)(RCDGroupInfo *group))completion {
     NSString * str = flag==1?v1TalentTeamInfo:flag==2?v1ServiceStationInfo:v1UserGroupInfo;
+    NSString * str1 = groupID;
     if (flag>0&&flag<3) {
-        groupID = [groupID componentsSeparatedByString:@"_"][1];
+        str1 = [groupID componentsSeparatedByString:@"_"][1];
     }
-    [YSNetworkTool POST:str params:@{@"id": groupID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:str params:@{@"id": str1} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *code = [NSString stringWithFormat:@"%@", responseObject[@"code"]];
         NSDictionary * result;
         if (flag==2) {
@@ -106,21 +108,23 @@
         }else if (flag==3){
             result = responseObject[@"data"][@"group"];
         }else{
-            
+           result = responseObject[@"team"][@"users"];
         }
         if (result && [code isEqualToString:@"SUCCESS"]) {
             RCDGroupInfo *group = [[RCDGroupInfo alloc] init];
             group.groupId = [result[@"groupId"] description];
             group.groupType = flag;
             group.groupName = [result objectForKey:@"name"];
-            group.portraitUri = [result objectForKey:@"logo"];
-            if (!group.portraitUri || group.portraitUri.length <= 0) {
-                group.portraitUri = [RCDUtilities defaultGroupPortrait:group];
+            group.portraitUri = [result objectForKey:@"logo"]?[result objectForKey:@"logo"]:@"";
+            if ([group.portraitUri isKindOfClass:[NSString class]]&&group.portraitUri!=NULL) {
+                if (group.portraitUri.length <= 0) {
+                    group.portraitUri = [RCDUtilities defaultGroupPortrait:group];
+                }
             }
             group.creatorId = result[@"userId"];
             group.introduce = result[@"notice"];
-            NSString * str = flag==3?@"groupUserCount":flag==2?@"serviceStationUserCount":@"";
-            group.number = KString(@"%@", responseObject[@"data"]    [str]);
+            NSString * str = flag==3?@"groupUserCount":flag==2?@"serviceStationUserCount":@"teamUserCount";
+            group.number = KString(@"%@", responseObject[@"data"][str]);
             group.maxNumber = [result objectForKey:@"max_number"]?[result objectForKey:@"max_number"]:@"1000";
             group.creatorTime = [result objectForKey:@"createTime"];
 //            if (![[result objectForKey:@"deletedAt"] isKindOfClass:[NSNull class]]) {
@@ -160,7 +164,7 @@
                     RCUserInfo *user = [RCUserInfo new];
                     user.userId = [dic[@"id"] description];
                     user.name = dic[@"nickName"];
-                    user.portraitUri = dic[@"headImage"];
+                    user.portraitUri = dic[@"headImage"]?dic[@"headImage"]:@"";
                     if (!user.portraitUri || user.portraitUri.length <= 0) {
                         user.portraitUri = [RCDUtilities defaultUserPortrait:user];
                     }
@@ -236,7 +240,6 @@
 
 //获取当前用户所在的所有群组信息
 - (void)getMyGroupsWithBlock:(void (^)(NSMutableArray *result))block {
-   
 //    [AFHttpTool getMyGroupsSuccess:^(id response) {
 //        NSArray *allGroups = response[@"result"];
 //        NSMutableArray *tempArr = [NSMutableArray new];
@@ -300,10 +303,11 @@
 - (void)getGroupMembersWithGroupId:(NSString *)groupId flag:(int)flag Block:(void (^)(NSMutableArray *result))block {
     __block NSMutableArray *tempArr = [NSMutableArray new];
     NSString * str = flag==1?v1TalentTeamInfo:flag==2?v1ServiceStationInfo:v1UserGroupInfo;
+    NSString * str1 = groupId;
     if (flag>0&&flag<3) {
-        groupId = [groupId componentsSeparatedByString:@"_"][1];
+        str1 = [groupId componentsSeparatedByString:@"_"][1];
     }
-    [YSNetworkTool POST:str params:@{@"id":groupId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:str params:@{@"id":str1} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]) {
             NSArray * members;
             if (flag==2) {
@@ -311,7 +315,7 @@
             }else if (flag==3){
                 members = responseObject[@"data"][@"group"][@"users"];
             }else{
-                
+                members = responseObject[@"code"][@"team"][@"users"];
             }
             for (int i=0; i<[members count]; i++) {
                 NSDictionary * dic = members[i];
@@ -364,10 +368,11 @@
 //添加群组成员
 - (void)addUsersIntoGroup:(NSString *)groupID flag:(int)flag usersId:(NSMutableArray *)usersId complete:(void (^)(BOOL))result {
     NSString * url = flag==1?v1TalentTeamBatchSign:flag==2?v1ServiceStationBatchsign:v1UserGroupBatchSign;
+    NSString * str1 = groupID;
     if (flag>0&&flag<3) {
-        groupID = [groupID componentsSeparatedByString:@"_"][1];
+        str1 = [groupID componentsSeparatedByString:@"_"][1];
     }
-    [YSNetworkTool POST:url params:@{@"groupId":groupID,@"userIds":usersId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:url params:@{@"groupId":str1,@"userIds":usersId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]) {
             result(YES);
         }else
@@ -375,28 +380,17 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         result(NO);
     }];
-//    [AFHttpTool addUsersIntoGroup:groupID
-//        usersId:usersId
-//        success:^(id response) {
-//            if ([response[@"code"] integerValue] == 200) {
-//                result(YES);
-//            } else {
-//                result(NO);
-//            }
-//        }
-//        failure:^(NSError *err) {
-//            result(NO);
-//        }];
 }
 
 //将用户踢出群组
 - (void)kickUsersOutOfGroup:(NSString *)groupID flag:(int)flag usersId:(NSMutableArray *)usersId complete:(void (^)(BOOL))result {
 //     我的
     NSString * str = flag==1?v1TalentTeamBatchSignOut:flag==2?v1ServiceStationBatchSignOut:v1UserGroupBatchSignOut;
+    NSString * str1 = groupID;
     if (flag>0&&flag<3) {
-        groupID = [groupID componentsSeparatedByString:@"_"][1];
+        str1 = [groupID componentsSeparatedByString:@"_"][1];
     }
-    [YSNetworkTool POST:str params:@{@"groupId":groupID,@"userIds":usersId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:str params:@{@"groupId":str1,@"userIds":usersId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]) {
             result(YES);
         }else
@@ -424,10 +418,11 @@
 //解散群组
 - (void)dismissGroupWithGroupId:(NSString *)groupID flag:(int)flag complete:(void (^)(BOOL))result {
     NSString * url = flag ==1?v1TalentTeamDelete:flag==2?v1ServiceStationDelete:v1UserGroupDelete;
+    NSString * str1 = groupID;
     if (flag>0&&flag<3) {
-        groupID = [groupID componentsSeparatedByString:@"_"][1];
+        str1 = [groupID componentsSeparatedByString:@"_"][1];
     }
-    [YSNetworkTool POST:url params:@{@"id":groupID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:url params:@{@"id":str1} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]) {
             result(YES);
         }else{
@@ -699,36 +694,6 @@
                  ImageData:(NSData *)image
                    success:(void (^)(NSString *url))success
                    failure:(void (^)(NSError *err))failure {
-//    [AFHttpTool uploadFile:image
-//        userId:userId
-//        success:^(id response) {
-//            NSString *imageUrl = nil;
-//            if ([response[@"key"] length] > 0) {
-//                NSString *key = response[@"key"];
-//                NSString *QiNiuDomai = [DEFAULTS objectForKey:@"QiNiuDomain"];
-//                imageUrl = [NSString stringWithFormat:@"http://%@/%@", QiNiuDomai, key];
-//            } else {
-//                NSDictionary *downloadInfo = response[@"rc_url"];
-//                if (downloadInfo) {
-//                    NSString *fileInfo = downloadInfo[@"path"];
-//                    if ([downloadInfo[@"type"] intValue] == 0) {
-//                        NSString *url = response[@"domain"];
-//                        if ([url hasSuffix:@"/"]) {
-//                            url = [url substringToIndex:url.length - 1];
-//                        }
-//                        if ([fileInfo hasPrefix:@"/"]) {
-//                            imageUrl = [url stringByAppendingString:fileInfo];
-//                        } else {
-//                            imageUrl = [url stringByAppendingPathComponent:fileInfo];
-//                        }
-//                    }
-//                }
-//            }
-//            success(imageUrl);
-//        }
-//        failure:^(NSError *err) {
-//            failure(err);
-//        }];
 }
 
 - (void)getVersioncomplete:(void (^)(NSDictionary *))versionInfo {
