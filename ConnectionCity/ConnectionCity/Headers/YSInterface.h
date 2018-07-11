@@ -373,7 +373,11 @@ static NSString * const v1UserWalletWithdraw = @"/v1/user/wallet/withdraw";
 static NSString * const v1UserWalletWithdrawAccountAdd = @"/v1/user/wallet/withdraw/account/add";
 //钱包-提现管理-提现账户列表
 static NSString * const v1UserWalletWithdrawAccountPage = @"/v1/user/wallet/withdraw/account/page";
-
+#pragma mark - 支付
+//统一支付接口
+static NSString * const v1Pay = @"/v1/pay";
+//查询接口
+static NSString * const v1PayCheck = @"/v1/pay/check";
 
 
 
