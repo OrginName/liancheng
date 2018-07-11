@@ -626,14 +626,19 @@ self.conversationBtn.translatesAutoresizingMaskIntoConstraints = NO;
     [YSNetworkTool POST:v1PrivateUserUserinfo params:@{@"id":self.friendInfo.userId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]) {
             NSDictionary *dic = responseObject[@"data"];
+            if ([YSTools dx_isNullOrNilWithObject:dic[@"mobile"]]) {
+                self.phoneNumberLabel.text = KString(@"手机号: %@", @"--");
+            }else
             self.phoneNumberLabel.text =
-            [NSString stringWithFormat:@"手机号: %@", [dic objectForKey:@"mobile"]];
+            [NSString stringWithFormat:@"手机号: %@", dic[@"mobile"]];
             //创建 NSMutableAttributedString
             NSMutableAttributedString *attributedStr =
             [[NSMutableAttributedString alloc] initWithString:self.phoneNumberLabel.text];
-            [attributedStr addAttribute:NSForegroundColorAttributeName
-                                  value:[UIColor colorWithHexString:@"0099ff" alpha:1.f]
-                                  range:NSMakeRange(5, 11)];
+            if (![YSTools dx_isNullOrNilWithObject:dic[@"mobile"]]) {
+                [attributedStr addAttribute:NSForegroundColorAttributeName
+                                      value:[UIColor colorWithHexString:@"0099ff" alpha:1.f]
+                                      range:NSMakeRange(5, 11)];
+            }
             self.phoneNumberLabel.attributedText = attributedStr;
             self.phonenumber =
             [NSString stringWithFormat:@"%@", [dic objectForKey:@"phone"]];

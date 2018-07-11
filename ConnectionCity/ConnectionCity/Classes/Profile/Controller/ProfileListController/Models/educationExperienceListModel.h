@@ -15,7 +15,7 @@ proStr(professionalName);
 proStr(resumeId);
 proStr(schoolName);
 proStr(status);
-proStr(id);
+proStr(ID);
 proStr(educationName);
-proStr(description);
+proStr(description1);
 @end

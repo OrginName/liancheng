@@ -1,17 +1,15 @@
 //
-//  ResumeMo.m
+//  ConnectionMo.m
 //  ConnectionCity
 //
-//  Created by umbrella on 2018/5/13.
+//  Created by qt on 2018/7/11.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
 //
 
-#import "ResumeMo.h"
+#import "ConnectionMo.h"
 
-@implementation ResumeMo
+@implementation ConnectionMo
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
-    return @{@"description1":@"description"};
+    return @{@"ID":@"id"};
 }
 @end
- 
-

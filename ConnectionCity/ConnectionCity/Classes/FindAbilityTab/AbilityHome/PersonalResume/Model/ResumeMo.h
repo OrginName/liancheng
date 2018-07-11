@@ -15,6 +15,7 @@ proStr(proAndPro);//专业职业
 proStr(XLAndIntro);//学历
 proStr(satrtTime);//开始时间
 proStr(endTime);//结束时间
+proStr(description1);
 proArr(EditArr);
 proArr(CollArr);
 proStr(ID);

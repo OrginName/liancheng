@@ -105,6 +105,7 @@
 		72A2FC7320D4B40A00CD6AAC /* trvalMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A2FC7220D4B40A00CD6AAC /* trvalMo.m */; };
 		72A3F48620E12EF8005BA873 /* AllDicMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A3F48520E12EF8005BA873 /* AllDicMo.m */; };
 		72A3F48B20E3BA32005BA873 /* CircleNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A3F48A20E3BA32005BA873 /* CircleNet.m */; };
+		72B1D84E20F645D50001FF43 /* ConnectionMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B1D84D20F645D50001FF43 /* ConnectionMo.m */; };
 		72BAB42A20B03A8C00496D29 /* BulidTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42820B03A8B00496D29 /* BulidTeamCell.m */; };
 		72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */; };
 		72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */; };
@@ -772,6 +773,8 @@
 		72A3F48520E12EF8005BA873 /* AllDicMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllDicMo.m; sourceTree = "<group>"; };
 		72A3F48920E3BA32005BA873 /* CircleNet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleNet.h; sourceTree = "<group>"; };
 		72A3F48A20E3BA32005BA873 /* CircleNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleNet.m; sourceTree = "<group>"; };
+		72B1D84C20F645D50001FF43 /* ConnectionMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionMo.h; sourceTree = "<group>"; };
+		72B1D84D20F645D50001FF43 /* ConnectionMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectionMo.m; sourceTree = "<group>"; };
 		72BAB42720B03A8B00496D29 /* BulidTeamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulidTeamCell.h; sourceTree = "<group>"; };
 		72BAB42820B03A8B00496D29 /* BulidTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulidTeamCell.m; sourceTree = "<group>"; };
 		72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BulidTeamCell.xib; sourceTree = "<group>"; };
@@ -2689,6 +2692,8 @@
 				8D2B8B9820A2DABD00C3157F /* ConnectionController.h */,
 				8D2B8B9920A2DABD00C3157F /* ConnectionController.m */,
 				8D2B8B9A20A2DABD00C3157F /* ConnectionController.xib */,
+				72B1D84C20F645D50001FF43 /* ConnectionMo.h */,
+				72B1D84D20F645D50001FF43 /* ConnectionMo.m */,
 			);
 			path = Connection;
 			sourceTree = "<group>";
@@ -4611,6 +4616,7 @@
 				CE9B9A5D20E7DC69005C47B2 /* TenderRecordsMo.m in Sources */,
 				CE14BD6820F3780E00F85C49 /* APOrderInfo.m in Sources */,
 				CEC4A57C20C41D540026EE19 /* ProfileHeadView.m in Sources */,
+				72B1D84E20F645D50001FF43 /* ConnectionMo.m in Sources */,
 				723F4FA620BEDE6000AF8268 /* TrvalInvitController.m in Sources */,
 				7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */,
 				CEBEDD9920B17F40000F9EE4 /* BulidTeamController.m in Sources */,
@@ -5095,7 +5101,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5154,7 +5160,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

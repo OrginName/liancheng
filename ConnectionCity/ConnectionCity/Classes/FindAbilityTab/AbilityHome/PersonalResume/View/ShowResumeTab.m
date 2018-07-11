@@ -32,7 +32,12 @@
 }
 -(void)setAbilttyMo:(AbilttyMo *)abilttyMo{
     _abilttyMo = abilttyMo;
-    self.lunArr = [[abilttyMo.userMo.headImage componentsSeparatedByString:@";"] mutableCopy];
+    for (NSString * url in [abilttyMo.userMo.headImage componentsSeparatedByString:@";"]) {
+        if (url.length!=0) {
+            [self.lunArr addObject:url];
+        }
+    }
+//    self.lunArr = [[abilttyMo.userMo.headImage componentsSeparatedByString:@";"] mutableCopy];
 }
 #pragma mark ---SDCycleScrollViewDelegate-----
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{

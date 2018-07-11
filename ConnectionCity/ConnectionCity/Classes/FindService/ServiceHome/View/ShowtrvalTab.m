@@ -32,13 +32,22 @@
 }
 -(void)setMo:(ServiceListMo *)Mo{
     _Mo = Mo;
-    self.lunArr = [[Mo.images componentsSeparatedByString:@";"] mutableCopy];
+    for (NSString * url in [Mo.images componentsSeparatedByString:@";"]) {
+        if (url.length!=0) {
+            [self.lunArr addObject:url];
+        }
+    }
+//    self.lunArr = [[Mo.images componentsSeparatedByString:@";"] mutableCopy];
     self.listMo = Mo;
     _flag = 0;
 }
 -(void)setMoTrval:(trvalMo *)MoTrval{
     _MoTrval  = MoTrval;
-    self.lunArr = [[MoTrval.images componentsSeparatedByString:@";"] mutableCopy];
+    for (NSString * url in [MoTrval.images componentsSeparatedByString:@";"]) {
+        if (url.length!=0) {
+            [self.lunArr addObject:url];
+        }
+    }
     _flag = 1;
 }
 #pragma mark ---SDCycleScrollViewDelegate-----
@@ -173,7 +182,7 @@
     }
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[5] contentArr][1];
-    [YSNetworkTool POST:v1CommonCommentAddlike  params:@{@"id":@([self.listMo.ID integerValue]),@"type":@([mo.value integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1CommonCommentAddlike  params:@{@"typeId":@([self.listMo.ID integerValue]),@"type":@([mo.value integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         sender.selected = YES;
         [sender setTitle:[NSString stringWithFormat:@"%@",responseObject[@"data"]] forState:UIControlStateNormal];
         [YTAlertUtil showTempInfo:@"点赞成功"];

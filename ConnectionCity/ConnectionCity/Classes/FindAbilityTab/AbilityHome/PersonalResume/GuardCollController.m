@@ -42,7 +42,7 @@
         self.txt_pro.text = mo.proAndPro;
         self.start_time.text = mo.satrtTime;
         self.end_Time.text = mo.endTime;
-        self.textView_Indro.text = @"暂无";
+        self.textView_Indro.text = mo.XLAndIntro;
         self.layout.constant = (kScreenWidth-20)/2;
     }
 }

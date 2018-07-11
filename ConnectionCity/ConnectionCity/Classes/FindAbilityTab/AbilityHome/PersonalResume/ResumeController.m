@@ -68,16 +68,18 @@
         for (educationExperienceListModel * model in self.resume.educationExperienceList) {
             ResumeMo * mo = [ResumeMo new];
             mo.collAndcompany = model.schoolName;
-            mo.proAndPro = model.professionalName;
-            mo.XLAndIntro = model.educationName;
+            mo.proAndPro = model.educationName;
+            mo.XLAndIntro = model.professionalName;
             mo.satrtTime = model.startDate;
             mo.endTime = model.endDate;
-            mo.ID = model.id;
+            mo.description1 = model.description1;
+            mo.ID = model.ID;
             [self.data_ArrWdu addObject:mo]; 
         }
         for (WorkExperienceListModel * model in self.resume.workExperienceList) {
             ResumeMo * mo = [ResumeMo new];
             mo.collAndcompany = model.companyName;
+            mo.XLAndIntro = model.descriptions;
             mo.proAndPro = model.occupationCategoryName.parentName;
             mo.ID = KString(@"%ld", model.modelId);
             mo.satrtTime = model.startDate;
@@ -98,14 +100,14 @@
         if (self.lunArr.count!=0) {
             [[self.tab_bottom.tableHeaderView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
             [self initScroll];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                self.cycleScrollView.imageURLStringsGroup = self.lunArr;
-            });
         }
        [self.Data_Dic setObject:@{@"name":self.resume.salaryName,@"ID":KString(@"%ld", self.resume.salaryId)} forKey:@"10"];
-        [self.Data_Dic setObject:@{@"name":self.resume.educationName,@"ID":KString(@"%ld", self.resume.educationId)} forKey:@"30"];
-        [self.Data_Dic setObject:@{@"name":self.resume.workingName,@"ID":KString(@"%ld", (long)self.resume.workingId)} forKey:@"20"];
+        [self.Data_Dic setObject:@{@"name":self.resume.educationName,@"ID":KString(@"%ld", self.resume.educationId)} forKey:@"20"];
+        [self.Data_Dic setObject:@{@"name":self.resume.workingName,@"ID":KString(@"%ld", (long)self.resume.workingId)} forKey:@"30"];
         [self.Data_Dic setObject:self.resume.introduce forKey:@"60"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.cycleScrollView.imageURLStringsGroup = self.lunArr;
+        });
         [self.tab_bottom reloadData];
     }
 }

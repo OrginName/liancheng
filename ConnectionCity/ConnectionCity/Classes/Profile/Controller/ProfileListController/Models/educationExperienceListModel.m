@@ -9,5 +9,7 @@
 #import "educationExperienceListModel.h"
 
 @implementation educationExperienceListModel
-
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"description1":@"description",@"ID":@"id"};
+}
 @end

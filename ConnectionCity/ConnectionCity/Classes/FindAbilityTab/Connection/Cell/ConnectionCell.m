@@ -7,14 +7,37 @@
 //
 
 #import "ConnectionCell.h"
-
+@interface ConnectionCell()
+@property (weak, nonatomic) IBOutlet UILabel *lab_num;
+@property (weak, nonatomic) IBOutlet UILabel *lab_des;
+@property (weak, nonatomic) IBOutlet UILabel *lab_name;
+@property (weak, nonatomic) IBOutlet UIImageView *image_Head;
+@end
 @implementation ConnectionCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
 }
-
+-(void)setMo:(ConnectionMo *)mo{
+    _mo = mo;
+    [self.image_Head sd_setImageWithURL:[NSURL URLWithString:mo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    self.lab_name.text = mo.nickName?mo.nickName:@"无";
+    self.lab_des.text = @"无";
+    self.lab_num.text = KString(@"%@", mo.commonFriendCount);
+    if ([[mo.isFriend description] isEqualToString:@"1"]) {
+        [self.btn_Add setTitle:@"好友" forState:UIControlStateNormal];
+        self.btn_Add.backgroundColor = [UIColor lightGrayColor];
+        self.btn_Add.userInteractionEnabled = NO;
+    }
+}
+- (IBAction)addFriens:(id)sender {
+    UIButton * btn = (UIButton *)sender;
+    if (self.cellDelegate&&[self.cellDelegate respondsToSelector:@selector(btnClick:)]) {
+        [self.cellDelegate btnClick:btn];
+    }
+    
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

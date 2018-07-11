@@ -43,11 +43,11 @@
     _mo = mo;
     if (self.mo!=nil) {
         self.text_Coll.text = mo.collAndcompany;
-        self.text_Pro.text = mo.proAndPro;
-        self.text_XL.text = mo.XLAndIntro;
+        self.text_Pro.text = mo.XLAndIntro;
+        self.text_XL.text = mo.proAndPro;
         self.Start_time.text = mo.satrtTime;
         self.end_Time.text = mo.endTime;
-        self.textView_Indro.text = @"暂无";
+        self.textView_Indro.text = mo.description1;
         self.layout.constant = (kScreenWidth-20)/2;
     }
 }
