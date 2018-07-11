@@ -76,6 +76,10 @@
 #define kData              @"data"
 /** 响应code */
 #define kCode              @"code"
+/** 支付宝 */
+#define kAlipay              @"alipay"
+/** 微信 */
+#define kWechat              @"wechat"
 /** @"UserCity"*/
 #define kUserCity @"UserCity"
 #define kUserCityID @"UserCityID"
@@ -115,9 +119,6 @@ static NSString * const NOTI_WEI_XIN_AUTH_SUCCESS = @"WeiXinAuthSuccess";
 static NSString * const NOTI_WEI_XIN_PAY_SUCCESS = @"WeiXinPaySuccess";
 /** 支付宝支付成功 */
 static NSString * const NOTI_ALI_PAY_SUCCESS = @"AlipaySuccess";
-/** 支付宝支付失败 */
-static NSString * const NOTI_ALI_PAY_FAIL = @"AlipayFail";
-
 
 #endif /* YSConstString_h */
 

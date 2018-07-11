@@ -785,16 +785,20 @@ handleWatchKitExtensionRequest:(NSDictionary *)userInfo
 //            6002 网络连接出错
             switch ([resultDic[@"resultStatus"]integerValue]) {
                 case 9000:
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ALI_PAY_SUCCESS object:nil userInfo:resultDic[@"result"]];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ALI_PAY_SUCCESS object:nil userInfo:resultDic[@"resultStatus"]];
+                    [YTAlertUtil showTempInfo:@"支付成功"];
                     break;
                 case 6001:
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ALI_PAY_FAIL object:nil userInfo:resultDic[@"result"]];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ALI_PAY_SUCCESS object:nil userInfo:resultDic[@"resultStatus"]];
+                    [YTAlertUtil showTempInfo:@"支付失败"];
                     break;
                 case 4000:
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ALI_PAY_FAIL object:nil userInfo:resultDic[@"result"]];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ALI_PAY_SUCCESS object:nil userInfo:resultDic[@"resultStatus"]];
+                    [YTAlertUtil showTempInfo:@"支付失败"];
                     break;
                 default:
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ALI_PAY_FAIL object:nil userInfo:resultDic[@"result"]];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ALI_PAY_SUCCESS object:nil userInfo:resultDic[@"resultStatus"]];
+                    [YTAlertUtil showTempInfo:@"支付失败"];
                     break;
             }
         }];

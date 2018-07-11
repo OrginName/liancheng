@@ -40,6 +40,7 @@
 #import "YSAccountTool.h"
 #import "YSAccount.h"
 #import "YSTools.h"
+#import "YTThirdPartyPay.h"
 //#import "Base64.h"
 //#import "BLE_central.h"
 //#import "BLEDevice.h"

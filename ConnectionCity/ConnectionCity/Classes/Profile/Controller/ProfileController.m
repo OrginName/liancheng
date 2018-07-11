@@ -29,7 +29,7 @@
     [super viewDidLoad];
     [self setUI];
     [self setupTableView];
-
+    
     // Do any additional setup after loading the view from its nib.
 }
 - (void)viewWillAppear:(BOOL)animated {
@@ -49,6 +49,8 @@
     [self requestV1PrivateUserInfo];
     //用户svip详情
     [self requestMembershipUserSvip];
+    //请求支付接口
+    [self pay];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -156,6 +158,12 @@
     } failure:nil];
 }
 
+- (void)pay {
+    NSDictionary *dic = @{@"orderNo": @"1017077456768733184",@"payType":kAlipay};
+    [YSNetworkTool POST:v1Pay params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTThirdPartyPay payByThirdPartyWithPaymet:YTThirdPartyPaymentAlipay dictionary:responseObject[kData]];
+    } failure:nil];
+}
 /*
 #pragma mark - Navigation
 
