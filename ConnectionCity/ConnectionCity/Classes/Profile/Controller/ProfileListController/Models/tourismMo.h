@@ -7,9 +7,7 @@
 //
 
 #import "BaseModel.h"
-#import "privateUserInfoModel.h"
-
-
+#import "UserMo.h"
 @interface tourismMo : BaseModel
 /** <#id描述#> */
 @property (nonatomic, copy) NSString * Id;
@@ -32,7 +30,7 @@
 /** <#comments描述#> */
 @property (nonatomic, copy) NSString *comments;
 /** <#user描述#> */
-@property (nonatomic, strong) privateUserInfoModel *user;
+@property (nonatomic, strong) UserMo *user;
 /** <#lng描述#> */
 @property (nonatomic, copy) NSString * lng;
 /** <#lat描述#> */

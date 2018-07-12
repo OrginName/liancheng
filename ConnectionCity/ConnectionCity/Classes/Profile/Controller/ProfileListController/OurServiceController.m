@@ -10,17 +10,22 @@
 #import "SegmentPageHead.h"
 #import "CustomButton.h"
 #import "OurServiceCell.h"
+#import "ProfileNet.h"
 @interface OurServiceController ()<MLMSegmentPageDelegate,UITableViewDelegate,UITableViewDataSource>
 {
     NSArray *list,*list1;
     UIButton *_tmpBtn;
     NSMutableArray *arr;
     NSInteger currentTag;
+    NSInteger _currentIndex;
+    int _page;
 }
+@property (nonatomic,strong)NSMutableArray * tab_Arr;
 @property (weak, nonatomic) IBOutlet CustomButton *btn_All;
 @property (strong, nonatomic) UIScrollView *scrollHead;
 @property (nonatomic, strong) MLMSegmentPage *pageView;
 @property (strong, nonatomic) UITableView *tableView;
+@property (nonatomic,strong) NSMutableArray * data_Arr;
 @end
 
 @implementation OurServiceController
@@ -35,8 +40,33 @@
     _tmpBtn = self.btn_All;
     list = @[@"待付款", @"待接单",@"待赴约", @"待评价", @"已完成"];
     list1 = @[@"待付款", @"待接单",@"待履约", @"待评价", @"已完成"];
+    self.tab_Arr = [NSMutableArray array];
+    self.data_Arr = [NSMutableArray array];
+    _currentIndex = 0;
+    _page = 1;
     [self setupSlider:list];
     currentTag = 1;
+}
+//加载数据
+-(void)loadData:(NSInteger)a tab:(UITableView *)tab{
+    NSDictionary * dic = @{
+                           @"pageNumber": @(_page),
+                           @"pageSize": @15,
+                           @"status": @(a)
+                           };
+    [ProfileNet requstMyService:dic flag:_tmpBtn.tag block:^(NSMutableArray *successArrValue) {
+        if (_page==1) {
+            [self.data_Arr removeAllObjects];
+        }
+        _page++;
+        [self endRefrsh:tab];
+    }withFailBlock:^(NSString *failValue) {
+        [self endRefrsh:tab];
+    }];;
+}
+-(void)endRefrsh:(UITableView *)tab{
+    [tab.mj_header endRefreshing];
+    [tab.mj_footer endRefreshing];
 }
 -(void)setupSlider:(NSArray *)arr{
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -77,10 +107,21 @@
         tableview.delegate = self;
         tableview.dataSource = self;
         tableview.tag = i+1000;
+        if (i==0) {
+            [tableview.mj_header beginRefreshing];
+        }
+        tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            _page=1;
+            [self loadData:i tab:tableview];
+        }];
+        tableview.mj_footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
+            [self loadData:i tab:tableview];
+        }];
         tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
         tableview.backgroundColor = [UIColor whiteColor];
         [arr addObject:tableview];
     }
+    self.tab_Arr = arr;
     return arr;
 }
 #pragma mark - delegate
@@ -89,6 +130,10 @@
 }
 - (void)selectedIndex:(NSInteger)index {
         NSLog(@"select %@",@(index));
+    NSInteger a = 10+index*10;
+    _currentIndex = index;
+    UITableView * tab = self.tab_Arr[index];
+    [self loadData:a tab:tab];
 }
 - (IBAction)btn_Click:(UIButton *)sender {
     [self.pageView removeFromSuperview];

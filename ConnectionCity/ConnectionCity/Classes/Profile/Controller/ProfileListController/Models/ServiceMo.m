@@ -13,7 +13,7 @@
     return @{@"Id":@"id"};
 }
 + (NSDictionary *)mj_objectClassInArray {
-    return @{@"user":[privateUserInfoModel class],@"serviceCategoryName":[ServiceCategoryNameModel class]};
+    return @{@"user":[UserMo class],@"serviceCategoryName":[ServiceCategoryNameModel class]};
 }
 
 @end

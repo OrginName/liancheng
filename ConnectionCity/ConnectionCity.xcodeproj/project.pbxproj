@@ -106,6 +106,7 @@
 		72A3F48620E12EF8005BA873 /* AllDicMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A3F48520E12EF8005BA873 /* AllDicMo.m */; };
 		72A3F48B20E3BA32005BA873 /* CircleNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A3F48A20E3BA32005BA873 /* CircleNet.m */; };
 		72B1D84E20F645D50001FF43 /* ConnectionMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B1D84D20F645D50001FF43 /* ConnectionMo.m */; };
+		72B1D85220F79CC60001FF43 /* ProfileNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B1D85120F79CC60001FF43 /* ProfileNet.m */; };
 		72BAB42A20B03A8C00496D29 /* BulidTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42820B03A8B00496D29 /* BulidTeamCell.m */; };
 		72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */; };
 		72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */; };
@@ -775,6 +776,8 @@
 		72A3F48A20E3BA32005BA873 /* CircleNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleNet.m; sourceTree = "<group>"; };
 		72B1D84C20F645D50001FF43 /* ConnectionMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionMo.h; sourceTree = "<group>"; };
 		72B1D84D20F645D50001FF43 /* ConnectionMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectionMo.m; sourceTree = "<group>"; };
+		72B1D85020F79CC60001FF43 /* ProfileNet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileNet.h; sourceTree = "<group>"; };
+		72B1D85120F79CC60001FF43 /* ProfileNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileNet.m; sourceTree = "<group>"; };
 		72BAB42720B03A8B00496D29 /* BulidTeamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulidTeamCell.h; sourceTree = "<group>"; };
 		72BAB42820B03A8B00496D29 /* BulidTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulidTeamCell.m; sourceTree = "<group>"; };
 		72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BulidTeamCell.xib; sourceTree = "<group>"; };
@@ -2088,6 +2091,15 @@
 			path = Net;
 			sourceTree = "<group>";
 		};
+		72B1D84F20F79CB30001FF43 /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				72B1D85020F79CC60001FF43 /* ProfileNet.h */,
+				72B1D85120F79CC60001FF43 /* ProfileNet.m */,
+			);
+			path = Net;
+			sourceTree = "<group>";
+		};
 		72BAB42520B03A7B00496D29 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2726,6 +2738,7 @@
 		8D50C54D20C631CF0095A824 /* ProfileListController */ = {
 			isa = PBXGroup;
 			children = (
+				72B1D84F20F79CB30001FF43 /* Net */,
 				CE21F0E920DF92BC00478482 /* Models */,
 				8D35878320C692EB008A5E74 /* View */,
 				8D50C56220C67BBB0095A824 /* Cell */,
@@ -4834,6 +4847,7 @@
 				8DE465EF20EDF226009730F7 /* RCDDiscussGroupSettingViewController.m in Sources */,
 				CEBEDD8D20B17ED1000F9EE4 /* FootSectionHeadV.m in Sources */,
 				CE0BA5E9209D5E9B004C3C33 /* YSRefreshTool.m in Sources */,
+				72B1D85220F79CC60001FF43 /* ProfileNet.m in Sources */,
 				8DD48CEE20A8380D00D6D1E6 /* EditAllController.m in Sources */,
 				8DA4990D20A7063E00968F86 /* ResumeCell.m in Sources */,
 				8DE4665320EDFBF7009730F7 /* RCDEditGroupNameViewController.m in Sources */,

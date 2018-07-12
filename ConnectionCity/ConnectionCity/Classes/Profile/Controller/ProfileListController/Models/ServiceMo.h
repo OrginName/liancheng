@@ -7,9 +7,8 @@
 //
 
 #import "BaseModel.h"
-#import "privateUserInfoModel.h"
+#import "UserMo.h"
 #import "ServiceCategoryNameModel.h"
-
 @interface ServiceMo : BaseModel
 /** <#id描述#> */
 @property (nonatomic, copy) NSString *Id;
@@ -52,7 +51,7 @@
 /** <#createTime描述#> */
 @property (nonatomic, copy) NSString *createTime;
 /** <#user描述#> */
-@property (nonatomic, strong) privateUserInfoModel *user;
+@property (nonatomic, strong) UserMo *user;
 /** <#properties描述#> */
 @property (nonatomic, copy) NSString *properties;
 /** <#serviceCircleList描述#> */

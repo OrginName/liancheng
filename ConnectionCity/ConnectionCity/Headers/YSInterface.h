@@ -317,6 +317,13 @@ static NSString * const myAuthAuthMobile = @"/my/auth/auth/mobile";
 static NSString * const myAuthUserIdentityAuthCreate = @"/my/auth/user-identity-auth/create";
 //个人中心-技能认证
 static NSString * const myAuthUserSkillAuthCreate = @"/my/auth/user-skill-auth/create";
+//个人中心-我发布的服务
+static NSString * const v1MyServiceOrderPublishedPage = @"/v1/my/service-order/published/page";
+//个人中心-我下单的服务
+static NSString * const v1MySerivceOrderRequiredPage = @"/v1/my/serivce-order/required/page";
+//个人中心-服务状态更新
+static NSString * const v1ServiceUpdateOrderStatus = @"/v1/service/update-order-status";
+
 #pragma mark - 我的 - My Controller
 //个人中心-服务评价
 static NSString * const v1MyCommentPage = @"/v1/my/comment/page";
@@ -332,10 +339,6 @@ static NSString * const v1MyIdentityPage = @"/v1/my/identity/page";
 static NSString * const v1MyOrthersExchangePage = @"/v1/my/orthers/exchange/page";
 //个人中心-我的发布-简历
 static NSString * const v1MyResumePage = @"/v1/my/resume/page";
-//个人中心-我下单的服务
-static NSString * const v1MySerivceOrderRequiredPage = @"/v1/my/serivce-order/required/page";
-//个人中心-我发布的服务
-static NSString * const v1MyServiceOrderPublishedPage = @"/v1/my/service-order/published/page";
 //个人中心-我的发布-服务
 static NSString * const v1MyServicePage = @"/v1/my/service/page";
 //个人中心-我的发布-邀约
