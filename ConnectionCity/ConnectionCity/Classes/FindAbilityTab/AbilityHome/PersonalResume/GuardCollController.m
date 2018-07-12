@@ -76,14 +76,16 @@
             [YTAlertUtil showTempInfo:@"结束日期不能小于开始日期"];
             return;
         }
+      
         NSDictionary * dic = @{
-                               @"companyName": self.txt_Company.text,
-                               @"description": self.textView_Indro.text,
-                               @"endDate": self.start_time.text,
-                               @"occupationCategoryId": @([_proID integerValue]),
-                               @"resumeId": @([self.resumeID integerValue]),
-                               @"startDate": self.end_Time.text
-                               };
+                   @"companyName": self.txt_Company.text,
+                   @"description": self.textView_Indro.text,
+                   @"endDate": self.start_time.text,
+                   @"occupationCategoryId": @([_proID integerValue]),
+                   @"resumeId": @([self.resumeID integerValue]),
+                   @"startDate": self.end_Time.text,
+                   @"workExperienceId":self.mo!=nil?self.mo.ID:@""
+                   };
         if (self.mo!=nil) {
             [YSNetworkTool POST:v1TalentResumeWorkUpdate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
                 [self reloadData:2];

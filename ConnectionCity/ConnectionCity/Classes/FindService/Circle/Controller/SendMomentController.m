@@ -65,7 +65,7 @@
         return;
     }
     if (self.txt_Moment.text.length==0) {
-        return [YTAlertUtil showHUDWithTitle:@"对圈子内的朋友说点什么..."];
+        return [YTAlertUtil showTempInfo:@"对圈子内的朋友说点什么..."];
     }
     __block NSString * urlStr = @"";//图片路径拼接
     __block NSString * videoStr = @"";//视频路径

@@ -15,6 +15,7 @@
 #import "privateUserInfoModel.h"
 #import "AllDicMo.h"
 #import <IQKeyboardManager.h>
+#import "RCDChatViewController.h"
 @interface FriendCirleTab()<UITableViewDelegate,UITableViewDataSource,MomentCellDelegate>
 {
     NSInteger _page;
@@ -290,6 +291,22 @@
 //私信
 -(void)didLetterMoment:(MomentCell *)cell{
     NSLog(@"%ld",(long)cell.tag);
+    RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
+    chatViewController.conversationType = ConversationType_PRIVATE;
+    NSString *title,*ID,*name;
+    Moment * mo = self.momentList[cell.tag];
+    ID = [mo.userMo.ID description];
+    name = mo.userMo.nickName;
+    chatViewController.targetId = ID;
+    if ([ID isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
+        title = [RCIM sharedRCIM].currentUserInfo.name;
+    } else {
+        title = name;
+    }
+    chatViewController.title = title;
+    //        chatViewController.needPopToRootView = YES;
+    chatViewController.displayUserNameInCell = NO;
+    [self.controller.navigationController pushViewController:chatViewController animated:YES];
 }
 #pragma mark - UITableViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

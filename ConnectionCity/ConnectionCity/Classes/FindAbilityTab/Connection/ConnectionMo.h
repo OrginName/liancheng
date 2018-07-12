@@ -15,4 +15,7 @@ proStr(nickName);
 proStr(commonFriendCount);
 proDic(occupationCategoryName);
 proStr(isFriend);
+proStr(genderName);//sex
+proStr(distance);//距离
+proStr(gender);
 @end

@@ -122,7 +122,6 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //<<<<<<< HEAD
     static NSString *InfoCellIdentifier = @"RCDPrivateSettingsUserInfoCell";
     RCDPrivateSettingsUserInfoCell *infoCell =
         (RCDPrivateSettingsUserInfoCell *)[tableView dequeueReusableCellWithIdentifier:InfoCellIdentifier];

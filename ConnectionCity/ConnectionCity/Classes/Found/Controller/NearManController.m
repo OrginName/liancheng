@@ -8,10 +8,14 @@
 
 #import "NearManController.h"
 #import "NearManCell.h"
-
+#import "ConnectionMo.h"
 @interface NearManController ()
+{
+    int _page;
+    NSString * _flag;
+}
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
+@property (nonatomic,strong)NSMutableArray * data_Arr;
 @end
 
 @implementation NearManController
@@ -19,13 +23,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    
-    // Do any additional setup after loading the view from its nib.
+    _page=1;
+    _flag = @"";
+    [self reloadData];
+    [self.collectionView.mj_header beginRefreshing];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//刷新数据
+-(void)reloadData{
+    NSDictionary * dic = @{
+                           @"gender": @([_flag integerValue]),
+                           @"lat": @([[KUserDefults objectForKey:kLat] floatValue]),
+                           @"lng": @([[KUserDefults objectForKey:KLng] floatValue]),
+                           @"pageNumber": @(_page),
+                           @"pageSize": @10
+                           };
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        _page=1;
+        [self loadData:dic];
+    }];
+    self.collectionView.mj_footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
+        [self loadData:dic];
+    }];
 }
 #pragma mark - setup
 - (void)setUI {
@@ -47,7 +65,7 @@
 #pragma mark -- UICollectionViewDataSource
 //定义展示的UICollectionViewCell的个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 19;
+    return self.data_Arr.count;
 }
 //每个UICollectionView展示的内容
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -75,25 +93,46 @@
 - (void)rightBarButtonClick {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [alert addAction:[UIAlertAction actionWithTitle:@"只看女生" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        _flag = @"0";
+        [self.data_Arr removeAllObjects];
+        [self.collectionView.mj_header beginRefreshing];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"只看男生" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        _flag = @"1";
+         [self.data_Arr removeAllObjects];
+        [self.collectionView.mj_header beginRefreshing];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"查看全部" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        _flag = @"";
+         [self.data_Arr removeAllObjects];
+        [self.collectionView.mj_header beginRefreshing];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)loadData:(NSDictionary *)dic{
+    [YSNetworkTool POST:v1PrivateUserNearbyList params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"data"][@"content"] count]==0) {
+            [YTAlertUtil showTempInfo:@"暂无数据"];
+            [self endRefesh];
+            return;
+        }
+        if (_page==1) {
+            [self.data_Arr removeAllObjects];
+        }
+        _page++;
+        for (int i=0; i<[responseObject[@"data"][@"content"] count]; i++) {
+            ConnectionMo * mo = [ConnectionMo mj_objectWithKeyValues:responseObject[@"data"][@"content"][i]];
+            [self.data_Arr addObject:mo];
+        }
+        [self.collectionView reloadData];
+        [self endRefesh];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self endRefesh];
+    }];
 }
-*/
-
+-(void)endRefesh{
+    [self.collectionView.mj_header endRefreshing];
+    [self.collectionView.mj_footer endRefreshing];
+}
 @end
