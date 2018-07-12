@@ -14,8 +14,12 @@
 -(void)btnClick:(NSInteger)tag;
 @end
 @interface ShowTrvalCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *image4;
+@property (weak, nonatomic) IBOutlet UIImageView *image3;
 @property (nonatomic,strong)ServiceListMo * list;
+@property (weak, nonatomic) IBOutlet UIImageView *image2;
 @property (nonatomic,strong)trvalMo * trval;
+@property (weak, nonatomic) IBOutlet UIImageView *image1;
 @property (weak, nonatomic) IBOutlet UIButton *btn_wight;//婚姻
 @property (weak, nonatomic) IBOutlet UIButton *btn_weight;
 @property (weak, nonatomic) IBOutlet UIImageView *image_sex;

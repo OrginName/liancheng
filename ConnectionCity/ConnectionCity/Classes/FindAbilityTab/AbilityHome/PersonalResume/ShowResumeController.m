@@ -13,6 +13,8 @@
 #import "ShowtrvalTab.h"
 #import "trvalMo.h"
 #import "AllDicMo.h"
+#import "ServiceHomeNet.h"
+#import "RCDChatViewController.h"
 #define identifier @"ScrollCell"
 #define TabHeight kScreenHeight-185
 @interface ShowResumeController ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -94,12 +96,42 @@
             [self GZLoadData:mo.ID];
         }
     }
+    if (sender.tag==3) {
+        RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
+        chatViewController.conversationType = ConversationType_PRIVATE;
+        NSString *title,*ID,*name;
+        if (self.Receive_Type == ENUM_TypeTrval){
+            if ([self.str isEqualToString:@"TrvalTrip"]){
+                trvalMo * mo = self.data_Count[self.zIndex];
+                ID = [mo.user1.ID description];
+                name = mo.user1.nickName;
+            }else{
+                ServiceListMo * mo = self.data_Count[self.zIndex];
+                ID = [mo.user1.ID description];
+                name = mo.user1.nickName;
+            }
+        }else if (self.Receive_Type == ENUM_TypeResume){
+            AbilttyMo * resume = self.data_Count[self.zIndex];
+            ID = [resume.userMo.ID description];
+            name = resume.userMo.nickName;
+        }
+        chatViewController.targetId = ID;
+        if ([ID isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
+            title = [RCIM sharedRCIM].currentUserInfo.name;
+        } else {
+            title = name;
+        }
+        chatViewController.title = title;
+//        chatViewController.needPopToRootView = YES;
+        chatViewController.displayUserNameInCell = NO;
+        [self.navigationController pushViewController:chatViewController animated:YES];
+    }
 }
 -(void)GZLoadData:(NSString *)type{
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[5] contentArr][1];
-    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":@([mo.value integerValue]),@"type":@([type integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        [YTAlertUtil showTempInfo:responseObject[@"message"]];
+    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":@([mo.value integerValue]),@"type":@([type integerValue])} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTAlertUtil showTempInfo:@"关注成功"];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
@@ -201,6 +233,7 @@
             [YTAlertUtil showTempInfo:@"在往前没有了"];
             return;
         }
+       
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.zIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }else{
         self.zIndex++;
@@ -210,6 +243,19 @@
             return;
         }
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.zIndex inSection:0]  atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    }
+    if (self.Receive_Type == ENUM_TypeTrval&&self.zIndex<=self.data_Count.count-1&&self.zIndex>0){
+        if ([self.str isEqualToString:@"TrvalTrip"]){
+            trvalMo * mo = self.data_Count[self.zIndex];
+            [ServiceHomeNet requstLiulanNum:@{@"id":mo.ID} flag:2 withSuc:^(NSMutableArray *successArrValue) {
+                
+            }];
+        }else{
+            ServiceListMo * mo = self.data_Count[self.zIndex];
+            [ServiceHomeNet requstLiulanNum:@{@"id":mo.ID} flag:1 withSuc:^(NSMutableArray *successArrValue) {
+                
+            }];
+        }
     }
 }
 @end

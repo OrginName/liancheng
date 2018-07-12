@@ -251,7 +251,7 @@ static NSString * const v1CommonCollectCreate = @"/v1/common/collect/create";
 //添加点赞
 static NSString * const v1CommonCommentAddlike = @"/v1/common/comment/add-like";
 //添加浏览次数
-static NSString * const v1ServiceServiceIdAddBrowseTimes = @"/v1/service/{serviceId}/add-browse-times";
+static NSString * const v1ServiceAddBrowseTimes = @"/v1/service/add-browse-times";
 //服务约单
 static NSString * const v1ServiceCreateOrder = @"/v1/service/create-order";
 //筛选条件
@@ -263,6 +263,8 @@ static NSString * const v1ServiceDetail = @"/v1/service/detail";
 //服务列表
 static NSString * const v1ServiceList = @"/v1/service/list";
 #pragma mark - 服务-旅游
+//服务-发布陪游
+static NSString * const v1ServiceTravelAddBrowseTimes = @"/v1/service/travel/add-browse-times";
 //服务-发布陪游
 static NSString * const v1ServiceTravelCreate = @"/v1/service/travel/create";
 //服务-陪游详情

@@ -134,4 +134,19 @@
         
     }];
 }
+
+/**
+ 旅行旅游添加浏览次数
+ @param param 字典
+ @param flag 1:服务浏览次数 2：旅行浏览次数
+ @param sucBlock 成功返回
+ */
++(void)requstLiulanNum:(NSDictionary *) param flag:(int)flag withSuc:(SuccessArrBlock)sucBlock{
+    NSString * url = flag==1?v1ServiceAddBrowseTimes:v1ServiceTravelAddBrowseTimes;
+    [YSNetworkTool POST:url params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"添加浏览次数成功");
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];             
+}
 @end

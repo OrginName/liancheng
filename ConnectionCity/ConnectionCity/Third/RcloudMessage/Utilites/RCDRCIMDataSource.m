@@ -76,6 +76,9 @@
         completion(user);
         return;
     }
+    [RCDHTTPTOOL getUserInfoByUserID:userId completion:^(RCUserInfo *user) {
+        completion(user);
+    }];;
     //开发者调自己的服务器接口根据userID异步请求数据
 //    if (![userId isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
 //        [[RCDUserInfoManager shareInstance] getFriendInfo:userId

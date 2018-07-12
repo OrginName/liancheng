@@ -7,7 +7,6 @@
 //
 
 #import "BaseModel.h"
-#import "trvalMo.h"
 #import "UserMo.h"
 @interface ServiceListMo : BaseModel
 proStr(ID);
@@ -26,6 +25,8 @@ proStr(cityCode);
 proStr(areaName);
 proStr(areaCode);
 proStr(typeName);
-@property (nonatomic,strong) UserMo * user1;
+proStr(browseTimes);
 proDic(user);
+proArr(serviceCircleList);//圈子
+@property (nonatomic,strong) UserMo * user1;
 @end

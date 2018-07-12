@@ -18,7 +18,6 @@
 @property (nonatomic,strong) UIViewController * control;
 @property (nonatomic,strong) UIButton * Save_Like;
 @property (nonatomic,strong) UIButton * btn_Like;
-@property (nonatomic,strong) ServiceListMo * listMo;
 @property (nonatomic,assign) NSInteger flag;
 @end
 @implementation ShowtrvalTab
@@ -37,8 +36,6 @@
             [self.lunArr addObject:url];
         }
     }
-//    self.lunArr = [[Mo.images componentsSeparatedByString:@";"] mutableCopy];
-    self.listMo = Mo;
     _flag = 0;
 }
 -(void)setMoTrval:(trvalMo *)MoTrval{
@@ -107,7 +104,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShowTrvalCell *cell = [ShowTrvalCell tempTableViewCellWith:tableView indexPath:indexPath];
     cell.delegate = self;
-    cell.list = self.listMo;
+    cell.list = self.Mo;
     cell.trval = self.MoTrval;
     return cell;
 }
@@ -115,7 +112,7 @@
 -(void)btnClick:(NSInteger)tag{
     AppointmentController * appoint = [AppointmentController new];
     appoint.str =_flag==0?@"YD":@"trval";
-    appoint.list = self.listMo;
+    appoint.list = self.Mo;
     appoint.trval = self.MoTrval;
     [self.control.navigationController pushViewController:appoint animated:YES];
 }
@@ -182,7 +179,7 @@
     }
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[5] contentArr][1];
-    [YSNetworkTool POST:v1CommonCommentAddlike  params:@{@"typeId":@([self.listMo.ID integerValue]),@"type":@([mo.value integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1CommonCommentAddlike  params:@{@"typeId":@([self.Mo.ID integerValue]),@"type":@([mo.value integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         sender.selected = YES;
         [sender setTitle:[NSString stringWithFormat:@"%@",responseObject[@"data"]] forState:UIControlStateNormal];
         [YTAlertUtil showTempInfo:@"点赞成功"];

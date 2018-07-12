@@ -50,8 +50,7 @@
         dic = @{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"pageNumber":@(_page),@"pageSize":@15};
     }else
         dic = @{@"pageNumber": @(_page),
-                @"pageSize": @(15)
-                
+                @"pageSize": @(15) 
                 };
     [YSNetworkTool POST:str params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray * arr = responseObject[@"data"][@"content"];

@@ -26,11 +26,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *txt_Time;
 @property (weak, nonatomic) IBOutlet UITextField *txt_Place;
 @property (weak, nonatomic) IBOutlet UITextField *txt_SumPrice;
-
 @end
-
 @implementation AppointmentController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -42,27 +39,26 @@
         self.lab_title1.text = @"服务价格";
         self.lab_title2.text = @"服务时间";
         self.lab_title3.text = @"服务地点";
-        self.navigationItem.title = self.list.title;
+        self.navigationItem.title = self.list.user1.nickName;
         [self.image_head sd_setImageWithURL:[NSURL URLWithString:self.list.user1.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
         self.lab_name.text = self.list.user1.nickName;
         self.lab_Sex.image = [UIImage imageNamed:[self.list.user1.gender isEqualToString:@"0"]?@"men":@"weomen"];
         self.lab_age.text = self.list.user1.age?self.list.user1.age:@"";
-        self.lab_Preson.text = [NSString stringWithFormat:@"%@ %@ %@ %@",self.list.user1.height?self.list.user1.height:@"",self.list.user1.weight?self.list.user1.weight:@"",self.list.user1.educationId?self.list.user1.educationId:@"",self.list.user1.marriage?self.list.user1.marriage:@""];
+        self.lab_Preson.text = [NSString stringWithFormat:@"%@cm %@kg %@ %@",self.list.user1.height?self.list.user1.height:@"",self.list.user1.weight?self.list.user1.weight:@"",self.list.user1.educationName?self.list.user1.educationName:@"",self.list.user1.marriageName?self.list.user1.marriageName:@""];
         self.lab_Servicetitle.text = self.list.title;
         self.lab_Price.text = self.list.price;
         self.lab_DY.text = self.list.typeName;
     }else{
-        self.navigationItem.title = self.trval.user1.realName;
+        self.navigationItem.title = self.trval.user1.nickName;
         [self.image_head sd_setImageWithURL:[NSURL URLWithString:self.trval.user1.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
-        self.lab_name.text = self.trval.user1.realName;
-        self.lab_Sex.image = [UIImage imageNamed:[self.trval.user1.gender isEqualToString:@"0"]?@"men":@"weomen"];
+        self.lab_name.text = self.trval.user1.nickName;
+        self.lab_Sex.image = [UIImage imageNamed:[self.trval.user1.gender isEqualToString:@"0"]?@"men":@"women"];
         self.lab_age.text = self.trval.user1.age?self.trval.user1.age:@"";
-        self.lab_Preson.text = [NSString stringWithFormat:@"%@ %@ %@ %@",self.trval.user1.height?self.trval.user1.height:@"",self.trval.user1.weight?self.trval.user1.weight:@"",self.trval.user1.educationId?self.trval.user1.educationId:@"",self.trval.user1.marriage?self.trval.user1.marriage:@""];
+        self.lab_Preson.text = [NSString stringWithFormat:@"%@cm %@kg %@ %@",self.trval.user1.height?self.trval.user1.height:@"",self.trval.user1.weight?self.trval.user1.weight:@"",self.trval.user1.educationName?self.trval.user1.educationName:@"",self.trval.user1.marriageName?self.trval.user1.marriageName:@""];
         self.lab_Servicetitle.text = self.trval.introduce;
         self.lab_Price.text = self.trval.price;
-        self.lab_DY.text = @"暂无";
+        self.lab_DY.text = self.trval.typeName?self.trval.typeName:@"无";
     }
-    
 }
 #define mark -----UITextFieldDelegate------
 - (void)textFieldDidEndEditing:(UITextField *)textField{
