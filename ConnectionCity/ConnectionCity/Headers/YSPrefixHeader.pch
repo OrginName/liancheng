@@ -60,4 +60,8 @@
 #import "CustomtextView.h"
 #import <Masonry.h>
 #import <QiniuSDK.h>
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+#import <ShareSDKUI/ShareSDKUI.h>
+
 #endif /* YSPrefixHeader_pch */

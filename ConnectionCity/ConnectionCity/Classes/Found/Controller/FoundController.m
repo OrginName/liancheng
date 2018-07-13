@@ -10,6 +10,9 @@
 #import "FoundCell.h"
 #import "NearManController.h"
 #import "FriendListController.h"
+#import "YCProjectScanningController.h"
+#import "RCDHttpTool.h"
+
 @interface FoundController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
@@ -66,7 +69,13 @@
         }
         case 1:
         {
-            [YTAlertUtil showTempInfo:@"扫一扫不知道干嘛"];
+            YCProjectScanningController *scanVC = [[YCProjectScanningController alloc]init];
+            scanVC.completionHandler = ^(NSString *result) {
+                [RCDHTTPTOOL requestFriend:result complete:^(BOOL result) {
+                    [YTAlertUtil showTempInfo:@"添加成功"];
+                }];
+            };
+            [self.navigationController pushViewController:scanVC animated:YES];
             break;
         }
         case 2:

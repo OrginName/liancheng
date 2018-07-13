@@ -571,6 +571,13 @@
 		CEE4B2A720C6CC3F008B8731 /* PersonalCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE4B2A520C6CC3F008B8731 /* PersonalCenterController.xib */; };
 		CEE4B2AF20C6D948008B8731 /* MemberRenewalController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE4B2AD20C6D948008B8731 /* MemberRenewalController.m */; };
 		CEE4B2B020C6D948008B8731 /* MemberRenewalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE4B2AE20C6D948008B8731 /* MemberRenewalController.xib */; };
+		CEE5250D20F771D400DD6179 /* YCProjectScanningController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE524FF20F771D400DD6179 /* YCProjectScanningController.m */; };
+		CEE5250E20F771D400DD6179 /* MYScanViewStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5250220F771D400DD6179 /* MYScanViewStyle.m */; };
+		CEE5250F20F771D400DD6179 /* MYScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5250620F771D400DD6179 /* MYScanView.m */; };
+		CEE5251020F771D400DD6179 /* MYScanLineAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5250720F771D400DD6179 /* MYScanLineAnimation.m */; };
+		CEE5251120F771D400DD6179 /* QRCodeReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5250820F771D400DD6179 /* QRCodeReaderView.m */; };
+		CEE5251520F7907C00DD6179 /* MyQRController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5251320F7907C00DD6179 /* MyQRController.m */; };
+		CEE5251620F7907C00DD6179 /* MyQRController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE5251420F7907C00DD6179 /* MyQRController.xib */; };
 		CEE68C4320ECF50A00233AE3 /* ServiceMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4220ECF50A00233AE3 /* ServiceMo.m */; };
 		CEE68C4620ECF55A00233AE3 /* ServiceCategoryNameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4520ECF55A00233AE3 /* ServiceCategoryNameModel.m */; };
 		CEE68C4920ECFAFC00233AE3 /* TravelInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4820ECFAFC00233AE3 /* TravelInvite.m */; };
@@ -1663,6 +1670,19 @@
 		CEE4B2AC20C6D948008B8731 /* MemberRenewalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberRenewalController.h; sourceTree = "<group>"; };
 		CEE4B2AD20C6D948008B8731 /* MemberRenewalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberRenewalController.m; sourceTree = "<group>"; };
 		CEE4B2AE20C6D948008B8731 /* MemberRenewalController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberRenewalController.xib; sourceTree = "<group>"; };
+		CEE524FC20F771D400DD6179 /* YCProjectScanningController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCProjectScanningController.h; sourceTree = "<group>"; };
+		CEE524FF20F771D400DD6179 /* YCProjectScanningController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCProjectScanningController.m; sourceTree = "<group>"; };
+		CEE5250220F771D400DD6179 /* MYScanViewStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYScanViewStyle.m; sourceTree = "<group>"; };
+		CEE5250320F771D400DD6179 /* MYScanViewStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYScanViewStyle.h; sourceTree = "<group>"; };
+		CEE5250520F771D400DD6179 /* QRCodeReaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReaderView.h; sourceTree = "<group>"; };
+		CEE5250620F771D400DD6179 /* MYScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYScanView.m; sourceTree = "<group>"; };
+		CEE5250720F771D400DD6179 /* MYScanLineAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYScanLineAnimation.m; sourceTree = "<group>"; };
+		CEE5250820F771D400DD6179 /* QRCodeReaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeReaderView.m; sourceTree = "<group>"; };
+		CEE5250920F771D400DD6179 /* MYScanLineAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYScanLineAnimation.h; sourceTree = "<group>"; };
+		CEE5250A20F771D400DD6179 /* MYScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYScanView.h; sourceTree = "<group>"; };
+		CEE5251220F7907C00DD6179 /* MyQRController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyQRController.h; sourceTree = "<group>"; };
+		CEE5251320F7907C00DD6179 /* MyQRController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyQRController.m; sourceTree = "<group>"; };
+		CEE5251420F7907C00DD6179 /* MyQRController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyQRController.xib; sourceTree = "<group>"; };
 		CEE68C4120ECF50A00233AE3 /* ServiceMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceMo.h; sourceTree = "<group>"; };
 		CEE68C4220ECF50A00233AE3 /* ServiceMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceMo.m; sourceTree = "<group>"; };
 		CEE68C4420ECF55A00233AE3 /* ServiceCategoryNameModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceCategoryNameModel.h; sourceTree = "<group>"; };
@@ -4069,6 +4089,7 @@
 		CEC4A54620C3FBE50026EE19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CEE524FA20F771D400DD6179 /* QR */,
 				72EBB8E820CAC51A00F670E9 /* Collection */,
 				8D8E4EC520C9109E00C3D537 /* EditProfile */,
 				72EBB8BE20C8155B00F670E9 /* Set */,
@@ -4181,6 +4202,50 @@
 		CEE4B2AB20C6D8FA008B8731 /* View */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEE524FA20F771D400DD6179 /* QR */ = {
+			isa = PBXGroup;
+			children = (
+				CEE524FB20F771D400DD6179 /* Controller */,
+				CEE5250120F771D400DD6179 /* Model */,
+				CEE5250420F771D400DD6179 /* View */,
+			);
+			path = QR;
+			sourceTree = "<group>";
+		};
+		CEE524FB20F771D400DD6179 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CEE524FC20F771D400DD6179 /* YCProjectScanningController.h */,
+				CEE524FF20F771D400DD6179 /* YCProjectScanningController.m */,
+				CEE5251220F7907C00DD6179 /* MyQRController.h */,
+				CEE5251320F7907C00DD6179 /* MyQRController.m */,
+				CEE5251420F7907C00DD6179 /* MyQRController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CEE5250120F771D400DD6179 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEE5250220F771D400DD6179 /* MYScanViewStyle.m */,
+				CEE5250320F771D400DD6179 /* MYScanViewStyle.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CEE5250420F771D400DD6179 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEE5250520F771D400DD6179 /* QRCodeReaderView.h */,
+				CEE5250620F771D400DD6179 /* MYScanView.m */,
+				CEE5250720F771D400DD6179 /* MYScanLineAnimation.m */,
+				CEE5250820F771D400DD6179 /* QRCodeReaderView.m */,
+				CEE5250920F771D400DD6179 /* MYScanLineAnimation.h */,
+				CEE5250A20F771D400DD6179 /* MYScanView.h */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4331,6 +4396,7 @@
 				72EC1B7820BA9F7B00ACC20B /* PlayEditController.xib in Resources */,
 				8D22C35220C7CDA1004DC8F4 /* ExchangeController.xib in Resources */,
 				8D50C55720C636560095A824 /* OurResumeController.xib in Resources */,
+				CEE5251620F7907C00DD6179 /* MyQRController.xib in Resources */,
 				CEC4A54220C3D6FC0026EE19 /* TeamSwitchCell.xib in Resources */,
 				CE5C281220B91AFD006A8332 /* WinnerInfoCell.xib in Resources */,
 				727418D220B1A058001D6BE1 /* FirstController.xib in Resources */,
@@ -4529,6 +4595,7 @@
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/Emoji.plist",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist",
 				"${PODS_ROOT}/ShareSDK3/SDK/ShareSDK/Support/Required/ShareSDK.bundle",
+				"${PODS_ROOT}/ShareSDK3/SDK/ShareSDK/Support/Optional/ShareSDKUI.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -4575,6 +4642,7 @@
 				8DE465E420EDF162009730F7 /* RCDContactSelectedCollectionViewCell.m in Sources */,
 				CE0BA5F7209D5EBE004C3C33 /* BaseViewController.m in Sources */,
 				8DC17A7E20C0E430005D9EE0 /* Utility.m in Sources */,
+				CEE5251020F771D400DD6179 /* MYScanLineAnimation.m in Sources */,
 				7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */,
 				8DE465DD20EDF0C4009730F7 /* RCDContactSelectedTableViewController.m in Sources */,
 				8DE4664B20EDF71B009730F7 /* RCAnnotationView.m in Sources */,
@@ -4646,6 +4714,7 @@
 				729BA6FE20A32F0B009713FD /* CustomMap.m in Sources */,
 				8DE465BC20EDECC2009730F7 /* RCDContactViewController.m in Sources */,
 				8DB42FDC20A57DBC00C4EBF8 /* FilterCell.m in Sources */,
+				CEE5251120F771D400DD6179 /* QRCodeReaderView.m in Sources */,
 				8DEA451A20C12C06001529F1 /* CustomPlayer.m in Sources */,
 				8DC17A7C20C0E430005D9EE0 /* MomentCell.m in Sources */,
 				CEE68C4920ECFAFC00233AE3 /* TravelInvite.m in Sources */,
@@ -4751,6 +4820,7 @@
 				723D376720ABDA62003FD4DF /* ShowResumeCell.m in Sources */,
 				72EC1BBD20BDA25200ACC20B /* SendSelectCell.m in Sources */,
 				CE5C27FE20B8FE3A006A8332 /* BiddInfoHeadView.m in Sources */,
+				CEE5250E20F771D400DD6179 /* MYScanViewStyle.m in Sources */,
 				CE21F0E020DDF00F00478482 /* MemberRenewalM.m in Sources */,
 				8DE4667020EDFD0F009730F7 /* RCDSearchResultModel.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
@@ -4826,6 +4896,7 @@
 				CE0BA5B8209D5E6B004C3C33 /* UIColor+Extension.m in Sources */,
 				CE03EE0020B467EC00F07D78 /* ReleaseTenderController.m in Sources */,
 				8D35878720C6A544008A5E74 /* OurPlayController.m in Sources */,
+				CEE5250D20F771D400DD6179 /* YCProjectScanningController.m in Sources */,
 				8DE4666020EDFC7D009730F7 /* RCDGroupMembersTableViewController.m in Sources */,
 				7274190C20B402FC001D6BE1 /* LxGridViewFlowLayout.m in Sources */,
 				8DC17A7A20C0E430005D9EE0 /* MMImageListView.m in Sources */,
@@ -4855,6 +4926,7 @@
 				8D24A23220A1CB8200F0740D /* FirstTanView.m in Sources */,
 				8DFA324B20EDAF620086423A /* DefaultPortraitView.m in Sources */,
 				7274188020B13CB6001D6BE1 /* MLMSegmentHead.m in Sources */,
+				CEE5251520F7907C00DD6179 /* MyQRController.m in Sources */,
 				CEE4B29720C6B5A2008B8731 /* NearManController.m in Sources */,
 				8DE4660E20EDF31C009730F7 /* RCDGroupSettingsTableViewCell.m in Sources */,
 				CE0BA5B5209D5E6B004C3C33 /* UIViewController+BackButtonHandler.m in Sources */,
@@ -4944,6 +5016,7 @@
 				7274190120B3F60D001D6BE1 /* SendSwapController.m in Sources */,
 				8D22C36020C7D18E004DC8F4 /* PresentManageViewController.m in Sources */,
 				CE0BA5E0209D5E9B004C3C33 /* DDFileReader.m in Sources */,
+				CEE5250F20F771D400DD6179 /* MYScanView.m in Sources */,
 				72EC1BAB20BC34AA00ACC20B /* TravalController.m in Sources */,
 				8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */,
 				8DE465CE20EDEED9009730F7 /* RCDUIBarButtonItem.m in Sources */,
@@ -5115,7 +5188,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5174,7 +5247,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

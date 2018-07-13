@@ -20,6 +20,16 @@
     [super viewDidLoad];
     [self setUI];
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    //添加通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alipayNotice:) name:NOTI_ALI_PAY_SUCCESS object:nil];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    //移除通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_ALI_PAY_SUCCESS object:nil];
+}
 -(void)setUI{
     self.navigationItem.title = @"充值";
     self.balanceLab.text = self.balanceStr;
@@ -31,10 +41,24 @@
     }
     WeakSelf
     [YSNetworkTool POST:v1UserWalletRecharge params:@{@"amount": _amountTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        } completion:nil];
+        NSDictionary *dic = responseObject[kData];
+        [weakSelf pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kAlipay}];
     } failure:nil];
 }
+- (void)pay:(NSDictionary *)dic {
+    [YSNetworkTool POST:v1Pay params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTThirdPartyPay payByThirdPartyWithPaymet:YTThirdPartyPaymentAlipay dictionary:responseObject[kData]];
+    } failure:nil];
+}
+#pragma mark - alipayNotice
+- (void)alipayNotice:(NSNotification *)notification {
+    if ([[[notification object] objectForKey:@"userInfo"] integerValue] == 9000) {
+        //支付失败
+        
+    }else{
+        //支付成功
+        
+    };
 
+}
 @end

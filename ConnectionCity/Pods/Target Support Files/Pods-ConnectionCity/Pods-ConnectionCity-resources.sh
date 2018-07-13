@@ -93,6 +93,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/RongCloudIM/RongCloudIM/Emoji.plist"
   install_resource "${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist"
   install_resource "${PODS_ROOT}/ShareSDK3/SDK/ShareSDK/Support/Required/ShareSDK.bundle"
+  install_resource "${PODS_ROOT}/ShareSDK3/SDK/ShareSDK/Support/Optional/ShareSDKUI.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle"
@@ -104,6 +105,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/RongCloudIM/RongCloudIM/Emoji.plist"
   install_resource "${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist"
   install_resource "${PODS_ROOT}/ShareSDK3/SDK/ShareSDK/Support/Required/ShareSDK.bundle"
+  install_resource "${PODS_ROOT}/ShareSDK3/SDK/ShareSDK/Support/Optional/ShareSDKUI.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

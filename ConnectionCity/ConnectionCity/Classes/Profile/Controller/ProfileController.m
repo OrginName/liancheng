@@ -15,6 +15,7 @@
 #import "privateUserInfoModel.h"
 #import "OccupationCategoryNameModel.h"
 #import "UserMo.h"
+#import "MyQRController.h"
 
 @interface ProfileController ()<ProfileHeadViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -49,8 +50,6 @@
     [self requestV1PrivateUserInfo];
     //用户svip详情
     [self requestMembershipUserSvip];
-    //请求支付接口
-    [self pay];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -127,7 +126,8 @@
 
 #pragma mark - 点击事件
 - (void)rightBarClick {
-    
+    MyQRController *myqrVC = [[MyQRController alloc]init];
+    [self.navigationController pushViewController:myqrVC animated:YES];
 }
 
 #pragma mark - 数据请求
@@ -151,19 +151,15 @@
     WeakSelf
     [YSNetworkTool POST:v1MembershipUserSvip params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if (![YSTools dx_isNullOrNilWithObject:responseObject[kData]]) {
-            weakSelf.tableHeadV.svipLogoBtn.hidden = NO;
-            weakSelf.tableHeadV.svipxfBtn.hidden = NO;
-            weakSelf.tableHeadV.svipTimeLab.text = @"xxxx.xx.xx到期";
+            if (![responseObject[kData] isKindOfClass:[NSArray class]]) {
+                weakSelf.tableHeadV.svipLogoBtn.hidden = NO;
+                weakSelf.tableHeadV.svipxfBtn.hidden = NO;
+                weakSelf.tableHeadV.svipTimeLab.text = @"xxxx.xx.xx到期";
+            }
         }
     } failure:nil];
 }
 
-- (void)pay {
-    NSDictionary *dic = @{@"orderNo": @"1017077456768733184",@"payType":kAlipay};
-    [YSNetworkTool POST:v1Pay params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        [YTThirdPartyPay payByThirdPartyWithPaymet:YTThirdPartyPaymentAlipay dictionary:responseObject[kData]];
-    } failure:nil];
-}
 /*
 #pragma mark - Navigation
 
