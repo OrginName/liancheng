@@ -34,6 +34,10 @@
     if ([self.receive_flag isEqualToString:@"EDIT"]) {
         [self initData];
     }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeAll) name:@"REMOVEALL" object:nil];
+}
+-(void)removeAll{
+    [self.Arr_images removeAllObjects];
 }
 -(void)initData{
     self.txt_Moment.text = self.receive_Moment.content;

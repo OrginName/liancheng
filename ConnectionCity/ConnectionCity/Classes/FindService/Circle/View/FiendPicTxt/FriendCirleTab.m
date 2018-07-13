@@ -224,7 +224,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MomentDetailController * mom = [MomentDetailController new];
-    mom.flagStr = @"HomeSend";
+    mom.flagStr = self.flagStr;
     mom.receiveMo = self.momentList[indexPath.row];
     WeakSelf
     mom.block = ^{

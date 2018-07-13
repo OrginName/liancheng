@@ -277,7 +277,6 @@
             isVideo = [[alAsset valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypeVideo];
         }
         if ([[asset valueForKey:@"flag"] tz_containsString:@"EDIT"]&&[[asset valueForKey:@"filename"] tz_containsString:@"video"]) {
-//            [YTAlertUtil showTempInfo:@"视频预览"];
             [self singletapVideoCallBack];//视频预览
             return;
         }
@@ -449,6 +448,12 @@
 }
 #pragma mark - UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    id asset = self.selectedAssets[buttonIndex];
+    if (![asset isKindOfClass:[PHAsset class]]&&[[asset valueForKey:@"flag"] tz_containsString:@"EDIT"]) {
+        [self.selectedPhotos removeAllObjects];
+        [self.selectedAssets removeAllObjects];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"REMOVEALL" object:nil];
+    }
     if (buttonIndex == 0) { // take photo / 去拍照
         [self takePhoto];
     } else if (buttonIndex == 1) {

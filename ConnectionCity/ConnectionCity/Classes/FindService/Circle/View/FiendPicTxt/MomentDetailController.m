@@ -23,9 +23,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    if ([self.receiveMo.userMo.ID isEqualToString:[[YSAccountTool userInfo]modelId]]) {
+        
+    }
 }
 -(void)ClearAll{
-    [YTAlertUtil showTempInfo:@"清空"];
+
     NSString * url = [self.flagStr isEqualToString:@"HomeSend"]?v1FriendCircleDelete:v1ServiceCircleDelete;
     [YSNetworkTool POST:url params:@{@"id":self.receiveMo.ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         self.block();
@@ -37,9 +40,9 @@
 }
 -(void)setUI{
     self.navigationItem.title = @"详情";
-//    if ([self.receiveMo.userId isEqualToString:[[YSAccountTool userInfo]ID]]) {
+    if ([self.receiveMo.userId isEqualToString:[[YSAccountTool userInfo]modelId]]) {
          self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(ClearAll) image:@"" title:@"清空" EdgeInsets:UIEdgeInsetsZero];
-//    } 
+    }
     self.momment = [[MomentDetailView alloc] initWithFrame:CGRectZero];
     self.momment.receiveMo = self.receiveMo;
     self.tab_Bottom.tableHeaderView = self.momment;
@@ -93,6 +96,9 @@
 }
 -(void)setReceiveMo:(Moment *)receiveMo{
     _receiveMo =receiveMo;
+    if ([receiveMo.userId isEqualToString:[[YSAccountTool userInfo]modelId]]) {
+        self.delebtn.hidden = NO;
+    }
     // 头像
     [_headImage sd_setImageWithURL:[NSURL URLWithString:receiveMo.userMo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     // 昵称
@@ -173,6 +179,7 @@
         _delebtn = [[UIButton alloc] init];
         _delebtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
         [_delebtn setTitleColor:YSColor(242, 151, 40) forState:UIControlStateNormal];
+        _delebtn.hidden = YES;
         _delebtn.backgroundColor = [UIColor clearColor];
         [_delebtn setTitle:@"删除" forState:UIControlStateNormal];
         [_delebtn addTarget:self action:@selector(shareMoment:) forControlEvents:UIControlEventTouchUpInside];
