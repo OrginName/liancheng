@@ -19,14 +19,15 @@
 #import "TZGifPhotoPreviewController.h"
 #import "TZLocationManager.h"
 #import "MMImagePreviewView.h"
-#import "CustomPlayer.h"
+#import "viewPaly.h"
 @interface PhotoSelect()<TZImagePickerControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UINavigationControllerDelegate>
 {
     BOOL _isSelectOriginalPhoto;
     CGFloat _itemWH;
     CGFloat _margin;
 }
-@property (nonatomic,strong)CustomPlayer * playView;
+@property (nonatomic,strong) viewPaly * playerView;
+//@property (nonatomic,strong)CustomPlayer * playView;
 @property (nonatomic, strong) UIImagePickerController *imagePickerVc;
 @property (strong, nonatomic) CLLocation *location;
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -46,12 +47,24 @@
     }
     return self;
 }
-#pragma mark -----视频预览-------
--(CustomPlayer *)playView{
-    if (!_playView) {
-        _playView = [[CustomPlayer alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//#pragma mark -----视频预览-------
+//-(CustomPlayer *)playView{
+//    if (!_playView) {
+//        _playView = [[CustomPlayer alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    }
+//    return _playView;
+//}
+-(viewPaly *)playerView{
+    if (!_playerView) {
+        _playerView = [[viewPaly alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//        TZTestCell * cell = (TZTestCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        WeakSelf
+        _playerView.tapBigView = ^{
+            [weakSelf.playerView.playView pause];
+            [weakSelf.playerView removeFromSuperview];
+        };
     }
-    return _playView;
+    return _playerView;
 }
 #pragma mark -----图片预览-------
 -(MMImagePreviewView *)previewView{
@@ -63,12 +76,18 @@
     return _previewView;
 }
 #pragma mark - 小视频单击
--(void)singletapVideoCallBack:(NSString *)url{
+-(void)singletapVideoCallBack{
     UIWindow *window = [[UIApplication sharedApplication].windows objectAtIndex:0];
     // 解除隐藏
-    [window addSubview:self.playView];
-    [window bringSubviewToFront:self.playView];
-    [self.playView setupPlayerWith:[NSURL URLWithString:url]];
+    [window addSubview:self.playerView];
+//    [self.playerView addSubview:self.playerView.playView];
+    [window bringSubviewToFront:self.playerView];
+//    TZTestCell * cell = (TZTestCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+//    CGRect convertRect = [[cell.imageView superview] convertRect:cell.imageView.frame toView:window];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.playerView.playView.frame = [[UIScreen mainScreen] bounds];
+    }];
+    [self.playerView.playView setupPlayerWith:[NSURL URLWithString:self.selectedPhotos[0]]];
 }
 #pragma mark - 小图单击
 - (void)singleTapSmallViewCallback:(UIImageView *)imageView
@@ -258,8 +277,8 @@
             isVideo = [[alAsset valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypeVideo];
         }
         if ([[asset valueForKey:@"flag"] tz_containsString:@"EDIT"]&&[[asset valueForKey:@"filename"] tz_containsString:@"video"]) {
-            [YTAlertUtil showTempInfo:@"视频预览"];
-            [self singletapVideoCallBack:self.selectedPhotos[0]];//视频预览
+//            [YTAlertUtil showTempInfo:@"视频预览"];
+            [self singletapVideoCallBack];//视频预览
             return;
         }
         if ([[asset valueForKey:@"filename"] tz_containsString:@"GIF"] && self.allowPickingGifSwitch && !self.allowPickingMuitlpleVideoSwitch) {

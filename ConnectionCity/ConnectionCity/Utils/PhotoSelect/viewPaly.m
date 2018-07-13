@@ -7,48 +7,60 @@
 //
 
 #import "viewPaly.h"
-#import "CustomPlayer.h"
 @interface viewPaly()
 @property (nonatomic,strong)UIButton * btn_back;
 @property (nonatomic,strong)UIImageView * image_cover;
 @property (nonatomic,strong)UIButton * btn_play;
-@property (nonatomic,strong)CustomPlayer * player;
+@property (nonatomic,strong)UIView * coverView;
 @end
 @implementation viewPaly
 -(id)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor blackColor];
-        [self addSubview:self.btn_back];
+        [self addSubview:self.coverView];
+        [self addSubview:self.playView];
+        [self bringSubviewToFront:self.coverView];
+        [self.coverView addSubview:self.btn_back];
+        // 单击
+//        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCallback)];
+//        [KWindowView addGestureRecognizer:singleTap];
     }
     return self;
 }
-//#pragma 播放事件
-//-(void)play{
-//
-//}
--(void)layoutSubviews{
-    
+//返回方法
+-(void)Back{
+    self.tapBigView();
 }
-//-(UIButton *)btn_play{
-//    if (!_btn_play) {
-//        _btn_play = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [_btn_play setBackgroundImage:[UIImage imageNamed:@"q-play"] forState:UIControlStateNormal];
-//        [_btn_play addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchUpInside];
-//    }
-//    return _btn_play;
-//}
-//-(UIImageView *)image_cover{
-//    if (!_image_cover) {
-//        _image_cover = [[UIImageView alloc] init];
-//
-//    }
-//    return _image_cover;
-//}
+-(void)singleTapGestureCallback{
+    self.tapBigView();
+}
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    self.coverView.frame = CGRectMake(0, 0, kScreenWidth, 64);
+    self.btn_back.frame = CGRectMake(0, 0, 60, 64);
+}
 -(UIButton *)btn_back{
     if (!_btn_back) {
         _btn_back = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_btn_back setBackgroundImage:[UIImage imageNamed:@"q-play"] forState:UIControlStateNormal];
+        [_btn_back setImage:[UIImage imageNamed:@"return-f"] forState:UIControlStateNormal];
+        [_btn_back addTarget:self action:@selector(Back) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btn_back;
+}
+-(UIView *)coverView{
+    if (!_coverView) {
+        _coverView = [[UIView alloc] init];
+        _coverView.backgroundColor = [UIColor blackColor];
+        _coverView.alpha = 0.3;
+        _coverView.userInteractionEnabled = YES;
+    }
+    return _coverView;
+}
+#pragma mark -----视频预览-------
+-(CustomPlayer *)playView{
+    if (!_playView) {
+        _playView = [[CustomPlayer alloc] init];
+    }
+    return _playView;
 }
 @end

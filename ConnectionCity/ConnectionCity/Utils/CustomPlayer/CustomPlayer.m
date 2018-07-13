@@ -31,6 +31,7 @@
         self.isCanPlay = NO;
         self.needBuffer = NO;
         self.isSeeking = NO;
+        self.userInteractionEnabled = NO;
         /**
          * 这里view用来做AVPlayer的容器
          * 完成对AVPlayer的二次封装

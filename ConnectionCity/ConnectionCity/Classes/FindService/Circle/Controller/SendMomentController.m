@@ -39,11 +39,12 @@
     self.txt_Moment.text = self.receive_Moment.content;
     if ([KString(@"%@", self.receive_Moment.containsImage) isEqualToString:@"1"]) {
         _isPic = 1;
-        _imageURL = self.receive_Moment.images;
+//        _imageURL = self.receive_Moment.images;
         NSArray * arr = [self.receive_Moment.images componentsSeparatedByString:@";"];
         for (int i=0; i<arr.count; i++) {
             if ([arr[i] length]!=0) {
                 [self.photo.selectedPhotos addObject:arr[i]];
+                [self.Arr_images addObject:arr[i]];
                 [self.photo.selectedAssets addObject:@{@"name":arr[i],@"filename":@"image",@"flag":self.receive_flag}];
             }
         }
@@ -57,34 +58,44 @@
 }
 //完成
 -(void)complete{
-    if ([self.receive_flag isEqualToString:@"EDIT"]) {
-        [YTAlertUtil showTempInfo:@"编辑完成"];
-        return;
-    }
     if (self.txt_Moment.text.length==0) {
         return [YTAlertUtil showTempInfo:@"对圈子内的朋友说点什么..."];
     }
+    BOOL a = [self.receive_flag isEqualToString:@"EDIT"]?YES:NO;
     __block NSString * urlStr = @"";//图片路径拼接
     __block NSString * videoStr = @"";//视频路径
     __block NSInteger index = 0;
-    [YTAlertUtil showHUDWithTitle:@"正在发布"];
+    [YTAlertUtil showHUDWithTitle:a?@"正在更新":@"正在发布"];
     if (self.Arr_images.count!=0) {
         for (int i=0; i<self.Arr_images.count; i++) {
-            [[QiniuUploader defaultUploader] uploadImageToQNFilePath:self.Arr_images[i] withBlock:^(NSDictionary *url) {
+            if ([self.Arr_images[i] isKindOfClass:[NSString class]]&&[self.Arr_images[i] containsString:@"http"]) {
                 index++;
-                urlStr = [NSString stringWithFormat:@"%@%@;%@",QINIUURL,url[@"hash"],urlStr];
+                urlStr = [NSString stringWithFormat:@"%@%@",self.Arr_images[i],urlStr];
                 if (index==self.Arr_images.count) {
                     [self loadData:urlStr urlVideo:@""];
                 }
-            }];
+                
+            }else{
+                [[QiniuUploader defaultUploader] uploadImageToQNFilePath:self.Arr_images[i] withBlock:^(NSDictionary *url) {
+                    index++;
+                    urlStr = [NSString stringWithFormat:@"%@%@;%@",QINIUURL,url[@"hash"],urlStr];
+                    if (index==self.Arr_images.count) {
+                        [self loadData:urlStr urlVideo:@""];
+                    }
+                }];
+            }
         }
     }else if (_videoUrl.length!=0) {
-        [[QiniuUploader defaultUploader] uploadVideoToQNFilePath:_videoUrl withBlock:^(NSDictionary *url) {
-            videoStr = [NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]];
-            [self loadData:@"" urlVideo:videoStr];
-        }];
+        if ([_videoUrl isKindOfClass:[NSString class]]&&[_videoUrl containsString:@"http"]) {
+            [self loadData:@"" urlVideo:_videoUrl];
+        }else{
+            [[QiniuUploader defaultUploader] uploadVideoToQNFilePath:_videoUrl withBlock:^(NSDictionary *url) {
+                videoStr = [NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]];
+                [self loadData:@"" urlVideo:videoStr];
+            }];
+        }
     }else{
-        [YTAlertUtil showHUDWithTitle:@"正在发布"];
+        [YTAlertUtil showHUDWithTitle:a?@"正在更新":@"正在发布"];
         [self loadData:@"" urlVideo:@""];
     }
     
@@ -92,21 +103,29 @@
 }
 //发布朋友圈
 -(void)loadData:(NSString *)urlStr urlVideo:(NSString *)videoUrl{
-    NSDictionary * dic = @{ 
+    BOOL a = [self.receive_flag isEqualToString:@"EDIT"]?YES:NO;
+//
+    NSDictionary * dic = @{
                            @"cityCode": @([[KUserDefults objectForKey:kUserCityID]integerValue]),
                            @"containsImage": @(_isPic),
                            @"containsVideo": @(_isVideo),
                            @"content": self.txt_Moment.text,
                            @"images": urlStr,
-                           @"videos": videoUrl
+                           @"videos": videoUrl,
+                           @"serviceCircleId":self.receive_Moment.ID?self.receive_Moment.ID:@""
                            };
-    NSString * url = [self.flagStr isEqualToString:@"HomeSend"]?v1FriendCircleCreate:v1ServiceCircleCreate;
+    NSString * url;
+    if (a) {
+        url = v1ServiceCircleUpdate;
+    }else{
+        url = [self.flagStr isEqualToString:@"HomeSend"]?v1FriendCircleCreate:v1ServiceCircleCreate;
+    }
     [YSNetworkTool POST:url params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if (self.block) {
             self.block();
         }
         [self.navigationController popViewControllerAnimated:YES];
-        [YTAlertUtil showHUDWithTitle:@"发布成功"];
+        [YTAlertUtil showHUDWithTitle:a?@"更新成功":@"发布成功"];
         [YTAlertUtil hideHUD];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -161,7 +180,7 @@
 //    if (self.photo.maxCountTF!=1) {
 //        [self.Arr_images removeObjectAtIndex:tag];
 //    }
-    if (imageArr.count==0&&[self.flagStr isEqualToString:@"HomeSend"]) {
+    if (imageArr.count==0&&![self.flagStr isEqualToString:@"HomeSend"]) {
         self.photo.allowTakeVideo = 1;
         _isPic = 0;
     }
