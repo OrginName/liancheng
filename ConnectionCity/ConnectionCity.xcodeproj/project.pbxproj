@@ -246,6 +246,7 @@
 		8D8E4ED320C9320200C3D537 /* PrivateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E4ED120C9320200C3D537 /* PrivateController.m */; };
 		8D8E4ED420C9320200C3D537 /* PrivateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D8E4ED220C9320200C3D537 /* PrivateController.xib */; };
 		8D8E4ED720C937D200C3D537 /* NKColorSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E4ED620C937D200C3D537 /* NKColorSwitch.m */; };
+		8D95769420F8506C00A9A740 /* viewPaly.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D95769320F8506C00A9A740 /* viewPaly.m */; };
 		8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990620A6FDEB00968F86 /* ResumeController.m */; };
 		8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA4990720A6FDEB00968F86 /* ResumeController.xib */; };
 		8DA4990D20A7063E00968F86 /* ResumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990B20A7063E00968F86 /* ResumeCell.m */; };
@@ -1003,6 +1004,8 @@
 		8D8E4ED220C9320200C3D537 /* PrivateController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivateController.xib; sourceTree = "<group>"; };
 		8D8E4ED520C937D200C3D537 /* NKColorSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKColorSwitch.h; sourceTree = "<group>"; };
 		8D8E4ED620C937D200C3D537 /* NKColorSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKColorSwitch.m; sourceTree = "<group>"; };
+		8D95769220F8506C00A9A740 /* viewPaly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = viewPaly.h; sourceTree = "<group>"; };
+		8D95769320F8506C00A9A740 /* viewPaly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = viewPaly.m; sourceTree = "<group>"; };
 		8DA4990520A6FDEB00968F86 /* ResumeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeController.h; sourceTree = "<group>"; };
 		8DA4990620A6FDEB00968F86 /* ResumeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeController.m; sourceTree = "<group>"; };
 		8DA4990720A6FDEB00968F86 /* ResumeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeController.xib; sourceTree = "<group>"; };
@@ -1799,6 +1802,8 @@
 			children = (
 				723B9F1120B4195A00AD919B /* PhotoSelect.h */,
 				723B9F1220B4195A00AD919B /* PhotoSelect.m */,
+				8D95769220F8506C00A9A740 /* viewPaly.h */,
+				8D95769320F8506C00A9A740 /* viewPaly.m */,
 			);
 			path = PhotoSelect;
 			sourceTree = "<group>";
@@ -4645,6 +4650,7 @@
 				CEE5251020F771D400DD6179 /* MYScanLineAnimation.m in Sources */,
 				7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */,
 				8DE465DD20EDF0C4009730F7 /* RCDContactSelectedTableViewController.m in Sources */,
+				8D95769420F8506C00A9A740 /* viewPaly.m in Sources */,
 				8DE4664B20EDF71B009730F7 /* RCAnnotationView.m in Sources */,
 				CEBEDD8B20B17ED1000F9EE4 /* BountyHostingController.m in Sources */,
 				8DE4664A20EDF71B009730F7 /* RCAnnotation.m in Sources */,
@@ -5188,7 +5194,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5247,7 +5253,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

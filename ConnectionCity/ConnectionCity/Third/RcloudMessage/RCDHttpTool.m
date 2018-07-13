@@ -315,7 +315,7 @@
             }else if (flag==3){
                 members = responseObject[@"data"][@"group"][@"users"];
             }else{
-                members = responseObject[@"code"][@"team"][@"users"];
+                members = responseObject[@"data"][@"team"][@"users"];
             }
             for (int i=0; i<[members count]; i++) {
                 NSDictionary * dic = members[i];

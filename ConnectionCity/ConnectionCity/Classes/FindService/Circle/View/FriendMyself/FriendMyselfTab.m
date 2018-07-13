@@ -19,6 +19,7 @@
 @property (nonatomic,strong)UIImageView * headImage;
 @property (nonatomic,strong) UIViewController * controller;
 @property (nonatomic,strong) NSMutableArray * data_Arr;
+@property (nonatomic,strong)  NSMutableArray * data;
 @end
 @implementation FriendMyselfTab
 -(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style withControll:(UIViewController *)control{
@@ -32,6 +33,7 @@
         self.controller = control;
         [self initData];
          _page = 1;
+        _data = [NSMutableArray array];
     }
     return self;
 }
@@ -91,7 +93,7 @@
     }];
 }
 -(void)jsonDataArr:(NSMutableArray *)arr{
-    NSMutableArray * data = [NSMutableArray array];
+    [self.data_Arr removeAllObjects];
     // 获取代表公历的NSCalendar对象
     NSCalendar *gregorian = [[NSCalendar alloc]
                              initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
@@ -107,27 +109,27 @@
     for (int i=0; i<arr.count; i++) {
         Moment * moment = arr[i];
         NSString * year = [moment.createTime componentsSeparatedByString:@"-"][0];
-        if (data&&data.count!=0) {
-            for (int j=0; j<data.count; j++) {
-                if ([data[j] isKindOfClass:[NSDictionary class]]&&[[data[j] allKeys][0] isEqualToString:year]) {
-                    [data[j][year] addObject:moment];
+        if (self.data&&self.data.count!=0) {
+            for (int j=0; j<self.data.count; j++) {
+                if ([self.data[j] isKindOfClass:[NSDictionary class]]&&[[self.data[j] allKeys][0] isEqualToString:year]) {
+                    [self.data[j][year] addObject:moment];
                 }else{
                     NSMutableArray * arr3 = [NSMutableArray array];
                     [arr3 addObject:moment];
                     NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithObject:arr3 forKey:year];
-                    [data addObject:dic];
+                    [self.data addObject:dic];
                 }
             }
         }else{
             NSMutableArray * arr3 = [NSMutableArray array];
             [arr3 addObject:moment];
             NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithObject:arr3 forKey:year];
-            [data addObject:dic];
+            [self.data addObject:dic];
         }
     }
-    [self.data_Arr addObjectsFromArray:[data copy]];
+    [self.data_Arr addObjectsFromArray:[self.data copy]];
     [self reloadData];
-    NSLog(@"%lu",(unsigned long)data.count);
+    NSLog(@"%lu",(unsigned long)self.data.count);
 }
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

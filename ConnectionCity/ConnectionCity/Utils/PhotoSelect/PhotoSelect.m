@@ -18,18 +18,21 @@
 #import "TZPhotoPreviewController.h"
 #import "TZGifPhotoPreviewController.h"
 #import "TZLocationManager.h"
-
+#import "MMImagePreviewView.h"
+#import "CustomPlayer.h"
 @interface PhotoSelect()<TZImagePickerControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UINavigationControllerDelegate>
 {
     BOOL _isSelectOriginalPhoto;
     CGFloat _itemWH;
     CGFloat _margin;
 }
+@property (nonatomic,strong)CustomPlayer * playView;
 @property (nonatomic, strong) UIImagePickerController *imagePickerVc;
 @property (strong, nonatomic) CLLocation *location;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (strong, nonatomic) LxGridViewFlowLayout *layout;
 @property (nonatomic,strong) UIViewController * controll;
+@property (nonatomic,strong) MMImagePreviewView * previewView;
 @end
 @implementation PhotoSelect
 -(instancetype)initWithFrame:(CGRect)frame withController:(UIViewController *)controll{
@@ -37,15 +40,96 @@
         _selectedPhotos = [NSMutableArray array];
         _selectedAssets = [NSMutableArray array];
         self.controll = controll;
+        
         [self configCollectionView];
         [self defultFlag];
     }
     return self;
 }
-//-(void)setSelectedPhotos:(NSMutableArray *)selectedPhotos{
-//    _selectedPhotos = selectedPhotos;
-//    [self.collectionView reloadData];
-//}
+#pragma mark -----视频预览-------
+-(CustomPlayer *)playView{
+    if (!_playView) {
+        _playView = [[CustomPlayer alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    }
+    return _playView;
+}
+#pragma mark -----图片预览-------
+-(MMImagePreviewView *)previewView{
+    if (!_previewView) {
+        // 预览视图
+        _previewView = [[MMImagePreviewView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        _previewView.scrollView.contentSize = CGSizeMake(_previewView.width*self.selectedPhotos.count, _previewView.height);
+    }
+    return _previewView;
+}
+#pragma mark - 小视频单击
+-(void)singletapVideoCallBack:(NSString *)url{
+    UIWindow *window = [[UIApplication sharedApplication].windows objectAtIndex:0];
+    // 解除隐藏
+    [window addSubview:self.playView];
+    [window bringSubviewToFront:self.playView];
+    [self.playView setupPlayerWith:[NSURL URLWithString:url]];
+}
+#pragma mark - 小图单击
+- (void)singleTapSmallViewCallback:(UIImageView *)imageView
+{
+    UIWindow *window = [[UIApplication sharedApplication].windows objectAtIndex:0];
+    // 解除隐藏
+    [window addSubview:self.previewView];
+    [window bringSubviewToFront:self.previewView];
+    // 清空
+    [_previewView.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    // 添加子视图
+    NSInteger index = imageView.tag;
+    NSInteger count = self.selectedPhotos.count;
+    CGRect convertRect;
+    if (count == 1) {
+        [_previewView.pageControl removeFromSuperview];
+    }
+    for (NSInteger i = 0; i < count; i ++)
+    {
+        TZTestCell * cell = (TZTestCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        // 转换Frame
+//         UIImageView *pImageView = (UIImageView *)[self viewWithTag:1000+i];
+        convertRect = [[cell.imageView superview] convertRect:cell.imageView.frame toView:window];
+        // 添加
+        MMScrollView *scrollView = [[MMScrollView alloc] initWithFrame:CGRectMake(i*_previewView.width, 0, _previewView.width, _previewView.height)];
+        scrollView.tag = 100+i;
+        scrollView.maximumZoomScale = 2.0;
+        scrollView.image = cell.imageView.image;
+        scrollView.contentRect = convertRect;
+        // 单击
+        [scrollView setTapBigView:^(MMScrollView *scrollView){
+            [self singleTapBigViewCallback:scrollView];
+        }];
+        [_previewView.scrollView addSubview:scrollView];
+        if (i == index) {
+            [UIView animateWithDuration:0.3 animations:^{
+                _previewView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1.0];
+                _previewView.pageControl.hidden = NO;
+                [scrollView updateOriginRect];
+            }];
+        } else {
+            [scrollView updateOriginRect];
+        }
+    }
+    // 更新offset
+    CGPoint offset = _previewView.scrollView.contentOffset;
+    offset.x = index * kScreenWidth;
+    _previewView.scrollView.contentOffset = offset;
+}
+#pragma mark - 大图单击||长按
+- (void)singleTapBigViewCallback:(MMScrollView *)scrollView
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        _previewView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+        _previewView.pageControl.hidden = YES;
+        scrollView.contentRect = scrollView.contentRect;
+        scrollView.zoomScale = 1.0;
+    } completion:^(BOOL finished) {
+        [_previewView removeFromSuperview];
+    }];
+}
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (UIImagePickerController *)imagePickerVc {
@@ -119,12 +203,17 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TZTestCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TZTestCell" forIndexPath:indexPath];
     cell.videoImageView.hidden = YES;
+    cell.imageView.tag = indexPath.row;
     if ((indexPath.item == _selectedPhotos.count)&&_selectedPhotos.count<=8) {
         cell.imageView.image = [UIImage imageNamed:@"AlbumAddBtn.png"];
         cell.deleteBtn.hidden = YES;
         cell.gifLable.hidden = YES;
     } else if((indexPath.item != _selectedPhotos.count)&&_selectedPhotos.count<=8) {
         if ([_selectedPhotos[indexPath.item] isKindOfClass:[NSString class]]&&[_selectedPhotos[indexPath.item] containsString:@"http"]) {
+            id asset = _selectedAssets[indexPath.row];
+            if ([[asset valueForKey:@"filename"] tz_containsString:@"video"]) {
+                cell.imageView.image = [UIImage thumbnailOfAVAsset:[NSURL URLWithString:_selectedPhotos[0]]];
+            }else
             [cell.imageView sd_setImageWithURL:[NSURL URLWithString:_selectedPhotos[indexPath.item]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
         }else
         cell.imageView.image = _selectedPhotos[indexPath.item];
@@ -145,6 +234,7 @@
     [self endEditing:YES];
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    TZTestCell * cell = (TZTestCell*)[collectionView cellForItemAtIndexPath:indexPath];
     if (indexPath.item == _selectedPhotos.count) {
         if (self.maxCountTF==1) {
             [YTAlertUtil showTempInfo:@"视频暂只能选择一个"];
@@ -167,17 +257,27 @@
             ALAsset *alAsset = asset;
             isVideo = [[alAsset valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypeVideo];
         }
+        if ([[asset valueForKey:@"flag"] tz_containsString:@"EDIT"]&&[[asset valueForKey:@"filename"] tz_containsString:@"video"]) {
+            [YTAlertUtil showTempInfo:@"视频预览"];
+            [self singletapVideoCallBack:self.selectedPhotos[0]];//视频预览
+            return;
+        }
         if ([[asset valueForKey:@"filename"] tz_containsString:@"GIF"] && self.allowPickingGifSwitch && !self.allowPickingMuitlpleVideoSwitch) {
             TZGifPhotoPreviewController *vc = [[TZGifPhotoPreviewController alloc] init];
             TZAssetModel *model = [TZAssetModel modelWithAsset:asset type:TZAssetModelMediaTypePhotoGif timeLength:@""];
             vc.model = model;
             [self.controll presentViewController:vc animated:YES completion:nil];
         } else if (isVideo && !self.allowPickingMuitlpleVideoSwitch) { // perview video / 预览视频
+          
             TZVideoPlayerController *vc = [[TZVideoPlayerController alloc] init];
             TZAssetModel *model = [TZAssetModel modelWithAsset:asset type:TZAssetModelMediaTypeVideo timeLength:@""];
             vc.model = model;
             [self.controll presentViewController:vc animated:YES completion:nil];
         } else { // preview photos / 预览照片
+            if ([[asset valueForKey:@"flag"] tz_containsString:@"EDIT"]) {
+                [self singleTapSmallViewCallback:cell.imageView];
+                return;
+            }
             TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithSelectedAssets:_selectedAssets selectedPhotos:_selectedPhotos index:indexPath.item];
             imagePickerVc.maxImagesCount = self.maxCountTF;
             imagePickerVc.allowPickingGif = self.allowPickingGifSwitch;

@@ -28,7 +28,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-       
         // 小图(九宫格)
         _imageViewsArray = [[NSMutableArray alloc] init];
         for (int i = 0; i < 9; i++) {

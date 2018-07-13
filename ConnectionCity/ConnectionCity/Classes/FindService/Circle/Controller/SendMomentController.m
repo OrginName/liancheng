@@ -44,9 +44,7 @@
         for (int i=0; i<arr.count; i++) {
             if ([arr[i] length]!=0) {
                 [self.photo.selectedPhotos addObject:arr[i]];
-                [self.photo.selectedAssets addObject:@{@"name":arr[i],@"filename":@"image"}];
-//                setProperty:ALAssetTypeVideo forKey:ALAssetPropertyType
-//                [self.photo.selectedAssets[i] setvalueforpr];
+                [self.photo.selectedAssets addObject:@{@"name":arr[i],@"filename":@"image",@"flag":self.receive_flag}];
             }
         }
     }
@@ -54,8 +52,7 @@
         _isVideo = 1;
         _videoUrl = self.receive_Moment.videos;
         self.photo.selectedPhotos = [NSMutableArray arrayWithObject:self.receive_Moment.videos];
-        self.photo.selectedAssets = self.photo.selectedPhotos;
-
+        [self.photo.selectedAssets addObject:@{@"filename":@"video",@"flag":self.receive_flag}];
     }
 }
 //完成
