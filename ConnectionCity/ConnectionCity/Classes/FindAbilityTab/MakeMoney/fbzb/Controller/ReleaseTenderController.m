@@ -102,11 +102,9 @@
         for (int i=0; i<self.Arr_Url.count; i++) {
             if ([self.Arr_Url[i] length]!=0) {
                 [self.photo.selectedPhotos addObject:self.Arr_Url[i]];
-                [self.photo.selectedAssets addObject:@{@"name":self.Arr_Url[i],@"filename":@"image"}];
+                [self.photo.selectedAssets addObject:@{@"name":self.Arr_Url[i],@"filename":@"image",@"flag":@"EDIT"}];
             }
         }
-        
-        
         
         return cell2;
     }else{

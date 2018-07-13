@@ -39,7 +39,8 @@
 }
 #pragma mark --- 分享按钮点击-----
 -(void)Share{
-    [YTAlertUtil showTempInfo:@"分享"];
+//    [YTAlertUtil showTempInfo:@"分享"];
+    [YSShareTool share];
 }
 -(void)setUI{
      self.imageArray = [NSMutableArray arrayWithArray:@[@"001.jpg",@"002.jpg",@"003.jpg"]];

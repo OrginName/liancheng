@@ -36,6 +36,7 @@
         self.navigationItem.title = @"账号安全";
 
     }
+    self.lab_LCH.text = kAccount.userId;
 }
 - (IBAction)BDPhoneClick:(UIButton *)sender {
     if (sender.tag==1) {
@@ -66,7 +67,9 @@
 - (void)requestPrivateUserChangePassword {
     WeakSelf
     [YSNetworkTool POST:v1PrivateUserChangePassword params:@{@"newPassword": _txt_NewPass.text,@"oldPassword": _txt_oldPassword.text} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } completion:nil];
     } failure:nil];
 }
 @end

@@ -91,12 +91,14 @@
 //    releasevc.imageArr = [mo.tenderImages componentsSeparatedByString:@","];
     NSArray *arr = [mo.tenderImages componentsSeparatedByString:@","];
     releasevc.Arr_Url = [NSMutableArray arrayWithArray:arr];
-//    for (int i=0; i<arr.count; i++) {
-//        if ([arr[i] length]!=0) {
-//            [releasevc.photo.selectedPhotos addObject:arr[i]];
-//            [releasevc.photo.selectedAssets addObject:@{@"name":arr[i],@"filename":@"image"}];
-//        }
-//    }
+    for (int i=0; i<arr.count; i++) {
+        if ([arr[i] length]!=0) {
+            [releasevc.photo.selectedPhotos addObject:arr[i]];
+            [releasevc.photo.selectedAssets addObject:@{@"name":arr[i],@"filename":@"image"}];
+            
+            
+        }
+    }
     
 //    {
 //        _isPic = 1;

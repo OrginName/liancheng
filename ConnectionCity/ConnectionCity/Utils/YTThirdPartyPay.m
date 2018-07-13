@@ -26,41 +26,40 @@
             break;
         }
         case YTThirdPartyPaymentWechat: {  //微信支付
-//            [[self class]p_payByWeChatWithPartnerId:weChatPayModel.mPartnerid prepayId:weChatPayModel.mPrepayId appId:weChatPayModel.mAppId package:weChatPayModel.mPackage nonceStr:weChatPayModel.mNonceStr timeStamp:weChatPayModel.mTimeStamp sign:weChatPayModel.mSign paymentType:paymentType];
+        [[self class] p_payByWeChatWithPartnerId:dictionary[@"mch_id"] prepayId:dictionary[@"prepay_id"] appId:dictionary[@"appid"] nonceStr:dictionary[@"nonce_str"] sign:dictionary[@"sign"]];
             break;
         }
     }
 }
 
 #pragma mark - Private method
+/** 调起支付宝支付 */
 + (void)p_payByAlipayWithPayOrder:(NSString *)payOrder {
         // NOTE: 调用支付结果开始支付
         [[AlipaySDK defaultService] payOrder:payOrder fromScheme:@"LianCheng" callback:^(NSDictionary *resultDic) {
             YTRLog(@"reslut = %@", resultDic);
         }];
 }
-
 /** 调起微信支付 */
 + (void)p_payByWeChatWithPartnerId:(NSString *)partnerId
                           prepayId:(NSString *)prepayId
                              appId:(NSString *)appId
-                           package:(NSString *)package
                           nonceStr:(NSString *)nonceStr
-                         timeStamp:(NSString *)timeStamp
-                              sign:(NSString *)sign
-                       paymentType:(YTThirdPartyPaymentType)paymentType {
+                              sign:(NSString *)sign {
+    
     PayReq *request = [[PayReq alloc] init];
     request.partnerId = partnerId;
     request.prepayId = prepayId;
-    request.package = package;
+    request.package = @"Sign=WXPay";
     request.nonceStr = nonceStr;
-    request.timeStamp = (UInt32)timeStamp.intValue;
-    if (paymentType == YTThirdPartyPaymentInvoicePay) {
-        request.sign = [[self class] createMD5SingForPay:appId partnerid:partnerId prepayid:prepayId package:package noncestr:nonceStr timestamp:(UInt32)timeStamp.intValue];
-    }else{
-        request.sign = sign;
-    }
+    NSDate *datenow = [NSDate date];
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]];
+    UInt32 timeStamp =[timeSp intValue];
+    request.timeStamp = timeStamp;
+    request.sign = sign;
+//    request.sign = [[self class] createMD5SingForPay:appId partnerid:partnerId prepayid:prepayId package:@"Sign=WXPay" noncestr:nonceStr timestamp:timeStamp];
     [WXApi sendReq:request];
+    
 }
 //生成签名
 + (NSString *)createMD5SingForPay:(NSString *)appid_key partnerid:(NSString *)partnerid_key prepayid:(NSString *)prepayid_key package:(NSString *)package_key noncestr:(NSString *)noncestr_key timestamp:(UInt32)timestamp_key {
@@ -85,7 +84,7 @@
         }
     }
     //添加商户密钥key字段
-    [contentString appendFormat:@"key=%@",@"ABCDEFGHIJKLMNOPQRSTUVWXYZ123456"];
+    [contentString appendFormat:@"key=%@",@"Rc6gEDcQHtV3Ry8HNLNWf0iCvSBtK17T"];
     NSString *result = [[self class] md5:contentString];
     return result;
 }
@@ -104,4 +103,5 @@
             result[12], result[13], result[14], result[15]
             ];
 }
+
 @end

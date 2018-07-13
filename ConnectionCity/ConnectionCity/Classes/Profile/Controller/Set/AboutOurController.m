@@ -23,7 +23,7 @@
     switch (sender.tag) {
         case 1://检查更新
             {
-                
+                [YTAlertUtil showTempInfo:@"暂无更新"];
             }
             break;
         case 2://许可协议
@@ -42,7 +42,9 @@
             break;
         case 4://联系我们
         {
-            
+            AgreementController *agreementVC = [[AgreementController alloc]init];
+            agreementVC.alias = about;
+            [self.navigationController pushViewController:agreementVC animated:YES];
         }
             break;
         default:

@@ -579,6 +579,7 @@
 		CEE5251120F771D400DD6179 /* QRCodeReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5250820F771D400DD6179 /* QRCodeReaderView.m */; };
 		CEE5251520F7907C00DD6179 /* MyQRController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5251320F7907C00DD6179 /* MyQRController.m */; };
 		CEE5251620F7907C00DD6179 /* MyQRController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE5251420F7907C00DD6179 /* MyQRController.xib */; };
+		CEE5251920F9039F00DD6179 /* YSShareTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5251820F9039F00DD6179 /* YSShareTool.m */; };
 		CEE68C4320ECF50A00233AE3 /* ServiceMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4220ECF50A00233AE3 /* ServiceMo.m */; };
 		CEE68C4620ECF55A00233AE3 /* ServiceCategoryNameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4520ECF55A00233AE3 /* ServiceCategoryNameModel.m */; };
 		CEE68C4920ECFAFC00233AE3 /* TravelInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4820ECFAFC00233AE3 /* TravelInvite.m */; };
@@ -1686,6 +1687,8 @@
 		CEE5251220F7907C00DD6179 /* MyQRController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyQRController.h; sourceTree = "<group>"; };
 		CEE5251320F7907C00DD6179 /* MyQRController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyQRController.m; sourceTree = "<group>"; };
 		CEE5251420F7907C00DD6179 /* MyQRController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyQRController.xib; sourceTree = "<group>"; };
+		CEE5251720F9039F00DD6179 /* YSShareTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YSShareTool.h; sourceTree = "<group>"; };
+		CEE5251820F9039F00DD6179 /* YSShareTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YSShareTool.m; sourceTree = "<group>"; };
 		CEE68C4120ECF50A00233AE3 /* ServiceMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceMo.h; sourceTree = "<group>"; };
 		CEE68C4220ECF50A00233AE3 /* ServiceMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceMo.m; sourceTree = "<group>"; };
 		CEE68C4420ECF55A00233AE3 /* ServiceCategoryNameModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceCategoryNameModel.h; sourceTree = "<group>"; };
@@ -3386,6 +3389,8 @@
 				CE0BA5C2209D5E9B004C3C33 /* YTDataPacket.m */,
 				CE0BA5C3209D5E9B004C3C33 /* YSNetworkTool.h */,
 				CE0BA5CE209D5E9B004C3C33 /* YSNetworkTool.m */,
+				CEE5251720F9039F00DD6179 /* YSShareTool.h */,
+				CEE5251820F9039F00DD6179 /* YSShareTool.m */,
 				CE0BA5C5209D5E9B004C3C33 /* DDFileReader.m */,
 				CE0BA5C6209D5E9B004C3C33 /* YSAccountTool.m */,
 				CE0BA5C7209D5E9B004C3C33 /* SRDownloadModel.m */,
@@ -4713,6 +4718,7 @@
 				723D376120ABBEB4003FD4DF /* ShowResumeTab.m in Sources */,
 				8DFA326220EDB97B0086423A /* RCWKSharedUserDefault.m in Sources */,
 				8DD48CCB20A811EA00D6D1E6 /* NSData+SDDataCache.m in Sources */,
+				CEE5251920F9039F00DD6179 /* YSShareTool.m in Sources */,
 				8DE465DA20EDF0A0009730F7 /* RCDAddFriendViewController.m in Sources */,
 				722D253B20AA76D400AB3863 /* JFCityViewController.m in Sources */,
 				8D8E4ED720C937D200C3D537 /* NKColorSwitch.m in Sources */,
@@ -5194,7 +5200,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5253,7 +5259,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -42,12 +42,12 @@
     WeakSelf
     [YSNetworkTool POST:v1UserWalletRecharge params:@{@"amount": _amountTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic = responseObject[kData];
-        [weakSelf pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kAlipay}];
+        [weakSelf pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kWechat}];
     } failure:nil];
 }
 - (void)pay:(NSDictionary *)dic {
     [YSNetworkTool POST:v1Pay params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        [YTThirdPartyPay payByThirdPartyWithPaymet:YTThirdPartyPaymentAlipay dictionary:responseObject[kData]];
+        [YTThirdPartyPay payByThirdPartyWithPaymet:YTThirdPartyPaymentWechat dictionary:responseObject[kData]];
     } failure:nil];
 }
 #pragma mark - alipayNotice

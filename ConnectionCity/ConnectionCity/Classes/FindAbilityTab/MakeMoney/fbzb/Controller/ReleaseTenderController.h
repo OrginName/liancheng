@@ -16,5 +16,6 @@
 @property (nonatomic, strong) PhotoSelect * photo;
 @property (nonatomic, strong) NSArray *imageArr;
 @property (nonatomic, strong) NSMutableArray *Arr_Url;
+@property (nonatomic,strong) NSString * receive_flag;
 
 @end
