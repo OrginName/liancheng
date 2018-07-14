@@ -28,7 +28,7 @@
                                     <constraint firstAttribute="height" constant="1" id="Dh8-xO-Mk7"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZE-hx-XZR">
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZE-hx-XZR">
                                 <rect key="frame" x="0.0" y="0.0" width="34" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="34" id="ysg-rK-Q5Q"/>
@@ -52,7 +52,7 @@
                                 <rect key="frame" x="124" y="0.0" width="162" height="43"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

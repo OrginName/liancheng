@@ -448,13 +448,15 @@
 #pragma mark - UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (self.selectedAssets.count!=0) {
-        id asset = self.selectedAssets[buttonIndex];
-        if (![asset isKindOfClass:[PHAsset class]]&&[[asset valueForKey:@"flag"] tz_containsString:@"EDIT"]) {
-            [self.selectedPhotos removeAllObjects];
-            [self.selectedAssets removeAllObjects];
-            [self.collectionView reloadData];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"REMOVEALL" object:nil];
-        }
+        [self.selectedAssets enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (![obj isKindOfClass:[PHAsset class]]&&[[obj valueForKey:@"flag"] tz_containsString:@"EDIT"]) {
+                [self.selectedPhotos removeAllObjects];
+                [self.selectedAssets removeAllObjects];
+                [self.collectionView reloadData];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"REMOVEALL" object:nil];
+                *stop = YES;
+            }
+        }];
     }
     if (buttonIndex == 0) { // take photo / 去拍照
         [self takePhoto];

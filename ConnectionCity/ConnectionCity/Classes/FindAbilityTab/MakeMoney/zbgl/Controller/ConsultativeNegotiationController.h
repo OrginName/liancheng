@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
+#import "FirstControllerMo.h"
 
 @interface ConsultativeNegotiationController : BaseViewController
+@property (nonatomic, strong) FirstControllerMo *mo;
 
 @end

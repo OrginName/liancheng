@@ -51,8 +51,38 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MarginCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MarginCell"];
+    cell.titleLab.text = [NSString stringWithFormat:@"赏金%ld期",(long)indexPath.row +1];
+    FirstControllerMo *mo = _dataArr[indexPath.section];
+    switch (indexPath.row) {
+        case 0:
+        {
+            cell.marginMoneyLab.text = mo.periodAmount1;
+            break;
+        }
+        case 1:
+        {
+            cell.marginMoneyLab.text = mo.periodAmount2;
+            break;
+        }
+        case 2:
+        {
+            cell.marginMoneyLab.text = mo.periodAmount3;
+            break;
+        }
+        case 3:
+        {
+            cell.marginMoneyLab.text = mo.periodAmount4;
+            break;
+        }
+        case 4:
+        {
+            cell.marginMoneyLab.text = mo.periodAmount5;
+            break;
+        }
+        default:
+            break;
+    }
     
-    cell.titleLab.text = [NSString stringWithFormat:@"赏金%ld期",(long)indexPath.row];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -14,6 +14,8 @@
 #import "JFCityViewController.h"
 #import "QiniuUploader.h"
 #import "ZBJFViewController.h"
+#import "PhotoSelect.h"
+#import "CityMo.h"
 
 @interface ReleaseTenderController ()<LCDatePickerDelegate,JFCityViewControllerDelegate,PhotoSelectDelegate>
 {
@@ -22,11 +24,13 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-/** 发票cell title数据源数组 */
 @property (nonatomic, copy) NSArray<NSString *> *cellTitles;
-/** 发票cell TextField placeHold数据源数组 */
 @property (nonatomic, strong) NSMutableArray<NSString *> *cellPlaceHolds;
 @property (nonatomic, strong) LCDatePicker * myDatePick;
+@property (nonatomic, strong) NSMutableArray *cellCntentText;
+@property (nonatomic, strong) CityMo *citymo;
+@property (nonatomic, strong) PhotoSelect * photo;
+@property (nonatomic, strong) NSMutableArray *Arr_Url;
 
 @end
 
@@ -36,22 +40,29 @@
     [super viewDidLoad];
     [self setUI];
     [self setTableView];
+    if ([self.receive_flag isEqualToString:@"EDIT"]) {
+        [self initEDITData];
+    }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeAll) name:@"REMOVEALL" object:nil];
     
     // Do any additional setup after loading the view from its nib.
 }
-
+-(void)removeAll{
+    [self.Arr_Url removeAllObjects];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 #pragma mark - setup
 -(void)setUI {
     self.navigationItem.title = @"发布招标";
     _cellTitles = @[@"项目标题", @"项目单位", @"招标所在地", @"开标地点", @"招标内容", @"",@"报名/投标时间",@"投标截止时间",@"招标金额",@"联系人",@"联系电话"];
     _cellPlaceHolds = [NSMutableArray arrayWithArray:@[@"请填写项目标题", @"请填写项目单位", @"请选择所在地", @"请填写开标地点", @"请填写招标内容",@"", @"请选择开始时间",@"请选择截止时间",@"请填写金额万元",@"请填写联系人姓名",@"请填写联系电话"]];
-    if (!_cellCntentText) {
-        _cellCntentText = [NSMutableArray arrayWithArray:@[@"", @"", @"", @"", @"",@"", @"",@"",@"",@"",@""]];
-    }
+    _cellCntentText = [NSMutableArray arrayWithArray:@[@"", @"", @"", @"", @"",@"", @"",@"",@"",@"",@""]];
     [self initDate];
 }
 - (void)setTableView {
@@ -77,9 +88,39 @@
     self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
     self.myDatePick.delegate  = self;
     [self.view addSubview:self.myDatePick];
-    if (!_Arr_Url) {
-        self.Arr_Url = [NSMutableArray array];
+    self.Arr_Url = [NSMutableArray array];
+}
+-(void)initEDITData{
+    _cellCntentText = [NSMutableArray arrayWithArray:@[
+                                                       self.firstMo.title,
+                                                       self.firstMo.company,
+                                                       self.firstMo.cityName,
+                                                       self.firstMo.tenderAddress,
+                                                       self.firstMo.content,
+                                                       self.firstMo.tenderImages,
+                                                       self.firstMo.tenderStartDate,
+                                                       self.firstMo.tenderEndDate,
+                                                       self.firstMo.amount,
+                                                       self.firstMo.contactName,
+                                                       self.firstMo.contactMobile
+                                                       ]];
+    
+    CityMo *mo = [[CityMo alloc]init];
+    mo.name = self.firstMo.cityName;
+    mo.ID = self.firstMo.cityCode;
+    mo.lat = self.firstMo.lat;
+    mo.lng = self.firstMo.lng;
+    self.citymo = mo;
+    
+    NSArray * arr = [self.firstMo.tenderImages componentsSeparatedByString:@";"];
+    for (int i=0; i<arr.count; i++) {
+        if ([arr[i] length]!=0) {
+            [self.photo.selectedPhotos addObject:arr[i]];
+            [self.Arr_Url addObject:arr[i]];
+            [self.photo.selectedAssets addObject:@{@"name":arr[i],@"filename":@"image",@"flag":self.receive_flag}];
+        }
     }
+    [self.tableView reloadData];
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -93,7 +134,7 @@
         self.photo = [[PhotoSelect alloc] initWithFrame:CGRectMake(0, 0, cell2.photoBgView.width, cell2.photoBgView.height) withController:self];
         self.photo.backgroundColor = [UIColor whiteColor];
         self.photo.PhotoDelegate = self;
-        self.photo.allowTakeVideo = YES;
+        self.photo.allowTakeVideo = NO;
         self.photo.maxCountTF = 3;
         self.photo.maxCountForRow = 3;
         [cell2.photoBgView addSubview: self.photo];
@@ -196,7 +237,7 @@
     self.cellCntentText[2] = name;
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:2 inSection:0];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
-
+    
     CityMo *mo = [[CityMo alloc]init];
     mo.name = name;
     mo.ID = ID;
@@ -207,16 +248,14 @@
 
 #pragma mark ----PhotoSelectDelegate-----
 -(void)selectImageArr:(NSArray *)imageArr{
-    NSLog(@"%lu",(unsigned long)imageArr.count);
-    self.imageArr = imageArr;
+    [self.Arr_Url addObjectsFromArray:imageArr];
 }
--(void)selectImage:(UIImage *) image arr:(NSArray *)imageArr{
-    NSLog(@"%lu",(unsigned long)imageArr.count);
-    self.imageArr = imageArr;
+-(void)selectImage:(UIImage *)image arr:(NSArray *)imageArr{
+    [self.Arr_Url addObjectsFromArray:imageArr];
 }
 -(void)deleteImage:(NSInteger) tag arr:(NSArray *)imageArr{
-    NSLog(@"%lu",(unsigned long)imageArr.count);
-    self.imageArr = imageArr;
+    [self.Arr_Url removeAllObjects];
+    [self.Arr_Url addObjectsFromArray:imageArr];
 }
 #pragma mark - 点击事件
 - (void)nextBtnClick:(UIButton *)btn {
@@ -227,40 +266,53 @@
             return;
         }
     }
-    if (self.imageArr.count!=0) {
-        [YTAlertUtil showHUDWithTitle:@"正在上传"];
+    
+    BOOL a = [self.receive_flag isEqualToString:@"EDIT"]?YES:NO;
+    __block NSString * urlStr = @"";//图片路径拼接
+    __block NSInteger index = 0;
+    if (self.Arr_Url.count!=0) {
+        for (int i=0; i<self.Arr_Url.count; i++) {
+            [YTAlertUtil showHUDWithTitle:a?@"正在更新":@"正在上传图片"];
+            if ([self.Arr_Url[i] isKindOfClass:[NSString class]]&&[self.Arr_Url[i] containsString:@"http"]) {
+                index++;
+                urlStr = [NSString stringWithFormat:@"%@;%@",self.Arr_Url[i],urlStr];
+                if (index==self.Arr_Url.count) {
+                    [YTAlertUtil hideHUD];
+                    [self pushVCWhithUrlStr:urlStr];
+                }
+            }else{
+                WeakSelf
+                [[QiniuUploader defaultUploader] uploadImageToQNFilePath:self.Arr_Url[i] withBlock:^(NSDictionary *url) {
+                    index++;
+                    urlStr = [NSString stringWithFormat:@"%@%@;%@",QINIUURL,url[@"hash"],urlStr];
+                    if (index==weakSelf.Arr_Url.count) {
+                        [YTAlertUtil hideHUD];
+                        [weakSelf pushVCWhithUrlStr:urlStr];
+                    }
+                }];
+            }
+        }
     }else{
         [YTAlertUtil showTempInfo:@"请上传招标附件"];
-        return;
-    }
-    __block int flag = 0;
-    WeakSelf
-    for (int i=0; i<self.imageArr.count; i++) {
-        [[QiniuUploader defaultUploader] uploadImageToQNFilePath:self.imageArr[i] withBlock:^(NSDictionary *url) {
-            flag++;
-            [weakSelf.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
-            if (flag == weakSelf.imageArr.count) {
-                [YTAlertUtil hideHUD];
-                weakSelf.cellCntentText[5] = [weakSelf.Arr_Url componentsJoinedByString:@","];
-                ZBJFViewController *zbjfVC = [[ZBJFViewController alloc]init];
-                zbjfVC.cellCntentText = weakSelf.cellCntentText;
-                zbjfVC.zbjeStr = weakSelf.cellCntentText[8];
-                zbjfVC.mo = weakSelf.citymo;
-                [weakSelf.navigationController pushViewController:zbjfVC animated:YES];
-            }
-        }];
     }
 }
-
+- (void)pushVCWhithUrlStr:(NSString *)urlStr {
+    self.cellCntentText[5] = urlStr;
+    ZBJFViewController *zbjfVC = [[ZBJFViewController alloc]init];
+    zbjfVC.cellCntentText = self.cellCntentText;
+    zbjfVC.zbjeStr = self.cellCntentText[8];
+    zbjfVC.mo = self.citymo;
+    [self.navigationController pushViewController:zbjfVC animated:YES];
+}
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

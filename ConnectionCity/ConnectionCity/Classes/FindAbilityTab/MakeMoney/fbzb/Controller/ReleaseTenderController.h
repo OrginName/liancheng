@@ -7,15 +7,11 @@
 //
 
 #import "BaseViewController.h"
-#import "PhotoSelect.h"
-#import "CityMo.h"
+#import "FirstControllerMo.h"
+
 
 @interface ReleaseTenderController : BaseViewController
-@property (nonatomic, strong) NSMutableArray *cellCntentText;
-@property (nonatomic, strong) CityMo *citymo;
-@property (nonatomic, strong) PhotoSelect * photo;
-@property (nonatomic, strong) NSArray *imageArr;
-@property (nonatomic, strong) NSMutableArray *Arr_Url;
+@property (nonatomic, strong) FirstControllerMo *firstMo;
 @property (nonatomic,strong) NSString * receive_flag;
 
 @end

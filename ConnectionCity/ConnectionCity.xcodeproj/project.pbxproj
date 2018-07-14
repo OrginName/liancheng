@@ -3719,9 +3719,6 @@
 				CEBEDD7720B17ED0000F9EE4 /* FootprintController.h */,
 				CEBEDD7C20B17ED0000F9EE4 /* FootprintController.m */,
 				CEBEDD7620B17ED0000F9EE4 /* FootprintController.xib */,
-				CE5C282720B972B9006A8332 /* ConsultativeNegotiationController.h */,
-				CE5C282820B972B9006A8332 /* ConsultativeNegotiationController.m */,
-				CE5C282920B972B9006A8332 /* ConsultativeNegotiationController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3737,9 +3734,6 @@
 				CE03EDEA20B43DC300F07D78 /* FootprintTabbleHeadV.h */,
 				CE03EDEB20B43DC400F07D78 /* FootprintTabbleHeadV.m */,
 				CE03EDE920B43DC300F07D78 /* FootprintTabbleHeadV.xib */,
-				CE5C282C20B9733A006A8332 /* ConsultativeNegotiationCell.h */,
-				CE5C282D20B9733A006A8332 /* ConsultativeNegotiationCell.m */,
-				CE5C282E20B9733A006A8332 /* ConsultativeNegotiationCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3864,6 +3858,9 @@
 		CE97DC0220B5B191003E46BD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CE5C282720B972B9006A8332 /* ConsultativeNegotiationController.h */,
+				CE5C282820B972B9006A8332 /* ConsultativeNegotiationController.m */,
+				CE5C282920B972B9006A8332 /* ConsultativeNegotiationController.xib */,
 				CE97DC0420B5B1CA003E46BD /* BidManageController.h */,
 				CE97DC0520B5B1CA003E46BD /* BidManageController.m */,
 				CE97DC0620B5B1CA003E46BD /* BidManageController.xib */,
@@ -3874,6 +3871,9 @@
 		CE97DC0320B5B191003E46BD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE5C282C20B9733A006A8332 /* ConsultativeNegotiationCell.h */,
+				CE5C282D20B9733A006A8332 /* ConsultativeNegotiationCell.m */,
+				CE5C282E20B9733A006A8332 /* ConsultativeNegotiationCell.xib */,
 				CE5C281820B94D84006A8332 /* BidManagerCell.h */,
 				CE5C281920B94D84006A8332 /* BidManagerCell.m */,
 				CE5C281A20B94D84006A8332 /* BidManagerCell.xib */,
@@ -5200,7 +5200,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5259,7 +5259,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

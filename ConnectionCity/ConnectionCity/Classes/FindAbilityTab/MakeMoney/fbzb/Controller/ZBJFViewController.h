@@ -13,5 +13,6 @@
 @property (nonatomic, strong) NSMutableArray *cellCntentText;
 @property (nonatomic, strong) NSString *zbjeStr;
 @property (nonatomic, strong) CityMo *mo;
+@property (nonatomic,strong) NSString * receive_flag;
 
 @end

@@ -9,7 +9,7 @@
 #import "ConsultativeNegotiationController.h"
 #import "ConsultativeNegotiationCell.h"
 
-@interface ConsultativeNegotiationController ()
+@interface ConsultativeNegotiationController ()<ConsultativeNegotiationCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *commitBtn;
 
@@ -45,11 +45,50 @@
     if (section == 0) {
         return 1;
     }else{
-        return 3;
+        return 5;
     }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ConsultativeNegotiationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ConsultativeNegotiationCell"];
+    cell.delegate = self;
+    if(indexPath.section==0&&indexPath.row==0){
+        cell.titleLab.text = @"招标金额";
+        cell.dataTF.text = _mo.amount;
+    }else if (indexPath.section==1){
+        switch (indexPath.row) {
+            case 0:
+            {
+                cell.titleLab.text = @"一期";
+                cell.dataTF.text = _mo.periodAmount1;
+                break;
+            }
+            case 1:
+            {
+                cell.titleLab.text = @"二期";
+                cell.dataTF.text = _mo.periodAmount2;
+                break;
+            }
+            case 2:
+            {
+                cell.titleLab.text = @"三期";
+                cell.dataTF.text = _mo.periodAmount3;
+                break;
+            }
+            case 3:
+            {
+                cell.titleLab.text = @"四期";
+                cell.dataTF.text = _mo.periodAmount4;
+                break;
+            }
+            case 4:
+            {
+                cell.titleLab.text = @"五期";
+                cell.dataTF.text = _mo.periodAmount5;
+                break;
+            }
+            default:
+                break;
+        }    }
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -79,9 +118,11 @@
     //返回区头视图
     return headerView;
 }
-
+#pragma mark - ConsultativeNegotiationCellDelegate
+- (void)consultativeNegotiationCell:(ConsultativeNegotiationCell *)cell selectedBtn:(UIButton *)btn {
+    btn.selected = !btn.selected;
+}
 #pragma mark - 点击事件
-
 - (IBAction)commitBtnClick:(id)sender {
     
 }

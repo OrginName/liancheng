@@ -12,6 +12,16 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    _firstStateLab.layer.cornerRadius = 10;
+    _firstStateLab.clipsToBounds = YES;
+    _secondStateLab.layer.cornerRadius = 10;
+    _secondStateLab.clipsToBounds = YES;
+    _thridStateLab.layer.cornerRadius = 10;
+    _thridStateLab.clipsToBounds = YES;
+    _fourStateLab.layer.cornerRadius = 10;
+    _fourStateLab.clipsToBounds = YES;
+    _fiveStateLab.layer.cornerRadius = 10;
+    _fiveStateLab.clipsToBounds = YES;
     _changeBtn.layer.cornerRadius = 3;
     _changeBtn.layer.borderWidth = 1;
     _changeBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -52,6 +62,8 @@
     _firstLab.text = model.periodAmount1;
     _secondLab.text = model.periodAmount2;
     _thridLab.text = model.periodAmount3;
+    _fourLab.text = model.periodAmount4;
+    _fiveLab.text = model.periodAmount5;
 }
 
 @end

@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分期或全额付款后的进度状态（此处可删除 此处为六种状态）" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHc-ml-UbD">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分期或全额付款后的进度状态（此处可删除 此处为六种状态）" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHc-ml-UbD">
                     <rect key="frame" x="10" y="10" width="355" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="tWA-wX-TnQ"/>
@@ -110,7 +110,15 @@
                 <constraint firstAttribute="trailing" secondItem="xHc-ml-UbD" secondAttribute="trailing" constant="10" id="yvo-Ba-cLe"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-5.5" y="-226.5"/>
+            <connections>
+                <outlet property="firstStateLab" destination="ol1-bL-e7u" id="AAw-Ow-goj"/>
+                <outlet property="fiveStateLab" destination="hcI-b8-pvp" id="MmX-xm-PmL"/>
+                <outlet property="fixStateLab" destination="K9j-bb-YRj" id="mmu-hH-EBy"/>
+                <outlet property="fourStateLab" destination="aqs-Gl-XgN" id="mZ0-9X-aZV"/>
+                <outlet property="secondStateLab" destination="puT-Vm-i5a" id="uFh-tj-4yZ"/>
+                <outlet property="thridStateLab" destination="1XL-9u-3dc" id="Zfe-Ed-5B7"/>
+            </connections>
+            <point key="canvasLocation" x="194.5" y="-221"/>
         </view>
     </objects>
 </document>

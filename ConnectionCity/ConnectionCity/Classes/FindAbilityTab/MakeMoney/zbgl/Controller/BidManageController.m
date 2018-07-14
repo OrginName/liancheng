@@ -73,88 +73,10 @@
     [YTAlertUtil showTempInfo:@"修改"];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:view];
     FirstControllerMo *mo = _dataArr[indexPath.row];
-    NSMutableArray *mutArr = [NSMutableArray arrayWithArray:@[
-                                                              mo.title,
-                                                              mo.company,
-                                                              mo.cityName,
-                                                              mo.tenderAddress,
-                                                              mo.content,
-                                                              mo.tenderImages,
-                                                              mo.tenderStartDate,
-                                                              mo.tenderEndDate,
-                                                              mo.amount,
-                                                              mo.contactName,
-                                                              mo.contactMobile
-                                                              ]];
     ReleaseTenderController *releasevc = [[ReleaseTenderController alloc]init];
-    releasevc.cellCntentText = mutArr;
-//    releasevc.imageArr = [mo.tenderImages componentsSeparatedByString:@","];
-    NSArray *arr = [mo.tenderImages componentsSeparatedByString:@","];
-    releasevc.Arr_Url = [NSMutableArray arrayWithArray:arr];
-    for (int i=0; i<arr.count; i++) {
-        if ([arr[i] length]!=0) {
-            [releasevc.photo.selectedPhotos addObject:arr[i]];
-            [releasevc.photo.selectedAssets addObject:@{@"name":arr[i],@"filename":@"image"}];
-            
-            
-        }
-    }
-    
-//    {
-//        _isPic = 1;
-//        _imageURL = self.receive_Moment.images;
-//        NSArray * arr = [self.receive_Moment.images componentsSeparatedByString:@";"];
-//        for (int i=0; i<arr.count; i++) {
-//            if ([arr[i] length]!=0) {
-//                [self.photo.selectedPhotos addObject:arr[i]];
-//                [self.photo.selectedAssets addObject:@{@"name":arr[i],@"filename":@"image"}];
-//                //                setProperty:ALAssetTypeVideo forKey:ALAssetPropertyType
-//                //                [self.photo.selectedAssets[i] setvalueforpr];
-//            }
-//        }
-//    }
-    
-    
-    CityMo *cityMo = [[CityMo alloc]init];
-    cityMo.ID = mo.cityCode;
-    cityMo.name = mo.cityName;
-    cityMo.lat = mo.lat;
-    cityMo.lng = mo.lng;
-    releasevc.citymo = cityMo;
+    releasevc.firstMo = mo;
+    releasevc.receive_flag = @"EDIT";
     [self.navigationController pushViewController:releasevc animated:YES];
-    
-//    NSDictionary *dic = @{
-//                          @"amount": self.cellCntentText[8],
-//                          @"areaCode": self.mo?self.mo.ID:@"",
-//                          @"company": self.cellCntentText[1],
-//                          @"contactMobile": self.cellCntentText[10],
-//                          @"contactName": self.cellCntentText[9],
-//                          @"content": self.cellCntentText[4],
-//                          @"depositAmount": mo20.data,
-//                          @"industryCategoryId": @"0",
-//                          @"industryCategoryName": @"string",
-//                          @"industryCategoryParentId": @"0",
-//                          @"industryCategoryParentName": @"string",
-//                          @"lat": self.mo?self.mo.lat:@"",
-//                          @"lng": self.mo?self.mo.lng:@"",
-//                          @"periodAmount1": mo0.data,
-//                          @"periodAmount2": mo1.data,
-//                          @"periodAmount3": mo2.data,
-//                          @"periodAmount4": mo3.data,
-//                          @"periodAmount5": mo4.data,
-//                          @"rewardAmount1": mo0.data,
-//                          @"rewardAmount2": mo1.data,
-//                          @"rewardAmount3": mo2.data,
-//                          @"rewardAmount4": mo3.data,
-//                          @"rewardAmount5": mo4.data,
-//                          @"tenderAddress": self.cellCntentText[3],
-//                          @"tenderEndDate": self.cellCntentText[7],
-//                          @"tenderImages": self.cellCntentText[5],
-//                          @"tenderStartDate": self.cellCntentText[6],
-//                          @"title": self.cellCntentText[0],
-//                          };
-//    _cellPlaceHolds = [NSMutableArray arrayWithArray:@[@"请填写项目标题", @"请填写项目单位", @"请选择所在地", @"请填写开标地点", @"请填写招标内容",@"", @"请选择开始时间",@"请选择截止时间",@"请填写金额万元",@"请填写联系人姓名",@"请填写联系电话"]];
-
 }
 - (void)bidManagerCell:(BidManagerCell *)view deleteBtnClick:(UIButton *)btn {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:view];
@@ -162,7 +84,10 @@
     [self v1TalentTenderDelete:@{@"id": mo.modelId}];
 }
 - (void)bidManagerCell:(BidManagerCell *)view negotiationBtnClick:(UIButton *)btn {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:view];
+    FirstControllerMo *mo = _dataArr[indexPath.row];
     ConsultativeNegotiationController *xsyjVC = [[ConsultativeNegotiationController alloc]init];
+    xsyjVC.mo = mo;
     [self.navigationController pushViewController:xsyjVC animated:YES];
 }
 #pragma mark - 接口请求

@@ -257,6 +257,37 @@
     } failure:nil];
 }
 
+//更新或发布招标
+//-(void)loadData:(NSString *)urlStr urlVideo:(NSString *)videoUrl{
+//    BOOL a = [self.receive_flag isEqualToString:@"EDIT"]?YES:NO;
+//    //
+//    NSDictionary * dic = @{
+//                           @"cityCode": @([[KUserDefults objectForKey:kUserCityID]integerValue]),
+//                           @"containsImage": @(_isPic),
+//                           @"containsVideo": @(_isVideo),
+//                           @"content": self.txt_Moment.text,
+//                           @"images": urlStr,
+//                           @"videos": videoUrl,
+//                           @"serviceCircleId":self.receive_Moment.ID?self.receive_Moment.ID:@""
+//                           };
+//    NSString * url;
+//    if (a) {
+//        url = v1ServiceCircleUpdate;
+//    }else{
+//        url = [self.flagStr isEqualToString:@"HomeSend"]?v1FriendCircleCreate:v1ServiceCircleCreate;
+//    }
+//    [YSNetworkTool POST:url params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+//        if (self.block) {
+//            self.block();
+//        }
+//        [self.navigationController popViewControllerAnimated:YES];
+//        [YTAlertUtil showHUDWithTitle:a?@"更新成功":@"发布成功"];
+//        [YTAlertUtil hideHUD];
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//
+//    }];
+//}
+
 
 /*
 #pragma mark - Navigation
