@@ -15,6 +15,7 @@
 #import "ServiceHomeNet.h"
 #import "TrvalInvitController.h"
 #import "SendTripController.h"
+#import "RCDChatViewController.h"
 @interface TravalController ()<UITableViewDelegate,UITableViewDataSource,JFCityViewControllerDelegate>
 {
     UIButton * _tmpBtn;
@@ -187,6 +188,23 @@
     cell.receive_Mo = self.data_Arr[indexPath.row];
     return cell;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
+    chatViewController.conversationType = ConversationType_PRIVATE;
+    NSString *title,*ID,*name;
+    trvalMo * mo = self.data_Arr[indexPath.row];
+    ID = [mo.user1.ID description];
+    name = mo.user1.nickName;
+    chatViewController.targetId = ID;
+    if ([ID isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
+        title = [RCIM sharedRCIM].currentUserInfo.name;
+    } else {
+        title = name;
+    }
+    chatViewController.title = title;
+    chatViewController.displayUserNameInCell = NO;
+    [self.navigationController pushViewController:chatViewController animated:YES];
+}
 - (IBAction)btnClick:(UIButton *)sender {
     sender.layer.borderWidth = 2;
     _tmpBtn.layer.borderWidth = 2;
@@ -196,7 +214,6 @@
         self.tab_Bottom.hidden = YES;
         self.trval.hidden = NO;
         [self.btn_PYYY setTitle:@"发布陪游" forState:UIControlStateNormal];
-       
     }else{
         self.tab_Bottom.hidden = NO;
         self.trval.hidden = YES;

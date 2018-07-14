@@ -362,7 +362,8 @@ static NSString * const v1MyAuthUsermobileAuthCreate = @"/v1/my/auth/user-mobile
 static NSString * const v1MyAuthUserskillAuthCreate = @"/v1/my/auth/user-skill-auth/create";
 //个人中心-认证中心-认证技能列表
 static NSString * const v1MyAuthUserskillAuthList = @"/v1/my/auth/user-skill-auth/list";
-
+//个人中心-我的收藏
+static NSString * const v1MyCollectPage = @"/v1/my/collect/page";
 #pragma mark - 我的钱包
 //兑换服币
 static NSString * const v1UserWalletExchange = @"/v1/user/wallet/exchange";

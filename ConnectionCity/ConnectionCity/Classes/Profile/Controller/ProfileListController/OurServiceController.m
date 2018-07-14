@@ -1,11 +1,7 @@
-//
 //  OurServiceController.m
 //  ConnectionCity
-//
 //  Created by umbrella on 2018/6/5.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
-//
-
 #import "OurServiceController.h"
 #import "SegmentPageHead.h"
 #import "CustomButton.h"
@@ -92,9 +88,7 @@
     return 10;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     OurServiceCell * cell = [OurServiceCell tempTableViewCellWith:tableView indexPath:indexPath currentTag:currentTag];
-    
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -152,7 +146,6 @@
     currentTag = sender.tag;
 }
 @end
-
 @implementation leftView
 @end
 @implementation rightView

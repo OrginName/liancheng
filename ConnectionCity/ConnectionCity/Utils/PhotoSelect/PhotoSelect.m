@@ -276,7 +276,7 @@
             ALAsset *alAsset = asset;
             isVideo = [[alAsset valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypeVideo];
         }
-        if ([[asset valueForKey:@"flag"] tz_containsString:@"EDIT"]&&[[asset valueForKey:@"filename"] tz_containsString:@"video"]) {
+        if (![asset isKindOfClass:[PHAsset class]]&&[[asset valueForKey:@"flag"] tz_containsString:@"EDIT"]&&[[asset valueForKey:@"filename"] tz_containsString:@"video"]) {
             [self singletapVideoCallBack];//视频预览
             return;
         }
@@ -292,7 +292,7 @@
             vc.model = model;
             [self.controll presentViewController:vc animated:YES completion:nil];
         } else { // preview photos / 预览照片
-            if ([[asset valueForKey:@"flag"] tz_containsString:@"EDIT"]) {
+            if (![asset isKindOfClass:[PHAsset class]]&&[[asset valueForKey:@"flag"] tz_containsString:@"EDIT"]) {
                 [self singleTapSmallViewCallback:cell.imageView];
                 return;
             }

@@ -19,6 +19,18 @@
     self.momentList = [NSMutableArray array];
     [self initTestInfo];
     [self setUI];
+    [self loadData];
+}
+-(void)loadData{
+    NSDictionary * dic = @{
+                           @"pageNumber": @1,
+                           @"pageSize": @15
+                           };
+    [YSNetworkTool POST:v1MyCollectPage params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 -(void)setUI{
     self.navigationItem.title = @"收藏";

@@ -12,6 +12,7 @@
 #import "AllDicMo.h"
 #import "CircleNet.h"
 #import "EvaluationController.h"
+#import "RCDChatViewController.h"
 @interface MommentPlayerController ()<LPAVPlayerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *lab_Zan;
 @property (weak, nonatomic) IBOutlet UILabel *like_Zan;
@@ -125,7 +126,7 @@
 }
 //分享
 -(void)ShareBtn{
-    [YTAlertUtil showTempInfo:@"分享"];
+//    [YTAlertUtil showTempInfo:@"分享"];
     [YSShareTool share];
 }
 - (IBAction)BtnClcik:(UIButton *)sender {
@@ -189,13 +190,22 @@
 }
 //点赞
 -(void)dianzanClick{
-    [YTAlertUtil showTempInfo:@"点赞"];
+//    [YTAlertUtil showTempInfo:@"点赞"];
+    NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+    AllContentMo * mo = [arr[5] contentArr][4];;
+    [YSNetworkTool POST:v1CommonCommentAddlike params:@{@"type":@([self.moment.ID integerValue]),@"typeId":mo.value} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTAlertUtil showTempInfo:responseObject[@"message"]];
+        self.lab_Zan.text = KString(@"%d", [responseObject[@"data"] intValue]+1);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 //收藏
 -(void)likeClick{
     NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[4] contentArr][1];
     [YSNetworkTool POST:v1CommonCollectCreate params:@{@"type":@([self.moment.ID integerValue]),@"typeId":mo.value} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+//        self.like_Zan.text = KString(@"%d", [responseObject[@"data"] intValue]+1);
         [YTAlertUtil showTempInfo:responseObject[@"message"]];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -203,7 +213,20 @@
 }
 //私信
 -(void)sixinClick{
-    [YTAlertUtil showTempInfo:@"私信"];
+    RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
+    chatViewController.conversationType = ConversationType_PRIVATE;
+    NSString *title,*ID,*name;
+    ID = [self.moment.userId description];
+    name = self.moment.userMo.nickName;
+    chatViewController.targetId = ID;
+    if ([ID isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
+        title = [RCIM sharedRCIM].currentUserInfo.name;
+    } else {
+        title = name;
+    }
+    chatViewController.title = title;
+    chatViewController.displayUserNameInCell = NO;
+    [self.navigationController pushViewController:chatViewController animated:YES];
 }
 -(CustomPlayer *)playView{
     if (!_playView) {

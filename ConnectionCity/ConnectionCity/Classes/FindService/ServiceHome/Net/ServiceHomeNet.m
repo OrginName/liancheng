@@ -127,6 +127,7 @@
             mo.ID = responseObject[@"data"][@"content"][i][@"id"];
             mo.description1 = responseObject[@"data"][@"content"][i][@"description"];
             mo.user1 = [UserMo mj_objectWithKeyValues:mo.user];
+            mo.user1.ID = mo.user[@"id"];
             [arr addObject:mo];
         }
         sucBlock(arr);
