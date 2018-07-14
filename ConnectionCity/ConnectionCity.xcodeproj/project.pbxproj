@@ -3923,10 +3923,10 @@
 		CE9B9A5720E7DC68005C47B2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CE9B9A5820E7DC68005C47B2 /* FirstControllerMo.m */,
+				CE9B9A5B20E7DC68005C47B2 /* TenderRecordsMo.h */,
 				CE9B9A5920E7DC68005C47B2 /* TenderRecordsMo.m */,
 				CE9B9A5A20E7DC68005C47B2 /* FirstControllerMo.h */,
-				CE9B9A5B20E7DC68005C47B2 /* TenderRecordsMo.h */,
+				CE9B9A5820E7DC68005C47B2 /* FirstControllerMo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";

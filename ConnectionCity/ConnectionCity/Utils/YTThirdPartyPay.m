@@ -48,18 +48,30 @@
                               sign:(NSString *)sign {
     
     PayReq *request = [[PayReq alloc] init];
+    request.openID = appId;
     request.partnerId = partnerId;
     request.prepayId = prepayId;
     request.package = @"Sign=WXPay";
     request.nonceStr = nonceStr;
-    NSDate *datenow = [NSDate date];
-    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]];
-    UInt32 timeStamp =[timeSp intValue];
-    request.timeStamp = timeStamp;
-    request.sign = sign;
+//    NSDate *datenow = [NSDate date];
+//    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]];
+//    UInt32 timeStamp =[timeSp intValue];
+//    request.timeStamp = timeStamp;
 //    request.sign = [[self class] createMD5SingForPay:appId partnerid:partnerId prepayid:prepayId package:@"Sign=WXPay" noncestr:nonceStr timestamp:timeStamp];
+    request.sign = sign;
     [WXApi sendReq:request];
     
+//    PayReq *request = [[PayReq alloc] init];
+//    request.partnerId = @"1509344051";
+//    request.prepayId = @"wx14094535999165e5e3b15b513524442048";
+//    request.package = @"Sign=WXPay";
+//    request.nonceStr = @"F50pwMvLrkp3lmOr";
+//    NSDate *datenow = [NSDate date];
+//    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]];
+//    UInt32 timeStamp =[timeSp intValue];
+//    request.timeStamp = timeStamp;
+//    request.sign = @"914C4E5732F73A4CED8F0AD24364F58A3920AAC24FFD2564B73D4E110877852F";
+//    [WXApi sendReq:request];
 }
 //生成签名
 + (NSString *)createMD5SingForPay:(NSString *)appid_key partnerid:(NSString *)partnerid_key prepayid:(NSString *)prepayid_key package:(NSString *)package_key noncestr:(NSString *)noncestr_key timestamp:(UInt32)timestamp_key {

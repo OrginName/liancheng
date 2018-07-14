@@ -10,6 +10,7 @@
 #import "BidderCell.h"
 #import "BidderSectionHeadV.h"
 #import "FirstControllerMo.h"
+#import "RCDHttpTool.h"
 
 @interface BidderController ()<UITableViewCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -78,6 +79,16 @@
 #pragma mark - UITableViewCellDelegate
 - (void)bidderCell:(BidderCell *)cell addFrendBtnClick:(UIButton *)btn {
     [YTAlertUtil showTempInfo:@"加好友"];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    FirstControllerMo *firstMo = _dataArr[indexPath.section];
+    TenderRecordsMo *tendMo = firstMo.tenderRecords[indexPath.row];
+    WeakSelf
+    [RCDHTTPTOOL requestFriend:tendMo.user.modelId complete:^(BOOL result) {
+        if (result) {
+            [YTAlertUtil showTempInfo:@"添加成功"];
+            [YSRefreshTool beginRefreshingWithView:weakSelf.tableView];
+        }
+    }];
 }
 - (void)bidderCell:(BidderCell *)cell selectedBtnClick:(UIButton *)btn {
     [YTAlertUtil showTempInfo:@"选中"];

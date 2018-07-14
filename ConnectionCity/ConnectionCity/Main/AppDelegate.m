@@ -33,7 +33,7 @@
 #define QQ_APPID @"1106473725"
 #define QQ_APPKEY @"dTrtNRCsVY79nCwC"
 #define APPID_WEIXIN @"wxb773a629b959a9f9"
-#define APPSECRET_WEIXIN @"b5b4abb0a4367ec6fdbd8851e3d86bc5"
+#define APPSECRET_WEIXIN @"682ffe7c6b89c8eea9f30862ebdfc1ce"
 #define RONGCLOUD_IM_APPKEY @"3argexb63m7xe"// online key
 #define UMENG_APPKEY @"571edc9b67e58e362e001101"
 #define LOG_EXPIRE_TIME -7 * 24 * 60 * 60
@@ -246,6 +246,8 @@
                    break;
                    }
                    }];
+    //注册微信支付
+    [WXApi registerApp:APPID_WEIXIN];
     //开始监听网络状态
     [YSNetworkTool startMonitorNetwork];
     //通知键盘弹出状态

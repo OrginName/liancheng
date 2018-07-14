@@ -11,6 +11,7 @@
 #import "BiddInfoHeadView.h"
 #import "FirstControllerMo.h"
 #import "AllDicMo.h"
+#import "RCDChatViewController.h"
 
 @interface BiddInfoController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -100,7 +101,22 @@
     [self v1TalentTenderRecordCreate];
 }
 - (IBAction)dialogueBtnClick:(id)sender {
-    [YTAlertUtil showTempInfo:@"对话"];
+//    [YTAlertUtil showTempInfo:@"对话"];
+    RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
+    chatViewController.conversationType = ConversationType_PRIVATE;
+    NSString *title,*ID,*name;
+    ID = self.mo.user.modelId;
+    name = self.mo.user.nickName;
+    chatViewController.targetId = ID;
+    if ([ID isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
+        title = [RCIM sharedRCIM].currentUserInfo.name;
+    } else {
+        title = name;
+    }
+    chatViewController.title = title;
+//        chatViewController.needPopToRootView = YES;
+    chatViewController.displayUserNameInCell = NO;
+    [self.navigationController pushViewController:chatViewController animated:YES];
 }
 - (IBAction)focusOnBtnClick:(id)sender {
     //[YTAlertUtil showTempInfo:@"关注"];
