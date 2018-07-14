@@ -44,11 +44,13 @@
     currentTag = 1;
 }
 //加载数据
--(void)loadData:(NSInteger)a tab:(UITableView *)tab{
+-(void)loadData:(NSDictionary *)dic1 tab:(UITableView *)tab{
     NSDictionary * dic = @{
+                           @"orderCommentStatus": @([dic1[@"1"] intValue]),//订单评论状态
+                           @"orderPayStatus": @([dic1[@"2"] intValue]),//订单支付状态
+                           @"orderStatus": @([dic1[@"3"] intValue]),//订单状态
                            @"pageNumber": @(_page),
                            @"pageSize": @15,
-                           @"status": @(a)
                            };
     [ProfileNet requstMyService:dic flag:_tmpBtn.tag block:^(NSMutableArray *successArrValue) {
         if (_page==1) {
@@ -104,12 +106,13 @@
         if (i==0) {
             [tableview.mj_header beginRefreshing];
         }
+        NSDictionary * dic = [self dic:i];
         tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             _page=1;
-            [self loadData:i tab:tableview];
+            [self loadData:dic tab:tableview];
         }];
         tableview.mj_footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
-            [self loadData:i tab:tableview];
+            [self loadData:dic tab:tableview];
         }];
         tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
         tableview.backgroundColor = [UIColor whiteColor];
@@ -118,16 +121,46 @@
     self.tab_Arr = arr;
     return arr;
 }
+-(NSDictionary *)dic:(NSInteger)i{
+    NSDictionary * dic = @{};
+    if (i==0) {//待付款
+        dic = @{@"1": @0,//订单评论状态
+                @"2": @0,//订单支付状态
+                @"3": @0//订单状态};
+                };
+    }else if(i==1){//待接单
+        dic = @{@"1": @0,//订单评论状态
+                @"2": @1,//订单支付状态
+                @"3": @10//订单状态};
+                };
+    }else if (i==2){//待赴约
+        dic = @{@"1": @0,//订单评论状态
+                @"2": @1,//订单支付状态
+                @"3": @15//订单状态};
+                };
+    }else if (i==3){//待评价
+        dic = @{@"1": @0,//订单评论状态
+                @"2": @1,//订单支付状态
+                @"3": @30//订单状态};
+                };
+    }else if (i==4){//已完成
+        dic = @{@"1": @1,//订单评论状态
+                @"2": @1,//订单支付状态
+                @"3": @50//订单状态};
+                };
+    }
+    return dic;
+}
 #pragma mark - delegate
 - (void)scrollThroughIndex:(NSInteger)index {
-        NSLog(@"scroll through %@",@(index));
+//        NSLog(@"scroll through %@",@(index));
 }
 - (void)selectedIndex:(NSInteger)index {
-        NSLog(@"select %@",@(index));
-    NSInteger a = 10+index*10;
+//    NSLog(@"select %@",@(index));
     _currentIndex = index;
     UITableView * tab = self.tab_Arr[index];
-    [self loadData:a tab:tab];
+    NSDictionary * dic = [self dic:index];
+    [self loadData:dic tab:tab];
 }
 - (IBAction)btn_Click:(UIButton *)sender {
     [self.pageView removeFromSuperview];

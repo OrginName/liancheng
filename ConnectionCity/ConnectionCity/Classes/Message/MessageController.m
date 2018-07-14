@@ -181,7 +181,6 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
     self.navigationController.navigationBar.hidden= NO;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     [self.navigationController.navigationBar setBackgroundImage:
@@ -203,6 +202,10 @@
     [self initData];
 }
 -(void)initData{
+    if ([KUserDefults objectForKey:KAllDic]!=nil) {
+        //        NSString * str = [KUserDefults objectForKey:kUserCityID];
+        return;
+    }
     [YSNetworkTool POST:dictionaryDictionaryAll params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray * arr1 = [NSMutableArray array];
         for (int i=0; i<[responseObject[@"data"] count]; i++) {

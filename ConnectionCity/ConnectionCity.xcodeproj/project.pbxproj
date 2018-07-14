@@ -107,6 +107,7 @@
 		72A3F48B20E3BA32005BA873 /* CircleNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72A3F48A20E3BA32005BA873 /* CircleNet.m */; };
 		72B1D84E20F645D50001FF43 /* ConnectionMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B1D84D20F645D50001FF43 /* ConnectionMo.m */; };
 		72B1D85220F79CC60001FF43 /* ProfileNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B1D85120F79CC60001FF43 /* ProfileNet.m */; };
+		72B1D85520FA78600001FF43 /* myServiceMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B1D85420FA78600001FF43 /* myServiceMo.m */; };
 		72BAB42A20B03A8C00496D29 /* BulidTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42820B03A8B00496D29 /* BulidTeamCell.m */; };
 		72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */; };
 		72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */; };
@@ -787,6 +788,8 @@
 		72B1D84D20F645D50001FF43 /* ConnectionMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectionMo.m; sourceTree = "<group>"; };
 		72B1D85020F79CC60001FF43 /* ProfileNet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileNet.h; sourceTree = "<group>"; };
 		72B1D85120F79CC60001FF43 /* ProfileNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileNet.m; sourceTree = "<group>"; };
+		72B1D85320FA78600001FF43 /* myServiceMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myServiceMo.h; sourceTree = "<group>"; };
+		72B1D85420FA78600001FF43 /* myServiceMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myServiceMo.m; sourceTree = "<group>"; };
 		72BAB42720B03A8B00496D29 /* BulidTeamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulidTeamCell.h; sourceTree = "<group>"; };
 		72BAB42820B03A8B00496D29 /* BulidTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulidTeamCell.m; sourceTree = "<group>"; };
 		72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BulidTeamCell.xib; sourceTree = "<group>"; };
@@ -3702,6 +3705,8 @@
 				CEE68C4820ECFAFC00233AE3 /* TravelInvite.m */,
 				CEE68C4A20ED23B800233AE3 /* tourismMo.h */,
 				CEE68C4B20ED23B800233AE3 /* tourismMo.m */,
+				72B1D85320FA78600001FF43 /* myServiceMo.h */,
+				72B1D85420FA78600001FF43 /* myServiceMo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -4723,6 +4728,7 @@
 				722D253B20AA76D400AB3863 /* JFCityViewController.m in Sources */,
 				8D8E4ED720C937D200C3D537 /* NKColorSwitch.m in Sources */,
 				72EBB8DB20C81CA500F670E9 /* AccountManageCell.m in Sources */,
+				72B1D85520FA78600001FF43 /* myServiceMo.m in Sources */,
 				729BA6FE20A32F0B009713FD /* CustomMap.m in Sources */,
 				8DE465BC20EDECC2009730F7 /* RCDContactViewController.m in Sources */,
 				8DB42FDC20A57DBC00C4EBF8 /* FilterCell.m in Sources */,
@@ -5200,7 +5206,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5259,7 +5265,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
