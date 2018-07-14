@@ -37,6 +37,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeAll) name:@"REMOVEALL" object:nil];
 }
 -(void)removeAll{
+//    [self.photo.selectedPhotos removeAllObjects];
+//    [self.photo.selectedAssets removeAllObjects];
     [self.Arr_images removeAllObjects];
 }
 -(void)initData{
@@ -193,5 +195,8 @@
         self.photo.maxCountTF = 8;
         _videoUrl = @"";
     }
+}
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end

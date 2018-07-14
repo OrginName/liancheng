@@ -428,7 +428,6 @@
             [self.PhotoDelegate selectImageArr:photos];
         }
     }];
-    
     [self.controll presentViewController:imagePickerVc animated:YES completion:nil];
 }
 #pragma mark - Click Event 删除按钮事件
@@ -448,11 +447,14 @@
 }
 #pragma mark - UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    id asset = self.selectedAssets[buttonIndex];
-    if (![asset isKindOfClass:[PHAsset class]]&&[[asset valueForKey:@"flag"] tz_containsString:@"EDIT"]) {
-        [self.selectedPhotos removeAllObjects];
-        [self.selectedAssets removeAllObjects];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"REMOVEALL" object:nil];
+    if (self.selectedAssets.count!=0) {
+        id asset = self.selectedAssets[buttonIndex];
+        if (![asset isKindOfClass:[PHAsset class]]&&[[asset valueForKey:@"flag"] tz_containsString:@"EDIT"]) {
+            [self.selectedPhotos removeAllObjects];
+            [self.selectedAssets removeAllObjects];
+            [self.collectionView reloadData];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"REMOVEALL" object:nil];
+        }
     }
     if (buttonIndex == 0) { // take photo / 去拍照
         [self takePhoto];
