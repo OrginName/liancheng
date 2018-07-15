@@ -20,6 +20,13 @@
     }
     return self;
 }
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    self.txt_view.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.txt_view.layer.cornerRadius = 5;
+    self.btn_TJ.layer.borderColor = [UIColor orangeColor].CGColor;
+    self.btn_TJ.layer.borderWidth = 1;
+}
 - (IBAction)FirstTanClick:(UIButton *)sender {
     if (sender.tag==5) {
         

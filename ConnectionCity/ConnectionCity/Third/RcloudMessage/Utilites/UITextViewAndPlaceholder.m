@@ -58,6 +58,7 @@
         self.showsVerticalScrollIndicator = YES;
         CGSize size = CGSizeMake(0, 600.0f);
         [self setContentSize:size];
+        self.placeholderLabel.font = [UIFont systemFontOfSize:14];
     }
 
     return self;

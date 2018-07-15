@@ -38,16 +38,6 @@ static NSArray * btnTitleArr1;
     if (self.delegate && [self.delegate respondsToSelector:@selector(cellBtnClick:)]) {
         [self.delegate cellBtnClick:self];
     }
-    if ([self.btn_status.titleLabel.text isEqualToString:btnTitleArr1[0]]) {
-        [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:@[@"支付宝",@"微信"] multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
-            if (idx==0) {
-                [YTThirdPartyPay v1Pay:@{@"orderNo": self.lab_orderNo.text,@"payType":kAlipay}];
-            }else{
-//                [YTThirdPartyPay v1Pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kWechat}]
-            }
-        } cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
-        } completion:nil];
-    }
 }
 -(void)setMo:(myServiceMo *)mo{
     _mo = mo;

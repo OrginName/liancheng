@@ -65,7 +65,7 @@
 }
 //天生我才必有用的按钮点击
 - (IBAction)btn_TS:(UIButton *)sender {
-    self.first = [[[NSBundle mainBundle] loadNibNamed:@"FirstTanView" owner:nil options:nil] lastObject];
+    self.first = [[[NSBundle mainBundle] loadNibNamed:@"FirstTanView" owner:nil options:nil] firstObject];
     self.first.frame = CGRectMake(20, 0, kScreenWidth-40, 310);
     self.first.messController = self;
     self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.first];

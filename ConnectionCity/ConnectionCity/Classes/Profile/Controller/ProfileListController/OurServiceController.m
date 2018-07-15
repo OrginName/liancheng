@@ -7,6 +7,8 @@
 #import "CustomButton.h"
 #import "OurServiceCell.h"
 #import "ProfileNet.h"
+#import "FirstTanView.h"
+#import "RefineView.h"
 @interface OurServiceController ()<MLMSegmentPageDelegate,UITableViewDelegate,UITableViewDataSource,CellClickDelegate>
 {
     NSArray *list,*list1;
@@ -16,6 +18,8 @@
     NSInteger _currentIndex;
     int _page;
 }
+@property (nonatomic,strong) RefineView * refine;
+@property (nonatomic,strong) FirstTanView * first;
 @property (nonatomic,strong)NSMutableArray * tab_Arr;
 @property (weak, nonatomic) IBOutlet CustomButton *btn_All;
 @property (strong, nonatomic) UIScrollView *scrollHead;
@@ -29,6 +33,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alipayNotice:) name:NOTI_ALI_PAY_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTab) name:NOTI_WEI_XIN_PAY_SUCCESS object:nil];
+}
+#pragma mark - alipayNotice
+- (void)alipayNotice:(NSNotification *)notification {
+    if ([[[notification object] objectForKey:@"userInfo"] integerValue] == 9000) {
+        //支付成功
+        [self reloadData];
+    }else{
+        //支付失败
+        
+    };
+    
+}
+//微信
+-(void)reloadTab{
+    [self reloadData];
+}
+//刷新数据
+-(void)reloadData{
+    UITableView * tab = self.tab_Arr[_currentIndex];
+    [tab reloadData];
 }
 -(void)setUI{
     self.title = @"我的服务";
@@ -44,10 +70,26 @@
     currentTag = 1;
 }
 - (void)cellBtnClick:(UITableViewCell *)cell{
+    UITableView * tab = (UITableView *)self.tab_Arr[_currentIndex];
     OurServiceCell * cell1 = (OurServiceCell *)cell;
-//    if (cell1) {
-//        <#statements#>
-//    }
+    NSIndexPath * index = [tab indexPathForCell:cell1];
+    myServiceMo * mo = self.data_Arr[index.row];
+    if ([cell1.btn_status.titleLabel.text isEqualToString:@"缴费"]) {
+        [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:@[@"支付宝",@"微信"] multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
+            if (idx==0) {
+                [YTThirdPartyPay v1Pay:@{@"orderNo": mo.orderNo,@"payType":kAlipay}];
+            }else{
+                [YTThirdPartyPay v1Pay:@{@"orderNo": mo.orderNo,@"payType":kWechat}];
+            }
+        } cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
+        } completion:nil];
+    }else if(_tmpBtn.tag==1&&[cell1.btn_status.titleLabel.text isEqualToString:@"取消"]){//我提供的服务取消
+        self.first = [[NSBundle mainBundle] loadNibNamed:@"FirstTanView" owner:nil options:nil][1];
+        self.first.frame = CGRectMake(10, 0, kScreenWidth-20, 235);
+//        self.first.messController = self;
+        self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.first];
+        [self.refine alertSelectViewshow];
+    }
 }
 //加载数据
 -(void)loadData:(NSDictionary *)dic1 tab:(UITableView *)tab{
