@@ -31,7 +31,11 @@
     if (self = [super initWithFrame:frame]) {
         self.controller = control;
         [self setUI];
-        NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"PICTXT"]];
+        NSArray * arr = @[];
+        if ([self.flagStr isEqualToString:@"HomeSend"]){
+           arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"PICHOME"]];
+        }else
+           arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"PICTXT"]];
         [self defultData:arr];
         [self initTestInfo]; 
         _page=1;
@@ -180,6 +184,9 @@
         [weakSelf.mj_header endRefreshing];
         [weakSelf.mj_footer endRefreshing];
         [weakSelf.momentList addObjectsFromArray:successArrValue];
+        if ([self.flagStr isEqualToString:@"HomeSend"]) {
+            [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:weakSelf.momentList] forKey:@"PICHOME"];
+        }else
         [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:weakSelf.momentList] forKey:@"PICTXT"];
         [weakSelf reloadData];
     } FailErrBlock:^(NSError *failValue) {
@@ -287,6 +294,7 @@
 //分享
 -(void)didShareMoment:(MomentCell *)cell{
     NSLog(@"%ld",(long)cell.tag);
+    [YSShareTool share];
 }
 //私信
 -(void)didLetterMoment:(MomentCell *)cell{
@@ -352,7 +360,7 @@
     [UIView animateWithDuration:duration.doubleValue animations:^{
         [UIView setAnimationBeginsFromCurrentState:YES];
         [UIView setAnimationCurve:[curve intValue]];
-        weakSelf.mainView.center = CGPointMake(weakSelf.mainView.center.x, keyBoardEndY+20);   // keyBoardEndY的坐标包括了状态栏的高度，要减去
+        weakSelf.mainView.center = CGPointMake(weakSelf.mainView.center.x, keyBoardEndY);   // keyBoardEndY的坐标包括了状态栏的高度，要减去
         
     }];
 }

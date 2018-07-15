@@ -9,11 +9,19 @@
 #import "myServiceMo.h"
 
 @implementation myServiceMo
-
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"ID":@"id"};
+}
++ (NSDictionary *)mj_objectClassInArray {
+    return @{@"obj":[myServiceObj class],@"reserveUser":[UserMo class]};
+}
 @end
-
-
 @implementation myServiceObj
-
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"ID":@"id"};
+}
++ (NSDictionary *)mj_objectClassInArray {
+    return @{@"user":[UserMo class],@"serviceCategoryName":[ServiceCategoryNameModel class]};
+}
 @end
 

@@ -8,7 +8,14 @@
 
 #import "OurServiceCell.h"
 @interface OurServiceCell()
-@property (weak, nonatomic) IBOutlet UIButton *btn_status;
+@property (weak, nonatomic) IBOutlet UILabel *lab_orderNo;
+@property (weak, nonatomic) IBOutlet UILabel *lab_name;
+@property (weak, nonatomic) IBOutlet UIImageView *image_head;
+@property (weak, nonatomic) IBOutlet UILabel *lab_sumPrice;
+@property (weak, nonatomic) IBOutlet UILabel *lab_price;
+@property (weak, nonatomic) IBOutlet UILabel *lab_title;
+@property (weak, nonatomic) IBOutlet UILabel *lab_Time;
+@property (weak, nonatomic) IBOutlet UILabel *lab_FWH;
 @property (weak, nonatomic) IBOutlet UILabel *lab_tipStatus;
 @property (weak, nonatomic) IBOutlet UILabel *lab_evaluation;
 @property (weak, nonatomic) IBOutlet UILabel *lab_num;
@@ -21,11 +28,37 @@ static NSArray * btnTitleArr1;
 +(void)initialize{
     labArr = @[@"待付款",@"待接单",@"待赴约",@"待完成",@"已履约"];
     labArr1 = @[@"待缴费",@"待接单",@"待赴约",@"服务中",@"服务结束"];
-    btnTitleArr = @[@"",@"",@"",@"",@""];
-    btnTitleArr1 = @[@"",@"",@"",@"",@""];
+    btnTitleArr = @[@"取消",@"接单",@"赴约",@"终止服务"];
+    btnTitleArr1 = @[@"缴费",@"取消",@"履约",@"评价"];
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
+}
+- (IBAction)btn_Click:(UIButton *)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cellBtnClick:)]) {
+        [self.delegate cellBtnClick:self];
+    }
+    if ([self.btn_status.titleLabel.text isEqualToString:btnTitleArr1[0]]) {
+        [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:@[@"支付宝",@"微信"] multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
+            if (idx==0) {
+                [YTThirdPartyPay v1Pay:@{@"orderNo": self.lab_orderNo.text,@"payType":kAlipay}];
+            }else{
+//                [YTThirdPartyPay v1Pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kWechat}]
+            }
+        } cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
+        } completion:nil];
+    }
+}
+-(void)setMo:(myServiceMo *)mo{
+    _mo = mo;
+    self.lab_FWH.text = mo.ID;
+    self.lab_orderNo.text = mo.orderNo;
+    self.lab_Time.text = mo.serviceTime;
+    self.lab_title.text = mo.obj.title?mo.obj.title:@"无";
+    self.lab_price.text = [NSString stringWithFormat:@"¥%@%@x%@",mo.obj.price,mo.obj.typeName,mo.num];
+    self.lab_sumPrice.text = [NSString stringWithFormat:@"合计:¥%.2f",[mo.obj.price floatValue]*[mo.num intValue]];
+    [self.image_head sd_setImageWithURL:[NSURL URLWithString:mo.reserveUser.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    self.lab_name.text = mo.reserveUser.nickName;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -47,9 +80,15 @@ static NSArray * btnTitleArr1;
     }
     if (tag==1) {
         cell.lab_tipStatus.text = labArr[tableView.tag-1000];
-    }else
+        if (tableView.tag<1004) {
+            [cell.btn_status setTitle:btnTitleArr[tableView.tag-1000] forState:UIControlStateNormal];
+        }
+    }else{
+        if (tableView.tag<1004) {
+            [cell.btn_status setTitle:btnTitleArr1[tableView.tag-1000] forState:UIControlStateNormal];
+        }
         cell.lab_tipStatus.text = labArr1[tableView.tag-1000];
-    
+    }
     return cell;
 }
 @end

@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    if ([self.receiveMo.userMo.ID isEqualToString:[[YSAccountTool userInfo]modelId]]) {
+    if ([[self.receiveMo.userMo.ID description] isEqualToString:[[YSAccountTool userInfo]modelId]]) {
         
     }
 }

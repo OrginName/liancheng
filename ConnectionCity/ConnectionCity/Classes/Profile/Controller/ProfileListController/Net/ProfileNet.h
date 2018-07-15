@@ -13,8 +13,9 @@
 typedef void (^SuccessArrBlock) (NSMutableArray * successArrValue);
 typedef void (^SuccessDicBlock) (NSDictionary * successDicValue);
 typedef void (^FailDicBlock) (NSString * failValue);
+typedef void (^FailErrorBlock) (NSError * error);
 @interface ProfileNet : NSObject
 //发布的服务接口
-+(void)requstMyService:(NSDictionary *)param flag:(NSInteger)flag block:(SuccessArrBlock) sucBloc withFailBlock:(FailDicBlock)failBlock;
++(void)requstMyService:(NSDictionary *)param flag:(NSInteger)flag block:(SuccessArrBlock) sucBloc withFailBlock:(FailErrorBlock)failBlock;
 
 @end

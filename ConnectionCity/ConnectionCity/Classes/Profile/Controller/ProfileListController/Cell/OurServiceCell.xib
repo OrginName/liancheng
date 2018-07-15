@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,12 +19,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="181.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服务编号:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebv-yU-Abh">
-                        <rect key="frame" x="16" y="11" width="57" height="16"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="陪你领罗杭州风采" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gb-qR-19C">
                         <rect key="frame" x="16" y="48" width="123" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -137,7 +131,23 @@
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="btn_Click:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sKI-Dg-WWr"/>
+                        </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服务编号:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebv-yU-Abh">
+                        <rect key="frame" x="16" y="11" width="57" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fy1-fB-OG6">
+                        <rect key="frame" x="262" y="37" width="42" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="5f1-JH-793" firstAttribute="top" secondItem="psw-yW-ewH" secondAttribute="bottom" constant="8" symbolic="YES" id="3vM-J6-vdK"/>
@@ -180,11 +190,19 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btn_status" destination="5f1-JH-793" id="r8O-RB-Gam"/>
+                <outlet property="image_head" destination="NvS-XP-JRz" id="1Gp-kv-UzR"/>
+                <outlet property="lab_FWH" destination="t2i-wB-39c" id="TjT-d9-Yfg"/>
+                <outlet property="lab_Time" destination="oP6-dg-KdD" id="y68-g0-qPd"/>
                 <outlet property="lab_evaluation" destination="zXF-wE-Y5H" id="E25-Aa-Qfw"/>
+                <outlet property="lab_name" destination="8Bg-Wo-yR4" id="Kfo-On-q9y"/>
                 <outlet property="lab_num" destination="mpF-v6-qG6" id="g1k-pP-jZj"/>
+                <outlet property="lab_orderNo" destination="fy1-fB-OG6" id="V3Q-As-YsW"/>
+                <outlet property="lab_price" destination="7Ch-b7-4Zp" id="VzU-zV-SdU"/>
+                <outlet property="lab_sumPrice" destination="gng-w8-Thp" id="qNL-Rp-Y4F"/>
                 <outlet property="lab_tipStatus" destination="ogQ-Rq-0wK" id="2bP-lR-7Zu"/>
+                <outlet property="lab_title" destination="6gb-qR-19C" id="nUn-O7-kOE"/>
             </connections>
-            <point key="canvasLocation" x="-36" y="-39"/>
+            <point key="canvasLocation" x="0.0" y="-37"/>
         </tableViewCell>
     </objects>
     <resources>

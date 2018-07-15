@@ -7,19 +7,21 @@
 //
 
 #import "ProfileNet.h"
-#import "ServiceMo.h"
+#import "myServiceMo.h"
 @implementation ProfileNet
 //发布的服务接口
-+(void)requstMyService:(NSDictionary *)param flag:(NSInteger)flag block:(SuccessArrBlock) sucBloc withFailBlock:(FailDicBlock)failBlock{
++(void)requstMyService:(NSDictionary *)param flag:(NSInteger)flag block:(SuccessArrBlock) sucBloc withFailBlock:(FailErrorBlock)failBlock{
     NSString * url = flag==1?v1MyServiceOrderPublishedPage:v1MySerivceOrderRequiredPage;
+    NSMutableArray * arr1 = [NSMutableArray array];
     [YSNetworkTool POST:url params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray * arr = responseObject[@"data"][@"content"];
         for (int i=0; i<arr.count; i++) {
-            ServiceMo * service = [ServiceMo mj_objectWithKeyValues:arr[i]];
-            
+            myServiceMo * service = [myServiceMo mj_objectWithKeyValues:arr[i]];
+            [arr1 addObject:service];
         }
+        sucBloc(arr1);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+        failBlock(error);
     }];
 }
 

@@ -19,12 +19,13 @@
         NSMutableArray * arr = [NSMutableArray array];
         NSArray * Arr = responseObject[@"data"][@"content"];
         if (Arr.count==0) {
-            [YTAlertUtil showTempInfo:@"暂无数据"];
+//            [YTAlertUtil showTempInfo:@"暂无数据"];
         }else{
             for (int i=0; i<Arr.count; i++) {
                 Moment * moment = [Moment  mj_objectWithKeyValues:Arr[i]];
                 moment.ID = Arr[i][@"id"];
                 moment.userMo = [UserMo mj_objectWithKeyValues:Arr[i][@"obj"][@"user"]];
+                moment.userMo.ID = Arr[i][@"obj"][@"user"][@"id"];
                 NSMutableArray * commentArr = [NSMutableArray array];
                 for (int j=0; j<[Arr[i][@"obj"][@"comments"] count]; j++) {
                     Comment * comment = [Comment mj_objectWithKeyValues:Arr[i][@"obj"][@"comments"][j]];
