@@ -166,7 +166,7 @@ static NSString *const groupMemberTableName = @"GROUPMEMBERTABLE";
         [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
             for (RCUserInfo *user in userList) {
                 NSString *insertSql = @"REPLACE INTO USERTABLE (userid, name, portraitUri) VALUES (?, ?, ?)";
-                if (user.portraitUri.length <= 0) {
+                if ([YSTools dx_isNullOrNilWithObject:user.portraitUri] || user.portraitUri.length <= 0) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         user.portraitUri = [RCDUtilities defaultUserPortrait:user];
                     });

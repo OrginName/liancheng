@@ -64,6 +64,39 @@
     _thridLab.text = model.periodAmount3;
     _fourLab.text = model.periodAmount4;
     _fiveLab.text = model.periodAmount5;
+    
+//    switch (model.payStatus1) {
+//        case 10://待付款
+//        {
+//            break;
+//        }
+//        case 10://待付款
+//        {
+//            break;
+//        }
+//        case 10://待付款
+//        {
+//            break;
+//        }
+//        case 10://待付款
+//        {
+//            break;
+//        }
+//        case 10://待付款
+//        {
+//            break;
+//        }
+//        case 10://待付款
+//        {
+//            break;
+//        }
+//
+//        default:
+//            break;
+//    }
+    
+    
+    
 }
 
 @end

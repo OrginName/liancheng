@@ -14,6 +14,7 @@
                 <outlet property="btn_SelectOpen" destination="HQf-Di-eOg" id="Aij-wa-fab"/>
                 <outlet property="lab_Phone" destination="ASP-PT-ajY" id="J9G-A6-hQH"/>
                 <outlet property="txt_Phone" destination="XNu-yJ-llZ" id="YUs-eR-F0W"/>
+                <outlet property="verificationCodeTF" destination="VIt-vM-Ehz" id="hbN-wh-wF8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="view_Bottom2" destination="uHT-w5-Qja" id="7Az-gr-4jI"/>
                 <outlet property="view_bottom1" destination="aLg-oc-Jhm" id="Z27-io-JsS"/>
@@ -34,9 +35,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="273" height="50"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDo-iD-8RM">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDo-iD-8RM">
                                     <rect key="frame" x="273" y="0.0" width="82" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="82" id="4Sk-u4-sHV"/>
@@ -45,6 +46,9 @@
                                     <state key="normal" title="获取验证码">
                                         <color key="titleColor" red="0.91910606620000002" green="0.36992591619999998" blue="0.35516113040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="getVerificationCodeBtnClick:" destination="-1" eventType="touchUpInside" id="yMl-pS-5HV"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -172,8 +176,8 @@
                                     <color key="textColor" red="0.23526731133460999" green="0.23530775308609009" blue="0.23526179790496826" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13233919756" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASP-PT-ajY">
-                                    <rect key="frame" x="113.5" y="20" width="95" height="18"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASP-PT-ajY">
+                                    <rect key="frame" x="113.5" y="29" width="0.0" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.93033462762832642" green="0.62574440240859985" blue="0.29300987720489502" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -191,7 +195,7 @@
                                     </constraints>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

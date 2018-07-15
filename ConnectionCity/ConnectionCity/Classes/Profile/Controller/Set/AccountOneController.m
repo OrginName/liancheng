@@ -8,6 +8,8 @@
 
 #import "AccountOneController.h"
 #import "AccountSecurityController.h"
+#import "privateUserInfoModel.h"
+
 @interface AccountOneController ()
 @property (weak, nonatomic) IBOutlet UILabel *lab_LCH;
 @property (weak, nonatomic) IBOutlet UILabel *lab_phone;
@@ -37,6 +39,7 @@
 
     }
     self.lab_LCH.text = kAccount.userId;
+    self.lab_phone.text = kUserinfo.mobile;
 }
 - (IBAction)BDPhoneClick:(UIButton *)sender {
     if (sender.tag==1) {

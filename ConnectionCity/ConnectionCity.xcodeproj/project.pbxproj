@@ -581,6 +581,7 @@
 		CEE5251520F7907C00DD6179 /* MyQRController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5251320F7907C00DD6179 /* MyQRController.m */; };
 		CEE5251620F7907C00DD6179 /* MyQRController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE5251420F7907C00DD6179 /* MyQRController.xib */; };
 		CEE5251920F9039F00DD6179 /* YSShareTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5251820F9039F00DD6179 /* YSShareTool.m */; };
+		CEE5252020FA689800DD6179 /* BidStateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE5251F20FA689800DD6179 /* BidStateTools.m */; };
 		CEE68C4320ECF50A00233AE3 /* ServiceMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4220ECF50A00233AE3 /* ServiceMo.m */; };
 		CEE68C4620ECF55A00233AE3 /* ServiceCategoryNameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4520ECF55A00233AE3 /* ServiceCategoryNameModel.m */; };
 		CEE68C4920ECFAFC00233AE3 /* TravelInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4820ECFAFC00233AE3 /* TravelInvite.m */; };
@@ -1692,6 +1693,8 @@
 		CEE5251420F7907C00DD6179 /* MyQRController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyQRController.xib; sourceTree = "<group>"; };
 		CEE5251720F9039F00DD6179 /* YSShareTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YSShareTool.h; sourceTree = "<group>"; };
 		CEE5251820F9039F00DD6179 /* YSShareTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YSShareTool.m; sourceTree = "<group>"; };
+		CEE5251E20FA689800DD6179 /* BidStateTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidStateTools.h; sourceTree = "<group>"; };
+		CEE5251F20FA689800DD6179 /* BidStateTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidStateTools.m; sourceTree = "<group>"; };
 		CEE68C4120ECF50A00233AE3 /* ServiceMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceMo.h; sourceTree = "<group>"; };
 		CEE68C4220ECF50A00233AE3 /* ServiceMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceMo.m; sourceTree = "<group>"; };
 		CEE68C4420ECF55A00233AE3 /* ServiceCategoryNameModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceCategoryNameModel.h; sourceTree = "<group>"; };
@@ -3846,18 +3849,11 @@
 		CE97DC0020B5B188003E46BD /* zbgl */ = {
 			isa = PBXGroup;
 			children = (
+				CEE5251D20FA689800DD6179 /* Model */,
 				CE97DC0220B5B191003E46BD /* Controller */,
-				CE97DC0120B5B191003E46BD /* Models */,
 				CE97DC0320B5B191003E46BD /* View */,
 			);
 			path = zbgl;
-			sourceTree = "<group>";
-		};
-		CE97DC0120B5B191003E46BD /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		CE97DC0220B5B191003E46BD /* Controller */ = {
@@ -4263,6 +4259,15 @@
 				CEE5250A20F771D400DD6179 /* MYScanView.h */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CEE5251D20FA689800DD6179 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEE5251E20FA689800DD6179 /* BidStateTools.h */,
+				CEE5251F20FA689800DD6179 /* BidStateTools.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CEF041CB20EA6EDA00C00314 /* Models */ = {
@@ -5046,6 +5051,7 @@
 				8DE4662720EDF51C009730F7 /* RCDPrivateSettingsTableViewController.m in Sources */,
 				8D22C37520C7E54D004DC8F4 /* TransactionRecordController.m in Sources */,
 				72EBB8D120C8184700F670E9 /* SetController.m in Sources */,
+				CEE5252020FA689800DD6179 /* BidStateTools.m in Sources */,
 				CE2C401D20F1EAF100D33B17 /* DubTimeSlectorController.m in Sources */,
 				8DE4662420EDF4F0009730F7 /* RCDPrivateSettingViewController.m in Sources */,
 				8DE4664C20EDF71B009730F7 /* RCLocationConvert.m in Sources */,

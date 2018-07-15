@@ -35,7 +35,7 @@
 #define APPID_WEIXIN @"wxb773a629b959a9f9"
 #define APPSECRET_WEIXIN @"682ffe7c6b89c8eea9f30862ebdfc1ce"
 #define RONGCLOUD_IM_APPKEY @"3argexb63m7xe"// online key
-#define UMENG_APPKEY @"571edc9b67e58e362e001101"
+#define UMENG_APPKEY @"5b4a423c8f4a9d1b3a00047e"
 #define LOG_EXPIRE_TIME -7 * 24 * 60 * 60
 @interface AppDelegate ()<RCIMReceiveMessageDelegate,RCIMConnectionStatusDelegate,RCWKAppInfoProvider,WXApiDelegate>
 @end

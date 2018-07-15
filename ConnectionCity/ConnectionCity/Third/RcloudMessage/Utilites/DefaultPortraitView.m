@@ -40,7 +40,7 @@
     UILabel *firstCharacterLabel = [[UILabel alloc] init];
 
     NSString *firstLetter = nil;
-    if (nickname.length > 0) {
+    if (![YSTools dx_isNullOrNilWithObject:nickname] && nickname.length > 0) {
         firstLetter = [nickname substringToIndex:1];
     } else {
         firstLetter = @"#";

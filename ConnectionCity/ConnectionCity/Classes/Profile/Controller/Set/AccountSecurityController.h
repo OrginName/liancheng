@@ -10,4 +10,6 @@
 
 @interface AccountSecurityController : BaseViewController
 @property (nonatomic,copy)NSString * str;
+@property (nonatomic, strong) NSString *phoneStr;
+
 @end

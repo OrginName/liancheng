@@ -26,7 +26,7 @@
             break;
         }
         case YTThirdPartyPaymentWechat: {  //微信支付
-        [[self class] p_payByWeChatWithPartnerId:dictionary[@"mch_id"] prepayId:dictionary[@"prepay_id"] appId:dictionary[@"appid"] nonceStr:dictionary[@"nonce_str"] sign:dictionary[@"sign"]];
+            [[self class] p_payByWeChatWithPartnerId:dictionary[@"mch_id"] prepayId:dictionary[@"prepay_id"] appId:dictionary[@"appid"] nonceStr:dictionary[@"nonce_str"] sign:dictionary[@"sign"] timestamp:dictionary[@"timestamp"]];
             break;
         }
     }
@@ -45,7 +45,8 @@
                           prepayId:(NSString *)prepayId
                              appId:(NSString *)appId
                           nonceStr:(NSString *)nonceStr
-                              sign:(NSString *)sign {
+                              sign:(NSString *)sign
+                         timestamp:(NSString *)timestamp {
     
     PayReq *request = [[PayReq alloc] init];
     request.openID = appId;
@@ -56,8 +57,9 @@
 //    NSDate *datenow = [NSDate date];
 //    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]];
 //    UInt32 timeStamp =[timeSp intValue];
-//    request.timeStamp = timeStamp;
-//    request.sign = [[self class] createMD5SingForPay:appId partnerid:partnerId prepayid:prepayId package:@"Sign=WXPay" noncestr:nonceStr timestamp:timeStamp];
+    UInt32 time = (UInt32)timestamp;
+    request.timeStamp = time;
+//    request.sign = [[self class] createMD5SingForPay:appId partnerid:partnerId prepayid:prepayId package:@"Sign=WXPay" noncestr:nonceStr timestamp:time];
     request.sign = sign;
     [WXApi sendReq:request];
     
