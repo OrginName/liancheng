@@ -7,6 +7,7 @@
 //
 
 #import "MommentPlayerController.h"
+//#import <IQKeyboardManager.h>
 #import "CustomPlayer.h"
 #import "Utility.h"
 #import "AllDicMo.h"
@@ -61,6 +62,18 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissKeyBoard:) name:UIKeyboardWillHideNotification object:nil];
    
 }
+//- (void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear:animated];
+//    //写入这个方法后,这个页面将没有这种效果
+//    [IQKeyboardManager sharedManager].enable = NO;
+//    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
+//}
+//- (void)viewWillDisappear:(BOOL)animated{
+//    [super viewWillDisappear:animated];
+//    //最后还设置回来,不要影响其他页面的效果
+//    [IQKeyboardManager sharedManager].enable = YES;
+//    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
+//}
 #pragma mark ----发送按钮-----
 -(void)btnClicked{
     NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];

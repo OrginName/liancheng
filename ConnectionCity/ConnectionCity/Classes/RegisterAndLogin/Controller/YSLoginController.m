@@ -140,7 +140,7 @@
         [YSAccountTool saveUserinfo:userInfoModel];
         [self loginRongCloud:userInfoModel.nickName userId:userInfoModel.modelId token:self.token password:self.passwordTF.text];
         RCUserInfo * user = [[RCUserInfo alloc] initWithUserId:userInfoModel.modelId name:userInfoModel.nickName portrait:userInfoModel.headImage]; 
-        if (!user.portraitUri || user.portraitUri.length <= 0) {
+        if ([YSTools dx_isNullOrNilWithObject:user.portraitUri] || user.portraitUri.length <= 0) {
             user.portraitUri = [RCDUtilities defaultUserPortrait:user];
         }
         [[RCDataBaseManager shareInstance] insertUserToDB:user];

@@ -41,7 +41,7 @@
     }
     [YSNetworkTool POST:v1UserWalletRecharge params:@{@"amount": _amountTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic = responseObject[kData];
-        [YTThirdPartyPay v1Pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kWechat}];
+        [YTThirdPartyPay v1Pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kAlipay}];
     } failure:nil];
 }
 

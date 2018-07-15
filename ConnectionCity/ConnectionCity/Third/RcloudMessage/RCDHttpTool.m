@@ -165,7 +165,7 @@
                     user.userId = [dic[@"id"] description];
                     user.name = dic[@"nickName"];
                     user.portraitUri = dic[@"headImage"]?dic[@"headImage"]:@"";
-                    if (!user.portraitUri || user.portraitUri.length <= 0) {
+                    if ([YSTools dx_isNullOrNilWithObject:user.portraitUri] || user.portraitUri.length <= 0) {
                         user.portraitUri = [RCDUtilities defaultUserPortrait:user];
                     }
                     [[RCDataBaseManager shareInstance] insertUserToDB:user];

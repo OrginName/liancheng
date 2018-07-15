@@ -399,7 +399,7 @@ static NSString *const groupMemberTableName = @"GROUPMEMBERTABLE";
             for (RCUserInfo *user in groupMemberList) {
                 NSString *insertSql = @"REPLACE INTO GROUPMEMBERTABLE (groupid, userid, "
                 @"name, portraitUri) VALUES (?, ?, ?, ?)";
-                if (user.portraitUri.length <= 0) {
+                if ([YSTools dx_isNullOrNilWithObject:user.portraitUri] || user.portraitUri.length <= 0) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         user.portraitUri = [RCDUtilities defaultUserPortrait:user];
                     });

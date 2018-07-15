@@ -283,11 +283,13 @@
             return NO;
         }
     } else if ([object isKindOfClass:[NSNumber class]]) {
+        /*
         if ([object isEqualToNumber:@0]) {
             return YES;
         } else {
             return NO;
         }
+         */
     }
     return NO;
 }
