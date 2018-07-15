@@ -12,6 +12,7 @@
 #import "FriendVideo.h"
 #import "FriendMyselfTab.h"
 #import "SendMomentController.h"
+#import <IQKeyboardManager.h>
 static NSInteger i;//判断当前返回按钮点击次数
 @interface FriendCircleController ()
 {
@@ -28,6 +29,7 @@ static NSInteger i;//判断当前返回按钮点击次数
 @implementation FriendCircleController
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [IQKeyboardManager sharedManager].enable = NO;
     self.tabBarController.tabBar.hidden = YES;
     i=0; 
 }
@@ -131,5 +133,12 @@ static NSInteger i;//判断当前返回按钮点击次数
     }else{
         [self.tabBarController.navigationController popViewControllerAnimated:YES];
     }
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    UITextField * text = (UITextField *)[self.frendTab.mainView viewWithTag:10];
+    [text resignFirstResponder];
+    [IQKeyboardManager sharedManager].enable = YES;
+    [self.frendTab.mainView removeFromSuperview];
 }
 @end

@@ -26,6 +26,7 @@
     if ([[self.receiveMo.userMo.ID description] isEqualToString:[[YSAccountTool userInfo]modelId]]) {
         
     }
+    
 }
 -(void)ClearAll{
 

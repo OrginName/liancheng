@@ -21,7 +21,6 @@
     NSInteger _page;
     NSInteger _CurrentTag;
 }
-@property (nonatomic,strong) UIView * mainView;
 @property (nonatomic,strong)UIImageView * headImage;
 @property (nonatomic,strong) NSMutableArray *momentList;
 @property (nonatomic,strong) UIViewController * controller;
@@ -40,6 +39,9 @@
         [self initTestInfo]; 
         _page=1;
         _CurrentTag= 0;
+//        [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeContentViewPoint:) name:UIKeyboardWillShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissKeyBoard:) name:UIKeyboardWillHideNotification object:nil];
     }
     return self;
 }
@@ -50,22 +52,24 @@
     self.delegate = self;
     self.dataSource = self;
     self.tableHeaderView = self.headImage;
-    self.mainView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 40)];
-    self.mainView.backgroundColor =[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-    [KWindowView addSubview:self.mainView];
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 5, self.mainView.width-65, self.mainView.height-10)];
+    [self setMainView];
+}
+-(void)setMainView{
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 40)];
+    view.backgroundColor =[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    [KWindowView addSubview:view];
+    self.mainView = view;
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 5, view.width-65, view.height-10)];
     textField.tag=10;
     textField.font = [UIFont systemFontOfSize:14];
     textField.placeholder = @"请输入评论内容";
     textField.borderStyle = UITextBorderStyleRoundedRect;
-    [self.mainView addSubview:textField];
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-50, 0, 40, self.mainView.height)];
+    [view addSubview:textField];
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(view.width-50, 0, 40, view.height)];
     [btn setTitle:@"发送" forState:UIControlStateNormal];
     btn.backgroundColor = [UIColor clearColor];
     [btn addTarget:self action:@selector(btnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.mainView addSubview:btn];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeContentViewPoint:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissKeyBoard:) name:UIKeyboardWillHideNotification object:nil];
+    [view addSubview:btn];
 }
 #pragma mark----发送-------
 -(void)btnClicked{
@@ -286,6 +290,7 @@
 //评论
 -(void)didCommentMoment:(MomentCell *)cell{
     NSLog(@"%ld",(long)cell.tag);
+    [self setMainView];
     UITextField * txt  = (UITextField*)[self.mainView viewWithTag:10];
     txt.text = @"";
     [txt becomeFirstResponder];
@@ -343,13 +348,13 @@
 // 收缩键盘
 -(void)dismissKeyBoard:(NSNotification *)notification
 {
-    [self kebordY:notification];
+    [self kebordY:notification flag:1];
 }
 // 根据键盘状态，调整_mainView的位置
 - (void) changeContentViewPoint:(NSNotification *)notification{
-    [self kebordY:notification];
+    [self kebordY:notification flag:2];
 }
--(void)kebordY:(NSNotification *)notification{
+-(void)kebordY:(NSNotification *)notification flag:(int)a{
     NSDictionary *userInfo = [notification userInfo];
     NSValue *value = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
     CGFloat keyBoardEndY = value.CGRectValue.origin.y;  // 得到键盘弹出后的键盘视图所在y坐标
@@ -360,7 +365,7 @@
     [UIView animateWithDuration:duration.doubleValue animations:^{
         [UIView setAnimationBeginsFromCurrentState:YES];
         [UIView setAnimationCurve:[curve intValue]];
-        weakSelf.mainView.center = CGPointMake(weakSelf.mainView.center.x, keyBoardEndY);   // keyBoardEndY的坐标包括了状态栏的高度，要减去
+        weakSelf.mainView.center = CGPointMake(weakSelf.mainView.center.x, a==1?keyBoardEndY+20:keyBoardEndY-20);   // keyBoardEndY的坐标包括了状态栏的高度，要减去
         
     }];
 }

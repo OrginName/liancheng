@@ -7,7 +7,7 @@
 //
 
 #import "MommentPlayerController.h"
-//#import <IQKeyboardManager.h>
+#import <IQKeyboardManager.h>
 #import "CustomPlayer.h"
 #import "Utility.h"
 #import "AllDicMo.h"
@@ -44,36 +44,35 @@
     self.navigationItem.title = @"服务圈视频";
     [self.view addSubview:self.playView];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(ShareBtn) image:@"share-1" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, -10)];
-    self.mainView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 40)];
-    self.mainView.backgroundColor =[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-    [self.view addSubview:self.mainView];
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 5, self.mainView.width-65, self.mainView.height-10)];
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 40)];
+    view.backgroundColor =[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    [self.view addSubview:view];
+    self.mainView = view;
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 5, view.width-65, view.height-10)];
     textField.tag=10;
     textField.font = [UIFont systemFontOfSize:14];
     textField.placeholder = @"请输入评论内容";
     textField.borderStyle = UITextBorderStyleRoundedRect;
-    [self.mainView addSubview:textField];
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-50, 0, 40, self.mainView.height)];
+    [view addSubview:textField];
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-50, 0, 40, view.height)];
     [btn setTitle:@"发送" forState:UIControlStateNormal];
     btn.backgroundColor = [UIColor clearColor];
     [btn addTarget:self action:@selector(btnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.mainView addSubview:btn];
+    [view addSubview:btn];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeContentViewPoint:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissKeyBoard:) name:UIKeyboardWillHideNotification object:nil];
-   
 }
-//- (void)viewWillAppear:(BOOL)animated{
-//    [super viewWillAppear:animated];
-//    //写入这个方法后,这个页面将没有这种效果
-//    [IQKeyboardManager sharedManager].enable = NO;
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //写入这个方法后,这个页面将没有这种效果
+    [IQKeyboardManager sharedManager].enable = NO;
 //    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
-//}
-//- (void)viewWillDisappear:(BOOL)animated{
-//    [super viewWillDisappear:animated];
-//    //最后还设置回来,不要影响其他页面的效果
-//    [IQKeyboardManager sharedManager].enable = YES;
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [IQKeyboardManager sharedManager].enable = YES;
 //    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
-//}
+}
 #pragma mark ----发送按钮-----
 -(void)btnClicked{
     NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
@@ -103,13 +102,13 @@
 // 收缩键盘
 -(void)dismissKeyBoard:(NSNotification *)notification
 {
-    [self kebordY:notification];
+    [self kebordY:notification flag:1];
 }
 // 根据键盘状态，调整_mainView的位置
 - (void) changeContentViewPoint:(NSNotification *)notification{
-    [self kebordY:notification];
+    [self kebordY:notification flag:2];
 }
--(void)kebordY:(NSNotification *)notification{
+-(void)kebordY:(NSNotification *)notification flag:(int)a{
     NSDictionary *userInfo = [notification userInfo];
     NSValue *value = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
     CGFloat keyBoardEndY = value.CGRectValue.origin.y;  // 得到键盘弹出后的键盘视图所在y坐标
@@ -119,7 +118,7 @@
     [UIView animateWithDuration:duration.doubleValue animations:^{
         [UIView setAnimationBeginsFromCurrentState:YES];
         [UIView setAnimationCurve:[curve intValue]];
-        _mainView.center = CGPointMake(_mainView.center.x, keyBoardEndY);   // keyBoardEndY的坐标包括了状态栏的高度，要减去
+        _mainView.center = CGPointMake(_mainView.center.x,   a==1?keyBoardEndY+20:keyBoardEndY-64-20);   // keyBoardEndY的坐标包括了状态栏的高度，要减去
         
     }];
 }
