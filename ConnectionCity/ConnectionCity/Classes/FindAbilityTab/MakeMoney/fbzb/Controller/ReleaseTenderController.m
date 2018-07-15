@@ -299,6 +299,8 @@
 - (void)pushVCWhithUrlStr:(NSString *)urlStr {
     self.cellCntentText[5] = urlStr;
     ZBJFViewController *zbjfVC = [[ZBJFViewController alloc]init];
+    zbjfVC.receive_flag = self.receive_flag;
+    zbjfVC.tenderId = self.tenderId;
     zbjfVC.cellCntentText = self.cellCntentText;
     zbjfVC.zbjeStr = self.cellCntentText[8];
     zbjfVC.mo = self.citymo;

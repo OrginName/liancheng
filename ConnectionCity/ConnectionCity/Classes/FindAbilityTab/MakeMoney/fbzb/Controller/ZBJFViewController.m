@@ -82,7 +82,6 @@
     cell.delegate = self;
     cell.dataTF.delegate = self;
     cell.dataTF.tag = 1000+indexPath.row;
-    cell.dataTF.keyboardType = UIKeyboardTypeDecimalPad;
     InstallmentMo *mo = self.dataArr[indexPath.section][indexPath.row];
     cell.model = mo;
     if (indexPath.section!=1) {
@@ -215,16 +214,16 @@
 
      NSDictionary *dic = @{
      @"amount": self.cellCntentText[8],
-     @"areaCode": self.mo?self.mo.ID:@"",
+     @"areaCode": self.mo.ID?self.mo.ID:@"",
      @"company": self.cellCntentText[1],
      @"contactMobile": self.cellCntentText[10],
      @"contactName": self.cellCntentText[9],
      @"content": self.cellCntentText[4],
      @"depositAmount": mo20.data,
      @"industryCategoryId": @"0",
-     @"industryCategoryName": @"string",
+     @"industryCategoryName": @"",
      @"industryCategoryParentId": @"0",
-     @"industryCategoryParentName": @"string",
+     @"industryCategoryParentName": @"",
      @"lat": self.mo?self.mo.lat:@"",
      @"lng": self.mo?self.mo.lng:@"",
      @"periodAmount1": mo0.data,
@@ -242,12 +241,18 @@
      @"tenderImages": self.cellCntentText[5],
      @"tenderStartDate": self.cellCntentText[6],
      @"title": self.cellCntentText[0],
+     @"tenderId": self.tenderId?self.tenderId:@"",
      };
-     [self v1TalentTenderCreate:dic];
-    
+    BOOL a = [self.receive_flag isEqualToString:@"EDIT"]?YES:NO;
+    if (a) {
+        [self v1TalentTenderUpdate:dic];
+    }else{
+        [self v1TalentTenderCreate:dic];
+    }
 }
 
 #pragma mark - 接口请求
+//发布招标
 - (void)v1TalentTenderCreate:(NSDictionary *)dic{
     WeakSelf
     [YSNetworkTool POST:v1TalentTenderCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -256,38 +261,15 @@
         } completion:nil];
     } failure:nil];
 }
-
-//更新或发布招标
-//-(void)loadData:(NSString *)urlStr urlVideo:(NSString *)videoUrl{
-//    BOOL a = [self.receive_flag isEqualToString:@"EDIT"]?YES:NO;
-//    //
-//    NSDictionary * dic = @{
-//                           @"cityCode": @([[KUserDefults objectForKey:kUserCityID]integerValue]),
-//                           @"containsImage": @(_isPic),
-//                           @"containsVideo": @(_isVideo),
-//                           @"content": self.txt_Moment.text,
-//                           @"images": urlStr,
-//                           @"videos": videoUrl,
-//                           @"serviceCircleId":self.receive_Moment.ID?self.receive_Moment.ID:@""
-//                           };
-//    NSString * url;
-//    if (a) {
-//        url = v1ServiceCircleUpdate;
-//    }else{
-//        url = [self.flagStr isEqualToString:@"HomeSend"]?v1FriendCircleCreate:v1ServiceCircleCreate;
-//    }
-//    [YSNetworkTool POST:url params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-//        if (self.block) {
-//            self.block();
-//        }
-//        [self.navigationController popViewControllerAnimated:YES];
-//        [YTAlertUtil showHUDWithTitle:a?@"更新成功":@"发布成功"];
-//        [YTAlertUtil hideHUD];
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//
-//    }];
-//}
-
+//修改招标
+- (void)v1TalentTenderUpdate:(NSDictionary *)dic{
+    WeakSelf
+    [YSNetworkTool POST:v1TalentTenderUpdate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确认" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        } completion:nil];
+    } failure:nil];
+}
 
 /*
 #pragma mark - Navigation

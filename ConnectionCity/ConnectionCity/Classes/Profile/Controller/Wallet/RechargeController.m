@@ -39,24 +39,19 @@
         [YTAlertUtil showTempInfo:@"请填写充值金额"];
         return;
     }
-    WeakSelf
     [YSNetworkTool POST:v1UserWalletRecharge params:@{@"amount": _amountTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic = responseObject[kData];
-        [weakSelf pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kWechat}];
+        [YTThirdPartyPay v1Pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kWechat}];
     } failure:nil];
 }
-- (void)pay:(NSDictionary *)dic {
-    [YSNetworkTool POST:v1Pay params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        [YTThirdPartyPay payByThirdPartyWithPaymet:YTThirdPartyPaymentWechat dictionary:responseObject[kData]];
-    } failure:nil];
-}
+
 #pragma mark - alipayNotice
 - (void)alipayNotice:(NSNotification *)notification {
     if ([[[notification object] objectForKey:@"userInfo"] integerValue] == 9000) {
-        //支付失败
+        //支付成功
         
     }else{
-        //支付成功
+        //支付失败
         
     };
 

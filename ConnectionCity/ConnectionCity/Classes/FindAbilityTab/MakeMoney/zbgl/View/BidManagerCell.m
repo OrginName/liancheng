@@ -7,6 +7,7 @@
 //
 
 #import "BidManagerCell.h"
+#import "BidStateTools.h"
 
 @implementation BidManagerCell
 
@@ -64,39 +65,11 @@
     _thridLab.text = model.periodAmount3;
     _fourLab.text = model.periodAmount4;
     _fiveLab.text = model.periodAmount5;
-    
-//    switch (model.payStatus1) {
-//        case 10://待付款
-//        {
-//            break;
-//        }
-//        case 10://待付款
-//        {
-//            break;
-//        }
-//        case 10://待付款
-//        {
-//            break;
-//        }
-//        case 10://待付款
-//        {
-//            break;
-//        }
-//        case 10://待付款
-//        {
-//            break;
-//        }
-//        case 10://待付款
-//        {
-//            break;
-//        }
-//
-//        default:
-//            break;
-//    }
-    
-    
-    
+    _firstStateLab.text = [BidStateTools stateStrWithState:[model.payStatus1 integerValue]];
+    _secondStateLab.text = [BidStateTools stateStrWithState:[model.payStatus2 integerValue]];
+    _thridStateLab.text = [BidStateTools stateStrWithState:[model.payStatus3 integerValue]];
+    _fourStateLab.text = [BidStateTools stateStrWithState:[model.payStatus4 integerValue]];
+    _fiveStateLab.text = [BidStateTools stateStrWithState:[model.payStatus5 integerValue]];
 }
 
 @end

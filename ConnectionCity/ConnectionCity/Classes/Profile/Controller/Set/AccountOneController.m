@@ -40,13 +40,20 @@
     }
     self.lab_LCH.text = kAccount.userId;
     self.lab_phone.text = kUserinfo.mobile;
+    [self requestV1PrivateUserInfo];
 }
 - (IBAction)BDPhoneClick:(UIButton *)sender {
     if (sender.tag==1) {
         AccountSecurityController * account = [AccountSecurityController new];
         [self.navigationController pushViewController:account animated:YES];
     }else if(sender.tag==2){
-        [YTAlertUtil showTempInfo:@"邮箱绑定"];
+        //[YTAlertUtil showTempInfo:@"邮箱绑定"];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"输入邮件地址" message:@"如果你更改了邮件地址，需要对邮件地址重新进行验证" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
+        UITextField * firstTextField = [alertView textFieldAtIndex:0];
+        firstTextField.placeholder = @"请输入邮件地址";
+        [alertView show];
+        
     }else if (sender.tag==3){
         AccountOneController * account = [AccountOneController new];
         account.str = @"AccountTwo";
@@ -74,5 +81,44 @@
             [weakSelf.navigationController popViewControllerAnimated:YES];
         } completion:nil];
     } failure:nil];
+}
+//请求用户信息
+- (void)requestV1PrivateUserInfo {
+    //获取用户信息
+    WeakSelf
+    [YSNetworkTool POST:v1PrivateUserInfo params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
+        if ([YSTools dx_isNullOrNilWithObject:userInfoModel.email]) {
+            weakSelf.lab_Email.text = @"未绑定";
+        }else{
+            weakSelf.lab_Email.text = userInfoModel.email;
+        }
+    } failure:nil];
+}
+//保存用户信息
+- (void)requestPrivateUserUpdateWithDic:(NSDictionary *)dic{
+    WeakSelf
+    [YSNetworkTool POST:v1PrivateUserUpdate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
+        if ([YSTools dx_isNullOrNilWithObject:userInfoModel.email]) {
+            weakSelf.lab_Email.text = @"未绑定";
+        }else{
+            weakSelf.lab_Email.text = userInfoModel.email;
+        }
+    } failure:nil];
+}
+#pragma mark UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex NS_DEPRECATED_IOS(2_0, 9_0) {
+    if(buttonIndex == 1){
+        //获取警告框中输入框
+        UITextField *tf = [alertView textFieldAtIndex:0];
+        if([YSTools dx_isNullOrNilWithObject:tf.text]){
+            [MBProgressHUD showProgressHUDWithOnlyText:@"请输入邮件地址" view:self.view];
+            return;
+        }
+        //请求邮箱绑定接口
+        NSDictionary *dic = @{@"email": tf.text};
+        [self requestPrivateUserUpdateWithDic:dic];
+    }
 }
 @end

@@ -75,6 +75,7 @@
     FirstControllerMo *mo = _dataArr[indexPath.row];
     ReleaseTenderController *releasevc = [[ReleaseTenderController alloc]init];
     releasevc.firstMo = mo;
+    releasevc.tenderId = mo.modelId;
     releasevc.receive_flag = @"EDIT";
     [self.navigationController pushViewController:releasevc animated:YES];
 }

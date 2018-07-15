@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface BidStateTools : NSObject
-- (NSString *)stateStrWithState;
++ (NSString *)stateStrWithState:(NSInteger)state;
 
 @end

@@ -18,6 +18,16 @@
 @implementation YTThirdPartyPay
 
 #pragma mark - Pay by third party
++ (void)v1Pay:(NSDictionary *)dic {
+    [YSNetworkTool POST:v1Pay params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([kAlipay isEqualToString:dic[@"payType"]]) {
+            [YTThirdPartyPay payByThirdPartyWithPaymet:YTThirdPartyPaymentAlipay dictionary:responseObject[kData]];
+        }else if([kWechat isEqualToString:dic[@"payType"]]){
+            [YTThirdPartyPay payByThirdPartyWithPaymet:YTThirdPartyPaymentWechat dictionary:responseObject[kData]];
+        }
+    } failure:nil];
+}
+
 + (void)payByThirdPartyWithPaymet:(YTThirdPartyPayment)payment
                        dictionary:(NSDictionary *)dictionary {
     switch (payment) {
@@ -48,31 +58,42 @@
                               sign:(NSString *)sign
                          timestamp:(NSString *)timestamp {
     
+
+//    PayReq *request = [[PayReq alloc] init];
+//    request.partnerId = @"10000100";
+//    request.prepayId= @"1101000000140415649af9fc314aa427";
+//    request.package = @"Sign=WXPay";
+//    request.nonceStr= @"a462b76e7436e98e0ed6e13c64b4fd1c";
+//    request.timeStamp= @"1397527777";
+//    request.sign= @"582282D72DD2B03AD892830965F428CB16E7A256";
+//    [WXApi sendReq:request];
+    
     PayReq *request = [[PayReq alloc] init];
     request.openID = appId;
     request.partnerId = partnerId;
     request.prepayId = prepayId;
     request.package = @"Sign=WXPay";
     request.nonceStr = nonceStr;
+
 //    NSDate *datenow = [NSDate date];
 //    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]];
-//    UInt32 timeStamp =[timeSp intValue];
-    UInt32 time = (UInt32)timestamp;
-    request.timeStamp = time;
+//    UInt32 timeStamp =[timestamp intValue];
+//    UInt32 time = (UInt32)timestamp;
+//    request.timeStamp = time;
 //    request.sign = [[self class] createMD5SingForPay:appId partnerid:partnerId prepayid:prepayId package:@"Sign=WXPay" noncestr:nonceStr timestamp:time];
     request.sign = sign;
     [WXApi sendReq:request];
     
 //    PayReq *request = [[PayReq alloc] init];
 //    request.partnerId = @"1509344051";
-//    request.prepayId = @"wx14094535999165e5e3b15b513524442048";
+//    request.prepayId = @"wx1514280476214491ddcdd8821570453434";
 //    request.package = @"Sign=WXPay";
-//    request.nonceStr = @"F50pwMvLrkp3lmOr";
+//    request.nonceStr = @"ZEtcxti6DbweGviH";
 //    NSDate *datenow = [NSDate date];
 //    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]];
 //    UInt32 timeStamp =[timeSp intValue];
 //    request.timeStamp = timeStamp;
-//    request.sign = @"914C4E5732F73A4CED8F0AD24364F58A3920AAC24FFD2564B73D4E110877852F";
+//    request.sign = @"E030E7C38774E3FE57EF2CB8F797CE37";
 //    [WXApi sendReq:request];
 }
 //生成签名

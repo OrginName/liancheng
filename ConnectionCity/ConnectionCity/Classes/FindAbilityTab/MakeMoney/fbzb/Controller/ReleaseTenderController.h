@@ -12,6 +12,7 @@
 
 @interface ReleaseTenderController : BaseViewController
 @property (nonatomic, strong) FirstControllerMo *firstMo;
-@property (nonatomic,strong) NSString * receive_flag;
+@property (nonatomic, strong) NSString *receive_flag;
+@property (nonatomic, strong) NSString *tenderId;
 
 @end

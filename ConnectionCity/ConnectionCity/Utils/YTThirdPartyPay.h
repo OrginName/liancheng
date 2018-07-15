@@ -23,7 +23,8 @@ typedef NS_ENUM(NSInteger, YTThirdPartyPaymentType) {
 };
 /** 调起第三方支付类 */
 @interface YTThirdPartyPay : NSObject
-
+/** 后台统一下单接口 */
++ (void)v1Pay:(NSDictionary *)dic;
 /** 调起第三方支付统一接口 */
 + (void)payByThirdPartyWithPaymet:(YTThirdPartyPayment)payment
                        dictionary:(NSDictionary *)dictionary;

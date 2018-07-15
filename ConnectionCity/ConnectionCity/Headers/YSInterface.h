@@ -181,6 +181,8 @@ static NSString * const v1TalentTenderCommentCreate = @"/v1/talent/tender/commen
 static NSString * const v1TalentTenderFollowCreate = @"/v1/talent/tender/follow/create";
 //招标发布
 static NSString * const v1TalentTenderCreate = @"/v1/talent/tender/create";
+//修改招标
+static NSString * const v1TalentTenderUpdate = @"/v1/talent/tender/update";
 //赚外快-删除招标
 static NSString * const v1TalentTenderDelete = @"/v1/talent/tender/delete";
 //赚外快-保证金

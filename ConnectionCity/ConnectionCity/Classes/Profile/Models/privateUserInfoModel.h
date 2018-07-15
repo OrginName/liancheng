@@ -84,6 +84,8 @@
 @property (nonatomic, copy) NSString *isMobileAuth;
 /** <#educationName描述#> */
 @property (nonatomic, copy) NSString *educationName;
+/** <#educationName描述#> */
+@property (nonatomic, copy) NSString *email;
 /** <#genderName描述#> */
 @property (nonatomic, copy) NSString *genderName;
 /** <#statusName描述#> */

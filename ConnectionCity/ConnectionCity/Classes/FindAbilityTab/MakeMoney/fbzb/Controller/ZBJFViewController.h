@@ -14,5 +14,6 @@
 @property (nonatomic, strong) NSString *zbjeStr;
 @property (nonatomic, strong) CityMo *mo;
 @property (nonatomic,strong) NSString * receive_flag;
+@property (nonatomic, strong) NSString *tenderId;
 
 @end

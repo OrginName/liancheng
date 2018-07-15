@@ -46,6 +46,9 @@
     [super viewDidAppear:animated];
     //添加微信授权通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weixinAuthSuccess:) name:NOTI_WEI_XIN_AUTH_SUCCESS object:nil];
+    //展示账号密码
+    self.phoneTF.text = [kDefaults objectForKey:@"userPhone"];
+    self.passwordTF.text = [kDefaults objectForKey:@"userPwd"];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -195,6 +198,7 @@
     [KUserDefults setObject:password forKey:@"userPwd"];
     [KUserDefults setObject:token forKey:@"userToken"];
     [KUserDefults setObject:userId forKey:@"userId"];
+    [KUserDefults setObject:self.phoneTF.text forKey:@"userPhone"];
     [KUserDefults synchronize];
     //保存“发现”的信息
 //    [RCDHTTPTOOL getSquareInfoCompletion:^(NSMutableArray *result) {
