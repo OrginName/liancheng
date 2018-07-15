@@ -58,42 +58,33 @@
                               sign:(NSString *)sign
                          timestamp:(NSString *)timestamp {
     
-
-//    PayReq *request = [[PayReq alloc] init];
-//    request.partnerId = @"10000100";
-//    request.prepayId= @"1101000000140415649af9fc314aa427";
-//    request.package = @"Sign=WXPay";
-//    request.nonceStr= @"a462b76e7436e98e0ed6e13c64b4fd1c";
-//    request.timeStamp= @"1397527777";
-//    request.sign= @"582282D72DD2B03AD892830965F428CB16E7A256";
-//    [WXApi sendReq:request];
-    
     PayReq *request = [[PayReq alloc] init];
-    request.openID = appId;
     request.partnerId = partnerId;
     request.prepayId = prepayId;
     request.package = @"Sign=WXPay";
     request.nonceStr = nonceStr;
-
-//    NSDate *datenow = [NSDate date];
-//    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]];
-//    UInt32 timeStamp =[timestamp intValue];
-//    UInt32 time = (UInt32)timestamp;
-//    request.timeStamp = time;
-//    request.sign = [[self class] createMD5SingForPay:appId partnerid:partnerId prepayid:prepayId package:@"Sign=WXPay" noncestr:nonceStr timestamp:time];
+    request.timeStamp = [timestamp intValue];
     request.sign = sign;
     [WXApi sendReq:request];
     
+    
+    //    NSDate *datenow = [NSDate date];
+    //    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]];
+    //    UInt32 timeStamp =[timestamp intValue];
+    //    UInt32 time = (UInt32)timestamp;
+    //    request.timeStamp = time;
+    //    request.sign = [[self class] createMD5SingForPay:appId partnerid:partnerId prepayid:prepayId package:@"Sign=WXPay" noncestr:nonceStr timestamp:time];
+    
 //    PayReq *request = [[PayReq alloc] init];
 //    request.partnerId = @"1509344051";
-//    request.prepayId = @"wx1514280476214491ddcdd8821570453434";
+//    request.prepayId = @"wx15212756249518bb8c40bc240023063725";
 //    request.package = @"Sign=WXPay";
-//    request.nonceStr = @"ZEtcxti6DbweGviH";
+//    request.nonceStr = @"EBjOdzTki8X6jqxw";
 //    NSDate *datenow = [NSDate date];
 //    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[datenow timeIntervalSince1970]];
 //    UInt32 timeStamp =[timeSp intValue];
-//    request.timeStamp = timeStamp;
-//    request.sign = @"E030E7C38774E3FE57EF2CB8F797CE37";
+//    request.timeStamp = 1531661281;
+//    request.sign = @"D5700F0E6FCF8F235E2AA5F4923BF6CE";
 //    [WXApi sendReq:request];
 }
 //生成签名
