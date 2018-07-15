@@ -434,20 +434,20 @@
 
 - (NSArray *)getAllFriendList {
     NSMutableArray *friendList = [[NSMutableArray alloc] init];
-    NSMutableArray *userInfoList = [NSMutableArray arrayWithArray:[[RCDataBaseManager shareInstance] getAllFriends]];
-    for (RCDUserInfo *user in userInfoList) {
+//    NSMutableArray *userInfoList = [NSMutableArray arrayWithArray:[[RCDataBaseManager shareInstance] getAllFriends]];
+//    for (RCDUserInfo *user in userInfoList) {
 //        if ([user.status isEqualToString:@"20"]) {
-            [friendList addObject:user];
+//            [friendList addObject:user];
 //        }
-    }
-    if (friendList.count <= 0 && !self.hasSyncFriendList) {
+//    }
+//    if (friendList.count <= 0 && !self.hasSyncFriendList) {
         [RCDDataSource syncFriendList:[RCIM sharedRCIM].currentUserInfo.userId
                              complete:^(NSMutableArray *result) {
-                                 [result removeAllObjects];
+//                                 [result removeAllObjects];
                                  self.hasSyncFriendList = YES;
                                  [self sortAndRefreshWithList:result];
                              }];
-    }
+//    }
     //如有好友备注，则显示备注
     NSArray *resultList = [[RCDUserInfoManager shareInstance] getFriendInfoList:friendList];
 

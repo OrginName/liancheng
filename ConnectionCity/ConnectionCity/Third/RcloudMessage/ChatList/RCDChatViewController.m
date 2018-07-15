@@ -1044,7 +1044,6 @@ NSMutableDictionary *userInputStatus;
         }
     });
 }
-
 //显示消息发送时间的方法
 - (void)figureOutAllConversationDataRepository {
     for (int i = 0; i < self.conversationDataRepository.count; i++) {

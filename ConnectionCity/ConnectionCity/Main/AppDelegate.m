@@ -147,7 +147,7 @@
                                             privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
                                             userInfoModel.ID = responseObject[@"data"][@"id"];
                                             [YSAccountTool saveUserinfo:userInfoModel];
-                                            RCUserInfo * user = [[RCUserInfo alloc] initWithUserId:userInfoModel.modelId name:userInfoModel.nickName portrait:userInfoModel.headImage];
+                                            RCUserInfo * user = [[RCUserInfo alloc] initWithUserId:userInfoModel.modelId name:userInfoModel.nickName?userInfoModel.nickName:userInfoModel.modelId portrait:userInfoModel.headImage];
                                             //登录demoserver成功之后才能调demo 的接口
                                             [RCDDataSource syncGroups];
                                             [RCDDataSource syncFriendList:userId

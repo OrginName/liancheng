@@ -139,7 +139,7 @@
         self.token = userInfoModel.rongyunToken;
         [YSAccountTool saveUserinfo:userInfoModel];
         [self loginRongCloud:userInfoModel.nickName userId:userInfoModel.modelId token:self.token password:self.passwordTF.text];
-        RCUserInfo * user = [[RCUserInfo alloc] initWithUserId:userInfoModel.modelId name:userInfoModel.nickName portrait:userInfoModel.headImage]; 
+        RCUserInfo * user = [[RCUserInfo alloc] initWithUserId:userInfoModel.modelId name:userInfoModel.nickName?userInfoModel.nickName:userInfoModel.modelId portrait:userInfoModel.headImage]; 
         if ([YSTools dx_isNullOrNilWithObject:user.portraitUri] || user.portraitUri.length <= 0) {
             user.portraitUri = [RCDUtilities defaultUserPortrait:user];
         }
@@ -198,8 +198,6 @@
     [KUserDefults setObject:password forKey:@"userPwd"];
     [KUserDefults setObject:token forKey:@"userToken"];
     [KUserDefults setObject:userId forKey:@"userId"];
-    [KUserDefults setObject:self.phoneTF.text forKey:@"userPhone"];
-    [KUserDefults synchronize];
     //保存“发现”的信息
 //    [RCDHTTPTOOL getSquareInfoCompletion:^(NSMutableArray *result) {
 //        [DEFAULTS setObject:result forKey:@"SquareInfoList"];
@@ -212,6 +210,8 @@
 //                         }];
     dispatch_async(dispatch_get_main_queue(), ^{
         UIWindow *win = [[UIApplication sharedApplication].windows objectAtIndex:0];
+        [KUserDefults setObject:self.phoneTF.text forKey:@"userPhone"];
+        [KUserDefults synchronize];
         BaseTabBarController *mainTabBarVC = [[BaseTabBarController alloc] init];
         win.rootViewController = mainTabBarVC;
     });
