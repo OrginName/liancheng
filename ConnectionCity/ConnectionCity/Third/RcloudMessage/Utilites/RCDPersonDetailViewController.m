@@ -57,7 +57,6 @@
     self.phoneNumberLabel = [[UILabel alloc] init];
     self.phoneNumberLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.infoView addSubview:self.phoneNumberLabel];
-
     self.onlineStatusLabel = [[UILabel alloc] init];
     self.onlineStatusLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.infoView addSubview:self.onlineStatusLabel];

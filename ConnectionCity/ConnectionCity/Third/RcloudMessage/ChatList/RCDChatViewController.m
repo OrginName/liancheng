@@ -654,7 +654,6 @@ NSMutableDictionary *userInputStatus;
 // 如：新版本增加了某种自定义消息，但是老版本不能识别，开发者可以在旧版本中预先自定义这种未识别的消息的显示
 // *  需要设置RCIM showUnkownMessage属性
 // **
-
 #pragma mark override
 - (void)resendMessage:(RCMessageContent *)messageContent {
     if ([messageContent isKindOfClass:[RCRealTimeLocationStartMessage class]]) {
@@ -674,10 +673,8 @@ NSMutableDictionary *userInputStatus;
     } break;
     }
 }
-
 - (void)willPresentActionSheet:(UIActionSheet *)actionSheet {
     SEL selector = NSSelectorFromString(@"_alertController");
-
     if ([actionSheet respondsToSelector:selector]) {
         UIAlertController *alertController = [actionSheet valueForKey:@"_alertController"];
         if ([alertController isKindOfClass:[UIAlertController class]]) {
@@ -692,7 +689,6 @@ NSMutableDictionary *userInputStatus;
         }
     }
 }
-
 #pragma mark - RCRealTimeLocationObserver
 - (void)onRealTimeLocationStatusChange:(RCRealTimeLocationStatus)status {
     __weak typeof(&*self) weakSelf = self;
@@ -1044,6 +1040,7 @@ NSMutableDictionary *userInputStatus;
         }
     });
 }
+
 //显示消息发送时间的方法
 - (void)figureOutAllConversationDataRepository {
     for (int i = 0; i < self.conversationDataRepository.count; i++) {
