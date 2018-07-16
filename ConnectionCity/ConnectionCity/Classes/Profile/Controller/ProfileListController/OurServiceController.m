@@ -9,7 +9,8 @@
 #import "ProfileNet.h"
 #import "FirstTanView.h"
 #import "RefineView.h"
-@interface OurServiceController ()<MLMSegmentPageDelegate,UITableViewDelegate,UITableViewDataSource,CellClickDelegate,FirstTanViewDelegate>
+#import "StarEvaluator.h"
+@interface OurServiceController ()<MLMSegmentPageDelegate,UITableViewDelegate,UITableViewDataSource,CellClickDelegate,FirstTanViewDelegate,StarEvaluatorDelegate>
 {
     NSArray *list,*list1;
     UIButton *_tmpBtn;
@@ -57,7 +58,7 @@
     self.title = @"我的服务";
     self.btn_All.selected = YES;
     _tmpBtn = self.btn_All;
-    list = @[@"待付款", @"待接单",@"待赴约", @"待评价", @"已完成"];
+    list = @[@"待付款", @"待接单",@"待赴约",@"已赴约", @"待评价", @"已完成"];
     list1 = @[@"待付款", @"待接单",@"待履约", @"待评价", @"已完成"];
     self.tab_Arr = [NSMutableArray array];
     self.data_Arr = [NSMutableArray array];
@@ -80,7 +81,7 @@
             }
         } cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
         } completion:nil];
-    }else if([cell1.btn_status.titleLabel.text isEqualToString:@"取消"]){//我提供的服务取消
+    }else if([cell1.btn_status.titleLabel.text isEqualToString:@"取消"]||[cell1.btn_status.titleLabel.text isEqualToString:@"终止服务"]){//我提供的服务取消
         self.first = [[NSBundle mainBundle] loadNibNamed:@"FirstTanView" owner:nil options:nil][1];
         self.first.delegate = self;
         self.first.frame = CGRectMake(10, 0, kScreenWidth-20, 235);
@@ -96,17 +97,47 @@
         [self.refine alertSelectViewshow];
     }else if([cell1.btn_status.titleLabel.text isEqualToString:@"接单"]){
         [self requstUpdateStates:@{@"orderNo": mo.orderNo,
-                                   @"status":@15}];
+                                   @"status":@15,
+                                   @"remark":@""
+                                   }];
     }else if([cell1.btn_status.titleLabel.text isEqualToString:@"赴约"]){
         [self requstUpdateStates:@{@"orderNo": mo.orderNo,
-                                   @"status":@20}];
+                                   @"status":@20,
+                                   @"remark":@""
+                                   }];
+    }else if([cell1.btn_status.titleLabel.text isEqualToString:@"履约"]){
+        [self requstUpdateStates:@{@"orderNo": mo.orderNo,
+                                   @"status":@30,
+                                   @"remark":@""
+                                   }];
+    }else if([cell1.btn_status.titleLabel.text isEqualToString:@"评价"]){
+        self.first = [[NSBundle mainBundle] loadNibNamed:@"FirstTanView" owner:nil options:nil][2];
+        self.first.delegate = self;
+        self.first.frame = CGRectMake(10, 0, kScreenWidth-20, 235);
+        StarEvaluator * ev = [[StarEvaluator alloc] initWithFrame:CGRectMake(0, 5, 140, 80)];
+        ev.delegate = self;
+        [self.first.view_PJ addSubview:ev];
+        //        self.first.messController = self;
+        self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.first];
+//        WeakSelf
+//        self.first.block = ^(NSString *txt) {
+//            [weakSelf requstUpdateStates:@{
+//                                           @"remark": txt,
+//                                           @"orderNo": mo.orderNo,
+//                                           @"status":@40}];
+//        };
+        [self.refine alertSelectViewshow];
     }
+}
+- (void)starEvaluator:(StarEvaluator *)evaluator currentValue:(float)value{
+    NSLog(@"%f",value);
 }
 /**
  更新状态
  */
 -(void)requstUpdateStates:(NSDictionary *)dic1{
     NSDictionary * dic = @{
+                           @"remark": dic1[@"remark"],
                            @"orderNo": dic1[@"orderNo"],
                            @"status": @([dic1[@"status"] intValue])
                            };
@@ -129,6 +160,7 @@
     [ProfileNet requstMyService:dic flag:_tmpBtn.tag block:^(NSMutableArray *successArrValue) {
         if (successArrValue.count==0) {
             [self endRefrsh:tab];
+            [tab reloadData];
             return [YTAlertUtil showTempInfo:@"暂无数据"];
         }
         if (_page==1) {
@@ -153,7 +185,7 @@
     _pageView.headStyle = SegmentHeadStyleLine;
     _pageView.delegate = self;
     _pageView.loadAll = YES;
-    _pageView.countLimit = 5;
+    _pageView.countLimit = arr.count;
     _pageView.fontScale = 1;
     _pageView.fontSize = 15;
     _pageView.lineHeight = 1;
@@ -183,6 +215,7 @@
     return 185;
 }
 - (NSArray *)viewArr {
+    [self.tab_Arr removeAllObjects];
     arr = [NSMutableArray array];
     for (NSInteger i = 0; i < list.count; i ++) {
         UITableView  *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, kScreenHeight) style:UITableViewStylePlain];
@@ -218,16 +251,44 @@
                 @"3": @10//订单状态};
                 };
     }else if (i==2){//待赴约
-        dic = @{@"1": @0,//订单评论状态
-                @"2": @1,//订单支付状态
-                @"3": @15//订单状态};
-                };
-    }else if (i==3){//待评价
-        dic = @{@"1": @0,//订单评论状态
-                @"2": @1,//订单支付状态
-                @"3": @30//订单状态};
-                };
-    }else if (i==4){//已完成
+        if (_tmpBtn.tag==1) {
+            dic = @{@"1": @0,//订单评论状态
+                    @"2": @1,//订单支付状态
+                    @"3": @15//订单状态};
+                    };
+        }else{
+            dic = @{@"1": @0,//订单评论状态
+                    @"2": @1,//订单支付状态
+                    @"3": @20//订单状态};
+                    };
+        }
+        
+    }else if (i==3){
+        if (_tmpBtn.tag==1) {//已赴约
+            dic = @{@"1": @0,//订单评论状态
+                    @"2": @1,//订单支付状态
+                    @"3": @20//订单状态};
+                    };
+        }else{
+            dic = @{@"1": @0,//订单评论状态
+                    @"2": @1,//订单支付状态
+                    @"3": @30//订单状态};
+                    };
+        }
+    }else if (i==4){//待评价
+        if (_tmpBtn.tag==1) {
+            dic = @{@"1": @0,//订单评论状态
+                    @"2": @1,//订单支付状态
+                    @"3": @30//订单状态};
+                    };
+        }else{
+            dic = @{@"1": @1,//订单评论状态
+                    @"2": @1,//订单支付状态
+                    @"3": @50//订单状态};
+                    };
+        }
+        
+    }else if (i==5){//已完成
         dic = @{@"1": @1,//订单评论状态
                 @"2": @1,//订单支付状态
                 @"3": @50//订单状态};

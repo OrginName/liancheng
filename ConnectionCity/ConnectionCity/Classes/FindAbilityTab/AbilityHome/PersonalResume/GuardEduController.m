@@ -62,6 +62,9 @@
             [YTAlertUtil showTempInfo:@"结束日期不能小于开始日期"];
             return;
         }
+        if (self.textView_Indro.text.length==0) {
+            return [YTAlertUtil showTempInfo:@"请输入描述"];
+        }
         NSDictionary * dic =@{
                               @"description": self.textView_Indro.text,
                               @"educationId": @([_EduID integerValue]),

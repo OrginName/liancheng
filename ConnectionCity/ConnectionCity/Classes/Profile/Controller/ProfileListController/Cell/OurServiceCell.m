@@ -26,8 +26,8 @@ static NSArray * btnTitleArr;
 static NSArray * btnTitleArr1;
 @implementation OurServiceCell
 +(void)initialize{
-    labArr = @[@"待付款",@"待接单",@"待赴约",@"待完成",@"已履约"];
-    labArr1 = @[@"待缴费",@"待接单",@"待赴约",@"服务中",@"服务结束"];
+    labArr = @[@"待付款",@"待接单",@"待赴约",@"已赴约",@"待评价",@"已完成"];
+    labArr1 = @[@"待缴费",@"待接单",@"待赴约",@"待评价",@"服务结束"];
     btnTitleArr = @[@"取消",@"接单",@"赴约",@"终止服务"];
     btnTitleArr1 = @[@"缴费",@"取消",@"履约",@"评价"];
 }

@@ -4,8 +4,6 @@
 //
 //  Created by umbrella on 2018/5/8.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
-//
-
 #import "FirstTanView.h"
 #import "AddressBookController.h"
 #import "YSConstString.h"
@@ -26,7 +24,9 @@
     self.txt_view.layer.cornerRadius = 5;
     self.btn_TJ.layer.borderColor = [UIColor orangeColor].CGColor;
     self.btn_TJ.layer.borderWidth = 1;
+    
 }
+
 - (IBAction)FirstTanClick:(UIButton *)sender {
     if (sender.tag==5) {
         
@@ -38,9 +38,7 @@
 //       [self.messController.navigationController pushViewController:address animated:YES];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:CLOSEANI object:nil];
-    
 }
-
 /**
  提交按钮点击事件
 

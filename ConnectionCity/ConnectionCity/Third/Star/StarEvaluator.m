@@ -120,8 +120,7 @@
             fullImgView.layer.mask.frame = CGRectMake(0, 0, 0, 0);
         }
     }
-    
-    if ([_delegate respondsToSelector:@selector(starEvaluator:currentValue:)]) {
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(starEvaluator:currentValue:)]) {
         [_delegate starEvaluator:self currentValue:_currentValue];
     }
 }
