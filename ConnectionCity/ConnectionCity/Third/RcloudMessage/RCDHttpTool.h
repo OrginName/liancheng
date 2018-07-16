@@ -54,7 +54,7 @@
 //将用户踢出群组
 - (void)kickUsersOutOfGroup:(NSString *)groupID flag:(int)flag usersId:(NSMutableArray *)usersId complete:(void (^)(BOOL))result;
 //退出群组
-- (void)quitGroupWithGroupId:(NSString *)groupID complete:(void (^)(BOOL result))quitResult;
+- (void)quitGroupWithGroupId:(NSString *)groupID flag:(int)a complete:(void (^)(BOOL))result;
 
 //解散群组
 - (void)dismissGroupWithGroupId:(NSString *)groupID flag:(int)flag complete:(void (^)(BOOL))result;

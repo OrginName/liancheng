@@ -141,11 +141,6 @@
         UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:(UIBarButtonItemStylePlain) target:self action:@selector(onCancelAction)];
         self.navigationItem.leftBarButtonItem = left;
     }
-}
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [self.searchFriendsBar resignFirstResponder];
-    [self sortAndRefreshWithList:[self getAllFriendList]];
     //自定义rightBarButtonItem
     RCDUIBarButtonItem *rightBtn = [[RCDUIBarButtonItem alloc] initContainImage:[UIImage imageNamed:@"jiaru"]
                                                                  imageViewFrame:CGRectMake(0, 0, 18, 20)
@@ -158,11 +153,13 @@
     self.navigationItem.rightBarButtonItems = [rightBtn setTranslation:rightBtn translation:-6];
     
     self.tabBarController.navigationItem.title = @"通讯录";
+    [self.searchFriendsBar resignFirstResponder];
+    [self sortAndRefreshWithList:[self getAllFriendList]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:KAddFriend object:nil];
 }
-//- (void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    
-//}
+-(void)reloadData{
+    [self sortAndRefreshWithList:[self getAllFriendList]];
+}
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     if (_isBeginSearch == YES) {
@@ -270,7 +267,7 @@
             if ([isDisplayID isEqualToString:@"YES"]) {
                 cell.userIdLabel.text = userInfo.userId;
             }
-            cell.nicknameLabel.text = userInfo.name;
+            cell.nicknameLabel.text = [userInfo.name isEqualToString:@"<null>"]?userInfo.userId:userInfo.name;
             if ([userInfo.portraitUri isEqualToString:@""]) {
                 DefaultPortraitView *defaultPortrait =
                     [[DefaultPortraitView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
@@ -307,7 +304,6 @@
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     return self.resultDic[@"allKeys"];
 }
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.friendsTabelView deselectRowAtIndexPath:indexPath animated:YES];
     RCDUserInfo *user = nil;
@@ -494,5 +490,8 @@
 - (void)onCancelAction{
     [self dismissViewControllerAnimated:YES completion:nil];
     [[RCDForwardMananer shareInstance] clear];
+}
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end

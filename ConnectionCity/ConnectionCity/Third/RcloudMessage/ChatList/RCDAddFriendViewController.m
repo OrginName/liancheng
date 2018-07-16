@@ -213,6 +213,7 @@
                                       [YTAlertUtil showTempInfo:@"添加成功"];
                                       [RCDHTTPTOOL getFriendscomplete:^(NSMutableArray *result){
                                       }];                                      [self.navigationController popToRootViewControllerAnimated:YES];
+                                      [[NSNotificationCenter defaultCenter] postNotificationName:KAddFriend object:nil];
                                   } else {
                                       [YTAlertUtil showTempInfo:@"添加失败,请重新添加"];
 //                                      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil

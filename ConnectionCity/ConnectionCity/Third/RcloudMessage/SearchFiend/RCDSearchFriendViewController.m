@@ -108,7 +108,7 @@
                                                    reuseIdentifier:reusableCellWithIdentifier];
         RCDUserInfo *user = _searchResult[indexPath.row];
         if (user) {
-            cell.lblName.text = user.name;
+            cell.lblName.text = [user.name isKindOfClass:[NSNull class]]?user.userId:user.name;
             if ([user.portraitUri isEqualToString:@""]) {
                 DefaultPortraitView *defaultPortrait =
                     [[DefaultPortraitView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
@@ -121,7 +121,6 @@
             }
         }
     }
-
     cell.ivAva.contentMode = UIViewContentModeScaleAspectFill;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -132,9 +131,8 @@
     RCDUserInfo *user = _searchResult[indexPath.row];
     RCUserInfo *userInfo = [RCUserInfo new];
     userInfo.userId = user.userId;
-    userInfo.name = user.name;
+    userInfo.name = [user.name isKindOfClass:[NSNull class]]?user.userId:user.name;
     userInfo.portraitUri = user.portraitUri;
-
     if ([KString(@"%@", userInfo.userId) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
                                                         message:@"你不能添加自己到通讯录"

@@ -105,7 +105,7 @@
     RCUserInfo *friend = [RCUserInfo new];
     friend.userId = friendDetails.userId;
     friend.name = friendDetails.name;
-    if (friendDetails.displayName.length > 0 && ![friendDetails.displayName isEqualToString:@""]) {
+    if (![friendDetails.displayName isKindOfClass:[NSNull class]]&&friendDetails.displayName.length > 0 && ![friendDetails.displayName isEqualToString:@""]) {
         friend.name = friendDetails.displayName;
     }
     friend.portraitUri = friendDetails.portraitUri;

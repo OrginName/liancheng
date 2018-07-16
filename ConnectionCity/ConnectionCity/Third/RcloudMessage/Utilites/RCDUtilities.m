@@ -148,6 +148,9 @@
             NSString *firstLetter;
             if ([user isMemberOfClass:[RCDUserInfo class]]) {
                 RCDUserInfo *userInfo = (RCDUserInfo *)user;
+                if ([userInfo.displayName isKindOfClass:[NSNull class]]) {
+                    userInfo.displayName = @"";
+                }
                 if (userInfo.displayName.length > 0 && ![userInfo.displayName isEqualToString:@""]) {
                     firstLetter = [self getFirstUpperLetter:userInfo.displayName];
                 } else {

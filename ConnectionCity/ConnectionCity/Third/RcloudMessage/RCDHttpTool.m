@@ -108,15 +108,15 @@
         }else if (flag==3){
             result = responseObject[@"data"][@"group"];
         }else{
-           result = responseObject[@"team"][@"users"];
+           result = responseObject[@"data"][@"team"];
         }
         if (result && [code isEqualToString:@"SUCCESS"]) {
             RCDGroupInfo *group = [[RCDGroupInfo alloc] init];
             group.groupId = [result[@"groupId"] description];
             group.groupType = flag;
-            group.groupName = [result objectForKey:@"name"];
+            group.groupName = [result[@"name"] description];
             group.portraitUri = [result objectForKey:@"logo"]?[result objectForKey:@"logo"]:@"";
-            if ([group.portraitUri isKindOfClass:[NSString class]]&&group.portraitUri!=NULL) {
+            if ([group.portraitUri isKindOfClass:[NSString class]]) {
                 if (group.portraitUri.length <= 0) {
                     group.portraitUri = [RCDUtilities defaultGroupPortrait:group];
                 }
@@ -163,8 +163,8 @@
                     NSDictionary *dic = responseObject[@"data"];
                     RCUserInfo *user = [RCUserInfo new];
                     user.userId = [dic[@"id"] description];
-                    user.name = dic[@"nickName"];
-                    user.portraitUri = dic[@"headImage"]?dic[@"headImage"]:@"";
+                    user.name = [dic[@"nickName"] isKindOfClass:[NSNull class]]?user.userId:dic[@"nickName"];
+                    user.portraitUri = [dic[@"headImage"] isKindOfClass:[NSNull class]]?dic[@"headImage"]:@"";
                     if ([YSTools dx_isNullOrNilWithObject:user.portraitUri] || user.portraitUri.length <= 0) {
                         user.portraitUri = [RCDUtilities defaultUserPortrait:user];
                     }
@@ -321,10 +321,10 @@
                 NSDictionary * dic = members[i];
                 RCDUserInfo *member = [[RCDUserInfo alloc] init];
                 member.userId = [dic[@"id"] description];
-                member.name = dic[@"nickName"];
-                member.portraitUri = dic[@"headImage"];
+                member.name = [dic[@"nickName"] isKindOfClass:[NSNull class]]?member.userId:[dic[@"nickName"] description];
+                member.portraitUri =[dic[@"headImage"] isKindOfClass:[NSNull class]]?@"":dic[@"headImage"];
                 member.updatedAt = dic[@"createdAt"]?dic[@"createdAt"]:@"";
-                member.displayName = dic[@"nickName"];
+                member.displayName = [dic[@"nickName"] description];
                 if (!member.portraitUri || member.portraitUri <= 0) {
                     member.portraitUri = [RCDUtilities defaultUserPortrait:member];
                 }
@@ -399,20 +399,22 @@
         result(NO);
     }];
 }
-
 //退出群组
-- (void)quitGroupWithGroupId:(NSString *)groupID complete:(void (^)(BOOL))result {
-//    [AFHttpTool quitGroupWithGroupId:groupID
-//        success:^(id response) {
-//            if ([response[@"code"] integerValue] == 200) {
-//                result(YES);
-//            } else {
-//                result(NO);
-//            }
-//        }
-//        failure:^(NSError *err) {
-//            result(NO);
-//        }];
+- (void)quitGroupWithGroupId:(NSString *)groupID flag:(int)a complete:(void (^)(BOOL))result {
+    NSString * url = a==1?v1TalentTeamSignOut:a==2?v1ServiceStationSignOut:v1UserGroupSignout;
+    NSString * str1 = groupID;
+    if (a>0&&a<3) {
+        str1 = [groupID componentsSeparatedByString:@"_"][1];
+    }
+    [YSNetworkTool POST:url params:@{@"id":str1} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]) {
+                            result(YES);
+                        } else {
+                            result(NO);
+                        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        result(NO);
+    }];
 }
 
 //解散群组
@@ -484,9 +486,9 @@
                         ![KString(@"%@", dic[@"id"]) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
                         RCDUserInfo *userInfo = [RCDUserInfo new];
                         userInfo.userId = [dic[@"id"] description];
-                        userInfo.name = dic[@"nickName"];
-                        userInfo.portraitUri = dic[@"headImage"];
-                        userInfo.displayName = dic[@"nickName"];
+                        userInfo.name = [dic[@"nickName"] isKindOfClass:[NSNull class]]?userInfo.userId:[dic[@"nickName"] description];
+                        userInfo.portraitUri =[dic[@"headImage"] isKindOfClass:[NSNull class]]?@"":[dic[@"headImage"] description];
+                        userInfo.displayName = [dic[@"nickName"] description];
                         if (!userInfo.portraitUri || userInfo.portraitUri <= 0) {
                             userInfo.portraitUri = [RCDUtilities defaultUserPortrait:userInfo];
                         }
@@ -546,9 +548,9 @@
                 return;
             if ([result respondsToSelector:@selector(objectForKey:)]) {
                 RCDUserInfo *userInfo = [RCDUserInfo new];
-                userInfo.userId =[result[@"id"] description];
-                userInfo.name = result[@"nickName"];
-                userInfo.portraitUri = result[@"headImage"];
+                userInfo.userId = [result[@"id"] isKindOfClass:[NSNull class]]?@"":[result[@"id"] description];
+                userInfo.name = [result[@"nickName"] isKindOfClass:[NSNull class]]?userInfo.userId:[result[@"nickName"] description];
+                userInfo.portraitUri = [result[@"headImage"] isKindOfClass:[NSNull class]]?@"":[result[@"headImage"] description];
                 if (!userInfo.portraitUri || userInfo.portraitUri <= 0) {
                     userInfo.portraitUri = [RCDUtilities defaultUserPortrait:userInfo];
                 }
@@ -662,8 +664,8 @@
             NSDictionary *dic = responseObject[@"data"];
             RCUserInfo *user = [RCUserInfo new];
             user.userId = [dic[@"id"] description];
-            user.name = [dic objectForKey:@"nickName"];
-            NSString *portraitUri = [dic objectForKey:@"headImage"];
+            user.name = [dic[@"nickName"] isKindOfClass:[NSNull class]]?user.userId:dic[@"nickName"];
+            NSString *portraitUri = [dic[@"headImage"] isKindOfClass:[NSNull class]]?@"":dic[@"headImage"];
             if (!portraitUri || portraitUri.length <= 0) {
                 portraitUri = [RCDUtilities defaultUserPortrait:user];
             }
@@ -674,9 +676,9 @@
             if (Details == nil) {
                 Details = [[RCDUserInfo alloc] init];
             }
-            Details.name = [dic objectForKey:@"nickName"];
+            Details.name = [dic[@"nickName"] isKindOfClass:[NSNull class]]?user.userId:dic[@"nickName"];
             Details.portraitUri = portraitUri;
-            Details.displayName = dic[@"nickName"];
+            Details.displayName = Details.name;
             [[RCDataBaseManager shareInstance] insertFriendToDB:Details];
             if (success) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -754,22 +756,21 @@
             NSDictionary * dic = responseObject[@"data"];
             RCUserInfo *user = [RCUserInfo new];
             user.userId = [dic[@"id"] description];
-            user.name = [dic objectForKey:@"nickName"];
-            NSString *portraitUri = [dic objectForKey:@"headImage"];
-            if (!portraitUri || portraitUri.length <= 0) {
+            user.name = [dic[@"nickName"] isKindOfClass:[NSNull class]]?user.userId:dic[@"nickName"];
+            NSString *portraitUri = [dic[@"headImage"] isKindOfClass:[NSNull class]]?@"":dic[@"headImage"];
+            if ([portraitUri isKindOfClass:[NSNull class]]||!portraitUri || (![portraitUri isKindOfClass:[NSNull class]]&&portraitUri.length <= 0)) {
                 portraitUri = [RCDUtilities defaultUserPortrait:user];
             }
             user.portraitUri = portraitUri;
             [[RCDataBaseManager shareInstance] insertUserToDB:user];
-            
             RCDUserInfo *Details = [[RCDataBaseManager shareInstance] getFriendInfo:friendId];
             if (Details == nil) {
                 Details = [[RCDUserInfo alloc] init];
             }
             Details.userId = user.userId;
-            Details.name = [dic objectForKey:@"nickName"];
+            Details.name = [dic[@"nickName"] isKindOfClass:[NSNull class]]?user.userId:dic[@"nickName"];;
             Details.portraitUri = portraitUri;
-            Details.displayName = dic[@"nickName"];
+            Details.displayName = Details.name;
             [[RCDataBaseManager shareInstance] insertFriendToDB:Details];
             if (success) {
                 dispatch_async(dispatch_get_main_queue(), ^{

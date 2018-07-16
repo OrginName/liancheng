@@ -105,6 +105,7 @@
             mo.isFriend = @"1";
             [self.data_Arr replaceObjectAtIndex:btn.tag-1 withObject:mo];
             [tab reloadData];
+            [[NSNotificationCenter defaultCenter] postNotificationName:KAddFriend object:nil];
         }
     }];
 }
