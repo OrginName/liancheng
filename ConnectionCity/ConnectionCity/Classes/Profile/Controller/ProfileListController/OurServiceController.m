@@ -9,7 +9,7 @@
 #import "ProfileNet.h"
 #import "FirstTanView.h"
 #import "RefineView.h"
-@interface OurServiceController ()<MLMSegmentPageDelegate,UITableViewDelegate,UITableViewDataSource,CellClickDelegate>
+@interface OurServiceController ()<MLMSegmentPageDelegate,UITableViewDelegate,UITableViewDataSource,CellClickDelegate,FirstTanViewDelegate>
 {
     NSArray *list,*list1;
     UIButton *_tmpBtn;
@@ -27,9 +27,7 @@
 @property (strong, nonatomic) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray * data_Arr;
 @end
-
 @implementation OurServiceController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
@@ -45,7 +43,6 @@
         //支付失败
         
     };
-    
 }
 //微信
 -(void)reloadTab{
@@ -54,7 +51,7 @@
 //刷新数据
 -(void)reloadData{
     UITableView * tab = self.tab_Arr[_currentIndex];
-    [tab reloadData];
+    [tab.mj_header beginRefreshing];
 }
 -(void)setUI{
     self.title = @"我的服务";
@@ -83,13 +80,33 @@
             }
         } cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
         } completion:nil];
-    }else if(_tmpBtn.tag==1&&[cell1.btn_status.titleLabel.text isEqualToString:@"取消"]){//我提供的服务取消
+    }else if([cell1.btn_status.titleLabel.text isEqualToString:@"取消"]){//我提供的服务取消
         self.first = [[NSBundle mainBundle] loadNibNamed:@"FirstTanView" owner:nil options:nil][1];
+        self.first.delegate = self;
         self.first.frame = CGRectMake(10, 0, kScreenWidth-20, 235);
 //        self.first.messController = self;
         self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.first];
+        WeakSelf
+        self.first.block = ^(NSString *txt) {
+            [weakSelf requstUpdateStates:@{@"orderNo": mo.orderNo,
+                                       @"status":@40}];
+        };
         [self.refine alertSelectViewshow];
     }
+}
+/**
+ 更新状态
+ */
+-(void)requstUpdateStates:(NSDictionary *)dic1{
+    NSDictionary * dic = @{
+                           @"orderNo": dic1[@"orderNo"],
+                           @"status": @([dic1[@"status"] intValue])
+                           };
+    [ProfileNet requstUpdateService:dic block:^(NSDictionary *successDicValue) {
+         [self reloadTab];
+    } withFailBlock:^(NSError *error) {
+        
+    }];
 }
 //加载数据
 -(void)loadData:(NSDictionary *)dic1 tab:(UITableView *)tab{

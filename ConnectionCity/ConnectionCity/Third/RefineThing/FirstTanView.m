@@ -40,6 +40,19 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:CLOSEANI object:nil];
     
 }
+
+/**
+ 提交按钮点击事件
+
+ @param sender btn
+ */
+- (IBAction)submitClick:(UIButton *)sender {
+    if (self.txt_view.text.length==0) {
+        return [YTAlertUtil showTempInfo:@"请输入取消原因"];
+    }
+    self.block(self.txt_view.text);
+    [[NSNotificationCenter defaultCenter] postNotificationName:CLOSEANI object:nil];
+}
 /**
  类名转换类
  

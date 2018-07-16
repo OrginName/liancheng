@@ -142,9 +142,8 @@
         self.navigationItem.leftBarButtonItem = left;
     }
 }
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [self.searchFriendsBar resignFirstResponder];
     [self sortAndRefreshWithList:[self getAllFriendList]];
     //自定义rightBarButtonItem
@@ -157,9 +156,13 @@
                                                                          target:self
                                                                          action:@selector(pushAddFriend:)];
     self.navigationItem.rightBarButtonItems = [rightBtn setTranslation:rightBtn translation:-6];
-
+    
     self.tabBarController.navigationItem.title = @"通讯录";
 }
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    
+//}
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     if (_isBeginSearch == YES) {

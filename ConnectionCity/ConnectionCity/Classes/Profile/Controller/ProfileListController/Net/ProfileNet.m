@@ -24,5 +24,13 @@
         failBlock(error);
     }];
 }
-
+//服务状态更新
++(void)requstUpdateService:(NSDictionary *)param block:(SuccessDicBlock) sucBloc withFailBlock:(FailErrorBlock)failBlock{
+    [YSNetworkTool POST:v1ServiceUpdateOrderStatus params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        sucBloc(responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+//
 @end
