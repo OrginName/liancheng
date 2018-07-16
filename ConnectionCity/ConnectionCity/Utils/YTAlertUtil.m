@@ -183,7 +183,7 @@ NSString * const YTAlertUtilAlertMessageOK = @"好";
 
 + (void)p_showTempInfo:(NSString *)info
           bottomMargin:(CGFloat)bottom {
-    if (info.length == 0) {
+    if ([YSTools dx_isNullOrNilWithObject:info] || info.length == 0) {
         return;
     }
     static UILabel *lastLabel;  //记录上次出现的label
