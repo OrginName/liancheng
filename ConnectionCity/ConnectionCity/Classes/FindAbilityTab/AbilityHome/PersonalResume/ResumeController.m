@@ -321,8 +321,10 @@
             [self.CollArr addObjectsFromArray:[self.data_ArrWork copy]];
         }else{
             self.isOpen[@"40"] = @"NO";
-            [self.CollArr removeAllObjects];
-            [self.CollArr addObject:self.data_ArrWork[0]];
+            if (self.data_ArrWork.count!=0) {
+                [self.CollArr removeAllObjects];
+                [self.CollArr addObject:self.data_ArrWork[0]];
+            }
             cell.imageISNo.transform = CGAffineTransformIdentity;
         }
          [self.tab_bottom reloadData];
@@ -336,8 +338,10 @@
         }else{
              self.isOpen[@"50"] = @"NO";
             cell.imageISNo.transform = CGAffineTransformIdentity;
-            [self.EduArr removeAllObjects];
-            [self.EduArr addObject:self.data_ArrWdu[0]]; 
+            if (self.data_ArrWdu.count!=0) {
+                [self.EduArr removeAllObjects];
+                [self.EduArr addObject:self.data_ArrWdu[0]];
+            }
         }
         [self.tab_bottom reloadData];
     }

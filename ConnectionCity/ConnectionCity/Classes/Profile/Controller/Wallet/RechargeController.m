@@ -39,10 +39,16 @@
         [YTAlertUtil showTempInfo:@"请填写充值金额"];
         return;
     }
-    
     [YSNetworkTool POST:v1UserWalletRecharge params:@{@"amount": _amountTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic = responseObject[kData];
-        [YTThirdPartyPay v1Pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kAlipay}];
+        [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:@[@"支付宝",@"微信"] multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
+            if (idx==0) {
+                [YTThirdPartyPay v1Pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kAlipay}];
+            }else{
+                [YTThirdPartyPay v1Pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kWechat}];
+            }
+        } cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
+        } completion:nil];
     } failure:nil];
 }
 

@@ -37,10 +37,12 @@ NSMutableAttributedString *kMLLinkLabelAttributedText(id object)
             [attributedText setAttributes:@{NSFontAttributeName:kComHLTextFont,NSLinkAttributeName:comment.userName}
                                     range:[likeString rangeOfString:comment.userName]];
         } else {
-            NSString *likeString  = [NSString stringWithFormat:@"%@：%@",comment.typeName,comment.content];
+            NSString *nickNameStr = [YSTools dx_isNullOrNilWithObject:comment.typeName]?@"nickName":KString(@"%@", comment.typeName);
+            
+            NSString *likeString  = [NSString stringWithFormat:@"%@：%@",nickNameStr,comment.content];
             attributedText = [[NSMutableAttributedString alloc] initWithString:likeString];
-            [attributedText setAttributes:@{NSFontAttributeName:kComHLTextFont,NSLinkAttributeName:comment.typeName,NSStrokeColorAttributeName:[UIColor lightGrayColor]}
-                                    range:[likeString rangeOfString:comment.typeName]];
+            [attributedText setAttributes:@{NSFontAttributeName:kComHLTextFont,NSLinkAttributeName:nickNameStr,NSStrokeColorAttributeName:[UIColor lightGrayColor]}
+                                    range:[likeString rangeOfString:nickNameStr]];
         }
     }
     if ([object isKindOfClass:[NSString class]])
