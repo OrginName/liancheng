@@ -11,6 +11,7 @@
 #import "FriendMyselfTab.h"
 #import "CustomButton.h"
 #import "SendMomentController.h"
+#import <IQKeyboardManager.h>
 #define HOMESEND @"HomeSend"
 @interface FriendListController ()
 {
@@ -33,11 +34,17 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.tabBar.hidden = YES;
+    [IQKeyboardManager sharedManager].enable = NO;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    UITextField * text = (UITextField *)[self.frendTab.mainView viewWithTag:10];
+    [text resignFirstResponder];
+    [self.frendTab.mainView removeFromSuperview];
+    [IQKeyboardManager sharedManager].enable = YES;
 }
 -(void)setUI{
     self.title = @"朋友圈";
-    //    UIButton * btn = [self.view viewWithTag:1];
-    //    btn.selected = YES;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
     [self.view addSubview:self.frendTab];
     [self.view addSubview:self.frendMyselfTab];

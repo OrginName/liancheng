@@ -88,10 +88,18 @@
         self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.first];
         WeakSelf
         self.first.block = ^(NSString *txt) {
-            [weakSelf requstUpdateStates:@{@"orderNo": mo.orderNo,
+            [weakSelf requstUpdateStates:@{
+                                           @"remark": txt,
+                                           @"orderNo": mo.orderNo,
                                        @"status":@40}];
         };
         [self.refine alertSelectViewshow];
+    }else if([cell1.btn_status.titleLabel.text isEqualToString:@"接单"]){
+        [self requstUpdateStates:@{@"orderNo": mo.orderNo,
+                                   @"status":@15}];
+    }else if([cell1.btn_status.titleLabel.text isEqualToString:@"赴约"]){
+        [self requstUpdateStates:@{@"orderNo": mo.orderNo,
+                                   @"status":@20}];
     }
 }
 /**
@@ -103,6 +111,7 @@
                            @"status": @([dic1[@"status"] intValue])
                            };
     [ProfileNet requstUpdateService:dic block:^(NSDictionary *successDicValue) {
+         [self.data_Arr removeAllObjects];
          [self reloadTab];
     } withFailBlock:^(NSError *error) {
         

@@ -21,6 +21,8 @@
 #import "UserMo.h"
 #import "AllDicMo.h"
 #import "SendServiceController.h"
+#import "ServiceHomeNet.h"
+#import "ShowResumeController.h"
 @interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate>
 {
     BOOL flag;
@@ -53,6 +55,9 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self setUI];
     flag = NO;
+    if ([KUserDefults objectForKey:kUserCityID]!=nil) {
+        [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
+    }
 }
 
 //导航左按钮我的点击
@@ -71,6 +76,24 @@
     self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.first];
     [self.refine alertSelectViewshow];
     flag = NO;
+}
+//加载服务列表数据
+-(void)loadServiceList:(NSDictionary *)dic{
+    NSDictionary * dic1 = @{
+//                            @"age": dic[@"age"]?dic[@"age"]:@"",
+//                            @"category": dic[@"category"]?dic[@"category"]:@"",
+                            @"cityCode":dic[@"cityCode"],
+//                            @"distance": dic[@"distance"]?dic[@"distance"]:@"",
+//                            @"gender": @([dic[@"gender"]?dic[@"gender"]:@"" integerValue]),
+                            @"lat": @([dic[@"lat"] floatValue]),
+                            @"lng": @([dic[@"lng"] floatValue]),
+//                            @"userStatus": @([dic[@"userStatus"]?dic[@"userStatus"]:@"" integerValue]),
+//                            @"validType": dic[@"validType"]?dic[@"validType"]:@""
+                            };
+    //    加载服务列表
+    [ServiceHomeNet requstServiceList:dic1 withSuc:^(NSMutableArray *successArrValue) {
+        self.cusMap.Arr_Mark = successArrValue;
+    }];
 }
 //获取当前自己的位置并设为中心点
 - (IBAction)btn_UserLocation:(UIButton *)sender {
@@ -126,12 +149,32 @@
             break;
     }
 }
+
 //城市选择按钮点击
 -(void)AddressClick:(UIButton *)btn{
     JFCityViewController * jf= [JFCityViewController new];
     jf.delegate = self;
     BaseNavigationController * nav = [[BaseNavigationController alloc] initWithRootViewController:jf];
     [self.navigationController presentViewController:nav animated:YES completion:nil];
+}
+
+
+#pragma mark - JFCityViewControllerDelegate
+- (void)cityName:(NSString *)name {
+    UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];
+    [btn setTitle:name forState:UIControlStateNormal];
+}
+-(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng{
+    UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];
+    [btn setTitle:name forState:UIControlStateNormal];
+    [self loadServiceList:@{@"lat":lat,@"lng":lng,@"cityCode":ID}];
+    [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([lat floatValue], [lng floatValue])];
+    [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
+}
+-(void)cityMo:(CityMo *)mo{
+    [self loadServiceList:@{@"lat":mo.lat,@"lng":mo.lng,@"cityCode":mo.ID}];
+    [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([mo.lat floatValue], [mo.lng floatValue])];
+    [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
 }
 -(void)setUI{
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MyselfClick) image:@"people" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
@@ -162,7 +205,7 @@
 //    初始化地图
 //    [self initMapView];
     self.cusMap = [[CustomMap alloc] initWithFrame:CGRectMake(0, 0, self.view_Map.width, self.view_Map.height)];
-    self.cusMap.selectAnimation = YES;
+//    self.cusMap.selectAnimation = YES;
     [self.view_Map addSubview:self.cusMap];
     self.cusMap.delegate = self;
     [self.view_Map bringSubviewToFront:self.btn_mapUserLocation];
@@ -174,10 +217,31 @@
     UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];
     [btn setTitle:locationDictionary[@"city"] forState:UIControlStateNormal];
 }
-#pragma mark - JFCityViewControllerDelegate
-- (void)cityName:(NSString *)name {
-    UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];
-   [btn setTitle:name forState:UIControlStateNormal];
+//回到当前位置的按钮点击
+-(void)currentLocationClick{
+    [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
+    [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([[KUserDefults objectForKey:kLat] floatValue], [[KUserDefults objectForKey:KLng] floatValue])];
+    [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
+}
+-(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
+    if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
+        ShowResumeController * show = [ShowResumeController new];
+        show.Receive_Type = ENUM_TypeTrval;
+        show.data_Count = self.cusMap.Arr_Mark;
+        __block NSUInteger index = 0;
+        [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            ServiceListMo * list = (ServiceListMo *)obj;
+            if (annotation.title == list.ID) {
+                index = idx;
+                *stop = YES;
+            }
+        }];
+        show.zIndex = index;
+        NSLog(@"当前zindex为：%ld",index);
+        [self.navigationController pushViewController:show animated:YES];
+    }else{
+        [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
+    }
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
