@@ -10,6 +10,7 @@
 #import "FirstTanView.h"
 #import "RefineView.h"
 #import "StarEvaluator.h"
+#import "CircleNet.h"
 @interface OurServiceController ()<MLMSegmentPageDelegate,UITableViewDelegate,UITableViewDataSource,CellClickDelegate,FirstTanViewDelegate,StarEvaluatorDelegate>
 {
     NSArray *list,*list1;
@@ -27,6 +28,7 @@
 @property (nonatomic, strong) MLMSegmentPage *pageView;
 @property (strong, nonatomic) UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray * data_Arr;
+@property (nonatomic,assign) float scroe;
 @end
 @implementation OurServiceController
 - (void)viewDidLoad {
@@ -34,6 +36,7 @@
     [self setUI];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alipayNotice:) name:NOTI_ALI_PAY_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTab) name:NOTI_WEI_XIN_PAY_SUCCESS object:nil];
+    self.scroe = 0;
 }
 #pragma mark - alipayNotice
 - (void)alipayNotice:(NSNotification *)notification {
@@ -84,8 +87,7 @@
     }else if([cell1.btn_status.titleLabel.text isEqualToString:@"取消"]||[cell1.btn_status.titleLabel.text isEqualToString:@"终止服务"]){//我提供的服务取消
         self.first = [[NSBundle mainBundle] loadNibNamed:@"FirstTanView" owner:nil options:nil][1];
         self.first.delegate = self;
-        self.first.frame = CGRectMake(10, 0, kScreenWidth-20, 235);
-//        self.first.messController = self;
+        self.first.frame = CGRectMake(10, 0, kScreenWidth-20, 235); 
         self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.first];
         WeakSelf
         self.first.block = ^(NSString *txt) {
@@ -114,23 +116,49 @@
         self.first = [[NSBundle mainBundle] loadNibNamed:@"FirstTanView" owner:nil options:nil][2];
         self.first.delegate = self;
         self.first.frame = CGRectMake(10, 0, kScreenWidth-20, 235);
-        StarEvaluator * ev = [[StarEvaluator alloc] initWithFrame:CGRectMake(0, 5, 140, 80)];
+        StarEvaluator * ev = [[StarEvaluator alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
         ev.delegate = self;
         [self.first.view_PJ addSubview:ev];
-        //        self.first.messController = self;
         self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.first];
-//        WeakSelf
-//        self.first.block = ^(NSString *txt) {
-//            [weakSelf requstUpdateStates:@{
-//                                           @"remark": txt,
-//                                           @"orderNo": mo.orderNo,
-//                                           @"status":@40}];
-//        };
+        WeakSelf
+        self.first.block = ^(NSString *txt) {
+            [weakSelf requstUpdatePJ:@{
+                                       @"content": txt,
+                                       @"typeId": @([mo.ID integerValue]),
+                                       @"orderNo":mo.orderNo
+                                       }];
+            
+        };
         [self.refine alertSelectViewshow];
     }
 }
 - (void)starEvaluator:(StarEvaluator *)evaluator currentValue:(float)value{
     NSLog(@"%f",value);
+    if (value>5) {
+        self.scroe = 10;
+    }else
+    self.scroe = [self roundFloat:(value*2)];
+}
+-(float)roundFloat:(float)price{
+    return (floorf(price*100 + 0.5))/100;
+}
+/**
+ 评价
+
+ @param dic1 param
+ */
+-(void)requstUpdatePJ:(NSDictionary *)dic1{
+    NSDictionary * dic = @{
+                           @"content": dic1[@"content"],
+                           @"score": @(self.scroe),
+                           @"type": @40,
+                           @"typeId": @([dic1[@"typeId"] integerValue])
+                           };
+    [CircleNet requstSendPL:dic withSuc:^(NSDictionary *successDicValue) {
+        [self requstUpdateStates:@{@"orderNo": dic1[@"orderNo"],
+                               @"status":@50,
+                               @"remark":@""}];
+    }];
 }
 /**
  更新状态

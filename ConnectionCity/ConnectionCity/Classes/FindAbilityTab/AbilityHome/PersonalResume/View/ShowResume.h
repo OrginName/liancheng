@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 typedef void (^btnClickBlock)(void);
 @interface ShowResume : UIView
-@property (weak, nonatomic) IBOutlet UIImageView *imageTurn;
-@property (weak, nonatomic) IBOutlet UILabel *lab_nametitle;
 @property (nonatomic,copy)btnClickBlock block;
+@property (weak, nonatomic) IBOutlet UIImageView * imageTurn;
+@property (weak, nonatomic) IBOutlet UILabel * lab_nametitle;
 @end

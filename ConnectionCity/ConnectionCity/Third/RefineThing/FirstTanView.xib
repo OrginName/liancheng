@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -228,6 +228,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="btn_PJ" destination="Ndb-yp-S3I" id="OpC-3g-Q9n"/>
                 <outlet property="btn_TJ" destination="txl-IT-hCr" id="TbX-Xc-ht4"/>
                 <outlet property="txtView_PJ" destination="SDz-nQ-ntm" id="YX6-Af-IHN"/>
                 <outlet property="txt_view" destination="gOe-m0-Vcr" id="EK8-9P-MqT"/>
@@ -257,7 +258,7 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="请输入取消原因"/>
                             </userDefinedRuntimeAttributes>
                         </textView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txl-IT-hCr">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txl-IT-hCr">
                             <rect key="frame" x="30" y="175" width="310" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="9ID-FU-eKv"/>
@@ -330,7 +331,7 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="请输入取消原因"/>
                             </userDefinedRuntimeAttributes>
                         </textView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ndb-yp-S3I">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ndb-yp-S3I">
                             <rect key="frame" x="30" y="175" width="310" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="5vG-XP-Xst"/>
@@ -344,6 +345,9 @@
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="submitClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="vgR-mI-iZ9"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评价：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1n-KZ-z7q">
                             <rect key="frame" x="10" y="25.5" width="49" height="19.5"/>
@@ -391,6 +395,8 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="btn_PJ" destination="Ndb-yp-S3I" id="ePS-kE-CFK"/>
+                <outlet property="btn_TJ" destination="txl-IT-hCr" id="j41-WN-8dy"/>
                 <outlet property="txtView_PJ" destination="SDz-nQ-ntm" id="Yd3-cw-dFd"/>
                 <outlet property="view_PJ" destination="maN-w2-QDe" id="xj4-ev-jZT"/>
             </connections>

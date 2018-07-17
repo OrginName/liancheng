@@ -17,6 +17,7 @@ typedef void (^ReturnBlock) (NSString * txt);
 - (void)sendValue:(NSString *)value; //声明协议方法
 @end
 @interface FirstTanView : UIView
+@property (weak, nonatomic) IBOutlet UIButton *btn_PJ;
 @property (weak, nonatomic) IBOutlet UIView *view_PJ;
 @property (weak, nonatomic) IBOutlet CustomtextView *txt_view;
 @property (weak, nonatomic) IBOutlet UIButton *btn_TJ;

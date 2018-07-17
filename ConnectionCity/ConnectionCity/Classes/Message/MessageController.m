@@ -225,6 +225,7 @@
     [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
 }
 -(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
+    flag = NO;
     if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
         ShowResumeController * show = [ShowResumeController new];
         show.Receive_Type = ENUM_TypeTrval;

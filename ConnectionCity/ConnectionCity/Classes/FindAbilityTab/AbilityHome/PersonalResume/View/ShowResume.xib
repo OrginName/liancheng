@@ -73,8 +73,8 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="imageTurn" destination="Qb7-34-89x" id="FZa-o9-U9E"/>
-                <outlet property="lab_nametitle" destination="ERh-Xy-n6I" id="tXq-u1-xdA"/>
+                <outlet property="imageTurn" destination="Qb7-34-89x" id="V57-NA-SLw"/>
+                <outlet property="lab_nametitle" destination="ERh-Xy-n6I" id="Q5k-JP-pIf"/>
             </connections>
             <point key="canvasLocation" x="-860" y="-249.5"/>
         </view>

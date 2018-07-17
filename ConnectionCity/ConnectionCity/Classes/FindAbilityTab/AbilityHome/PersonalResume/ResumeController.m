@@ -35,7 +35,6 @@
 @property (nonatomic,strong) NSMutableArray * data_ArrWork;//工作经历数值
 @property (nonatomic,strong) NSMutableArray * data_ArrWdu;//教育经历数值
 @end
-
 @implementation ResumeController
 
 - (void)viewDidLoad {
@@ -143,7 +142,7 @@
     [YTAlertUtil showHUDWithTitle:self.resume!=nil?@"正在更新简历": @"正在创建简历"];
     if (self.lunArr.count!=0) {
         for (int i=0; i<self.lunArr.count; i++) {
-            if ([self.lunArr[i] containsString:@"http"]) {
+            if (([self.lunArr[i] isKindOfClass:[NSString class]])&& [self.lunArr[i] containsString:@"http"]) {
                 flag++;
                 str = [NSString stringWithFormat:@"%@%@",self.lunArr[i],str];
                 if (flag==self.lunArr.count) {

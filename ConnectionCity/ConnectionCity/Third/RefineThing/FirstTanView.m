@@ -24,9 +24,9 @@
     self.txt_view.layer.cornerRadius = 5;
     self.btn_TJ.layer.borderColor = [UIColor orangeColor].CGColor;
     self.btn_TJ.layer.borderWidth = 1;
-    
+    self.btn_PJ.layer.borderColor = [UIColor orangeColor].CGColor;
+    self.btn_PJ.layer.borderWidth = 1;
 }
-
 - (IBAction)FirstTanClick:(UIButton *)sender {
     if (sender.tag==5) {
         
@@ -45,10 +45,17 @@
  @param sender btn
  */
 - (IBAction)submitClick:(UIButton *)sender {
-    if (self.txt_view.text.length==0) {
-        return [YTAlertUtil showTempInfo:@"请输入取消原因"];
+    if (sender.tag==1) {
+        if (self.txt_view.text.length==0) {
+            return [YTAlertUtil showTempInfo:@"请输入取消原因"];
+        }
+        self.block(self.txt_view.text);
+    }else{
+        if (self.txtView_PJ.text.length==0) {
+            return [YTAlertUtil showTempInfo:@"请输入评价内容"];
+        }
+        self.block(self.txtView_PJ.text);
     }
-    self.block(self.txt_view.text);
     [[NSNotificationCenter defaultCenter] postNotificationName:CLOSEANI object:nil];
 }
 /**
