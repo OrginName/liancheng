@@ -32,4 +32,8 @@
     self.lab_time.text = [moment.createTime componentsSeparatedByString:@" "][0];
     self.lab_HF.text = @"未知回复";
 }
+-(void)setMo:(myServiceMo *)mo{
+    _mo = mo;
+    
+}
 @end

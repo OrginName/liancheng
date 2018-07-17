@@ -57,7 +57,7 @@
         self.lab_Preson.text = [NSString stringWithFormat:@"%@cm %@kg %@ %@",self.trval.user1.height?self.trval.user1.height:@"",self.trval.user1.weight?self.trval.user1.weight:@"",self.trval.user1.educationName?self.trval.user1.educationName:@"",self.trval.user1.marriageName?self.trval.user1.marriageName:@""];
         self.lab_Servicetitle.text = self.trval.introduce;
         self.lab_Price.text = self.trval.price;
-        self.lab_DY.text = self.trval.typeName?self.trval.typeName:@"无";
+        self.lab_DY.text = self.trval.priceUnit?self.trval.priceUnit:@"无";
     }
 }
 #define mark -----UITextFieldDelegate------

@@ -35,8 +35,13 @@ static NSArray * btnTitleArr1;
     [super awakeFromNib];
 }
 - (IBAction)btn_Click:(UIButton *)sender {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(cellBtnClick:)]) {
-        [self.delegate cellBtnClick:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cellBtnClick:cell:)]) {
+        [self.delegate cellBtnClick:sender cell:self];
+    }
+}
+- (IBAction)btn_PL:(UIButton *)sender {
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(cellPLClick:cell:)]) {
+        [self.delegate cellPLClick:sender cell:self];
     }
 }
 -(void)setMo:(myServiceMo *)mo{
@@ -44,11 +49,16 @@ static NSArray * btnTitleArr1;
     self.lab_FWH.text = mo.ID;
     self.lab_orderNo.text = mo.orderNo;
     self.lab_Time.text = mo.serviceTime;
-    self.lab_title.text = mo.obj.title?mo.obj.title:@"无";
-    self.lab_price.text = [NSString stringWithFormat:@"¥%@%@x%@",mo.obj.price,mo.obj.typeName,mo.num];
+    if ([mo.typeName isEqualToString:@"旅游"]) {
+        self.lab_title.text = mo.obj.introduce?mo.obj.introduce:@"无";
+    }else{
+        self.lab_title.text = mo.obj.title?mo.obj.title:@"无";
+    }
+    self.lab_price.text = [NSString stringWithFormat:@"¥%@%@x%@",mo.obj.price,[mo.typeName isEqualToString:@"旅游"]?mo.obj.priceUnit:mo.obj.typeName,mo.num];
     self.lab_sumPrice.text = [NSString stringWithFormat:@"合计:¥%.2f",[mo.obj.price floatValue]*[mo.num intValue]];
     [self.image_head sd_setImageWithURL:[NSURL URLWithString:mo.reserveUser.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     self.lab_name.text = mo.reserveUser.nickName;
+    self.lab_num.text  = KString(@"(%lu)", (unsigned long)[mo.obj.commentList count]);
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -59,14 +69,23 @@ static NSArray * btnTitleArr1;
     if (!cell) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"OurServiceCell" owner:nil options:nil][0];
     }
-    if (tableView.tag==1004) {
+    if((tag==2&&tableView.tag==1004)||(tag==1&&tableView.tag==1005)) {
         cell.lab_evaluation.hidden = NO;
         cell.lab_num.hidden = NO;
         cell.btn_status.hidden = YES;
+        cell.btn_Cancle.hidden = YES;
+        cell.btn_PL.hidden = NO;
     }else{
         cell.lab_evaluation.hidden = YES;
         cell.lab_num.hidden = YES;
-        cell.btn_status.hidden = NO;
+        if (tag==2&&tableView.tag==1000) {
+            cell.btn_Cancle.hidden = NO;
+        }
+        if (tag==1&&tableView.tag==1000) {
+            cell.btn_status.hidden = YES;
+        }else{
+           cell.btn_status.hidden = NO;
+        }
     }
     if (tag==1) {
         cell.lab_tipStatus.text = labArr[tableView.tag-1000];

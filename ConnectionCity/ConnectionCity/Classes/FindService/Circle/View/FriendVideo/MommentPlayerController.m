@@ -90,7 +90,7 @@
                            };
     [CircleNet requstSendPL:dic withSuc:^(NSDictionary *successDicValue) {
         [txt resignFirstResponder];
-        [self.btn_PL setTitle:KString(@"%ld", [self.moment.commentCount integerValue]+1) forState:UIControlStateNormal];
+        [self.btn_PL setTitle:KString(@"评论(%ld)", [self.moment.commentCount integerValue]+1) forState:UIControlStateNormal];
     }];
 }
 - (IBAction)TanClick:(UIButton *)sender {
@@ -147,7 +147,7 @@
         [self.navigationController pushViewController:[super rotateClass:arr[0]] animated:YES];
     }
     if (sender.tag==4) {
-        if ([self.moment.commentCount integerValue]==0) {
+        if ([self.btn_PL.titleLabel.text isEqualToString:@"评论(0)"]) {
             return [YTAlertUtil showTempInfo:@"暂无评论信息"];
         }
         EvaluationController * ev = [EvaluationController new];

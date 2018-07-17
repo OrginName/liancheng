@@ -9,6 +9,6 @@
 #import "UserMo.h"
 
 @implementation UserMo
-
-MJCodingImplementation
-@end
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"ID":@"id"};
+}@end

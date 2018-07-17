@@ -8,9 +8,10 @@
 
 #import "BaseViewController.h"
 #import "Moment.h"
+#import "myServiceMo.h"
 typedef void(^BtnDeleteBlock)(void);
 @interface EvaluationController : BaseViewController
 @property (nonatomic,strong)Moment * moment;
 @property (nonatomic,copy)BtnDeleteBlock block;
-
+@property (nonatomic,strong) myServiceMo * service;
 @end

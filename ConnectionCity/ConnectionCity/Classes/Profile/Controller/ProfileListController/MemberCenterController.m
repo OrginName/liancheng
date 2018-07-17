@@ -12,7 +12,7 @@
 #import "YTSideMenuModel.h"
 #import "privateUserInfoModel.h"
 #import "OccupationCategoryNameModel.h"
-
+#import "OurServiceController.h"
 @interface MemberCenterController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, copy) NSArray <YTSideMenuModel *> *menuModels;
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
@@ -71,6 +71,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSString *className = self.menuModels[indexPath.row].mClass;
     UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc]init];
+    if ([vc isKindOfClass:[OurServiceController class]]) {
+        OurServiceController * os = (OurServiceController *)vc;
+        os.inter = indexPath.row;//2服务3//旅行
+    }
     if (vc == nil)return;
     [self.navigationController pushViewController:vc animated:YES];
 }

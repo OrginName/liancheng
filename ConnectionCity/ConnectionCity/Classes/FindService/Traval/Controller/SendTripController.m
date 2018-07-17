@@ -101,6 +101,12 @@
     [self.dictionary setValue:mo.lat forKey:@"lat"];
     [self.dictionary setValue:mo.lng forKey:@"lng"];
 }
+-(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng{
+    self.txt_City.text = name;
+    [self.dictionary setValue:ID forKey:@"cityCode"];
+    [self.dictionary setValue:lat forKey:@"lat"];
+    [self.dictionary setValue:lng forKey:@"lng"];
+}
 - (IBAction)btn_priceSelect:(UIButton *)sender {
     if (sender.tag!=1) {
         UIButton * btn = (UIButton *)[self.view_Btn viewWithTag:1];

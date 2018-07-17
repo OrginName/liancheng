@@ -21,11 +21,20 @@
     [super viewDidLoad];
     self.navigationItem.title = @"评论";
     [self setUI];
-    [self initData];
+    if (self.service==nil) {
+        [self initData];
+    }
+}
+-(void)setService:(myServiceMo *)service{
+    _service = service;
+    if (service!=nil) {
+        self.array = [service.obj.commentList mutableCopy];
+        [self.tab_bottom reloadData];
+    }
 }
 -(void)setUI{
     self.array = [NSMutableArray array];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(ClearAll) image:@"" title:@"清空" EdgeInsets:UIEdgeInsetsZero];
+//    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(ClearAll) image:@"" title:@"清空" EdgeInsets:UIEdgeInsetsZero];
 }
 -(void)initData{
     [CircleNet requstCircleDetail:@{@"id":self.moment.ID} withSuc:^(NSMutableArray *successArrValue) {

@@ -17,6 +17,7 @@ proStr(userId);//接单者的userID
 proStr(orderNo);//订单号
 proStr(serviceTime);//服务时间
 proStr(num);//数量
+proStr(typeName);//类型
 @property (nonatomic,strong) UserMo * reserveUser;
 @property (nonatomic,strong) myServiceObj * obj;
 @end
@@ -28,7 +29,17 @@ proStr(introduce);
 proStr(price);
 proStr(content);
 proStr(cityName);
+proArr(commentList);//评论
 proStr(typeName);//单位
+proStr(priceUnit);//陪游单位
 @property (nonatomic,strong) UserMo * user;
 @property (nonatomic,strong) ServiceCategoryNameModel * serviceCategoryName;
+@end
+
+@interface ObjComment: BaseModel
+proStr(content);
+proStr(ID);
+proArr(replyList);//回复列表
+proStr(score);
+proStr(typeName);
 @end

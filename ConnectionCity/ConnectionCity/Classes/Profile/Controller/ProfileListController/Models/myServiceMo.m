@@ -25,3 +25,6 @@
 }
 @end
 
+@implementation ObjComment
+
+@end

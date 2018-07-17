@@ -10,9 +10,13 @@
 #import "myServiceMo.h"
 @protocol CellClickDelegate <NSObject>
 @optional
-- (void)cellBtnClick:(UITableViewCell *)cell;
+- (void)cellBtnClick:(UIButton *)btn cell:(UITableViewCell *)cell;
+@optional
+- (void)cellPLClick:(UIButton *)btn cell:(UITableViewCell *)cell;
 @end
 @interface OurServiceCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIButton *btn_PL;
+@property (weak, nonatomic) IBOutlet UIButton *btn_Cancle;
 @property (weak, nonatomic) IBOutlet UIButton *btn_status;
 @property (nonatomic,strong)myServiceMo * mo;
 @property (nonatomic,assign)id <CellClickDelegate>delegate;

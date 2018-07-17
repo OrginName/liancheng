@@ -265,6 +265,9 @@ static NSString * const v1ServiceDetail = @"/v1/service/detail";
 //服务列表
 static NSString * const v1ServiceList = @"/v1/service/list";
 #pragma mark - 服务-旅游
+
+//服务-陪游订单状态更新
+static NSString * const v1ServiceTravelUpdateOrderStatus = @"/v1/service/travel/update-order-status";
 //服务-发布陪游
 static NSString * const v1ServiceTravelAddBrowseTimes = @"/v1/service/travel/add-browse-times";
 //服务-发布陪游

@@ -41,7 +41,7 @@
         _page=1;
         [self loadData:dic];
     }];
-    self.collectionView.mj_footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
+    self.collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         [self loadData:dic];
     }];
 }

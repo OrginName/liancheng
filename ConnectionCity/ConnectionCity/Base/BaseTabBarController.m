@@ -97,6 +97,10 @@
     [BaseTabBarController shareInstance].selectedTabBarIndex = index;
     switch (index) {
         case 0: {
+            self.previousIndex = index;
+        } break;
+            
+        case 1:
             if (self.previousIndex == index) {
                 //判断如果有未读数存在，发出定位到未读数会话的通知
                 if ([[RCIMClient sharedRCIMClient] getTotalUnreadCount] > 0) {
@@ -104,10 +108,6 @@
                 }
                 self.previousIndex = index;
             }
-            self.previousIndex = index;
-        } break;
-            
-        case 1:
             self.previousIndex = index;
             break;
             
