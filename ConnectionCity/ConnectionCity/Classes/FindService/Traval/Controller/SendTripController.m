@@ -67,10 +67,13 @@
                            @"price": @([self.txt_Price.text floatValue]),
                            @"type": @(priceTag)
                            };
+    WeakSelf
     [YSNetworkTool POST:v1ServiceTravelCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        [self.navigationController popViewControllerAnimated:YES];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
         [YTAlertUtil showTempInfo:responseObject[@"message"]];
-        self.block();
+        if (weakSelf.block) {
+            weakSelf.block();
+        }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

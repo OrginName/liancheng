@@ -36,15 +36,7 @@ NSString * const YTHttpUtilResponseData = @"Data";
      success:(YTHttpUtilSuccess)success
      failure:(YTHttpUtilFailure)failure {
     AFHTTPSessionManager *manager = [[self class] manager]; 
-    NSString *cacheKeyStr = [[self class] getCacheWithWithUrl:url requestDict:params];
    
-//    if (![[self class] connectedAndShowDisconnectInfo]) {
-//        id cacheData = [[EGOCache globalCache] objectForKey:cacheKeyStr];
-//        if (![YSTools dx_isNullOrNilWithObject:cacheData]) {
-//            success ? success(nil, cacheData) : nil;
-//        }
-//        return;
-//    }
     if (showHud) {[YTAlertUtil showHUDWithTitle:nil];}
     [manager.requestSerializer setValue:kAccount.token forHTTPHeaderField:@"X-ACCESS-TOKEN"];
     [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -55,16 +47,16 @@ NSString * const YTHttpUtilResponseData = @"Data";
         //如果成功再返回请求结果
         if ([[self class] isSuccessWithResp:responseObject]) {
             if ([YSTools dx_isNullOrNilWithObject:responseObject[@"data"]]) {
-//                [YTAlertUtil showTempInfo:responseObject[kMessage]];
-//                return;
+                /*
+                [YTAlertUtil showTempInfo:responseObject[kMessage]];
+                return;
+                 */
                 NSArray * arr= [NSArray array];
                 if ([[dic1 allKeys] containsObject:@"data"]) {
                     [dic1 setObject:arr forKey:@"data"];
                 }
             } 
             success ? success(task, dic1) : nil;
-            //缓存
-            [[EGOCache globalCache] setObject:dic1 forKey:cacheKeyStr];
         }else{
             [YTAlertUtil showTempInfo:responseObject[kMessage]];
         }
