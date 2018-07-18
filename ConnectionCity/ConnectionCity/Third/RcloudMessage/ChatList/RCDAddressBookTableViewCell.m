@@ -9,10 +9,8 @@
 #import "RCDAddressBookTableViewCell.h"
 #import "DefaultPortraitView.h"
 #import "RCDCommonDefine.h"
-#import "RCDUserInfo.h"
 #import "UIImageView+WebCache.h"
 #import <RongIMKit/RongIMKit.h>
-
 #define CellHeight 65.0f
 
 @implementation RCDAddressBookTableViewCell
@@ -45,71 +43,49 @@
     CGFloat nameLabelY = cellHeight / 2.0 - nameLabelHeight / 2.0;
     self.nameLabel =
         [[UILabel alloc] initWithFrame:CGRectMake(nameLabelX, nameLabelY, nameLabelWidth, nameLabelHeight)];
-    self.nameLabel.font = [UIFont systemFontOfSize:17];
+    self.nameLabel.font = [UIFont systemFontOfSize:14];
 
-    //右侧箭头
-    CGFloat arrowWidth = 15;
-    CGFloat arrowHeight = cellHeight - 19.5 - 19 - 8 - 8;
-    CGFloat arrowX = cellWidth - arrowWidth - 8;
-    CGFloat arrowY = cellHeight / 2.0 - arrowHeight / 2.0;
-    self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
-    self.arrow.image = [UIImage imageNamed:@"grayarrow"];
-
-    //右侧label
-    CGFloat rightLabelWidth = 53;
-    CGFloat rightLabelHeight = cellHeight - 16.5 - 16;
-    CGFloat rightLabelX = CGRectGetMaxX(self.arrow.frame) - 20 - rightLabelWidth;
-    CGFloat rightLabelY = 16.5;
-    self.rightLabel =
-        [[UILabel alloc] initWithFrame:CGRectMake(rightLabelX, rightLabelY, rightLabelWidth, rightLabelHeight)];
-    self.rightLabel.font = [UIFont systemFontOfSize:14];
+//    //右侧箭头
+//    CGFloat arrowWidth = 15;
+//    CGFloat arrowHeight = cellHeight - 19.5 - 19 - 8 - 8;
+//    CGFloat arrowX = cellWidth - arrowWidth - 8;
+//    CGFloat arrowY = cellHeight / 2.0 - arrowHeight / 2.0;
+//    self.arrow = [[UIImageView alloc] initWithFrame:CGRectMake(arrowX, arrowY, arrowWidth, arrowHeight)];
+//    self.arrow.image = [UIImage imageNamed:@"grayarrow"];
 
     //“接受”按钮
-    CGFloat acceptBtnWidth = rightLabelWidth - 15;
-    CGFloat acceptBtnHeight = rightLabelHeight - 8;
-    CGFloat acceptBtnX = rightLabelX;
-    CGFloat acceptBtnY = rightLabelY + 5;
-    _acceptBtn = [[UIButton alloc] initWithFrame:CGRectMake(acceptBtnX, acceptBtnY, acceptBtnWidth, acceptBtnHeight)];
+    _acceptBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-75, 20, 55, 20)];
     _acceptBtn.tag = self.tag;
     [_acceptBtn setTitle:@"接受" forState:UIControlStateNormal];
     [_acceptBtn setTintColor:[UIColor whiteColor]];
-    [_acceptBtn setBackgroundColor:[[UIColor alloc] initWithRed:23 / 255.f green:136 / 255.f blue:213 / 255.f alpha:1]];
+    _acceptBtn.layer.cornerRadius = 10;
+    [_acceptBtn setBackgroundColor:[UIColor orangeColor]];
     _acceptBtn.translatesAutoresizingMaskIntoConstraints = NO;
     [_acceptBtn.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:14.0]];
-
+    [_acceptBtn addTarget:self action:@selector(accept:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.portraitImageView];
     [self.contentView addSubview:self.nameLabel];
-    [self.contentView addSubview:self.rightLabel];
-    [self.contentView addSubview:self.arrow];
     [self.contentView addSubview:_acceptBtn];
 }
-
-- (void)setModel:(RCDUserInfo *)user {
+-(void)accept:(UIButton *)btn{
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(acceptClick:)]) {
+        [self.delegate acceptClick:btn];
+    }
+}
+- (void)setModel:(friendMo *)user {
     if (user) {
-        self.nameLabel.text = user.name;
-        if ([user.portraitUri isEqualToString:@""]) {
+        self.nameLabel.text = user.user.nickName?user.user.nickName:user.user.ID;
+        if ([user.user.headImage isEqualToString:@""]) {
             DefaultPortraitView *defaultPortrait =
                 [[DefaultPortraitView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-            [defaultPortrait setColorAndLabel:user.userId Nickname:user.name];
+            [defaultPortrait setColorAndLabel:user.friendId Nickname:user.user.nickName];
             UIImage *portrait = [defaultPortrait imageFromView];
             self.portraitImageView.image = portrait;
         } else {
-            [self.portraitImageView sd_setImageWithURL:[NSURL URLWithString:user.portraitUri]
+            [self.portraitImageView sd_setImageWithURL:[NSURL URLWithString:user.user.headImage]
                                       placeholderImage:[UIImage imageNamed:@"contact"]];
         }
     }
-    if ([user.status intValue] == 20) {
-        self.rightLabel.text = @"已接受";
-        self.acceptBtn.hidden = YES;
-        self.arrow.hidden = NO;
-    }
-    if ([user.status intValue] == 10) {
-        self.rightLabel.text = @"已邀请";
-        self.selected = NO;
-        self.arrow.hidden = YES;
-        self.acceptBtn.hidden = YES;
-    }
-
     if ([RCIM sharedRCIM].globalConversationAvatarStyle == RC_USER_AVATAR_CYCLE &&
         [RCIM sharedRCIM].globalMessageAvatarStyle == RC_USER_AVATAR_CYCLE) {
         self.portraitImageView.layer.masksToBounds = YES;

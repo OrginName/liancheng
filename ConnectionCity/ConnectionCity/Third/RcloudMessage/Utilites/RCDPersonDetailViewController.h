@@ -11,7 +11,6 @@
 #import <UIKit/UIKit.h>
 
 @interface RCDPersonDetailViewController : UIViewController
-
 @property(nonatomic, strong) UIView *infoView;
 @property(nonatomic, strong) NSString *userId;
 @property(nonatomic, strong) UILabel *lblName;

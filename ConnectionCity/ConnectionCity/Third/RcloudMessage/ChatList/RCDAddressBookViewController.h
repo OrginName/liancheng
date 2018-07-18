@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 //#import "RCSelectPersonViewController.h"
-
+typedef void(^returnBlock)(void);
 @interface RCDAddressBookViewController : UITableViewController
 
+@property (nonatomic,copy) returnBlock block;
 + (instancetype)addressBookViewController;
 
 @property(nonatomic, strong) NSArray *keys;

@@ -155,11 +155,11 @@
     self.tabBarController.navigationItem.title = @"通讯录";
     [self.searchFriendsBar resignFirstResponder];
     [self sortAndRefreshWithList:[self getAllFriendList]];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:KAddFriend object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:KAddFriend object:nil];
 }
--(void)reloadData{
-    [self sortAndRefreshWithList:[self getAllFriendList]];
-}
+//-(void)reloadData{
+//    [self sortAndRefreshWithList:[self getAllFriendList]];
+//}
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     if (_isBeginSearch == YES) {
@@ -311,6 +311,9 @@
         switch (indexPath.row) {
         case 0: {
             RCDAddressBookViewController *addressBookVC = [RCDAddressBookViewController addressBookViewController];
+            addressBookVC.block = ^{
+                [self sortAndRefreshWithList:[self getAllFriendList]];
+            };
             [self.navigationController pushViewController:addressBookVC animated:YES];
             return;
         } break;

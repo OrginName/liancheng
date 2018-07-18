@@ -51,7 +51,6 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -63,6 +62,9 @@
     CircleCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CircleCell0"];
     if (!cell) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"CircleCell" owner:nil options:nil][0];
+    }
+    if (self.service!=nil) {
+        cell.mo = self.array[indexPath.row];
     }
     cell.moment = self.array[indexPath.row];
     return cell;

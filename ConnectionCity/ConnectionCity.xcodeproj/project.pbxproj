@@ -110,6 +110,7 @@
 		72B1D85520FA78600001FF43 /* myServiceMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B1D85420FA78600001FF43 /* myServiceMo.m */; };
 		72B6EC9720FCC16700B4088D /* AnotherStarEvaluator.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B6EC9420FCC16700B4088D /* AnotherStarEvaluator.m */; };
 		72B6EC9820FCC16700B4088D /* StarEvaluator.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B6EC9620FCC16700B4088D /* StarEvaluator.m */; };
+		72B6EC9B20FF621500B4088D /* friendMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72B6EC9A20FF621500B4088D /* friendMo.m */; };
 		72BAB42A20B03A8C00496D29 /* BulidTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42820B03A8B00496D29 /* BulidTeamCell.m */; };
 		72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */; };
 		72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */; };
@@ -797,6 +798,8 @@
 		72B6EC9420FCC16700B4088D /* AnotherStarEvaluator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnotherStarEvaluator.m; sourceTree = "<group>"; };
 		72B6EC9520FCC16700B4088D /* StarEvaluator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarEvaluator.h; sourceTree = "<group>"; };
 		72B6EC9620FCC16700B4088D /* StarEvaluator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarEvaluator.m; sourceTree = "<group>"; };
+		72B6EC9920FF621500B4088D /* friendMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = friendMo.h; path = ConnectionCity/Classes/Found/Model/friendMo.h; sourceTree = SOURCE_ROOT; };
+		72B6EC9A20FF621500B4088D /* friendMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = friendMo.m; path = ConnectionCity/Classes/Found/Model/friendMo.m; sourceTree = SOURCE_ROOT; };
 		72BAB42720B03A8B00496D29 /* BulidTeamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulidTeamCell.h; sourceTree = "<group>"; };
 		72BAB42820B03A8B00496D29 /* BulidTeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulidTeamCell.m; sourceTree = "<group>"; };
 		72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BulidTeamCell.xib; sourceTree = "<group>"; };
@@ -2150,6 +2153,15 @@
 				72B6EC9620FCC16700B4088D /* StarEvaluator.m */,
 			);
 			path = Star;
+			sourceTree = "<group>";
+		};
+		72B6EC9C20FF623100B4088D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				72B6EC9920FF621500B4088D /* friendMo.h */,
+				72B6EC9A20FF621500B4088D /* friendMo.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		72BAB42520B03A7B00496D29 /* View */ = {
@@ -3539,8 +3551,8 @@
 		CE0BA616209D617F004C3C33 /* Found */ = {
 			isa = PBXGroup;
 			children = (
+				72B6EC9C20FF623100B4088D /* Model */,
 				CEE4B29320C6B553008B8731 /* Controller */,
-				CEE4B28C20C6B157008B8731 /* Models */,
 				CEE4B28D20C6B157008B8731 /* View */,
 			);
 			path = Found;
@@ -4156,13 +4168,6 @@
 				CE6BEC1C20C83769003B36D7 /* LCDatePicker.m */,
 			);
 			path = CustomPicker;
-			sourceTree = "<group>";
-		};
-		CEE4B28C20C6B157008B8731 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		CEE4B28D20C6B157008B8731 /* View */ = {
@@ -4820,6 +4825,7 @@
 				721DAE1120F272BA006F141F /* FoundQunController.m in Sources */,
 				72EC1B6720B8465D00ACC20B /* ShowTreaueTab.m in Sources */,
 				CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */,
+				72B6EC9B20FF621500B4088D /* friendMo.m in Sources */,
 				CE0BA5B3209D5E6B004C3C33 /* UIView+YSCategory.m in Sources */,
 				8D07D75E20DCC8AB0073807C /* AbilttyMo.m in Sources */,
 				CE5C280C20B91AD8006A8332 /* WinnerInfoController.m in Sources */,
@@ -5232,7 +5238,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5291,7 +5297,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -317,7 +317,6 @@
         title = name;
     }
     chatViewController.title = title;
-    //        chatViewController.needPopToRootView = YES;
     chatViewController.displayUserNameInCell = NO;
     [self.controller.navigationController pushViewController:chatViewController animated:YES];
 }

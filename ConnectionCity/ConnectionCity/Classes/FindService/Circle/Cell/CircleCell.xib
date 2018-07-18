@@ -96,7 +96,7 @@
                 <outlet property="lab_name" destination="Tm9-3Z-Df0" id="EGd-Lg-ECD"/>
                 <outlet property="lab_time" destination="ej4-4q-X7f" id="iqC-9q-kCa"/>
             </connections>
-            <point key="canvasLocation" x="7" y="104"/>
+            <point key="canvasLocation" x="7" y="14"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CircleCell1" rowHeight="75" id="zQl-7c-bhJ" customClass="CircleCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
@@ -160,7 +160,7 @@
                     <constraint firstItem="h4D-Jb-md5" firstAttribute="leading" secondItem="hb5-NI-XpD" secondAttribute="leadingMargin" id="xtx-Ky-dLy"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="7" y="219"/>
+            <point key="canvasLocation" x="1" y="181"/>
         </tableViewCell>
     </objects>
     <resources>

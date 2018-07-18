@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-@class RCDUserInfo;
-
+#import "friendMo.h"
+@protocol RCDAddressBookCellDelegate <NSObject>
+@optional
+- (void)acceptClick:(UIButton *)btn;
+@end
 @interface RCDAddressBookTableViewCell : UITableViewCell
-
+@property (nonatomic,assign) id<RCDAddressBookCellDelegate>delegate;
 /**
  *  cell高度
  *
@@ -22,7 +25,7 @@
  *
  *  @param user 设置用户信息模型，填充控件的数据
  */
-- (void)setModel:(RCDUserInfo *)user;
+- (void)setModel:(friendMo *)user;
 
 /**
  *  昵称

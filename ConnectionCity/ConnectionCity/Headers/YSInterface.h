@@ -36,6 +36,13 @@ static NSString * const v1MyBlackCreate
 static NSString * const v1MyAdd = @"/v1/my/add";
 //查找用户
 static NSString * const v1PrivateUserSearch = @"/v1/private/user/search";
+//好友申请
+static NSString * const v1ApplicationAdd = @"/v1/application/add";
+//同意好友申请
+static NSString * const v1ApplicationAgree = @"/v1/application/agree";
+//好友申请
+static NSString * const v1ApplicationPage = @"/v1/application/page";
+
 
 
 //首页  更新群

@@ -566,7 +566,7 @@
 }
 
 - (void)requestFriend:(NSString *)userId complete:(void (^)(BOOL))result {
-    [YSNetworkTool POST:v1MyAdd params:@{@"friendId":userId} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1ApplicationAdd params:@{@"friendId":userId} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             result(YES);
         });
@@ -578,21 +578,19 @@
 }
 
 - (void)processInviteFriendRequest:(NSString *)userId complete:(void (^)(BOOL))result {
-//    [AFHttpTool processInviteFriendRequest:userId
-//        success:^(id response) {
-//            if (result && [response[@"code"] intValue] == 200) {
-//                dispatch_async(dispatch_get_main_queue(), ^(void) {
-//                    result(YES);
-//                });
-//            } else if (result) {
-//                result(NO);
-//            }
-//        }
-//        failure:^(id response) {
-//            if (result) {
-//                result(NO);
-//            }
-//        }];
+    [YSNetworkTool POST:v1ApplicationAgree params:@{@"id":userId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]) {
+            dispatch_async(dispatch_get_main_queue(), ^(void) {
+                result(YES);
+            });
+        }else{
+            result(NO);
+        }
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        result(NO);
+    }];
 }
 
 - (void)AddToBlacklist:(NSString *)userId complete:(void (^)(BOOL result))result {

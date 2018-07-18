@@ -210,12 +210,12 @@
             [RCDHTTPTOOL requestFriend:_targetUserInfo.userId
                               complete:^(BOOL result) {
                                   if (result) {
-                                      [YTAlertUtil showTempInfo:@"添加成功"];
+                                      [YTAlertUtil showTempInfo:@"好友申请已发送"];
                                       [RCDHTTPTOOL getFriendscomplete:^(NSMutableArray *result){
                                       }];                                      [self.navigationController popToRootViewControllerAnimated:YES];
-                                      [[NSNotificationCenter defaultCenter] postNotificationName:KAddFriend object:nil];
+//                                      [[NSNotificationCenter defaultCenter] postNotificationName:KAddFriend object:nil];
                                   } else {
-                                      [YTAlertUtil showTempInfo:@"添加失败,请重新添加"];
+                                      [YTAlertUtil showTempInfo:@"发送失败,请重新发送"];
 //                                      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
 //                                                                                          message:@"请求失败，请重试"
 //                                                                                         delegate:nil
