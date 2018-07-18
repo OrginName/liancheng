@@ -32,8 +32,16 @@
     self.lab_time.text = [moment.createTime componentsSeparatedByString:@" "][0];
     self.lab_HF.text = @"未知回复";
 }
--(void)setMo:(myServiceMo *)mo{
+-(void)setMo:(ObjComment *)mo{
     _mo = mo;
-    
+    self.image_Head.image = [UIImage imageNamed:@"no-pic"];
+//    [self.image_Head sd_setImageWithURL:[NSURL URLWithString:] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    self.lab_name.text = @"无";
+    self.lab_Content.text = mo.content;
+    self.lab_time.text = [mo.createTime componentsSeparatedByString:@" "][0];
+    self.lab_HF.text = @"未知回复";
+}
+-(BOOL)canBecomeFirstResponder{
+    return YES;
 }
 @end

@@ -179,7 +179,6 @@ self.conversationBtn.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 - (void)btnConversation:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeTabBarIndex" object:@0];
     //创建会话
     RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
     chatViewController.conversationType = ConversationType_PRIVATE;

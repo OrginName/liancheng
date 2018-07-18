@@ -42,4 +42,5 @@ proStr(ID);
 proArr(replyList);//回复列表
 proStr(score);
 proStr(typeName);
+proStr(createTime);
 @end

@@ -23,12 +23,8 @@
     [self setUI];
     if (self.service==nil) {
         [self initData];
-    }
-}
--(void)setService:(myServiceMo *)service{
-    _service = service;
-    if (service!=nil) {
-        self.array = [service.obj.commentList mutableCopy];
+    }else{
+        self.array = [self.service.obj.commentList mutableCopy];
         [self.tab_bottom reloadData];
     }
 }
@@ -63,10 +59,39 @@
     if (!cell) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"CircleCell" owner:nil options:nil][0];
     }
+    //添加长按手势
+    UILongPressGestureRecognizer * longPressGesture =[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(cellLongPress:)];
+    longPressGesture.minimumPressDuration=1.5f;//设置长按 时间
+    [cell addGestureRecognizer:longPressGesture];
     if (self.service!=nil) {
         cell.mo = self.array[indexPath.row];
-    }
+    }else
     cell.moment = self.array[indexPath.row];
     return cell;
+}
+-(void)cellLongPress:(UILongPressGestureRecognizer *)longRecognizer{
+    if (longRecognizer.state==UIGestureRecognizerStateBegan) {
+        //成为第一响应者，需重写该方法
+        [self becomeFirstResponder];
+        CGPoint location = [longRecognizer locationInView:self.tab_bottom];
+        NSIndexPath * indexPath = [self.tab_bottom indexPathForRowAtPoint:location];
+        CircleCell * cell = (CircleCell *)longRecognizer.view;
+        [cell becomeFirstResponder];
+        UIMenuItem *itCopy = [[UIMenuItem alloc] initWithTitle:@"回复" action:@selector(handleCopyCell:)];
+        UIMenuItem *itDelete = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(handleDeleteCell:)];
+        UIMenuController *menu = [UIMenuController sharedMenuController];
+        [menu setMenuItems:[NSArray arrayWithObjects:itCopy, itDelete,  nil]];
+        [menu setTargetRect:cell.frame inView:self.view];
+        [menu setMenuVisible:YES animated:YES];
+        //可以得到此时你点击的哪一行
+        NSLog(@"%lu",indexPath.row);
+        //在此添加你想要完成的功能
+    }
+}
+-(void)handleCopyCell:(id)sender{
+    NSLog(@"我是回复");
+}
+-(void)handleDeleteCell:(id)sender{
+    NSLog(@"我是删除");
 }
 @end

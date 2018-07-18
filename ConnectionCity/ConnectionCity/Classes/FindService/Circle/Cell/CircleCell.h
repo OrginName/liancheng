@@ -15,6 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab_Content;
 @property (weak, nonatomic) IBOutlet UILabel *lab_HF;
 @property (weak, nonatomic) IBOutlet UILabel *lab_time;
-@property (nonatomic,strong)Comment * moment;
-@property (nonatomic,strong)myServiceMo * mo;
+@property (nonatomic,strong) Comment * moment;
+@property (nonatomic,strong) ObjComment * mo;
 @end
