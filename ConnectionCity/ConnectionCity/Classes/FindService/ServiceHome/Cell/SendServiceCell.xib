@@ -83,13 +83,12 @@
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="9" maxY="0.0"/>
                         <inset key="imageEdgeInsets" minX="-11" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <state key="normal" title="元/单" image="w-xuanhzong">
+                        <state key="normal" title="元/单" image="weixuanhzong">
                             <color key="titleColor" red="0.79332336110000001" green="0.80117804780000001" blue="0.80117804780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <state key="selected" title="元/单" image="xuanzhong"/>
                         <connections>
                             <action selector="priceTypeClcik:" destination="w9A-0f-Sc7" eventType="touchUpInside" id="DH9-vX-yVG"/>
-                            <action selector="priceTypeClcik:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="h8c-hI-yPD"/>
                         </connections>
                     </button>
                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ble-VI-riB">
@@ -100,13 +99,12 @@
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="9" maxY="0.0"/>
                         <inset key="imageEdgeInsets" minX="-11" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <state key="normal" title="元/小时" image="w-xuanhzong">
+                        <state key="normal" title="元/小时" image="weixuanhzong">
                             <color key="titleColor" red="0.79332336110000001" green="0.80117804780000001" blue="0.80117804780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <state key="selected" title="元/小时" image="xuanzhong"/>
                         <connections>
                             <action selector="priceTypeClcik:" destination="w9A-0f-Sc7" eventType="touchUpInside" id="SD3-Wv-Stf"/>
-                            <action selector="priceTypeClcik:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hz4-ea-P1W"/>
                         </connections>
                     </button>
                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFf-Mq-F7f">
@@ -117,13 +115,12 @@
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="9" maxY="0.0"/>
                         <inset key="imageEdgeInsets" minX="-11" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <state key="normal" title="元/天" image="w-xuanhzong">
+                        <state key="normal" title="元/天" image="weixuanhzong">
                             <color key="titleColor" red="0.79332336110000001" green="0.80117804780000001" blue="0.80117804780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <state key="selected" title="元/天" image="xuanzhong"/>
                         <connections>
                             <action selector="priceTypeClcik:" destination="w9A-0f-Sc7" eventType="touchUpInside" id="81C-Rf-Vwv"/>
-                            <action selector="priceTypeClcik:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9ev-ep-GrB"/>
                         </connections>
                     </button>
                 </subviews>
@@ -160,10 +157,9 @@
                             <constraint firstAttribute="height" constant="15" id="Fjk-IM-oY5"/>
                             <constraint firstAttribute="width" constant="15" id="mEh-DD-4ro"/>
                         </constraints>
-                        <state key="normal" image="w-xuanhzong"/>
+                        <state key="normal" image="weixuanhzong"/>
                         <state key="selected" image="xuanzhong"/>
                         <connections>
-                            <action selector="btnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9wr-qG-nUi"/>
                             <action selector="btnClick:" destination="nzt-WA-Zgm" eventType="touchUpInside" id="ivV-3z-udc"/>
                         </connections>
                     </button>
@@ -184,7 +180,7 @@
     </objects>
     <resources>
         <image name="arraw-right" width="9" height="15"/>
-        <image name="w-xuanhzong" width="14" height="14"/>
+        <image name="weixuanhzong" width="14" height="14"/>
         <image name="xuanzhong" width="14" height="14"/>
     </resources>
 </document>

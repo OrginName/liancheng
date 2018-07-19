@@ -412,7 +412,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
     if (!_view_Search) {
         _view_Search = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30)];
         _view_Search.backgroundColor = [UIColor whiteColor];
-        _search_text = [[UITextField alloc] initWithFrame:CGRectMake(15, 0, _view_Search.width-110, 30)];
+        _search_text = [[UITextField alloc] initWithFrame:CGRectMake(15, 0, _view_Search.width-140, 30)];
         _search_text.backgroundColor = [UIColor whiteColor];
         _search_text.placeholder = @"请输入城市名称";
         _search_text.font = [UIFont systemFontOfSize:14];

@@ -283,7 +283,7 @@ NSString const *badgeValueKey = @"badgeValueKey";
 {
     UIButton*btn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    btn.backgroundColor = [UIColor greenColor];
-    btn.frame = CGRectMake(0, 0, 30, 30);
+    btn.frame = CGRectMake(0, 0, 40, 30);
     btn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     btn.imageEdgeInsets = EdgeInsets;
     [btn setTitle:title forState:UIControlStateNormal];

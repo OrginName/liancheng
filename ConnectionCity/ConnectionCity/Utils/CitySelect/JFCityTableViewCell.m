@@ -44,6 +44,17 @@ static NSString *ID = @"cityCollectionViewCell";
 
 - (void)setCityNameArray:(NSMutableArray *)cityNameArray {
     _cityNameArray = cityNameArray;
+    NSUInteger height = 44;
+    if (0 == (_cityNameArray.count % 3)) {
+        height = _cityNameArray.count / 3 * 50;
+    }else {
+        height = (_cityNameArray.count / 3 + 1) * 50;
+    }
+    if (height > 300) {
+        height = 300;
+    }
+    _collectionView.height = height;
+    _collectionView.width = kScreenWidth - 50;
     [_collectionView reloadData];
 }
 
