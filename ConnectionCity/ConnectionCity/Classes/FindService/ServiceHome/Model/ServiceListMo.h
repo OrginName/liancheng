@@ -27,6 +27,19 @@ proStr(areaCode);
 proStr(typeName);
 proStr(browseTimes);
 proDic(user);
+proArr(commentList);
+proStr(score);
 proArr(serviceCircleList);//圈子
 @property (nonatomic,strong) UserMo * user1;
+@end
+
+@interface commentList : BaseModel
+proStr(ID);
+proStr(userId);
+proStr(score);
+proStr(content);
+proStr(createTime);
+proArr(replyList);//回复列表
+@property (nonatomic,assign)CGFloat cellHeight;
+@property (nonatomic,strong)UserMo * user;
 @end

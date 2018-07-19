@@ -17,11 +17,8 @@
     NSMutableArray  *fullStarArray;
 }
 @property (nonatomic, assign) float currentValue;
-
 @end
-
 @implementation StarEvaluator
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
@@ -31,7 +28,6 @@
     }
     return self;
 }
-
 - (void)loadSubviews
 {
     fullStarArray = [NSMutableArray arrayWithCapacity:5];
@@ -65,16 +61,16 @@
     }
 }
 
-- (void)setCurrentValue:(float)currentValue
+- (void)setCurrentValueMy:(float)currentValueMy
 {
-    _currentValue = currentValue;
+    _currentValueMy = currentValueMy;
+    self.currentValue = currentValueMy;
     [self setNeedsDisplay];
 }
 
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CGPoint touchPoint = [touch locationInView:self];
-    
     int t = (int)(touchPoint.x/aWidth);
     float f = (touchPoint.x - t*Space - t*aStarWidth)/aStarWidth;
     f = f>1.0?1.0:f;
@@ -91,7 +87,6 @@
     float f = (touchPoint.x - t*Space - t*aStarWidth)/aStarWidth;
     f = f>1.0?1.0:f;
     self.currentValue = t + f;
-    
     return YES;
 }
 
@@ -103,11 +98,9 @@
         [CATransaction setDisableActions:YES];
     }
     
-    int t = (int)_currentValue;
-    float f = _currentValue - t;
-    
+    int t = (int)self.currentValue;
+    float f = self.currentValue - t;
     for (int i = 0; i < 5; i ++) {
-        
         UIImageView *fullImgView = [fullStarArray objectAtIndex:i];
         
         if (i < t) {
@@ -121,11 +114,9 @@
         }
     }
     if (self.delegate&&[self.delegate respondsToSelector:@selector(starEvaluator:currentValue:)]) {
-        [_delegate starEvaluator:self currentValue:_currentValue];
+        [_delegate starEvaluator:self currentValue:self.currentValue];
     }
 }
-
-
 @end
 
 

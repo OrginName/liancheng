@@ -53,11 +53,6 @@
         self.title = @"互换宝物";
         [self.btn_sayAndChange setTitle:@"我想换" forState:UIControlStateNormal];
     }else if (self.Receive_Type == ENUM_TypeTrval){
-//        [self.view addSubview:self.btn_Like];
-//        [self.view addSubview:self.Save_Like];
-//        self.title = @"欧阳姐姐";
-//        [self loadData:@"7"];
-        NSLog(@"%ld",self.zIndex);
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.zIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     }
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(Share) image:@"share" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, -10)];
@@ -131,7 +126,7 @@
 -(void)GZLoadData:(NSString *)type{
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[5] contentArr][1];
-    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":@([mo.value integerValue]),@"type":@([type integerValue])} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":@([type integerValue]),@"type":@([mo.value integerValue])} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         [YTAlertUtil showTempInfo:@"关注成功"];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         

@@ -261,6 +261,9 @@ static NSString * const v1CommonCollectCreate = @"/v1/common/collect/create";
 static NSString * const v1CommonCommentAddlike = @"/v1/common/comment/add-like";
 //添加浏览次数
 static NSString * const v1ServiceAddBrowseTimes = @"/v1/service/add-browse-times";
+//添加评论回复
+static NSString * const v1CommonCommentReplay = @"//v1/common/comment/replay";
+
 //服务约单
 static NSString * const v1ServiceCreateOrder = @"/v1/service/create-order";
 //筛选条件

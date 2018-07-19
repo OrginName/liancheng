@@ -44,6 +44,7 @@
                 list.ID = responseObject[@"data"][i][@"id"];
                 list.user1 = [UserMo mj_objectWithKeyValues:list.user];
                 list.user1.ID = list.user[@"id"];
+                list.commentList = [commentList mj_objectArrayWithKeyValuesArray:list.commentList];
                 [arr addObject:list];
             }
         }else

@@ -52,6 +52,7 @@ proStr(commentCount);//评论数
 ProMutArr(comments);//不知道是不是评价先放着
 proStr(containsImage);
 proStr(containsVideo);
+proArr(replyList);
 @property (nonatomic,strong)UIImage * coverImage;
 @property (nonatomic,strong) UserMo * userMo;
 @end

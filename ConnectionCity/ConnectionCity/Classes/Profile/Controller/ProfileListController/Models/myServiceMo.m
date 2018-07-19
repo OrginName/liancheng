@@ -26,5 +26,7 @@
 @end
 
 @implementation ObjComment
-
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"ID":@"id"};
+}
 @end

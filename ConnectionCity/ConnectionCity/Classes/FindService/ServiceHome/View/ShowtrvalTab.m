@@ -58,7 +58,12 @@
     }else if (section==1){
         return 1;
     }else{
-        return 5;
+        if (self.Mo!=nil) {
+            return self.Mo.commentList.count;
+        }else{
+            return 5;
+        }
+        
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -70,6 +75,10 @@
     }else if (indexPath.section==1){
         return 166;
     }else{
+        if (self.Mo!=nil) {
+            commentList * com = self.Mo.commentList[indexPath.row];
+            return com.cellHeight;
+        }else
         return 80;
     }
 }
@@ -92,7 +101,6 @@
         return view;
     }
 }
-
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *footView = [[UIView alloc] init];
@@ -104,8 +112,14 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShowTrvalCell *cell = [ShowTrvalCell tempTableViewCellWith:tableView indexPath:indexPath];
     cell.delegate = self;
-    cell.list = self.Mo;
-    cell.trval = self.MoTrval;
+    if (indexPath.section<2) {
+        cell.list = self.Mo;
+        cell.trval = self.MoTrval;
+    }else{
+        if (self.Mo!=nil) {
+            cell.commen = self.Mo.commentList[indexPath.row];
+        }
+    }
     return cell;
 }
 //ShowTrvalCellDelegate

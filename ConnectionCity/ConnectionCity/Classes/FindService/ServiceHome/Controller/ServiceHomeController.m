@@ -216,7 +216,8 @@
                             @"lat": @([dic[@"lat"] floatValue]),
                             @"lng": @([dic[@"lng"] floatValue]),
                             @"userStatus": @([dic[@"userStatus"]?dic[@"userStatus"]:@"" integerValue]),
-                            @"validType": dic[@"validType"]?dic[@"validType"]:@""
+                            @"validType": dic[@"validType"]?dic[@"validType"]:@"",
+                            @"keyword":dic[@"keyword"]?dic[@"keyword"]:@""
                             };
     //    加载服务列表
     [ServiceHomeNet requstServiceList:dic1 withSuc:^(NSMutableArray *successArrValue) {

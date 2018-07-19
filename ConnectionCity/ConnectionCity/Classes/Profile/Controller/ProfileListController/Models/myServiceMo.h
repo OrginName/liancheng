@@ -43,4 +43,5 @@ proArr(replyList);//回复列表
 proStr(score);
 proStr(typeName);
 proStr(createTime);
+@property (nonatomic,assign) CGFloat cellHeight;
 @end

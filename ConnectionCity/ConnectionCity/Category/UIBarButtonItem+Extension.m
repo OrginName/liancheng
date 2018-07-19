@@ -279,14 +279,12 @@ NSString const *badgeValueKey = @"badgeValueKey";
     objc_setAssociatedObject(self, &shouldAnimateBadgeKey, number, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-
-
 +(UIBarButtonItem *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image title:(NSString *)title EdgeInsets:(UIEdgeInsets )EdgeInsets
 {
     UIButton*btn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    btn.backgroundColor = [UIColor greenColor];
     btn.frame = CGRectMake(0, 0, 30, 30);
-    btn.titleLabel.font = [UIFont systemFontOfSize:15];
+    btn.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     btn.imageEdgeInsets = EdgeInsets;
     [btn setTitle:title forState:UIControlStateNormal];
     [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];

@@ -176,6 +176,7 @@
 		8D09E18E20BFD52E000F7EBD /* ShowtrvalTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E18D20BFD52E000F7EBD /* ShowtrvalTab.m */; };
 		8D09E19C20BFDC16000F7EBD /* ShowTrvalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D09E19A20BFDC16000F7EBD /* ShowTrvalCell.m */; };
 		8D09E19D20BFDC16000F7EBD /* ShowTrvalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D09E19B20BFDC16000F7EBD /* ShowTrvalCell.xib */; };
+		8D10B3B121002E8B00C153EF /* CommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D10B3B021002E8B00C153EF /* CommentView.m */; };
 		8D114CBA20CA22BD00637D34 /* AddMyWayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D114CB820CA22BD00637D34 /* AddMyWayController.m */; };
 		8D114CBB20CA22BD00637D34 /* AddMyWayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D114CB920CA22BD00637D34 /* AddMyWayController.xib */; };
 		8D114CBF20CA235200637D34 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D114CBE20CA235200637D34 /* AccountView.m */; };
@@ -903,6 +904,8 @@
 		8D09E19920BFDC16000F7EBD /* ShowTrvalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowTrvalCell.h; sourceTree = "<group>"; };
 		8D09E19A20BFDC16000F7EBD /* ShowTrvalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowTrvalCell.m; sourceTree = "<group>"; };
 		8D09E19B20BFDC16000F7EBD /* ShowTrvalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTrvalCell.xib; sourceTree = "<group>"; };
+		8D10B3AF21002E8B00C153EF /* CommentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentView.h; sourceTree = "<group>"; };
+		8D10B3B021002E8B00C153EF /* CommentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentView.m; sourceTree = "<group>"; };
 		8D114CB720CA22BD00637D34 /* AddMyWayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMyWayController.h; sourceTree = "<group>"; };
 		8D114CB820CA22BD00637D34 /* AddMyWayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMyWayController.m; sourceTree = "<group>"; };
 		8D114CB920CA22BD00637D34 /* AddMyWayController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMyWayController.xib; sourceTree = "<group>"; };
@@ -2066,14 +2069,9 @@
 				72B6EC9220FCC16700B4088D /* Star */,
 				CE14BD0E20F3780E00F85C49 /* Alipay */,
 				8D14FDE320EB0BAA0013A9DF /* RcloudMessage */,
-				8D07D75F20DCDF490073807C /* QinNiu */,
 				720263D220B5015500382B2F /* TZImagePickerController */,
 				7274187820B13CB6001D6BE1 /* MLMSegmentPageView */,
-				722D252A20AA76D400AB3863 /* CitySelect */,
-				722D252620AA769600AB3863 /* PopView */,
 				8DD48CB720A811EA00D6D1E6 /* SDCycleScrollView */,
-				8D24A22F20A1CB6000F0740D /* RefineThing */,
-				8D24A22820A1B64400F0740D /* map */,
 				729BA6B220A01E7F009713FD /* AreaDataManager */,
 				729BA6B520A01E7F009713FD /* AreaDB */,
 				729BA6C520A01E7F009713FD /* Location */,
@@ -2709,6 +2707,8 @@
 				8DF7E3D320CFB33F009A92D7 /* PopThree.h */,
 				8DF7E3D420CFB33F009A92D7 /* PopThree.m */,
 				8DF7E3D620CFB363009A92D7 /* PopThree.xib */,
+				8D10B3AF21002E8B00C153EF /* CommentView.h */,
+				8D10B3B021002E8B00C153EF /* CommentView.m */,
 			);
 			path = RefineThing;
 			sourceTree = "<group>";
@@ -3411,6 +3411,11 @@
 		CE0BA5BE209D5E9B004C3C33 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8D24A22820A1B64400F0740D /* map */,
+				8D24A22F20A1CB6000F0740D /* RefineThing */,
+				722D252A20AA76D400AB3863 /* CitySelect */,
+				722D252620AA769600AB3863 /* PopView */,
+				8D07D75F20DCDF490073807C /* QinNiu */,
 				CEE4B28920C585D4008B8731 /* CustomPicker */,
 				8DEA451720C12BF5001529F1 /* CustomPlayer */,
 				723B9F1020B4195A00AD919B /* PhotoSelect */,
@@ -4381,7 +4386,7 @@
 				TargetAttributes = {
 					CE0BA563209D5004004C3C33 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -4752,6 +4757,7 @@
 				8DFA326220EDB97B0086423A /* RCWKSharedUserDefault.m in Sources */,
 				8DD48CCB20A811EA00D6D1E6 /* NSData+SDDataCache.m in Sources */,
 				CEE5251920F9039F00DD6179 /* YSShareTool.m in Sources */,
+				8D10B3B121002E8B00C153EF /* CommentView.m in Sources */,
 				8DE465DA20EDF0A0009730F7 /* RCDAddFriendViewController.m in Sources */,
 				722D253B20AA76D400AB3863 /* JFCityViewController.m in Sources */,
 				8D8E4ED720C937D200C3D537 /* NKColorSwitch.m in Sources */,
@@ -5236,9 +5242,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DAFGF97Y34;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5283,8 +5290,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LC.CC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fd946775-62be-4c10-8ca8-1c39d860e2ee";
-				PROVISIONING_PROFILE_SPECIFIER = LLLLLLLCCCCCCC;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -5295,9 +5302,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DAFGF97Y34;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5341,8 +5349,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LC.CC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fd946775-62be-4c10-8ca8-1c39d860e2ee";
-				PROVISIONING_PROFILE_SPECIFIER = LLLLLLLCCCCCCC;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

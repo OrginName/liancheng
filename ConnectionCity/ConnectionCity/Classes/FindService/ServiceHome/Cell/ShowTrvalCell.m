@@ -7,15 +7,24 @@
 //
 
 #import "ShowTrvalCell.h"
+#import "StarEvaluator.h"
 @interface ShowTrvalCell()
 {
     NSMutableArray * _arr_image;
+    StarEvaluator * ev;
 }
 @end
 @implementation ShowTrvalCell
 -(void)awakeFromNib{
     [super awakeFromNib];
-    _arr_image = [[NSMutableArray alloc] initWithObjects:self.image1,self.image2,self.image3,self.image4, nil];
+    if (!_arr_image) {
+        _arr_image = [[NSMutableArray alloc] initWithObjects:self.image1,self.image2,self.image3,self.image4, nil];
+    }
+     if (!ev) {
+        ev = [[StarEvaluator alloc] initWithFrame:CGRectMake(0, 9, 140, 40)];
+        ev.animate = NO;
+        [self.viewStar addSubview:ev];
+    }
 }
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView
                             indexPath:(NSIndexPath *)indexPath{
@@ -78,6 +87,7 @@
                 }
                 break;
             }
+            
         }
         
     }
@@ -109,6 +119,7 @@
             self.lab_DW.text = @"无";
         self.lab_LLNum.text = [NSString stringWithFormat:@"浏览%@次",list.browseTimes?list.browseTimes:@"999+"];
         self.lab_DTNum.text = KString(@"%lu", (unsigned long)list.serviceCircleList.count);
+        ev.currentValueMy = [list.score floatValue];
         for (NSDictionary * dic in list.serviceCircleList) {
             if ([[dic[@"containsImage"] description] isEqualToString:@"1"]) {
                 NSArray * arr2 = [dic[@"images"] componentsSeparatedByString:@";"];
@@ -125,6 +136,15 @@
             }
         }
     }
+}
+-(void)setCommen:(commentList *)commen{
+    _commen = commen;
+    [self.imgae_Comment sd_setImageWithURL:[NSURL URLWithString:commen.user.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    self.lab_commentTitle.text = commen.user.nickName?commen.user.nickName:commen.user.ID;
+    self.lab_Comment.text = commen.content;
+    self.lab_HF.text = commen.replyList.count!=0?commen.replyList[0][@"content"]:@"";
+    self.lab_CommentTime.text = [commen.createTime componentsSeparatedByString:@" "][0];
+    commen.cellHeight = 45+[YSTools cauculateHeightOfText:self.lab_Comment.text width:(self.width-60) font:13]+[YSTools cauculateHeightOfText:self.lab_HF.text width:(self.width-80) font:13];
 }
 - (NSArray *)stringToJSON:(NSString *)jsonStr {
     if (jsonStr) {

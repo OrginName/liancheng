@@ -27,4 +27,5 @@ proStr(typeName);
 proArr(replyList);
 proStr(createTime);
 proDic(user);
+@property (nonatomic,assign) CGFloat cellHeight;
 @end
