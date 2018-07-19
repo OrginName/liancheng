@@ -16,13 +16,11 @@
 @end
 
 @implementation BaseViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
     self.navBarHairlineImageView.hidden = YES;
     self.view.backgroundColor = kCommonBGColor;
-    
 }
 -(void)setFlag_back:(BOOL)flag_back{
     _flag_back = flag_back;

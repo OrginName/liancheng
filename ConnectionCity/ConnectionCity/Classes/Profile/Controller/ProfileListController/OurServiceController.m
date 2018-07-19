@@ -149,7 +149,7 @@
     myServiceMo * mo = self.data_Arr[index.row];
     ev.service = mo;
     ev.block = ^{
-        
+        [tab.mj_header beginRefreshing];
     };
     [self.navigationController pushViewController:ev animated:YES];
 }
@@ -172,7 +172,7 @@
     NSDictionary * dic = @{
                            @"content": dic1[@"content"],
                            @"score": @(self.scroe),
-                           @"type": @40,
+                           @"type": self.inter==2?@40:@20,
                            @"typeId": @([dic1[@"typeId"] integerValue])
                            };
     [CircleNet requstSendPL:dic withSuc:^(NSDictionary *successDicValue) {

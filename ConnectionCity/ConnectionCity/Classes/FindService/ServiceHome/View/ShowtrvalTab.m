@@ -11,6 +11,7 @@
 #import "ShowTrvalCell.h"
 #import "AppointmentController.h"
 #import "AllDicMo.h"
+#import "StarEvaluator.h"
 @interface ShowtrvalTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ShowTrvalCellDelegate>
 @property (nonatomic,strong) SDCycleScrollView * cycleScrollView;
 @property (nonatomic,strong) NSMutableArray * lunArr;//轮播图数组
@@ -61,9 +62,8 @@
         if (self.Mo!=nil) {
             return self.Mo.commentList.count;
         }else{
-            return 5;
+            return self.MoTrval.comments.count;
         }
-        
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -78,8 +78,10 @@
         if (self.Mo!=nil) {
             commentList * com = self.Mo.commentList[indexPath.row];
             return com.cellHeight;
-        }else
-        return 80;
+        }else{
+            comments * com = self.MoTrval.comments[indexPath.row];
+           return com.cellHeight;
+        }
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -94,6 +96,14 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section==2) {
         ShowTrvalCell * cell = [[NSBundle mainBundle] loadNibNamed:@"ShowTrvalCell" owner:nil options:nil][4];
+        StarEvaluator * ev = [[StarEvaluator alloc] initWithFrame:CGRectMake(0, 9, 140, 40)];
+        ev.animate = NO;
+        if (self.Mo!=nil) {
+            ev.currentValue = [self.Mo.score floatValue]/2;
+        }else{
+            ev.currentValue = [self.MoTrval.score floatValue]/2;
+        }
+        [cell.viewStar addSubview:ev];
         return cell;
     } else {
         UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tab_Bottom.width, 10)];
@@ -118,6 +128,8 @@
     }else{
         if (self.Mo!=nil) {
             cell.commen = self.Mo.commentList[indexPath.row];
+        }else{
+            cell.commentrval = self.MoTrval.comments[indexPath.row];
         }
     }
     return cell;

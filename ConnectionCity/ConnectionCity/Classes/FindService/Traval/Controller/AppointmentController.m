@@ -49,12 +49,12 @@
         self.lab_Price.text = self.list.price;
         self.lab_DY.text = self.list.typeName;
     }else{
-        self.navigationItem.title = self.trval.user1.nickName;
-        [self.image_head sd_setImageWithURL:[NSURL URLWithString:self.trval.user1.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
-        self.lab_name.text = self.trval.user1.nickName;
-        self.lab_Sex.image = [UIImage imageNamed:[self.trval.user1.gender isEqualToString:@"0"]?@"men":@"women"];
-        self.lab_age.text = self.trval.user1.age?self.trval.user1.age:@"";
-        self.lab_Preson.text = [NSString stringWithFormat:@"%@cm %@kg %@ %@",self.trval.user1.height?self.trval.user1.height:@"",self.trval.user1.weight?self.trval.user1.weight:@"",self.trval.user1.educationName?self.trval.user1.educationName:@"",self.trval.user1.marriageName?self.trval.user1.marriageName:@""];
+        self.navigationItem.title = self.trval.user.nickName;
+        [self.image_head sd_setImageWithURL:[NSURL URLWithString:self.trval.user.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+        self.lab_name.text = self.trval.user.nickName;
+        self.lab_Sex.image = [UIImage imageNamed:[self.trval.user.gender isEqualToString:@"0"]?@"men":@"women"];
+        self.lab_age.text = self.trval.user.age?self.trval.user.age:@"";
+        self.lab_Preson.text = [NSString stringWithFormat:@"%@cm %@kg %@ %@",self.trval.user.height?self.trval.user.height:@"",self.trval.user.weight?self.trval.user.weight:@"",self.trval.user.educationName?self.trval.user.educationName:@"",self.trval.user.marriageName?self.trval.user.marriageName:@""];
         self.lab_Servicetitle.text = self.trval.introduce;
         self.lab_Price.text = self.trval.price;
         self.lab_DY.text = self.trval.priceUnit?self.trval.priceUnit:@"无";

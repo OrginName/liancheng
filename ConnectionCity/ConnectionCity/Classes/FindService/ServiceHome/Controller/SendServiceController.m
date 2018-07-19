@@ -90,7 +90,6 @@
             }];
         }
     }else{
-        
         [self loadData:@""];
     }
 }

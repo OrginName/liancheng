@@ -28,6 +28,7 @@ proStr(typeName);
 proStr(browseTimes);
 proDic(user);
 proArr(commentList);
+proArr(comments);
 proStr(score);
 proArr(serviceCircleList);//圈子
 @property (nonatomic,strong) UserMo * user1;

@@ -99,31 +99,28 @@
         case 0: {
             self.previousIndex = index;
         } break;
-            
         case 1:
             if (self.previousIndex == index) {
                 //判断如果有未读数存在，发出定位到未读数会话的通知
                 if ([[RCIMClient sharedRCIMClient] getTotalUnreadCount] > 0) {
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"GotoNextCoversation" object:nil];
                 }
-                self.previousIndex = index;
             }
             self.previousIndex = index;
             break;
-            
         case 2:
             self.previousIndex = index;
             break;
-            
         case 3:
             self.previousIndex = index;
             break;
-            
+        case 4:
+            self.previousIndex = index;
+            break;
         default:
             break;
     }
 }
-
 - (void)changeSelectedIndex:(NSNotification *)notify {
     NSInteger index = [notify.object integerValue];
     self.selectedIndex = index;

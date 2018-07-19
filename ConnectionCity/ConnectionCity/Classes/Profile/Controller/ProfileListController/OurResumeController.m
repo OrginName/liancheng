@@ -170,7 +170,7 @@
 //            proStr(travelModeName);//出行方式
             listMo.browseTimes = mo.browseTimes;
             listMo.priceUnit = mo.priceUnit;
-            listMo.user1 = (UserMo *)mo.user;
+            listMo.user = (UserMo *)mo.user;
             [mutArr addObject:listMo];
             if (mo.Id == model.Id) {
                 index = idx;

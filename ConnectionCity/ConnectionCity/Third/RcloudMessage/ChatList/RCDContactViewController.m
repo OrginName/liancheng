@@ -155,11 +155,7 @@
     self.tabBarController.navigationItem.title = @"通讯录";
     [self.searchFriendsBar resignFirstResponder];
     [self sortAndRefreshWithList:[self getAllFriendList]];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:KAddFriend object:nil];
 }
-//-(void)reloadData{
-//    [self sortAndRefreshWithList:[self getAllFriendList]];
-//}
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     if (_isBeginSearch == YES) {
@@ -168,8 +164,8 @@
         self.searchFriendsBar.showsCancelButton = NO;
         [self.searchFriendsBar resignFirstResponder];
         self.searchFriendsBar.text = @"";
-        [self.matchFriendList removeAllObjects];
-        [self.friendsTabelView setContentOffset:CGPointMake(0, 0) animated:NO];
+//        [self.matchFriendList removeAllObjects];
+//        [self.friendsTabelView setContentOffset:CGPointMake(0, 0) animated:NO];
     }
 }
 

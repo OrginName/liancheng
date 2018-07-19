@@ -16,7 +16,6 @@
     float   aStarWidth; //一个星星的宽度
     NSMutableArray  *fullStarArray;
 }
-@property (nonatomic, assign) float currentValue;
 @end
 @implementation StarEvaluator
 - (instancetype)initWithFrame:(CGRect)frame
@@ -61,10 +60,9 @@
     }
 }
 
-- (void)setCurrentValueMy:(float)currentValueMy
+- (void)setCurrentValue:(float)currentValue
 {
-    _currentValueMy = currentValueMy;
-    self.currentValue = currentValueMy;
+    _currentValue = currentValue;
     [self setNeedsDisplay];
 }
 

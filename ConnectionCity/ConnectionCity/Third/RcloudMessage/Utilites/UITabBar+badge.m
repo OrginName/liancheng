@@ -7,7 +7,7 @@
 //
 
 #import "UITabBar+badge.h"
-#define TabbarItemNums 4.0
+#define TabbarItemNums 5.0
 #import "RCDTabBarBtn.h"
 #import "UIColor+RCColor.h"
 

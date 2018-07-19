@@ -46,7 +46,7 @@ static NSArray * btnTitleArr1;
 }
 -(void)setMo:(myServiceMo *)mo{
     _mo = mo;
-    self.lab_FWH.text = mo.ID;
+    self.lab_FWH.text = mo.orderNo;
     self.lab_orderNo.text = mo.orderNo;
     self.lab_Time.text = mo.serviceTime;
     if ([mo.typeName isEqualToString:@"旅游"]) {
@@ -58,7 +58,13 @@ static NSArray * btnTitleArr1;
     self.lab_sumPrice.text = [NSString stringWithFormat:@"合计:¥%.2f",[mo.obj.price floatValue]*[mo.num intValue]];
     [self.image_head sd_setImageWithURL:[NSURL URLWithString:mo.reserveUser.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     self.lab_name.text = mo.reserveUser.nickName;
-    self.lab_num.text  = KString(@"(%lu)", (unsigned long)[mo.obj.commentList count]);
+    NSArray * arr;
+    if ([mo.typeName isEqualToString:@"旅游"]) {
+        arr = mo.obj.comments;
+    }else{
+        arr = mo.obj.commentList;
+    }
+    self.lab_num.text  = KString(@"(%lu)", (unsigned long)[arr count]);
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

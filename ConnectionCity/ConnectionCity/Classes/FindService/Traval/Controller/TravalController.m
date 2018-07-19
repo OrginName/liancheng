@@ -193,8 +193,8 @@
     chatViewController.conversationType = ConversationType_PRIVATE;
     NSString *title,*ID,*name;
     trvalMo * mo = self.data_Arr[indexPath.row];
-    ID = [mo.user1.ID description];
-    name = mo.user1.nickName;
+    ID = [mo.user.ID description];
+    name = mo.user.nickName;
     chatViewController.targetId = ID;
     if ([ID isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
         title = [RCIM sharedRCIM].currentUserInfo.name;

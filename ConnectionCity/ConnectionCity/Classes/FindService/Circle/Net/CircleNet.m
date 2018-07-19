@@ -29,8 +29,6 @@
                 NSMutableArray * commentArr = [NSMutableArray array];
                 for (int j=0; j<[Arr[i][@"obj"][@"comments"] count]; j++) {
                     Comment * comment = [Comment mj_objectWithKeyValues:Arr[i][@"obj"][@"comments"][j]];
-//                    comment.userMo = [UserMo mj_objectWithKeyValues:Arr[i][@"obj"][@"comments"][j][@"user"]];
-//                    comment.ID = Arr[i][@"obj"][@"comments"][j][@"id"];
                     comment.typeName = Arr[i][@"obj"][@"comments"][j][@"user"][@"nickName"];
                     [commentArr addObject:comment];
                 }

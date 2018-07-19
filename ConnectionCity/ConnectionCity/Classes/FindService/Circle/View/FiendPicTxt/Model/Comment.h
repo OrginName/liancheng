@@ -20,12 +20,11 @@
 @property (nonatomic,assign) long long time;
 // 关联动态的PK
 @property (nonatomic,assign) int pk;
-@property (nonatomic,strong) UserMo * userMo;
+@property (nonatomic,strong) UserMo * user;
 proStr(content);
 proStr(ID);
 proStr(typeName);
 proArr(replyList);
 proStr(createTime);
-proDic(user);
-@property (nonatomic,assign) CGFloat cellHeight;
+@property (nonatomic,assign)CGFloat cellHeight;
 @end

@@ -17,7 +17,7 @@
 @end
 
 @interface StarEvaluator : UIControl
-@property (nonatomic, assign) float currentValueMy;
+@property (nonatomic, assign) float currentValue;
 @property (assign, nonatomic) BOOL animate;
 @property (assign, nonatomic) id<StarEvaluatorDelegate>delegate;
 

@@ -9,6 +9,19 @@
 #import "trvalMo.h"
 
 @implementation trvalMo
-
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"ID":@"id",@"description1":@"description"};
+}
++ (NSDictionary *)mj_objectClassInArray {
+    return @{@"user":[UserMo class]};
+}
 @end
- 
+
+@implementation comments
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"ID":@"id"};
+}
++ (NSDictionary *)mj_objectClassInArray {
+    return @{@"user":[UserMo class]};
+}
+@end

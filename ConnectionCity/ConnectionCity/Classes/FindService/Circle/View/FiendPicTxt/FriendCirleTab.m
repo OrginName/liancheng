@@ -101,7 +101,8 @@
         comment.typeName = [[YSAccountTool userInfo] nickName];
         [momet.comments addObject:comment];
         [weakSelf.momentList replaceObjectAtIndex:_CurrentTag withObject:momet];
-        [weakSelf reloadData];
+        NSIndexPath * index = [NSIndexPath indexPathForRow:_CurrentTag inSection:0];
+        [weakSelf reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationNone];
     }];
 }
 -(void)defultData:(NSArray *)arr{
@@ -270,7 +271,7 @@
     [CircleNet requstCircleDZ:@{@"typeId":[self.momentList[cell.tag] ID],@"type":mo.value} withSuc:^(NSDictionary *successDicValue) {
 //        cell.praiseBtn.selected = YES;
         Moment * momet = weakSelf.momentList[cell.tag];
-        momet.likeCount = [NSString stringWithFormat:@"%ld",[momet.likeCount integerValue]+1];
+        momet.likeCount = KString(@"%@", successDicValue[@"data"]);
         [weakSelf.momentList replaceObjectAtIndex:cell.tag withObject:momet];
         [weakSelf reloadData];
     }];

@@ -99,8 +99,8 @@
         if (self.Receive_Type == ENUM_TypeTrval){
             if ([self.str isEqualToString:@"TrvalTrip"]){
                 trvalMo * mo = self.data_Count[self.zIndex];
-                ID = [mo.user1.ID description];
-                name = mo.user1.nickName;
+                ID = [mo.user.ID description];
+                name = mo.user.nickName;
             }else{
                 ServiceListMo * mo = self.data_Count[self.zIndex];
                 ID = [mo.user1.ID description];
@@ -162,7 +162,7 @@
         self.trvaltab = [[ShowtrvalTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight) withControl:self];
         if ([self.str isEqualToString:@"TrvalTrip"]) {
             trvalMo * mo = self.data_Count[indexPath.row];
-            self.title = mo.user1.nickName;
+            self.title = mo.user.nickName;
             self.trvaltab.MoTrval = mo;
         }else{
             ServiceListMo * mo = self.data_Count[indexPath.row];

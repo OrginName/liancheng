@@ -126,7 +126,7 @@
     NSMutableArray * arr = [NSMutableArray array];
     NSMutableArray * arr1 = [NSMutableArray array];
     NSMutableArray * arr2 = [NSMutableArray array];
-    [YSNetworkTool POST:@"/v1/talent/team/relation-to-me/list" params:@{@"areaCode":[KUserDefults objectForKey:kUserCityID]} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:@"/v1/talent/team/relation-to-me/list" params:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         for (int i=0; i<[responseObject[@"data"][@"nearby"] count]; i++) {
             groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][@"nearby"][i]];
             [arr addObject:mo];

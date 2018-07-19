@@ -10,6 +10,7 @@
 #import "UserMo.h"
 @interface trvalMo : BaseModel
 proStr(ID);
+proStr(score);
 proStr(userId);
 proStr(images);//图片
 proStr(cityCode);
@@ -18,9 +19,8 @@ proStr(createTime);
 proStr(introduce);
 proStr(price);
 proStr(type);
-proStr(comments);
+proArr(comments);
 proArr(serviceCircleList);//圈子
-proDic(user);
 proStr(departTimeName);//出发时间
 proStr(description1);//旅行说明
 proStr(inviteObjectName);//邀约对象
@@ -31,6 +31,16 @@ proStr(travelModeName);//出行方式
 proStr(browseTimes);
 proStr(priceUnit);
 proStr(typeName);//单位
-@property (nonatomic,strong) UserMo * user1;
+@property (nonatomic,strong) UserMo * user;
 @end
 
+@interface comments : BaseModel
+proStr(ID);
+proStr(userId);
+proStr(score);
+proStr(content);
+proStr(createTime);
+proArr(replyList);//回复列表
+@property (nonatomic,assign)CGFloat cellHeight;
+@property (nonatomic,strong)UserMo * user;
+@end

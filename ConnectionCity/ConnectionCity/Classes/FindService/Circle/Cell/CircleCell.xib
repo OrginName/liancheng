@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,19 +33,19 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="吴先生" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tm9-3Z-Df0">
-                        <rect key="frame" x="76" y="14" width="49" height="19.5"/>
+                        <rect key="frame" x="76" y="16" width="49" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="吴先生" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5O-G3-Umy">
-                        <rect key="frame" x="76" y="34.5" width="234" height="17"/>
+                        <rect key="frame" x="76" y="36.5" width="234" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.69411764705882351" green="0.69411764705882351" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="吴先生" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gaj-cT-XJX">
-                        <rect key="frame" x="109" y="52" width="201" height="17"/>
+                        <rect key="frame" x="109" y="54" width="201" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -58,13 +58,13 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="1月24日 13:13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ej4-4q-X7f">
-                        <rect key="frame" x="226" y="14" width="84" height="16"/>
+                        <rect key="frame" x="226" y="16" width="84" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.69411764710000001" green="0.69411764710000001" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="回复:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50u-9X-zc0">
-                        <rect key="frame" x="76" y="52" width="33" height="17"/>
+                        <rect key="frame" x="76" y="54" width="33" height="17"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="33" id="cUw-Ik-e7C"/>
                         </constraints>
@@ -76,7 +76,7 @@
                 <constraints>
                     <constraint firstItem="Gaj-cT-XJX" firstAttribute="top" secondItem="50u-9X-zc0" secondAttribute="top" id="1Rl-dU-XBt"/>
                     <constraint firstItem="ej4-4q-X7f" firstAttribute="top" secondItem="Tm9-3Z-Df0" secondAttribute="top" id="3ZA-pi-D3H"/>
-                    <constraint firstItem="Tm9-3Z-Df0" firstAttribute="top" secondItem="18o-l0-owx" secondAttribute="top" constant="-2" id="6zo-tj-LJj"/>
+                    <constraint firstItem="Tm9-3Z-Df0" firstAttribute="top" secondItem="18o-l0-owx" secondAttribute="top" id="6zo-tj-LJj"/>
                     <constraint firstItem="Gaj-cT-XJX" firstAttribute="trailing" secondItem="g5O-G3-Umy" secondAttribute="trailing" id="F8a-Zs-Xeg"/>
                     <constraint firstItem="18o-l0-owx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="JBY-sW-sV2"/>
                     <constraint firstItem="50u-9X-zc0" firstAttribute="top" secondItem="g5O-G3-Umy" secondAttribute="bottom" constant="1" id="Jtt-C0-Jt7"/>

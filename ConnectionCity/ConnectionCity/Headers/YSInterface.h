@@ -405,11 +405,8 @@ static NSString * const v1PayCheck = @"/v1/pay/check";
 //公工接口
 //关注
 static NSString * const v1CommonFollowCreate = @"/v1/common/follow/create";
-
-
-
-
-
+//删除单条评论
+static NSString * const v1CommonCommentDelete = @"/v1/common/comment/delete";
 #endif /* YSInterface_h */
 
 

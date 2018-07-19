@@ -5,7 +5,6 @@
 //  Created by umbrella on 2018/6/1.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
 //
-
 #import "MomentDetailController.h"
 #import "MomentKit.h"
 #import "UIView+Geometry.h"
@@ -13,23 +12,32 @@
 #import "Utility.h"
 #import "CircleCell.h"
 #import "privateUserInfoModel.h"
-@interface MomentDetailController ()<UITableViewDelegate,UITableViewDataSource>
+#import "CommentView.h"
+#import <IQKeyboardManager.h>
+@interface MomentDetailController ()<UITableViewDelegate,UITableViewDataSource,CommentViewDelegate>
+{
+    NSInteger CurrentIndex;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,strong) MomentDetailView * momment;
+@property (nonatomic,strong)CommentView * comment;
+
 @end
 
 @implementation MomentDetailController
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [IQKeyboardManager sharedManager].enable = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
     if ([[self.receiveMo.userMo.ID description] isEqualToString:[[YSAccountTool userInfo]modelId]]) {
-        
     }
-    
+    [self setComment];
+    CurrentIndex = 0;
 }
 -(void)ClearAll{
-
     NSString * url = [self.flagStr isEqualToString:@"HomeSend"]?v1FriendCircleDelete:v1ServiceCircleDelete;
     [YSNetworkTool POST:url params:@{@"id":self.receiveMo.ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         self.block();
@@ -60,13 +68,104 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.receiveMo.comments.count;
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    Comment * comm = self.receiveMo.comments[indexPath.row];
+    return comm.cellHeight;
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CircleCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CircleCell1"];
+    CircleCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CircleCell0"];
     if (!cell) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"CircleCell" owner:nil options:nil][0];
     }
+    //添加长按手势
+    UILongPressGestureRecognizer * longPressGesture =[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(cellLongPress:)];
+    longPressGesture.minimumPressDuration=1.0f;//设置长按 时间
+    [cell addGestureRecognizer:longPressGesture];
     cell.moment =self.receiveMo.comments[indexPath.row];
     return cell;
+}
+-(void)cellLongPress:(UILongPressGestureRecognizer *)longRecognizer{
+    if (longRecognizer.state==UIGestureRecognizerStateBegan) {
+        //成为第一响应者，需重写该方法
+        if ([[self.receiveMo.userMo.ID description] isEqualToString:[[YSAccountTool userInfo]modelId]]) {
+            [self becomeFirstResponder];
+            CGPoint location = [longRecognizer locationInView:self.tab_Bottom];
+            NSIndexPath * indexPath = [self.tab_Bottom indexPathForRowAtPoint:location];
+            Comment * comm = self.receiveMo.comments[indexPath.row];
+            CircleCell * cell = (CircleCell *)longRecognizer.view;
+            [cell becomeFirstResponder];
+            [self setMenItem:comm.replyList cell:cell];
+            CurrentIndex = indexPath.row;
+        }
+    }
+}
+-(void)setMenItem:(NSArray *)arr cell:(CircleCell *)cell{
+    UIMenuItem *itCopy;
+    UIMenuItem *itDelete;
+    UIMenuController *menu = [UIMenuController sharedMenuController];
+    if (arr.count!=0) {
+        itDelete = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(handleDeleteCell:)];
+        [menu setMenuItems:@[itDelete]];
+    }else{
+        itCopy = [[UIMenuItem alloc] initWithTitle:@"回复" action:@selector(handleCopyCell:)];
+        itDelete = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(handleDeleteCell:)];
+        [menu setMenuItems:@[itCopy,itDelete]];
+    }
+    [menu setTargetRect:cell.frame inView:self.view];
+    [menu setMenuVisible:YES animated:YES];
+}
+-(void)handleCopyCell:(id)sender{
+    self.comment.textField.text = @"";
+    [self.comment.textField becomeFirstResponder];
+}
+-(void)handleDeleteCell:(id)sender{
+    //    [YTAlertUtil showTempInfo:@"我是删除"];
+    [self deleteOnce];//删除
+}
+-(void)deleteOnce{
+    Comment * comm = self.receiveMo.comments[CurrentIndex];
+    [YSNetworkTool POST:v1CommonCommentDelete params:@{@"id":comm.ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [self.receiveMo.comments removeObjectAtIndex:CurrentIndex];
+        [self.tab_Bottom reloadData];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+#pragma mark -----CommentViewDelegate------
+- (void)sendValue{
+    Comment * comm = self.receiveMo.comments[CurrentIndex];
+    [self reply:comm.ID];
+}
+-(void)reply:(NSString *)ID{
+    NSDictionary * dic1 = @{
+                            @"commentId": @([ID integerValue]),
+                            @"content": self.comment.textField.text
+                            };
+    [YSNetworkTool POST:v1CommonCommentReplay params:dic1 showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        Comment * obj = self.receiveMo.comments[CurrentIndex];
+        NSMutableArray * arr = [NSMutableArray array];
+        [arr addObject:responseObject[@"data"]];
+        obj.replyList = [arr copy];
+        [self.receiveMo.comments replaceObjectAtIndex:CurrentIndex withObject:obj];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.comment.textField resignFirstResponder];
+            [self.tab_Bottom reloadData];
+        });
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [IQKeyboardManager sharedManager].enable = YES;
+    [self.comment removeFromSuperview];
+}
+-(void)setComment{
+    self.comment = [[CommentView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 40)];
+    self.comment.placeHolder = @"请输入回复内容";
+    self.comment.btnTitle = @"回复";
+    self.comment.delegate = self;
+    [KWindowView addSubview:self.comment];
 }
 @end
 #pragma mark------头部view-------

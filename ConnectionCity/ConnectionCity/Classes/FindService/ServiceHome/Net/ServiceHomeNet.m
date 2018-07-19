@@ -86,9 +86,7 @@
         if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]]) {
             for (int i=0; i<[responseObject[@"data"][@"content"] count]; i++) {
                 trvalMo * trval = [trvalMo mj_objectWithKeyValues:responseObject[@"data"][@"content"][i]];
-                trval.ID = responseObject[@"data"][@"content"][i][@"id"];
-                trval.user1 = [UserMo mj_objectWithKeyValues:trval.user];
-                trval.user1.ID = trval.user[@"id"];
+                trval.comments = [comments mj_objectArrayWithKeyValuesArray:trval.comments];
                 [arr addObject:trval];
             }
         } 
@@ -125,10 +123,6 @@
         NSMutableArray * arr = [NSMutableArray array];
         for (int i=0; i<[responseObject[@"data"][@"content"] count]; i++) {
             trvalMo * mo = [trvalMo mj_objectWithKeyValues:responseObject[@"data"][@"content"][i]];
-            mo.ID = responseObject[@"data"][@"content"][i][@"id"];
-            mo.description1 = responseObject[@"data"][@"content"][i][@"description"];
-            mo.user1 = [UserMo mj_objectWithKeyValues:mo.user];
-            mo.user1.ID = mo.user[@"id"];
             [arr addObject:mo];
         }
         sucBlock(arr);

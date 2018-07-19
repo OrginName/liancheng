@@ -22,12 +22,8 @@
 }
 -(void)setMoment:(Comment *)moment{
     _moment = moment;
-    if ([YSTools dx_isNullOrNilWithObject:moment.user[@"headImage"]]) {
-        self.image_Head.image = [UIImage imageNamed:@"no-pic"];
-    }else{
-        [self.image_Head sd_setImageWithURL:[NSURL URLWithString:moment.user[@"headImage"]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
-    }
-    self.lab_name.text = [YSTools dx_isNullOrNilWithObject:moment.user[@"nickName"]]?moment.userMo.ID:moment.user[@"nickName"];
+    [self.image_Head sd_setImageWithURL:[NSURL URLWithString:moment.user.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    self.lab_name.text = moment.user.nickName?moment.user.nickName:moment.user.ID;
     self.lab_Content.text = moment.content;
     self.lab_time.text = [moment.createTime componentsSeparatedByString:@" "][0];
     self.lab_HF.text = moment.replyList.count!=0?moment.replyList[0][@"content"]:@"";
@@ -35,9 +31,8 @@
 }
 -(void)setMo:(ObjComment *)mo{
     _mo = mo;
-    self.image_Head.image = [UIImage imageNamed:@"no-pic"];
-//    [self.image_Head sd_setImageWithURL:[NSURL URLWithString:] placeholderImage:[UIImage imageNamed:@"no-pic"]];
-    self.lab_name.text = @"无";
+    [self.image_Head sd_setImageWithURL:[NSURL URLWithString:mo.user.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    self.lab_name.text = mo.user.nickName?mo.user.nickName:mo.user.ID;
     self.lab_Content.text = mo.content;
     self.lab_time.text = [mo.createTime componentsSeparatedByString:@" "][0];
     self.lab_HF.text = mo.replyList.count!=0?mo.replyList[0][@"content"]:@"";

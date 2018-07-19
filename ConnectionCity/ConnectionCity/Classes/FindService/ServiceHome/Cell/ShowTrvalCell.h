@@ -14,6 +14,7 @@
 -(void)btnClick:(NSInteger)tag;
 @end
 @interface ShowTrvalCell : UITableViewCell
+@property (nonatomic,strong) comments * commentrval;
 @property (nonatomic,strong) commentList * commen;
 @property (weak, nonatomic) IBOutlet UIView *viewStar;
 @property (weak, nonatomic) IBOutlet UIImageView *image4;

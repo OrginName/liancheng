@@ -30,20 +30,29 @@
     if (self.service==nil) {
         [self initData];
     }else{
+        if ([self.service.typeName isEqualToString:@"旅游"]) {
+            self.array = [self.service.obj.comments mutableCopy];
+        }else
         self.array = [self.service.obj.commentList mutableCopy];
         [self.tab_bottom reloadData];
     }
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [IQKeyboardManager sharedManager].enable = NO;
 }
 -(void)setUI{
     self.array = [NSMutableArray array];
     NSString * str = @"";
     if (self.service!=nil) {
+        if ([self.service.typeName isEqualToString:@"旅游"]) {
+            str = self.service.obj.userId;
+        }else
         str = self.service.obj.user.ID;
     }else{
         str = self.moment.userMo.ID;
     }
-    if ([str isEqualToString:[[YSAccountTool userInfo]modelId]]) {
+    if ([[str description] isEqualToString:[[YSAccountTool userInfo]modelId]]) {
         self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(ClearAll) image:@"" title:@"清空" EdgeInsets:UIEdgeInsetsZero];
     }
     [self setComment];
@@ -60,6 +69,22 @@
         [self.navigationController popToRootViewControllerAnimated:YES];
         self.block();
         [YTAlertUtil showTempInfo:@"删除成功"];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+-(void)deleteOnce{
+    NSString * str = @"";
+    if (self.service!=nil) {
+        ObjComment * obj = self.array[CurrentIndex];
+        str = obj.ID;
+    }else{
+        Comment * comm = self.array[CurrentIndex];
+        str = comm.ID;
+    }
+    [YSNetworkTool POST:v1CommonCommentDelete params:@{@"id":str} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [self.array removeObjectAtIndex:CurrentIndex];
+        [self.tab_bottom reloadData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
@@ -99,11 +124,14 @@
         //成为第一响应者，需重写该方法
         NSString * str = @"";
         if (self.service!=nil) {
+            if ([self.service.typeName isEqualToString:@"旅游"]) {
+                str = self.service.obj.userId;
+            }else
             str = self.service.obj.user.ID;
         }else{
             str = self.moment.userMo.ID;
         }
-        if ([str isEqualToString:[[YSAccountTool userInfo]modelId]]) {
+        if ([[str description] isEqualToString:[[YSAccountTool userInfo]modelId]]) {
             [self becomeFirstResponder];
             CGPoint location = [longRecognizer locationInView:self.tab_bottom];
             NSIndexPath * indexPath = [self.tab_bottom indexPathForRowAtPoint:location];
@@ -112,6 +140,9 @@
             if (self.service!=nil) {
                 ObjComment * obj = self.array[indexPath.row];
                 [self setMenItem:obj.replyList cell:cell];
+            }else{
+                Comment * comm =self.array[indexPath.row];
+                [self setMenItem:comm.replyList cell:cell];
             }
             CurrentIndex = indexPath.row;
         }
@@ -137,7 +168,8 @@
     [self.comment.textField becomeFirstResponder];
 }
 -(void)handleDeleteCell:(id)sender{
-    [YTAlertUtil showTempInfo:@"我是删除"];
+//    [YTAlertUtil showTempInfo:@"我是删除"];
+    [self deleteOnce];//删除
 }
 #pragma mark -----CommentViewDelegate------
 - (void)sendValue{

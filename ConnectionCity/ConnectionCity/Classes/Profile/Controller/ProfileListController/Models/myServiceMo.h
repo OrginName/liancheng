@@ -30,8 +30,10 @@ proStr(price);
 proStr(content);
 proStr(cityName);
 proArr(commentList);//评论
+proArr(comments);//评论
 proStr(typeName);//单位
 proStr(priceUnit);//陪游单位
+proStr(userId);
 @property (nonatomic,strong) UserMo * user;
 @property (nonatomic,strong) ServiceCategoryNameModel * serviceCategoryName;
 @end
@@ -43,5 +45,6 @@ proArr(replyList);//回复列表
 proStr(score);
 proStr(typeName);
 proStr(createTime);
+@property (nonatomic,strong) UserMo * user;
 @property (nonatomic,assign) CGFloat cellHeight;
 @end

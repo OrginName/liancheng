@@ -7,11 +7,9 @@
 //
 
 #import "ShowTrvalCell.h"
-#import "StarEvaluator.h"
 @interface ShowTrvalCell()
 {
     NSMutableArray * _arr_image;
-    StarEvaluator * ev;
 }
 @end
 @implementation ShowTrvalCell
@@ -19,11 +17,6 @@
     [super awakeFromNib];
     if (!_arr_image) {
         _arr_image = [[NSMutableArray alloc] initWithObjects:self.image1,self.image2,self.image3,self.image4, nil];
-    }
-     if (!ev) {
-        ev = [[StarEvaluator alloc] initWithFrame:CGRectMake(0, 9, 140, 40)];
-        ev.animate = NO;
-        [self.viewStar addSubview:ev];
     }
 }
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView
@@ -59,20 +52,20 @@
         self.lab_PriceDY.hidden = YES;
         self.lab_price.hidden=YES;
         self.lab_Des.hidden = YES;
-        self.lab_Title.text = trval.user1.nickName;
+        self.lab_Title.text = trval.user.nickName;
         if (trval.cityName.length!=0) {
             [self.btn_city setTitle:trval.cityName forState:UIControlStateNormal];
         }
-        [self.btn_height setTitle:[NSString stringWithFormat:@"%@cm",trval.user1.height?trval.user1.height:@"180"] forState:UIControlStateNormal];
-        [self.btn_coll setTitle:trval.user1.educationName?trval.user1.educationName:@"无" forState:UIControlStateNormal];
-        [self.btn_wight setTitle:trval.user1.marriageName?trval.user1.marriageName:@"无" forState:UIControlStateNormal];
-        self.lab_Age.text = trval.user1.age?trval.user1.age:@"无";
-        [self.btn_weight setTitle:[NSString stringWithFormat:@"%@kg",trval.user1.weight?trval.user1.weight:@"60"] forState:UIControlStateNormal];
+        [self.btn_height setTitle:[NSString stringWithFormat:@"%@cm",trval.user.height?trval.user.height:@"180"] forState:UIControlStateNormal];
+        [self.btn_coll setTitle:trval.user.educationName?trval.user.educationName:@"无" forState:UIControlStateNormal];
+        [self.btn_wight setTitle:trval.user.marriageName?trval.user.marriageName:@"无" forState:UIControlStateNormal];
+        self.lab_Age.text = trval.user.age?trval.user.age:@"无";
+        [self.btn_weight setTitle:[NSString stringWithFormat:@"%@kg",trval.user.weight?trval.user.weight:@"60"] forState:UIControlStateNormal];
         self.lab_TrvalPrice.text = [NSString stringWithFormat:@"¥%@",trval.price];
         self.lab_TrvalDY.text = trval.priceUnit;//单位暂无
         self.lab_TrvalDes.text = trval.introduce;
         self.lab_LLNum.text = [NSString stringWithFormat:@"浏览%@次",trval.browseTimes?trval.browseTimes:@"999+"];
-        self.image_sex.image = [UIImage imageNamed:[KString(@"%@", trval.user1.gender) isEqualToString:@"2"]?@"women":@"men"];
+        self.image_sex.image = [UIImage imageNamed:[KString(@"%@", trval.user.gender) isEqualToString:@"2"]?@"women":@"men"];
         for (NSDictionary * dic in trval.serviceCircleList) {
             if ([[dic[@"containsImage"] description] isEqualToString:@"1"]) {
                 NSArray * arr2 = [dic[@"images"] componentsSeparatedByString:@";"];
@@ -119,7 +112,6 @@
             self.lab_DW.text = @"无";
         self.lab_LLNum.text = [NSString stringWithFormat:@"浏览%@次",list.browseTimes?list.browseTimes:@"999+"];
         self.lab_DTNum.text = KString(@"%lu", (unsigned long)list.serviceCircleList.count);
-        ev.currentValueMy = [list.score floatValue];
         for (NSDictionary * dic in list.serviceCircleList) {
             if ([[dic[@"containsImage"] description] isEqualToString:@"1"]) {
                 NSArray * arr2 = [dic[@"images"] componentsSeparatedByString:@";"];
@@ -136,6 +128,15 @@
             }
         }
     }
+}
+-(void)setCommentrval:(comments *)commentrval{
+    _commentrval = commentrval;
+    [self.imgae_Comment sd_setImageWithURL:[NSURL URLWithString:commentrval.user.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    self.lab_commentTitle.text = commentrval.user.nickName?commentrval.user.nickName:commentrval.user.ID;
+    self.lab_Comment.text = commentrval.content;
+    self.lab_HF.text = commentrval.replyList.count!=0?commentrval.replyList[0][@"content"]:@"";
+    self.lab_CommentTime.text = [commentrval.createTime componentsSeparatedByString:@" "][0];
+    commentrval.cellHeight = 45+[YSTools cauculateHeightOfText:self.lab_Comment.text width:(self.width-60) font:13]+[YSTools cauculateHeightOfText:self.lab_HF.text width:(self.width-80) font:13];
 }
 -(void)setCommen:(commentList *)commen{
     _commen = commen;

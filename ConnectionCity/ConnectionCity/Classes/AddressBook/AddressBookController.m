@@ -561,11 +561,11 @@
         if (count > 0) {
             //      __weakSelf.tabBarItem.badgeValue =
             //          [[NSString alloc] initWithFormat:@"%d", count];
-            [__weakSelf.tabBarController.tabBar showBadgeOnItemIndex:0 badgeValue:count];
+            [__weakSelf.tabBarController.tabBar showBadgeOnItemIndex:1 badgeValue:count];
             
         } else {
             //      __weakSelf.tabBarItem.badgeValue = nil;
-            [__weakSelf.tabBarController.tabBar hideBadgeOnItemIndex:0];
+            [__weakSelf.tabBarController.tabBar hideBadgeOnItemIndex:1];
         }
         
     });

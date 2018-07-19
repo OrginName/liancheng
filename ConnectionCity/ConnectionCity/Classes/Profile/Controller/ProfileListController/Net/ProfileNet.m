@@ -22,6 +22,7 @@
         for (int i=0; i<arr.count; i++) {
             myServiceMo * service = [myServiceMo mj_objectWithKeyValues:arr[i]];
             service.obj.commentList = [ObjComment mj_objectArrayWithKeyValuesArray:service.obj.commentList];
+            service.obj.comments = [ObjComment mj_objectArrayWithKeyValuesArray:service.obj.comments];
             [arr1 addObject:service];
         }
         sucBloc(arr1);
