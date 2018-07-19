@@ -44,6 +44,18 @@
     
     [AppRootViewController presentViewController:sheetViewController animated:YES completion:nil];
 }
+- (void)hehe:(sendPictureBlock)block {
+    
+    self.pictureBlock = block;
+    UIAlertController *sheetViewController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIImagePickerController *imagePickrerController = [[UIImagePickerController alloc]init];
+    imagePickrerController.delegate = self;
+    imagePickrerController.allowsEditing = YES;
+    imagePickrerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [AppRootViewController presentViewController:imagePickrerController animated:YES completion:NULL];
+    [AppRootViewController presentViewController:sheetViewController animated:YES completion:nil];
+}
 
 #pragma mark -- 
 #pragma mark imagePickerDelegate

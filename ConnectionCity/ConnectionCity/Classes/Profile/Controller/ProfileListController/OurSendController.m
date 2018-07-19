@@ -75,7 +75,7 @@
         self.tab_bottom.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     } else {
         // Fallback on earlier versions
-        self.automaticallyAdjustsScrollViewInsets = YES;
+        self.automaticallyAdjustsScrollViewInsets = NO;
     }
 }
 @end

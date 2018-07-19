@@ -18,6 +18,7 @@ typedef void(^sendPictureBlock)(UIImage *image);
 
 + (TakePhoto *)sharedPhoto;
 - (void)sharePicture:(sendPictureBlock)block;
+- (void)hehe:(sendPictureBlock)block;
 
 @end
 

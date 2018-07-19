@@ -16,6 +16,8 @@
 #import "OccupationCategoryNameModel.h"
 #import "UserMo.h"
 #import "MyQRController.h"
+#import "AgreementController.h"
+#import "TakePhoto.h"
 
 @interface ProfileController ()<ProfileHeadViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -40,7 +42,7 @@
         self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     } else {
         // Fallback on earlier versions
-        self.automaticallyAdjustsScrollViewInsets = YES;
+        self.automaticallyAdjustsScrollViewInsets = NO;
     }
     //设置导航透明
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]forBarMetrics:UIBarMetricsDefault];
@@ -109,6 +111,22 @@
     // 根据类名跳转控制器
 //    NSString *className = [YTAccountInfo loginState] ? self.menuModels[indexPath.row].mClass : @"YTLoginViewController";
     
+    //相册
+    if (indexPath.row==5) {
+        [[TakePhoto sharedPhoto] hehe:^(UIImage *image) {
+            
+        }];
+        return;
+    }
+    //客服
+    if (indexPath.row==6) {
+        
+        AgreementController *connectUs = [[AgreementController alloc]init];
+        connectUs.alias = @"customservice";
+        [self.navigationController pushViewController:connectUs animated:YES];
+        
+        return;
+    }
     NSString *className = self.menuModels[indexPath.row].mClass;
     UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc]init];
     if (vc == nil)return;

@@ -33,7 +33,7 @@
         self.tab_Bottom.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     } else {
         // Fallback on earlier versions
-        self.automaticallyAdjustsScrollViewInsets = YES;
+        self.automaticallyAdjustsScrollViewInsets = NO;
     }
     //设置导航透明
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]forBarMetrics:UIBarMetricsDefault];
