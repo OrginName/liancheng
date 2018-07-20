@@ -23,6 +23,12 @@
 		720263FD20B5015500382B2F /* TZVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 720263ED20B5015500382B2F /* TZVideoPlayerController.m */; };
 		720263FE20B5015500382B2F /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 720263EF20B5015500382B2F /* UIView+Layout.m */; };
 		721040FB2102193000B575BB /* likeModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 721040FA2102193000B575BB /* likeModels.m */; };
+		72104109210243D300B575BB /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 721040FE210243D200B575BB /* UIView+Extension.m */; };
+		7210410A210243D300B575BB /* XMPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 72104102210243D200B575BB /* XMPlayerManager.m */; };
+		7210410B210243D300B575BB /* XMProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 72104104210243D200B575BB /* XMProgress.m */; };
+		7210410C210243D300B575BB /* XMRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72104106210243D200B575BB /* XMRefreshView.m */; };
+		7210410D210243D300B575BB /* XMWaves.m in Sources */ = {isa = PBXBuildFile; fileRef = 72104108210243D200B575BB /* XMWaves.m */; };
+		721041102102477700B575BB /* viewPaly.m in Sources */ = {isa = PBXBuildFile; fileRef = 7210410F2102477700B575BB /* viewPaly.m */; };
 		721DAE0120F20EBC006F141F /* FriendListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721DADFF20F20EBC006F141F /* FriendListController.m */; };
 		721DAE0220F20EBC006F141F /* FriendListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 721DAE0020F20EBC006F141F /* FriendListController.xib */; };
 		721DAE0520F2421A006F141F /* SortCollProController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721DAE0420F2421A006F141F /* SortCollProController.m */; };
@@ -252,7 +258,6 @@
 		8D8E4ED320C9320200C3D537 /* PrivateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E4ED120C9320200C3D537 /* PrivateController.m */; };
 		8D8E4ED420C9320200C3D537 /* PrivateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D8E4ED220C9320200C3D537 /* PrivateController.xib */; };
 		8D8E4ED720C937D200C3D537 /* NKColorSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E4ED620C937D200C3D537 /* NKColorSwitch.m */; };
-		8D95769420F8506C00A9A740 /* viewPaly.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D95769320F8506C00A9A740 /* viewPaly.m */; };
 		8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990620A6FDEB00968F86 /* ResumeController.m */; };
 		8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA4990720A6FDEB00968F86 /* ResumeController.xib */; };
 		8DA4990D20A7063E00968F86 /* ResumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990B20A7063E00968F86 /* ResumeCell.m */; };
@@ -644,6 +649,20 @@
 		720263EF20B5015500382B2F /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 		721040F92102193000B575BB /* likeModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = likeModels.h; sourceTree = "<group>"; };
 		721040FA2102193000B575BB /* likeModels.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = likeModels.m; sourceTree = "<group>"; };
+		721040FD210243D200B575BB /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		721040FE210243D200B575BB /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		721040FF210243D200B575BB /* XMPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPlayer.h; sourceTree = "<group>"; };
+		72104100210243D200B575BB /* XMPlayerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPlayerConfig.h; sourceTree = "<group>"; };
+		72104101210243D200B575BB /* XMPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPlayerManager.h; sourceTree = "<group>"; };
+		72104102210243D200B575BB /* XMPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPlayerManager.m; sourceTree = "<group>"; };
+		72104103210243D200B575BB /* XMProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMProgress.h; sourceTree = "<group>"; };
+		72104104210243D200B575BB /* XMProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMProgress.m; sourceTree = "<group>"; };
+		72104105210243D200B575BB /* XMRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMRefreshView.h; sourceTree = "<group>"; };
+		72104106210243D200B575BB /* XMRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMRefreshView.m; sourceTree = "<group>"; };
+		72104107210243D200B575BB /* XMWaves.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMWaves.h; sourceTree = "<group>"; };
+		72104108210243D200B575BB /* XMWaves.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMWaves.m; sourceTree = "<group>"; };
+		7210410E2102477600B575BB /* viewPaly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viewPaly.h; sourceTree = "<group>"; };
+		7210410F2102477700B575BB /* viewPaly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = viewPaly.m; sourceTree = "<group>"; };
 		721DADFE20F20EBC006F141F /* FriendListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendListController.h; sourceTree = "<group>"; };
 		721DADFF20F20EBC006F141F /* FriendListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendListController.m; sourceTree = "<group>"; };
 		721DAE0020F20EBC006F141F /* FriendListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendListController.xib; sourceTree = "<group>"; };
@@ -1024,8 +1043,6 @@
 		8D8E4ED220C9320200C3D537 /* PrivateController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivateController.xib; sourceTree = "<group>"; };
 		8D8E4ED520C937D200C3D537 /* NKColorSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKColorSwitch.h; sourceTree = "<group>"; };
 		8D8E4ED620C937D200C3D537 /* NKColorSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKColorSwitch.m; sourceTree = "<group>"; };
-		8D95769220F8506C00A9A740 /* viewPaly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = viewPaly.h; sourceTree = "<group>"; };
-		8D95769320F8506C00A9A740 /* viewPaly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = viewPaly.m; sourceTree = "<group>"; };
 		8DA4990520A6FDEB00968F86 /* ResumeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeController.h; sourceTree = "<group>"; };
 		8DA4990620A6FDEB00968F86 /* ResumeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeController.m; sourceTree = "<group>"; };
 		8DA4990720A6FDEB00968F86 /* ResumeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeController.xib; sourceTree = "<group>"; };
@@ -1800,6 +1817,25 @@
 			path = likeModels;
 			sourceTree = "<group>";
 		};
+		721040FC210243D200B575BB /* XMPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				721040FD210243D200B575BB /* UIView+Extension.h */,
+				721040FE210243D200B575BB /* UIView+Extension.m */,
+				721040FF210243D200B575BB /* XMPlayer.h */,
+				72104100210243D200B575BB /* XMPlayerConfig.h */,
+				72104101210243D200B575BB /* XMPlayerManager.h */,
+				72104102210243D200B575BB /* XMPlayerManager.m */,
+				72104103210243D200B575BB /* XMProgress.h */,
+				72104104210243D200B575BB /* XMProgress.m */,
+				72104105210243D200B575BB /* XMRefreshView.h */,
+				72104106210243D200B575BB /* XMRefreshView.m */,
+				72104107210243D200B575BB /* XMWaves.h */,
+				72104108210243D200B575BB /* XMWaves.m */,
+			);
+			path = XMPlayer;
+			sourceTree = "<group>";
+		};
 		722D252620AA769600AB3863 /* PopView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1833,10 +1869,10 @@
 		723B9F1020B4195A00AD919B /* PhotoSelect */ = {
 			isa = PBXGroup;
 			children = (
+				7210410E2102477600B575BB /* viewPaly.h */,
+				7210410F2102477700B575BB /* viewPaly.m */,
 				723B9F1120B4195A00AD919B /* PhotoSelect.h */,
 				723B9F1220B4195A00AD919B /* PhotoSelect.m */,
-				8D95769220F8506C00A9A740 /* viewPaly.h */,
-				8D95769320F8506C00A9A740 /* viewPaly.m */,
 			);
 			path = PhotoSelect;
 			sourceTree = "<group>";
@@ -2078,6 +2114,7 @@
 		729BA6B120A01E7F009713FD /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				721040FC210243D200B575BB /* XMPlayer */,
 				72B6EC9220FCC16700B4088D /* Star */,
 				CE14BD0E20F3780E00F85C49 /* Alipay */,
 				8D14FDE320EB0BAA0013A9DF /* RcloudMessage */,
@@ -4706,7 +4743,6 @@
 				CEE5251020F771D400DD6179 /* MYScanLineAnimation.m in Sources */,
 				7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */,
 				8DE465DD20EDF0C4009730F7 /* RCDContactSelectedTableViewController.m in Sources */,
-				8D95769420F8506C00A9A740 /* viewPaly.m in Sources */,
 				8DE4664B20EDF71B009730F7 /* RCAnnotationView.m in Sources */,
 				CEBEDD8B20B17ED1000F9EE4 /* BountyHostingController.m in Sources */,
 				8DE4664A20EDF71B009730F7 /* RCAnnotation.m in Sources */,
@@ -4755,6 +4791,7 @@
 				8D14FDEC20EB0C000013A9DF /* UIColor+RCColor.m in Sources */,
 				8DC17A7620C0E430005D9EE0 /* FriendCirleTab.m in Sources */,
 				CEBEDD9120B17ED1000F9EE4 /* FootprintController.m in Sources */,
+				7210410D210243D300B575BB /* XMWaves.m in Sources */,
 				CEBEDD8120B17ED1000F9EE4 /* MarginController.m in Sources */,
 				CE9B9A5D20E7DC69005C47B2 /* TenderRecordsMo.m in Sources */,
 				CE14BD6820F3780E00F85C49 /* APOrderInfo.m in Sources */,
@@ -4842,6 +4879,7 @@
 				8DD48CE820A8367100D6D1E6 /* GuardEduController.m in Sources */,
 				8DD48CD320A811EA00D6D1E6 /* UIView+SDExtension.m in Sources */,
 				721DAE1120F272BA006F141F /* FoundQunController.m in Sources */,
+				72104109210243D300B575BB /* UIView+Extension.m in Sources */,
 				72EC1B6720B8465D00ACC20B /* ShowTreaueTab.m in Sources */,
 				CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */,
 				72B6EC9B20FF621500B4088D /* friendMo.m in Sources */,
@@ -4854,6 +4892,7 @@
 				8DD48CCC20A811EA00D6D1E6 /* TAAbstractDotView.m in Sources */,
 				CEBEDD8420B17ED1000F9EE4 /* MarginCell.m in Sources */,
 				CEE68C4C20ED23B800233AE3 /* tourismMo.m in Sources */,
+				7210410B210243D300B575BB /* XMProgress.m in Sources */,
 				CEC4A54020C3D6FC0026EE19 /* TeamSwitchCell.m in Sources */,
 				CEE68C4620ECF55A00233AE3 /* ServiceCategoryNameModel.m in Sources */,
 				8D09426620C14AF200C45E2B /* EvaluationController.m in Sources */,
@@ -5000,8 +5039,10 @@
 				CE0BA5B5209D5E6B004C3C33 /* UIViewController+BackButtonHandler.m in Sources */,
 				723B9F1320B4195B00AD919B /* PhotoSelect.m in Sources */,
 				CEBEDD8720B17ED1000F9EE4 /* BidderController.m in Sources */,
+				721041102102477700B575BB /* viewPaly.m in Sources */,
 				72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */,
 				8DE465C520EDED57009730F7 /* RCDAddressBookViewController.m in Sources */,
+				7210410C210243D300B575BB /* XMRefreshView.m in Sources */,
 				8DEA44D620C0E9ED001529F1 /* FriendVideoCell.m in Sources */,
 				CE0BA5FA209D5EBE004C3C33 /* YTBaseTableViewController.m in Sources */,
 				721040FB2102193000B575BB /* likeModels.m in Sources */,
@@ -5088,6 +5129,7 @@
 				CEE5250F20F771D400DD6179 /* MYScanView.m in Sources */,
 				72EC1BAB20BC34AA00ACC20B /* TravalController.m in Sources */,
 				8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */,
+				7210410A210243D300B575BB /* XMPlayerManager.m in Sources */,
 				8DE465CE20EDEED9009730F7 /* RCDUIBarButtonItem.m in Sources */,
 				8DFA324820EDAF330086423A /* RCDUtilities.m in Sources */,
 				8DC17A8520C0E598005D9EE0 /* FriendCircleController.m in Sources */,

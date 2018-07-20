@@ -19,7 +19,7 @@
 @property (nonatomic,strong)UILabel * lab_desc;
 @property (nonatomic,strong)MMImageListView * listView;
 @property (nonatomic,strong)UIButton * btn_Cancle;
-@property (nonatomic,strong)UIImageView * imagePlay;
+@property (nonatomic,strong)UIImageView * play;
 @end
 @implementation CollectionCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -46,8 +46,13 @@
     if ([receive_Mo.text length]) {
         _lab_desc.text = receive_Mo.text;
         CGFloat labH = [self calculateRowHeight:receive_Mo.text fontSize:13];
-        _lab_desc.numberOfLines = 0;
-        _lab_desc.frame = CGRectMake(_image_head.right, bottom, kScreenWidth-40, labH);
+        if (receive_Mo.isFullText) {
+           _lab_desc.numberOfLines = 0;
+        }else{
+            _lab_desc.numberOfLines = 2;
+            labH = labH<40?labH:40;
+        }
+        _lab_desc.frame = CGRectMake(_image_head.right, bottom, kScreenWidth-65, labH);
         bottom = _lab_desc.bottom + kPaddingValue;
     }
     // 图片
@@ -58,12 +63,23 @@
         receive_Mo.cellHeight = _listView.bottom+10;
     }else if(receive_Mo.videos.length!=0){
         _imagePlay.image = receive_Mo.coverImage;
-        _imagePlay.frame = CGRectMake(_lab_desc.left, _lab_desc.bottom+5, 40, 60);
+        _imagePlay.frame = CGRectMake(_lab_desc.left, _lab_desc.bottom+5, 100, 150);
+        self.play.frame = CGRectMake(35, 60, 40, 40);
         receive_Mo.cellHeight = _imagePlay.bottom+10;
     }else{
         receive_Mo.cellHeight = _lab_desc.bottom+10;
     }
-    
+}
+-(void)CancleLike{
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(didCancleClick:)]) {
+        [self.delegate didCancleClick:self];
+    }
+}
+//播放视频按钮
+-(void)playMyVideo{
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(didPlayMyVideo:)]) {
+        [self.delegate didPlayMyVideo:self];
+    }
 }
 //点击展开
 -(void)DescClick{
@@ -134,6 +150,7 @@
         [_btn_Cancle setBackgroundColor:YSColor(236, 95, 90)];
         [_btn_Cancle setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _btn_Cancle.titleLabel.font = [UIFont systemFontOfSize:11];
+        [_btn_Cancle addTarget:self action:@selector(CancleLike) forControlEvents:UIControlEventTouchUpInside];
         _btn_Cancle.layer.cornerRadius = 5;
         _btn_Cancle.layer.masksToBounds = YES;
     }
@@ -144,9 +161,11 @@
         _imagePlay = [[UIImageView alloc] init];
         UIImageView * image = [[UIImageView alloc] init];
         image.image = [UIImage imageNamed:@"q-play"];
-        image.center = _imagePlay.center;
-        image.frame = CGRectMake(0, 0, 30, 30);
+        self.play = image;
         [_imagePlay addSubview:image];
+        _imagePlay.userInteractionEnabled = YES;
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playMyVideo)];
+        [_imagePlay addGestureRecognizer:tap];
     }
     return _imagePlay;
 }

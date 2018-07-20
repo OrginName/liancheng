@@ -17,4 +17,5 @@
 // 点击大图(关闭预览)
 @property (nonatomic, copy) void (^tapBigView)(void);
 @property (nonatomic,strong)CustomPlayer * playView;
+-(void)animateShow;
 @end

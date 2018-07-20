@@ -16,28 +16,44 @@
 @implementation viewPaly
 -(id)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor blackColor];
-        [self addSubview:self.coverView];
+//        self.backgroundColor = [UIColor blackColor];
         [self addSubview:self.playView];
-        [self bringSubviewToFront:self.coverView];
+        [self.playView addSubview:self.coverView];
         [self.coverView addSubview:self.btn_back];
+
+//        [self addSubview:self.coverView];
+//        [self bringSubviewToFront:self.coverView];
+//        [self.coverView addSubview:self.btn_back];
         // 单击
-//        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCallback)];
-//        [KWindowView addGestureRecognizer:singleTap];
+//
     }
     return self;
 }
+-(void)animateShow{
+    [UIView animateWithDuration:1 animations:^{
+        self.frame = [[UIScreen mainScreen] bounds];
+    }];
+}
+-(void)closed{
+    [UIView animateWithDuration:1 animations:^{
+        self.frame = CGRectZero;
+        [self.playView pause];
+    }];
+}
 //返回方法
 -(void)Back{
-    self.tapBigView();
+//    self.tapBigView();
+    [self closed];
 }
 -(void)singleTapGestureCallback{
-    self.tapBigView();
+//    self.tapBigView();
+    [self closed];
 }
 -(void)layoutSubviews{
     [super layoutSubviews];
-    self.coverView.frame = CGRectMake(0, 0, kScreenWidth, 64);
-    self.btn_back.frame = CGRectMake(0, 0, 60, 64);
+//    self.coverView.frame = CGRectMake(0, 0, kScreenWidth, 64);
+    self.btn_back.frame = CGRectMake(10, 44, 60, 64);
+    self.playView.frame = self.frame;
 }
 -(UIButton *)btn_back{
     if (!_btn_back) {
@@ -50,9 +66,10 @@
 -(UIView *)coverView{
     if (!_coverView) {
         _coverView = [[UIView alloc] init];
-        _coverView.backgroundColor = [UIColor blackColor];
-        _coverView.alpha = 0.3;
+        _coverView.backgroundColor = [UIColor clearColor];
         _coverView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCallback)];
+        [_coverView addGestureRecognizer:singleTap];
     }
     return _coverView;
 }
