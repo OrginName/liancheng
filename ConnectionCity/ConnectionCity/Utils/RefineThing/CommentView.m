@@ -51,7 +51,6 @@
         [UIView setAnimationBeginsFromCurrentState:YES];
         [UIView setAnimationCurve:[curve intValue]];
         weakSelf.center = CGPointMake(weakSelf.center.x, a==1?keyBoardEndY+20:keyBoardEndY-20);   // keyBoardEndY的坐标包括了状态栏的高度，要减去
-        
     }];
 }
 -(void)layoutSubviews{
@@ -62,7 +61,7 @@
 -(UITextField *)textField{
     if (!_textField) {
         _textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 5, self.width-65, self.height-10)];
-        _textField.tag=10;
+        _textField.tag = 10;
         _textField.font = [UIFont systemFontOfSize:14];
         _textField.placeholder = @"请输入评论内容";
         _textField.borderStyle = UITextBorderStyleRoundedRect;

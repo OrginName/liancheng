@@ -60,7 +60,7 @@
     [tab.mj_header beginRefreshing];
 }
 -(void)setUI{
-    if (self.inter==2) {
+    if (self.inter==1) {
         self.title = @"我的服务";
     }else{
         self.title = @"我的旅行";
@@ -172,7 +172,7 @@
     NSDictionary * dic = @{
                            @"content": dic1[@"content"],
                            @"score": @(self.scroe),
-                           @"type": self.inter==2?@40:@20,
+                           @"type": self.inter==1?@40:@20,
                            @"typeId": @([dic1[@"typeId"] integerValue])
                            };
     [CircleNet requstSendPL:dic withSuc:^(NSDictionary *successDicValue) {

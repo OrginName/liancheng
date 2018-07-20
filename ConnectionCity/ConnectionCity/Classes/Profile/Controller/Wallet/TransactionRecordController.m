@@ -93,7 +93,6 @@
                           @"pageSize": @"10",
                           @"type": mo.value
                           };
-    
     WeakSelf
     [YSNetworkTool POST:v1UserWalletPaymentPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         [weakSelf.dataArr removeAllObjects];

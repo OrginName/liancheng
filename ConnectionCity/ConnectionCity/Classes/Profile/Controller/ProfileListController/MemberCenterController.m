@@ -78,14 +78,13 @@
     if (vc == nil)return;
     [self.navigationController pushViewController:vc animated:YES];
 }
+//@{@"icon":@"our-fabu",@"title":@"我的评价",@"class":@"OurSendController"}
 #pragma mark - setter and getter
 - (NSArray<YTSideMenuModel *> *)menuModels {
     if (_menuModels == nil) {
         NSMutableArray <YTSideMenuModel *> *menuArr = [NSMutableArray array];
         NSArray * menuArray = @[@{@"icon":@"our-fabu",
                                   @"title":@"我的发布",@"class":@"OurSendController"},
-                                @{@"icon":@"our-fabu",
-                                  @"title":@"我的评价",@"class":@"OurSendController"},
                                 @{@"icon":@"our-service",@"title":@"我的服务",@"class":@"OurServiceController"},
                                 @{@"icon":@"our-travel",@"title":@"我的旅行",@"class":@"OurServiceController"},
                                 @{@"icon":@"our-wanjia",@"title":@"我的玩家",@"class":@"OurPlayController"},

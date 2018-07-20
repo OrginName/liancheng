@@ -12,7 +12,7 @@
 //发布的服务接口
 +(void)requstMyService:(NSDictionary *)param ZT:(NSInteger)ZT flag:(NSInteger)flag block:(SuccessArrBlock) sucBloc withFailBlock:(FailErrorBlock)failBlock{
     NSString * url = @"";
-    if (ZT==2) {
+    if (ZT==1) {
         url = flag==1?v1MyServiceOrderPublishedPage:v1MySerivceOrderRequiredPage;
     }else
         url = flag==1?v1MyTravelOrderPublishedPage:v1MyTravelOrderRequiredPage;
@@ -32,7 +32,7 @@
 }
 //服务状态更新
 +(void)requstUpdateService:(NSDictionary *)param flag:(NSInteger)flag block:(SuccessDicBlock) sucBloc withFailBlock:(FailErrorBlock)failBlock{
-    NSString * url = flag==2?v1ServiceUpdateOrderStatus:v1ServiceTravelUpdateOrderStatus;
+    NSString * url = flag==1?v1ServiceUpdateOrderStatus:v1ServiceTravelUpdateOrderStatus;
     [YSNetworkTool POST:url params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         sucBloc(responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
