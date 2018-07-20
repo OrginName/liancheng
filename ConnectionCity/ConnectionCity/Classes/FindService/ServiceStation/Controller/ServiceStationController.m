@@ -180,7 +180,7 @@
     [self.tableView registerClass:[BulidTeamSectionHead class] forHeaderFooterViewReuseIdentifier:@"BulidTeamSectionHead"];
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 60)];
     headerView.backgroundColor = kCommonBGColor;
-    UIButton *headerBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    UIButton *headerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     headerBtn.frame = CGRectMake(0, 10, kScreenWidth, 50);
     headerBtn.backgroundColor = [UIColor whiteColor];
     headerBtn.layer.cornerRadius = 5;

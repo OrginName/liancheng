@@ -84,7 +84,9 @@
             [[RCDataBaseManager
               shareInstance]
              insertGroupToDB:group];
-            self.block();
+            if (self.block) {
+                self.block();
+            }
             [self.navigationController popViewControllerAnimated:YES];
             [YTAlertUtil showTempInfo:responseObject[@"message"]];
         }];

@@ -9,9 +9,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowResume"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowResume">
+            <connections>
+                <outlet property="imageTurn" destination="Qb7-34-89x" id="Kg8-2b-Q5q"/>
+                <outlet property="lab_nametitle" destination="ERh-Xy-n6I" id="KqT-0r-Lo7"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ShowResume">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -32,7 +37,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dN-v3-cop">
                     <rect key="frame" x="0.0" y="10" width="320" height="35"/>
                     <connections>
-                        <action selector="BtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="kPv-b9-v0i"/>
+                        <action selector="BtnClick:" destination="-1" eventType="touchUpInside" id="SRC-hg-hqu"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="教育经历" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERh-Xy-n6I">
@@ -72,10 +77,6 @@
                 <constraint firstItem="ERh-Xy-n6I" firstAttribute="centerY" secondItem="1cx-Qf-AyN" secondAttribute="centerY" id="xCS-c1-LbB"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="imageTurn" destination="Qb7-34-89x" id="V57-NA-SLw"/>
-                <outlet property="lab_nametitle" destination="ERh-Xy-n6I" id="Q5k-JP-pIf"/>
-            </connections>
             <point key="canvasLocation" x="-860" y="-249.5"/>
         </view>
     </objects>
