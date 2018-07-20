@@ -136,9 +136,8 @@ static NSInteger i;//判断当前返回按钮点击次数
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    UITextField * text = (UITextField *)[self.frendTab.mainView viewWithTag:10];
-    [text resignFirstResponder];
     [IQKeyboardManager sharedManager].enable = YES;
-    [self.frendTab.mainView removeFromSuperview];
+    [self.frendTab.comment removeFromSuperview];
+    self.frendTab.comment =nil;
 }
 @end

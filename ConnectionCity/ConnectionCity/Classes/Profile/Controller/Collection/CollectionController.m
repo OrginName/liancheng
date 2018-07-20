@@ -17,9 +17,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.momentList = [NSMutableArray array];
-    [self initTestInfo];
     [self setUI];
     [self loadData];
+    
+    self.tab_Bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+    }];
+    self.tab_Bottom.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        
+    }];
 }
 -(void)loadData{
     NSDictionary * dic = @{
@@ -27,6 +33,34 @@
                            @"pageSize": @15
                            };
     [YSNetworkTool POST:v1MyCollectPage params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray * Arr = responseObject[@"data"][@"content"];
+        for (int i=0; i<Arr.count; i++) {
+            Moment * moment = [Moment  mj_objectWithKeyValues:Arr[i]];
+            moment.ID = Arr[i][@"typeId"];//收藏ID
+            if ([Arr[i][@"obj"] isKindOfClass:[NSDictionary class]]) {
+                moment.text = Arr[i][@"obj"][@"content"];
+                moment.videos = [Arr[i][@"obj"][@"videos"] description];
+                moment.images = [Arr[i][@"obj"][@"images"] description];
+                moment.containsImage =Arr[i][@"obj"][@"containsImage"];
+                moment.containsVideo =Arr[i][@"obj"][@"containsVideo"];
+            }
+            if ([Arr[i][@"user"] isKindOfClass:[NSDictionary class]]) {
+                moment.userMo = [UserMo mj_objectWithKeyValues:Arr[i][@"user"]];
+                moment.userMo.ID = Arr[i][@"user"][@"id"];
+            }
+            moment.singleWidth = 500;
+            moment.singleHeight = 315;
+            if (moment.videos.length!=0&&[moment.videos containsString:@"http"]) {
+                moment.coverImage = [UIImage thumbnailOfAVAsset:[NSURL URLWithString:moment.videos]];
+            }else{
+                moment.coverImage = [UIImage imageNamed:@"no-pic"];
+                NSMutableArray * imageArr = [[moment.images componentsSeparatedByString:@";"] mutableCopy];
+                [imageArr removeLastObject];
+                moment.fileCount = [imageArr count];
+            }
+            [self.momentList addObject:moment];
+            [self.tab_Bottom reloadData];
+        }
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -35,22 +69,7 @@
 -(void)setUI{
     self.navigationItem.title = @"收藏";
 }
-#pragma mark - 测试数据
-- (void)initTestInfo
-{
-    for (int i = 0;  i < 10; i ++)  {
-        Moment *moment = [[Moment alloc] init];
-        moment.praiseNameList = @"";
-        moment.userName = @"Jeanne";
-        moment.time = 1487649403;
-        moment.singleWidth = 500;
-        moment.singleHeight = 315;
-        moment.text = @"蜀绣又名“川绣”，是在丝绸或其他织物上采用蚕丝线绣出花纹图案的中国传统工艺，18107891687主要指以四川成都为中心的川西平原一带的刺绣。😁蜀绣最早见于西汉的记载，当时的工艺已相当成熟，同时传承了图案配色鲜艳、常用红绿颜色的特点。😁蜀绣又名“川绣”，是在丝绸或其他织物上采用蚕丝线绣出花纹图案的中国传统工艺，https://www.baidu.com，主要指以四川成都为中心的川西平原一带的刺绣。蜀绣最早见于西汉的记载，当时的工艺已相当成熟，同时传承了图案配色鲜艳、常用红绿颜色的特点。";
-            moment.fileCount = arc4random()%10;
-        [self.momentList addObject:moment];
-    }
-    [self.tab_Bottom reloadData];
-}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.momentList.count;
 }

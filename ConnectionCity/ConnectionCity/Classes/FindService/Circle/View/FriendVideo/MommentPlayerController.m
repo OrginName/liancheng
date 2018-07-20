@@ -216,8 +216,7 @@
 -(void)likeClick{
     NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[4] contentArr][1];
-    [YSNetworkTool POST:v1CommonCollectCreate params:@{@"type":@([self.moment.ID integerValue]),@"typeId":mo.value} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-//        self.like_Zan.text = KString(@"%d", [responseObject[@"data"] intValue]+1);
+    [YSNetworkTool POST:v1CommonCollectCreate params:@{@"typeId":@([self.moment.ID integerValue]),@"type":mo.value} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) { 
         [YTAlertUtil showTempInfo:responseObject[@"message"]];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         

@@ -22,6 +22,7 @@
 		720263FC20B5015500382B2F /* TZProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 720263EB20B5015500382B2F /* TZProgressView.m */; };
 		720263FD20B5015500382B2F /* TZVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 720263ED20B5015500382B2F /* TZVideoPlayerController.m */; };
 		720263FE20B5015500382B2F /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 720263EF20B5015500382B2F /* UIView+Layout.m */; };
+		721040FB2102193000B575BB /* likeModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 721040FA2102193000B575BB /* likeModels.m */; };
 		721DAE0120F20EBC006F141F /* FriendListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721DADFF20F20EBC006F141F /* FriendListController.m */; };
 		721DAE0220F20EBC006F141F /* FriendListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 721DAE0020F20EBC006F141F /* FriendListController.xib */; };
 		721DAE0520F2421A006F141F /* SortCollProController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721DAE0420F2421A006F141F /* SortCollProController.m */; };
@@ -641,6 +642,8 @@
 		720263ED20B5015500382B2F /* TZVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZVideoPlayerController.m; sourceTree = "<group>"; };
 		720263EE20B5015500382B2F /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
 		720263EF20B5015500382B2F /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		721040F92102193000B575BB /* likeModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = likeModels.h; sourceTree = "<group>"; };
+		721040FA2102193000B575BB /* likeModels.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = likeModels.m; sourceTree = "<group>"; };
 		721DADFE20F20EBC006F141F /* FriendListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendListController.h; sourceTree = "<group>"; };
 		721DADFF20F20EBC006F141F /* FriendListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendListController.m; sourceTree = "<group>"; };
 		721DAE0020F20EBC006F141F /* FriendListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendListController.xib; sourceTree = "<group>"; };
@@ -1788,6 +1791,15 @@
 			path = TZImagePickerController;
 			sourceTree = "<group>";
 		};
+		721040F82102191400B575BB /* likeModels */ = {
+			isa = PBXGroup;
+			children = (
+				721040F92102193000B575BB /* likeModels.h */,
+				721040FA2102193000B575BB /* likeModels.m */,
+			);
+			path = likeModels;
+			sourceTree = "<group>";
+		};
 		722D252620AA769600AB3863 /* PopView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2270,6 +2282,7 @@
 		72EBB8E820CAC51A00F670E9 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
+				721040F82102191400B575BB /* likeModels */,
 				72EBB8EE20CAC63100F670E9 /* Cell */,
 				72EBB8E920CAC52600F670E9 /* CollectionController.h */,
 				72EBB8EA20CAC52600F670E9 /* CollectionController.m */,
@@ -4991,6 +5004,7 @@
 				8DE465C520EDED57009730F7 /* RCDAddressBookViewController.m in Sources */,
 				8DEA44D620C0E9ED001529F1 /* FriendVideoCell.m in Sources */,
 				CE0BA5FA209D5EBE004C3C33 /* YTBaseTableViewController.m in Sources */,
+				721040FB2102193000B575BB /* likeModels.m in Sources */,
 				720263F320B5015500382B2F /* TZGifPhotoPreviewController.m in Sources */,
 				8D07D76C20DCE1E40073807C /* GTMBase64.m in Sources */,
 				8DE4667720EDFD7E009730F7 /* RCDReceiptDetailsTableViewCell.m in Sources */,

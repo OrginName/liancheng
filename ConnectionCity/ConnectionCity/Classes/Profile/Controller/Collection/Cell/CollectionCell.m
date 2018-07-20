@@ -11,7 +11,7 @@
 #import "MMImageListView.h"
 #import "Utility.h"
 // 视图之间的间距
-#define kPaddingValue       8
+#define kPaddingValue  8
 @interface CollectionCell()
 @property (nonatomic,strong)UIImageView * image_head;
 @property (nonatomic,strong)UILabel * lab_title;
@@ -19,6 +19,7 @@
 @property (nonatomic,strong)UILabel * lab_desc;
 @property (nonatomic,strong)MMImageListView * listView;
 @property (nonatomic,strong)UIButton * btn_Cancle;
+@property (nonatomic,strong)UIImageView * imagePlay;
 @end
 @implementation CollectionCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -30,28 +31,23 @@
         [self addSubview:self.btn_Cancle];
         [self addSubview:self.lab_desc];
         [self addSubview:self.listView];
+        [self addSubview:self.imagePlay];
     }
     return self;
 }
 -(void)setReceive_Mo:(Moment *)receive_Mo{
     _receive_Mo = receive_Mo;
     // 头像
-    _image_head.image = [UIImage imageNamed:@"moment_head"];
+    [_image_head sd_setImageWithURL:[NSURL URLWithString:receive_Mo.userMo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     // 昵称
-    _lab_title.text = receive_Mo.userName;
-//    [NSString stringWithFormat:@"%@",[Utility getDateFormatByTimestamp:receive_Mo.time]]
-    _lab_Time.text = @"2018年1月27号";
+    _lab_title.text = receive_Mo.userMo.nickName?receive_Mo.userMo.nickName:receive_Mo.userMo.ID;
+    _lab_Time.text = [receive_Mo.createTime componentsSeparatedByString:@" "][0];
     CGFloat bottom = _lab_Time.bottom + kPaddingValue;
     if ([receive_Mo.text length]) {
         _lab_desc.text = receive_Mo.text;
         CGFloat labH = [self calculateRowHeight:receive_Mo.text fontSize:13];
-        if (!receive_Mo.isFullText) {
-            labH=50;
-            _lab_desc.numberOfLines = 3;
-        }else{
-            _lab_desc.numberOfLines = 0;
-        }
-        _lab_desc.frame = CGRectMake(_image_head.left, bottom, kScreenWidth-40, labH);
+        _lab_desc.numberOfLines = 0;
+        _lab_desc.frame = CGRectMake(_image_head.right, bottom, kScreenWidth-40, labH);
         bottom = _lab_desc.bottom + kPaddingValue;
     }
     // 图片
@@ -59,8 +55,15 @@
     if (receive_Mo.fileCount > 0) {
         _listView.origin = CGPointMake(_image_head.right, bottom);
         bottom = _listView.bottom + kPaddingValue;
+        receive_Mo.cellHeight = _listView.bottom+10;
+    }else if(receive_Mo.videos.length!=0){
+        _imagePlay.image = receive_Mo.coverImage;
+        _imagePlay.frame = CGRectMake(_lab_desc.left, _lab_desc.bottom+5, 40, 60);
+        receive_Mo.cellHeight = _imagePlay.bottom+10;
+    }else{
+        receive_Mo.cellHeight = _lab_desc.bottom+10;
     }
-    receive_Mo.cellHeight = _listView.bottom+10;
+    
 }
 //点击展开
 -(void)DescClick{
@@ -135,5 +138,16 @@
         _btn_Cancle.layer.masksToBounds = YES;
     }
     return _btn_Cancle;
+}
+-(UIImageView *)imagePlay{
+    if (!_imagePlay) {
+        _imagePlay = [[UIImageView alloc] init];
+        UIImageView * image = [[UIImageView alloc] init];
+        image.image = [UIImage imageNamed:@"q-play"];
+        image.center = _imagePlay.center;
+        image.frame = CGRectMake(0, 0, 30, 30);
+        [_imagePlay addSubview:image];
+    }
+    return _imagePlay;
 }
 @end

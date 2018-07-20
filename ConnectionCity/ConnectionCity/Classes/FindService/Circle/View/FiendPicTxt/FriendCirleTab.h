@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CommentView.h"
 @interface FriendCirleTab : UITableView
 @property (nonatomic,strong) UIView * mainView;
 @property (nonatomic,strong)NSString * flagStr;
+@property (nonatomic,strong) CommentView * comment;
 -(instancetype)initWithFrame:(CGRect)frame withControll:(UIViewController *)control;
 @end
