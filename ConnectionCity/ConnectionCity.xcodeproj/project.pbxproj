@@ -222,8 +222,6 @@
 		8D35878820C6A544008A5E74 /* OurPlayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D35878620C6A544008A5E74 /* OurPlayController.xib */; };
 		8D35878C20C6A693008A5E74 /* OurPlayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D35878A20C6A693008A5E74 /* OurPlayCell.m */; };
 		8D35878D20C6A693008A5E74 /* OurPlayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D35878B20C6A693008A5E74 /* OurPlayCell.xib */; };
-		8D41D87520E0DA5600ACC0A0 /* ShowResume.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D41D87420E0DA5600ACC0A0 /* ShowResume.m */; };
-		8D41D87720E0DA6500ACC0A0 /* ShowResume.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D41D87620E0DA6500ACC0A0 /* ShowResume.xib */; };
 		8D50C55120C632090095A824 /* OurSendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D50C54F20C632090095A824 /* OurSendController.m */; };
 		8D50C55220C632090095A824 /* OurSendController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D50C55020C632090095A824 /* OurSendController.xib */; };
 		8D50C55620C636560095A824 /* OurResumeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D50C55420C636560095A824 /* OurResumeController.m */; };
@@ -234,6 +232,8 @@
 		8D50C56120C66EAF0095A824 /* OurServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D50C55F20C66EAF0095A824 /* OurServiceController.xib */; };
 		8D50C56620C67C2F0095A824 /* OurServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D50C56420C67C2F0095A824 /* OurServiceCell.m */; };
 		8D50C56720C67C2F0095A824 /* OurServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D50C56520C67C2F0095A824 /* OurServiceCell.xib */; };
+		8D54139D2101E8E6000366E6 /* ShowResume1.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D54139C2101E8E6000366E6 /* ShowResume1.m */; };
+		8D54139F2101E8F4000366E6 /* ShowResume1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D54139E2101E8F4000366E6 /* ShowResume1.xib */; };
 		8D5B3C3820C0143200773105 /* ServiceListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B3C3620C0143200773105 /* ServiceListController.m */; };
 		8D5B3C3920C0143200773105 /* ServiceListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D5B3C3720C0143200773105 /* ServiceListController.xib */; };
 		8D5B3C3D20C0147A00773105 /* ServiceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B3C3B20C0147A00773105 /* ServiceListCell.m */; };
@@ -977,9 +977,6 @@
 		8D35878920C6A693008A5E74 /* OurPlayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurPlayCell.h; sourceTree = "<group>"; };
 		8D35878A20C6A693008A5E74 /* OurPlayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurPlayCell.m; sourceTree = "<group>"; };
 		8D35878B20C6A693008A5E74 /* OurPlayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OurPlayCell.xib; sourceTree = "<group>"; };
-		8D41D87320E0DA5500ACC0A0 /* ShowResume.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowResume.h; sourceTree = "<group>"; };
-		8D41D87420E0DA5600ACC0A0 /* ShowResume.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowResume.m; sourceTree = "<group>"; };
-		8D41D87620E0DA6500ACC0A0 /* ShowResume.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowResume.xib; sourceTree = "<group>"; };
 		8D50C54E20C632090095A824 /* OurSendController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurSendController.h; sourceTree = "<group>"; };
 		8D50C54F20C632090095A824 /* OurSendController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurSendController.m; sourceTree = "<group>"; };
 		8D50C55020C632090095A824 /* OurSendController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OurSendController.xib; sourceTree = "<group>"; };
@@ -995,6 +992,9 @@
 		8D50C56320C67C2F0095A824 /* OurServiceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurServiceCell.h; sourceTree = "<group>"; };
 		8D50C56420C67C2F0095A824 /* OurServiceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurServiceCell.m; sourceTree = "<group>"; };
 		8D50C56520C67C2F0095A824 /* OurServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OurServiceCell.xib; sourceTree = "<group>"; };
+		8D54139B2101E8E6000366E6 /* ShowResume1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowResume1.h; sourceTree = "<group>"; };
+		8D54139C2101E8E6000366E6 /* ShowResume1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowResume1.m; sourceTree = "<group>"; };
+		8D54139E2101E8F4000366E6 /* ShowResume1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowResume1.xib; sourceTree = "<group>"; };
 		8D5B3C3520C0143200773105 /* ServiceListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceListController.h; sourceTree = "<group>"; };
 		8D5B3C3620C0143200773105 /* ServiceListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceListController.m; sourceTree = "<group>"; };
 		8D5B3C3720C0143200773105 /* ServiceListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceListController.xib; sourceTree = "<group>"; };
@@ -1834,9 +1834,9 @@
 			children = (
 				723D375F20ABBEB4003FD4DF /* ShowResumeTab.h */,
 				723D376020ABBEB4003FD4DF /* ShowResumeTab.m */,
-				8D41D87320E0DA5500ACC0A0 /* ShowResume.h */,
-				8D41D87420E0DA5600ACC0A0 /* ShowResume.m */,
-				8D41D87620E0DA6500ACC0A0 /* ShowResume.xib */,
+				8D54139B2101E8E6000366E6 /* ShowResume1.h */,
+				8D54139C2101E8E6000366E6 /* ShowResume1.m */,
+				8D54139E2101E8F4000366E6 /* ShowResume1.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4557,6 +4557,7 @@
 				CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */,
 				CE0BA60F209D6126004C3C33 /* AddressBookController.xib in Resources */,
 				72EBB8E720C9682A00F670E9 /* AccountOneController.xib in Resources */,
+				8D54139F2101E8F4000366E6 /* ShowResume1.xib in Resources */,
 				72EC1B9820BC307E00ACC20B /* ServiceHomeController.xib in Resources */,
 				CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */,
 				CEBEDD8F20B17ED1000F9EE4 /* FootprintCell.xib in Resources */,
@@ -4569,7 +4570,6 @@
 				727C86D820DBE11D00AA2796 /* CreatGroupController.xib in Resources */,
 				CE5C283020B9733A006A8332 /* ConsultativeNegotiationCell.xib in Resources */,
 				8D67603620A448CB0027CDEE /* SX.plist in Resources */,
-				8D41D87720E0DA6500ACC0A0 /* ShowResume.xib in Resources */,
 				8D5B3C3920C0143200773105 /* ServiceListController.xib in Resources */,
 				8DC17A8420C0E598005D9EE0 /* FriendCircleController.xib in Resources */,
 				8DEA450F20C1193E001529F1 /* MomentDetailController.xib in Resources */,
@@ -4978,6 +4978,7 @@
 				8DE4665320EDFBF7009730F7 /* RCDEditGroupNameViewController.m in Sources */,
 				CE0BA5B2209D5E6B004C3C33 /* NSData+DDAdditions.m in Sources */,
 				8D24A23220A1CB8200F0740D /* FirstTanView.m in Sources */,
+				8D54139D2101E8E6000366E6 /* ShowResume1.m in Sources */,
 				8DFA324B20EDAF620086423A /* DefaultPortraitView.m in Sources */,
 				7274188020B13CB6001D6BE1 /* MLMSegmentHead.m in Sources */,
 				CEE5251520F7907C00DD6179 /* MyQRController.m in Sources */,
@@ -5051,7 +5052,6 @@
 				CE0BA5B9209D5E6B004C3C33 /* UIAlertView+Blocks.m in Sources */,
 				8DC17AB620C0E7E5005D9EE0 /* FriendMyselfTab.m in Sources */,
 				CE0BA569209D5004004C3C33 /* AppDelegate.m in Sources */,
-				8D41D87520E0DA5600ACC0A0 /* ShowResume.m in Sources */,
 				8D114CBA20CA22BD00637D34 /* AddMyWayController.m in Sources */,
 				8D12931220E5F16D0008BD6F /* EditCircleController.m in Sources */,
 				CEE4B29120C6B17C008B8731 /* FoundCell.m in Sources */,
@@ -5245,7 +5245,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5305,7 +5305,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = WVUAE7KCP3;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

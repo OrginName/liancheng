@@ -125,6 +125,11 @@
 }
 -(void)GZLoadData:(NSString *)type{
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+    if (self.Receive_Type == ENUM_TypeTrval){
+        if ([self.str isEqualToString:@"TrvalTrip"]){
+            
+        }
+    }
     AllContentMo * mo = [arr[5] contentArr][1];
     [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":@([type integerValue]),@"type":@([mo.value integerValue])} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         [YTAlertUtil showTempInfo:@"关注成功"];
@@ -153,7 +158,6 @@
         AbilttyMo * resume = self.data_Count[indexPath.row];
         self.showTab.abilttyMo = resume;
         self.title = resume.userMo.nickName;
-        NSLog(@"indexPath.row ====>%ld",(long)indexPath.row);
         [cell.contentView addSubview:self.showTab];
     }else if(self.Receive_Type == ENUM_TypeCard){
         self.showCardTab = [[ShowCardTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];
@@ -170,7 +174,7 @@
             self.trvaltab.Mo = mo; 
         }
         [cell.contentView addSubview:self.trvaltab];
-        
+
     }else {
         self.showTreaueTab = [[ShowTreaueTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];
         [cell.contentView addSubview:self.showTreaueTab];
@@ -182,16 +186,13 @@
 {
     return UIEdgeInsetsMake(0, 0, 0, 0);
 }
-
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
     return 0;
 }
-
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return CGSizeMake(kScreenWidth-20, TabHeight);
 }
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     //得到每页宽度
@@ -199,7 +200,6 @@
     // 根据当前的x坐标和页宽度计算出当前页数
     self.zIndex = floor((scrollView.contentOffset.x - pageWidth/2)/pageWidth) + 1;
 }
-
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];

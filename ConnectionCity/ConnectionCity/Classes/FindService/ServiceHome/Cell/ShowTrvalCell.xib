@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -109,29 +109,9 @@
                 <outlet property="btn_height" destination="vPd-3G-1pP" id="qOq-vR-EoD"/>
                 <outlet property="btn_weight" destination="4Zb-g1-Ffl" id="eKs-rS-tfN"/>
                 <outlet property="btn_wight" destination="qli-7f-C0f" id="KtG-Vv-dFf"/>
-                <outlet property="image1" destination="ymH-CC-Xcx" id="ZEm-0j-gqd"/>
-                <outlet property="image2" destination="aFM-Mn-85R" id="kv6-sE-yr2"/>
-                <outlet property="image3" destination="3hh-Wm-EDK" id="8kO-NL-MI0"/>
-                <outlet property="image4" destination="wJI-md-SiJ" id="PNB-9e-g2v"/>
                 <outlet property="image_sex" destination="O8G-cD-ldE" id="fMv-wa-bIT"/>
-                <outlet property="imgae_Comment" destination="nig-Q1-0lx" id="CTC-5d-eQS"/>
                 <outlet property="lab_Age" destination="H5t-5S-gVH" id="iBr-qV-QQv"/>
-                <outlet property="lab_Comment" destination="WtL-Bd-cbF" id="PgK-Lf-sdk"/>
-                <outlet property="lab_CommentTime" destination="IUx-3v-6O2" id="dqn-Fh-w82"/>
-                <outlet property="lab_DTNum" destination="o0k-oa-21f" id="Q1d-OH-Jka"/>
-                <outlet property="lab_DW" destination="8oF-8I-nWy" id="YfD-cE-LRE"/>
-                <outlet property="lab_Des" destination="UtX-P8-DPh" id="bht-q2-fuo"/>
-                <outlet property="lab_HF" destination="49X-DN-yct" id="emu-vT-Xga"/>
-                <outlet property="lab_LLNum" destination="hGc-VG-Qgt" id="bVw-Hz-S9N"/>
-                <outlet property="lab_PriceDY" destination="S50-NE-1le" id="07Q-iB-PZy"/>
-                <outlet property="lab_ServiceTitle" destination="XMi-99-3Vg" id="RJd-tg-J9B"/>
                 <outlet property="lab_Title" destination="gK4-4I-LyX" id="bS8-Z2-Ei9"/>
-                <outlet property="lab_TrvalDY" destination="Hjn-6u-3xT" id="IWp-Ub-Ced"/>
-                <outlet property="lab_TrvalDes" destination="TSX-iV-6Nl" id="NUL-Nz-W8f"/>
-                <outlet property="lab_TrvalPrice" destination="8bg-36-xP5" id="hgt-NK-aOq"/>
-                <outlet property="lab_commentTitle" destination="cfF-Yt-340" id="x3U-X1-tTe"/>
-                <outlet property="lab_price" destination="sy2-GH-Fzm" id="aqS-5Q-rqh"/>
-                <outlet property="viewStar" destination="61i-s3-yPW" id="0lB-hA-aLL"/>
             </connections>
             <point key="canvasLocation" x="34" y="67"/>
         </tableViewCell>

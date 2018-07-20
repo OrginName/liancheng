@@ -268,7 +268,6 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ResumeCell *cell = [ResumeCell tempTableViewCellWith:tableView indexPath:indexPath withCollArr:self.CollArr withEduArr:self.EduArr];
-    
     if (indexPath.section==5&&indexPath.row!=0&&indexPath.row!=self.EduArr.count+1) {
         if ([self.isOpen[@"50"] isEqualToString:@"NO"]&&self.EduArr.count!=0) {
             if (self.EduArr.count>0) {
@@ -279,7 +278,7 @@
         {
             cell.Mo = self.EduArr[indexPath.row-1];
             cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2);
-        } 
+        }
     }
    else if (indexPath.section==4&&indexPath.row!=0&&indexPath.row!=self.CollArr.count+1) {
         if ([self.isOpen[@"40"] isEqualToString:@"NO"]&&self.CollArr.count!=0) {

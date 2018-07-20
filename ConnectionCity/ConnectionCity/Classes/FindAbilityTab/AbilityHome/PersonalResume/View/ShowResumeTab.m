@@ -7,7 +7,7 @@
 #import "ShowResumeTab.h"
 #import "SDCycleScrollView.h"
 #import "ShowResumeCell.h"
-#import "ShowResume.h"
+#import "ShowResume1.h"
 #define SHOWCELL @"SHOWCELL"
 @interface ShowResumeTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) SDCycleScrollView * cycleScrollView;
@@ -15,7 +15,7 @@
 @property (nonatomic,strong) UITableView * tab_Bottom;
 @property (nonatomic,strong) NSMutableDictionary * dict;
 @property (nonatomic,strong) NSMutableArray * data_Arr;
-@property (nonatomic,strong) ShowResume * resume;
+@property (nonatomic,strong) ShowResume1 * resume;
 @end
 @implementation ShowResumeTab
 -(instancetype)initWithFrame:(CGRect)frame{
@@ -107,7 +107,7 @@
     return cell;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    ShowResume * view = [[[NSBundle mainBundle] loadNibNamed:@"ShowResume" owner:nil options:nil] lastObject];
+    ShowResume1 * view = [[[NSBundle mainBundle] loadNibNamed:@"ShowResume1" owner:nil options:nil] firstObject];
     view.lab_nametitle.text = section==2?@"教育经历":@"工作经历";
     if (section==1) {
         if ([self.dict[@"1"] isEqualToString:@"NO"]) {

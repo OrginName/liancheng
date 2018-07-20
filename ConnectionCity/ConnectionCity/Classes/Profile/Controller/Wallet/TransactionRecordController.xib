@@ -120,15 +120,12 @@
                         <constraint firstItem="iGE-MY-8w6" firstAttribute="width" secondItem="HuL-BM-VO9" secondAttribute="width" id="xAf-oa-cej"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIP-HR-kA1">
+                <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIP-HR-kA1">
                     <rect key="frame" x="20" y="65" width="79" height="32"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <state key="normal" title="2018年4月">
                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
-                    <connections>
-                        <action selector="BtnSelectClick:" destination="-1" eventType="touchUpInside" id="1t9-Qa-tn8"/>
-                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow-xia1" translatesAutoresizingMaskIntoConstraints="NO" id="SPV-NU-DmV">
                     <rect key="frame" x="104" y="77" width="12" height="8"/>

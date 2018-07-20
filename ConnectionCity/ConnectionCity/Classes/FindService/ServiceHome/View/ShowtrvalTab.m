@@ -199,16 +199,15 @@
 //}
 //点赞按钮点击
 -(void)likeClick:(UIButton *)sender{
-    if (sender.selected) {
-        [YTAlertUtil showTempInfo:@"您已点赞不能重复点赞"];
-        return;
-    }
+//    if (sender.selected) {
+//        [YTAlertUtil showTempInfo:@"您已点赞不能重复点赞"];
+//        return;
+//    }
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[5] contentArr][1];
     [YSNetworkTool POST:v1CommonCommentAddlike  params:@{@"typeId":@([self.Mo.ID integerValue]),@"type":@([mo.value integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        sender.selected = YES;
+        sender.selected = !sender.selected;
         [sender setTitle:[NSString stringWithFormat:@"%@",responseObject[@"data"]] forState:UIControlStateNormal];
-        [YTAlertUtil showTempInfo:@"点赞成功"];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

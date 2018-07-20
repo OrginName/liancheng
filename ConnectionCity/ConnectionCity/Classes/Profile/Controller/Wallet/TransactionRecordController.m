@@ -31,6 +31,7 @@
     [self setUI];
     [self addHeaderRefresh];
     [self addFooterRefresh];
+    self.tagFlag = 0;
 }
 -(void)setUI{
     self.navigationItem.title = @"交易记录";

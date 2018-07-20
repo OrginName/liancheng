@@ -37,6 +37,14 @@
     [self setComment];
     CurrentIndex = 0;
 }
+-(void)saveClick{
+    int a = [self.flagStr isEqualToString:@"HomeSend"]?40:20;
+    [YSNetworkTool POST:v1CommonCollectCreate params:@{@"type":@(a),@"typeId":self.receiveMo.ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTAlertUtil showTempInfo:responseObject[@"message"]];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
 -(void)ClearAll{
     NSString * url = [self.flagStr isEqualToString:@"HomeSend"]?v1FriendCircleDelete:v1ServiceCircleDelete;
     [YSNetworkTool POST:url params:@{@"id":self.receiveMo.ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -59,7 +67,10 @@
     __block MomentDetailController * weakSelf = self;
     self.momment.Btnblock = ^{
         [weakSelf ClearAll];
-    };
+    };//删除
+    self.momment.saveBlock = ^{
+        [weakSelf saveClick];
+    };//收藏
     [self.tab_Bottom reloadData];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -176,6 +187,7 @@
 @property (nonatomic,strong)UILabel * labDes;
 @property (nonatomic,strong)UILabel * timelab;
 @property (nonatomic,strong)UIButton * delebtn;
+@property (nonatomic,strong)UIButton * btnSave;
 @property (nonatomic,strong)MMImageListView * listView;
 @end
 @implementation MomentDetailView
@@ -186,6 +198,7 @@
         [self addSubview:self.labDes];
         [self addSubview:self.listView];
         [self addSubview:self.timelab];
+        [self addSubview:self.btnSave];
         [self addSubview:self.delebtn];
     }
     return self;
@@ -193,6 +206,10 @@
 //删除按钮
 -(void)shareMoment:(UIButton *)btn{
     self.Btnblock();
+}
+//收藏button
+-(void)SaveMoment:(UIButton *)btn{
+    self.saveBlock();
 }
 -(void)setReceiveMo:(Moment *)receiveMo{
     _receiveMo =receiveMo;
@@ -223,7 +240,18 @@
                                              attributes:@{NSFontAttributeName:_timelab.font}
                                                 context:nil].size.width;
     _timelab.frame = CGRectMake(_headTitleLab.left, bottom, textW, kTimeLabelH);
-    _delebtn.frame = CGRectMake(_timelab.right+5, _timelab.top, 60, kTimeLabelH);
+    [_btnSave mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_timelab.mas_top);
+        make.left.equalTo(_timelab.mas_right).offset(5);
+        make.bottom.equalTo(_timelab.mas_bottom);
+    }];
+    [_delebtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_timelab.mas_top);
+        make.left.equalTo(_btnSave.mas_right).offset(5);
+        make.bottom.equalTo(_timelab.mas_bottom);
+    }];
+//    _btnSave.frame = CGRectMake(_timelab.right+5, _timelab.top, 70, kTimeLabelH);
+//    _delebtn.frame = CGRectMake(_btnSave.right+5, _timelab.top, 60, kTimeLabelH);
     receiveMo.cellHeight =_timelab.bottom+20;
 }
 -(UIImageView *)headImage{
@@ -272,6 +300,18 @@
         _timelab.font = [UIFont systemFontOfSize:13.0f];
     }
     return _timelab;
+}
+-(UIButton *)btnSave{
+    if (!_btnSave) {
+        //收藏
+        _btnSave = [[UIButton alloc] init];
+        _btnSave.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+        [_btnSave setTitleColor:YSColor(242, 151, 40) forState:UIControlStateNormal];
+         _btnSave.backgroundColor = [UIColor clearColor];
+        [_btnSave setTitle:@"收藏" forState:UIControlStateNormal];
+        [_btnSave addTarget:self action:@selector(SaveMoment:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btnSave;
 }
 -(UIButton *)delebtn{
     if (!_delebtn) {
