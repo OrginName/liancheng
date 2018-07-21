@@ -70,10 +70,13 @@
     UIButton *btn = (UIButton *)sender;
     btn.selected = !btn.selected;
     if (btn.selected) {
-        _passwordTF.secureTextEntry = YES;
-    }else{
-        _passwordTF.secureTextEntry = NO;
+        _passwordTF.text = @"";
     }
+//    if (btn.selected) {
+//        _passwordTF.secureTextEntry = YES;
+//    }else{
+//        _passwordTF.secureTextEntry = NO;
+//    }
 }
 - (IBAction)checkBtnClick:(id)sender {
     UIButton *btn = (UIButton *)sender;
