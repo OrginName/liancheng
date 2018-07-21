@@ -182,6 +182,7 @@ self.conversationBtn.translatesAutoresizingMaskIntoConstraints = NO;
     //创建会话
     RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
     chatViewController.conversationType = ConversationType_PRIVATE;
+    
     chatViewController.targetId = KString(@"%@", self.userId);
     NSString *title;
     if ([KString(@"%@", self.userId) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {

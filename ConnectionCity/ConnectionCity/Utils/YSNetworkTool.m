@@ -35,8 +35,7 @@ NSString * const YTHttpUtilResponseData = @"Data";
     showHud:(BOOL)showHud
      success:(YTHttpUtilSuccess)success
      failure:(YTHttpUtilFailure)failure {
-    AFHTTPSessionManager *manager = [[self class] manager]; 
-   
+    AFHTTPSessionManager *manager = [[self class] manager];
     if (showHud) {[YTAlertUtil showHUDWithTitle:nil];}
     [manager.requestSerializer setValue:kAccount.token forHTTPHeaderField:@"X-ACCESS-TOKEN"];
     [manager POST:[NSString stringWithFormat:@"%@%@",HOSTURL,url] parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -61,6 +60,7 @@ NSString * const YTHttpUtilResponseData = @"Data";
             [YTAlertUtil showTempInfo:responseObject[kMessage]];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"错误的是:%@",error);
         [[self class]p_handleRequestFailure:nil];
         [YTAlertUtil showTempInfo:[error.userInfo objectForKey:@"NSLocalizedDescription"]];
         failure ? failure(task, error) : nil;

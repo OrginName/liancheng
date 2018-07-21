@@ -9,8 +9,10 @@
 #import "RCDGroupInfo.h"
 #import <UIKit/UIKit.h>
 
+typedef void(^returnName)(NSString * name);
 @interface RCDEditGroupNameViewController : UIViewController <UITextFieldDelegate>
-
+@property (nonatomic,strong)NSString * name;
+@property (nonatomic,copy) returnName block;
 @property (nonatomic,assign)int flagStr;
 /**
  *  修改群名称页面的初始化方法

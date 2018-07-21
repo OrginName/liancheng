@@ -11,12 +11,10 @@
 #import "RCDTableViewController.h"
 #import <RongIMKit/RongIMKit.h>
 #import <UIKit/UIKit.h>
-
 @interface RCDGroupSettingsTableViewController
     : RCDTableViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIActionSheetDelegate,
                               UINavigationControllerDelegate, UIImagePickerControllerDelegate,
                               RCDBaseSettingTableViewCellDelegate>
-
 @property (nonatomic,assign)int flagStr;
 + (instancetype)groupSettingsTableViewController;
 

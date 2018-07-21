@@ -66,7 +66,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"0099ff" alpha:1.0f];
+//    self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"0099ff" alpha:1.0f];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
@@ -74,7 +74,8 @@
     self.searchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, RCDscreenWidth, 44)];
     _searchBars = [[RCDSearchBar alloc] initWithFrame:CGRectZero];
     _searchBars.delegate = self;
-    _searchBars.tintColor = [UIColor blueColor];
+    _searchBars.backgroundColor = [UIColor clearColor];
+    _searchBars.tintColor = [UIColor clearColor];
     [_searchBars becomeFirstResponder];
     _searchBars.frame = CGRectMake(0, 0, self.searchView.frame.size.width - 55, 44);
     [self.searchView addSubview:self.searchBars];
@@ -82,7 +83,7 @@
     _cancelButton = [[UIButton alloc]
         initWithFrame:CGRectMake(CGRectGetMaxX(_searchBars.frame) - 3, CGRectGetMinY(self.searchBars.frame), 55, 44)];
     [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
-    [_cancelButton setTitleColor:HEXCOLOR(0x0099ff) forState:UIControlStateNormal];
+    [_cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _cancelButton.titleLabel.font = [UIFont systemFontOfSize:18.];
     [_cancelButton addTarget:self action:@selector(cancelButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.searchView addSubview:_cancelButton];

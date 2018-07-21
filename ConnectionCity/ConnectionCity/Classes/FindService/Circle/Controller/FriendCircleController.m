@@ -82,8 +82,6 @@ static NSInteger i;//判断当前返回按钮点击次数
 }
 
 -(void)setUI{
-//    UIButton * btn = [self.view viewWithTag:1];
-//    btn.selected = YES;
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
     [self.view addSubview:self.frendTab];
     [self.view addSubview:self.frendVedio];
@@ -92,9 +90,15 @@ static NSInteger i;//判断当前返回按钮点击次数
     if ([self.tabBarItem.title isEqualToString:@"我的"]) {
         self.btn_picTxt.selected = NO;
         self.btn_My.selected = YES;
+        self.frendTab.hidden = YES;
+        self.frendVedio.hidden = YES;
+        self.frendMyselfTab.hidden = NO;
     }else{
         self.btn_picTxt.selected = YES;
         self.btn_My.selected = NO;
+        self.frendTab.hidden = NO;
+        self.frendVedio.hidden = YES;
+        self.frendMyselfTab.hidden = YES;
     }
 }
 //图文

@@ -36,6 +36,8 @@
     [self setUI];
     _page = 0;
     _currentIndex = 0;
+    UITableView * tab = self.tabArr[_currentIndex];
+    [tab.mj_header beginRefreshing];
 }
 -(void)setUI{
     _tmpBtn = self.btn_All;
@@ -101,11 +103,10 @@
     ConnectionMo * mo = self.data_Arr[btn.tag-1];
     [RCDHTTPTOOL requestFriend:mo.ID complete:^(BOOL result) {
         if (result) {
-            [YTAlertUtil showTempInfo:@"添加成功"];
+            [YTAlertUtil showTempInfo:@"好友申请已发送"];
             mo.isFriend = @"1";
             [self.data_Arr replaceObjectAtIndex:btn.tag-1 withObject:mo];
             [tab reloadData];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:KAddFriend object:nil];
         }
     }];
 }
@@ -152,9 +153,6 @@
         tableview.delegate = self;
         tableview.dataSource = self;
         tableview.tag = i;
-        if (i==0) {
-            [tableview.mj_header beginRefreshing];
-        }
         tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             _page=1;
             [self loadData:i tab:tableview];

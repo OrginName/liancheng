@@ -375,7 +375,7 @@ MBProgressHUD *hud;
                         dispatch_async(dispatch_get_main_queue(), ^{
                             RCDChatViewController *chat = [[RCDChatViewController alloc] init];
                             chat.targetId = discussion.discussionId;
-                            chat.userName = discussion.discussionName;
+//                            chat.userName = discussion.discussionName;
                             chat.conversationType = ConversationType_DISCUSSION;
                             chat.title = @"讨论组";
                             chat.needPopToRootView = YES;

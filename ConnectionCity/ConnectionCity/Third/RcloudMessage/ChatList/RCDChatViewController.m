@@ -922,15 +922,16 @@ NSMutableDictionary *userInputStatus;
 }
 
 - (void)refreshTitle {
-//    if (self.userName == nil) {
-//        return;
-//    }
-//    int count = [[[RCDataBaseManager shareInstance] getGroupByGroupId:self.targetId].number intValue];
-//    if (self.conversationType == ConversationType_GROUP && count > 0) {
-//        self.title = [NSString stringWithFormat:@"%@(%d)", self.userName, count];
-//    } else {
-//        self.title = self.userName;
-//    }
+    if (self.group1.name==nil) {
+        return;
+    }
+    RCDGroupInfo * info = [[RCDataBaseManager shareInstance] getGroupByGroupId:self.targetId];
+    int count = [info.number intValue];
+    if (self.conversationType == ConversationType_GROUP && count > 0) {
+        self.title = [NSString stringWithFormat:@"%@(%d)", self.group1.name, count];
+    } else {
+        self.title = self.group1.name;
+    }
 }
 
 - (void)didTapReceiptCountView:(RCMessageModel *)model {

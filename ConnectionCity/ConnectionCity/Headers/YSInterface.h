@@ -149,7 +149,7 @@ static NSString * const v1TalentTeamCreate = @"/v1/talent/team/create";
 //批量加入团队成员
 static NSString * const v1TalentTeamBatchSign = @"/v1/talent/team/batch-sign";
 //批量退出
-static NSString * const v1TalentTeamBatchSignOut = @"v1/talent/team/batch-sign-out";
+static NSString * const v1TalentTeamBatchSignOut = @"/v1/talent/team/batch-sign-out";
 //更新团队
 static NSString * const v1TalentTeamUpdate = @"/v1/talent/team/update";
 //退出团队

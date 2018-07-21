@@ -29,13 +29,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUI];
     [self p_initDataSource];
     [self p_initTableView];
-}
-#pragma mark - setup
-- (void)setUI {
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(p_back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    [super setFlag_back:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(p_initDataSource) name:@"QUNREFRESH" object:nil];
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -72,6 +69,7 @@
     groupMo * mo = arr.count!=0?arr[indexPath.row]:[groupMo new];
     RCDChatViewController *temp = [[RCDChatViewController alloc] init];
     temp.flagStr = 1;
+    temp.group1 = mo;
     temp.targetId = KString(@"team_%@", mo.ID);
     temp.conversationType = ConversationType_GROUP;
     temp.title = [NSString stringWithFormat:@"%@(%@)",mo.name,[mo.teamUsers isKindOfClass:[NSArray class]]?KString(@"%lu", (unsigned long)mo.teamUsers.count):0];
@@ -166,5 +164,8 @@
 - (void)p_back{
     [self.tabBarController.navigationController popViewControllerAnimated:YES];
     //    [[NSNotificationCenter defaultCenter] postNotificationName:@"BACKMAINWINDOW" object:nil];
+}
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end

@@ -65,7 +65,7 @@
 
 - (void)setGroupInfo:(RCDGroupInfo *)groupInfo {
     _groupInfo = groupInfo;
-    self.groupNameTextField.text = groupInfo.groupName;
+    self.groupNameTextField.text = self.name;
 }
 
 - (void)viewDidLoad {
@@ -90,53 +90,35 @@
         [self Alert:@"群组名称不能为空"];
         return;
     }
-    //群组名称需要大于2个字
-    if ([nameStr length] < 2) {
-        [self Alert:@"群组名称过短"];
-        return;
-    }
+//    //群组名称需要大于2个字
+//    if ([nameStr length] < 2) {
+//        [self Alert:@"群组名称过短"];
+//        return;
+//    }
     //群组名称需要小于10个字
     if ([nameStr length] > 10) {
         [self Alert:@"群组名称不能超过10个字"];
         return;
     }
-    [RCDHTTPTOOL setGroupPortraitUri:@"" groupId:_groupInfo.groupId flag:self.flagStr name:nameStr notice:@"" complete:^(BOOL result) {
+    WeakSelf
+    [RCDHTTPTOOL setGroupPortraitUri:@"" groupId:weakSelf.groupInfo.groupId flag:self.flagStr name:nameStr notice:@"" complete:^(BOOL result) {
         if (result == YES) {
-            RCGroup *groupInfo = [RCGroup new];
-            groupInfo.groupId = _groupInfo.groupId;
-            groupInfo.groupName = nameStr;
-            groupInfo.portraitUri = _groupInfo.portraitUri;
-            [[RCIM sharedRCIM] refreshGroupInfoCache:groupInfo withGroupId:_groupInfo.groupId];
-            RCDGroupInfo *tempGroupInfo =
-            [[RCDataBaseManager shareInstance] getGroupByGroupId:groupInfo.groupId];
-            tempGroupInfo.groupName = nameStr;
-            [[RCDataBaseManager shareInstance] insertGroupToDB:tempGroupInfo];
+//            RCGroup *groupInfo = [RCGroup new];
+//            groupInfo.groupId = [weakSelf.groupInfo.groupId description];
+//            groupInfo.groupName = nameStr;
+//            groupInfo.portraitUri = weakSelf.groupInfo.portraitUri;
+//            [[RCIM sharedRCIM] refreshGroupInfoCache:groupInfo withGroupId:groupInfo.groupId];
+//            RCDGroupInfo *tempGroupInfo =
+//            [[RCDataBaseManager shareInstance] getGroupByGroupId:groupInfo.groupId];
+//            tempGroupInfo.groupName = nameStr;
+//            [[RCDataBaseManager shareInstance] insertGroupToDB:tempGroupInfo];
+            self.block(nameStr);
             [self.navigationController popViewControllerAnimated:YES];
         }
         if (result == NO) {
             [self Alert:@"群组名称修改失败"];
         }
     }];
-//    [RCDHTTPTOOL
-//        renameGroupWithGoupId:_groupInfo.groupId
-//                    groupName:nameStr
-//                     complete:^(BOOL result) {
-//                         if (result == YES) {
-//                             RCGroup *groupInfo = [RCGroup new];
-//                             groupInfo.groupId = _groupInfo.groupId;
-//                             groupInfo.groupName = nameStr;
-//                             groupInfo.portraitUri = _groupInfo.portraitUri;
-//                             [[RCIM sharedRCIM] refreshGroupInfoCache:groupInfo withGroupId:_groupInfo.groupId];
-//                             RCDGroupInfo *tempGroupInfo =
-//                                 [[RCDataBaseManager shareInstance] getGroupByGroupId:groupInfo.groupId];
-//                             tempGroupInfo.groupName = nameStr;
-//                             [[RCDataBaseManager shareInstance] insertGroupToDB:tempGroupInfo];
-//                             [self.navigationController popViewControllerAnimated:YES];
-//                         }
-//                         if (result == NO) {
-//                             [self Alert:@"群组名称修改失败"];
-//                         }
-//                     }];
 }
 
 - (void)Alert:(NSString *)alertContent {
@@ -155,16 +137,4 @@
     [self.rightBtn buttonIsCanClick:YES buttonColor:[UIColor whiteColor] barButtonItem:self.rightBtn];
     return YES;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little
-preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

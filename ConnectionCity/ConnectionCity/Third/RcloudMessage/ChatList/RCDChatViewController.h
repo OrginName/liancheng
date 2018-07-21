@@ -7,7 +7,7 @@
 //
 
 #import <RongIMKit/RongIMKit.h>
-
+#import "groupMo.h"
 @interface RCDChatViewController : RCConversationViewController
 @property (nonatomic,assign) int flagStr;
 @property(nonatomic, copy) NSString *groupName;
@@ -15,7 +15,7 @@
  *  会话数据模型
  */
 @property(strong, nonatomic) RCConversationModel *conversation;
-
+@property (nonatomic,strong) groupMo * group1;
 @property BOOL needPopToRootView;
 - (UIView *)loadEmoticonView:(NSString *)identify index:(int)index;
 @end

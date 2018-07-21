@@ -29,10 +29,8 @@
     [super viewDidLoad];
     [self setUI];
     [self p_initDataSource];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteSuccess) name:@"DELETETEAM" object:nil];
-}
--(void)deleteSuccess{
-    [self p_initDataSource];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(p_initDataSource) name:@"DELETETEAM" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(p_initDataSource) name:@"QUNREFRESH" object:nil];
 }
 #pragma mark - setup
 - (void)setUI {
@@ -74,6 +72,7 @@
     RCDChatViewController *temp = [[RCDChatViewController alloc] init];
     temp.targetId =KString(@"station_%@", mo.ID);
     temp.flagStr = 2;
+    temp.group1 = mo;
     temp.conversationType = ConversationType_GROUP;
     temp.title = [NSString stringWithFormat:@"%@(%@)",mo.name,[mo.userList isKindOfClass:[NSArray class]]?KString(@"%lu", (unsigned long)mo.userList.count):0];
     [self.navigationController pushViewController:temp animated:YES];
@@ -115,9 +114,11 @@
 - (void)headerBtnClick:(UIButton *)btn {
     CreatGroupController * creat = [CreatGroupController new];
     creat.flag_str = 2;
-    creat.block = ^{
-        [self p_initDataSource];
-    };
+    if (creat.block) {
+        creat.block = ^{
+            [self p_initDataSource];
+        };
+    }
     [self.navigationController pushViewController:creat animated:YES];
 }
 #pragma mark - profile method
@@ -190,5 +191,8 @@
     [headerBtn addTarget:self action:@selector(headerBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:headerBtn];
     self.tableView.tableHeaderView = headerView;
+}
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end

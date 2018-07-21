@@ -31,6 +31,7 @@
     [super viewDidLoad];
     [self p_initDataSource];
     [self p_initTableView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(p_initDataSource) name:@"QUNREFRESH" object:nil];
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -68,6 +69,7 @@
     RCDChatViewController *temp = [[RCDChatViewController alloc] init];
     temp.flagStr = 3;
     temp.targetId = mo.ID;
+    temp.group1 = mo;
     temp.conversationType = ConversationType_GROUP;
     temp.title = [NSString stringWithFormat:@"%@(%@)",mo.name,[mo.userGroupFriends isKindOfClass:[NSArray class]]?KString(@"%lu", (unsigned long)mo.userGroupFriends.count):0];
     [self.navigationController pushViewController:temp animated:YES];
@@ -158,5 +160,7 @@
     [headerView addSubview:headerBtn];
     self.tableView.tableHeaderView = headerView;
 }
-
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

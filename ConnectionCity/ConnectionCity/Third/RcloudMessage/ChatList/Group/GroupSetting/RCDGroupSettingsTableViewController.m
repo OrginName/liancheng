@@ -73,8 +73,8 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 }
 
 - (void)initSubViews {
+    
 }
-
 - (void)setGroup:(RCDGroupInfo *)Group {
     _Group = Group;
     if (_Group) {
@@ -87,16 +87,12 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         }
     }
 }
-
 - (void)viewDidLoad {
-
     [super viewDidLoad];
-
     self.tableView.tableFooterView = [UIView new];
     self.tableView.backgroundColor = HEXCOLOR(0xf0f0f6);
     self.tableView.separatorColor = HEXCOLOR(0xdfdfdf);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
 
@@ -134,6 +130,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     } else {
         self.title = @"群组信息";
     }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -361,8 +358,9 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         groupInfo.portraitUri = [NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]];
         groupInfo.groupName = weakSelf.Group.groupName;
         weakSelf.Group.portraitUri = groupInfo.portraitUri;
-        [[RCIM sharedRCIM] refreshGroupInfoCache:groupInfo withGroupId:[weakSelf.Group.groupId description]];
+//        [[RCIM sharedRCIM] refreshGroupInfoCache:groupInfo withGroupId:[weakSelf.Group.groupId description]];
         if (url) {
+            WeakSelf
             [RCDHTTPTOOL
              setGroupPortraitUri:groupInfo.portraitUri
              groupId:weakSelf.Group.groupId flag:self.flagStr name:groupInfo.groupName notice:weakSelf.Group.introduce
@@ -373,9 +371,11 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                          (RCDBaseSettingTableViewCell *)[weakSelf.tableView viewWithTag:1000];
                          [cell.rightImageView
                           sd_setImageWithURL:[NSURL URLWithString:weakSelf.Group.portraitUri]];
+//                         cell.PortraitImg.image = image;
                          //在修改群组头像成功后，更新本地数据库。
                          [[RCDataBaseManager shareInstance] insertGroupToDB:weakSelf.Group];
-                         //                                      cell.PortraitImg.image = image;
+                         [[NSNotificationCenter defaultCenter] postNotificationName:@"QUNREFRESH" object:nil];
+                         
                          //关闭HUD
                          [hud hide:YES];
                      });
@@ -588,6 +588,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 
                 dispatch_async(dispatch_get_main_queue(), ^{
                                        if (isOk) {
+                                           [[NSNotificationCenter defaultCenter] postNotificationName:@"QUNREFRESH" object:nil];
                                            NSArray *latestMessages = [[RCIMClient sharedRCIMClient] getLatestMessages:ConversationType_GROUP targetId:groupId count:1];
                                            if (latestMessages.count > 0) {
                                                RCMessage *message = (RCMessage *)[latestMessages firstObject];
@@ -604,7 +605,6 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                                                                                     targetId:groupId];
                                            [[RCDataBaseManager shareInstance] deleteGroupToDB:groupId];
                                            [self.navigationController popToRootViewControllerAnimated:YES];
-                                           [[NSNotificationCenter defaultCenter] postNotificationName:@"DELETETEAM" object:nil];
                                        } else {
                                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
                                                                                                message:@"解散群组失败！"
@@ -629,7 +629,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger rows;
+    NSInteger rows = 0;
     switch (section) {
     case 0:
         rows = 1;
@@ -666,6 +666,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     }
     cell.baseSettingTableViewDelegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -689,7 +690,6 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         GroupMembersVC.GroupMembers = groupMemberList;
         [self.navigationController pushViewController:GroupMembersVC animated:YES];
     } break;
-
     case 1: {
         switch (indexPath.row) {
         case 0: {
@@ -701,13 +701,20 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         } break;
 
         case 1: {
-
             if (isCreator == YES) {
                 //如果是创建者，进入修改群名称页面
+                RCDGroupSettingsTableViewCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
                 RCDEditGroupNameViewController *editGroupNameVC =
                     [RCDEditGroupNameViewController editGroupNameViewController];
                 editGroupNameVC.flagStr = self.flagStr;
+//                editGroupNameVC.name = cell.rightLabel.text;
                 editGroupNameVC.groupInfo = _Group;
+                editGroupNameVC.title = @"修改群名称";
+                editGroupNameVC.block = ^(NSString *name) {
+                    cell.rightLabel.text = name;
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"QUNREFRESH" object:nil];
+                };
+                
                 [self.navigationController pushViewController:editGroupNameVC animated:YES];
             } else {
                 [YTAlertUtil showTempInfo:@"只有群主可以修改群组名称"];
@@ -764,7 +771,6 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         break;
     }
 }
-
 #pragma mark - UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView
                     layout:(UICollectionViewLayout *)collectionViewLayout
