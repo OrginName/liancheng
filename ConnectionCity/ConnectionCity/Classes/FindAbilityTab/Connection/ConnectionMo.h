@@ -11,6 +11,7 @@
 @interface ConnectionMo : BaseModel
 proStr(ID);
 proStr(headImage);
+proStr(backgroundImage);
 proStr(nickName);
 proStr(commonFriendCount);
 proDic(occupationCategoryName);

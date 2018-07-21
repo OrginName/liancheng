@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "trvalMo.h"
+@protocol TrvalCellDelegate <NSObject>
+@optional
+- (void)btnSend:(UIButton *)btn;
+@optional
+-(void)DetailClick:(UIButton *)btn;
+@end
 @interface TrvalCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIButton *btn_send;
+@property (nonatomic,assign) id<TrvalCellDelegate>delegate;
+@property (weak, nonatomic) IBOutlet UIButton *btn_detail;
 @property (weak, nonatomic) IBOutlet UILabel *lab_Money;
 @property (weak, nonatomic) IBOutlet UILabel *lab_TrvalGoTime;
 @property (weak, nonatomic) IBOutlet UILabel *lab_TrvalWay;

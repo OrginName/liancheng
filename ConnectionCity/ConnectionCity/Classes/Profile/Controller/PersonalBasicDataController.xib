@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,6 +17,7 @@
                 <outlet property="beiZhuLab" destination="El1-y1-Nqs" id="Tew-93-J8S"/>
                 <outlet property="headImage" destination="U4u-2n-cfY" id="6me-ac-I9x"/>
                 <outlet property="introduceLab" destination="jDz-TA-Qdl" id="5sp-fk-scR"/>
+                <outlet property="layoutMu" destination="45j-WT-FJQ" id="pky-kV-UWm"/>
                 <outlet property="lcNumLab" destination="eHE-KH-eO9" id="UlI-pB-DUt"/>
                 <outlet property="nickNameLab" destination="RP5-V2-xob" id="dPn-1H-q0G"/>
                 <outlet property="phoneNumLab" destination="l4v-IG-xAK" id="L1U-PX-5dr"/>
@@ -147,7 +149,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hehe" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="El1-y1-Nqs">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="El1-y1-Nqs">
                                     <rect key="frame" x="95" y="0.0" width="236" height="49"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -291,11 +293,19 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKw-0D-E5B">
                     <rect key="frame" x="10" y="582" width="355" height="75"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZR-dB-xrJ">
-                            <rect key="frame" x="15" y="20.5" width="325" height="33"/>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ki-Ci-rZI">
+                            <rect key="frame" x="15" y="21" width="137.5" height="33"/>
+                            <color key="backgroundColor" red="0.93474149699999998" green="0.36836501960000001" blue="0.33746045829999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="加好友"/>
+                            <connections>
+                                <action selector="sendMessageBtnClick:" destination="-1" eventType="touchUpInside" id="cxW-S4-Eri"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZR-dB-xrJ">
+                            <rect key="frame" x="202.5" y="21" width="137.5" height="33"/>
                             <color key="backgroundColor" red="0.93474149699999998" green="0.36836501960000001" blue="0.33746045829999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="33" id="ic9-lW-EWB"/>
+                                <constraint firstAttribute="height" constant="33" id="3Wf-7T-ed0"/>
                             </constraints>
                             <state key="normal" title="发消息"/>
                             <connections>
@@ -305,10 +315,14 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="MZR-dB-xrJ" firstAttribute="width" secondItem="MKw-0D-E5B" secondAttribute="width" multiplier="0.5" constant="-40" id="45j-WT-FJQ"/>
+                        <constraint firstItem="4Ki-Ci-rZI" firstAttribute="bottom" secondItem="MZR-dB-xrJ" secondAttribute="bottom" id="4XV-hi-7Ac"/>
                         <constraint firstAttribute="height" constant="75" id="53a-Vz-5Oe"/>
-                        <constraint firstItem="MZR-dB-xrJ" firstAttribute="leading" secondItem="MKw-0D-E5B" secondAttribute="leading" constant="15" id="NfP-Q6-aiu"/>
-                        <constraint firstItem="MZR-dB-xrJ" firstAttribute="centerY" secondItem="MKw-0D-E5B" secondAttribute="centerY" id="gQX-L9-JFv"/>
-                        <constraint firstAttribute="trailing" secondItem="MZR-dB-xrJ" secondAttribute="trailing" constant="15" id="kCI-dd-tDN"/>
+                        <constraint firstItem="MZR-dB-xrJ" firstAttribute="width" secondItem="4Ki-Ci-rZI" secondAttribute="width" id="834-eC-G1i"/>
+                        <constraint firstItem="4Ki-Ci-rZI" firstAttribute="top" secondItem="MZR-dB-xrJ" secondAttribute="top" id="FdJ-uL-6bV"/>
+                        <constraint firstAttribute="trailing" secondItem="MZR-dB-xrJ" secondAttribute="trailing" constant="15" id="RsQ-25-hKM"/>
+                        <constraint firstItem="4Ki-Ci-rZI" firstAttribute="leading" secondItem="MKw-0D-E5B" secondAttribute="leading" constant="15" id="VBY-j7-bc7"/>
+                        <constraint firstItem="MZR-dB-xrJ" firstAttribute="centerY" secondItem="MKw-0D-E5B" secondAttribute="centerY" id="WQL-Rv-ILb"/>
                     </constraints>
                 </view>
             </subviews>

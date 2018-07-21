@@ -142,7 +142,6 @@ NSMutableDictionary *userInputStatus;
 
     ///注册自定义测试消息Cell
     [self registerClass:[RCDTestMessageCell class] forMessageClass:[RCDTestMessage class]];
-    [self setLeftNavigationItem];
     [self notifyUpdateUnreadMessageCount];
     if (self.conversationType != ConversationType_APPSERVICE &&
         self.conversationType != ConversationType_PUBLICSERVICE) {
@@ -462,11 +461,6 @@ NSMutableDictionary *userInputStatus;
     [super didLongTouchMessageCell:model inView:view];
     NSLog(@"%s", __FUNCTION__);
 }
-
-- (void)setLeftNavigationItem
-{
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(leftBarButtonItemPressed:) image:@"return-f" title:nil EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
-} 
 /**
  *  更新左上角未读消息数
  */

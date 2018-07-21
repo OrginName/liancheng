@@ -9,8 +9,9 @@
 #import "ConnectionController.h"
 #import "SegmentPageHead.h"
 #import "ConnectionCell.h"
-#import "ConnectionMo.h"
 #import "RCDHttpTool.h"
+#import "UserMo.h"
+#import "PersonalBasicDataController.h"
 @interface ConnectionController ()<MLMSegmentPageDelegate,UITableViewDelegate,UITableViewDataSource,ConnectionCellDelegate>
 {
     NSArray *list;
@@ -67,7 +68,7 @@
         }
         _page++;
         for (int i=0; i<[arr count]; i++) {
-            ConnectionMo * mo = [ConnectionMo mj_objectWithKeyValues:arr[i]];
+            UserMo * mo = [UserMo mj_objectWithKeyValues:arr[i]];
             [self.data_Arr addObject:mo];
         }
         [tab reloadData];
@@ -97,10 +98,10 @@
     UITableView * tab = self.tabArr[_currentIndex];
     [tab.mj_header beginRefreshing];
 }
-#pragma mark ---------------------------------
+#pragma mark -------ConnectionCellDelegate-------------
 - (void)btnClick:(UIButton *)btn{
     UITableView * tab = self.tabArr[_currentIndex];
-    ConnectionMo * mo = self.data_Arr[btn.tag-1];
+    UserMo * mo = self.data_Arr[btn.tag-1];
     [RCDHTTPTOOL requestFriend:mo.ID complete:^(BOOL result) {
         if (result) {
             [YTAlertUtil showTempInfo:@"好友申请已发送"];
@@ -109,6 +110,13 @@
             [tab reloadData];
         }
     }];
+}
+-(void)DetailClick:(UIButton *)btn{
+    UserMo * mo = self.data_Arr[btn.tag-1];
+    PersonalBasicDataController * person = [PersonalBasicDataController new];
+    person.connectionMo = mo;
+    person.title = mo.nickName?mo.nickName:mo.ID;
+    [self.navigationController pushViewController:person animated:YES];
 }
 -(void)setupSlider{
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -138,7 +146,7 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ConnectionCell" owner:nil options:nil] lastObject];
     }
-    cell.btn_Add.tag = indexPath.row+1;
+    cell.btn_detail.tag=cell.btn_Add.tag = indexPath.row+1;
     cell.mo = self.data_Arr[indexPath.row];
     cell.cellDelegate = self;
     return cell;
@@ -177,7 +185,6 @@
     NSLog(@"select %@",@(index));
     _currentIndex = index;
     _page = 1;
-    [self.data_Arr removeAllObjects];
     UITableView * tab = self.tabArr[index];
     [tab.mj_header beginRefreshing];
 }

@@ -17,7 +17,8 @@
 #import "SendTripController.h"
 #import "RCDChatViewController.h"
 #import "UIView+Geometry.h"
-@interface TravalController ()<UITableViewDelegate,UITableViewDataSource,JFCityViewControllerDelegate>
+#import "PersonalBasicDataController.h"
+@interface TravalController ()<UITableViewDelegate,UITableViewDataSource,JFCityViewControllerDelegate,TrvalCellDelegate>
 {
     UIButton * _tmpBtn;
     NSInteger  _page;
@@ -201,14 +202,17 @@
     if (!cell) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"TrvalCell" owner:nil options:nil][0];
     }
+    cell.btn_detail.tag = cell.btn_send.tag = indexPath.row+1;
+    cell.delegate = self;
     cell.receive_Mo = self.data_Arr[indexPath.row];
     return cell;
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+#pragma mark ------------
+- (void)btnSend:(UIButton *)btn;{//私信
     RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
     chatViewController.conversationType = ConversationType_PRIVATE;
     NSString *title,*ID,*name;
-    trvalMo * mo = self.data_Arr[indexPath.row];
+    trvalMo * mo = self.data_Arr[btn.tag-1];
     ID = [mo.user.ID description];
     name = mo.user.nickName;
     chatViewController.targetId = ID;
@@ -220,6 +224,15 @@
     chatViewController.title = title;
     chatViewController.displayUserNameInCell = NO;
     [self.navigationController pushViewController:chatViewController animated:YES];
+}
+-(void)DetailClick:(UIButton *)btn{//个人详情
+    trvalMo * mo = self.data_Arr[btn.tag-1];
+    PersonalBasicDataController * person = [PersonalBasicDataController new];
+    person.connectionMo = mo.user;
+    [self.navigationController pushViewController:person animated:YES];
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
 }
 - (IBAction)btnClick:(UIButton *)sender {
     sender.layer.borderWidth = 2;

@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="81.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="index拷贝" translatesAutoresizingMaskIntoConstraints="NO" id="8VT-JR-wjy">
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="index拷贝" translatesAutoresizingMaskIntoConstraints="NO" id="8VT-JR-wjy">
                         <rect key="frame" x="10" y="16" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="XwQ-lJ-HHw"/>
@@ -82,6 +82,12 @@
                             <action selector="addFriens:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pF2-gD-9au"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2s-1A-fxO">
+                        <rect key="frame" x="10" y="16" width="50" height="50"/>
+                        <connections>
+                            <action selector="frinedDetail:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hGf-nY-6qt"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="uQz-8I-pFk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="1TG-1I-KdQ"/>
@@ -89,26 +95,31 @@
                     <constraint firstItem="8VT-JR-wjy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="32g-C9-9ee"/>
                     <constraint firstItem="8VT-JR-wjy" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8iJ-1u-LlZ"/>
                     <constraint firstItem="Yk1-zk-J3o" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="9NH-7R-zTg"/>
+                    <constraint firstItem="Y2s-1A-fxO" firstAttribute="leading" secondItem="8VT-JR-wjy" secondAttribute="leading" id="Hdv-or-Ulo"/>
                     <constraint firstItem="Yms-E7-bUT" firstAttribute="top" secondItem="uQz-8I-pFk" secondAttribute="bottom" constant="5" id="HwU-sj-81J"/>
                     <constraint firstItem="3FR-Tc-Ow4" firstAttribute="leading" secondItem="YuF-Xn-AQv" secondAttribute="trailing" id="MVG-A6-Fwf"/>
                     <constraint firstAttribute="trailing" secondItem="Yl3-vC-Ebq" secondAttribute="trailing" id="QMt-bb-LhK"/>
                     <constraint firstItem="YuF-Xn-AQv" firstAttribute="top" secondItem="Yms-E7-bUT" secondAttribute="bottom" id="Qer-Xa-2ya"/>
                     <constraint firstItem="Yms-E7-bUT" firstAttribute="leading" secondItem="uQz-8I-pFk" secondAttribute="leading" id="VXD-1m-WSE"/>
+                    <constraint firstItem="Y2s-1A-fxO" firstAttribute="trailing" secondItem="8VT-JR-wjy" secondAttribute="trailing" id="Wy9-kh-Htr"/>
                     <constraint firstAttribute="bottom" secondItem="Yl3-vC-Ebq" secondAttribute="bottom" id="XxB-c4-xGJ"/>
                     <constraint firstItem="Yk1-zk-J3o" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="aVe-hp-Nhp"/>
                     <constraint firstItem="3FR-Tc-Ow4" firstAttribute="centerY" secondItem="YuF-Xn-AQv" secondAttribute="centerY" id="mVM-ay-h4V"/>
+                    <constraint firstItem="Y2s-1A-fxO" firstAttribute="bottom" secondItem="8VT-JR-wjy" secondAttribute="bottom" id="nrp-bd-1Kt"/>
                     <constraint firstItem="YuF-Xn-AQv" firstAttribute="leading" secondItem="Yms-E7-bUT" secondAttribute="leading" id="pLS-hs-uEE"/>
+                    <constraint firstItem="Y2s-1A-fxO" firstAttribute="top" secondItem="8VT-JR-wjy" secondAttribute="top" id="tkk-gY-jo7"/>
                     <constraint firstItem="uQz-8I-pFk" firstAttribute="leading" secondItem="8VT-JR-wjy" secondAttribute="trailing" constant="10" id="ySY-bg-ysd"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="btn_Add" destination="Yk1-zk-J3o" id="zbi-6l-imy"/>
+                <outlet property="btn_detail" destination="Y2s-1A-fxO" id="A74-zF-6xu"/>
                 <outlet property="image_Head" destination="8VT-JR-wjy" id="qYB-ic-FQX"/>
                 <outlet property="lab_des" destination="Yms-E7-bUT" id="xUr-Mw-aPk"/>
                 <outlet property="lab_name" destination="uQz-8I-pFk" id="1IT-f8-ZUa"/>
                 <outlet property="lab_num" destination="YuF-Xn-AQv" id="65b-9v-SGq"/>
             </connections>
-            <point key="canvasLocation" x="37" y="85"/>
+            <point key="canvasLocation" x="-104" y="-162"/>
         </tableViewCell>
     </objects>
     <resources>

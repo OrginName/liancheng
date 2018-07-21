@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "UserMo.h"
 @interface PersonalBasicDataController : BaseViewController
-
+@property (nonatomic,strong)UserMo * connectionMo;//连合作人脉
 @end

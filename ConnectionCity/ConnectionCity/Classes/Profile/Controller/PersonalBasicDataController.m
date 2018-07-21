@@ -8,8 +8,11 @@
 
 #import "PersonalBasicDataController.h"
 #import "EditAllController.h"
-
+#import "RCDChatViewController.h"
+#import "RCDHttpTool.h"
+#import "RCDChatViewController.h"
 @interface PersonalBasicDataController ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutMu;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *headImage;
 @property (weak, nonatomic) IBOutlet UIImageView *sexImage;
@@ -28,9 +31,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    
-    // Do any additional setup after loading the view from its nib.
+    [self setConnectionMo:self.connectionMo];
 }
+-(void)setConnectionMo:(UserMo *)connectionMo{
+    _connectionMo = connectionMo;
+    if (_connectionMo!=nil) {
+        [self.backgroundImage sd_setImageWithURL:[NSURL URLWithString:connectionMo.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
+        [self.headImage sd_setImageWithURL:[NSURL URLWithString:connectionMo.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
+        self.sexImage.image =[UIImage imageNamed:[connectionMo.gender isEqualToString:@"1"]?@"women":@"men"];
+        self.nickNameLab.text = connectionMo.nickName?connectionMo.nickName:connectionMo.ID;
+        self.introduceLab.text = connectionMo.sign?connectionMo.sign:@"";
+        self.lcNumLab.text = connectionMo.ID;
+        self.phoneNumLab.text = connectionMo.mobile;
+        self.addressLab.text = connectionMo.cityName;
+        if ([[connectionMo.isFriend description] isEqualToString:@"1"]) {
+            self.layoutMu.constant = (kScreenWidth-50)/2-40;
+            
+        }
+    }
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     //设置导航透明
@@ -56,25 +76,40 @@
 }
 #pragma mark - 点击事件
 - (IBAction)sendMessageBtnClick:(id)sender {
-    
+    UIButton * btn = (UIButton *)sender;
+    if (btn.tag==1) {
+        [RCDHTTPTOOL requestFriend:self.connectionMo.ID complete:^(BOOL result) {
+            if (result) {
+                [YTAlertUtil showTempInfo:@"好友申请已发送"];
+            }
+        }];
+    }else{
+        RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
+        chatViewController.conversationType = ConversationType_PRIVATE;
+        
+        chatViewController.targetId = [self.connectionMo.ID description];
+        NSString *title;
+        if ([KString(@"%@", self.connectionMo.ID) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
+            title = [RCIM sharedRCIM].currentUserInfo.name;
+        } else {
+//            if (self.friendInfo.displayName.length > 0) {
+//                title = self.friendInfo.displayName;
+//            } else {
+            title = self.connectionMo.nickName?self.connectionMo.nickName:self.connectionMo.ID;
+//            }
+        }
+        chatViewController.title = title;
+//        chatViewController.needPopToRootView = YES;
+        chatViewController.displayUserNameInCell = NO;
+        [self.navigationController pushViewController:chatViewController animated:YES];
+    }
 }
 - (IBAction)beizhuBtnClick:(id)sender {
     EditAllController * edit = [EditAllController new];
     WeakSelf
     edit.block = ^(NSString * str){
-        YTLog(@"%@",str);
+        weakSelf.beiZhuLab.text = str;
     };
     [self.navigationController pushViewController:edit animated:YES];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

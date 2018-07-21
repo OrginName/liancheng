@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ConnectionMo.h"
+#import "UserMo.h"
 @protocol ConnectionCellDelegate <NSObject>
 @optional
 - (void)btnClick:(UIButton *)btn;
+@optional
+-(void)DetailClick:(UIButton *)btn;
 @end
 @interface ConnectionCell : UITableViewCell
-@property (nonatomic,strong)ConnectionMo * mo;
+@property (weak, nonatomic) IBOutlet UIButton *btn_detail;
+@property (weak, nonatomic) IBOutlet UIImageView *image_Head;
+@property (nonatomic,strong)UserMo * mo;
 @property (nonatomic,assign) id<ConnectionCellDelegate> cellDelegate;
 @property (weak, nonatomic) IBOutlet UIButton *btn_Add;
 

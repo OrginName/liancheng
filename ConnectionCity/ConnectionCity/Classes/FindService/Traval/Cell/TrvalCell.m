@@ -54,4 +54,14 @@ static NSArray * arr_title;
     self.lab_TrvalWay.text = receive_Mo.travelModeName?receive_Mo.travelModeName:@"无";
     self.lab_Money.text = receive_Mo.travelFeeName?receive_Mo.travelFeeName:@"无";
 }
+- (IBAction)DetailPerson:(UIButton *)sender {
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(DetailClick:)]) {
+        [self.delegate DetailClick:sender];
+    }
+}
+- (IBAction)sendMessage:(UIButton *)sender {
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(btnSend:)]) {
+        [self.delegate btnSend:sender];
+    }
+}
 @end

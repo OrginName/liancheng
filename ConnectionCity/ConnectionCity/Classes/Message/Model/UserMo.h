@@ -10,6 +10,8 @@
 
 @interface UserMo : BaseModel<NSCoding> 
 proStr(age);
+proStr(isFriend);//是否是好友
+proStr(commonFriendCount);//共同好友数
 proStr(areaCode);
 proStr(areaName);
 proStr(backgroundImage);

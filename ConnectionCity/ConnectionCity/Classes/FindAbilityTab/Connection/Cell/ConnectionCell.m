@@ -11,15 +11,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab_num;
 @property (weak, nonatomic) IBOutlet UILabel *lab_des;
 @property (weak, nonatomic) IBOutlet UILabel *lab_name;
-@property (weak, nonatomic) IBOutlet UIImageView *image_Head;
 @end
 @implementation ConnectionCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
--(void)setMo:(ConnectionMo *)mo{
+-(void)setMo:(UserMo*)mo{
     _mo = mo;
     [self.image_Head sd_setImageWithURL:[NSURL URLWithString:mo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     self.lab_name.text = mo.nickName?mo.nickName:@"无";
@@ -38,10 +36,13 @@
     }
     
 }
+- (IBAction)frinedDetail:(UIButton *)sender {
+    if (self.cellDelegate&&[self.cellDelegate respondsToSelector:@selector(DetailClick:)]) {
+        [self.cellDelegate DetailClick:sender];
+    }
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end
