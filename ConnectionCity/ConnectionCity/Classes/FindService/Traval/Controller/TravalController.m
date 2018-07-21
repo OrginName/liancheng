@@ -16,6 +16,7 @@
 #import "TrvalInvitController.h"
 #import "SendTripController.h"
 #import "RCDChatViewController.h"
+#import "UIView+Geometry.h"
 @interface TravalController ()<UITableViewDelegate,UITableViewDataSource,JFCityViewControllerDelegate>
 {
     UIButton * _tmpBtn;
@@ -30,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIView *view_tab;
 @property (nonatomic,strong) UIButton * backBtn;
 @property (nonatomic,strong) NSMutableArray * data_Arr;
+@property (nonatomic,strong) UIView * btnView;
 @end
 @implementation TravalController
 - (void)viewDidLoad {
@@ -129,11 +131,13 @@
     [self loadData:ID name:name];
     _cityID = ID;
     [self.tab_Bottom.mj_header beginRefreshing];
+    self.btnView.width = [YSTools caculateTheWidthOfLableText:15 withTitle:name]+20;
 }
 -(void)cityMo:(CityMo *)mo{
     [self loadData:mo.ID name:mo.name];
     _cityID = mo.ID;
     [self.tab_Bottom.mj_header beginRefreshing];
+    self.btnView.width = [YSTools caculateTheWidthOfLableText:15 withTitle:mo.name]+20;
 }
 -(void)loadData:(NSString *)ID name:(NSString *)name{
     [self.backBtn setTitle:name forState:UIControlStateNormal];
@@ -145,6 +149,7 @@
     self.trval.cityID = ID;
     [self.trval.data_Arr removeAllObjects];
     [self.trval.bollec_bottom.mj_header beginRefreshing];
+    self.btnView.width = [YSTools caculateTheWidthOfLableText:15 withTitle:name]+20;
 }
 -(void)back{
     [self.tabBarController.navigationController popViewControllerAnimated:YES];
@@ -162,17 +167,28 @@
 }
 -(void)initLeftBarButton{
     //为导航栏添加右侧按钮1
-    UIBarButtonItem * left1 = [UIBarButtonItem itemWithRectTarget:self action:@selector(back) image:@"return-f" title:@"" withRect:CGRectMake(0, 0, 30, 10)];
+//    UIBarButtonItem  * left1 = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:nil EdgeInsets:UIEdgeInsetsMake(0, -40, 0, 0)];
+    UIBarButtonItem * left1 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"return-f"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    NSString * city = [KUserDefults objectForKey:kUserCity];
+    CGFloat aa = [YSTools caculateTheWidthOfLableText:15 withTitle:city]+20;
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(-40, 5,aa, 20)];
+    view.backgroundColor = [UIColor clearColor];
+    self.btnView = view;
     UIButton*btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(0, 0, 30, 30);
     btn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [btn setTitle:[KUserDefults objectForKey:kUserCity] forState:UIControlStateNormal];
-    self.backBtn = btn;
+    [btn setTitle:city forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(CityClick) forControlEvents:UIControlEventTouchUpInside];
-    [btn setImage:[UIImage imageNamed:@"s-xiala"] forState:UIControlStateNormal];
-    btn.imageEdgeInsets = UIEdgeInsetsMake(0, 40, -7, 0);
-    btn.titleEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
-    UIBarButtonItem *right2 = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    btn.frame = CGRectMake(0, 0, (aa-20)>80?80:(aa-20), 20);
+    [view addSubview:btn];
+    UIImageView * xiaImage = [[UIImageView alloc] init];
+    xiaImage.image = [UIImage imageNamed:@"s-xiala"];
+    xiaImage.frame = CGRectMake(btn.right+1, 8, 10, 8);
+    [view addSubview:xiaImage];
+    self.backBtn = btn;
+//    [btn setImage:[UIImage imageNamed:@"s-xiala"] forState:UIControlStateNormal];
+//    btn.imageEdgeInsets = UIEdgeInsetsMake(0, 40, -7, 0);
+//    btn.titleEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
+    UIBarButtonItem *right2 = [[UIBarButtonItem alloc] initWithCustomView:view];
     NSArray *  arr = @[left1,right2];
     self.navigationItem.leftBarButtonItems = arr;
 }

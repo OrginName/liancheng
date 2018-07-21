@@ -409,8 +409,8 @@
     self.searchFriendsBar.showsCancelButton = NO;
     [self.searchFriendsBar resignFirstResponder];
     self.searchFriendsBar.text = @"";
-    [self.matchFriendList removeAllObjects];
-    [self sortAndRefreshWithList:[self getAllFriendList]];
+//    [self.matchFriendList removeAllObjects];
+//    [self sortAndRefreshWithList:[self getAllFriendList]];
     _isBeginSearch = NO;
     [self.friendsTabelView reloadData];
 }
