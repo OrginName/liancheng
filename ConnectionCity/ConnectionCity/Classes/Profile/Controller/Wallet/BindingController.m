@@ -26,7 +26,7 @@
     [self setUI];
 }
 -(void)setUI{
-    self.navigationItem.title = @"绑定账号";
+    self.navigationItem.title = @"提现管理";
 }
 - (IBAction)accountTypeBtnClick:(id)sender {
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
@@ -41,7 +41,7 @@
     WeakSelf
     [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:title multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
         AllContentMo * mo = contentArr[idx];
-        weakSelf.txt_type.text = mo.value;
+        weakSelf.txt_type.text = mo.description1;
     } cancelTitle:@"取消" cancelHandler:nil completion:nil];
 }
 - (IBAction)getVerificationCodeBtnClick:(id)sender {
@@ -69,7 +69,6 @@
                           @"accountName": _txt_people.text,
                           @"accountNumber": _txt_Account.text,
                           @"accountType": _txt_type.text,
-                          @"bankName": @"",
                           @"code": _txt_YZM.text,
                           };
     WeakSelf

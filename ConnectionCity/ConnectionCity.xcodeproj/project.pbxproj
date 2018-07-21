@@ -504,6 +504,8 @@
 		CE5C283020B9733A006A8332 /* ConsultativeNegotiationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C282E20B9733A006A8332 /* ConsultativeNegotiationCell.xib */; };
 		CE5C283820B99441006A8332 /* PayOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5C283620B99441006A8332 /* PayOrderController.m */; };
 		CE5C283920B99441006A8332 /* PayOrderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5C283720B99441006A8332 /* PayOrderController.xib */; };
+		CE6645FB210326AF00AA956E /* PersonalBasicDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6645F9210326AF00AA956E /* PersonalBasicDataController.m */; };
+		CE6645FC210326AF00AA956E /* PersonalBasicDataController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6645FA210326AF00AA956E /* PersonalBasicDataController.xib */; };
 		CE6BEC1A20C83740003B36D7 /* LCPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC1920C83740003B36D7 /* LCPicker.m */; };
 		CE6BEC1D20C83769003B36D7 /* LCDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC1C20C83769003B36D7 /* LCDatePicker.m */; };
 		CE6BEC2C20C970C1003B36D7 /* EditProfileHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC2B20C970C1003B36D7 /* EditProfileHeadView.m */; };
@@ -1578,6 +1580,9 @@
 		CE5C283520B99441006A8332 /* PayOrderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayOrderController.h; sourceTree = "<group>"; };
 		CE5C283620B99441006A8332 /* PayOrderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayOrderController.m; sourceTree = "<group>"; };
 		CE5C283720B99441006A8332 /* PayOrderController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayOrderController.xib; sourceTree = "<group>"; };
+		CE6645F8210326AF00AA956E /* PersonalBasicDataController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalBasicDataController.h; sourceTree = "<group>"; };
+		CE6645F9210326AF00AA956E /* PersonalBasicDataController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalBasicDataController.m; sourceTree = "<group>"; };
+		CE6645FA210326AF00AA956E /* PersonalBasicDataController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalBasicDataController.xib; sourceTree = "<group>"; };
 		CE6BEC1320C80DA0003B36D7 /* PresentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentCell.h; sourceTree = "<group>"; };
 		CE6BEC1420C80DA0003B36D7 /* PresentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentCell.m; sourceTree = "<group>"; };
 		CE6BEC1520C80DA0003B36D7 /* PresentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresentCell.xib; sourceTree = "<group>"; };
@@ -4197,6 +4202,9 @@
 				CE0BA61D209D61C0004C3C33 /* ProfileController.h */,
 				CE0BA61E209D61C0004C3C33 /* ProfileController.m */,
 				CE0BA61F209D61C0004C3C33 /* ProfileController.xib */,
+				CE6645F8210326AF00AA956E /* PersonalBasicDataController.h */,
+				CE6645F9210326AF00AA956E /* PersonalBasicDataController.m */,
+				CE6645FA210326AF00AA956E /* PersonalBasicDataController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4573,6 +4581,7 @@
 				8D35878D20C6A693008A5E74 /* OurPlayCell.xib in Resources */,
 				8DC17A8020C0E430005D9EE0 /* CircleCell.xib in Resources */,
 				72EBB8ED20CAC52600F670E9 /* CollectionController.xib in Resources */,
+				CE6645FC210326AF00AA956E /* PersonalBasicDataController.xib in Resources */,
 				727418EC20B2AAB9001D6BE1 /* ChangeCell.xib in Resources */,
 				727418C620B17E78001D6BE1 /* ChangePlayController.xib in Resources */,
 				CE5C281720B91B47006A8332 /* WinnerInfoHeadView.xib in Resources */,
@@ -4932,6 +4941,7 @@
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
 				CE9B9A6F20E9168D005C47B2 /* AgreementController.m in Sources */,
 				72626F5C20ED03BC001B807D /* RCDChatRoomInfo.m in Sources */,
+				CE6645FB210326AF00AA956E /* PersonalBasicDataController.m in Sources */,
 				CEBEDD7D20B17ED1000F9EE4 /* WinningBidderCell.m in Sources */,
 				CE21F0EF20DF94A800478482 /* WorkExperienceListModel.m in Sources */,
 				8DE4662120EDF4A2009730F7 /* RCDPersonDetailViewController.m in Sources */,
@@ -5301,7 +5311,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5361,7 +5371,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WVUAE7KCP3;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

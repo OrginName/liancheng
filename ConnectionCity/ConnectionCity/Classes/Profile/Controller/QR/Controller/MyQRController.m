@@ -20,6 +20,7 @@
     [super viewDidLoad];
     self.navigationItem.title = @"我的二维码";
     
+    /*
     // 1.创建过滤器 -- 苹果没有将这个字符定义为常量
     CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
     
@@ -39,6 +40,10 @@
 
     UIImage *image = [self createNonInterpolatedUIImageFormCIImage:outputImage withSize:200];
     self.imageView.image = image;
+    
+     */
+     
+    
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -69,6 +74,81 @@
     CGContextRelease(bitmapRef);
     CGImageRelease(bitmapImage);
     return [UIImage imageWithCGImage:scaledImage];
+}
+
+/**
+ 
+ 生成二维码(中间有小图片)
+ 
+ QRStering：所需字符串
+ 
+ centerImage：二维码中间的image对象
+ 
+ */
+
++ (UIImage *)createImgQRCodeWithString:(NSString *)QRString centerImage:(UIImage *)centerImage{
+    
+    // 创建滤镜对象
+    
+    CIFilter *filter = [CIFilter filterWithName:@"XiaoGuiGe"];
+    
+    // 恢复滤镜的默认属性
+    
+    [filter setDefaults];
+    
+    // 将字符串转换成 NSdata
+    
+    NSData *dataString = [QRString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    // 设置过滤器的输入值, KVC赋值
+    
+    [filter setValue:dataString forKey:@"inputMessage"];
+    
+    // 获得滤镜输出的图像
+    
+    CIImage *outImage = [filter outputImage];
+    
+    // 图片小于(27,27),我们需要放大
+    
+    outImage = [outImage imageByApplyingTransform:CGAffineTransformMakeScale(20, 20)];
+    
+    // 将CIImage类型转成UIImage类型
+    
+    UIImage *startImage = [UIImage imageWithCIImage:outImage];
+    
+    // 开启绘图, 获取图形上下文
+    
+    UIGraphicsBeginImageContext(startImage.size);
+    
+    
+    
+    // 把二维码图片画上去 (这里是以图形上下文, 左上角为(0,0)点
+    
+    [startImage drawInRect:CGRectMake(0, 0, startImage.size.width, startImage.size.height)];
+    
+    // 再把小图片画上去
+    
+    CGFloat icon_imageW = 200;
+    
+    CGFloat icon_imageH = icon_imageW;
+    
+    CGFloat icon_imageX = (startImage.size.width - icon_imageW) * 0.5;
+    
+    CGFloat icon_imageY = (startImage.size.height - icon_imageH) * 0.5;
+    
+    [centerImage drawInRect:CGRectMake(icon_imageX, icon_imageY, icon_imageW, icon_imageH)];
+    
+    // 获取当前画得的这张图片
+    
+    UIImage *qrImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // 关闭图形上下文
+    
+    UIGraphicsEndImageContext();
+    
+    //返回二维码图像
+    
+    return qrImage;
 }
 
 /*

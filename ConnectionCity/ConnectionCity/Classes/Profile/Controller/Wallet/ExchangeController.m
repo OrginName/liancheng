@@ -7,6 +7,7 @@
 //
 
 #import "ExchangeController.h"
+#import "RechargeController.h"
 
 @interface ExchangeController ()
 @property (weak, nonatomic) IBOutlet UITextField *amountTF;
@@ -27,7 +28,9 @@
 }
 - (IBAction)BtnClick:(UIButton *)sender {
     if (sender.tag == 1) {
-        [self.navigationController pushViewController:[super rotateClass:@"RechargeController"] animated:YES];
+        RechargeController *rechargeVC = [[RechargeController alloc]init];
+        rechargeVC.balanceStr = self.balanceStr;
+        [self.navigationController pushViewController:rechargeVC animated:YES];
         return;
     }
     if([YSTools dx_isNullOrNilWithObject:_amountTF.text]){

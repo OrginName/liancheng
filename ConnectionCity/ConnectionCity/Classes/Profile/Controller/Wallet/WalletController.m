@@ -11,6 +11,7 @@
 #import "ExpressiveController.h"
 #import "ExchangeController.h"
 #import "TransactionRecordController.h"
+#import "PresentManageViewController.h"
 
 @interface WalletController ()
 @property (weak, nonatomic) IBOutlet UILabel *balanceLab;
@@ -23,6 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self v1UserWalletInfo];
 }
 -(void)setUI{
@@ -48,6 +52,14 @@
         TransactionRecordController *vc = [[TransactionRecordController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
         return;
+    }else if (sender.tag ==5){
+        PresentManageViewController *vc = [[PresentManageViewController alloc]init];
+        WeakSelf
+        vc.accountBlock = ^(NSString * sss) {
+
+        };
+        [self.navigationController pushViewController:vc animated:YES];
+        return;
     }
     
     if (sender.tag>4) {
@@ -61,7 +73,7 @@
     WeakSelf
     [YSNetworkTool POST:v1UserWalletInfo params:nil showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         weakSelf.balanceLab.text = [NSString stringWithFormat:@"%@",responseObject[kData][@"balance"]];
-        weakSelf.fbLab.text = [NSString stringWithFormat:@"%@",responseObject[kData][@"fb"]];
+        weakSelf.fbLab.text = [[NSString stringWithFormat:@"%@",responseObject[kData][@"fb"]] isEqual:@"<null>"]?@"0":[NSString stringWithFormat:@"%@",responseObject[kData][@"fb"]];
     } failure:nil];
 }
 @end

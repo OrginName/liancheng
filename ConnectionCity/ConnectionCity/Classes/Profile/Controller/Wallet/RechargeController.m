@@ -24,11 +24,15 @@
     [super viewWillAppear:animated];
     //添加通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alipayNotice:) name:NOTI_ALI_PAY_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wxNotice:) name:NOTI_WEI_XIN_PAY_SUCCESS object:nil];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     //移除通知
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_ALI_PAY_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_WEI_XIN_PAY_SUCCESS object:nil];
+    //键盘消失
+    [self.amountTF resignFirstResponder];
 }
 -(void)setUI{
     self.navigationItem.title = @"充值";
@@ -56,11 +60,33 @@
 - (void)alipayNotice:(NSNotification *)notification {
     if ([[[notification object] objectForKey:@"userInfo"] integerValue] == 9000) {
         //支付成功
-        
+        WeakSelf
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付成功" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } completion:nil];
     }else{
         //支付失败
-        
+        WeakSelf
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付失败" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } completion:nil];
     };
 
 }
+- (void)wxNotice:(NSNotification *)notification {
+    if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"success"]) {
+        //支付成功
+        WeakSelf
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付成功" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } completion:nil];
+    }else if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"failure"]) {
+        //支付失败
+        WeakSelf
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付失败" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } completion:nil];
+    }
+}
+
 @end
