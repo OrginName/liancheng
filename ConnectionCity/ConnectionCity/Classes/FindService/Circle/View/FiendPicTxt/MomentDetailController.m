@@ -92,6 +92,7 @@
     UILongPressGestureRecognizer * longPressGesture =[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(cellLongPress:)];
     longPressGesture.minimumPressDuration=1.0f;//设置长按 时间
     [cell addGestureRecognizer:longPressGesture];
+    
     cell.moment =self.receiveMo.comments[indexPath.row];
     return cell;
 }

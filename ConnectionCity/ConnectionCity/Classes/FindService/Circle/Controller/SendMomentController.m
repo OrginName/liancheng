@@ -110,7 +110,6 @@
 //发布朋友圈
 -(void)loadData:(NSString *)urlStr urlVideo:(NSString *)videoUrl{
     BOOL a = [self.receive_flag isEqualToString:@"EDIT"]?YES:NO;
-//
     NSDictionary * dic = @{
                            @"cityCode": @([[KUserDefults objectForKey:kUserCityID]integerValue]),
                            @"containsImage": @(_isPic),
@@ -118,11 +117,12 @@
                            @"content": self.txt_Moment.text,
                            @"images": urlStr,
                            @"videos": videoUrl,
-                           @"serviceCircleId":self.receive_Moment.ID?self.receive_Moment.ID:@""
+                           @"serviceCircleId":self.receive_Moment.ID?self.receive_Moment.ID:@"",
+                           @"friendCircleId":self.receive_Moment.ID?self.receive_Moment.ID:@""
                            };
     NSString * url;
     if (a) {
-        url = v1ServiceCircleUpdate;
+        url = [self.flagStr isEqualToString:@"HomeMySelf"]?v1FriendCircleUpdate:v1ServiceCircleUpdate;
     }else{
         url = [self.flagStr isEqualToString:@"HomeSend"]?v1FriendCircleCreate:v1ServiceCircleCreate;
     }

@@ -38,14 +38,13 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    UITextField * text = (UITextField *)[self.frendTab.mainView viewWithTag:10];
-    [text resignFirstResponder];
-    [self.frendTab.mainView removeFromSuperview];
     [IQKeyboardManager sharedManager].enable = YES;
+    [self.frendTab.comment removeFromSuperview];
+    self.frendTab.comment =nil;
 }
 -(void)setUI{
     self.title = @"朋友圈";
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -40, 0, 0)];
     [self.view addSubview:self.frendTab];
     [self.view addSubview:self.frendMyselfTab];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SendFriend) image:@"" title:@"发布" EdgeInsets:UIEdgeInsetsZero];

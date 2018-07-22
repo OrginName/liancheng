@@ -43,6 +43,7 @@ static NSInteger i;//判断当前返回按钮点击次数
     send.block = ^{
         [self.frendTab.mj_header beginRefreshing];
         [self.frendVedio.mj_header beginRefreshing];
+        [self.frendMyselfTab.mj_header beginRefreshing];
     };
     [self.navigationController pushViewController:send animated:YES];
 }
@@ -82,7 +83,7 @@ static NSInteger i;//判断当前返回按钮点击次数
 }
 
 -(void)setUI{
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -40, 0, 0)];
     [self.view addSubview:self.frendTab];
     [self.view addSubview:self.frendVedio];
     [self.view addSubview:self.frendMyselfTab];

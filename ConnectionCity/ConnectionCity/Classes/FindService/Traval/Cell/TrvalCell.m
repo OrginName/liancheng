@@ -47,12 +47,13 @@ static NSArray * arr_title;
     self.lab_Time.text = receive_Mo.createTime;
     self.lab_Age.text = receive_Mo.user.age?receive_Mo.user.age:@"无";
     self.image_Sex.image = [UIImage imageNamed:[receive_Mo.user.gender isEqualToString:@"0"]?@"men":@"women"];
-    self.lab_TrvalPlace.text = receive_Mo.cityName?receive_Mo.cityName:@"无";
-    self.lab_Trvaltime.text = receive_Mo.longTimeName?receive_Mo.longTimeName:@"无";
-    self.lab_DX.text = receive_Mo.inviteObjectName?receive_Mo.inviteObjectName:@"无";
-    self.lab_TrvalGoTime.text = receive_Mo.departTimeName?receive_Mo.departTimeName:@"无";
-    self.lab_TrvalWay.text = receive_Mo.travelModeName?receive_Mo.travelModeName:@"无";
-    self.lab_Money.text = receive_Mo.travelFeeName?receive_Mo.travelFeeName:@"无";
+    self.lab_TrvalPlace.text = receive_Mo.cityName?receive_Mo.cityName:@"";
+    self.lab_Trvaltime.text = receive_Mo.longTimeName?receive_Mo.longTimeName:@"";
+    self.lab_DX.text = receive_Mo.inviteObjectName?receive_Mo.inviteObjectName:@"";
+    self.lab_TrvalGoTime.text = receive_Mo.departTimeName?receive_Mo.departTimeName:@"";
+    self.lab_TrvalWay.text = receive_Mo.travelModeName?receive_Mo.travelModeName:@"";
+    self.lab_Money.text = receive_Mo.travelFeeName?receive_Mo.travelFeeName:@"";
+    self.lab_SM.text = receive_Mo.description1?receive_Mo.description1:@"";
 }
 - (IBAction)DetailPerson:(UIButton *)sender {
     if (self.delegate&&[self.delegate respondsToSelector:@selector(DetailClick:)]) {

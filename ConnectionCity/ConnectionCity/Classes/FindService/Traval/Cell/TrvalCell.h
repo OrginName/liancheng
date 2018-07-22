@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab_TrvalPlace;
 @property (weak, nonatomic) IBOutlet UILabel *lab_Age;
 @property (weak, nonatomic) IBOutlet UIImageView *image_Head;
+@property (weak, nonatomic) IBOutlet UILabel *lab_SM;
 @property (weak, nonatomic) IBOutlet UIImageView *image_Sex;
 @property (weak, nonatomic) IBOutlet UILabel *lab_Name;
 @property (weak, nonatomic) IBOutlet UILabel *lab_Time;

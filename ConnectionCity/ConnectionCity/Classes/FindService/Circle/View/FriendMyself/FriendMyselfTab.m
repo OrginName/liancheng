@@ -33,7 +33,7 @@
         self.controller = control;
         [self initData];
          _page = 1;
-        _data = [NSMutableArray array];
+        self.data = [NSMutableArray array];
     }
     return self;
 }
@@ -58,6 +58,7 @@
                                };
         [CircleNet requstHomeCirclelDic:dic withSuc:^(NSMutableArray *successArrValue) {
             if (_page==1) {
+                [self.data removeAllObjects];
                 [self.data_Arr removeAllObjects];
             }
             _page++;
@@ -68,29 +69,31 @@
             [self.mj_header endRefreshing];
             [self.mj_footer endRefreshing];
         }];
-        return;
+    }else{
+        NSDictionary * dic = @{
+                               @"containsImage": @0,
+                               @"containsVideo": @0,
+                               @"pageNumber": @(_page),
+                               @"pageSize": @15
+                               };
+        [CircleNet requstCirclelDic:dic flag:@"Friend" withSuc:^(NSMutableArray *successArrValue) {
+            if (_page==1) {
+                [self.data removeAllObjects];
+                [self.data_Arr removeAllObjects];
+            }
+            _page++;
+            [self.mj_header endRefreshing];
+            [self.mj_footer endRefreshing];
+            //        [self.data_Arr addObjectsFromArray:successArrValue];
+            [self jsonDataArr:successArrValue];
+            //        [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:self.data_Arr] forKey:@"VIDEO"];
+            //        [self reloadData];
+        }FailErrBlock:^(NSError *failValue) {
+            [self.mj_header endRefreshing];
+            [self.mj_footer endRefreshing];
+        }];
     }
-    NSDictionary * dic = @{
-                           @"containsImage": @0,
-                           @"containsVideo": @0,
-                           @"pageNumber": @(_page),
-                           @"pageSize": @15
-                           };
-    [CircleNet requstCirclelDic:dic flag:@"Friend" withSuc:^(NSMutableArray *successArrValue) {
-        if (_page==1) {
-            [self.data_Arr removeAllObjects];
-        }
-        _page++;
-        [self.mj_header endRefreshing];
-        [self.mj_footer endRefreshing];
-//        [self.data_Arr addObjectsFromArray:successArrValue];
-        [self jsonDataArr:successArrValue];
-//        [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:self.data_Arr] forKey:@"VIDEO"];
-//        [self reloadData];
-    }FailErrBlock:^(NSError *failValue) {
-        [self.mj_header endRefreshing];
-        [self.mj_footer endRefreshing];
-    }];
+  
 }
 -(void)jsonDataArr:(NSMutableArray *)arr{
     [self.data_Arr removeAllObjects];
@@ -181,12 +184,19 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     SendMomentController * send = [SendMomentController new];
     send.title = @"编辑";
+    WeakSelf
     send.block = ^{
-        [self.mj_header beginRefreshing];
+        _page = 1;
+        [weakSelf.mj_header beginRefreshing];
     };
     send.receive_flag = @"EDIT";
+    send.flagStr = self.flagStr;
     NSDictionary * dic = self.data_Arr[indexPath.section];
-    send.receive_Moment = dic[[dic allKeys][0]][indexPath.row];
+    Moment * moment = dic[[dic allKeys][0]][indexPath.row];
+    if ([self.flagStr isEqualToString:@"HomeMySelf"]){
+        moment.containsImage = @"1";
+    }
+    send.receive_Moment = moment;
     [self.controller.navigationController pushViewController:send animated:YES];
 }
 #pragma mark ----SectionClick-----
