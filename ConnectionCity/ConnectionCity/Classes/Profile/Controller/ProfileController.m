@@ -18,7 +18,7 @@
 #import "MyQRController.h"
 #import "AgreementController.h"
 #import "TakePhoto.h"
-#import "ZoomImage.h"
+//#import "ZoomImage.h"
 #import "QiniuUploader.h"
 
 @interface ProfileController ()<ProfileHeadViewDelegate>
@@ -152,7 +152,7 @@
     [self.navigationController pushViewController:xfVC animated:YES];
 }
 - (void)profileHeadViewHeadImgTap:(ProfileHeadView *)view {
-    [ZoomImage showImage:_tableHeadV.headImage];
+//    [ZoomImage showImage:_tableHeadV.headImage];
 }
 - (void)profileHeadViewHeadImgLongTap:(ProfileHeadView *)view {
     WeakSelf
