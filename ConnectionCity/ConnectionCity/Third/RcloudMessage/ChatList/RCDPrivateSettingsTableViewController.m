@@ -19,6 +19,7 @@
 #import "UIImageView+WebCache.h"
 #import "RCDUIBarButtonItem.h"
 #import "FirstTanView.h"
+#import "EditAllController.h"
 #import "privateUserInfoModel.h"
 static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 @interface RCDPrivateSettingsTableViewController ()
@@ -209,6 +210,19 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     return [UIView new];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    RCDBaseSettingTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if (indexPath.section==0&&indexPath.row==1) {
+        if (![[self.userInfo1.isFriend description] isEqualToString:@"1"]) {
+            return [YTAlertUtil showTempInfo:@"对方还不是您的好友,不能修改"];
+        }
+        EditAllController * edit = [EditAllController new];
+        WeakSelf
+        edit.block = ^(NSString * str){
+            cell.rightLabel.text = str;
+            [weakSelf updateBeiZhu:str];
+        };
+        [self.navigationController pushViewController:edit animated:YES];
+    }
     if (indexPath.section == 1) {
         RCDSearchHistoryMessageController *searchViewController = [[RCDSearchHistoryMessageController alloc] init];
         searchViewController.conversationType = ConversationType_PRIVATE;
@@ -228,7 +242,20 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         }
     }
 }
-
+-(void)updateBeiZhu:(NSString *)str{
+    if (str.length==0) {
+        return;
+    }
+    NSDictionary * dic = @{
+                           @"friendId": self.userInfo1.userId,
+                           @"remark":str
+                           };
+    [YSNetworkTool POST:@"/v1/my/update-remark" params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTAlertUtil showTempInfo:@"修改成功"];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
 #pragma mark -UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (actionSheet.tag == 100) {

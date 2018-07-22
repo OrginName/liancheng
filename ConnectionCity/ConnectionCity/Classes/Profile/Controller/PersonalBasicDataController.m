@@ -105,11 +105,29 @@
     }
 }
 - (IBAction)beizhuBtnClick:(id)sender {
+    if (![[self.connectionMo.isFriend description] isEqualToString:@"1"]) {
+        return [YTAlertUtil showTempInfo:@"对方还不是您的好友,不能修改"];
+    }
     EditAllController * edit = [EditAllController new];
     WeakSelf
     edit.block = ^(NSString * str){
         weakSelf.beiZhuLab.text = str;
+        [weakSelf updateBeiZhu:str];
     };
     [self.navigationController pushViewController:edit animated:YES];
+}
+-(void)updateBeiZhu:(NSString *)str{
+    if (str.length==0) {
+        return;
+    }
+    NSDictionary * dic = @{
+                           @"friendId": self.connectionMo.ID,
+                           @"remark":str
+                           };
+    [YSNetworkTool POST:@"/v1/my/update-remark" params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 @end
