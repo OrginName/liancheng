@@ -64,6 +64,7 @@
 #pragma mark - Setup
 - (void)setUI {
     self.navigationItem.title = @"基础资料";
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(rightBarClick) image:nil title:@"保存" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 - (void)setupTableView {
     [self registerCell];
@@ -234,7 +235,10 @@
 -(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng {
     [self requestPrivateUserUpdateWithDic:@{@"areaCode": ID}];
 }
-
+#pragma mark - 点击事件
+- (void)rightBarClick {
+    [YTAlertUtil showTempInfo:@"保存成功"];
+}
 #pragma mark - 数据请求
 - (void)requestV1PrivateUserInfo {
     //获取用户信息

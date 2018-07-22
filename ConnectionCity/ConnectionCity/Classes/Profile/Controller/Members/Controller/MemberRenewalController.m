@@ -27,12 +27,21 @@
     [self setUI];
     //获取svip套餐详情
     [self requestv1MembershipSvipInfo];
-    //用户svip详情
-//    [self requestMembershipUserSvip];
     
     // Do any additional setup after loading the view from its nib.
 }
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    //添加通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alipayNotice:) name:NOTI_ALI_PAY_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wxNotice:) name:NOTI_WEI_XIN_PAY_SUCCESS object:nil];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    //移除通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_ALI_PAY_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_WEI_XIN_PAY_SUCCESS object:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -50,7 +59,8 @@
         [self.logo sd_setImageWithURL:[NSURL URLWithString:weakSelf.model.logo]];
         self.name.text = weakSelf.model.name;
         self.descriptions.text = weakSelf.model.modelDescription;
-        self.remark.text = weakSelf.model.remark;
+        self.descriptions.text = [NSString stringWithFormat:@"连程号  %@",kAccount.userId];
+        self.remark.text = weakSelf.model.modelDescription;
         NSUInteger count = weakSelf.model.membershipMeals.count;
         int interval = 10;
         double width = (kScreenWidth - 40 - 20)/3.0;
@@ -94,14 +104,15 @@
 - (void)requestv1MembershipSvipRecharge:(NSString *)ID {
     WeakSelf
     [YSNetworkTool POST:v1MembershipSvipRecharge params:@{@"id": ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-
-    } failure:nil];
-}
-//用户svip详情
-- (void)requestMembershipUserSvip {
-    WeakSelf
-    [YSNetworkTool POST:v1MembershipUserSvip params:nil showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+        NSDictionary *dic = responseObject[kData];
+        [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:@[@"支付宝",@"微信"] multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
+            if (idx==0) {
+                [YTThirdPartyPay v1Pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kAlipay}];
+            }else{
+                [YTThirdPartyPay v1Pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kWechat}];
+            }
+        } cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
+        } completion:nil];
     } failure:nil];
 }
 
@@ -118,6 +129,39 @@
 - (IBAction)ImmediatelyOpeneBtnClick:(id)sender {
     [self requestv1MembershipSvipRecharge:self.selectedmd.modelId];
 }
+#pragma mark - alipayNotice
+- (void)alipayNotice:(NSNotification *)notification {
+    if ([[[notification object] objectForKey:@"userInfo"] integerValue] == 9000) {
+        //支付成功
+        WeakSelf
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付成功" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } completion:nil];
+    }else{
+        //支付失败
+        WeakSelf
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付失败" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } completion:nil];
+    };
+    
+}
+- (void)wxNotice:(NSNotification *)notification {
+    if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"success"]) {
+        //支付成功
+        WeakSelf
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付成功" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } completion:nil];
+    }else if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"failure"]) {
+        //支付失败
+        WeakSelf
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付失败" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } completion:nil];
+    }
+}
+
 /*
 #pragma mark - Navigation
 

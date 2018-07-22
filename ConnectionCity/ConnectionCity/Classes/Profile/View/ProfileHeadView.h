@@ -16,6 +16,8 @@
 
 - (void)profileHeadView:(ProfileHeadView *)view editBtnClick:(UIButton *)btn;
 - (void)profileHeadView:(ProfileHeadView *)view xfBtnClick:(UIButton *)btn;
+- (void)profileHeadViewHeadImgTap:(ProfileHeadView *)view;
+- (void)profileHeadViewHeadImgLongTap:(ProfileHeadView *)view;
 
 @end
 

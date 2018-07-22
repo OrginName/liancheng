@@ -28,13 +28,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    [self requestV1PrivateUserInfo];
-    [self requestMembershipUserSvip];
     
     // Do any additional setup after loading the view from its nib.
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self requestV1PrivateUserInfo];
+    [self requestMembershipUserSvip];
     //设置导航透明
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]forBarMetrics:UIBarMetricsDefault];
     //去掉导航栏底部的黑线
@@ -89,7 +89,11 @@
 - (void)requestMembershipUserSvip {
     WeakSelf
     [YSNetworkTool POST:v1MembershipUserSvip params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        weakSelf.svipTimeLab.text = @"xxxx.xx.xx到期";
+        if (![YSTools dx_isNullOrNilWithObject:responseObject[kData]]) {
+            if (![responseObject[kData] isKindOfClass:[NSArray class]]) {
+                weakSelf.svipTimeLab.text = [responseObject[kData] objectForKey:@"endTime"];
+            }
+        }
     } failure:nil];
 }
 

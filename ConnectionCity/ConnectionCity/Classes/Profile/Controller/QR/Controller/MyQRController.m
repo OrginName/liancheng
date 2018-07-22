@@ -8,9 +8,14 @@
 
 #import "MyQRController.h"
 #import <CoreImage/CoreImage.h>
+#import "privateUserInfoModel.h"
 
 @interface MyQRController ()
+@property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *headImgV;
+@property (weak, nonatomic) IBOutlet UILabel *nameLab;
+@property (weak, nonatomic) IBOutlet UILabel *addressLab;
 
 @end
 
@@ -19,30 +24,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"我的二维码";
+    self.view.backgroundColor = [UIColor darkGrayColor];
+    self.bgView.layer.cornerRadius = 5;
+    self.headImgV.layer.cornerRadius = 5;
+    self.headImgV.clipsToBounds = YES;
+    [self requestV1PrivateUserInfo];
     
-    /*
-    // 1.创建过滤器 -- 苹果没有将这个字符定义为常量
-    CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
-    
-    // 2.过滤器恢复默认设置
-    [filter setDefaults];
-    
-    // 3.给过滤器添加数据(正则表达式/帐号和密码) -- 通过KVC设置过滤器,只能设置NSData类型
-    NSString *dataString = kAccount.userId;
-    NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
-    [filter setValue:data forKeyPath:@"inputMessage"];
-    
-    // 4.获取输出的二维码
-    CIImage *outputImage = [filter outputImage];
-    
-    // 5.显示二维码
-    //UIImage *image = [UIImage imageWithCIImage:outputImage];
-
-    UIImage *image = [self createNonInterpolatedUIImageFormCIImage:outputImage withSize:200];
-    self.imageView.image = image;
-    
-     */
-     
     
     
     // Do any additional setup after loading the view from its nib.
@@ -53,112 +40,124 @@
     // Dispose of any resources that can be recreated.
 }
 
-/** 根据CIImage生成指定大小的UIImage */
-- (UIImage *)createNonInterpolatedUIImageFormCIImage:(CIImage *)image withSize:(CGFloat)size {
-    CGRect extent = CGRectIntegral(image.extent);
-    CGFloat scale = MIN(size/CGRectGetWidth(extent), size/CGRectGetHeight(extent));
+- (void)createCoreImage:(NSString *)codeStr  centerImage:(UIImage *)centerImage{
     
-    // 1.创建bitmap;
-    size_t width = CGRectGetWidth(extent) * scale;
-    size_t height = CGRectGetHeight(extent) * scale;
-    CGColorSpaceRef cs = CGColorSpaceCreateDeviceGray();
-    CGContextRef bitmapRef = CGBitmapContextCreate(nil, width, height, 8, 0, cs, (CGBitmapInfo)kCGImageAlphaNone);
-    CIContext *context = [CIContext contextWithOptions:nil];
-    CGImageRef bitmapImage = [context createCGImage:image fromRect:extent];
-    CGContextSetInterpolationQuality(bitmapRef, kCGInterpolationNone);
-    CGContextScaleCTM(bitmapRef, scale, scale);
-    CGContextDrawImage(bitmapRef, extent, bitmapImage);
-    
-    // 2.保存bitmap到图片
-    CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);
-    CGContextRelease(bitmapRef);
-    CGImageRelease(bitmapImage);
-    return [UIImage imageWithCGImage:scaledImage];
-}
-
-/**
- 
- 生成二维码(中间有小图片)
- 
- QRStering：所需字符串
- 
- centerImage：二维码中间的image对象
- 
- */
-
-+ (UIImage *)createImgQRCodeWithString:(NSString *)QRString centerImage:(UIImage *)centerImage{
-    
-    // 创建滤镜对象
-    
-    CIFilter *filter = [CIFilter filterWithName:@"XiaoGuiGe"];
-    
-    // 恢复滤镜的默认属性
-    
+    //1.生成coreImage框架中的滤镜来生产二维码
+    CIFilter *filter=[CIFilter filterWithName:@"CIQRCodeGenerator"];
     [filter setDefaults];
     
-    // 将字符串转换成 NSdata
+    [filter setValue:[codeStr dataUsingEncoding:NSUTF8StringEncoding] forKey:@"inputMessage"];
+    //4.获取生成的图片
+    CIImage *ciImg=filter.outputImage;
+    //放大ciImg,默认生产的图片很小
     
-    NSData *dataString = [QRString dataUsingEncoding:NSUTF8StringEncoding];
+    //5.设置二维码的前景色和背景颜色
+    CIFilter *colorFilter=[CIFilter filterWithName:@"CIFalseColor"];
+    //5.1设置默认值
+    [colorFilter setDefaults];
+    [colorFilter setValue:ciImg forKey:@"inputImage"];
+    [colorFilter setValue:[CIColor colorWithRed:0 green:0 blue:0] forKey:@"inputColor0"];
+    [colorFilter setValue:[CIColor colorWithRed:1 green:1 blue:1] forKey:@"inputColor1"];
+    //5.3获取生存的图片
+    ciImg=colorFilter.outputImage;
     
-    // 设置过滤器的输入值, KVC赋值
+    CGAffineTransform scale=CGAffineTransformMakeScale(10, 10);
+    ciImg=[ciImg imageByApplyingTransform:scale];
     
-    [filter setValue:dataString forKey:@"inputMessage"];
+    //    self.imgView.image=[UIImage imageWithCIImage:ciImg];
     
-    // 获得滤镜输出的图像
+    //6.在中心增加一张图片
+    UIImage *img=[UIImage imageWithCIImage:ciImg];
+    //7.生存图片
+    //7.1开启图形上下文
+    UIGraphicsBeginImageContext(img.size);
+    //7.2将二维码的图片画入
+    //BSXPCMessage received error for message: Connection interrupted   why??
+    //    [img drawInRect:CGRectMake(10, 10, img.size.width-20, img.size.height-20)];
+    [img drawInRect:CGRectMake(0, 0, img.size.width, img.size.height)];
+    //7.3在中心划入其他图片
     
-    CIImage *outImage = [filter outputImage];
+    UIImage *centerImg=centerImage;
     
-    // 图片小于(27,27),我们需要放大
+    CGFloat centerW=70;
+    CGFloat centerH=70;
+    CGFloat centerX=(img.size.width-70)*0.5;
+    CGFloat centerY=(img.size.height -70)*0.5;
     
-    outImage = [outImage imageByApplyingTransform:CGAffineTransformMakeScale(20, 20)];
+    [centerImg drawInRect:CGRectMake(centerX, centerY, centerW, centerH)];
     
-    // 将CIImage类型转成UIImage类型
+    //7.4获取绘制好的图片
+    UIImage *finalImg=UIGraphicsGetImageFromCurrentImageContext();
     
-    UIImage *startImage = [UIImage imageWithCIImage:outImage];
-    
-    // 开启绘图, 获取图形上下文
-    
-    UIGraphicsBeginImageContext(startImage.size);
-    
-    
-    
-    // 把二维码图片画上去 (这里是以图形上下文, 左上角为(0,0)点
-    
-    [startImage drawInRect:CGRectMake(0, 0, startImage.size.width, startImage.size.height)];
-    
-    // 再把小图片画上去
-    
-    CGFloat icon_imageW = 200;
-    
-    CGFloat icon_imageH = icon_imageW;
-    
-    CGFloat icon_imageX = (startImage.size.width - icon_imageW) * 0.5;
-    
-    CGFloat icon_imageY = (startImage.size.height - icon_imageH) * 0.5;
-    
-    [centerImage drawInRect:CGRectMake(icon_imageX, icon_imageY, icon_imageW, icon_imageH)];
-    
-    // 获取当前画得的这张图片
-    
-    UIImage *qrImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // 关闭图形上下文
-    
+    //7.5关闭图像上下文
     UIGraphicsEndImageContext();
+    //设置图片
+    self.imageView.image = finalImg;
+    self.imageView.userInteractionEnabled = YES;
+    //长按手势识别器
+    UILongPressGestureRecognizer *pressGesture=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleLongPress:)];
+    [self.imageView addGestureRecognizer:pressGesture];
+}
+
+-(void)handleLongPress:(UILongPressGestureRecognizer *)uilpgr {
     
-    //返回二维码图像
+    if (uilpgr.state != UIGestureRecognizerStateBegan){
+        return;
+    }
     
-    return qrImage;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+    }];
+    
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"保存到相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        //保存到相册
+        UIImageWriteToSavedPhotosAlbum(self.imageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+        
+    }];
+    
+    [alert addAction:action1];
+    [alert addAction:action2];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+// 存相册
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    if(!error){
+        NSLog(@"保存成功");
+        [YTAlertUtil showTempInfo:@"保存成功"];
+    }else{
+        NSLog(@"保存失败");
+        [YTAlertUtil showTempInfo:@"保存失败"];
+
+    }
+}
+#pragma mark - 数据请求
+- (void)requestV1PrivateUserInfo {
+    //获取用户信息
+    WeakSelf
+    [YSNetworkTool POST:v1PrivateUserInfo params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
+        [YSAccountTool saveUserinfo:userInfoModel];
+        
+        [weakSelf.headImgV sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
+        weakSelf.nameLab.text = userInfoModel.nickName;
+        weakSelf.addressLab.text = [NSString stringWithFormat:@"%@",[YSTools dx_isNullOrNilWithObject:userInfoModel.cityName]?@"":userInfoModel.cityName];
+        [weakSelf createCoreImage:kAccount.userId centerImage:[UIImage imageWithData:[NSData  dataWithContentsOfURL:[NSURL URLWithString:userInfoModel.headImage]]]];
+    } failure:nil];
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

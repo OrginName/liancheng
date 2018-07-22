@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MemberRenewalController">
             <connections>
-                <outlet property="bgViewH" destination="cV6-CL-F8l" id="KFx-O8-Pem"/>
                 <outlet property="descriptions" destination="5jm-G6-dGJ" id="DBz-rE-Hcd"/>
                 <outlet property="logo" destination="jUk-Nx-VhN" id="93P-Cz-rLt"/>
                 <outlet property="membershipMealsVbg" destination="khw-sU-Nuw" id="8uf-vj-Bdo"/>
@@ -31,7 +30,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JgT-Mi-zgm">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="420"/>
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="667"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1K-Ee-7um">
                                     <rect key="frame" x="10" y="10" width="354" height="100"/>
@@ -43,7 +42,7 @@
                                                 <constraint firstAttribute="height" constant="55" id="hKe-m7-95R"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Svip超级会员" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05w-qE-ZZm">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05w-qE-ZZm">
                                             <rect key="frame" x="100" y="0.0" width="249" height="100"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
@@ -81,8 +80,8 @@
                                                 <constraint firstAttribute="height" constant="1" id="Len-dS-8tJ"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="连程号  100001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jm-G6-dGJ">
-                                            <rect key="frame" x="16" y="0.0" width="111" height="49"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jm-G6-dGJ">
+                                            <rect key="frame" x="16" y="0.0" width="0.0" height="49"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -109,7 +108,7 @@
                                                 <constraint firstAttribute="height" constant="1" id="wQb-gT-O0T"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开通Svip超级会员 玩转一切" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYv-Bj-JBx">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYv-Bj-JBx">
                                             <rect key="frame" x="17" y="0.0" width="320" height="49"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
@@ -157,7 +156,7 @@
                                                 <constraint firstAttribute="height" constant="1" id="kMc-tR-kV8"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥20.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVX-16-lva">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVX-16-lva">
                                             <rect key="frame" x="17" y="0.0" width="320" height="50"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" red="0.96440905332565308" green="0.60261577367782593" blue="0.10455261915922165" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -177,7 +176,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="757-Lv-tyL">
-                                    <rect key="frame" x="10" y="340" width="354" height="75"/>
+                                    <rect key="frame" x="10" y="582" width="354" height="75"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdc-up-pj5">
                                             <rect key="frame" x="15" y="20.5" width="324" height="33"/>
@@ -205,14 +204,12 @@
                                 <constraint firstAttribute="trailing" secondItem="Vgq-Hv-i87" secondAttribute="trailing" constant="10" id="2Zc-x1-VRU"/>
                                 <constraint firstAttribute="trailing" secondItem="7eC-ge-Bgk" secondAttribute="trailing" constant="10" id="3K4-6w-KWn"/>
                                 <constraint firstItem="L1K-Ee-7um" firstAttribute="top" secondItem="JgT-Mi-zgm" secondAttribute="top" constant="10" id="3Q4-hR-KFT"/>
-                                <constraint firstItem="757-Lv-tyL" firstAttribute="top" secondItem="Vgq-Hv-i87" secondAttribute="bottom" constant="80" id="70t-9i-JsN"/>
                                 <constraint firstItem="QRf-ga-2b3" firstAttribute="top" secondItem="L1K-Ee-7um" secondAttribute="bottom" id="FjY-TS-fnv"/>
                                 <constraint firstItem="Vgq-Hv-i87" firstAttribute="leading" secondItem="JgT-Mi-zgm" secondAttribute="leading" constant="10" id="NuL-jn-7f8"/>
                                 <constraint firstItem="L1K-Ee-7um" firstAttribute="leading" secondItem="JgT-Mi-zgm" secondAttribute="leading" constant="10" id="Syv-Yd-yzX"/>
                                 <constraint firstItem="khw-sU-Nuw" firstAttribute="leading" secondItem="JgT-Mi-zgm" secondAttribute="leading" constant="10" id="TvI-O5-Ytw"/>
                                 <constraint firstItem="QRf-ga-2b3" firstAttribute="leading" secondItem="JgT-Mi-zgm" secondAttribute="leading" constant="10" id="U3E-2L-QuD"/>
                                 <constraint firstItem="khw-sU-Nuw" firstAttribute="top" secondItem="QRf-ga-2b3" secondAttribute="bottom" id="agO-0K-kAA"/>
-                                <constraint firstAttribute="height" constant="420" id="cV6-CL-F8l"/>
                                 <constraint firstAttribute="trailing" secondItem="QRf-ga-2b3" secondAttribute="trailing" constant="10" id="crl-nB-cn3"/>
                                 <constraint firstAttribute="trailing" secondItem="khw-sU-Nuw" secondAttribute="trailing" constant="10" id="ejs-Tg-BSr"/>
                                 <constraint firstAttribute="trailing" secondItem="L1K-Ee-7um" secondAttribute="trailing" constant="10" id="hbD-K5-EqA"/>
@@ -221,11 +218,13 @@
                                 <constraint firstItem="Vgq-Hv-i87" firstAttribute="top" secondItem="7eC-ge-Bgk" secondAttribute="bottom" id="r6n-Vo-b1v"/>
                                 <constraint firstItem="757-Lv-tyL" firstAttribute="leading" secondItem="JgT-Mi-zgm" secondAttribute="leading" constant="10" id="x9d-jU-4GD"/>
                                 <constraint firstItem="7eC-ge-Bgk" firstAttribute="leading" secondItem="JgT-Mi-zgm" secondAttribute="leading" constant="10" id="y70-Eg-8Z5"/>
+                                <constraint firstAttribute="bottom" secondItem="757-Lv-tyL" secondAttribute="bottom" constant="10" id="zU8-zS-USd"/>
                             </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="JgT-Mi-zgm" firstAttribute="centerY" secondItem="PF2-hb-7mg" secondAttribute="centerY" id="8qY-o5-yMy"/>
                         <constraint firstAttribute="trailing" secondItem="JgT-Mi-zgm" secondAttribute="trailing" id="A1s-vk-Sgz"/>
                         <constraint firstAttribute="bottom" secondItem="JgT-Mi-zgm" secondAttribute="bottom" id="IqR-WZ-565"/>
                         <constraint firstItem="JgT-Mi-zgm" firstAttribute="top" secondItem="PF2-hb-7mg" secondAttribute="top" id="R9M-QV-sgU"/>

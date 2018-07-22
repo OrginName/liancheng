@@ -40,6 +40,11 @@
     //去掉导航栏底部的黑线
     self.navigationController.navigationBar.shadowImage = [UIImage new];
 }
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 210);
+    [self.tab_Bottom reloadData];
+}
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController.navigationBar setBackgroundImage:
@@ -49,7 +54,7 @@
 -(void)setUI{
     self.navigationItem.title = @"个人中心";
     self.tableHeadV = [[NSBundle mainBundle] loadNibNamed:@"ProfileHeadView" owner:nil options:nil][1];
-    self.tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 300);
+    self.tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 210);
     self.tab_Bottom.tableHeaderView = self.tableHeadV;
     [self requestV1PrivateUserInfo];
 }

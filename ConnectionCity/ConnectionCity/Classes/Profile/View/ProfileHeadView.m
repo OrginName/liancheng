@@ -18,6 +18,12 @@
     _headImage.clipsToBounds = YES;
     _twoHeadImage.layer.cornerRadius = 27;
     _twoHeadImage.clipsToBounds = YES;
+    UITapGestureRecognizer *headImgTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(headImgTap)];
+    [self.headImage addGestureRecognizer:headImgTap];
+    
+    UILongPressGestureRecognizer *headImageLongTap = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(headImageLongTap)];
+    [self.headImage addGestureRecognizer:headImageLongTap];
+    
 }
 
 #pragma mark - 点击事件
@@ -29,6 +35,16 @@
 - (IBAction)membershipRenewalBtnClick:(id)sender {
     if (_delegate && [_delegate respondsToSelector:@selector(profileHeadView:xfBtnClick:)]) {
         [_delegate profileHeadView:self xfBtnClick:(UIButton *)sender];
+    }
+}
+- (void)headImgTap {
+    if (_delegate && [_delegate respondsToSelector:@selector(profileHeadViewHeadImgTap:)]) {
+        [_delegate profileHeadViewHeadImgTap:self];
+    }
+}
+- (void)headImageLongTap {
+    if (_delegate && [_delegate respondsToSelector:@selector(profileHeadViewHeadImgLongTap:)]) {
+        [_delegate profileHeadViewHeadImgLongTap:self];
     }
 }
 

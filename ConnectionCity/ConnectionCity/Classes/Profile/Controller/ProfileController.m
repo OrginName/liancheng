@@ -18,6 +18,8 @@
 #import "MyQRController.h"
 #import "AgreementController.h"
 #import "TakePhoto.h"
+#import "ZoomImage.h"
+#import "QiniuUploader.h"
 
 @interface ProfileController ()<ProfileHeadViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -53,6 +55,11 @@
     //用户svip详情
     [self requestMembershipUserSvip];
 }
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 210);
+    [self.tableView reloadData];
+}
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController.navigationBar setBackgroundImage:
@@ -64,7 +71,11 @@
 }
 #pragma mark - Setup
 - (void)setUI {
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(rightBarClick) image:@"erweima" title:nil EdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(0, 0, 30, 30);
+    [btn setBackgroundImage:[UIImage imageNamed:@"erweima"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(rightBarClick) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
 - (void)setupTableView {
     [self registerCell];
@@ -72,7 +83,7 @@
 - (void)registerCell {
 //    [self.tableView registerNib:[UINib nibWithNibName:@"ProfileCell" bundle:nil] forCellReuseIdentifier:@"ProfileCell0"];
     _tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"ProfileHeadView" owner:nil options:nil] firstObject];
-    _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 250 + 64);
+    _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 210);
     _tableHeadV.delegate = self;
     self.tableView.tableHeaderView = _tableHeadV;
 }
@@ -90,7 +101,6 @@
     }
     return _menuModels;
 }
-
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.menuModels.count;
@@ -141,7 +151,19 @@
     MemberRenewalController *xfVC = [[MemberRenewalController alloc]init];
     [self.navigationController pushViewController:xfVC animated:YES];
 }
-
+- (void)profileHeadViewHeadImgTap:(ProfileHeadView *)view {
+    [ZoomImage showImage:_tableHeadV.headImage];
+}
+- (void)profileHeadViewHeadImgLongTap:(ProfileHeadView *)view {
+    WeakSelf
+    [[TakePhoto sharedPhoto] sharePicture:^(UIImage *image) {
+        [YTAlertUtil showHUDWithTitle:nil];
+        [[QiniuUploader defaultUploader] uploadImageToQNFilePath:image withBlock:^(NSDictionary *url) {
+            [YTAlertUtil hideHUD];
+            [weakSelf requestPrivateUserUpdateWithDic:@{@"headImage": [NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]}];
+        }];
+    }];
+}
 #pragma mark - 点击事件
 - (void)rightBarClick {
     MyQRController *myqrVC = [[MyQRController alloc]init];
@@ -172,9 +194,17 @@
             if (![responseObject[kData] isKindOfClass:[NSArray class]]) {
                 weakSelf.tableHeadV.svipLogoBtn.hidden = NO;
                 weakSelf.tableHeadV.svipxfBtn.hidden = NO;
-                weakSelf.tableHeadV.svipTimeLab.text = @"xxxx.xx.xx到期";
+                weakSelf.tableHeadV.svipTimeLab.text = [responseObject[kData] objectForKey:@"endTime"];
             }
         }
+    } failure:nil];
+}
+- (void)requestPrivateUserUpdateWithDic:(NSDictionary *)dic{
+    WeakSelf
+    [YSNetworkTool POST:v1PrivateUserUpdate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
+        [YSAccountTool saveUserinfo:userInfoModel];
+        [weakSelf.tableHeadV.headImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage]];
     } failure:nil];
 }
 

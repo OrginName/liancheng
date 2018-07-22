@@ -116,7 +116,7 @@
     [super prepareLayout];
     //设置item尺寸
     CGFloat itemW = (self.collectionView.frame.size.width - 30)/ 2;
-    self.itemSize = CGSizeMake(itemW, 200);
+    self.itemSize = CGSizeMake(itemW, itemW*(175.0/163.0) + 50);
     //设置最小间距
     self.minimumLineSpacing = 10;
     self.minimumInteritemSpacing = 10;

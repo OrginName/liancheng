@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,31 +19,48 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="RzH-CT-mws">
-                        <rect key="frame" x="0.0" y="0.0" width="155" height="152.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="155" height="168"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="章鱼小丸子" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sl-fK-qca">
-                        <rect key="frame" x="36" y="167.5" width="82" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" red="0.45093357563018799" green="0.45100408792495728" blue="0.45092391967773438" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28 岁 江苏 苏州" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5u-5a-LsI">
-                        <rect key="frame" x="30.5" y="192" width="93.5" height="16"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" red="0.80776345729827881" green="0.80788367986679077" blue="0.8077470064163208" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="prn-BJ-2Qp">
+                        <rect key="frame" x="0.0" y="168" width="155" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28 岁 江苏 苏州" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5u-5a-LsI">
+                                <rect key="frame" x="5" y="30" width="145" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="章鱼小丸子" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sl-fK-qca">
+                                <rect key="frame" x="5" y="10" width="145" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8sl-fK-qca" firstAttribute="top" secondItem="prn-BJ-2Qp" secondAttribute="top" constant="10" id="0fC-t4-Eeh"/>
+                            <constraint firstItem="P5u-5a-LsI" firstAttribute="top" secondItem="8sl-fK-qca" secondAttribute="bottom" id="34Y-4g-yyi"/>
+                            <constraint firstItem="8sl-fK-qca" firstAttribute="leading" secondItem="prn-BJ-2Qp" secondAttribute="leading" constant="5" id="9NH-ff-eNt"/>
+                            <constraint firstItem="P5u-5a-LsI" firstAttribute="leading" secondItem="prn-BJ-2Qp" secondAttribute="leading" constant="5" id="IFx-J4-LFN"/>
+                            <constraint firstAttribute="trailing" secondItem="8sl-fK-qca" secondAttribute="trailing" constant="5" id="fv2-Yd-1bk"/>
+                            <constraint firstAttribute="bottom" secondItem="P5u-5a-LsI" secondAttribute="bottom" id="lLm-Ns-Nz3"/>
+                            <constraint firstAttribute="height" constant="50" id="mPs-tb-34s"/>
+                            <constraint firstItem="P5u-5a-LsI" firstAttribute="height" secondItem="8sl-fK-qca" secondAttribute="height" id="oba-IL-ybk"/>
+                            <constraint firstAttribute="trailing" secondItem="P5u-5a-LsI" secondAttribute="trailing" constant="5" id="prc-vg-mpb"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="RzH-CT-mws" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1BE-aQ-Xdb"/>
-                <constraint firstItem="P5u-5a-LsI" firstAttribute="top" secondItem="8sl-fK-qca" secondAttribute="bottom" constant="5" id="1R8-Qf-htZ"/>
-                <constraint firstItem="8sl-fK-qca" firstAttribute="top" secondItem="RzH-CT-mws" secondAttribute="bottom" constant="15" id="7fo-kt-EXc"/>
-                <constraint firstItem="RzH-CT-mws" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.7" id="Ccb-z4-mpG"/>
-                <constraint firstItem="P5u-5a-LsI" firstAttribute="centerX" secondItem="8sl-fK-qca" secondAttribute="centerX" id="PMb-a4-XT3"/>
-                <constraint firstItem="8sl-fK-qca" firstAttribute="centerX" secondItem="RzH-CT-mws" secondAttribute="centerX" id="RYR-zq-zge"/>
-                <constraint firstAttribute="trailing" secondItem="RzH-CT-mws" secondAttribute="trailing" id="VXR-H4-rg1"/>
-                <constraint firstItem="RzH-CT-mws" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rux-aA-UUV"/>
+                <constraint firstItem="prn-BJ-2Qp" firstAttribute="top" secondItem="RzH-CT-mws" secondAttribute="bottom" id="Exa-zo-l8Z"/>
+                <constraint firstItem="RzH-CT-mws" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aDp-pZ-JaE"/>
+                <constraint firstAttribute="trailing" secondItem="RzH-CT-mws" secondAttribute="trailing" id="iED-Cm-XyW"/>
+                <constraint firstItem="RzH-CT-mws" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="iTg-Pd-YGf"/>
+                <constraint firstAttribute="bottom" secondItem="prn-BJ-2Qp" secondAttribute="bottom" id="lHX-Re-p3u"/>
+                <constraint firstItem="prn-BJ-2Qp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="mAH-vF-rNj"/>
+                <constraint firstAttribute="trailing" secondItem="prn-BJ-2Qp" secondAttribute="trailing" id="qdG-cG-qYM"/>
             </constraints>
             <size key="customSize" width="155" height="218"/>
             <connections>

@@ -17,7 +17,7 @@
     _mo_receive = mo_receive;
     [self.image_head sd_setImageWithURL:[NSURL URLWithString:[mo_receive.images componentsSeparatedByString:@";"][0]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     self.lab_name.text = mo_receive.user.nickName;
-    self.lab_ageAndCity.text = [NSString stringWithFormat:@"%@岁   %@",mo_receive.user.age?mo_receive.user.age:@"",mo_receive.cityName?mo_receive.cityName:@""];
+    self.lab_ageAndCity.text = [NSString stringWithFormat:@"%@岁 %@",mo_receive.user.age?mo_receive.user.age:@"",mo_receive.cityName?mo_receive.cityName:@""];
     
 }
 @end
