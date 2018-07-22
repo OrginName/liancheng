@@ -18,12 +18,11 @@
 #import "UIColor+RCColor.h"
 #import "UIImageView+WebCache.h"
 #import "RCDUIBarButtonItem.h"
+#import "FirstTanView.h"
 static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
-
 @interface RCDPrivateSettingsTableViewController ()
-
-@property(strong, nonatomic) RCDUserInfo *userInfo;
-
+@property (nonatomic,strong) RCDUserInfo * userInfo;
+@property (nonatomic,strong)UITableView * tableView;
 @end
 
 @implementation RCDPrivateSettingsTableViewController {
@@ -32,54 +31,27 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     BOOL enableNotification;
     RCConversation *currentConversation;
 }
-
 + (instancetype)privateSettingsTableViewController {
     return [[[self class] alloc] init];
 }
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
-    }
-    return self;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:YES];
-    [self startLoadView];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    RCDUIBarButtonItem *leftButton = [[RCDUIBarButtonItem alloc] initWithLeftBarButton:@"返回" target:self                action:@selector(leftBarButtonItemPressed:)];
-//    [self.navigationItem setLeftBarButtonItem:leftButton];
     self.title = @"聊天详情";
-    self.tableView.tableFooterView = [UIView new];
-    self.tableView.backgroundColor = HEXCOLOR(0xf0f0f6);
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:self.tableView];
+    FirstTanView * tan = [[NSBundle mainBundle] loadNibNamed:@"FirstTanView" owner:nil options:nil][3];
+    tan.userInfo = self.userInfo1;
+    self.tableView.tableHeaderView = tan;
+    [self.tableView reloadData];
 }
-
-- (void)leftBarButtonItemPressed:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger rows = 0;
     switch (section) {
     case 0:
-        rows = 1;
+        rows = 4;
         break;
 
     case 1:
@@ -94,96 +66,37 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     }
     return rows;
 }
-
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 1 || section == 2) {
-        return 20.f;
-    }
-    return 0;
+    return 20.0f;
 }
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat heigh;
-    switch (indexPath.section) {
-    case 0:
-        heigh = 86.f;
-        break;
-
-    case 1:
-        heigh = 43.f;
-        break;
-    case 2:
-        heigh = 43.f;
-        break;
-    default:
-        break;
-    }
-    return heigh;
+    return 43.0f;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *InfoCellIdentifier = @"RCDPrivateSettingsUserInfoCell";
-    RCDPrivateSettingsUserInfoCell *infoCell =
-        (RCDPrivateSettingsUserInfoCell *)[tableView dequeueReusableCellWithIdentifier:InfoCellIdentifier];
-    if (!infoCell) {
-        infoCell = [[RCDPrivateSettingsUserInfoCell alloc] init];
-    }
     RCDBaseSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[RCDBaseSettingTableViewCell alloc] init];
     }
-
-    infoCell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
     if (indexPath.section == 0) {
-        //        if ([portraitUrl isEqualToString:@""]) {
-        //            DefaultPortraitView *defaultPortrait = [[DefaultPortraitView alloc]
-        //                                                    initWithFrame:CGRectMake(0, 0, 100, 100)];
-        //            [defaultPortrait setColorAndLabel:self.userId Nickname:nickname];
-        //            UIImage *portrait = [defaultPortrait imageFromView];
-        //            infoCell.PortraitImageView.image = portrait;
-        //        } else {
-        //            [infoCell.PortraitImageView
-        //             sd_setImageWithURL:[NSURL URLWithString:portraitUrl]
-        //             placeholderImage:[UIImage imageNamed:@"icon_person"]];
-        //        }
-        //        infoCell.PortraitImageView.layer.masksToBounds = YES;
-        //        infoCell.PortraitImageView.layer.cornerRadius = 5.f;
-        //        infoCell.PortraitImageView.contentMode = UIViewContentModeScaleAspectFill;
-        //        infoCell.NickNameLabel.text = nickname;
-        //        return infoCell;
-        RCDPrivateSettingsUserInfoCell *infoCell;
-        if (self.userInfo != nil) {
-            portraitUrl = self.userInfo.portraitUri;
-            if (self.userInfo.displayName.length > 0) {
-                infoCell = [[RCDPrivateSettingsUserInfoCell alloc] initWithIsHaveDisplayName:YES];
-                infoCell.NickNameLabel.text = self.userInfo.displayName;
-                infoCell.displayNameLabel.text = [NSString stringWithFormat:@"昵称: %@", self.userInfo.name];
-            } else {
-                infoCell = [[RCDPrivateSettingsUserInfoCell alloc] initWithIsHaveDisplayName:NO];
-                infoCell.NickNameLabel.text = self.userInfo.name;
-            }
-        } else {
-            infoCell = [[RCDPrivateSettingsUserInfoCell alloc] initWithIsHaveDisplayName:NO];
-            infoCell.NickNameLabel.text = [RCIM sharedRCIM].currentUserInfo.name;
-            portraitUrl = [RCIM sharedRCIM].currentUserInfo.portraitUri;
+        if (indexPath.row==0) {
+            [cell setCellStyle:DefaultStyle_RightLabel_WithoutRightArrow];
+            cell.leftLabel.text = @"连程号";
+            cell.rightLabel.text = self.userId;
+        }else if (indexPath.row==1){
+            [cell setCellStyle:DefaultStyle_RightLabel];
+            cell.leftLabel.text = @"设置备注";
+            cell.rightLabel.text = @"";
+        }else if (indexPath.row==2){
+            [cell setCellStyle:DefaultStyle_RightLabel_WithoutRightArrow];
+            cell.leftLabel.text = @"电话号码";
+            cell.rightLabel.text = self.userInfo1.mobilePhone;
+        }else{
+            [cell setCellStyle:DefaultStyle_RightLabel_WithoutRightArrow];
+            cell.leftLabel.text = @"所在地区";
+            cell.rightLabel.text = self.userInfo1.cityName;
         }
-        if ([portraitUrl isEqualToString:@""]) {
-            DefaultPortraitView *defaultPortrait =
-                [[DefaultPortraitView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-            [defaultPortrait setColorAndLabel:self.userId Nickname:nickname];
-            UIImage *portrait = [defaultPortrait imageFromView];
-            infoCell.PortraitImageView.image = portrait;
-        } else {
-            [infoCell.PortraitImageView sd_setImageWithURL:[NSURL URLWithString:portraitUrl]
-                                          placeholderImage:[UIImage imageNamed:@"icon_person"]];
-        }
-        infoCell.PortraitImageView.layer.masksToBounds = YES;
-        infoCell.PortraitImageView.layer.cornerRadius = 5.f;
-        infoCell.PortraitImageView.contentMode = UIViewContentModeScaleAspectFill;
-        infoCell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return infoCell;
+        return cell;
     }
     if (indexPath.section == 1) {
         RCDBaseSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -235,87 +148,10 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         return cell;
     }
     return nil;
-    //=======
-    //  RCDPrivateSettingsUserInfoCell *infoCell;
-    //  if (self.userInfo != nil) {
-    //    portraitUrl = self.userInfo.portraitUri;
-    //    if (self.userInfo.displayName.length > 0 && ![self.userInfo.displayName isEqualToString:@""]) {
-    //      infoCell = [[RCDPrivateSettingsUserInfoCell alloc] initWithIsHaveDisplayName:YES];
-    //      infoCell.NickNameLabel.text = self.userInfo.displayName;
-    //      infoCell.displayNameLabel.text = [NSString stringWithFormat:@"昵称: %@",self.userInfo.name];
-    //    } else {
-    //      infoCell = [[RCDPrivateSettingsUserInfoCell alloc] initWithIsHaveDisplayName:NO];
-    //      infoCell.NickNameLabel.text = self.userInfo.name;
-    //    }
-    //  } else {
-    //    infoCell = [[RCDPrivateSettingsUserInfoCell alloc] initWithIsHaveDisplayName:NO];
-    //    infoCell.NickNameLabel.text = [RCIM sharedRCIM].currentUserInfo.name;
-    //    portraitUrl = [RCIM sharedRCIM].currentUserInfo.portraitUri;
-    //  }
-    //
-    //
-    //  static NSString *CellIdentifier = @"RCDPrivateSettingsCell";
-    //  RCDPrivateSettingsCell *cell = (RCDPrivateSettingsCell *)[tableView
-    //      dequeueReusableCellWithIdentifier:CellIdentifier];
-    //
-    //  infoCell.selectionStyle = UITableViewCellSelectionStyleNone;
-    //  cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    //
-    //  if (indexPath.section == 0) {
-    //    if ([portraitUrl isEqualToString:@""]) {
-    //      DefaultPortraitView *defaultPortrait = [[DefaultPortraitView alloc]
-    //          initWithFrame:CGRectMake(0, 0, 100, 100)];
-    //      [defaultPortrait setColorAndLabel:self.userId Nickname:nickname];
-    //      UIImage *portrait = [defaultPortrait imageFromView];
-    //      infoCell.PortraitImageView.image = portrait;
-    //    } else {
-    //      [infoCell.PortraitImageView
-    //          sd_setImageWithURL:[NSURL URLWithString:portraitUrl]
-    //            placeholderImage:[UIImage imageNamed:@"icon_person"]];
-    //    }
-    //    infoCell.PortraitImageView.layer.masksToBounds = YES;
-    //    infoCell.PortraitImageView.layer.cornerRadius = 5.f;
-    //    infoCell.PortraitImageView.contentMode = UIViewContentModeScaleAspectFill;
-    //    return infoCell;
-    //  }
-    //
-    //  switch (indexPath.row) {
-    //  case 0: {
-    //    cell.TitleLabel.text = @"消息免打扰";
-    //    cell.SwitchButton.hidden = NO;
-    //    cell.SwitchButton.on = !enableNotification;
-    //    [cell.SwitchButton removeTarget:self
-    //                             action:@selector(clickIsTopBtn:)
-    //                   forControlEvents:UIControlEventValueChanged];
-    //
-    //    [cell.SwitchButton addTarget:self
-    //                          action:@selector(clickNotificationBtn:)
-    //                forControlEvents:UIControlEventValueChanged];
-    //
-    //  } break;
-    //
-    //  case 1: {
-    //    cell.TitleLabel.text = @"会话置顶";
-    //    cell.SwitchButton.hidden = NO;
-    //    cell.SwitchButton.on = currentConversation.isTop;
-    //    [cell.SwitchButton addTarget:self
-    //                          action:@selector(clickIsTopBtn:)
-    //                forControlEvents:UIControlEventValueChanged];
-    //  } break;
-    //
-    //  case 2: {
-    //    cell.TitleLabel.text = @"清除聊天记录";
-    //    cell.SwitchButton.hidden = YES;
-    //  } break;
-    //
-    //  default:
-    //    break;
-    //  }
-    //
-    //  return cell;
-    //>>>>>>> dev
 }
-
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return [UIView new];
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1) {
         RCDSearchHistoryMessageController *searchViewController = [[RCDSearchHistoryMessageController alloc] init];
@@ -444,5 +280,35 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     UISwitch *swch = sender;
     [[RCIMClient sharedRCIMClient] setConversationToTop:ConversationType_PRIVATE targetId:self.userId isTop:swch.on];
 }
-
+-(UITableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.tableFooterView = [UIView new];
+        _tableView.backgroundColor = HEXCOLOR(0xf0f0f6);
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    return _tableView;
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self startLoadView];
+    //关闭自适应
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        // Fallback on earlier versions
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    //设置导航透明
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]forBarMetrics:UIBarMetricsDefault];
+    //去掉导航栏底部的黑线
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:
+     [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
+}
 @end

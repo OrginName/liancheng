@@ -10,6 +10,7 @@
 #import "MessageController.h"
 #import "CustomtextView.h"
 #import "StarEvaluator.h"
+#import "RCDUserInfo.h"
 typedef void (^ReturnBlock) (NSString * txt);
 //创建协议
 @protocol FirstTanViewDelegate <NSObject>
@@ -17,6 +18,11 @@ typedef void (^ReturnBlock) (NSString * txt);
 - (void)sendValue:(NSString *)value; //声明协议方法
 @end
 @interface FirstTanView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *lab_signature;
+@property (weak, nonatomic) IBOutlet UILabel *lab_nickName;
+@property (weak, nonatomic) IBOutlet UIImageView *image_Sex;
+@property (weak, nonatomic) IBOutlet UIImageView *image_heda;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIButton *btn_PJ;
 @property (weak, nonatomic) IBOutlet UIView *view_PJ;
 @property (weak, nonatomic) IBOutlet CustomtextView *txt_view;
@@ -25,4 +31,5 @@ typedef void (^ReturnBlock) (NSString * txt);
 @property (nonatomic,assign) id<FirstTanViewDelegate>delegate;
 @property (nonatomic,strong) MessageController * messController;
 @property (nonatomic,copy) ReturnBlock block;
+@property (nonatomic,strong)RCDUserInfo * userInfo;
 @end

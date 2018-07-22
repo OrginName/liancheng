@@ -27,6 +27,19 @@
     self.btn_PJ.layer.borderColor = [UIColor orangeColor].CGColor;
     self.btn_PJ.layer.borderWidth = 1;
 }
+-(void)setUserInfo:(RCDUserInfo *)userInfo{
+    _userInfo = userInfo;
+    if (userInfo!=nil) {
+            [self.backgroundImage sd_setImageWithURL:[NSURL URLWithString:[userInfo.backGroundImage description]] placeholderImage:[UIImage imageNamed:@"2"]];
+             [self.image_heda sd_setImageWithURL:[NSURL URLWithString:[userInfo.portraitUri description]] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
+        self.image_Sex.image =[UIImage imageNamed:[[userInfo.genderName description] isEqualToString:@"男"]?@"men":@"women"];
+        self.lab_nickName.text = [userInfo.name description];\
+        if ([[userInfo.sign description] containsString:@"null"]) {
+            self.lab_signature.text = @"";
+        }else
+        self.lab_signature.text = [userInfo.sign description]?[userInfo.sign description]:@"";
+    }
+}
 - (IBAction)FirstTanClick:(UIButton *)sender {
     if (sender.tag==5) {
         

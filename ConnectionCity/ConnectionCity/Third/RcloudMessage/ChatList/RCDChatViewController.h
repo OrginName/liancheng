@@ -8,8 +8,12 @@
 
 #import <RongIMKit/RongIMKit.h>
 #import "groupMo.h"
+#import "UserMo.h"
+#import "RCDUserInfo.h"
 @interface RCDChatViewController : RCConversationViewController
 @property (nonatomic,assign) int flagStr;
+@property (nonatomic,strong) UserMo * user;
+@property (nonatomic,strong) RCDUserInfo * userInfo;
 @property(nonatomic, copy) NSString *groupName;
 /**
  *  会话数据模型

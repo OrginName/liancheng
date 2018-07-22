@@ -55,6 +55,8 @@ NSMutableDictionary *userInputStatus;
 @implementation RCDChatViewController
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [IQKeyboardManager sharedManager].enable = NO;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     NSString *userInputStatusKey =
         [NSString stringWithFormat:@"%lu--%@", (unsigned long)self.conversationType, self.targetId];
     if (userInputStatus && [userInputStatus.allKeys containsObject:userInputStatusKey]) {
@@ -74,6 +76,8 @@ NSMutableDictionary *userInputStatus;
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [IQKeyboardManager sharedManager].enable = YES;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
     NSArray *viewControllers = self.navigationController.viewControllers;//获取当前的视图控制其
     if ([viewControllers indexOfObject:self] == NSNotFound) {
         //当前视图控制器不在栈中，故为pop操作
@@ -369,14 +373,9 @@ NSMutableDictionary *userInputStatus;
  */
 - (void)rightBarButtonItemClicked:(id)sender {
     if (self.conversationType == ConversationType_PRIVATE) {
-//        RCDUserInfo *friendInfo = [[RCDataBaseManager shareInstance] getFriendInfo:self.targetId];
-//        if (![friendInfo.status isEqualToString:@"20"]) {
-//            RCDAddFriendViewController *vc = [[RCDAddFriendViewController alloc] init];
-//            vc.targetUserInfo = friendInfo;
-//            [self.navigationController pushViewController:vc animated:YES];
-//        } else {
             RCDPrivateSettingsTableViewController *settingsVC =
                 [RCDPrivateSettingsTableViewController privateSettingsTableViewController];
+            settingsVC.userInfo1 = self.userInfo;
             settingsVC.userId = self.targetId;
             [self.navigationController pushViewController:settingsVC animated:YES];
 //        }

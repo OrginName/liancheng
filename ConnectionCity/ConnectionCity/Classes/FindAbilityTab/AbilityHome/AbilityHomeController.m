@@ -149,14 +149,9 @@
         self.cusMap.Arr_Mark = successArrValue;
     }];
 }
-
 #pragma mark ----初始化加载数据（结束）------
--(void)back{
-    [self.tabBarController.navigationController popViewControllerAnimated:YES];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"BACKMAINWINDOW" object:nil];
-}
 -(void)setUI{
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    [super setFlag_back:YES];
     self.cusMap = [[CustomMap alloc] initWithFrame:CGRectMake(0, 0, self.view_Map.width, self.view_Map.height) ];
     self.cusMap.delegate = self;
     [self.view_Map addSubview:self.cusMap];
@@ -164,7 +159,6 @@
     [self.view_Map bringSubviewToFront:self.view_fajianli];
     [self initNavi];
     [self initRightBarItem];
-    
 }
 -(void)initNavi{
     //自定义标题视图
@@ -181,7 +175,7 @@
     self.navigationItem.titleView = nav_view;
 }
 -(void)initRightBarItem{
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SearchClick) image:@"search" title:@"" EdgeInsets:UIEdgeInsetsZero];
+//    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SearchClick) image:@"search" title:@"" EdgeInsets:UIEdgeInsetsZero];
 }
 #pragma mark - JFCityViewControllerDelegate
 - (void)cityName:(NSString *)name {

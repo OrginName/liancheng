@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -227,13 +227,6 @@
                 <constraint firstItem="nhL-ZB-irS" firstAttribute="top" secondItem="lXV-Wv-IfZ" secondAttribute="bottom" constant="20" id="nNG-ph-w77"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="btn_PJ" destination="Ndb-yp-S3I" id="OpC-3g-Q9n"/>
-                <outlet property="btn_TJ" destination="txl-IT-hCr" id="TbX-Xc-ht4"/>
-                <outlet property="txtView_PJ" destination="SDz-nQ-ntm" id="YX6-Af-IHN"/>
-                <outlet property="txt_view" destination="gOe-m0-Vcr" id="EK8-9P-MqT"/>
-                <outlet property="view_PJ" destination="maN-w2-QDe" id="zcF-hS-3LP"/>
-            </connections>
             <point key="canvasLocation" x="226" y="107"/>
         </view>
         <view contentMode="scaleToFill" id="uDK-Rn-LW2" customClass="FirstTanView">
@@ -402,11 +395,99 @@
             </connections>
             <point key="canvasLocation" x="238" y="777.5"/>
         </view>
+        <view contentMode="scaleToFill" id="r5a-Pu-4ni" customClass="FirstTanView">
+            <rect key="frame" x="0.0" y="0.0" width="370" height="210"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcC-5n-aF4">
+                    <rect key="frame" x="0.0" y="0.0" width="370" height="225"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="GmS-8f-EKW">
+                            <rect key="frame" x="0.0" y="0.0" width="370" height="225"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="娃哈哈" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThF-o1-MX2">
+                            <rect key="frame" x="2" y="136" width="365" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="our-center-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ium-8h-eoD">
+                            <rect key="frame" x="158" y="77" width="54" height="54"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="54" id="sqF-5l-tc1"/>
+                                <constraint firstAttribute="width" constant="54" id="xuu-He-gXn"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="26"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="women" translatesAutoresizingMaskIntoConstraints="NO" id="mqc-7j-l03">
+                            <rect key="frame" x="197" y="77" width="15" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="15" id="6RD-Rb-Nj5"/>
+                                <constraint firstAttribute="height" constant="15" id="kKm-74-K9a"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我很丑，可是我很温柔..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCN-7x-pZg">
+                            <rect key="frame" x="124" y="162" width="122.5" height="13.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="GmS-8f-EKW" secondAttribute="bottom" id="2P7-dA-niZ"/>
+                        <constraint firstItem="mqc-7j-l03" firstAttribute="top" secondItem="Ium-8h-eoD" secondAttribute="top" id="5Ob-qb-OeA"/>
+                        <constraint firstItem="mqc-7j-l03" firstAttribute="trailing" secondItem="Ium-8h-eoD" secondAttribute="trailing" id="8aZ-ui-I0e"/>
+                        <constraint firstItem="Ium-8h-eoD" firstAttribute="top" secondItem="wcC-5n-aF4" secondAttribute="top" constant="77" id="Gw6-qq-aJc"/>
+                        <constraint firstItem="wCN-7x-pZg" firstAttribute="top" secondItem="ThF-o1-MX2" secondAttribute="bottom" constant="5" id="K3N-v9-1Dz"/>
+                        <constraint firstAttribute="trailing" secondItem="GmS-8f-EKW" secondAttribute="trailing" id="M7L-cA-fbi"/>
+                        <constraint firstAttribute="height" constant="225" id="Wbv-CV-mb4"/>
+                        <constraint firstItem="GmS-8f-EKW" firstAttribute="leading" secondItem="wcC-5n-aF4" secondAttribute="leading" id="alI-5p-YM5"/>
+                        <constraint firstAttribute="trailing" secondItem="ThF-o1-MX2" secondAttribute="trailing" constant="3" id="bQy-cL-8Ig"/>
+                        <constraint firstItem="wCN-7x-pZg" firstAttribute="centerX" secondItem="ThF-o1-MX2" secondAttribute="centerX" id="dcb-yO-37D"/>
+                        <constraint firstItem="ThF-o1-MX2" firstAttribute="leading" secondItem="wcC-5n-aF4" secondAttribute="leading" constant="2" id="dfb-Zm-dqn"/>
+                        <constraint firstItem="ThF-o1-MX2" firstAttribute="centerX" secondItem="Ium-8h-eoD" secondAttribute="centerX" id="dml-XN-Fuy"/>
+                        <constraint firstItem="Ium-8h-eoD" firstAttribute="centerX" secondItem="wcC-5n-aF4" secondAttribute="centerX" id="h8X-zC-LkC"/>
+                        <constraint firstItem="ThF-o1-MX2" firstAttribute="top" secondItem="Ium-8h-eoD" secondAttribute="bottom" constant="5" id="n5H-AQ-fDU"/>
+                        <constraint firstItem="GmS-8f-EKW" firstAttribute="top" secondItem="wcC-5n-aF4" secondAttribute="top" id="wid-Z5-qiF"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="wcC-5n-aF4" firstAttribute="leading" secondItem="r5a-Pu-4ni" secondAttribute="leading" id="2ck-lv-69j"/>
+                <constraint firstItem="wcC-5n-aF4" firstAttribute="top" secondItem="r5a-Pu-4ni" secondAttribute="top" id="CbH-fB-wxP"/>
+                <constraint firstAttribute="trailing" secondItem="wcC-5n-aF4" secondAttribute="trailing" id="gVN-l1-Hzd"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="backgroundImage" destination="GmS-8f-EKW" id="sdL-y7-MAX"/>
+                <outlet property="btn_TJ" destination="txl-IT-hCr" id="wQg-Ch-9qz"/>
+                <outlet property="image_Sex" destination="mqc-7j-l03" id="jTh-o1-iFg"/>
+                <outlet property="image_heda" destination="Ium-8h-eoD" id="hLh-cw-Szd"/>
+                <outlet property="lab_nickName" destination="ThF-o1-MX2" id="CjG-Iv-36D"/>
+                <outlet property="lab_signature" destination="wCN-7x-pZg" id="tKx-Wg-PNu"/>
+            </connections>
+            <point key="canvasLocation" x="238" y="1043"/>
+        </view>
     </objects>
     <resources>
+        <image name="2" width="600" height="366"/>
         <image name="ciose-big-index" width="32" height="32"/>
+        <image name="our-center-1" width="22" height="22"/>
         <image name="service" width="28" height="28"/>
         <image name="travrl" width="28" height="28"/>
+        <image name="women" width="13" height="13"/>
         <image name="wupin" width="28" height="28"/>
         <image name="zhaobiao" width="28" height="28"/>
     </resources>

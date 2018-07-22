@@ -437,7 +437,6 @@ static NSString *const groupMemberTableName = @"GROUPMEMBERTABLE";
     NSString *insertSql = @"REPLACE INTO FRIENDSTABLE (userid, name, "
     @"portraitUri, status, updatedAt, displayName) VALUES (?, ?, ?, ?, "
     @"?, ?)";
-    
     [self.dbQueue inDatabase:^(FMDatabase *db) {
         [db executeUpdate:insertSql, friendInfo.userId, friendInfo.name, friendInfo.portraitUri, friendInfo.status,
          friendInfo.updatedAt, friendInfo.displayName];

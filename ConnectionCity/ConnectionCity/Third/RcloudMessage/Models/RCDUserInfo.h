@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <RongIMLib/RCUserInfo.h>
-
 @interface RCDUserInfo : RCUserInfo
 
 /** 全拼*/
@@ -24,10 +23,15 @@
         | 已是好友       | 20   | 30  | 删除了好友关系
         | 删除了好友关系  | 30   | 30  | 删除了好友关系
  */
-@property(nonatomic, strong) NSString *status;
+@property (nonatomic, strong) NSString *status;
 
-@property(nonatomic, strong) NSString *updatedAt;
+@property (nonatomic, strong) NSString *updatedAt;
 
-@property(nonatomic, strong) NSString *displayName;
-
+@property (nonatomic,strong) NSString *displayName;
+@property (nonatomic,strong) NSString * backGroundImage;
+@property (nonatomic,strong) NSString * mobilePhone;
+@property (nonatomic,strong) NSString * genderName;
+@property (nonatomic,strong) NSString * cityName;
+@property (nonatomic,strong) NSString * beiZhu;
+@property (nonatomic,strong) NSString * sign;
 @end

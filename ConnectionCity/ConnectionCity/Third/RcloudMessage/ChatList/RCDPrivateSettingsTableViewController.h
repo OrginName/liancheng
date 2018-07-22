@@ -9,9 +9,10 @@
 #import "RCDTableViewController.h"
 #import <RongIMKit/RongIMKit.h>
 #import <UIKit/UIKit.h>
-
-@interface RCDPrivateSettingsTableViewController : RCDTableViewController <UIActionSheetDelegate>
-
+#import "BaseViewController.h"
+#import "RCDUserInfo.h"
+@interface RCDPrivateSettingsTableViewController : BaseViewController <UIActionSheetDelegate,UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic,strong) RCDUserInfo * userInfo1;
 @property(nonatomic, strong) NSString *userId;
 
 + (instancetype)privateSettingsTableViewController;

@@ -466,7 +466,6 @@
 
 - (void)getFriendscomplete:(void (^)(NSMutableArray *))friendList {
     NSMutableArray *list = [NSMutableArray new];
-    
     [YSNetworkTool POST:v1MyContacts params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if (((NSArray *)responseObject[@"data"]).count == 0) {
             friendList(nil);
@@ -492,6 +491,14 @@
                         if (!userInfo.portraitUri || userInfo.portraitUri <= 0) {
                             userInfo.portraitUri = [RCDUtilities defaultUserPortrait:userInfo];
                         }
+                        userInfo.backGroundImage = dic[@"backgroundImage"];
+                        userInfo.mobilePhone = [dic[@"mobile"] description];
+                        if ([[dic[@"cityName"] description] containsString:@"null"]) {
+                            userInfo.cityName = @"";
+                        }else
+                        userInfo.cityName = [dic[@"cityName"] description];
+                        userInfo.genderName = dic[@"genderName"];
+                        userInfo.sign = dic[@"sign"];
                         userInfo.status = [NSString stringWithFormat:@"%@", [dic objectForKey:@"status"]];
                         userInfo.updatedAt = [NSString stringWithFormat:@"%@", [dic objectForKey:@"updatedAt"]];
                         [list addObject:userInfo];

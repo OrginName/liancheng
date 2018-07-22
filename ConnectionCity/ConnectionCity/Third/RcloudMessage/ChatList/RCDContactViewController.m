@@ -27,6 +27,7 @@
 #import "RCDUtilities.h"
 #import "RCDForwardAlertView.h"
 #import "FoundQunController.h"
+#import "RCDChatViewController.h"
 @interface RCDContactViewController ()
 @property(strong, nonatomic) NSMutableArray *matchFriendList;
 @property(strong, nonatomic) NSArray *defaultCellsTitle;
@@ -318,32 +319,30 @@
             FoundQunController * foun = [FoundQunController new];
             foun.title = @"群";
             [self.navigationController pushViewController:foun animated:YES];
-//            RCDGroupViewController *groupVC = [[RCDGroupViewController alloc] init];
-//            [self.navigationController pushViewController:groupVC animated:YES];
             return;
 
         } break;
 
-//        case 2: {
-//            RCDPublicServiceListViewController *publicServiceVC = [[RCDPublicServiceListViewController alloc] init];
-//            [self.navigationController pushViewController:publicServiceVC animated:YES];
-//            return;
-//
-//        } break;
-
         case 2: {
-            if ([RCDForwardMananer shareInstance].isForward) {
-                RCConversation *conver = [[RCConversation alloc] init];
-                conver.targetId = [RCIM sharedRCIM].currentUserInfo.userId;
-                conver.conversationType = ConversationType_PRIVATE;
-                [RCDForwardMananer shareInstance].toConversation = conver;
-                [[RCDForwardMananer shareInstance] showForwardAlertViewInViewController:self];
-                return;
-            }
-            
-            RCDPersonDetailViewController *detailViewController = [[RCDPersonDetailViewController alloc] init];
-            [self.navigationController pushViewController:detailViewController animated:YES];
-            detailViewController.userId = [RCIM sharedRCIM].currentUserInfo.userId;
+//            if ([RCDForwardMananer shareInstance].isForward) {
+//                RCConversation *conver = [[RCConversation alloc] init];
+//                conver.targetId = [RCIM sharedRCIM].currentUserInfo.userId;
+//                conver.conversationType = ConversationType_PRIVATE;
+//                [RCDForwardMananer shareInstance].toConversation = conver;
+//                [[RCDForwardMananer shareInstance] showForwardAlertViewInViewController:self];
+//                return;
+//            }
+//
+//            RCDPersonDetailViewController *detailViewController = [[RCDPersonDetailViewController alloc] init];
+//            [self.navigationController pushViewController:detailViewController animated:YES];
+//            detailViewController.userId = [RCIM sharedRCIM].currentUserInfo.userId;
+            //创建会话
+            RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
+            chatViewController.conversationType = ConversationType_PRIVATE;
+            chatViewController.targetId = [RCIM sharedRCIM].currentUserInfo.userId;
+            chatViewController.title = [RCIM sharedRCIM].currentUserInfo.name?[RCIM sharedRCIM].currentUserInfo.name:[RCIM sharedRCIM].currentUserInfo.userId;
+            chatViewController.displayUserNameInCell = NO;
+            [self.navigationController pushViewController:chatViewController animated:YES];
             return;
         }
 
@@ -357,23 +356,28 @@
     if (user == nil) {
         return;
     }
-    if ([RCDForwardMananer shareInstance].isForward) {
-        RCConversation *conver = [[RCConversation alloc] init];
-        conver.targetId = user.userId;
-        conver.conversationType = ConversationType_PRIVATE;
-        [RCDForwardMananer shareInstance].toConversation = conver;
-        [[RCDForwardMananer shareInstance] showForwardAlertViewInViewController:self];
-        return;
-    }
-    
+//    if ([RCDForwardMananer shareInstance].isForward) {
+//        RCConversation *conver = [[RCConversation alloc] init];
+//        conver.targetId = user.userId;
+//        conver.conversationType = ConversationType_PRIVATE;
+//        [RCDForwardMananer shareInstance].toConversation = conver;
+//        [[RCDForwardMananer shareInstance] showForwardAlertViewInViewController:self];
+//        return;
+//    }
     RCUserInfo *userInfo = [RCUserInfo new];
-    userInfo.userId = user.userId;
+    userInfo.userId = [user.userId description];
     userInfo.portraitUri = user.portraitUri;
     userInfo.name = user.name;
-
-    RCDPersonDetailViewController *detailViewController = [[RCDPersonDetailViewController alloc] init];
-    detailViewController.userId = user.userId;
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
+    chatViewController.conversationType = ConversationType_PRIVATE;
+    chatViewController.targetId = [userInfo.userId description];
+    chatViewController.title = user.displayName?user.displayName:userInfo.name;
+    chatViewController.userInfo = user;
+    chatViewController.displayUserNameInCell = NO;
+    [self.navigationController pushViewController:chatViewController animated:YES];
+//    RCDPersonDetailViewController *detailViewController = [[RCDPersonDetailViewController alloc] init];
+//    detailViewController.userId = user.userId;
+//    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

@@ -9,8 +9,8 @@
 #import "RCDUserInfo.h"
 #import <RongIMLib/RCUserInfo.h>
 #import <UIKit/UIKit.h>
-
-@interface RCDPersonDetailViewController : UIViewController
+#import "BaseViewController.h"
+@interface RCDPersonDetailViewController : BaseViewController
 @property(nonatomic, strong) UIView *infoView;
 @property(nonatomic, strong) NSString *userId;
 @property(nonatomic, strong) UILabel *lblName;
