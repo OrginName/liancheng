@@ -681,6 +681,12 @@
             if (Details == nil) {
                 Details = [[RCDUserInfo alloc] init];
             }
+            Details.mobilePhone = [dic[@"mobile"] description];
+            Details.cityName = [dic[@"cityName"] description];
+            Details.backGroundImage = [dic[@"backgroundImage"] description];
+            Details.genderName = dic[@"genderName"];
+            Details.sign = [dic[@"sign"] description];
+            Details.isFriend = [dic[@"isFriend"] description];
             Details.name = [dic[@"nickName"] isKindOfClass:[NSNull class]]?user.userId:dic[@"nickName"];
             Details.portraitUri = portraitUri;
             Details.displayName = Details.name;

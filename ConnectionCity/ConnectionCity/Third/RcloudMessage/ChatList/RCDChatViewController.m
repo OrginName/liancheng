@@ -851,6 +851,7 @@ NSMutableDictionary *userInputStatus;
                                [[RCDHttpTool shareInstance]
                                    updateUserInfo:weakSelf.targetId
                                           success:^(RCDUserInfo *user) {
+                                              weakSelf.userInfo = user;
                                               RCUserInfo *updatedUserInfo = [[RCUserInfo alloc] init];
                                               updatedUserInfo.userId = user.userId;
                                               if (user.displayName.length > 0) {
@@ -913,7 +914,6 @@ NSMutableDictionary *userInputStatus;
         }
     });
 }
-
 - (void)refreshTitle {
     if (self.group1.name==nil) {
         return;

@@ -98,7 +98,7 @@
         NSString *title,*ID,*name;
         if (self.Receive_Type == ENUM_TypeTrval){
             if ([self.str isEqualToString:@"TrvalTrip"]){
-                trvalMo * mo = self.data_Count[self.zIndex];
+                trvalMo * mo = self.data_Count[self.zIndex];                
                 ID = [mo.user.ID description];
                 name = mo.user.nickName;
             }else{

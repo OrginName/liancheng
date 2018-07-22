@@ -211,7 +211,6 @@ self.conversationBtn.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 - (void)rightBarButtonItemClicked:(id)sender {
-
     if (self.inBlackList) {
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                                  delegate:self

@@ -11,6 +11,7 @@
 #import "SendTripController.h"
 #import "ReleaseTenderController.h"
 #import "SendSwapController.h"
+#import "privateUserInfoModel.h"
 @implementation FirstTanView
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super initWithCoder:aDecoder]) {
@@ -33,11 +34,22 @@
             [self.backgroundImage sd_setImageWithURL:[NSURL URLWithString:[userInfo.backGroundImage description]] placeholderImage:[UIImage imageNamed:@"2"]];
              [self.image_heda sd_setImageWithURL:[NSURL URLWithString:[userInfo.portraitUri description]] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
         self.image_Sex.image =[UIImage imageNamed:[[userInfo.genderName description] isEqualToString:@"男"]?@"men":@"women"];
-        self.lab_nickName.text = [userInfo.name description];\
+        self.lab_nickName.text = [userInfo.name description];
         if ([[userInfo.sign description] containsString:@"null"]) {
             self.lab_signature.text = @"";
         }else
         self.lab_signature.text = [userInfo.sign description]?[userInfo.sign description]:@"";
+    }else{
+        privateUserInfoModel * user = [YSAccountTool userInfo];
+        [self.backgroundImage sd_setImageWithURL:[NSURL URLWithString:[user.backgroundImage description]] placeholderImage:[UIImage imageNamed:@"2"]];
+        [self.image_heda sd_setImageWithURL:[NSURL URLWithString:[user.headImage description]] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
+        self.image_Sex.image =[UIImage imageNamed:[[user.genderName description] isEqualToString:@"男"]?@"men":@"women"];
+        self.lab_nickName.text = [user.nickName description];
+        if ([[user.sign description] containsString:@"null"]) {
+            self.lab_signature.text = @"";
+        }else
+            self.lab_signature.text = [user.sign description]?[user.sign description]:@"";
+        
     }
 }
 - (IBAction)FirstTanClick:(UIButton *)sender {

@@ -111,7 +111,6 @@
     self.bollec_bottom.frame = CGRectMake(0, 0, self.width, self.height);
 }
 @end
-
 @implementation TrvalTripLayout
 -(void)prepareLayout{
     [super prepareLayout];

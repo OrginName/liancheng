@@ -19,6 +19,7 @@
 #import "UIImageView+WebCache.h"
 #import "RCDUIBarButtonItem.h"
 #import "FirstTanView.h"
+#import "privateUserInfoModel.h"
 static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 @interface RCDPrivateSettingsTableViewController ()
 @property (nonatomic,strong) RCDUserInfo * userInfo;
@@ -42,6 +43,60 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     tan.userInfo = self.userInfo1;
     self.tableView.tableHeaderView = tan;
     [self.tableView reloadData];
+    self.navigationItem.rightBarButtonItem =
+    [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"our-more"]
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:@selector(rightBarButtonItemClicked)];
+
+    
+}
+-(void)rightBarButtonItemClicked{
+    privateUserInfoModel* model = [YSAccountTool userInfo];
+    NSString * arr = @"";
+    if (![[self.userId description] isEqualToString:model.modelId]) {
+        if ([[self.userInfo1.isFriend description] isEqualToString:@"1"]) {
+            arr = @"加入黑名单";
+        }else{
+            arr = @"加为好友";
+        }
+    }
+    WeakSelf
+    [YTAlertUtil alertDualWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
+        
+    } defaultTitle:arr defaultHandler:^(UIAlertAction *action) {
+        if ([action.title isEqualToString:@"加入黑名单"]) {
+            [weakSelf joinBlacklist];
+        }else{
+            [weakSelf AddFriend];
+        }
+    } completion:nil];
+}
+-(void)AddFriend{
+    [RCDHTTPTOOL requestFriend:self.userId complete:^(BOOL result) {
+        if (result) {
+            [YTAlertUtil showTempInfo:@"好友申请已发送"];
+        }
+    }];
+}
+-(void)joinBlacklist{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    //黑名单
+        hud.labelText = @"正在加入黑名单";
+        [[RCIMClient sharedRCIMClient] addToBlacklist:self.userId
+                                              success:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                        [hud hide:YES];
+                                                  });
+                                               
+                                              }
+                        error:^(RCErrorCode status) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                    [hud hide:YES];
+                    [YTAlertUtil showTempInfo:@"加入失败"];
+                            });
+                                                }];
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -77,6 +132,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     if (!cell) {
         cell = [[RCDBaseSettingTableViewCell alloc] init];
     }
+    privateUserInfoModel * model = [YSAccountTool userInfo];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.section == 0) {
         if (indexPath.row==0) {
@@ -90,11 +146,11 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         }else if (indexPath.row==2){
             [cell setCellStyle:DefaultStyle_RightLabel_WithoutRightArrow];
             cell.leftLabel.text = @"电话号码";
-            cell.rightLabel.text = self.userInfo1.mobilePhone;
+            cell.rightLabel.text =[[model.modelId description] isEqualToString:self.userId]?model.mobile:self.userInfo1.mobilePhone;
         }else{
             [cell setCellStyle:DefaultStyle_RightLabel_WithoutRightArrow];
             cell.leftLabel.text = @"所在地区";
-            cell.rightLabel.text = self.userInfo1.cityName;
+            cell.rightLabel.text = [[model.modelId description] isEqualToString:self.userId]?model.cityName:self.userInfo1.cityName;
         }
         return cell;
     }
