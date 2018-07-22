@@ -79,7 +79,7 @@
 }
 -(void)setUI{
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(more) image:@"our-more" title:nil EdgeInsets:UIEdgeInsetsZero];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
     //设置tableView样式
     self.conversationListTableView.separatorColor = [UIColor hexColorWithString:@"dfdfdf"];
     self.conversationListTableView.tableFooterView = [UIView new];
@@ -122,7 +122,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.translucent = NO;
+//    self.navigationController.navigationBar.translucent = NO;
     _isClick = YES;
 //    [self notifyUpdateUnreadMessageCount];
     [[NSNotificationCenter defaultCenter] addObserver:self
