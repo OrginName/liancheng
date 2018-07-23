@@ -35,4 +35,5 @@
 @property (nonatomic,strong) NSString * beiZhu;
 @property (nonatomic,strong) NSString * sign;
 @property (nonatomic,strong) NSString * isFriend;
+@property (nonatomic,strong) NSString * friendRemark;//备注信息
 @end

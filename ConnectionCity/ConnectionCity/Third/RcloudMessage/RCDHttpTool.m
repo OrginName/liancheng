@@ -485,12 +485,12 @@
                         ![KString(@"%@", dic[@"id"]) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
                         RCDUserInfo *userInfo = [RCDUserInfo new];
                         userInfo.userId = [dic[@"id"] description];
-                        userInfo.name = [dic[@"nickName"] isKindOfClass:[NSNull class]]?userInfo.userId:[dic[@"nickName"] description];
                         userInfo.portraitUri =[dic[@"headImage"] isKindOfClass:[NSNull class]]?@"":[dic[@"headImage"] description];
                         userInfo.displayName = [dic[@"nickName"] description];
                         if (!userInfo.portraitUri || userInfo.portraitUri <= 0) {
                             userInfo.portraitUri = [RCDUtilities defaultUserPortrait:userInfo];
                         }
+                        userInfo.friendRemark = [dic[@"friendRemark"] description];
                         userInfo.backGroundImage = dic[@"backgroundImage"];
                         userInfo.mobilePhone = [dic[@"mobile"] description];
                         if ([[dic[@"cityName"] description] containsString:@"null"]) {
@@ -501,6 +501,15 @@
                         userInfo.sign = dic[@"sign"];
                         userInfo.status = [NSString stringWithFormat:@"%@", [dic objectForKey:@"status"]];
                         userInfo.updatedAt = [NSString stringWithFormat:@"%@", [dic objectForKey:@"updatedAt"]];
+                        NSString * str = @"";
+                        if ([userInfo.friendRemark containsString:@"null"]||userInfo.friendRemark.length==0) {
+                            if ([userInfo.displayName containsString:@"null"]||userInfo.displayName.length==0) {
+                                str = userInfo.userId;
+                            }else
+                                str = userInfo.displayName;
+                        }else
+                            str = userInfo.friendRemark;
+                        userInfo.name = str;
                         [list addObject:userInfo];
                         [_allFriends addObject:userInfo];
                         
@@ -681,13 +690,26 @@
             if (Details == nil) {
                 Details = [[RCDUserInfo alloc] init];
             }
+            Details.friendRemark = [dic[@"friendRemark"] description];
             Details.mobilePhone = [dic[@"mobile"] description];
             Details.cityName = [dic[@"cityName"] description];
             Details.backGroundImage = [dic[@"backgroundImage"] description];
-            Details.genderName = dic[@"genderName"];
             Details.sign = [dic[@"sign"] description];
             Details.isFriend = [dic[@"isFriend"] description];
-            Details.name = [dic[@"nickName"] isKindOfClass:[NSNull class]]?user.userId:dic[@"nickName"];
+            Details.cityName = [dic[@"cityName"] description];
+            Details.genderName = dic[@"genderName"];
+            Details.sign = dic[@"sign"];
+            Details.status = [NSString stringWithFormat:@"%@", [dic objectForKey:@"status"]];
+            Details.updatedAt = [NSString stringWithFormat:@"%@", [dic objectForKey:@"updatedAt"]];
+            NSString * str = @"";
+            if ([Details.friendRemark containsString:@"null"]||Details.friendRemark.length==0) {
+                if ([Details.displayName containsString:@"null"]||Details.displayName.length==0) {
+                    str = Details.userId;
+                }else
+                    str = Details.displayName;
+            }else
+                str = Details.friendRemark;
+            Details.name = str;
             Details.portraitUri = portraitUri;
             Details.displayName = Details.name;
             [[RCDataBaseManager shareInstance] insertFriendToDB:Details];

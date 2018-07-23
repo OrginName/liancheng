@@ -23,11 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *phoneNumLab;
 @property (weak, nonatomic) IBOutlet UILabel *addressLab;
 @property (weak, nonatomic) IBOutlet UIButton *sendMessageBtn;
-
 @end
-
 @implementation PersonalBasicDataController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
@@ -46,11 +43,9 @@
         self.addressLab.text = connectionMo.cityName;
         if ([[connectionMo.isFriend description] isEqualToString:@"1"]) {
             self.layoutMu.constant = (kScreenWidth-50)/2-40;
-            
         }
     }
 }
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     //设置导航透明

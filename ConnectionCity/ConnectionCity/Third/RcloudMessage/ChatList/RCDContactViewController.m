@@ -356,14 +356,6 @@
     if (user == nil) {
         return;
     }
-//    if ([RCDForwardMananer shareInstance].isForward) {
-//        RCConversation *conver = [[RCConversation alloc] init];
-//        conver.targetId = user.userId;
-//        conver.conversationType = ConversationType_PRIVATE;
-//        [RCDForwardMananer shareInstance].toConversation = conver;
-//        [[RCDForwardMananer shareInstance] showForwardAlertViewInViewController:self];
-//        return;
-//    }
     RCUserInfo *userInfo = [RCUserInfo new];
     userInfo.userId = [user.userId description];
     userInfo.portraitUri = user.portraitUri;
@@ -371,13 +363,10 @@
     RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
     chatViewController.conversationType = ConversationType_PRIVATE;
     chatViewController.targetId = [userInfo.userId description];
-    chatViewController.title = user.displayName?user.displayName:userInfo.name;
+    chatViewController.title = userInfo.name;
     chatViewController.userInfo = user;
     chatViewController.displayUserNameInCell = NO;
     [self.navigationController pushViewController:chatViewController animated:YES];
-//    RCDPersonDetailViewController *detailViewController = [[RCDPersonDetailViewController alloc] init];
-//    detailViewController.userId = user.userId;
-//    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

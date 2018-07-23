@@ -69,7 +69,7 @@ NSMutableDictionary *userInputStatus;
         }
     }
 
-    [self refreshTitle];
+//    [self refreshTitle];
     //    [self.chatSessionInputBarControl updateStatus:self.chatSessionInputBarControl.currentBottomBarStatus
     //    animated:NO];
 }
@@ -845,9 +845,9 @@ NSMutableDictionary *userInputStatus;
     if (self.conversationType == ConversationType_PRIVATE) {
         if (![self.targetId isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
             __weak typeof(self) weakSelf = self;
-            [[RCDRCIMDataSource shareInstance]
-                getUserInfoWithUserId:self.targetId
-                           completion:^(RCUserInfo *userInfo) {
+//            [[RCDRCIMDataSource shareInstance]
+//                getUserInfoWithUserId:self.targetId
+//                           completion:^(RCUserInfo *userInfo) {
                                [[RCDHttpTool shareInstance]
                                    updateUserInfo:weakSelf.targetId
                                           success:^(RCDUserInfo *user) {
@@ -860,14 +860,13 @@ NSMutableDictionary *userInputStatus;
                                                   updatedUserInfo.name = user.name;
                                               }
                                               updatedUserInfo.portraitUri = user.portraitUri;
-                                              weakSelf.navigationItem.title = updatedUserInfo.name;
                                               [[RCIM sharedRCIM] refreshUserInfoCache:updatedUserInfo
                                                                            withUserId:updatedUserInfo.userId];
                                           }
                                           failure:^(NSError *err){
 
                                           }];
-                           }];
+//                           }];
         }
     }
     //刷新自己头像昵称

@@ -143,7 +143,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         }else if (indexPath.row==1){
             [cell setCellStyle:DefaultStyle_RightLabel];
             cell.leftLabel.text = @"设置备注";
-            cell.rightLabel.text = @"";
+            cell.rightLabel.text =self.userInfo1.friendRemark;
         }else if (indexPath.row==2){
             [cell setCellStyle:DefaultStyle_RightLabel_WithoutRightArrow];
             cell.leftLabel.text = @"电话号码";
@@ -210,15 +210,16 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     return [UIView new];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    RCDBaseSettingTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
     if (indexPath.section==0&&indexPath.row==1) {
         if (![[self.userInfo1.isFriend description] isEqualToString:@"1"]) {
             return [YTAlertUtil showTempInfo:@"对方还不是您的好友,不能修改"];
         }
+        RCDBaseSettingTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         EditAllController * edit = [EditAllController new];
+        edit.receiveTxt = cell.rightLabel.text;
         WeakSelf
         edit.block = ^(NSString * str){
-            cell.rightLabel.text = str;
             [weakSelf updateBeiZhu:str];
         };
         [self.navigationController pushViewController:edit animated:YES];
@@ -251,6 +252,9 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                            @"remark":str
                            };
     [YSNetworkTool POST:@"/v1/my/update-remark" params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+         RCDBaseSettingTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+        cell.rightLabel.text = str;
         [YTAlertUtil showTempInfo:@"修改成功"];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
