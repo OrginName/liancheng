@@ -544,8 +544,8 @@ NSMutableDictionary *userInputStatus;
 - (RCMessageContent *)willSendMessage:(RCMessageContent *)messageContent {
     //可以在这里修改将要发送的消息
     if ([messageContent isMemberOfClass:[RCTextMessage class]]) {
-        // RCTextMessage *textMsg = (RCTextMessage *)messageContent;
-        // textMsg.extra = @"";
+//         RCTextMessage *textMsg = (RCTextMessage *)messageContent;
+//         textMsg.extra = @"";
     }
     return messageContent;
 }
@@ -709,7 +709,7 @@ NSMutableDictionary *userInputStatus;
                                [weakSelf notifyParticipantChange:[NSString stringWithFormat:@"%@加入地理位置共享",
                                                                                             userInfo.name]];
                            } else {
-                               [weakSelf notifyParticipantChange:[NSString stringWithFormat:@"user<%@>加入地理位置共享",
+                               [weakSelf notifyParticipantChange:[NSString stringWithFormat:@"%@加入地理位置共享",
                                                                                             userId]];
                            }
                        }];
@@ -728,7 +728,7 @@ NSMutableDictionary *userInputStatus;
                                [weakSelf notifyParticipantChange:[NSString stringWithFormat:@"%@退出地理位置共享",
                                                                                             userInfo.name]];
                            } else {
-                               [weakSelf notifyParticipantChange:[NSString stringWithFormat:@"user<%@>退出地理位置共享",
+                               [weakSelf notifyParticipantChange:[NSString stringWithFormat:@"%@退出地理位置共享",
                                                                                             userId]];
                            }
                        }];
@@ -815,7 +815,7 @@ NSMutableDictionary *userInputStatus;
             if (participants.count == 1) {
                 NSString *userId = participants[0];
                 [weakSelf.realTimeLocationStatusView
-                    updateText:[NSString stringWithFormat:@"user<%@>正在共享位置", userId]];
+                    updateText:[NSString stringWithFormat:@"%@正在共享位置", userId]];
                 [[RCIM sharedRCIM].userInfoDataSource
                     getUserInfoWithUserId:userId
                                completion:^(RCUserInfo *userInfo) {

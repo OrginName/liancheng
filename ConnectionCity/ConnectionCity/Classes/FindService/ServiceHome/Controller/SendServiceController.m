@@ -197,6 +197,7 @@
     }else if(indexPath.section!=4&&indexPath.section!=5){
         SendServiceCell * cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section]];
         EditAllController * edit = [EditAllController new];
+        edit.receiveTxt = cell.txt_Placeholder.text;
         edit.block = ^(NSString * str){
             cell.txt_Placeholder.text = str;
             [self.Dic2 setValue:str forKey:[NSString stringWithFormat:@"%ld",indexPath.section]];

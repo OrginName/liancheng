@@ -51,7 +51,7 @@
             {
                 CreatGroupController * creat = [CreatGroupController new];
                 creat.flag_str = 3;
-                creat.block = ^{
+                creat.blockGroup = ^{
 
                 };
                 [self.navigationController pushViewController:creat animated:YES];
@@ -465,7 +465,6 @@
         temp.isEnteredToCollectionViewController = YES;
         [self.navigationController pushViewController:temp animated:YES];
     }
-    
     //自定义会话类型
     if (model.conversationModelType == RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION) {
 //        RCConversationModel *model =

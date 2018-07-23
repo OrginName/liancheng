@@ -191,7 +191,7 @@
  */
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     [_searchResult removeAllObjects];
-    if ([searchText length] == 11) {
+    if ([searchText length]>=7) {
         [RCDHTTPTOOL
             searchUserByPhone:searchText 
                      complete:^(NSMutableArray *result) {

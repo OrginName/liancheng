@@ -127,6 +127,7 @@
         [self.myDatePick animateShow];
     }else{
         EditAllController * edit = [EditAllController new];
+        edit.receiveTxt = self.txt_Place.text;
         edit.block = ^(NSString *EditStr) {
             self.txt_Place.text = EditStr;
         };

@@ -58,8 +58,9 @@
                                 @{@"icon":@"服务",@"title":@"服务",@"class":@"OurResumeController"},
                                 @{@"icon":@"our-t-1",@"title":@"陪旅行",@"class":@"OurResumeController"},
                                 @{@"icon":@"our-t-line",@"title":@"旅行邀约",@"class":@"OurResumeController"},
-                                @{@"icon":@"our-wup",@"title":@"宝物",@"class":@"OurResumeController"},
-                                @{@"icon":@"our-ch",@"title":@"身份互换",@"class":@"OurResumeController"}];
+//                                @{@"icon":@"our-wup",@"title":@"宝物",@"class":@"OurResumeController"},
+//                                @{@"icon":@"our-ch",@"title":@"身份互换",@"class":@"OurResumeController"}
+                                ];
         [menuArray enumerateObjectsUsingBlock:^(NSDictionary *_Nonnull dic, NSUInteger idx, BOOL * _Nonnull stop) {
             YTSideMenuModel *model = [YTSideMenuModel modelWithDictionary:dic];
             [menuArr addObject:model];

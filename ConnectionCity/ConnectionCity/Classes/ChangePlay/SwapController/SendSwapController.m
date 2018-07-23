@@ -37,6 +37,7 @@
     NSLog(@"%ld",(long)sender.tag);
     if (sender.tag==3) {
         EditAllController * edit = [EditAllController new];
+        edit.receiveTxt = self.txt_headTitle.text;
         edit.block = ^(NSString * str){
             self.txt_headTitle.text = str;
         };

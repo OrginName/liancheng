@@ -104,6 +104,7 @@
         return [YTAlertUtil showTempInfo:@"对方还不是您的好友,不能修改"];
     }
     EditAllController * edit = [EditAllController new];
+    edit.receiveTxt = self.beiZhuLab.text;
     WeakSelf
     edit.block = ^(NSString * str){
         weakSelf.beiZhuLab.text = str;

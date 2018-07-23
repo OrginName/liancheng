@@ -71,6 +71,7 @@
     temp.targetId = mo.ID;
     temp.group1 = mo;
     temp.conversationType = ConversationType_GROUP;
+    temp.displayUserNameInCell = YES;
     temp.title = [NSString stringWithFormat:@"%@(%@)",mo.name,[mo.userGroupFriends isKindOfClass:[NSArray class]]?KString(@"%lu", (unsigned long)mo.userGroupFriends.count):0];
     [self.navigationController pushViewController:temp animated:YES];
 }
@@ -111,7 +112,7 @@
 - (void)headerBtnClick:(UIButton *)btn {
     CreatGroupController * creat = [CreatGroupController new];
     creat.flag_str = 3;
-    creat.block = ^{
+    creat.blockGroup = ^{
         [self.data_Arr removeAllObjects];
         [self p_initDataSource];
     };

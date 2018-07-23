@@ -99,7 +99,7 @@
                                if (!userInfo) {
                                    userInfo = [[RCUserInfo alloc]
                                        initWithUserId:userId
-                                                 name:[NSString stringWithFormat:@"user<%@>", userId]
+                                                 name:[NSString stringWithFormat:@"%@", userId]
                                              portrait:nil];
                                }
                                [self.rcUserInfos addObject:userInfo];

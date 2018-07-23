@@ -71,6 +71,7 @@
                            @"notice": self.txt_Notice.text,
                            @"type": _ID?_ID:@""
                            };
+    WeakSelf
     [YSNetworkTool POST:self.flag_str==1?v1TalentTeamCreate:self.flag_str==2?v1ServiceStationCreate:v1UserGroupCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [RCDHTTPTOOL getGroupMembersWithGroupId:responseObject[@"data"] flag:self.flag_str Block:^(NSMutableArray *result) {
             //更新本地数据库中群组成员的信息
@@ -79,14 +80,17 @@
         groupInfo.portraitUri = self.qun_Url;
         groupInfo.groupId = [responseObject[@"data"] description];
         groupInfo.groupName = self.txt_name.text;
-        [[RCIM sharedRCIM]refreshGroupInfoCache:groupInfo withGroupId:responseObject[@"data"]];
-        [RCDHTTPTOOL getGroupByID:groupInfo.groupId flag:self.flag_str  successCompletion:^(RCDGroupInfo *group) {
+        [[RCIM sharedRCIM]refreshGroupInfoCache:groupInfo withGroupId:groupInfo.groupId];
+         [RCDHTTPTOOL getGroupByID:groupInfo.groupId flag:self.flag_str  successCompletion:^(RCDGroupInfo *group) {
             [[RCDataBaseManager
               shareInstance]
              insertGroupToDB:group];
-            if (self.block) {
-                self.block();
-            }
+             if (weakSelf.blockGroup){
+                 weakSelf.blockGroup();
+             }
+             if (weakSelf.delegate&&[weakSelf.delegate respondsToSelector:@selector(transButIndex)]) {
+                 [weakSelf.delegate transButIndex];
+             }
             [self.navigationController popViewControllerAnimated:YES];
             [YTAlertUtil showTempInfo:responseObject[@"message"]];
         }];
@@ -131,6 +135,10 @@
         }];
     }else{
         EditAllController * edit = [EditAllController new];
+        if (sender.tag==2) {
+            edit.receiveTxt = self.txt_name.text;
+        }else
+            edit.receiveTxt = self.txt_Notice.text;
         edit.block = ^(NSString *EditStr) {
             if (sender.tag==2) {
                 self.txt_name.text = EditStr;

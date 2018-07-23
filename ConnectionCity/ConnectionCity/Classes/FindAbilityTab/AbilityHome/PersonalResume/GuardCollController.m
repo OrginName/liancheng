@@ -121,8 +121,9 @@
     if (sender.tag==1) {
         NSArray * arr = @[self.txt_Company,self.txt_pro];
         EditAllController * edit = [EditAllController new];
+        UITextField * text = (UITextField *)arr[sender.tag-1];
+        edit.receiveTxt = text.text;
         edit.block = ^(NSString * str){
-            UITextField * text = (UITextField *)arr[sender.tag-1];
             text.text = str;
         };
         [self.navigationController pushViewController:edit animated:YES];

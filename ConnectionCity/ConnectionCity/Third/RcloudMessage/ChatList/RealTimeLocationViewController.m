@@ -189,7 +189,7 @@ MBProgressHUD *hud;
                  if (!userInfo) {
                      userInfo = [[RCUserInfo alloc]
                                  initWithUserId:userId
-                                 name:[NSString stringWithFormat:@"user<%@>", userId]
+                                 name:[NSString stringWithFormat:@"%@", userId]
                                  portrait:nil];
                  }
                  
@@ -264,7 +264,7 @@ MBProgressHUD *hud;
                                if (!userInfo) {
                                    userInfo = [[RCUserInfo alloc]
                                        initWithUserId:userId
-                                                 name:[NSString stringWithFormat:@"user<%@>", userId]
+                                                 name:[NSString stringWithFormat:@"%@", userId]
                                              portrait:nil];
                                }
                                dispatch_async(dispatch_get_main_queue(), ^{

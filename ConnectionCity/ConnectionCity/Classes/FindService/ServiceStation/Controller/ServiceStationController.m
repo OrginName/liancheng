@@ -16,7 +16,7 @@
 #import <RongIMKit/RongIMKit.h>
 #import "RCDChatViewController.h"
 #import "RCDForwardAlertView.h"
-@interface ServiceStationController ()<BulidTeamSectionHeadDelegate>
+@interface ServiceStationController ()<BulidTeamSectionHeadDelegate,CreatGroupDelegate>
 {
     BOOL _isOpen[10000]; //== @[NO, NO, NO];
 }
@@ -74,6 +74,7 @@
     temp.flagStr = 2;
     temp.group1 = mo;
     temp.conversationType = ConversationType_GROUP;
+    temp.displayUserNameInCell = YES;
     temp.title = [NSString stringWithFormat:@"%@(%@)",mo.name,[mo.userList isKindOfClass:[NSArray class]]?KString(@"%lu", (unsigned long)mo.userList.count):0];
     [self.navigationController pushViewController:temp animated:YES];
 }
@@ -114,13 +115,12 @@
 - (void)headerBtnClick:(UIButton *)btn {
     CreatGroupController * creat = [CreatGroupController new];
     creat.flag_str = 2;
-    if (creat.block) {
-        creat.block = ^{
-            [self p_initDataSource];
-        };
-    }
+    creat.delegate = self;
     [self.navigationController pushViewController:creat animated:YES];
 }
+- (void)transButIndex{
+    [self p_initDataSource];
+}//协议方法
 #pragma mark - profile method
 - (void)p_initDataSource {
     [self.data_Arr removeAllObjects];
@@ -147,34 +147,6 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-//    [YSNetworkTool POST:v1ServiceStationNearbyList params:@{@"areaCode":[KUserDefults objectForKey:kUserCityID]} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-//        for (int i=0; i<[responseObject[@"data"] count]; i++) {
-//            groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
-//            [arr addObject:mo];
-//        }
-//        [YSNetworkTool POST:v1ServiceStationMyList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-//            for (int i=0; i<[responseObject[@"data"] count]; i++) {
-//                groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
-//                [arr1 addObject:mo];
-//            }
-//            [YSNetworkTool POST:v1ServiceStationJoinList params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-//                for (int i=0; i<[responseObject[@"data"] count]; i++) {
-//                    groupMo * mo = [groupMo mj_objectWithKeyValues:responseObject[@"data"][i]];
-//                    [arr2 addObject:mo];
-//                }
-//                [self.data_Arr addObject:@{@"1":arr}];
-//                [self.data_Arr addObject:@{@"2":arr1}];
-//                [self.data_Arr addObject:@{@"3":arr2}];
-//                [self.tableView reloadData];
-//            } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//
-//            }];
-//        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//
-//        }];
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//
-//    }];
 }
 - (void)p_initTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"BulidTeamCell" bundle:nil] forCellReuseIdentifier:@"BulidTeamCell"];
@@ -182,12 +154,12 @@
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 60)];
     headerView.backgroundColor = kCommonBGColor;
     UIButton *headerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    headerBtn.frame = CGRectMake(0, 10, kScreenWidth, 50);
+    headerBtn.frame = CGRectMake(0, 10, kScreenWidth, 60);
     headerBtn.backgroundColor = [UIColor whiteColor];
     headerBtn.layer.cornerRadius = 5;
+    [headerBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     [headerBtn setTitle:@"  创建团队" forState: UIControlStateNormal];
     [headerBtn setImage:[UIImage imageNamed:@"jia-team"] forState:UIControlStateNormal];
-    [headerBtn setTintColor:[UIColor orangeColor]];
     [headerBtn addTarget:self action:@selector(headerBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:headerBtn];
     self.tableView.tableHeaderView = headerView;

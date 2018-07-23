@@ -121,8 +121,8 @@
                     group.portraitUri = [RCDUtilities defaultGroupPortrait:group];
                 }
             }
-            group.creatorId = result[@"userId"];
-            group.introduce = result[@"notice"];
+            group.creatorId = [result[@"userId"] description];
+            group.introduce = [result[@"notice"] description];
             NSString * str = flag==3?@"groupUserCount":flag==2?@"serviceStationUserCount":@"teamUserCount";
             group.number = KString(@"%@", responseObject[@"data"][str]);
             group.maxNumber = [result objectForKey:@"max_number"]?[result objectForKey:@"max_number"]:@"1000";
@@ -321,10 +321,10 @@
                 NSDictionary * dic = members[i];
                 RCDUserInfo *member = [[RCDUserInfo alloc] init];
                 member.userId = [dic[@"id"] description];
-                member.name = [dic[@"nickName"] isKindOfClass:[NSNull class]]?member.userId:[dic[@"nickName"] description];
+                member.name = [[dic[@"nickName"] description] containsString:@"null"]?member.userId:dic[@"nickName"];
                 member.portraitUri =[dic[@"headImage"] isKindOfClass:[NSNull class]]?@"":dic[@"headImage"];
                 member.updatedAt = dic[@"createdAt"]?dic[@"createdAt"]:@"";
-                member.displayName = [dic[@"nickName"] description];
+                member.displayName = member.name;
                 if (!member.portraitUri || member.portraitUri <= 0) {
                     member.portraitUri = [RCDUtilities defaultUserPortrait:member];
                 }

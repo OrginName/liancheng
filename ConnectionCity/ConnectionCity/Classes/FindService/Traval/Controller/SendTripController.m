@@ -87,6 +87,10 @@
         [self.navigationController presentViewController:nav animated:YES completion:nil];
     }else{
         EditAllController * edit = [EditAllController new];
+        if (sender.tag==5) {
+            edit.receiveTxt = self.txt_Des.text;
+        }else
+            edit.receiveTxt = self.txt_Price.text;
         edit.block = ^(NSString *EditStr) {
             if (sender.tag==5) {
                 self.txt_Des.text = EditStr;

@@ -395,6 +395,7 @@
         [self.Data_Dic setValue:[NSString stringWithFormat:@"%d",cell.btnAgree.selected] forKey:@"70"];
     }else if (indexPath.section==6){
         EditAllController * edit  = [EditAllController new];
+        edit.receiveTxt = cell.lab_MyselfProW.text;
         edit.block = ^(NSString *EditStr) {
             cell.lab_MyselfProW.text = EditStr;
             [self.Data_Dic setObject:EditStr forKey:@"60"];

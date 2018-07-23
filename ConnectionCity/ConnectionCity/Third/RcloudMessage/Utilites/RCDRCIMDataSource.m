@@ -60,7 +60,7 @@
         return;
 
     //开发者调自己的服务器接口根据userID异步请求数据
-//    [RCDHTTPTOOL getGroupByID:groupId
+//    [RCDHTTPTOOL getGroupByID:groupId flag:2
 //            successCompletion:^(RCDGroupInfo *group) {
 //                completion(group);
 //            }];
@@ -116,14 +116,14 @@
 }
 
 - (void)getAllMembersOfGroup:(NSString *)groupId result:(void (^)(NSArray *userIdList))resultBlock {
-//    [[RCDHttpTool shareInstance] getGroupMembersWithGroupId:groupId
-//                                                      Block:^(NSMutableArray *result) {
-//                                                          NSMutableArray *ret = [[NSMutableArray alloc] init];
-//                                                          for (RCUserInfo *user in result) {
-//                                                              [ret addObject:user.userId];
-//                                                          }
-//                                                          resultBlock(ret);
-//                                                      }];
+    [RCDHTTPTOOL getGroupMembersWithGroupId:groupId flag:2
+                                                      Block:^(NSMutableArray *result) {
+                                                          NSMutableArray *ret = [[NSMutableArray alloc] init];
+                                                          for (RCUserInfo *user in result) {
+                                                              [ret addObject:user.userId];
+                                                          }
+                                                          resultBlock(ret);
+                                                      }];
 }
 
 - (NSArray *)getAllUserInfo:(void (^)(void))completion {

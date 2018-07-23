@@ -72,6 +72,7 @@
     temp.group1 = mo;
     temp.targetId = KString(@"team_%@", mo.ID);
     temp.conversationType = ConversationType_GROUP;
+    temp.displayUserNameInCell = YES;
     temp.title = [NSString stringWithFormat:@"%@(%@)",mo.name,[mo.teamUsers isKindOfClass:[NSArray class]]?KString(@"%lu", (unsigned long)mo.teamUsers.count):0];
     [self.navigationController pushViewController:temp animated:YES];
 }
@@ -112,7 +113,7 @@
 - (void)headerBtnClick:(UIButton *)btn {
     CreatGroupController * creat = [CreatGroupController new];
     creat.flag_str = 1;
-    creat.block = ^{
+    creat.blockGroup = ^{
         [self.data_Arr removeAllObjects];
         [self p_initDataSource];
     };

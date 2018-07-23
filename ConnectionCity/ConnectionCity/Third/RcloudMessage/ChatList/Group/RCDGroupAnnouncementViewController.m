@@ -262,9 +262,9 @@
                                                           [self.navigationController popViewControllerAnimated:YES];
                                                       });
                                    });
-//                    [RCDHTTPTOOL setGroupPortraitUri:nil groupId:self.GroupId flag:self.flagStr name:_name notice:self.AnnouncementContent.text complete:^(BOOL result) {
-//                        
-//                    }];
+                    [RCDHTTPTOOL setGroupPortraitUri:nil groupId:self.GroupId flag:self.flagStr name:_name notice:self.AnnouncementContent.text complete:^(BOOL result) {
+                        
+                    }];
                 }
                 error:^(RCErrorCode nErrorCode, long messageId) {
                     dispatch_async(dispatch_get_main_queue(), ^{

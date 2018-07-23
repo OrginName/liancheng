@@ -48,23 +48,11 @@
     UIViewController *vc = [[UIViewController alloc]initWithNibName:nil bundle:nil];
     self.window.rootViewController = vc;
     
-//    if (kIsLogin) {
-//        BaseTabBarController *baseTabBar = [[BaseTabBarController alloc]init];
-//        //    ShowResumeController * baseTabBar = [ShowResumeController new];
-//        [self.window setRootViewController:baseTabBar];
-//    }else{
-//        YSLoginController *loginVC = [[YSLoginController alloc]init];
-//        BaseNavigationController * base = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
-//        [self.window setRootViewController:base];
-//    }
     [self umengTrack];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(Receivetag) name:@"TABBAR" object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backWindow) name:@"BACKMAINWINDOW" object:nil];
     //非debug模式初始化sdk
     [[RCIM sharedRCIM] initWithAppKey:RONGCLOUD_IM_APPKEY];
     // 注册自定义测试消息
 //    [[RCIM sharedRCIM] registerMessageType:[RCDTestMessage class]];
-    
     //设置会话列表头像和会话页面头像
     
     [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
@@ -88,7 +76,6 @@
     //    [RCIM sharedRCIM].globalMessagePortraitSize = CGSizeMake(46, 46);
     //开启输入状态监听
     [RCIM sharedRCIM].enableTypingStatus = YES;
-    
     //开启发送已读回执
     [RCIM sharedRCIM].enabledReadReceiptConversationTypeList =
     @[ @(ConversationType_PRIVATE), @(ConversationType_DISCUSSION), @(ConversationType_GROUP) ];
@@ -105,7 +92,7 @@
     [RCIM sharedRCIM].groupMemberDataSource = RCDDataSource;
     
     //开启消息@功能（只支持群聊和讨论组, App需要实现群成员数据源groupMemberDataSource）
-    [RCIM sharedRCIM].enableMessageMentioned = YES;
+//    [RCIM sharedRCIM].enableMessageMentioned = YES;
     
     //开启消息撤回功能
     [RCIM sharedRCIM].enableMessageRecall = YES;
