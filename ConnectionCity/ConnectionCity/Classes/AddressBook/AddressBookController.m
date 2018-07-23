@@ -22,6 +22,7 @@
 @property(nonatomic, assign) NSUInteger index;
 @property(nonatomic, strong) UINavigationController *searchNavigationController;
 @property (nonatomic,strong) NSMutableArray * arr_AllGroup;
+@property (nonatomic,strong) NSString * MessStr;
 @property(nonatomic, assign) BOOL isClick;
 - (void)updateBadgeValueForTabBarItem;
 @property(nonatomic) BOOL isLoading;
@@ -33,6 +34,10 @@
     [super viewDidLoad];
     [self setUI];
     self.arr_AllGroup = [NSMutableArray array];
+    if ([KUserDefults objectForKey:@"MESSAGEID"]==nil) {
+        self.MessStr = @"";
+    }else
+        self.MessStr = [KUserDefults objectForKey:@"MESSAGEID"];
 }
 //更多按钮创建
 -(void)more{
@@ -117,6 +122,7 @@
         
         //聚合会话类型
         [self setCollectionConversationType:@[ @(ConversationType_SYSTEM) ]];
+        
     }
     return self;
 }
@@ -180,7 +186,6 @@
 - (void)willDisplayConversationTableCell:(RCConversationBaseCell *)cell
 
                              atIndexPath:(NSIndexPath *)indexPath{
-  
 }
 //左滑删除
 - (void)rcConversationListTableView:(UITableView *)tableView
@@ -360,6 +365,9 @@
     __weak typeof(&*self) blockSelf_ = self;
     //处理好友请求
     RCMessage *message = notification.object;
+    self.MessStr = [NSString stringWithFormat:@"%@,%@",KString(@"%ld", message.messageId),self.MessStr];
+    [KUserDefults setObject:self.MessStr forKey:@"MESSAGEID"];
+    [KUserDefults synchronize];
     if ([message.content isMemberOfClass:[RCContactNotificationMessage class]]) {
         
         if (message.conversationType != ConversationType_SYSTEM) {

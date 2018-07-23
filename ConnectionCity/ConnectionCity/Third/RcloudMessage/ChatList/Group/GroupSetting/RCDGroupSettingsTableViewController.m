@@ -179,7 +179,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                                                                      });
                                                                  }
                                                                    error:^(RCErrorCode status){
-
+                                                                       
                                                                    }];
     }
     NSMutableArray *groupMemberList = [[RCDataBaseManager shareInstance] getGroupMember:groupId];
@@ -195,7 +195,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                                                    });
                                                }];
     }
-
+    
     if ([groupMemberList count] > 0) {
         /******************添加headerview*******************/
         collectionViewResource = [[NSMutableArray alloc] initWithArray:groupMemberList];
@@ -209,43 +209,42 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                                           if ([result count] > 0) {
                                               dispatch_async(dispatch_get_main_queue(), ^{
                                                   weakSelf.title = [NSString
-                                                      stringWithFormat:@"群组信息(%lu)", (unsigned long)result.count];
+                                                                    stringWithFormat:@"群组信息(%lu)", (unsigned long)result.count];
                                                   RCDGroupSettingsTableViewCell *cell =
-                                                      (RCDGroupSettingsTableViewCell *)[weakSelf.tableView
-                                                          viewWithTag:RCDGroupSettingsTableViewCellGroupNameTag];
+                                                  (RCDGroupSettingsTableViewCell *)[weakSelf.tableView
+                                                                                    viewWithTag:RCDGroupSettingsTableViewCellGroupNameTag];
                                                   cell.leftLabel.text = [NSString
-                                                      stringWithFormat:@"全部群成员(%lu)", (unsigned long)result.count];
+                                                                         stringWithFormat:@"全部群成员(%lu)", (unsigned long)result.count];
                                               });
                                               collectionViewResource = [NSMutableArray new];
-                                            NSMutableArray *tempArray = result;
+                                              NSMutableArray *tempArray = result;
                                               tempArray = [weakSelf moveCreator:tempArray];
                                               NSArray *resultList =
-                                                  [[RCDUserInfoManager shareInstance] getFriendInfoList:tempArray];
+                                              [[RCDUserInfoManager shareInstance] getFriendInfoList:tempArray];
                                               NSMutableArray *groupMemberList =
-                                                  [[NSMutableArray alloc] initWithArray:resultList];
+                                              [[NSMutableArray alloc] initWithArray:resultList];
                                               collectionViewResource = [groupMemberList mutableCopy];
                                               [weakSelf setHeaderView];
                                               [[RCDataBaseManager shareInstance] insertGroupMemberToDB:result
                                                                                                groupId:groupId
                                                                                               complete:^(BOOL results){
-
+                                                                                                  
                                                                                               }];
                                               for (RCDUserInfo *user in result) {
-                                                  [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:[user.userId description]];
+                                                  [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:user.userId];
                                               }
                                           }
                                       }];
-
+    
     /******************添加footerview*******************/
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 150)];
-
+    
     //删除并退出按钮
-//    UIImage *quitImage = [UIImage imageNamed:@"group_quit"];
-//    UIImage *quitImageSelected = [UIImage imageNamed:@"group_quit_hover"];
+    UIImage *quitImage = [UIImage imageNamed:@"group_quit"];
+    UIImage *quitImageSelected = [UIImage imageNamed:@"group_quit_hover"];
     _btJoinOrQuitGroup = [[UIButton alloc] init];
-//    [_btJoinOrQuitGroup setBackgroundImage:quitImage forState:UIControlStateNormal];
-//    [_btJoinOrQuitGroup setBackgroundImage:quitImageSelected forState:UIControlStateSelected];
-    [_btJoinOrQuitGroup setBackgroundColor:[UIColor orangeColor]];
+    [_btJoinOrQuitGroup setBackgroundImage:quitImage forState:UIControlStateNormal];
+    [_btJoinOrQuitGroup setBackgroundImage:quitImageSelected forState:UIControlStateSelected];
     [_btJoinOrQuitGroup setTitle:@"删除并退出" forState:UIControlStateNormal];
     [_btJoinOrQuitGroup setCenter:CGPointMake(view.bounds.size.width / 2, view.bounds.size.height / 2)];
     [_btJoinOrQuitGroup addTarget:self action:@selector(btnJOQAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -253,11 +252,11 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     _btJoinOrQuitGroup.layer.borderWidth = 0.5f;
     _btJoinOrQuitGroup.layer.borderColor = [HEXCOLOR(0xcc4445) CGColor];
     [view addSubview:_btJoinOrQuitGroup];
-
+    
     //解散群组按钮
     _btDismissGroup = [[UIButton alloc] init];
-//    [_btDismissGroup setBackgroundImage:quitImage forState:UIControlStateNormal];
-//    [_btDismissGroup setBackgroundImage:quitImageSelected forState:UIControlStateSelected];
+    [_btDismissGroup setBackgroundImage:quitImage forState:UIControlStateNormal];
+    [_btDismissGroup setBackgroundImage:quitImageSelected forState:UIControlStateSelected];
     [_btDismissGroup setTitle:@"解散并删除" forState:UIControlStateNormal];
     [_btDismissGroup setBackgroundColor:[UIColor orangeColor]];
     [_btDismissGroup setCenter:CGPointMake(view.bounds.size.width / 2, view.bounds.size.height / 2)];
@@ -267,30 +266,30 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     _btDismissGroup.layer.borderWidth = 0.5f;
     _btDismissGroup.layer.borderColor = [HEXCOLOR(0xcc4445) CGColor];
     [view addSubview:_btDismissGroup];
-
+    
     //自动布局
     [_btChat setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_btJoinOrQuitGroup setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_btDismissGroup setTranslatesAutoresizingMaskIntoConstraints:NO];
-
+    
     NSDictionary *views = NSDictionaryOfVariableBindings(_btJoinOrQuitGroup, _btDismissGroup);
-
+    
     if (isCreator == YES) {
         [_btDismissGroup setHidden:NO];
         [_btJoinOrQuitGroup setHidden:YES];
         [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-29-[_"
-                                                                             @"btDismissGroup(42)]"
+                              @"btDismissGroup(42)]"
                                                                      options:0
                                                                      metrics:nil
                                                                        views:views]];
-
+        
         [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[_btDismissGroup]-10-|"
                                                                      options:0
                                                                      metrics:nil
                                                                        views:views]];
     } else {
         [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-29-[_"
-                                                                             @"btJoinOrQuitGroup(42)]"
+                              @"btJoinOrQuitGroup(42)]"
                                                                      options:0
                                                                      metrics:nil
                                                                        views:views]];
@@ -299,7 +298,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                                                                      metrics:nil
                                                                        views:views]];
     }
-
+    
     self.tableView.tableFooterView = view;
 }
 

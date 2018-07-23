@@ -69,8 +69,8 @@
     [RCContactCardKit shareInstance].groupDataSource = RCDDataSource;
     
     //设置群组内用户信息源。如果不使用群名片功能，可以不设置
-      [RCIM sharedRCIM].groupUserInfoDataSource = RCDDataSource;
-      [RCIM sharedRCIM].enableMessageAttachUserInfo = YES;
+//      [RCIM sharedRCIM].groupUserInfoDataSource = RCDDataSource;
+//      [RCIM sharedRCIM].enableMessageAttachUserInfo = NO;
     //设置接收消息代理
     [RCIM sharedRCIM].receiveMessageDelegate = self;
     //    [RCIM sharedRCIM].globalMessagePortraitSize = CGSizeMake(46, 46);

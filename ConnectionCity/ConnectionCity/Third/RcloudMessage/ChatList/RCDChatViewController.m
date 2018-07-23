@@ -880,7 +880,6 @@ NSMutableDictionary *userInputStatus;
         __weak typeof(self) weakSelf = self;
         [RCDHTTPTOOL getGroupByID:self.targetId flag:self.flagStr
                 successCompletion:^(RCDGroupInfo *group) {
-//                    self.groupInfo = group;
                     RCGroup *Group = [[RCGroup alloc] initWithGroupId:weakSelf.targetId
                                                             groupName:group.groupName
                                                           portraitUri:group.portraitUri];

@@ -8,6 +8,7 @@
 
 #import "AccountView.h"
 #import "UIView+Geometry.h"
+#import <RongIMLib/RongIMLib.h>
 @interface AccountView()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 
@@ -35,11 +36,28 @@
 - (IBAction)btnClick:(UIButton *)sender {
 //    1 清空消息列表  2 清空所有聊天记录  3 清空缓存数据
     if (sender.tag==1) {
-        [YTAlertUtil showTempInfo:@"清空消息列表"];
+        BOOL a = [[RCIMClient sharedRCIMClient] clearConversations:@[@1,@3,@6]];
+        if (a) {
+            [YTAlertUtil showTempInfo:@"已清理"];
+        }
     }else if (sender.tag==2){
-        [YTAlertUtil showTempInfo:@"清空所有聊天记录"];
+        NSString * str = [KUserDefults objectForKey:@"MESSAGEID"];
+        NSMutableArray * arr = [NSMutableArray array];
+        for (NSString * str1 in [str componentsSeparatedByString:@","]) {
+            if (str1.length!=0) {
+                [arr addObject:str1];
+            }
+        }
+        BOOL a = [[RCIMClient sharedRCIMClient] deleteMessages:[arr copy]];
+        if (a) {
+            [KUserDefults removeObjectForKey:@"MESSAGEID"];
+            [KUserDefults synchronize];
+            [YTAlertUtil showTempInfo:@"已清理"];
+        }
     }else{
-        [YTAlertUtil showTempInfo:@"清空缓存数据"];
+        [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+            [YTAlertUtil showTempInfo:@"已清除"];
+        }];
     }
 }
 @end

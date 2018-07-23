@@ -60,10 +60,10 @@
         return;
 
     //开发者调自己的服务器接口根据userID异步请求数据
-//    [RCDHTTPTOOL getGroupByID:groupId flag:2
-//            successCompletion:^(RCDGroupInfo *group) {
-//                completion(group);
-//            }];
+    [RCDHTTPTOOL getGroupByID:groupId flag:2
+            successCompletion:^(RCDGroupInfo *group) {
+                completion(group);
+            }];
 }
 #pragma mark - RCIMUserInfoDataSource
 - (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion {

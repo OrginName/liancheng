@@ -23,7 +23,6 @@
     self.momentList = [NSMutableArray array];
     [self setUI];
     page=1;
-    [self.tab_Bottom.mj_header beginRefreshing];
     self.tab_Bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         page=1;
         [self loadData];
@@ -31,6 +30,7 @@
     self.tab_Bottom.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         [self loadData];
     }];
+    [self.tab_Bottom.mj_header beginRefreshing];
 }
 -(void)loadData{
     NSDictionary * dic = @{
