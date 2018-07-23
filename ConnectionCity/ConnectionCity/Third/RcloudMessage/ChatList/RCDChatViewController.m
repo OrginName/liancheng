@@ -589,30 +589,30 @@ NSMutableDictionary *userInputStatus;
 }
 
 - (void)didTapCellPortrait:(NSString *)userId {
-    if (self.conversationType == ConversationType_GROUP || self.conversationType == ConversationType_DISCUSSION) {
-        if (![KString(@"%@", userId) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
-            [[RCDUserInfoManager shareInstance]
-                getFriendInfo:userId
-                   completion:^(RCUserInfo *user) {
-                       [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:KString(@"%@", user.userId)];
-                       [self gotoNextPage:user];
-                   }];
-        } else {
-            [[RCDUserInfoManager shareInstance]
-                getUserInfo:userId
-                 completion:^(RCUserInfo *user) {
-                     [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:KString(@"%@", user.userId)];
-                     [self gotoNextPage:user];
-                 }];
-        }
-    }
-    if (self.conversationType == ConversationType_PRIVATE) {
-        [[RCDUserInfoManager shareInstance] getUserInfo:userId
-                                             completion:^(RCUserInfo *user) {
-                                                 [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:KString(@"%@", user.userId)];
-                                                 [self gotoNextPage:user];
-                                             }];
-    }
+//    if (self.conversationType == ConversationType_GROUP || self.conversationType == ConversationType_DISCUSSION) {
+//        if (![KString(@"%@", userId) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
+//            [[RCDUserInfoManager shareInstance]
+//                getFriendInfo:userId
+//                   completion:^(RCUserInfo *user) {
+//                       [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:KString(@"%@", user.userId)];
+//                       [self gotoNextPage:user];
+//                   }];
+//        } else {
+//            [[RCDUserInfoManager shareInstance]
+//                getUserInfo:userId
+//                 completion:^(RCUserInfo *user) {
+//                     [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:KString(@"%@", user.userId)];
+//                     [self gotoNextPage:user];
+//                 }];
+//        }
+//    }
+//    if (self.conversationType == ConversationType_PRIVATE) {
+//        [[RCDUserInfoManager shareInstance] getUserInfo:userId
+//                                             completion:^(RCUserInfo *user) {
+//                                                 [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:KString(@"%@", user.userId)];
+//                                                 [self gotoNextPage:user];
+//                                             }];
+//    }
 }
 
 - (void)gotoNextPage:(RCUserInfo *)user {
