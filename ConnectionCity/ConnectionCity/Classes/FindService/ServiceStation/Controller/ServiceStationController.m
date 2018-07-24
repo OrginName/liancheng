@@ -16,9 +16,11 @@
 #import <RongIMKit/RongIMKit.h>
 #import "RCDChatViewController.h"
 #import "RCDForwardAlertView.h"
-@interface ServiceStationController ()<BulidTeamSectionHeadDelegate,CreatGroupDelegate>
+#import "CircleNet.h"
+#import "privateUserInfoModel.h"
+@interface ServiceStationController ()<BulidTeamSectionHeadDelegate,CreatGroupDelegate,BulidTeamCellDelegate>
 {
-    BOOL _isOpen[10000]; //== @[NO, NO, NO];
+    BOOL _isOpen[10000];
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataSourceArr;
@@ -55,20 +57,32 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BulidTeamCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BulidTeamCell"];
     NSArray * arr = _data_Arr[indexPath.section][KString(@"%ld", indexPath.section+1)];
+    
     groupMo * mo = arr.count!=0?arr[indexPath.row]:[groupMo new];
-//    NSArray *arr = _dataSourceArr[indexPath.section];
+    if (indexPath.section==0) {
+        cell.btnJoin.hidden = NO;
+        cell.peopleNumbersLab.hidden = YES;
+    }else{
+        cell.btnJoin.hidden = YES;
+        cell.peopleNumbersLab.hidden = NO;
+    }
     cell.titleLab.text = mo.name?mo.name:@"";
     if ([mo.userList isKindOfClass:[NSArray class]]) {
         cell.peopleNumbersLab.text = KString(@"%lu", (unsigned long)mo.userList.count);
     }else
         cell.peopleNumbersLab.text = @"0";
     [cell.headerImgeView sd_setImageWithURL:[NSURL URLWithString:mo.logo] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    cell.btnJoin.tag = indexPath.row;
+    cell.delegate = self;
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSArray * arr = _data_Arr[indexPath.section][KString(@"%ld", indexPath.section+1)];
     groupMo * mo = arr.count!=0?arr[indexPath.row]:[groupMo new];
+    if (indexPath.section==0) {
+        return;
+    }
     RCDChatViewController *temp = [[RCDChatViewController alloc] init];
     temp.targetId =KString(@"station_%@", mo.ID);
     temp.flagStr = 2;
@@ -117,6 +131,25 @@
     creat.flag_str = 2;
     creat.delegate = self;
     [self.navigationController pushViewController:creat animated:YES];
+}
+#pragma mark ----BulidTeamCellDelegate----
+- (void)joinIndex:(UIButton *)index{
+    NSArray * arr = _data_Arr[0][@"1"];
+    groupMo * mo = arr.count!=0?arr[index.tag]:[groupMo new];
+    NSDictionary * dic = @{
+                           @"createTime": mo.createTime,
+                           @"stationId": @([mo.ID integerValue]),
+                           @"userId": @([[[YSAccountTool userInfo] modelId] integerValue])
+                           };
+    [CircleNet requstJoinQun:dic withFlag:2 withSuc:^(NSDictionary *successDicValue) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            index.userInteractionEnabled = NO;
+            [index setBackgroundColor:[UIColor lightGrayColor]];
+        });
+        [YTAlertUtil showTempInfo:@"申请已发送,请耐心等待"];
+    } withFailBlock:^(NSError *failValue) {
+        
+    }];
 }
 - (void)transButIndex{
     [self p_initDataSource];

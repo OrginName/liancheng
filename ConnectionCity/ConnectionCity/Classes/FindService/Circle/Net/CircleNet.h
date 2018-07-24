@@ -44,4 +44,13 @@ typedef void (^FailErrBlock) (NSError * failValue);
  */
 +(void)requstCircleDZ:(NSDictionary *) param withSuc:(SuccessDicBlock)sucBlock;
 
+/**
+ 申请加入群
+
+ @param param 字典
+ @param flag 类型判断
+ @param sucBlock 成功回调
+ @param failBlock 失败回调
+ */
++(void)requstJoinQun:(NSDictionary *) param withFlag:(int)flag withSuc:(SuccessDicBlock)sucBlock withFailBlock:(FailErrBlock)failBlock;
 @end

@@ -17,12 +17,14 @@
 #import "RCDSearchFriendViewController.h"
 #import "RCDSearchViewController.h"
 #import "CreatGroupController.h"
+#import "MessageMo.h"
 @interface AddressBookController ()<RCDSearchViewDelegate>
 @property(nonatomic, strong) RCConversationModel *tempModel;
 @property(nonatomic, assign) NSUInteger index;
 @property(nonatomic, strong) UINavigationController *searchNavigationController;
 @property (nonatomic,strong) NSMutableArray * arr_AllGroup;
 @property (nonatomic,strong) NSString * MessStr;
+@property (nonatomic,strong) NSMutableArray * arr_mess;
 @property(nonatomic, assign) BOOL isClick;
 - (void)updateBadgeValueForTabBarItem;
 @property(nonatomic) BOOL isLoading;
@@ -38,6 +40,10 @@
         self.MessStr = @"";
     }else
         self.MessStr = [KUserDefults objectForKey:@"MESSAGEID"];
+    self.arr_mess = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"MESSAGE"]];
+    if (!self.arr_mess) {
+        self.arr_mess = [NSMutableArray array];
+    }
 }
 //更多按钮创建
 -(void)more{
@@ -60,11 +66,6 @@
 
                 };
                 [self.navigationController pushViewController:creat animated:YES];
-//                RCDContactSelectedTableViewController *contactSelectedVC = [[RCDContactSelectedTableViewController alloc] init];
-//                contactSelectedVC.forCreatingGroup = YES;
-//                contactSelectedVC.isAllowsMultipleSelection = YES;
-//                contactSelectedVC.titleStr = @"选择联系人";
-//                [self.navigationController pushViewController:contactSelectedVC animated:YES];
             }
                 break;
             case 2:
@@ -94,6 +95,7 @@
     //定位未读数会话
     self.index = 0;
     //接收定位到未读数会话的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyUpdateUnreadMessageCount) name:@"UpdateNum" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(GotoNextCoversation)
                                                  name:@"GotoNextCoversation"
@@ -212,6 +214,7 @@
          conversationModel:(RCConversationModel *)model
                atIndexPath:(NSIndexPath *)indexPath {
 //     [[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeTabBarIndex" object:@0];
+    [self notifyUpdateUnreadMessageCount];
     if (_isClick) {
         _isClick = NO;
         if (model.conversationModelType == RC_CONVERSATION_MODEL_TYPE_PUBLIC_SERVICE) {
@@ -365,9 +368,26 @@
     __weak typeof(&*self) blockSelf_ = self;
     //处理好友请求
     RCMessage *message = notification.object;
-    self.MessStr = [NSString stringWithFormat:@"%@,%@",KString(@"%ld", message.messageId),self.MessStr];
-    [KUserDefults setObject:self.MessStr forKey:@"MESSAGEID"];
-    [KUserDefults synchronize];
+    MessageMo * mo = [MessageMo new];
+    mo.ID = message.targetId;
+    mo.Type = message.conversationType;//1单 3群
+    if (self.arr_mess.count!=0) {
+        [self.arr_mess enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            MessageMo * mo1 = (MessageMo *)obj;
+            if ([mo1.ID isEqualToString:mo.ID]) {
+                
+            }else{
+                [self.arr_mess addObject:mo];
+            }
+        }];
+    }else
+        [self.arr_mess addObject:mo];
+    NSData * hotCityData = [NSKeyedArchiver archivedDataWithRootObject:self.arr_mess];
+    //拼音转换太耗时，这里把第一次转换结果存到单例中
+    [KUserDefults setValue:hotCityData forKey:@"MESSAGE"];
+//    self.MessStr = [NSString stringWithFormat:@"%@,%@",KString(@"%ld", message.messageId),self.MessStr];
+//    [KUserDefults setObject:self.MessStr forKey:@"MESSAGEID"];
+//    [KUserDefults synchronize];
     if ([message.content isMemberOfClass:[RCContactNotificationMessage class]]) {
         
         if (message.conversationType != ConversationType_SYSTEM) {
@@ -586,5 +606,8 @@
         }
         
     });
+}
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end

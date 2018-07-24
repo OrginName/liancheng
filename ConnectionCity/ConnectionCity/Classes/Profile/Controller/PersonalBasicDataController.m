@@ -22,13 +22,19 @@
 @property (weak, nonatomic) IBOutlet UILabel *beiZhuLab;
 @property (weak, nonatomic) IBOutlet UILabel *phoneNumLab;
 @property (weak, nonatomic) IBOutlet UILabel *addressLab;
+@property (weak, nonatomic) IBOutlet UIView *view_btn;
 @property (weak, nonatomic) IBOutlet UIButton *sendMessageBtn;
+@property (weak, nonatomic) IBOutlet UIButton *btn_BZ;
 @end
 @implementation PersonalBasicDataController
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
     [self setConnectionMo:self.connectionMo];
+    if ([self.flagStr isEqualToString:@"BLACKLIST"]) {
+        self.view_btn.hidden = YES;
+        self.btn_BZ.userInteractionEnabled = NO;
+    }
 }
 -(void)setConnectionMo:(UserMo *)connectionMo{
     _connectionMo = connectionMo;
@@ -44,6 +50,7 @@
         if ([[connectionMo.isFriend description] isEqualToString:@"1"]) {
             self.layoutMu.constant = (kScreenWidth-50)/2-40;
         }
+        self.beiZhuLab.text = connectionMo.friendRemark?connectionMo.friendRemark:connectionMo.nickName;
     }
 }
 - (void)viewWillAppear:(BOOL)animated {

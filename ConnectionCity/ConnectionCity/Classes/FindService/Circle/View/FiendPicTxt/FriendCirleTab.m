@@ -320,7 +320,7 @@
     if (!_headImage) {
         _headImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, 250)];
         privateUserInfoModel * userInfo = [YSAccountTool userInfo];
-        [_headImage sd_setImageWithURL:[NSURL URLWithString:userInfo.backgroundImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+        [_headImage sd_setImageWithURL:[NSURL URLWithString:userInfo.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
         UIImageView * image1 = [[UIImageView alloc] initWithFrame:CGRectMake(_headImage.width-70, _headImage.height-25, 50, 50)];
         [image1 sd_setImageWithURL:[NSURL URLWithString:userInfo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
         image1.layer.cornerRadius = 25;

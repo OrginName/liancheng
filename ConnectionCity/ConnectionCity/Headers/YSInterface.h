@@ -16,7 +16,6 @@
 #define QINIUURL @"http://panixgsjz.bkt.clouddn.com/"
 
 #pragma mark ----- 首页-------
-
 //发现 -发布朋友圈
 static NSString * const v1FriendCircleCreate = @"/v1/friend-circle/create";
 //发现 -删除朋友圈
@@ -30,12 +29,9 @@ static NSString * const v1FriendCircleMyPage = @"/v1/friend-circle/my/page";
 //发现 -朋友圈我的
 static NSString * const v1FriendCircleUpdate = @"/v1/friend-circle/update";
 
-
-
 #pragma mark ----我的-------
 //加入黑名单
-static NSString * const v1MyBlackCreate
-= @"/v1/my/black/create";
+static NSString * const v1MyBlackCreate = @"/v1/my/black/create";
 //添加好友
 static NSString * const v1MyAdd = @"/v1/my/add";
 //查找用户
@@ -46,9 +42,10 @@ static NSString * const v1ApplicationAdd = @"/v1/application/add";
 static NSString * const v1ApplicationAgree = @"/v1/application/agree";
 //好友申请
 static NSString * const v1ApplicationPage = @"/v1/application/page";
+//通讯录黑名单
+static NSString * const v1MyBlackPage = @"/v1/my/black/page";
 
-
-
+#pragma mark ----首页Qun-------
 //首页  更新群
 static NSString * const v1UserGroupUpdate = @"/v1/user/group/update";
 //首页  创建群
@@ -71,6 +68,14 @@ static NSString * const v1UserGroupNearbyList = @"/v1/user/group/nearby/list";
 static NSString * const v1UserGroupSign = @"/v1/user/group/sign";
 //首页  退出群
 static NSString * const v1UserGroupSignout = @"/v1/user/group/sign-out";
+//首页  申请加入群
+static NSString * const v1GroupApplicationAdd = @"/v1/group/application/add";
+//首页  同意加入群
+static NSString * const v1GroupApplicationAgree = @"/v1/group/application/agree";
+//首页  申请加入群的列表
+static NSString * const v1GroupApplicationPage = @"/v1/group/application/page";
+
+
 #pragma mark - 登录、注册、短信验证
 //短信验证
 static NSString * const smsVerificationCode = @"/sms/verification-code";
@@ -82,6 +87,7 @@ static NSString * const login = @"/login";
 static NSString * const auth = @"/auth";
 //找回密码
 static NSString * const passwordForget = @"/password/forget";
+
 #pragma mark - 协议条款
 //协议条款
 static NSString * const pageInfo = @"/page/info";
@@ -103,6 +109,7 @@ static NSString * const serviceGuarantee = @"service-guarantee";
 static NSString * const auditStandards = @"audit-standards";
 //连程隐私协议
 static NSString * const privacyAgreement = @"privacy-agreement";
+
 #pragma mark - 用户接口
 //获取svip套餐详情
 static NSString * const v1MembershipSvipInfo = @"/v1/membership/svip/info";
@@ -120,6 +127,7 @@ static NSString * const v1PrivateUserNearbyList = @"/v1/private/user/nearby/list
 static NSString * const v1PrivateUserUpdate = @"/v1/private/user/update";
 //查找用户信息
 static NSString * const v1PrivateUserUserinfo = @"/v1/private/user/user-info";
+
 #pragma mark - 用户-关注
 //添加关注
 static NSString * const v1UserFollowAdd = @"/v1/user/follow/add";
@@ -158,6 +166,13 @@ static NSString * const v1TalentTeamBatchSignOut = @"/v1/talent/team/batch-sign-
 static NSString * const v1TalentTeamUpdate = @"/v1/talent/team/update";
 //退出团队
 static NSString * const v1TalentTeamSignOut = @"v1/talent/team/sign-out";
+//申请加入团队
+static NSString * const v1TeamApplicationAdd = @"/v1/team/application/add";
+//同意加入团队
+static NSString * const v1TeamApplicationAgree = @"/v1/team/application/agree";
+//申请加入团队的列表
+static NSString * const v1TeamApplicationPage = @"/v1/team/application/page";
+
 #pragma mark - 人才-简历
 //筛选条件
 static NSString * const v1TalentResumeConditions = @"/v1/talent/resume/conditions";
@@ -216,6 +231,7 @@ static NSString * const v1TalentTenderRewardList = @"/v1/talent/tender/reward/pa
 static NSString * const v1TalentTenderWinRecordList = @"/v1/talent/tender/win-record/page";
 //赚外快-足迹
 static NSString * const v1TalentTenderFootPrintPage = @"/v1/talent/tender/foot-print/page";
+
 #pragma mark - 关键字信息
 //换着玩关键字
 static NSString * const keywordPlayKeyword = @"/keyword/play-keyword";
@@ -223,6 +239,7 @@ static NSString * const keywordPlayKeyword = @"/keyword/play-keyword";
 static NSString * const keywordServiceKeyword = @"/keyword/service-keyword";
 //找人才关键字
 static NSString * const keywordTalentKeyword = @"/keyword/talent-keyword";
+
 #pragma mark - 数据字典
 //区域树状列表
 static NSString * const dictionaryAreaTreeList = @"/dictionary/area/tree-list";
@@ -245,6 +262,7 @@ static NSString * const dictionaryServiceCategory = @"/dictionary/service-catego
 static NSString * const dictionaryServiceCategoryProperties = @"/dictionary/service-category-properties";
 //宝物分类
 static NSString * const dictionaryTreasureCategory = @"/dictionary/treasure-category";
+
 #pragma mark - 服务圈子
 //服务发布圈子
 static NSString * const v1ServiceCircleCreate = @"/v1/service-circle/create";
@@ -256,6 +274,7 @@ static NSString * const v1ServiceCircleDelete = @"/v1/service-circle/delete";
 static NSString * const v1ServiceCirclePage = @"/v1/service-circle/page";
 //服务圈列表编辑
 static NSString * const v1ServiceCircleUpdate = @"/v1/service-circle/update";
+
 #pragma mark - 服务
 //添加评论
 static NSString * const v1CommonCommentCreate = @"/v1/common/comment/create";
@@ -278,8 +297,9 @@ static NSString * const v1ServiceCreate = @"/v1/service/create";
 static NSString * const v1ServiceDetail = @"/v1/service/detail";
 //服务列表
 static NSString * const v1ServiceList = @"/v1/service/list";
-#pragma mark - 服务-旅游
 
+
+#pragma mark - 服务-旅游
 //服务-陪游订单状态更新
 static NSString * const v1ServiceTravelUpdateOrderStatus = @"/v1/service/travel/update-order-status";
 //服务-发布陪游
@@ -298,6 +318,8 @@ static NSString * const v1ServiceTravelInvitePage = @"/v1/service/travel/invite/
 static NSString * const v1ServiceTravelOrderCreate = @"/v1/service/travel/order/create";
 //服务-旅游列表（分页）
 static NSString * const v1ServiceTravelPage = @"/v1/service/travel/page";
+
+
 #pragma mark - 服务-服务站
 //更新群信息
 static NSString * const v1ServiceStationUpdate= @"/v1/service/station/update";
@@ -323,6 +345,13 @@ static NSString * const v1ServiceStationRelationToMeList = @"/v1/service/station
 static NSString * const v1ServiceStationSign = @"/v1/service/station/sign";
 //退出服务站
 static NSString * const v1ServiceStationSignOut = @"/v1/service/station/sign-out";
+//申请加入服务站
+static NSString * const v1StationApplicationAdd = @"/v1/station/application/add";
+//同意加入服务站
+static NSString * const v1StationApplicationAgree = @"/v1/station/application/agree";
+//同意加入服务站
+static NSString * const v1StationApplicationPage = @"/v1/station/application/page";
+
 #pragma mark - 个人中心-认证中心
 //个人中心-认证中心
 static NSString * const myAuthAuth = @"/my/auth/auth";

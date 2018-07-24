@@ -118,7 +118,22 @@
         
     }];
 }
-
+/**
+ 申请加入群
+ 
+ @param param 字典
+ @param flag 类型判断
+ @param sucBlock 成功回调
+ @param failBlock 失败回调
+ */
++(void)requstJoinQun:(NSDictionary *) param withFlag:(int)flag withSuc:(SuccessDicBlock)sucBlock withFailBlock:(FailErrBlock)failBlock{
+    NSString * url = flag==1?v1GroupApplicationAdd:flag==2?v1StationApplicationAdd:v1TeamApplicationAdd;
+    [YSNetworkTool POST:url params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        sucBlock(responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failBlock(error);
+    }];
+}
 
 /**
  *  根据图片url获取图片尺寸

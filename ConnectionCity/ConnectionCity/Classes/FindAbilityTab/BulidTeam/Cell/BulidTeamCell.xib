@@ -50,10 +50,31 @@
                                 <color key="textColor" red="0.39603209495544434" green="0.39610502123832703" blue="0.39602747559547424" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MM8-iX-ADS">
+                                <rect key="frame" x="230" y="9" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.59999999999999998" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="XBY-l9-r38"/>
+                                    <constraint firstAttribute="height" constant="30" id="atD-6m-IYn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="申请加入">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="AppJoin:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="SWT-Q9-wdk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bxc-mt-pFT" firstAttribute="top" secondItem="9fA-FH-YiJ" secondAttribute="top" id="2ab-Hp-PbQ"/>
+                            <constraint firstItem="MM8-iX-ADS" firstAttribute="centerY" secondItem="COA-iC-5dB" secondAttribute="centerY" id="3g0-09-T1g"/>
+                            <constraint firstAttribute="trailing" secondItem="MM8-iX-ADS" secondAttribute="trailing" constant="10" id="5Bq-PP-wse"/>
                             <constraint firstItem="Tat-Az-7Cn" firstAttribute="leading" secondItem="9fA-FH-YiJ" secondAttribute="leading" constant="10" id="5fz-b7-m7l"/>
                             <constraint firstAttribute="trailing" secondItem="bxc-mt-pFT" secondAttribute="trailing" constant="10" id="BUi-SM-alO"/>
                             <constraint firstItem="COA-iC-5dB" firstAttribute="leading" secondItem="Tat-Az-7Cn" secondAttribute="trailing" constant="10" id="InT-Av-0l5"/>
@@ -77,6 +98,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.94869428870000005" green="0.95688086750000001" blue="0.96092218159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
+                <outlet property="btnJoin" destination="MM8-iX-ADS" id="Hfv-HS-oxd"/>
                 <outlet property="headerImgeView" destination="Tat-Az-7Cn" id="aS2-x7-nFV"/>
                 <outlet property="peopleNumbersLab" destination="bxc-mt-pFT" id="Zm7-pI-hAm"/>
                 <outlet property="titleLab" destination="COA-iC-5dB" id="r42-4m-sze"/>

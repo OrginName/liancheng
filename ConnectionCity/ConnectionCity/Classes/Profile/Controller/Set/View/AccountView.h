@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "UserMo.h"
+@protocol AccountViewDelegate <NSObject>
+@optional
+- (void)selectedItemButton:(UserMo *)user;
+@end
 @interface AccountView : UIView
-
+@property (nonatomic,assign) id<AccountViewDelegate>delegate;
 @end
 
 @interface AccountViewCell : UITableViewCell
-
+@property (nonatomic,strong)UserMo * user;
 @end
 

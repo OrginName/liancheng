@@ -156,6 +156,10 @@
     self.tabBarController.navigationItem.title = @"通讯录";
     [self.searchFriendsBar resignFirstResponder];
     [self sortAndRefreshWithList:[self getAllFriendList]];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:@"MYADDRESSBOOK" object:nil];
+}
+-(void)updateData{
+    [self sortAndRefreshWithList:[self getAllFriendList]];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -454,7 +458,6 @@
         });
     });
 }
-
 /**
  *  添加好友
  *
@@ -464,7 +467,6 @@
     RCDSearchFriendViewController *searchFirendVC = [RCDSearchFriendViewController searchFriendViewController];
     [self.navigationController pushViewController:searchFirendVC animated:YES];
 }
-
 - (UIImage *)GetImageWithColor:(UIColor *)color andHeight:(CGFloat)height {
     CGRect r = CGRectMake(0.0f, 0.0f, 1.0f, height);
     UIGraphicsBeginImageContext(r.size);

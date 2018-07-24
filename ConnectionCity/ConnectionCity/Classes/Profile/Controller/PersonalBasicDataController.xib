@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,6 +15,7 @@
                 <outlet property="addressLab" destination="yay-An-Oqe" id="M2e-CP-Hsf"/>
                 <outlet property="backgroundImage" destination="Wq1-ud-zn5" id="t2V-eL-Hkk"/>
                 <outlet property="beiZhuLab" destination="El1-y1-Nqs" id="Tew-93-J8S"/>
+                <outlet property="btn_BZ" destination="1Iu-RE-5VA" id="cAz-Vm-gQY"/>
                 <outlet property="headImage" destination="U4u-2n-cfY" id="6me-ac-I9x"/>
                 <outlet property="introduceLab" destination="jDz-TA-Qdl" id="5sp-fk-scR"/>
                 <outlet property="layoutMu" destination="45j-WT-FJQ" id="pky-kV-UWm"/>
@@ -24,6 +25,7 @@
                 <outlet property="sendMessageBtn" destination="MZR-dB-xrJ" id="bsI-gb-s2O"/>
                 <outlet property="sexImage" destination="AqQ-PS-Qxf" id="gDD-w1-9u1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view_btn" destination="MKw-0D-E5B" id="p03-S2-8g5"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -140,7 +142,7 @@
                                         <constraint firstAttribute="height" constant="1" id="xan-hf-jIU"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设置备注" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s13-on-hpl">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s13-on-hpl">
                                     <rect key="frame" x="10" y="0.0" width="80" height="49"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="80" id="HpQ-E3-2gw"/>
@@ -150,19 +152,19 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="El1-y1-Nqs">
-                                    <rect key="frame" x="95" y="0.0" width="236" height="49"/>
+                                    <rect key="frame" x="95" y="0.0" width="250" height="49"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arraw-right" translatesAutoresizingMaskIntoConstraints="NO" id="Aam-y7-0Z4">
+                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arraw-right" translatesAutoresizingMaskIntoConstraints="NO" id="Aam-y7-0Z4">
                                     <rect key="frame" x="336" y="17" width="9" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="16" id="DPf-6j-Ug8"/>
                                         <constraint firstAttribute="width" constant="9" id="Vbj-9B-LTR"/>
                                     </constraints>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Iu-RE-5VA">
+                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Iu-RE-5VA">
                                     <rect key="frame" x="0.0" y="0.0" width="355" height="49"/>
                                     <connections>
                                         <action selector="beizhuBtnClick:" destination="-1" eventType="touchUpInside" id="Jdd-Ln-xIJ"/>
@@ -176,7 +178,6 @@
                                 <constraint firstItem="s13-on-hpl" firstAttribute="top" secondItem="SpG-xV-dd2" secondAttribute="top" id="CYV-DY-2Xb"/>
                                 <constraint firstItem="XIl-WX-G9R" firstAttribute="top" secondItem="s13-on-hpl" secondAttribute="bottom" id="JI9-uB-ImL"/>
                                 <constraint firstAttribute="trailing" secondItem="1Iu-RE-5VA" secondAttribute="trailing" id="KhW-w3-xLH"/>
-                                <constraint firstItem="Aam-y7-0Z4" firstAttribute="leading" secondItem="El1-y1-Nqs" secondAttribute="trailing" constant="5" id="Rc4-rc-Gor"/>
                                 <constraint firstItem="Aam-y7-0Z4" firstAttribute="centerY" secondItem="SpG-xV-dd2" secondAttribute="centerY" id="Vlt-Hg-a5Q"/>
                                 <constraint firstItem="1Iu-RE-5VA" firstAttribute="top" secondItem="SpG-xV-dd2" secondAttribute="top" id="ZJ6-NM-o3C"/>
                                 <constraint firstAttribute="bottom" secondItem="XIl-WX-G9R" secondAttribute="bottom" id="bqb-Z1-cxV"/>
@@ -285,6 +286,7 @@
                         <constraint firstItem="SpG-xV-dd2" firstAttribute="leading" secondItem="3vh-qe-Pbd" secondAttribute="leading" id="ZdW-g2-vrd"/>
                         <constraint firstAttribute="height" constant="200" id="Zlm-id-aPl"/>
                         <constraint firstAttribute="trailing" secondItem="SpG-xV-dd2" secondAttribute="trailing" id="e0L-Aq-2QP"/>
+                        <constraint firstItem="El1-y1-Nqs" firstAttribute="trailing" secondItem="eHE-KH-eO9" secondAttribute="trailing" id="glM-sT-8fe"/>
                         <constraint firstItem="GU3-SF-xt3" firstAttribute="leading" secondItem="3vh-qe-Pbd" secondAttribute="leading" id="oDA-NW-iyi"/>
                         <constraint firstAttribute="trailing" secondItem="EJ3-9E-JLs" secondAttribute="trailing" id="ohX-q8-afL"/>
                         <constraint firstItem="dlj-38-YDh" firstAttribute="leading" secondItem="3vh-qe-Pbd" secondAttribute="leading" id="x0x-NW-cC6"/>

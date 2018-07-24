@@ -16,7 +16,9 @@
 #import "RCDChatViewController.h"
 #import "RCDForwardAlertView.h"
 #import "CreatGroupController.h"
-@interface FoundQunController ()<BulidTeamSectionHeadDelegate>
+#import "privateUserInfoModel.h"
+#import "CircleNet.h"
+@interface FoundQunController ()<BulidTeamSectionHeadDelegate,BulidTeamCellDelegate>
 {
     BOOL _isOpen[10000]; //== @[NO, NO, NO];
 }
@@ -52,11 +54,20 @@
     NSArray *arr = _data_Arr[indexPath.section][KString(@"%ld", indexPath.section+1)];
     groupMo * mo = arr.count!=0?arr[indexPath.row]:[groupMo new];
     cell.titleLab.text = mo.name;
+    if (indexPath.section==0) {
+        cell.btnJoin.hidden = NO;
+        cell.peopleNumbersLab.hidden = YES;
+    }else{
+        cell.btnJoin.hidden = YES;
+        cell.peopleNumbersLab.hidden = NO;
+    }
     if ([mo.userGroupFriends isKindOfClass:[NSArray class]]) {
         cell.peopleNumbersLab.text = KString(@"%lu", (unsigned long)mo.userGroupFriends.count);
     }else
         cell.peopleNumbersLab.text = @"0";
     [cell.headerImgeView sd_setImageWithURL:[NSURL URLWithString:mo.logo] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    cell.btnJoin.tag = indexPath.row;
+    cell.delegate = self;
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -106,6 +117,25 @@
     _isOpen[btn.tagId] = !_isOpen[btn.tagId];
     //刷新表 重新加载表中的数据
     [_tableView reloadData];
+}
+#pragma mark ----BulidTeamCellDelegate----
+- (void)joinIndex:(UIButton *)index{
+    NSArray * arr = _data_Arr[0][@"1"];
+    groupMo * mo = arr.count!=0?arr[index.tag]:[groupMo new];
+    NSDictionary * dic = @{
+                           @"createTime": mo.createTime,
+                           @"groupId": @([mo.ID integerValue]),
+                           @"userId": @([[[YSAccountTool userInfo] modelId] integerValue])
+                           };
+    [CircleNet requstJoinQun:dic withFlag:1 withSuc:^(NSDictionary *successDicValue) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            index.userInteractionEnabled = NO;
+            [index setBackgroundColor:[UIColor lightGrayColor]];
+        });
+        [YTAlertUtil showTempInfo:@"申请已发送,请耐心等待"];
+    } withFailBlock:^(NSError *failValue) {
+        
+    }];
 }
 #pragma mark - response method
 //创建团队

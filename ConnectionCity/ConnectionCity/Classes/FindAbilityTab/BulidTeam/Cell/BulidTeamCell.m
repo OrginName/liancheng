@@ -14,14 +14,10 @@
     [super awakeFromNib];
     self.headerImgeView.layer.cornerRadius = 35.0/2.0;
     self.headerImgeView.clipsToBounds = YES;
-    
-    // Initialization code
 }
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (IBAction)AppJoin:(UIButton *)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(joinIndex:)]) {
+        [self.delegate joinIndex:sender];
+    }
 }
-
 @end

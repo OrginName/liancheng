@@ -82,22 +82,29 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 }
 -(void)joinBlacklist{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
     //黑名单
         hud.labelText = @"正在加入黑名单";
-        [[RCIMClient sharedRCIMClient] addToBlacklist:self.userId
-                                              success:^{
-            dispatch_async(dispatch_get_main_queue(), ^{
-                        [hud hide:YES];
+    WeakSelf
+    [[RCIMClient sharedRCIMClient] addToBlacklist:self.userId
+                                          success:^{
+                                              [YSNetworkTool POST:v1MyBlackCreate params:@{@"blackUserId":self.userId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                      [hud hide:YES];
+                                                      [YTAlertUtil showTempInfo:@"已移除到黑名单"];
+                                                      weakSelf.userInfo1.isFriend = @"0";
+                                                      [[NSNotificationCenter defaultCenter] postNotificationName:@"MYADDRESSBOOK" object:nil];
                                                   });
-                                               
-                                              }
-                        error:^(RCErrorCode status) {
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                    [hud hide:YES];
-                    [YTAlertUtil showTempInfo:@"加入失败"];
-                            });
-                                                }];
+                                              } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                                  [hud hide:YES];
+                                              }];
+                                          }
+                                            error:^(RCErrorCode status) {
+                                                dispatch_async(dispatch_get_main_queue(), ^{
+                                                    [hud hide:YES];
+                                                    [YTAlertUtil showTempInfo:@"加入失败"];
+                                                });
+                                            }];
+    
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -252,10 +259,13 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                            @"remark":str
                            };
     [YSNetworkTool POST:@"/v1/my/update-remark" params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            RCDBaseSettingTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+            cell.rightLabel.text = str;
+            [YTAlertUtil showTempInfo:@"修改成功"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"MYADDRESSBOOK" object:nil];
+        });
         
-         RCDBaseSettingTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-        cell.rightLabel.text = str;
-        [YTAlertUtil showTempInfo:@"修改成功"];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

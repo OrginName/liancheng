@@ -9,8 +9,14 @@
 #import "AccountView.h"
 #import "UIView+Geometry.h"
 #import <RongIMLib/RongIMLib.h>
+#import "PersonalBasicDataController.h"
+#import "MessageMo.h"
 @interface AccountView()<UITableViewDelegate,UITableViewDataSource>
+{
+    int _page;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
+@property (nonatomic,strong) NSMutableArray * arrBlackList;
 
 @end
 @implementation AccountView
@@ -18,45 +24,105 @@
     [super awakeFromNib];
     self.tab_Bottom.delegate = self;
     self.tab_Bottom.dataSource = self;
+    self.arrBlackList = [NSMutableArray array];
+    _page = 1;
+    self.tab_Bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        _page = 1;
+        [self loadBlackList];
+    }];
+    self.tab_Bottom.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [self loadBlackList];
+    }];
+    [self.tab_Bottom.mj_header beginRefreshing];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.arrBlackList.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     AccountViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
         cell = [[AccountViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+    cell.user = self.arrBlackList[indexPath.row];
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    UserMo * user = self.arrBlackList[indexPath.row];
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(selectedItemButton:)]) {
+        [self.delegate selectedItemButton:user];
+    }
+}
+#pragma mark ---加载黑名单数据-----
+-(void)loadBlackList{
+    NSDictionary * dic = @{
+                           @"pageNumber": @(_page),
+                           @"pageSize": @30
+                           };
+    WeakSelf
+    [YSNetworkTool POST:v1MyBlackPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (_page==1) {
+            [weakSelf.arrBlackList removeAllObjects];
+        }
+        _page++;
+        for (NSDictionary * dic1 in responseObject[@"data"][@"content"]) {
+            UserMo * user = [UserMo mj_objectWithKeyValues:dic1[@"user"]];
+            [weakSelf.arrBlackList addObject:user];
+        }
+        [weakSelf.tab_Bottom reloadData];
+        [weakSelf endRefresh];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [weakSelf endRefresh];
+    }];
+}
+-(void)endRefresh{
+    [self.tab_Bottom.mj_header endRefreshing];
+    [self.tab_Bottom.mj_footer endRefreshing];
 }
 //消息记录清理
 - (IBAction)btnClick:(UIButton *)sender {
 //    1 清空消息列表  2 清空所有聊天记录  3 清空缓存数据
     if (sender.tag==1) {
-        BOOL a = [[RCIMClient sharedRCIMClient] clearConversations:@[@1,@3,@6]];
-        if (a) {
-            [YTAlertUtil showTempInfo:@"已清理"];
-        }
+        [YTAlertUtil alertDualWithTitle:@"连程" message:@"是否要清空所有的会话列表" style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
+            
+        } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {
+             [YTAlertUtil showHUDWithTitle:@"正在清除..."];
+            BOOL a = [[RCIMClient sharedRCIMClient] clearConversations:@[@1,@3,@6]];
+            if (a) {
+                [YTAlertUtil showTempInfo:@"已清理"];
+                [YTAlertUtil hideHUD];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateNum" object:nil];
+            }else
+                [YTAlertUtil hideHUD];
+        } completion:nil];
     }else if (sender.tag==2){
-        NSString * str = [KUserDefults objectForKey:@"MESSAGEID"];
-        NSMutableArray * arr = [NSMutableArray array];
-        for (NSString * str1 in [str componentsSeparatedByString:@","]) {
-            if (str1.length!=0) {
-                [arr addObject:str1];
+        [YTAlertUtil alertDualWithTitle:@"连程" message:@"是否要清空所有的聊天记录" style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
+        } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {
+             [YTAlertUtil showHUDWithTitle:@"正在清除..."];
+            NSMutableArray * arr1 = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"MESSAGE"]];
+            __block int i=0;
+            for (MessageMo * mo in arr1) {
+                BOOL a = [[RCIMClient sharedRCIMClient] clearMessages:mo.Type targetId:mo.ID];
+                if (a) {
+                    i++;
+                    if (i==arr1.count) {
+                        [YTAlertUtil hideHUD];
+                        [YTAlertUtil showTempInfo:@"清除成功"];
+                        [KUserDefults removeObjectForKey:@"MESSAGE"];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateNum" object:nil];
+                    }
+                }else{
+                    [YTAlertUtil hideHUD];
+                }
             }
-        }
-        BOOL a = [[RCIMClient sharedRCIMClient] deleteMessages:[arr copy]];
-        if (a) {
-            [KUserDefults removeObjectForKey:@"MESSAGEID"];
-            [KUserDefults synchronize];
-            [YTAlertUtil showTempInfo:@"已清理"];
-        }
+        } completion:nil];
     }else{
+        [YTAlertUtil showHUDWithTitle:@"正在清除..."];
         [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
             [YTAlertUtil showTempInfo:@"已清除"];
+            [YTAlertUtil hideHUD];
         }];
     }
 }
@@ -76,6 +142,12 @@
         [self addSubview:self.view_Bottom];
     }
     return self;
+}
+-(void)setUser:(UserMo *)user{
+    _user = user;
+    [self.image_head sd_setImageWithURL:[NSURL URLWithString:user.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
+    self.lab_title.text = user.nickName?user.nickName:user.ID;
+    
 }
 -(UIImageView *)image_head{
     if (!_image_head) {

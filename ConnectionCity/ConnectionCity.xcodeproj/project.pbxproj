@@ -302,6 +302,11 @@
 		8DD48CE920A8367100D6D1E6 /* GuardEduController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DD48CE720A8367100D6D1E6 /* GuardEduController.xib */; };
 		8DD48CEE20A8380D00D6D1E6 /* EditAllController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CEC20A8380D00D6D1E6 /* EditAllController.m */; };
 		8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DD48CED20A8380D00D6D1E6 /* EditAllController.xib */; };
+		8DE161A92106FA5D00CC7558 /* MessageMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE161A82106FA5D00CC7558 /* MessageMo.m */; };
+		8DE161AE21072A3B00CC7558 /* PaymentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE161AA21072A3A00CC7558 /* PaymentModel.m */; };
+		8DE161AF21072A3B00CC7558 /* TransactionRecordMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE161AD21072A3B00CC7558 /* TransactionRecordMo.m */; };
+		8DE161B221072B0000CC7558 /* ZoomImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE161B021072AFF00CC7558 /* ZoomImage.m */; };
+		8DE161B621072B9200CC7558 /* QFDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE161B521072B9100CC7558 /* QFDatePickerView.m */; };
 		8DE465BC20EDECC2009730F7 /* RCDContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE465BA20EDECC1009730F7 /* RCDContactViewController.m */; };
 		8DE465BF20EDECF2009730F7 /* RCDTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE465BE20EDECF1009730F7 /* RCDTableView.m */; };
 		8DE465C520EDED57009730F7 /* RCDAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE465C420EDED57009730F7 /* RCDAddressBookViewController.m */; };
@@ -1126,6 +1131,16 @@
 		8DD48CEB20A8380D00D6D1E6 /* EditAllController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditAllController.h; sourceTree = "<group>"; };
 		8DD48CEC20A8380D00D6D1E6 /* EditAllController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditAllController.m; sourceTree = "<group>"; };
 		8DD48CED20A8380D00D6D1E6 /* EditAllController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditAllController.xib; sourceTree = "<group>"; };
+		8DE161A72106FA5D00CC7558 /* MessageMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageMo.h; sourceTree = "<group>"; };
+		8DE161A82106FA5D00CC7558 /* MessageMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageMo.m; sourceTree = "<group>"; };
+		8DE161AA21072A3A00CC7558 /* PaymentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentModel.m; sourceTree = "<group>"; };
+		8DE161AB21072A3A00CC7558 /* TransactionRecordMo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransactionRecordMo.h; sourceTree = "<group>"; };
+		8DE161AC21072A3A00CC7558 /* PaymentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentModel.h; sourceTree = "<group>"; };
+		8DE161AD21072A3B00CC7558 /* TransactionRecordMo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransactionRecordMo.m; sourceTree = "<group>"; };
+		8DE161B021072AFF00CC7558 /* ZoomImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomImage.m; sourceTree = "<group>"; };
+		8DE161B121072B0000CC7558 /* ZoomImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomImage.h; sourceTree = "<group>"; };
+		8DE161B421072B9100CC7558 /* QFDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFDatePickerView.h; sourceTree = "<group>"; };
+		8DE161B521072B9100CC7558 /* QFDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFDatePickerView.m; sourceTree = "<group>"; };
 		8DE465BA20EDECC1009730F7 /* RCDContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDContactViewController.m; sourceTree = "<group>"; };
 		8DE465BB20EDECC1009730F7 /* RCDContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDContactViewController.h; sourceTree = "<group>"; };
 		8DE465BD20EDECF1009730F7 /* RCDTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDTableView.h; sourceTree = "<group>"; };
@@ -3114,6 +3129,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		8DE161B321072B9100CC7558 /* QFDatePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				8DE161B421072B9100CC7558 /* QFDatePickerView.h */,
+				8DE161B521072B9100CC7558 /* QFDatePickerView.m */,
+			);
+			path = QFDatePickerView;
+			sourceTree = "<group>";
+		};
 		8DE465DE20EDF0FF009730F7 /* Emotion */ = {
 			isa = PBXGroup;
 			children = (
@@ -3466,6 +3490,7 @@
 		CE0BA5BE209D5E9B004C3C33 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8DE161B321072B9100CC7558 /* QFDatePickerView */,
 				8D24A22820A1B64400F0740D /* map */,
 				8D24A22F20A1CB6000F0740D /* RefineThing */,
 				722D252A20AA76D400AB3863 /* CitySelect */,
@@ -3475,6 +3500,8 @@
 				8DEA451720C12BF5001529F1 /* CustomPlayer */,
 				723B9F1020B4195A00AD919B /* PhotoSelect */,
 				727418BA20B17536001D6BE1 /* CusTabBar */,
+				8DE161B121072B0000CC7558 /* ZoomImage.h */,
+				8DE161B021072AFF00CC7558 /* ZoomImage.m */,
 				72BAB43720B047F500496D29 /* YSButton.h */,
 				72BAB43820B047F500496D29 /* YSButton.m */,
 				CE14BD6D20F3794000F85C49 /* YTThirdPartyPay.h */,
@@ -3594,6 +3621,8 @@
 				721DAE0E20F272BA006F141F /* FoundQunController.h */,
 				721DAE0F20F272BA006F141F /* FoundQunController.m */,
 				721DAE1020F272BA006F141F /* FoundQunController.xib */,
+				8DE161A72106FA5D00CC7558 /* MessageMo.h */,
+				8DE161A82106FA5D00CC7558 /* MessageMo.m */,
 			);
 			path = AddressBook;
 			sourceTree = "<group>";
@@ -4361,6 +4390,10 @@
 			children = (
 				CEF041CC20EA6EFD00C00314 /* AccountPageMo.h */,
 				CEF041CD20EA6EFD00C00314 /* AccountPageMo.m */,
+				8DE161AC21072A3A00CC7558 /* PaymentModel.h */,
+				8DE161AA21072A3A00CC7558 /* PaymentModel.m */,
+				8DE161AB21072A3A00CC7558 /* TransactionRecordMo.h */,
+				8DE161AD21072A3B00CC7558 /* TransactionRecordMo.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -4929,6 +4962,7 @@
 				8D75934F20CA84CA0059C9F6 /* AboutOurController.m in Sources */,
 				729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */,
 				8DD48CD720A81B9100D6D1E6 /* GuardCollController.m in Sources */,
+				8DE161A92106FA5D00CC7558 /* MessageMo.m in Sources */,
 				727418CB20B17F3D001D6BE1 /* ChangeHeadView.m in Sources */,
 				720263F820B5015500382B2F /* TZLocationManager.m in Sources */,
 				720263F420B5015500382B2F /* TZImageCropManager.m in Sources */,
@@ -4994,6 +5028,7 @@
 				72EC1B5F20B8341900ACC20B /* ShowCardTab.m in Sources */,
 				72EC1B6B20B8475100ACC20B /* ShowtreaureCell.m in Sources */,
 				8DE4660F20EDF31C009730F7 /* RCDGroupSettingsTableViewController.m in Sources */,
+				8DE161B621072B9200CC7558 /* QFDatePickerView.m in Sources */,
 				CEBEDD9020B17ED1000F9EE4 /* FootprintCell.m in Sources */,
 				8DE4662A20EDF557009730F7 /* RCDReceiptDetailsTableViewController.m in Sources */,
 				723F4FB320BEEA8D00AF8268 /* TrvalTripCell.m in Sources */,
@@ -5030,6 +5065,7 @@
 				CE0BA636209D68A3004C3C33 /* YSLoginController.m in Sources */,
 				CEE68C4320ECF50A00233AE3 /* ServiceMo.m in Sources */,
 				72626F3220ECF66E001B807D /* RCDSettingUserDefaults.m in Sources */,
+				8DE161AF21072A3B00CC7558 /* TransactionRecordMo.m in Sources */,
 				8DD48CCE20A811EA00D6D1E6 /* TADotView.m in Sources */,
 				8DE465EF20EDF226009730F7 /* RCDDiscussGroupSettingViewController.m in Sources */,
 				CEBEDD8D20B17ED1000F9EE4 /* FootSectionHeadV.m in Sources */,
@@ -5097,6 +5133,7 @@
 				8DEA450420C10BB7001529F1 /* FindMySelfCell.m in Sources */,
 				72EC1BB320BC386D00ACC20B /* SendServiceController.m in Sources */,
 				8DFA326120EDB97B0086423A /* RCWKRequestHandler.m in Sources */,
+				8DE161B221072B0000CC7558 /* ZoomImage.m in Sources */,
 				7274188620B1474B001D6BE1 /* ConnectionCell.m in Sources */,
 				8D24A22E20A1B9BA00F0740D /* CustomCalloutView.m in Sources */,
 				72EC1BA620BC349600ACC20B /* ServiceStationController.m in Sources */,
@@ -5136,6 +5173,7 @@
 				7274190120B3F60D001D6BE1 /* SendSwapController.m in Sources */,
 				8D22C36020C7D18E004DC8F4 /* PresentManageViewController.m in Sources */,
 				CE0BA5E0209D5E9B004C3C33 /* DDFileReader.m in Sources */,
+				8DE161AE21072A3B00CC7558 /* PaymentModel.m in Sources */,
 				CEE5250F20F771D400DD6179 /* MYScanView.m in Sources */,
 				72EC1BAB20BC34AA00ACC20B /* TravalController.m in Sources */,
 				8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */,

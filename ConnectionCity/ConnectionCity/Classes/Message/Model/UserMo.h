@@ -20,6 +20,7 @@ proStr(cityCode);
 proStr(cityName);
 proStr(distance);
 proStr(educationId);
+proStr(friendRemark);
 proStr(educationName);
 proStr(gender);
 proStr(sign);
