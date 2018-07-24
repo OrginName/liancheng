@@ -53,4 +53,13 @@ typedef void (^FailErrBlock) (NSError * failValue);
  @param failBlock 失败回调
  */
 +(void)requstJoinQun:(NSDictionary *) param withFlag:(int)flag withSuc:(SuccessDicBlock)sucBlock withFailBlock:(FailErrBlock)failBlock;
+
+
+/**
+ 公告接口
+
+ @param param 字典
+ @param sucBlok 成功返回
+ */
++(void)requstNotice:(NSDictionary *)param withSuc:(SuccessDicBlock)sucBlok;
 @end

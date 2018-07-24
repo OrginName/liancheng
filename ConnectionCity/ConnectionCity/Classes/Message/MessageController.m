@@ -23,6 +23,7 @@
 #import "SendServiceController.h"
 #import "ServiceHomeNet.h"
 #import "ShowResumeController.h"
+#import "CircleNet.h"
 @interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate>
 {
     BOOL flag;
@@ -268,8 +269,11 @@
     [self initData];
 }
 -(void)initData{
+    WeakSelf
+    [CircleNet requstNotice:@{@"pageNumber": @1,@"pageSize":@20} withSuc:^(NSDictionary *successDicValue) {
+        weakSelf.lab_Notice.text = successDicValue[@"content"];
+    }];
     if ([KUserDefults objectForKey:KAllDic]!=nil) {
-        //        NSString * str = [KUserDefults objectForKey:kUserCityID];
         return;
     }
     [YSNetworkTool POST:dictionaryDictionaryAll params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
