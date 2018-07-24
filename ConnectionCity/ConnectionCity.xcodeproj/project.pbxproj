@@ -29,6 +29,8 @@
 		7210410C210243D300B575BB /* XMRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72104106210243D200B575BB /* XMRefreshView.m */; };
 		7210410D210243D300B575BB /* XMWaves.m in Sources */ = {isa = PBXBuildFile; fileRef = 72104108210243D200B575BB /* XMWaves.m */; };
 		721041102102477700B575BB /* viewPaly.m in Sources */ = {isa = PBXBuildFile; fileRef = 7210410F2102477700B575BB /* viewPaly.m */; };
+		72104119210776A200B575BB /* NoticeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72104117210776A100B575BB /* NoticeController.m */; };
+		7210411A210776A200B575BB /* NoticeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72104118210776A100B575BB /* NoticeController.xib */; };
 		721DAE0120F20EBC006F141F /* FriendListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721DADFF20F20EBC006F141F /* FriendListController.m */; };
 		721DAE0220F20EBC006F141F /* FriendListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 721DAE0020F20EBC006F141F /* FriendListController.xib */; };
 		721DAE0520F2421A006F141F /* SortCollProController.m in Sources */ = {isa = PBXBuildFile; fileRef = 721DAE0420F2421A006F141F /* SortCollProController.m */; };
@@ -670,6 +672,9 @@
 		72104108210243D200B575BB /* XMWaves.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMWaves.m; sourceTree = "<group>"; };
 		7210410E2102477600B575BB /* viewPaly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = viewPaly.h; sourceTree = "<group>"; };
 		7210410F2102477700B575BB /* viewPaly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = viewPaly.m; sourceTree = "<group>"; };
+		72104116210776A100B575BB /* NoticeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeController.h; sourceTree = "<group>"; };
+		72104117210776A100B575BB /* NoticeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeController.m; sourceTree = "<group>"; };
+		72104118210776A100B575BB /* NoticeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeController.xib; sourceTree = "<group>"; };
 		721DADFE20F20EBC006F141F /* FriendListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendListController.h; sourceTree = "<group>"; };
 		721DADFF20F20EBC006F141F /* FriendListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendListController.m; sourceTree = "<group>"; };
 		721DAE0020F20EBC006F141F /* FriendListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendListController.xib; sourceTree = "<group>"; };
@@ -3608,6 +3613,9 @@
 				CE0BA604209D60C3004C3C33 /* MessageController.h */,
 				CE0BA605209D60C3004C3C33 /* MessageController.m */,
 				CE0BA606209D60C3004C3C33 /* MessageController.xib */,
+				72104116210776A100B575BB /* NoticeController.h */,
+				72104117210776A100B575BB /* NoticeController.m */,
+				72104118210776A100B575BB /* NoticeController.xib */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -4576,6 +4584,7 @@
 				8D114CC120CA236900637D34 /* AccountView.xib in Resources */,
 				CEC4A55B20C407500026EE19 /* MemberCenterController.xib in Resources */,
 				CEC4A53E20C3D6FC0026EE19 /* TeamCollectionCell.xib in Resources */,
+				7210411A210776A200B575BB /* NoticeController.xib in Resources */,
 				CEC4A54C20C3FC180026EE19 /* ProfileCell.xib in Resources */,
 				CE5C280020B8FE5A006A8332 /* BiddInfoHeadView.xib in Resources */,
 				8DD48CE920A8367100D6D1E6 /* GuardEduController.xib in Resources */,
@@ -5130,6 +5139,7 @@
 				8DC17A7D20C0E430005D9EE0 /* UIView+Geometry.m in Sources */,
 				CEC4A54120C3D6FC0026EE19 /* TeamNameCell.m in Sources */,
 				8D7FF6B020D3A8AB0075B2D5 /* ClassAttrMo.m in Sources */,
+				72104119210776A200B575BB /* NoticeController.m in Sources */,
 				8DEA450420C10BB7001529F1 /* FindMySelfCell.m in Sources */,
 				72EC1BB320BC386D00ACC20B /* SendServiceController.m in Sources */,
 				8DFA326120EDB97B0086423A /* RCWKRequestHandler.m in Sources */,

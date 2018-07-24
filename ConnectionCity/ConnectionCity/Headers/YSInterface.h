@@ -28,6 +28,11 @@ static NSString * const v1FriendCirclePage = @"/v1/friend-circle/page";
 static NSString * const v1FriendCircleMyPage = @"/v1/friend-circle/my/page";
 //发现 -朋友圈我的
 static NSString * const v1FriendCircleUpdate = @"/v1/friend-circle/update";
+//首页 - 右上角消息
+static NSString * const v1CommonMessagePage = @"/v1/common/message/page";
+//首页 - 通知公告
+static NSString * const v1CommonNoticePage = @"/v1/common/notice/page";
+
 
 #pragma mark ----我的-------
 //加入黑名单

@@ -123,7 +123,7 @@ MBProgressHUD *hud;
                            };
     [YSNetworkTool POST:v1ApplicationPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"data"][@"content"] count]==0) {
-            [YTAlertUtil showTempInfo:@"暂无数据"];
+//            [YTAlertUtil showTempInfo:@"暂无数据"];
             [self endFresh];
             return;
         }
@@ -208,7 +208,7 @@ MBProgressHUD *hud;
                                                        
                                                    } error:^(RCErrorCode status) {
                                                        
-                                                   }];
+                                                   }]; 
                                                }
                                            } error:^(RCErrorCode status) {
                                                
