@@ -10,11 +10,11 @@
 #import "CustomButton.h"
 #import "PresentCell.h"
 #import "AllDicMo.h"
-#import "LCDateMoncePicker.h"
+#import "QFDatePickerView.h"
 #import "TransactionRecordMo.h"
 #import "PaymentModel.h"
 
-@interface TransactionRecordController ()<UITableViewDelegate,UITableViewDataSource,LCDateMoncePickerDelegate>
+@interface TransactionRecordController ()<UITableViewDelegate,UITableViewDataSource>
 {
     CustomButton * _tmpBtn;
 }
@@ -25,7 +25,6 @@
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, assign) NSInteger tagFlag;
-@property (nonatomic, strong) LCDateMoncePicker *myDatePick;
 
 @end
 
@@ -54,9 +53,6 @@
     self.btn_All.selected = YES;
     _tmpBtn = self.btn_All;
     self.dataArr = [[NSMutableArray alloc]init];
-    self.myDatePick = [[LCDateMoncePicker alloc] initWithFrame:kScreen];
-    self.myDatePick.delegate  = self;
-    [self.view addSubview:self.myDatePick];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -89,7 +85,13 @@
     [YSRefreshTool beginRefreshingWithView:self.tab_Bottom];
 }
 - (IBAction)selectedMonceBtnClick:(id)sender {
-    [self.myDatePick animateShow];
+    QFDatePickerView *datePickerView = [[QFDatePickerView alloc]initDatePackerWithResponse:^(NSString *str) {
+        NSString *string = str;
+        NSLog(@"str = %@",string);
+        [_selectedMonceBtn setTitle:str forState:UIControlStateNormal];
+        [YSRefreshTool beginRefreshingWithView:self.tab_Bottom];
+    }];
+    [datePickerView animateShow];
 }
 #pragma mark - 接口请求
 - (void)addHeaderRefresh {
@@ -148,11 +150,6 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [YSRefreshTool endRefreshingWithView:self.tab_Bottom];
     }];
-}
-#pragma mark - LCDateMoncePickerDelegate
-- (void)lcDatePickerViewWithPickerView:(LCDateMoncePicker *)picker str:(NSString *)str {
-    [_selectedMonceBtn setTitle:str forState:UIControlStateNormal];
-    [YSRefreshTool beginRefreshingWithView:self.tab_Bottom];
 }
 
 @end
