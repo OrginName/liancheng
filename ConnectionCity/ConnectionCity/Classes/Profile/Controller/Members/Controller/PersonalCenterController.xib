@@ -17,6 +17,7 @@
                 <outlet property="functionBgView" destination="Ue3-RT-Z9P" id="ec8-dS-odz"/>
                 <outlet property="headImage" destination="p5y-ki-SHH" id="IDr-5Z-Iol"/>
                 <outlet property="nickName" destination="4J5-hr-J2O" id="r4X-lT-TGb"/>
+                <outlet property="svipImgV" destination="SRp-7j-n92" id="jKc-fk-Sod"/>
                 <outlet property="svipTimeLab" destination="Odk-LH-an2" id="7jP-q1-ckB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yearBgView" destination="4RS-0Y-s6H" id="9yf-Oy-Qsv"/>
@@ -58,7 +59,7 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="svip" translatesAutoresizingMaskIntoConstraints="NO" id="SRp-7j-n92">
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="svip" translatesAutoresizingMaskIntoConstraints="NO" id="SRp-7j-n92">
                             <rect key="frame" x="169" y="110" width="38" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="38" id="HSp-hv-b4X"/>

@@ -18,7 +18,7 @@
 #import "MyQRController.h"
 #import "AgreementController.h"
 #import "TakePhoto.h"
-//#import "ZoomImage.h"
+#import "ZoomImage.h"
 #import "QiniuUploader.h"
 
 @interface ProfileController ()<ProfileHeadViewDelegate>
@@ -152,7 +152,7 @@
     [self.navigationController pushViewController:xfVC animated:YES];
 }
 - (void)profileHeadViewHeadImgTap:(ProfileHeadView *)view {
-//    [ZoomImage showImage:_tableHeadV.headImage];
+    [ZoomImage showImage:_tableHeadV.headImage];
 }
 - (void)profileHeadViewHeadImgLongTap:(ProfileHeadView *)view {
     WeakSelf
@@ -182,8 +182,8 @@
         [weakSelf.tableHeadV.headImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
         weakSelf.tableHeadV.nickName.text = userInfoModel.nickName;
         weakSelf.tableHeadV.genderName.text = userInfoModel.genderName;
-        weakSelf.tableHeadV.age.text = [NSString stringWithFormat:@"%@岁",userInfoModel.age];
-        weakSelf.tableHeadV.centerLab.text = [NSString stringWithFormat:@"%@  %@CM  %@KG  %@  %@",userInfoModel.cityName,userInfoModel.height,userInfoModel.weight,userInfoModel.educationName,userInfoModel.marriageName];
+        weakSelf.tableHeadV.age.text = [NSString stringWithFormat:@"%@",userInfoModel.age?[NSString stringWithFormat:@"%@岁",userInfoModel.age]:@""];
+        weakSelf.tableHeadV.centerLab.text = [NSString stringWithFormat:@"%@  %@  %@  %@  %@",userInfoModel.cityName?userInfoModel.cityName:@"",userInfoModel.height?[NSString stringWithFormat:@"%@CM",userInfoModel.height]:@"",userInfoModel.weight?[NSString stringWithFormat:@"%@KG",userInfoModel.weight]:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.marriageName?userInfoModel.marriageName:@""];
     } failure:nil];
 }
 //用户svip详情

@@ -149,7 +149,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtV-5t-k5a">
-                    <rect key="frame" x="10" y="120" width="355" height="150"/>
+                    <rect key="frame" x="10" y="120" width="355" height="100"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8P-8O-fuX">
                             <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
@@ -261,7 +261,7 @@
                                 <constraint firstItem="MA4-Lv-Vaz" firstAttribute="leading" secondItem="NI4-84-UdC" secondAttribute="leading" id="umU-Kq-I3G"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOC-G5-vU0">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOC-G5-vU0">
                             <rect key="frame" x="0.0" y="100" width="355" height="50"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Fd-8x-4es">
@@ -320,7 +320,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="b8P-8O-fuX" firstAttribute="top" secondItem="XtV-5t-k5a" secondAttribute="top" id="8DB-R3-xUT"/>
-                        <constraint firstAttribute="height" constant="150" id="BZS-H1-7xT"/>
+                        <constraint firstAttribute="height" constant="100" id="BZS-H1-7xT"/>
                         <constraint firstAttribute="trailing" secondItem="b8P-8O-fuX" secondAttribute="trailing" id="Cba-c0-8YC"/>
                         <constraint firstItem="NI4-84-UdC" firstAttribute="top" secondItem="b8P-8O-fuX" secondAttribute="bottom" id="HC5-f1-v3m"/>
                         <constraint firstItem="NI4-84-UdC" firstAttribute="leading" secondItem="XtV-5t-k5a" secondAttribute="leading" id="Jwg-BC-pIa"/>

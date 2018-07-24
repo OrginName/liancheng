@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ka" translatesAutoresizingMaskIntoConstraints="NO" id="IGe-JX-Bgn">
-                        <rect key="frame" x="16" y="11" width="30" height="25"/>
+                        <rect key="frame" x="8" y="8" width="30" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="HSe-lU-O1D"/>
                             <constraint firstAttribute="width" constant="30" id="piX-e7-xma"/>
@@ -33,20 +33,20 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="银行卡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9QJ-6Y-WV3">
-                        <rect key="frame" x="56" y="14.5" width="46" height="18"/>
+                        <rect key="frame" x="48" y="11.5" width="46" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.49411764705882355" green="0.49411764705882355" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qP6-x5-TeA">
-                        <rect key="frame" x="56" y="43" width="264" height="1"/>
+                        <rect key="frame" x="48" y="43" width="272" height="1"/>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="vsB-0o-IJQ"/>
                         </constraints>
                     </view>
                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l4z-Qk-odV">
-                        <rect key="frame" x="112" y="0.0" width="178" height="43"/>
+                        <rect key="frame" x="104" y="0.0" width="186" height="43"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
@@ -84,13 +84,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="中国建设银行储蓄卡(12321)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ts4-mc-Dtl">
-                        <rect key="frame" x="56" y="14" width="165" height="16"/>
+                        <rect key="frame" x="48" y="14" width="165" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.4941176471" green="0.4941176471" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRV-Eh-byj">
-                        <rect key="frame" x="56" y="43" width="264" height="1"/>
+                        <rect key="frame" x="48" y="43" width="272" height="1"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="Iud-go-bzg"/>
@@ -125,19 +125,19 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="陪人聊天-来自顾先生" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E81-vn-ceT">
-                        <rect key="frame" x="16" y="11" width="145" height="18"/>
+                        <rect key="frame" x="8" y="8" width="145" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4月28号 19:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4Z-l5-za5">
-                        <rect key="frame" x="16" y="37" width="89" height="16"/>
+                        <rect key="frame" x="8" y="34" width="89" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.4941176471" green="0.4941176471" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Rx-u3-ASi">
-                        <rect key="frame" x="274.5" y="24" width="29.5" height="16"/>
+                        <rect key="frame" x="282.5" y="24" width="29.5" height="16"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                         <color key="textColor" red="0.35294117647058826" green="0.76470588235294112" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -150,11 +150,17 @@
                     <constraint firstItem="E81-vn-ceT" firstAttribute="leading" secondItem="jCo-Ap-Uxp" secondAttribute="leadingMargin" id="Q2k-WM-7lv"/>
                     <constraint firstItem="6Rx-u3-ASi" firstAttribute="centerY" secondItem="jCo-Ap-Uxp" secondAttribute="centerY" id="aLx-cN-koH"/>
                     <constraint firstItem="n4Z-l5-za5" firstAttribute="leading" secondItem="E81-vn-ceT" secondAttribute="leading" id="bwi-5d-19a"/>
+                    <constraint firstItem="bks-Y8-Cbn" firstAttribute="top" secondItem="n4Z-l5-za5" secondAttribute="bottom" constant="14.5" id="gCW-QK-cc0"/>
                     <constraint firstAttribute="trailing" secondItem="bks-Y8-Cbn" secondAttribute="trailing" id="heJ-LY-pu1"/>
                     <constraint firstItem="6Rx-u3-ASi" firstAttribute="trailing" secondItem="jCo-Ap-Uxp" secondAttribute="trailingMargin" id="qoR-fd-f2n"/>
                     <constraint firstItem="n4Z-l5-za5" firstAttribute="top" secondItem="E81-vn-ceT" secondAttribute="bottom" constant="8" id="t2k-YE-V2k"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="paymentMoneyLab" destination="6Rx-u3-ASi" id="pEH-UW-q7t"/>
+                <outlet property="paymentTimeLab" destination="n4Z-l5-za5" id="ZNY-SS-6Nx"/>
+                <outlet property="paymentTitleLab" destination="E81-vn-ceT" id="Ifk-Hx-RhT"/>
+            </connections>
             <point key="canvasLocation" x="25" y="235"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PresentCell3" rowHeight="40" id="NEX-bC-IgI" customClass="PresentCell">
@@ -172,7 +178,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号管理" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ol-gM-Iao">
-                        <rect key="frame" x="16" y="11" width="61.5" height="18"/>
+                        <rect key="frame" x="8" y="11" width="61.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>

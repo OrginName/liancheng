@@ -29,9 +29,15 @@
     [self requestData];
 }
 - (IBAction)btnClick:(UIButton *)sender {
-    
-    
-    
+    if (sender.tag==1&&[_lab_RZ1.text isEqualToString:@"已认证"]) {
+        [YTAlertUtil showTempInfo:@"已认证"];
+        return;
+    }
+    if (sender.tag==2&&[_lab_RZ2.text isEqualToString:@"已认证"]) {
+        [YTAlertUtil showTempInfo:@"已认证"];
+        return;
+    }
+
     NSArray * arr = @[@"CardAuthorController",@"IdentityAuthorController",@"SkillCertificationController"];
     [self.navigationController pushViewController:[super rotateClass:arr[sender.tag-1]] animated:YES];
 }

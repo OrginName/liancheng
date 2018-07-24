@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headImage;
 @property (weak, nonatomic) IBOutlet UILabel *nickName;
 @property (weak, nonatomic) IBOutlet UILabel *svipTimeLab;
+@property (weak, nonatomic) IBOutlet UIImageView *svipImgV;
 
 @end
 
@@ -91,6 +92,7 @@
     [YSNetworkTool POST:v1MembershipUserSvip params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if (![YSTools dx_isNullOrNilWithObject:responseObject[kData]]) {
             if (![responseObject[kData] isKindOfClass:[NSArray class]]) {
+                weakSelf.svipImgV.hidden = NO;
                 weakSelf.svipTimeLab.text = [responseObject[kData] objectForKey:@"endTime"];
             }
         }

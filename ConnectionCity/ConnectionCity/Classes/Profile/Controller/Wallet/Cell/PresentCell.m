@@ -53,4 +53,11 @@
     _model = model;
     _cellNameLab.text = [NSString stringWithFormat:@"%@(%@)",model.accountType,model.accountNumber];
 }
+- (void)setPaymentModel:(PaymentModel *)paymentModel {
+    _paymentModel = paymentModel;
+    _paymentTitleLab.text = paymentModel.descriptionModel;
+    _paymentTimeLab.text = paymentModel.createTime;
+    _paymentMoneyLab.text = paymentModel.amount;
+}
+
 @end
