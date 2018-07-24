@@ -202,7 +202,17 @@ MBProgressHUD *hud;
                                            [YTAlertUtil hideHUD];
                                            [weakSelf.tableView.mj_header beginRefreshing];
                                            weakSelf.block();
-                                           [self.navigationController popViewControllerAnimated:YES];
+                                           [[RCIMClient sharedRCIMClient] getBlacklistStatus:friend.user.ID success:^(int bizStatus) {
+                                               if (bizStatus==0) {
+                                                   [[RCIMClient sharedRCIMClient] removeFromBlacklist:friend.user.ID success:^{
+                                                       
+                                                   } error:^(RCErrorCode status) {
+                                                       
+                                                   }];
+                                               }
+                                           } error:^(RCErrorCode status) {
+                                               
+                                           }]; [self.navigationController popViewControllerAnimated:YES];
                                            [RCDHTTPTOOL getFriendscomplete:^(NSMutableArray *result) {
                                                
                                            }];
