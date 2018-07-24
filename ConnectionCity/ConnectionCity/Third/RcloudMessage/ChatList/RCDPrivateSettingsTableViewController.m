@@ -44,13 +44,14 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     tan.userInfo = self.userInfo1;
     self.tableView.tableHeaderView = tan;
     [self.tableView reloadData];
-    self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"our-more"]
-                                     style:UIBarButtonItemStylePlain
-                                    target:self
-                                    action:@selector(rightBarButtonItemClicked)];
-
     
+    if (![self.userId isEqualToString: [[YSAccountTool userInfo] modelId]]) {
+        self.navigationItem.rightBarButtonItem =
+        [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"our-more"]
+                                         style:UIBarButtonItemStylePlain
+                                        target:self
+                                        action:@selector(rightBarButtonItemClicked)];
+    }
 }
 -(void)rightBarButtonItemClicked{
     privateUserInfoModel* model = [YSAccountTool userInfo];
@@ -67,6 +68,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         
     } defaultTitle:arr defaultHandler:^(UIAlertAction *action) {
         if ([action.title isEqualToString:@"加入黑名单"]) {
+            
             [weakSelf joinBlacklist];
         }else{
             [weakSelf AddFriend];
@@ -88,11 +90,14 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     [[RCIMClient sharedRCIMClient] addToBlacklist:self.userId
                                           success:^{
                                               [YSNetworkTool POST:v1MyBlackCreate params:@{@"blackUserId":self.userId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+                                                 [[NSNotificationCenter defaultCenter] postNotificationName:@"MYADDRESSBOOK" object:nil];
+                                                  [[RCIMClient sharedRCIMClient] removeConversation:1 targetId:weakSelf.userId];
+                                                  [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateNum" object:nil];
                                                   dispatch_async(dispatch_get_main_queue(), ^{
                                                       [hud hide:YES];
                                                       [YTAlertUtil showTempInfo:@"已移除到黑名单"];
-                                                      weakSelf.userInfo1.isFriend = @"0";
-                                                      [[NSNotificationCenter defaultCenter] postNotificationName:@"MYADDRESSBOOK" object:nil];
+                                                  [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+                                                      
                                                   });
                                               } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                                   [hud hide:YES];
@@ -286,7 +291,6 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                 [cell addSubview:loadingView];
             });
             __weak typeof(self) weakSelf = self;
-            
             NSArray *latestMessages = [[RCIMClient sharedRCIMClient] getLatestMessages:ConversationType_PRIVATE targetId:_userId count:1];
             if (latestMessages.count > 0) {
                 RCMessage *message = (RCMessage *)[latestMessages firstObject];
@@ -405,6 +409,12 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        // Fallback on earlier versions
+        self.automaticallyAdjustsScrollViewInsets = YES;
+    }
     [self.navigationController.navigationBar setBackgroundImage:
      [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
 }

@@ -65,11 +65,6 @@
     [self.navigationController.navigationBar setBackgroundImage:
      [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 #pragma mark - setup
 - (void)setUI {
     self.navigationItem.title = @"基础资料";
@@ -86,6 +81,9 @@
             }
         }];
     }else{
+        if ([[self.connectionMo.isBlack description] isEqualToString:@"1"]) {
+            return [YTAlertUtil showTempInfo:@"您已在对方的黑名单中,暂不能聊天"];
+        }
         RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
         chatViewController.conversationType = ConversationType_PRIVATE;
         

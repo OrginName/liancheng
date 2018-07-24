@@ -92,25 +92,25 @@
     }
     return _friendsTabelView;
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:
+     [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    self.edgesForExtendedLayout = UIRectEdgeNone;
 //    self.navigationController.navigationBar.translucent = NO;
-
     [self setUpView];
     // initial data
     self.matchFriendList = [[NSMutableArray alloc] init];
     self.allFriendSectionDic = [[NSDictionary alloc] init];
-
     self.friendsTabelView.tableFooterView = [UIView new];
     self.friendsTabelView.backgroundColor = HEXCOLOR(0xf0f0f6);
     self.friendsTabelView.separatorColor = HEXCOLOR(0xdfdfdf);
-
     self.friendsTabelView.tableHeaderView =
         [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.friendsTabelView.bounds.size.width, 0.01f)];
-
     //设置右侧索引
     self.friendsTabelView.sectionIndexBackgroundColor = [UIColor clearColor];
     self.friendsTabelView.sectionIndexColor = HEXCOLOR(0x555555);

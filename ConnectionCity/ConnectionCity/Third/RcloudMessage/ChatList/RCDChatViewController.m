@@ -564,7 +564,6 @@ NSMutableDictionary *userInputStatus;
         [self gotoNextPage:user];
     }
 }
-
 - (NSArray<UIMenuItem *> *)getLongTouchMessageCellMenuList:(RCMessageModel *)model {
     NSMutableArray<UIMenuItem *> *menuList = [[super getLongTouchMessageCellMenuList:model] mutableCopy];
     /*
@@ -587,7 +586,6 @@ NSMutableDictionary *userInputStatus;
     */
     return menuList;
 }
-
 - (void)didTapCellPortrait:(NSString *)userId {
 //    if (self.conversationType == ConversationType_GROUP || self.conversationType == ConversationType_DISCUSSION) {
 //        if (![KString(@"%@", userId) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {

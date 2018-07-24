@@ -32,14 +32,12 @@
 @end
 
 @implementation ShowResumeController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
 }
 #pragma mark --- 分享按钮点击-----
 -(void)Share{
-//    [YTAlertUtil showTempInfo:@"分享"];
     [YSShareTool share];
 }
 -(void)setUI{
@@ -74,7 +72,6 @@
 -(void)complete{
     
 }
-
 //对话 关注  交换点击
 - (IBAction)callAndChangeClick:(UIButton *)sender {
     if (sender.tag==4&&self.Receive_Type == ENUM_TypeTreasure) {
@@ -93,6 +90,17 @@
         }
     }
     if (sender.tag==3) {
+        if ([self.str isEqualToString:@"TrvalTrip"]){
+            trvalMo * mo = self.data_Count[self.zIndex];
+            if ([[mo.user.isBlack description] isEqualToString:@"1"]) {
+                return [YTAlertUtil showTempInfo:@"您已在对方的黑名单中,暂不能对话"];
+            }
+        }else{
+            ServiceListMo * mo = self.data_Count[self.zIndex];
+            if ([[mo.user1.isBlack description] isEqualToString:@"1"]) {
+                return [YTAlertUtil showTempInfo:@"您已在对方的黑名单中,暂不能对话"];
+            }
+        }
         RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
         chatViewController.conversationType = ConversationType_PRIVATE;
         NSString *title,*ID,*name;

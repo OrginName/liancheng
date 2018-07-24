@@ -14,17 +14,15 @@
 @property (nonatomic,strong)AccountView *add;
 @end
 @implementation AddMyWayController
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+-(void)viewDidLayoutSubviews{
     self.add = [[NSBundle mainBundle] loadNibNamed:@"AccountView" owner:nil options:nil][self.index_receive-1];
-    self.add .frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-64);
+    self.add.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-64);
     [self.view addSubview: self.add];
     self.add.delegate = self;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
-
 #pragma mark -----AccountViewDelegate------
 - (void)selectedItemButton:(UserMo *)user{
     PersonalBasicDataController * person = [PersonalBasicDataController new];
