@@ -232,13 +232,15 @@
         ResumeController * resume = [ResumeController new];
         resume.resume = mo;
         [self.navigationController pushViewController:resume animated:YES];
-
     }else if (index==2){
         OurResumeMo *mo = self.resumedataArr[btn.tag - 10000];
         WeakSelf
-        [YSNetworkTool POST:v1TalentResumeDelete params:@{@"id": mo.modelId} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-            [weakSelf requestMyResumePage];
-        } failure:nil];
+        [YTAlertUtil alertDualWithTitle:@"连程" message:@"是否要删除当前简历" style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
+        } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {
+            [YSNetworkTool POST:v1TalentResumeDelete params:@{@"id": mo.modelId} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+                [weakSelf requestMyResumePage];
+            } failure:nil];
+        } completion:nil];
     }
 }
 #pragma mark - 数据请求

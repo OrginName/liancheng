@@ -135,6 +135,23 @@
     }];
 }
 /**
+ 同意加入群
+ 
+ @param param 字典
+ @param flag 类型判断
+ @param sucBlock 成功回调
+ @param failBlock 失败回调
+ */
++(void)requstAgreeJoinQun:(NSDictionary *) param withFlag:(int)flag withSuc:(SuccessDicBlock)sucBlock withFailBlock:(FailErrBlock)failBlock{
+//    20 qun 30 station 40 team
+    NSString * url = flag==20?v1GroupApplicationAgree:flag==30?v1StationApplicationAgree:v1TeamApplicationAgree;
+    [YSNetworkTool POST:url params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        sucBlock(responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failBlock(error);
+    }];
+}
+/**
  公告接口
  
  @param param 字典

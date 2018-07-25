@@ -30,6 +30,14 @@
 //微信SDK头文件
 #import <WXApi.h>
 #import <AlipaySDK/AlipaySDK.h>
+// 引入JPush功能所需头文件
+#import "JPUSHService.h"
+// iOS10注册APNs所需头文件
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
+#define IsProduction 0
+#define JpushAppKey @"06ead6e422830a9523255984"
 #define QQ_APPID @"1106473725"
 #define QQ_APPKEY @"dTrtNRCsVY79nCwC"
 #define APPID_WEIXIN @"wxb773a629b959a9f9"
@@ -37,7 +45,7 @@
 #define RONGCLOUD_IM_APPKEY @"3argexb63m7xe"// online key
 #define UMENG_APPKEY @"5b4a423c8f4a9d1b3a00047e"
 #define LOG_EXPIRE_TIME -7 * 24 * 60 * 60
-@interface AppDelegate ()<RCIMReceiveMessageDelegate,RCIMConnectionStatusDelegate,RCWKAppInfoProvider,WXApiDelegate>
+@interface AppDelegate ()<RCIMReceiveMessageDelegate,RCIMConnectionStatusDelegate,RCWKAppInfoProvider,WXApiDelegate,JPUSHRegisterDelegate>
 @end
 
 @implementation AppDelegate
@@ -157,6 +165,17 @@
         BaseNavigationController * base = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
         [self.window setRootViewController:base];
     }
+    //Required
+    //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
+    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+    entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+    }
+    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+    [JPUSHService setupWithOption:launchOptions appKey:JpushAppKey
+                          channel:@"App Store"
+                 apsForProduction:IsProduction
+            advertisingIdentifier:nil];
     /**
      * 推送处理1
      */
@@ -264,6 +283,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                        withString:@""];
     
     [[RCIMClient sharedRCIMClient] setDeviceToken:token];
+    /// Required - 注册 DeviceToken
+    [JPUSHService registerDeviceToken:deviceToken];
 }
 /**
  *  网络状态变化。
@@ -321,6 +342,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // http://www.rongcloud.cn/docs/ios_push.html。
     NSLog(@"获取DeviceToken失败！！！");
     NSLog(@"ERROR：%@", error);
+    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 #endif
 }
 //友盟设置
@@ -349,6 +371,39 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     NSLog(@"online config has fininshed and note = %@", note.userInfo);
 }
+
+// iOS 10 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
+    // Required
+    NSDictionary * userInfo = notification.request.content.userInfo;
+    if (@available(iOS 10.0, *)) {
+        if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+            [JPUSHService handleRemoteNotification:userInfo];
+        }
+    } else {
+        // Fallback on earlier versions
+    }
+    if (@available(iOS 10.0, *)) {
+        completionHandler(UNNotificationPresentationOptionAlert);
+    } else {
+        // Fallback on earlier versions
+    } // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+}
+
+// iOS 10 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+    // Required
+    NSDictionary * userInfo = response.notification.request.content.userInfo;
+    if (@available(iOS 10.0, *)) {
+        if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+            [JPUSHService handleRemoteNotification:userInfo];
+        }
+    } else {
+        // Fallback on earlier versions
+    }
+    completionHandler();  // 系统要求执行这个方法
+}
+
 /**
  * 推送处理4
  * userInfo内容请参考官网文档
@@ -370,8 +425,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     } else {
         NSLog(@"该远程推送不包含来自融云的推送服务");
     }
+     [JPUSHService handleRemoteNotification:userInfo];
 }
-
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    
+    // Required, iOS 7 Support
+    [JPUSHService handleRemoteNotification:userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
+}
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     /**
      * 统计推送打开率3

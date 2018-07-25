@@ -26,6 +26,9 @@ PODS:
   - FMDB/standard (2.7.2)
   - HappyDNS (0.3.14)
   - IQKeyboardManager (6.0.2)
+  - JCore (1.1.9)
+  - JPush (3.0.6):
+    - JCore (~> 1.1.1)
   - Masonry (1.1.0)
   - MBProgressHUD (0.9.2)
   - MJExtension (3.0.13)
@@ -61,6 +64,7 @@ DEPENDENCIES:
   - AMapSearch
   - FMDB
   - IQKeyboardManager
+  - JPush (= 3.0.6)
   - Masonry
   - MBProgressHUD (~> 0.9.2)
   - MJExtension
@@ -94,6 +98,8 @@ SPEC CHECKSUMS:
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   HappyDNS: dc6a164ee81979093123c241c6353bcf0218add6
   IQKeyboardManager: c49d59e358aeeffaa0280aa305093c2b194d2607
+  JCore: 27598485098d0db99d2812cba048003457d08cfb
+  JPush: c41be50eb1a574a66aeb68d237f00a4ec6ec3a82
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
@@ -105,6 +111,6 @@ SPEC CHECKSUMS:
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   ShareSDK3: 83f47b9723e16756d426bb8ebf63497f2412bdef
 
-PODFILE CHECKSUM: 44317e27d0446dc5a45a66b7258056898f721528
+PODFILE CHECKSUM: e7a825f9f8a581f0784c4d3d6acb22c2a55fdd85
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.1.1

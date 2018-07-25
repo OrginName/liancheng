@@ -11,4 +11,5 @@
 @implementation UserMo
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"ID":@"id"};
-}@end
+}
+@end

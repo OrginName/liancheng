@@ -7,7 +7,11 @@
 //
 
 #import "NoticeController.h"
-@interface NoticeController ()<UITableViewDelegate,UITableViewDataSource>
+#import "NoticeMo.h"
+#import "NoticeCell.h"
+#import "CircleNet.h"
+#import "RCDHttpTool.h"
+@interface NoticeController ()<UITableViewDelegate,UITableViewDataSource,NoticeCellDelegate>
 {
     int _page;
 }
@@ -29,25 +33,50 @@
     }];
     [self.tab_Bottom.mj_header beginRefreshing];
 }
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.arr_Data.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [UITableViewCell new];
+    NoticeCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NoticeCell"];
+    if (!cell) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"NoticeCell" owner:nil options:nil] lastObject];
+    }
+    cell.btn_agree.tag = indexPath.row;
+    cell.delegate = self;
+    cell.mo = self.arr_Data[indexPath.row];
+    return cell;
 }
 -(void)loadData{
-    NSDictionary * dic = @{@"pageNumber": @1,
+    NSDictionary * dic = @{@"pageNumber": @(_page),
                            @"pageSize": @15};
     WeakSelf
     [YSNetworkTool POST:v1CommonMessagePage params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         if (_page==1) {
             [self.arr_Data removeAllObjects];
         }
+        self.arr_Data = [NoticeMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
         _page++;
+        [self.tab_Bottom reloadData];
         [weakSelf endRefrsh];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [weakSelf endRefrsh];
     }];
+}
+- (void)agreeClik:(UIButton *)btn{
+    NoticeMo * notice = self.arr_Data[btn.tag];
+    if ([[notice.type description] isEqualToString:@"10"]) {
+        [RCDHTTPTOOL processInviteFriendRequest:[notice.sendUserId description] complete:^(BOOL a) {
+            
+        }];
+    }else if ([notice.type intValue]>10&&[notice.type intValue]<=40){
+        [CircleNet requstAgreeJoinQun:@{@"groupId":notice.ID} withFlag:[notice.type intValue] withSuc:^(NSDictionary *successDicValue) {
+            
+        } withFailBlock:^(NSError *failValue) {
+            
+        }];
+    }else{
+        [YTAlertUtil showTempInfo:@"其他"];
+    }
 }
 -(void)endRefrsh{
     [self.tab_Bottom.mj_header endRefreshing];

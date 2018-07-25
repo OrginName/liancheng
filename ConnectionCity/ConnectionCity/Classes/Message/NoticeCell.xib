@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoticeCell" rowHeight="55" id="KGk-i7-Jjw" customClass="NoticeCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="54.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="our-center-1" translatesAutoresizingMaskIntoConstraints="NO" id="Orq-cW-iEb">
+                        <rect key="frame" x="16" y="7.5" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="3x3-4x-OXG"/>
+                            <constraint firstAttribute="height" constant="40" id="qBE-9H-SWs"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IeS-Nr-cPY">
+                        <rect key="frame" x="71" y="7" width="39.5" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fp-eL-5Z6">
+                        <rect key="frame" x="71" y="29.5" width="37.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4X2-9f-RLJ">
+                        <rect key="frame" x="230" y="10" width="80" height="35"/>
+                        <color key="backgroundColor" red="0.95272332429999995" green="0.58440268039999999" blue="0.1649968624" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="UyX-ID-OTa"/>
+                            <constraint firstAttribute="height" constant="35" id="vKi-xx-G5T"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <state key="normal" title="同意"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="btnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="nEE-ke-rc4"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcI-Fu-dmC">
+                        <rect key="frame" x="0.0" y="54" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.95284813639999999" green="0.95298856499999995" blue="0.95282894370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="5QQ-KJ-Yyt"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="IeS-Nr-cPY" firstAttribute="top" secondItem="Orq-cW-iEb" secondAttribute="top" id="3l4-V8-oDe"/>
+                    <constraint firstAttribute="bottom" secondItem="EcI-Fu-dmC" secondAttribute="bottom" id="8Rc-Yd-Qzr"/>
+                    <constraint firstItem="0fp-eL-5Z6" firstAttribute="bottom" secondItem="Orq-cW-iEb" secondAttribute="bottom" id="Ctg-2i-vEH"/>
+                    <constraint firstItem="Orq-cW-iEb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Dms-Ke-BIL"/>
+                    <constraint firstItem="Orq-cW-iEb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="I4u-Wt-tcV"/>
+                    <constraint firstAttribute="trailing" secondItem="EcI-Fu-dmC" secondAttribute="trailing" id="Va1-OM-HhN"/>
+                    <constraint firstAttribute="trailing" secondItem="4X2-9f-RLJ" secondAttribute="trailing" constant="10" id="gmT-0w-UAW"/>
+                    <constraint firstItem="IeS-Nr-cPY" firstAttribute="leading" secondItem="Orq-cW-iEb" secondAttribute="trailing" constant="15" id="h5a-5L-mWY"/>
+                    <constraint firstItem="4X2-9f-RLJ" firstAttribute="centerY" secondItem="Orq-cW-iEb" secondAttribute="centerY" id="kmg-oz-i6k"/>
+                    <constraint firstItem="0fp-eL-5Z6" firstAttribute="leading" secondItem="IeS-Nr-cPY" secondAttribute="leading" id="pAt-h2-TLR"/>
+                    <constraint firstItem="EcI-Fu-dmC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zwG-Y8-Td7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btn_agree" destination="4X2-9f-RLJ" id="lXr-Gy-m0l"/>
+                <outlet property="image_head" destination="Orq-cW-iEb" id="qJf-vL-YIO"/>
+                <outlet property="lab_Title" destination="0fp-eL-5Z6" id="DI9-jU-lHW"/>
+                <outlet property="lab_name" destination="IeS-Nr-cPY" id="jcx-db-74d"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="57.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="our-center-1" width="22" height="22"/>
+    </resources>
+</document>
