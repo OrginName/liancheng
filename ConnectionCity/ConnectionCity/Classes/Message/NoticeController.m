@@ -7,31 +7,50 @@
 //
 
 #import "NoticeController.h"
-
-@interface NoticeController ()
-
+@interface NoticeController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    int _page;
+}
+@property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
+@property (nonatomic,strong) NSMutableArray * arr_Data;
 @end
-
 @implementation NoticeController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.arr_Data = [NSMutableArray array];
+    _page = 1;
+    WeakSelf
+    self.tab_Bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        _page=1;
+        [weakSelf loadData];
+    }];
+    self.tab_Bottom.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf loadData];
+    }];
+    [self.tab_Bottom.mj_header beginRefreshing];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return self.arr_Data.count;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [UITableViewCell new];
 }
-*/
-
+-(void)loadData{
+    NSDictionary * dic = @{@"pageNumber": @1,
+                           @"pageSize": @15};
+    WeakSelf
+    [YSNetworkTool POST:v1CommonMessagePage params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (_page==1) {
+            [self.arr_Data removeAllObjects];
+        }
+        _page++;
+        [weakSelf endRefrsh];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [weakSelf endRefrsh];
+    }];
+}
+-(void)endRefrsh{
+    [self.tab_Bottom.mj_header endRefreshing];
+    [self.tab_Bottom.mj_footer endRefreshing];
+}
 @end

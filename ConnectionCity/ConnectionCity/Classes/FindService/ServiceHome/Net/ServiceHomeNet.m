@@ -108,7 +108,7 @@
                 if (arrItem.count==[arr[i][@"childs"] count]) {
                     [dicItem setObject:arrItem forKey:@"subname"];
                     dicItem[@"isMulitable"] = @"1";
-                    dicItem[@"name"] = i==0?@"擅长位置":i==1?@"最高段位":@"";
+                    dicItem[@"name"] = arr[i][@"name"];
                 }
             }
             [dataArr addObject:dicItem];

@@ -258,6 +258,9 @@
 }
 #pragma mark ----SendSelectCellDelegate----
 - (void)selectedItemButton:(NSString *)arr{
+    if ([self.Attr_Arr containsObject:arr]) {
+        [self.Attr_Arr removeObject:arr];
+    }
     [self.Attr_Arr addObject:arr];
 }
 #pragma mark ----SendServiceCellDelegate----

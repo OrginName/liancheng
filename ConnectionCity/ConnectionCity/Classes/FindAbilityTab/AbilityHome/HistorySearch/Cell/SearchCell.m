@@ -19,17 +19,17 @@ static NSString *ID = @"SearchCollectionCell";
 @implementation SearchCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self addSubview:self.collectionView];
     }
     return self;
 }
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self addSubview:self.collectionView];
+    self.collectionView.frame = CGRectMake(0, 0, kScreenWidth-20, self.height);
 }
-
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
-        _collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:[[SearchLayout alloc] init]];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, self.height) collectionViewLayout:[[SearchLayout alloc] init]];
         [_collectionView registerClass:[SearchCollectionCell class] forCellWithReuseIdentifier:ID];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;

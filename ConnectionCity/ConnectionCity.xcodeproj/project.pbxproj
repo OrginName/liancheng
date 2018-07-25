@@ -187,7 +187,6 @@
 		8D09E19D20BFDC16000F7EBD /* ShowTrvalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D09E19B20BFDC16000F7EBD /* ShowTrvalCell.xib */; };
 		8D10B3B121002E8B00C153EF /* CommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D10B3B021002E8B00C153EF /* CommentView.m */; };
 		8D114CBA20CA22BD00637D34 /* AddMyWayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D114CB820CA22BD00637D34 /* AddMyWayController.m */; };
-		8D114CBB20CA22BD00637D34 /* AddMyWayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D114CB920CA22BD00637D34 /* AddMyWayController.xib */; };
 		8D114CBF20CA235200637D34 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D114CBE20CA235200637D34 /* AccountView.m */; };
 		8D114CC120CA236900637D34 /* AccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D114CC020CA236900637D34 /* AccountView.xib */; };
 		8D12931220E5F16D0008BD6F /* EditCircleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D12931020E5F16D0008BD6F /* EditCircleController.m */; };
@@ -942,7 +941,6 @@
 		8D10B3B021002E8B00C153EF /* CommentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentView.m; sourceTree = "<group>"; };
 		8D114CB720CA22BD00637D34 /* AddMyWayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMyWayController.h; sourceTree = "<group>"; };
 		8D114CB820CA22BD00637D34 /* AddMyWayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMyWayController.m; sourceTree = "<group>"; };
-		8D114CB920CA22BD00637D34 /* AddMyWayController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMyWayController.xib; sourceTree = "<group>"; };
 		8D114CBD20CA235200637D34 /* AccountView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountView.h; sourceTree = "<group>"; };
 		8D114CBE20CA235200637D34 /* AccountView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountView.m; sourceTree = "<group>"; };
 		8D114CC020CA236900637D34 /* AccountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountView.xib; sourceTree = "<group>"; };
@@ -2317,7 +2315,6 @@
 				8D8E4ED220C9320200C3D537 /* PrivateController.xib */,
 				8D114CB720CA22BD00637D34 /* AddMyWayController.h */,
 				8D114CB820CA22BD00637D34 /* AddMyWayController.m */,
-				8D114CB920CA22BD00637D34 /* AddMyWayController.xib */,
 				72EBB8DE20C95F8800F670E9 /* AccountSecurityController.h */,
 				72EBB8DF20C95F8800F670E9 /* AccountSecurityController.m */,
 				72EBB8E020C95F8800F670E9 /* AccountSecurityController.xib */,
@@ -4616,7 +4613,6 @@
 				8D75935020CA84CA0059C9F6 /* AboutOurController.xib in Resources */,
 				727418DA20B290AE001D6BE1 /* PlayPoductController.xib in Resources */,
 				CE97DC0820B5B1CA003E46BD /* BidManageController.xib in Resources */,
-				8D114CBB20CA22BD00637D34 /* AddMyWayController.xib in Resources */,
 				723D376820ABDA62003FD4DF /* ShowResumeCell.xib in Resources */,
 				727418CD20B17F4B001D6BE1 /* ChangeHeadView.xib in Resources */,
 				8DF7E3CE20CF994C009A92D7 /* ClassCell.xib in Resources */,

@@ -57,6 +57,10 @@
 //搜索按钮点击
 -(void)SearchClick{
     SearchHistoryController * search = [SearchHistoryController new];
+    WeakSelf
+    search.block = ^(NSString *str) {
+        [weakSelf loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID],@"keyword":str}];
+    };
     [self.navigationController pushViewController:search animated:YES];
 }
 //PopThreeDelegate声明协议方法
@@ -129,7 +133,6 @@
             break;
     }
 }
- 
 -(void)setUI{
     [super setFlag_back:YES];//设置返回按钮
     self.cusMap = [[CustomMap alloc] initWithFrame:CGRectMake(0, 0, self.view_Map.width, self.view_Map.height) ];

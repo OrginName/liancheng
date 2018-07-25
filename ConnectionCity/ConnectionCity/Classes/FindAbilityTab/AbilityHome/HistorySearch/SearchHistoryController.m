@@ -9,29 +9,71 @@
 #import "SearchHistoryController.h"
 #import "JFCityHeaderView.h"
 #import "SearchCell.h"
+#import "ServiceHomeNet.h"
+#import "AbilityNet.h"
 @interface SearchHistoryController() <UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 @property (nonatomic,strong)UITableView * tab_Bottom;
 @property (nonatomic, strong) JFCityHeaderView *headerView;
 @property (nonatomic,strong) UIView * view_Search;
 @property (nonatomic,strong) UITextField * search_text;
-@property (nonatomic,strong) SearchCell * cell;
-
+//@property (nonatomic,strong) SearchCell * cell;
+@property (nonatomic,strong) NSMutableArray * arr_Data;
+@property (nonatomic,strong) NSMutableArray * arr_Data1;
 @end
 @implementation SearchHistoryController
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    self.arr_Data = [NSMutableArray array];
+    if ([[NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:[self.flagStr isEqualToString:@"FIND"]?@"KEYWORDSFIND":@"KEYWORDS"]] count]!=0) {
+        self.arr_Data1  = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:[self.flagStr isEqualToString:@"FIND"]?@"KEYWORDSFIND":@"KEYWORDS"]];
+    }else
+    self.arr_Data1 = [NSMutableArray array];
+    [self loadData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(search:) name:SearchCellDidChangeNotification object:nil];
+}
+-(void)search:(NSNotification *)noti{
+    self.block(noti.userInfo[@"cityName"]);
+    [self.navigationController popViewControllerAnimated:YES];
 }
 //搜索按钮
 -(void)search{
-    [YTAlertUtil showTempInfo:@"我是搜索按钮"];
+    if (![self.arr_Data1 containsObject:self.search_text]&&self.search_text.text.length!=0) {
+        [self.arr_Data1 addObject:self.search_text.text];
+        NSData * hotCityData = [NSKeyedArchiver archivedDataWithRootObject:self.arr_Data1];
+        if ([self.flagStr isEqualToString:@"FIND"]){
+            [KUserDefults setObject:hotCityData forKey:@"KEYWORDSFIND"];
+        }else{
+            [KUserDefults setObject:hotCityData forKey:@"KEYWORDS"];
+        }
+        [KUserDefults synchronize];
+        self.block(self.search_text.text);
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 //搜索框删除按钮
 -(void)deleteSearch{
     self.search_text.text = @"";
 }
 -(void)clearSearchAll:(UIButton *)btn{
-    [YTAlertUtil showTempInfo:@"清空历史按钮"];
+    [self.arr_Data1 removeAllObjects];
+    [KUserDefults removeObjectForKey:@"KEYWORDS"];
+    [KUserDefults synchronize];
+    [self.tab_Bottom reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+}
+-(void)loadData{
+    if ([self.flagStr isEqualToString:@"FIND"]) {
+        [AbilityNet requstAbilityKeyWords:^(NSMutableArray *successArrValue) {
+            self.arr_Data = successArrValue;
+            [self.tab_Bottom reloadData];
+        }];
+    }else{
+        [ServiceHomeNet requstServiceKeywords:^(NSMutableArray *successArrValue) {
+            self.arr_Data = successArrValue;
+            [self.tab_Bottom reloadData];
+        }];
+    }
+    
 }
 -(void)setUI{
     [self.view addSubview:self.tab_Bottom];
@@ -57,13 +99,23 @@
     return 2;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.cell = [tableView dequeueReusableCellWithIdentifier:@"SearchCell" forIndexPath:indexPath];
-    _cell.cityNameArray = @[@"PHP",@"银行专员",@"IOS",@"安卓",@"JAVA",@"Python"];
-    
-    return _cell;
+    SearchCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SearchCell" forIndexPath:indexPath];
+    if (indexPath.section==0) {
+        cell.cityNameArray = self.arr_Data;
+    }else
+        cell.cityNameArray = self.arr_Data1;
+    return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 120;
+     if (indexPath.section==0) {
+        int a = self.arr_Data.count%3;
+        long b = a==0?self.arr_Data.count/3:(a+1);
+        return b*55;
+     }else{
+         int a = self.arr_Data1.count%3;
+         long b = a==0?self.arr_Data1.count/3:(a+1);
+         return b*55;
+     }
 }
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];

@@ -77,7 +77,10 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     for (int i = 0; i < array.count; i++) {
         NSMutableDictionary * dic = [array[i] mutableCopy];
         if (i == indexPath.row) {
-            dic[@"isSelected"] = @YES;
+            if ([dic[@"isSelected"] isEqual:@YES]) {
+                dic[@"isSelected"] = @NO;
+            }else
+                dic[@"isSelected"] = @YES;
         } else {
             if ([flag isEqualToString:@"0"]) {
                 dic[@"isSelected"] = @NO;
@@ -87,8 +90,8 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     }
     [_dataArr replaceObjectAtIndex:indexPath.section withObject:array];
     [_bollec_bottom reloadData];
-    
     if ([self.delegate respondsToSelector:@selector(selectedItemButton:)]) {
+        NSDictionary * dic = _dataArr[indexPath.section][indexPath.row];
         [self.delegate selectedItemButton:_dataArr[indexPath.section][indexPath.row][@"id"]];
     }
     NSLog(@"%@",_dataArr[indexPath.section][indexPath.row]);

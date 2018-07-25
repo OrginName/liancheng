@@ -16,6 +16,7 @@
 #import "AllDicMo.h"
 #import <IQKeyboardManager.h>
 #import "RCDChatViewController.h"
+#import "PersonalBasicDataController.h"
 @interface FriendCirleTab()<UITableViewDelegate,UITableViewDataSource,MomentCellDelegate,CommentViewDelegate>
 {
     NSInteger _page;
@@ -239,6 +240,11 @@
 - (void)didClickHead:(MomentCell *)cell
 {
     NSLog(@"击用户头像%ld",(long)cell.tag);
+    PersonalBasicDataController * person = [PersonalBasicDataController new];
+    Moment * moment = self.momentList[cell.tag];
+    person.connectionMo = moment.userMo;
+    person.flagStr = @"BLACKLIST";
+    [self.controller.navigationController pushViewController:person animated:YES];
 }
 // 赞
 -(void)didPraiseMoment:(MomentCell *)cell{

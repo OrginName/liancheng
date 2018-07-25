@@ -71,9 +71,9 @@
         if (indexPath.row == 0 ) {
             return 70;
         }else
-            return 86;
+            return (kScreenWidth-84)/4+35;
     }else if (indexPath.section==1){
-        return 166;
+        return 190;
     }else{
         if (self.Mo!=nil) {
             commentList * com = self.Mo.commentList[indexPath.row];

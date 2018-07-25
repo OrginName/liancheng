@@ -13,14 +13,16 @@
 //        self.backgroundColor = [UIColor cyanColor];
         [self addSubview:self.scrollView];
         for (int i=0; i<arr.count; i++) {
-            float width = [YSTools caculateTheWidthOfLableText:14 withTitle:arr[i]]+10;
-            if (width<40) {
-                width=40;
-            }
-            UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(i*width, 0, width, self.height)];
+            float width = [YSTools caculateTheWidthOfLableText:15 withTitle:arr[i]]+10;
+            float width1 = 0.0;
+            if (i!=0) {
+                width1 = [YSTools caculateTheWidthOfLableText:15 withTitle:arr[i-1]]+10;
+            }else
+                width1 = width;
+            UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(5+i*width1, 0, width, self.height)];
             [btn setTitle:arr[i] forState:UIControlStateNormal];
             btn.titleLabel.font = [UIFont systemFontOfSize:14];
-            [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             [btn setBackgroundColor:[UIColor whiteColor]];
             [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
             btn.tag=i+1;

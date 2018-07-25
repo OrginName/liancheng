@@ -52,6 +52,11 @@
 -(void)SearchClick{
      _flag=NO;
     SearchHistoryController * search = [SearchHistoryController new];
+    search.flagStr = @"FIND";
+    WeakSelf
+    search.block = ^(NSString *str) {
+        [weakSelf loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID],@"keyword":str}];
+    };
     [self.navigationController pushViewController:search animated:YES];
 }
 
@@ -158,7 +163,7 @@
     [self.view_Map bringSubviewToFront:self.btn_fajianli];
     [self.view_Map bringSubviewToFront:self.view_fajianli];
     [self initNavi];
-    [self initRightBarItem];
+//    [self initRightBarItem];
 }
 -(void)initNavi{
     //自定义标题视图
@@ -175,7 +180,7 @@
     self.navigationItem.titleView = nav_view;
 }
 -(void)initRightBarItem{
-//    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SearchClick) image:@"search" title:@"" EdgeInsets:UIEdgeInsetsZero];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SearchClick) image:@"search" title:@"" EdgeInsets:UIEdgeInsetsZero];
 }
 #pragma mark - JFCityViewControllerDelegate
 - (void)cityName:(NSString *)name {

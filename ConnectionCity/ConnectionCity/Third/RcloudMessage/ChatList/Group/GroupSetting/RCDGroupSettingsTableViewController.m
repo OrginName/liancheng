@@ -240,23 +240,24 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 150)];
     
     //删除并退出按钮
-    UIImage *quitImage = [UIImage imageNamed:@"group_quit"];
-    UIImage *quitImageSelected = [UIImage imageNamed:@"group_quit_hover"];
+//    UIImage *quitImage = [UIImage imageNamed:@"group_quit"];
+//    UIImage *quitImageSelected = [UIImage imageNamed:@"group_quit_hover"];
     _btJoinOrQuitGroup = [[UIButton alloc] init];
-    [_btJoinOrQuitGroup setBackgroundImage:quitImage forState:UIControlStateNormal];
-    [_btJoinOrQuitGroup setBackgroundImage:quitImageSelected forState:UIControlStateSelected];
+//    [_btJoinOrQuitGroup setBackgroundImage:quitImage forState:UIControlStateNormal];
+//    [_btJoinOrQuitGroup setBackgroundImage:quitImageSelected forState:UIControlStateSelected];
     [_btJoinOrQuitGroup setTitle:@"删除并退出" forState:UIControlStateNormal];
     [_btJoinOrQuitGroup setCenter:CGPointMake(view.bounds.size.width / 2, view.bounds.size.height / 2)];
+    [_btJoinOrQuitGroup setBackgroundColor:[UIColor orangeColor]];
     [_btJoinOrQuitGroup addTarget:self action:@selector(btnJOQAction:) forControlEvents:UIControlEventTouchUpInside];
     _btJoinOrQuitGroup.layer.cornerRadius = 5.f;
-    _btJoinOrQuitGroup.layer.borderWidth = 0.5f;
-    _btJoinOrQuitGroup.layer.borderColor = [HEXCOLOR(0xcc4445) CGColor];
+//    _btJoinOrQuitGroup.layer.borderWidth = 0.5f;
+//    _btJoinOrQuitGroup.layer.borderColor = [HEXCOLOR(0xcc4445) CGColor];
     [view addSubview:_btJoinOrQuitGroup];
     
     //解散群组按钮
     _btDismissGroup = [[UIButton alloc] init];
-    [_btDismissGroup setBackgroundImage:quitImage forState:UIControlStateNormal];
-    [_btDismissGroup setBackgroundImage:quitImageSelected forState:UIControlStateSelected];
+//    [_btDismissGroup setBackgroundImage:quitImage forState:UIControlStateNormal];
+//    [_btDismissGroup setBackgroundImage:quitImageSelected forState:UIControlStateSelected];
     [_btDismissGroup setTitle:@"解散并删除" forState:UIControlStateNormal];
     [_btDismissGroup setBackgroundColor:[UIColor orangeColor]];
     [_btDismissGroup setCenter:CGPointMake(view.bounds.size.width / 2, view.bounds.size.height / 2)];

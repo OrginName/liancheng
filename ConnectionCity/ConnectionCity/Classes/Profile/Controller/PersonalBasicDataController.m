@@ -40,13 +40,13 @@
     _connectionMo = connectionMo;
     if (_connectionMo!=nil) {
         [self.backgroundImage sd_setImageWithURL:[NSURL URLWithString:connectionMo.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
-        [self.headImage sd_setImageWithURL:[NSURL URLWithString:connectionMo.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
-        self.sexImage.image =[UIImage imageNamed:[connectionMo.gender isEqualToString:@"1"]?@"women":@"men"];
-        self.nickNameLab.text = connectionMo.nickName?connectionMo.nickName:connectionMo.ID;
+        [self.headImage sd_setImageWithURL:[NSURL URLWithString:[connectionMo.headImage description]] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
+        self.sexImage.image =[UIImage imageNamed:[[connectionMo.gender description] isEqualToString:@"1"]?@"women":@"men"];
+        self.nickNameLab.text = connectionMo.nickName?connectionMo.nickName:[connectionMo.ID description];
         self.introduceLab.text = connectionMo.sign?connectionMo.sign:@"";
-        self.lcNumLab.text = connectionMo.ID;
-        self.phoneNumLab.text = connectionMo.mobile;
-        self.addressLab.text = connectionMo.cityName;
+        self.lcNumLab.text = [connectionMo.ID description];
+        self.phoneNumLab.text = [connectionMo.mobile description];
+        self.addressLab.text = [connectionMo.cityName description];
         if ([[connectionMo.isFriend description] isEqualToString:@"1"]) {
             self.layoutMu.constant = (kScreenWidth-50)/2-40;
         }

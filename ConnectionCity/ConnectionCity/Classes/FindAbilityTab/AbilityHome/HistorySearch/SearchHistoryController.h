@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
+typedef void(^keyWordBlock)(NSString * str);
 
 @interface SearchHistoryController : BaseViewController
-
+@property (nonatomic,copy) keyWordBlock block;
+@property (nonatomic,strong) NSString * flagStr;
 @end

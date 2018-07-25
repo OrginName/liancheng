@@ -24,6 +24,7 @@
 #import "ServiceHomeNet.h"
 #import "ShowResumeController.h"
 #import "CircleNet.h"
+#import "NoticeController.h"
 @interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate>
 {
     BOOL flag;
@@ -68,7 +69,9 @@
 }
 //导航右侧按钮点击
 -(void)MessageClick{
-    [YTAlertUtil showTempInfo:@"正在认真开发..."];
+    NoticeController * noice = [NoticeController new];
+    noice.title = @"消息列表";
+    [self.navigationController pushViewController:noice animated:YES];
 }
 //天生我才必有用的按钮点击
 - (IBAction)btn_TS:(UIButton *)sender {
