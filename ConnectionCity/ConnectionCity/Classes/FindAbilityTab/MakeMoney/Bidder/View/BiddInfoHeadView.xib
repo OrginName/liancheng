@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -62,14 +62,24 @@
                                 <constraint firstAttribute="height" constant="50" id="oun-Ng-z9z"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnZ-ou-y06">
+                            <rect key="frame" x="0.0" y="0.0" width="355" height="83"/>
+                            <connections>
+                                <action selector="headBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="PRK-Wr-8dG"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="dnZ-ou-y06" firstAttribute="leading" secondItem="gMu-V4-oAB" secondAttribute="leading" id="4D3-vh-va5"/>
                         <constraint firstAttribute="trailing" secondItem="eM3-fw-zpG" secondAttribute="trailing" constant="14" id="GpE-ue-inc"/>
+                        <constraint firstAttribute="bottom" secondItem="dnZ-ou-y06" secondAttribute="bottom" id="JAz-0Z-Jip"/>
                         <constraint firstItem="eM3-fw-zpG" firstAttribute="leading" secondItem="RK6-ng-HTd" secondAttribute="trailing" constant="5" id="Ohc-Ql-vuO"/>
+                        <constraint firstAttribute="trailing" secondItem="dnZ-ou-y06" secondAttribute="trailing" id="Qme-Zo-eY0"/>
                         <constraint firstAttribute="height" constant="83" id="RrY-Gb-PZR"/>
                         <constraint firstItem="RK6-ng-HTd" firstAttribute="leading" secondItem="XiW-Pd-ZX5" secondAttribute="trailing" constant="5" id="TnP-OJ-UAV"/>
                         <constraint firstItem="RK6-ng-HTd" firstAttribute="centerY" secondItem="gMu-V4-oAB" secondAttribute="centerY" id="YwB-fv-nRQ"/>
+                        <constraint firstItem="dnZ-ou-y06" firstAttribute="top" secondItem="gMu-V4-oAB" secondAttribute="top" id="bEx-yi-oCN"/>
                         <constraint firstItem="XiW-Pd-ZX5" firstAttribute="centerY" secondItem="gMu-V4-oAB" secondAttribute="centerY" id="ilf-hV-Hsu"/>
                         <constraint firstItem="XiW-Pd-ZX5" firstAttribute="leading" secondItem="gMu-V4-oAB" secondAttribute="leading" constant="17" id="jXf-vm-TsE"/>
                         <constraint firstItem="eM3-fw-zpG" firstAttribute="centerY" secondItem="gMu-V4-oAB" secondAttribute="centerY" id="viH-Pi-0V0"/>
@@ -257,7 +267,7 @@
                 <outlet property="nameLab" destination="aK4-7e-mMg" id="Otn-WE-Qbg"/>
                 <outlet property="titleLab" destination="8xv-Jn-tWN" id="WgD-tU-Nhq"/>
             </connections>
-            <point key="canvasLocation" x="-0.5" y="235.5"/>
+            <point key="canvasLocation" x="-189.5" y="208.5"/>
         </view>
     </objects>
     <resources>

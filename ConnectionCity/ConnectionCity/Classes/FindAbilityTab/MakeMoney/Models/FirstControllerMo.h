@@ -7,7 +7,8 @@
 //
 
 #import "BaseModel.h"
-#import "privateUserInfoModel.h"
+//#import "privateUserInfoModel.h"
+#import "UserMo.h"
 #import "TenderRecordsMo.h"
 
 @interface FirstControllerMo : BaseModel
@@ -46,7 +47,7 @@
 /** <#areaCode描述#> */
 @property (nonatomic, copy) NSString *areaCode;
 /** <#user描述#> */
-@property (nonatomic, strong) privateUserInfoModel *user;
+@property (nonatomic, strong) UserMo *user;
 /** <#industryCategoryParentName描述#> */
 @property (nonatomic, copy) NSString *industryCategoryParentName;
 /** <#periodAmount2描述#> */

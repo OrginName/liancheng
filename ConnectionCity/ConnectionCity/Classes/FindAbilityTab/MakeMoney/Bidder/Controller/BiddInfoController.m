@@ -12,8 +12,10 @@
 #import "FirstControllerMo.h"
 #import "AllDicMo.h"
 #import "RCDChatViewController.h"
+#import "PersonalBasicDataController.h"
+#import "UserMo.h"
 
-@interface BiddInfoController ()
+@interface BiddInfoController ()<BiddInfoHeadViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) BiddInfoHeadView *tableHeadV;
 @property (nonatomic, strong) NSArray *titleArr;
@@ -50,6 +52,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"BiddInfoCell" bundle:nil] forCellReuseIdentifier:@"BiddInfoCell"];
     _tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"BiddInfoHeadView" owner:nil options:nil] firstObject];
     _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 440);
+    _tableHeadV.delegate = self;
     self.tableView.tableHeaderView = _tableHeadV;
     UIView *tableFootV = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 60)];
     tableFootV.backgroundColor = kCommonBGColor;
@@ -95,6 +98,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.1;
 }
+#pragma mark - BiddInfoHeadViewDelegate
+- (void)biddInfoHeadView:(BiddInfoHeadView *)view headBtnClick:(UIButton *)btn {
+    PersonalBasicDataController * person = [PersonalBasicDataController new];
+    person.connectionMo = _mo.user;
+    [self.navigationController pushViewController:person animated:YES];
+}
+- (void)biddInfoHeadView:(BiddInfoHeadView *)view expandBtnClick:(UIButton *)btn {
+    
+}
 #pragma mark - 点击事件
 - (void)bidBtnClick:(UIButton *)btn {
     //[YTAlertUtil showTempInfo:@"投标"];
@@ -105,7 +117,7 @@
     RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
     chatViewController.conversationType = ConversationType_PRIVATE;
     NSString *title,*ID,*name;
-    ID = self.mo.user.modelId;
+    ID = self.mo.user.ID;
     name = self.mo.user.nickName;
     chatViewController.targetId = ID;
     if ([ID isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
@@ -145,7 +157,7 @@
 - (void)v1CommonFollowCreate{
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[6] contentArr][0];
-    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":@([mo.value integerValue]),@"type":self.bidid} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":self.bidid,@"type":@([mo.value integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [YTAlertUtil showTempInfo:responseObject[@"message"]];
     } failure:nil];
 }

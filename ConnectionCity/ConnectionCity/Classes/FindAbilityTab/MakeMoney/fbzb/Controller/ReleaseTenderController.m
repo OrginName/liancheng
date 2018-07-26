@@ -271,8 +271,8 @@
     __block NSString * urlStr = @"";//图片路径拼接
     __block NSInteger index = 0;
     if (self.Arr_Url.count!=0) {
+        [YTAlertUtil showHUDWithTitle:a?@"正在更新":@"正在上传图片"];
         for (int i=0; i<self.Arr_Url.count; i++) {
-            [YTAlertUtil showHUDWithTitle:a?@"正在更新":@"正在上传图片"];
             if ([self.Arr_Url[i] isKindOfClass:[NSString class]]&&[self.Arr_Url[i] containsString:@"http"]) {
                 index++;
                 urlStr = [NSString stringWithFormat:@"%@;%@",self.Arr_Url[i],urlStr];

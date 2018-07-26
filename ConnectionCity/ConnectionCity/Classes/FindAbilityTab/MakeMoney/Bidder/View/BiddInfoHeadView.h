@@ -13,6 +13,7 @@
 
 @protocol BiddInfoHeadViewDelegate <NSObject>
 - (void)biddInfoHeadView:(BiddInfoHeadView *)view expandBtnClick:(UIButton *)btn;
+- (void)biddInfoHeadView:(BiddInfoHeadView *)view headBtnClick:(UIButton *)btn;
 
 @end
 

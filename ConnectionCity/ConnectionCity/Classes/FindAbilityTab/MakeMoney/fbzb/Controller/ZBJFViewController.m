@@ -270,6 +270,20 @@
         } completion:nil];
     } failure:nil];
 }
+//赚外快-创建订单（支付全额/分期/保证金）
+- (void)v1TalentTenderorderCreate {
+//    NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+//    AllContentMo * mo = [arr[8] contentArr][4];
+//
+//    NSDictionary *dic = @{<#key#>: <#object, ...#>}
+//    WeakSelf
+//    [YSNetworkTool POST:v1TalentTenderUpdate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+//        [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确认" defaultHandler:^(UIAlertAction *action) {
+//            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+//        } completion:nil];
+//    } failure:nil];
+}
+
 
 /*
 #pragma mark - Navigation

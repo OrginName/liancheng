@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface PayOrderController : BaseViewController
+@property (nonatomic, strong) NSString *orderNo;
 
 @end

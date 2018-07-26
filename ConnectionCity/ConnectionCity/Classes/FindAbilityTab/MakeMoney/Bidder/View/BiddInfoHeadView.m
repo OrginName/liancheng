@@ -39,6 +39,11 @@
         self.height = 230 + 50 + 15 + 20 + 110;
     }
 }
+- (IBAction)headBtnClick:(id)sender {
+    if (_delegate && [_delegate respondsToSelector:@selector(biddInfoHeadView:headBtnClick:)]) {
+        [_delegate biddInfoHeadView:self headBtnClick:(UIButton *)sender];
+    }
+}
 - (void)setModel:(FirstControllerMo *)model {
     _model = model;
     privateUserInfoModel *userinfomo = model.user;
