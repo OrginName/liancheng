@@ -71,14 +71,14 @@
                            @"notice": self.txt_Notice.text,
                            @"type": _ID?_ID:@""
                            };
-    WeakSelf
     [YSNetworkTool POST:self.flag_str==1?v1TalentTeamCreate:self.flag_str==2?v1ServiceStationCreate:v1UserGroupCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        WeakSelf
         [RCDHTTPTOOL getGroupMembersWithGroupId:responseObject[@"data"] flag:self.flag_str Block:^(NSMutableArray *result) {
             //更新本地数据库中群组成员的信息
             RCGroup *groupInfo = [RCGroup new];
-            groupInfo.portraitUri = self.qun_Url;
+            groupInfo.portraitUri = weakSelf.qun_Url;
             groupInfo.groupId = [responseObject[@"data"] description];
-            groupInfo.groupName = self.txt_name.text;
+            groupInfo.groupName = dic[@"name"];
             [[RCIM sharedRCIM]refreshGroupInfoCache:groupInfo withGroupId:groupInfo.groupId];
             [RCDHTTPTOOL getGroupByID:groupInfo.groupId flag:self.flag_str  successCompletion:^(RCDGroupInfo *group) {
                 [[RCDataBaseManager

@@ -374,6 +374,8 @@
 		8DE4668D20EE0ABD009730F7 /* RCDGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4668C20EE0ABD009730F7 /* RCDGroupViewController.m */; };
 		8DE4669020EE0ADF009730F7 /* RCDPublicServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4668F20EE0ADE009730F7 /* RCDPublicServiceListViewController.m */; };
 		8DE4669320EE0C3F009730F7 /* RCDGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4669220EE0C3F009730F7 /* RCDGroupTableViewCell.m */; };
+		8DE9484A2109BB8000AEC160 /* icon_STSearchBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DE948472109BB7F00AEC160 /* icon_STSearchBar@2x.png */; };
+		8DE9484B2109BB8000AEC160 /* RefineSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE948492109BB7F00AEC160 /* RefineSearchBar.m */; };
 		8DEA44D620C0E9ED001529F1 /* FriendVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEA44D420C0E9ED001529F1 /* FriendVideoCell.m */; };
 		8DEA44D720C0E9ED001529F1 /* FriendVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DEA44D520C0E9ED001529F1 /* FriendVideoCell.xib */; };
 		8DEA450020C0ECB6001529F1 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEA44FE20C0ECB6001529F1 /* CustomButton.m */; };
@@ -1278,6 +1280,9 @@
 		8DE4668F20EE0ADE009730F7 /* RCDPublicServiceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDPublicServiceListViewController.m; sourceTree = "<group>"; };
 		8DE4669120EE0C3F009730F7 /* RCDGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDGroupTableViewCell.h; sourceTree = "<group>"; };
 		8DE4669220EE0C3F009730F7 /* RCDGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDGroupTableViewCell.m; sourceTree = "<group>"; };
+		8DE948472109BB7F00AEC160 /* icon_STSearchBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_STSearchBar@2x.png"; sourceTree = "<group>"; };
+		8DE948482109BB7F00AEC160 /* RefineSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefineSearchBar.h; sourceTree = "<group>"; };
+		8DE948492109BB7F00AEC160 /* RefineSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefineSearchBar.m; sourceTree = "<group>"; };
 		8DEA44D320C0E9ED001529F1 /* FriendVideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendVideoCell.h; sourceTree = "<group>"; };
 		8DEA44D420C0E9ED001529F1 /* FriendVideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendVideoCell.m; sourceTree = "<group>"; };
 		8DEA44D520C0E9ED001529F1 /* FriendVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendVideoCell.xib; sourceTree = "<group>"; };
@@ -3326,6 +3331,16 @@
 			path = SearchFiend;
 			sourceTree = "<group>";
 		};
+		8DE948462109BB7F00AEC160 /* RefineSearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				8DE948472109BB7F00AEC160 /* icon_STSearchBar@2x.png */,
+				8DE948482109BB7F00AEC160 /* RefineSearchBar.h */,
+				8DE948492109BB7F00AEC160 /* RefineSearchBar.m */,
+			);
+			path = RefineSearchBar;
+			sourceTree = "<group>";
+		};
 		8DEA451720C12BF5001529F1 /* CustomPlayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -3502,6 +3517,7 @@
 		CE0BA5BE209D5E9B004C3C33 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8DE948462109BB7F00AEC160 /* RefineSearchBar */,
 				8DE161B321072B9100CC7558 /* QFDatePickerView */,
 				8D24A22820A1B64400F0740D /* map */,
 				8D24A22F20A1CB6000F0740D /* RefineThing */,
@@ -4703,6 +4719,7 @@
 				72EC1B6420B8357400ACC20B /* ShowCardCell.xib in Resources */,
 				722D254120AAA64C00AB3863 /* ShowResumeController.xib in Resources */,
 				CEC4A52A20C3D6AE0026EE19 /* TeamChatController.xib in Resources */,
+				8DE9484A2109BB8000AEC160 /* icon_STSearchBar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5204,6 +5221,7 @@
 				8DFA324820EDAF330086423A /* RCDUtilities.m in Sources */,
 				8DC17A8520C0E598005D9EE0 /* FriendCircleController.m in Sources */,
 				721DAE0520F2421A006F141F /* SortCollProController.m in Sources */,
+				8DE9484B2109BB8000AEC160 /* RefineSearchBar.m in Sources */,
 				722D253C20AA76D400AB3863 /* JFSearchView.m in Sources */,
 				8DE465F520EDF29B009730F7 /* RCDConversationSettingBaseViewController.m in Sources */,
 				8DE4662720EDF51C009730F7 /* RCDPrivateSettingsTableViewController.m in Sources */,
@@ -5369,7 +5387,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = ConnectionCity/ConnectionCity.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5ZZQZXVFDM;

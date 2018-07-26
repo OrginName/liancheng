@@ -11,14 +11,14 @@
 #import "SearchCell.h"
 #import "ServiceHomeNet.h"
 #import "AbilityNet.h"
-@interface SearchHistoryController() <UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
+@interface SearchHistoryController() <UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UISearchBarDelegate>
 @property (nonatomic,strong)UITableView * tab_Bottom;
 @property (nonatomic, strong) JFCityHeaderView *headerView;
 @property (nonatomic,strong) UIView * view_Search;
 @property (nonatomic,strong) UITextField * search_text;
-//@property (nonatomic,strong) SearchCell * cell;
 @property (nonatomic,strong) NSMutableArray * arr_Data;
 @property (nonatomic,strong) NSMutableArray * arr_Data1;
+@property (nonatomic, strong) UISearchBar *searchBar;
 @end
 @implementation SearchHistoryController
 - (void)viewDidLoad {
@@ -32,29 +32,26 @@
     [self loadData];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(search:) name:SearchCellDidChangeNotification object:nil];
 }
+
 -(void)search:(NSNotification *)noti{
     self.block(noti.userInfo[@"cityName"]);
     [self.navigationController popViewControllerAnimated:YES];
 }
-//搜索按钮
--(void)search{
-    if (![self.arr_Data1 containsObject:self.search_text]&&self.search_text.text.length!=0) {
-        [self.arr_Data1 addObject:self.search_text.text];
-        NSData * hotCityData = [NSKeyedArchiver archivedDataWithRootObject:self.arr_Data1];
-        if ([self.flagStr isEqualToString:@"FIND"]){
-            [KUserDefults setObject:hotCityData forKey:@"KEYWORDSFIND"];
-        }else{
-            [KUserDefults setObject:hotCityData forKey:@"KEYWORDS"];
-        }
-        [KUserDefults synchronize];
-        self.block(self.search_text.text);
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-}
-//搜索框删除按钮
--(void)deleteSearch{
-    self.search_text.text = @"";
-}
+////搜索按钮
+//-(void)search{
+//    if (![self.arr_Data1 containsObject:self.search_text]&&self.search_text.text.length!=0) {
+//        [self.arr_Data1 addObject:self.search_text.text];
+//        NSData * hotCityData = [NSKeyedArchiver archivedDataWithRootObject:self.arr_Data1];
+//        if ([self.flagStr isEqualToString:@"FIND"]){
+//            [KUserDefults setObject:hotCityData forKey:@"KEYWORDSFIND"];
+//        }else{
+//            [KUserDefults setObject:hotCityData forKey:@"KEYWORDS"];
+//        }
+//        [KUserDefults synchronize];
+//        self.block(self.search_text.text);
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
+//}
 -(void)clearSearchAll:(UIButton *)btn{
     [self.arr_Data1 removeAllObjects];
     [KUserDefults removeObjectForKey:@"KEYWORDS"];
@@ -75,22 +72,71 @@
     }
     
 }
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (!_searchBar.isFirstResponder) {
+        [self.searchBar becomeFirstResponder];
+    }
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.searchBar resignFirstResponder];
+}
 -(void)setUI{
     [self.view addSubview:self.tab_Bottom];
-    self.navigationItem.titleView = self.view_Search;
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(search) image:@"search" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, -20)];
+    [self setBarButtonItem];
 }
-#pragma mark --- UITextFieldDelegate
--(void)textFieldDidEndEditing:(UITextField *)textField{
-    
-}
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    
+//#pragma mark --- UITextFieldDelegate
+//-(void)textFieldDidEndEditing:(UITextField *)textField{
+//
+//}
+//-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+//
+//    return YES;
+//}
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+//
+//    return YES;
+//}
+#pragma mark - UISearchBarDelegate
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
     return YES;
 }
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    searchBar.showsCancelButton = YES;
+}
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    if (searchBar.text.length==0) {
+        return [YTAlertUtil showTempInfo:@"请输入搜索内容"];
+    }
+    if (![self.arr_Data1 containsObject:searchBar.text]&&searchBar.text.length!=0) {
+        [self.arr_Data1 addObject:searchBar.text];
+        NSData * hotCityData = [NSKeyedArchiver archivedDataWithRootObject:self.arr_Data1];
+        if ([self.flagStr isEqualToString:@"FIND"]){
+            [KUserDefults setObject:hotCityData forKey:@"KEYWORDSFIND"];
+        }else{
+            [KUserDefults setObject:hotCityData forKey:@"KEYWORDS"];
+        }
+        [KUserDefults synchronize];
+        self.block(searchBar.text);
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self.searchBar resignFirstResponder];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    searchBar.showsCancelButton = YES;
+}
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
     
-    return YES;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
@@ -110,11 +156,11 @@
      if (indexPath.section==0) {
         int a = self.arr_Data.count%3;
         long b = a==0?self.arr_Data.count/3:(a+1);
-        return b*55;
+        return b*60;
      }else{
          int a = self.arr_Data1.count%3;
          long b = a==0?self.arr_Data1.count/3:(a+1);
-         return b*55;
+         return b*60;
      }
 }
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -151,22 +197,42 @@
     }
     return _tab_Bottom;
 }
--(UIView *)view_Search{
-    if (!_view_Search) {
-        _view_Search = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-100, 30)];
-        _view_Search.backgroundColor = [UIColor whiteColor];
-        _search_text = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-150, 30)];
-        _search_text.backgroundColor = [UIColor whiteColor];
-        _search_text.placeholder = @"   请输入搜索内容";
-        _search_text.font = [UIFont systemFontOfSize:14];
-        _search_text.delegate = self;
-        [_view_Search addSubview:_search_text];
-        UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(_search_text.width+20, 10,10, 10)];
-        [btn addTarget:self action:@selector(deleteSearch) forControlEvents:UIControlEventTouchUpInside];
-        [btn setBackgroundImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
-        [_view_Search addSubview:btn];
-    }
-    return _view_Search;
+- (void)setBarButtonItem
+{
+    //隐藏导航栏上的返回按钮
+    [self.navigationItem setHidesBackButton:YES];
+    //用来放searchBar的View
+    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 7, self.view.frame.size.width, 30)];
+    //创建searchBar
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(titleView.frame) - 15, 30)];
+    //默认提示文字
+    searchBar.placeholder = @"请输入关键字";
+    //背景图片
+    searchBar.backgroundImage = [UIImage imageNamed:@"our-pub-close"];
+    //代理
+    searchBar.delegate = self;
+    
+    //显示右侧取消按钮
+    searchBar.showsCancelButton = YES;
+    //光标颜色
+    searchBar.tintColor = [UIColor orangeColor];
+    //拿到searchBar的输入框
+    UITextField *searchTextField = [searchBar valueForKey:@"_searchField"];
+    //字体大小
+    searchTextField.font = [UIFont systemFontOfSize:15];
+    //输入框背景颜色
+    searchTextField.backgroundColor = [UIColor colorWithRed:234/255.0 green:235/255.0 blue:237/255.0 alpha:1];
+    //拿到取消按钮
+    UIButton *cancleBtn = [searchBar valueForKey:@"cancelButton"];
+    //设置按钮上的文字
+    [cancleBtn setTitle:@"取消" forState:UIControlStateNormal];
+    //设置按钮上文字的颜色
+    [cancleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [titleView addSubview:searchBar];
+    self.searchBar = searchBar;
+    self.navigationItem.titleView = titleView;
 }
-
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.searchBar resignFirstResponder];
+}
 @end

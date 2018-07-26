@@ -178,14 +178,14 @@
 }
 #pragma mark - delegate
 - (void)scrollThroughIndex:(NSInteger)index {
-    //    NSLog(@"scroll through %@",@(index));
+    
 }
-
 - (void)selectedIndex:(NSInteger)index {
     NSLog(@"select %@",@(index));
     _currentIndex = index;
     _page = 1;
     UITableView * tab = self.tabArr[index];
-    [tab.mj_header beginRefreshing];
+//    [tab.mj_header beginRefreshing];
+    [self loadData:index tab:tab];
 }
 @end

@@ -55,7 +55,7 @@
     search.flagStr = @"FIND";
     WeakSelf
     search.block = ^(NSString *str) {
-        [weakSelf loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID],@"keyword":str}];
+        [weakSelf loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityID":[KUserDefults objectForKey:kUserCityID],@"keyword":str}];
     };
     [self.navigationController pushViewController:search animated:YES];
 }
@@ -147,7 +147,8 @@
                             @"cityCode":dic[@"cityID"],
                             @"salary": @([dic[@"salary"]?dic[@"salary"]:@"" integerValue]),
                             @"education": @([dic[@"education"]?dic[@"education"]:@"" integerValue]),
-                            @"work": @([dic[@"work"]?dic[@"work"]:@"" integerValue])
+                            @"work": @([dic[@"work"]?dic[@"work"]:@"" integerValue]),
+                            @"keyword":dic[@"keyword"]?dic[@"keyword"]:@""
                             };
     //    加载服务列表
     [AbilityNet requstAbilityConditions:dic1 withBlock:^(NSMutableArray *successArrValue) {
@@ -163,7 +164,7 @@
     [self.view_Map bringSubviewToFront:self.btn_fajianli];
     [self.view_Map bringSubviewToFront:self.view_fajianli];
     [self initNavi];
-//    [self initRightBarItem];
+    [self initRightBarItem];
 }
 -(void)initNavi{
     //自定义标题视图

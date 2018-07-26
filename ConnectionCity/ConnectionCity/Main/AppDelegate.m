@@ -115,7 +115,7 @@
     //  [[RCCallClient sharedRCCallClient] setVideoProfile:RC_VIDEO_PROFILE_480P];
     
     //设置Log级别，开发阶段打印详细log
-    [RCIMClient sharedRCIMClient].logLevel = RC_Log_Level_Info;
+//    [RCIMClient sharedRCIMClient].logLevel = RC_Log_Level_Info;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(didReceiveMessageNotification:)
