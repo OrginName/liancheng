@@ -21,5 +21,6 @@ pod 'ShareSDK3/ShareSDKPlatforms/WeChat',:git => ‘https://github.com/MobClub/S
 pod 'ShareSDK3/ShareSDKUI',:git => ‘https://github.com/MobClub/ShareSDK-for-iOS-Spec.git'
 pod 'ShareSDK3/ShareSDKExtension',:git => ‘https://github.com/MobClub/ShareSDK-for-iOS-Spec.git'
 pod 'JPush', '3.0.6'
+pod 'DZNEmptyDataSet'
 end
 

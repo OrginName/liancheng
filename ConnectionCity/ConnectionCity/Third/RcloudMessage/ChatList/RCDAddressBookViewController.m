@@ -65,17 +65,14 @@ MBProgressHUD *hud;
         [self getAllData];
     }];
 }
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     _needSyncFriendList = YES;
     [self getAllData];
 }
-
 //删除已选中用户
 - (void)removeSelectedUsers:(NSArray *)selectedUsers {
     for (RCUserInfo *user in selectedUsers) {
-
         [_friends enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             RCDUserInfo *userInfo = obj;
             if ([user.userId isEqualToString:userInfo.userId]) {
@@ -84,44 +81,15 @@ MBProgressHUD *hud;
         }];
     }
 }
-
 /**
  *  initial data
  */
 - (void)getAllData {
-//    _friends = [NSMutableArray arrayWithArray:[[RCDataBaseManager shareInstance] getAllFriends]];
-//    if (_friends.count > 0) {
-//        self.hideSectionHeader = YES;
-//        _friends = [self sortForFreindList:_friends];
-//        tag = 0;
-//        [self.tableView reloadData];
-//    } else {
-//        CGRect frame = CGRectMake(0, 0, RCDscreenWidth, RCDscreenHeight - 64);
-//        self.noFriendView = [[RCDNoFriendView alloc] initWithFrame:frame];
-//        self.noFriendView.displayLabel.text = @"暂无数据";
-//        [self.view addSubview:self.noFriendView];
-//        [self.view bringSubviewToFront:self.noFriendView];
-//    }
-//    if (isSyncFriends == NO) {
-//        [RCDDataSource syncFriendList:[RCIM sharedRCIM].currentUserInfo.userId
-//                             complete:^(NSMutableArray *result) {
-//                                 isSyncFriends = YES;
-//                                 if (result > 0) {
-//                                     dispatch_async(dispatch_get_main_queue(), ^{
-//                                         if (self.noFriendView != nil) {
-//                                             [self.noFriendView removeFromSuperview];
-//                                         }
-//                                     });
-//                                     [self getAllData];
-//                                 }
-//                             }];
-//    }
-    
     NSDictionary * dic = @{
-                           @"pageNumber": @1,
+                           @"pageNumber": @(_page),
                            @"pageSize": @50
                            };
-    [YSNetworkTool POST:v1ApplicationPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1ApplicationPageAll params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"data"][@"content"] count]==0) {
 //            [YTAlertUtil showTempInfo:@"暂无数据"];
             [self endFresh];
@@ -130,7 +98,33 @@ MBProgressHUD *hud;
         if (_page==1) {
             [_friends removeAllObjects];
         }
-        _friends = [friendMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+        _page++;
+        NSMutableArray * arr1 = [NSMutableArray array];
+        for (NSDictionary * dic in responseObject[@"data"][@"userGroupApplications"][@"content"]) {
+            friendMo * friend = [friendMo mj_objectWithKeyValues:dic];
+            friend.type = @"20";
+            [arr1 addObject:friend];
+        }
+        NSMutableArray * arr2 = [NSMutableArray array];
+        for (NSDictionary * dic1 in responseObject[@"data"][@"userFriendApplications"][@"content"]) {
+            friendMo * friend = [friendMo mj_objectWithKeyValues:dic1];
+            friend.type = @"100";
+            [arr2 addObject:friend];
+        }
+        NSMutableArray * arr3 = [NSMutableArray array];
+        for (NSDictionary * dic2 in responseObject[@"data"][@"teamUserApplications"][@"content"]) {
+            friendMo * friend = [friendMo mj_objectWithKeyValues:dic2];
+            friend.type = @"30";
+            [arr3 addObject:friend];
+        }
+        NSMutableArray * arr4 = [NSMutableArray array];
+        for (NSDictionary * dic2 in responseObject[@"data"][@"teamUserApplications"][@"content"]) {
+            friendMo * friend = [friendMo mj_objectWithKeyValues:dic2];
+            friend.type = @"30";
+            [arr3 addObject:friend];
+        }
+        
+        _friends = [friendMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"userGroupApplications"][@"content"]];
         [self.tableView reloadData];
         [self endFresh];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -141,13 +135,7 @@ MBProgressHUD *hud;
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - UITableViewDataSource
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *reusableCellWithIdentifier = @"RCDAddressBookCell";
     RCDAddressBookTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reusableCellWithIdentifier];

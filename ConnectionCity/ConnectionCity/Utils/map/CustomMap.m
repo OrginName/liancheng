@@ -72,27 +72,6 @@
     if ([annotation isKindOfClass:[MAUserLocation class]]) {
         [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:[[YSAccountTool userInfo]headImage]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     }else{
-        /*
-        NSString * url = @"";
-        if (self.Arr_Mark.count!=0) {
-            for (int i=0; i<self.Arr_Mark.count; i++) {
-                if ([self.Arr_Mark[i] isKindOfClass:[ServiceListMo class]]) {
-                    ServiceListMo * list = self.Arr_Mark[i];
-                    NSLog(@"当前为：%@-%f",list.lat,annotation.coordinate.latitude);
-                    NSString * lat = [NSString stringWithFormat:@"%.4f",[list.lat floatValue]];
-                    NSString * lng = [NSString stringWithFormat:@"%.4f",[list.lng floatValue]];
-                    if ([lat isEqualToString:KString(@"%f", annotation.coordinate.latitude)]&&[lng isEqualToString:KString(@"%f", annotation.coordinate.longitude)]) {
-                        url = list.user1.headImage;
-                    }
-                }else{
-                    AbilttyMo * mo = self.Arr_Mark[i];
-                    if ([mo.lat floatValue]==annotation.coordinate.latitude&&[mo.lng floatValue]==annotation.coordinate.longitude) {
-                        url = mo.userMo.headImage;
-                    }
-                }
-            }
-            [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"no-pic"]];
-         */
         if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
             ZWCustomPointAnnotation *pointAnnotation = (ZWCustomPointAnnotation*)annotation;
             //在这里,直接将请求回来的商户图片地址复制给calloutview的imageview
@@ -105,7 +84,6 @@
 
 /**
  选中当前点击mark的代理
-
  @param mapView mapView description
  @param view view description
  */
@@ -130,6 +108,7 @@
     [KUserDefults setObject:[NSString stringWithFormat:@"%f",location.coordinate.longitude] forKey:KLng];
     [KUserDefults synchronize];
     [self loadCityData];
+    [self updateUseLat];
     //获取到定位信息，更新annotation
         if (self.pointAnnotaiton == nil)
         {
@@ -146,6 +125,18 @@
     if ([self.delegate respondsToSelector:@selector(currentMapLocation:location:)]) {
         [self.delegate currentMapLocation:locationDictionary location:location];
         }
+}
+#pragma mark ------
+-(void)updateUseLat{
+    NSDictionary * dic = @{
+                           @"lat": @([[KUserDefults objectForKey:kLat]floatValue]),
+                           @"lng": @([[KUserDefults objectForKey:KLng]floatValue]),
+                           };
+    [YSNetworkTool POST:v1PrivateUserUpdate params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 -(void)loadCityData{
     if ([KUserDefults objectForKey:kUserCityID]!=nil) {

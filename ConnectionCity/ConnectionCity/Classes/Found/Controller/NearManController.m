@@ -31,11 +31,11 @@
 //刷新数据
 -(void)reloadData{
     NSDictionary * dic = @{
-                           @"gender": @([_flag integerValue]),
+                           @"gender": _flag.length!=0?@([_flag integerValue]):@"",
                            @"lat": @([[KUserDefults objectForKey:kLat] floatValue]),
                            @"lng": @([[KUserDefults objectForKey:KLng] floatValue]),
                            @"pageNumber": @(_page),
-                           @"pageSize": @10
+                           @"pageSize": @15
                            };
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         _page=1;

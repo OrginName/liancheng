@@ -10,8 +10,11 @@
 #import "UserMo.h"
 #import "privateUserInfoModel.h"
 @interface friendMo : BaseModel
-
 proStr(userId);
-proStr(friendId);
+proStr(friendId);//朋友ID
+proStr(groupId);//首页群ID
+proStr(teamId);//团队ID
+proStr(stationId);//服务站ID
+proStr(type);
 @property (nonatomic,strong)UserMo * user;//朋友的user
 @end
