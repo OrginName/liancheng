@@ -88,21 +88,22 @@
 }
 #pragma mark - 点击事件
 - (void)rightBarButtonClick {
+    WeakSelf
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [alert addAction:[UIAlertAction actionWithTitle:@"只看女生" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self.data_Arr removeAllObjects];
-        [self reloadData:@"0"];
-        [self.collectionView.mj_header beginRefreshing];
+        _page=1;
+        [weakSelf reloadData:@"0"];
+//        [self.collectionView.mj_header beginRefreshing];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"只看男生" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self.data_Arr removeAllObjects];
-        [self reloadData:@"1"];
-        [self.collectionView.mj_header beginRefreshing];
+        _page=1;
+        [weakSelf reloadData:@"1"];
+//        [self.collectionView.mj_header beginRefreshing];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"查看全部" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self.data_Arr removeAllObjects];
-        [self reloadData:@""];
-        [self.collectionView.mj_header beginRefreshing];
+        _page=1;
+        [weakSelf reloadData:@""];
+//        [self.collectionView.mj_header beginRefreshing];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
@@ -110,8 +111,7 @@
 -(void)loadData:(NSDictionary *)dic{
     [YSNetworkTool POST:v1PrivateUserNearbyList params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"data"][@"content"] count]==0) {
-            [self endRefesh];
-            return;
+            [self.data_Arr removeAllObjects];
         }
         if (_page==1) {
             [self.data_Arr removeAllObjects];
