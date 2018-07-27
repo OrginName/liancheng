@@ -24,7 +24,7 @@
 @property (strong, nonatomic) UIScrollView *scrollHead;
 @property (weak, nonatomic) IBOutlet UIButton *btn_All;//所有的人
 @property (nonatomic, strong) MLMSegmentPage *pageView;
-@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) MyTab *tableView;
 @end
 
 @implementation ConnectionController
@@ -36,7 +36,7 @@
     [self setUI];
     _page = 0;
     _currentIndex = 0;
-    UITableView * tab = self.tabArr[_currentIndex];
+    MyTab * tab = self.tabArr[_currentIndex];
     [tab.mj_header beginRefreshing];
 }
 -(void)setUI{
@@ -45,7 +45,7 @@
     self.data_Arr = [NSMutableArray array];
 //     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SearchClick) image:@"search" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
 }
--(void)loadData:(NSInteger)a tab:(UITableView *)tab{
+-(void)loadData:(NSInteger)a tab:(MyTab *)tab{
    NSString * str = a==0?v1TalentConnectionCityPage:a==1?v1TalentConnectionEducationPage:v1TalentConnectionOccupationPage;
     NSDictionary * dic = @{};
     if (_tmpBtn.tag==2) {
@@ -94,7 +94,7 @@
     }
     [self.data_Arr removeAllObjects];
     _page=1;
-    UITableView * tab = self.tabArr[_currentIndex];
+    MyTab * tab = self.tabArr[_currentIndex];
     [tab.mj_header beginRefreshing];
 }
 #pragma mark -------ConnectionCellDelegate-------------
@@ -156,7 +156,7 @@
 - (NSArray *)viewArr {
     NSMutableArray *arr = [NSMutableArray array];
     for (NSInteger i = 0; i < list.count; i ++) {
-        UITableView  *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, kScreenHeight-2000) style:UITableViewStylePlain];
+        MyTab  *tableview = [[MyTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, kScreenHeight-2000) style:UITableViewStylePlain];
         tableview.delegate = self;
         tableview.dataSource = self;
         tableview.tag = i;
@@ -183,7 +183,7 @@
     NSLog(@"select %@",@(index));
     _currentIndex = index;
     _page = 1;
-    UITableView * tab = self.tabArr[index];
+    MyTab * tab = self.tabArr[index];
 //    [tab.mj_header beginRefreshing];
     [self loadData:index tab:tab];
 }

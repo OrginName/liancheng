@@ -21,7 +21,7 @@
     _mo = mo;
     [self.image_Head sd_setImageWithURL:[NSURL URLWithString:mo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     self.lab_name.text = mo.nickName?mo.nickName:@"无";
-    self.lab_des.text = mo.occupationCategoryName[@""];
+    self.lab_des.text = mo.occupationCategoryName[@""]?mo.occupationCategoryName[@""]:@"无";
     self.lab_num.text = KString(@"%@", mo.commonFriendCount);
     if ([[mo.isFriend description] isEqualToString:@"1"]) {
         [self.btn_Add setTitle:@"好友" forState:UIControlStateNormal];

@@ -14,7 +14,7 @@
 {
     int page;
 }
-@property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
+@property (weak, nonatomic) IBOutlet MyTab *tab_Bottom;
 @property (nonatomic,strong)NSMutableArray * momentList;
 @end
 @implementation CollectionController
@@ -39,7 +39,7 @@
                            };
     [YSNetworkTool POST:v1MyCollectPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"data"][@"content"] count]==0) {            [self endRefresh];
-            return [YTAlertUtil showTempInfo:@"暂无数据"];
+            return;
         }
         if (page==1) {
             [self.momentList removeAllObjects];

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyTableController.h"
 //#import "RCSelectPersonViewController.h"
 typedef void(^returnBlock)(void);
-@interface RCDAddressBookViewController : UITableViewController
-
+@interface RCDAddressBookViewController : MyTableController
 @property (nonatomic,copy) returnBlock block;
 + (instancetype)addressBookViewController;
 

@@ -15,7 +15,7 @@
 {
     int _page;
 }
-@property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
+@property (weak, nonatomic) IBOutlet MyTab *tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * arrBlackList;
 @end
 @implementation AccountView
