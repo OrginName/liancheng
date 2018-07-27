@@ -485,7 +485,7 @@
 }
 -(void)initScroll{
     __block ResumeController * weakSelf = self;
-    _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.tab_bottom.width, 220) imageURLStringsGroup:nil]; // 模拟网络延时情景
+    _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.tab_bottom.width, self.tab_bottom.width*0.8) imageURLStringsGroup:nil]; // 模拟网络延时情景
     _cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     _cycleScrollView.delegate = self;
     _cycleScrollView.autoScroll = YES;

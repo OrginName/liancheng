@@ -63,6 +63,7 @@
         self.lab_Age.text = trval.user.age?trval.user.age:@"无";
         [self.btn_weight setTitle:[NSString stringWithFormat:@"%@kg",trval.user.weight?trval.user.weight:@""] forState:UIControlStateNormal];
         self.lab_TrvalPrice.text = [NSString stringWithFormat:@"¥%@",trval.price];
+        self.lab_DTNum.text = KString(@"%lu", (unsigned long)trval.serviceCircleList.count);
         self.lab_TrvalDY.text = trval.priceUnit;//单位暂无
         self.lab_TrvalDes.text = trval.introduce;
         self.lab_LLNum.text = [NSString stringWithFormat:@"浏览%@次",trval.browseTimes?trval.browseTimes:@"999+"];

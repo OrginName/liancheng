@@ -121,7 +121,6 @@ NSString * const ID = @"cycleCell";
 - (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-    
     _flowLayout.itemSize = self.frame.size;
 }
 

@@ -249,6 +249,7 @@
 		8D5B3C3920C0143200773105 /* ServiceListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D5B3C3720C0143200773105 /* ServiceListController.xib */; };
 		8D5B3C3D20C0147A00773105 /* ServiceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B3C3B20C0147A00773105 /* ServiceListCell.m */; };
 		8D5B3C3E20C0147A00773105 /* ServiceListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D5B3C3C20C0147A00773105 /* ServiceListCell.xib */; };
+		8D5FF5ED210B16EE0094516F /* MyTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5FF5EC210B16ED0094516F /* MyTab.m */; };
 		8D67602720A408470027CDEE /* ClassificationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67602520A408470027CDEE /* ClassificationsController.m */; };
 		8D67602820A408470027CDEE /* ClassificationsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D67602620A408470027CDEE /* ClassificationsController.xib */; };
 		8D67603620A448CB0027CDEE /* SX.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D67603520A448CB0027CDEE /* SX.plist */; };
@@ -1043,6 +1044,8 @@
 		8D5B3C3A20C0147A00773105 /* ServiceListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceListCell.h; sourceTree = "<group>"; };
 		8D5B3C3B20C0147A00773105 /* ServiceListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceListCell.m; sourceTree = "<group>"; };
 		8D5B3C3C20C0147A00773105 /* ServiceListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceListCell.xib; sourceTree = "<group>"; };
+		8D5FF5EB210B16ED0094516F /* MyTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTab.h; sourceTree = "<group>"; };
+		8D5FF5EC210B16ED0094516F /* MyTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTab.m; sourceTree = "<group>"; };
 		8D67602420A408470027CDEE /* ClassificationsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassificationsController.h; sourceTree = "<group>"; };
 		8D67602520A408470027CDEE /* ClassificationsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassificationsController.m; sourceTree = "<group>"; };
 		8D67602620A408470027CDEE /* ClassificationsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassificationsController.xib; sourceTree = "<group>"; };
@@ -2928,6 +2931,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		8D5FF5EA210B16ED0094516F /* MyTab */ = {
+			isa = PBXGroup;
+			children = (
+				8D5FF5EB210B16ED0094516F /* MyTab.h */,
+				8D5FF5EC210B16ED0094516F /* MyTab.m */,
+			);
+			path = MyTab;
+			sourceTree = "<group>";
+		};
 		8D8E4EC520C9109E00C3D537 /* EditProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -3517,6 +3529,7 @@
 		CE0BA5BE209D5E9B004C3C33 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8D5FF5EA210B16ED0094516F /* MyTab */,
 				8DE948462109BB7F00AEC160 /* RefineSearchBar */,
 				8DE161B321072B9100CC7558 /* QFDatePickerView */,
 				8D24A22820A1B64400F0740D /* map */,
@@ -4834,6 +4847,7 @@
 				72A2FC6F20D00B2E00CD6AAC /* AbilityNet.m in Sources */,
 				CE0BA5DD209D5E9B004C3C33 /* YTSystemUtil.m in Sources */,
 				723F4FA120BED37800AF8268 /* TrvalCell.m in Sources */,
+				8D5FF5ED210B16EE0094516F /* MyTab.m in Sources */,
 				CE14BD6F20F3794000F85C49 /* YTThirdPartyPay.m in Sources */,
 				CE03EDF520B4544700F07D78 /* FirstSectionHeadV.m in Sources */,
 				8D50C55120C632090095A824 /* OurSendController.m in Sources */,

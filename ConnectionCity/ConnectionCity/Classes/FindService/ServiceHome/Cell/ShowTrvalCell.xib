@@ -124,7 +124,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="动态" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJG-Ow-SRU">
-                        <rect key="frame" x="16" y="11" width="27" height="14.5"/>
+                        <rect key="frame" x="16" y="11" width="27" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.29803921568627451" green="0.29803921568627451" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -136,13 +136,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=")" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKP-fw-0qH">
-                        <rect key="frame" x="74" y="11" width="5" height="16"/>
+                        <rect key="frame" x="68.5" y="11" width="5" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.29803921570000003" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0k-oa-21f">
-                        <rect key="frame" x="59" y="11" width="14" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0k-oa-21f">
+                        <rect key="frame" x="59" y="11" width="8.5" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.95686274509803926" green="0.69411764705882351" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -165,13 +165,14 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="wJI-md-SiJ" firstAttribute="bottom" secondItem="ymH-CC-Xcx" secondAttribute="bottom" id="0zN-x3-6St"/>
-                    <constraint firstItem="ymH-CC-Xcx" firstAttribute="top" secondItem="vJG-Ow-SRU" secondAttribute="bottom" constant="10" id="20c-dD-9UG"/>
                     <constraint firstItem="rOy-we-HLk" firstAttribute="leading" secondItem="vJG-Ow-SRU" secondAttribute="trailing" constant="10" id="4D7-HU-g4X"/>
+                    <constraint firstItem="vJG-Ow-SRU" firstAttribute="top" secondItem="Rj0-y7-2d1" secondAttribute="topMargin" id="95j-gS-CWD"/>
                     <constraint firstItem="ymH-CC-Xcx" firstAttribute="leading" secondItem="Rj0-y7-2d1" secondAttribute="leading" constant="16" id="JJH-Za-w0o"/>
                     <constraint firstItem="3hh-Wm-EDK" firstAttribute="leading" secondItem="aFM-Mn-85R" secondAttribute="trailing" constant="10" id="JKj-FJ-o1I"/>
                     <constraint firstItem="o0k-oa-21f" firstAttribute="leading" secondItem="rOy-we-HLk" secondAttribute="trailing" constant="1" id="LHu-uR-4Ja"/>
                     <constraint firstItem="wJI-md-SiJ" firstAttribute="leading" secondItem="3hh-Wm-EDK" secondAttribute="trailing" constant="10" id="RqN-cF-vFb"/>
                     <constraint firstItem="VKP-fw-0qH" firstAttribute="leading" secondItem="o0k-oa-21f" secondAttribute="trailing" constant="1" id="T2H-d2-DaM"/>
+                    <constraint firstAttribute="bottom" secondItem="ymH-CC-Xcx" secondAttribute="bottom" constant="10" id="V4T-bX-ESA"/>
                     <constraint firstItem="3hh-Wm-EDK" firstAttribute="width" secondItem="ymH-CC-Xcx" secondAttribute="width" id="Xvq-Ww-V0y"/>
                     <constraint firstItem="rOy-we-HLk" firstAttribute="centerY" secondItem="vJG-Ow-SRU" secondAttribute="centerY" id="Zrh-XV-O0c"/>
                     <constraint firstItem="aFM-Mn-85R" firstAttribute="leading" secondItem="ymH-CC-Xcx" secondAttribute="trailing" constant="10" id="Zuv-FC-Z0D"/>
@@ -185,7 +186,6 @@
                     <constraint firstItem="vJG-Ow-SRU" firstAttribute="leading" secondItem="Rj0-y7-2d1" secondAttribute="leadingMargin" id="jOx-f4-eVv"/>
                     <constraint firstItem="VKP-fw-0qH" firstAttribute="centerY" secondItem="o0k-oa-21f" secondAttribute="centerY" id="pvy-Dt-ETo"/>
                     <constraint firstItem="wJI-md-SiJ" firstAttribute="width" secondItem="ymH-CC-Xcx" secondAttribute="width" id="rQQ-7M-xUU"/>
-                    <constraint firstItem="vJG-Ow-SRU" firstAttribute="top" secondItem="Rj0-y7-2d1" secondAttribute="topMargin" id="s8c-2t-0VJ"/>
                     <constraint firstItem="aFM-Mn-85R" firstAttribute="top" secondItem="ymH-CC-Xcx" secondAttribute="top" id="uV4-nY-cxA"/>
                     <constraint firstItem="o0k-oa-21f" firstAttribute="centerY" secondItem="rOy-we-HLk" secondAttribute="centerY" id="v3F-Ja-4S6"/>
                 </constraints>

@@ -16,7 +16,7 @@
 {
     int _page;
 }
-@property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
+@property (weak, nonatomic) IBOutlet MyTab *tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * arr_Data;
 @end
 @implementation NoticeController
@@ -58,7 +58,7 @@
     NSDictionary * dic = @{@"pageNumber": @(_page),
                            @"pageSize": @15};
     WeakSelf
-    [YSNetworkTool POST:v1CommonMessagePage params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1CommonMessagePage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if (_page==1) {
             [self.arr_Data removeAllObjects];
         }

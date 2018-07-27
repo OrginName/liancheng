@@ -78,8 +78,13 @@
     if (indexPath.section==0) {
         if (indexPath.row == 0 ) {
             return 70;
-        }else
-            return (kScreenWidth-84)/4+35;
+        }else{
+            if ((self.Mo!=nil&&self.Mo.serviceCircleList.count==0)||(self.MoTrval!=nil&&self.MoTrval.serviceCircleList.count==0)) {
+                return 35;
+            }else{
+                return (kScreenWidth-84)/4+35;
+            }
+        }
     }else if (indexPath.section==1){
         return 190;
     }else{
@@ -171,7 +176,7 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     self.tab_Bottom.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    self.cycleScrollView.frame = CGRectMake(0, 0, self.tab_Bottom.width, 220);
+    self.cycleScrollView.frame = CGRectMake(0, 0, self.tab_Bottom.width, self.tab_Bottom.width*0.8);
 }
 -(UITableView *)tab_Bottom{
     if (!_tab_Bottom) {
