@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ConnectionMo.h"
+#import "UserMo.h"
 @interface NearManCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *image_head;
 @property (weak, nonatomic) IBOutlet UIImageView *image_Sex;
 @property (weak, nonatomic) IBOutlet UILabel *lab_Name;
 @property (weak, nonatomic) IBOutlet UILabel *lab_Distance;
-@property (nonatomic,strong)ConnectionMo * mo;
+@property (nonatomic,strong)UserMo * mo;
 @end

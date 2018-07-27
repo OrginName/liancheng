@@ -14,11 +14,11 @@
     [super awakeFromNib];
     // Initialization code
 }
--(void)setMo:(ConnectionMo *)mo{
+-(void)setMo:(UserMo *)mo{
     _mo = mo;
     [self.image_head sd_setImageWithURL:[NSURL URLWithString:mo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
-    self.lab_Name.text = mo.nickName;
+    self.lab_Name.text = mo.nickName?mo.nickName:mo.ID;
     self.image_Sex.image = [UIImage imageNamed: [[mo.gender description] isEqualToString:@"1"]?@"men":@"women"];
-    self.lab_Distance.text = KString(@"%.2f", [mo.distance floatValue]);
+    self.lab_Distance.text = KString(@"%.2fm", [mo.distance floatValue]);
 }
 @end

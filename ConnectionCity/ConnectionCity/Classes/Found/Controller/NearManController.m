@@ -4,15 +4,13 @@
 //
 //  Created by YanShuang Jiang on 2018/6/5.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
-//
-
 #import "NearManController.h"
 #import "NearManCell.h"
 #import "ConnectionMo.h"
+#import "UserMo.h"
 @interface NearManController ()
 {
     int _page;
-    NSString * _flag;
 }
 @property (weak, nonatomic) IBOutlet MyCollectionView *collectionView;
 @property (nonatomic,strong)NSMutableArray * data_Arr;
@@ -24,14 +22,12 @@
     [super viewDidLoad];
     [self setUI];
     _page=1;
-    _flag = @"";
-    [self reloadData];
-    [self.collectionView.mj_header beginRefreshing];
+    [self reloadData:@""];
 }
 //刷新数据
--(void)reloadData{
+-(void)reloadData:(NSString *)flag{
     NSDictionary * dic = @{
-                           @"gender": _flag.length!=0?@([_flag integerValue]):@"",
+                           @"gender": flag,
                            @"lat": @([[KUserDefults objectForKey:kLat] floatValue]),
                            @"lng": @([[KUserDefults objectForKey:KLng] floatValue]),
                            @"pageNumber": @(_page),
@@ -44,6 +40,7 @@
     self.collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         [self loadData:dic];
     }];
+    [self.collectionView.mj_header beginRefreshing];
 }
 #pragma mark - setup
 - (void)setUI {
@@ -70,6 +67,7 @@
 //每个UICollectionView展示的内容
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NearManCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"NearManCell" forIndexPath:indexPath];
+    cell.mo = self.data_Arr[indexPath.row];
     return cell;
 }
 #pragma mark --UICollectionViewDelegateFlowLayout
@@ -88,23 +86,22 @@
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
-
 #pragma mark - 点击事件
 - (void)rightBarButtonClick {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [alert addAction:[UIAlertAction actionWithTitle:@"只看女生" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        _flag = @"0";
         [self.data_Arr removeAllObjects];
+        [self reloadData:@"0"];
         [self.collectionView.mj_header beginRefreshing];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"只看男生" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        _flag = @"1";
-         [self.data_Arr removeAllObjects];
+        [self.data_Arr removeAllObjects];
+        [self reloadData:@"1"];
         [self.collectionView.mj_header beginRefreshing];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"查看全部" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        _flag = @"";
-         [self.data_Arr removeAllObjects];
+        [self.data_Arr removeAllObjects];
+        [self reloadData:@""];
         [self.collectionView.mj_header beginRefreshing];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
@@ -113,7 +110,6 @@
 -(void)loadData:(NSDictionary *)dic{
     [YSNetworkTool POST:v1PrivateUserNearbyList params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"data"][@"content"] count]==0) {
-            [YTAlertUtil showTempInfo:@"暂无数据"];
             [self endRefesh];
             return;
         }
@@ -121,10 +117,7 @@
             [self.data_Arr removeAllObjects];
         }
         _page++;
-        for (int i=0; i<[responseObject[@"data"][@"content"] count]; i++) {
-            ConnectionMo * mo = [ConnectionMo mj_objectWithKeyValues:responseObject[@"data"][@"content"][i]];
-            [self.data_Arr addObject:mo];
-        }
+        self.data_Arr = [UserMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
         [self.collectionView reloadData];
         [self endRefesh];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
