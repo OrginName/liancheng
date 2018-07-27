@@ -68,6 +68,7 @@
 		72626F5B20ED03BC001B807D /* RCDTestMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 72626F5320ED03BB001B807D /* RCDTestMessage.m */; };
 		72626F5C20ED03BC001B807D /* RCDChatRoomInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72626F5620ED03BB001B807D /* RCDChatRoomInfo.m */; };
 		72626F5D20ED03BC001B807D /* RCDUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72626F5920ED03BC001B807D /* RCDUserInfo.m */; };
+		7266FEC5210B4304005794AD /* MyCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7266FEC4210B4304005794AD /* MyCollectionView.m */; };
 		7274188020B13CB6001D6BE1 /* MLMSegmentHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */; };
 		7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187C20B13CB6001D6BE1 /* MLMSegmentPage.m */; };
 		7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187F20B13CB6001D6BE1 /* UIView+ViewController.m */; };
@@ -747,6 +748,8 @@
 		72626F5820ED03BB001B807D /* RCDGroupInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDGroupInfo.h; sourceTree = "<group>"; };
 		72626F5920ED03BC001B807D /* RCDUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDUserInfo.m; sourceTree = "<group>"; };
 		72626F6B20ED1D8C001B807D /* RCloudMessage.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = RCloudMessage.entitlements; sourceTree = "<group>"; };
+		7266FEC3210B4304005794AD /* MyCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCollectionView.h; sourceTree = "<group>"; };
+		7266FEC4210B4304005794AD /* MyCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCollectionView.m; sourceTree = "<group>"; };
 		7274187920B13CB6001D6BE1 /* MLMSegmentHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentHead.h; sourceTree = "<group>"; };
 		7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLMSegmentHead.m; sourceTree = "<group>"; };
 		7274187B20B13CB6001D6BE1 /* MLMSegmentPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentPage.h; sourceTree = "<group>"; };
@@ -2936,6 +2939,8 @@
 			children = (
 				8D5FF5EB210B16ED0094516F /* MyTab.h */,
 				8D5FF5EC210B16ED0094516F /* MyTab.m */,
+				7266FEC3210B4304005794AD /* MyCollectionView.h */,
+				7266FEC4210B4304005794AD /* MyCollectionView.m */,
 			);
 			path = MyTab;
 			sourceTree = "<group>";
@@ -4914,6 +4919,7 @@
 				8DC17A7C20C0E430005D9EE0 /* MomentCell.m in Sources */,
 				CEE68C4920ECFAFC00233AE3 /* TravelInvite.m in Sources */,
 				CEC4A55120C3FF4F0026EE19 /* YTSideMenuModel.m in Sources */,
+				7266FEC5210B4304005794AD /* MyCollectionView.m in Sources */,
 				8DD48CCF20A811EA00D6D1E6 /* TAPageControl.m in Sources */,
 				8DE4669320EE0C3F009730F7 /* RCDGroupTableViewCell.m in Sources */,
 				CE0BA5E7209D5E9B004C3C33 /* YSTools.m in Sources */,

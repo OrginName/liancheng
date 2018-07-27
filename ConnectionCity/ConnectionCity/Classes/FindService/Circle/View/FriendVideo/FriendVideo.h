@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FriendVideo : UICollectionView
+@interface FriendVideo : MyCollectionView
 -(instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout withController:(UIViewController *)controller;
 @end
 @interface FriendVideoLayout : UICollectionViewFlowLayout

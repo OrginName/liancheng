@@ -12,7 +12,7 @@
 #import "ServiceHomeNet.h"
 #import "AbilityNet.h"
 @interface SearchHistoryController() <UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UISearchBarDelegate>
-@property (nonatomic,strong)UITableView * tab_Bottom;
+@property (nonatomic,strong) UITableView * tab_Bottom;
 @property (nonatomic, strong) JFCityHeaderView *headerView;
 @property (nonatomic,strong) UIView * view_Search;
 @property (nonatomic,strong) UITextField * search_text;

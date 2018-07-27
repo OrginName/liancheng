@@ -18,7 +18,7 @@
 {
     CustomButton * _tmpBtn;
 }
-@property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
+@property (weak, nonatomic) IBOutlet MyTab *tab_Bottom;
 @property (weak, nonatomic) IBOutlet CustomButton *btn_All;
 @property (weak, nonatomic) IBOutlet UIButton *inandoutBtn;
 @property (weak, nonatomic) IBOutlet UIButton *selectedMonceBtn;

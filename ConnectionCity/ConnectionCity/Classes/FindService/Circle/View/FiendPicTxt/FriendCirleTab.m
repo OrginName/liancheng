@@ -50,7 +50,6 @@
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.delegate = self;
     self.dataSource = self;
-    self.tableHeaderView = self.headImage;
 }
 #pragma mark -----CommentViewDelegate------
 - (void)sendValue{
@@ -177,6 +176,12 @@
             [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:weakSelf.momentList] forKey:@"PICHOME"];
         }else
         [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:weakSelf.momentList] forKey:@"PICTXT"];
+        if (weakSelf.momentList.count!=0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // 通知主线程刷新 神马的
+                weakSelf.tableHeaderView = weakSelf.headImage;
+            });
+        }
         [weakSelf reloadData];
     } FailErrBlock:^(NSError *failValue) {
         [weakSelf.mj_header endRefreshing];
@@ -324,7 +329,7 @@
 } 
 -(UIImageView *)headImage{
     if (!_headImage) {
-        _headImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, 250)];
+        _headImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.width*0.7)];
         privateUserInfoModel * userInfo = [YSAccountTool userInfo];
         [_headImage sd_setImageWithURL:[NSURL URLWithString:userInfo.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
         UIImageView * image1 = [[UIImageView alloc] initWithFrame:CGRectMake(_headImage.width-70, _headImage.height-25, 50, 50)];

@@ -12,7 +12,7 @@
 #import "OurResumeController.h"
 @interface OurSendController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, copy) NSArray <YTSideMenuModel *> *menuModels;
-@property (weak, nonatomic) IBOutlet UITableView *tab_bottom;
+@property (weak, nonatomic) IBOutlet MyTab *tab_bottom;
 
 @end
 

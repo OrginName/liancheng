@@ -32,12 +32,12 @@
     [view.mj_footer resetNoMoreData];
 }
 
-+ (void)addRefreshHeaderWithView:(UIScrollView *)scrollView refreshingBlock:(void(^)())block {
++ (void)addRefreshHeaderWithView:(UIScrollView *)scrollView refreshingBlock:(void(^)(void))block {
     scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:block];
 }
 
-+ (void)addRefreshFooterWithView:(UIScrollView *)scrollView refreshingBlock:(void(^)())block {
-    scrollView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:block];
++ (void)addRefreshFooterWithView:(UIScrollView *)scrollView refreshingBlock:(void(^)(void))block {
+    scrollView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:block];
 }
 
 @end

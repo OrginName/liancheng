@@ -27,7 +27,7 @@
 {
     int _page;
 }
-@property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
+@property (weak, nonatomic) IBOutlet MyTab *tab_Bottom;
 //简历数组
 @property (nonatomic, strong) NSMutableArray *resumedataArr;
 //服务数组
@@ -266,7 +266,7 @@
         WeakSelf
         [YTAlertUtil alertDualWithTitle:@"连程" message:@"是否要删除当前简历" style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
         } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {
-            [YSNetworkTool POST:v1TalentResumeDelete params:@{@"id": mo.modelId} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+            [YSNetworkTool POST:v1TalentResumeDelete params:@{@"id": mo.modelId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
                 [weakSelf requestMyResumePage];
             } failure:nil];
         } completion:nil];
@@ -276,7 +276,7 @@
 //我的发布-简历
 - (void)requestMyResumePage {
     WeakSelf
-    [YSNetworkTool POST:v1MyResumePage params:@{@"pageNumber": @(_page),@"pageSize":@"20"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1MyResumePage params:@{@"pageNumber": @(_page),@"pageSize":@"20"} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if (_page==1) {
             [[weakSelf.resumedataArr mutableCopy] removeAllObjects];
         }
@@ -291,7 +291,7 @@
 //我的发布-服务
 - (void)v1MyServicePage {
     WeakSelf
-    [YSNetworkTool POST:v1MyServicePage params:@{@"pageNumber": @(_page),@"pageSize":@"20"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1MyServicePage params:@{@"pageNumber": @(_page),@"pageSize":@"20"} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if (_page==1) {
             [weakSelf.servicedataArr  removeAllObjects];
         }
@@ -307,7 +307,7 @@
 //我的发布-旅行
 - (void)v1MyTravelPage {
     WeakSelf
-    [YSNetworkTool POST:v1MyTravelPage params:@{@"pageNumber": @(_page),@"pageSize":@"20"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1MyTravelPage params:@{@"pageNumber": @(_page),@"pageSize":@"20"} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if (_page==1) {
             [weakSelf.tourismdataArr removeAllObjects];
         }
@@ -323,7 +323,7 @@
 //我的发布-邀约
 - (void)v1MyTravelInvitePage {
     WeakSelf
-    [YSNetworkTool POST:v1MyTravelInvitePage params:@{@"pageNumber": @(_page),@"pageSize":@"20"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1MyTravelInvitePage params:@{@"pageNumber": @(_page),@"pageSize":@"20"} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if (_page==1) {
             [[weakSelf.invitationdataArr mutableCopy] removeAllObjects];
         }
@@ -339,14 +339,14 @@
 //我的发布-宝物
 - (void)requestMyTreasurePage {
     
-    [YSNetworkTool POST:v1MyTreasurePage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1MyTreasurePage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         
     } failure:nil];
 }
 //我的发布-身份互换
 - (void)v1MyIdentityPage {
     
-    [YSNetworkTool POST:v1MyIdentityPage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1MyIdentityPage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         
     } failure:nil];
 }

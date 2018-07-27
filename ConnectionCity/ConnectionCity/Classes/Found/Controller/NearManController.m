@@ -14,7 +14,7 @@
     int _page;
     NSString * _flag;
 }
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet MyCollectionView *collectionView;
 @property (nonatomic,strong)NSMutableArray * data_Arr;
 @end
 

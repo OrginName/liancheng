@@ -65,4 +65,5 @@
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 #import <ShareSDKUI/ShareSDKUI.h>
 #import "MyTab.h"
+#import "MyCollectionView.h"
 #endif /* YSPrefixHeader_pch */

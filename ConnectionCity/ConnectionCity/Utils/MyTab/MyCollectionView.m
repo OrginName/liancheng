@@ -1,21 +1,23 @@
 //
-//  MyTab.m
-//  emTab
+//  MyCollectionView.m
+//  ConnectionCity
 //
-//  Created by qt on 2018/7/26.
-//  Copyright © 2018年 qt. All rights reserved.
+//  Created by qt on 2018/7/27.
+//  Copyright © 2018年 ConnectionCity. All rights reserved.
 //
 
-#import "MyTab.h"
-@implementation MyTab
+#import "MyCollectionView.h"
+
+@implementation MyCollectionView
 -(void)awakeFromNib{
     [super awakeFromNib];
     [self Mydelegate];
 }
-- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
-    if (self = [super initWithFrame:frame style:style]) {
+-(instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout
+{
+    if (self = [super initWithFrame:frame collectionViewLayout:layout]) {
         [self Mydelegate];
-    }
+    };
     return self;
 }
 -(void)Mydelegate{
@@ -40,8 +42,4 @@
 {
     return YES;
 }
-//- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
-//{
-//    return self.tableHeaderView.frame.size.height/2.0f;
-//}
 @end

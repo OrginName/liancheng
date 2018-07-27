@@ -11,7 +11,7 @@
 #import "OurConcernMo.h"
 
 @interface OurConcernController ()<UITableViewDelegate,UITableViewDataSource,profileCellDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
+@property (weak, nonatomic) IBOutlet MyTab *tab_Bottom;
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, assign) NSInteger page;
 

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TrvalTrip : UIView
-@property (nonatomic,strong) UICollectionView * bollec_bottom;
+@property (nonatomic,strong) MyCollectionView * bollec_bottom;
 @property (nonatomic,strong) NSString * cityID;
 @property (nonatomic,strong)NSMutableArray * data_Arr;
 @property (nonatomic,assign) NSInteger page;

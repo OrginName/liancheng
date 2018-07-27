@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet CustomButton *btn_AllOne;
 @property (strong, nonatomic) UIScrollView *scrollHead;
 @property (nonatomic, strong) MLMSegmentPage *pageView;
-@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) MyTab *tableView;
 @property (nonatomic,strong) NSMutableArray * data_Arr;
 @property (nonatomic,assign) float scroe;
 @end
@@ -210,7 +210,7 @@
         if (successArrValue.count==0) {
             [self endRefrsh:tab];
             [tab reloadData];
-            return [YTAlertUtil showTempInfo:@"暂无数据"];
+            return;
         }
         if (_page==1) {
             [self.data_Arr removeAllObjects];
@@ -268,7 +268,7 @@
     [self.tab_Arr removeAllObjects];
     arr = [NSMutableArray array];
     for (NSInteger i = 0; i < list.count; i ++) {
-        UITableView  *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, kScreenHeight-200) style:UITableViewStylePlain];
+        MyTab *tableview = [[MyTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, kScreenHeight-200) style:UITableViewStylePlain];
         tableview.delegate = self;
         tableview.dataSource = self;
         tableview.tag = i+1000;
