@@ -161,7 +161,6 @@
         _imagePlay = [[UIImageView alloc] init];
         UIImageView * image = [[UIImageView alloc] init];
         image.image = [UIImage imageNamed:@"q-play"];
-        self.play = image;
         [_imagePlay addSubview:image];
         _imagePlay.userInteractionEnabled = YES;
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playMyVideo)];

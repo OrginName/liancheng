@@ -16,5 +16,6 @@ proStr(groupId);//首页群ID
 proStr(teamId);//团队ID
 proStr(stationId);//服务站ID
 proStr(type);
+proStr(des);
 @property (nonatomic,strong)UserMo * user;//朋友的user
 @end

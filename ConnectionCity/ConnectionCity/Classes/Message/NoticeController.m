@@ -11,6 +11,7 @@
 #import "NoticeCell.h"
 #import "CircleNet.h"
 #import "RCDHttpTool.h"
+#import "RCDAddressBookViewController.h"
 @interface NoticeController ()<UITableViewDelegate,UITableViewDataSource,NoticeCellDelegate>
 {
     int _page;
@@ -46,6 +47,13 @@
     cell.mo = self.arr_Data[indexPath.row];
     return cell;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NoticeMo * mo = self.arr_Data[indexPath.row];
+    if (![[mo.type description] isEqualToString:@"99"]) {
+        RCDAddressBookViewController * address = [RCDAddressBookViewController new];
+        [self.navigationController pushViewController:address animated:YES];
+    }
+}
 -(void)loadData{
     NSDictionary * dic = @{@"pageNumber": @(_page),
                            @"pageSize": @15};
@@ -54,30 +62,32 @@
         if (_page==1) {
             [self.arr_Data removeAllObjects];
         }
-        self.arr_Data = [NoticeMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
         _page++;
+//        for (NSDictionary * dic in responseObject[@"data"][@"content"]) {
+//            NoticeMo * mo = [NoticeMo mj_objectWithKeyValues:dic];
+//            [self.arr_Data addObject:mo];
+//        }
+        self.arr_Data = [NoticeMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
         [self.tab_Bottom reloadData];
         [weakSelf endRefrsh];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [weakSelf endRefrsh];
     }];
 }
-- (void)agreeClik:(UIButton *)btn{
-    NoticeMo * notice = self.arr_Data[btn.tag];
-    if ([[notice.type description] isEqualToString:@"10"]) {
-        [RCDHTTPTOOL processInviteFriendRequest:[notice.sendUserId description] complete:^(BOOL a) {
-            
-        }];
-    }else if ([notice.type intValue]>10&&[notice.type intValue]<=40){
-        [CircleNet requstAgreeJoinQun:@{@"groupId":notice.ID} withFlag:[notice.type intValue] withSuc:^(NSDictionary *successDicValue) {
-            
-        } withFailBlock:^(NSError *failValue) {
-            
-        }];
-    }else{
-        [YTAlertUtil showTempInfo:@"其他"];
-    }
-}
+//- (void)agreeClik:(UIButton *)btn{
+//    NoticeMo * notice = self.arr_Data[btn.tag];
+//    if ([[notice.type description] isEqualToString:@"10"]) {
+//        [RCDHTTPTOOL processInviteFriendRequest:[notice.sendUserId description] complete:^(BOOL a) {
+//        }];
+//    }else if ([notice.type intValue]>10&&[notice.type intValue]<=40){
+//        [CircleNet requstAgreeJoinQun:@{@"groupId":notice.ID} withFlag:[notice.type intValue] withSuc:^(NSDictionary *successDicValue) {
+//
+//        } withFailBlock:^(NSError *failValue) {
+//        }];
+//    }else{
+//        [YTAlertUtil showTempInfo:@"其他"];
+//    }
+//}
 -(void)endRefrsh{
     [self.tab_Bottom.mj_header endRefreshing];
     [self.tab_Bottom.mj_footer endRefreshing];

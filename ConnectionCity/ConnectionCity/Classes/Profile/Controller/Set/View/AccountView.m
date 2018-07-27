@@ -97,10 +97,13 @@
                 [YTAlertUtil hideHUD];
         } completion:nil];
     }else if (sender.tag==2){
+         NSMutableArray * arr1 = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"MESSAGE"]];
+        if (arr1.count==0) {
+            return [YTAlertUtil showTempInfo:@"暂无聊天记录"];
+        }
         [YTAlertUtil alertDualWithTitle:@"连程" message:@"是否要清空所有的聊天记录" style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
         } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {
-             [YTAlertUtil showHUDWithTitle:@"正在清除..."];
-            NSMutableArray * arr1 = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"MESSAGE"]];
+             [YTAlertUtil showHUDWithTitle:@"正在清除..."]; 
             __block int i=0;
             for (MessageMo * mo in arr1) {
                 BOOL a = [[RCIMClient sharedRCIMClient] clearMessages:mo.Type targetId:mo.ID];

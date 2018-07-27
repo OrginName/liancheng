@@ -56,22 +56,22 @@
                 moment.images = [Arr[i][@"obj"][@"images"] description];
                 moment.containsImage =Arr[i][@"obj"][@"containsImage"];
                 moment.containsVideo =Arr[i][@"obj"][@"containsVideo"];
+                if ([Arr[i][@"user"] isKindOfClass:[NSDictionary class]]) {
+                    moment.userMo = [UserMo mj_objectWithKeyValues:Arr[i][@"user"]];
+                    moment.userMo.ID = Arr[i][@"user"][@"id"];
+                }
+                moment.singleWidth = 500;
+                moment.singleHeight = 315;
+                if (moment.videos.length!=0&&[moment.videos containsString:@"http"]) {
+                    moment.coverImage = [UIImage thumbnailOfAVAsset:[NSURL URLWithString:moment.videos]];
+                }else{
+                    moment.coverImage = [UIImage imageNamed:@"no-pic"];
+                    NSMutableArray * imageArr = [[moment.images componentsSeparatedByString:@";"] mutableCopy];
+                    [imageArr removeLastObject];
+                    moment.fileCount = [imageArr count];
+                }
+                [self.momentList addObject:moment];
             }
-            if ([Arr[i][@"user"] isKindOfClass:[NSDictionary class]]) {
-                moment.userMo = [UserMo mj_objectWithKeyValues:Arr[i][@"user"]];
-                moment.userMo.ID = Arr[i][@"user"][@"id"];
-            }
-            moment.singleWidth = 500;
-            moment.singleHeight = 315;
-            if (moment.videos.length!=0&&[moment.videos containsString:@"http"]) {
-                moment.coverImage = [UIImage thumbnailOfAVAsset:[NSURL URLWithString:moment.videos]];
-            }else{
-                moment.coverImage = [UIImage imageNamed:@"no-pic"];
-                NSMutableArray * imageArr = [[moment.images componentsSeparatedByString:@";"] mutableCopy];
-                [imageArr removeLastObject];
-                moment.fileCount = [imageArr count];
-            }
-            [self.momentList addObject:moment];
             [self endRefresh];
             [self.tab_Bottom reloadData];
         }
@@ -118,8 +118,9 @@
     Moment * comm = self.momentList[index.row];
     WeakSelf
     [YSNetworkTool POST:v1CommonCollectCreate params:@{@"typeId":@([comm.ID integerValue]),@"type":@20} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        [weakSelf.momentList removeObjectAtIndex:index.row];
-        [self.tab_Bottom reloadData];
+        page=1;
+        [cell.imagePlay removeFromSuperview];
+        [weakSelf loadData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

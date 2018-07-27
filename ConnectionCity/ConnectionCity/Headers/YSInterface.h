@@ -439,7 +439,6 @@ static NSString * const v1Pay = @"/v1/pay";
 static NSString * const v1PayCheck = @"/v1/pay/check";
 
 
-
 //公工接口
 //关注
 static NSString * const v1CommonFollowCreate = @"/v1/common/follow/create";
@@ -447,7 +446,6 @@ static NSString * const v1CommonFollowCreate = @"/v1/common/follow/create";
 static NSString * const v1CommonCommentDelete = @"/v1/common/comment/delete";
 //全部申请列表（分页，含好友申请，群申请，团队申请，服务站申请
 static NSString * const v1ApplicationPageAll = @"/v1/application/page/all";
-
 #endif /* YSInterface_h */
 
 

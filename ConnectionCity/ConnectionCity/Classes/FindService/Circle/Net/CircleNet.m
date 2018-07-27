@@ -143,8 +143,8 @@
  @param failBlock 失败回调
  */
 +(void)requstAgreeJoinQun:(NSDictionary *) param withFlag:(int)flag withSuc:(SuccessDicBlock)sucBlock withFailBlock:(FailErrBlock)failBlock{
-//    20 qun 30 station 40 team
-    NSString * url = flag==20?v1GroupApplicationAgree:flag==30?v1StationApplicationAgree:v1TeamApplicationAgree;
+//    20 qun 30team  40 station
+    NSString * url = flag==20?v1GroupApplicationAgree:flag==40?v1StationApplicationAgree:v1TeamApplicationAgree;
     [YSNetworkTool POST:url params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         sucBlock(responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

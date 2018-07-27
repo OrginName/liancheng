@@ -28,7 +28,7 @@
 /** <#createTime描述#> */
 @property (nonatomic, copy) NSString *createTime;
 /** <#comments描述#> */
-@property (nonatomic, copy) NSString *comments;
+@property (nonatomic, copy) NSArray *comments;
 /** <#user描述#> */
 @property (nonatomic, strong) UserMo *user;
 /** <#lng描述#> */

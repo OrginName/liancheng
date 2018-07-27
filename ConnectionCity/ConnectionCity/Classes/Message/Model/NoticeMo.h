@@ -17,5 +17,6 @@ proStr(type);
 proStr(typeName);
 proStr(sendUserId);
 proStr(ID);
+proStr(content);
 @property (nonatomic,strong)UserMo * user;
 @end

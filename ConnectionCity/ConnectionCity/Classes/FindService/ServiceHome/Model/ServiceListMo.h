@@ -10,6 +10,7 @@
 #import "UserMo.h"
 @interface ServiceListMo : BaseModel
 proStr(ID);
+proStr(likeCount);
 proStr(images);
 proStr(title);
 proStr(serviceCategoryId);

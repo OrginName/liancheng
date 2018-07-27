@@ -20,16 +20,22 @@
 #import "ServiceListMo.h"
 #import "trvalMo.h"
 #import "ResumeController.h"
+#import "SendServiceController.h"
+#import "SendTripController.h"
+#import "TrvalInvitController.h"
 @interface OurResumeController ()<UITableViewDelegate,UITableViewDataSource,profileCellDelegate>
+{
+    int _page;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 //简历数组
-@property (nonatomic, strong) NSArray *resumedataArr;
+@property (nonatomic, strong) NSMutableArray *resumedataArr;
 //服务数组
-@property (nonatomic, strong) NSArray *servicedataArr;
+@property (nonatomic, strong) NSMutableArray *servicedataArr;
 //陪旅游数组
-@property (nonatomic, strong) NSArray *tourismdataArr;
+@property (nonatomic, strong) NSMutableArray *tourismdataArr;
 //旅游邀约数组
-@property (nonatomic, strong) NSArray *invitationdataArr;
+@property (nonatomic, strong) NSMutableArray *invitationdataArr;
 //宝物数组
 @property (nonatomic, strong) NSArray *goodsdataArr;
 //身份互换数组
@@ -42,6 +48,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    self.resumedataArr = [NSMutableArray array];
+    self.servicedataArr = [NSMutableArray array];
+    self.tourismdataArr = [NSMutableArray array];
+    self.invitationdataArr = [NSMutableArray array];
+    _page=1;
+    self.tab_Bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        _page=1;
+        [self loadData];
+    }];
+    self.tab_Bottom.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [self loadData];
+    }];
+    [self.tab_Bottom.mj_header beginRefreshing];
+}
+-(void)loadData{
     if(self.index==2){
         //我的发布-简历
         [self requestMyResumePage];
@@ -139,12 +160,14 @@
                 index = idx;
             }
         }];
-        ShowResumeController * show = [ShowResumeController new];
-        show.Receive_Type = ENUM_TypeTrval;
-        show.data_Count = mutArr;
-        show.zIndex = index;
-        NSLog(@"当前zindex为：%ld",index);
-        [self.navigationController pushViewController:show animated:YES];
+        SendServiceController * send = [SendServiceController new];
+        [self.navigationController pushViewController:send animated:YES];
+//        ShowResumeController * show = [ShowResumeController new];
+//        show.Receive_Type = ENUM_TypeTrval;
+//        show.data_Count = mutArr;
+//        show.zIndex = index;
+//        NSLog(@"当前zindex为：%ld",index);
+//        [self.navigationController pushViewController:show animated:YES];
     }else if (self.index==4){
         NSMutableArray *mutArr = [NSMutableArray array];
         __block tourismMo *model = self.tourismdataArr[indexPath.row];
@@ -176,13 +199,15 @@
                 index = idx;
             }
         }];
-        ShowResumeController * show = [ShowResumeController new];
-        show.Receive_Type = ENUM_TypeTrval;
-        show.data_Count = mutArr;
-        show.zIndex = index;
-        show.str = @"TrvalTrip";
-        NSLog(@"当前zindex为：%ld",index);
-        [self.navigationController pushViewController:show animated:YES];
+        SendTripController * trip = [SendTripController new];
+        [self.navigationController pushViewController:trip animated:YES];
+//        ShowResumeController * show = [ShowResumeController new];
+//        show.Receive_Type = ENUM_TypeTrval;
+//        show.data_Count = mutArr;
+//        show.zIndex = index;
+//        show.str = @"TrvalTrip";
+//        NSLog(@"当前zindex为：%ld",index);
+//        [self.navigationController pushViewController:show animated:YES];
     }else if (self.index==5){
         NSMutableArray *mutArr = [NSMutableArray array];
         __block TravelInvite *model = self.invitationdataArr[indexPath.row];
@@ -214,13 +239,17 @@
                 index = idx;
             }
         }];
-        ShowResumeController * show = [ShowResumeController new];
-        show.Receive_Type = ENUM_TypeTrval;
-        show.data_Count = mutArr;
-        show.zIndex = index;
-        show.str = @"TrvalTrip";
-        NSLog(@"当前zindex为：%ld",index);
-        [self.navigationController pushViewController:show animated:YES];
+        TrvalInvitController * trval = [TrvalInvitController new];
+        [self.navigationController pushViewController:trval animated:YES];
+//        if (self.index!=5) {
+//            ShowResumeController * show = [ShowResumeController new];
+//            show.Receive_Type = ENUM_TypeTrval;
+//            show.data_Count = mutArr;
+//            show.zIndex = index;
+//            show.str = @"TrvalTrip";
+//            NSLog(@"当前zindex为：%ld",index);
+//            [self.navigationController pushViewController:show animated:YES];
+//        }
     }
 }
 #pragma mark -----profileCellDelegate-----
@@ -247,47 +276,82 @@
 //我的发布-简历
 - (void)requestMyResumePage {
     WeakSelf
-    [YSNetworkTool POST:v1MyResumePage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1MyResumePage params:@{@"pageNumber": @(_page),@"pageSize":@"20"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (_page==1) {
+            [[weakSelf.resumedataArr mutableCopy] removeAllObjects];
+        }
+        _page++;
         weakSelf.resumedataArr = [OurResumeMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
         [weakSelf.tab_Bottom reloadData];
-    } failure:nil];
+        [weakSelf endRefresh];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [weakSelf endRefresh];
+    }];
 }
 //我的发布-服务
 - (void)v1MyServicePage {
     WeakSelf
-    [YSNetworkTool POST:v1MyServicePage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        weakSelf.servicedataArr = [ServiceMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+    [YSNetworkTool POST:v1MyServicePage params:@{@"pageNumber": @(_page),@"pageSize":@"20"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (_page==1) {
+            [weakSelf.servicedataArr  removeAllObjects];
+        }
+        _page++;
+        NSArray * arr = [ServiceMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+        [weakSelf.servicedataArr addObjectsFromArray:arr];
         [weakSelf.tab_Bottom reloadData];
-    } failure:nil];
+        [weakSelf endRefresh];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [weakSelf endRefresh];
+    }];
 }
 //我的发布-旅行
 - (void)v1MyTravelPage {
     WeakSelf
-    [YSNetworkTool POST:v1MyTravelPage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        weakSelf.tourismdataArr = [tourismMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+    [YSNetworkTool POST:v1MyTravelPage params:@{@"pageNumber": @(_page),@"pageSize":@"20"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (_page==1) {
+            [weakSelf.tourismdataArr removeAllObjects];
+        }
+        _page++;
+        NSArray * arr = [tourismMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+        [weakSelf.tourismdataArr addObjectsFromArray:arr];
         [weakSelf.tab_Bottom reloadData];
-    } failure:nil];
+        [weakSelf endRefresh];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [weakSelf endRefresh];
+    }];
 }
 //我的发布-邀约
 - (void)v1MyTravelInvitePage {
     WeakSelf
-    [YSNetworkTool POST:v1MyTravelInvitePage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        weakSelf.invitationdataArr = [TravelInvite mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+    [YSNetworkTool POST:v1MyTravelInvitePage params:@{@"pageNumber": @(_page),@"pageSize":@"20"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (_page==1) {
+            [[weakSelf.invitationdataArr mutableCopy] removeAllObjects];
+        }
+        _page++;
+        NSArray * arr = [TravelInvite mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+        [weakSelf.invitationdataArr addObjectsFromArray:arr];
         [weakSelf.tab_Bottom reloadData];
-    } failure:nil];
+        [weakSelf endRefresh];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [weakSelf endRefresh];
+    }];
 }
 //我的发布-宝物
 - (void)requestMyTreasurePage {
-    WeakSelf
+    
     [YSNetworkTool POST:v1MyTreasurePage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         
     } failure:nil];
 }
 //我的发布-身份互换
 - (void)v1MyIdentityPage {
-    WeakSelf
+    
     [YSNetworkTool POST:v1MyIdentityPage params:@{@"pageNumber": @"1",@"pageSize":@"10"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         
     } failure:nil];
+}
+-(void)endRefresh{
+    [self.tab_Bottom.mj_header endRefreshing];
+    [self.tab_Bottom.mj_footer endRefreshing];
 }
 @end

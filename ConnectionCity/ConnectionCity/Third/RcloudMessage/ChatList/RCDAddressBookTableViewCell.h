@@ -36,6 +36,12 @@
  *  头像
  */
 @property(nonatomic, strong) UIImageView *portraitImageView;
+/**
+ *  说明
+ */
+@property(nonatomic, strong) UILabel *desLabel;
+
+
 
 /**
  *  “已接受”、“已邀请”

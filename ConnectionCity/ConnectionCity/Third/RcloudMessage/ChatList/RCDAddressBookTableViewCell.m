@@ -37,13 +37,22 @@
         [[UIImageView alloc] initWithFrame:CGRectMake(portraitImageViewX, portraitImageViewY, 36, 36)];
 
     //昵称
-    CGFloat nameLabelWidth = 100;
+    CGFloat nameLabelWidth = 200;
     CGFloat nameLabelHeight = 21;
     CGFloat nameLabelX = CGRectGetMaxX(self.portraitImageView.frame) + 8;
-    CGFloat nameLabelY = cellHeight / 2.0 - nameLabelHeight / 2.0;
+    CGFloat nameLabelY = portraitImageViewY-5;
     self.nameLabel =
         [[UILabel alloc] initWithFrame:CGRectMake(nameLabelX, nameLabelY, nameLabelWidth, nameLabelHeight)];
     self.nameLabel.font = [UIFont systemFontOfSize:14];
+    
+    //昵称
+    CGFloat desLabelX = nameLabelX;
+    CGFloat desLabelY = nameLabelY+26;
+    self.desLabel =
+    [[UILabel alloc] initWithFrame:CGRectMake(desLabelX, desLabelY, nameLabelWidth, nameLabelHeight)];
+    self.desLabel.textColor = [UIColor lightGrayColor];
+    self.desLabel.font = [UIFont systemFontOfSize:13];
+    
 
 //    //右侧箭头
 //    CGFloat arrowWidth = 15;
@@ -54,11 +63,11 @@
 //    self.arrow.image = [UIImage imageNamed:@"grayarrow"];
 
     //“接受”按钮
-    _acceptBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-75, 20, 55, 20)];
+    _acceptBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-100, 20, 80, 30)];
     _acceptBtn.tag = self.tag;
     [_acceptBtn setTitle:@"接受" forState:UIControlStateNormal];
     [_acceptBtn setTintColor:[UIColor whiteColor]];
-    _acceptBtn.layer.cornerRadius = 10;
+    _acceptBtn.layer.cornerRadius = 5;
     [_acceptBtn setBackgroundColor:[UIColor orangeColor]];
     _acceptBtn.translatesAutoresizingMaskIntoConstraints = NO;
     [_acceptBtn.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:14.0]];
@@ -66,6 +75,7 @@
     [self.contentView addSubview:self.portraitImageView];
     [self.contentView addSubview:self.nameLabel];
     [self.contentView addSubview:_acceptBtn];
+    [self.contentView addSubview:self.desLabel];
 }
 -(void)accept:(UIButton *)btn{
     if (self.delegate&&[self.delegate respondsToSelector:@selector(acceptClick:)]) {
@@ -75,6 +85,7 @@
 - (void)setModel:(friendMo *)user {
     if (user) {
         self.nameLabel.text = user.user.nickName?user.user.nickName:user.user.ID;
+        self.desLabel.text = user.des;
         if ([user.user.headImage isEqualToString:@""]) {
             DefaultPortraitView *defaultPortrait =
                 [[DefaultPortraitView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];

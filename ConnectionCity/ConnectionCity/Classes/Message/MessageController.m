@@ -69,6 +69,7 @@
 }
 //导航右侧按钮点击
 -(void)MessageClick{
+    flag = NO;
     NoticeController * noice = [NoticeController new];
     noice.title = @"消息列表";
     [self.navigationController pushViewController:noice animated:YES];

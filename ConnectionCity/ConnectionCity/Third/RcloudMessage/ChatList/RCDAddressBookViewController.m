@@ -23,6 +23,7 @@
 #import <RongIMLib/RongIMLib.h>
 #include <ctype.h>
 #import "friendMo.h"
+#import "CircleNet.h"
 @interface RCDAddressBookViewController ()<RCDAddressBookCellDelegate>
 {
     int _page;
@@ -45,6 +46,7 @@ MBProgressHUD *hud;
     if (self) {
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        self.friends = [NSMutableArray array];
     }
     return self;
 }
@@ -56,7 +58,6 @@ MBProgressHUD *hud;
     self.navigationItem.title = @"新朋友";
     self.tableView.tableFooterView = [UIView new];
     _page = 1;
-    [self.tableView.mj_header beginRefreshing];
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         _page=1;
         [self getAllData];
@@ -64,11 +65,11 @@ MBProgressHUD *hud;
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         [self getAllData];
     }];
+    [self.tableView.mj_header beginRefreshing];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     _needSyncFriendList = YES;
-    [self getAllData];
 }
 //删除已选中用户
 - (void)removeSelectedUsers:(NSArray *)selectedUsers {
@@ -90,41 +91,24 @@ MBProgressHUD *hud;
                            @"pageSize": @50
                            };
     [YSNetworkTool POST:v1ApplicationPageAll params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        if ([responseObject[@"data"][@"content"] count]==0) {
-//            [YTAlertUtil showTempInfo:@"暂无数据"];
-            [self endFresh];
-            return;
-        }
         if (_page==1) {
             [_friends removeAllObjects];
         }
         _page++;
-        NSMutableArray * arr1 = [NSMutableArray array];
-        for (NSDictionary * dic in responseObject[@"data"][@"userGroupApplications"][@"content"]) {
-            friendMo * friend = [friendMo mj_objectWithKeyValues:dic];
-            friend.type = @"20";
-            [arr1 addObject:friend];
+        NSArray * array = @[@"userGroupApplications",@"userFriendApplications",@"teamUserApplications",@"serviceStationUserApplications"];
+        NSArray * array1 = @[@"20",@"100",@"30",@"40"];
+        NSArray * array2 = @[@"申请加为好友",@"申请加入群"];
+        for (int i=0; i<array.count; i++) {
+            for (NSDictionary * dic in responseObject[@"data"][array[i]][@"content"]) {
+                friendMo * friend = [friendMo mj_objectWithKeyValues:dic];
+                friend.type = array1[i];
+                if ([array[i] isEqualToString:@"userFriendApplications"]) {
+                    friend.des = array2[0];
+                }else
+                    friend.des = array2[1];
+                [_friends addObject:friend];
+            }
         }
-        NSMutableArray * arr2 = [NSMutableArray array];
-        for (NSDictionary * dic1 in responseObject[@"data"][@"userFriendApplications"][@"content"]) {
-            friendMo * friend = [friendMo mj_objectWithKeyValues:dic1];
-            friend.type = @"100";
-            [arr2 addObject:friend];
-        }
-        NSMutableArray * arr3 = [NSMutableArray array];
-        for (NSDictionary * dic2 in responseObject[@"data"][@"teamUserApplications"][@"content"]) {
-            friendMo * friend = [friendMo mj_objectWithKeyValues:dic2];
-            friend.type = @"30";
-            [arr3 addObject:friend];
-        }
-        NSMutableArray * arr4 = [NSMutableArray array];
-        for (NSDictionary * dic2 in responseObject[@"data"][@"teamUserApplications"][@"content"]) {
-            friendMo * friend = [friendMo mj_objectWithKeyValues:dic2];
-            friend.type = @"30";
-            [arr3 addObject:friend];
-        }
-        
-        _friends = [friendMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"userGroupApplications"][@"content"]];
         [self.tableView reloadData];
         [self endFresh];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -177,37 +161,45 @@ MBProgressHUD *hud;
 
 - (void)acceptClick:(UIButton *)btn
 {
-//    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    hud.color = [UIColor colorWithHexString:@"343637" alpha:0.5];
-//    hud.labelText = @"添加好友中...";
-//    [hud show:YES];
-    [YTAlertUtil showHUDWithTitle:@"添加好友中..."];
     friendMo *friend = _friends[btn.tag-10000];
-    WeakSelf
-    [RCDHTTPTOOL processInviteFriendRequest:friend.user.ID
-                                   complete:^(BOOL request) {
-                                       if (request) {
-                                           [YTAlertUtil hideHUD];
-                                           [weakSelf.tableView.mj_header beginRefreshing];
-                                           weakSelf.block();
-                                           [[RCIMClient sharedRCIMClient] getBlacklistStatus:friend.user.ID success:^(int bizStatus) {
-                                               if (bizStatus==0) {
-                                                   [[RCIMClient sharedRCIMClient] removeFromBlacklist:friend.user.ID success:^{
-                                                       
-                                                   } error:^(RCErrorCode status) {
-                                                       
-                                                   }]; 
-                                               }
-                                           } error:^(RCErrorCode status) {
+    if ([friend.type isEqualToString:@"100"]) {
+        [YTAlertUtil showHUDWithTitle:@"添加好友中..."];
+        WeakSelf
+        [RCDHTTPTOOL processInviteFriendRequest:friend.user.ID
+                                       complete:^(BOOL request) {
+                                           if (request) {
+                                               [YTAlertUtil hideHUD];
+                                               [weakSelf.tableView.mj_header beginRefreshing];
+                                               weakSelf.block();
+                                               [[RCIMClient sharedRCIMClient] getBlacklistStatus:friend.user.ID success:^(int bizStatus) {
+                                                   if (bizStatus==0) {
+                                                       [[RCIMClient sharedRCIMClient] removeFromBlacklist:friend.user.ID success:^{
+                                                           
+                                                       } error:^(RCErrorCode status) {
+                                                           
+                                                       }];
+                                                   }
+                                               } error:^(RCErrorCode status) {
+                                                   
+                                               }]; [self.navigationController popViewControllerAnimated:YES];
+                                               [RCDHTTPTOOL getFriendscomplete:^(NSMutableArray *result) {
+                                                   
+                                               }];
                                                
-                                           }]; [self.navigationController popViewControllerAnimated:YES];
-                                           [RCDHTTPTOOL getFriendscomplete:^(NSMutableArray *result) {
-                                               
-                                           }];
-                                           
-                                       } else {
-                                           [YTAlertUtil hideHUD];
-                                       }
-                                   }];
+                                           } else {
+                                               [YTAlertUtil hideHUD];
+                                           }
+                                       }];
+    }else{
+        NSString * str = @"";
+        str = [friend.type isEqualToString:@"20"]?friend.groupId:[friend.type isEqualToString:@"30"]?friend.teamId:friend.stationId;
+        WeakSelf
+        [CircleNet requstAgreeJoinQun:@{@"groupId":str,@"memberUserId": friend.userId} withFlag:[friend.type intValue] withSuc:^(NSDictionary *successDicValue) {
+            _page=1;
+            [weakSelf getAllData];
+        } withFailBlock:^(NSError *failValue) {
+        }];
+    }
+   
 }
 @end

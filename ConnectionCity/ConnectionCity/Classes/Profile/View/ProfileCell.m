@@ -60,7 +60,7 @@
     _serviceModel = serviceModel;
     _serviceTitleLab.text = serviceModel.title;
     _servicepriceLab.text = [NSString stringWithFormat:@"￥%@%@",serviceModel.price,serviceModel.typeName];
-    _serviceContentLab.text = [NSString stringWithFormat:@"￥%@/%@",serviceModel.serviceCategoryName.parentName,serviceModel.serviceCategoryName.name];
+    _serviceContentLab.text = [NSString stringWithFormat:@"%@/%@",serviceModel.serviceCategoryName.parentName?serviceModel.serviceCategoryName.parentName:@"",serviceModel.serviceCategoryName.name?serviceModel.serviceCategoryName.name:@""];
     _serviceTimeLab.text = serviceModel.createTime;
 }
 - (void)setTourismModel:(tourismMo *)tourismModel {

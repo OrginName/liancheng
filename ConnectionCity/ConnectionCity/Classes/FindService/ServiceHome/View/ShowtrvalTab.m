@@ -37,6 +37,10 @@
             [self.lunArr addObject:url];
         }
     }
+    if ([Mo.likeCount intValue]>0) {
+        self.btn_Like.selected = YES;
+    }
+     [self.btn_Like setTitle:[Mo.likeCount description] forState:UIControlStateNormal];
     _flag = 0;
 }
 -(void)setMoTrval:(trvalMo *)MoTrval{
@@ -46,6 +50,10 @@
             [self.lunArr addObject:url];
         }
     }
+    if ([MoTrval.likeCount intValue]>0) {
+        self.btn_Like.selected = YES;
+    }
+    [self.btn_Like setTitle:[MoTrval.likeCount description] forState:UIControlStateNormal];
     _flag = 1;
 }
 #pragma mark ---SDCycleScrollViewDelegate-----
@@ -199,13 +207,14 @@
 //}
 //点赞按钮点击
 -(void)likeClick:(UIButton *)sender{
-//    if (sender.selected) {
-//        [YTAlertUtil showTempInfo:@"您已点赞不能重复点赞"];
-//        return;
-//    }
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[5] contentArr][1];
-    [YSNetworkTool POST:v1CommonCommentAddlike  params:@{@"typeId":@([self.Mo.ID integerValue]),@"type":@([mo.value integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSString * str = @"";
+    if (self.Mo!=nil) {
+        str = self.Mo.ID;
+    }else
+        str = self.MoTrval.ID;
+    [YSNetworkTool POST:v1CommonCommentAddlike  params:@{@"typeId":@([str integerValue]),@"type":@([mo.value integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         sender.selected = !sender.selected;
         [sender setTitle:[NSString stringWithFormat:@"%@",responseObject[@"data"]] forState:UIControlStateNormal];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

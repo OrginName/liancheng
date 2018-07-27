@@ -133,11 +133,11 @@
 }
 -(void)GZLoadData:(NSString *)type{
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
-    if (self.Receive_Type == ENUM_TypeTrval){
-        if ([self.str isEqualToString:@"TrvalTrip"]){
-            
-        }
-    }
+//    if (self.Receive_Type == ENUM_TypeTrval){
+//        if ([self.str isEqualToString:@"TrvalTrip"]){
+//
+//        }
+//    }
     AllContentMo * mo = [arr[5] contentArr][1];
     [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":@([type integerValue]),@"type":@([mo.value integerValue])} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         [YTAlertUtil showTempInfo:@"关注成功"];

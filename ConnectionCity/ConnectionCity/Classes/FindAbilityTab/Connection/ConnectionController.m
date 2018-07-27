@@ -23,7 +23,6 @@
 @property (nonatomic,strong)NSMutableArray * tabArr;
 @property (strong, nonatomic) UIScrollView *scrollHead;
 @property (weak, nonatomic) IBOutlet UIButton *btn_All;//所有的人
-
 @property (nonatomic, strong) MLMSegmentPage *pageView;
 @property (strong, nonatomic) UITableView *tableView;
 @end

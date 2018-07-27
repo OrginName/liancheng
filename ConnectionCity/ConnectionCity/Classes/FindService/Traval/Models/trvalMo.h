@@ -31,6 +31,7 @@ proStr(travelModeName);//出行方式
 proStr(browseTimes);
 proStr(priceUnit);
 proStr(typeName);//单位
+proStr(likeCount);//点赞数
 @property (nonatomic,strong) UserMo * user;
 @end
 

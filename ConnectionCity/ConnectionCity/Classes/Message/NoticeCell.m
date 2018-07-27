@@ -17,11 +17,14 @@
 
 -(void)setMo:(NoticeMo *)mo{
     _mo = mo;
-    self.lab_name.text = mo.user.nickName?mo.user.nickName:mo.user.ID;
-    [self.image_head sd_setImageWithURL:[NSURL URLWithString:mo.user.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
-    self.lab_Title.text = mo.title;
-    if ([[mo.type description] isEqualToString:@"99"]) {
-        self.btn_agree.hidden = YES;
+    if (![[mo.type description] isEqualToString:@"99"]) {
+        self.lab_name.text = mo.user.nickName?mo.user.nickName:mo.user.ID;
+        [self.image_head sd_setImageWithURL:[NSURL URLWithString:mo.user.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
+        self.lab_Title.text = [[mo.title description] containsString:@"null"]?@"":[mo.title description];
+    }else{
+        self.lab_name.text = [[mo.title description] containsString:@"null"]?@"":[mo.title description];
+        [self.image_head sd_setImageWithURL:[NSURL URLWithString:mo.user.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
+        self.lab_Title.text = [[mo.content description] containsString:@"null"]?@"":[mo.content description];
     }
 }
 - (IBAction)btnClick:(UIButton *)sender {
