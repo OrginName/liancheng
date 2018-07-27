@@ -28,7 +28,7 @@
 @property (nonatomic,strong)TrvalTrip * trval;
 @property (weak, nonatomic) IBOutlet UIButton *btn_travl;
 @property (weak, nonatomic) IBOutlet UIButton *btn_invit;
-@property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
+@property (weak, nonatomic) IBOutlet MyTab *tab_Bottom;
 @property (weak, nonatomic) IBOutlet UIView *view_tab;
 @property (nonatomic,strong) UIButton * backBtn;
 @property (nonatomic,strong) NSMutableArray * data_Arr;

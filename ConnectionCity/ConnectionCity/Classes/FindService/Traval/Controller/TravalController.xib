@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,7 +14,7 @@
                 <outlet property="btn_PYYY" destination="Od9-0U-5Bq" id="TIZ-Jz-dH3"/>
                 <outlet property="btn_invit" destination="j3e-GR-LpM" id="vRe-4N-H4L"/>
                 <outlet property="btn_travl" destination="A2m-5S-3yD" id="eGQ-gJ-Gsg"/>
-                <outlet property="tab_Bottom" destination="9Xv-SW-9fQ" id="r2D-ff-F3v"/>
+                <outlet property="tab_Bottom" destination="9Xv-SW-9fQ" id="wWg-kM-j2F"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="view_tab" destination="eoO-en-mft" id="hez-wW-SXc"/>
             </connections>
@@ -111,7 +111,7 @@
                                 <action selector="send_invit:" destination="-1" eventType="touchUpInside" id="sCS-Oa-mg7"/>
                             </connections>
                         </button>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="190" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Xv-SW-9fQ">
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="190" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Xv-SW-9fQ" customClass="MyTab">
                             <rect key="frame" x="0.0" y="0.0" width="355" height="489"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
