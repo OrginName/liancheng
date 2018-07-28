@@ -33,6 +33,7 @@
 // 引入JPush功能所需头文件
 #import "JPUSHService.h"
 // iOS10注册APNs所需头文件
+#import "NoticeController.h"
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
@@ -47,7 +48,6 @@
 #define LOG_EXPIRE_TIME -7 * 24 * 60 * 60
 @interface AppDelegate ()<RCIMReceiveMessageDelegate,RCIMConnectionStatusDelegate,RCWKAppInfoProvider,WXApiDelegate,JPUSHRegisterDelegate>
 @end
-
 @implementation AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
@@ -208,7 +208,6 @@
         NSLog(@"该启动事件不包含来自融云的推送服务");
     }
     /**初始化ShareSDK应用
-     
      @param activePlatforms
      使用的分享平台集合
      @param importHandler (onImport)
@@ -260,6 +259,11 @@
     [self notify_addObserver];
     [[AMapServices sharedServices] setEnableHTTPS:YES];
     [AMapServices sharedServices].apiKey = KGDMapKey;
+    NSDictionary* userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if(userInfo){//推送信息
+        [KUserDefults setObject:userInfo forKey:@"TS"];
+        [KUserDefults synchronize];
+    }
     return YES;
 }
 /**
@@ -350,8 +354,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     //    [MobClick setCrashReportEnabled:NO]; // 如果不需要捕捉异常，注释掉此行
     [MobClick setLogEnabled:YES]; // 打开友盟sdk调试，注意Release发布时需要注释掉此行,减少io消耗
     [MobClick setAppVersion:XcodeAppVersion]; //参数为NSString *
-    //类型,自定义app版本信息，如果不设置，默认从CFBundleVersion里取
-    //
     [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:(ReportPolicy)REALTIME channelId:nil];
     //   reportPolicy为枚举类型,可以为 REALTIME, BATCH,SENDDAILY,SENDWIFIONLY几种
     //   channelId 为NSString * 类型，channelId 为nil或@""时,默认会被被当作@"App
@@ -372,7 +374,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"online config has fininshed and note = %@", note.userInfo);
 }
 
-// iOS 10 Support
+// iOS 10 Support 前台收到的
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
     // Required
     NSDictionary * userInfo = notification.request.content.userInfo;
@@ -387,10 +389,14 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         completionHandler(UNNotificationPresentationOptionAlert);
     } else {
         // Fallback on earlier versions
-    } // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+    }
+    if (![userInfo[@"rc"][@"oName"] isEqualToString:@"RC:TxtMsg"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TSJBACTIVE" object:@{@"num":@"1"}];
+    }
+    
 }
-
 // iOS 10 Support
+//#ifdef __IPHONE_10_0  //后台收到的
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
     // Required
     NSDictionary * userInfo = response.notification.request.content.userInfo;
@@ -401,9 +407,25 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     } else {
         // Fallback on earlier versions
     }
+    
+    [self gotoNextPage:userInfo];
     completionHandler();  // 系统要求执行这个方法
 }
-
+-(void)gotoNextPage:(NSDictionary *)userInfo{
+    if ([userInfo[@"rc"][@"oName"] isEqualToString:@"RC:TxtMsg"]) {
+        BaseTabBarController *tabBar = (BaseTabBarController *)self.window.rootViewController;//获取window的跟视图,并进行强制转换
+        tabBar.selectedIndex = 1;
+    }else{
+        NoticeController * notice = [NoticeController new];
+        notice.title = @"消息";
+        BaseTabBarController *tabBar = (BaseTabBarController *)self.window.rootViewController;//获取window的跟视图,并进行强制转换
+        if ([tabBar isKindOfClass:[BaseTabBarController class]]) {//判断是否是当前根视图
+            UINavigationController *nav = tabBar.selectedViewController;//获取到当前视图的导航视图
+            [nav.topViewController.navigationController pushViewController:notice animated:YES];//获取当前跟视图push到的最高视图层,然后进行push到目的页面
+        }
+    }
+}
+//#endif
 /**
  * 推送处理4
  * userInfo内容请参考官网文档
@@ -428,10 +450,18 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
      [JPUSHService handleRemoteNotification:userInfo];
 }
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    
-    // Required, iOS 7 Support
     [JPUSHService handleRemoteNotification:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
+    if([UIApplication sharedApplication].applicationState == UIApplicationStateActive)
+    {
+        NSLog(@"应用程序在前台");
+        if (![userInfo[@"rc"][@"oName"] isEqualToString:@"RC:TxtMsg"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"TSJBACTIVE" object:@{@"num":@"1"}];
+        }
+        
+    }else if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground){
+        [self gotoNextPage:userInfo];
+    }
 }
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     /**
@@ -445,12 +475,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state.
-    // This can occur for certain types of temporary interruptions (such as an
-    // incoming phone call or SMS message) or when the user quits the application
-    // and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down
-    // OpenGL ES frame rates. Games should use this method to pause the game.
     RCConnectionStatus status = [[RCIMClient sharedRCIMClient] getConnectionStatus];
     if (status != ConnectionStatus_SignUp) {
         int unreadMsgCount = [[RCIMClient sharedRCIMClient] getUnreadCount:@[

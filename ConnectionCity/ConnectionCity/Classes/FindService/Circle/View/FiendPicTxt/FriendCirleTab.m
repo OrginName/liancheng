@@ -17,6 +17,8 @@
 #import <IQKeyboardManager.h>
 #import "RCDChatViewController.h"
 #import "PersonalBasicDataController.h"
+#import "TakePhoto.h"
+#import "QiniuUploader.h"
 @interface FriendCirleTab()<UITableViewDelegate,UITableViewDataSource,MomentCellDelegate,CommentViewDelegate>
 {
     NSInteger _page;
@@ -321,6 +323,29 @@
     chatViewController.displayUserNameInCell = NO;
     [self.controller.navigationController pushViewController:chatViewController animated:YES];
 }
+//更换图片
+-(void)ChangePhoto{
+    WeakSelf
+    [[TakePhoto sharedPhoto] sharePicture:^(UIImage *image) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakSelf.headImage.image = image;
+        });
+        [YTAlertUtil showHUDWithTitle:@"正在更新..."];
+        [[QiniuUploader defaultUploader] uploadImageToQNFilePath:image withBlock:^(NSDictionary *url) {
+            [YSNetworkTool POST:v1PrivateUserUpdate params:@{@"backgroundImage":[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+                privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
+                [YSAccountTool saveUserinfo:userInfoModel];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [YTAlertUtil hideHUD];
+                });
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [YTAlertUtil hideHUD];
+                });
+            }];
+        }];
+    }];
+}
 #pragma mark - UITableViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -330,9 +355,11 @@
 -(UIImageView *)headImage{
     if (!_headImage) {
         _headImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.width*0.7)];
+        _headImage.userInteractionEnabled = YES;
         privateUserInfoModel * userInfo = [YSAccountTool userInfo];
         [_headImage sd_setImageWithURL:[NSURL URLWithString:userInfo.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
         UIImageView * image1 = [[UIImageView alloc] initWithFrame:CGRectMake(_headImage.width-70, _headImage.height-25, 50, 50)];
+        image1.tag = 999;
         [image1 sd_setImageWithURL:[NSURL URLWithString:userInfo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
         image1.layer.cornerRadius = 25;
         image1.layer.masksToBounds = YES;
@@ -341,6 +368,8 @@
         lab.text = userInfo.nickName;
         lab.textColor = YSColor(55, 21, 17);
         lab.font = [UIFont systemFontOfSize:14];
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ChangePhoto)];
+        [_headImage addGestureRecognizer:tap];
         [_headImage addSubview:lab];
     }
     return _headImage;

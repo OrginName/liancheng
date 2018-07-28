@@ -25,6 +25,7 @@
 #import "ShowResumeController.h"
 #import "CircleNet.h"
 #import "NoticeController.h"
+#import "UITabBar+badge.h"
 @interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate>
 {
     BOOL flag;
@@ -57,11 +58,27 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self setUI];
     flag = NO;
+    if ([KUserDefults objectForKey:@"TS"]!=nil) {
+        [KUserDefults removeObjectForKey:@"TS"];
+        [KUserDefults synchronize];
+        NoticeController * notice = [NoticeController new];
+        [self.navigationController pushViewController:notice animated:YES];
+    }
     if ([KUserDefults objectForKey:kUserCityID]!=nil) {
         [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
     }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(JB:) name:@"TSJBACTIVE" object:nil];
 }
-
+-(void)JB:(NSNotification *)noti{
+    NSDictionary * dic = noti.object;
+    if ([dic[@"num"] intValue]==0) {
+        [self.tabBarController.tabBar hideBadgeOnItemIndex:0];
+        [self.navigationItem.rightBarButtonItem setBadgeValue:@""];
+    }else{
+        [self.tabBarController.tabBar showBadgeOnItemIndex:0 badgeValue:[dic[@"num"] intValue]];
+        [self.navigationItem.rightBarButtonItem setBadgeValue:@" "];
+    }
+}
 //导航左按钮我的点击
 -(void)MyselfClick{
 //    [self.navigationController pushViewController:[super rotateClass:@"ProfileController"] animated:YES];
@@ -185,7 +202,7 @@
 -(void)setUI{
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MyselfClick) image:@"people" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
      self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MessageClick) image:@"index-dope" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
-    self.navigationItem.leftBarButtonItem.badgeValue=self.navigationItem.rightBarButtonItem.badgeValue = @" ";
+    self.navigationItem.leftBarButtonItem.badgeValue=self.navigationItem.rightBarButtonItem.badgeValue = @"";
     self.navigationItem.leftBarButtonItem.badgeOriginX = 19;
     self.navigationItem.rightBarButtonItem.badgeOriginX = 29; self.navigationItem.leftBarButtonItem.badgeOriginY = 5;
     self.navigationItem.rightBarButtonItem.badgeOriginY = 2;

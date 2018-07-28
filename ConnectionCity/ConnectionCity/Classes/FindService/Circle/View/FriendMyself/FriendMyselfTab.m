@@ -12,6 +12,8 @@
 #import "SendMomentController.h"
 #import "CircleNet.h"
 #import "Moment.h"
+#import "TakePhoto.h"
+#import "QiniuUploader.h"
 @interface FriendMyselfTab()<UITableViewDelegate,UITableViewDataSource>
 {
     NSInteger _page;
@@ -213,6 +215,29 @@
         [self.controller.navigationController pushViewController:send animated:YES];
     }
 }
+//更换图片
+-(void)ChangePhoto{
+    WeakSelf
+    [[TakePhoto sharedPhoto] sharePicture:^(UIImage *image) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakSelf.headImage.image = image;
+        });
+        [YTAlertUtil showHUDWithTitle:@"正在更新..."];
+        [[QiniuUploader defaultUploader] uploadImageToQNFilePath:image withBlock:^(NSDictionary *url) {
+            [YSNetworkTool POST:v1PrivateUserUpdate params:@{@"backgroundImage":[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+                privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
+                [YSAccountTool saveUserinfo:userInfoModel];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [YTAlertUtil hideHUD];
+                });
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [YTAlertUtil hideHUD];
+                });
+            }];
+        }];
+    }];
+}
 -(UIImageView *)headImage{
     if (!_headImage) {
         _headImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.width*0.7)];
@@ -227,6 +252,9 @@
         lab.text = userInfo.nickName;
         lab.textColor = YSColor(55, 21, 17);
         lab.font = [UIFont systemFontOfSize:14];
+        _headImage.userInteractionEnabled = YES;
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ChangePhoto)];
+        [_headImage addGestureRecognizer:tap];
         [_headImage addSubview:lab];
     }
     return _headImage;

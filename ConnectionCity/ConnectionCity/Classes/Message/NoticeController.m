@@ -92,4 +92,8 @@
     [self.tab_Bottom.mj_header endRefreshing];
     [self.tab_Bottom.mj_footer endRefreshing];
 }
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TSJBACTIVE" object:@{@"num":@"0"}];
+}
 @end
