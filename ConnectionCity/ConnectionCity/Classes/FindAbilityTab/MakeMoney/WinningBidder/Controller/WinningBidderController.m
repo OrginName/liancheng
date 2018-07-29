@@ -11,6 +11,7 @@
 #import "WinningBidderCell.h"
 #import "BidderSectionHeadV.h"
 #import "FirstControllerMo.h"
+#import "RCDHttpTool.h"
 
 @interface WinningBidderController ()<WinningBidderCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -83,7 +84,17 @@
 }
 #pragma mark - WinningBidderCellDelegate
 - (void)winnerCell:(WinningBidderCell *)cell addFrendBtnClick:(UIButton *)btn {
-    [YTAlertUtil showTempInfo:@"加好友"];
+    //[YTAlertUtil showTempInfo:@"加好友"];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    FirstControllerMo *firstMo = _dataArr[indexPath.section];
+    TenderRecordsMo *tendMo = firstMo.tenderRecords[indexPath.row];
+    WeakSelf
+    [RCDHTTPTOOL requestFriend:tendMo.user.modelId complete:^(BOOL result) {
+        if (result) {
+            [YTAlertUtil showTempInfo:@"添加成功"];
+            [YSRefreshTool beginRefreshingWithView:weakSelf.tableView];
+        }
+    }];
 }
 #pragma mark - profile method
 -(void)p_back {

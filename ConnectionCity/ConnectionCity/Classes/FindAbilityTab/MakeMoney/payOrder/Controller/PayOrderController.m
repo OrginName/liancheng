@@ -8,12 +8,18 @@
 
 #import "PayOrderController.h"
 #import "AllDicMo.h"
+#import "HCCountdown.h"
 
 @interface PayOrderController ()
+@property (weak, nonatomic) IBOutlet UILabel *timeLab;
 @property (weak, nonatomic) IBOutlet UIView *pintView;
 @property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 @property (weak, nonatomic) IBOutlet UILabel *amountLab;
+@property (weak, nonatomic) IBOutlet UIButton *wxPayBtn;
 @property (nonatomic, strong) UIButton *lastBtn;
+@property (nonatomic, strong) HCCountdown *countdown;
+@property (nonatomic) long nowTimeSp;
+@property (nonatomic) long fiveMinuteSp;
 
 @end
 
@@ -23,6 +29,29 @@
     [super viewDidLoad];
     [self initUI];
     
+    
+    _countdown = [[HCCountdown alloc] init];
+    
+    //现在时间
+    NSDate *datenow = [NSDate date];
+    
+    //获取当前时间的时间戳 long
+    long timeSpam = [_countdown timeStampWithDate:datenow];
+    
+    //获取当前时间 NSSting
+    NSString *timeStr = [_countdown getNowTimeString];
+    
+    //时间戳转时间
+    NSString *timeStrWithSpam = [_countdown dateWithTimeStamp:timeSpam];
+    
+    NSLog(@"timeSpam = %ld", timeSpam);
+    NSLog(@"timeDate = %@", timeStr);
+    NSLog(@"timeStrWithSpam = %@", timeStrWithSpam);
+    
+    //创建倒计时的UI
+//    [self createHeaderView];
+    [self getNowTimeSP:@"订单成功"];
+
     // Do any additional setup after loading the view from its nib.
 }
 - (void)viewWillAppear:(BOOL)animated {
@@ -41,12 +70,98 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)dealloc {
+    //控制器释放的时候一点要停止计时器，以免再次进入发生错误
+    [_countdown destoryTimer];
+}
+- (void) didInBackground: (NSNotification *)notification {
+    
+    NSLog(@"倒计时进入后台");
+    [_countdown destoryTimer];
+    
+}
+
+- (void) willEnterForground: (NSNotification *)notification {
+    
+    NSLog(@"倒计时进入前台");
+    [self getNowTimeSP:@""];  //进入前台重新获取当前的时间戳，在进行倒计时， 主要是为了解决app退到后台倒计时停止的问题，缺点就是不能防止用户更改本地时间造成的倒计时错误
+    
+}
+- (void) getNowTimeSP: (NSString *) string {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    // ----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
+    [formatter setDateFormat:@"YYYY年MM月dd日HH:mm:ss"];
+    
+    //现在时间,你可以输出来看下是什么格式
+    NSDate *datenow = [NSDate date];
+    //----------将nsdate按formatter格式转成NSString
+    NSString *currentTimeString_1 = [formatter stringFromDate:datenow];
+    NSDate *applyTimeString_1 = [formatter dateFromString:currentTimeString_1];
+    _nowTimeSp = (long long)[applyTimeString_1 timeIntervalSince1970];
+    
+    if ([string isEqualToString:@"订单成功"]) {
+        
+        NSTimeInterval time = 5 * 60;//5分钟后的秒数
+        NSDate *lastTwoHour = [datenow dateByAddingTimeInterval:time];
+        NSString *currentTimeString_2 = [formatter stringFromDate:lastTwoHour];
+        NSDate *applyTimeString_2 = [formatter dateFromString:currentTimeString_2];
+        _fiveMinuteSp = (long)[applyTimeString_2 timeIntervalSince1970];
+        
+    }
+    
+    //时间戳进行倒计时
+    long startLong = _nowTimeSp;
+    long finishLong = _fiveMinuteSp;
+    [self startLongLongStartStamp:startLong longlongFinishStamp:finishLong];
+    
+    NSLog(@"currentTimeString_1 = %@", currentTimeString_1);
+    NSLog(@"_nowTimeSp = %ld", _nowTimeSp);
+    NSLog(@"_fiveMinuteSp = %ld", _fiveMinuteSp);
+    
+}
+///此方法用两个时间戳做参数进行倒计时
+-(void)startLongLongStartStamp:(long)strtL longlongFinishStamp:(long) finishL {
+    __weak __typeof(self) weakSelf= self;
+    
+    NSLog(@"second = %ld, minute = %ld", strtL, finishL);
+    
+    [_countdown countDownWithStratTimeStamp:strtL finishTimeStamp:finishL completeBlock:^(NSInteger day, NSInteger hour, NSInteger minute, NSInteger second) {
+        
+        [weakSelf refreshUIDay:day hour:hour minute:minute second:second];
+    }];
+}
+
+-(void)refreshUIDay:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second{
+    
+    NSString *str_1 = [NSString stringWithFormat:@"%ld", second];
+    NSString *str_2 = [NSString stringWithFormat:@"%ld", minute];
+    
+    if (second == 0 && minute == 0) {
+        
+        [_countdown destoryTimer];
+        WeakSelf
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"支付超时,请重新下单" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"重新下单" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }];
+        
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    NSString *minuteStr = [NSString stringWithFormat:@"%.2ld",(long)[str_2 integerValue]];
+    NSString *secondStr = [NSString stringWithFormat:@"%.2ld",(long)[str_1 integerValue]];
+    self.timeLab.text = [NSString stringWithFormat:@"支付剩余时间：%@:%@",minuteStr,secondStr];
+}
+
 #pragma mark - setup
 - (void)initUI {
     self.confirmBtn.layer.cornerRadius = 3;
     self.pintView.layer.cornerRadius = 4;
     self.pintView.clipsToBounds = YES;
     self.amountLab.text = _amount;
+    self.lastBtn = _wxPayBtn;
 }
 #pragma mark - 点击事件
 - (IBAction)confirmBtnClick:(id)sender {
