@@ -23,6 +23,8 @@
 //微信SDK头文件
 #import <WXApi.h>
 #import <JPUSHService.h>
+#import "YSAccount.h"
+
 @interface YSLoginController ()<RCIMConnectionStatusDelegate,WXApiDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
@@ -123,7 +125,7 @@
                                                     userInfo:nil
                                                      repeats:NO];
     WeakSelf
-    [YSNetworkTool POST:login params:@{@"loginName":_phoneTF.text,@"password":_passwordTF.text} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:login params:@{@"loginName":_phoneTF.text,@"password":_passwordTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([YSNetworkTool isSuccessWithResp:responseObject]) {
             [JPUSHService setAlias:[responseObject[@"data"][@"userId"] description] completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
                 NSLog(@"别名设置为%ld---%@",(long)iResCode,iAlias);
@@ -131,6 +133,22 @@
             YSAccount *account = [YSAccount mj_objectWithKeyValues:responseObject[kData]];
             [YSAccountTool saveAccount:account];
             [weakSelf loadUserInfo];
+            
+            //账号管理
+            NSMutableArray *accountMutArr = [NSMutableArray arrayWithArray:[kDefaults objectForKey:KAccountManager]];
+            __block BOOL has = NO;
+            [accountMutArr enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull dic, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([weakSelf.phoneTF.text isEqualToString:[dic objectForKey:@"account"]]) {
+                    has = YES;
+                    *stop = YES;
+                }
+            }];
+            if (!has) {
+                NSDictionary *dic = @{@"account": weakSelf.phoneTF.text,@"psd":weakSelf.passwordTF.text,@"id":kAccount.userId};
+                [accountMutArr addObject:dic];
+                [kDefaults setObject:accountMutArr forKey:KAccountManager];
+                [kDefaults synchronize];
+            }
         }else{
             [YTAlertUtil showTempInfo:responseObject[kMessage]];
         }
@@ -172,6 +190,7 @@
                  token:(NSString *)token
               password:(NSString *)password{
     //登录融云服务器
+    WeakSelf
     [[RCIM sharedRCIM] connectWithToken:token
                                 success:^(NSString *userId) {
                                     NSLog([NSString stringWithFormat:@"token is %@  userId is %@", token, userId], nil);
@@ -184,7 +203,7 @@
                                           NSLog(@"RCConnectErrorCode is %ld", (long)status);
                                           [YTAlertUtil showTempInfo:@"登录失败"]; 
                                           // SDK会自动重连登录，这时候需要监听连接状态
-                                          [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
+                                          [[RCIM sharedRCIM] setConnectionStatusDelegate:weakSelf];
                                       });
                                       //        //SDK会自动重连登陆，这时候需要监听连接状态
                                       //        [[RCIM sharedRCIM] setConnectionStatusDelegate:self];
@@ -329,7 +348,7 @@
 #pragma mark - 请求数据
 - (void)auth:(NSDictionary *)dic {
     WeakSelf
-    [YSNetworkTool POST:auth params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:auth params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([YSNetworkTool isSuccessWithResp:responseObject]) {
             YSAccount *account = [YSAccount mj_objectWithKeyValues:responseObject[kData]];
             [YSAccountTool saveAccount:account];

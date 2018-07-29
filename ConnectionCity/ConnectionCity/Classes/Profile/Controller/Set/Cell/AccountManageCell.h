@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface AccountManageCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *accountLab;
 @property (weak, nonatomic) IBOutlet UILabel *currentCountLab;
 @property (weak, nonatomic) IBOutlet UIButton *image_onLine;
 @property (weak, nonatomic) IBOutlet UIImageView *iamge_Select;

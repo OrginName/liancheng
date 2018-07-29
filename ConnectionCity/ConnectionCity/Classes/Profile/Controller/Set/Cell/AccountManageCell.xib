@@ -60,8 +60,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="accountLab" destination="Jdb-oh-Tl6" id="H6v-Ur-TEl"/>
                 <outlet property="iamge_Select" destination="r3B-tw-HZD" id="Nmu-3n-O8Q"/>
-                <outlet property="image_onLine" destination="3Xs-Ig-Cke" id="neB-dF-dKw"/>
             </connections>
             <point key="canvasLocation" x="-42" y="77"/>
         </tableViewCell>

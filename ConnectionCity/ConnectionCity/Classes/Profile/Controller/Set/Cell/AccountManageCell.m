@@ -24,13 +24,13 @@
     NSString * str = @"";
     NSInteger index;
     if (indexPath.section==0) {
-        if (indexPath.row==2) {
-            str = @"AccountManageCell1";
-            index = 1;
-        }else{
+//        if (indexPath.row==2) {
+//            str = @"AccountManageCell1";
+//            index = 1;
+//        }else{
             str = @"AccountManageCell0";
             index = 0;
-        }
+//        }
     }else{
         str = [NSString stringWithFormat:@"AccountManageCell%ld",indexPath.row+2];
         index = indexPath.row+2;
