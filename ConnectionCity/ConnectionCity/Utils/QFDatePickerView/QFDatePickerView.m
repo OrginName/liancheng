@@ -92,7 +92,7 @@
         
         [self setMonthArray];
         
-        _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40, CGRectGetWidth(self.bounds), 260)];
+        _pickerView = [[UIPickerView alloc] init];
         _pickerView.delegate = self;
         _pickerView.dataSource = self;
         _pickerView.backgroundColor = [UIColor colorWithRed:240.0/255 green:243.0/255 blue:250.0/255 alpha:1];

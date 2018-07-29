@@ -172,7 +172,7 @@
     UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
     btn.tag = 99999;
     btn.titleLabel.font = [UIFont systemFontOfSize:16];
-    [btn setTitle:@"人才" forState:UIControlStateNormal];
+    [btn setTitle:@"连合作" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn setImage:[UIImage imageNamed:@"Arrow-xia"] forState:UIControlStateNormal];
     [btn layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleRight imageTitleSpace:5];

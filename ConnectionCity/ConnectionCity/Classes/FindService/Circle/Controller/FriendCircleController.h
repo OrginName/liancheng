@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface FriendCircleController : BaseViewController
+@property (nonatomic, assign) BOOL showOrHidden;
 
 @end

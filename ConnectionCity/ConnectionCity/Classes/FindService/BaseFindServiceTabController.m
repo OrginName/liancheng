@@ -32,7 +32,9 @@
     TravalController *addressVC = [[TravalController alloc]init];
     ServiceStationController *lifeVC = [[ServiceStationController alloc]init];
     FriendCircleController *foundVC = [[FriendCircleController alloc]init];
+    foundVC.showOrHidden = NO;
     FriendCircleController *foundVC1 = [[FriendCircleController alloc]init];
+    foundVC1.showOrHidden = YES;
 //    ProfileServiceController *Profile = [[ProfileServiceController alloc]init];
     NSArray *arrVC = @[messageVC,addressVC,lifeVC,foundVC,foundVC1];
     NSArray *titleArr = @[@"首页",@"旅行",@"服务站",@"圈子",@"我的圈子"];
