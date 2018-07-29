@@ -59,7 +59,7 @@
 }
 #pragma mark ----初始化加载数据（开始）------
 -(void)initData{
-    self.areaCode = [KUserDefults objectForKey:kUserCityID];
+    //self.areaCode = [KUserDefults objectForKey:kUserCityID];
     //加载分类数据
     WeakSelf
     [AbilityNet requstMakeMoneyClass:^(NSMutableArray *successArrValue) {
@@ -206,10 +206,10 @@
 - (void)getHeaderData {
     NSDictionary *dic = @{
                           @"areaCode": @"",
-                          @"cityCode": @"",
+                          @"cityCode": _areaCode?_areaCode:@"",
                           @"industryCategoryId":@"",
-                          @"maxDate": @"",
-                          @"minDate": @"",
+                          @"maxDate": _endTime?_endTime:@"",
+                          @"minDate": _startTime?_startTime:@"",
                           @"pageNumber": [NSString stringWithFormat:@"%ld",(long)_page],
                           @"pageSize": @"10",
                           @"provinceCode": @""
@@ -228,10 +228,10 @@
 - (void)getFooterData {
     NSDictionary *dic = @{
                           @"areaCode": @"",
-                          @"cityCode": @"",
+                          @"cityCode": _areaCode?_areaCode:@"",
                           @"industryCategoryId":@"",
-                          @"maxDate": @"",
-                          @"minDate": @"",
+                          @"maxDate": _endTime?_endTime:@"",
+                          @"minDate": _startTime?_startTime:@"",
                           @"pageNumber": [NSString stringWithFormat:@"%ld",(long)_page],
                           @"pageSize": @"10",
                           @"provinceCode": @""

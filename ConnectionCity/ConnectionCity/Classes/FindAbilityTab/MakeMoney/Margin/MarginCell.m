@@ -21,7 +21,7 @@
 }
 - (void)setFootModel:(FirstControllerMo *)footModel {
     _footModel = footModel;
-    _titleLab.text = @"招标金额";
+    _titleLab.text = @"接单金额";
     _marginMoneyLab.text = footModel.amount;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

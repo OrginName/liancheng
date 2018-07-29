@@ -20,12 +20,12 @@
         _headerImgV = [[UIImageView alloc]init];
         _headerImgV.image = [UIImage imageNamed:@"Bid"];
         [upBgView addSubview:_headerImgV];
-        //投标人
+        //抢单人
         _bidderLab = [[UILabel alloc]init];
         _bidderLab.font = [UIFont systemFontOfSize:17];
-        _bidderLab.text = @"投标人";
+        _bidderLab.text = @"抢单人";
         [upBgView addSubview:_bidderLab];
-        //中标人数
+        //中单人数
         _winNumbersLab = [[UILabel alloc]init];
         _winNumbersLab.font = [UIFont systemFontOfSize:12];
         _winNumbersLab.text = @"(2)";
@@ -87,11 +87,11 @@
     self.titleLab.text = model.title;
     if ([model.isWin isEqualToString:@"1"]) {
         self.headerImgV.image = [UIImage imageNamed:@"Win"];
-        self.bidderLab.text = @"中标";
+        self.bidderLab.text = @"中单";
         self.winNumbersLab.hidden = NO;
     }else{
         self.headerImgV.image = [UIImage imageNamed:@"Bid"];
-        self.bidderLab.text = @"投标";
+        self.bidderLab.text = @"抢单";
         self.winNumbersLab.hidden = YES;
     }
 }

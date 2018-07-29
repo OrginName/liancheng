@@ -35,10 +35,10 @@
         _headerImgV = [[UIImageView alloc]init];
         //_headerImgV.image = [UIImage imageNamed:@"Bid"];
         [downBgView addSubview:_headerImgV];
-        //投标人
+        //抢单人
         _bidderLab = [[UILabel alloc]init];
         _bidderLab.font = [UIFont systemFontOfSize:17];
-        //_bidderLab.text = @"投标人";
+        //_bidderLab.text = @"抢单人";
         [downBgView addSubview:_bidderLab];
         
         [upBgView mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -59,9 +59,9 @@
 }
 #pragma mark - setup
 -(void)setUI {
-    self.navigationItem.title = @"发布招标";
-    _cellTitles = @[@"项目标题", @"项目单位", @"招标所在地", @"开标地点", @"招标内容", @"",@"报名/投标时间",@"投标截止时间",@"招标金额",@"联系人",@"联系电话"];
-    _cellPlaceHolds = [NSMutableArray arrayWithArray:@[@"请填写项目标题", @"请填写项目单位", @"请选择所在地", @"请填写开标地点", @"请填写招标内容",@"", @"请选择开始时间",@"请选择截止时间",@"请填写金额万元",@"请填写联系人姓名",@"请填写联系电话"]];
+    self.navigationItem.title = @"发布任务";
+    _cellTitles = @[@"项目标题", @"项目单位", @"接单所在地", @"开标地点", @"接单内容", @"",@"报名/抢单时间",@"抢单截止时间",@"接单金额",@"联系人",@"联系电话"];
+    _cellPlaceHolds = [NSMutableArray arrayWithArray:@[@"请填写项目标题", @"请填写项目单位", @"请选择所在地", @"请填写开标地点", @"请填写接单内容",@"", @"请选择开始时间",@"请选择截止时间",@"请填写金额万元",@"请填写联系人姓名",@"请填写联系电话"]];
     _cellCntentText = [NSMutableArray arrayWithArray:@[@"", @"", @"", @"", @"",@"", @"",@"",@"",@"",@""]];
     [self initDate];
 }
@@ -293,7 +293,7 @@
             }
         }
     }else{
-        [YTAlertUtil showTempInfo:@"请上传招标附件"];
+        [YTAlertUtil showTempInfo:@"请上传接单附件"];
     }
 }
 - (void)pushVCWhithUrlStr:(NSString *)urlStr {

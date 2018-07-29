@@ -309,6 +309,6 @@
     <resources>
         <image name="arraw-right" width="9" height="15"/>
         <image name="weixuanhzong" width="14" height="14"/>
-        <image name="xuanzhong" width="14" height="14"/>
+        <image name="xuanzhong" width="12" height="12"/>
     </resources>
 </document>

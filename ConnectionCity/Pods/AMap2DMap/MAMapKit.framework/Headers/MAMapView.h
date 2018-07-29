@@ -340,14 +340,14 @@ typedef NS_ENUM(NSInteger, MAUserTrackingMode)
 - (MAAnnotationView *)dequeueReusableAnnotationViewWithIdentifier:(NSString *)identifier;
 
 /**
- * @brief 选中标注数据对应的view
+ * @brief 选中单注数据对应的view
  * @param annotation 标注数据
  8 @param animated 是否有动画效果
  */
 - (void)selectAnnotation:(id <MAAnnotation>)annotation animated:(BOOL)animated;
 
 /**
- * @brief 取消选中标注数据对应的view
+ * @brief 取消选中单注数据对应的view
  * @param annotation 标注数据
  * @param animated 是否有动画效果
  */

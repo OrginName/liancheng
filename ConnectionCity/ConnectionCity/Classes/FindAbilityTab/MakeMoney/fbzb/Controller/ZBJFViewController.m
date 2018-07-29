@@ -9,6 +9,8 @@
 #import "ZBJFViewController.h"
 #import "ConsultativeNegotiationCell.h"
 #import "InstallmentMo.h"
+#import "AllDicMo.h"
+#import "PayOrderController.h"
 
 @interface ZBJFViewController ()<ConsultativeNegotiationCellDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -33,12 +35,12 @@
 }
 #pragma mark - setup
 - (void)setUI {
-    self.navigationItem.title = @"招标缴费";
+    self.navigationItem.title = @"接单缴费";
     self.commitBtn.layer.cornerRadius = 3;
     
     InstallmentMo *mo00 = [[InstallmentMo alloc]init];
     mo00.bbb = YES;
-    mo00.title = @"招标金额";
+    mo00.title = @"接单金额";
     mo00.data = self.zbjeStr;
     InstallmentMo *mo10 = [[InstallmentMo alloc]init];
     mo10.bbb = YES;
@@ -110,28 +112,28 @@
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     /*
-    //重用区头视图
-    UITableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"UITableViewHeaderFooterView"];
-    if (headerView.subviews.count == 1 && section == 1) {
-        UILabel *sectinLab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
-        sectinLab.textAlignment = NSTextAlignmentCenter;
-        sectinLab.textColor = [UIColor orangeColor];
-        sectinLab.font = [UIFont systemFontOfSize:15];
-        sectinLab.text = @"+分  期";
-        [headerView addSubview:sectinLab];
-    }else if (headerView.subviews.count == 1 && section == 2) {
-        UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, kScreenWidth - 20, 50)];
-        lab.text = @"如暂不支付招标金额，必须缴纳保证金。";
-        lab.font = [UIFont systemFontOfSize:12];
-        lab.textColor = [UIColor darkGrayColor];
-        lab.textAlignment = NSTextAlignmentLeft;
-        lab.numberOfLines = 0;
-        [headerView addSubview:lab];
-    }else{
-        [headerView.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    }
-    //返回区头视图
-    return headerView;
+     //重用区头视图
+     UITableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"UITableViewHeaderFooterView"];
+     if (headerView.subviews.count == 1 && section == 1) {
+     UILabel *sectinLab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
+     sectinLab.textAlignment = NSTextAlignmentCenter;
+     sectinLab.textColor = [UIColor orangeColor];
+     sectinLab.font = [UIFont systemFontOfSize:15];
+     sectinLab.text = @"+分  期";
+     [headerView addSubview:sectinLab];
+     }else if (headerView.subviews.count == 1 && section == 2) {
+     UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, kScreenWidth - 20, 50)];
+     lab.text = @"如暂不支付接单金额，必须缴纳保证金。";
+     lab.font = [UIFont systemFontOfSize:12];
+     lab.textColor = [UIColor darkGrayColor];
+     lab.textAlignment = NSTextAlignmentLeft;
+     lab.numberOfLines = 0;
+     [headerView addSubview:lab];
+     }else{
+     [headerView.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+     }
+     //返回区头视图
+     return headerView;
      */
     if (section==1) {
         UILabel *sectinLab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
@@ -143,7 +145,7 @@
     }else if (section==2){
         UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 50)];
         UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, kScreenWidth - 20, 50)];
-        lab.text = @"如暂不支付招标金额，必须缴纳保证金。";
+        lab.text = @"如暂不支付接单金额，必须缴纳保证金。";
         lab.font = [UIFont systemFontOfSize:12];
         lab.textColor = [UIColor darkGrayColor];
         lab.textAlignment = NSTextAlignmentLeft;
@@ -156,26 +158,26 @@
 }
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     /*
-    //重用区头视图
-    UITableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"UITableViewHeaderFooterView"];
-    if (headerView.subviews.count == 1 && section == 2) {
-        UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, kScreenWidth - 20, 50)];
-        lab.text = @"招标金额的10%由平台上托管，以保证招标双方权益，交易完成后退还。";
-        lab.font = [UIFont systemFontOfSize:12];
-        lab.textColor = [UIColor darkGrayColor];
-        lab.textAlignment = NSTextAlignmentLeft;
-        lab.numberOfLines = 0;
-        [headerView addSubview:lab];
-    }else{
-        [headerView.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    }
-    //返回区头视图
-    return headerView;
-    */
+     //重用区头视图
+     UITableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"UITableViewHeaderFooterView"];
+     if (headerView.subviews.count == 1 && section == 2) {
+     UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, kScreenWidth - 20, 50)];
+     lab.text = @"接单金额的10%由平台上托管，以保证接单双方权益，交易完成后退还。";
+     lab.font = [UIFont systemFontOfSize:12];
+     lab.textColor = [UIColor darkGrayColor];
+     lab.textAlignment = NSTextAlignmentLeft;
+     lab.numberOfLines = 0;
+     [headerView addSubview:lab];
+     }else{
+     [headerView.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+     }
+     //返回区头视图
+     return headerView;
+     */
     if (section == 2) {
         UIView *bgview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 50)];
         UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, kScreenWidth - 20, 50)];
-        lab.text = @"招标金额的10%由平台上托管，以保证招标双方权益，交易完成后退还。";
+        lab.text = @"接单金额的10%由平台上托管，以保证接单双方权益，交易完成后退还。";
         lab.font = [UIFont systemFontOfSize:12];
         lab.textColor = [UIColor darkGrayColor];
         lab.textAlignment = NSTextAlignmentLeft;
@@ -211,38 +213,38 @@
     InstallmentMo *mo3 = self.dataArr[1][3];
     InstallmentMo *mo4 = self.dataArr[1][4];
     InstallmentMo *mo20 = self.dataArr[2][0];
-
-     NSDictionary *dic = @{
-     @"amount": self.cellCntentText[8],
-     @"areaCode": self.mo.ID?self.mo.ID:@"",
-     @"company": self.cellCntentText[1],
-     @"contactMobile": self.cellCntentText[10],
-     @"contactName": self.cellCntentText[9],
-     @"content": self.cellCntentText[4],
-     @"depositAmount": mo20.data,
-     @"industryCategoryId": @"0",
-     @"industryCategoryName": @"",
-     @"industryCategoryParentId": @"0",
-     @"industryCategoryParentName": @"",
-     @"lat": self.mo?self.mo.lat:@"",
-     @"lng": self.mo?self.mo.lng:@"",
-     @"periodAmount1": mo0.data,
-     @"periodAmount2": mo1.data,
-     @"periodAmount3": mo2.data,
-     @"periodAmount4": mo3.data,
-     @"periodAmount5": mo4.data,
-     @"rewardAmount1": mo0.data,
-     @"rewardAmount2": mo1.data,
-     @"rewardAmount3": mo2.data,
-     @"rewardAmount4": mo3.data,
-     @"rewardAmount5": mo4.data,
-     @"tenderAddress": self.cellCntentText[3],
-     @"tenderEndDate": self.cellCntentText[7],
-     @"tenderImages": self.cellCntentText[5],
-     @"tenderStartDate": self.cellCntentText[6],
-     @"title": self.cellCntentText[0],
-     @"tenderId": self.tenderId?self.tenderId:@"",
-     };
+    
+    NSDictionary *dic = @{
+                          @"amount": self.cellCntentText[8],
+                          @"areaCode": self.mo.ID?self.mo.ID:@"",
+                          @"company": self.cellCntentText[1],
+                          @"contactMobile": self.cellCntentText[10],
+                          @"contactName": self.cellCntentText[9],
+                          @"content": self.cellCntentText[4],
+                          @"depositAmount": mo20.data,
+                          @"industryCategoryId": @"0",
+                          @"industryCategoryName": @"",
+                          @"industryCategoryParentId": @"0",
+                          @"industryCategoryParentName": @"",
+                          @"lat": self.mo?self.mo.lat:@"",
+                          @"lng": self.mo?self.mo.lng:@"",
+                          @"periodAmount1": mo0.data,
+                          @"periodAmount2": mo1.data,
+                          @"periodAmount3": mo2.data,
+                          @"periodAmount4": mo3.data,
+                          @"periodAmount5": mo4.data,
+                          @"rewardAmount1": mo0.data,
+                          @"rewardAmount2": mo1.data,
+                          @"rewardAmount3": mo2.data,
+                          @"rewardAmount4": mo3.data,
+                          @"rewardAmount5": mo4.data,
+                          @"tenderAddress": self.cellCntentText[3],
+                          @"tenderEndDate": self.cellCntentText[7],
+                          @"tenderImages": self.cellCntentText[5],
+                          @"tenderStartDate": self.cellCntentText[6],
+                          @"title": self.cellCntentText[0],
+                          @"tenderId": self.tenderId?self.tenderId:@"",
+                          };
     BOOL a = [self.receive_flag isEqualToString:@"EDIT"]?YES:NO;
     if (a) {
         [self v1TalentTenderUpdate:dic];
@@ -252,16 +254,21 @@
 }
 
 #pragma mark - 接口请求
-//发布招标
+//发布任务
 - (void)v1TalentTenderCreate:(NSDictionary *)dic{
+    //6、接单全额 7、接单保证金 8、接单赏金托管
+    NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+    AllContentMo * mo = [arr[8] contentArr][5];
     WeakSelf
     [YSNetworkTool POST:v1TalentTenderCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确认" defaultHandler:^(UIAlertAction *action) {
-            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
-        } completion:nil];
+        PayOrderController *vc = [[PayOrderController alloc]init];
+        vc.tenderId = responseObject[kData];
+        vc.orderType = mo.value;
+        vc.amount = weakSelf.cellCntentText[8];
+        [weakSelf.navigationController pushViewController:vc animated:YES];
     } failure:nil];
 }
-//修改招标
+//修改接单
 - (void)v1TalentTenderUpdate:(NSDictionary *)dic{
     WeakSelf
     [YSNetworkTool POST:v1TalentTenderUpdate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -270,29 +277,16 @@
         } completion:nil];
     } failure:nil];
 }
-//赚外快-创建订单（支付全额/分期/保证金）
-- (void)v1TalentTenderorderCreate {
-//    NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
-//    AllContentMo * mo = [arr[8] contentArr][4];
-//
-//    NSDictionary *dic = @{<#key#>: <#object, ...#>}
-//    WeakSelf
-//    [YSNetworkTool POST:v1TalentTenderUpdate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-//        [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确认" defaultHandler:^(UIAlertAction *action) {
-//            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
-//        } completion:nil];
-//    } failure:nil];
-}
-
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
+

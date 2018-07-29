@@ -70,7 +70,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     //重用区头视图
     BidderSectionHeadV *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"BidderSectionHeadV"];
-    headerView.bidderLab.text = @"投标人";
+    headerView.bidderLab.text = @"抢单人";
     headerView.headerImgV.image = [UIImage imageNamed:@"Bid"];
     headerView.model = _dataArr[section];
     //返回区头视图
@@ -78,7 +78,7 @@
 }
 #pragma mark - UITableViewCellDelegate
 - (void)bidderCell:(BidderCell *)cell addFrendBtnClick:(UIButton *)btn {
-    [YTAlertUtil showTempInfo:@"加好友"];
+    //[YTAlertUtil showTempInfo:@"加好友"];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     FirstControllerMo *firstMo = _dataArr[indexPath.section];
     TenderRecordsMo *tendMo = firstMo.tenderRecords[indexPath.row];
@@ -91,7 +91,15 @@
     }];
 }
 - (void)bidderCell:(BidderCell *)cell selectedBtnClick:(UIButton *)btn {
-    [YTAlertUtil showTempInfo:@"选中"];
+    //[YTAlertUtil showTempInfo:@"选中"];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    FirstControllerMo *firstMo = _dataArr[indexPath.section];
+    TenderRecordsMo *tendMo = firstMo.tenderRecords[indexPath.row];
+    WeakSelf
+    [YSNetworkTool POST:v1TalentTenderRecordWin params:@{@"id": tendMo.modelId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTAlertUtil showTempInfo:responseObject[kMessage]];
+        [YSRefreshTool beginRefreshingWithView:weakSelf.tableView];
+    } failure:nil];
 }
 #pragma mark - profile method
 -(void)p_back {

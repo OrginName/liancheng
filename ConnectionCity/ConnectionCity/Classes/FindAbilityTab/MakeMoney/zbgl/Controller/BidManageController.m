@@ -48,7 +48,7 @@
 }
 #pragma mark - setup
 - (void)setUI {
-    self.navigationItem.title = @"招标管理";
+    self.navigationItem.title = @"任务管理";
     self.dataArr = [[NSMutableArray alloc]init];
 }
 - (void)setTableView {

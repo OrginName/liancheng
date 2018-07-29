@@ -131,20 +131,19 @@
 }
 #pragma mark - alipayNotice
 - (void)alipayNotice:(NSNotification *)notification {
-    if ([[[notification object] objectForKey:@"userInfo"] integerValue] == 9000) {
+    if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"success"]) {
         //支付成功
         WeakSelf
         [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付成功" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
             [weakSelf.navigationController popViewControllerAnimated:YES];
         } completion:nil];
-    }else{
+    }else if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"failure"]) {
         //支付失败
         WeakSelf
         [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付失败" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
             [weakSelf.navigationController popViewControllerAnimated:YES];
         } completion:nil];
-    };
-    
+    }
 }
 - (void)wxNotice:(NSNotification *)notification {
     if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"success"]) {

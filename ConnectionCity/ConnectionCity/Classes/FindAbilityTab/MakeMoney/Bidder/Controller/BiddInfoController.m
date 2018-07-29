@@ -42,11 +42,11 @@
 }
 #pragma mark - setup
 - (void)setData {
-    _titleArr = @[@"招标金额",@"报名/投标时间",@"报名/投标截止时间",@"联系人",@"联系电话"];
+    _titleArr = @[@"接单金额",@"报名/抢单时间",@"报名/抢单截止时间",@"联系人",@"联系电话"];
     _dataArr = [NSMutableArray arrayWithArray:@[@"10,000.00",@"2018-06-10",@"2018-07-10",@"刘永富",@"18865657799"]];
 }
 - (void)setUI {
-    self.navigationItem.title = @"招标信息";
+    self.navigationItem.title = @"接单信息";
 }
 - (void)setTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"BiddInfoCell" bundle:nil] forCellReuseIdentifier:@"BiddInfoCell"];
@@ -61,7 +61,7 @@
     [tableFootV addSubview:bgView];
     UIButton *bidBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     bidBtn.layer.cornerRadius = 3;
-    [bidBtn setTitle:@"投标" forState: UIControlStateNormal];
+    [bidBtn setTitle:@"抢单" forState: UIControlStateNormal];
     [bidBtn setBackgroundColor:YSColor(236,95,90)];
     [bidBtn addTarget:self action:@selector(bidBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:bidBtn];
@@ -109,7 +109,7 @@
 }
 #pragma mark - 点击事件
 - (void)bidBtnClick:(UIButton *)btn {
-    //[YTAlertUtil showTempInfo:@"投标"];
+    //[YTAlertUtil showTempInfo:@"抢单"];
     [self v1TalentTenderRecordCreate];
 }
 - (IBAction)dialogueBtnClick:(id)sender {

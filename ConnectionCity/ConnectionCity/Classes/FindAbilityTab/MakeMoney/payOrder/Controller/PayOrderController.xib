@@ -11,7 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PayOrderController">
             <connections>
+                <outlet property="amountLab" destination="Ocq-OW-41e" id="MSd-lz-51F"/>
                 <outlet property="confirmBtn" destination="pVW-dQ-mrW" id="Xt6-W6-YKQ"/>
+                <outlet property="pintView" destination="SDY-qR-c1X" id="8vf-Qa-5rA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -38,13 +40,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="招标费用-一期" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fe0-vB-I78">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="费用" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fe0-vB-I78">
                                             <rect key="frame" x="10" y="65.5" width="335" height="34.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付剩余时间：14：56" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PJ-oo-Zlt">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PJ-oo-Zlt">
                                             <rect key="frame" x="10" y="0.0" width="335" height="35.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,7 +69,7 @@
                                         <constraint firstAttribute="trailing" secondItem="1PJ-oo-Zlt" secondAttribute="trailing" constant="10" id="zAd-Lb-MaZ"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ivy-MH-1oH">
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ivy-MH-1oH">
                                     <rect key="frame" x="10" y="120" width="355" height="50"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDY-qR-c1X">
@@ -87,13 +89,16 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1d-Dj-LBK">
+                                        <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1d-Dj-LBK">
                                             <rect key="frame" x="305" y="0.0" width="50" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="kga-ys-EXu"/>
                                             </constraints>
                                             <state key="normal" image="zhuangtai"/>
                                             <state key="selected" image="ok"/>
+                                            <connections>
+                                                <action selector="selectedBtnClick:" destination="-1" eventType="touchUpInside" id="mm8-BZ-kAF"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -119,13 +124,16 @@
                                                 <constraint firstAttribute="height" constant="1" id="epc-cf-ixx"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PrG-bj-Jqv">
+                                        <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PrG-bj-Jqv">
                                             <rect key="frame" x="305" y="0.0" width="50" height="49.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="Z5N-Am-5Bc"/>
                                             </constraints>
                                             <state key="normal" image="zhuangtai"/>
                                             <state key="selected" image="ok"/>
+                                            <connections>
+                                                <action selector="selectedBtnClick:" destination="-1" eventType="touchUpInside" id="7Jk-El-STG"/>
+                                            </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weixin" translatesAutoresizingMaskIntoConstraints="NO" id="j2J-Wk-ILn">
                                             <rect key="frame" x="16" y="13" width="28" height="28"/>
@@ -153,13 +161,16 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vae-UX-2kP">
+                                        <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vae-UX-2kP">
                                             <rect key="frame" x="305" y="50.5" width="50" height="49.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="MSJ-Md-v8C"/>
                                             </constraints>
                                             <state key="normal" image="zhuangtai"/>
                                             <state key="selected" image="ok"/>
+                                            <connections>
+                                                <action selector="selectedBtnClick:" destination="-1" eventType="touchUpInside" id="c6I-nU-s3x"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -195,7 +206,7 @@
                                         <constraint firstAttribute="height" constant="50" id="pXY-rq-taB"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <state key="normal" title="确认支付：￥3000.00"/>
+                                    <state key="normal" title="确认支付"/>
                                     <connections>
                                         <action selector="confirmBtnClick:" destination="-1" eventType="touchUpInside" id="yO8-HL-ObT"/>
                                     </connections>

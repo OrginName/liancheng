@@ -42,7 +42,7 @@
 }
 #pragma mark - alipayNotice
 - (void)alipayNotice:(NSNotification *)notification {
-    if ([[[notification object] objectForKey:@"userInfo"] integerValue] == 9000) {
+    if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"success"]) {
         //支付成功
         [self reloadData];
     }else{

@@ -208,34 +208,36 @@ static NSString * const v1TalentResumeDelete = @"/v1/talent/resume/delete";
 #pragma mark - 人才-赚外快
 //评论
 static NSString * const v1TalentTenderCommentCreate = @"/v1/talent/tender/comment/create";
-//关注招标
+//关注接单
 static NSString * const v1TalentTenderFollowCreate = @"/v1/talent/tender/follow/create";
-//招标发布
+//接单发布
 static NSString * const v1TalentTenderCreate = @"/v1/talent/tender/create";
-//修改招标
+//修改接单
 static NSString * const v1TalentTenderUpdate = @"/v1/talent/tender/update";
-//赚外快-删除招标
+//赚外快-删除接单
 static NSString * const v1TalentTenderDelete = @"/v1/talent/tender/delete";
 //赚外快-保证金
 static NSString * const v1TalentTenderDepositList = @"/v1/talent/tender/deposit/page";
-//招标详情
+//接单详情
 static NSString * const v1TalentTenderDetail = @"/v1/talent/tender/detail";
 //赚外快-创建订单（支付全额/分期/保证金）
 static NSString * const v1TalentTenderorderCreate = @"/v1/talent/tender/order/create";
 //赚外快（分页）
 static NSString * const v1TalentTenderPage = @"/v1/talent/tender/page";
-//赚外快-招标管理（分页）
+//赚外快-任务管理（分页）
 static NSString * const v1TalentTenderMyPage = @"/v1/talent/tender/my/page";
-//赚外快-投标
+//赚外快-抢单
 static NSString * const v1TalentTenderRecordCreate = @"/v1/talent/tender/record/create";
-//赚外快-投标人
+//赚外快-抢单人
 static NSString * const v1TalentTenderRecordList = @"/v1/talent/tender/record/page";
 //赚外快-赏金托管
 static NSString * const v1TalentTenderRewardList = @"/v1/talent/tender/reward/page";
-//赚外快-中标人
+//赚外快-中单人
 static NSString * const v1TalentTenderWinRecordList = @"/v1/talent/tender/win-record/page";
 //赚外快-足迹
 static NSString * const v1TalentTenderFootPrintPage = @"/v1/talent/tender/foot-print/page";
+//赚外快-中标
+static NSString * const v1TalentTenderRecordWin = @"/v1/talent/tender/record/win";
 
 #pragma mark - 关键字信息
 //换着玩关键字

@@ -35,7 +35,7 @@
 }
 #pragma mark - setup
 - (void)setUI {
-    self.navigationItem.title = @"中标信息";
+    self.navigationItem.title = @"中单信息";
 }
 - (void)setTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"WinnerInfoCell" bundle:nil] forCellReuseIdentifier:@"WinnerInfoCell"];

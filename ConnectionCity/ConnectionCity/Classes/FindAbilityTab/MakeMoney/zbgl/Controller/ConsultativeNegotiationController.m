@@ -37,7 +37,7 @@
     
     InstallmentMo *mo00 = [[InstallmentMo alloc]init];
     mo00.bbb = YES;
-    mo00.title = @"招标金额";
+    mo00.title = @"接单金额";
     mo00.data = self.mo.amount;
     InstallmentMo *mo10 = [[InstallmentMo alloc]init];
     mo10.bbb = YES;
@@ -178,7 +178,7 @@
     [self v1TalentTenderUpdate:dic];
 }
 #pragma mark - 接口请求
-//修改招标
+//修改接单
 - (void)v1TalentTenderUpdate:(NSDictionary *)dic{
     WeakSelf
     [YSNetworkTool POST:v1TalentTenderUpdate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {

@@ -29,6 +29,14 @@
     [_headerImgView sd_setImageWithURL:[NSURL URLWithString:userinfomo.headImage]];
     _nameLab.text = userinfomo.nickName;
     _detailLab.text = userinfomo.occupationCategoryName.name;
+    
+    if ([userinfomo.isFriend isEqualToString:@"1"]) {
+        _addFrendBtn.backgroundColor = [UIColor grayColor];
+        [_addFrendBtn setTitle:@"+好友" forState: UIControlStateNormal];
+    }else{
+        _addFrendBtn.backgroundColor = [UIColor orangeColor];
+        [_addFrendBtn setTitle:@"好友" forState: UIControlStateNormal];
+    }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -75,7 +75,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     //重用区头视图
     BidderSectionHeadV *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"BidderSectionHeadV"];
-    headerView.bidderLab.text = @"中标人";
+    headerView.bidderLab.text = @"中单人";
     headerView.headerImgV.image = [UIImage imageNamed:@"Win"];
     headerView.model = _dataArr[section];
     //返回区头视图
