@@ -35,7 +35,7 @@
     FriendCircleController *foundVC1 = [[FriendCircleController alloc]init];
 //    ProfileServiceController *Profile = [[ProfileServiceController alloc]init];
     NSArray *arrVC = @[messageVC,addressVC,lifeVC,foundVC,foundVC1];
-    NSArray *titleArr = @[@"首页",@"旅行",@"服务站",@"圈子",@"我的"];
+    NSArray *titleArr = @[@"首页",@"旅行",@"服务站",@"圈子",@"我的圈子"];
     NSArray *picArr = @[@"index-nav",@"nav-travel",@"nav-service",@"nav-quan",@"nav-our-service"];
     NSArray *picSelectArr = @[@"index-nav1",@"nav-travel-h",@"nav-service-h",@"nav-quan-h",@"nav-our-service-h"];
     

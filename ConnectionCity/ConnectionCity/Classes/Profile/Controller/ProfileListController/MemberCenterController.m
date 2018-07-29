@@ -42,8 +42,6 @@
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 210);
-    [self.tab_Bottom reloadData];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -53,9 +51,14 @@
 //添加UI
 -(void)setUI{
     self.navigationItem.title = @"个人中心";
-    self.tableHeadV = [[NSBundle mainBundle] loadNibNamed:@"ProfileHeadView" owner:nil options:nil][1];
-    self.tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 210);
-    self.tab_Bottom.tableHeaderView = self.tableHeadV;
+    _tableHeadV = [[NSBundle mainBundle] loadNibNamed:@"ProfileHeadView" owner:nil options:nil][1];
+    _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 300);
+    WeakSelf
+    _tableHeadV.Block = ^{
+        weakSelf.tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 300);
+        [weakSelf.tab_Bottom reloadData];
+    };
+    self.tab_Bottom.tableHeaderView = _tableHeadV;
     [self requestV1PrivateUserInfo];
 }
 #pragma mark ---UITableviewDelegate--------

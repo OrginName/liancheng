@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,6 +16,7 @@
                 <outlet property="coinBgView" destination="Fxt-ve-NlC" id="UwI-7C-Qda"/>
                 <outlet property="functionBgView" destination="Ue3-RT-Z9P" id="ec8-dS-odz"/>
                 <outlet property="headImage" destination="p5y-ki-SHH" id="IDr-5Z-Iol"/>
+                <outlet property="membershipRenewalBtn" destination="rDT-7k-fLb" id="GtK-sU-uKd"/>
                 <outlet property="nickName" destination="4J5-hr-J2O" id="r4X-lT-TGb"/>
                 <outlet property="svipImgV" destination="SRp-7j-n92" id="jKc-fk-Sod"/>
                 <outlet property="svipTimeLab" destination="Odk-LH-an2" id="7jP-q1-ckB"/>
@@ -29,10 +30,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tL1-0d-zGd">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="290"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="nsL-ov-9Jj">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="290"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="our-center-1" translatesAutoresizingMaskIntoConstraints="NO" id="p5y-ki-SHH">
                             <rect key="frame" x="160.5" y="70" width="54" height="54"/>
@@ -55,7 +56,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="nTW-mE-APV"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -67,14 +68,14 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDT-7k-fLb">
-                            <rect key="frame" x="167.5" y="181" width="40" height="15"/>
+                            <rect key="frame" x="147.5" y="181" width="80" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="40" id="5SC-Y1-RRR"/>
-                                <constraint firstAttribute="height" constant="15" id="l3I-aI-U9j"/>
+                                <constraint firstAttribute="width" constant="80" id="5SC-Y1-RRR"/>
+                                <constraint firstAttribute="height" constant="30" id="l3I-aI-U9j"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="续费">
-                                <color key="titleColor" red="0.93474149699999998" green="0.36836501960000001" blue="0.33746045829999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
                                 <action selector="membershipRenewalBtnClick:" destination="-1" eventType="touchUpInside" id="f4f-93-FB4"/>
@@ -90,7 +91,7 @@
                         <constraint firstItem="SRp-7j-n92" firstAttribute="bottom" secondItem="p5y-ki-SHH" secondAttribute="bottom" id="IwO-cg-dZB"/>
                         <constraint firstItem="SRp-7j-n92" firstAttribute="centerX" secondItem="tL1-0d-zGd" secondAttribute="centerX" id="J67-ca-3et"/>
                         <constraint firstItem="nsL-ov-9Jj" firstAttribute="top" secondItem="tL1-0d-zGd" secondAttribute="top" id="Nig-fm-CoG"/>
-                        <constraint firstAttribute="height" constant="210" id="Tvb-kZ-ltV"/>
+                        <constraint firstAttribute="height" constant="290" id="Tvb-kZ-ltV"/>
                         <constraint firstAttribute="trailing" secondItem="nsL-ov-9Jj" secondAttribute="trailing" id="VWV-d4-fl9"/>
                         <constraint firstItem="p5y-ki-SHH" firstAttribute="centerX" secondItem="tL1-0d-zGd" secondAttribute="centerX" id="cZ4-UW-Wfy"/>
                         <constraint firstItem="4J5-hr-J2O" firstAttribute="leading" secondItem="tL1-0d-zGd" secondAttribute="leading" constant="5" id="iAJ-Rf-aGi"/>
@@ -102,7 +103,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RUo-Gy-QRA">
-                    <rect key="frame" x="10" y="220" width="355" height="83"/>
+                    <rect key="frame" x="10" y="300" width="355" height="83"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4RS-0Y-s6H">
                             <rect key="frame" x="10" y="10" width="76.5" height="63"/>
@@ -275,7 +276,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0kF-JB-xgL">
-                    <rect key="frame" x="10" y="313" width="355" height="344"/>
+                    <rect key="frame" x="10" y="393" width="355" height="264"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TUR-BL-re3">
                             <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>

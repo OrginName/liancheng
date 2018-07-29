@@ -354,20 +354,21 @@
 } 
 -(UIImageView *)headImage{
     if (!_headImage) {
-        _headImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.width*0.7)];
+        _headImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.width)];
         _headImage.userInteractionEnabled = YES;
         privateUserInfoModel * userInfo = [YSAccountTool userInfo];
         [_headImage sd_setImageWithURL:[NSURL URLWithString:userInfo.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
-        UIImageView * image1 = [[UIImageView alloc] initWithFrame:CGRectMake(_headImage.width-70, _headImage.height-25, 50, 50)];
+        UIImageView * image1 = [[UIImageView alloc] initWithFrame:CGRectMake(_headImage.width-70, _headImage.height-30, 60, 60)];
         image1.tag = 999;
         [image1 sd_setImageWithURL:[NSURL URLWithString:userInfo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
-        image1.layer.cornerRadius = 25;
+        image1.layer.cornerRadius = 5;
         image1.layer.masksToBounds = YES;
         [_headImage addSubview:image1];
-        UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(image1.x-40, image1.y, 100, 25)];
+        UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(image1.x-110, image1.y, 100, 25)];
         lab.text = userInfo.nickName;
         lab.textColor = YSColor(55, 21, 17);
-        lab.font = [UIFont systemFontOfSize:14];
+        lab.font = [UIFont systemFontOfSize:18];
+        lab.textAlignment = NSTextAlignmentRight;
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ChangePhoto)];
         [_headImage addGestureRecognizer:tap];
         [_headImage addSubview:lab];

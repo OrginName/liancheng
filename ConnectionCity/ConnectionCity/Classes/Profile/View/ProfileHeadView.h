@@ -38,5 +38,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *twoNickName;
 @property (weak, nonatomic) IBOutlet UILabel *twoSvipTimeLab;
 @property (weak, nonatomic) IBOutlet UIButton *twoSvipBtn;
+@property (copy, nonatomic) void (^Block)(void);
 
 @end

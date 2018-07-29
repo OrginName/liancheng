@@ -24,6 +24,12 @@
         [_delegate profileHeadView:self refreshBtnClick:(UIButton *)sender];
     }
 }
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    if (_Block) {
+        _Block();
+    }
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

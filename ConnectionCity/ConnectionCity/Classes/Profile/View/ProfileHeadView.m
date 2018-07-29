@@ -25,7 +25,12 @@
     [self.headImage addGestureRecognizer:headImageLongTap];
     
 }
-
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    if (_Block) {
+        _Block();
+    }
+}
 #pragma mark - 点击事件
 - (IBAction)editBtnClick:(id)sender {
     if (_delegate && [_delegate respondsToSelector:@selector(profileHeadView:editBtnClick:)]) {

@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nickName;
 @property (weak, nonatomic) IBOutlet UILabel *svipTimeLab;
 @property (weak, nonatomic) IBOutlet UIImageView *svipImgV;
+@property (weak, nonatomic) IBOutlet UIButton *membershipRenewalBtn;
 
 @end
 
@@ -68,6 +69,10 @@
     self.coinBgView.layer.borderWidth = 0.5;
     self.headImage.layer.cornerRadius = 27;
     self.headImage.clipsToBounds = YES;
+    self.membershipRenewalBtn.layer.cornerRadius = 15;
+    self.membershipRenewalBtn.backgroundColor = [UIColor orangeColor];
+    self.membershipRenewalBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.membershipRenewalBtn.layer.borderWidth = 1;
 }
 #pragma mark - 点击事件
 - (IBAction)membershipRenewalBtnClick:(id)sender {

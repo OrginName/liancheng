@@ -73,7 +73,12 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"EditProfileCell" bundle:nil] forCellReuseIdentifier:@"EditProfileCell"];
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"UITableViewHeaderFooterView"];
     _tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"EditProfileHeadView" owner:nil options:nil] firstObject];
-    _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 220 + 64);
+    _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 300);
+    WeakSelf
+    _tableHeadV.Block = ^{
+        weakSelf.tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 300);
+        [weakSelf.tableView reloadData];
+    };
     _tableHeadV.delegate = self;
     self.tableView.tableHeaderView = _tableHeadV;
 }

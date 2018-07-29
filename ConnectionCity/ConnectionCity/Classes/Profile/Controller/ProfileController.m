@@ -57,7 +57,7 @@
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 210);
+    self.tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 300);
     [self.tableView reloadData];
 }
 - (void)viewWillDisappear:(BOOL)animated {
@@ -83,7 +83,7 @@
 - (void)registerCell {
 //    [self.tableView registerNib:[UINib nibWithNibName:@"ProfileCell" bundle:nil] forCellReuseIdentifier:@"ProfileCell0"];
     _tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"ProfileHeadView" owner:nil options:nil] firstObject];
-    _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 210);
+    _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 300);
     _tableHeadV.delegate = self;
     self.tableView.tableHeaderView = _tableHeadV;
 }
@@ -139,6 +139,7 @@
     }
     NSString *className = self.menuModels[indexPath.row].mClass;
     UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc]init];
+    vc.view.backgroundColor = [UIColor whiteColor];
     if (vc == nil)return;
     [self.navigationController pushViewController:vc animated:YES];
 }
