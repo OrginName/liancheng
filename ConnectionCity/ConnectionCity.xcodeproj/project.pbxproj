@@ -525,6 +525,7 @@
 		CE6BEC1D20C83769003B36D7 /* LCDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC1C20C83769003B36D7 /* LCDatePicker.m */; };
 		CE6BEC2C20C970C1003B36D7 /* EditProfileHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC2B20C970C1003B36D7 /* EditProfileHeadView.m */; };
 		CE6BEC2E20C970D1003B36D7 /* EditProfileHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6BEC2D20C970D1003B36D7 /* EditProfileHeadView.xib */; };
+		CE6E8EA3210DCB6400764BBF /* HCCountdown.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6E8EA1210DCB6400764BBF /* HCCountdown.m */; };
 		CE81AD7920E10AC20042E50D /* CertificationCenterMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE81AD7820E10AC20042E50D /* CertificationCenterMo.m */; };
 		CE97DBF520B5A2C1003E46BD /* ReleaseTenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97DBF320B5A2C1003E46BD /* ReleaseTenderCell.m */; };
 		CE97DBF620B5A2C1003E46BD /* ReleaseTenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE97DBF420B5A2C1003E46BD /* ReleaseTenderCell.xib */; };
@@ -1636,6 +1637,8 @@
 		CE6BEC2A20C970C1003B36D7 /* EditProfileHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileHeadView.h; sourceTree = "<group>"; };
 		CE6BEC2B20C970C1003B36D7 /* EditProfileHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileHeadView.m; sourceTree = "<group>"; };
 		CE6BEC2D20C970D1003B36D7 /* EditProfileHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileHeadView.xib; sourceTree = "<group>"; };
+		CE6E8EA1210DCB6400764BBF /* HCCountdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCountdown.m; sourceTree = "<group>"; };
+		CE6E8EA2210DCB6400764BBF /* HCCountdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCountdown.h; sourceTree = "<group>"; };
 		CE81AD7720E10AC20042E50D /* CertificationCenterMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CertificationCenterMo.h; sourceTree = "<group>"; };
 		CE81AD7820E10AC20042E50D /* CertificationCenterMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertificationCenterMo.m; sourceTree = "<group>"; };
 		CE97DBF220B5A2C1003E46BD /* ReleaseTenderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReleaseTenderCell.h; sourceTree = "<group>"; };
@@ -3558,6 +3561,8 @@
 				727418BA20B17536001D6BE1 /* CusTabBar */,
 				8DE161B121072B0000CC7558 /* ZoomImage.h */,
 				8DE161B021072AFF00CC7558 /* ZoomImage.m */,
+				CE6E8EA2210DCB6400764BBF /* HCCountdown.h */,
+				CE6E8EA1210DCB6400764BBF /* HCCountdown.m */,
 				72BAB43720B047F500496D29 /* YSButton.h */,
 				72BAB43820B047F500496D29 /* YSButton.m */,
 				CE14BD6D20F3794000F85C49 /* YTThirdPartyPay.h */,
@@ -4539,7 +4544,7 @@
 				TargetAttributes = {
 					CE0BA563209D5004004C3C33 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -5424,7 +5429,7 @@
 				CODE_SIGN_ENTITLEMENTS = ConnectionCity/ConnectionCity.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
@@ -5470,8 +5475,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LC.CC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "819cdad9-ecd2-4374-a683-bd3866b89632";
-				PROVISIONING_PROFILE_SPECIFIER = tsLC;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -5484,8 +5489,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = ConnectionCity/ConnectionCity.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5530,8 +5535,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LC.CC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "22cf1c5a-63b4-4558-8dde-5c0f4007b782";
-				PROVISIONING_PROFILE_SPECIFIER = LCC;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
