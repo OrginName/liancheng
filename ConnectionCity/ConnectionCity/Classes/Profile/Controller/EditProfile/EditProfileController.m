@@ -17,6 +17,8 @@
 #import "JFCityViewController.h"
 #import "CityMo.h"
 #import "AllDicMo.h"
+#import "AbilityNet.h"
+#import "ClassificationsController.h"
 
 @interface EditProfileController ()<EditProfileHeadViewDelegate,JFCityViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -24,6 +26,7 @@
 @property (nonatomic, strong) NSArray *titleDataArr;
 @property (nonatomic, strong) NSArray *parmeDataArr;
 @property (nonatomic, strong) NSMutableArray *contentDataArr;
+@property (nonatomic, strong) NSMutableArray * arr_Class;
 
 @end
 
@@ -65,6 +68,10 @@
 - (void)setUI {
     self.navigationItem.title = @"基础资料";
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(rightBarClick) image:nil title:@"保存" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    WeakSelf
+    [AbilityNet requstMakeMoneyClass:^(NSMutableArray *successArrValue) {
+        weakSelf.arr_Class = successArrValue;
+    }];
 }
 - (void)setupTableView {
     [self registerCell];
@@ -85,15 +92,15 @@
 #pragma mark - setter and getter
 - (NSArray *)titleDataArr{
     if (!_titleDataArr) {
-        _titleDataArr = @[@[@"昵称",@"姓名",@"年龄",@"性别",@"所在地区"],@[@"身高",@"体重",@"婚姻",@"学历",@"签名"]];
-        _parmeDataArr = @[@[@"nickName",@"realName",@"age",@"gender",@"areaCode"],@[@"height",@"weight",@"marriage",@"educationId",@"sign"]];
+        _titleDataArr = @[@[@"昵称",@"姓名",@"年龄",@"性别",@"所在地区"],@[@"身高",@"体重",@"婚姻",@"学历",@"职业",@"签名"]];
+        _parmeDataArr = @[@[@"nickName",@"realName",@"age",@"gender",@"areaCode"],@[@"height",@"weight",@"marriage",@"educationId",@"occupationCategoryId",@"sign"]];
     }
     return _titleDataArr;
 }
 - (NSMutableArray *)contentDataArr {
     if (!_contentDataArr) {
         NSMutableArray *firstMutArr = [[NSMutableArray alloc]initWithArray:@[@"东方奇迹",@"江小白",@"18",@"女",@"武汉"]];
-        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[@"160",@"45",@"未婚",@"研究生",@"我是单身贵族"]];
+        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[@"160",@"45",@"未婚",@"研究生",@"职业",@"我是单身贵族"]];
         _contentDataArr = [[NSMutableArray alloc]initWithArray:@[firstMutArr,secondMutArr]];
     }
     return _contentDataArr;
@@ -184,6 +191,19 @@
             NSDictionary *dic = @{@"educationId": mo.value};
             [weakSelf requestPrivateUserUpdateWithDic:dic];
         } cancelTitle:@"取消" cancelHandler:nil completion:nil];
+    }else if (indexPath.section==1&&indexPath.row==4){
+        ClassificationsController * class = [ClassificationsController new];
+        class.title = @"行业类型";
+        class.arr_Data = self.arr_Class;
+        WeakSelf
+        class.block = ^(NSString *classifiation){
+            
+        };
+        class.block1 = ^(NSString *classifiationID, NSString *classifiation) {
+            [weakSelf requestPrivateUserUpdateWithDic:@{_parmeDataArr[indexPath.section][indexPath.row]: classifiationID?classifiationID:@""}];
+        };
+        [self.navigationController pushViewController:class animated:YES];
+
     }else{
         EditAllController * edit = [EditAllController new];
         WeakSelf
@@ -253,7 +273,7 @@
         [YSAccountTool saveUserinfo:userInfoModel];
         
         NSMutableArray *firstMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.nickName?userInfoModel.nickName:@"",userInfoModel.realName?userInfoModel.realName:@"",userInfoModel.age?userInfoModel.age:@"",userInfoModel.genderName?userInfoModel.genderName:@"",userInfoModel.cityName?userInfoModel.cityName:@""]];
-        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.height?[NSString stringWithFormat:@"%@CM",userInfoModel.height]:@"",userInfoModel.weight?[NSString stringWithFormat:@"%@KG",userInfoModel.weight]:@"",userInfoModel.marriageName?userInfoModel.marriageName:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.sign?userInfoModel.sign:@""]];
+        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.height?[NSString stringWithFormat:@"%@CM",userInfoModel.height]:@"",userInfoModel.weight?[NSString stringWithFormat:@"%@KG",userInfoModel.weight]:@"",userInfoModel.marriageName?userInfoModel.marriageName:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.occupationCategoryName.name?userInfoModel.occupationCategoryName.name:@"",userInfoModel.sign?userInfoModel.sign:@""]];
         weakSelf.contentDataArr = [[NSMutableArray alloc]initWithArray:@[firstMutArr,secondMutArr]];
         [weakSelf.tableHeadV.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
         [weakSelf.tableHeadV.headImage sd_setBackgroundImageWithURL:[NSURL URLWithString:userInfoModel.headImage] forState:UIControlStateNormal];
@@ -267,7 +287,7 @@
         [YSAccountTool saveUserinfo:userInfoModel];
         
         NSMutableArray *firstMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.nickName?userInfoModel.nickName:@"",userInfoModel.realName?userInfoModel.realName:@"",userInfoModel.age?userInfoModel.age:@"",userInfoModel.genderName?userInfoModel.genderName:@"",userInfoModel.cityName?userInfoModel.cityName:@""]];
-        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.height?[NSString stringWithFormat:@"%@CM",userInfoModel.height]:@"",userInfoModel.weight?[NSString stringWithFormat:@"%@KG",userInfoModel.weight]:@"",userInfoModel.marriageName?userInfoModel.marriageName:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.sign?userInfoModel.sign:@""]];
+        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.height?[NSString stringWithFormat:@"%@CM",userInfoModel.height]:@"",userInfoModel.weight?[NSString stringWithFormat:@"%@KG",userInfoModel.weight]:@"",userInfoModel.marriageName?userInfoModel.marriageName:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.occupationCategoryName.name?userInfoModel.occupationCategoryName.name:@"",userInfoModel.sign?userInfoModel.sign:@""]];
         weakSelf.contentDataArr = [[NSMutableArray alloc]initWithArray:@[firstMutArr,secondMutArr]];
         [weakSelf.tableHeadV.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
         [weakSelf.tableHeadV.headImage sd_setBackgroundImageWithURL:[NSURL URLWithString:userInfoModel.headImage] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"our-center-1"]];

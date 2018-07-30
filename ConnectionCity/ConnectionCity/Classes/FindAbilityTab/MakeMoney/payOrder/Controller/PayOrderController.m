@@ -172,13 +172,6 @@
     btn.selected = !btn.selected;
     _lastBtn.selected = !_lastBtn.selected;
     _lastBtn = btn;
-    if (btn.tag==0) {
-        
-    }else if (btn.tag==1){
-        
-    }else if (btn.tag==2){
-        
-    }
 }
 
 #pragma mark - 接口请求
@@ -191,8 +184,10 @@
     NSDictionary *dic = @{@"payTypeId": _orderType,@"tenderId":_tenderId,@"depositAmount":_amount};
     WeakSelf
     [YSNetworkTool POST:v1TalentTenderorderCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        
-        if (weakSelf.lastBtn.tag==101) {
+        if (weakSelf.lastBtn.tag==100) {
+            //[YTThirdPartyPay v1Pay:@{@"orderNo": responseObject[kData],@"payType":kBalance}];
+            [weakSelf v1Pay:@{@"orderNo": responseObject[kData],@"payType":kBalance}];
+        }else if (weakSelf.lastBtn.tag==101) {
             [YTThirdPartyPay v1Pay:@{@"orderNo": responseObject[kData],@"payType":kWechat}];
         }else if(weakSelf.lastBtn.tag==102){
             [YTThirdPartyPay v1Pay:@{@"orderNo": responseObject[kData],@"payType":kAlipay}];
@@ -200,7 +195,18 @@
         
     } failure:nil];
 }
-
+- (void)v1Pay:(NSDictionary *)dic {
+    WeakSelf
+    [YSNetworkTool POST:v1Pay params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([kBalance isEqualToString:dic[@"payType"]]) {
+            [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付成功" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+                [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+            } completion:nil];
+        }else if ([kAlipay isEqualToString:dic[@"payType"]]) {
+        }else if([kWechat isEqualToString:dic[@"payType"]]){
+        }
+    } failure:nil];
+}
 #pragma mark - alipayNotice
 - (void)alipayNotice:(NSNotification *)notification {
     if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"success"]) {

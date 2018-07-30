@@ -20,7 +20,9 @@
 #pragma mark - Pay by third party
 + (void)v1Pay:(NSDictionary *)dic {
     [YSNetworkTool POST:v1Pay params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        if ([kAlipay isEqualToString:dic[@"payType"]]) {
+        if ([kBalance isEqualToString:dic[@"payType"]]) {
+            
+        }else if ([kAlipay isEqualToString:dic[@"payType"]]) {
             [YTThirdPartyPay payByThirdPartyWithPaymet:YTThirdPartyPaymentAlipay dictionary:responseObject[kData]];
         }else if([kWechat isEqualToString:dic[@"payType"]]){
             [YTThirdPartyPay payByThirdPartyWithPaymet:YTThirdPartyPaymentWechat dictionary:responseObject[kData]];

@@ -80,6 +80,8 @@
 #define kAlipay              @"alipay"
 /** 微信 */
 #define kWechat              @"wechat"
+/** 余额 */
+#define kBalance              @"balance"
 //添加好友成功的帅新
 #define KAddFriend @"KAddFriend"
 /** @"UserCity"*/
