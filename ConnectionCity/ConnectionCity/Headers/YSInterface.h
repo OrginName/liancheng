@@ -448,6 +448,11 @@ static NSString * const v1CommonFollowCreate = @"/v1/common/follow/create";
 static NSString * const v1CommonCommentDelete = @"/v1/common/comment/delete";
 //全部申请列表（分页，含好友申请，群申请，团队申请，服务站申请
 static NSString * const v1ApplicationPageAll = @"/v1/application/page/all";
+//当前用户配置列表
+static NSString * const v1MyConfigGet = @"/v1/my/config/get";
+//更新用户配置列表
+static NSString * const v1MyConfigUpdate = @"/v1/my/config/update";
+
 #endif /* YSInterface_h */
 
 

@@ -10,4 +10,5 @@
 
 @interface AddMyWayController : BaseViewController
 @property (nonatomic,assign) NSInteger index_receive;
+@property (nonatomic,strong) NSDictionary * dic;
 @end

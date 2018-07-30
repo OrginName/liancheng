@@ -196,7 +196,6 @@
     _cycleScrollView.autoScroll = NO;
     UIWindow *window = [[UIApplication sharedApplication].delegate window];
     CGRect frame = [sender convertRect:sender.bounds toView:window];
-    
     FKGPopOption *s = [[FKGPopOption alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
     s.option_mutiple = 0.25;
     s.option_optionContents = @[@"新增", @"编辑", @"删除"];
