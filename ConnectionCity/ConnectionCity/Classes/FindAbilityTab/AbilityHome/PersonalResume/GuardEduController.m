@@ -75,10 +75,11 @@
                               @"startDate": self.Start_time.text,
                               @"professinalName":self.text_Pro.text,//专业名称
                               @"schoolName":self.text_Coll.text,//学校名称
-                              @"educationId":self.mo!=nil?self.mo.ID:@""
+                              @"educationId":self.mo!=nil?self.mo.ID:@"",
+                              @"educationExperienceId":self.mo!=nil?self.mo.ID:@""
                               };
         if (self.mo!=nil) {
-            [YSNetworkTool POST:v1TalentResumeEducationUpdate params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+            [YSNetworkTool POST:v1TalentResumeEducationUpdate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
                 [self backReload:2];
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
                 

@@ -484,7 +484,7 @@
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(complete) image:@"" title:@"完成" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 -(void)initScroll{
-    __block ResumeController * weakSelf = self;
+//    __block ResumeController * weakSelf = self;
     _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.tab_bottom.width, self.tab_bottom.width*0.8) imageURLStringsGroup:nil]; // 模拟网络延时情景
     _cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     _cycleScrollView.delegate = self;
@@ -496,9 +496,9 @@
     }else
         self.tab_bottom.tableHeaderView = _cycleScrollView;
     //                     --- 模拟加载延迟
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        _cycleScrollView.localizationImagesGroup = weakSelf.lunArr;
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        _cycleScrollView.localizationImagesGroup = weakSelf.lunArr;
+//    });
     
     UIButton * EditBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     EditBtn.frame = CGRectMake(kScreenWidth-60, 10, 30, 30);

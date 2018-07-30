@@ -265,6 +265,7 @@
 		8D8E4ED320C9320200C3D537 /* PrivateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E4ED120C9320200C3D537 /* PrivateController.m */; };
 		8D8E4ED420C9320200C3D537 /* PrivateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D8E4ED220C9320200C3D537 /* PrivateController.xib */; };
 		8D8E4ED720C937D200C3D537 /* NKColorSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E4ED620C937D200C3D537 /* NKColorSwitch.m */; };
+		8D95E325210EDF5600C26892 /* HCCountdown.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D95E323210EDF5500C26892 /* HCCountdown.m */; };
 		8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990620A6FDEB00968F86 /* ResumeController.m */; };
 		8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA4990720A6FDEB00968F86 /* ResumeController.xib */; };
 		8DA4990D20A7063E00968F86 /* ResumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990B20A7063E00968F86 /* ResumeCell.m */; };
@@ -1072,6 +1073,8 @@
 		8D8E4ED220C9320200C3D537 /* PrivateController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivateController.xib; sourceTree = "<group>"; };
 		8D8E4ED520C937D200C3D537 /* NKColorSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKColorSwitch.h; sourceTree = "<group>"; };
 		8D8E4ED620C937D200C3D537 /* NKColorSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKColorSwitch.m; sourceTree = "<group>"; };
+		8D95E323210EDF5500C26892 /* HCCountdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCountdown.m; sourceTree = "<group>"; };
+		8D95E324210EDF5600C26892 /* HCCountdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCountdown.h; sourceTree = "<group>"; };
 		8DA4990520A6FDEB00968F86 /* ResumeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeController.h; sourceTree = "<group>"; };
 		8DA4990620A6FDEB00968F86 /* ResumeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeController.m; sourceTree = "<group>"; };
 		8DA4990720A6FDEB00968F86 /* ResumeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeController.xib; sourceTree = "<group>"; };
@@ -3539,6 +3542,8 @@
 		CE0BA5BE209D5E9B004C3C33 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8D95E324210EDF5600C26892 /* HCCountdown.h */,
+				8D95E323210EDF5500C26892 /* HCCountdown.m */,
 				8D5FF5EA210B16ED0094516F /* MyTab */,
 				8DE948462109BB7F00AEC160 /* RefineSearchBar */,
 				8DE161B321072B9100CC7558 /* QFDatePickerView */,
@@ -5233,6 +5238,7 @@
 				729BA6C820A01E7F009713FD /* JFAreaDataManager.m in Sources */,
 				8DC17A7B20C0E430005D9EE0 /* MMImagePreviewView.m in Sources */,
 				8DE4668A20EE05B2009730F7 /* RCDSearchResultTableViewCell.m in Sources */,
+				8D95E325210EDF5600C26892 /* HCCountdown.m in Sources */,
 				8D67602720A408470027CDEE /* ClassificationsController.m in Sources */,
 				720263F920B5015500382B2F /* TZPhotoPickerController.m in Sources */,
 				8DD48CCD20A811EA00D6D1E6 /* TAAnimatedDotView.m in Sources */,
