@@ -7,9 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "AccountPageMo.h"
 
 @interface PresentManageViewController : BaseViewController
-@property (nonatomic, copy) void(^accountBlock)(NSString *);
+@property (nonatomic, copy) void(^accountBlock)(AccountPageMo *);
 
 @end
 

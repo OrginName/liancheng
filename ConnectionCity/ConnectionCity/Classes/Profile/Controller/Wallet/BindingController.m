@@ -8,6 +8,7 @@
 
 #import "BindingController.h"
 #import "AllDicMo.h"
+#import "privateUserInfoModel.h"
 
 @interface BindingController ()
 @property (weak, nonatomic) IBOutlet UITextField *txt_people;
@@ -27,6 +28,7 @@
 }
 -(void)setUI{
     self.navigationItem.title = @"提现管理";
+    self.lab_Phone.text = kUserinfo.mobile;
 }
 - (IBAction)accountTypeBtnClick:(id)sender {
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];

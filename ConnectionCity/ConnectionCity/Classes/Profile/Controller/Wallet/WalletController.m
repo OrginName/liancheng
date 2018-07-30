@@ -12,6 +12,7 @@
 #import "ExchangeController.h"
 #import "TransactionRecordController.h"
 #import "PresentManageViewController.h"
+#import "AccountPageMo.h"
 
 @interface WalletController ()
 @property (weak, nonatomic) IBOutlet UILabel *balanceLab;
@@ -55,7 +56,7 @@
     }else if (sender.tag ==5){
         PresentManageViewController *vc = [[PresentManageViewController alloc]init];
         WeakSelf
-        vc.accountBlock = ^(NSString * sss) {
+        vc.accountBlock = ^(AccountPageMo * mo) {
 
         };
         [self.navigationController pushViewController:vc animated:YES];

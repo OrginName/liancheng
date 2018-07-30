@@ -23,5 +23,7 @@
 @property (nonatomic, copy) NSString *code;
 /** <#accountTypeName描述#> */
 @property (nonatomic, copy) NSString *accountTypeName;
+/** <#accountTypeName描述#> */
+@property (nonatomic, copy) NSString *modelId;
 
 @end

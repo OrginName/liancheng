@@ -27,7 +27,7 @@
                             indexPath:(NSIndexPath *)indexPath{
     NSString * str = @"";
     NSInteger index;
-    if (indexPath.section==0&&indexPath.row!=0) {
+    if (indexPath.row!=0) {
         str = @"PresentCell1";
         index = 1;
     }else{
@@ -38,14 +38,24 @@
     if (!cell) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"PresentCell" owner:nil options:nil][index];
     }
-    if (indexPath.section==1) {
-        if (indexPath.row==0) {
-            cell.image_Head.image = [UIImage imageNamed:@"weixin"];
-            cell.lab_title.text = @"微信";
-        }else{
-            cell.image_Head.image = [UIImage imageNamed:@"zhi"];
-            cell.lab_title.text = @"支付宝";
-        }
+//    if (indexPath.section==1) {
+//        if (indexPath.row==0) {
+//            cell.image_Head.image = [UIImage imageNamed:@"weixin"];
+//            cell.lab_title.text = @"微信";
+//        }else{
+//            cell.image_Head.image = [UIImage imageNamed:@"zhi"];
+//            cell.lab_title.text = @"支付宝";
+//        }
+//    }
+    if (indexPath.section==0&&indexPath.row==0) {
+                    cell.image_Head.image = [UIImage imageNamed:@"ka"];
+                    cell.lab_title.text = @"银行卡";
+    }else if (indexPath.section==1&&indexPath.row==0){
+                    cell.image_Head.image = [UIImage imageNamed:@"weixin"];
+                    cell.lab_title.text = @"微信";
+    }else if (indexPath.section==2&&indexPath.row==0){
+                    cell.image_Head.image = [UIImage imageNamed:@"zhi"];
+                    cell.lab_title.text = @"支付宝";
     }
     return cell;
 }

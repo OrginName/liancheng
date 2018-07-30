@@ -24,8 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.navigationController.navigationBar.translucent = NO;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.navigationController.navigationBar.translucent = NO;
     self.data_arr = [NSMutableArray array];
     [self setUpView];
     // initial data

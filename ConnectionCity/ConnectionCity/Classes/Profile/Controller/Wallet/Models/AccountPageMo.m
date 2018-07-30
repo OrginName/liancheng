@@ -9,5 +9,8 @@
 #import "AccountPageMo.h"
 
 @implementation AccountPageMo
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"modelId":@"id"};
+}
 
 @end
