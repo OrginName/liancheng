@@ -5,9 +5,9 @@
 //  Created by umbrella on 2018/6/7.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
 //
-
 #import "PrivateController.h"
 #import "AddMyWayController.h"
+#import "CircleNet.h"
 @interface PrivateController ()
 @property (weak, nonatomic) IBOutlet UISwitch *switch_Two;//是否允许陌生人查看
 @property (weak, nonatomic) IBOutlet UISwitch *Switch_One;//加好友时需验证
@@ -33,7 +33,16 @@
         add.title = @"通讯录黑名单";
     }
     add.dic = self.dic;
+    if (add.index_receive==1) {
+        if (self.Switch_One.on==NO) {
+            return [YTAlertUtil showTempInfo:@"请打开添加好友验证开关"];
+        }
+    }
     [self.navigationController pushViewController:add animated:YES];
+}
+- (IBAction)switchClick:(UISwitch *)sender {
+    NSArray * arr = @[@"openFriendVerify",@"openStrangerViewTenPhoto",@"openFriendCircleNewRemind"];
+    [self updateUser:@{arr[sender.tag-1]:KString(@"%d", sender.on)} sender:sender];
 }
 -(void)loadData{
     WeakSelf
@@ -46,6 +55,11 @@
             
         });
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+-(void)updateUser:(NSDictionary *)dic sender:(UISwitch *)send{
+    [CircleNet requstUserPZ:dic withSuc:^(NSDictionary *successDicValue) {
         
     }];
 }

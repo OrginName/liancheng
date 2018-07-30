@@ -13,6 +13,10 @@
 - (void)selectedItemButton:(UserMo *)user;
 @end
 @interface AccountView : UIView
+@property (weak, nonatomic) IBOutlet UISwitch *switch_Three;
+@property (weak, nonatomic) IBOutlet UISwitch *switch_one;
+@property (weak, nonatomic) IBOutlet UISwitch *switch_Two;
+@property (nonatomic,strong) NSDictionary * dic;
 @property (nonatomic,assign) id<AccountViewDelegate>delegate;
 @end
 

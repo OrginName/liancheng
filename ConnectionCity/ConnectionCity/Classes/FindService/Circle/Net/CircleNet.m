@@ -168,6 +168,31 @@
     }];
 }
 /**
+ 更新用户配置接口
+ 
+ @param param 字典
+ @param sucBlok 成功返回
+ */
++(void)requstUserPZ:(NSDictionary *)param withSuc:(SuccessDicBlock)sucBlok{
+    NSDictionary * dic = @{
+                           @"openFriendCircleNewRemind": param[@"openFriendCircleNewRemind"]?param[@"openFriendCircleNewRemind"]:@"",
+                           @"openFriendVerify": param[@"openFriendVerify"]?param[@"openFriendVerify"]:@"",
+                           @"openMessageVoice": param[@"openMessageVoice"]?param[@"openMessageVoice"]:@"",
+                           @"openNonWifiAutoImage": param[@"openNonWifiAutoImage"]?param[@"openNonWifiAutoImage"]:@"",
+                           @"openRemind": param[@"openRemind"]?param[@"openRemind"]:@"",
+                           @"openSearchMobile": param[@"openSearchMobile"]?param[@"openSearchMobile"]:@"",
+                           @"openSearchUserID": param[@"openSearchUserID"]?param[@"openSearchUserID"]:@"",
+                           @"openShock": param[@"openShock"]?param[@"openShock"]:@"",
+                           @"openStrangerViewTenPhoto": param[@"openStrangerViewTenPhoto"]?param[@"openStrangerViewTenPhoto"]:@"",
+                           @"openWifiAutoUpgrade": param[@"openWifiAutoUpgrade"]?param[@"openWifiAutoUpgrade"]:@"",
+                           };
+    [YSNetworkTool POST:v1MyConfigUpdate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        sucBlok(responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+/**
  *  根据图片url获取图片尺寸
  */
 +(CGSize)getImageSizeWithURL:(id)URL{

@@ -56,12 +56,6 @@
                 };
     [YSNetworkTool POST:str params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray * arr = responseObject[@"data"][@"content"];
-        if (arr.count==0) {
-            [YTAlertUtil showTempInfo:@"暂无数据"];
-            [tab reloadData];
-            [self endReload:tab];
-            return;
-        }
         if (_page==1) {
             [self.data_Arr removeAllObjects];
         }

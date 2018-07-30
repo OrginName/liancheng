@@ -11,6 +11,7 @@
 #import <RongIMLib/RongIMLib.h>
 #import "PersonalBasicDataController.h"
 #import "MessageMo.h"
+#import "CircleNet.h"
 @interface AccountView()<UITableViewDelegate,UITableViewDataSource>
 {
     int _page;
@@ -54,6 +55,11 @@
         [self.delegate selectedItemButton:user];
     }
 }
+-(void)setDic:(NSDictionary *)dic{
+    _dic = dic;
+    [self.switch_one setOn:[[dic[@"openSearchUserID"] description] intValue]];
+    [self.switch_Two setOn:[dic[@"openSearchMobile"] intValue]];
+}
 #pragma mark ---加载黑名单数据-----
 -(void)loadBlackList{
     NSDictionary * dic = @{
@@ -79,6 +85,35 @@
 -(void)endRefresh{
     [self.tab_Bottom.mj_header endRefreshing];
     [self.tab_Bottom.mj_footer endRefreshing];
+}
+- (IBAction)switchClick:(UISwitch *)sender {
+    if (sender.tag==13) {
+        if (sender.on==YES) {
+            [[RCIMClient sharedRCIMClient] setNotificationQuietHours:@"00:00:00" spanMins:1439 success:^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [YTAlertUtil showTempInfo:@"已开启"];
+                });
+                
+            } error:^(RCErrorCode status) {
+                
+            }];
+        }else{
+            [[RCIMClient sharedRCIMClient] removeNotificationQuietHours:^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [YTAlertUtil showTempInfo:@"已关闭"];
+                    
+                });
+            } error:^(RCErrorCode status) {
+                
+            }];
+        }
+        
+    }else{
+        NSArray * arr = @[@"openSearchUserID",@"openSearchMobile"];
+        [CircleNet requstUserPZ:@{arr[sender.tag-10]:KString(@"%d", sender.on)} withSuc:^(NSDictionary *successDicValue) {
+            
+        }];
+    }
 }
 //消息记录清理
 - (IBAction)btnClick:(UIButton *)sender {

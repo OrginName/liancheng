@@ -17,7 +17,6 @@
 #import "RCDataBaseManager.h"
 #import "RCDRCIMDataSource.h"
 #import <JPUSHService.h>
-
 @interface AccontManageController ()<UITableViewDelegate,UITableViewDataSource,RCIMConnectionStatusDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,assign)NSInteger  selectRow;
@@ -26,9 +25,7 @@
 @property (nonatomic,strong) NSString * nickName;
 @property (nonatomic,strong) NSString * ID;
 @property (nonatomic,strong) NSString * token;
-
 @end
-
 @implementation AccontManageController
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,7 +33,6 @@
 }
 -(void)setUI{
     self.navigationItem.title  = @"账号管理";
-   
 //    [kDefaults setObject: @[@{@"account": @"13525006051",@"psd":@"123456"},@{@"account": @"13525006051",@"psd":@"123456"}] forKey:KAccountManager];
 //    [kDefaults removeObjectForKey:KAccountManager];
     self.accountArr = [kDefaults objectForKey:KAccountManager];
@@ -63,7 +59,7 @@
             _selectRow = indexPath.row;
         }
     }
-    if (indexPath.section==0&&indexPath.row<_accountArr.count) {
+    if(indexPath.section==0&&indexPath.row<_accountArr.count) {
         //重用机制，如果选中的行正好要重用
         if( indexPath.row ==_selectRow)
         {
@@ -155,7 +151,6 @@
 }
 
 - (void)loginBtnClick:(NSDictionary *)dic {
-
     [KUserDefults removeObjectForKey:@"userToken"];
     [KUserDefults removeObjectForKey:@"userCookie"];
     [KUserDefults removeObjectForKey:@"isLogin"];
@@ -163,12 +158,9 @@
     [[RCDataBaseManager shareInstance] closeDBForDisconnect];
     [[RCIMClient sharedRCIMClient] logout];
     //[[RCIMClient sharedRCIMClient]disconnect:NO];
-    
     NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cn.rongcloud.im.share"];
     [userDefaults removeObjectForKey:@"Cookie"];
     [userDefaults synchronize];
-    
-        
     self.retryTime = [NSTimer scheduledTimerWithTimeInterval:60
                                                       target:self
                                                     selector:@selector(retryConnectionFailed)
@@ -207,11 +199,8 @@
         [KUserDefults setObject:user.portraitUri forKey:@"userPortraitUri"];
         [KUserDefults setObject:user.name forKey:@"userNickName"];
         [KUserDefults synchronize];
-        
-        
     } failure:nil];
 }
-
 /**
  *  登录融云服务器
  *

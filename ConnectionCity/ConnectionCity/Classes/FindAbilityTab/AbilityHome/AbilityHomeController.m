@@ -18,7 +18,8 @@
 #import "AbilityNet.h"
 #import "CustomScro.h"
 #import "AbilttyMo.h"
-
+#import "OurResumeMo.h"
+#import "ResumeController.h"
 @interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate,CustomScroDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
@@ -63,7 +64,20 @@
 //发布简历按钮点击
 - (IBAction)sendResume:(UIButton *)sender {
     _flag = NO;
-    [self.navigationController pushViewController:[self rotateClass:@"ResumeController"] animated:YES];
+    [YSNetworkTool POST:v1MyResumePage params:@{@"pageNumber": @1,@"pageSize":@20} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"data"][@"content"] count]!=0) {
+            NSArray * arr = [OurResumeMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+            OurResumeMo *mo = arr[0];
+            ResumeController * resume = [ResumeController new];
+            resume.resume = mo;
+            [self.navigationController pushViewController:resume animated:YES];
+            
+        }else{
+            [self.navigationController pushViewController:[self rotateClass:@"ResumeController"] animated:YES];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 //PopThreeDelegate声明协议方法
 - (void)sendValue:(NSInteger )tag{
