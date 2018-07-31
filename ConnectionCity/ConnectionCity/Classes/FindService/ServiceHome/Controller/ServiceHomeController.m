@@ -255,7 +255,7 @@
 }
 #pragma mark ---初始化关键字button加载-----
 -(void)loadketBtn:(NSMutableArray *)arr{
-    CustomScro * cus = [[CustomScro alloc] initWithFrame:CGRectMake(103, 52, kScreenWidth-113, 47) arr:[arr copy]];
+    CustomScro * cus = [[CustomScro alloc] initWithFrame:CGRectMake(103, 52, kScreenWidth-113, 47) arr:[arr copy] flag:NO];
     cus.delegate = self;
     [self.view addSubview:cus];
 }

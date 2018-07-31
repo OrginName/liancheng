@@ -16,5 +16,5 @@
 @interface CustomScro : UIView<UIScrollViewDelegate>
 @property (nonatomic,strong)UIScrollView * scrollView;
 @property (nonatomic,assign)id<CustomScroDelegate>delegate;
--(instancetype)initWithFrame:(CGRect)frame arr:(NSArray *)arr;
+-(instancetype)initWithFrame:(CGRect)frame arr:(NSArray *)arr flag:(BOOL) flag;
 @end

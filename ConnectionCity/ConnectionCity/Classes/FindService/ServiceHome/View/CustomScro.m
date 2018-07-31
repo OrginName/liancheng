@@ -8,21 +8,34 @@
 
 #import "CustomScro.h"
 @implementation CustomScro
--(instancetype)initWithFrame:(CGRect)frame arr:(NSArray *)arr{
+-(instancetype)initWithFrame:(CGRect)frame arr:(NSArray *)arr flag:(BOOL) flag{
     if (self = [super initWithFrame:frame]) {
-//        self.backgroundColor = [UIColor cyanColor];
         [self addSubview:self.scrollView];
         for (int i=0; i<arr.count; i++) {
-            float width = [YSTools caculateTheWidthOfLableText:15 withTitle:arr[i]]+10;
-            float width1 = 0.0;
-            if (i!=0) {
-                width1 = [YSTools caculateTheWidthOfLableText:15 withTitle:arr[i-1]]+10;
-            }else
-                width1 = width;
+            float width = 0.0f;
+            float width1 = 0.0f;
+            if (!flag) {
+                width = [YSTools caculateTheWidthOfLableText:15 withTitle:arr[i]]+10;
+                width1 = 0.0;
+                if (i!=0) {
+                    width1 = [YSTools caculateTheWidthOfLableText:15 withTitle:arr[i-1]]+10;
+                }else
+                    width1 = width;
+            }else{
+                width=width1=80;
+            }
             UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(5+i*width1, 0, width, self.height)];
             [btn setTitle:arr[i] forState:UIControlStateNormal];
             btn.titleLabel.font = [UIFont systemFontOfSize:14];
             [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+            if (flag) {
+                if (i==0) {
+                    btn.selected = YES;
+                }
+                [btn setImage:[UIImage imageNamed:@"weixuanhzong"] forState:UIControlStateNormal];
+                [btn setImage:[UIImage imageNamed:@"xuanzhong"] forState:UIControlStateSelected];
+                [btn layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleLeft imageTitleSpace:4];
+            }
             [btn setBackgroundColor:[UIColor whiteColor]];
             [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
             btn.tag=i+1;
