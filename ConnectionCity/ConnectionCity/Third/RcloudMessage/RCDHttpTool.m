@@ -486,7 +486,15 @@
                         RCDUserInfo *userInfo = [RCDUserInfo new];
                         userInfo.userId = [dic[@"id"] description];
                         userInfo.portraitUri =[dic[@"headImage"] isKindOfClass:[NSNull class]]?@"":[dic[@"headImage"] description];
-                        userInfo.displayName = [dic[@"nickName"] description];
+                        NSString * str1 = @"";
+                        if ([[dic[@"friendRemark"] description] containsString:@"null"]||[dic[@"friendRemark"] description].length==0) {
+                            if ([[dic[@"nickName"] description] containsString:@"null"]||[dic[@"nickName"] description].length==0) {
+                                str1 = userInfo.userId;
+                            }else
+                                str1 = [dic[@"nickName"] description];
+                        }else
+                            str1 = [dic[@"friendRemark"] description];
+                        userInfo.displayName = str1;
                         if (!userInfo.portraitUri || userInfo.portraitUri <= 0) {
                             userInfo.portraitUri = [RCDUtilities defaultUserPortrait:userInfo];
                         }
