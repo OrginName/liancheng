@@ -278,6 +278,7 @@
 		8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DB42FD320A57D6E00C4EBF8 /* FilterOneController.xib */; };
 		8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB42FD720A57D9900C4EBF8 /* FilterLayout.m */; };
 		8DB42FDC20A57DBC00C4EBF8 /* FilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB42FDA20A57DBC00C4EBF8 /* FilterCell.m */; };
+		8DB43C78211053B00099B7CA /* MyCircleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB43C77211053B00099B7CA /* MyCircleController.m */; };
 		8DC17A7620C0E430005D9EE0 /* FriendCirleTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC17A5E20C0E430005D9EE0 /* FriendCirleTab.m */; };
 		8DC17A7720C0E430005D9EE0 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC17A6120C0E430005D9EE0 /* Comment.m */; };
 		8DC17A7820C0E430005D9EE0 /* Moment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC17A6320C0E430005D9EE0 /* Moment.m */; };
@@ -1096,6 +1097,8 @@
 		8DB42FD720A57D9900C4EBF8 /* FilterLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterLayout.m; sourceTree = "<group>"; };
 		8DB42FD920A57DBC00C4EBF8 /* FilterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterCell.h; sourceTree = "<group>"; };
 		8DB42FDA20A57DBC00C4EBF8 /* FilterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterCell.m; sourceTree = "<group>"; };
+		8DB43C76211053B00099B7CA /* MyCircleController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCircleController.h; sourceTree = "<group>"; };
+		8DB43C77211053B00099B7CA /* MyCircleController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCircleController.m; sourceTree = "<group>"; };
 		8DC17A5D20C0E430005D9EE0 /* FriendCirleTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCirleTab.h; sourceTree = "<group>"; };
 		8DC17A5E20C0E430005D9EE0 /* FriendCirleTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCirleTab.m; sourceTree = "<group>"; };
 		8DC17A6020C0E430005D9EE0 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
@@ -2453,6 +2456,8 @@
 				8D12930F20E5F16D0008BD6F /* EditCircleController.h */,
 				8D12931020E5F16D0008BD6F /* EditCircleController.m */,
 				8D12931120E5F16D0008BD6F /* EditCircleController.xib */,
+				8DB43C76211053B00099B7CA /* MyCircleController.h */,
+				8DB43C77211053B00099B7CA /* MyCircleController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -5175,6 +5180,7 @@
 				CE21F0DA20DD380900478482 /* OccupationCategoryNameModel.m in Sources */,
 				8D50C56020C66EAF0095A824 /* OurServiceController.m in Sources */,
 				8DFA325520EDB5C50086423A /* RCDRCIMDataSource.m in Sources */,
+				8DB43C78211053B00099B7CA /* MyCircleController.m in Sources */,
 				8DE4663A20EDF611009730F7 /* RealTimeLocationStatusView.m in Sources */,
 				8D19FF2320D8CFE4005F7361 /* ServiceListMo.m in Sources */,
 				72EC1B7220BA984400ACC20B /* PlayDouctCell.m in Sources */,

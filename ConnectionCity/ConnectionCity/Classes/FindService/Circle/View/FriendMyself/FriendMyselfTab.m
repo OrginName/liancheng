@@ -26,6 +26,8 @@
 @implementation FriendMyselfTab
 -(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style withControll:(UIViewController *)control{
     if (self = [super initWithFrame:frame style:style]) {
+        self.showsHorizontalScrollIndicator = NO;
+        self.showsVerticalScrollIndicator = NO;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.data_Arr = [NSMutableArray array];
         self.delegate = self;
@@ -149,10 +151,6 @@
     NSDictionary * dic = self.data_Arr[section]; 
     return [dic[[dic allKeys][0]] count];
 }
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    FindMySelfCell * cell1 = (FindMySelfCell *)cell;
-    
-}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FindMySelfCell * cell = [FindMySelfCell tempTableViewCellWith:tableView indexPath:indexPath];
     [self bringSubviewToFront:[self.tableHeaderView viewWithTag:11111111]];
@@ -160,7 +158,6 @@
     cell.moment = dic[[dic allKeys][0]][indexPath.row];
     return cell;
 }
-
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 78;
 }
@@ -207,8 +204,8 @@
 -(void)SectionClick:(UIButton *)btn{
     if (btn.tag==0) {
         SendMomentController * send = [SendMomentController new];
-        send.title = @"服务圈";
-        send.flagStr = @"HomeSend";
+        send.title = [self.flagStr isEqualToString:@"HomeSend"]?@"朋友圈":@"服务圈";
+        send.flagStr = self.flagStr;
         send.block = ^{
             [self.mj_header beginRefreshing];
         };

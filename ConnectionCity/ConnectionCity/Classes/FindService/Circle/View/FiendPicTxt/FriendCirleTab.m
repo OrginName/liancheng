@@ -33,6 +33,8 @@
     if (self = [super initWithFrame:frame]) {
         self.controller = control;
         [self setUI];
+        self.showsVerticalScrollIndicator = NO;
+        self.showsHorizontalScrollIndicator = NO;
         NSArray * arr = @[];
         if ([self.flagStr isEqualToString:@"HomeSend"]){
            arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"PICHOME"]];

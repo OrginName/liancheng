@@ -30,7 +30,8 @@
         [self registerNib:[UINib nibWithNibName:@"FriendVideoCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"VideoCell"];
         self.delegate = self;
         self.dataSource = self;
-        
+        self.showsVerticalScrollIndicator = NO;
+        self.showsHorizontalScrollIndicator = NO;
         NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"VIDEO"]];
         [self defultData:arr];
         [self initData];
