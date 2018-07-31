@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
 
 @interface YSShareTool : NSObject
 +(void)share;
++(void)share:(SSDKPlatformType)type;
 
 @end

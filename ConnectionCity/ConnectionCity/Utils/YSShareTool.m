@@ -16,8 +16,8 @@
     if (imageArray) {
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
         [shareParams SSDKSetupShareParamsByText:@"连你所需连你所能连你远大前程"
-                                         images:imageArray
-                                            url:[NSURL URLWithString:@"http://mob.com"]
+                                         images:[UIImage imageNamed:@"AppIcon"]
+                                            url:[NSURL URLWithString:[NSString stringWithFormat:@"https://www.lc.test.cn-apps.com/share/invite/index?uid=%@",kAccount.userId]]
                                           title:@"连程"
                                            type:SSDKContentTypeAuto];
         
@@ -49,6 +49,40 @@
             }
         }];
     }
+}
+
++ (void)share:(SSDKPlatformType)type {
+    //创建分享参数
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+
+    [shareParams SSDKSetupShareParamsByText:@"连你所需连你所能连你远大前程" images:[UIImage imageNamed:@"AppIcon"] url:[NSURL URLWithString:[NSString stringWithFormat:@"https://www.lc.test.cn-apps.com/share/invite/index?uid=%@",kAccount.userId]] title:@"连程" type:SSDKContentTypeAuto];
+    [ShareSDK share:type parameters:shareParams onStateChanged:^(SSDKResponseState state, NSDictionary *userData,SSDKContentEntity *contentEntity, NSError *error) {
+        switch (state) {
+            case SSDKResponseStateSuccess:
+            {
+                if (type == SSDKPlatformTypeSinaWeibo) {
+                    [ShareSDK cancelAuthorize:SSDKPlatformTypeSinaWeibo];
+                }
+                [UIAlertView showAlertViewWithTitle:@"提示" message:@"分享成功" cancelButtonTitle:@"确定" otherButtonTitles:nil onDismiss:^(long buttonIndex) {
+                    
+                } onCancel:^{
+                    
+                }];
+                break;
+            }
+            case SSDKResponseStateFail:
+            {
+                [UIAlertView showAlertViewWithTitle:@"提示" message:@"分享失败" cancelButtonTitle:@"确定" otherButtonTitles:nil onDismiss:^(long buttonIndex) {
+                    
+                } onCancel:^{
+                    
+                }];
+                break;
+            }
+            default:
+                break;
+        }
+    }];
 }
 
 @end
