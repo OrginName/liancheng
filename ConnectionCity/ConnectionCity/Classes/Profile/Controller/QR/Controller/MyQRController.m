@@ -9,14 +9,16 @@
 #import "MyQRController.h"
 #import <CoreImage/CoreImage.h>
 #import "privateUserInfoModel.h"
-
+#import "PrivateController.h"
+#import "CircleNet.h"
 @interface MyQRController ()
+@property (weak, nonatomic) IBOutlet UIView *view_Meng;
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *headImgV;
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
 @property (weak, nonatomic) IBOutlet UILabel *addressLab;
-
+@property (nonatomic,copy) NSString * LCSet;
 @end
 
 @implementation MyQRController
@@ -28,20 +30,14 @@
     self.bgView.layer.cornerRadius = 5;
     self.headImgV.layer.cornerRadius = 5;
     self.headImgV.clipsToBounds = YES;
+    [self loadUserPZ];//加载用户配置信息
     [self requestV1PrivateUserInfo];
-    
-    
-    
-    // Do any additional setup after loading the view from its nib.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(SX) name:@"LCPZ" object:nil];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)SX{
+    self.view_Meng.hidden = YES;
 }
-
 - (void)createCoreImage:(NSString *)codeStr  centerImage:(UIImage *)centerImage{
-    
     //1.生成coreImage框架中的滤镜来生产二维码
     CIFilter *filter=[CIFilter filterWithName:@"CIQRCodeGenerator"];
     [filter setDefaults];
@@ -85,7 +81,6 @@
     CGFloat centerY=(img.size.height -70)*0.5;
     
     [centerImg drawInRect:CGRectMake(centerX, centerY, centerW, centerH)];
-    
     //7.4获取绘制好的图片
     UIImage *finalImg=UIGraphicsGetImageFromCurrentImageContext();
     
@@ -94,35 +89,33 @@
     //设置图片
     self.imageView.image = finalImg;
     self.imageView.userInteractionEnabled = YES;
+    if ([self.LCSet intValue]==0) {
+        self.view_Meng.hidden = NO;
+        return;
+    }
     //长按手势识别器
     UILongPressGestureRecognizer *pressGesture=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleLongPress:)];
     [self.imageView addGestureRecognizer:pressGesture];
 }
 
 -(void)handleLongPress:(UILongPressGestureRecognizer *)uilpgr {
-    
     if (uilpgr.state != UIGestureRecognizerStateBegan){
         return;
     }
-    
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         
     }];
-    
     UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"保存到相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         //保存到相册
         UIImageWriteToSavedPhotosAlbum(self.imageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
         
     }];
-    
     [alert addAction:action1];
     [alert addAction:action2];
-    
     [self presentViewController:alert animated:YES completion:nil];
-    
 }
 // 存相册
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
@@ -132,10 +125,24 @@
     }else{
         NSLog(@"保存失败");
         [YTAlertUtil showTempInfo:@"保存失败"];
-
     }
 }
-#pragma mark - 数据请求
+#pragma mark ---------蒙版点击开始--------------
+- (IBAction)openClick:(UIButton *)sender {
+    PrivateController * private = [PrivateController new];
+    [self.navigationController pushViewController:private animated:YES];
+}
+#pragma mark ---------蒙版点击结束--------------]
+-(void)loadUserPZ{
+    WeakSelf
+    [YSNetworkTool POST:v1MyConfigGet params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSString * str = [responseObject[@"data"][@"openSearchUserID"] description];
+        weakSelf.LCSet = str?str:@"";
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+#pragma mark ------- 数据请求 -----------
 - (void)requestV1PrivateUserInfo {
     //获取用户信息
     WeakSelf
@@ -149,15 +156,7 @@
         [weakSelf createCoreImage:kAccount.userId centerImage:[UIImage imageWithData:[NSData  dataWithContentsOfURL:[NSURL URLWithString:userInfoModel.headImage]]]];
     } failure:nil];
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

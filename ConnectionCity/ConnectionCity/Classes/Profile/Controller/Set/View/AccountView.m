@@ -111,8 +111,11 @@
     }else{
         NSArray * arr = @[@"openSearchUserID",@"openSearchMobile"];
         [CircleNet requstUserPZ:@{arr[sender.tag-10]:KString(@"%d", sender.on)} withSuc:^(NSDictionary *successDicValue) {
-            
+            if (sender.on) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"LCPZ" object:nil];
+            }
         }];
+        
     }
 }
 //消息记录清理

@@ -26,15 +26,12 @@
     self.add.dic = self.dic;
     WeakSelf
     [[RCIMClient sharedRCIMClient] getNotificationQuietHours:^(NSString *startTime, int spansMin) {
-        NSLog(@"%@---%d",startTime,spansMin);
         if (spansMin<=0) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                // 通知主线程刷新 神马的
                 [weakSelf.add.switch_Three setOn:NO];
             });
         }else{
             dispatch_async(dispatch_get_main_queue(), ^{
-                // 通知主线程刷新 神马的
                 [weakSelf.add.switch_Three setOn:YES];
             });
         }

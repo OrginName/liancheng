@@ -166,7 +166,7 @@
     cycleScrollView.placeholderImage = [UIImage imageNamed:@"no-pic"];
     self.cycleScrollView = cycleScrollView;
     self.tab_Bottom.tableHeaderView = cycleScrollView;
-    //                --- 模拟加载延迟
+    //--- 模拟加载延迟
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         cycleScrollView.imageURLStringsGroup = weakSelf.lunArr;
     });
@@ -175,7 +175,7 @@
 }
 -(void)layoutSubviews{
     [super layoutSubviews];
-    self.tab_Bottom.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    self.tab_Bottom.frame = CGRectMake(0, 0, kScreenWidth-20, self.frame.size.height);
     self.cycleScrollView.frame = CGRectMake(0, 0, self.tab_Bottom.width, self.tab_Bottom.width*0.8);
 }
 -(UITableView *)tab_Bottom{
