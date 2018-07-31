@@ -11,13 +11,17 @@
 #import "JFCityViewController.h"
 #import "EditAllController.h"
 #import "QiniuUploader.h"
-@interface SendTripController ()<JFCityViewControllerDelegate,PhotoSelectDelegate>
+#import "CustomScro.h"
+#import "AllDicMo.h"
+@interface SendTripController ()<JFCityViewControllerDelegate,PhotoSelectDelegate,CustomScroDelegate>
 {
     CGFloat itemHeigth;
     UIButton * _tmpBtn;
     NSString * _urlStr;
     NSInteger priceTag;
+    NSArray * _arr;
 }
+@property (nonatomic,strong) CustomScro * customScro;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_select;
 @property (nonatomic,strong)NSMutableDictionary * dictionary;
 @property (weak, nonatomic) IBOutlet UITextField *txt_Price;
@@ -36,7 +40,14 @@
     [self setUI];
     self.dictionary = [NSMutableDictionary dictionary];
     self.Arr_Url = [NSMutableArray array];
-    priceTag = 10;
+    _arr = [[NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]][11] contentArr];
+    NSMutableArray * arr1 = [NSMutableArray array];
+    for (AllContentMo * mo in _arr) {
+        [arr1 addObject:mo.description1];
+    }
+    CustomScro * customScro = [[CustomScro alloc] initWithFrame:CGRectMake(0, 0, self.view_Btn.width, self.view_Btn.height) arr:[arr1 copy] flag:YES];
+    customScro.delegate = self;
+    [self.view_Btn addSubview:customScro];
 }
 //完成
 -(void)complete{
@@ -51,6 +62,9 @@
     if (self.txt_Price.text.length==0) {
         [YTAlertUtil showTempInfo:@"请输入陪游价格"];
         return;
+    }
+    if (!_tmpBtn.selected) {
+        return [YTAlertUtil showTempInfo:@"请选择单位"];
     }
     NSString * urlStr = @"";
     if (self.Arr_Url.count!=0) {
@@ -78,6 +92,22 @@
         
     }];
 }
+#pragma mark -----CustomScroDelegate--------
+- (void)CustomScroBtnClick:(UIButton *)tag{
+    if (_tmpBtn == nil){
+        tag.selected = YES;
+        _tmpBtn = tag;
+    }
+    if (_tmpBtn !=nil &&_tmpBtn == tag){
+        tag.selected = YES;
+    } else if (_tmpBtn!= tag && _tmpBtn!=nil){
+        _tmpBtn.selected = NO;
+        tag.selected = YES;
+        _tmpBtn = tag;
+    }
+    AllContentMo * mo = _arr[tag.tag-1];
+    priceTag = [[mo.value description] integerValue];
+} //声明协议方法
 //选择所在城市
 - (IBAction)btnClick:(UIButton *)sender {
     if (sender.tag==4) {
@@ -114,24 +144,24 @@
     [self.dictionary setValue:lat forKey:@"lat"];
     [self.dictionary setValue:lng forKey:@"lng"];
 }
-- (IBAction)btn_priceSelect:(UIButton *)sender {
-    if (sender.tag!=1) {
-        UIButton * btn = (UIButton *)[self.view_Btn viewWithTag:1];
-        btn.selected = NO;
-    }
-    priceTag=sender.tag==1?10:sender.tag==2?20:sender.tag==3?30:10;
-    if (_tmpBtn == nil){
-        sender.selected = YES;
-        _tmpBtn = sender;
-    }
-    if (_tmpBtn !=nil &&_tmpBtn == sender){
-        sender.selected = YES;
-    } else if (_tmpBtn!= sender && _tmpBtn!=nil){
-        _tmpBtn.selected = NO;
-        sender.selected = YES;
-        _tmpBtn = sender;
-    }
-}
+//- (IBAction)btn_priceSelect:(UIButton *)sender {
+//    if (sender.tag!=1) {
+//        UIButton * btn = (UIButton *)[self.view_Btn viewWithTag:1];
+//        btn.selected = NO;
+//    }
+//    priceTag=sender.tag==1?10:sender.tag==2?20:sender.tag==3?30:10;
+//    if (_tmpBtn == nil){
+//        sender.selected = YES;
+//        _tmpBtn = sender;
+//    }
+//    if (_tmpBtn !=nil &&_tmpBtn == sender){
+//        sender.selected = YES;
+//    } else if (_tmpBtn!= sender && _tmpBtn!=nil){
+//        _tmpBtn.selected = NO;
+//        sender.selected = YES;
+//        _tmpBtn = sender;
+//    }
+//}
 -(void)setUI{
     self.navigationItem.title = @"发布陪游";
     itemHeigth = (kScreenWidth-70) / 4+10;

@@ -96,10 +96,10 @@
     show.str = @"TrvalTrip";
     [self.control.navigationController pushViewController:show animated:YES]; 
 }
--(UICollectionView *)bollec_bottom{
+-(MyCollectionView *)bollec_bottom{
     if (!_bollec_bottom) {
         self.flowLyout = [[TrvalTripLayout alloc] init];
-        _bollec_bottom = [[UICollectionView  alloc] initWithFrame:CGRectZero collectionViewLayout:self.flowLyout];
+        _bollec_bottom = [[MyCollectionView  alloc] initWithFrame:CGRectZero collectionViewLayout:self.flowLyout];
         _bollec_bottom.backgroundColor = [UIColor whiteColor];
         _bollec_bottom.delegate = self;
         _bollec_bottom.dataSource = self;

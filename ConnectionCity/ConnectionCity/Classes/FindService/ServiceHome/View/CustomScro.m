@@ -26,12 +26,9 @@
             }
             UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(5+i*width1, 0, width, self.height)];
             [btn setTitle:arr[i] forState:UIControlStateNormal];
-            btn.titleLabel.font = [UIFont systemFontOfSize:14];
+            btn.titleLabel.font = [UIFont systemFontOfSize: flag?13:14];
             [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             if (flag) {
-                if (i==0) {
-                    btn.selected = YES;
-                }
                 [btn setImage:[UIImage imageNamed:@"weixuanhzong"] forState:UIControlStateNormal];
                 [btn setImage:[UIImage imageNamed:@"xuanzhong"] forState:UIControlStateSelected];
                 [btn layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleLeft imageTitleSpace:4];
@@ -46,8 +43,8 @@
     return self;
 }
 -(void)btnClick:(UIButton *)btn{
-    if (self.delegate&&[self.delegate respondsToSelector:@selector(btnClick:)]) {
-        [self.delegate btnClick:btn];
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(CustomScroBtnClick:)]) {
+        [self.delegate CustomScroBtnClick:btn];
     }
 }
 -(UIScrollView *)scrollView{

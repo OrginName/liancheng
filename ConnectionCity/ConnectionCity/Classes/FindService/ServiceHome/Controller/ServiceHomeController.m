@@ -259,7 +259,7 @@
     cus.delegate = self;
     [self.view addSubview:cus];
 }
--(void)btnClick:(UIButton *)tag{
+-(void)CustomScroBtnClick:(UIButton *)tag{
     [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID],@"keyword":tag.titleLabel.text}];
 }
 @end

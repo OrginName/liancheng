@@ -10,7 +10,7 @@
 
 @protocol CustomScroDelegate <NSObject>
 @optional
-- (void)btnClick:(UIButton *)tag; //声明协议方法
+- (void)CustomScroBtnClick:(UIButton *)tag; //声明协议方法
 @end
 
 @interface CustomScro : UIView<UIScrollViewDelegate>

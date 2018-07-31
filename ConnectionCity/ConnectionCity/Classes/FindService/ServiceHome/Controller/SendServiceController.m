@@ -15,12 +15,17 @@
 #import "ClassificationsController.h"
 #import "ServiceHomeNet.h"
 #import "QiniuUploader.h"
-@interface SendServiceController ()<PhotoSelectDelegate,UITableViewDelegate,UITableViewDataSource,SendSelectCellDelegate,SendServiceCellDelegate>
+#import "CustomScro.h"
+#import "AllDicMo.h"
+@interface SendServiceController ()<PhotoSelectDelegate,UITableViewDelegate,UITableViewDataSource,SendSelectCellDelegate,SendServiceCellDelegate,CustomScroDelegate>
 {
     CGFloat itemHeigth,layout_Height;
     UIButton * _tmpBtn;
     NSString * _secrviceType;
+    NSArray * _arr;
+    NSMutableArray * _arr1;
 }
+@property (nonatomic,strong) CustomScro * customScro;
 @property (nonatomic,strong)SendSelectCell * selectView;
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,strong)PhotoSelect * photo;
@@ -42,6 +47,11 @@
     self.Dic2 = [NSMutableDictionary dictionary];
     self.Arr_Url = [NSMutableArray array];
     [self setUI];
+    _arr = [[NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]][11] contentArr];
+    _arr1 = [NSMutableArray array];
+    for (AllContentMo * mo in _arr) {
+        [_arr1 addObject:mo.description1];
+    }
 }
 -(void)setUI{
     itemHeigth = (kScreenWidth-70) / 4+10;
@@ -54,7 +64,7 @@
     [self.view addSubview:self.myPicker];
     _section2Num = 1;
     [self.view addSubview:self.selectView];
-    [self.Dic2 setValue:@"10" forKey:KString(@"%d", 4)];
+//    [self.Dic2 setValue:@"10" forKey:KString(@"%d", 4)];
     [self.Dic2 setValue:@"1" forKey:KString(@"%d", 5)];
     if (!self.arr_receive) {
         self.arr_receive = [NSMutableArray array];
@@ -71,6 +81,9 @@
     if (![arr containsObject:KString(@"%d",0)]||![arr containsObject:KString(@"%d",1)]||![arr containsObject:KString(@"%d",2)]||![arr containsObject:KString(@"%d",3)]) {
         [YTAlertUtil showTempInfo:@"请填写完整"];
         return;
+    }
+    if (![arr containsObject:KString(@"%d",4)]) {
+        return [YTAlertUtil showTempInfo:@"请选择单位"];
     }
     if (![arr containsObject:KString(@"%d", 5)]) {
         [YTAlertUtil showTempInfo:@"请阅读并同意找服务发布规则"];
@@ -147,6 +160,11 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SendServiceCell * cell = [SendServiceCell tempTableViewCellWith:tableView indexPath:indexPath];
+    if (indexPath.section==4) {
+        CustomScro * customScro = [[CustomScro alloc] initWithFrame:CGRectMake(0, 5, cell.width, cell.height) arr:[_arr1 copy] flag:YES];
+        customScro.delegate = self;
+        [cell  addSubview:customScro];
+    }
     // 取出存储所有textFileld改变对应的行
     NSArray *indexArr  = [self.Dic2 allKeys];
     if ([indexArr containsObject:[NSString stringWithFormat:@"%ld",indexPath.section]]) {
@@ -204,7 +222,23 @@
         };
         [self.navigationController pushViewController:edit animated:YES];
     }
-} 
+}
+#pragma mark -----CustomScroDelegate--------
+- (void)CustomScroBtnClick:(UIButton *)tag{
+    if (_tmpBtn == nil){
+        tag.selected = YES;
+        _tmpBtn = tag;
+    }
+    if (_tmpBtn !=nil &&_tmpBtn == tag){
+        tag.selected = YES;
+    } else if (_tmpBtn!= tag && _tmpBtn!=nil){
+        _tmpBtn.selected = NO;
+        tag.selected = YES;
+        _tmpBtn = tag;
+    }
+    AllContentMo * mo = _arr[tag.tag-1];
+    [self.Dic2 setValue:mo.value forKey:[NSString stringWithFormat:@"%d",4]];
+} //声明协议方法
 #pragma mark ----PhotoSelectDelegate-----
 -(void)selectImageArr:(NSArray *)imageArr{
     NSLog(@"%lu",(unsigned long)imageArr.count);
@@ -218,16 +252,6 @@
         [self.tab_Bottom endUpdates];
     }
     [self.Arr_Url addObjectsFromArray:imageArr];
-//    [YTAlertUtil showHUDWithTitle:@"正在上传"];
-//    for (int i=0; i<imageArr.count; i++) {
-//        [[QiniuUploader defaultUploader] uploadImageToQNFilePath:imageArr[i] withBlock:^(NSDictionary *url) {
-//            flag++;
-//            [self.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
-//            if (flag == imageArr.count) {
-//                [YTAlertUtil hideHUD];
-//            }
-//        }];
-//    }
 }
 -(void)selectImage:(UIImage *) image arr:(NSArray *)imageArr{
     if (imageArr.count>=4) {
@@ -239,11 +263,6 @@
         [self.tab_Bottom endUpdates];
     }
     [self.Arr_Url addObjectsFromArray:imageArr];
-//    [YTAlertUtil showHUDWithTitle:@"正在上传"];
-//    [[QiniuUploader defaultUploader] uploadImageToQNFilePath:image withBlock:^(NSDictionary *url) {
-//        [YTAlertUtil hideHUD];
-//        [self.Arr_Url addObject:[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]]];
-//    }];
 }
 -(void)deleteImage:(NSInteger) tag arr:(NSArray *)imageArr{
     if (imageArr.count<=4) {
@@ -265,8 +284,8 @@
 }
 #pragma mark ----SendServiceCellDelegate----
 - (void)selectedItem:(NSInteger)tag{
-    NSString * a = tag==1?@"10":tag==2?@"20":tag==3?@"30":@"";
-    [self.Dic2 setValue:a forKey:[NSString stringWithFormat:@"%d",4]];
+//    NSString * a = tag==1?@"10":tag==2?@"20":tag==3?@"30":@"";
+//    [self.Dic2 setValue:a forKey:[NSString stringWithFormat:@"%d",4]];
 }
 - (void)selectedAgree:(UIButton *)btn{
      [self.Dic2 setValue:[NSString stringWithFormat:@"%d",btn.selected] forKey:[NSString stringWithFormat:@"%d",5]];

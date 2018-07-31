@@ -34,7 +34,7 @@ static NSArray * arr_Str;
     SendServiceCell *cell = (SendServiceCell*)[tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"SendServiceCell" owner:self options:nil] objectAtIndex:index];
-    } 
+    }
     if (indexPath.section!=4&&indexPath.section!=5){
         cell.lab_title.text = arr_Str[indexPath.section][@"title"];
         cell.txt_Placeholder.placeholder = arr_Str[indexPath.section][@"placeholder"];
@@ -68,4 +68,5 @@ static NSArray * arr_Str;
         [self.delegate selectedAgree:sender];
     }
 }
+
 @end
