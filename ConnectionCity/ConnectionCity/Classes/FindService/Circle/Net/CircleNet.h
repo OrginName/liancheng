@@ -80,4 +80,10 @@ typedef void (^FailErrBlock) (NSError * failValue);
  @param sucBlok 成功返回
  */
 +(void)requstUserPZ:(NSDictionary *)param withSuc:(SuccessDicBlock)sucBlok;
+/**
+ 获取某个用户配置接口
+ @param param 字典
+ @param sucBlok 成功返回
+ */
++(void)requstUserPZDetail:(NSDictionary *)param withSuc:(SuccessDicBlock)sucBlok;
 @end

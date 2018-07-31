@@ -264,6 +264,19 @@
         [KUserDefults setObject:userInfo forKey:@"TS"];
         [KUserDefults synchronize];
     }
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    UIFont *font = [UIFont systemFontOfSize:18.f];
+    NSDictionary *textAttributes = @{
+                                     
+                                     NSFontAttributeName : font,
+                                     
+                                     NSForegroundColorAttributeName : [UIColor whiteColor]
+                                     
+                                     };
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:textAttributes];
+    [[UINavigationBar appearance] setBackgroundImage:
+     [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
     return YES;
 }
 /**

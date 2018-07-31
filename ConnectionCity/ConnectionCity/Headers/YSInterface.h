@@ -452,6 +452,8 @@ static NSString * const v1ApplicationPageAll = @"/v1/application/page/all";
 static NSString * const v1MyConfigGet = @"/v1/my/config/get";
 //更新用户配置列表
 static NSString * const v1MyConfigUpdate = @"/v1/my/config/update";
+//获取某个用户配置列表
+static NSString * const v1PrivateUserConfig = @"/v1/private/user/config";
 
 #endif /* YSInterface_h */
 

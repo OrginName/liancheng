@@ -193,6 +193,18 @@
     }];
 }
 /**
+ 获取某个用户配置接口
+ @param param 字典
+ @param sucBlok 成功返回
+ */
++(void)requstUserPZDetail:(NSDictionary *)param withSuc:(SuccessDicBlock)sucBlok{
+    [YSNetworkTool POST:v1PrivateUserConfig params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        sucBlok(responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+/**
  *  根据图片url获取图片尺寸
  */
 +(CGSize)getImageSizeWithURL:(id)URL{

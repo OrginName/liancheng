@@ -11,6 +11,7 @@
 #import "RCDChatViewController.h"
 #import "RCDHttpTool.h"
 #import "RCDChatViewController.h"
+#import "CircleNet.h"
 @interface PersonalBasicDataController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutMu;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
@@ -75,11 +76,28 @@
 - (IBAction)sendMessageBtnClick:(id)sender {
     UIButton * btn = (UIButton *)sender;
     if (btn.tag==1) {
-        [RCDHTTPTOOL requestFriend:self.connectionMo.ID complete:^(BOOL result) {
-            if (result) {
-                [YTAlertUtil showTempInfo:@"好友申请已发送"];
-            }
-        }];
+        if ([self.flagStr isEqualToString:@"CHAT"]) {
+            [CircleNet requstUserPZDetail:@{@"id":self.connectionMo.ID} withSuc:^(NSDictionary *successDicValue) {
+                NSString * str = [successDicValue[@"data"][@"openSearchUserID"] description];
+                if ([str isEqualToString:@"1"]) {
+                    [RCDHTTPTOOL requestFriend:self.connectionMo.ID complete:^(BOOL result) {
+                        if (result) {
+                            [YTAlertUtil showTempInfo:@"好友申请已发送"];
+                        }
+                    }];
+                }else{
+                    [YTAlertUtil alertSingleWithTitle:@"连程" message:@"对方已关闭通过连程号添加好友" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+                        
+                    } completion:nil];
+                }
+            }];
+        }else{
+            [RCDHTTPTOOL requestFriend:self.connectionMo.ID complete:^(BOOL result) {
+                if (result) {
+                    [YTAlertUtil showTempInfo:@"好友申请已发送"];
+                }
+            }];
+        }
     }else{
         if ([[self.connectionMo.isBlack description] isEqualToString:@"1"]) {
             return [YTAlertUtil showTempInfo:@"您已在对方的黑名单中,暂不能聊天"];

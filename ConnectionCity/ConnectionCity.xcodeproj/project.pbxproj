@@ -525,7 +525,6 @@
 		CE6BEC1D20C83769003B36D7 /* LCDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC1C20C83769003B36D7 /* LCDatePicker.m */; };
 		CE6BEC2C20C970C1003B36D7 /* EditProfileHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC2B20C970C1003B36D7 /* EditProfileHeadView.m */; };
 		CE6BEC2E20C970D1003B36D7 /* EditProfileHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6BEC2D20C970D1003B36D7 /* EditProfileHeadView.xib */; };
-		CE6E8EA3210DCB6400764BBF /* HCCountdown.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6E8EA1210DCB6400764BBF /* HCCountdown.m */; };
 		CE81AD7920E10AC20042E50D /* CertificationCenterMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE81AD7820E10AC20042E50D /* CertificationCenterMo.m */; };
 		CE97DBF520B5A2C1003E46BD /* ReleaseTenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97DBF320B5A2C1003E46BD /* ReleaseTenderCell.m */; };
 		CE97DBF620B5A2C1003E46BD /* ReleaseTenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE97DBF420B5A2C1003E46BD /* ReleaseTenderCell.xib */; };
@@ -4544,7 +4543,7 @@
 				TargetAttributes = {
 					CE0BA563209D5004004C3C33 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -5429,7 +5428,7 @@
 				CODE_SIGN_ENTITLEMENTS = ConnectionCity/ConnectionCity.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
@@ -5475,8 +5474,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LC.CC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "819cdad9-ecd2-4374-a683-bd3866b89632";
+				PROVISIONING_PROFILE_SPECIFIER = tsLC;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -5488,9 +5487,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = ConnectionCity/ConnectionCity.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5535,8 +5534,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LC.CC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "22cf1c5a-63b4-4558-8dde-5c0f4007b782";
+				PROVISIONING_PROFILE_SPECIFIER = LCC;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

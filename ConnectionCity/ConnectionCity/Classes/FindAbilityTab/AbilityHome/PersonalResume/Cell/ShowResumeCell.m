@@ -50,7 +50,8 @@
     self.lab_city.text = ability.cityName;
     self.lab_signature.text = ability.userMo.sign;
     self.image_sex.image = [UIImage imageNamed:[ability.userMo.gender isEqualToString:@"0"]?@"men":@"women"];
-    self.lab_Profession.text = ability.userMo.occupationCategoryName[@"parentName"];
+    NSString * str = [NSString stringWithFormat:@"%@/%@",ability.userMo.occupationCategoryName[@"parentName"],ability.userMo.occupationCategoryName[@"name"]];
+    self.lab_Profession.text = [str containsString:@"null"]?@"":str;
     [self.btn_year setTitle:ability.workingName forState:UIControlStateNormal];//工作经验
     [self.btn_XL setTitle:ability.userMo.educationName forState:UIControlStateNormal];
     [self.btn_age setTitle:ability.userMo.age forState:UIControlStateNormal];//年龄

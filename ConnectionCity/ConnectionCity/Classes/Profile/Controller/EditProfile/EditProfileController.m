@@ -69,7 +69,7 @@
     self.navigationItem.title = @"基础资料";
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(rightBarClick) image:nil title:@"保存" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     WeakSelf
-    [AbilityNet requstMakeMoneyClass:^(NSMutableArray *successArrValue) {
+    [AbilityNet requstAbilityClass:^(NSMutableArray *successArrValue) {
         weakSelf.arr_Class = successArrValue;
     }];
 }
@@ -193,7 +193,7 @@
         } cancelTitle:@"取消" cancelHandler:nil completion:nil];
     }else if (indexPath.section==1&&indexPath.row==4){
         ClassificationsController * class = [ClassificationsController new];
-        class.title = @"行业类型";
+        class.title = @"职业类型";
         class.arr_Data = self.arr_Class;
         WeakSelf
         class.block = ^(NSString *classifiation){

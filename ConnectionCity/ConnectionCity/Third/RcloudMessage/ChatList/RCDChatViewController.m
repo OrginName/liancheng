@@ -35,6 +35,8 @@
 #import "RCDContactViewController.h"
 #import "RCDForwardAlertView.h"
 #import <IQKeyboardManager.h>
+#import "PersonalBasicDataController.h"
+#import "UserMo.h"
 @interface RCDChatViewController () <UIActionSheetDelegate, RCRealTimeLocationObserver,
                                      RealTimeLocationStatusViewDelegate, UIAlertViewDelegate, RCMessageCellDelegate>
 @property(nonatomic, weak) id<RCRealTimeLocationProxy> realTimeLocation;
@@ -147,16 +149,16 @@ NSMutableDictionary *userInputStatus;
     ///注册自定义测试消息Cell
     [self registerClass:[RCDTestMessageCell class] forMessageClass:[RCDTestMessage class]];
     [self notifyUpdateUnreadMessageCount];
-    if (self.conversationType != ConversationType_APPSERVICE &&
-        self.conversationType != ConversationType_PUBLICSERVICE) {
-        //加号区域增加发送文件功能，Kit中已经默认实现了该功能，但是为了SDK向后兼容性，目前SDK默认不开启该入口，可以参考以下代码在加号区域中增加发送文件功能。
-        UIImage *imageFile = [RCKitUtility imageNamed:@"actionbar_file_icon" ofBundle:@"RongCloud.bundle"];
-        RCPluginBoardView *pluginBoardView = self.chatSessionInputBarControl.pluginBoardView;
-        [pluginBoardView insertItemWithImage:imageFile
-                                       title:NSLocalizedStringFromTable(@"File", @"RongCloudKit", nil)
-                                     atIndex:3
-                                         tag:PLUGIN_BOARD_ITEM_FILE_TAG];
-    }
+//    if (self.conversationType != ConversationType_APPSERVICE &&
+//        self.conversationType != ConversationType_PUBLICSERVICE) {
+//        //加号区域增加发送文件功能，Kit中已经默认实现了该功能，但是为了SDK向后兼容性，目前SDK默认不开启该入口，可以参考以下代码在加号区域中增加发送文件功能。
+//        UIImage *imageFile = [RCKitUtility imageNamed:@"actionbar_file_icon" ofBundle:@"RongCloud.bundle"];
+//        RCPluginBoardView *pluginBoardView = self.chatSessionInputBarControl.pluginBoardView;
+//        [pluginBoardView insertItemWithImage:imageFile
+//                                       title:NSLocalizedStringFromTable(@"File", @"RongCloudKit", nil)
+//                                     atIndex:3
+//                                         tag:PLUGIN_BOARD_ITEM_FILE_TAG];
+//    }
 
     //    self.chatSessionInputBarControl.hidden = YES;
     //    CGRect intputTextRect = self.conversationMessageCollectionView.frame;
@@ -614,29 +616,39 @@ NSMutableDictionary *userInputStatus;
 }
 
 - (void)gotoNextPage:(RCUserInfo *)user {
-    NSArray *friendList = [[RCDataBaseManager shareInstance] getAllFriends];
-    BOOL isGotoDetailView = NO;
+//    NSArray *friendList = [[RCDataBaseManager shareInstance] getAllFriends];
+//    BOOL isGotoDetailView = NO;
 //    && [friend.status isEqualToString:@"20"]
-    for (RCDUserInfo *friend in friendList) {
-        if ([KString(@"%@", user.userId) isEqualToString:friend.userId]) {
-            isGotoDetailView = YES;
-        } else if ([KString(@"%@", user.userId) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
-            isGotoDetailView = YES;
-        }
-    }
-    if (isGotoDetailView == YES) {
-        RCDPersonDetailViewController *temp = [[RCDPersonDetailViewController alloc] init];
-        temp.userId = user.userId;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.navigationController pushViewController:temp animated:YES];
-        });
-    } else {
-        RCDAddFriendViewController *vc = [[RCDAddFriendViewController alloc] init];
-        vc.targetUserInfo = user;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.navigationController pushViewController:vc animated:YES];
-        });
-    }
+//    for (RCDUserInfo *friend in friendList) {
+//        if ([KString(@"%@", user.userId) isEqualToString:friend.userId]) {
+//            isGotoDetailView = YES;
+//        } else if ([KString(@"%@", user.userId) isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
+//            isGotoDetailView = YES;
+//        }
+//    }
+//    if (isGotoDetailView == YES) {
+//        RCDPersonDetailViewController *temp = [[RCDPersonDetailViewController alloc] init];
+//        temp.userId = user.userId;
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.navigationController pushViewController:temp animated:YES];
+//        });
+//    } else {
+//        RCDAddFriendViewController *vc = [[RCDAddFriendViewController alloc] init];
+//        vc.targetUserInfo = user;
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//    }
+    [YSNetworkTool POST:v1PrivateUserUserinfo params:@{@"id":user.userId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        UserMo * user1 = [UserMo mj_objectWithKeyValues:responseObject[@"data"]];
+        PersonalBasicDataController * person = [PersonalBasicDataController new];
+        person.flagStr = @"CHAT";
+        person.connectionMo = user1;
+        [self.navigationController pushViewController:person animated:YES];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+    
 }
 
 ///**

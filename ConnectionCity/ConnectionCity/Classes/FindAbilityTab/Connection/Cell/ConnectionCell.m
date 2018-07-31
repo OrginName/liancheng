@@ -13,15 +13,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab_name;
 @end
 @implementation ConnectionCell
-
 - (void)awakeFromNib {
     [super awakeFromNib];
 }
 -(void)setMo:(UserMo*)mo{
     _mo = mo;
     [self.image_Head sd_setImageWithURL:[NSURL URLWithString:mo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
-    self.lab_name.text = mo.nickName?mo.nickName:@"无";
-    self.lab_des.text = mo.occupationCategoryName[@""]?mo.occupationCategoryName[@""]:@"无";
+    self.lab_name.text = mo.nickName?mo.nickName:mo.ID;
+//    [NSString stringWithFormat:@"%@/%@",mo.occupationCategoryName[@"parentName"],mo.occupationCategoryName[@"name"]];
+    self.lab_des.text = mo.occupationCategoryName[@"name"]?mo.occupationCategoryName[@"name"]:@"暂无";
     self.lab_num.text = KString(@"%@", mo.commonFriendCount);
     if ([[mo.isFriend description] isEqualToString:@"1"]) {
         [self.btn_Add setTitle:@"好友" forState:UIControlStateNormal];
@@ -34,7 +34,6 @@
     if (self.cellDelegate&&[self.cellDelegate respondsToSelector:@selector(btnClick:)]) {
         [self.cellDelegate btnClick:btn];
     }
-    
 }
 - (IBAction)frinedDetail:(UIButton *)sender {
     if (self.cellDelegate&&[self.cellDelegate respondsToSelector:@selector(DetailClick:)]) {

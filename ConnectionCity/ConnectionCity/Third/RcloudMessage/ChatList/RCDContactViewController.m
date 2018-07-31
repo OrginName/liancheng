@@ -312,9 +312,6 @@
         switch (indexPath.row) {
         case 0: {
             RCDAddressBookViewController *addressBookVC = [RCDAddressBookViewController addressBookViewController];
-            addressBookVC.block = ^{
-                [self sortAndRefreshWithList:[self getAllFriendList]];
-            };
             [self.navigationController pushViewController:addressBookVC animated:YES];
             return;
         } break;

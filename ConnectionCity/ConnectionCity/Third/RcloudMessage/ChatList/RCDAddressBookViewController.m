@@ -170,7 +170,7 @@ MBProgressHUD *hud;
                                            if (request) {
                                                [YTAlertUtil hideHUD];
                                                [weakSelf.tableView.mj_header beginRefreshing];
-                                               weakSelf.block();
+                                               [[NSNotificationCenter defaultCenter] postNotificationName:@"MYADDRESSBOOK" object:nil];
                                                [[RCIMClient sharedRCIMClient] getBlacklistStatus:friend.user.ID success:^(int bizStatus) {
                                                    if (bizStatus==0) {
                                                        [[RCIMClient sharedRCIMClient] removeFromBlacklist:friend.user.ID success:^{
