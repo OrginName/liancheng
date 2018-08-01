@@ -442,10 +442,8 @@
 //    }
     //如有好友备注，则显示备注
     NSArray *resultList = [[RCDUserInfoManager shareInstance] getFriendInfoList:friendList];
-
     return resultList;
 }
-
 - (void)sortAndRefreshWithList:(NSArray *)friendList {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         self.resultDic = [RCDUtilities sortedArrayWithPinYinDic:friendList];
