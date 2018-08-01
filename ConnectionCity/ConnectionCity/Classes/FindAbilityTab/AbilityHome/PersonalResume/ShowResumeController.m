@@ -76,17 +76,21 @@
 - (IBAction)callAndChangeClick:(UIButton *)sender {
     if (sender.tag==4&&self.Receive_Type == ENUM_TypeTreasure) {
         [self.navigationController pushViewController:[super rotateClass:@"DouctChangeController"] animated:YES];
-    }if (sender.tag==4&&self.Receive_Type == ENUM_TypeTrval&&[self.str isEqualToString:@"TrvalTrip"]) {
-        trvalMo * mo = self.data_Count[self.zIndex];
-        [self GZLoadData:mo.ID];
     }
+//    if (sender.tag==4&&self.Receive_Type == ENUM_TypeTrval&&[self.str isEqualToString:@"TrvalTrip"]) {
+//        trvalMo * mo = self.data_Count[self.zIndex];
+//        [self GZLoadData:mo.ID typeID:@"40"];
+//    }
     if (sender.tag==4) {
         if ([self.data_Count[self.zIndex] isKindOfClass:[trvalMo class]]) {
             trvalMo * mo = self.data_Count[self.zIndex];
-            [self GZLoadData:mo.ID];
+            [self GZLoadData:mo.ID typeID:@"40"];
         }else if ([self.data_Count[self.zIndex] isKindOfClass:[ServiceListMo class]]){
             ServiceListMo * mo = self.data_Count[self.zIndex];
-            [self GZLoadData:mo.ID];
+            [self GZLoadData:mo.ID typeID:@"20"];
+        }else if ([self.data_Count[self.zIndex] isKindOfClass:[AbilttyMo class]]){
+            AbilttyMo*mo = self.data_Count[self.zIndex];
+            [self GZLoadData:mo.ID typeID:@"50"];
         }
     }
     if (sender.tag==3) {
@@ -96,8 +100,15 @@
                 return [YTAlertUtil showTempInfo:@"您已在对方的黑名单中,暂不能对话"];
             }
         }else{
-            ServiceListMo * mo = self.data_Count[self.zIndex];
-            if ([[mo.user1.isBlack description] isEqualToString:@"1"]) {
+            NSString * str = @"";
+            if (self.Receive_Type == ENUM_TypeResume){
+                AbilttyMo * mo = self.data_Count[self.zIndex];
+                str = mo.userMo.isBlack;
+            }else{
+                ServiceListMo * mo = self.data_Count[self.zIndex];
+                str = mo.user1.isBlack;
+            }
+            if ([[str description] isEqualToString:@"1"]) {
                 return [YTAlertUtil showTempInfo:@"您已在对方的黑名单中,暂不能对话"];
             }
         }
@@ -131,15 +142,8 @@
         [self.navigationController pushViewController:chatViewController animated:YES];
     }
 }
--(void)GZLoadData:(NSString *)type{
-    NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
-//    if (self.Receive_Type == ENUM_TypeTrval){
-//        if ([self.str isEqualToString:@"TrvalTrip"]){
-//
-//        }
-//    }
-    AllContentMo * mo = [arr[5] contentArr][1];
-    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":@([type integerValue]),@"type":@([mo.value integerValue])} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+-(void)GZLoadData:(NSString *)type typeID:(NSString *)typeID{
+    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":@([type integerValue]),@"type":@([typeID integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [YTAlertUtil showTempInfo:@"关注成功"];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
