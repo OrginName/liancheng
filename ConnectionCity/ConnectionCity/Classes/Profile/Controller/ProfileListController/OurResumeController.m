@@ -240,6 +240,10 @@
             }
         }];
         TrvalInvitController * trval = [TrvalInvitController new];
+        WeakSelf
+        trval.block = ^{
+            [weakSelf v1MyTravelInvitePage];
+        };
         [self.navigationController pushViewController:trval animated:YES];
 //        if (self.index!=5) {
 //            ShowResumeController * show = [ShowResumeController new];

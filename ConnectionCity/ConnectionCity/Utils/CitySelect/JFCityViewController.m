@@ -78,13 +78,13 @@ JFSearchViewDelegate,UITextFieldDelegate>
  初始化加载城市数据
  */
 -(void)initData{
-//    if ([kCurrentCityInfoDefaults objectForKey:@"cityData"]) {
-//            self.characterMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"cityData"]];
-//            _sectionMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"sectionData"]];
-//        _cityMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"cityData1"]];
-//        _hotCity_Arr = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"hotCityData"]];
-//            [_rootTableView reloadData];
-//        }else {
+    if ([kCurrentCityInfoDefaults objectForKey:@"cityData"]) {
+            self.characterMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"cityData"]];
+            _sectionMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"sectionData"]];
+        _cityMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"cityData1"]];
+        _hotCity_Arr = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"hotCityData"]];
+            [_rootTableView reloadData];
+        }else {
             [YSNetworkTool POST:dictionaryAreaTreeList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
                 [_cityMutableArray removeAllObjects];
                 if (![responseObject[@"data"] isKindOfClass:[NSArray class]]) {
@@ -115,7 +115,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
                 
             }];
-//        }
+        }
 }
 //搜索按钮
 -(void)search{
@@ -500,7 +500,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
         return;
     }
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    CityMo * mo = _sectionMutableArray[0][_characterMutableArray[indexPath.section]][indexPath.row];
+    CityMo * mo = _sectionMutableArray[0][_characterMutableArray[indexPath.section-1]][indexPath.row];
 //    [KUserDefults setObject:mo.fullName forKey:kUserCity];
 //    [KUserDefults setObject:mo.ID forKey:kUserCityID];
 //    [KUserDefults setObject:mo.lat forKey:kLat];

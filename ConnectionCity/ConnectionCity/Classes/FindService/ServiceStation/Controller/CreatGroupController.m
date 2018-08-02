@@ -60,7 +60,8 @@
         return;
     }
     if (self.qun_Url.length==0) {
-        [YTAlertUtil showHUDWithTitle:@"请上传群头像"];
+        [YTAlertUtil showTempInfo:@"请上传群头像"];
+        return;
     }
     NSDictionary * dic = @{
                            @"areaCode": @([[KUserDefults objectForKey:kUserCityID] integerValue]),

@@ -51,7 +51,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BulidTeamCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BulidTeamCell"];
-    NSArray *arr = _data_Arr[indexPath.section][KString(@"%ld", indexPath.section+1)];
+    NSArray *arr =self.data_Arr.count>0?self.data_Arr[indexPath.section][KString(@"%ld", indexPath.section+1)]:@[];
     groupMo * mo = arr.count!=0?arr[indexPath.row]:[groupMo new];
     cell.titleLab.text = mo.name;
     if (indexPath.section==0) {

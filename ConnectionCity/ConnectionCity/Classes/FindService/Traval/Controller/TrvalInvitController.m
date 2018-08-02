@@ -144,6 +144,11 @@
     cell.txt_Edit.text = mo.fullName;
     [self.Dic setObject:@{@"name":mo.fullName,@"ID":mo.ID} forKey:@"00"];
 }
+-(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng{
+    TrvalCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    cell.txt_Edit.text = name;
+    [self.Dic setObject:@{@"name":name,@"ID":ID} forKey:@"00"];
+}
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     TrvalCell * cell = [[NSBundle mainBundle] loadNibNamed:@"TrvalCell" owner:nil options:nil][1];
     cell.lab_headTitle.text = section==0?@"我要去哪里":section==1?@"计划安排":section==2?@"计划说明":@"";
