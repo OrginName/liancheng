@@ -161,9 +161,7 @@
                     CityMo * mo1 = [CityMo mj_objectWithKeyValues:mo.childs[j]];
                     mo1.ID = responseObject[@"data"][j][@"id"];
                     if ([mo1.fullName isEqualToString:city]) {
-                        NSLog(@"1qweqweqweqwe");
-                        [KUserDefults setValue:mo1.ID forKey:kUserCityID];
-                        
+                        [KUserDefults setValue:mo1.ID forKey:kUserCityID];                        
                         return;
                     }
                 }

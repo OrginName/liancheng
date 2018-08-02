@@ -28,7 +28,6 @@ JFSearchViewDelegate,UITextFieldDelegate>
 {
     NSMutableArray   *_indexMutableArray;           //存字母索引下标数组
     NSMutableArray   *_sectionMutableArray;         //存处理过以后的数组
-    NSInteger        _HeaderSectionTotal;           //头section的个数
     CGFloat          _cellHeight;                   //添加的(显示区县名称)cell的高度
 }
 @property (nonatomic,strong) UIView * view_Bottom;
@@ -44,8 +43,6 @@ JFSearchViewDelegate,UITextFieldDelegate>
 @property (nonatomic, strong) NSMutableArray *historyCityMutableArray;
 @property (nonatomic, strong) NSMutableArray *hotCity_Arr;
 
-/** 热门城市*/
-@property (nonatomic, strong) NSArray *hotCityArray;
 /** 字母索引*/
 @property (nonatomic, strong) NSMutableArray *characterMutableArray;
 /** 所有“市”级城市名称*/
@@ -60,7 +57,6 @@ JFSearchViewDelegate,UITextFieldDelegate>
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
-    _HeaderSectionTotal = 1;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chooseCityWithName:) name:JFCityTableViewCellDidChangeCityNotification object:nil];
     self.view_Bottom = [[UIView alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth-40, kScreenHeight-20)];
     [self.view addSubview:self.view_Bottom];
@@ -69,7 +65,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
     self.rootTableView.tableHeaderView = self.headerView;
     
     [self backBarButtonItem];
-    [self initWithJFAreaDataManaager];
+//    [self initWithJFAreaDataManaager];
     self.navigationItem.titleView = self.view_Search;
     _indexMutableArray = [NSMutableArray array];
     _sectionMutableArray = [NSMutableArray array];
@@ -82,13 +78,13 @@ JFSearchViewDelegate,UITextFieldDelegate>
  初始化加载城市数据
  */
 -(void)initData{
-    if ([kCurrentCityInfoDefaults objectForKey:@"cityData"]) {
-            self.characterMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"cityData"]];
-            _sectionMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"sectionData"]];
-        _cityMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"cityData1"]];
-        _hotCity_Arr = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"hotCityData"]];
-            [_rootTableView reloadData];
-        }else {
+//    if ([kCurrentCityInfoDefaults objectForKey:@"cityData"]) {
+//            self.characterMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"cityData"]];
+//            _sectionMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"sectionData"]];
+//        _cityMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"cityData1"]];
+//        _hotCity_Arr = [NSKeyedUnarchiver unarchiveObjectWithData:[kCurrentCityInfoDefaults objectForKey:@"hotCityData"]];
+//            [_rootTableView reloadData];
+//        }else {
             [YSNetworkTool POST:dictionaryAreaTreeList params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
                 [_cityMutableArray removeAllObjects];
                 if (![responseObject[@"data"] isKindOfClass:[NSArray class]]) {
@@ -119,7 +115,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
                 
             }];
-        }
+//        }
 }
 //搜索按钮
 -(void)search{
@@ -234,17 +230,9 @@ JFSearchViewDelegate,UITextFieldDelegate>
     }
     return _historyCityMutableArray;
 }
-
-- (NSArray *)hotCityArray {
-    if (!_hotCityArray) {
-        _hotCityArray = @[@"北京市", @"上海市", @"广州市", @"深圳市", @"武汉市", @"天津市"];
-    }
-    return _hotCityArray;
-}
-
 - (NSMutableArray *)characterMutableArray {
     if (!_characterMutableArray) {
-        _characterMutableArray = [NSMutableArray arrayWithObjects:@"!", nil];
+        _characterMutableArray = [NSMutableArray array];
     }
     return _characterMutableArray;
 }
@@ -256,7 +244,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
         if ([mo.fullName isEqualToString:str]) {
             [KUserDefults setObject:mo.ID forKey:kUserCityID];
         }
-        if ([KString(@"%@", mo.isHot) isEqualToString:@"1"]) {
+        if ([[mo.isHot description] isEqualToString:@"1"]) {
             [self.hotCity_Arr addObject:mo];
         }
         if (mo.initial.length) {
@@ -442,23 +430,22 @@ JFSearchViewDelegate,UITextFieldDelegate>
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    NSLog(@"当前取数为：%lu",(unsigned long)_characterMutableArray.count);
     return _characterMutableArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section < _HeaderSectionTotal ? 1 : [_sectionMutableArray[0][_characterMutableArray[section]] count];
+    return section==0?1:[_sectionMutableArray[0][_characterMutableArray[section-1]] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section < _HeaderSectionTotal) {
+    if (indexPath.section == 0) {
         self.cell = [tableView dequeueReusableCellWithIdentifier:@"cityCell" forIndexPath:indexPath];
-        if (indexPath.section == _HeaderSectionTotal - 1) {
-            _cell.cityNameArray = self.hotCity_Arr;
-        }
-    return _cell;
+        _cell.cityNameArray = self.hotCity_Arr;
+        return _cell;
     }else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cityNameCell" forIndexPath:indexPath];
-        NSArray *currentArray = _sectionMutableArray[0][_characterMutableArray[indexPath.section]];
+        NSArray *currentArray = _sectionMutableArray[0][_characterMutableArray[indexPath.section-1]];
         CityMo * mo = currentArray[indexPath.row];
         cell.textLabel.text = mo.fullName;
         cell.textLabel.textColor = KFontColor;
@@ -466,21 +453,19 @@ JFSearchViewDelegate,UITextFieldDelegate>
         return cell;
     }
 }
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (_HeaderSectionTotal == 4 && indexPath.section == 0) {
-        return _cellHeight;
-    }else {
-        return indexPath.section == (_HeaderSectionTotal - 1) ? self.hotCity_Arr.count/3==0?self.hotCity_Arr.count/3*40:(self.hotCity_Arr.count/3+1)*40 : 44;
+    if(indexPath.section == 0){
+        long a = self.hotCity_Arr.count%3;
+        long b = self.hotCity_Arr.count/3;
+         NSLog(@"%ld",a);
+        return a==0?b*40+10:(b+1)*40+10;
+    }else{
+        return 44;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (_HeaderSectionTotal == 4 && section == 0) {
-        return 0;
-    }else{
-        return 40;
-    }
+    return 40;
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -498,7 +483,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
         
     }else{
         UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 70, 40)];
-        lab.text = _characterMutableArray[section];
+        lab.text = _characterMutableArray[section-1];
         lab.font = [UIFont systemFontOfSize:15];
         lab.textColor = [UIColor hexColorWithString:@"#989898"];
         [view addSubview:lab];
@@ -576,8 +561,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
         //添加一行cell
         [_rootTableView endUpdates];
         [_characterMutableArray insertObject:@"*" atIndex:0];
-        _HeaderSectionTotal = 4;
-        NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:0];
+         NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:0];
         [self.rootTableView insertSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
         [_rootTableView endUpdates];
     }else {
@@ -586,8 +570,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
         //删除一行cell
         [_rootTableView endUpdates];
         [_characterMutableArray removeObjectAtIndex:0];
-        _HeaderSectionTotal = 3;
-        NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:0];
+         NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndex:0];
         [self.rootTableView deleteSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
         [_rootTableView endUpdates];
     }
