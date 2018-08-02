@@ -43,7 +43,7 @@
     mo00.title = @"接单金额";
     mo00.data = self.zbjeStr;
     InstallmentMo *mo10 = [[InstallmentMo alloc]init];
-    mo10.bbb = YES;
+    mo10.bbb = NO;
     mo10.title = @"一期";
     mo10.data = self.zbjeStr;
     InstallmentMo *mo11 = [[InstallmentMo alloc]init];
@@ -193,13 +193,65 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     InstallmentMo *mo = self.dataArr[indexPath.section][indexPath.row];
     mo.bbb = !mo.bbb;
+    if (indexPath.section==0) {
+        InstallmentMo *oneMo = self.dataArr[1][0];
+        InstallmentMo *twoMo = self.dataArr[1][1];
+        InstallmentMo *threeMo = self.dataArr[1][2];
+        InstallmentMo *fourMo = self.dataArr[1][3];
+        InstallmentMo *fiveMo = self.dataArr[1][4];
+        InstallmentMo *bzjMo = self.dataArr[2][0];
+        oneMo.bbb = NO;
+        twoMo.bbb = NO;
+        threeMo.bbb = NO;
+        fourMo.bbb = NO;
+        fiveMo.bbb = NO;
+        bzjMo.bbb = NO;
+    }else if(indexPath.section==1){
+        InstallmentMo *jdjeMo = self.dataArr[0][0];
+        InstallmentMo *bzjMo = self.dataArr[2][0];
+        jdjeMo.bbb = NO;
+        bzjMo.bbb = NO;
+    }else if(indexPath.section==2){
+        InstallmentMo *oneMo = self.dataArr[1][0];
+        InstallmentMo *twoMo = self.dataArr[1][1];
+        InstallmentMo *threeMo = self.dataArr[1][2];
+        InstallmentMo *fourMo = self.dataArr[1][3];
+        InstallmentMo *fiveMo = self.dataArr[1][4];
+        InstallmentMo *jdjeMo = self.dataArr[0][0];
+        oneMo.bbb = NO;
+        twoMo.bbb = NO;
+        threeMo.bbb = NO;
+        fourMo.bbb = NO;
+        fiveMo.bbb = NO;
+        jdjeMo.bbb = NO;
+    }
     [self.tableView reloadData];
 }
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     YTLog(@"%@",textField);
     InstallmentMo *mo = _dataArr[1][textField.tag-1000];
-    mo.data = textField.text;
+    mo.data = [NSString stringWithFormat:@"%.2f",[textField.text doubleValue]];
+    textField.text = [NSString stringWithFormat:@"%.2f",[textField.text doubleValue]];
+    double value = 0.0;
+    for (int i=0; i<textField.tag-1000 +1; i++) {
+        InstallmentMo *model = _dataArr[1][i];
+        value = value + [model.data doubleValue];
+    }
+    if (value > [_zbjeStr doubleValue]) {
+        [YTAlertUtil showTempInfo:@"分期金额不能大于总金额"];
+        mo.data = @"0";
+        textField.text = @"0";
+    }else{
+        if (textField.tag-1000 < 4) {
+            InstallmentMo *mo = _dataArr[1][textField.tag-1000+1];
+            mo.data = [NSString stringWithFormat:@"%.2f",[_zbjeStr doubleValue]-value];
+            NSIndexPath *indepath = [NSIndexPath indexPathForRow:textField.tag-1000+1 inSection:1];
+            ConsultativeNegotiationCell *cell = [_tableView cellForRowAtIndexPath:indepath];
+            cell.dataTF.text = [NSString stringWithFormat:@"%.2f",[_zbjeStr doubleValue]-value];
+        }
+    }
+    
     [self.tableView reloadData];
     
     return YES;
@@ -207,12 +259,18 @@
 #pragma mark - 点击事件
 - (IBAction)commitBtnClick:(id)sender {
     
+    InstallmentMo *mo00 = self.dataArr[0][0];
     InstallmentMo *mo0 = self.dataArr[1][0];
     InstallmentMo *mo1 = self.dataArr[1][1];
     InstallmentMo *mo2 = self.dataArr[1][2];
     InstallmentMo *mo3 = self.dataArr[1][3];
     InstallmentMo *mo4 = self.dataArr[1][4];
     InstallmentMo *mo20 = self.dataArr[2][0];
+    
+    if (!(mo00.bbb || mo0.bbb || mo1.bbb || mo2.bbb || mo3.bbb || mo4.bbb || mo20.bbb)) {
+        [YTAlertUtil showTempInfo:@"招标金额、分期、保证金至少选择一项"];
+        return;
+    }
     
     NSDictionary *dic = @{
                           @"amount": self.cellCntentText[8],
