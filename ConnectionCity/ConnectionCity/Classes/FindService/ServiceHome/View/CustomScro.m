@@ -4,8 +4,6 @@
 //
 //  Created by umbrella on 2018/6/29.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
-//
-
 #import "CustomScro.h"
 @implementation CustomScro
 -(instancetype)initWithFrame:(CGRect)frame arr:(NSArray *)arr flag:(BOOL) flag{

@@ -7,6 +7,7 @@
 //
 
 #import "ShowTrvalCell.h"
+#import "CustomImageScro.h"
 @interface ShowTrvalCell()
 {
     NSMutableArray * _arr_image;
@@ -27,9 +28,12 @@
         if (indexPath.row==0) {
             identifiy = @"ShowTrvalCell0";
             index = 0;
-        } else {
+        } else if (indexPath.row==2){
             identifiy = @"ShowTrvalCell1";
             index = 1;
+        }else{
+            identifiy = @"ShowTrvalCell5";
+            index = 5;
         }
     }else if (indexPath.section==1){
         identifiy = @"ShowTrvalCell2";

@@ -12,6 +12,7 @@
 @property (nonatomic,strong)AbilttyMo * ability;
 @property (nonatomic,strong)AbilttyWorkMo * work;
 @property (nonatomic,strong)AbilttyEducationMo* edu;
+@property (weak, nonatomic) IBOutlet UIView *view_RZ;
 @property (weak, nonatomic) IBOutlet UIImageView *image_sex;
 @property (weak, nonatomic) IBOutlet UILabel *lab_introTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lab_ProTitle;

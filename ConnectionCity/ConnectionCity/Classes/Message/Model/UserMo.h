@@ -11,6 +11,9 @@
 @interface UserMo : BaseModel<NSCoding> 
 proStr(age);
 proStr(isBlack);
+proStr(isMobileAuth);//手机认证
+proStr(isSkillAuth);//技能认证
+proStr(isIdentityAuth);//身份证认证
 proStr(isFriend);//是否是好友
 proStr(commonFriendCount);//共同好友数
 proStr(areaCode);

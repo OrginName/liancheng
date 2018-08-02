@@ -25,9 +25,12 @@
         if (indexPath.row==0){
             identifier = [NSString stringWithFormat:@"ShowResumeCell%d",0];
             index = 0;
-        }else if (indexPath.row==1){
+        }else if (indexPath.row==2){
             identifier = [NSString stringWithFormat:@"ShowResumeCell%d",1];
             index = 1;
+        }else if (indexPath.row==1){
+            identifier = @"ShowResumeCell5";
+            index = 5;
         }
     }else if(indexPath.section==3){
         identifier = [NSString stringWithFormat:@"ShowResumeCell%d",3];

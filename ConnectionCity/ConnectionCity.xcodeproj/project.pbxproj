@@ -400,6 +400,7 @@
 		8DF7E3D220CFAA78009A92D7 /* ClassifyMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7E3D120CFAA78009A92D7 /* ClassifyMo.m */; };
 		8DF7E3D520CFB33F009A92D7 /* PopThree.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7E3D420CFB33F009A92D7 /* PopThree.m */; };
 		8DF7E3D720CFB363009A92D7 /* PopThree.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DF7E3D620CFB363009A92D7 /* PopThree.xib */; };
+		8DF8862E2112DE3300A35E89 /* CustomImageScro.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF8862D2112DE3300A35E89 /* CustomImageScro.m */; };
 		8DFA324820EDAF330086423A /* RCDUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFA324720EDAF330086423A /* RCDUtilities.m */; };
 		8DFA324B20EDAF620086423A /* DefaultPortraitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFA324A20EDAF620086423A /* DefaultPortraitView.m */; };
 		8DFA324E20EDAF780086423A /* pinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFA324D20EDAF780086423A /* pinyin.m */; };
@@ -1330,6 +1331,8 @@
 		8DF7E3D320CFB33F009A92D7 /* PopThree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopThree.h; sourceTree = "<group>"; };
 		8DF7E3D420CFB33F009A92D7 /* PopThree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopThree.m; sourceTree = "<group>"; };
 		8DF7E3D620CFB363009A92D7 /* PopThree.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopThree.xib; sourceTree = "<group>"; };
+		8DF8862C2112DE3300A35E89 /* CustomImageScro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomImageScro.h; sourceTree = "<group>"; };
+		8DF8862D2112DE3300A35E89 /* CustomImageScro.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomImageScro.m; sourceTree = "<group>"; };
 		8DFA324620EDAF330086423A /* RCDUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDUtilities.h; sourceTree = "<group>"; };
 		8DFA324720EDAF330086423A /* RCDUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDUtilities.m; sourceTree = "<group>"; };
 		8DFA324920EDAF620086423A /* DefaultPortraitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultPortraitView.h; sourceTree = "<group>"; };
@@ -2658,6 +2661,8 @@
 				8D09E18D20BFD52E000F7EBD /* ShowtrvalTab.m */,
 				8D12931420E616670008BD6F /* CustomScro.h */,
 				8D12931520E616670008BD6F /* CustomScro.m */,
+				8DF8862C2112DE3300A35E89 /* CustomImageScro.h */,
+				8DF8862D2112DE3300A35E89 /* CustomImageScro.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5001,6 +5006,7 @@
 				727418DE20B290BF001D6BE1 /* EnthusiastsControll.m in Sources */,
 				7210411D2108CC7100B575BB /* NoticeMo.m in Sources */,
 				727418E720B291B6001D6BE1 /* BaseChangeTabController.m in Sources */,
+				8DF8862E2112DE3300A35E89 /* CustomImageScro.m in Sources */,
 				720263F020B5015500382B2F /* NSBundle+TZImagePicker.m in Sources */,
 				727C86D720DBE11D00AA2796 /* CreatGroupController.m in Sources */,
 				CEC4A54B20C3FC180026EE19 /* ProfileCell.m in Sources */,

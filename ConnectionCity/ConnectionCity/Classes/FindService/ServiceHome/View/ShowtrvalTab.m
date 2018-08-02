@@ -12,6 +12,7 @@
 #import "AppointmentController.h"
 #import "AllDicMo.h"
 #import "StarEvaluator.h"
+#import "CustomImageScro.h"
 @interface ShowtrvalTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ShowTrvalCellDelegate>
 @property (nonatomic,strong) SDCycleScrollView * cycleScrollView;
 @property (nonatomic,strong) NSMutableArray * lunArr;//轮播图数组
@@ -63,7 +64,7 @@
 #pragma mark --UITableviewDelegate---
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section==0) {
-        return 2;
+        return 3;
     }else if (section==1){
         return 1;
     }else{
@@ -78,12 +79,14 @@
     if (indexPath.section==0) {
         if (indexPath.row == 0 ) {
             return 70;
-        }else{
+        }else if(indexPath.row==2){
             if ((self.Mo!=nil&&self.Mo.serviceCircleList.count==0)||(self.MoTrval!=nil&&self.MoTrval.serviceCircleList.count==0)) {
-                return 35;
+                return 45;
             }else{
-                return (kScreenWidth-84)/4+35;
+                return (kScreenWidth-84)/4+45;
             }
+        }else{
+            return 52;
         }
     }else if (indexPath.section==1){
         return 190;
@@ -135,6 +138,16 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShowTrvalCell *cell = [ShowTrvalCell tempTableViewCellWith:tableView indexPath:indexPath];
     cell.delegate = self;
+    if (indexPath.section==0&&indexPath.row==1) {
+        NSMutableArray * arr = [NSMutableArray array];
+        if (self.Mo!=nil) {
+            arr = [self loadA:self.Mo.user1.isSkillAuth b:self.Mo.user1.isMobileAuth c:self.Mo.user1.isIdentityAuth];
+        }else{
+           arr = [self loadA:self.MoTrval.user.isSkillAuth b:self.MoTrval.user.isMobileAuth c:self.MoTrval.user.isIdentityAuth];
+        }
+        CustomImageScro * img = [[CustomImageScro alloc] initWithFrame:CGRectMake(0, 0, cell.view_RZ.width, cell.view_RZ.height) arr:[arr copy]];
+        [cell.view_RZ addSubview:img];
+    }
     if (indexPath.section<2) {
         cell.list = self.Mo;
         cell.trval = self.MoTrval;
@@ -146,6 +159,19 @@
         }
     }
     return cell;
+}
+-(NSMutableArray *)loadA:(NSString *)a b:(NSString *)b c:(NSString *)c{
+    NSMutableArray * arr = [NSMutableArray array];
+    if ([a isEqualToString:@"1"]) {
+        [arr addObject:@"our-rz-tec"];
+    }
+    if ([b isEqualToString:@"1"]) {
+        [arr addObject:@"our-rz-phone"];
+    }
+    if ([c isEqualToString:@"1"]) {
+        [arr addObject:@"our-rz-p"];
+    }
+    return arr;
 }
 //ShowTrvalCellDelegate
 -(void)btnClick:(NSInteger)tag{

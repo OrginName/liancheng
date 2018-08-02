@@ -8,6 +8,7 @@
 #import "SDCycleScrollView.h"
 #import "ShowResumeCell.h"
 #import "ShowResume1.h"
+#import "CustomImageScro.h"
 #define SHOWCELL @"SHOWCELL"
 @interface ShowResumeTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) SDCycleScrollView * cycleScrollView;
@@ -46,7 +47,7 @@
 #pragma mark --UITableviewDelegate---
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section==0) {
-        return 2;
+        return 3;
     }else if (section==1){
         if ([self.dict[@"1"] isEqualToString:@"NO"]) {
             return self.abilttyMo.workExperienceList.count>0?1:0;
@@ -65,8 +66,11 @@
     if (indexPath.section==0) {
         if (indexPath.row==0) {
             return 110;
-        }else
-            return 80;
+        }else if(indexPath.row==2){
+           return 80;
+        }else{
+            return 53;
+        }
     }else if(indexPath.section==1||indexPath.section==2){
         return 90;
     }else
@@ -95,6 +99,11 @@
             self.resume.imageTurn.transform = CGAffineTransformIdentity;
         }
     }
+    if (indexPath.section==0&&indexPath.row==1) {
+         NSMutableArray * arr = [self loadA:self.abilttyMo.userMo.isSkillAuth b:self.abilttyMo.userMo.isMobileAuth c:self.abilttyMo.userMo.isIdentityAuth];
+        CustomImageScro * img = [[CustomImageScro alloc] initWithFrame:CGRectMake(0, 0, cell.view_RZ.width, cell.view_RZ.height) arr:[arr copy]];
+        [cell.view_RZ addSubview:img];
+    }
     if (indexPath.section==2) {
         if ([self.dict[@"2"] isEqualToString:@"YES"]) {
             cell.edu = self.abilttyMo.EduArr[indexPath.row];
@@ -105,6 +114,19 @@
         }
     }
     return cell;
+}
+-(NSMutableArray *)loadA:(NSString *)a b:(NSString *)b c:(NSString *)c{
+    NSMutableArray * arr = [NSMutableArray array];
+    if ([a isEqualToString:@"1"]) {
+        [arr addObject:@"our-rz-tec"];
+    }
+    if ([b isEqualToString:@"1"]) {
+        [arr addObject:@"our-rz-phone"];
+    }
+    if ([c isEqualToString:@"1"]) {
+        [arr addObject:@"our-rz-p"];
+    }
+    return arr;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     ShowResume1 * view = [[[NSBundle mainBundle] loadNibNamed:@"ShowResume1" owner:nil options:nil] firstObject];

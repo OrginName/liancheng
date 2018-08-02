@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -393,6 +393,51 @@
                 <outlet property="lab_EduAndWork" destination="PSa-Rb-J8Q" id="sG4-OY-m1f"/>
             </connections>
             <point key="canvasLocation" x="25" y="664"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShowResumeCell5" rowHeight="53" id="B5Q-8K-4rP" customClass="ShowResumeCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="53"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B5Q-8K-4rP" id="VMs-fC-wyb">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="52.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nc0-Gy-uid">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="10"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="wBN-Af-eAc"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="认证信息：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqw-IQ-3fk">
+                        <rect key="frame" x="16" y="23.5" width="67" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Udx-XA-Le0">
+                        <rect key="frame" x="83" y="14.5" width="228" height="35"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="pz5-KK-jn6"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="nc0-Gy-uid" firstAttribute="top" secondItem="VMs-fC-wyb" secondAttribute="top" id="0wU-6q-l7k"/>
+                    <constraint firstAttribute="trailing" secondItem="nc0-Gy-uid" secondAttribute="trailing" id="Hrw-Hr-0e0"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Udx-XA-Le0" secondAttribute="trailing" constant="-7" id="NcV-cW-2RY"/>
+                    <constraint firstItem="Udx-XA-Le0" firstAttribute="centerY" secondItem="bqw-IQ-3fk" secondAttribute="centerY" id="RyL-pE-BPs"/>
+                    <constraint firstItem="bqw-IQ-3fk" firstAttribute="centerY" secondItem="VMs-fC-wyb" secondAttribute="centerY" constant="5" id="hb8-gG-ATS"/>
+                    <constraint firstItem="bqw-IQ-3fk" firstAttribute="leading" secondItem="VMs-fC-wyb" secondAttribute="leadingMargin" id="jyi-rU-bRL"/>
+                    <constraint firstItem="Udx-XA-Le0" firstAttribute="leading" secondItem="bqw-IQ-3fk" secondAttribute="trailing" id="qbE-1g-Lz8"/>
+                    <constraint firstItem="nc0-Gy-uid" firstAttribute="leading" secondItem="VMs-fC-wyb" secondAttribute="leading" id="xpd-gC-hPr"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="view_RZ" destination="Udx-XA-Le0" id="TYg-hp-dbP"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="766"/>
         </tableViewCell>
     </objects>
     <resources>
