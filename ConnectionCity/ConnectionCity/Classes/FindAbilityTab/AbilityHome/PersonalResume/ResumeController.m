@@ -91,22 +91,34 @@
         if (self.data_ArrWork.count!=0) {
             [self.CollArr addObject:self.data_ArrWork[0]];
         }
-        for (NSString * str in [self.resume.avatar componentsSeparatedByString:@";"]) {
-            if (str.length!=0) {
-                [self.lunArr addObject:str];
-            }
-        }
-        if (self.lunArr.count!=0) {
-            [[self.tab_bottom.tableHeaderView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
-            [self initScroll];
-        }
-       [self.Data_Dic setObject:@{@"name":self.resume.salaryName,@"ID":KString(@"%ld", self.resume.salaryId)} forKey:@"10"];
+        NSArray * imgArr = [self.resume.avatar componentsSeparatedByString:@";"];
+        __block int i=0;
+        WeakSelf
+        [imgArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString * urlStr = (NSString *)obj;
+            [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:urlStr] options:SDWebImageCacheMemoryOnly progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                
+            } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                i++;
+                [weakSelf.lunArr addObject:image];
+                if (i==imgArr.count) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (weakSelf.lunArr.count!=0) {
+                            [[weakSelf.tab_bottom.tableHeaderView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+                            [weakSelf initScroll];
+                        }
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            weakSelf.cycleScrollView.localizationImagesGroup = weakSelf.lunArr;
+                            [weakSelf.cycleScrollView reload];
+                        });
+                    });
+                }
+            }];
+        }];
+        [self.Data_Dic setObject:@{@"name":self.resume.salaryName,@"ID":KString(@"%ld", self.resume.salaryId)} forKey:@"10"];
         [self.Data_Dic setObject:@{@"name":self.resume.educationName,@"ID":KString(@"%ld", self.resume.educationId)} forKey:@"20"];
         [self.Data_Dic setObject:@{@"name":self.resume.workingName,@"ID":KString(@"%ld", (long)self.resume.workingId)} forKey:@"30"];
         [self.Data_Dic setObject:self.resume.introduce forKey:@"60"];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.cycleScrollView.imageURLStringsGroup = self.lunArr;
-        });
         [self.tab_bottom reloadData];
     }
 }
