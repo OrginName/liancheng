@@ -615,6 +615,8 @@
 		CEE68C4920ECFAFC00233AE3 /* TravelInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4820ECFAFC00233AE3 /* TravelInvite.m */; };
 		CEE68C4C20ED23B800233AE3 /* tourismMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE68C4B20ED23B800233AE3 /* tourismMo.m */; };
 		CEF041CE20EA6EFD00C00314 /* AccountPageMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF041CD20EA6EFD00C00314 /* AccountPageMo.m */; };
+		CEFC90FC2110AB43006E262E /* ShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFC90FA2110AB43006E262E /* ShareController.m */; };
+		CEFC90FD2110AB43006E262E /* ShareController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEFC90FB2110AB43006E262E /* ShareController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1790,6 +1792,9 @@
 		CEE68C4B20ED23B800233AE3 /* tourismMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tourismMo.m; sourceTree = "<group>"; };
 		CEF041CC20EA6EFD00C00314 /* AccountPageMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountPageMo.h; sourceTree = "<group>"; };
 		CEF041CD20EA6EFD00C00314 /* AccountPageMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountPageMo.m; sourceTree = "<group>"; };
+		CEFC90F92110AB43006E262E /* ShareController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareController.h; sourceTree = "<group>"; };
+		CEFC90FA2110AB43006E262E /* ShareController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareController.m; sourceTree = "<group>"; };
+		CEFC90FB2110AB43006E262E /* ShareController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4290,6 +4295,7 @@
 		CEC4A54620C3FBE50026EE19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CEFC90F82110AB29006E262E /* Share */,
 				CEE524FA20F771D400DD6179 /* QR */,
 				72EBB8E820CAC51A00F670E9 /* Collection */,
 				8D8E4EC520C9109E00C3D537 /* EditProfile */,
@@ -4467,6 +4473,16 @@
 				8DE161AD21072A3B00CC7558 /* TransactionRecordMo.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CEFC90F82110AB29006E262E /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				CEFC90F92110AB43006E262E /* ShareController.h */,
+				CEFC90FA2110AB43006E262E /* ShareController.m */,
+				CEFC90FB2110AB43006E262E /* ShareController.xib */,
+			);
+			path = Share;
 			sourceTree = "<group>";
 		};
 		FED23FC9B0FA87A13AD43642 /* Pods */ = {
@@ -4756,6 +4772,7 @@
 				CE03EDF920B4547200F07D78 /* FirstSectionHeadV.xib in Resources */,
 				72EBB8BD20C800C300F670E9 /* PresentCell.xib in Resources */,
 				CE0BA635209D68A3004C3C33 /* YSLoginController.xib in Resources */,
+				CEFC90FD2110AB43006E262E /* ShareController.xib in Resources */,
 				72EC1B6420B8357400ACC20B /* ShowCardCell.xib in Resources */,
 				722D254120AAA64C00AB3863 /* ShowResumeController.xib in Resources */,
 				CEC4A52A20C3D6AE0026EE19 /* TeamChatController.xib in Resources */,
@@ -4906,6 +4923,7 @@
 				8DD48CD220A811EA00D6D1E6 /* UIColor+MyColor.m in Sources */,
 				722D253820AA76D400AB3863 /* JFCityCollectionViewCell.m in Sources */,
 				CE0BA5BB209D5E6B004C3C33 /* UIBarButtonItem+Extension.m in Sources */,
+				CEFC90FC2110AB43006E262E /* ShareController.m in Sources */,
 				72EBB8E620C9682A00F670E9 /* AccountOneController.m in Sources */,
 				8D14FDEC20EB0C000013A9DF /* UIColor+RCColor.m in Sources */,
 				8DC17A7620C0E430005D9EE0 /* FriendCirleTab.m in Sources */,
