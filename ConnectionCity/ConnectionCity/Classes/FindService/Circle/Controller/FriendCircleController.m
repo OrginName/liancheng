@@ -36,6 +36,7 @@ static NSInteger i;//判断当前返回按钮点击次数
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    self.navigationItem.title = @"服务圈";
 }
 //发布朋友圈
 -(void)SendFriend{
@@ -54,7 +55,7 @@ static NSInteger i;//判断当前返回按钮点击次数
         self.btn_My.selected= NO;
     }
     if (sender.tag==2) {
-        self.navigationItem.title = @"服务圈视频";
+//        self.navigationItem.title = @"服务圈视频";
         self.frendTab.hidden = YES;
         self.frendVedio.hidden = NO;
 //        self.frendMyselfTab.hidden = YES;
@@ -62,9 +63,9 @@ static NSInteger i;//判断当前返回按钮点击次数
         self.frendTab.hidden = YES;
         self.frendVedio.hidden = YES;
 //        self.frendMyselfTab.hidden = NO;
-        self.navigationItem.title = @"我的";
+//        self.navigationItem.title = @"我的";
     }else{
-        self.navigationItem.title = @"圈子";
+//        self.navigationItem.title = @"圈子";
         self.frendTab.hidden = NO;
         self.frendVedio.hidden = YES;
 //        self.frendMyselfTab.hidden = YES;

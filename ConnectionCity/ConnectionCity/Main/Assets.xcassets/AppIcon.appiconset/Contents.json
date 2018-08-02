@@ -3,55 +3,55 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "20ptx20pt@2x.png",
+      "filename" : "20pt x 20pt.png",
       "scale" : "2x"
     },
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "20ptx20pt@3x.png",
+      "filename" : "20pt x 20pt-1.png",
       "scale" : "3x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "29ptx29pt@2x.png",
+      "filename" : "29pt x 29pt .png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "29ptx29pt@3x.png",
+      "filename" : "29pt x 29pt -1.png",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "40ptx40pt@2x.png",
+      "filename" : "40pt x 40pt.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "40ptx40pt@3x.png",
+      "filename" : "40pt x 40pt-1.png",
       "scale" : "3x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "60ptx60pt@2x.png",
+      "filename" : "60pt x 60pt.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "60ptx60pt@3x.png",
+      "filename" : "60pt x 60pt-1.png",
       "scale" : "3x"
     },
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "store.png",
+      "filename" : "app-store-Retina.png",
       "scale" : "1x"
     }
   ],

@@ -111,8 +111,10 @@
     imageView.transform = _isOpen[section]?CGAffineTransformMakeRotation(M_PI_2):CGAffineTransformIdentity;
     //设置区头标题
     headerView.titleLab.text = section==0?@"附近的站":section==1?@"我的站":@"加入的站";
-    NSArray *arr = _data_Arr[section][KString(@"%ld", section+1)];
-    headerView.teamNumbers.text = [NSString stringWithFormat:@"%lu",(unsigned long)arr.count];
+    if (_data_Arr.count!=0) {
+        NSArray *arr = _data_Arr[section][KString(@"%ld", section+1)];
+        headerView.teamNumbers.text = [NSString stringWithFormat:@"%lu",(unsigned long)arr.count];
+    }
     //返回区头视图
     return headerView;
 }

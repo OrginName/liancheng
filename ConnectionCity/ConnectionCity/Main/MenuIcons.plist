@@ -30,14 +30,6 @@
 		<key>icon</key>
 		<string>our-qian</string>
 		<key>title</key>
-		<string>邀请加盟</string>
-		<key>class</key>
-		<string>ShareController</string>
-	</dict>
-	<dict>
-		<key>icon</key>
-		<string>our-qian</string>
-		<key>title</key>
 		<string>钱包</string>
 		<key>class</key>
 		<string>WalletController</string>

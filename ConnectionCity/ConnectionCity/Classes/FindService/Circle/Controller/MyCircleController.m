@@ -18,6 +18,7 @@
     [super viewDidLoad];
     [super setFlag_back:YES];
     [self.view addSubview:self.frendMyselfTab];
+    self.navigationItem.title = @"服务圈";
 }
 //我的
 -(FriendMyselfTab *)frendMyselfTab{
