@@ -169,7 +169,7 @@
         self.searchFriendsBar.showsCancelButton = NO;
         [self.searchFriendsBar resignFirstResponder];
         self.searchFriendsBar.text = @"";
-//        [self.matchFriendList removeAllObjects];
+        [self.matchFriendList removeAllObjects];
 //        [self.friendsTabelView setContentOffset:CGPointMake(0, 0) animated:NO];
     }
 }
