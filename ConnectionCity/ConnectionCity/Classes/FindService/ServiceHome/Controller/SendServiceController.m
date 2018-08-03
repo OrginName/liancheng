@@ -124,9 +124,13 @@
                            @"title": self.Dic2[KString(@"%d", 0)],
                            @"type": self.Dic2[KString(@"%d", 4)]
                            };
+    WeakSelf
     [YSNetworkTool POST:v1ServiceCreate params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         [YTAlertUtil hideHUD];
         [YTAlertUtil showTempInfo:responseObject[@"message"]];
+        if (weakSelf.refreshBlock) {
+            weakSelf.refreshBlock();
+        }
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -167,9 +171,9 @@
     }
     // 取出存储所有textFileld改变对应的行
     NSArray *indexArr  = [self.Dic2 allKeys];
-    if ([indexArr containsObject:[NSString stringWithFormat:@"%ld",indexPath.section]]) {
+    if ([indexArr containsObject:[NSString stringWithFormat:@"%ld",(long)indexPath.section]]) {
         // 如果字典中保存当前的值，那么直接从字典里取出值然后赋给UITextField的text
-        cell.txt_Placeholder.text = [self.Dic2 objectForKey:[NSString stringWithFormat:@"%ld",indexPath.section]];
+        cell.txt_Placeholder.text = [self.Dic2 objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.section]];
     } else {
         cell.txt_Placeholder.text =nil;
     }

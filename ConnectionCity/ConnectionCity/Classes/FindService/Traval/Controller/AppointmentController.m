@@ -9,6 +9,7 @@
 #import "AppointmentController.h"
 #import "LCDatePicker.h"
 #import "EditAllController.h"
+#import "OurServiceController.h"
 @interface AppointmentController ()<LCDatePickerDelegate,UITextFieldDelegate>
 @property (nonatomic,strong) LCDatePicker * myDatePick;
 @property (weak, nonatomic) IBOutlet UILabel *lab_title1;
@@ -30,7 +31,6 @@
 @implementation AppointmentController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self setUI];
     [self initDate];
 }
@@ -109,23 +109,28 @@
             [YTAlertUtil showTempInfo:flag==0?@"请输入服务地点":@"请选择陪游地点"];
             return;
         }
-    
+        WeakSelf
         [YSNetworkTool POST:str params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
             if ([responseObject[@"code"] isEqualToString:@"FAIL"]) {
                 [YTAlertUtil showTempInfo:responseObject[@"message"]];
                 return;
             }
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            OurServiceController * our = [OurServiceController new];
+            if ([weakSelf.str isEqualToString:@"YD"]) {
+                our.inter = 1;
+            }else
+                our.inter = 2;
+            [self.navigationController pushViewController:our animated:YES];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
-    
 }
 - (IBAction)TimeClick:(id)sender {
     UIButton * btn = (UIButton *)sender;
     if (btn.tag==4) {
         [self.myDatePick animateShow];
     }else{
+        
         EditAllController * edit = [EditAllController new];
         edit.receiveTxt = self.txt_Place.text;
         edit.block = ^(NSString *EditStr) {

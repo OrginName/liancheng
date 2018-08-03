@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,12 +19,15 @@
                 <outlet property="headImage" destination="U4u-2n-cfY" id="6me-ac-I9x"/>
                 <outlet property="introduceLab" destination="jDz-TA-Qdl" id="5sp-fk-scR"/>
                 <outlet property="layoutMu" destination="45j-WT-FJQ" id="pky-kV-UWm"/>
+                <outlet property="layout_View" destination="Zlm-id-aPl" id="qeN-tP-ryD"/>
+                <outlet property="layout_phone" destination="tXO-Rm-UrM" id="DUk-WV-cVc"/>
                 <outlet property="lcNumLab" destination="eHE-KH-eO9" id="UlI-pB-DUt"/>
                 <outlet property="nickNameLab" destination="RP5-V2-xob" id="dPn-1H-q0G"/>
                 <outlet property="phoneNumLab" destination="l4v-IG-xAK" id="L1U-PX-5dr"/>
                 <outlet property="sendMessageBtn" destination="MZR-dB-xrJ" id="bsI-gb-s2O"/>
                 <outlet property="sexImage" destination="AqQ-PS-Qxf" id="gDD-w1-9u1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view_Phone" destination="dlj-38-YDh" id="zTB-8N-YHC"/>
                 <outlet property="view_btn" destination="MKw-0D-E5B" id="p03-S2-8g5"/>
             </connections>
         </placeholder>
@@ -89,7 +92,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vh-qe-Pbd">
-                    <rect key="frame" x="10" y="220" width="355" height="200"/>
+                    <rect key="frame" x="10" y="220" width="355" height="150"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GU3-SF-xt3">
                             <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
@@ -191,18 +194,18 @@
                                 <constraint firstAttribute="trailing" secondItem="Aam-y7-0Z4" secondAttribute="trailing" constant="10" id="vbQ-hZ-TNz"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlj-38-YDh">
-                            <rect key="frame" x="0.0" y="100" width="355" height="50"/>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlj-38-YDh">
+                            <rect key="frame" x="0.0" y="100" width="355" height="0.0"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SgN-bl-kKD">
-                                    <rect key="frame" x="0.0" y="49" width="355" height="1"/>
+                                    <rect key="frame" x="0.0" y="18" width="355" height="1"/>
                                     <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="xeL-E1-4R5"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电话号码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tx0-ji-lht">
-                                    <rect key="frame" x="10" y="0.0" width="80" height="49"/>
+                                    <rect key="frame" x="10" y="0.0" width="80" height="18"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="80" id="dYk-TL-mNh"/>
                                     </constraints>
@@ -211,7 +214,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13666887459" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4v-IG-xAK">
-                                    <rect key="frame" x="95" y="0.0" width="250" height="49"/>
+                                    <rect key="frame" x="95" y="0.0" width="250" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -228,12 +231,12 @@
                                 <constraint firstItem="l4v-IG-xAK" firstAttribute="leading" secondItem="Tx0-ji-lht" secondAttribute="trailing" constant="5" id="gyz-qL-g9s"/>
                                 <constraint firstItem="SgN-bl-kKD" firstAttribute="top" secondItem="l4v-IG-xAK" secondAttribute="bottom" id="jTM-Lq-ktH"/>
                                 <constraint firstItem="SgN-bl-kKD" firstAttribute="leading" secondItem="dlj-38-YDh" secondAttribute="leading" id="kJ7-cL-euw"/>
-                                <constraint firstAttribute="height" constant="50" id="tXO-Rm-UrM"/>
+                                <constraint firstAttribute="height" id="tXO-Rm-UrM"/>
                                 <constraint firstAttribute="bottom" secondItem="SgN-bl-kKD" secondAttribute="bottom" id="vdL-YC-3wH"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJ3-9E-JLs">
-                            <rect key="frame" x="0.0" y="150" width="355" height="50"/>
+                            <rect key="frame" x="0.0" y="100" width="355" height="50"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PFK-nY-Hqo">
                                     <rect key="frame" x="0.0" y="49" width="355" height="1"/>
@@ -284,7 +287,7 @@
                         <constraint firstItem="GU3-SF-xt3" firstAttribute="top" secondItem="3vh-qe-Pbd" secondAttribute="top" id="WxY-lU-TgC"/>
                         <constraint firstItem="EJ3-9E-JLs" firstAttribute="leading" secondItem="3vh-qe-Pbd" secondAttribute="leading" id="XeM-GQ-rLw"/>
                         <constraint firstItem="SpG-xV-dd2" firstAttribute="leading" secondItem="3vh-qe-Pbd" secondAttribute="leading" id="ZdW-g2-vrd"/>
-                        <constraint firstAttribute="height" constant="200" id="Zlm-id-aPl"/>
+                        <constraint firstAttribute="height" constant="150" id="Zlm-id-aPl"/>
                         <constraint firstAttribute="trailing" secondItem="SpG-xV-dd2" secondAttribute="trailing" id="e0L-Aq-2QP"/>
                         <constraint firstItem="El1-y1-Nqs" firstAttribute="trailing" secondItem="eHE-KH-eO9" secondAttribute="trailing" id="glM-sT-8fe"/>
                         <constraint firstItem="GU3-SF-xt3" firstAttribute="leading" secondItem="3vh-qe-Pbd" secondAttribute="leading" id="oDA-NW-iyi"/>

@@ -768,7 +768,6 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 12;
 }
-
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
                         layout:(UICollectionViewLayout *)collectionViewLayout
         insetForSectionAtIndex:(NSInteger)section {

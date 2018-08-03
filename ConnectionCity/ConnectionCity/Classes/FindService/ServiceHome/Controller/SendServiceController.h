@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+typedef void(^refreshBlock)(void);
 @interface SendServiceController : BaseViewController
 @property (nonatomic,strong) NSMutableArray * arr_receive;
+@property (nonatomic,copy) refreshBlock refreshBlock;
 @end

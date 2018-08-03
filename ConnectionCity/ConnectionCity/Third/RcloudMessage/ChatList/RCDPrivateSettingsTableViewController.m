@@ -119,7 +119,12 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     NSInteger rows = 0;
     switch (section) {
     case 0:
-        rows = 4;
+        {
+            if ([self.userId isEqualToString:[[YSAccountTool userInfo] modelId]]) {
+                return 4;
+            }else
+                return 3;
+        }
         break;
 
     case 1:
@@ -156,7 +161,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
             [cell setCellStyle:DefaultStyle_RightLabel];
             cell.leftLabel.text = @"设置备注";
             cell.rightLabel.text =self.userInfo1.friendRemark;
-        }else if (indexPath.row==2){
+        }else if ([self.userId isEqualToString:[[YSAccountTool userInfo] modelId]]&&indexPath.row==2){
             [cell setCellStyle:DefaultStyle_RightLabel_WithoutRightArrow];
             cell.leftLabel.text = @"电话号码";
             cell.rightLabel.text =[[model.modelId description] isEqualToString:self.userId]?model.mobile:self.userInfo1.mobilePhone;

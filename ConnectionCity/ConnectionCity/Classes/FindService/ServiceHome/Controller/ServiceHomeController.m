@@ -78,8 +78,12 @@
 //发布简历按钮点击
 - (IBAction)sendResume:(UIButton *)sender {
     _flag = NO;
+    WeakSelf
     SendServiceController * send = [SendServiceController new];
     send.arr_receive = self.Arr_Classify;
+    send.refreshBlock = ^{
+        [weakSelf loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
+    };
     [self.navigationController pushViewController:send animated:YES];
 }
 //顶部三个筛选按钮的点击
@@ -202,7 +206,6 @@
             }
         }];
         show.zIndex = index;
-        NSLog(@"当前zindex为：%ld",index);
         [self.navigationController pushViewController:show animated:YES];
     }else{
         [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];

@@ -28,6 +28,5 @@
     self.lab_date.text = [strFirst componentsSeparatedByString:@"-"][2];
     self.lab_city.text = moment.cityName;
     self.lab_content.text = moment.content;
-    
 }
 @end
