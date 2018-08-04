@@ -10,6 +10,7 @@
 //#import "privateUserInfoModel.h"
 #import "UserMo.h"
 #import "TenderRecordsMo.h"
+#import "orderListModel.h"
 
 @interface FirstControllerMo : BaseModel
 /** <#provinceName描述#> */
@@ -104,5 +105,6 @@
 @property (nonatomic, copy) NSString *amount;
 /** amount描述 */
 @property (nonatomic, copy) NSString *isWin;
+@property (nonatomic, strong) NSArray <orderListModel *> *orderList;
 
 @end

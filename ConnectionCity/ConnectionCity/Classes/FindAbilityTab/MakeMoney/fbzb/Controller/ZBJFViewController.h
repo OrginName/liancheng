@@ -15,5 +15,7 @@
 @property (nonatomic, strong) CityMo *mo;
 @property (nonatomic,strong) NSString * receive_flag;
 @property (nonatomic, strong) NSString *tenderId;
+@property (nonatomic, strong) NSString *industryCategoryId;
+@property (nonatomic, strong) NSString *industryCategoryName;
 
 @end

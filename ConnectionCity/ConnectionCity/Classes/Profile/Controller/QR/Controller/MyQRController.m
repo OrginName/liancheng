@@ -75,10 +75,10 @@
     
     UIImage *centerImg=centerImage;
     
-    CGFloat centerW=70;
-    CGFloat centerH=70;
-    CGFloat centerX=(img.size.width-70)*0.5;
-    CGFloat centerY=(img.size.height -70)*0.5;
+    CGFloat centerW=50;
+    CGFloat centerH=50;
+    CGFloat centerX=(img.size.width-50)*0.5;
+    CGFloat centerY=(img.size.height -50)*0.5;
     
     [centerImg drawInRect:CGRectMake(centerX, centerY, centerW, centerH)];
     //7.4获取绘制好的图片

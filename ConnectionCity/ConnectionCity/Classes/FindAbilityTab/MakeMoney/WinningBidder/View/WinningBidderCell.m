@@ -32,10 +32,10 @@
     
     if ([userinfomo.isFriend isEqualToString:@"1"]) {
         _addFrendBtn.backgroundColor = [UIColor grayColor];
-        [_addFrendBtn setTitle:@"+好友" forState: UIControlStateNormal];
+        [_addFrendBtn setTitle:@"好友" forState: UIControlStateNormal];
     }else{
         _addFrendBtn.backgroundColor = [UIColor orangeColor];
-        [_addFrendBtn setTitle:@"好友" forState: UIControlStateNormal];
+        [_addFrendBtn setTitle:@"+好友" forState: UIControlStateNormal];
     }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

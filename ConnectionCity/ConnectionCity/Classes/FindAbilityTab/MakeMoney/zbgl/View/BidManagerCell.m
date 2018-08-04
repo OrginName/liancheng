@@ -70,6 +70,29 @@
     _thridStateLab.text = [BidStateTools stateStrWithState:[model.payStatus3 integerValue]];
     _fourStateLab.text = [BidStateTools stateStrWithState:[model.payStatus4 integerValue]];
     _fiveStateLab.text = [BidStateTools stateStrWithState:[model.payStatus5 integerValue]];
+    
+//    状态-审核中、招标中、中标、结束
+    if([model.status integerValue]==1){
+        _reviewStatusLab.text = @"审核中";
+        _changeBtn.hidden = NO;
+        _deleteBtn.hidden = NO;
+        _negotiationBtn.hidden = YES;
+    }else if([model.status integerValue]==2){
+        _reviewStatusLab.text = @"招标中";
+        _changeBtn.hidden = NO;
+        _deleteBtn.hidden = NO;
+        _negotiationBtn.hidden = YES;
+    }else if([model.status integerValue]==3){
+        _reviewStatusLab.text = @"中标";
+        _changeBtn.hidden = YES;
+        _deleteBtn.hidden = YES;
+        _negotiationBtn.hidden = NO;
+    }else if([model.status integerValue]==3){
+        _reviewStatusLab.text = @"结束";
+        _changeBtn.hidden = YES;
+        _deleteBtn.hidden = NO;
+        _negotiationBtn.hidden = YES;
+    }
 }
 
 @end

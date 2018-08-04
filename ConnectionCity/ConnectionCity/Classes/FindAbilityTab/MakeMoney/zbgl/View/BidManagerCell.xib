@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -519,6 +523,7 @@
                 <outlet property="fourLab" destination="9dn-VJ-82p" id="T7U-wY-Ube"/>
                 <outlet property="fourStateLab" destination="cPT-XT-EPl" id="TSG-Zu-L3t"/>
                 <outlet property="negotiationBtn" destination="YHM-G2-Jqy" id="7h0-fa-7NI"/>
+                <outlet property="reviewStatusLab" destination="9IQ-tF-nMT" id="uVO-yP-pNv"/>
                 <outlet property="secondLab" destination="eA6-73-9Vt" id="vNj-ZW-CHY"/>
                 <outlet property="secondStateLab" destination="Rti-aL-Qhc" id="W4w-f8-tVa"/>
                 <outlet property="thridLab" destination="ozH-nP-TLR" id="zYc-eO-ycv"/>

@@ -36,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *changeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
 @property (weak, nonatomic) IBOutlet UIButton *negotiationBtn;
+@property (weak, nonatomic) IBOutlet UILabel *reviewStatusLab;
 @property (nonatomic, weak) id<BidManagerCellDelegate>delegate;
 @property (nonatomic, strong) FirstControllerMo *model;
 

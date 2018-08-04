@@ -7,15 +7,19 @@
 //
 
 #import "BidManageController.h"
-#import "BidManagerCell.h"
+//#import "BidManagerCell.h"
 #import "BidManagerFootV.h"
 #import "BidManagerHeadV.h"
 #import "ConsultativeNegotiationController.h"
 #import "FirstControllerMo.h"
+#import "orderListModel.h"
 #import "ReleaseTenderController.h"
 #import "CityMo.h"
+#import "BidManagerCellOne.h"
+#import "BidManagerSectionHeadV.h"
+#import "BidManagerSectionFootV.h"
 
-@interface BidManageController ()<BidManagerCellDelegate>
+@interface BidManageController ()<BidManagerCellOneDelegate,BidManagerSectionFootVDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, assign) NSInteger page;
@@ -32,6 +36,18 @@
     [self addFooterRefresh];
     
     // Do any additional setup after loading the view from its nib.
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    //添加通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alipayNotice:) name:NOTI_ALI_PAY_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wxNotice:) name:NOTI_WEI_XIN_PAY_SUCCESS object:nil];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    //移除通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_ALI_PAY_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_WEI_XIN_PAY_SUCCESS object:nil];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -52,44 +68,113 @@
     self.dataArr = [[NSMutableArray alloc]init];
 }
 - (void)setTableView {
-    [self.tableView registerNib:[UINib nibWithNibName:@"BidManagerCell" bundle:nil] forCellReuseIdentifier:@"BidManagerCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"BidManagerCellOne" bundle:nil] forCellReuseIdentifier:@"BidManagerCellOne"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"BidManagerSectionHeadV" bundle:nil] forHeaderFooterViewReuseIdentifier:@"BidManagerSectionHeadV"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"BidManagerSectionFootV" bundle:nil] forHeaderFooterViewReuseIdentifier:@"BidManagerSectionFootV"];
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataArr.count;
 }
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    FirstControllerMo *mo = self.dataArr[section];
+    return mo.orderList.count;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    BidManagerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BidManagerCell"];
+    BidManagerCellOne *cell = [tableView dequeueReusableCellWithIdentifier:@"BidManagerCellOne"];
     cell.delegate = self;
-    cell.model = _dataArr[indexPath.row];
+    FirstControllerMo *mo = self.dataArr[indexPath.section];
+    cell.model = mo.orderList[indexPath.row];
+    NSString *pointStr;
+    switch (indexPath.row) {
+        case 0:
+            pointStr = @"一期";
+            break;
+        case 1:
+            pointStr = @"二期";
+            break;
+        case 2:
+            pointStr = @"三期";
+            break;
+        case 3:
+            pointStr = @"四期";
+            break;
+        case 4:
+            pointStr = @"五期";
+            break;
+        default:
+            break;
+    }
+    cell.pointLab.text = pointStr;
     return cell;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    //重用区头视图
+    BidManagerSectionHeadV *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"BidManagerSectionHeadV"];
+    headerView.model = _dataArr[section];
+    //返回区头视图
+    return headerView;
+}
+- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    //重用区脚视图
+    BidManagerSectionFootV *footView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"BidManagerSectionFootV"];
+    footView.changeBtn.tag = section + 100;
+    footView.deleteBtn.tag = section + 100;
+    footView.negotiationBtn.tag = section + 100;
+    footView.model = _dataArr[section];
+    footView.delegate = self;
+    //返回区脚视图
+    return footView;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-#pragma mark - BidManagerCellDelegate
-- (void)bidManagerCell:(BidManagerCell *)view changeBtnClick:(UIButton *)btn {
-    [YTAlertUtil showTempInfo:@"修改"];
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:view];
-    FirstControllerMo *mo = _dataArr[indexPath.row];
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 40;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 140;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 60;
+}
+#pragma mark - BidManagerSectionFootVDelegate
+- (void)BidManagerSectionFootV:(BidManagerSectionFootV *)view changeBtnClick:(UIButton *)btn {
+    FirstControllerMo *mo = _dataArr[btn.tag - 100];
     ReleaseTenderController *releasevc = [[ReleaseTenderController alloc]init];
     releasevc.firstMo = mo;
     releasevc.tenderId = mo.modelId;
     releasevc.receive_flag = @"EDIT";
     [self.navigationController pushViewController:releasevc animated:YES];
 }
-- (void)bidManagerCell:(BidManagerCell *)view deleteBtnClick:(UIButton *)btn {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:view];
-    FirstControllerMo *mo = _dataArr[indexPath.row];
+- (void)BidManagerSectionFootV:(BidManagerSectionFootV *)view deleteBtnClick:(UIButton *)btn {
+    FirstControllerMo *mo = _dataArr[btn.tag - 100];
     [self v1TalentTenderDelete:@{@"id": mo.modelId}];
 }
-- (void)bidManagerCell:(BidManagerCell *)view negotiationBtnClick:(UIButton *)btn {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:view];
-    FirstControllerMo *mo = _dataArr[indexPath.row];
+- (void)BidManagerSectionFootV:(BidManagerSectionFootV *)view negotiationBtnClick:(UIButton *)btn {
+    FirstControllerMo *mo = _dataArr[btn.tag - 100];
     ConsultativeNegotiationController *xsyjVC = [[ConsultativeNegotiationController alloc]init];
     xsyjVC.mo = mo;
     [self.navigationController pushViewController:xsyjVC animated:YES];
+}
+#pragma mark - BidManagerCellOneDelegate
+- (void)bidManagerCell:(BidManagerCellOne *)view btn:(UIButton *)btn {
+    NSIndexPath *indexPath = [_tableView indexPathForCell:view];
+    FirstControllerMo *mo = _dataArr[indexPath.section];
+    orderListModel *orderlist = mo.orderList[indexPath.row];
+    if ([btn.titleLabel.text containsString:@"确认"]) {
+        NSDictionary *dic = @{@"orderNo": orderlist.orderNo,@"status":@"60"};
+        [self v1TalentTenderUpdateOrderStatus:dic];
+    }else if([btn.titleLabel.text containsString:@"付款"]){
+        [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:@[@"支付宝",@"微信"] multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
+            if (idx==0) {
+                [YTThirdPartyPay v1Pay:@{@"orderNo": orderlist.orderNo,@"payType":kAlipay}];
+            }else{
+                [YTThirdPartyPay v1Pay:@{@"orderNo": orderlist.orderNo,@"payType":kWechat}];
+            }
+        } cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
+        } completion:nil];
+    }
 }
 #pragma mark - 接口请求
 - (void)addHeaderRefresh {
@@ -157,9 +242,38 @@
 
 - (void)v1TalentTenderDelete:(NSDictionary *)dic {
     WeakSelf
-    [YSNetworkTool POST:v1TalentTenderDelete params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1TalentTenderDelete params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [YSRefreshTool beginRefreshingWithView:weakSelf.tableView];
     } failure:nil];
+}
+- (void)v1TalentTenderUpdateOrderStatus:(NSDictionary *)dic {
+    WeakSelf
+    [YSNetworkTool POST:v1TalentTenderUpdateOrderStatus params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YSRefreshTool beginRefreshingWithView:weakSelf.tableView];
+    } failure:nil];
+}
+#pragma mark - alipayNotice
+- (void)alipayNotice:(NSNotification *)notification {
+    if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"success"]) {
+        //支付成功
+        [YTAlertUtil showTempInfo:@"支付成功"];
+        [YSRefreshTool beginRefreshingWithView:self.tableView];
+
+    }else if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"failure"]) {
+        //支付失败
+        [YTAlertUtil showTempInfo:@"支付失败"];
+    }
+}
+- (void)wxNotice:(NSNotification *)notification {
+    if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"success"]) {
+        //支付成功
+        [YTAlertUtil showTempInfo:@"支付成功"];
+        [YSRefreshTool beginRefreshingWithView:self.tableView];
+
+    }else if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"failure"]) {
+        //支付失败
+        [YTAlertUtil showTempInfo:@"支付失败"];
+    }
 }
 /*
 #pragma mark - Navigation

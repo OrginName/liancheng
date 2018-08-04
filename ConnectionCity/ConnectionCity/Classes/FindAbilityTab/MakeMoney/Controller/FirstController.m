@@ -207,7 +207,7 @@
     NSDictionary *dic = @{
                           @"areaCode": @"",
                           @"cityCode": _areaCode?_areaCode:@"",
-                          @"industryCategoryId":@"",
+                          @"industryCategoryId":_industryCategoryId?_industryCategoryId:@"",
                           @"maxDate": _endTime?_endTime:@"",
                           @"minDate": _startTime?_startTime:@"",
                           @"pageNumber": [NSString stringWithFormat:@"%ld",(long)_page],
@@ -229,7 +229,7 @@
     NSDictionary *dic = @{
                           @"areaCode": @"",
                           @"cityCode": _areaCode?_areaCode:@"",
-                          @"industryCategoryId":@"",
+                          @"industryCategoryId":_industryCategoryId?_industryCategoryId:@"",
                           @"maxDate": _endTime?_endTime:@"",
                           @"minDate": _startTime?_startTime:@"",
                           @"pageNumber": [NSString stringWithFormat:@"%ld",(long)_page],

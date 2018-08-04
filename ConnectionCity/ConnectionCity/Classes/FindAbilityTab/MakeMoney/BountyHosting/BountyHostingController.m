@@ -47,7 +47,20 @@
     return _dataArr.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    FirstControllerMo *mo = _dataArr[section];
+    if ([mo.periodAmount5 doubleValue] > 0) {
+        return 5;
+    }else if ([mo.periodAmount4 doubleValue] > 0){
+        return 4;
+    }else if ([mo.periodAmount3 doubleValue] > 0){
+        return 3;
+    }else if ([mo.periodAmount2 doubleValue] > 0){
+        return 2;
+    }else if ([mo.periodAmount1 doubleValue] > 0){
+        return 1;
+    }else{
+        return 0;
+    }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MarginCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MarginCell"];

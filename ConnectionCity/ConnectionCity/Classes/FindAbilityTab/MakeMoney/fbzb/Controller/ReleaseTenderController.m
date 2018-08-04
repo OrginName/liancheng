@@ -16,6 +16,8 @@
 #import "ZBJFViewController.h"
 #import "PhotoSelect.h"
 #import "CityMo.h"
+#import "ClassificationsController.h"
+#import "AbilityNet.h"
 
 @interface ReleaseTenderController ()<LCDatePickerDelegate,JFCityViewControllerDelegate,PhotoSelectDelegate>
 {
@@ -31,6 +33,9 @@
 @property (nonatomic, strong) CityMo *citymo;
 @property (nonatomic, strong) PhotoSelect * photo;
 @property (nonatomic, strong) NSMutableArray *Arr_Url;
+@property (nonatomic, strong) NSMutableArray * arr_Class;
+@property (nonatomic, strong) NSString *industryCategoryId;
+@property (nonatomic, strong) NSString *industryCategoryName;
 
 @end
 
@@ -39,13 +44,50 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    [self initData];
     [self setTableView];
     if ([self.receive_flag isEqualToString:@"EDIT"]) {
         [self initEDITData];
+    }else{
+        if ([kDefaults objectForKey:@"cellCntentText"]) {
+            _cellCntentText = [NSMutableArray arrayWithArray:[kDefaults objectForKey:@"cellCntentText"]];
+
+            NSDictionary *dic = [kDefaults objectForKey:@"citymooo"];
+            if (dic) {
+                CityMo *mo = [[CityMo alloc]init];
+                mo.name = dic[@"cityName"];
+                mo.ID = dic[@"cityCode"];
+                mo.lat = dic[@"lat"];
+                mo.lng = dic[@"lng"];
+                self.citymo = mo;
+            }
+            NSArray * arr = [_cellCntentText[6] componentsSeparatedByString:@";"];
+            for (int i=0; i<arr.count; i++) {
+                if ([arr[i] length]!=0) {
+                    [self.photo.selectedPhotos addObject:arr[i]];
+                    [self.Arr_Url addObject:arr[i]];
+                    [self.photo.selectedAssets addObject:@{@"name":arr[i],@"filename":@"image",@"flag":@"EDIT"}];
+                }
+            }
+            [self.tableView reloadData];
+
+            
+        }
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeAll) name:@"REMOVEALL" object:nil];
     
     // Do any additional setup after loading the view from its nib.
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    [kDefaults setObject:_cellCntentText forKey:@"cellCntentText"];
+    if (_citymo) {
+        if (_citymo.name && _citymo.ID && _citymo.lat && _citymo.lng) {
+            [kDefaults setObject:@{@"cityName": _citymo.name,@"cityCode": _citymo.ID,@"lat": _citymo.lat,@"lng": _citymo.lng} forKey:@"citymooo"];
+        }
+    }
+    [kDefaults synchronize];
 }
 -(void)removeAll{
     [self.Arr_Url removeAllObjects];
@@ -60,10 +102,18 @@
 #pragma mark - setup
 -(void)setUI {
     self.navigationItem.title = @"发布任务";
-    _cellTitles = @[@"项目标题", @"项目单位", @"接单所在地", @"开标地点", @"接单内容", @"",@"报名/抢单时间",@"抢单截止时间",@"接单金额",@"联系人",@"联系电话"];
-    _cellPlaceHolds = [NSMutableArray arrayWithArray:@[@"请填写项目标题", @"请填写项目单位", @"请选择所在地", @"请填写开标地点", @"请填写接单内容",@"", @"请选择开始时间",@"请选择截止时间",@"请填写金额万元",@"请填写联系人姓名",@"请填写联系电话"]];
-    _cellCntentText = [NSMutableArray arrayWithArray:@[@"", @"", @"", @"", @"",@"", @"",@"",@"",@"",@""]];
+    _cellTitles = @[@"项目标题", @"项目单位", @"行业分类", @"接单所在地", @"开标地点", @"接单内容", @"",@"报名/抢单时间",@"抢单截止时间",@"接单金额",@"联系人",@"联系电话"];
+    _cellPlaceHolds = [NSMutableArray arrayWithArray:@[@"请填写项目标题", @"请填写项目单位", @"请选择行业", @"请选择所在地", @"请填写开标地点", @"请填写接单内容",@"", @"请选择开始时间",@"请选择截止时间",@"请填写金额元",@"请填写联系人姓名",@"请填写联系电话"]];
+    _cellCntentText = [NSMutableArray arrayWithArray:@[@"", @"", @"", @"", @"", @"",@"", @"",@"",@"",@"",@""]];
     [self initDate];
+}
+-(void)initData{
+    //self.areaCode = [KUserDefults objectForKey:kUserCityID];
+    //加载分类数据
+    WeakSelf
+    [AbilityNet requstMakeMoneyClass:^(NSMutableArray *successArrValue) {
+        weakSelf.arr_Class = successArrValue;
+    }];
 }
 - (void)setTableView {
     [self.tableView registerNib:[UINib nibWithNibName:@"ReleaseTenderCell" bundle:nil] forCellReuseIdentifier:@"ReleaseTenderCell"];
@@ -87,6 +137,7 @@
 -(void)initDate{
     self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
     self.myDatePick.delegate  = self;
+    self.myDatePick.minDate = [NSDate date];
     [self.view addSubview:self.myDatePick];
     self.Arr_Url = [NSMutableArray array];
 }
@@ -94,6 +145,7 @@
     _cellCntentText = [NSMutableArray arrayWithArray:@[
                                                        self.firstMo.title,
                                                        self.firstMo.company,
+                                                       self.firstMo.industryCategoryName,
                                                        self.firstMo.cityName,
                                                        self.firstMo.tenderAddress,
                                                        self.firstMo.content,
@@ -124,12 +176,12 @@
 }
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 11;
+    return self.cellCntentText.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ReleaseTenderCell *cell1 = [tableView dequeueReusableCellWithIdentifier:@"ReleaseTenderCell"];
     ReleaseTenderAdditionalCell *cell2 = [tableView dequeueReusableCellWithIdentifier:@"ReleaseTenderAdditionalCell"];
-    if (indexPath.row == 5) {
+    if (indexPath.row == 6) {
         itemHeigth = (kScreenWidth-70) / 3+10;
         self.photo = [[PhotoSelect alloc] initWithFrame:CGRectMake(0, 0, cell2.photoBgView.width, cell2.photoBgView.height) withController:self];
         self.photo.backgroundColor = [UIColor whiteColor];
@@ -158,26 +210,43 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(indexPath.row==2){
+        ClassificationsController * class = [ClassificationsController new];
+        class.title = @"行业类型";
+        class.arr_Data = self.arr_Class;
+        WeakSelf
+        class.block = ^(NSString *classifiation){
+            
+        };
+        class.block1 = ^(NSString *classifiationID, NSString *classifiation) {
+            weakSelf.industryCategoryId = classifiationID;
+            weakSelf.industryCategoryName = classifiation;
+            weakSelf.cellCntentText[2] = classifiation;
+            NSIndexPath *indexPath=[NSIndexPath indexPathForRow:2 inSection:0];
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+        };
+        [self.navigationController pushViewController:class animated:YES];
+        return;
+    }else if(indexPath.row==3){
         JFCityViewController * jf= [JFCityViewController new];
         jf.delegate = self;
         BaseNavigationController * nav = [[BaseNavigationController alloc] initWithRootViewController:jf];
         [self.navigationController presentViewController:nav animated:YES completion:nil];
         return;
-    }else if (indexPath.row==6){
+    }else if (indexPath.row==7){
         currtenTag = indexPath.row;
         [self.myDatePick animateShow];
         return;
-    }else if (indexPath.row==7){
+    }else if (indexPath.row==8){
         currtenTag = indexPath.row;
         [self.myDatePick animateShow];
         return;
     }
     
-    if(indexPath.row!=5){
+    if(indexPath.row!=6){
         EditAllController * edit = [EditAllController new];
         WeakSelf
         edit.block = ^(NSString * str){
-            if (indexPath.row==8) {
+            if (indexPath.row==9) {
                 str = [NSString stringWithFormat:@"%.2f",[str floatValue]];
             }
             weakSelf.cellCntentText[indexPath.row] = str;
@@ -197,7 +266,7 @@
     return 0.1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    if (indexPath.row == 5) {
+    if (indexPath.row == 6) {
         return 185;
     }else{
         return 50;
@@ -226,16 +295,16 @@
 }
 #pragma mark - JFCityViewControllerDelegate
 - (void)cityName:(NSString *)name {
-    self.cellCntentText[2] = name;
-    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:2 inSection:0];
+    self.cellCntentText[3] = name;
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:3 inSection:0];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
 }
 -(void)cityMo:(CityMo *)mo{
     self.citymo = mo;
 }
 -(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng {
-    self.cellCntentText[2] = name;
-    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:2 inSection:0];
+    self.cellCntentText[3] = name;
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:3 inSection:0];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
     
     CityMo *mo = [[CityMo alloc]init];
@@ -261,10 +330,15 @@
 - (void)nextBtnClick:(UIButton *)btn {
     for (int i=0; i<self.cellCntentText.count; i++) {
         NSString *str = self.cellCntentText[i];
-        if ([YSTools dx_isNullOrNilWithObject:str] && i!=5) {
+        if ([YSTools dx_isNullOrNilWithObject:str] && i!=6) {
             [YTAlertUtil showTempInfo:@"请将信息填写完整"];
             return;
         }
+    }
+    
+    if ([YSTools initTimerCompare:self.cellCntentText[7] withEndTime:self.cellCntentText[8]]!=2) {
+        [YTAlertUtil showTempInfo:@"结束日期不能小于开始日期"];
+        return;
     }
     
     BOOL a = [self.receive_flag isEqualToString:@"EDIT"]?YES:NO;
@@ -297,13 +371,15 @@
     }
 }
 - (void)pushVCWhithUrlStr:(NSString *)urlStr {
-    self.cellCntentText[5] = urlStr;
+    self.cellCntentText[6] = urlStr;
     ZBJFViewController *zbjfVC = [[ZBJFViewController alloc]init];
     zbjfVC.receive_flag = self.receive_flag;
     zbjfVC.tenderId = self.tenderId;
     zbjfVC.cellCntentText = self.cellCntentText;
-    zbjfVC.zbjeStr = self.cellCntentText[8];
+    zbjfVC.zbjeStr = self.cellCntentText[9];
     zbjfVC.mo = self.citymo;
+    zbjfVC.industryCategoryId = self.industryCategoryId;
+    zbjfVC.industryCategoryName = self.industryCategoryName;
     [self.navigationController pushViewController:zbjfVC animated:YES];
 }
 

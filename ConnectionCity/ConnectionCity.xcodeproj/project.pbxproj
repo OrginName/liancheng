@@ -527,6 +527,13 @@
 		CE6BEC1D20C83769003B36D7 /* LCDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC1C20C83769003B36D7 /* LCDatePicker.m */; };
 		CE6BEC2C20C970C1003B36D7 /* EditProfileHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEC2B20C970C1003B36D7 /* EditProfileHeadView.m */; };
 		CE6BEC2E20C970D1003B36D7 /* EditProfileHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6BEC2D20C970D1003B36D7 /* EditProfileHeadView.xib */; };
+		CE782AB021158860002C6403 /* BidManagerSectionHeadV.m in Sources */ = {isa = PBXBuildFile; fileRef = CE782AAF21158860002C6403 /* BidManagerSectionHeadV.m */; };
+		CE782AB321158874002C6403 /* BidManagerSectionFootV.m in Sources */ = {isa = PBXBuildFile; fileRef = CE782AB221158874002C6403 /* BidManagerSectionFootV.m */; };
+		CE782AB5211588A1002C6403 /* BidManagerSectionHeadV.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE782AB4211588A1002C6403 /* BidManagerSectionHeadV.xib */; };
+		CE782AB7211588B3002C6403 /* BidManagerSectionFootV.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE782AB6211588B3002C6403 /* BidManagerSectionFootV.xib */; };
+		CE782ABB21158D1B002C6403 /* BidManagerCellOne.m in Sources */ = {isa = PBXBuildFile; fileRef = CE782AB921158D1B002C6403 /* BidManagerCellOne.m */; };
+		CE782ABC21158D1B002C6403 /* BidManagerCellOne.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE782ABA21158D1B002C6403 /* BidManagerCellOne.xib */; };
+		CE782ABF21159891002C6403 /* orderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE782ABE21159891002C6403 /* orderListModel.m */; };
 		CE81AD7920E10AC20042E50D /* CertificationCenterMo.m in Sources */ = {isa = PBXBuildFile; fileRef = CE81AD7820E10AC20042E50D /* CertificationCenterMo.m */; };
 		CE97DBF520B5A2C1003E46BD /* ReleaseTenderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97DBF320B5A2C1003E46BD /* ReleaseTenderCell.m */; };
 		CE97DBF620B5A2C1003E46BD /* ReleaseTenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE97DBF420B5A2C1003E46BD /* ReleaseTenderCell.xib */; };
@@ -1646,6 +1653,17 @@
 		CE6BEC2D20C970D1003B36D7 /* EditProfileHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileHeadView.xib; sourceTree = "<group>"; };
 		CE6E8EA1210DCB6400764BBF /* HCCountdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCountdown.m; sourceTree = "<group>"; };
 		CE6E8EA2210DCB6400764BBF /* HCCountdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCountdown.h; sourceTree = "<group>"; };
+		CE782AAE21158860002C6403 /* BidManagerSectionHeadV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidManagerSectionHeadV.h; sourceTree = "<group>"; };
+		CE782AAF21158860002C6403 /* BidManagerSectionHeadV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidManagerSectionHeadV.m; sourceTree = "<group>"; };
+		CE782AB121158874002C6403 /* BidManagerSectionFootV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidManagerSectionFootV.h; sourceTree = "<group>"; };
+		CE782AB221158874002C6403 /* BidManagerSectionFootV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidManagerSectionFootV.m; sourceTree = "<group>"; };
+		CE782AB4211588A1002C6403 /* BidManagerSectionHeadV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BidManagerSectionHeadV.xib; sourceTree = "<group>"; };
+		CE782AB6211588B3002C6403 /* BidManagerSectionFootV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BidManagerSectionFootV.xib; sourceTree = "<group>"; };
+		CE782AB821158D1B002C6403 /* BidManagerCellOne.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BidManagerCellOne.h; sourceTree = "<group>"; };
+		CE782AB921158D1B002C6403 /* BidManagerCellOne.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BidManagerCellOne.m; sourceTree = "<group>"; };
+		CE782ABA21158D1B002C6403 /* BidManagerCellOne.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BidManagerCellOne.xib; sourceTree = "<group>"; };
+		CE782ABD21159891002C6403 /* orderListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = orderListModel.h; sourceTree = "<group>"; };
+		CE782ABE21159891002C6403 /* orderListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = orderListModel.m; sourceTree = "<group>"; };
 		CE81AD7720E10AC20042E50D /* CertificationCenterMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CertificationCenterMo.h; sourceTree = "<group>"; };
 		CE81AD7820E10AC20042E50D /* CertificationCenterMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CertificationCenterMo.m; sourceTree = "<group>"; };
 		CE97DBF220B5A2C1003E46BD /* ReleaseTenderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReleaseTenderCell.h; sourceTree = "<group>"; };
@@ -4078,6 +4096,15 @@
 				CE5C281820B94D84006A8332 /* BidManagerCell.h */,
 				CE5C281920B94D84006A8332 /* BidManagerCell.m */,
 				CE5C281A20B94D84006A8332 /* BidManagerCell.xib */,
+				CE782AB821158D1B002C6403 /* BidManagerCellOne.h */,
+				CE782AB921158D1B002C6403 /* BidManagerCellOne.m */,
+				CE782ABA21158D1B002C6403 /* BidManagerCellOne.xib */,
+				CE782AAE21158860002C6403 /* BidManagerSectionHeadV.h */,
+				CE782AAF21158860002C6403 /* BidManagerSectionHeadV.m */,
+				CE782AB4211588A1002C6403 /* BidManagerSectionHeadV.xib */,
+				CE782AB121158874002C6403 /* BidManagerSectionFootV.h */,
+				CE782AB221158874002C6403 /* BidManagerSectionFootV.m */,
+				CE782AB6211588B3002C6403 /* BidManagerSectionFootV.xib */,
 				CE5C281D20B953C1006A8332 /* BidManagerHeadV.h */,
 				CE5C281E20B953C1006A8332 /* BidManagerHeadV.m */,
 				CE5C282020B953CE006A8332 /* BidManagerHeadV.xib */,
@@ -4128,6 +4155,8 @@
 				CE9B9A5920E7DC68005C47B2 /* TenderRecordsMo.m */,
 				CE9B9A5A20E7DC68005C47B2 /* FirstControllerMo.h */,
 				CE9B9A5820E7DC68005C47B2 /* FirstControllerMo.m */,
+				CE782ABD21159891002C6403 /* orderListModel.h */,
+				CE782ABE21159891002C6403 /* orderListModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -4692,6 +4721,7 @@
 				8DEA451420C11F85001529F1 /* MommentPlayerController.xib in Resources */,
 				72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */,
 				8D22C34D20C7CD68004DC8F4 /* ExpressiveController.xib in Resources */,
+				CE782ABC21158D1B002C6403 /* BidManagerCellOne.xib in Resources */,
 				CE9B9A7020E9168D005C47B2 /* AgreementController.xib in Resources */,
 				CEE4B29820C6B5A2008B8731 /* NearManController.xib in Resources */,
 				8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */,
@@ -4716,6 +4746,7 @@
 				CE5C281720B91B47006A8332 /* WinnerInfoHeadView.xib in Resources */,
 				CEC4A52B20C3D6AE0026EE19 /* TeamInfoController.xib in Resources */,
 				8D50C56120C66EAF0095A824 /* OurServiceController.xib in Resources */,
+				CE782AB7211588B3002C6403 /* BidManagerSectionFootV.xib in Resources */,
 				CE9B9A4720E533B5005C47B2 /* ZBJFViewController.xib in Resources */,
 				8D22C34220C77C0F004DC8F4 /* SkillCertificationController.xib in Resources */,
 				8D09E18220BFB49A000F7EBD /* SendTripController.xib in Resources */,
@@ -4762,6 +4793,7 @@
 				8DC17A8420C0E598005D9EE0 /* FriendCircleController.xib in Resources */,
 				8DEA450F20C1193E001529F1 /* MomentDetailController.xib in Resources */,
 				8DA4990E20A7063E00968F86 /* ResumeCell.xib in Resources */,
+				CE782AB5211588A1002C6403 /* BidManagerSectionHeadV.xib in Resources */,
 				CEE4B2B020C6D948008B8731 /* MemberRenewalController.xib in Resources */,
 				727418DF20B290BF001D6BE1 /* EnthusiastsControll.xib in Resources */,
 				72EC1BAC20BC34AA00ACC20B /* TravalController.xib in Resources */,
@@ -4907,6 +4939,7 @@
 				CE5C281F20B953C1006A8332 /* BidManagerHeadV.m in Sources */,
 				CEC4A52F20C3D6D10026EE19 /* TeamHeadView.m in Sources */,
 				CE6BEC1D20C83769003B36D7 /* LCDatePicker.m in Sources */,
+				CE782AB021158860002C6403 /* BidManagerSectionHeadV.m in Sources */,
 				CE9B9A7620E920C6005C47B2 /* OurConcernMo.m in Sources */,
 				8D12931620E616670008BD6F /* CustomScro.m in Sources */,
 				CEE4B2A620C6CC3F008B8731 /* PersonalCenterController.m in Sources */,
@@ -5065,6 +5098,7 @@
 				72B6EC9820FCC16700B4088D /* StarEvaluator.m in Sources */,
 				8D75934F20CA84CA0059C9F6 /* AboutOurController.m in Sources */,
 				729BA6D720A029AC009713FD /* UIImage+Extension.m in Sources */,
+				CE782AB321158874002C6403 /* BidManagerSectionFootV.m in Sources */,
 				8DD48CD720A81B9100D6D1E6 /* GuardCollController.m in Sources */,
 				8DE161A92106FA5D00CC7558 /* MessageMo.m in Sources */,
 				727418CB20B17F3D001D6BE1 /* ChangeHeadView.m in Sources */,
@@ -5137,6 +5171,7 @@
 				8DE4662A20EDF557009730F7 /* RCDReceiptDetailsTableViewController.m in Sources */,
 				723F4FB320BEEA8D00AF8268 /* TrvalTripCell.m in Sources */,
 				CE5C281520B91B3A006A8332 /* WinnerInfoHeadView.m in Sources */,
+				CE782ABB21158D1B002C6403 /* BidManagerCellOne.m in Sources */,
 				8DE465EB20EDF1C5009730F7 /* RCDCreateGroupViewController.m in Sources */,
 				8DE465E120EDF0FF009730F7 /* RCDCustomerEmoticonTab.m in Sources */,
 				8DEA450920C1148C001529F1 /* SendMomentController.m in Sources */,
@@ -5249,6 +5284,7 @@
 				8DE4666C20EDFCFE009730F7 /* RCDSearchDataManager.m in Sources */,
 				CEBEDD7F20B17ED1000F9EE4 /* WinningBidderController.m in Sources */,
 				8DE4665F20EDFC7D009730F7 /* RCDGroupMemberCollectionViewCell.m in Sources */,
+				CE782ABF21159891002C6403 /* orderListModel.m in Sources */,
 				720263FC20B5015500382B2F /* TZProgressView.m in Sources */,
 				720263F220B5015500382B2F /* TZAssetModel.m in Sources */,
 				8D35878C20C6A693008A5E74 /* OurPlayCell.m in Sources */,
@@ -5517,7 +5553,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = ConnectionCity/ConnectionCity.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
@@ -5563,8 +5599,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LC.CC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "22cf1c5a-63b4-4558-8dde-5c0f4007b782";
-				PROVISIONING_PROFILE_SPECIFIER = LCC;
+				PROVISIONING_PROFILE = "819cdad9-ecd2-4374-a683-bd3866b89632";
+				PROVISIONING_PROFILE_SPECIFIER = tsLC;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

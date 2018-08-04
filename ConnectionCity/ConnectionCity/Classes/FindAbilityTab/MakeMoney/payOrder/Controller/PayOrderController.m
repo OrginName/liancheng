@@ -9,6 +9,7 @@
 #import "PayOrderController.h"
 #import "AllDicMo.h"
 #import "HCCountdown.h"
+#import "InstallmentMo.h"
 
 @interface PayOrderController ()
 @property (weak, nonatomic) IBOutlet UILabel *timeLab;
@@ -162,6 +163,7 @@
     self.pintView.clipsToBounds = YES;
     self.amountLab.text = _amount;
     self.lastBtn = _wxPayBtn;
+    self.navigationItem.title = @"支付订单";
 }
 #pragma mark - 点击事件
 - (IBAction)confirmBtnClick:(id)sender {
@@ -181,7 +183,14 @@
         [YTAlertUtil showTempInfo:@"请选择支付方式"];
         return;
     }
-    NSDictionary *dic = @{@"payTypeId": _orderType,@"tenderId":_tenderId,@"depositAmount":_amount};
+    InstallmentMo *mo0 = self.dataArr[1][0];
+    InstallmentMo *mo1 = self.dataArr[1][1];
+    InstallmentMo *mo2 = self.dataArr[1][2];
+    InstallmentMo *mo3 = self.dataArr[1][3];
+    InstallmentMo *mo4 = self.dataArr[1][4];
+
+    NSDictionary *dic = @{@"payTypeId": _orderType,@"tenderId":_tenderId,@"periodAmount1": mo0.data,@"periodAmount2": mo1.data,@"periodAmount3": mo2.data,@"periodAmount4": mo3.data,@"periodAmount5": mo4.data,};
+
     WeakSelf
     [YSNetworkTool POST:v1TalentTenderorderCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         if (weakSelf.lastBtn.tag==100) {
@@ -200,6 +209,9 @@
     [YSNetworkTool POST:v1Pay params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([kBalance isEqualToString:dic[@"payType"]]) {
             [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付成功" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+                [kDefaults removeObjectForKey:@"cellCntentText"];
+                [kDefaults removeObjectForKey:@"citymooo"];
+                [kDefaults synchronize];
                 [weakSelf.navigationController popToRootViewControllerAnimated:YES];
             } completion:nil];
         }else if ([kAlipay isEqualToString:dic[@"payType"]]) {
@@ -213,6 +225,9 @@
         //支付成功
         WeakSelf
         [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付成功" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+            [kDefaults removeObjectForKey:@"cellCntentText"];
+            [kDefaults removeObjectForKey:@"citymooo"];
+            [kDefaults synchronize];
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         } completion:nil];
     }else if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"failure"]) {
@@ -228,6 +243,9 @@
         //支付成功
         WeakSelf
         [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付成功" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+            [kDefaults removeObjectForKey:@"cellCntentText"];
+            [kDefaults removeObjectForKey:@"citymooo"];
+            [kDefaults synchronize];
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         } completion:nil];
     }else if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"failure"]) {

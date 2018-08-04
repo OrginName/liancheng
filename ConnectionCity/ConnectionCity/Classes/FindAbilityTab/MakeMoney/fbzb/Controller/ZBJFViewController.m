@@ -271,18 +271,27 @@
         [YTAlertUtil showTempInfo:@"招标金额、分期、保证金至少选择一项"];
         return;
     }
-    
+    AllContentMo *mo;
+    NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+    if (mo00.bbb) {
+        mo = [arr[8] contentArr][5];
+    }else if(mo20.bbb){
+        mo = [arr[8] contentArr][6];
+    }else{
+        mo = [arr[8] contentArr][7];
+    }
+
     NSDictionary *dic = @{
-                          @"amount": self.cellCntentText[8],
+                          @"amount": self.cellCntentText[9],
                           @"areaCode": self.mo.ID?self.mo.ID:@"",
                           @"company": self.cellCntentText[1],
-                          @"contactMobile": self.cellCntentText[10],
-                          @"contactName": self.cellCntentText[9],
-                          @"content": self.cellCntentText[4],
+                          @"contactMobile": self.cellCntentText[11],
+                          @"contactName": self.cellCntentText[10],
+                          @"content": self.cellCntentText[5],
                           @"depositAmount": mo20.data,
-                          @"industryCategoryId": @"0",
-                          @"industryCategoryName": @"",
-                          @"industryCategoryParentId": @"0",
+                          @"industryCategoryId": self.industryCategoryId?self.industryCategoryId:@"",
+                          @"industryCategoryName": self.industryCategoryName?self.industryCategoryName:@"",
+                          @"industryCategoryParentId": @"",
                           @"industryCategoryParentName": @"",
                           @"lat": self.mo?self.mo.lat:@"",
                           @"lng": self.mo?self.mo.lng:@"",
@@ -296,12 +305,13 @@
                           @"rewardAmount3": mo2.data,
                           @"rewardAmount4": mo3.data,
                           @"rewardAmount5": mo4.data,
-                          @"tenderAddress": self.cellCntentText[3],
-                          @"tenderEndDate": self.cellCntentText[7],
-                          @"tenderImages": self.cellCntentText[5],
-                          @"tenderStartDate": self.cellCntentText[6],
+                          @"tenderAddress": self.cellCntentText[4],
+                          @"tenderEndDate": self.cellCntentText[8],
+                          @"tenderImages": self.cellCntentText[6],
+                          @"tenderStartDate": self.cellCntentText[7],
                           @"title": self.cellCntentText[0],
                           @"tenderId": self.tenderId?self.tenderId:@"",
+                          @"payType":mo.value
                           };
     BOOL a = [self.receive_flag isEqualToString:@"EDIT"]?YES:NO;
     if (a) {
@@ -316,13 +326,32 @@
 - (void)v1TalentTenderCreate:(NSDictionary *)dic{
     //6、接单全额 7、接单保证金 8、接单赏金托管
     NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
-    AllContentMo * mo = [arr[8] contentArr][5];
+    InstallmentMo *mo00 = self.dataArr[0][0];
+    InstallmentMo *mo0 = self.dataArr[1][0];
+//    InstallmentMo *mo1 = self.dataArr[1][1];
+//    InstallmentMo *mo2 = self.dataArr[1][2];
+//    InstallmentMo *mo3 = self.dataArr[1][3];
+//    InstallmentMo *mo4 = self.dataArr[1][4];
+    InstallmentMo *mo20 = self.dataArr[2][0];
+    AllContentMo *mo;
+    NSString *amount;
+    if (mo00.bbb) {
+        mo = [arr[8] contentArr][5];
+        amount = mo00.data;
+    }else if(mo20.bbb){
+        mo = [arr[8] contentArr][6];
+        amount = mo20.data;
+    }else{
+        mo = [arr[8] contentArr][7];
+        amount = mo0.data;
+    }
     WeakSelf
     [YSNetworkTool POST:v1TalentTenderCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         PayOrderController *vc = [[PayOrderController alloc]init];
         vc.tenderId = responseObject[kData];
         vc.orderType = mo.value;
-        vc.amount = weakSelf.cellCntentText[8];
+        vc.amount = amount;
+        vc.dataArr = weakSelf.dataArr;
         [weakSelf.navigationController pushViewController:vc animated:YES];
     } failure:nil];
 }

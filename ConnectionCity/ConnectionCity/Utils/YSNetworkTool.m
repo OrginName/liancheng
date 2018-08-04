@@ -10,6 +10,8 @@
 #import "EGOCache.h"
 #import "AppDelegate.h"
 #import "YSAccount.h"
+#import "YSLoginController.h"
+
 /** 请求失败提示 */
 static NSString * const kRequestFalseMessage = @"无网络连接，请稍后重试";
 /** 服务器异常提示信息 */
@@ -56,6 +58,12 @@ NSString * const YTHttpUtilResponseData = @"Data";
                 }
             } 
             success ? success(task, dic1) : nil;
+        }else if([responseObject[kCode] isEqualToString:@"UNAUTHORIZED"]){
+            [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+                YSLoginController *loginVC = [[YSLoginController alloc]init];
+                BaseNavigationController * base = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
+                [kWindow setRootViewController:base];
+            } completion:nil];
         }else{
             [YTAlertUtil showTempInfo:responseObject[kMessage]];
         }

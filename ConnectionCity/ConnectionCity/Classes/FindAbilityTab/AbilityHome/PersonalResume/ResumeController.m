@@ -100,7 +100,9 @@
                 
             } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                 i++;
-                [weakSelf.lunArr addObject:image];
+                if (![YSTools dx_isNullOrNilWithObject:image]) {
+                    [weakSelf.lunArr addObject:image];
+                }
                 if (i==imgArr.count) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         if (weakSelf.lunArr.count!=0) {

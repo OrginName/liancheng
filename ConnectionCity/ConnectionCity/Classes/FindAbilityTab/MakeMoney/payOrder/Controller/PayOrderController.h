@@ -12,5 +12,7 @@
 @property (nonatomic, strong) NSString *tenderId;
 @property (nonatomic, strong) NSString *orderType;
 @property (nonatomic, strong) NSString *amount;
+@property (nonatomic, strong) NSArray *dataArr;
+
 @end
 

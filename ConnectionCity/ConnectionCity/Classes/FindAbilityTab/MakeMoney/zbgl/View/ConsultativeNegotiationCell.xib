@@ -49,18 +49,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZXb-kQ-ubS">
-                                <rect key="frame" x="124" y="0.0" width="162" height="43"/>
+                                <rect key="frame" x="124" y="0.0" width="155.5" height="43"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBq-1b-1e3">
+                                <rect key="frame" x="279.5" y="0.0" width="15.5" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="7n3-qc-pay" secondAttribute="bottom" id="31m-ya-5aT"/>
                             <constraint firstItem="ZXb-kQ-ubS" firstAttribute="top" secondItem="iDQ-bY-c7m" secondAttribute="top" id="4dp-cL-pV3"/>
-                            <constraint firstAttribute="trailing" secondItem="ZXb-kQ-ubS" secondAttribute="trailing" constant="14" id="D8S-mf-y8T"/>
                             <constraint firstItem="7n3-qc-pay" firstAttribute="leading" secondItem="iDQ-bY-c7m" secondAttribute="leading" id="ESY-En-R3D"/>
+                            <constraint firstItem="QBq-1b-1e3" firstAttribute="leading" secondItem="ZXb-kQ-ubS" secondAttribute="trailing" id="ETf-zw-VYb"/>
                             <constraint firstItem="7n3-qc-pay" firstAttribute="top" secondItem="aZE-hx-XZR" secondAttribute="bottom" id="IBZ-gk-KWJ"/>
                             <constraint firstItem="aZE-hx-XZR" firstAttribute="leading" secondItem="iDQ-bY-c7m" secondAttribute="leading" id="IlR-VY-SZ4"/>
                             <constraint firstItem="aZE-hx-XZR" firstAttribute="top" secondItem="iDQ-bY-c7m" secondAttribute="top" id="Itb-O6-YZ4"/>
@@ -69,7 +75,10 @@
                             <constraint firstItem="7n3-qc-pay" firstAttribute="top" secondItem="VvI-nW-dgY" secondAttribute="bottom" id="XAg-5D-eIB"/>
                             <constraint firstItem="aZE-hx-XZR" firstAttribute="centerY" secondItem="iDQ-bY-c7m" secondAttribute="centerY" id="dcu-aO-cbB"/>
                             <constraint firstItem="ZXb-kQ-ubS" firstAttribute="leading" secondItem="VvI-nW-dgY" secondAttribute="trailing" constant="5" id="jcs-iA-4It"/>
+                            <constraint firstAttribute="trailing" secondItem="QBq-1b-1e3" secondAttribute="trailing" constant="5" id="p5m-h2-MSs"/>
                             <constraint firstItem="VvI-nW-dgY" firstAttribute="top" secondItem="iDQ-bY-c7m" secondAttribute="top" id="sRX-9K-bVB"/>
+                            <constraint firstItem="7n3-qc-pay" firstAttribute="top" secondItem="QBq-1b-1e3" secondAttribute="bottom" id="tn5-uU-DSQ"/>
+                            <constraint firstItem="QBq-1b-1e3" firstAttribute="top" secondItem="iDQ-bY-c7m" secondAttribute="top" id="u8M-cr-UZY"/>
                             <constraint firstItem="VvI-nW-dgY" firstAttribute="leading" secondItem="aZE-hx-XZR" secondAttribute="trailing" constant="5" id="yhj-Ox-zeR"/>
                         </constraints>
                     </view>
@@ -92,6 +101,6 @@
     </objects>
     <resources>
         <image name="weixuanhzong" width="14" height="14"/>
-        <image name="xuanzhong" width="14" height="14"/>
+        <image name="xuanzhong" width="12" height="12"/>
     </resources>
 </document>
