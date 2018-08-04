@@ -43,7 +43,7 @@
     if (!_timeTextField) {
         _datePicker = [[UIDatePicker alloc]init];
         _datePicker.datePickerMode = UIDatePickerModeDate;
-//        _datePicker.maximumDate = [NSDate date];
+//        _datePicker.minimumDate = [NSDate date];
         _datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
         _datePicker.backgroundColor = [UIColor whiteColor];
         [_datePicker addTarget:self action:@selector(dateChange:) forControlEvents:UIControlEventValueChanged];
