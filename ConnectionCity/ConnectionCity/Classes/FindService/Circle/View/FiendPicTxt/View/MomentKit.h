@@ -19,7 +19,7 @@
 // 时间视图高度
 #define kTimeLabelH         15
 // 顶部和底部的留白
-#define kBlank              15
+#define kBlank              10
 // 右侧留白
 #define kRightMargin        15
 // 正文字体

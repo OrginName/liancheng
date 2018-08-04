@@ -110,6 +110,9 @@
 //发布朋友圈
 -(void)loadData:(NSString *)urlStr urlVideo:(NSString *)videoUrl{
     BOOL a = [self.receive_flag isEqualToString:@"EDIT"]?YES:NO;
+    if (videoUrl.length==0&&urlStr.length==0) {
+        _isPic = 1;
+    }
     NSDictionary * dic = @{
                            @"cityCode": @([[KUserDefults objectForKey:kUserCityID]integerValue]),
                            @"containsImage": @(_isPic),

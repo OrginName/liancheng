@@ -54,6 +54,7 @@
             self.view_Phone.hidden = NO;
             self.layout_phone.constant = 50;
             self.layout_View.constant = 200;
+            self.view_btn.hidden = YES;
         }
         self.phoneNumLab.text = [connectionMo.mobile description];
         self.addressLab.text = [connectionMo.cityName description];

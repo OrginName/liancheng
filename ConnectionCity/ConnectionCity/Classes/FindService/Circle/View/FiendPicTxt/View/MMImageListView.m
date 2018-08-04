@@ -91,14 +91,15 @@
         }
         NSInteger rowNum = i/3;
         NSInteger colNum = i%3;
+        float width = (kScreenWidth-20-rowNum*kImagePadding-90)/3;
         if(count == 4) {
             rowNum = i/2;
             colNum = i%2;
+            width = kImageWidth;
         }
-        
-        CGFloat imageX = colNum * (kImageWidth + kImagePadding);
-        CGFloat imageY = rowNum * (kImageWidth + kImagePadding);
-        CGRect frame = CGRectMake(imageX, imageY, kImageWidth, kImageWidth);
+        CGFloat imageX = colNum * (width + kImagePadding);
+        CGFloat imageY = rowNum * (width + kImagePadding);
+        CGRect frame = CGRectMake(imageX, imageY, width, width);
         
         //单张图片需计算实际显示size
         if (count == 1) {

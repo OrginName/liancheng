@@ -98,6 +98,8 @@
         self.lab_TrvalDY.hidden = YES;
         self.lab_TrvalDes.hidden = YES;
         self.lab_TrvalPrice.hidden = YES;
+        self.lab_trvalJNXQ.hidden = YES;
+        self.view_trval1.hidden = YES;
         self.lab_Title.text = list.user1.nickName?list.user1.nickName:@"无";
         if (list.cityName.length!=0) {
             [self.btn_city setTitle:list.cityName forState:UIControlStateNormal];

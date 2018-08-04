@@ -180,6 +180,7 @@
 //创建日期插件
 -(void)initDate{
     self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
+    self.myDatePick.minDate =[NSDate date];
     self.myDatePick.delegate  = self;
     [self.view addSubview:self.myDatePick];
 }

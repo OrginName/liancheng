@@ -180,7 +180,7 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     self.tab_Bottom.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    self.cycleScrollView.frame = CGRectMake(0, 0, self.tab_Bottom.width, 220);
+    self.cycleScrollView.frame = CGRectMake(0, 0, self.tab_Bottom.width, self.tab_Bottom.width*0.7);
 }
 -(UITableView *)tab_Bottom{
     if (!_tab_Bottom) {

@@ -13,6 +13,7 @@
 #import "MLLabelUtil.h"
 #import "UIView+Geometry.h"
 #import "Utility.h"
+#import "privateUserInfoModel.h"
 #define TitleColor  [UIColor colorWithRed:179 / 255.0 green:179 / 255.0 blue:179 / 255.0 alpha:1.0]
 #pragma mark - ------------------ 动态 ------------------
 
@@ -220,22 +221,25 @@ CGFloat maxLimitHeight = 0;
     // 处理评论
     NSInteger count = [moment.comments count];
     if (count > 0) {
-        for (NSInteger i = 0; i < count; i ++) {
-            CommentLabel *label = [[CommentLabel alloc] initWithFrame:CGRectMake(0, top, width, 0)];
-            label.comment = [moment.comments objectAtIndex:i];
-            [label setDidClickText:^(Comment *comment) {
-                if ([self.delegate respondsToSelector:@selector(didSelectComment:)]) {
-                    [self.delegate didSelectComment:comment];
-                }
-            }];
-            [label setDidClickLinkText:^(MLLink *link, NSString *linkText) {
-                if ([self.delegate respondsToSelector:@selector(didClickLink:linkText:momentCell:)]) {
-                    [self.delegate didClickLink:link linkText:linkText momentCell:self];
-                }
-            }];
-            [_commentView addSubview:label];
-            // 更新
-            top += label.height;
+        for (NSInteger i = count-1; i < count; i ++) {
+            Comment * comment = moment.comments[i];
+            if ([[comment.user.ID description] isEqualToString:[[YSAccountTool userInfo] modelId]]) {
+                CommentLabel *label = [[CommentLabel alloc] initWithFrame:CGRectMake(0, top, width, 0)];
+                label.comment = [moment.comments objectAtIndex:i];
+                [label setDidClickText:^(Comment *comment) {
+                    if ([self.delegate respondsToSelector:@selector(didSelectComment:)]) {
+                        [self.delegate didSelectComment:comment];
+                    }
+                }];
+                [label setDidClickLinkText:^(MLLink *link, NSString *linkText) {
+                    if ([self.delegate respondsToSelector:@selector(didClickLink:linkText:momentCell:)]) {
+                        [self.delegate didClickLink:link linkText:linkText momentCell:self];
+                    }
+                }];
+                [_commentView addSubview:label];
+                // 更新
+                top += label.height;
+            }
         }
     }
     // 更新UI
@@ -293,10 +297,13 @@ CGFloat maxLimitHeight = 0;
     if (count > 0) {
         addH = kArrowHeight;
         MLLinkLabel *linkLab = kMLLinkLabel();
-        for (NSInteger i = 0; i < count; i ++) {
-            linkLab.attributedText = kMLLinkLabelAttributedText([moment.comments objectAtIndex:i]);
-            CGFloat commentH = [linkLab preferredSizeWithMaxWidth:kTextWidth].height + 5;
-            height += commentH;
+        for (NSInteger i = count-1; i < count; i ++) {
+            Comment * comment = moment.comments[i];
+            if ([[comment.user.ID description] isEqualToString:[[YSAccountTool userInfo] modelId]]) {
+                linkLab.attributedText = kMLLinkLabelAttributedText([moment.comments objectAtIndex:i]);
+                CGFloat commentH = [linkLab preferredSizeWithMaxWidth:kTextWidth].height + 5;
+                height += commentH;
+            }
         }
     }
     if (addH == 0) {

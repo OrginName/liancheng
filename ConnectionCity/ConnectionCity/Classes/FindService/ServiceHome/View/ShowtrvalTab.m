@@ -81,15 +81,21 @@
             return 70;
         }else if(indexPath.row==2){
             if ((self.Mo!=nil&&self.Mo.serviceCircleList.count==0)||(self.MoTrval!=nil&&self.MoTrval.serviceCircleList.count==0)) {
-                return 45;
+                return 40;
             }else{
-                return (kScreenWidth-84)/4+45;
+                return (kScreenWidth-68)/4+45;
             }
         }else{
             return 52;
         }
     }else if (indexPath.section==1){
-        return 190;
+        if (self.Mo!=nil) {
+            float hidth = [YSTools cauculateHeightOfText:self.Mo.introduce width:kScreenWidth-40 font:13];
+            return 180+hidth;
+        }else{
+            float hidth = [YSTools cauculateHeightOfText:self.MoTrval.introduce width:kScreenWidth-40 font:13];
+             return 170+hidth;
+        }
     }else{
         if (self.Mo!=nil) {
             commentList * com = self.Mo.commentList[indexPath.row];

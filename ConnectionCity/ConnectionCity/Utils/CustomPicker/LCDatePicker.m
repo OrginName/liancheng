@@ -35,6 +35,10 @@
     }
     return self;
 }
+-(void)setMinDate:(NSDate *)minDate{
+    _minDate = minDate;
+    self.datePicker.minimumDate = minDate;
+}
 - (UITextField *)timeTextField {
     if (!_timeTextField) {
         _datePicker = [[UIDatePicker alloc]init];

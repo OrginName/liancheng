@@ -47,6 +47,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab_TrvalPrice;
 @property (weak, nonatomic) IBOutlet UILabel *lab_TrvalDY;
 @property (weak, nonatomic) IBOutlet UILabel *lab_TrvalDes;
+@property (weak, nonatomic) IBOutlet UILabel *lab_trvalJNXQ;
+@property (weak, nonatomic) IBOutlet UIView *view_trval1;
 
 @property(nonatomic,assign) id<ShowTrvalCellDelegate>delegate;
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView
