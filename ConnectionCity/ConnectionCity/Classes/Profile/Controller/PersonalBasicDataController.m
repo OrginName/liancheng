@@ -50,7 +50,7 @@
         self.nickNameLab.text = connectionMo.nickName?connectionMo.nickName:[connectionMo.ID description];
         self.introduceLab.text = connectionMo.sign?connectionMo.sign:@"";
         self.lcNumLab.text = [connectionMo.ID description];
-        if ([connectionMo.ID isEqualToString:[[YSAccountTool userInfo] modelId]]) {
+        if ([[connectionMo.ID description] isEqualToString:[[YSAccountTool userInfo] modelId]]) {
             self.view_Phone.hidden = NO;
             self.layout_phone.constant = 50;
             self.layout_View.constant = 200;

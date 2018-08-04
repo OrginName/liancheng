@@ -35,11 +35,10 @@
 @property(nonatomic, assign) BOOL hasSyncFriendList;
 @property(nonatomic, assign) BOOL isBeginSearch;
 @property(nonatomic, strong) NSMutableDictionary *resultDic;
-
+@property (nonatomic,strong) NSMutableArray * arr_Data;
 @end
 
 @implementation RCDContactViewController
-
 - (void)setUpView {
     [self.friendsTabelView
         setBackgroundColor:[UIColor colorWithRed:235 / 255.0 green:235 / 255.0 blue:235 / 255.0 alpha:1]];
@@ -106,6 +105,7 @@
     // initial data
     self.matchFriendList = [[NSMutableArray alloc] init];
     self.allFriendSectionDic = [[NSDictionary alloc] init];
+    self.arr_Data = [NSMutableArray array];
     self.friendsTabelView.tableFooterView = [UIView new];
     self.friendsTabelView.backgroundColor = HEXCOLOR(0xf0f0f6);
     self.friendsTabelView.separatorColor = HEXCOLOR(0xdfdfdf);
@@ -346,7 +346,6 @@
             [self.navigationController pushViewController:chatViewController animated:YES];
             return;
         }
-
         default:
             break;
         }
@@ -384,9 +383,9 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     [self.matchFriendList removeAllObjects];
     if (searchText.length <= 0) {
-        [self sortAndRefreshWithList:[self getAllFriendList]];
+        [self sortAndRefreshWithList:self.arr_Data];
     } else {
-        for (RCUserInfo *userInfo in [self getAllFriendList]) {
+        for (RCUserInfo *userInfo in self.arr_Data) {
             //忽略大小写去判断是否包含
             if ([userInfo.name rangeOfString:searchText options:NSCaseInsensitiveSearch].location != NSNotFound ||
                 [[RCDUtilities hanZiToPinYinWithString:userInfo.name] rangeOfString:searchText
@@ -398,17 +397,15 @@
         [self sortAndRefreshWithList:self.matchFriendList];
     }
 }
-
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     self.searchFriendsBar.showsCancelButton = NO;
     [self.searchFriendsBar resignFirstResponder];
     self.searchFriendsBar.text = @"";
-//    [self.matchFriendList removeAllObjects];
-//    [self sortAndRefreshWithList:[self getAllFriendList]];
+    [self.matchFriendList removeAllObjects];
+    [self sortAndRefreshWithList:self.arr_Data];
     _isBeginSearch = NO;
     [self.friendsTabelView reloadData];
 }
-
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
     if (_isBeginSearch == NO) {
         _isBeginSearch = YES;
@@ -417,15 +414,13 @@
     self.searchFriendsBar.showsCancelButton = YES;
     return YES;
 }
-
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
 }
-
 #pragma mark - 获取好友并且排序
-
 - (NSArray *)getAllFriendList {
-    NSMutableArray *friendList = [[NSMutableArray alloc] init];
+    __block NSMutableArray *friendList = [[NSMutableArray alloc] init];
+    WeakSelf
 //    NSMutableArray *userInfoList = [NSMutableArray arrayWithArray:[[RCDataBaseManager shareInstance] getAllFriends]];
 //    for (RCDUserInfo *user in userInfoList) {
 //        if ([user.status isEqualToString:@"20"]) {
@@ -436,8 +431,10 @@
         [RCDDataSource syncFriendList:[RCIM sharedRCIM].currentUserInfo.userId
                              complete:^(NSMutableArray *result) {
 //                                 [result removeAllObjects];
+                                 
                                  self.hasSyncFriendList = YES;
                                  [self sortAndRefreshWithList:result];
+                                 weakSelf.arr_Data = result;
                              }];
 //    }
     //如有好友备注，则显示备注
