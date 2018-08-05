@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FriendVideo : MyCollectionView
+-(void)loadDataFriendList;//加载视频列表
 -(instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout withController:(UIViewController *)controller;
 @end
 @interface FriendVideoLayout : UICollectionViewFlowLayout

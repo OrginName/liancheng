@@ -119,26 +119,21 @@
         [UIView setAnimationBeginsFromCurrentState:YES];
         [UIView setAnimationCurve:[curve intValue]];
         _mainView.center = CGPointMake(_mainView.center.x,   a==1?keyBoardEndY+20:keyBoardEndY-64-20);   // keyBoardEndY的坐标包括了状态栏的高度，要减去
-        
     }];
 }
-
 -(void)setMoment:(Moment *)moment{
     _moment = moment;
-    self.imageBg.image = moment.coverImage;
+    [self.imageBg sd_setImageWithURL:[NSURL URLWithString:moment.videoCover] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     [self.image_head sd_setImageWithURL:[NSURL URLWithString:moment.userMo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     self.lab_title.text = moment.userMo.nickName;
     self.lab_SubTitle.text = moment.content;
-//    long long a = [[YSTools cTimestampFromString:moment.createTime] floatValue];
     self.lab_time.text = [YSTools compareCurrentTime:moment.createTime];
-//    [self.btn_Zan setTitle:KString(@"%@", moment.likeCount) forState:UIControlStateNormal];
     [self.btn_PL setTitle:KString(@"评论(%@)", moment.commentCount) forState:UIControlStateNormal];
     self.lab_Zan.text = KString(@"%@", moment.likeCount);
     self.like_Zan.text = KString(@"%@", moment.likeCount);
 }
 //分享
 -(void)ShareBtn{
-//    [YTAlertUtil showTempInfo:@"分享"];
     [YSShareTool share];
 }
 - (IBAction)BtnClcik:(UIButton *)sender {

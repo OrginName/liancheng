@@ -51,16 +51,14 @@
 /**
  准备播放器
  
- @param videoPath 视频地址
+ @param videoURL视频地址
  */
 - (void)setupPlayerWith:(NSURL *)videoURL
 {
     [self creatPlayer:videoURL];
-    
     [_player play];
     [self useDelegateWith:LPAVPlayerStatusLoadingVideo];
 }
-
 /**
  avplayer自身有一个rate属性
  rate ==1.0，表示正在播放；rate == 0.0，暂停；rate == -1.0，播放失败
@@ -177,7 +175,7 @@
 - (AVPlayerItem *)getPlayerItem:(NSURL *)videoURL
 {
     // 转utf8 防止中文报错
-    //    videoPath = [videoPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//        videoPath = [videoPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     //    videoPath = [videoPath stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
     // NSURL *url = [NSURL URLWithString:videoPath];

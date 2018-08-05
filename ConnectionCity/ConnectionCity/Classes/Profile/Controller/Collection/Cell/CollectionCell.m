@@ -25,13 +25,13 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        [self addSubview:self.image_head];
-        [self addSubview:self.lab_title];
-        [self addSubview:self.lab_Time];
-        [self addSubview:self.btn_Cancle];
-        [self addSubview:self.lab_desc];
-        [self addSubview:self.listView];
-        [self addSubview:self.imagePlay];
+        [self.contentView addSubview:self.image_head];
+        [self.contentView addSubview:self.lab_title];
+        [self.contentView addSubview:self.lab_Time];
+        [self.contentView addSubview:self.btn_Cancle];
+        [self.contentView addSubview:self.lab_desc];
+        [self.contentView addSubview:self.listView];
+        [self.contentView addSubview:self.imagePlay];
     }
     return self;
 }
@@ -61,7 +61,11 @@
         _listView.origin = CGPointMake(_image_head.right, bottom);
         bottom = _listView.bottom + kPaddingValue;
         receive_Mo.cellHeight = _listView.bottom+10;
-    }else if(receive_Mo.videos.length!=0){
+        self.imagePlay.hidden = YES;
+        self.listView.hidden = NO;
+    }else if(![[receive_Mo.videos description] containsString:@"null"]&&receive_Mo.videos.length!=0){
+        self.listView.hidden = YES;
+        self.imagePlay.hidden = NO;
         _imagePlay.image = receive_Mo.coverImage;
         _imagePlay.frame = CGRectMake(_lab_desc.left, _lab_desc.bottom+5, 100, 150);
         self.play.frame = CGRectMake(35, 60, 40, 40);
@@ -112,7 +116,7 @@
         _lab_title = [[UILabel alloc] initWithFrame:CGRectMake(self.image_head.right+10, self.image_head.top-5, self.width-self.image_head.right,15)];
         _lab_title.textColor = YSColor(43, 43, 43);
         _lab_title.font = [UIFont systemFontOfSize:14];
-        _lab_title.text = @"大海的孩子";
+        _lab_title.text = @"";
     }
     return _lab_title;
 }
@@ -140,6 +144,7 @@
     if (!_listView) {
         // 图片区
         _listView = [[MMImageListView alloc] initWithFrame:CGRectZero];
+        _listView.hidden = YES;
     }
     return _listView;
 }
@@ -159,7 +164,9 @@
 -(UIImageView *)imagePlay{
     if (!_imagePlay) {
         _imagePlay = [[UIImageView alloc] init];
+        _imagePlay.hidden = YES;
         UIImageView * image = [[UIImageView alloc] init];
+        image.frame = CGRectMake(30, 55, 40, 40);
         image.image = [UIImage imageNamed:@"q-play"];
         [_imagePlay addSubview:image];
         _imagePlay.userInteractionEnabled = YES;

@@ -119,7 +119,6 @@
     WeakSelf
     [YSNetworkTool POST:v1CommonCollectCreate params:@{@"typeId":@([comm.ID integerValue]),@"type":@20} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         page=1;
-        [cell.imagePlay removeFromSuperview];
         [weakSelf.momentList removeObject:comm];
         [weakSelf.tab_Bottom deleteRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationNone];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

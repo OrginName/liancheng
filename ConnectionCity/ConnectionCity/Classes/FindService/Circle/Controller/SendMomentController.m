@@ -10,19 +10,21 @@
 #import "PhotoSelect.h"
 #import "QiniuUploader.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <AVFoundation/AVFoundation.h>
 @interface SendMomentController ()<PhotoSelectDelegate>
 {
     CGFloat itemHeigth;
     NSString * _videoUrl;
     int _isPic;//是否包含图片
     int _isVideo;//是否包含视频
-    NSString * _imageURL;
+    NSString * _imageURL,*_coverImgaeUrl;
 }
 @property (weak, nonatomic) IBOutlet CustomtextView *txt_Moment;
 @property (weak, nonatomic) IBOutlet UIView *view_Photo;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_photoSlect;
 @property (nonatomic,strong)PhotoSelect * photo;
 @property (nonatomic,strong) NSMutableArray * Arr_images;
+@property (nonatomic,strong) UIImage * coverImage;
 @end
 @implementation SendMomentController
 - (void)viewDidLoad {
@@ -58,6 +60,7 @@
     if ([KString(@"%@", self.receive_Moment.containsVideo) isEqualToString:@"1"]) {
         _isVideo = 1;
         _videoUrl = self.receive_Moment.videos;
+        _coverImgaeUrl = self.receive_Moment.videoCover;
         self.photo.selectedPhotos = [NSMutableArray arrayWithObject:self.receive_Moment.videos];
         [self.photo.selectedAssets addObject:@{@"filename":@"video",@"flag":self.receive_flag}];
     }
@@ -71,6 +74,7 @@
     __block NSString * urlStr = @"";//图片路径拼接
     __block NSString * videoStr = @"";//视频路径
     __block NSInteger index = 0;
+    WeakSelf
     [YTAlertUtil showHUDWithTitle:a?@"正在更新":@"正在发布"];
     if (self.Arr_images.count!=0) {
         for (int i=0; i<self.Arr_images.count; i++) {
@@ -97,7 +101,14 @@
         }else{
             [[QiniuUploader defaultUploader] uploadVideoToQNFilePath:_videoUrl withBlock:^(NSDictionary *url) {
                 videoStr = [NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]];
-                [self loadData:@"" urlVideo:videoStr];
+                if (![YSTools dx_isNullOrNilWithObject:_coverImgaeUrl]&&_coverImgaeUrl.length!=0) {
+                    [self loadData:@"" urlVideo:videoStr];
+                    return;
+                }
+                [[QiniuUploader defaultUploader] uploadImageToQNFilePath:[UIImage thumbnailOfAVAsset:[NSURL URLWithString:videoStr]] withBlock:^(NSDictionary *url) {
+                    _coverImgaeUrl =[NSString stringWithFormat:@"%@%@",QINIUURL,url[@"hash"]];
+                    [self loadData:@"" urlVideo:videoStr];
+                }];
             }];
         }
     }else{
@@ -119,6 +130,7 @@
                            @"containsVideo": @(_isVideo),
                            @"content": self.txt_Moment.text,
                            @"images": urlStr,
+                           @"videoCover":_coverImgaeUrl,
                            @"videos": videoUrl,
                            @"serviceCircleId":self.receive_Moment.ID?self.receive_Moment.ID:@"",
                            @"friendCircleId":self.receive_Moment.ID?self.receive_Moment.ID:@""

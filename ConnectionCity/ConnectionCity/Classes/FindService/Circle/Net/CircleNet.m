@@ -37,14 +37,16 @@
                 moment.comments = commentArr;
                 moment.likeCount = Arr[i][@"obj"][@"likeCount"];
                 moment.commentCount = Arr[i][@"obj"][@"commentCount"];
-                if (moment.videos.length!=0&&[moment.videos containsString:@"http"]) {
-                    moment.coverImage = [UIImage thumbnailOfAVAsset:[NSURL URLWithString:moment.videos]];
-                }else{
-                    moment.coverImage = [UIImage imageNamed:@"no-pic"];
+//                if (moment.videos.length!=0&&[moment.videos containsString:@"http"]) {
+//                    moment.coverImage = [UIImage thumbnailOfAVAsset:[NSURL URLWithString:moment.videos]];
+//                }else{
+                if (moment.images.length!=0&&[moment.images containsString:@"http"]) {
                     NSMutableArray * imageArr = [[moment.images componentsSeparatedByString:@";"] mutableCopy];
                     [imageArr removeLastObject];
                     moment.fileCount = [imageArr count];
                 }
+                    moment.coverImage = [UIImage imageNamed:@"no-pic"];
+//                }
                 [arr addObject:moment];
             }
             

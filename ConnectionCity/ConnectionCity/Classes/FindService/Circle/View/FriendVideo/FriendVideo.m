@@ -54,7 +54,7 @@
     self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         [self loadDataFriendList];
     }];
-    [self.mj_header beginRefreshing];
+//    [self.mj_header beginRefreshing];
 }
 //加载朋友圈列表
 -(void)loadDataFriendList{
@@ -62,7 +62,7 @@
                            @"containsImage": @0,
                            @"containsVideo": @1,
                            @"pageNumber": @(_page),
-                           @"pageSize": @15
+                           @"pageSize": @10
                            };
     [CircleNet requstCirclelDic:dic flag:@"Friend" withSuc:^(NSMutableArray *successArrValue) {
         if (_page==1) {

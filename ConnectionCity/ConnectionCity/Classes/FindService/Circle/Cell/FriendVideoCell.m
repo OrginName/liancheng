@@ -25,7 +25,7 @@
     _moment = moment;
     self.lab_User.text = moment.userMo.nickName;
     self.lab_content.text = moment.content;
-    self.image_cover.image = moment.coverImage;
+    [self.image_cover sd_setImageWithURL:[NSURL URLWithString:moment.videoCover] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     [self.image_User sd_setImageWithURL:[NSURL URLWithString:moment.userMo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     [self.btn_Zan setTitle:[NSString stringWithFormat:@"%@ 赞",KString(@"%@", moment.likeCount)] forState:UIControlStateNormal];
 }
