@@ -37,12 +37,10 @@
                            @"pageNumber": @(page),
                            @"pageSize": @15
                            };
+    WeakSelf
     [YSNetworkTool POST:v1MyCollectPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        if ([responseObject[@"data"][@"content"] count]==0) {            [self endRefresh];
-            return;
-        }
         if (page==1) {
-            [self.momentList removeAllObjects];
+            [weakSelf.momentList removeAllObjects];
         }
         page++;
         NSArray * Arr = responseObject[@"data"][@"content"];
@@ -54,6 +52,7 @@
                 moment.text = Arr[i][@"obj"][@"content"];
                 moment.videos = [Arr[i][@"obj"][@"videos"] description];
                 moment.images = [Arr[i][@"obj"][@"images"] description];
+                moment.videoCover = [Arr[i][@"obj"][@"videoCover"] description];
                 moment.containsImage =Arr[i][@"obj"][@"containsImage"];
                 moment.containsVideo =Arr[i][@"obj"][@"containsVideo"];
                 if ([Arr[i][@"user"] isKindOfClass:[NSDictionary class]]) {
@@ -62,21 +61,19 @@
                 }
                 moment.singleWidth = 500;
                 moment.singleHeight = 315;
-                if (moment.videos.length!=0&&[moment.videos containsString:@"http"]) {
-                    moment.coverImage = [UIImage thumbnailOfAVAsset:[NSURL URLWithString:moment.videos]];
-                }else{
+                if (![YSTools dx_isNullOrNilWithObject:moment.images]) {
                     moment.coverImage = [UIImage imageNamed:@"no-pic"];
                     NSMutableArray * imageArr = [[moment.images componentsSeparatedByString:@";"] mutableCopy];
                     [imageArr removeLastObject];
                     moment.fileCount = [imageArr count];
                 }
-                [self.momentList addObject:moment];
+                [weakSelf.momentList addObject:moment];
             }
-            [self endRefresh];
-            [self.tab_Bottom reloadData];
         }
+        [weakSelf endRefresh];
+        [weakSelf.tab_Bottom reloadData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [self endRefresh];
+        [weakSelf endRefresh];
     }];
 }
 -(void)endRefresh{
@@ -105,8 +102,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 }
 - (void)didSelectFullText:(CollectionCell *)cell{
-//    NSIndexPath * index = [self.tab_Bottom indexPathForCell:cell];
-    [self.tab_Bottom reloadData];
+    NSIndexPath * index = [self.tab_Bottom indexPathForCell:cell];
+    [self.tab_Bottom reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationNone];
+//    [self.tab_Bottom reloadData];
 }
 -(void)didPlayMyVideo:(CollectionCell *)cell{
     NSIndexPath * index = [self.tab_Bottom indexPathForCell:cell];
@@ -119,6 +117,7 @@
     WeakSelf
     [YSNetworkTool POST:v1CommonCollectCreate params:@{@"typeId":@([comm.ID integerValue]),@"type":@20} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         page=1;
+//        [weakSelf loadData];
         [weakSelf.momentList removeObject:comm];
         [weakSelf.tab_Bottom deleteRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationNone];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

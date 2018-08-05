@@ -66,9 +66,8 @@
     }else if(![[receive_Mo.videos description] containsString:@"null"]&&receive_Mo.videos.length!=0){
         self.listView.hidden = YES;
         self.imagePlay.hidden = NO;
-        _imagePlay.image = receive_Mo.coverImage;
+        [_imagePlay sd_setImageWithURL:[NSURL URLWithString:receive_Mo.videoCover] placeholderImage:[UIImage imageNamed:@"no-pic"]];
         _imagePlay.frame = CGRectMake(_lab_desc.left, _lab_desc.bottom+5, 100, 150);
-        self.play.frame = CGRectMake(35, 60, 40, 40);
         receive_Mo.cellHeight = _imagePlay.bottom+10;
     }else{
         receive_Mo.cellHeight = _lab_desc.bottom+10;
