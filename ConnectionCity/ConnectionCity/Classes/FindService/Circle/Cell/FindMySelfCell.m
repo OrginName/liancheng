@@ -20,7 +20,7 @@
 -(void)setMoment:(Moment *)moment{
     _moment = moment;
     if ([KString(@"%@", moment.containsVideo) isEqualToString:@"1"]) {
-        self.image_first.image = moment.coverImage  ;
+        [self.image_first sd_setImageWithURL:[NSURL URLWithString:moment.videoCover] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     }else
        [self.image_first sd_setImageWithURL:[NSURL URLWithString:[moment.images componentsSeparatedByString:@";"][0]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     NSString * strFirst = [moment.createTime componentsSeparatedByString:@" "][0];

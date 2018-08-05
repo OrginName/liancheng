@@ -48,6 +48,7 @@
 #pragma mark - 获取整体高度
 + (CGFloat)imageListHeightForMoment:(Moment *)moment
 {
+    float width = (kScreenWidth-20-2*kImagePadding-90)/3;
     // 图片高度
     CGFloat height = 0;
     NSInteger count = moment.fileCount;
@@ -56,11 +57,11 @@
     } else if (count == 1) {
         height += [Utility getSingleSize:CGSizeMake(moment.singleWidth, moment.singleHeight)].height;
     } else if (count < 4) {
-        height += kImageWidth;
+        height += width;
     } else if (count < 7) {
-        height += (kImageWidth*2 + kImagePadding);
+        height += (width*2 + kImagePadding);
     } else {
-        height += (kImageWidth*3 + kImagePadding*2);
+        height += (width*3 + kImagePadding*2);
     }
     return height;
 }
@@ -91,11 +92,11 @@
         }
         NSInteger rowNum = i/3;
         NSInteger colNum = i%3;
-        float width = (kScreenWidth-20-rowNum*kImagePadding-90)/3;
+        float width = (kScreenWidth-20-2*kImagePadding-90)/3;
         if(count == 4) {
             rowNum = i/2;
             colNum = i%2;
-            width = kImageWidth;
+            width = (kScreenWidth-20-2*kImagePadding-90)/3;
         }
         CGFloat imageX = colNum * (width + kImagePadding);
         CGFloat imageY = rowNum * (width + kImagePadding);

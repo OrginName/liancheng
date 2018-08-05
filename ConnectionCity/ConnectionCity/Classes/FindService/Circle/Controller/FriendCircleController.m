@@ -58,7 +58,7 @@ static NSInteger i;//判断当前返回按钮点击次数
 //        self.navigationItem.title = @"服务圈视频";
         self.frendTab.hidden = YES;
         self.frendVedio.hidden = NO;
-        [self.frendVedio.mj_header beginRefreshing];
+//        [self.frendVedio.mj_header beginRefreshing];
 //        self.frendMyselfTab.hidden = YES;
     }else if(sender.tag==3){
         self.frendTab.hidden = YES;

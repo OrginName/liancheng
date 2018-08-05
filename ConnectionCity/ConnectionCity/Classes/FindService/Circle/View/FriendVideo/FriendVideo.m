@@ -54,7 +54,7 @@
     self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         [self loadDataFriendList];
     }];
-//    [self.mj_header beginRefreshing];
+    [self.mj_header beginRefreshing];
 }
 //加载朋友圈列表
 -(void)loadDataFriendList{

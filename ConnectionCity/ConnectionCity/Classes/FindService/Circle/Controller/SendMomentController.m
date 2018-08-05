@@ -130,7 +130,7 @@
                            @"containsVideo": @(_isVideo),
                            @"content": self.txt_Moment.text,
                            @"images": urlStr,
-                           @"videoCover":_coverImgaeUrl,
+                           @"videoCover":_coverImgaeUrl?_coverImgaeUrl:@"",
                            @"videos": videoUrl,
                            @"serviceCircleId":self.receive_Moment.ID?self.receive_Moment.ID:@"",
                            @"friendCircleId":self.receive_Moment.ID?self.receive_Moment.ID:@""

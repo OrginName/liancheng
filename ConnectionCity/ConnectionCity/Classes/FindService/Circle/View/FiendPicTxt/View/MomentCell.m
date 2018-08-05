@@ -53,8 +53,8 @@ CGFloat maxLimitHeight = 0;
     _linkLabel = kMLLinkLabel();
     _linkLabel.font = kTextFont;
     _linkLabel.delegate = self;
-    _linkLabel.linkTextAttributes = @{NSForegroundColorAttributeName:kLinkTextColor};
-    _linkLabel.activeLinkTextAttributes = @{NSForegroundColorAttributeName:kLinkTextColor,NSBackgroundColorAttributeName:kHLBgColor};
+//    _linkLabel.linkTextAttributes = @{NSForegroundColorAttributeName:kLinkTextColor};
+//    _linkLabel.activeLinkTextAttributes = @{NSForegroundColorAttributeName:kLinkTextColor,NSBackgroundColorAttributeName:kHLBgColor};
     [self.contentView addSubview:_linkLabel];
     // 查看'全文'按钮
     _showAllBtn = [[UIButton alloc]init];
