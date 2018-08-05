@@ -32,6 +32,21 @@
         [_delegate selectedItemButton:(UIButton *)sender index:sender.tag];
     }
 }
+- (IBAction)btn_Serivce:(UIButton *)sender {
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(selectedSeriveButton:)]) {
+        [self.delegate selectedSeriveButton:self];
+    }
+}
+- (IBAction)btn_trval:(UIButton *)sender {
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(selectedTrvalButton:)]) {
+        [self.delegate selectedTrvalButton:self];
+    }
+}
+- (IBAction)btn_invite:(UIButton *)sender {
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(selectedInvitButton:)]) {
+        [self.delegate selectedInvitButton:self];
+    }
+}
 - (IBAction)resumeeditBtn:(id)sender {
     if (_delegate && [_delegate respondsToSelector:@selector(selectedItemButton:index:)]) {
         [_delegate selectedItemButton:(UIButton *)sender index:1];

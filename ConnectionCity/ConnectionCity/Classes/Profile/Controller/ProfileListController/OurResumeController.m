@@ -276,6 +276,44 @@
         } completion:nil];
     }
 }
+//删除服务的
+- (void)selectedSeriveButton:(ProfileCell *)cell{
+    [self deleteList:1 cell:cell];
+}
+//删除服务陪游
+- (void)selectedTrvalButton:(ProfileCell *)cell{
+    [self deleteList:2 cell:cell];
+}
+//删除旅行邀约
+- (void)selectedInvitButton:(ProfileCell *)cell{
+    [self deleteList:3 cell:cell];
+}
+-(void)deleteList:(int)a cell:(ProfileCell *)cell{
+    NSIndexPath * index = [self.tab_Bottom indexPathForCell:cell];
+    NSString * ID = @"";
+    if (self.servicedataArr.count!=0) {
+        ServiceMo *model = self.servicedataArr[index.row];
+        ID = model.Id;
+    }else if (self.tourismdataArr.count!=0){
+        tourismMo *model = self.tourismdataArr[index.row];
+        ID = model.Id;
+    }else if(self.invitationdataArr.count!=0){
+       TravelInvite *model = self.invitationdataArr[index.row];
+        ID = model.Id;
+    }
+    NSString * str = a==1?v1ServiceDelete:a==2?v1ServiceTravelDeleteTravel:v1ServiceTravelDeleteInvite;
+    WeakSelf
+    [YTAlertUtil alertDualWithTitle:@"连程" message:KString(@"是否要删除当前%@", a==1?@"服务":a==2?@"陪游":@"邀约") style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
+    } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {
+        [YSNetworkTool POST:str params:@{@"id": ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+            
+            a==1?[weakSelf v1MyServicePage]:a==2?[weakSelf v1MyTravelPage]:[weakSelf v1MyTravelInvitePage];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+    } completion:nil];
+    
+}
 #pragma mark - 数据请求
 //我的发布-简历
 - (void)requestMyResumePage {

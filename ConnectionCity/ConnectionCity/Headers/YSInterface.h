@@ -408,6 +408,14 @@ static NSString * const v1MyTravelOrderRequiredPage = @"/v1/my/travel-order/requ
 static NSString * const v1MyTravelPage = @"/v1/my/travel/page";
 //个人中心-我的发布-宝物
 static NSString * const v1MyTreasurePage = @"/v1/my/treasure/page";
+
+//服务-删除旅游邀约
+static NSString * const v1ServiceTravelDeleteInvite = @"/v1/service/travel/delete-invite";
+//服务-删除陪旅行
+static NSString * const v1ServiceTravelDeleteTravel = @"/v1/service/travel/delete-travel";
+//服务-删除服务
+static NSString * const v1ServiceDelete = @"/v1/service/delete";
+
 #pragma mark - 个人中心-认证中心
 //个人中心-认证中心
 static NSString * const v1MyAuthInfo = @"/v1/my/auth/info";

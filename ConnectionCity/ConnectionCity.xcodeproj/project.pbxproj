@@ -70,6 +70,12 @@
 		72626F5D20ED03BC001B807D /* RCDUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72626F5920ED03BC001B807D /* RCDUserInfo.m */; };
 		7266FEC5210B4304005794AD /* MyCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7266FEC4210B4304005794AD /* MyCollectionView.m */; };
 		7266FEC8210B4CEF005794AD /* MyTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7266FEC7210B4CEF005794AD /* MyTableController.m */; };
+		7266FEDF21173ED5005794AD /* FootReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7266FED621173ED4005794AD /* FootReusableView.m */; };
+		7266FEE021173ED5005794AD /* JKAreaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7266FED821173ED4005794AD /* JKAreaCollectionViewCell.m */; };
+		7266FEE121173ED5005794AD /* JKAreaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7266FEDA21173ED4005794AD /* JKAreaTableViewCell.m */; };
+		7266FEE221173ED5005794AD /* JKFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7266FEDC21173ED4005794AD /* JKFlowLayout.m */; };
+		7266FEE321173ED5005794AD /* JKReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7266FEDE21173ED4005794AD /* JKReusableView.m */; };
+		7266FEE6211742E3005794AD /* ClassificationsController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 7266FEE5211742E3005794AD /* ClassificationsController1.m */; };
 		7274188020B13CB6001D6BE1 /* MLMSegmentHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */; };
 		7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187C20B13CB6001D6BE1 /* MLMSegmentPage.m */; };
 		7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187F20B13CB6001D6BE1 /* UIView+ViewController.m */; };
@@ -765,6 +771,18 @@
 		7266FEC4210B4304005794AD /* MyCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCollectionView.m; sourceTree = "<group>"; };
 		7266FEC6210B4CEF005794AD /* MyTableController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTableController.h; sourceTree = "<group>"; };
 		7266FEC7210B4CEF005794AD /* MyTableController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTableController.m; sourceTree = "<group>"; };
+		7266FED521173ED4005794AD /* FootReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootReusableView.h; sourceTree = "<group>"; };
+		7266FED621173ED4005794AD /* FootReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootReusableView.m; sourceTree = "<group>"; };
+		7266FED721173ED4005794AD /* JKAreaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKAreaCollectionViewCell.h; sourceTree = "<group>"; };
+		7266FED821173ED4005794AD /* JKAreaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKAreaCollectionViewCell.m; sourceTree = "<group>"; };
+		7266FED921173ED4005794AD /* JKAreaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKAreaTableViewCell.h; sourceTree = "<group>"; };
+		7266FEDA21173ED4005794AD /* JKAreaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKAreaTableViewCell.m; sourceTree = "<group>"; };
+		7266FEDB21173ED4005794AD /* JKFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKFlowLayout.h; sourceTree = "<group>"; };
+		7266FEDC21173ED4005794AD /* JKFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKFlowLayout.m; sourceTree = "<group>"; };
+		7266FEDD21173ED4005794AD /* JKReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKReusableView.h; sourceTree = "<group>"; };
+		7266FEDE21173ED4005794AD /* JKReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKReusableView.m; sourceTree = "<group>"; };
+		7266FEE4211742E3005794AD /* ClassificationsController1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassificationsController1.h; sourceTree = "<group>"; };
+		7266FEE5211742E3005794AD /* ClassificationsController1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassificationsController1.m; sourceTree = "<group>"; };
 		7274187920B13CB6001D6BE1 /* MLMSegmentHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentHead.h; sourceTree = "<group>"; };
 		7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLMSegmentHead.m; sourceTree = "<group>"; };
 		7274187B20B13CB6001D6BE1 /* MLMSegmentPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentPage.h; sourceTree = "<group>"; };
@@ -2006,6 +2024,23 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		7266FED421173ED4005794AD /* CustomClass */ = {
+			isa = PBXGroup;
+			children = (
+				7266FED521173ED4005794AD /* FootReusableView.h */,
+				7266FED621173ED4005794AD /* FootReusableView.m */,
+				7266FED721173ED4005794AD /* JKAreaCollectionViewCell.h */,
+				7266FED821173ED4005794AD /* JKAreaCollectionViewCell.m */,
+				7266FED921173ED4005794AD /* JKAreaTableViewCell.h */,
+				7266FEDA21173ED4005794AD /* JKAreaTableViewCell.m */,
+				7266FEDB21173ED4005794AD /* JKFlowLayout.h */,
+				7266FEDC21173ED4005794AD /* JKFlowLayout.m */,
+				7266FEDD21173ED4005794AD /* JKReusableView.h */,
+				7266FEDE21173ED4005794AD /* JKReusableView.m */,
+			);
+			path = CustomClass;
+			sourceTree = "<group>";
+		};
 		7274187820B13CB6001D6BE1 /* MLMSegmentPageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2891,6 +2926,8 @@
 				8D67602420A408470027CDEE /* ClassificationsController.h */,
 				8D67602520A408470027CDEE /* ClassificationsController.m */,
 				8D67602620A408470027CDEE /* ClassificationsController.xib */,
+				7266FEE4211742E3005794AD /* ClassificationsController1.h */,
+				7266FEE5211742E3005794AD /* ClassificationsController1.m */,
 			);
 			path = AbilityHome;
 			sourceTree = "<group>";
@@ -3577,6 +3614,7 @@
 		CE0BA5BE209D5E9B004C3C33 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7266FED421173ED4005794AD /* CustomClass */,
 				8D95E324210EDF5600C26892 /* HCCountdown.h */,
 				8D95E323210EDF5500C26892 /* HCCountdown.m */,
 				8D5FF5EA210B16ED0094516F /* MyTab */,
@@ -5012,6 +5050,7 @@
 				72EC1B5B20B7027000ACC20B /* SwapListController.m in Sources */,
 				8D22C33C20C77B70004DC8F4 /* IdentityAuthorController.m in Sources */,
 				72A3F48B20E3BA32005BA873 /* CircleNet.m in Sources */,
+				7266FEDF21173ED5005794AD /* FootReusableView.m in Sources */,
 				CE5C282F20B9733A006A8332 /* ConsultativeNegotiationCell.m in Sources */,
 				8DC17A7820C0E430005D9EE0 /* Moment.m in Sources */,
 				723F4FAF20BEE8FF00AF8268 /* TrvalTrip.m in Sources */,
@@ -5106,9 +5145,11 @@
 				720263F420B5015500382B2F /* TZImageCropManager.m in Sources */,
 				723D376720ABDA62003FD4DF /* ShowResumeCell.m in Sources */,
 				72EC1BBD20BDA25200ACC20B /* SendSelectCell.m in Sources */,
+				7266FEE021173ED5005794AD /* JKAreaCollectionViewCell.m in Sources */,
 				CE5C27FE20B8FE3A006A8332 /* BiddInfoHeadView.m in Sources */,
 				CEE5250E20F771D400DD6179 /* MYScanViewStyle.m in Sources */,
 				CE21F0E020DDF00F00478482 /* MemberRenewalM.m in Sources */,
+				7266FEE221173ED5005794AD /* JKFlowLayout.m in Sources */,
 				8DE4667020EDFD0F009730F7 /* RCDSearchResultModel.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
 				CE9B9A6F20E9168D005C47B2 /* AgreementController.m in Sources */,
@@ -5284,6 +5325,7 @@
 				8DE4666C20EDFCFE009730F7 /* RCDSearchDataManager.m in Sources */,
 				CEBEDD7F20B17ED1000F9EE4 /* WinningBidderController.m in Sources */,
 				8DE4665F20EDFC7D009730F7 /* RCDGroupMemberCollectionViewCell.m in Sources */,
+				7266FEE121173ED5005794AD /* JKAreaTableViewCell.m in Sources */,
 				CE782ABF21159891002C6403 /* orderListModel.m in Sources */,
 				720263FC20B5015500382B2F /* TZProgressView.m in Sources */,
 				720263F220B5015500382B2F /* TZAssetModel.m in Sources */,
@@ -5333,7 +5375,9 @@
 				8D22C37520C7E54D004DC8F4 /* TransactionRecordController.m in Sources */,
 				72EBB8D120C8184700F670E9 /* SetController.m in Sources */,
 				CEE5252020FA689800DD6179 /* BidStateTools.m in Sources */,
+				7266FEE321173ED5005794AD /* JKReusableView.m in Sources */,
 				CE2C401D20F1EAF100D33B17 /* DubTimeSlectorController.m in Sources */,
+				7266FEE6211742E3005794AD /* ClassificationsController1.m in Sources */,
 				8DE4662420EDF4F0009730F7 /* RCDPrivateSettingViewController.m in Sources */,
 				8DE4664C20EDF71B009730F7 /* RCLocationConvert.m in Sources */,
 				7294185320AD11E00054B71D /* SearchCell.m in Sources */,

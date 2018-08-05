@@ -19,6 +19,7 @@
 #import "SendServiceController.h"
 #import "CustomScro.h"
 #import "CustomAnnotationView.h"
+#import "ClassificationsController1.h"
 @interface ServiceHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate,CustomScroDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
@@ -101,17 +102,20 @@
             break;
         case 2:
         {
-            ClassificationsController * class = [ClassificationsController new];
+//            ClassificationsController * class = [ClassificationsController new];
+//            class.title = @"服务分类";
+//            class.arr_Data = self.Arr_Classify;
+//            class.block = ^(NSString *classifiation){
+//                UILabel * btn = (UILabel *)[self.view_SX viewWithTag:2];
+//                btn.text = classifiation;
+//
+//            };
+//            class.block1 = ^(NSString *classifiationID, NSString *classifiation) {
+//                [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID],@"category":classifiationID}];
+//            };
+            ClassificationsController1 * class = [ClassificationsController1 new];
             class.title = @"服务分类";
             class.arr_Data = self.Arr_Classify;
-            class.block = ^(NSString *classifiation){
-                UILabel * btn = (UILabel *)[self.view_SX viewWithTag:2];
-                btn.text = classifiation;
-                
-            };
-            class.block1 = ^(NSString *classifiationID, NSString *classifiation) {
-                [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID],@"category":classifiationID}];
-            };
             [self.navigationController pushViewController:class animated:YES];
         }
             break;

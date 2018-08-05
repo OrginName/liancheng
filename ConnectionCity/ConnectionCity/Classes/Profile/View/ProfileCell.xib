@@ -193,7 +193,7 @@
                 <outlet property="concernTitleLab" destination="eFC-nR-C1d" id="EES-lf-8Kb"/>
                 <outlet property="headerImgV" destination="ARY-1v-fsA" id="BoU-Y3-Xvj"/>
             </connections>
-            <point key="canvasLocation" x="35" y="69"/>
+            <point key="canvasLocation" x="41" y="71"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileCell2" rowHeight="87" id="KGk-i7-Jjw" customClass="ProfileCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
@@ -276,7 +276,7 @@
                 <outlet property="resumeeditBtn" destination="irP-QF-2gj" id="KKv-lv-3SH"/>
                 <outlet property="resumetitleLab" destination="YKb-y8-lrx" id="JGt-i5-6G9"/>
             </connections>
-            <point key="canvasLocation" x="23" y="199"/>
+            <point key="canvasLocation" x="41" y="215"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileCell3" rowHeight="85" id="Glg-RK-c2c" customClass="ProfileCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
@@ -293,7 +293,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="陪打王者荣耀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSG-iz-xxp">
-                        <rect key="frame" x="16" y="11" width="86" height="17"/>
+                        <rect key="frame" x="16" y="11" width="278" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -323,6 +323,18 @@
                             <constraint firstAttribute="width" constant="10" id="beP-8T-Gkb"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcp-rO-ih2">
+                        <rect key="frame" x="259" y="24" width="30" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="EFL-xs-Jrl"/>
+                            <constraint firstAttribute="height" constant="27" id="Oyi-v1-Cg5"/>
+                        </constraints>
+                        <state key="normal" image="our-del"/>
+                        <connections>
+                            <action selector="btn_Serivce:" destination="6P8-er-9ZG" eventType="touchUpInside" id="B48-kV-l9i"/>
+                            <action selector="btn_Serivce:" destination="Glg-RK-c2c" eventType="touchUpInside" id="qts-lJ-Abu"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
@@ -330,8 +342,11 @@
                     <constraint firstAttribute="bottom" secondItem="k48-Ga-ASZ" secondAttribute="bottom" id="CCL-Ba-Nv4"/>
                     <constraint firstItem="Ifm-c5-Lso" firstAttribute="top" secondItem="URV-4H-BUa" secondAttribute="bottom" constant="5" id="E2C-2Z-RhV"/>
                     <constraint firstItem="URV-4H-BUa" firstAttribute="leading" secondItem="qSG-iz-xxp" secondAttribute="leading" id="N0O-jr-TGO"/>
+                    <constraint firstItem="pcp-rO-ih2" firstAttribute="centerY" secondItem="2ug-I4-4dh" secondAttribute="centerY" id="RT8-tT-Kc3"/>
                     <constraint firstItem="URV-4H-BUa" firstAttribute="top" secondItem="qSG-iz-xxp" secondAttribute="bottom" constant="5" id="YMg-Lc-ebk"/>
                     <constraint firstItem="qSG-iz-xxp" firstAttribute="leading" secondItem="HJX-hk-5uY" secondAttribute="leadingMargin" id="ZJt-Uo-yKb"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="qSG-iz-xxp" secondAttribute="trailing" constant="10" id="caw-jF-z7o"/>
+                    <constraint firstItem="2ug-I4-4dh" firstAttribute="leading" secondItem="pcp-rO-ih2" secondAttribute="trailing" constant="5" id="dt6-6o-EqL"/>
                     <constraint firstItem="qSG-iz-xxp" firstAttribute="top" secondItem="HJX-hk-5uY" secondAttribute="topMargin" id="fdM-8H-ZIH"/>
                     <constraint firstItem="B2u-Eb-MMJ" firstAttribute="leading" secondItem="Ifm-c5-Lso" secondAttribute="trailing" constant="10" id="hBL-1F-MgV"/>
                     <constraint firstItem="k48-Ga-ASZ" firstAttribute="leading" secondItem="HJX-hk-5uY" secondAttribute="leading" id="i39-6D-CsA"/>
@@ -348,7 +363,7 @@
                 <outlet property="serviceTitleLab" destination="qSG-iz-xxp" id="6HK-Og-9hM"/>
                 <outlet property="servicepriceLab" destination="URV-4H-BUa" id="weP-8d-QRy"/>
             </connections>
-            <point key="canvasLocation" x="-308" y="353"/>
+            <point key="canvasLocation" x="41" y="351"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileCell4" rowHeight="79" id="nlq-CY-aqF" customClass="ProfileCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
@@ -395,6 +410,18 @@
                             <constraint firstAttribute="width" constant="10" id="dnF-Ir-9xw"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pU-PE-SRi">
+                        <rect key="frame" x="259" y="21" width="30" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="OYR-gn-mDc"/>
+                            <constraint firstAttribute="height" constant="27" id="P7t-xS-llh"/>
+                        </constraints>
+                        <state key="normal" image="our-del"/>
+                        <connections>
+                            <action selector="btn_trval:" destination="nlq-CY-aqF" eventType="touchUpInside" id="AUf-eO-0hH"/>
+                            <action selector="btn_trval:" destination="6P8-er-9ZG" eventType="touchUpInside" id="hzR-Cf-TgK"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
@@ -408,8 +435,10 @@
                     <constraint firstItem="urd-US-JEm" firstAttribute="top" secondItem="iUa-Ra-7Rf" secondAttribute="bottom" constant="5" id="RrR-EW-VX7"/>
                     <constraint firstItem="O5F-mU-bxw" firstAttribute="centerY" secondItem="mur-Vf-g8H" secondAttribute="centerY" id="Uaj-NL-eem"/>
                     <constraint firstItem="uFE-GK-hFL" firstAttribute="trailing" secondItem="Kbo-9Z-0Ho" secondAttribute="trailingMargin" id="VDi-NF-pn7"/>
+                    <constraint firstItem="7pU-PE-SRi" firstAttribute="centerY" secondItem="uFE-GK-hFL" secondAttribute="centerY" id="WEk-wS-QPE"/>
                     <constraint firstItem="mur-Vf-g8H" firstAttribute="leading" secondItem="urd-US-JEm" secondAttribute="leading" id="ZIV-VS-bLa"/>
                     <constraint firstItem="urd-US-JEm" firstAttribute="leading" secondItem="iUa-Ra-7Rf" secondAttribute="leading" id="aVs-Mc-6le"/>
+                    <constraint firstItem="uFE-GK-hFL" firstAttribute="leading" secondItem="7pU-PE-SRi" secondAttribute="trailing" constant="5" id="cgh-1T-lip"/>
                     <constraint firstItem="iUa-Ra-7Rf" firstAttribute="top" secondItem="Kbo-9Z-0Ho" secondAttribute="topMargin" id="iWD-IJ-Y2n"/>
                 </constraints>
             </tableViewCellContentView>
@@ -420,7 +449,7 @@
                 <outlet property="tourismTimeLab" destination="O5F-mU-bxw" id="aHA-i9-h8x"/>
                 <outlet property="tourismTitleLab" destination="iUa-Ra-7Rf" id="WAS-Mh-9ea"/>
             </connections>
-            <point key="canvasLocation" x="0.0" y="464"/>
+            <point key="canvasLocation" x="41" y="489"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileCell5" rowHeight="79" id="0GW-bo-nFD" customClass="ProfileCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
@@ -473,9 +502,22 @@
                         <color key="textColor" red="0.96078431369999995" green="0.66274509800000003" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGY-Fi-Nr7">
+                        <rect key="frame" x="259" y="21" width="30" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="5hc-I1-fmz"/>
+                            <constraint firstAttribute="width" constant="30" id="7vv-2F-w7m"/>
+                        </constraints>
+                        <state key="normal" image="our-del"/>
+                        <connections>
+                            <action selector="btn_invite:" destination="6P8-er-9ZG" eventType="touchUpInside" id="SKx-me-eOe"/>
+                            <action selector="btn_invite:" destination="0GW-bo-nFD" eventType="touchUpInside" id="xTL-C9-P6s"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstItem="fGY-Fi-Nr7" firstAttribute="centerY" secondItem="Gtw-q0-cgE" secondAttribute="centerY" id="KuW-0m-lzH"/>
                     <constraint firstAttribute="bottom" secondItem="CZE-la-eHf" secondAttribute="bottom" id="NFK-6C-skL"/>
                     <constraint firstItem="5Wp-ov-2xH" firstAttribute="leading" secondItem="6kw-uO-gan" secondAttribute="trailing" constant="10" id="P3I-kR-8KS"/>
                     <constraint firstItem="6kw-uO-gan" firstAttribute="top" secondItem="BqF-GW-DKh" secondAttribute="bottom" constant="5" id="RDX-Pf-IBE"/>
@@ -485,6 +527,7 @@
                     <constraint firstItem="Gtw-q0-cgE" firstAttribute="trailing" secondItem="ouM-Lz-f8y" secondAttribute="trailingMargin" id="e3a-Ys-vxC"/>
                     <constraint firstItem="rsZ-xE-gCI" firstAttribute="top" secondItem="6kw-uO-gan" secondAttribute="bottom" constant="5" id="eTv-gH-wI3"/>
                     <constraint firstItem="xrf-z0-j8y" firstAttribute="leading" secondItem="rsZ-xE-gCI" secondAttribute="trailing" id="h4n-BR-dN8"/>
+                    <constraint firstItem="Gtw-q0-cgE" firstAttribute="leading" secondItem="fGY-Fi-Nr7" secondAttribute="trailing" constant="5" id="jL7-oq-2ed"/>
                     <constraint firstAttribute="trailing" secondItem="CZE-la-eHf" secondAttribute="trailing" id="jmM-ax-gBz"/>
                     <constraint firstItem="BqF-GW-DKh" firstAttribute="top" secondItem="ouM-Lz-f8y" secondAttribute="topMargin" id="lQv-CX-VxK"/>
                     <constraint firstItem="rsZ-xE-gCI" firstAttribute="leading" secondItem="6kw-uO-gan" secondAttribute="leading" id="sRU-1d-Ljc"/>
@@ -499,7 +542,7 @@
                 <outlet property="travelInviteTimeLab" destination="xrf-z0-j8y" id="B82-cp-mqF"/>
                 <outlet property="travelInviteTitleLab" destination="BqF-GW-DKh" id="ecm-Ii-cRh"/>
             </connections>
-            <point key="canvasLocation" x="-434" y="535"/>
+            <point key="canvasLocation" x="41" y="632"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileCell6" rowHeight="79" id="cBl-yT-5m6" userLabel="ProfileCell6" customClass="ProfileCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
@@ -565,7 +608,7 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="35" y="716"/>
+            <point key="canvasLocation" x="41" y="778"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileCell7" rowHeight="56" id="cFh-yZ-5qc" userLabel="ProfileCell6" customClass="ProfileCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
@@ -623,7 +666,7 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.9371530414" green="0.93731355670000005" blue="0.93714290860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="35" y="823"/>
+            <point key="canvasLocation" x="41" y="907"/>
         </tableViewCell>
     </objects>
     <resources>

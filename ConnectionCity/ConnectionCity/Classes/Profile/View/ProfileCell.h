@@ -13,10 +13,16 @@
 #import "ServiceCategoryNameModel.h"
 #import "TravelInvite.h"
 #import "tourismMo.h"
-
+@class ProfileCell;
 @protocol profileCellDelegate <NSObject>
 @optional
 - (void)selectedItemButton:(UIButton *)btn index:(NSInteger)index;
+@optional
+- (void)selectedSeriveButton:(ProfileCell *)cell;
+@optional
+- (void)selectedTrvalButton:(ProfileCell *)cell;
+@optional
+- (void)selectedInvitButton:(ProfileCell *)cell;
 @end
 
 @interface ProfileCell : UITableViewCell

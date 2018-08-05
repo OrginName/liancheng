@@ -88,7 +88,7 @@ MBProgressHUD *hud;
 - (void)getAllData {
     NSDictionary * dic = @{
                            @"pageNumber": @(_page),
-                           @"pageSize": @50
+                           @"pageSize": @40
                            };
     [YSNetworkTool POST:v1ApplicationPageAll params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if (_page==1) {
@@ -98,15 +98,19 @@ MBProgressHUD *hud;
         NSArray * array = @[@"userGroupApplications",@"userFriendApplications",@"teamUserApplications",@"serviceStationUserApplications"];
         NSArray * array1 = @[@"20",@"100",@"30",@"40"];
         NSArray * array2 = @[@"申请加为好友",@"申请加入群"];
+        
         for (int i=0; i<array.count; i++) {
-            for (NSDictionary * dic in responseObject[@"data"][array[i]][@"content"]) {
-                friendMo * friend = [friendMo mj_objectWithKeyValues:dic];
-                friend.type = array1[i];
-                if ([array[i] isEqualToString:@"userFriendApplications"]) {
-                    friend.des = array2[0];
-                }else
-                    friend.des = array2[1];
-                [_friends addObject:friend];
+            NSDictionary * dic1 = responseObject[@"data"][array[i]];
+            if ([dic1 isKindOfClass:[NSDictionary class]]) {
+                for (NSDictionary * dic in responseObject[@"data"][array[i]][@"content"]) {
+                    friendMo * friend = [friendMo mj_objectWithKeyValues:dic];
+                    friend.type = array1[i];
+                    if ([array[i] isEqualToString:@"userFriendApplications"]) {
+                        friend.des = array2[0];
+                    }else
+                        friend.des = array2[1];
+                    [_friends addObject:friend];
+                }
             }
         }
         [self.tableView reloadData];

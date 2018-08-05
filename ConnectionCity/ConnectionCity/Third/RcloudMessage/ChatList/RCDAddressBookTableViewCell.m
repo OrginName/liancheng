@@ -63,18 +63,17 @@
 //    self.arrow.image = [UIImage imageNamed:@"grayarrow"];
 
     //“接受”按钮
-    _acceptBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-100, 20, 80, 30)];
-    _acceptBtn.tag = self.tag;
-    [_acceptBtn setTitle:@"接受" forState:UIControlStateNormal];
-    [_acceptBtn setTintColor:[UIColor whiteColor]];
-    _acceptBtn.layer.cornerRadius = 5;
-    [_acceptBtn setBackgroundColor:[UIColor orangeColor]];
-    _acceptBtn.translatesAutoresizingMaskIntoConstraints = NO;
-    [_acceptBtn.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:14.0]];
-    [_acceptBtn addTarget:self action:@selector(accept:) forControlEvents:UIControlEventTouchUpInside];
+    self.acceptBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-100, 20, 80, 30)];
+    self.acceptBtn.tag = self.tag;
+    [self.acceptBtn setTitle:@"接受" forState:UIControlStateNormal];
+    [self.acceptBtn setTintColor:[UIColor whiteColor]];
+    self.acceptBtn.layer.cornerRadius = 5;
+    self.acceptBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.acceptBtn setBackgroundColor:[UIColor orangeColor]];
+    [self.acceptBtn addTarget:self action:@selector(accept:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.portraitImageView];
     [self.contentView addSubview:self.nameLabel];
-    [self.contentView addSubview:_acceptBtn];
+    [self.contentView addSubview:self.acceptBtn];
     [self.contentView addSubview:self.desLabel];
 }
 -(void)accept:(UIButton *)btn{
