@@ -8,6 +8,7 @@
 #import "NearManCell.h"
 #import "ConnectionMo.h"
 #import "UserMo.h"
+#import "PersonalBasicDataController.h"
 @interface NearManController ()
 {
     int _page;
@@ -81,6 +82,10 @@
 }
 #pragma mark --UICollectionViewDelegate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    UserMo * user = self.data_Arr[indexPath.row];
+    PersonalBasicDataController * person = [PersonalBasicDataController new];
+    person.connectionMo = user;
+    [self.navigationController pushViewController:person animated:YES];
 }
 //返回这个UICollectionView是否可以被选择
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
