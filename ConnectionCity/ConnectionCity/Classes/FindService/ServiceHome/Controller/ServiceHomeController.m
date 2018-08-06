@@ -72,10 +72,6 @@
         [self.navigationController pushViewController:[super rotateClass:str] animated:YES];
     }
 }
-//关键字点击
--(void)KeyWordsClick:(UIButton *)btn{
-    [YTAlertUtil showTempInfo:@"关键字点击"];
-}
 //发布简历按钮点击
 - (IBAction)sendResume:(UIButton *)sender {
     _flag = NO;
@@ -102,20 +98,16 @@
             break;
         case 2:
         {
-//            ClassificationsController * class = [ClassificationsController new];
-//            class.title = @"服务分类";
-//            class.arr_Data = self.Arr_Classify;
-//            class.block = ^(NSString *classifiation){
-//                UILabel * btn = (UILabel *)[self.view_SX viewWithTag:2];
-//                btn.text = classifiation;
-//
-//            };
-//            class.block1 = ^(NSString *classifiationID, NSString *classifiation) {
-//                [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID],@"category":classifiationID}];
-//            };
             ClassificationsController1 * class = [ClassificationsController1 new];
             class.title = @"服务分类";
             class.arr_Data = self.Arr_Classify;
+            class.block = ^(NSString *classifiation){
+                UILabel * btn = (UILabel *)[self.view_SX viewWithTag:2];
+                btn.text = classifiation; 
+            };
+            class.block1 = ^(NSString *classifiationID, NSString *classifiation) {
+                [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID],@"category":classifiationID}];
+            };
             [self.navigationController pushViewController:class animated:YES];
         }
             break;

@@ -12,6 +12,7 @@
 #import "JKReusableView.h"
 #import "FootReusableView.h"
 #import "JKFlowLayout.h"
+#import "ClassifyMo.h"
 #define CIO_SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
 #define CIO_SCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
 #define tabWidth 100
@@ -21,14 +22,9 @@
     NSInteger _selectIndex;//记录位置
     BOOL _isScrollDown;//滚动方向
 }
-
-@property(nonatomic,strong) NSMutableArray *tableTittleDataArray;
-@property(nonatomic,strong) NSMutableArray *headTittleDataArray;
 @property(nonatomic,strong) NSMutableArray *dataArray;
 @property(nonatomic,strong) UICollectionView *collectionView;
-
 @property(nonatomic,strong)UITableView *tableView;
-
 @end
 
 @implementation ClassificationsController1
@@ -38,18 +34,12 @@ static NSString *footerID = @"footerID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"JKFlowLayoutDemo";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     _selectIndex = 0;
     _isScrollDown = YES;
-    
-    [self.tableTittleDataArray addObjectsFromArray:@[@"专家",@"CIO",@"教师",@"专家2",@"CIO2",@"教师2",@"专家3",@"CIO3",@"教师3",@"专家4",@"CIO4",@"教师4",@"专家5",@"CIO5",@"教师5",@"专家6",@"CIO6",@"教师6"]];
-    
-    [self.headTittleDataArray addObjectsFromArray:@[@"专家领域",@"CIO领域",@"教师领域",@"专家领域2",@"CIO领域2",@"教师领域2",@"专家领域3",@"CIO领域3",@"教师领域3",@"专家领域4",@"CIO领域4",@"教师领域4",@"专家领域5",@"CIO领域5",@"教师领域5",@"专家领域6",@"CIO领域6",@"教师领域6"]];
-    
-    
-    [self.dataArray addObjectsFromArray: @[@[@"全部",@"云计算",@"大数据",@"物联网",@"移动应用",@"区块链",@"网络技术",@"互联网技术",@"产品设计",@"产品运营",@"人工智能",@"信息安全",@"数据治理",@"商务智能",@"DevOps",@"EA",@"CIO",@"O2O",@"IT规划",@"IT项目管理",@"IT服务管理",@"流程管理",@"管理系统",@"电子商务",@"数字营销",@"变革转型",@"基础设施",@"智慧医疗",@"智慧城市",@"电子政务",@"智能制造",@"金融科技",@"智慧交通",@"智慧教研",@"智慧能源",@"智慧旅游",@"智慧地产",@"智慧社区",@"软技能",@"创业投资",@"数据中心",@"其他"],@[@"全部",@"金融",@"房地产",@"建筑",@"能源",@"化工",@"政府",@"服装",@"汽车",@"交通",@"医疗",@"医药",@"教育",@"农业",@"物流",@"商贸",@"酒店",@"旅游",@"冶金",@"电器",@"机械",@"IT",@"食品",@"餐饮",@"综合",@"其他"],@[@"全部",@"软件工程",@"数据库",@"电子工程",@"网络工程",@"通信工程",@"云计算",@"人工智能",@"信息安全",@"信息管理",@"大数据",@"自动化",@"电子商务",@"物联网",@"移动互联网",@"电脑设计",@"数字媒体",@"地理信息系统",@"医学信息学",@"计算机应用",@"其他"],@[@"全部",@"云计算",@"大数据",@"物联网",@"移动应用",@"区块链",@"网络技术",@"互联网技术",@"产品设计",@"产品运营",@"人工智能",@"信息安全",@"数据治理",@"商务智能",@"DevOps",@"EA",@"CIO",@"O2O",@"IT规划",@"IT项目管理",@"IT服务管理",@"流程管理",@"管理系统",@"电子商务",@"数字营销",@"变革转型",@"基础设施",@"智慧医疗",@"智慧城市",@"电子政务",@"智能制造",@"金融科技",@"智慧交通",@"智慧教研",@"智慧能源",@"智慧旅游",@"智慧地产",@"智慧社区",@"软技能",@"创业投资",@"数据中心",@"其他"],@[@"全部",@"金融",@"房地产",@"建筑",@"能源",@"化工",@"政府",@"服装",@"汽车",@"交通",@"医疗",@"医药",@"教育",@"农业",@"物流",@"商贸",@"酒店",@"旅游",@"冶金",@"电器",@"机械",@"IT",@"食品",@"餐饮",@"综合",@"其他"],@[@"全部",@"软件工程",@"数据库",@"电子工程",@"网络工程",@"通信工程",@"云计算",@"人工智能",@"信息安全",@"信息管理",@"大数据",@"自动化",@"电子商务",@"物联网",@"移动互联网",@"电脑设计",@"数字媒体",@"地理信息系统",@"医学信息学",@"计算机应用",@"其他"],@[@"全部",@"云计算",@"大数据",@"物联网",@"移动应用",@"区块链",@"网络技术",@"互联网技术",@"产品设计",@"产品运营",@"人工智能",@"信息安全",@"数据治理",@"商务智能",@"DevOps",@"EA",@"CIO",@"O2O",@"IT规划",@"IT项目管理",@"IT服务管理",@"流程管理",@"管理系统",@"电子商务",@"数字营销",@"变革转型",@"基础设施",@"智慧医疗",@"智慧城市",@"电子政务",@"智能制造",@"金融科技",@"智慧交通",@"智慧教研",@"智慧能源",@"智慧旅游",@"智慧地产",@"智慧社区",@"软技能",@"创业投资",@"数据中心",@"其他"],@[@"全部",@"金融",@"房地产",@"建筑",@"能源",@"化工",@"政府",@"服装",@"汽车",@"交通",@"医疗",@"医药",@"教育",@"农业",@"物流",@"商贸",@"酒店",@"旅游",@"冶金",@"电器",@"机械",@"IT",@"食品",@"餐饮",@"综合",@"其他"],@[@"全部",@"软件工程",@"数据库",@"电子工程",@"网络工程",@"通信工程",@"云计算",@"人工智能",@"信息安全",@"信息管理",@"大数据",@"自动化",@"电子商务",@"物联网",@"移动互联网",@"电脑设计",@"数字媒体",@"地理信息系统",@"医学信息学",@"计算机应用",@"其他"],@[@"全部",@"云计算",@"大数据",@"物联网",@"移动应用",@"区块链",@"网络技术",@"互联网技术",@"产品设计",@"产品运营",@"人工智能",@"信息安全",@"数据治理",@"商务智能",@"DevOps",@"EA",@"CIO",@"O2O",@"IT规划",@"IT项目管理",@"IT服务管理",@"流程管理",@"管理系统",@"电子商务",@"数字营销",@"变革转型",@"基础设施",@"智慧医疗",@"智慧城市",@"电子政务",@"智能制造",@"金融科技",@"智慧交通",@"智慧教研",@"智慧能源",@"智慧旅游",@"智慧地产",@"智慧社区",@"软技能",@"创业投资",@"数据中心",@"其他"],@[@"全部",@"金融",@"房地产",@"建筑",@"能源",@"化工",@"政府",@"服装",@"汽车",@"交通",@"医疗",@"医药",@"教育",@"农业",@"物流",@"商贸",@"酒店",@"旅游",@"冶金",@"电器",@"机械",@"IT",@"食品",@"餐饮",@"综合",@"其他"],@[@"全部",@"软件工程",@"数据库",@"电子工程",@"网络工程",@"通信工程",@"云计算",@"人工智能",@"信息安全",@"信息管理",@"大数据",@"自动化",@"电子商务",@"物联网",@"移动互联网",@"电脑设计",@"数字媒体",@"地理信息系统",@"医学信息学",@"计算机应用",@"其他"],@[@"全部",@"云计算",@"大数据",@"物联网",@"移动应用",@"区块链",@"网络技术",@"互联网技术",@"产品设计",@"产品运营",@"人工智能",@"信息安全",@"数据治理",@"商务智能",@"DevOps",@"EA",@"CIO",@"O2O",@"IT规划",@"IT项目管理",@"IT服务管理",@"流程管理",@"管理系统",@"电子商务",@"数字营销",@"变革转型",@"基础设施",@"智慧医疗",@"智慧城市",@"电子政务",@"智能制造",@"金融科技",@"智慧交通",@"智慧教研",@"智慧能源",@"智慧旅游",@"智慧地产",@"智慧社区",@"软技能",@"创业投资",@"数据中心",@"其他"],@[@"全部",@"金融",@"房地产",@"建筑",@"能源",@"化工",@"政府",@"服装",@"汽车",@"交通",@"医疗",@"医药",@"教育",@"农业",@"物流",@"商贸",@"酒店",@"旅游",@"冶金",@"电器",@"机械",@"IT",@"食品",@"餐饮",@"综合",@"其他"],@[@"全部",@"软件工程",@"数据库",@"电子工程",@"网络工程",@"通信工程",@"云计算",@"人工智能",@"信息安全",@"信息管理",@"大数据",@"自动化",@"电子商务",@"物联网",@"移动互联网",@"电脑设计",@"数字媒体",@"地理信息系统",@"医学信息学",@"计算机应用",@"其他"],@[@"全部",@"云计算",@"大数据",@"物联网",@"移动应用",@"区块链",@"网络技术",@"互联网技术",@"产品设计",@"产品运营",@"人工智能",@"信息安全",@"数据治理",@"商务智能",@"DevOps",@"EA",@"CIO",@"O2O",@"IT规划",@"IT项目管理",@"IT服务管理",@"流程管理",@"管理系统",@"电子商务",@"数字营销",@"变革转型",@"基础设施",@"智慧医疗",@"智慧城市",@"电子政务",@"智能制造",@"金融科技",@"智慧交通",@"智慧教研",@"智慧能源",@"智慧旅游",@"智慧地产",@"智慧社区",@"软技能",@"创业投资",@"数据中心",@"其他"],@[@"全部",@"金融",@"房地产",@"建筑",@"能源",@"化工",@"政府",@"服装",@"汽车",@"交通",@"医疗",@"医药",@"教育",@"农业",@"物流",@"商贸",@"酒店",@"旅游",@"冶金",@"电器",@"机械",@"IT",@"食品",@"餐饮",@"综合",@"其他"],@[@"全部",@"软件工程",@"数据库",@"电子工程",@"网络工程",@"通信工程",@"云计算",@"人工智能",@"信息安全",@"信息管理",@"大数据",@"自动化",@"电子商务",@"物联网",@"移动互联网",@"电脑设计",@"数字媒体",@"地理信息系统",@"医学信息学",@"计算机应用",@"其他"]]];
-    
+    for (ClassifyMo * class in self.arr_Data) {
+        [self.dataArray addObject:class.childs];
+    }
     layout = [JKFlowLayout new];
     layout.itemSize = CGSizeMake((CIO_SCREEN_WIDTH-142)/3.0, 30);
     layout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5);
@@ -73,7 +63,7 @@ static NSString *footerID = @"footerID";
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return self.headTittleDataArray.count;
+    return self.arr_Data.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -86,21 +76,25 @@ static NSString *footerID = @"footerID";
 {
     JKAreaCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
     NSArray *array = self.dataArray[indexPath.section];
-    cell.areaName.text = array[indexPath.row];
+    cell.areaName.text = array[indexPath.row][@"name"];
     return cell;
 }
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSArray *array = self.dataArray[indexPath.section];
+    self.block(array[indexPath.row][@"name"]);
+    self.block1(array[indexPath.row][@"id"],array[indexPath.row][@"name"]);
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    
     if (kind==UICollectionElementKindSectionFooter) {
-        
         FootReusableView *footer = [collectionView  dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:footerID forIndexPath:indexPath];
         footer.backgroundColor = [UIColor whiteColor];
         return footer;
     }
-    
     JKReusableView *header = [collectionView  dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerID forIndexPath:indexPath];
     header.backgroundColor = [UIColor whiteColor];
-    header.headText.text = [NSString stringWithFormat:@"%@",self.headTittleDataArray[indexPath.section]];
+    ClassifyMo * class = self.arr_Data[indexPath.section];
+    header.headText.text = class.name;
     return header;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
@@ -110,7 +104,7 @@ static NSString *footerID = @"footerID";
 
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(105,0, CIO_SCREEN_WIDTH-65-41, CIO_SCREEN_HEIGHT-64) collectionViewLayout: layout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(105,10, CIO_SCREEN_WIDTH-65-41, CIO_SCREEN_HEIGHT-64) collectionViewLayout: layout];
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
@@ -125,33 +119,15 @@ static NSString *footerID = @"footerID";
 }
 
 -(NSMutableArray *)dataArray{
-    
     if (!_dataArray) {
         
         _dataArray = [[NSMutableArray alloc]init];
     }
-    
     return _dataArray;
 }
-
--(NSMutableArray *)headTittleDataArray{
-    
-    if (!_headTittleDataArray) {
-        _headTittleDataArray = [[NSMutableArray alloc]init];
-    }
-    return _headTittleDataArray;
-}
--(NSMutableArray *)tableTittleDataArray{
-    if (!_tableTittleDataArray) {
-        _tableTittleDataArray = [[NSMutableArray alloc]init];
-    }
-    return _tableTittleDataArray;
-}
-
-
 -(UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0, 100, CIO_SCREEN_HEIGHT-64)];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,10, 100, CIO_SCREEN_HEIGHT-64)];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -168,11 +144,10 @@ static NSString *footerID = @"footerID";
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return self.tableTittleDataArray.count;
+    return self.arr_Data.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     static NSString *cellID = @"cellID";
     JKAreaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (!cell) {
@@ -180,11 +155,12 @@ static NSString *footerID = @"footerID";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if (_selectIndex == indexPath.row) {
-        cell.selected=YES;
+        cell.view_top.backgroundColor = [UIColor orangeColor];
     }else{
-        cell.selected = NO;
+        cell.view_top.backgroundColor = [UIColor clearColor];
     }
-    cell.nameText.text = self.tableTittleDataArray[indexPath.row];
+    ClassifyMo * class = self.arr_Data[indexPath.row];
+    cell.nameText.text = class.name;
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -9,7 +9,7 @@
 #import "AbilityHomeController.h"
 #import "CustomMap.h"
 #import "JFCityViewController.h"
-#import "ClassificationsController.h"
+#import "ClassificationsController1.h"
 #import "FilterOneController.h"
 #import "ShowResumeController.h"
 #import "SearchHistoryController.h"
@@ -101,7 +101,7 @@
             break;
         case 2:
         {
-            ClassificationsController * class = [ClassificationsController new];
+            ClassificationsController1 * class = [ClassificationsController1 new];
             class.title = @"职业分类";
             class.arr_Data = self.arr_Class;
             class.block = ^(NSString *classifiation){

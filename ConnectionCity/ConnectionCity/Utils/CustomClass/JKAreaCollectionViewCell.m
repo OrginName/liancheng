@@ -18,12 +18,9 @@
         self.layer.borderWidth = 1;
         self.layer.borderColor = YSColor(230, 230, 230).CGColor;
     }
-    
     return self;
 }
-
 -(void)layout{
-    
     /*
      *  名字的添加
      */
@@ -34,8 +31,6 @@
     _areaName.textColor = YSColor(143, 143, 143);
     _areaName.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:_areaName];
-    
 }
-
 @end
 

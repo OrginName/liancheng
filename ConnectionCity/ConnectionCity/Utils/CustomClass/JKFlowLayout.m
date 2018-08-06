@@ -61,7 +61,6 @@
         //如果当前分区确实有因为离开屏幕而被系统回收的header
         if (attributes)
         {
-            NSLog(@"1");
             //将该header结构信息重新加入到superArray中去
             [superArray addObject:attributes];
         }
