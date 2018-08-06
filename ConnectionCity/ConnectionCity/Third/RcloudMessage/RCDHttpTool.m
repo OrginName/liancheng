@@ -705,6 +705,7 @@
             Details.sign = [dic[@"sign"] description];
             Details.isFriend = [dic[@"isFriend"] description];
             Details.cityName = [dic[@"cityName"] description];
+            Details.serviceCircleList = dic[@"serviceCircleList"];
             Details.genderName = dic[@"genderName"];
             Details.sign = dic[@"sign"];
             Details.status = [NSString stringWithFormat:@"%@", [dic objectForKey:@"status"]];

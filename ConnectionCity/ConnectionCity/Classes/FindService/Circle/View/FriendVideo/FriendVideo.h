@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "UserMo.h"
 @interface FriendVideo : MyCollectionView
-@property (nonatomic,strong) NSString * userID1;
+@property (nonatomic,strong) UserMo * user;
 -(void)loadDataFriendList;//加载视频列表
 -(instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout withController:(UIViewController *)controller;
 @end

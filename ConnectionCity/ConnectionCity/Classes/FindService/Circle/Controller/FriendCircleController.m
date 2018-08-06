@@ -50,9 +50,9 @@ static NSInteger i;//判断当前返回按钮点击次数
     [self.navigationController pushViewController:send animated:YES];
 }
 - (IBAction)tagSelectClick:(CustomButton *)sender {
-    if ([self.tabBarItem.title isEqualToString:@"圈子"]&&sender.tag!=1) {
+    if (sender.tag!=1) {
         self.btn_picTxt.selected= NO;
-    }else if ([self.tabBarItem.title isEqualToString:@"我的"]&&sender.tag!=3) {
+    }else if (sender.tag!=3) {
         self.btn_My.selected= NO;
     }
     if (sender.tag==2) {
@@ -89,10 +89,12 @@ static NSInteger i;//判断当前返回按钮点击次数
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -40, 0, 0)];
     [self.view addSubview:self.frendTab];
     [self.view addSubview:self.frendVedio];
-    self.frendTab.userID1 = self.userID;
-    self.frendVedio.userID1 = self.userID;
+    self.frendTab.user = self.user;
+    self.frendVedio.user = self.user;
 //    [self.view addSubview:self.frendMyselfTab];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SendFriend) image:@"" title:@"发布" EdgeInsets:UIEdgeInsetsZero];
+    if (self.user==nil) {
+       self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SendFriend) image:@"" title:@"发布" EdgeInsets:UIEdgeInsetsZero];
+    }
     if ([self.tabBarItem.title isEqualToString:@"我的"]) {
         self.btn_picTxt.selected = NO;
         self.btn_My.selected = YES;
@@ -136,12 +138,19 @@ static NSInteger i;//判断当前返回按钮点击次数
     if (self.tabBarController.tabBar.hidden) {
         i++;
         if (i==1) {
+            if (self.user!=nil) {
+                [self.navigationController popViewControllerAnimated:YES];
+                return;
+            }
             self.tabBarController.tabBar.hidden = NO;
             self.tabBarController.selectedIndex = 0;
         }else{
             [self.tabBarController.navigationController popViewControllerAnimated:YES];
         }
     }else{
+        if (self.user!=nil) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }else
         [self.tabBarController.navigationController popViewControllerAnimated:YES];
     }
 }

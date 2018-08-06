@@ -291,6 +291,9 @@ static NSString * const v1ServiceCircleDelete = @"/v1/service-circle/delete";
 static NSString * const v1ServiceCirclePage = @"/v1/service-circle/page";
 //服务圈列表编辑
 static NSString * const v1ServiceCircleUpdate = @"/v1/service-circle/update";
+//服务圈列表编辑
+static NSString * const v1ServiceCircleUserPage = @"/v1/service-circle/user/page";
+
 
 #pragma mark - 服务
 //添加评论

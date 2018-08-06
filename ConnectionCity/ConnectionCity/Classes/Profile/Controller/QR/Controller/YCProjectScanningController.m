@@ -143,19 +143,24 @@
         [_session stopRunning];
         AVMetadataMachineReadableCodeObject *metadataObject = [metadataObjects firstObject];
         NSString *scanResult = metadataObject.stringValue;
-        
         if (scanResult.length > 0) {
-            NSLog(@"扫描结果：%@", scanResult);
-            if (self.completionHandler) {
-                self.completionHandler(scanResult);
+            if ([scanResult containsString:@"10000"]) {
+                if (self.completionHandler) {
+                    self.completionHandler(scanResult);
+                }
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                WeakSelf
+                [YTAlertUtil alertDualWithTitle:@"连程" message:@"请扫描有效的二维码!!!" style:UIAlertControllerStyleAlert cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
+                    [weakSelf.navigationController popViewControllerAnimated:YES];
+                } defaultTitle:@"重新扫描" defaultHandler:^(UIAlertAction *action) {
+                     [_session startRunning];
+                } completion:nil];
+               
             }
-            [self.navigationController popViewControllerAnimated:YES];
-            //[self dismissViewControllerAnimated:YES completion:nil];
         }
     }
 }
-
-
 #pragma mark MYScanViewDelegate
 //打开闪光灯关闭闪光灯
 - (void)scanView:(MYScanView *)scanView didChangeTorchMode:(BOOL)torchOn{

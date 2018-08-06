@@ -75,7 +75,7 @@
         for (NSDictionary * dic in trval.serviceCircleList) {
             if ([[dic[@"containsImage"] description] isEqualToString:@"1"] && ![YSTools dx_isNullOrNilWithObject:dic[@"images"]]) {
                 NSArray * arr2 = [dic[@"images"] componentsSeparatedByString:@";"];
-                for (int i=0; i<[arr2 count]; i++) {
+                for (int i=0; i<([arr2 count]>4?4:[arr2 count]); i++) {
                     if ([arr2[i] length]!=0) {
                         if (_arr_image.count!=0) {
                             UIImageView * image = _arr_image[i];
@@ -136,7 +136,7 @@
         for (NSDictionary * dic in list.serviceCircleList) {
             if ([[dic[@"containsImage"] description] isEqualToString:@"1"] && ![YSTools dx_isNullOrNilWithObject:dic[@"images"]]) {
                 NSArray * arr2 = [dic[@"images"] componentsSeparatedByString:@";"];
-                for (int i=0; i<[arr2 count]; i++) {
+                for (int i=0; i<([arr2 count]>4?4:arr2.count); i++) {
                     if ([arr2[i] length]!=0) {
                         if (_arr_image.count!=0) {
                             UIImageView * image = _arr_image[i];

@@ -163,7 +163,7 @@
 #pragma ------------好友动态---------------------
 - (IBAction)btn_friendDT:(UIButton *)sender {
     FriendCircleController * friend = [FriendCircleController new];
-    friend.userID = self.connectionMo.ID;
+    friend.user = self.connectionMo;
     [self.navigationController pushViewController:friend animated:YES];
 }
 -(void)updateBeiZhu:(NSString *)str{

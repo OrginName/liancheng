@@ -165,8 +165,11 @@
                 @"containsVideo": @0,
                 @"pageNumber": @(_page),
                 @"pageSize": @15,
-                @"userId": self.userID1?self.userID1:@""
+                @"userId": self.user.ID?self.user.ID:@""
                 };
+    }
+    if (self.user!=nil) {
+        self.flagStr = @"userFriend";
     }
     WeakSelf
     [CircleNet requstCirclelDic:dic flag:self.flagStr withSuc:^(NSMutableArray *successArrValue) {
@@ -358,20 +361,28 @@
         _headImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.width)];
         _headImage.userInteractionEnabled = YES;
         privateUserInfoModel * userInfo = [YSAccountTool userInfo];
+        if (self.user!=nil) {
+            [_headImage sd_setImageWithURL:[NSURL URLWithString:self.user.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
+        }else
         [_headImage sd_setImageWithURL:[NSURL URLWithString:userInfo.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
         UIImageView * image1 = [[UIImageView alloc] initWithFrame:CGRectMake(_headImage.width-70, _headImage.height-30, 60, 60)];
         image1.tag = 999;
+        if (self.user!=nil) {
+            [image1 sd_setImageWithURL:[NSURL URLWithString:self.user.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+        }else
         [image1 sd_setImageWithURL:[NSURL URLWithString:userInfo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
         image1.layer.cornerRadius = 5;
         image1.layer.masksToBounds = YES;
         [_headImage addSubview:image1];
         UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(image1.x-110, image1.y, 100, 25)];
-        lab.text = userInfo.nickName;
+        lab.text = self.user!=nil?self.user.nickName:userInfo.nickName;
         lab.textColor = YSColor(55, 21, 17);
         lab.font = [UIFont systemFontOfSize:18];
         lab.textAlignment = NSTextAlignmentRight;
-        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ChangePhoto)];
-        [_headImage addGestureRecognizer:tap];
+        if (self.user==nil) {
+            UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ChangePhoto)];
+            [_headImage addGestureRecognizer:tap];
+        }
         [_headImage addSubview:lab];
     }
     return _headImage;

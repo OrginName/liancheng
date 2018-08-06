@@ -63,9 +63,14 @@
                            @"containsVideo": @1,
                            @"pageNumber": @(_page),
                            @"pageSize": @15,
-                           @"userId": self.userID1?self.userID1:@""
+                           @"userId": self.user.ID?self.user.ID:@""
                            };
-    [CircleNet requstCirclelDic:dic flag:@"Friend" withSuc:^(NSMutableArray *successArrValue) {
+    NSString * str = @"";
+    if (self.user!=nil) {
+        str = @"userFriend";
+    }else
+        str = @"Friend";
+    [CircleNet requstCirclelDic:dic flag:str withSuc:^(NSMutableArray *successArrValue) {
         if (_page==1) {
             [self.data_Arr removeAllObjects];
         }

@@ -71,9 +71,11 @@
         {
             YCProjectScanningController *scanVC = [[YCProjectScanningController alloc]init];
             scanVC.completionHandler = ^(NSString *result) {
-                [RCDHTTPTOOL requestFriend:result complete:^(BOOL result) {
-                    [YTAlertUtil showTempInfo:@"添加成功"];
-                }];
+                 
+                    [RCDHTTPTOOL requestFriend:result complete:^(BOOL result) {
+                        [YTAlertUtil showTempInfo:@"添加成功"];
+                    }];
+                
             };
             [self.navigationController pushViewController:scanVC animated:YES];
             break;

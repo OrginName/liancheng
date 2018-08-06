@@ -36,4 +36,5 @@
 @property (nonatomic,strong) NSString * sign;
 @property (nonatomic,strong) NSString * isFriend;
 @property (nonatomic,strong) NSString * friendRemark;//备注信息
+@property (nonatomic,strong) NSArray * serviceCircleList;//服务圈
 @end

@@ -4,8 +4,6 @@
 //
 //  Created by umbrella on 2018/5/31.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
-//
-
 #import "ShowtrvalTab.h"
 #import "SDCycleScrollView.h"
 #import "ShowTrvalCell.h"
@@ -13,6 +11,7 @@
 #import "AllDicMo.h"
 #import "StarEvaluator.h"
 #import "CustomImageScro.h"
+#import "FriendCircleController.h"
 @interface ShowtrvalTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ShowTrvalCellDelegate>
 @property (nonatomic,strong) SDCycleScrollView * cycleScrollView;
 @property (nonatomic,strong) NSMutableArray * lunArr;//轮播图数组
@@ -165,6 +164,13 @@
         }
     }
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section==0&&indexPath.row==2) {
+            FriendCircleController * friend = [FriendCircleController new];
+        friend.user = self.Mo!=nil?self.Mo.user1:self.MoTrval.user;
+            [self.control.navigationController pushViewController:friend animated:YES];
+    }
 }
 -(NSMutableArray *)loadA:(NSString *)a b:(NSString *)b c:(NSString *)c{
     NSMutableArray * arr = [NSMutableArray array];

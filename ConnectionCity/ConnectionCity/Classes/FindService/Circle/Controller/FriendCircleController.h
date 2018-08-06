@@ -7,8 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+#import "UserMo.h"
 @interface FriendCircleController : BaseViewController
 @property (nonatomic, assign) BOOL showOrHidden;
-@property (nonatomic, copy) NSString * userID;//当前传进来的userID
+@property (nonatomic, strong) UserMo * user;//当前传进来的userID
 @end

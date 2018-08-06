@@ -21,6 +21,9 @@
 #import "FirstTanView.h"
 #import "EditAllController.h"
 #import "privateUserInfoModel.h"
+#import "UIView+Geometry.h"
+#import "UserMo.h"
+#import "FriendCircleController.h"
 static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 @interface RCDPrivateSettingsTableViewController ()
 @property (nonatomic,strong) RCDUserInfo * userInfo;
@@ -121,9 +124,9 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     case 0:
         {
             if ([self.userId isEqualToString:[[YSAccountTool userInfo] modelId]]) {
-                return 4;
+                return 5;
             }else
-                return 3;
+                return 4;
         }
         break;
 
@@ -143,6 +146,11 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     return 20.0f;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.userId isEqualToString:[[YSAccountTool userInfo] modelId]]&&indexPath.row==4) {
+        return 60;
+    }else if (indexPath.row==3){
+        return 60;
+    }else
     return 43.0f;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -160,15 +168,44 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         }else if (indexPath.row==1){
             [cell setCellStyle:DefaultStyle_RightLabel];
             cell.leftLabel.text = @"设置备注";
-            cell.rightLabel.text =self.userInfo1.friendRemark;
+            NSString * str = @"";
+            if ([self.userInfo1.friendRemark containsString:@"null"]) {
+                str = self.userInfo1.name;
+            }else
+                str = self.userInfo1.friendRemark;
+            cell.rightLabel.text =str;
         }else if ([self.userId isEqualToString:[[YSAccountTool userInfo] modelId]]&&indexPath.row==2){
             [cell setCellStyle:DefaultStyle_RightLabel_WithoutRightArrow];
             cell.leftLabel.text = @"电话号码";
-            cell.rightLabel.text =[[model.modelId description] isEqualToString:self.userId]?model.mobile:self.userInfo1.mobilePhone;
-        }else{
+            NSString * phone = @"";
+            if ([self.userInfo1.mobilePhone containsString:@"null"]) {
+                phone=@"";
+            }else
+                phone = self.userInfo1.mobilePhone;
+            cell.rightLabel.text =[[model.modelId description] isEqualToString:self.userId]?([model.mobile containsString:@"null"]?@"":model.mobile):phone;
+        }else if([self.userId isEqualToString:[[YSAccountTool userInfo] modelId]]?indexPath.row==3:indexPath.row==2){
             [cell setCellStyle:DefaultStyle_RightLabel_WithoutRightArrow];
             cell.leftLabel.text = @"所在地区";
             cell.rightLabel.text = [[model.modelId description] isEqualToString:self.userId]?model.cityName:self.userInfo1.cityName;
+        }else{
+            [cell setCellStyle:DefaultStyle];
+            cell.leftLabel.text = @"个人动态";
+            UIView * view = [[UIView alloc] initWithFrame:CGRectMake(90, 0, cell.width-70, 60)];
+            view.backgroundColor = [UIColor clearColor];
+            [cell.contentView addSubview:view];
+            WeakSelf
+            [YSNetworkTool POST:v1PrivateUserUserinfo params:@{@"id":self.userId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+                NSArray * arr = responseObject[@"data"][@"serviceCircleList"];
+                NSMutableArray * arr1 = [NSMutableArray array];
+                for (int i=0; i<(arr.count>4?4:arr.count); i++) {
+                    NSDictionary * dic = arr[i];
+                    NSString * url = [dic[@"images"] componentsSeparatedByString:@";"][0];
+                    [arr1 addObject:url];
+                }
+                [weakSelf loadData:[arr1 copy] view:view];
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                
+            }];
         }
         return cell;
     }
@@ -223,11 +260,25 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     }
     return nil;
 }
+-(void)loadData:(NSArray *)arr view:(UIView *)view{
+    for (int i=0; i<arr.count; i++) {
+        float width = 50;
+        float kpadding = (view.width-width*4-15)/2;
+        UIImageView * image = [[UIImageView alloc] initWithFrame:CGRectMake(kpadding+i*(width+5),5, width, width)];
+        [image sd_setImageWithURL:[NSURL URLWithString:arr[i]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+        [view addSubview:image];
+    }
+    
+}
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return [UIView new];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    UserMo * user = [UserMo new];
+    user.backgroundImage = self.userInfo1.backGroundImage;
+    user.ID = self.userId;
+    user.headImage = self.userInfo1.portraitUri;
+    user.nickName = self.userInfo1.name;
     if (indexPath.section==0&&indexPath.row==1) {
         if (![[self.userInfo1.isFriend description] isEqualToString:@"1"]) {
             return [YTAlertUtil showTempInfo:@"对方还不是您的好友,不能修改"];
@@ -240,6 +291,15 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
             [weakSelf updateBeiZhu:str];
         };
         [self.navigationController pushViewController:edit animated:YES];
+    }
+    if ([self.userId isEqualToString:[[YSAccountTool userInfo] modelId]]&&indexPath.section==0&&indexPath.row==4) {
+        FriendCircleController * friend = [FriendCircleController new];
+        friend.user = user;
+        [self.navigationController pushViewController:friend animated:YES];
+    }else if(indexPath.section==0&&indexPath.row==3){
+        FriendCircleController * friend = [FriendCircleController new];
+        friend.user = user;
+        [self.navigationController pushViewController:friend animated:YES];
     }
     if (indexPath.section == 1) {
         RCDSearchHistoryMessageController *searchViewController = [[RCDSearchHistoryMessageController alloc] init];
