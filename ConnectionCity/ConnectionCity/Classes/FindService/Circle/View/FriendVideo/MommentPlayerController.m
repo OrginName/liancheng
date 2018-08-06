@@ -14,6 +14,7 @@
 #import "CircleNet.h"
 #import "EvaluationController.h"
 #import "RCDChatViewController.h"
+#import "PersonalBasicDataController.h"
 @interface MommentPlayerController ()<LPAVPlayerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *lab_Zan;
 @property (weak, nonatomic) IBOutlet UILabel *like_Zan;
@@ -153,6 +154,14 @@
         [self.navigationController pushViewController:ev animated:YES];
     }
 }
+#pragma ---------个人详情----------
+- (IBAction)btn_ppersonDetail:(UIButton *)sender {
+    PersonalBasicDataController * person = [PersonalBasicDataController new];
+    Moment * moment = self.moment;
+    person.connectionMo = moment.userMo;
+    [self.navigationController pushViewController:person animated:YES];
+}
+#pragma -------play---------
 - (IBAction)palyBtnClcik:(UIButton *)sender {
     self.imageBg.hidden = YES;
     self.playView.hidden = NO;

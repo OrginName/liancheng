@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FriendVideo : MyCollectionView
+@property (nonatomic,strong) NSString * userID1;
 -(void)loadDataFriendList;//加载视频列表
 -(instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout withController:(UIViewController *)controller;
 @end

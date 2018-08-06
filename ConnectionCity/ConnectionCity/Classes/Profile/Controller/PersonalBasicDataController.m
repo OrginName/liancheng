@@ -13,6 +13,7 @@
 #import "RCDChatViewController.h"
 #import "CircleNet.h"
 #import "privateUserInfoModel.h"
+#import "FriendCircleController.h"
 @interface PersonalBasicDataController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_View;
 @property (weak, nonatomic) IBOutlet UIView *view_Phone;
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLab;
 @property (weak, nonatomic) IBOutlet UIView *view_btn;
 @property (weak, nonatomic) IBOutlet UIButton *sendMessageBtn;
+@property (weak, nonatomic) IBOutlet UIView *view_Image;
 @property (weak, nonatomic) IBOutlet UIButton *btn_BZ;
 @end
 @implementation PersonalBasicDataController
@@ -40,6 +42,19 @@
         self.view_btn.hidden = YES;
         self.btn_BZ.userInteractionEnabled = NO;
     }
+    WeakSelf
+    [YSNetworkTool POST:v1PrivateUserUserinfo params:@{@"id":self.connectionMo.ID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray * arr = responseObject[@"data"][@"serviceCircleList"];
+        NSMutableArray * arr1 = [NSMutableArray array];
+        for (int i=0; i<(arr.count>4?4:arr.count); i++) {
+            NSDictionary * dic = arr[i];
+            NSString * url = [dic[@"images"] componentsSeparatedByString:@";"][0];
+            [arr1 addObject:url];
+        }
+        [weakSelf loadData:[arr1 copy]];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 -(void)setConnectionMo:(UserMo *)connectionMo{
     _connectionMo = connectionMo;
@@ -53,7 +68,7 @@
         if ([[connectionMo.ID description] isEqualToString:[[YSAccountTool userInfo] modelId]]) {
             self.view_Phone.hidden = NO;
             self.layout_phone.constant = 50;
-            self.layout_View.constant = 200;
+            self.layout_View.constant = 280;
             self.view_btn.hidden = YES;
         }
         self.phoneNumLab.text = [connectionMo.mobile description];
@@ -145,6 +160,12 @@
     };
     [self.navigationController pushViewController:edit animated:YES];
 }
+#pragma ------------好友动态---------------------
+- (IBAction)btn_friendDT:(UIButton *)sender {
+    FriendCircleController * friend = [FriendCircleController new];
+    friend.userID = self.connectionMo.ID;
+    [self.navigationController pushViewController:friend animated:YES];
+}
 -(void)updateBeiZhu:(NSString *)str{
     if (str.length==0) {
         return;
@@ -158,5 +179,15 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+}
+-(void)loadData:(NSArray *)arr{
+    for (int i=0; i<arr.count; i++) {
+        float width = 50;
+        float kpadding = (self.view_Image.width-width*4-15)/2;
+        UIImageView * image = [[UIImageView alloc] initWithFrame:CGRectMake(kpadding+i*(width+5),1, width, width)];
+        [image sd_setImageWithURL:[NSURL URLWithString:arr[i]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+        [self.view_Image addSubview:image];
+    }
+     
 }
 @end

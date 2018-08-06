@@ -62,7 +62,8 @@
                            @"containsImage": @0,
                            @"containsVideo": @1,
                            @"pageNumber": @(_page),
-                           @"pageSize": @10
+                           @"pageSize": @15,
+                           @"userId": self.userID1?self.userID1:@""
                            };
     [CircleNet requstCirclelDic:dic flag:@"Friend" withSuc:^(NSMutableArray *successArrValue) {
         if (_page==1) {

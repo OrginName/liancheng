@@ -37,6 +37,7 @@ static NSInteger i;//判断当前返回按钮点击次数
     [super viewDidLoad];
     [self setUI];
     self.navigationItem.title = @"服务圈";
+   
 }
 //发布朋友圈
 -(void)SendFriend{
@@ -88,13 +89,15 @@ static NSInteger i;//判断当前返回按钮点击次数
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -40, 0, 0)];
     [self.view addSubview:self.frendTab];
     [self.view addSubview:self.frendVedio];
+    self.frendTab.userID1 = self.userID;
+    self.frendVedio.userID1 = self.userID;
 //    [self.view addSubview:self.frendMyselfTab];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SendFriend) image:@"" title:@"发布" EdgeInsets:UIEdgeInsetsZero];
     if ([self.tabBarItem.title isEqualToString:@"我的"]) {
         self.btn_picTxt.selected = NO;
         self.btn_My.selected = YES;
         self.frendTab.hidden = YES;
-        self.frendVedio.hidden = YES;
+        self.frendVedio.hidden = YES; 
 //        self.frendMyselfTab.hidden = NO;
     }else{
         self.btn_picTxt.selected = YES;
@@ -109,6 +112,7 @@ static NSInteger i;//判断当前返回按钮点击次数
     if (!_frendTab) {
         _frendTab = [[FriendCirleTab alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth-20, kScreenHeight-134) withControll:self];
         _frendTab.hidden = NO;
+        
     }
     return _frendTab;
 }

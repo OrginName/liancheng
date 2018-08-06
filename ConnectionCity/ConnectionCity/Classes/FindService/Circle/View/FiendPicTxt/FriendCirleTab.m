@@ -164,7 +164,8 @@
                 @"containsImage": @1,
                 @"containsVideo": @0,
                 @"pageNumber": @(_page),
-                @"pageSize": @15
+                @"pageSize": @15,
+                @"userId": self.userID1?self.userID1:@""
                 };
     }
     WeakSelf
@@ -248,11 +249,9 @@
 // 点击用户头像
 - (void)didClickHead:(MomentCell *)cell
 {
-    NSLog(@"击用户头像%ld",(long)cell.tag);
     PersonalBasicDataController * person = [PersonalBasicDataController new];
     Moment * moment = self.momentList[cell.tag];
     person.connectionMo = moment.userMo;
-    person.flagStr = @"BLACKLIST";
     [self.controller.navigationController pushViewController:person animated:YES];
 }
 // 赞

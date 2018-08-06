@@ -104,7 +104,6 @@
 - (void)didSelectFullText:(CollectionCell *)cell{
     NSIndexPath * index = [self.tab_Bottom indexPathForCell:cell];
     [self.tab_Bottom reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationNone];
-//    [self.tab_Bottom reloadData];
 }
 -(void)didPlayMyVideo:(CollectionCell *)cell{
     NSIndexPath * index = [self.tab_Bottom indexPathForCell:cell];
@@ -117,7 +116,6 @@
     WeakSelf
     [YSNetworkTool POST:v1CommonCollectCreate params:@{@"typeId":@([comm.ID integerValue]),@"type":@20} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         page=1;
-//        [weakSelf loadData];
         [weakSelf.momentList removeObject:comm];
         [weakSelf.tab_Bottom deleteRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationNone];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

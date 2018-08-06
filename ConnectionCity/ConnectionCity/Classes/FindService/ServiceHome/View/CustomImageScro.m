@@ -12,7 +12,7 @@
     if (self = [super initWithFrame:frame]) {
         [self addSubview:self.scrollView];
         for (int i=0; i<arr.count; i++) {
-             float width = 0.0f;
+            float width = 0.0f;
             width=self.height-10;
             UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(5+i*(width+10), 5, width, width)];
             [btn setBackgroundImage:[UIImage imageNamed:arr[i]] forState:UIControlStateNormal];
