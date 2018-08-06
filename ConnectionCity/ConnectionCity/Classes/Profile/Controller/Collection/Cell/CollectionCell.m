@@ -52,13 +52,13 @@
             _lab_desc.numberOfLines = 2;
             labH = labH<40?labH:40;
         }
-        _lab_desc.frame = CGRectMake(_image_head.right, bottom, kScreenWidth-65, labH);
+        _lab_desc.frame = CGRectMake(_lab_title.left, bottom, kScreenWidth-65, labH);
         bottom = _lab_desc.bottom + kPaddingValue;
     }
     // 图片
     _listView.moment = receive_Mo;
     if (receive_Mo.fileCount > 0) {
-        _listView.origin = CGPointMake(_image_head.right, bottom);
+        _listView.origin = CGPointMake(_lab_title.left, bottom);
         bottom = _listView.bottom + kPaddingValue;
         receive_Mo.cellHeight = _listView.bottom+10;
         self.imagePlay.hidden = YES;
