@@ -10,7 +10,7 @@
 #import "LCDatePicker.h"
 #import "EditAllController.h"
 #import "AbilityNet.h"
-#import "ClassificationsController.h"
+#import "ClassificationsController1.h"
 @interface GuardCollController ()<UITextViewDelegate,LCDatePickerDelegate>
 {
     NSInteger  currentTag;
@@ -54,7 +54,7 @@
     }];
 }
 - (IBAction)btn_SelectProfess:(UIButton *)sender {
-    ClassificationsController * class = [ClassificationsController new];
+    ClassificationsController1 * class = [ClassificationsController1 new];
     class.title = @"职业分类";
     class.arr_Data = self.arr_Class;
     class.block = ^(NSString *classifiation){

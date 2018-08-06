@@ -16,7 +16,7 @@
 #import "ZBJFViewController.h"
 #import "PhotoSelect.h"
 #import "CityMo.h"
-#import "ClassificationsController.h"
+#import "ClassificationsController1.h"
 #import "AbilityNet.h"
 
 @interface ReleaseTenderController ()<LCDatePickerDelegate,JFCityViewControllerDelegate,PhotoSelectDelegate>
@@ -210,7 +210,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if(indexPath.row==2){
-        ClassificationsController * class = [ClassificationsController new];
+        ClassificationsController1 * class = [ClassificationsController1 new];
         class.title = @"行业类型";
         class.arr_Data = self.arr_Class;
         WeakSelf

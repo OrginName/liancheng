@@ -104,7 +104,7 @@ static NSString *footerID = @"footerID";
 
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(105,10, CIO_SCREEN_WIDTH-65-41, CIO_SCREEN_HEIGHT-64) collectionViewLayout: layout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(105,10, CIO_SCREEN_WIDTH-65-41, CIO_SCREEN_HEIGHT-74) collectionViewLayout: layout];
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
@@ -127,7 +127,7 @@ static NSString *footerID = @"footerID";
 }
 -(UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,10, 100, CIO_SCREEN_HEIGHT-64)];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,10, 100, CIO_SCREEN_HEIGHT-74)];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.delegate = self;
         _tableView.dataSource = self;

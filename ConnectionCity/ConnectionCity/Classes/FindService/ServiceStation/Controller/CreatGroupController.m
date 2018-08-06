@@ -7,7 +7,7 @@
 //
 
 #import "CreatGroupController.h"
-#import "ClassificationsController.h"
+#import "ClassificationsController1.h"
 #import "EditAllController.h"
 #import "TakePhoto.h"
 #import "ServiceHomeNet.h"
@@ -113,7 +113,7 @@
 }
 - (IBAction)Btnclick:(UIButton *)sender {
     if (sender.tag==3) {
-        ClassificationsController * class = [ClassificationsController new];
+        ClassificationsController1 * class = [ClassificationsController1 new];
         class.arr_Data = self.Arr_Classify;
         class.title = self.flag_str==1?@"职业分类":@"服务分类";
         class.block1 = ^(NSString *classifiationID, NSString *classifiation) {

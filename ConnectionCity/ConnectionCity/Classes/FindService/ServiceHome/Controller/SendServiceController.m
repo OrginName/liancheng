@@ -12,7 +12,7 @@
 #import "LCPicker.h"
 #import "SendSelectCell.h"
 #import "EditAllController.h"
-#import "ClassificationsController.h"
+#import "ClassificationsController1.h"
 #import "ServiceHomeNet.h"
 #import "QiniuUploader.h"
 #import "CustomScro.h"
@@ -203,7 +203,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{ 
     if (indexPath.section == 1) {
-        ClassificationsController * class = [ClassificationsController new];
+        ClassificationsController1 * class = [ClassificationsController1 new];
         class.title = @"服务分类";
         class.arr_Data = self.arr_receive;
         class.block = ^(NSString *classifiation) {

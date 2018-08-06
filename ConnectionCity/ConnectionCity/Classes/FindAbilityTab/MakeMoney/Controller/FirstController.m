@@ -13,7 +13,7 @@
 #import "BiddInfoController.h"
 #import "BidManageController.h"
 #import "JFCityViewController.h"
-#import "ClassificationsController.h"
+#import "ClassificationsController1.h"
 #import "AbilityNet.h"
 #import "LCDatePicker.h"
 #import "FirstControllerMo.h"
@@ -140,7 +140,7 @@
     [self.navigationController presentViewController:nav animated:YES completion:nil];
 }
 - (void)firstSectionHeadV:(FirstSectionHeadV *)view typeBtnClick:(UIButton *)btn {
-    ClassificationsController * class = [ClassificationsController new];
+    ClassificationsController1 * class = [ClassificationsController1 new];
     class.title = @"行业类型";
     class.arr_Data = self.arr_Class;
     WeakSelf

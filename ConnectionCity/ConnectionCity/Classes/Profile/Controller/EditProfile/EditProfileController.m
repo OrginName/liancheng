@@ -18,7 +18,7 @@
 #import "CityMo.h"
 #import "AllDicMo.h"
 #import "AbilityNet.h"
-#import "ClassificationsController.h"
+#import "ClassificationsController1.h"
 
 @interface EditProfileController ()<EditProfileHeadViewDelegate,JFCityViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -192,7 +192,7 @@
             [weakSelf requestPrivateUserUpdateWithDic:dic];
         } cancelTitle:@"取消" cancelHandler:nil completion:nil];
     }else if (indexPath.section==1&&indexPath.row==4){
-        ClassificationsController * class = [ClassificationsController new];
+        ClassificationsController1 * class = [ClassificationsController1 new];
         class.title = @"职业类型";
         class.arr_Data = self.arr_Class;
         WeakSelf
