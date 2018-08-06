@@ -114,6 +114,14 @@ static NSString * const serviceGuarantee = @"service-guarantee";
 static NSString * const auditStandards = @"audit-standards";
 //连程隐私协议
 static NSString * const privacyAgreement = @"privacy-agreement";
+//商务合作
+static NSString * const cooperation = @"cooperation";
+//年费
+static NSString * const annualFee = @"annual-fee";
+//功能
+static NSString * const function = @"function";
+
+
 
 #pragma mark - 用户接口
 //获取svip套餐详情

@@ -73,7 +73,7 @@
         self.lab_LLNum.text = [NSString stringWithFormat:@"浏览%@次",trval.browseTimes?trval.browseTimes:@"999+"];
         self.image_sex.image = [UIImage imageNamed:[KString(@"%@", trval.user.gender) isEqualToString:@"2"]?@"women":@"men"];
         for (NSDictionary * dic in trval.serviceCircleList) {
-            if ([[dic[@"containsImage"] description] isEqualToString:@"1"]) {
+            if ([[dic[@"containsImage"] description] isEqualToString:@"1"] && ![YSTools dx_isNullOrNilWithObject:dic[@"images"]]) {
                 NSArray * arr2 = [dic[@"images"] componentsSeparatedByString:@";"];
                 for (int i=0; i<[arr2 count]; i++) {
                     if ([arr2[i] length]!=0) {
@@ -134,7 +134,7 @@
         self.lab_LLNum.text = [NSString stringWithFormat:@"浏览%@次",list.browseTimes?list.browseTimes:@"999+"];
         self.lab_DTNum.text = KString(@"%lu", (unsigned long)list.serviceCircleList.count);
         for (NSDictionary * dic in list.serviceCircleList) {
-            if ([[dic[@"containsImage"] description] isEqualToString:@"1"]) {
+            if ([[dic[@"containsImage"] description] isEqualToString:@"1"] && ![YSTools dx_isNullOrNilWithObject:dic[@"images"]]) {
                 NSArray * arr2 = [dic[@"images"] componentsSeparatedByString:@";"];
                 for (int i=0; i<[arr2 count]; i++) {
                     if ([arr2[i] length]!=0) {

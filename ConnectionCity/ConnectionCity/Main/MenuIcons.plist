@@ -60,6 +60,14 @@
 	</dict>
 	<dict>
 		<key>icon</key>
+		<string>our-kf</string>
+		<key>title</key>
+		<string>商务合作</string>
+		<key>class</key>
+		<string>AgreementController</string>
+	</dict>
+	<dict>
+		<key>icon</key>
 		<string>our-shetup</string>
 		<key>title</key>
 		<string>设置</string>
