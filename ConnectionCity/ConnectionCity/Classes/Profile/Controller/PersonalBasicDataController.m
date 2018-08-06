@@ -14,6 +14,7 @@
 #import "CircleNet.h"
 #import "privateUserInfoModel.h"
 #import "FriendCircleController.h"
+#import "ZoomImage.h"
 @interface PersonalBasicDataController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_View;
 @property (weak, nonatomic) IBOutlet UIView *view_Phone;
@@ -96,6 +97,10 @@
     self.navigationItem.title = @"基础资料";
     _headImage.layer.cornerRadius = 27;
     _headImage.clipsToBounds = YES;
+}
+#pragma ----------头像点击放大----------
+- (IBAction)ZomIn:(UIButton *)sender {
+    [ZoomImage showImage:self.headImage];
 }
 #pragma mark - 点击事件
 - (IBAction)sendMessageBtnClick:(id)sender {

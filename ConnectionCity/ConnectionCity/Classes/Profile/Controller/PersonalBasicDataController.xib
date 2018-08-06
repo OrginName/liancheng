@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -74,6 +74,12 @@
                                 <constraint firstAttribute="width" constant="15" id="ggn-jJ-tOP"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="As4-Hb-Dj0">
+                            <rect key="frame" x="160.5" y="70" width="53.5" height="54"/>
+                            <connections>
+                                <action selector="ZomIn:" destination="-1" eventType="touchUpInside" id="APh-fy-9fs"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -83,11 +89,15 @@
                         <constraint firstAttribute="trailing" secondItem="Wq1-ud-zn5" secondAttribute="trailing" id="8Og-e7-kvQ"/>
                         <constraint firstAttribute="bottom" secondItem="Wq1-ud-zn5" secondAttribute="bottom" id="9gW-da-IxF"/>
                         <constraint firstItem="AqQ-PS-Qxf" firstAttribute="trailing" secondItem="U4u-2n-cfY" secondAttribute="trailing" id="Ctf-YX-WFy"/>
+                        <constraint firstItem="As4-Hb-Dj0" firstAttribute="trailing" secondItem="U4u-2n-cfY" secondAttribute="trailing" id="EZP-60-Tjt"/>
                         <constraint firstAttribute="width" secondItem="PV7-km-ZiO" secondAttribute="height" multiplier="4:3" id="GW8-KK-Zrc"/>
+                        <constraint firstItem="As4-Hb-Dj0" firstAttribute="leading" secondItem="U4u-2n-cfY" secondAttribute="leading" id="I8z-Sv-Deh"/>
                         <constraint firstItem="jDz-TA-Qdl" firstAttribute="centerX" secondItem="PV7-km-ZiO" secondAttribute="centerX" id="KPM-8V-Zkf"/>
                         <constraint firstItem="U4u-2n-cfY" firstAttribute="top" secondItem="PV7-km-ZiO" secondAttribute="top" constant="70" id="KkE-eh-OUY"/>
                         <constraint firstAttribute="trailing" secondItem="RP5-V2-xob" secondAttribute="trailing" constant="5" id="aVg-Pi-WQu"/>
+                        <constraint firstItem="As4-Hb-Dj0" firstAttribute="bottom" secondItem="U4u-2n-cfY" secondAttribute="bottom" id="i9D-Pw-QzD"/>
                         <constraint firstItem="RP5-V2-xob" firstAttribute="top" secondItem="U4u-2n-cfY" secondAttribute="bottom" constant="5" id="mwL-ae-X3m"/>
+                        <constraint firstItem="As4-Hb-Dj0" firstAttribute="top" secondItem="U4u-2n-cfY" secondAttribute="top" id="oVe-ck-kez"/>
                         <constraint firstItem="jDz-TA-Qdl" firstAttribute="top" secondItem="RP5-V2-xob" secondAttribute="bottom" constant="5" id="sbR-l3-hFd"/>
                         <constraint firstItem="Wq1-ud-zn5" firstAttribute="top" secondItem="PV7-km-ZiO" secondAttribute="top" id="uYZ-aR-SmU"/>
                         <constraint firstItem="Wq1-ud-zn5" firstAttribute="leading" secondItem="PV7-km-ZiO" secondAttribute="leading" id="y5K-rv-jsr"/>
