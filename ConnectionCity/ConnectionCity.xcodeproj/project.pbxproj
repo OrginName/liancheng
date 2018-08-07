@@ -264,6 +264,8 @@
 		8D75934F20CA84CA0059C9F6 /* AboutOurController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D75934D20CA84CA0059C9F6 /* AboutOurController.m */; };
 		8D75935020CA84CA0059C9F6 /* AboutOurController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D75934E20CA84CA0059C9F6 /* AboutOurController.xib */; };
 		8D7FF6B020D3A8AB0075B2D5 /* ClassAttrMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7FF6AF20D3A8AB0075B2D5 /* ClassAttrMo.m */; };
+		8D88FD5A21197F160085EA82 /* CompanyCertificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D88FD5721197F140085EA82 /* CompanyCertificationController.m */; };
+		8D88FD5B21197F160085EA82 /* CompanyCertificationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D88FD5821197F140085EA82 /* CompanyCertificationController.xib */; };
 		8D8E4ECC20C9109E00C3D537 /* EditProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E4EC720C9109E00C3D537 /* EditProfileCell.m */; };
 		8D8E4ECD20C9109E00C3D537 /* EditProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D8E4EC820C9109E00C3D537 /* EditProfileCell.xib */; };
 		8D8E4ECE20C9109E00C3D537 /* EditProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E4ECA20C9109E00C3D537 /* EditProfileController.m */; };
@@ -1091,6 +1093,9 @@
 		8D75934E20CA84CA0059C9F6 /* AboutOurController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutOurController.xib; sourceTree = "<group>"; };
 		8D7FF6AE20D3A8AB0075B2D5 /* ClassAttrMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassAttrMo.h; sourceTree = "<group>"; };
 		8D7FF6AF20D3A8AB0075B2D5 /* ClassAttrMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassAttrMo.m; sourceTree = "<group>"; };
+		8D88FD5721197F140085EA82 /* CompanyCertificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyCertificationController.m; sourceTree = "<group>"; };
+		8D88FD5821197F140085EA82 /* CompanyCertificationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyCertificationController.xib; sourceTree = "<group>"; };
+		8D88FD5921197F150085EA82 /* CompanyCertificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyCertificationController.h; sourceTree = "<group>"; };
 		8D8E4EC620C9109E00C3D537 /* EditProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileCell.h; sourceTree = "<group>"; };
 		8D8E4EC720C9109E00C3D537 /* EditProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileCell.m; sourceTree = "<group>"; };
 		8D8E4EC820C9109E00C3D537 /* EditProfileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileCell.xib; sourceTree = "<group>"; };
@@ -2372,6 +2377,9 @@
 				8D22C33E20C77C0F004DC8F4 /* SkillCertificationController.h */,
 				8D22C33F20C77C0F004DC8F4 /* SkillCertificationController.m */,
 				8D22C34020C77C0F004DC8F4 /* SkillCertificationController.xib */,
+				8D88FD5921197F150085EA82 /* CompanyCertificationController.h */,
+				8D88FD5721197F140085EA82 /* CompanyCertificationController.m */,
+				8D88FD5821197F140085EA82 /* CompanyCertificationController.xib */,
 				CE0A99DA20C57C44003A4D91 /* CertificationCenterController.h */,
 				CE0A99DB20C57C44003A4D91 /* CertificationCenterController.m */,
 				CE0A99DC20C57C44003A4D91 /* CertificationCenterController.xib */,
@@ -4847,6 +4855,7 @@
 				CE03EDF920B4547200F07D78 /* FirstSectionHeadV.xib in Resources */,
 				72EBB8BD20C800C300F670E9 /* PresentCell.xib in Resources */,
 				CE0BA635209D68A3004C3C33 /* YSLoginController.xib in Resources */,
+				8D88FD5B21197F160085EA82 /* CompanyCertificationController.xib in Resources */,
 				CEFC90FD2110AB43006E262E /* ShareController.xib in Resources */,
 				72EC1B6420B8357400ACC20B /* ShowCardCell.xib in Resources */,
 				722D254120AAA64C00AB3863 /* ShowResumeController.xib in Resources */,
@@ -5043,6 +5052,7 @@
 				8D50C55B20C669020095A824 /* OurConcernController.m in Sources */,
 				8DC17A7720C0E430005D9EE0 /* Comment.m in Sources */,
 				8DE4667D20EDFF14009730F7 /* RCDUpdateNameViewController.m in Sources */,
+				8D88FD5A21197F160085EA82 /* CompanyCertificationController.m in Sources */,
 				8DE4660520EDF2CE009730F7 /* RCDConversationSettingTableViewHeader.m in Sources */,
 				8DD48CDF20A828F200D6D1E6 /* CustomtextView.m in Sources */,
 				720263FD20B5015500382B2F /* TZVideoPlayerController.m in Sources */,

@@ -260,11 +260,7 @@
     [self notify_addObserver];
     [[AMapServices sharedServices] setEnableHTTPS:YES];
     [AMapServices sharedServices].apiKey = KGDMapKey;
-    NSDictionary* userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-    if(userInfo){//推送信息
-        [KUserDefults setObject:userInfo forKey:@"TS"];
-        [KUserDefults synchronize];
-    }
+     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     UIFont *font = [UIFont systemFontOfSize:18.f];
     NSDictionary *textAttributes = @{

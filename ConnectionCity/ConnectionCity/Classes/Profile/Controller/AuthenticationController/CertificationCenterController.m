@@ -9,17 +9,13 @@
 #import "CertificationCenterController.h"
 #import "CardAuthorController.h"
 #import "CertificationCenterMo.h"
-
+#import "CompanyCertificationController.h"
 @interface CertificationCenterController ()
 @property (weak, nonatomic) IBOutlet UILabel *lab_RZ1;
 @property (weak, nonatomic) IBOutlet UILabel *lab_RZ2;
 @property (weak, nonatomic) IBOutlet UILabel *lab_RZ3;
-
-
 @end
-
 @implementation CertificationCenterController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
@@ -37,8 +33,7 @@
         [YTAlertUtil showTempInfo:@"已认证"];
         return;
     }
-
-    NSArray * arr = @[@"CardAuthorController",@"IdentityAuthorController",@"SkillCertificationController"];
+    NSArray * arr = @[@"CardAuthorController",@"IdentityAuthorController",@"SkillCertificationController",@"CompanyCertificationController"];
     [self.navigationController pushViewController:[super rotateClass:arr[sender.tag-1]] animated:YES];
 }
 -(void)setUI{

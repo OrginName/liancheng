@@ -52,18 +52,11 @@
 @end
 
 @implementation MessageController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self setUI];
     flag = NO;
-    if ([KUserDefults objectForKey:@"TS"]!=nil) {
-        [KUserDefults removeObjectForKey:@"TS"];
-        [KUserDefults synchronize];
-        NoticeController * notice = [NoticeController new];
-        [self.navigationController pushViewController:notice animated:YES];
-    }
     if ([KUserDefults objectForKey:kUserCityID]!=nil) {
         [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
     }
