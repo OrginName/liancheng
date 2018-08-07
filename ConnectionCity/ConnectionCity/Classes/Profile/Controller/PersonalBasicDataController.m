@@ -88,7 +88,7 @@
                 [arr1 addObject:url];
             }
             [self loadData:[arr1 copy]];
-        } 
+        }
     }
 }
 - (void)viewWillAppear:(BOOL)animated {
