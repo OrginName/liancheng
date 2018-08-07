@@ -131,25 +131,27 @@
 //        newCell.image_onLine.selected = !newCell.image_onLine.selected;
 //        newCell.currentCountLab.text = kUserinfo.modelId;
     }else if (indexPath.section==1&&indexPath.row==1){
-        //[YTAlertUtil showTempInfo:@"退出登录"];
-        [YSAccountTool deleteAccount];
-        [KUserDefults removeObjectForKey:@"userToken"];
-        [KUserDefults removeObjectForKey:@"userCookie"];
-        [KUserDefults removeObjectForKey:@"isLogin"];
-        [KUserDefults synchronize];
-        [[RCDataBaseManager shareInstance] closeDBForDisconnect];
-        [[RCIMClient sharedRCIMClient] logout];
-        //[[RCIMClient sharedRCIMClient]disconnect:NO];
-        
-        NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cn.rongcloud.im.share"];
-        [userDefaults removeObjectForKey:@"Cookie"];
-        [userDefaults synchronize];
-        YSLoginController *loginVC = [[YSLoginController alloc]init];
-        BaseNavigationController * base = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
-        [kWindow setRootViewController:base];
+        [YTAlertUtil alertDualWithTitle:@"连程" message:@"是否要退出当前账号" style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
+            
+        } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {
+            [YSAccountTool deleteAccount];
+            [KUserDefults removeObjectForKey:@"userToken"];
+            [KUserDefults removeObjectForKey:@"userCookie"];
+            [KUserDefults removeObjectForKey:@"isLogin"];
+            [KUserDefults synchronize];
+            [[RCDataBaseManager shareInstance] closeDBForDisconnect];
+            [[RCIMClient sharedRCIMClient] logout];
+            //[[RCIMClient sharedRCIMClient]disconnect:NO];
+            
+            NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cn.rongcloud.im.share"];
+            [userDefaults removeObjectForKey:@"Cookie"];
+            [userDefaults synchronize];
+            YSLoginController *loginVC = [[YSLoginController alloc]init];
+            BaseNavigationController * base = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
+            [kWindow setRootViewController:base];
+        } completion:nil];
     }
-}
-
+} 
 - (void)loginBtnClick:(NSDictionary *)dic {
     [KUserDefults removeObjectForKey:@"userToken"];
     [KUserDefults removeObjectForKey:@"userCookie"];

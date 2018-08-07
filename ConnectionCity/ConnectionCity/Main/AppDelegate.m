@@ -426,14 +426,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 -(void)gotoNextPage:(NSDictionary *)userInfo{
     NSArray * arr = @[@"10",@"20",@"30",@"40"];
-    if ([userInfo[@"rc"][@"oName"] isEqualToString:@"RC:TxtMsg"]) {
+    // 融云目前用到的消息类型  RC:TxtMsg RC:ImgMsg RC:CardMsg RC:FileMsg RC:VcMsg
+    if ([userInfo[@"rc"][@"cType"] isEqualToString:@"PR"]) {
         BaseTabBarController *tabBar = (BaseTabBarController *)self.window.rootViewController;//获取window的跟视图,并进行强制转换
         tabBar.selectedIndex = 1;
-        
     }else if([arr containsObject:[userInfo[@"type"] description]]){
         RCDAddressBookViewController * address = [RCDAddressBookViewController new];
         BaseTabBarController *tabBar = (BaseTabBarController *)self.window.rootViewController;//获取window的跟视图,并进行强制转换
-        tabBar.selectedIndex = 2;
         if ([tabBar isKindOfClass:[BaseTabBarController class]]) {//判断是否是当前根视图
             UINavigationController *nav = tabBar.selectedViewController;//获取到当前视图的导航视图
             [nav.topViewController.navigationController pushViewController:address animated:YES];//获取当前跟视图push到的最高视图层,然后进行push到目的页面
