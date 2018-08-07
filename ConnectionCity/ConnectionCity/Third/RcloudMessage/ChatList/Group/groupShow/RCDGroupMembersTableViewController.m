@@ -15,7 +15,8 @@
 #import "RCDataBaseManager.h"
 #import "UIImageView+WebCache.h"
 #import <RongIMKit/RongIMKit.h>
-
+#import "PersonalBasicDataController.h"
+#import "UserMo.h"
 @interface RCDGroupMembersTableViewController ()
 
 @property(nonatomic, strong) RCDUIBarButtonItem *leftBtn;
@@ -87,23 +88,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     RCUserInfo *user = _GroupMembers[indexPath.row];
-    BOOL isFriend = NO;
-    NSArray *friendList = [[RCDataBaseManager shareInstance] getAllFriends];
-    for (RCDUserInfo *friend in friendList) {
-        if ([user.userId isEqualToString:friend.userId] && [friend.status isEqualToString:@"20"]) {
-            isFriend = YES;
-        }
-    }
-    if (isFriend == YES || [user.userId isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
-        RCDPersonDetailViewController *detailViewController = [[RCDPersonDetailViewController alloc] init];
-
-        [self.navigationController pushViewController:detailViewController animated:YES];
-        RCUserInfo *user = _GroupMembers[indexPath.row];
-        detailViewController.userId = user.userId;
-    } else {
-        RCDAddFriendViewController *addViewController = [[RCDAddFriendViewController alloc] init];
-        addViewController.targetUserInfo = _GroupMembers[indexPath.row];
-        [self.navigationController pushViewController:addViewController animated:YES];
-    }
+    [YSNetworkTool POST:v1PrivateUserUserinfo params:@{@"id":user.userId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        UserMo * mo = [UserMo mj_objectWithKeyValues:responseObject[@"data"]];
+        PersonalBasicDataController * person = [PersonalBasicDataController new];
+        person.connectionMo = mo;
+        [self.navigationController pushViewController:person animated:YES];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 @end

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -396,14 +397,14 @@
             <point key="canvasLocation" x="238" y="777.5"/>
         </view>
         <view contentMode="scaleToFill" id="r5a-Pu-4ni" customClass="FirstTanView">
-            <rect key="frame" x="0.0" y="0.0" width="370" height="210"/>
+            <rect key="frame" x="0.0" y="0.0" width="370" height="278"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcC-5n-aF4">
-                    <rect key="frame" x="0.0" y="0.0" width="370" height="225"/>
+                    <rect key="frame" x="0.0" y="0.0" width="370" height="277.5"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="GmS-8f-EKW">
-                            <rect key="frame" x="0.0" y="0.0" width="370" height="225"/>
+                            <rect key="frame" x="0.0" y="0.0" width="370" height="277.5"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="娃哈哈" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThF-o1-MX2">
                             <rect key="frame" x="2" y="136" width="365" height="21"/>
@@ -445,13 +446,13 @@
                         <constraint firstItem="Ium-8h-eoD" firstAttribute="top" secondItem="wcC-5n-aF4" secondAttribute="top" constant="77" id="Gw6-qq-aJc"/>
                         <constraint firstItem="wCN-7x-pZg" firstAttribute="top" secondItem="ThF-o1-MX2" secondAttribute="bottom" constant="5" id="K3N-v9-1Dz"/>
                         <constraint firstAttribute="trailing" secondItem="GmS-8f-EKW" secondAttribute="trailing" id="M7L-cA-fbi"/>
-                        <constraint firstAttribute="height" constant="225" id="Wbv-CV-mb4"/>
                         <constraint firstItem="GmS-8f-EKW" firstAttribute="leading" secondItem="wcC-5n-aF4" secondAttribute="leading" id="alI-5p-YM5"/>
                         <constraint firstAttribute="trailing" secondItem="ThF-o1-MX2" secondAttribute="trailing" constant="3" id="bQy-cL-8Ig"/>
                         <constraint firstItem="wCN-7x-pZg" firstAttribute="centerX" secondItem="ThF-o1-MX2" secondAttribute="centerX" id="dcb-yO-37D"/>
                         <constraint firstItem="ThF-o1-MX2" firstAttribute="leading" secondItem="wcC-5n-aF4" secondAttribute="leading" constant="2" id="dfb-Zm-dqn"/>
                         <constraint firstItem="ThF-o1-MX2" firstAttribute="centerX" secondItem="Ium-8h-eoD" secondAttribute="centerX" id="dml-XN-Fuy"/>
                         <constraint firstItem="Ium-8h-eoD" firstAttribute="centerX" secondItem="wcC-5n-aF4" secondAttribute="centerX" id="h8X-zC-LkC"/>
+                        <constraint firstAttribute="width" secondItem="wcC-5n-aF4" secondAttribute="height" multiplier="4:3" id="kaX-Un-MAg"/>
                         <constraint firstItem="ThF-o1-MX2" firstAttribute="top" secondItem="Ium-8h-eoD" secondAttribute="bottom" constant="5" id="n5H-AQ-fDU"/>
                         <constraint firstItem="GmS-8f-EKW" firstAttribute="top" secondItem="wcC-5n-aF4" secondAttribute="top" id="wid-Z5-qiF"/>
                     </constraints>
@@ -478,7 +479,7 @@
                 <outlet property="lab_nickName" destination="ThF-o1-MX2" id="CjG-Iv-36D"/>
                 <outlet property="lab_signature" destination="wCN-7x-pZg" id="tKx-Wg-PNu"/>
             </connections>
-            <point key="canvasLocation" x="238" y="1043"/>
+            <point key="canvasLocation" x="238" y="1077"/>
         </view>
     </objects>
     <resources>

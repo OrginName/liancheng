@@ -43,19 +43,21 @@
         self.view_btn.hidden = YES;
         self.btn_BZ.userInteractionEnabled = NO;
     }
-    WeakSelf
-    [YSNetworkTool POST:v1PrivateUserUserinfo params:@{@"id":self.connectionMo.ID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSArray * arr = responseObject[@"data"][@"serviceCircleList"];
-        NSMutableArray * arr1 = [NSMutableArray array];
-        for (int i=0; i<(arr.count>4?4:arr.count); i++) {
-            NSDictionary * dic = arr[i];
-            NSString * url = [dic[@"images"] componentsSeparatedByString:@";"][0];
-            [arr1 addObject:url];
-        }
-        [weakSelf loadData:[arr1 copy]];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-    }];
+    if (self.connectionMo.serviceCircleList.count==0) {
+        WeakSelf
+        [YSNetworkTool POST:v1PrivateUserUserinfo params:@{@"id":self.connectionMo.ID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSArray * arr = responseObject[@"data"][@"serviceCircleList"];
+            NSMutableArray * arr1 = [NSMutableArray array];
+            for (int i=0; i<(arr.count>4?4:arr.count); i++) {
+                NSDictionary * dic = arr[i];
+                NSString * url = [dic[@"images"] componentsSeparatedByString:@";"][0];
+                [arr1 addObject:url];
+            }
+            [weakSelf loadData:[arr1 copy]];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+    }
 }
 -(void)setConnectionMo:(UserMo *)connectionMo{
     _connectionMo = connectionMo;
@@ -78,6 +80,15 @@
             self.layoutMu.constant = (kScreenWidth-50)/2-40;
         }
         self.beiZhuLab.text = connectionMo.friendRemark?connectionMo.friendRemark:connectionMo.nickName;
+        if (connectionMo.serviceCircleList.count!=0) {
+            NSMutableArray * arr1 = [NSMutableArray array];
+            for (int i=0; i<(connectionMo.serviceCircleList.count>4?4:connectionMo.serviceCircleList.count); i++) {
+                NSDictionary * dic = connectionMo.serviceCircleList[i];
+                NSString * url = [dic[@"images"] componentsSeparatedByString:@";"][0];
+                [arr1 addObject:url];
+            }
+            [self loadData:[arr1 copy]];
+        } 
     }
 }
 - (void)viewWillAppear:(BOOL)animated {

@@ -28,6 +28,7 @@
 #import "RCDForwardAlertView.h"
 #import "FoundQunController.h"
 #import "RCDChatViewController.h"
+#import "UITabBar+badge.h"
 @interface RCDContactViewController ()
 @property(strong, nonatomic) NSMutableArray *matchFriendList;
 @property(strong, nonatomic) NSArray *defaultCellsTitle;
@@ -157,6 +158,20 @@
     [self.searchFriendsBar resignFirstResponder];
     [self sortAndRefreshWithList:[self getAllFriendList]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:@"MYADDRESSBOOK" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBage:) name:@"JOINACTIVE" object:nil];
+}
+#pragma mark -----------更新角标--------------------------
+-(void)updateBage:(NSNotification *)noti{
+    RCDContactTableViewCell * cell = [self.friendsTabelView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    UIView * view = (UIView *)[cell.contentView viewWithTag:1000000];
+    NSDictionary * dic = noti.object;
+    if ([dic[@"num"] intValue]==0) {
+        [self.tabBarController.tabBar hideBadgeOnItemIndex:2];
+        view.hidden = YES;
+    }else{
+        [self.tabBarController.tabBar showBadgeOnItemIndex:2 badgeValue:[dic[@"num"] intValue]];
+        view.hidden = NO;
+    }
 }
 -(void)updateData{
     [self sortAndRefreshWithList:[self getAllFriendList]];
@@ -245,6 +260,16 @@
         if ([RCDForwardMananer shareInstance].isForward && indexPath.section == 0 && indexPath.row == 0) {
             
         }else{
+            if (indexPath.row==0) {
+                UIView * view = [[UIView alloc] initWithFrame:CGRectMake(110, 22, 10, 10)];
+                view.backgroundColor = [UIColor redColor];
+                view.alpha = 0.8;
+                view.tag = 1000000;
+                view.hidden = YES;
+                view.layer.cornerRadius = 5;
+                view.layer.masksToBounds = YES;
+                [cell.contentView addSubview:view];
+            }
             cell.nicknameLabel.text = [_defaultCellsTitle objectAtIndex:indexPath.row];
             [cell.portraitView
              setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", [_defaultCellsPortrait

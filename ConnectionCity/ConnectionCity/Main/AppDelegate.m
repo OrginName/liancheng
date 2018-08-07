@@ -34,6 +34,7 @@
 #import "JPUSHService.h"
 // iOS10注册APNs所需头文件
 #import "NoticeController.h"
+#import "RCDAddressBookViewController.h"
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
@@ -394,17 +395,18 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             [JPUSHService handleRemoteNotification:userInfo];
         }
     } else {
-        // Fallback on earlier versions
     }
     if (@available(iOS 10.0, *)) {
         completionHandler(UNNotificationPresentationOptionAlert);
     } else {
-        // Fallback on earlier versions
     }
+    NSArray * arr = @[@"10",@"20",@"30",@"40"];
     if (![userInfo[@"rc"][@"oName"] isEqualToString:@"RC:TxtMsg"]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"TSJBACTIVE" object:@{@"num":@"1"}];
-    }
-    
+        if([arr containsObject:[userInfo[@"type"] description]]){
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"JOINACTIVE" object:@{@"num":@"1"}];
+        }else
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"TSJBACTIVE" object:@{@"num":@"1"}];
+    } 
 }
 // iOS 10 Support
 //#ifdef __IPHONE_10_0  //后台收到的
@@ -423,9 +425,19 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     completionHandler();  // 系统要求执行这个方法
 }
 -(void)gotoNextPage:(NSDictionary *)userInfo{
+    NSArray * arr = @[@"10",@"20",@"30",@"40"];
     if ([userInfo[@"rc"][@"oName"] isEqualToString:@"RC:TxtMsg"]) {
         BaseTabBarController *tabBar = (BaseTabBarController *)self.window.rootViewController;//获取window的跟视图,并进行强制转换
         tabBar.selectedIndex = 1;
+        
+    }else if([arr containsObject:[userInfo[@"type"] description]]){
+        RCDAddressBookViewController * address = [RCDAddressBookViewController new];
+        BaseTabBarController *tabBar = (BaseTabBarController *)self.window.rootViewController;//获取window的跟视图,并进行强制转换
+        tabBar.selectedIndex = 2;
+        if ([tabBar isKindOfClass:[BaseTabBarController class]]) {//判断是否是当前根视图
+            UINavigationController *nav = tabBar.selectedViewController;//获取到当前视图的导航视图
+            [nav.topViewController.navigationController pushViewController:address animated:YES];//获取当前跟视图push到的最高视图层,然后进行push到目的页面
+        }
     }else{
         NoticeController * notice = [NoticeController new];
         notice.title = @"消息";
@@ -466,9 +478,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if([UIApplication sharedApplication].applicationState == UIApplicationStateActive)
     {
         NSLog(@"应用程序在前台");
+        NSArray * arr = @[@"10",@"20",@"30",@"40"];
         if (![userInfo[@"rc"][@"oName"] isEqualToString:@"RC:TxtMsg"]) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"TSJBACTIVE" object:@{@"num":@"1"}];
-        }
+            if([arr containsObject:[userInfo[@"type"] description]]){
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"JOINACTIVE" object:@{@"num":@"1"}];
+            }else
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"TSJBACTIVE" object:@{@"num":@"1"}];
+        } 
         
     }else if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground){
         [self gotoNextPage:userInfo];

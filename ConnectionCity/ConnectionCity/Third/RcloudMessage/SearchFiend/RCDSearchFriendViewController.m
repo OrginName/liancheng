@@ -20,6 +20,7 @@
 #import "RCDataBaseManager.h"
 #import "UIImageView+WebCache.h"
 #import "RCDSearchBar.h"
+#import "PersonalBasicDataController.h"
 @interface RCDSearchFriendViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate,
                                              UISearchDisplayDelegate, UISearchControllerDelegate>
 
@@ -141,44 +142,51 @@
                                               otherButtonTitles:nil];
         [alert show];
     } else if (user && tableView == self.searchDisplayController.searchResultsTableView) {
-//        NSMutableArray *cacheList =
-//            [[NSMutableArray alloc] initWithArray:[[RCDataBaseManager shareInstance] getAllFriends]];
-        __block BOOL isFriend = NO;
-        [YSNetworkTool POST:v1MyContacts params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-            if (((NSArray *)responseObject[@"data"]).count == 0) {
-                RCDAddFriendViewController *addViewController = [[RCDAddFriendViewController alloc] init];
-                addViewController.targetUserInfo = userInfo;
-                [self.navigationController pushViewController:addViewController animated:YES];
-                return;
-            }
-            NSString *code = [NSString stringWithFormat:@"%@", responseObject[@"code"]];
-            if ([code isEqualToString:@"SUCCESS"]) {
-                for (int i=0; i<[responseObject[@"data"] count]; i++) {
-                    if ([[responseObject[@"data"][i][@"id"] description] isEqualToString:user.userId]) {
-                        isFriend = YES;
-                        break;
-                    }
-                }
-                if (isFriend == YES) {
-                    RCDPersonDetailViewController *detailViewController = [[RCDPersonDetailViewController alloc] init];
-                    detailViewController.userId = user.userId;
-                    [self.navigationController pushViewController:detailViewController animated:YES];
-                } else {
-                    RCDAddFriendViewController *addViewController = [[RCDAddFriendViewController alloc] init];
-                    addViewController.targetUserInfo = userInfo;
-                    [self.navigationController pushViewController:addViewController animated:YES];
-                }
-            }
+////        NSMutableArray *cacheList =
+////            [[NSMutableArray alloc] initWithArray:[[RCDataBaseManager shareInstance] getAllFriends]];
+//        __block BOOL isFriend = NO;
+//        [YSNetworkTool POST:v1MyContacts params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+//            if (((NSArray *)responseObject[@"data"]).count == 0) {
+//                RCDAddFriendViewController *addViewController = [[RCDAddFriendViewController alloc] init];
+//                addViewController.targetUserInfo = userInfo;
+//                [self.navigationController pushViewController:addViewController animated:YES];
+//                return;
+//            }
+//            NSString *code = [NSString stringWithFormat:@"%@", responseObject[@"code"]];
+//            if ([code isEqualToString:@"SUCCESS"]) {
+//                for (int i=0; i<[responseObject[@"data"] count]; i++) {
+//                    if ([[responseObject[@"data"][i][@"id"] description] isEqualToString:user.userId]) {
+//                        isFriend = YES;
+//                        break;
+//                    }
+//                }
+//                if (isFriend == YES) {
+//                    RCDPersonDetailViewController *detailViewController = [[RCDPersonDetailViewController alloc] init];
+//                    detailViewController.userId = user.userId;
+//                    [self.navigationController pushViewController:detailViewController animated:YES];
+//                } else {
+//                    RCDAddFriendViewController *addViewController = [[RCDAddFriendViewController alloc] init];
+//                    addViewController.targetUserInfo = userInfo;
+//                    [self.navigationController pushViewController:addViewController animated:YES];
+//                }
+//            }
+//        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//
+//        }];
+////        for (int i=0;i<cacheList.count;i++) {
+////            if ([[cacheList[i] userId] isEqualToString:user.userId]) {
+////                isFriend = YES;
+////                break;
+////            }
+////        }
+        [YSNetworkTool POST:v1PrivateUserUserinfo params:@{@"id":user.userId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+            UserMo * mo = [UserMo mj_objectWithKeyValues:responseObject[@"data"]];
+            PersonalBasicDataController * person = [PersonalBasicDataController new];
+            person.connectionMo = mo;
+            [self.navigationController pushViewController:person animated:YES];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             
-        }];
-//        for (int i=0;i<cacheList.count;i++) {
-//            if ([[cacheList[i] userId] isEqualToString:user.userId]) {
-//                isFriend = YES;
-//                break;
-//            }
-//        }
-        
+        }]; 
     }
 }
 

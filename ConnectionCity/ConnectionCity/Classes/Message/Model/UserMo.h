@@ -43,5 +43,5 @@ proStr(weight);
 proStr(realName);
 proStr(marriage);
 proStr(marriageName);
-
+proArr(serviceCircleList);//当前好友的服务圈
 @end

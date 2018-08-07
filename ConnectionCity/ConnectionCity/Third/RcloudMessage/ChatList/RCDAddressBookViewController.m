@@ -70,6 +70,7 @@ MBProgressHUD *hud;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     _needSyncFriendList = YES;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"JOINACTIVE" object:@{@"num":@"0"}];
 }
 //删除已选中用户
 - (void)removeSelectedUsers:(NSArray *)selectedUsers {
@@ -97,8 +98,6 @@ MBProgressHUD *hud;
         _page++;
         NSArray * array = @[@"userGroupApplications",@"userFriendApplications",@"teamUserApplications",@"serviceStationUserApplications"];
         NSArray * array1 = @[@"20",@"100",@"30",@"40"];
-        NSArray * array2 = @[@"申请加为好友",@"申请加入群"];
-        
         for (int i=0; i<array.count; i++) {
             NSDictionary * dic1 = responseObject[@"data"][array[i]];
             if ([dic1 isKindOfClass:[NSDictionary class]]) {
@@ -106,9 +105,9 @@ MBProgressHUD *hud;
                     friendMo * friend = [friendMo mj_objectWithKeyValues:dic];
                     friend.type = array1[i];
                     if ([array[i] isEqualToString:@"userFriendApplications"]) {
-                        friend.des = array2[0];
+                        friend.des = @"申请加为好友";
                     }else
-                        friend.des = array2[1];
+                        friend.des = KString(@"申请加入%@群", friend.group.name);
                     [_friends addObject:friend];
                 }
             }
