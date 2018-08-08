@@ -139,6 +139,9 @@
                                                object:nil];
     RCUserInfo *groupNotify = [[RCUserInfo alloc] initWithUserId:@"__system__" name:@"" portrait:nil];
     [[RCIM sharedRCIM] refreshUserInfoCache:groupNotify withUserId:@"__system__"];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [self.navigationController.navigationBar setBackgroundImage:
+     [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
     
 }
 //由于demo使用了tabbarcontroller，当切换到其它tab时，不能更改tabbarcontroller的标题。

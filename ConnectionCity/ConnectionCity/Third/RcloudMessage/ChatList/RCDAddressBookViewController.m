@@ -174,16 +174,18 @@ MBProgressHUD *hud;
                                                [YTAlertUtil hideHUD];
                                                [weakSelf.tableView.mj_header beginRefreshing];
                                                [[NSNotificationCenter defaultCenter] postNotificationName:@"MYADDRESSBOOK" object:nil];
+                                                
+                                               NSLog(@"%@",friend.user.ID);
                                                [[RCIMClient sharedRCIMClient] getBlacklistStatus:friend.user.ID success:^(int bizStatus) {
                                                    if (bizStatus==0) {
                                                        [[RCIMClient sharedRCIMClient] removeFromBlacklist:friend.user.ID success:^{
-                                                           
+                                                                NSLog(@"移除成功");
                                                        } error:^(RCErrorCode status) {
-                                                           
+
                                                        }];
                                                    }
                                                } error:^(RCErrorCode status) {
-                                                   
+
                                                }]; [self.navigationController popViewControllerAnimated:YES];
                                                [RCDHTTPTOOL getFriendscomplete:^(NSMutableArray *result) {
                                                    
@@ -205,4 +207,5 @@ MBProgressHUD *hud;
     }
    
 }
+
 @end

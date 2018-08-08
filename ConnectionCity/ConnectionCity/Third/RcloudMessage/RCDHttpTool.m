@@ -520,7 +520,17 @@
                         userInfo.name = str;
                         [list addObject:userInfo];
                         [_allFriends addObject:userInfo];
-                        
+                        [[RCIMClient sharedRCIMClient] getBlacklist:^(NSArray *blockUserIds) {
+                            if ([blockUserIds containsObject:userInfo.userId]) {
+                                [[RCIMClient sharedRCIMClient] removeFromBlacklist:userInfo.userId success:^{
+                                    
+                                } error:^(RCErrorCode status) {
+                                    
+                                }];
+                            }
+                        } error:^(RCErrorCode status) {
+                            
+                        }];
                         RCUserInfo *user = [RCUserInfo new];
                         user.userId = userInfo.userId;
                         user.name = dic[@"nickName"];
