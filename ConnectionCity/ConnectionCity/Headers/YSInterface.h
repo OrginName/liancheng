@@ -256,6 +256,13 @@ static NSString * const keywordPlayKeyword = @"/keyword/play-keyword";
 static NSString * const keywordServiceKeyword = @"/keyword/service-keyword";
 //找人才关键字
 static NSString * const keywordTalentKeyword = @"/keyword/talent-keyword";
+//找服务热门
+static NSString * const keywordServiceHot = @"/keyword/service-hot";
+//找人才热门
+static NSString * const keywordTalentHot = @"/keyword/talent-hot";
+//换着玩热门
+static NSString * const keywordPlayHot = @"/keyword/play-hot";
+
 
 #pragma mark - 数据字典
 //区域树状列表

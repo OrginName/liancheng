@@ -235,7 +235,7 @@
         self.Arr_Classify = successArrValue;
     }];
 //    关键字
-    [ServiceHomeNet requstServiceKeywords:^(NSMutableArray *successArrValue) {
+    [ServiceHomeNet requstServiceHot:^(NSMutableArray *successArrValue) {
         self.Arr_keyWords = successArrValue;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self loadketBtn:successArrValue];

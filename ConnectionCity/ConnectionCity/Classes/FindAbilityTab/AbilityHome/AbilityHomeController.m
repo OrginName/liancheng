@@ -141,7 +141,7 @@
 -(void)initData{
     [self loadServiceList:@{@"cityID":[KUserDefults objectForKey:kUserCityID],@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
 //    热门职业加载
-    [AbilityNet requstAbilityKeyWords:^(NSMutableArray *successArrValue) {
+    [AbilityNet requstAbilityHot:^(NSMutableArray *successArrValue) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self loadketBtn:successArrValue];
         });

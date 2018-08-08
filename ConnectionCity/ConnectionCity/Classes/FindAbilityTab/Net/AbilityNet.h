@@ -22,6 +22,12 @@ typedef void (^FailDicBlock) (NSString * failValue);
  */
 +(void)requstAbilityKeyWords:(SuccessArrBlock)block;
 /**
+ 找人才热门
+ 
+ @param block 成功返回
+ */
++(void)requstAbilityHot:(SuccessArrBlock)block;
+/**
  职业分类
  
  @param block 成功返回

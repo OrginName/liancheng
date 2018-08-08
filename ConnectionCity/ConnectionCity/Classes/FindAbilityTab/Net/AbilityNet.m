@@ -21,6 +21,17 @@
         
     }];
 }
++(void)requstAbilityHot:(SuccessArrBlock)block{
+    [YSNetworkTool POST:keywordTalentHot params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray * arr = [NSMutableArray array];
+        for (int i=0; i<[responseObject[@"data"] count]; i++){
+            [arr addObject:responseObject[@"data"][i][@"name"]];
+        }
+        block(arr);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
 +(void)requstAbilityClass:(SuccessArrBlock)block{
     [YSNetworkTool POST:dictionaryOccupationCategory params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray * arr = [NSMutableArray array];

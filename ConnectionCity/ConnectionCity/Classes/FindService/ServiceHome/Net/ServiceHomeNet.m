@@ -80,6 +80,22 @@
         
     }];
 }
+/**
+ 服务热门
+ 
+ @param sucBlock 成功回调
+ */
++(void)requstServiceHot:(SuccessArrBlock)sucBlock{
+    [YSNetworkTool POST:keywordServiceHot params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray * arr = [NSMutableArray array];
+        for (int i=0; i<[responseObject[@"data"] count]; i++){
+            [arr addObject:responseObject[@"data"][i][@"name"]];
+        }
+        sucBlock(arr);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
 +(void)requstTrvalInvitDic:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock{
     [YSNetworkTool POST:v1ServiceTravelPage params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray * arr = [NSMutableArray array];
