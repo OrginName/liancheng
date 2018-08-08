@@ -67,8 +67,8 @@
         [self.btn_All setTitle:@"提供的陪游" forState:UIControlStateNormal];
         [self.btn_AllOne setTitle:@"预约的陪游" forState:UIControlStateNormal];
     }
-    self.btn_All.selected = YES;
-    _tmpBtn = self.btn_All;
+    self.btn_AllOne.selected = YES;
+    _tmpBtn = self.btn_AllOne;
     list = @[@"待付款", @"待接单",@"待赴约",@"已赴约", @"待评价", @"已完成"];
     list1 = @[@"待付款", @"待接单",@"待履约", @"待评价", @"已完成"];
     self.tab_Arr = [NSMutableArray array];
@@ -76,7 +76,7 @@
     _currentIndex = 0;
     _page = 1;
     [self setupSlider:list];
-    currentTag = 1;
+    currentTag = 2;
 }
 - (void)cellBtnClick:(UIButton *)btn cell:(UITableViewCell *)cell{
     UITableView * tab = (UITableView *)self.tab_Arr[_currentIndex];
