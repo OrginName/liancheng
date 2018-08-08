@@ -41,9 +41,19 @@
 //                    moment.coverImage = [UIImage thumbnailOfAVAsset:[NSURL URLWithString:moment.videos]];
 //                }else{
                 if (moment.images.length!=0&&[moment.images containsString:@"http"]) {
-                    NSMutableArray * imageArr = [[moment.images componentsSeparatedByString:@";"] mutableCopy];
-                    [imageArr removeLastObject];
-                    moment.fileCount = [imageArr count];
+                    if (![moment.images containsString:@";"]) {
+                        moment.fileCount = 1;
+                    }else{
+                        NSMutableArray * imageArr = [[moment.images componentsSeparatedByString:@";"] mutableCopy];
+                        NSMutableArray * imgArr = [NSMutableArray array];
+                        for (NSString * str in imageArr) {
+                            if (str.length!=0) {
+                                [imgArr addObject:str];
+                            }
+                        }
+                        [imageArr removeLastObject];
+                        moment.fileCount = [imgArr count];
+                    }
                 }
                     moment.coverImage = [UIImage imageNamed:@"no-pic"];
 //                }
