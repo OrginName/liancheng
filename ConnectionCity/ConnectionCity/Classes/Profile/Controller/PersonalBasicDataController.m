@@ -84,8 +84,10 @@
             NSMutableArray * arr1 = [NSMutableArray array];
             for (int i=0; i<(connectionMo.serviceCircleList.count>4?4:connectionMo.serviceCircleList.count); i++) {
                 NSDictionary * dic = connectionMo.serviceCircleList[i];
-                NSString * url = [dic[@"images"] componentsSeparatedByString:@";"][0];
-                [arr1 addObject:url];
+                if (![YSTools dx_isNullOrNilWithObject:dic[@"images"]]) {
+                    NSString * url = [dic[@"images"] componentsSeparatedByString:@";"][0];
+                    [arr1 addObject:url];
+                }
             }
             [self loadData:[arr1 copy]];
         }
