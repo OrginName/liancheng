@@ -26,5 +26,6 @@ proStr(ID);
 proStr(typeName);
 proArr(replyList);
 proStr(createTime);
+proStr(orderNo);
 @property (nonatomic,assign)CGFloat cellHeight;
 @end

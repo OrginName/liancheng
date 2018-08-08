@@ -75,7 +75,7 @@
     self.data_Arr = [NSMutableArray array];
     _currentIndex = 0;
     _page = 1;
-    [self setupSlider:list];
+    [self setupSlider:list1];
     currentTag = 2;
 }
 - (void)cellBtnClick:(UIButton *)btn cell:(UITableViewCell *)cell{
@@ -172,6 +172,7 @@
     NSDictionary * dic = @{
                            @"content": dic1[@"content"],
                            @"score": @(self.scroe),
+                           @"orderNo":dic1[@"orderNo"],
                            @"type": self.inter==1?@40:@20,
                            @"typeId": @([dic1[@"typeId"] integerValue])
                            };

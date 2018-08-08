@@ -30,11 +30,27 @@
     if (self.service==nil) {
         [self initData];
     }else{
+        WeakSelf
         if ([self.service.typeName isEqualToString:@"旅游"]) {
-            self.array = [self.service.obj.comments mutableCopy];
-        }else
-        self.array = [self.service.obj.commentList mutableCopy];
-        [self.tab_bottom reloadData];
+            [self.service.obj.comments enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                Comment * obj1  = (Comment *)obj;
+                if ([[obj1.orderNo description] isEqualToString:[weakSelf.service.orderNo description]]) {
+                    [weakSelf.array addObject:obj1];
+                }
+                [weakSelf.tab_bottom reloadData];
+            }];
+//            self.array = [self.service.obj.comments mutableCopy];
+        }else{
+            [self.service.obj.commentList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                ObjComment * obj1  = (ObjComment *)obj;
+                if ([[obj1.orderNo description] isEqualToString:[weakSelf.service.orderNo description]]) {
+                    [weakSelf.array addObject:obj1];
+                }
+                [weakSelf.tab_bottom reloadData];
+            }];
+        }
+//        self.array = [self.service.obj.commentList mutableCopy];
+//        [self.tab_bottom reloadData];
     }
 }
 -(void)viewWillAppear:(BOOL)animated{
