@@ -306,7 +306,7 @@
     [YTAlertUtil alertDualWithTitle:@"连程" message:KString(@"是否要删除当前%@", a==1?@"服务":a==2?@"陪游":@"邀约") style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
     } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {
         [YSNetworkTool POST:str params:@{@"id": ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-            
+            _page=1;
             a==1?[weakSelf v1MyServicePage]:a==2?[weakSelf v1MyTravelPage]:[weakSelf v1MyTravelInvitePage];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             

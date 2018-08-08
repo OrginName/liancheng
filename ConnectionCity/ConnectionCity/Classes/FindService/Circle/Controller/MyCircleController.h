@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "UserMo.h"
 @interface MyCircleController : BaseViewController
-
+@property (nonatomic, strong) UserMo * user;//当前传进来的userID
 @end

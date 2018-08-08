@@ -237,7 +237,7 @@
 }
 -(UIImageView *)headImage{
     if (!_headImage) {
-        _headImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.width)];
+        _headImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.width*0.8)];
         privateUserInfoModel * userInfo = [YSAccountTool userInfo];
         [_headImage sd_setImageWithURL:[NSURL URLWithString:userInfo.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
         UIImageView * image1 = [[UIImageView alloc] initWithFrame:CGRectMake(_headImage.width-70, _headImage.height-30, 60, 60)];

@@ -19,6 +19,7 @@
 #import "PersonalBasicDataController.h"
 #import "TakePhoto.h"
 #import "QiniuUploader.h"
+#import "PersonalBasicDataController.h"
 @interface FriendCirleTab()<UITableViewDelegate,UITableViewDataSource,MomentCellDelegate,CommentViewDelegate>
 {
     NSInteger _page;
@@ -327,6 +328,22 @@
     chatViewController.displayUserNameInCell = NO;
     [self.controller.navigationController pushViewController:chatViewController animated:YES];
 }
+//点击用户当前的资料
+-(void)headImageClick{
+    UserMo * mo = [UserMo new];
+    if (self.user!=nil) {
+        mo = self.user;
+    }else{
+        privateUserInfoModel * user = (privateUserInfoModel *)[YSAccountTool userInfo];
+        mo.ID = user.modelId;
+        mo.backgroundImage = user.backgroundImage;
+        mo.nickName = user.nickName;
+        mo.headImage = user.headImage;
+    }
+    PersonalBasicDataController * person = [PersonalBasicDataController new];
+    person.connectionMo = mo;
+    [self.controller.navigationController pushViewController:person animated:YES];
+}
 //更换图片
 -(void)ChangePhoto{
     WeakSelf
@@ -358,7 +375,7 @@
 } 
 -(UIImageView *)headImage{
     if (!_headImage) {
-        _headImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.width)];
+        _headImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.width*0.8)];
         _headImage.userInteractionEnabled = YES;
         privateUserInfoModel * userInfo = [YSAccountTool userInfo];
         if (self.user!=nil) {
@@ -373,14 +390,17 @@
         [image1 sd_setImageWithURL:[NSURL URLWithString:userInfo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
         image1.layer.cornerRadius = 5;
         image1.layer.masksToBounds = YES;
+        image1.userInteractionEnabled = YES;
+        UITapGestureRecognizer * tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headImageClick)];
+        [image1 addGestureRecognizer:tap1];
         [_headImage addSubview:image1];
         UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(image1.x-110, image1.y, 100, 25)];
         lab.text = self.user!=nil?self.user.nickName:userInfo.nickName;
         lab.textColor = YSColor(55, 21, 17);
         lab.font = [UIFont systemFontOfSize:18];
         lab.textAlignment = NSTextAlignmentRight;
-        if (self.user==nil) {
-            UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ChangePhoto)];
+        if (self.user==nil||(self.user!=nil&&[self.user.ID isEqualToString:[[YSAccountTool userInfo] modelId]])) {
+            UILongPressGestureRecognizer * tap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(ChangePhoto)];
             [_headImage addGestureRecognizer:tap];
         }
         [_headImage addSubview:lab];

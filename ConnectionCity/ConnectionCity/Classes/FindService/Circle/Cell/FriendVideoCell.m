@@ -35,7 +35,7 @@
 //    }
     NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[5] contentArr][4];
-    [YSNetworkTool POST:v1CommonCommentAddlike params:@{@"id":self.moment.ID,@"type":mo.value} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1CommonCommentAddlike params:@{@"typeId":self.moment.ID,@"type":mo.value} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
 //        self.btn_Zan.selected = YES;
         [self.btn_Zan setTitle:[NSString stringWithFormat:@"%@ 赞",KString(@"%@", responseObject[@"data"])] forState:UIControlStateNormal];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

@@ -278,6 +278,7 @@
 		8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA4990720A6FDEB00968F86 /* ResumeController.xib */; };
 		8DA4990D20A7063E00968F86 /* ResumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990B20A7063E00968F86 /* ResumeCell.m */; };
 		8DA4990E20A7063E00968F86 /* ResumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA4990C20A7063E00968F86 /* ResumeCell.xib */; };
+		8DAB6671211AD663000FBFD8 /* MyCircleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DAB6670211AD662000FBFD8 /* MyCircleController.xib */; };
 		8DB277AE20EF34C400B3D747 /* groupMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB277AD20EF34C400B3D747 /* groupMo.m */; };
 		8DB277B120EF53B900B3D747 /* RCDSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB277AF20EF53B800B3D747 /* RCDSearchViewController.m */; };
 		8DB277B420EF53E100B3D747 /* RCDSearchMoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB277B320EF53E100B3D747 /* RCDSearchMoreController.m */; };
@@ -1115,6 +1116,7 @@
 		8DA4990A20A7063E00968F86 /* ResumeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeCell.h; sourceTree = "<group>"; };
 		8DA4990B20A7063E00968F86 /* ResumeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeCell.m; sourceTree = "<group>"; };
 		8DA4990C20A7063E00968F86 /* ResumeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeCell.xib; sourceTree = "<group>"; };
+		8DAB6670211AD662000FBFD8 /* MyCircleController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCircleController.xib; sourceTree = "<group>"; };
 		8DB277AC20EF34C400B3D747 /* groupMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = groupMo.h; sourceTree = "<group>"; };
 		8DB277AD20EF34C400B3D747 /* groupMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = groupMo.m; sourceTree = "<group>"; };
 		8DB277AF20EF53B800B3D747 /* RCDSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDSearchViewController.m; sourceTree = "<group>"; };
@@ -2527,6 +2529,7 @@
 				8D12931120E5F16D0008BD6F /* EditCircleController.xib */,
 				8DB43C76211053B00099B7CA /* MyCircleController.h */,
 				8DB43C77211053B00099B7CA /* MyCircleController.m */,
+				8DAB6670211AD662000FBFD8 /* MyCircleController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4823,6 +4826,7 @@
 				CE0BA60F209D6126004C3C33 /* AddressBookController.xib in Resources */,
 				72EBB8E720C9682A00F670E9 /* AccountOneController.xib in Resources */,
 				8D54139F2101E8F4000366E6 /* ShowResume1.xib in Resources */,
+				8DAB6671211AD663000FBFD8 /* MyCircleController.xib in Resources */,
 				72EC1B9820BC307E00ACC20B /* ServiceHomeController.xib in Resources */,
 				CE0BA571209D5004004C3C33 /* Assets.xcassets in Resources */,
 				CEBEDD8F20B17ED1000F9EE4 /* FootprintCell.xib in Resources */,

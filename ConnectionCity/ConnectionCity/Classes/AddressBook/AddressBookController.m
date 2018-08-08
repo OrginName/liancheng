@@ -73,8 +73,7 @@
                 RCDSearchFriendViewController *searchFirendVC = [RCDSearchFriendViewController searchFriendViewController];
                 [self.navigationController pushViewController:searchFirendVC animated:YES];
             }
-                break;
-                
+                break; 
             default:
                 break;
         }
