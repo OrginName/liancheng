@@ -399,7 +399,7 @@
         lab.textColor = YSColor(55, 21, 17);
         lab.font = [UIFont systemFontOfSize:18];
         lab.textAlignment = NSTextAlignmentRight;
-        if (self.user==nil||(self.user!=nil&&[self.user.ID isEqualToString:[[YSAccountTool userInfo] modelId]])) {
+        if (self.user==nil||(self.user!=nil&&[[self.user.ID description] isEqualToString:[[YSAccountTool userInfo] modelId]])) {
             UILongPressGestureRecognizer * tap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(ChangePhoto)];
             [_headImage addGestureRecognizer:tap];
         }

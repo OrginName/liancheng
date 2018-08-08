@@ -298,7 +298,7 @@
         tourismMo *model = self.tourismdataArr[index.row];
         ID = model.Id;
     }else if(self.invitationdataArr.count!=0){
-       TravelInvite *model = self.invitationdataArr[index.row];
+        TravelInvite *model = self.invitationdataArr[index.row];
         ID = model.Id;
     }
     NSString * str = a==1?v1ServiceDelete:a==2?v1ServiceTravelDeleteTravel:v1ServiceTravelDeleteInvite;
@@ -367,7 +367,7 @@
     WeakSelf
     [YSNetworkTool POST:v1MyTravelInvitePage params:@{@"pageNumber": @(_page),@"pageSize":@"20"} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if (_page==1) {
-            [[weakSelf.invitationdataArr mutableCopy] removeAllObjects];
+            [weakSelf.invitationdataArr  removeAllObjects];
         }
         _page++;
         NSArray * arr = [TravelInvite mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
