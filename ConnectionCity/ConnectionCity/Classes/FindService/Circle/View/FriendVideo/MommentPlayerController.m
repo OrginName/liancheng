@@ -15,6 +15,7 @@
 #import "EvaluationController.h"
 #import "RCDChatViewController.h"
 #import "PersonalBasicDataController.h"
+#import "ServiceListController.h"
 @interface MommentPlayerController ()<LPAVPlayerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *lab_Zan;
 @property (weak, nonatomic) IBOutlet UILabel *like_Zan;
@@ -138,9 +139,11 @@
     [YSShareTool share];
 }
 - (IBAction)BtnClcik:(UIButton *)sender {
-    NSArray * arr = @[@"ServiceListController",@"EvaluationController",@"ServiceListController"];
+   
     if (sender.tag==5) {
-        [self.navigationController pushViewController:[super rotateClass:arr[0]] animated:YES];
+        ServiceListController * servist = [ServiceListController new];
+        servist.user = self.moment.userMo;
+        [self.navigationController pushViewController:servist animated:YES];
     }
     if (sender.tag==4) {
         if ([self.btn_PL.titleLabel.text isEqualToString:@"评论(0)"]) {

@@ -31,6 +31,7 @@ proDic(user);
 proArr(commentList);
 proArr(comments);
 proStr(score);
+proDic(serviceCategoryName);
 proArr(serviceCircleList);//圈子
 @property (nonatomic,strong) UserMo * user1;
 @end

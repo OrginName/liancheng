@@ -50,8 +50,10 @@
             NSMutableArray * arr1 = [NSMutableArray array];
             for (int i=0; i<(arr.count>4?4:arr.count); i++) {
                 NSDictionary * dic = arr[i];
-                NSString * url = [dic[@"images"] componentsSeparatedByString:@";"][0];
-                [arr1 addObject:url];
+                if ([dic[@"images"] isKindOfClass:[NSString class]]&&[dic[@"images"] description]!=0) {
+                    NSString * url =[dic[@"images"] componentsSeparatedByString:@";"][0];
+                    [arr1 addObject:url];
+                } 
             }
             [weakSelf loadData:[arr1 copy]];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {

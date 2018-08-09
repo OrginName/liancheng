@@ -12,13 +12,11 @@
 #import "privateUserInfoModel.h"
 #import "ShowResumeController.h"
 @interface ServiceListController ()<UITableViewDelegate,UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
+@property (weak, nonatomic) IBOutlet MyTab *tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * arr_data;
-
 @end
 
 @implementation ServiceListController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"服务约单";
@@ -28,17 +26,13 @@
 //加载服务列表数据
 -(void)loadServiceList{
     NSDictionary * dic1 = @{
-                            @"cityCode":[KUserDefults objectForKey:kUserCityID],
-                            @"lat": @([[KUserDefults objectForKey:kLat] floatValue]),
-                            @"lng": @([[KUserDefults objectForKey:KLng] floatValue]),
-                            @"userId":[[YSAccountTool userInfo] modelId]
+                            @"cityCode":self.user.cityCode?self.user.cityCode:@"",
+                            @"lat": @([self.user.lat floatValue]),
+                            @"lng": @([self.user.lng floatValue]),
+                            @"userId":self.user.ID
                             };
     //    加载服务列表
     [ServiceHomeNet requstServiceList:dic1 withSuc:^(NSMutableArray *successArrValue) {
-        if (successArrValue.count!=0) {
-            [YTAlertUtil showTempInfo:@"暂无数据"];
-            return;
-        }
         self.arr_data = successArrValue;
         [self.tab_Bottom reloadData];
     }];

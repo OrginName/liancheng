@@ -20,6 +20,7 @@
 #import "TakePhoto.h"
 #import "QiniuUploader.h"
 #import "PersonalBasicDataController.h"
+#import "UIView+Geometry.h"
 @interface FriendCirleTab()<UITableViewDelegate,UITableViewDataSource,MomentCellDelegate,CommentViewDelegate>
 {
     NSInteger _page;
@@ -243,6 +244,16 @@
     };
     [self.controller.navigationController pushViewController:mom animated:YES];
 }
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView * view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    return 20;
+    
+}
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -280,7 +291,8 @@
 // 查看全文/收起
 - (void)didSelectFullText:(MomentCell *)cell
 {
-    [self reloadData];
+    NSIndexPath * index = [self indexPathForCell:cell];
+    [self reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationNone];
 }
 // 点击高亮文字
 - (void)didClickLink:(MLLink *)link linkText:(NSString *)linkText momentCell:(MomentCell *)cell
@@ -396,7 +408,7 @@
         [_headImage addSubview:image1];
         UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(image1.x-110, image1.y, 100, 25)];
         lab.text = self.user!=nil?self.user.nickName:userInfo.nickName;
-        lab.textColor = YSColor(55, 21, 17);
+        lab.textColor = [UIColor whiteColor];
         lab.font = [UIFont systemFontOfSize:18];
         lab.textAlignment = NSTextAlignmentRight;
         if (self.user==nil||(self.user!=nil&&[[self.user.ID description] isEqualToString:[[YSAccountTool userInfo] modelId]])) {

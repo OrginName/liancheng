@@ -44,8 +44,8 @@ CGFloat maxLimitHeight = 0;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickHead:)];
     [_headImageView addGestureRecognizer:tapGesture];
     // 名字视图
-    _nameLab = [[UILabel alloc] initWithFrame:CGRectMake(_headImageView.right+10, _headImageView.top, kTextWidth, 20)];
-    _nameLab.font = [UIFont boldSystemFontOfSize:17.0];
+    _nameLab = [[UILabel alloc] init];
+    _nameLab.font = [UIFont boldSystemFontOfSize:16.0];
     _nameLab.textColor = kHLTextColor;
     _nameLab.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_nameLab];
@@ -134,11 +134,15 @@ CGFloat maxLimitHeight = 0;
     _moment = moment;
     // 头像
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:moment.userMo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
-//    if ([moment isEqualToString:@"1"]) {
-//        self.praiseBtn.selected = YES;
-//    }
     // 昵称
     _nameLab.text = moment.userMo.nickName;
+    _nameLab.frame = CGRectMake(_headImageView.right+10, _headImageView.top, [YSTools caculateTheWidthOfLableText:16 withTitle:_nameLab.text], 20);
+    _timeLab.text = [YSTools compareCurrentTime:moment.createTime];
+    CGFloat textW = [_timeLab.text boundingRectWithSize:CGSizeMake(200, kTimeLabelH)
+                                                options:NSStringDrawingUsesLineFragmentOrigin
+                                             attributes:@{NSFontAttributeName:_timeLab.font}
+                                                context:nil].size.width;
+    _timeLab.frame = CGRectMake(_nameLab.right+10, _nameLab.top, textW, kTimeLabelH);
     // 正文
     _showAllBtn.hidden = YES;
     _linkLabel.hidden = YES;
@@ -175,27 +179,22 @@ CGFloat maxLimitHeight = 0;
     // 位置
     _locationLab.frame = CGRectMake(_nameLab.left, bottom, _nameLab.width, kTimeLabelH);
 //    long long a = [[YSTools cTimestampFromString:moment.createTime] floatValue];
-    _timeLab.text = [YSTools compareCurrentTime:moment.createTime];
-    CGFloat textW = [_timeLab.text boundingRectWithSize:CGSizeMake(200, kTimeLabelH)
-                                                options:NSStringDrawingUsesLineFragmentOrigin
-                                             attributes:@{NSFontAttributeName:_timeLab.font}
-                                                context:nil].size.width;
     if ([moment.cityName length]) {
         _locationLab.hidden = NO;
         _locationLab.text = moment.cityName;
-        _timeLab.frame = CGRectMake(_nameLab.left, _locationLab.bottom+kPaddingValue, textW, kTimeLabelH);
+        _praiseBtn.frame = CGRectMake(_nameLab.left-3, _locationLab.bottom+kPaddingValue, textW, kTimeLabelH);
     } else {
         _locationLab.hidden = YES;
-        _timeLab.frame = CGRectMake(_nameLab.left, bottom, textW, kTimeLabelH);
+        _praiseBtn.frame = CGRectMake(_nameLab.left-3, bottom, textW, kTimeLabelH);
     }
     [_praiseBtn setTitle:[NSString stringWithFormat:@"点赞(%@)",moment.likeCount?moment.likeCount:@"999+"] forState:UIControlStateNormal];
     [_commentBtn setTitle:[NSString stringWithFormat:@"评论(%@)",moment.commentCount?moment.commentCount:@"999+"] forState:UIControlStateNormal];
-    _praiseBtn.frame = CGRectMake(_timeLab.right+1, _timeLab.top, 60, kTimeLabelH);
-    _commentBtn.frame = CGRectMake(_praiseBtn.right+1, _timeLab.top, 60, kTimeLabelH);
-    _shareBtn.frame = CGRectMake(_commentBtn.right+1, _timeLab.top, 40, kTimeLabelH);
-    _letterBtn.frame = CGRectMake(_shareBtn.right+1, _timeLab.top, 40, kTimeLabelH);
+//    _praiseBtn.frame = CGRectMake(_timeLab.right+1, _timeLab.top, 60, kTimeLabelH);
+    _commentBtn.frame = CGRectMake(_praiseBtn.right+1, _praiseBtn.top, 60, kTimeLabelH);
+    _shareBtn.frame = CGRectMake(_commentBtn.right+1, _praiseBtn.top, 50, kTimeLabelH);
+    _letterBtn.frame = CGRectMake(_shareBtn.right+1, _praiseBtn.top, 50, kTimeLabelH);
     
-    bottom = _timeLab.bottom + kPaddingValue;
+    bottom = _praiseBtn.bottom + kPaddingValue;
     // 处理评论/赞
     _commentView.frame = CGRectZero;
     _bgImageView.frame = CGRectZero;

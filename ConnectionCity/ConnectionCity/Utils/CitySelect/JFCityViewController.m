@@ -65,7 +65,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
     self.rootTableView.tableHeaderView = self.headerView;
     
     [self backBarButtonItem];
-//    [self initWithJFAreaDataManaager];
+    [self initWithJFAreaDataManaager];
     self.navigationItem.titleView = self.view_Search;
     _indexMutableArray = [NSMutableArray array];
     _sectionMutableArray = [NSMutableArray array];
@@ -173,7 +173,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
     }else {
         cityName = [cityDic valueForKey:@"cityName"];
         ID = [cityDic valueForKey:@"ID"];
-        _headerView.cityName = cityName;
+//        _headerView.cityName = cityName;
 //        [kCurrentCityInfoDefaults setObject:[cityDic valueForKey:@"cityName"] forKey:@"currentCity"];
         if (self.delegate && [self.delegate respondsToSelector:@selector(city:ID:lat:lng:)]) {
             [self.delegate city:cityName ID:ID lat:[cityDic valueForKey:@"lat"] lng:[cityDic valueForKey:@"lng"]];
@@ -430,7 +430,6 @@ JFSearchViewDelegate,UITextFieldDelegate>
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSLog(@"当前取数为：%lu",(unsigned long)_characterMutableArray.count);
     return _characterMutableArray.count;
 }
 
@@ -519,6 +518,19 @@ JFSearchViewDelegate,UITextFieldDelegate>
 //    [self historyCity:cell.textLabel.text];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+-(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    for (UIView *view in [tableView subviews]) {
+        if ([view isKindOfClass:[NSClassFromString(@"UITableViewIndex") class]]) {
+            // 设置字体大小
+            [view setValue:[UIFont fontWithName:@"PingFangTC-Medium" size:16] forKey:@"_font"];
+            //设置view的大小
+            view.bounds = CGRectMake(0, 0, 30, self.view.height);
+            [view setBackgroundColor:[UIColor clearColor]];
+            //单单设置其中一个是无效的
+        }
+    }
+    
+}
 #pragma mark --- UITextFieldDelegate
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     [self deleteSearchView];
@@ -528,6 +540,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
     return YES;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    _manager.dataArr = _cityMutableArray;
     [_manager searchCityData1:textField.text result:^(NSMutableArray *result) {
         if ([result count] > 0) {
             _searchView.backgroundColor = [UIColor whiteColor];
@@ -542,7 +555,6 @@ JFSearchViewDelegate,UITextFieldDelegate>
     [self deleteSearchView];
 }
 #pragma mark --- JFCityHeaderViewDelegate
-
 - (void)cityNameWithSelected:(BOOL)selected {
     //获取当前城市的所有辖区
     if (selected) {
@@ -575,9 +587,6 @@ JFSearchViewDelegate,UITextFieldDelegate>
         [_rootTableView endUpdates];
     }
 }
-
-
-
 #pragma mark - JFSearchViewDelegate
 -(void)serchResultCityMo:(CityMo *) mo{
     [kCurrentCityInfoDefaults setObject:mo.fullName forKey:@"currentCity"];

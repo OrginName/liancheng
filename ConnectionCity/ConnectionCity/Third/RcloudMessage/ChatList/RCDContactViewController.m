@@ -410,12 +410,17 @@
     if (searchText.length <= 0) {
         [self sortAndRefreshWithList:self.arr_Data];
     } else {
-        for (RCUserInfo *userInfo in self.arr_Data) {
+        for (RCDUserInfo *userInfo in self.arr_Data) {
             //忽略大小写去判断是否包含
-            if ([userInfo.name rangeOfString:searchText options:NSCaseInsensitiveSearch].location != NSNotFound ||
-                [[RCDUtilities hanZiToPinYinWithString:userInfo.name] rangeOfString:searchText
+            if ([userInfo.mobilePhone rangeOfString:searchText options:NSCaseInsensitiveSearch].location != NSNotFound ||
+                [[RCDUtilities hanZiToPinYinWithString:userInfo.mobilePhone] rangeOfString:searchText
                                                                             options:NSCaseInsensitiveSearch]
-                        .location != NSNotFound) {
+                .location != NSNotFound||[userInfo.userId rangeOfString:searchText options:NSCaseInsensitiveSearch].location != NSNotFound ||
+                [[RCDUtilities hanZiToPinYinWithString:userInfo.userId] rangeOfString:searchText
+                                                                                   options:NSCaseInsensitiveSearch]
+                .location != NSNotFound||[userInfo.name rangeOfString:searchText options:NSCaseInsensitiveSearch].location != NSNotFound||[[RCDUtilities hanZiToPinYinWithString:userInfo.name] rangeOfString:searchText
+                                                                                                                                                                                                        options:NSCaseInsensitiveSearch]
+                .location != NSNotFound) {
                 [self.matchFriendList addObject:userInfo];
             }
         }

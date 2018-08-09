@@ -14,6 +14,7 @@
 #import "privateUserInfoModel.h"
 #import "CommentView.h"
 #import <IQKeyboardManager.h>
+#import "ServiceListController.h"
 @interface MomentDetailController ()<UITableViewDelegate,UITableViewDataSource,CommentViewDelegate>
 {
     NSInteger CurrentIndex;
@@ -56,6 +57,7 @@
     }];
 }
 -(void)setUI{
+    WeakSelf
     self.navigationItem.title = @"详情";
     if ([self.receiveMo.userId isEqualToString:[[YSAccountTool userInfo]modelId]]) {
          self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(ClearAll) image:@"" title:@"清空" EdgeInsets:UIEdgeInsetsZero];
@@ -64,13 +66,17 @@
     self.momment.receiveMo = self.receiveMo;
     self.tab_Bottom.tableHeaderView = self.momment;
     self.tab_Bottom.tableHeaderView.height = self.receiveMo.cellHeight;
-    __block MomentDetailController * weakSelf = self;
     self.momment.Btnblock = ^{
         [weakSelf ClearAll];
     };//删除
     self.momment.saveBlock = ^{
         [weakSelf saveClick];
-    };//收藏
+    };//收藏 
+    self.momment.YDBlock = ^{
+        ServiceListController * serive = [ServiceListController new];
+        serive.user = weakSelf.receiveMo.userMo;
+        [weakSelf.navigationController pushViewController:serive animated:YES];
+    };//约单
     [self.tab_Bottom reloadData];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -189,6 +195,7 @@
 @property (nonatomic,strong)UILabel * timelab;
 @property (nonatomic,strong)UIButton * delebtn;
 @property (nonatomic,strong)UIButton * btnSave;
+@property (nonatomic,strong)UIButton * btnYD;
 @property (nonatomic,strong)MMImageListView * listView;
 @end
 @implementation MomentDetailView
@@ -199,6 +206,7 @@
         [self addSubview:self.labDes];
         [self addSubview:self.listView];
         [self addSubview:self.timelab];
+        [self addSubview:self.btnYD];
         [self addSubview:self.btnSave];
         [self addSubview:self.delebtn];
     }
@@ -211,6 +219,12 @@
 //收藏button
 -(void)SaveMoment:(UIButton *)btn{
     self.saveBlock();
+}
+//约单button
+-(void)YDMoment:(UIButton *)btn{
+    if (self.YDBlock) {
+        self.YDBlock();
+    }
 }
 -(void)setReceiveMo:(Moment *)receiveMo{
     _receiveMo =receiveMo;
@@ -241,18 +255,21 @@
                                              attributes:@{NSFontAttributeName:_timelab.font}
                                                 context:nil].size.width;
     _timelab.frame = CGRectMake(_headTitleLab.left, bottom, textW, kTimeLabelH);
-    [_btnSave mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_btnYD mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_timelab.mas_top);
         make.left.equalTo(_timelab.mas_right).offset(5);
         make.bottom.equalTo(_timelab.mas_bottom);
+    }];
+    [_btnSave mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_timelab.mas_top);
+        make.left.equalTo(_btnYD.mas_right).offset(5);
+        make.bottom.equalTo(_btnYD.mas_bottom);
     }];
     [_delebtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_timelab.mas_top);
         make.left.equalTo(_btnSave.mas_right).offset(5);
         make.bottom.equalTo(_timelab.mas_bottom);
     }];
-//    _btnSave.frame = CGRectMake(_timelab.right+5, _timelab.top, 70, kTimeLabelH);
-//    _delebtn.frame = CGRectMake(_btnSave.right+5, _timelab.top, 60, kTimeLabelH);
     receiveMo.cellHeight =_timelab.bottom+20;
 }
 -(UIImageView *)headImage{
@@ -298,15 +315,27 @@
         // 时间视图
         _timelab = [[UILabel alloc] init];
         _timelab.textColor = TitleColor;
-        _timelab.font = [UIFont systemFontOfSize:13.0f];
+        _timelab.font = [UIFont systemFontOfSize:14.0f];
     }
     return _timelab;
+}
+-(UIButton *)btnYD{
+    if (!_btnYD) {
+        //收藏
+        _btnYD = [[UIButton alloc] init];
+        _btnYD.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+        [_btnYD setTitleColor:YSColor(242, 151, 40) forState:UIControlStateNormal];
+        _btnYD.backgroundColor = [UIColor clearColor];
+        [_btnYD setTitle:@"约单" forState:UIControlStateNormal];
+        [_btnYD addTarget:self action:@selector(YDMoment:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _btnYD;
 }
 -(UIButton *)btnSave{
     if (!_btnSave) {
         //收藏
         _btnSave = [[UIButton alloc] init];
-        _btnSave.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+        _btnSave.titleLabel.font = [UIFont systemFontOfSize:14.0f];
         [_btnSave setTitleColor:YSColor(242, 151, 40) forState:UIControlStateNormal];
          _btnSave.backgroundColor = [UIColor clearColor];
         [_btnSave setTitle:@"收藏" forState:UIControlStateNormal];
@@ -318,7 +347,7 @@
     if (!_delebtn) {
         //分享
         _delebtn = [[UIButton alloc] init];
-        _delebtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+        _delebtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
         [_delebtn setTitleColor:YSColor(242, 151, 40) forState:UIControlStateNormal];
         _delebtn.hidden = YES;
         _delebtn.backgroundColor = [UIColor clearColor];

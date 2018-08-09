@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "UserMo.h"
 @interface ServiceListController : BaseViewController
-
+@property (nonatomic,strong) UserMo * user;
 @end

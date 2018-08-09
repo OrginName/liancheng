@@ -17,8 +17,10 @@ typedef void(^BtnDeleteBlock)(void);
 
 typedef void(^BtnClickBlock)(void);
 typedef void(^BtnSaveBlock)(void);
+typedef void(^BtnYDBlock)(void);
 @interface MomentDetailView : UIView
 @property (nonatomic,strong)Moment * receiveMo;
 @property (nonatomic,copy)BtnClickBlock Btnblock;
 @property (nonatomic,copy)BtnSaveBlock saveBlock;
+@property (nonatomic,copy)BtnYDBlock YDBlock;
 @end
