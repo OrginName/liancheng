@@ -324,9 +324,9 @@
                          return;
                      }
                      RCDUserInfo *rcduserinfo_ = [RCDUserInfo new];
-                     rcduserinfo_.name = user.name;
-                     rcduserinfo_.userId = user.userId;
-                     rcduserinfo_.portraitUri = user.portraitUri;
+                     rcduserinfo_.name = [user.name description];
+                     rcduserinfo_.userId = [user.userId description];
+                     rcduserinfo_.portraitUri = [user.portraitUri description];
                      model.extend = rcduserinfo_;
                      NSDictionary *userinfoDic =
                      @{@"username" : rcduserinfo_.name, @"portraitUri" : rcduserinfo_.portraitUri};
@@ -345,8 +345,8 @@
         
     }else {
         RCDUserInfo *user = (RCDUserInfo *)model.extend;
-        userName = user.name;
-        portraitUri = user.portraitUri;
+        userName = [user.name description];
+        portraitUri = [user.portraitUri description];
     }
     
     RCDChatListCell *cell = [[RCDChatListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@""];

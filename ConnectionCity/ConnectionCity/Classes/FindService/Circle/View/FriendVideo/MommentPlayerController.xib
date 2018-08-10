@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,6 +21,7 @@
                 <outlet property="lab_Zan" destination="cwR-Mg-jQp" id="D4s-0w-KXl"/>
                 <outlet property="lab_time" destination="jhp-be-qXm" id="kAp-LG-vku"/>
                 <outlet property="lab_title" destination="xSr-a7-ci3" id="woO-1e-B4k"/>
+                <outlet property="layout_zan" destination="kiD-yd-DTv" id="sna-Zg-054"/>
                 <outlet property="like_Zan" destination="i72-z9-PNA" id="Xlm-hh-ucS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="view_Like" destination="1NL-CR-jk2" id="UMz-qf-Afr"/>
@@ -238,15 +239,15 @@
                 <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qvf-9L-WR9">
                     <rect key="frame" x="311" y="510" width="52" height="65"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video-sx" translatesAutoresizingMaskIntoConstraints="NO" id="iJq-ao-jk9">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="del" translatesAutoresizingMaskIntoConstraints="NO" id="iJq-ao-jk9">
                             <rect key="frame" x="11" y="8" width="30" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="PvP-z6-pcz"/>
                                 <constraint firstAttribute="width" constant="30" id="SeO-Gv-Mpi"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="私信" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIM-xm-G13">
-                            <rect key="frame" x="10" y="41" width="33" height="19.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIM-xm-G13">
+                            <rect key="frame" x="26.5" y="41" width="0.0" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -315,9 +316,9 @@
     </objects>
     <resources>
         <image name="1" width="639" height="512"/>
+        <image name="del" width="17" height="17"/>
         <image name="q-play" width="67" height="67"/>
         <image name="video-sc" width="30" height="29"/>
-        <image name="video-sx" width="28" height="28"/>
         <image name="video-zan" width="27" height="28"/>
     </resources>
 </document>

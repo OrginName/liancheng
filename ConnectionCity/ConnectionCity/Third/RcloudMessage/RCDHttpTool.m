@@ -124,16 +124,16 @@
             group.creatorId = [result[@"userId"] description];
             group.introduce = [result[@"notice"] description];
             NSString * str = flag==3?@"groupUserCount":flag==2?@"serviceStationUserCount":@"teamUserCount";
-            group.number = KString(@"%@", responseObject[@"data"][str]);
+            group.number = [KString(@"%@", responseObject[@"data"][str]) description];
             group.maxNumber = [result objectForKey:@"max_number"]?[result objectForKey:@"max_number"]:@"1000";
-            group.creatorTime = [result objectForKey:@"createTime"];
+            group.creatorTime = [[result objectForKey:@"createTime"] description];
 //            if (![[result objectForKey:@"deletedAt"] isKindOfClass:[NSNull class]]) {
 //                group.isDismiss = @"YES";
 //            } else {
                 group.isDismiss = @"NO";
 //            }
             [[RCDataBaseManager shareInstance] insertGroupToDB:group];
-            if ([KString(@"%@", group.groupId) isEqualToString:groupID] && completion) {
+            if ([[group.groupId description] isEqualToString:groupID] && completion) {
                 completion(group);
             } else if (completion) {
                 completion(nil);

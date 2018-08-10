@@ -710,9 +710,9 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
             
             if (isCreator == YES) {
               RCDGroupAnnouncementViewController *vc = [[RCDGroupAnnouncementViewController alloc] init];
-              vc.GroupId = _Group.groupId;
-                vc.flagStr = self.flagStr;
-                vc.name = _Group.groupName;
+              vc.GroupId = [_Group.groupId description];
+              vc.flagStr = self.flagStr;
+              vc.name = [_Group.groupName description];
               [self.navigationController pushViewController:vc animated:YES];
             }
             else

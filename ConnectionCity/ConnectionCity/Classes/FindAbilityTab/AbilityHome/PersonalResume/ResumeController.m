@@ -220,7 +220,9 @@
                 if (self.lunArr.count==0) {
                     [self.lunArr addObject:image];
                     [[self.tab_bottom.tableHeaderView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+                    
                     [self initScroll];
+                self.cycleScrollView.localizationImagesGroup = self.lunArr;
                 }else{
                     [self.lunArr addObject:image];
                     self.cycleScrollView.localizationImagesGroup = self.lunArr;

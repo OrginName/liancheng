@@ -16,6 +16,7 @@
 #import "RCDChatViewController.h"
 #import "PersonalBasicDataController.h"
 #import "ServiceListController.h"
+#import "privateUserInfoModel.h"
 @interface MommentPlayerController ()<LPAVPlayerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *lab_Zan;
 @property (weak, nonatomic) IBOutlet UILabel *like_Zan;
@@ -31,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIView *view_Zan;
 @property (weak, nonatomic) IBOutlet UIView *view_Like;
 @property (weak, nonatomic) IBOutlet UIView *view_moment;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_zan;
 @property (nonatomic,strong) CustomPlayer * playView;
 @property (nonatomic,strong) UIView * mainView;
 @end
@@ -61,6 +63,10 @@
     btn.backgroundColor = [UIColor clearColor];
     [btn addTarget:self action:@selector(btnClicked) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:btn];
+    if (![[self.moment.userMo.ID description] isEqualToString:[[YSAccountTool userInfo]modelId]]) {
+        self.layout_zan.constant = 100;
+        self.view_moment.hidden = YES;
+    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeContentViewPoint:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissKeyBoard:) name:UIKeyboardWillHideNotification object:nil];
 }
@@ -231,20 +237,38 @@
 }
 //私信
 -(void)sixinClick{
-    RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
-    chatViewController.conversationType = ConversationType_PRIVATE;
-    NSString *title,*ID,*name;
-    ID = [self.moment.userId description];
-    name = self.moment.userMo.nickName;
-    chatViewController.targetId = ID;
-    if ([ID isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
-        title = [RCIM sharedRCIM].currentUserInfo.name;
-    } else {
-        title = name;
-    }
-    chatViewController.title = title;
-    chatViewController.displayUserNameInCell = NO;
-    [self.navigationController pushViewController:chatViewController animated:YES];
+//    RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
+//    chatViewController.conversationType = ConversationType_PRIVATE;
+//    NSString *title,*ID,*name;
+//    ID = [self.moment.userId description];
+//    name = self.moment.userMo.nickName;
+//    chatViewController.targetId = ID;
+//    if ([ID isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
+//        title = [RCIM sharedRCIM].currentUserInfo.name;
+//    } else {
+//        title = name;
+//    }
+//    chatViewController.title = title;
+//    chatViewController.displayUserNameInCell = NO;
+//    [self.navigationController pushViewController:chatViewController animated:YES];
+    WeakSelf
+    [YTAlertUtil alertDualWithTitle:@"连程" message:@"是否要删除当前视频" style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
+        
+    } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {
+         [weakSelf ClearAll];
+    } completion:nil];
+   
+}
+-(void)ClearAll{
+//    NSString * url = [self.flagStr isEqualToString:@"HomeSend"]?v1FriendCircleDelete:v1ServiceCircleDelete;
+    WeakSelf
+    [YSNetworkTool POST:v1ServiceCircleDelete params:@{@"id":self.moment.ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        weakSelf.block();
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+        [YTAlertUtil showTempInfo:@"删除成功"];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 -(CustomPlayer *)playView{
     if (!_playView) {

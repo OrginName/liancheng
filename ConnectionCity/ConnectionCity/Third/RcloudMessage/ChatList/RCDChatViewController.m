@@ -869,7 +869,7 @@ NSMutableDictionary *userInputStatus;
         }
     }
     //刷新自己头像昵称
-    [[RCDUserInfoManager shareInstance] getUserInfo:[RCIM sharedRCIM].currentUserInfo.userId
+    [[RCDUserInfoManager shareInstance] getUserInfo:[[RCIM sharedRCIM].currentUserInfo.userId description]
                                          completion:^(RCUserInfo *user) {
                                              [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:[user.userId description]];
                                          }];
@@ -877,9 +877,9 @@ NSMutableDictionary *userInputStatus;
     //打开群聊强制从demo server 获取群组信息更新本地数据库
     if (self.conversationType == ConversationType_GROUP) {
         __weak typeof(self) weakSelf = self;
-        [RCDHTTPTOOL getGroupByID:self.targetId flag:self.flagStr
+        [RCDHTTPTOOL getGroupByID:[self.targetId description] flag:self.flagStr
                 successCompletion:^(RCDGroupInfo *group) {
-                    RCGroup *Group = [[RCGroup alloc] initWithGroupId:weakSelf.targetId
+                    RCGroup *Group = [[RCGroup alloc] initWithGroupId:[weakSelf.targetId description]
                                                             groupName:group.groupName
                                                           portraitUri:group.portraitUri];
                     [[RCIM sharedRCIM] refreshGroupInfoCache:Group withGroupId:[group.groupId description]];
@@ -890,7 +890,7 @@ NSMutableDictionary *userInputStatus;
     }
     //更新群组成员用户信息的本地缓存
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSMutableArray *groupList = [[RCDataBaseManager shareInstance] getGroupMember:self.targetId];
+        NSMutableArray *groupList = [[RCDataBaseManager shareInstance] getGroupMember:[self.targetId description]];
         NSArray *resultList = [[RCDUserInfoManager shareInstance] getFriendInfoList:groupList];
         groupList = [[NSMutableArray alloc] initWithArray:resultList];
         for (RCUserInfo *user in groupList) {
@@ -899,15 +899,15 @@ NSMutableDictionary *userInputStatus;
             }
             if ([user.portraitUri hasPrefix:@"file:///"]) {
                 NSString *filePath =
-                    [RCDUtilities getIconCachePath:[NSString stringWithFormat:@"user%@.png", user.userId]];
+                    [RCDUtilities getIconCachePath:[NSString stringWithFormat:@"user%@.png", [user.userId description]]];
                 if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
                     NSURL *portraitPath = [NSURL fileURLWithPath:filePath];
-                    user.portraitUri = [portraitPath absoluteString];
+                    user.portraitUri = [[portraitPath absoluteString] description];
                 } else {
-                    user.portraitUri = [RCDUtilities defaultUserPortrait:user];
+                    user.portraitUri = [[RCDUtilities defaultUserPortrait:user] description];
                 }
             }
-            [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:user.userId];
+            [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:[user.userId description]];
         }
     });
 }

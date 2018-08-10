@@ -243,6 +243,7 @@
             RCTextMessage *announcementMsg = [RCTextMessage messageWithContent:txt];
             announcementMsg.mentionedInfo =
                 [[RCMentionedInfo alloc] initWithMentionedType:RC_Mentioned_All userIdList:nil mentionedContent:nil];
+            NSString * notice = self.AnnouncementContent.text;
             [[RCIM sharedRCIM] sendMessage:ConversationType_GROUP
                 targetId:self.GroupId
                 content:announcementMsg
@@ -262,7 +263,7 @@
                                                           [self.navigationController popViewControllerAnimated:YES];
                                                       });
                                    });
-                    [RCDHTTPTOOL setGroupPortraitUri:nil groupId:self.GroupId flag:self.flagStr name:_name notice:self.AnnouncementContent.text complete:^(BOOL result) {
+                    [RCDHTTPTOOL setGroupPortraitUri:nil groupId:self.GroupId flag:self.flagStr name:_name notice:notice complete:^(BOOL result) {
                         
                     }];
                 }
