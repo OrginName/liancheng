@@ -61,6 +61,7 @@
         [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(JB:) name:@"TSJBACTIVE" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:@"LOADSERVICELIST" object:nil];
 }
 -(void)JB:(NSNotification *)noti{
     NSDictionary * dic = noti.object;
@@ -70,6 +71,11 @@
     }else{
         [self.tabBarController.tabBar showBadgeOnItemIndex:0 badgeValue:[dic[@"num"] intValue]];
         [self.navigationItem.rightBarButtonItem setBadgeValue:@" "];
+    }
+}
+- (void)updateData {
+    if ([KUserDefults objectForKey:kUserCityID]!=nil) {
+        [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
     }
 }
 //导航左按钮我的点击

@@ -231,6 +231,7 @@
         self.annotationView.zIndex = idx;
     }];
     [self.mapView addAnnotations:self.annotations];
+    
 }
 #pragma mark - Initialization
 - (void)initAnnotations

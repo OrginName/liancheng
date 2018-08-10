@@ -232,7 +232,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.4869592673" green="1" blue="0.42359480240000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="ppw-xu-kOq" secondAttribute="trailing" constant="10" id="21T-Cw-aiX"/>
                         <constraint firstItem="ppw-xu-kOq" firstAttribute="top" secondItem="A63-DS-CoX" secondAttribute="bottom" constant="5" id="Gzu-se-qhm"/>

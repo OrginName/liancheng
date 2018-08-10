@@ -115,7 +115,7 @@
             group.groupId = [result[@"groupId"] description];
             group.groupType = flag;
             group.groupName = [result[@"name"] description];
-            group.portraitUri = [result objectForKey:@"logo"]?[result objectForKey:@"logo"]:@"";
+            group.portraitUri = [YSTools dx_isNullOrNilWithObject:[result objectForKey:@"logo"]]?@"":[result objectForKey:@"logo"];
             if ([group.portraitUri isKindOfClass:[NSString class]]) {
                 if (group.portraitUri.length <= 0) {
                     group.portraitUri = [RCDUtilities defaultGroupPortrait:group];
@@ -323,7 +323,7 @@
                 member.userId = [dic[@"id"] description];
                 member.name = [[dic[@"nickName"] description] containsString:@"null"]?member.userId:dic[@"nickName"];
                 member.portraitUri =[dic[@"headImage"] isKindOfClass:[NSNull class]]?@"":dic[@"headImage"];
-                member.updatedAt = dic[@"createdAt"]?dic[@"createdAt"]:@"";
+                member.updatedAt = [YSTools dx_isNullOrNilWithObject:dic[@"createdAt"]]?@"":dic[@"createdAt"];
                 member.displayName = member.name;
                 if (!member.portraitUri || member.portraitUri <= 0) {
                     member.portraitUri = [RCDUtilities defaultUserPortrait:member];

@@ -269,6 +269,8 @@
 //        win.rootViewController = mainTabBarVC;
         [YTAlertUtil showTempInfo:@"切换成功"];
         [weakSelf.tab_Bottom reloadData];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MYADDRESSBOOK" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"LOADSERVICELIST" object:nil];
     });
 }
 - (void)onRCIMConnectionStatusChanged:(RCConnectionStatus)status {
