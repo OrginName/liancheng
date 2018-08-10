@@ -38,4 +38,6 @@
 
 @interface CustomLocatiom : NSObject
 @property (nonatomic, weak) id<CustomLocationDelegate> delegate;
+- (void)startUpdatingLocation;
+
 @end

@@ -21,8 +21,11 @@
 @end
 @interface CustomMap : UIView
 @property (nonatomic,strong) MAMapView * mapView;
+@property (nonatomic,strong) CustomLocatiom * location;
 @property (nonatomic, strong) NSMutableArray *annotations;
 @property (nonatomic, weak) id<CustomMapDelegate> delegate;
 @property (nonatomic, assign) BOOL selectAnimation;//是否默认选中该mark
 @property (nonatomic,strong) NSMutableArray * Arr_Mark;
+-(void)locationClick;
+
 @end

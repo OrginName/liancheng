@@ -15,7 +15,6 @@
 #import "AbilttyMo.h"
 @interface CustomMap()<MAMapViewDelegate,CustomLocationDelegate,UITextFieldDelegate>
 @property (nonatomic,assign) id controller;
-@property (nonatomic,strong) CustomLocatiom * location;
 @property (nonatomic, strong) CustomAnnotationView * annotationView;
 @property (nonatomic, strong) MAPointAnnotation * pointAnnotaiton;
 @property (nonatomic,strong) UIButton * btn_location;

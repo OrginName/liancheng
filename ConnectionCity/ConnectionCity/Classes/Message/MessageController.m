@@ -74,6 +74,9 @@
     }
 }
 - (void)updateData {
+    [self setUI];
+    [self.cusMap.location startUpdatingLocation];
+    [self.cusMap locationClick];
     if ([KUserDefults objectForKey:kUserCityID]!=nil) {
         [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
     }
@@ -272,7 +275,6 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     [self.navigationController.navigationBar setBackgroundImage:
      [UIImage createImageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
-   
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -287,6 +289,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self initData];
+    [self.cusMap locationClick];
 }
 -(void)initData{
     WeakSelf

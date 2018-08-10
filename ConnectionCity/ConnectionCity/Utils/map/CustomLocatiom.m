@@ -37,6 +37,11 @@
     //        [self.locationManager startUpdatingHeading];
     //    }
 }
+
+- (void)startUpdatingLocation {
+    [self.locationManager startUpdatingLocation];
+    self.locationManager.delegate = self;
+}
 #pragma mark - AMapLocationManager Delegate
 
 - (void)amapLocationManager:(AMapLocationManager *)manager didFailWithError:(NSError *)error
