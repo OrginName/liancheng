@@ -28,6 +28,8 @@
 #import <RongIMLib/RongIMLib.h>
 #import "RCDUIBarButtonItem.h"
 #import "QiniuUploader.h"
+#import "UserMo.h"
+#import "PersonalBasicDataController.h"
 static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 
 @interface RCDGroupSettingsTableViewController ()<RCDContactDelegate>
@@ -865,32 +867,15 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         }
     }
     RCUserInfo *selectedUser = [collectionViewResource objectAtIndex:indexPath.row];
-    BOOL isFriend = YES;
-#warning mark-----判断好友状态--------
-//    NSArray *friendList = [[RCDataBaseManager shareInstance] getAllFriends];
-//    for (RCDUserInfo *friend in friendList) {
-//        if ([selectedUser.userId isEqualToString:friend.userId] && [friend.status isEqualToString:@"20"]) {
-//            isFriend = YES;
-//        }
-//    }
-    if (isFriend == YES || [selectedUser.userId isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
-        RCDPersonDetailViewController *detailViewController = [[RCDPersonDetailViewController alloc] init];
-        [self.navigationController pushViewController:detailViewController animated:YES];
-        RCUserInfo *user = [collectionViewResource objectAtIndex:indexPath.row];
-        detailViewController.userId = user.userId;
-    } else {
-        RCDAddFriendViewController *addViewController = [[RCDAddFriendViewController alloc] init];
-
-        addViewController.targetUserInfo =
-
-            [collectionViewResource objectAtIndex:indexPath.row];
-
-        [self.navigationController pushViewController:addViewController
-
-                                             animated:YES];
-    }
+    [YSNetworkTool POST:v1PrivateUserUserinfo params:@{@"id":selectedUser.userId} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        UserMo * mo = [UserMo mj_objectWithKeyValues:responseObject[@"data"]];
+        PersonalBasicDataController * person = [PersonalBasicDataController new];
+        person.connectionMo = mo;
+        [self.navigationController pushViewController:person animated:YES];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
-
 - (void)didReceiveMessageNotification:(NSNotification *)notification {
     RCMessage *message = notification.object;
     if ([message.content isMemberOfClass:[RCGroupNotificationMessage class]]) {

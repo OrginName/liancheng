@@ -590,7 +590,7 @@ NSMutableDictionary *userInputStatus;
     return menuList;
 }
 - (void)didTapCellPortrait:(NSString *)userId {
-    if (self.conversationType == ConversationType_GROUP) {
+    if (self.conversationType == ConversationType_GROUP||self.conversationType == ConversationType_PRIVATE) {
         RCUserInfo *user = [RCUserInfo new];
         user.userId = userId;
         [self gotoNextPage:user];

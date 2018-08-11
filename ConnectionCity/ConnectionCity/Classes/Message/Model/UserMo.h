@@ -11,6 +11,7 @@
 @interface UserMo : BaseModel<NSCoding> 
 proStr(age);
 proStr(isBlack);
+proStr(isCompanyAuth);
 proStr(isMobileAuth);//手机认证
 proStr(isSkillAuth);//技能认证
 proStr(isIdentityAuth);//身份证认证

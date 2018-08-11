@@ -96,10 +96,11 @@
     _list = list;
     if (list!=nil) {
         self.lab_TrvalDY.hidden = YES;
-        self.lab_TrvalDes.hidden = YES;
+//        self.lab_TrvalDes.hidden = YES;
         self.lab_TrvalPrice.hidden = YES;
-        self.lab_trvalJNXQ.hidden = YES;
-        self.view_trval1.hidden = YES;
+//        self.lab_trvalJNXQ.hidden = YES;
+//        self.view_trval1.hidden = YES;
+        self.layout_height.constant = 75;
         self.lab_Title.text = list.user1.nickName?list.user1.nickName:@"无";
         if (list.cityName.length!=0) {
             [self.btn_city setTitle:list.cityName forState:UIControlStateNormal];
@@ -113,7 +114,7 @@
         self.image_sex.image = [UIImage imageNamed:[KString(@"%@", list.user1.gender) isEqualToString:@"2"]?@"women":@"men"];
         [self.btn_weight setTitle:KString(@"%@kg", list.user1.weight?list.user1.weight:@"无") forState:UIControlStateNormal];
         self.lab_ServiceTitle.text = list.title?list.title:@"无";
-        self.lab_Des.text = list.introduce?list.introduce:@"无";
+        self.lab_TrvalDes.text = list.introduce?list.introduce:@"无";
         if (list.property.length!=0&&[[self stringToJSON:list.property] count]!=0) {
             NSString * propertyTxt = @"";
             NSArray * arr = [self stringToJSON:list.property];
@@ -129,8 +130,9 @@
                 propertyTxt = [NSString stringWithFormat:@"%@ %@",[NSString stringWithFormat:@"%@:%@",dic[@"name"],str],propertyTxt];
             }
             self.lab_DW.text =propertyTxt;
-        }else
+        }else{
             self.lab_DW.text = @"无";
+        }
         self.lab_LLNum.text = [NSString stringWithFormat:@"浏览%@次",list.browseTimes?list.browseTimes:@"999+"];
         self.lab_DTNum.text = KString(@"%lu", (unsigned long)list.serviceCircleList.count);
         for (NSDictionary * dic in list.serviceCircleList) {

@@ -537,16 +537,23 @@ JFSearchViewDelegate,UITextFieldDelegate>
 }
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     [self.view_Bottom addSubview:self.searchView];
-    return YES;
-}
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
     _manager.dataArr = _cityMutableArray;
-    [_manager searchCityData1:textField.text result:^(NSMutableArray *result) {
+    [_manager searchCityData1:string result:^(NSMutableArray *result) {
         if ([result count] > 0) {
             _searchView.backgroundColor = [UIColor whiteColor];
             _searchView.resultMutableArray = result;
         }
     }];
+    return YES;
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+//    _manager.dataArr = _cityMutableArray;
+//    [_manager searchCityData1:textField.text result:^(NSMutableArray *result) {
+//        if ([result count] > 0) {
+//            _searchView.backgroundColor = [UIColor whiteColor];
+//            _searchView.resultMutableArray = result;
+//        }
+//    }];
     return YES;
 }
 //搜索框删除按钮

@@ -182,10 +182,10 @@ CGFloat maxLimitHeight = 0;
     if ([moment.cityName length]) {
         _locationLab.hidden = NO;
         _locationLab.text = moment.cityName;
-        _praiseBtn.frame = CGRectMake(_nameLab.left-3, _locationLab.bottom+kPaddingValue, textW, kTimeLabelH);
+        _praiseBtn.frame = CGRectMake(_nameLab.left-10, _locationLab.bottom+kPaddingValue, 60, kTimeLabelH);
     } else {
         _locationLab.hidden = YES;
-        _praiseBtn.frame = CGRectMake(_nameLab.left-3, bottom, textW, kTimeLabelH);
+        _praiseBtn.frame = CGRectMake(_nameLab.left-10, bottom, 60, kTimeLabelH);
     }
     [_praiseBtn setTitle:[NSString stringWithFormat:@"点赞(%@)",moment.likeCount?moment.likeCount:@"999+"] forState:UIControlStateNormal];
     [_commentBtn setTitle:[NSString stringWithFormat:@"评论(%@)",moment.commentCount?moment.commentCount:@"999+"] forState:UIControlStateNormal];

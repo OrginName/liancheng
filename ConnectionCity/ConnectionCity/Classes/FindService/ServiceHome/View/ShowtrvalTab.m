@@ -80,6 +80,7 @@
             if ((self.Mo!=nil&&self.Mo.serviceCircleList.count==0)||(self.MoTrval!=nil&&self.MoTrval.serviceCircleList.count==0)) {
                 return 40;
             }else{
+                
                 return (kScreenWidth-68)/4+45;
             }
         }else{
@@ -88,7 +89,7 @@
     }else if (indexPath.section==1){
         if (self.Mo!=nil) {
             float hidth = [YSTools cauculateHeightOfText:self.Mo.introduce width:kScreenWidth-40 font:13];
-            return 180+hidth;
+            return 225+hidth;
         }else{
             float hidth = [YSTools cauculateHeightOfText:self.MoTrval.introduce width:kScreenWidth-40 font:13];
              return 170+hidth;
@@ -144,9 +145,9 @@
     if (indexPath.section==0&&indexPath.row==1) {
         NSMutableArray * arr = [NSMutableArray array];
         if (self.Mo!=nil) {
-            arr = [self loadA:self.Mo.user1.isSkillAuth b:self.Mo.user1.isMobileAuth c:self.Mo.user1.isIdentityAuth];
+            arr = [self loadA:self.Mo.user1.isSkillAuth b:self.Mo.user1.isMobileAuth c:self.Mo.user1.isIdentityAuth d:self.Mo.user1.isCompanyAuth];
         }else{
-           arr = [self loadA:self.MoTrval.user.isSkillAuth b:self.MoTrval.user.isMobileAuth c:self.MoTrval.user.isIdentityAuth];
+           arr = [self loadA:self.MoTrval.user.isSkillAuth b:self.MoTrval.user.isMobileAuth c:self.MoTrval.user.isIdentityAuth d:self.Mo.user1.isCompanyAuth];
         }
         CustomImageScro * img = [[CustomImageScro alloc] initWithFrame:CGRectMake(0, 0, cell.view_RZ.width, cell.view_RZ.height) arr:[arr copy]];
         [cell.view_RZ addSubview:img];
@@ -170,7 +171,7 @@
             [self.control.navigationController pushViewController:friend animated:YES];
     }
 }
--(NSMutableArray *)loadA:(NSString *)a b:(NSString *)b c:(NSString *)c{
+-(NSMutableArray *)loadA:(NSString *)a b:(NSString *)b c:(NSString *)c d:(NSString *)d{
     NSMutableArray * arr = [NSMutableArray array];
     if ([a isEqualToString:@"1"]) {
         [arr addObject:@"our-rz-tec"];
@@ -179,6 +180,9 @@
         [arr addObject:@"our-rz-phone"];
     }
     if ([c isEqualToString:@"1"]) {
+        [arr addObject:@"our-rz-p"];
+    }
+    if ([d isEqualToString:@"1"]) {
         [arr addObject:@"our-rz-p"];
     }
     return arr;
