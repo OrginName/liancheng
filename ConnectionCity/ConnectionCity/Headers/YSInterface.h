@@ -472,6 +472,46 @@ static NSString * const v1Pay = @"/v1/pay";
 static NSString * const v1PayCheck = @"/v1/pay/check";
 
 
+#pragma mark ------宝物------------
+
+//发布宝物
+static NSString * const v1PlayTreasureCreate = @"/v1/play/treasure/create";
+//宝物详情
+static NSString * const v1PlayTreasureDetail = @"/v1/play/treasure/detail";
+//玩拼柜交换
+static NSString * const v1PlayTreasureExchange = @"/v1/play/treasure/exchange";
+//宝物列表
+static NSString * const v1PlayTreasureList = @"/v1/play/treasure/list";
+//玩拼柜-上加
+static NSString * const v1PlayTreasurePutOffShelves = @"/v1/play/treasure/put-off-shelves";
+///玩拼柜-下架
+static NSString * const v1PlayTreasurePutOnShelves = @"/v1/play/treasure/put-on-shelves";
+//换着玩宝物-添加浏览次数
+static NSString * const v1PlayTreasureAddBrowseTimes = @"/v1/play/treasure/add-browse-times";
+///换着玩宝物-点赞
+static NSString * const v1PlayTreasureAddLikeCount = @"/v1/play/treasure/add-like-count";
+//玩品柜-用户确认, id为订单Id，当订单装填为10,20,30时可调用
+static NSString * const v1PlayTreasureConfirm = @"/v1/play/treasure/confirm";
+///玩品柜-发起补差价
+static NSString * const v1PlayTreasureCompensationPrice = @"/v1/play/treasure/compensation-price";
+///发布身份互换
+static NSString * const v1PlayIdentityCreate = @"/v1/play/identity/create";
+//身份互换详情
+static NSString * const v1PlayIdentityDetail = @"/v1/play/identity/detail";
+//身份互换列表
+static NSString * const v1PlayIdentityPage = @"/v1/play/identity/page";
+//创建发烧友
+static NSString * const v1PlayFeverCreate = @"/v1/play/fever/create";
+//发烧友详情
+static NSString * const v1PlayFeverInfo = @"/v1/play/fever/info";
+//获取附近，我的，我加入的发烧友
+static NSString * const v1PlayFeverRelationToMeList = @"/v1/play/fever/relation-to-me/list";
+//加入发烧友
+static NSString * const v1PlayFeverSignIn = @"/v1/play/fever/sign-in";
+//退出发烧友
+static NSString * const v1PlayFeverSignOut = @"/v1/play/fever/sign-out";
+
+
 //公工接口
 //关注
 static NSString * const v1CommonFollowCreate = @"/v1/common/follow/create";

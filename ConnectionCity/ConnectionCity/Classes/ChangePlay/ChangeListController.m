@@ -9,14 +9,16 @@
 #import "ChangeListController.h"
 #import "ChangeCell.h"
 #import "JFCityViewController.h"
-#import "ClassificationsController.h"
+#import "ClassificationsController1.h"
 #import "FilterOneController.h"
 #import "ShowResumeController.h"
+#import "ChangePlayNet.h"
 #define ID @"ChangeCell"
 @interface ChangeListController ()<JFCityViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_X;
 @property (weak, nonatomic) IBOutlet UILabel *lab_City;
 @property (weak, nonatomic) IBOutlet UICollectionView *collec_Bottom;
+@property (nonatomic,strong) NSMutableArray * arrClass;
 @property (nonatomic,strong) ChangeListLayout * flowLyout;
 
 @end
@@ -24,6 +26,8 @@
 @implementation ChangeListController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.arrClass = [NSMutableArray array];
+    [self initData];
     [self setUI];
 }
 -(void)setUI{
@@ -34,8 +38,12 @@
      self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SearchClick) image:@"search" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
     [self initNavi];
 }
+-(void)initData{
+    [ChangePlayNet requstBWClass:^(NSMutableArray *successArrValue) {
+        self.arrClass = successArrValue;
+    }];
+}
 - (IBAction)btn_Click:(UIButton *)sender {
-    
     switch (sender.tag) {
         case 1:
         {
@@ -47,11 +55,15 @@
             break;
         case 2:
         {
-            ClassificationsController * class = [ClassificationsController new];
-            class.title = @"职业分类";
+            ClassificationsController1 * class = [ClassificationsController1 new];
+            class.arr_Data = self.arrClass;
+            class.title = @"宝物分类";
             class.block = ^(NSString *classifiation){
                 UILabel * btn = (UILabel *)[self.view_X viewWithTag:2];
                 btn.text = classifiation;
+            };
+            class.block1 = ^(NSString *classifiationID, NSString *classifiation) {
+                
             };
             [self.navigationController pushViewController:class animated:YES];
         }

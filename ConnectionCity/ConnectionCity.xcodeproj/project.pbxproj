@@ -183,6 +183,7 @@
 		72EC1BBA20BC4CA100ACC20B /* SendServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EC1BB820BC4CA100ACC20B /* SendServiceCell.xib */; };
 		72EC1BBD20BDA25200ACC20B /* SendSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1BBC20BDA25200ACC20B /* SendSelectCell.m */; };
 		72EC1BC220BDB10500ACC20B /* SelectLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EC1BC120BDB10400ACC20B /* SelectLayout.m */; };
+		72F89305211EDDD100D06646 /* ChangePlayNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F89304211EDDD100D06646 /* ChangePlayNet.m */; };
 		8817A720716E5B61344D714A /* libPods-ConnectionCity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C925F9235B467157F8630F87 /* libPods-ConnectionCity.a */; };
 		8D07D75E20DCC8AB0073807C /* AbilttyMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D07D75D20DCC8AB0073807C /* AbilttyMo.m */; };
 		8D07D76820DCE0370073807C /* QiniuUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D07D76720DCE0370073807C /* QiniuUploader.m */; };
@@ -966,6 +967,8 @@
 		72EC1BBC20BDA25200ACC20B /* SendSelectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendSelectCell.m; sourceTree = "<group>"; };
 		72EC1BC020BDB10400ACC20B /* SelectLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLayout.h; sourceTree = "<group>"; };
 		72EC1BC120BDB10400ACC20B /* SelectLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLayout.m; sourceTree = "<group>"; };
+		72F89303211EDDD100D06646 /* ChangePlayNet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePlayNet.h; sourceTree = "<group>"; };
+		72F89304211EDDD100D06646 /* ChangePlayNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePlayNet.m; sourceTree = "<group>"; };
 		8D07D75C20DCC8AB0073807C /* AbilttyMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbilttyMo.h; sourceTree = "<group>"; };
 		8D07D75D20DCC8AB0073807C /* AbilttyMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AbilttyMo.m; sourceTree = "<group>"; };
 		8D07D76620DCE0370073807C /* QiniuUploader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiniuUploader.h; sourceTree = "<group>"; };
@@ -2086,6 +2089,7 @@
 		727418C120B17E65001D6BE1 /* ChangePlay */ = {
 			isa = PBXGroup;
 			children = (
+				72F89302211EDDBE00D06646 /* Net */,
 				727418D520B29095001D6BE1 /* EnthusiastsControll */,
 				727418D320B29094001D6BE1 /* PlayPoduct */,
 				727418D420B29095001D6BE1 /* SwapController */,
@@ -2684,6 +2688,15 @@
 				8D5B3C3C20C0147A00773105 /* ServiceListCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		72F89302211EDDBE00D06646 /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				72F89303211EDDD100D06646 /* ChangePlayNet.h */,
+				72F89304211EDDD100D06646 /* ChangePlayNet.m */,
+			);
+			path = Net;
 			sourceTree = "<group>";
 		};
 		8B7BE3068BAA237F55FD6962 /* Frameworks */ = {
@@ -4952,6 +4965,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72F89305211EDDD100D06646 /* ChangePlayNet.m in Sources */,
 				8DE465F220EDF261009730F7 /* RCDSettingBaseViewController.m in Sources */,
 				8D22C34120C77C0F004DC8F4 /* SkillCertificationController.m in Sources */,
 				8DE4665620EDFC09009730F7 /* RCDGroupAnnouncementViewController.m in Sources */,
