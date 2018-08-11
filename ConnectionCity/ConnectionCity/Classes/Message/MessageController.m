@@ -76,7 +76,6 @@
 - (void)updateData {
     [self setUI];
     [self.cusMap.location startUpdatingLocation];
-    [self.cusMap locationClick];
     if ([KUserDefults objectForKey:kUserCityID]!=nil) {
         [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
     }
@@ -229,6 +228,9 @@
     self.navigationItem.titleView = nav_view;
 //    初始化地图
 //    [self initMapView];
+    if (self.cusMap) {
+        [self.cusMap removeFromSuperview];
+    }
     self.cusMap = [[CustomMap alloc] initWithFrame:CGRectMake(0, 0, self.view_Map.width, self.view_Map.height)];
 //    self.cusMap.selectAnimation = YES;
     [self.view_Map addSubview:self.cusMap];
@@ -236,6 +238,7 @@
     [self.view_Map bringSubviewToFront:self.btn_mapUserLocation];
     [self.view_Map bringSubviewToFront:self.view_notice];
     [self.view_Map bringSubviewToFront:self.view_userLocation];
+    
 }
 - (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location{
     self.lab_Location.text =locationDictionary[@"addRess"];

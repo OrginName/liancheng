@@ -36,7 +36,7 @@
     }];
 }
 +(void)requstServiceList:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock{
-    [YSNetworkTool POST:v1ServiceList params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1ServiceList params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray * arr = [NSMutableArray array];
         if ([responseObject[@"data"] isKindOfClass:[NSArray class]]) {
             for (int i=0; i<[responseObject[@"data"] count]; i++) {
