@@ -47,14 +47,20 @@
     }];
 }
 -(void)ClearAll{
-    NSString * url = [self.flagStr isEqualToString:@"HomeSend"]?v1FriendCircleDelete:v1ServiceCircleDelete;
-    [YSNetworkTool POST:url params:@{@"id":self.receiveMo.ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        self.block();
-        [self.navigationController popViewControllerAnimated:YES];
-        [YTAlertUtil showTempInfo:@"删除成功"];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    WeakSelf
+    [YTAlertUtil alertDualWithTitle:@"连程" message:@"是否要删除当前动态" style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
         
-    }];
+    } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {
+        NSString * url = [weakSelf.flagStr isEqualToString:@"HomeSend"]?v1FriendCircleDelete:v1ServiceCircleDelete;
+        [YSNetworkTool POST:url params:@{@"id":weakSelf.receiveMo.ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+            weakSelf.block();
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+            [YTAlertUtil showTempInfo:@"删除成功"];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+    } completion:nil];
+    
 }
 -(void)setUI{
     WeakSelf

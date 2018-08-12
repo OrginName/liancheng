@@ -111,16 +111,22 @@
     [self setPlay:comm.videos image:comm.coverImage];
 }
 -(void)didCancleClick:(CollectionCell *)cell{
-    NSIndexPath * index = [self.tab_Bottom indexPathForCell:cell];
-    Moment * comm = self.momentList[index.row];
     WeakSelf
-    [YSNetworkTool POST:v1CommonCollectCreate params:@{@"typeId":@([comm.ID integerValue]),@"type":@20} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        page=1;
-        [weakSelf.momentList removeObject:comm];
-        [weakSelf.tab_Bottom deleteRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationNone];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    [YTAlertUtil alertDualWithTitle:@"连程" message:@"确认取消该收藏吗？" style:UIAlertControllerStyleAlert cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
         
-    }];
+    } defaultTitle:@"确认" defaultHandler:^(UIAlertAction *action) {
+        NSIndexPath * index = [weakSelf.tab_Bottom indexPathForCell:cell];
+        Moment * comm = weakSelf.momentList[index.row];
+        WeakSelf
+        [YSNetworkTool POST:v1CommonCollectCreate params:@{@"typeId":@([comm.ID integerValue]),@"type":@20} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+            page=1;
+            [weakSelf.momentList removeObject:comm];
+            [weakSelf.tab_Bottom deleteRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationNone];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+    } completion:nil];
+    
 }
 -(void)setPlay:(NSString *)url image:(UIImage *)image{
     XMPlayerManager *playerManager = [[XMPlayerManager alloc] init];
