@@ -292,7 +292,9 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self initData];
-    [self.cusMap locationClick];
+    if ([KUserDefults objectForKey:kUserCityID]!=nil) {
+        [self.cusMap locationClick];
+    } 
 }
 -(void)initData{
     WeakSelf

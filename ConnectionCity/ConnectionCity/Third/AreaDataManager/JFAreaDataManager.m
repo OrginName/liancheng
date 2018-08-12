@@ -9,6 +9,7 @@
 #import "JFAreaDataManager.h"
 #import "FMDB.h"
 #import "CityMo.h"
+#import "ShoolOREduMo.h"
 @interface JFAreaDataManager ()
 
 @property (nonatomic, strong) FMDatabase *db;
@@ -164,9 +165,16 @@ static JFAreaDataManager *manager = nil;
 //                    }
 //                }
 //            }
-            CityMo * mo = self.dataArr[i];
-            if ([mo.fullName containsString:searchObject]) {
-                [arr addObject:mo];
+            if ([self.dataArr[i] isKindOfClass:[CityMo class]]) {
+                CityMo * mo = self.dataArr[i];
+                if ([mo.fullName containsString:searchObject]) {
+                    [arr addObject:mo];
+                }
+            }else{
+                ShoolOREduMo * mo = self.dataArr[i];
+                if ([mo.name containsString:searchObject]) {
+                    [arr addObject:mo];
+                }
             }
         }
     //返回结果

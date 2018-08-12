@@ -9,6 +9,7 @@
 #import "ShoolOREduMo.h"
 
 @implementation ShoolOREduMo
+MJCodingImplementation
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"ID":@"id"};
 }

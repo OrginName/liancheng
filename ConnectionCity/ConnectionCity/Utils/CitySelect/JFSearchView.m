@@ -7,6 +7,7 @@
 //
 
 #import "JFSearchView.h"
+
 static NSString *ID = @"searchCell";
 
 @interface JFSearchView ()<UITableViewDelegate, UITableViewDataSource>
@@ -23,13 +24,11 @@ static NSString *ID = @"searchCell";
     }
     return self;
 }
-
 - (void)setResultMutableArray:(NSMutableArray *)resultMutableArray {
     _resultMutableArray = resultMutableArray;
     [self addSubview:self.rootTableView];
     [_rootTableView reloadData];
 }
-
 - (UITableView *)rootTableView {
     if (!_rootTableView) {
         _rootTableView = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStylePlain];
@@ -47,20 +46,35 @@ static NSString *ID = @"searchCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
-    CityMo * mo = _resultMutableArray[indexPath.row];
-    cell.textLabel.text = mo.fullName;
+    if ([_resultMutableArray[indexPath.row] isKindOfClass:[CityMo class]]) {
+        CityMo * mo = _resultMutableArray[indexPath.row];
+        cell.textLabel.text = mo.fullName;
+    }else{
+        ShoolOREduMo * mo = _resultMutableArray[indexPath.row];
+        cell.textLabel.text = mo.name;
+    }
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    CityMo * mo = _resultMutableArray[indexPath.row];
-    if (mo.fullName.length!=0) {
-        if (self.delegate&&[self.delegate respondsToSelector:@selector(serchResultCityMo:)]) {
-            [self.delegate serchResultCityMo:mo];
+    if ([_resultMutableArray[indexPath.row] isKindOfClass:[CityMo class]]) {
+        CityMo * mo = _resultMutableArray[indexPath.row];
+        if (mo.fullName.length!=0) {
+            if (self.delegate&&[self.delegate respondsToSelector:@selector(serchResultCityMo:)]) {
+                [self.delegate serchResultCityMo:mo];
+            }
+        }
+    }else{
+        ShoolOREduMo * mo = _resultMutableArray[indexPath.row];
+        if (mo.name.length!=0) {
+            if (self.delegate&&[self.delegate respondsToSelector:@selector(serchResultSchoolMo:)]) {
+                [self.delegate serchResultSchoolMo:mo];
+            }
         }
     }
+    
 //    [KUserDefults setObject:mo.fullName forKey:kUserCity];
 //    [KUserDefults setObject:mo.ID forKey:kUserCityID];
 //    [KUserDefults setObject:mo.lat forKey:kLat];

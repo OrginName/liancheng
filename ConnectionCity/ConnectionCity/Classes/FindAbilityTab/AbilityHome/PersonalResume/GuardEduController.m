@@ -69,7 +69,7 @@
                               @"description": self.textView_Indro.text,
                               @"educationId": @([_EduID integerValue]),
                               @"endDate": self.end_Time.text,
-                              @"professionalId": @([_proID integerValue]),
+                              @"professionalId": _proID.length!=0? @([_proID integerValue]):@"",
                               @"resumeId": @([self.resumeID integerValue]),
                               @"schoolId": @([_collID integerValue]),//****
                               @"startDate": self.Start_time.text,
@@ -121,19 +121,19 @@
         };
         [self.navigationController pushViewController:sort animated:YES];
     }else if (sender.tag==2) {
-        SortCollProController * sort = [SortCollProController new];
-        sort.title = @"专业";
-        sort.url = dictionaryProfessional;
-        sort.block = ^(ShoolOREduMo *mo) {
-            self.text_Pro.text = mo.name;
-            _proID = mo.ID;
-        };
-        [self.navigationController pushViewController:sort animated:YES];
-//        EditAllController * edit = [EditAllController new];
-//        edit.block = ^(NSString * str){
-//            sender.tag==2?(self.text_Pro.text = str):(self.text_Coll.text=str);
+//        SortCollProController * sort = [SortCollProController new];
+//        sort.title = @"专业";
+//        sort.url = dictionaryProfessional;
+//        sort.block = ^(ShoolOREduMo *mo) {
+//            self.text_Pro.text = mo.name;
+//            _proID = mo.ID;
 //        };
-//        [self.navigationController pushViewController:edit animated:YES];
+//        [self.navigationController pushViewController:sort animated:YES];
+        EditAllController * edit = [EditAllController new];
+        edit.block = ^(NSString * str){
+            sender.tag==2?(self.text_Pro.text = str):(self.text_Coll.text=str);
+        };
+        [self.navigationController pushViewController:edit animated:YES];
     }
     else if (sender.tag==3) {
         NSMutableArray * title = [NSMutableArray array];
