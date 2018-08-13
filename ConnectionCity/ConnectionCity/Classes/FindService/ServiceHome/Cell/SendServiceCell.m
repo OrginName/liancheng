@@ -15,19 +15,20 @@
 @implementation SendServiceCell
 static NSArray * arr_Str;
 +(void)initialize{
-    arr_Str = @[@{@"title":@"服务标题",@"placeholder":@"填写你可以赚钱的服务技能"},@{@"title":@"服务类别",@"placeholder":@"请选择服务类别"},@{@"title":@"服务介绍",@"placeholder":@"介绍你自己的服务优势"},@{@"title":@"服务价格",@"placeholder":@"填写价格"}];
+//    @{@"title":@"服务标题",@"placeholder":@"填写你可以赚钱的服务技能"},
+    arr_Str = @[@{@"title":@"服务类别",@"placeholder":@"请选择服务类别"},@{@"title":@"服务介绍",@"placeholder":@"介绍你自己的服务优势"},@{@"title":@"服务价格",@"placeholder":@"填写价格"}];
 }
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView
                             indexPath:(NSIndexPath *)indexPath{
     NSString *identifier = @"";
     NSInteger index = 0;
-    if (indexPath.section!=4&&indexPath.section!=5) {
+    if (indexPath.section!=3&&indexPath.section!=4) {
         identifier = @"SendServiceCell0";
         index = 0;
-    }else if (indexPath.section==4){
+    }else if (indexPath.section==3){
         identifier = @"SendServiceCell1";
         index = 1;
-    }else if (indexPath.section==5){
+    }else if (indexPath.section==4){
         identifier = @"SendServiceCell2";
         index = 2;
     } 
@@ -35,7 +36,7 @@ static NSArray * arr_Str;
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"SendServiceCell" owner:self options:nil] objectAtIndex:index];
     }
-    if (indexPath.section!=4&&indexPath.section!=5){
+    if (indexPath.section!=3&&indexPath.section!=4){
         cell.lab_title.text = arr_Str[indexPath.section][@"title"];
         cell.txt_Placeholder.placeholder = arr_Str[indexPath.section][@"placeholder"];
     }

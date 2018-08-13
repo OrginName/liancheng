@@ -65,7 +65,7 @@
     _section2Num = 1;
     [self.view addSubview:self.selectView];
 //    [self.Dic2 setValue:@"10" forKey:KString(@"%d", 4)];
-    [self.Dic2 setValue:@"1" forKey:KString(@"%d", 5)];
+    [self.Dic2 setValue:@"1" forKey:KString(@"%d", 4)];
     if (!self.arr_receive) {
         self.arr_receive = [NSMutableArray array];
         //    服务类别列表
@@ -77,15 +77,16 @@
 }
 #pragma mark ---- 各种按钮点击i-----
 -(void)complete{
+//    ||![arr containsObject:KString(@"%d",3)]
     NSArray * arr = [self.Dic2 allKeys];
-    if (![arr containsObject:KString(@"%d",0)]||![arr containsObject:KString(@"%d",1)]||![arr containsObject:KString(@"%d",2)]||![arr containsObject:KString(@"%d",3)]) {
+    if (![arr containsObject:KString(@"%d",0)]||![arr containsObject:KString(@"%d",1)]||![arr containsObject:KString(@"%d",2)]) {
         [YTAlertUtil showTempInfo:@"请填写完整"];
         return;
     }
-    if (![arr containsObject:KString(@"%d",4)]) {
+    if (![arr containsObject:KString(@"%d",3)]) {
         return [YTAlertUtil showTempInfo:@"请选择单位"];
     }
-    if (![arr containsObject:KString(@"%d", 5)]) {
+    if (![arr containsObject:KString(@"%d", 4)]) {
         [YTAlertUtil showTempInfo:@"请阅读并同意找服务发布规则"];
         return;
     }
@@ -115,14 +116,14 @@
                            //                           @"areaCode": @(areaCode),
                            @"content": @"",
                            @"images": urlStr,
-                           @"introduce": self.Dic2[KString(@"%d", 2)],
+                           @"introduce": self.Dic2[KString(@"%d", 1)],
                            @"lat": @(lat),
                            @"lng": @(lng),
-                           @"price": @([self.Dic2[KString(@"%d", 3)] floatValue]),
+                           @"price": @([self.Dic2[KString(@"%d", 2)] floatValue]),
                            @"properties": self.Attr_Arr,
                            @"serviceCategoryId":@([_secrviceType integerValue]),
-                           @"title": self.Dic2[KString(@"%d", 0)],
-                           @"type": self.Dic2[KString(@"%d", 4)]
+//                           @"title": self.Dic2[KString(@"%d", 0)],
+                           @"type": self.Dic2[KString(@"%d", 3)]
                            };
     WeakSelf
     [YSNetworkTool POST:v1ServiceCreate params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -137,19 +138,19 @@
     }];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 6;
+    return 5;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section==0||section==5) {
+    if (section==0||section==4) {
         return 10;
     }else
         return CGFLOAT_MIN;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section==1) {
+    if (section==0) {
         unsigned long a =0;
         for (int i=0; i<_selectView.arrData.count; i++) {
             NSArray * arr= _selectView.arrData[i][@"subname"];
@@ -164,7 +165,7 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SendServiceCell * cell = [SendServiceCell tempTableViewCellWith:tableView indexPath:indexPath];
-    if (indexPath.section==4) {
+    if (indexPath.section==3) {
         CustomScro * customScro = [[CustomScro alloc] initWithFrame:CGRectMake(0, 5, cell.width, cell.height) arr:[_arr1 copy] flag:YES];
         customScro.delegate = self;
         [cell  addSubview:customScro];
@@ -181,13 +182,13 @@
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section!=4||indexPath.section!=5) {
+    if (indexPath.section!=3||indexPath.section!=4) {
         return 44;
     }else
         return 30;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    if (section==0||section==5) {
+    if (section==0||section==4) {
         UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tab_Bottom.width, 10)];
         view.backgroundColor = YSColor(239, 239, 239);
         return view;
@@ -196,13 +197,13 @@
     
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    if (section==1) {
+    if (section==0) {
         return self.selectView;
     }else
         return [[UIView alloc] init];
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{ 
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
         ClassificationsController1 * class = [ClassificationsController1 new];
         class.title = @"服务分类";
         class.arr_Data = self.arr_receive;
@@ -216,7 +217,7 @@
             [self.Dic2 setValue:classifiation1 forKey:[NSString stringWithFormat:@"%ld",indexPath.section]];
         };
         [self.navigationController pushViewController:class animated:YES];
-    }else if(indexPath.section!=4&&indexPath.section!=5){
+    }else if(indexPath.section!=3&&indexPath.section!=4){
         SendServiceCell * cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section]];
         EditAllController * edit = [EditAllController new];
         edit.receiveTxt = cell.txt_Placeholder.text;
@@ -241,7 +242,7 @@
         _tmpBtn = tag;
     }
     AllContentMo * mo = _arr[tag.tag-1];
-    [self.Dic2 setValue:mo.value forKey:[NSString stringWithFormat:@"%d",4]];
+    [self.Dic2 setValue:mo.value forKey:[NSString stringWithFormat:@"%d",3]];
 } //声明协议方法
 #pragma mark ----PhotoSelectDelegate-----
 -(void)selectImageArr:(NSArray *)imageArr{
@@ -292,7 +293,7 @@
 //    [self.Dic2 setValue:a forKey:[NSString stringWithFormat:@"%d",4]];
 }
 - (void)selectedAgree:(UIButton *)btn{
-     [self.Dic2 setValue:[NSString stringWithFormat:@"%d",btn.selected] forKey:[NSString stringWithFormat:@"%d",5]];
+     [self.Dic2 setValue:[NSString stringWithFormat:@"%d",btn.selected] forKey:[NSString stringWithFormat:@"%d",4]];
 }
 #pragma mark --- 懒加载UI-----
 -(SendSelectCell *)selectView{

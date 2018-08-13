@@ -169,7 +169,7 @@
         self.showTab = [[ShowResumeTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];
         AbilttyMo * resume = self.data_Count[indexPath.row];
         self.showTab.abilttyMo = resume;
-        self.title = resume.userMo.nickName;
+        self.title = resume.userMo.nickName?resume.userMo.nickName:KString(@"用户%@", [resume.userMo.ID description]);
         [cell.contentView addSubview:self.showTab];
     }else if(self.Receive_Type == ENUM_TypeCard){
         self.showCardTab = [[ShowCardTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];
@@ -178,11 +178,11 @@
         self.trvaltab = [[ShowtrvalTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight) withControl:self];
         if ([self.str isEqualToString:@"TrvalTrip"]) {
             trvalMo * mo = self.data_Count[indexPath.row];
-            self.title = mo.user.nickName;
+            self.title = mo.user.nickName?mo.user.nickName:KString(@"用户%@", [mo.user.ID description]);
             self.trvaltab.MoTrval = mo;
         }else{
             ServiceListMo * mo = self.data_Count[indexPath.row];
-            self.title = mo.title;
+            self.title = mo.user1.nickName?mo.user1.nickName:KString(@"用户%@", [mo.user1.ID description]);
             self.trvaltab.Mo = mo; 
         }
         [cell.contentView addSubview:self.trvaltab];
