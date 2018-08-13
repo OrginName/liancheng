@@ -86,8 +86,8 @@
 -(void)initData:(NSString *)url{
     if ([KUserDefults objectForKey:@"schollData"]) {
         self.characterMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"schollData"]];
-        _sectionMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"sectionData"]];
-        _cityMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"cityData1"]];
+        _sectionMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"sectionData1"]];
+        _cityMutableArray = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"cityData2"]];
         [self.friendsTabelView reloadData];
     }else {
         [YSNetworkTool POST:url params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -365,7 +365,7 @@
 - (void)setUpView {
     [self.friendsTabelView
      setBackgroundColor:[UIColor whiteColor]];
-    self.view_Bottom = [[UIView alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth-20, kScreenHeight-20)];
+    self.view_Bottom = [[UIView alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight-20)];
     [self.view addSubview:self.view_Bottom];
     
     [self.view_Bottom addSubview:self.friendsTabelView];
@@ -403,16 +403,16 @@
         CGRect searchBarFrame = self.searchFriendsBar.frame;
         CGFloat originY = CGRectGetMaxY(searchBarFrame);
         _friendsTabelView = [[RCDTableView alloc]
-                             initWithFrame:CGRectMake(0, originY, self.view.bounds.size.width, self.view.bounds.size.height - searchBarFrame.size.height)
+                             initWithFrame:CGRectMake(0, originY, kScreenWidth, kScreenHeight - searchBarFrame.size.height)
                              style:UITableViewStyleGrouped];
         
-        _friendsTabelView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-        if ([_friendsTabelView respondsToSelector:@selector(setSeparatorInset:)]) {
-            _friendsTabelView.separatorInset = UIEdgeInsetsMake(0, 10, 0, 0);
-        }
-        if ([_friendsTabelView respondsToSelector:@selector(setLayoutMargins:)]) {
-            _friendsTabelView.layoutMargins = UIEdgeInsetsMake(0, 10, 0, 0);
-        }
+//        _friendsTabelView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+//        if ([_friendsTabelView respondsToSelector:@selector(setSeparatorInset:)]) {
+//            _friendsTabelView.separatorInset = UIEdgeInsetsMake(0, 10, 0, 0);
+//        }
+//        if ([_friendsTabelView respondsToSelector:@selector(setLayoutMargins:)]) {
+//            _friendsTabelView.layoutMargins = UIEdgeInsetsMake(0, 10, 0, 0);
+//        }
         [_friendsTabelView setDelegate:self];
         [_friendsTabelView setDataSource:self];
         [_friendsTabelView setSectionIndexBackgroundColor:[UIColor clearColor]];
@@ -508,11 +508,11 @@
     [self.characterMutableArray addObjectsFromArray:_indexMutableArray];
     NSData *cityData = [NSKeyedArchiver archivedDataWithRootObject:self.characterMutableArray];
     NSData *sectionData = [NSKeyedArchiver archivedDataWithRootObject:_sectionMutableArray];
-    NSData * cityData1 = [NSKeyedArchiver archivedDataWithRootObject:self.cityMutableArray];
+    NSData * cityData2 = [NSKeyedArchiver archivedDataWithRootObject:self.cityMutableArray];
     //拼音转换太耗时，这里把第一次转换结果存到单例中
     [KUserDefults setValue:cityData forKey:@"schollData"];
-    [KUserDefults setObject:sectionData forKey:@"sectionData"];
-    [KUserDefults setObject:cityData1 forKey:@"cityData1"];
+    [KUserDefults setObject:sectionData forKey:@"sectionData1"];
+    [KUserDefults setObject:cityData2 forKey:@"cityData2"];
     success(@"成功");
 }
 - (NSMutableArray *)characterMutableArray {
