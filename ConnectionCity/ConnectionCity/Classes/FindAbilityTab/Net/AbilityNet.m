@@ -104,10 +104,10 @@
  */
 +(void)requstAbilityConditions:(NSDictionary *)param withBlock:(SuccessArrBlock)block{
     [YSNetworkTool POST:v1TalentResumeList params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        if ([responseObject[@"data"] count]==0) {
-            [YTAlertUtil showTempInfo:@"附件暂无简历"];
-            return;
-        }
+//        if ([responseObject[@"data"] count]==0) {
+//            [YTAlertUtil showTempInfo:@"附件暂无简历"];
+//            return;
+//        }
         NSMutableArray * arr = [NSMutableArray array];
         NSMutableArray * arr1 = [NSMutableArray array];
         NSMutableArray * arr2 = [NSMutableArray array];
