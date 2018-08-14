@@ -25,6 +25,7 @@
     NSArray * _arr;
     NSMutableArray * _arr1;
 }
+@property (nonatomic,strong) NSMutableArray * Arr_Url;//选择的图片路径
 @property (nonatomic,strong) CustomScro * customScro;
 @property (nonatomic,strong)SendSelectCell * selectView;
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
@@ -35,7 +36,6 @@
 @property (nonatomic,strong) NSMutableDictionary * Dic2;
 @property (nonatomic,strong) NSString * serviceCategoryId;
 @property (nonatomic,strong) NSMutableArray * Attr_Arr;
-@property (nonatomic,strong) NSMutableArray * Arr_Url;//选择的图片路径
 @end
 
 @implementation SendServiceController

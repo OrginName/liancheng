@@ -25,7 +25,7 @@
 }
 -(void)initData{
     self.Arr_Data = [NSMutableArray array];
-    [self.Arr_Data addObjectsFromArray:@[@"1",@"2",@"4",@"r"]];
+//    [self.Arr_Data addObjectsFromArray:@[@"1",@"2",@"4",@"r"]];
 }
 -(void)setUI{
     [self initNavibarItem];

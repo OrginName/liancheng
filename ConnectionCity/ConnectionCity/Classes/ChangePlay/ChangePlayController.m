@@ -13,6 +13,7 @@
 #import "ShowResumeController.h"
 #import "RefineView.h"
 #import "PopThree.h"
+#import "SendTreasureController.h"
 #define ID @"ChangeCell"
 static NSString * collectionCellIndentider = @"collectionCellIndentider";
 @interface ChangePlayController ()<UICollectionViewDelegate,UICollectionViewDataSource,PopThreeDelegate>
@@ -59,15 +60,20 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     [self.coll_Botom addSubview:self.changeHead];
 //    //自定义重用视图 FilterCollecFooterRuesuableView
     [self.coll_Botom registerClass:[ChangeCollecRuesuableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:collectionCellIndentider];
-    __block ChangePlayController * weakSelf = self;
+    WeakSelf
     _changeHead.block = ^(NSInteger flag){
         NSLog(@"%ld",flag);
          _flag = NO;
         if (flag==4||flag==5) {
             ChangeListController * change = [ChangeListController new];
             [weakSelf.navigationController pushViewController:change animated:YES];
+        }else if(flag==1){
+            SendTreasureController * send = [SendTreasureController new];
+            [weakSelf.navigationController pushViewController:send animated:YES];
+        }else if(flag==3){
+            [YTAlertUtil showTempInfo:@"使用说明"];
         }else{
-            [YTAlertUtil showTempInfo:@"我也不知道去哪"];
+            [YTAlertUtil showTempInfo:@"我换什么"];
         }
     };
 }

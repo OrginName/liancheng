@@ -15,9 +15,15 @@ typedef void (^SuccessDicBlock) (NSDictionary * successDicValue);
 typedef void (^FailDicBlock) (NSString * failValue);
 @interface ChangePlayNet : NSObject
 /**
- 服务分类列表
+ 宝物分类列表
  
  @param sucBlock 成功回调
  */
 +(void)requstBWClass:(SuccessArrBlock)sucBlock;
+/**
+ 发布宝物
+ 
+ @param sucBlock 成功回调
+ */
++(void)requstSendBWClass:(NSDictionary *)param sucBlock:(SuccessArrBlock)sucBlock failBlock:(FailDicBlock)failBlock;
 @end

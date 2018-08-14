@@ -29,4 +29,16 @@
         
     }];
 }
+/**
+ 发布宝物
+ 
+ @param sucBlock 成功回调
+ */
++(void)requstSendBWClass:(NSDictionary *)param sucBlock:(SuccessArrBlock)sucBlock failBlock:(FailDicBlock)failBlock{
+    [YSNetworkTool POST:v1PlayTreasureCreate params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
 @end
