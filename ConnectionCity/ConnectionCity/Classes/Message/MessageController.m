@@ -75,11 +75,13 @@
     }
 }
 - (void)updateData {
-    [self setUI];
+    [self.cusMap.mapView removeAnnotations:self.cusMap.mapView.annotations];
     [self.cusMap.location startUpdatingLocation];
-    if ([KUserDefults objectForKey:kUserCityID]!=nil) {
-        [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
-    }
+//    [self setUI];
+//    [self.cusMap.location startUpdatingLocation];
+//    if ([KUserDefults objectForKey:kUserCityID]!=nil) {
+//        [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
+//    }
 }
 //导航左按钮我的点击
 -(void)MyselfClick{
@@ -104,16 +106,19 @@
 }
 //加载服务列表数据
 -(void)loadServiceList:(NSDictionary *)dic{
-    NSDictionary * dic1 = @{
-//                            @"age": dic[@"age"]?dic[@"age"]:@"",
-//                            @"category": dic[@"category"]?dic[@"category"]:@"",
+    NSDictionary * dic1 = @{};
+    if ([YSTools dx_isNullOrNilWithObject:dic[@"cityCode"]]) {
+        dic1 = @{
+                 @"distance": @([dic[@"distance"]?dic[@"distance"]:@"10" integerValue]),
+                 @"lat": @([dic[@"lat"] floatValue]),
+                 @"lng": @([dic[@"lng"] floatValue]),
+                 };
+    }else
+      dic1 = @{
                             @"cityCode":dic[@"cityCode"]?dic[@"cityCode"]:@"",
-                            @"distance": dic[@"distance"]?dic[@"distance"]:@"",
-//                            @"gender": @([dic[@"gender"]?dic[@"gender"]:@"" integerValue]),
+                            @"distance": @([dic[@"distance"]?dic[@"distance"]:@"10" integerValue]),
                             @"lat": @([dic[@"lat"] floatValue]),
                             @"lng": @([dic[@"lng"] floatValue]),
-//                            @"userStatus": @([dic[@"userStatus"]?dic[@"userStatus"]:@"" integerValue]),
-//                            @"validType": dic[@"validType"]?dic[@"validType"]:@""
                             };
     //    加载服务列表
     [ServiceHomeNet requstServiceList:dic1 withSuc:^(NSMutableArray *successArrValue) {

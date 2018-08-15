@@ -218,13 +218,15 @@
                             @"age": dic[@"age"]?dic[@"age"]:@"",
                             @"category": dic[@"category"]?dic[@"category"]:@"",
                             @"cityCode":dic[@"cityCode"]?dic[@"cityCode"]:@"",
-                            @"distance": dic[@"distance"]?dic[@"distance"]:@"",
+                           @"distance":@([dic[@"distance"]?dic[@"distance"]:@"10" integerValue]),
+                            
                             @"gender":
-                                dic[@"gender"]?@([dic[@"gender"] integerValue]):@"",
+                                @([dic[@"gender"]?dic[@"gender"]:@"" integerValue]),
                             @"lat": @([dic[@"lat"] floatValue]),
                             @"lng": @([dic[@"lng"] floatValue]),
-                            @"userStatus": dic[@"userStatus"]?@([dic[@"userStatus"] integerValue]):@"",
-                            @"validType": dic[@"validType"]?dic[@"validType"]:@"",
+                            @"userStatus": @([dic[@"userStatus"]?dic[@"userStatus"]:@"" integerValue]),
+                            @"validType":
+                                @([dic[@"validType"]?dic[@"validType"]:@"" integerValue]),
                             @"keyword":dic[@"keyword"]?dic[@"keyword"]:@""
                             };
     //    加载服务列表

@@ -123,7 +123,8 @@
                 [self loadServiceList:@{@"cityID":[KUserDefults objectForKey:kUserCityID],@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],
                                         @"salary":strDic[@"2"],
                                         @"education":strDic[@"1"],
-                                        @"work":strDic[@"0"]
+                                        @"work":strDic[@"0"],
+                                        @"userStatus":strDic[@"10"]
                                         }];
             };
             [self.navigationController pushViewController:filter animated:YES];
@@ -150,7 +151,6 @@
     [AbilityNet requstAbilityClass:^(NSMutableArray *successArrValue) {
         self.arr_Class = successArrValue;
     }];
-
 }
 //加载简历列表数据
 -(void)loadServiceList:(NSDictionary *)dic{
@@ -159,10 +159,11 @@
                             @"lng": @([dic[@"lng"] floatValue]),
                             @"category": dic[@"category"]?dic[@"category"]:@"",
                             @"cityCode":dic[@"cityID"]?dic[@"cityID"]:@"",
-                            @"salary": dic[@"salary"]?@([dic[@"salary"] integerValue]):@"",
-                            @"education": dic[@"education"]?@([dic[@"education"] integerValue]):@"",
-                            @"work": dic[@"work"]?@([dic[@"work"] integerValue]):@"",
-                            @"keyword":dic[@"keyword"]?dic[@"keyword"]:@""
+                            @"salary": dic[@"salary"]?@([dic[@"salary"] integerValue]):@(0),
+                            @"education": dic[@"education"]?@([dic[@"education"] integerValue]):@(0),
+                            @"work": dic[@"work"]?@([dic[@"work"] integerValue]):@(0),
+                            @"keyword":dic[@"keyword"]?dic[@"keyword"]:@"",
+                            @"userStatus":dic[@"userStatus"]?@([dic[@"userStatus"] integerValue]):@(0)
                             };
     //    加载服务列表
     [AbilityNet requstAbilityConditions:dic1 withBlock:^(NSMutableArray *successArrValue) {
@@ -238,10 +239,10 @@
 -(void)currentLocationClick:(CLLocationCoordinate2D)location{
     [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude),@"cityID":[KUserDefults objectForKey:kUserCityID]}];
 }
-//-(void)dragCenterLocation:(CLLocationCoordinate2D)location{
-//    //    ,@"cityCode":[KUserDefults objectForKey:kUserCityID]
-//    [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude),@"distance":@"5"}];
-//}
+-(void)dragCenterLocation:(CLLocationCoordinate2D)location{
+    //    ,@"cityCode":[KUserDefults objectForKey:kUserCityID]
+    [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude)}];
+}
 -(void)cityMo:(CityMo *)mo{
     [self loadServiceList:@{@"lat":mo.lat,@"lng":mo.lng,@"cityID":mo.ID}];
     [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([mo.lat floatValue], [mo.lng floatValue])];

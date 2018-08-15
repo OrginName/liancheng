@@ -47,7 +47,7 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
         [AbilityNet requstAbilityConditions:^(NSMutableArray *successArrValue) {
             self.data_Arr = successArrValue;
             [self loadData:successArrValue];
-            self.dic = [[NSMutableDictionary alloc] initWithDictionary:@{@"0":@"1",@"1":@"0",@"2":@"1",@"3":@"1"}];
+            self.dic = [[NSMutableDictionary alloc] initWithDictionary:@{@"0":@"1",@"1":@"0",@"2":@"1",@"10":@"1"}];
         }];
     }else{
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"SX" ofType:@"plist"];

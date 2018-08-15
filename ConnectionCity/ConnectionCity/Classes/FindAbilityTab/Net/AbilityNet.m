@@ -103,7 +103,7 @@
  @param block 成功数组
  */
 +(void)requstAbilityConditions:(NSDictionary *)param withBlock:(SuccessArrBlock)block{
-    [YSNetworkTool POST:v1TalentResumeList params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1TalentResumeList params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
 //        if ([responseObject[@"data"] count]==0) {
 //            [YTAlertUtil showTempInfo:@"附件暂无简历"];
 //            return;
