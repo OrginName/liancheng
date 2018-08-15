@@ -11,6 +11,12 @@
 @interface YSTools : NSObject
 #pragma mark 验证电话号码格式的对错
 +(BOOL)isRightPhoneNumberFormat:(NSString*)phone;
+#pragma mark 验证身份证号码格式的对错
++ (BOOL)verifyIDCardNumber:(NSString *)IDCardNumber;
+#pragma mark - 护照 校验
++ (BOOL)isValidatePassport:(NSString *)string;
+#pragma mark - 港澳通行证 校验
++ (BOOL)isValidateHKMT:(NSString *)string;
 #pragma mark 倒计时
 +(void)DaojiShi:(UIButton*)sender;
 #pragma mark 打电话

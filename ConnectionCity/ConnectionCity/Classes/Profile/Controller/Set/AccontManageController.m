@@ -169,7 +169,7 @@
                                                     userInfo:nil
                                                      repeats:NO];
     WeakSelf
-    [YSNetworkTool POST:login params:@{@"loginName":[dic objectForKey:@"account"],@"password":[dic objectForKey:@"psd"]} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:login params:@{@"loginName":[dic objectForKey:@"account"],@"password":[dic objectForKey:@"psd"],@"status":@"1"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([YSNetworkTool isSuccessWithResp:responseObject]) {
             [JPUSHService setAlias:[responseObject[@"data"][@"userId"] description] completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
                 NSLog(@"别名设置为%ld---%@",(long)iResCode,iAlias);

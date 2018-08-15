@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *idTF;
 @property (nonatomic, strong) NSString *frontImgStr;
 @property (nonatomic, strong) NSString *backgroundImgStr;
+@property (nonatomic, strong) AllContentMo *mo;
 
 @end
 
@@ -51,9 +52,29 @@
 }
 - (IBAction)DeleteClick:(UIButton *)sender {
     if (sender.tag == 4) {
+        if ([YSTools dx_isNullOrNilWithObject:self.mo]) {
+            [YTAlertUtil showTempInfo:@"请选择证件类型"];
+            return;
+        }
         if ([YSTools dx_isNullOrNilWithObject:self.frontImgStr] || [YSTools dx_isNullOrNilWithObject:self.backgroundImgStr] || [YSTools dx_isNullOrNilWithObject:self.idTF.text]) {
             [YTAlertUtil showTempInfo:@"请将信息填写完整"];
             return;
+        }
+        if ([self.mo.value integerValue]==1) {
+            if (![YSTools verifyIDCardNumber:self.idTF.text]) {
+                [YTAlertUtil showTempInfo:@"请输入正确的证件号码"];
+                return;
+            }
+        }else if([self.mo.value integerValue]==2) {
+            if (![YSTools isValidatePassport:self.idTF.text]) {
+                [YTAlertUtil showTempInfo:@"请输入正确的证件号码"];
+                return;
+            }
+        }else if([self.mo.value integerValue]==3) {
+            if (![YSTools isValidateHKMT:self.idTF.text]) {
+                [YTAlertUtil showTempInfo:@"请输入正确的证件号码"];
+                return;
+            }
         }
         [self requestData];
         return;
@@ -80,12 +101,12 @@
     }
     WeakSelf
     [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:title multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
-        AllContentMo * mo = contentArr[idx];
-        weakSelf.idtyypTF.text = mo.description1;
+        weakSelf.mo = contentArr[idx];
+        weakSelf.idtyypTF.text = weakSelf.mo.description1;
     } cancelTitle:@"取消" cancelHandler:nil completion:nil];
 }
 - (void)requestData {
-    NSDictionary *dic = @{@"certNo": _idTF.text,@"image":[NSString stringWithFormat:@"%@;%@",self.frontImgStr,self.backgroundImgStr],@"type":@"0"};
+    NSDictionary *dic = @{@"certNo": _idTF.text,@"image":[NSString stringWithFormat:@"%@;%@",self.frontImgStr,self.backgroundImgStr],@"type":_mo.value};
     WeakSelf
     [YSNetworkTool POST:v1MyAuthUseridentityAuthCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {

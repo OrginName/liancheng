@@ -125,7 +125,7 @@
                                                     userInfo:nil
                                                      repeats:NO];
     WeakSelf
-    [YSNetworkTool POST:login params:@{@"loginName":_phoneTF.text,@"password":_passwordTF.text} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:login params:@{@"loginName":_phoneTF.text,@"password":_passwordTF.text,@"status":@"1"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([YSNetworkTool isSuccessWithResp:responseObject]) {
             [JPUSHService setAlias:[responseObject[@"data"][@"userId"] description] completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
                 NSLog(@"别名设置为%ld---%@",(long)iResCode,iAlias);
@@ -331,7 +331,7 @@
     [ShareSDK getUserInfo:SSDKPlatformTypeQQ onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
         [ShareSDK cancelAuthorize:SSDKPlatformTypeQQ];
         if (state == SSDKResponseStateSuccess) {
-            NSDictionary *dic = @{@"headImageUrl": user.icon,@"identifier":user.uid,@"loginType":@"qq",@"nickName":user.nickname};
+            NSDictionary *dic = @{@"headImageUrl": user.icon,@"identifier":user.uid,@"loginType":@"qq",@"nickName":user.nickname,@"status":@"1"};
             [weakSelf auth:dic];
         }else{
             [YTAlertUtil alertSingleWithTitle:@"提示" message:@"授权失败" defaultTitle:@"确定" defaultHandler:nil completion:nil];
@@ -342,7 +342,7 @@
 //微信授权成功
 - (void)weixinAuthSuccess:(NSNotification*)dic {
     NSDictionary *dd = dic.userInfo;
-    NSDictionary *dict = @{@"headImageUrl": dd[@"headimgurl"],@"identifier":dd[@"unionid"],@"loginType":@"wechat",@"nickName":dd[@"nickname"]};
+    NSDictionary *dict = @{@"headImageUrl": dd[@"headimgurl"],@"identifier":dd[@"unionid"],@"loginType":@"wechat",@"nickName":dd[@"nickname"],@"status":@"1"};
     [self auth:dict];
 }
 #pragma mark - 请求数据

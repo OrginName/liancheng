@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,23 +19,23 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNu-3l-7of">
-                    <rect key="frame" x="10" y="10" width="355" height="647"/>
+                    <rect key="frame" x="10" y="10" width="300" height="548"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfW-Ks-qdF">
-                            <rect key="frame" x="0.0" y="0.0" width="355" height="489"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="489"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBI-6y-Kuf">
-                                    <rect key="frame" x="0.0" y="0.0" width="355" height="350"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="350"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nte-IB-DTB">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFw-lC-6Kp">
-                                                    <rect key="frame" x="0.0" y="49" width="355" height="1"/>
+                                                    <rect key="frame" x="0.0" y="49" width="300" height="1"/>
                                                     <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="sPa-Ya-eeL"/>
@@ -48,7 +48,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的证书名称" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pWf-Gv-tMo">
-                                                    <rect key="frame" x="101.5" y="0.0" width="238.5" height="49"/>
+                                                    <rect key="frame" x="101.5" y="0.0" width="183.5" height="49"/>
                                                     <color key="textColor" red="0.6705882353" green="0.6705882353" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -70,10 +70,10 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTB-ja-mDm">
-                                            <rect key="frame" x="0.0" y="50" width="355" height="50"/>
+                                            <rect key="frame" x="0.0" y="50" width="300" height="50"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEg-6F-pSM">
-                                                    <rect key="frame" x="0.0" y="49" width="355" height="1"/>
+                                                    <rect key="frame" x="0.0" y="49" width="300" height="1"/>
                                                     <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="8go-JU-8q8"/>
@@ -86,7 +86,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入证书编号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bRI-bJ-2YC">
-                                                    <rect key="frame" x="101.5" y="0.0" width="238.5" height="49"/>
+                                                    <rect key="frame" x="101.5" y="0.0" width="183.5" height="49"/>
                                                     <color key="textColor" red="0.6705882353" green="0.6705882353" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -107,10 +107,10 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OwA-2K-1w6">
-                                            <rect key="frame" x="0.0" y="100" width="355" height="50"/>
+                                            <rect key="frame" x="0.0" y="100" width="300" height="50"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dru-wb-mnt">
-                                                    <rect key="frame" x="0.0" y="49" width="355" height="1"/>
+                                                    <rect key="frame" x="0.0" y="49" width="300" height="1"/>
                                                     <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="hhA-GI-ZRC"/>
@@ -135,7 +135,7 @@
                                             </constraints>
                                         </view>
                                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Fr-3h-IZ4">
-                                            <rect key="frame" x="117.5" y="178" width="120" height="150"/>
+                                            <rect key="frame" x="90" y="178" width="120" height="150"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="FT6-nR-2vn"/>
                                                 <constraint firstAttribute="height" constant="150" id="fS9-gh-WQC"/>
@@ -146,7 +146,7 @@
                                             </connections>
                                         </button>
                                         <button hidden="YES" opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Sp-fI-dZw">
-                                            <rect key="frame" x="227" y="173" width="15" height="15"/>
+                                            <rect key="frame" x="199.5" y="173" width="15" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="15" id="5SM-Ni-AW6"/>
                                                 <constraint firstAttribute="height" constant="15" id="WR7-Mz-w9Y"/>
@@ -178,10 +178,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DK7-Ci-LEJ">
-                                    <rect key="frame" x="0.0" y="450" width="355" height="70"/>
+                                    <rect key="frame" x="0.0" y="420" width="300" height="70"/>
                                     <subviews>
                                         <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGQ-JK-pW8">
-                                            <rect key="frame" x="20" y="19" width="315" height="33"/>
+                                            <rect key="frame" x="20" y="19" width="260" height="33"/>
                                             <color key="backgroundColor" red="0.93474149699999998" green="0.36836501960000001" blue="0.33746045829999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" title="提交认证"/>
                                             <userDefinedRuntimeAttributes>
@@ -207,7 +207,7 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="DK7-Ci-LEJ" firstAttribute="top" secondItem="DBI-6y-Kuf" secondAttribute="bottom" constant="100" id="9ub-xN-uIA"/>
+                                <constraint firstItem="DK7-Ci-LEJ" firstAttribute="top" secondItem="DBI-6y-Kuf" secondAttribute="bottom" constant="70" id="9ub-xN-uIA"/>
                                 <constraint firstItem="DBI-6y-Kuf" firstAttribute="leading" secondItem="jfW-Ks-qdF" secondAttribute="leading" id="FYZ-mV-NGn"/>
                                 <constraint firstItem="DBI-6y-Kuf" firstAttribute="top" secondItem="jfW-Ks-qdF" secondAttribute="top" id="GbQ-Xh-Svp"/>
                                 <constraint firstAttribute="height" constant="489" id="NQT-MH-8ik"/>
