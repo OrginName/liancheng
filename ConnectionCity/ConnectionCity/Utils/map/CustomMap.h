@@ -15,9 +15,14 @@
 #import "ZWCustomPointAnnotation.h"
 
 @protocol CustomMapDelegate <NSObject>
+@optional
 - (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location;
+@optional
 -(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation;
--(void)currentLocationClick;
+@optional
+-(void)currentLocationClick:(CLLocationCoordinate2D)location;
+@optional//拖动地图的中心点坐标
+-(void)dragCenterLocation:(CLLocationCoordinate2D)location;
 @end
 @interface CustomMap : UIView
 @property (nonatomic,strong) MAMapView * mapView;

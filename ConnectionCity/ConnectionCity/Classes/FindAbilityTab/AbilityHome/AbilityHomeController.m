@@ -158,10 +158,10 @@
                             @"lat": @([dic[@"lat"] floatValue]),
                             @"lng": @([dic[@"lng"] floatValue]),
                             @"category": dic[@"category"]?dic[@"category"]:@"",
-                            @"cityCode":dic[@"cityID"],
-                            @"salary": @([dic[@"salary"]?dic[@"salary"]:@"" integerValue]),
-                            @"education": @([dic[@"education"]?dic[@"education"]:@"" integerValue]),
-                            @"work": @([dic[@"work"]?dic[@"work"]:@"" integerValue]),
+                            @"cityCode":dic[@"cityID"]?dic[@"cityID"]:@"",
+                            @"salary": dic[@"salary"]?@([dic[@"salary"] integerValue]):@"",
+                            @"education": dic[@"education"]?@([dic[@"education"] integerValue]):@"",
+                            @"work": dic[@"work"]?@([dic[@"work"] integerValue]):@"",
                             @"keyword":dic[@"keyword"]?dic[@"keyword"]:@""
                             };
     //    加载服务列表
@@ -235,11 +235,13 @@
     }
 }
 //回到当前位置的按钮点击
--(void)currentLocationClick{
-    [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityID":[KUserDefults objectForKey:kUserCityID]}];
-    [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([[KUserDefults objectForKey:kLat] floatValue], [[KUserDefults objectForKey:KLng] floatValue])];
-    [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
+-(void)currentLocationClick:(CLLocationCoordinate2D)location{
+    [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude),@"cityID":[KUserDefults objectForKey:kUserCityID]}];
 }
+//-(void)dragCenterLocation:(CLLocationCoordinate2D)location{
+//    //    ,@"cityCode":[KUserDefults objectForKey:kUserCityID]
+//    [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude),@"distance":@"5"}];
+//}
 -(void)cityMo:(CityMo *)mo{
     [self loadServiceList:@{@"lat":mo.lat,@"lng":mo.lng,@"cityID":mo.ID}];
     [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([mo.lat floatValue], [mo.lng floatValue])];

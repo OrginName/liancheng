@@ -56,6 +56,7 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self setUI];
+    [self initData];
     flag = NO;
     if ([KUserDefults objectForKey:kUserCityID]!=nil) {
         [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
@@ -106,8 +107,8 @@
     NSDictionary * dic1 = @{
 //                            @"age": dic[@"age"]?dic[@"age"]:@"",
 //                            @"category": dic[@"category"]?dic[@"category"]:@"",
-                            @"cityCode":dic[@"cityCode"],
-//                            @"distance": dic[@"distance"]?dic[@"distance"]:@"",
+                            @"cityCode":dic[@"cityCode"]?dic[@"cityCode"]:@"",
+                            @"distance": dic[@"distance"]?dic[@"distance"]:@"",
 //                            @"gender": @([dic[@"gender"]?dic[@"gender"]:@"" integerValue]),
                             @"lat": @([dic[@"lat"] floatValue]),
                             @"lng": @([dic[@"lng"] floatValue]),
@@ -121,8 +122,12 @@
 }
 //获取当前自己的位置并设为中心点
 - (IBAction)btn_UserLocation:(UIButton *)sender {
-    [self.mapView setCenterCoordinate:self.pointAnnotaiton.coordinate];
-    [self.mapView setZoomLevel:15.1 animated:NO];
+    
+//    [self.mapView setCenterCoordinate:self.pointAnnotaiton.coordinate];
+//    [self.mapView setZoomLevel:15.1 animated:NO];
+}
+-(void)dragCenterLocation:(CLLocationCoordinate2D)location{
+    [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude),@"distance":@"5"}];
 }
 //首页三个按钮点击选中方法
 - (IBAction)btn_selected:(UIButton *)sender {
@@ -246,10 +251,8 @@
     [btn setTitle:locationDictionary[@"city"] forState:UIControlStateNormal];
 }
 //回到当前位置的按钮点击
--(void)currentLocationClick{
-    [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
-    [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([[KUserDefults objectForKey:kLat] floatValue], [[KUserDefults objectForKey:KLng] floatValue])];
-    [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
+-(void)currentLocationClick:(CLLocationCoordinate2D)location{
+//    [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
 }
 -(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
     flag = NO;
@@ -291,10 +294,9 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self initData];
-    if ([KUserDefults objectForKey:kUserCityID]!=nil) {
+//    if ([KUserDefults objectForKey:kUserCityID]!=nil) {
         [self.cusMap locationClick];
-    } 
+//    }
 }
 -(void)initData{
     WeakSelf

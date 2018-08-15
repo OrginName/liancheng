@@ -183,10 +183,15 @@
     btn.text = locationDictionary[@"city"];
 }
 //回到当前位置的按钮点击
--(void)currentLocationClick{
-   [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
-    [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([[KUserDefults objectForKey:kLat] floatValue], [[KUserDefults objectForKey:KLng] floatValue])];
-    [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
+-(void)currentLocationClick:(CLLocationCoordinate2D)location{
+//    if(self.cusMap.mapView.userLocation.updating && self.cusMap.mapView.userLocation.location) {
+//        [self.cusMap.mapView setCenterCoordinate:self.cusMap.mapView.userLocation.location.coordinate animated:YES];
+//        [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
+//    }
+}
+-(void)dragCenterLocation:(CLLocationCoordinate2D)location{
+//    ,@"cityCode":[KUserDefults objectForKey:kUserCityID]
+    [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude),@"distance":@"5"}];
 }
 -(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
     if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
@@ -212,12 +217,13 @@
     NSDictionary * dic1 = @{
                             @"age": dic[@"age"]?dic[@"age"]:@"",
                             @"category": dic[@"category"]?dic[@"category"]:@"",
-                            @"cityCode":dic[@"cityCode"],
+                            @"cityCode":dic[@"cityCode"]?dic[@"cityCode"]:@"",
                             @"distance": dic[@"distance"]?dic[@"distance"]:@"",
-                            @"gender": @([dic[@"gender"]?dic[@"gender"]:@"" integerValue]),
+                            @"gender":
+                                dic[@"gender"]?@([dic[@"gender"] integerValue]):@"",
                             @"lat": @([dic[@"lat"] floatValue]),
                             @"lng": @([dic[@"lng"] floatValue]),
-                            @"userStatus": @([dic[@"userStatus"]?dic[@"userStatus"]:@"" integerValue]),
+                            @"userStatus": dic[@"userStatus"]?@([dic[@"userStatus"] integerValue]):@"",
                             @"validType": dic[@"validType"]?dic[@"validType"]:@"",
                             @"keyword":dic[@"keyword"]?dic[@"keyword"]:@""
                             };

@@ -18,6 +18,7 @@
 @property (nonatomic, strong) CustomAnnotationView * annotationView;
 @property (nonatomic, strong) MAPointAnnotation * pointAnnotaiton;
 @property (nonatomic,strong) UIButton * btn_location;
+@property (nonatomic,strong) UIImageView * image_Mark;
 @end
 @implementation CustomMap
 -(instancetype)initWithFrame:(CGRect)frame{
@@ -41,6 +42,7 @@
         [btn addTarget:self action:@selector(locationClick) forControlEvents:UIControlEventTouchUpInside];
         self.btn_location = btn;
         [self addSubview:btn];
+        [self addSubview:self.image_Mark];
 //        [self initAnnotations];
 //        [self setArr_Mark:self.Arr_Mark];
     }
@@ -48,10 +50,12 @@
 }
 //定位当前自己位置
 -(void)locationClick{
-    [self.mapView setCenterCoordinate:self.pointAnnotaiton.coordinate];
-    [self.mapView setZoomLevel:15.1 animated:NO];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(currentLocationClick)]) {
-        [self.delegate currentLocationClick];
+    if(self.mapView.userLocation.updating && self.mapView.userLocation.location) {
+        [self.mapView setCenterCoordinate:self.mapView.userLocation.location.coordinate animated:YES];
+        [self.mapView setZoomLevel:15.1 animated:NO];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(currentLocationClick:)]) {
+            [self.delegate currentLocationClick:self.mapView.userLocation.location.coordinate];
+        }
     }
 }
 #pragma mark - MAMapView Delegate
@@ -232,6 +236,16 @@
     [self.mapView addAnnotations:self.annotations];
     
 }
+- (void)mapView:(MAMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    
+    MACoordinateRegion region;
+    CLLocationCoordinate2D centerCoordinate = mapView.region.center;
+    region.center= centerCoordinate;
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(dragCenterLocation:)]) {
+        [self.delegate dragCenterLocation:centerCoordinate];
+    }
+    NSLog(@" regionDidChangeAnimated %f,%f",centerCoordinate.latitude, centerCoordinate.longitude);
+}
 #pragma mark - Initialization
 - (void)initAnnotations
 {
@@ -262,10 +276,16 @@
     self.mapView.logoCenter = CGPointMake(-1000, 1000);
     self.btn_location.frame = CGRectMake(kScreenWidth-50, 10, 40, 40);
 }
-
+-(UIImageView *)image_Mark{
+    if (!_image_Mark) {
+        _image_Mark = [[UIImageView alloc] init];
+        _image_Mark.frame = CGRectMake(kScreenWidth/2-7, (kScreenHeight-64-100)/2-12, 15, 25);
+        _image_Mark.image = [UIImage imageNamed:@"position-1"];
+    }
+    return _image_Mark;
+}
 /**
  是否默认选中当前mark
-
  @param selectAnimation BOOl
  */
 -(void)setSelectAnimation:(BOOL)selectAnimation{
