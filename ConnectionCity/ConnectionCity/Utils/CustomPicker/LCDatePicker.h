@@ -16,6 +16,7 @@
 
 @interface LCDatePicker : UIView
 @property (nonatomic,strong) NSDate * minDate;//开始时间
+@property (nonatomic,assign) UIDatePickerMode  dateModel;
 @property (nonatomic, weak) id<LCDatePickerDelegate>delegate;
 - (void)animateShow;
 @end

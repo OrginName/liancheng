@@ -10,6 +10,7 @@
 #import "LCDatePicker.h"
 #import "EditAllController.h"
 #import "OurServiceController.h"
+#import "LYSDatePicker.h"
 @interface AppointmentController ()<LCDatePickerDelegate,UITextFieldDelegate>
 @property (nonatomic,strong) LCDatePicker * myDatePick;
 @property (weak, nonatomic) IBOutlet UILabel *lab_title1;
@@ -71,8 +72,10 @@
 //创建日期插件
 -(void)initDate{
     self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
+    self.myDatePick.dateModel = UIDatePickerModeDateAndTime;
     self.myDatePick.delegate  = self;
     [self.view addSubview:self.myDatePick];
+    
 }
 - (IBAction)yuyueClick:(UIButton *)sender {
     NSInteger flag;
@@ -130,7 +133,6 @@
     if (btn.tag==4) {
         [self.myDatePick animateShow];
     }else{
-        
         EditAllController * edit = [EditAllController new];
         edit.receiveTxt = self.txt_Place.text;
         edit.block = ^(NSString *EditStr) {
@@ -140,7 +142,7 @@
     }
 }
 #pragma mark ---LCDatePickerDelegate-----
-- (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
+- (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str { 
     self.txt_Time.text = str;
 }
 @end

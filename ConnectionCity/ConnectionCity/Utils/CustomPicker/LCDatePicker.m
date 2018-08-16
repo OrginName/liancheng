@@ -24,7 +24,7 @@
         self.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
         //创建格式化器
         _dateFormatter = [[NSDateFormatter alloc]init];
-        [_dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        [_dateFormatter setDateFormat:@"yyyy-MM-dd HH:MM"];
         //格式化当前日期
         _dateStr = [_dateFormatter stringFromDate:[NSDate date]];
         //添加子控件
@@ -38,6 +38,10 @@
 -(void)setMinDate:(NSDate *)minDate{
     _minDate = minDate;
     self.datePicker.minimumDate = minDate;
+}
+-(void)setDateModel:(UIDatePickerMode)dateModel{
+    _dateModel = dateModel;
+    self.datePicker.datePickerMode = dateModel;
 }
 - (UITextField *)timeTextField {
     if (!_timeTextField) {

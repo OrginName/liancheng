@@ -39,11 +39,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    //@"cityCode":[KUserDefults objectForKey:kUserCityID]
     [self setUI];
     [self loadData];
     if ([KUserDefults objectForKey:kUserCityID]!=nil) {
-         [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
+         [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
     }
     _flag = NO;
 }
@@ -60,7 +60,7 @@
     SearchHistoryController * search = [SearchHistoryController new];
     WeakSelf
     search.block = ^(NSString *str) {
-        [weakSelf loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID],@"keyword":str}];
+        [weakSelf loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"keyword":str}];
     };
     [self.navigationController pushViewController:search animated:YES];
 }
@@ -79,7 +79,7 @@
     SendServiceController * send = [SendServiceController new];
     send.arr_receive = self.Arr_Classify;
     send.refreshBlock = ^{
-        [weakSelf loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
+        [weakSelf loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
     };
     [self.navigationController pushViewController:send animated:YES];
 }
@@ -93,7 +93,6 @@
             jf.delegate = self;
             BaseNavigationController * nav = [[BaseNavigationController alloc] initWithRootViewController:jf];
             [self.navigationController presentViewController:nav animated:YES completion:nil];
-            
         }
             break;
         case 2:
@@ -106,7 +105,7 @@
                 btn.text = classifiation; 
             };
             class.block1 = ^(NSString *classifiationID, NSString *classifiation) {
-                [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID],@"category":classifiationID}];
+                [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"category":classifiationID}];
             };
             [self.navigationController pushViewController:class animated:YES];
         }
@@ -168,12 +167,13 @@
 -(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng{
     UILabel * btn = (UILabel *)[self.view_SX viewWithTag:1];
     btn.text = name;
-    [self loadServiceList:@{@"lat":lat,@"lng":lng,@"cityCode":ID}];
+//    @"cityCode":ID
+    [self loadServiceList:@{@"lat":lat,@"lng":lng}];
     [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([lat floatValue], [lng floatValue])];
     [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
 }
 -(void)cityMo:(CityMo *)mo{
-    [self loadServiceList:@{@"lat":mo.lat,@"lng":mo.lng,@"cityCode":mo.ID}];
+    [self loadServiceList:@{@"lat":mo.lat,@"lng":mo.lng}];
     [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([mo.lat floatValue], [mo.lng floatValue])];
     [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
 }
@@ -218,7 +218,7 @@
                             @"age": dic[@"age"]?dic[@"age"]:@"",
                             @"category": dic[@"category"]?dic[@"category"]:@"",
                             @"cityCode":dic[@"cityCode"]?dic[@"cityCode"]:@"",
-                           @"distance":@([dic[@"distance"]?dic[@"distance"]:@"" integerValue]),
+                           @"distance":@([dic[@"distance"]?dic[@"distance"]:KDistance integerValue]),
                             
                             @"gender":
                                 dic[@"gender"]?@([dic[@"gender"] integerValue]):@"",
@@ -267,6 +267,7 @@
     [self.view addSubview:cus];
 }
 -(void)CustomScroBtnClick:(UIButton *)tag{
-    [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID],@"keyword":tag.titleLabel.text}];
+//    @"cityCode":[KUserDefults objectForKey:kUserCityID]
+    [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"keyword":tag.titleLabel.text}];
 }
 @end
