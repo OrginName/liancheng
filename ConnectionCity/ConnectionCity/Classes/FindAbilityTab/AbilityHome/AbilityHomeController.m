@@ -163,9 +163,8 @@
                             @"education": dic[@"education"]?@([dic[@"education"] integerValue]):@(0),
                             @"work": dic[@"work"]?@([dic[@"work"] integerValue]):@(0),
                             @"keyword":dic[@"keyword"]?dic[@"keyword"]:@"",
-                            @"userStatus":dic[@"userStatus"]?@([dic[@"userStatus"] integerValue]):@(0)
+                            @"userStatus":dic[@"userStatus"]?@([dic[@"userStatus"] integerValue]):@""
                             };
-    //    加载服务列表
     [AbilityNet requstAbilityConditions:dic1 withBlock:^(NSMutableArray *successArrValue) {
         self.cusMap.Arr_Mark = successArrValue;
     }];

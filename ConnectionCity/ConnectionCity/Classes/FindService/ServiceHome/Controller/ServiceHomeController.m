@@ -191,7 +191,7 @@
 }
 -(void)dragCenterLocation:(CLLocationCoordinate2D)location{
 //    ,@"cityCode":[KUserDefults objectForKey:kUserCityID]
-    [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude),@"distance":@"5"}];
+    [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude),@"distance":KDistance}];
 }
 -(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
     if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
@@ -218,15 +218,15 @@
                             @"age": dic[@"age"]?dic[@"age"]:@"",
                             @"category": dic[@"category"]?dic[@"category"]:@"",
                             @"cityCode":dic[@"cityCode"]?dic[@"cityCode"]:@"",
-                           @"distance":@([dic[@"distance"]?dic[@"distance"]:@"10" integerValue]),
+                           @"distance":@([dic[@"distance"]?dic[@"distance"]:@"" integerValue]),
                             
                             @"gender":
-                                @([dic[@"gender"]?dic[@"gender"]:@"" integerValue]),
+                                dic[@"gender"]?@([dic[@"gender"] integerValue]):@"",
                             @"lat": @([dic[@"lat"] floatValue]),
                             @"lng": @([dic[@"lng"] floatValue]),
-                            @"userStatus": @([dic[@"userStatus"]?dic[@"userStatus"]:@"" integerValue]),
+                            @"userStatus": dic[@"userStatus"]?@([dic[@"userStatus"] integerValue]):@"",
                             @"validType":
-                                @([dic[@"validType"]?dic[@"validType"]:@"" integerValue]),
+                                dic[@"validType"]?@([dic[@"validType"] integerValue]):@"",
                             @"keyword":dic[@"keyword"]?dic[@"keyword"]:@""
                             };
     //    加载服务列表

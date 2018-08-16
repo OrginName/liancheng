@@ -109,17 +109,17 @@
     NSDictionary * dic1 = @{};
     if ([YSTools dx_isNullOrNilWithObject:dic[@"cityCode"]]) {
         dic1 = @{
-                 @"distance": @([dic[@"distance"]?dic[@"distance"]:@"10" integerValue]),
+                 @"distance": @([dic[@"distance"]?dic[@"distance"]:KDistance integerValue]),
                  @"lat": @([dic[@"lat"] floatValue]),
                  @"lng": @([dic[@"lng"] floatValue]),
                  };
     }else
       dic1 = @{
-                            @"cityCode":dic[@"cityCode"]?dic[@"cityCode"]:@"",
-                            @"distance": @([dic[@"distance"]?dic[@"distance"]:@"10" integerValue]),
-                            @"lat": @([dic[@"lat"] floatValue]),
-                            @"lng": @([dic[@"lng"] floatValue]),
-                            };
+                @"cityCode":dic[@"cityCode"]?dic[@"cityCode"]:@"",
+                @"distance": @([dic[@"distance"]?dic[@"distance"]:@"" integerValue]),
+                @"lat": @([dic[@"lat"] floatValue]),
+                @"lng": @([dic[@"lng"] floatValue]),
+             };
     //    加载服务列表
     [ServiceHomeNet requstServiceList:dic1 withSuc:^(NSMutableArray *successArrValue) {
         self.cusMap.Arr_Mark = successArrValue;
@@ -132,7 +132,7 @@
 //    [self.mapView setZoomLevel:15.1 animated:NO];
 }
 -(void)dragCenterLocation:(CLLocationCoordinate2D)location{
-    [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude),@"distance":@"5"}];
+    [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude),@"distance":KDistance}];
 }
 //首页三个按钮点击选中方法
 - (IBAction)btn_selected:(UIButton *)sender {

@@ -40,7 +40,7 @@
         NSMutableArray * arr = [NSMutableArray array];
         if ([responseObject[@"data"] isKindOfClass:[NSArray class]]) {
             if ([responseObject[@"data"] count]==0) {
-                return [YTAlertUtil showTempInfo:@"当前位置附近暂无服务"];
+                return [YTAlertUtil showTempInfo:@"暂无服务"];
             }
             for (int i=0; i<[responseObject[@"data"] count]; i++) {
                 ServiceListMo * list = [ServiceListMo mj_objectWithKeyValues:responseObject[@"data"][i]];

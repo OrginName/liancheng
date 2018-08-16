@@ -13,7 +13,9 @@
 #import "CityMo.h"
 #import "privateUserInfoModel.h"
 #import "AbilttyMo.h"
-@interface CustomMap()<MAMapViewDelegate,CustomLocationDelegate,UITextFieldDelegate>
+@interface CustomMap()<MAMapViewDelegate,CustomLocationDelegate,UITextFieldDelegate>{
+    CLLocation * currentLocation;
+}
 @property (nonatomic,assign) id controller;
 @property (nonatomic, strong) CustomAnnotationView * annotationView;
 @property (nonatomic, strong) MAPointAnnotation * pointAnnotaiton;
@@ -105,6 +107,7 @@
 }
 #pragma mark -------CustomLocationDelegate------
 - (void)currentLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location{
+    currentLocation = location;
     NSLog(@"%@",locationDictionary[@"addRess"]);
     [KUserDefults setObject:locationDictionary[@"city"] forKey:kUserCity];
     [KUserDefults setObject:[NSString stringWithFormat:@"%f",location.coordinate.latitude] forKey:kLat];
@@ -237,7 +240,9 @@
     
 }
 - (void)mapView:(MAMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-    
+    if (currentLocation==nil) {
+        return;
+    }
     MACoordinateRegion region;
     CLLocationCoordinate2D centerCoordinate = mapView.region.center;
     region.center= centerCoordinate;
