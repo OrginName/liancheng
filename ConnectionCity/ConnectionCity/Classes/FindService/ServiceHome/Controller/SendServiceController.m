@@ -208,7 +208,8 @@
         class.title = @"服务分类";
         class.arr_Data = self.arr_receive;
         class.block = ^(NSString *classifiation) {
-            
+            SendServiceCell * cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section]];
+            cell.txt_Placeholder.text = classifiation;
         };
         class.block1 = ^(NSString *classifiation,NSString *classifiation1){
             _serviceCategoryId = classifiation;

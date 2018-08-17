@@ -136,13 +136,13 @@ CGFloat maxLimitHeight = 0;
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:moment.userMo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     // 昵称
     _nameLab.text = moment.userMo.nickName;
-    _nameLab.frame = CGRectMake(_headImageView.right+10, _headImageView.top, [YSTools caculateTheWidthOfLableText:16 withTitle:_nameLab.text], 20);
+    _nameLab.frame = CGRectMake(_headImageView.right+5, _headImageView.top, [YSTools caculateTheWidthOfLableText:16 withTitle:_nameLab.text]+10, 20);
     _timeLab.text = [YSTools compareCurrentTime:moment.createTime];
     CGFloat textW = [_timeLab.text boundingRectWithSize:CGSizeMake(200, kTimeLabelH)
                                                 options:NSStringDrawingUsesLineFragmentOrigin
                                              attributes:@{NSFontAttributeName:_timeLab.font}
                                                 context:nil].size.width;
-    _timeLab.frame = CGRectMake(_nameLab.right+10, _nameLab.top, textW, kTimeLabelH);
+    _timeLab.frame = CGRectMake(_nameLab.right+10, _nameLab.top+3, textW, kTimeLabelH);
     // 正文
     _showAllBtn.hidden = YES;
     _linkLabel.hidden = YES;

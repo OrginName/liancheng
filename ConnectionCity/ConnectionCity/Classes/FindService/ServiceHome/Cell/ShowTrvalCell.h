@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ServiceListMo.h"
 #import "trvalMo.h"
+#import "UserMo.h"
 @protocol ShowTrvalCellDelegate <NSObject>
 @optional;
 -(void)btnClick:(NSInteger)tag;
 @end
 @interface ShowTrvalCell : UITableViewCell
+@property (nonatomic,assign) NSInteger JNIndexReceive;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_height;
 @property (nonatomic,strong) comments * commentrval;
 @property (weak, nonatomic) IBOutlet UIView *view_RZ;
@@ -21,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIView *viewStar;
 @property (weak, nonatomic) IBOutlet UIImageView *image4;
 @property (weak, nonatomic) IBOutlet UIImageView *image3;
-@property (nonatomic,strong)ServiceListMo * list;
+@property (nonatomic,strong) UserMo * list;
 @property (weak, nonatomic) IBOutlet UIImageView *image2;
 @property (nonatomic,strong)trvalMo * trval;
 @property (weak, nonatomic) IBOutlet UIImageView *image1;
@@ -50,6 +52,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab_TrvalDes;
 @property (weak, nonatomic) IBOutlet UILabel *lab_trvalJNXQ;
 @property (weak, nonatomic) IBOutlet UIView *view_trval1;
+@property (weak, nonatomic) IBOutlet UIView *view_JNB;//技能包
 
 @property(nonatomic,assign) id<ShowTrvalCellDelegate>delegate;
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView

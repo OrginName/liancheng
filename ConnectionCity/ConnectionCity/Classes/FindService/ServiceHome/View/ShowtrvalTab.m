@@ -9,8 +9,12 @@
 #import "AllDicMo.h"
 #import "StarEvaluator.h"
 #import "CustomImageScro.h"
+#import "CustomScro.h"
 #import "FriendCircleController.h"
-@interface ShowtrvalTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ShowTrvalCellDelegate>
+@interface ShowtrvalTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ShowTrvalCellDelegate,CustomScroDelegate>
+{
+    NSInteger JNIndex;//当前点击的第几个技能包
+}
 @property (nonatomic,strong) SDCycleScrollView * cycleScrollView;
 @property (nonatomic,strong) NSMutableArray * lunArr;//轮播图数组
 @property (nonatomic,strong) UITableView * tab_Bottom;
@@ -25,20 +29,22 @@
         self.control = control;
         [self initScroll];
         [self addSubview:self.tab_Bottom];
+        JNIndex = 0;
     }
     return self;
 }
--(void)setMo:(ServiceListMo *)Mo{
+-(void)setMo:(UserMo *)Mo{
     _Mo = Mo;
-    for (NSString * url in [Mo.images componentsSeparatedByString:@";"]) {
+    ServiceListMo * list = Mo.serviceList[JNIndex];
+    for (NSString * url in [list.images componentsSeparatedByString:@";"]) {
         if (url.length!=0) {
             [self.lunArr addObject:url];
         }
     }
-    if ([Mo.likeCount intValue]>0) {
+    if ([list.likeCount intValue]>0) {
         self.btn_Like.selected = YES;
     }
-     [self.btn_Like setTitle:[Mo.likeCount description] forState:UIControlStateNormal];
+     [self.btn_Like setTitle:[list.likeCount description] forState:UIControlStateNormal];
     _flag = 0;
 }
 -(void)setMoTrval:(trvalMo *)MoTrval{
@@ -61,12 +67,12 @@
 #pragma mark --UITableviewDelegate---
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section==0) {
-        return 3;
+        return 4;
     }else if (section==1){
         return 1;
     }else{
         if (self.Mo!=nil) {
-            return self.Mo.commentList.count;
+            return [self.Mo.serviceList[JNIndex] commentList].count;
         }else{
             return self.MoTrval.comments.count;
         }
@@ -75,20 +81,19 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
         if (indexPath.row == 0 ) {
-            return 70;
-        }else if(indexPath.row==2){
-            if ((self.Mo!=nil&&self.Mo.serviceCircleList.count==0)||(self.MoTrval!=nil&&self.MoTrval.serviceCircleList.count==0)) {
+            return 65;
+        }else if(indexPath.row==3){
+            if ((self.Mo!=nil&&[self.Mo.serviceList[JNIndex] serviceCircleList].count==0)||(self.MoTrval!=nil&&self.MoTrval.serviceCircleList.count==0)) {
                 return 40;
             }else{
-                
                 return (kScreenWidth-68)/4+45;
             }
         }else{
-            return 52;
+            return 40;
         }
     }else if (indexPath.section==1){
         if (self.Mo!=nil) {
-            float hidth = [YSTools cauculateHeightOfText:self.Mo.introduce width:kScreenWidth-40 font:13];
+            float hidth = [YSTools cauculateHeightOfText:[self.Mo.serviceList[JNIndex] introduce] width:kScreenWidth-40 font:13];
             return 225+hidth;
         }else{
             float hidth = [YSTools cauculateHeightOfText:self.MoTrval.introduce width:kScreenWidth-40 font:13];
@@ -96,7 +101,7 @@
         }
     }else{
         if (self.Mo!=nil) {
-            commentList * com = self.Mo.commentList[indexPath.row];
+            commentList * com =[self.Mo.serviceList[JNIndex] commentList][indexPath.row];
             return com.cellHeight;
         }else{
             comments * com = self.MoTrval.comments[indexPath.row];
@@ -119,7 +124,7 @@
         StarEvaluator * ev = [[StarEvaluator alloc] initWithFrame:CGRectMake(0, 9, 140, 40)];
         ev.animate = NO;
         if (self.Mo!=nil) {
-            ev.currentValue = [self.Mo.score floatValue]/2;
+            ev.currentValue = [[self.Mo.serviceList[JNIndex]score] floatValue]/2;
         }else{
             ev.currentValue = [self.MoTrval.score floatValue]/2;
         }
@@ -145,19 +150,25 @@
     if (indexPath.section==0&&indexPath.row==1) {
         NSMutableArray * arr = [NSMutableArray array];
         if (self.Mo!=nil) {
-            arr = [self loadA:self.Mo.user1.isSkillAuth b:self.Mo.user1.isMobileAuth c:self.Mo.user1.isIdentityAuth d:self.Mo.user1.isCompanyAuth];
+            arr = [self loadA:self.Mo.isSkillAuth b:self.Mo.isMobileAuth c:self.Mo.isIdentityAuth d:self.Mo.isCompanyAuth];
         }else{
-           arr = [self loadA:self.MoTrval.user.isSkillAuth b:self.MoTrval.user.isMobileAuth c:self.MoTrval.user.isIdentityAuth d:self.Mo.user1.isCompanyAuth];
+            arr = [self loadA:self.MoTrval.user.isSkillAuth b:self.MoTrval.user.isMobileAuth c:self.MoTrval.user.isIdentityAuth d:self.MoTrval.user.isCompanyAuth];
         }
         CustomImageScro * img = [[CustomImageScro alloc] initWithFrame:CGRectMake(0, 0, cell.view_RZ.width, cell.view_RZ.height) arr:[arr copy]];
         [cell.view_RZ addSubview:img];
     }
+    if (indexPath.section==0&&indexPath.row==2) {
+        CustomScro * scr = [[CustomScro alloc] initWithFrame:CGRectMake(0, 0, cell.view_JNB.width, cell.view_JNB.height) arr:self.Mo.JNArr flag:NO];
+        scr.delegate = self;
+        [cell.view_JNB addSubview:scr];
+    }
     if (indexPath.section<2) {
         cell.list = self.Mo;
+        cell.JNIndexReceive = JNIndex;
         cell.trval = self.MoTrval;
     }else{
         if (self.Mo!=nil) {
-            cell.commen = self.Mo.commentList[indexPath.row];
+            cell.commen = [self.Mo.serviceList[JNIndex]commentList][indexPath.row];
         }else{
             cell.commentrval = self.MoTrval.comments[indexPath.row];
         }
@@ -167,7 +178,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0&&indexPath.row==2) {
             FriendCircleController * friend = [FriendCircleController new];
-        friend.user = self.Mo!=nil?self.Mo.user1:self.MoTrval.user;
+        friend.user = self.Mo!=nil?self.Mo:self.MoTrval.user;
             [self.control.navigationController pushViewController:friend animated:YES];
     }
 }
@@ -191,10 +202,16 @@
 -(void)btnClick:(NSInteger)tag{
     AppointmentController * appoint = [AppointmentController new];
     appoint.str =_flag==0?@"YD":@"trval";
-    appoint.list = self.Mo;
+    appoint.list = self.Mo.serviceList[JNIndex];
     appoint.trval = self.MoTrval;
     [self.control.navigationController pushViewController:appoint animated:YES];
 }
+- (void)CustomScroBtnClick:(UIButton *)tag{
+    JNIndex = tag.tag-1;
+    [self setMo:self.Mo];
+    [self.cycleScrollView reload];
+    [self.tab_Bottom reloadData];
+} //声明协议方法
 #pragma mark ---initUI--------
 -(void)initScroll{
     __block ShowtrvalTab * weakSelf = self;

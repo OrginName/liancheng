@@ -40,15 +40,16 @@
         NSMutableArray * arr = [NSMutableArray array];
         if ([responseObject[@"data"] isKindOfClass:[NSArray class]]) {
             if ([responseObject[@"data"] count]==0) {
-                return [YTAlertUtil showTempInfo:@"暂无服务"];
+                [YTAlertUtil showTempInfo:@"暂无服务"];
             }
             for (int i=0; i<[responseObject[@"data"] count]; i++) {
-                ServiceListMo * list = [ServiceListMo mj_objectWithKeyValues:responseObject[@"data"][i]];
-                list.ID = responseObject[@"data"][i][@"id"];
-                list.user1 = [UserMo mj_objectWithKeyValues:list.user];
-                list.user1.ID = list.user[@"id"];
-                list.commentList = [commentList mj_objectArrayWithKeyValuesArray:list.commentList];
-                [arr addObject:list];
+                NSMutableArray * arr1 = [NSMutableArray array];
+                UserMo * user = [UserMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+                for (ServiceListMo * mo in user.serviceList) {
+                    [arr1 addObject:mo.serviceCategoryName[@"name"]];
+                }
+                user.JNArr = arr1;
+                [arr addObject:user];
             }
         }else
             [YTAlertUtil showTempInfo:@"暂无数据"];

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -474,7 +474,7 @@
                 <outlet property="lab_HF" destination="49X-DN-yct" id="EU1-uk-vXG"/>
                 <outlet property="lab_commentTitle" destination="cfF-Yt-340" id="a0R-pl-IZp"/>
             </connections>
-            <point key="canvasLocation" x="34" y="704"/>
+            <point key="canvasLocation" x="34" y="588"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShowTrvalCell4" rowHeight="56" id="L7N-4M-YKI" customClass="ShowTrvalCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
@@ -542,29 +542,29 @@
             <connections>
                 <outlet property="viewStar" destination="61i-s3-yPW" id="MNz-N4-MBr"/>
             </connections>
-            <point key="canvasLocation" x="34" y="809"/>
+            <point key="canvasLocation" x="40" y="704"/>
         </tableViewCell>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShowTrvalCell5" rowHeight="53" id="M7u-Og-Aua" customClass="ShowTrvalCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="53"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShowTrvalCell5" rowHeight="36" id="M7u-Og-Aua" customClass="ShowTrvalCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="31"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M7u-Og-Aua" id="hAC-LV-E0g">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="52.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="30.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPb-Xc-dYK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="10"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="10" id="c0q-43-dg1"/>
-                        </constraints>
-                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="认证信息：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inB-fQ-K9d">
-                        <rect key="frame" x="16" y="23.5" width="67" height="16"/>
+                        <rect key="frame" x="16" y="7.5" width="67" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jrt-NG-pCk">
+                        <rect key="frame" x="5" y="29.5" width="310" height="1"/>
+                        <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="u1j-Mg-KYl"/>
+                        </constraints>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRw-nL-HCe">
-                        <rect key="frame" x="83" y="14.5" width="228" height="35"/>
+                        <rect key="frame" x="83" y="-2.5" width="228" height="35.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="nva-cC-7C2"/>
@@ -574,20 +574,65 @@
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="wPb-Xc-dYK" firstAttribute="top" secondItem="hAC-LV-E0g" secondAttribute="top" id="8Z3-y5-2FU"/>
+                    <constraint firstItem="Jrt-NG-pCk" firstAttribute="leading" secondItem="hAC-LV-E0g" secondAttribute="leading" constant="5" id="8fk-EZ-Bn5"/>
+                    <constraint firstAttribute="trailing" secondItem="Jrt-NG-pCk" secondAttribute="trailing" constant="5" id="EKd-gP-eny"/>
                     <constraint firstItem="inB-fQ-K9d" firstAttribute="leading" secondItem="hAC-LV-E0g" secondAttribute="leadingMargin" id="OaG-3u-Lj5"/>
                     <constraint firstItem="sRw-nL-HCe" firstAttribute="leading" secondItem="inB-fQ-K9d" secondAttribute="trailing" id="SE5-9r-gCb"/>
                     <constraint firstAttribute="trailingMargin" secondItem="sRw-nL-HCe" secondAttribute="trailing" constant="-7" id="WPZ-jR-PEh"/>
+                    <constraint firstAttribute="bottom" secondItem="Jrt-NG-pCk" secondAttribute="bottom" id="Wqu-wx-Wma"/>
                     <constraint firstItem="sRw-nL-HCe" firstAttribute="centerY" secondItem="inB-fQ-K9d" secondAttribute="centerY" id="dTe-09-Gx9"/>
-                    <constraint firstItem="wPb-Xc-dYK" firstAttribute="leading" secondItem="hAC-LV-E0g" secondAttribute="leading" id="m7X-U9-LEj"/>
-                    <constraint firstAttribute="trailing" secondItem="wPb-Xc-dYK" secondAttribute="trailing" id="qWW-7Q-WLU"/>
-                    <constraint firstItem="inB-fQ-K9d" firstAttribute="centerY" secondItem="hAC-LV-E0g" secondAttribute="centerY" constant="5" id="uYT-te-1mc"/>
+                    <constraint firstItem="inB-fQ-K9d" firstAttribute="centerY" secondItem="hAC-LV-E0g" secondAttribute="centerY" id="uYT-te-1mc"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="view_RZ" destination="sRw-nL-HCe" id="db8-sl-Hbx"/>
             </connections>
-            <point key="canvasLocation" x="34" y="794.5"/>
+            <point key="canvasLocation" x="34" y="788.5"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShowTrvalCell6" rowHeight="36" id="iCB-v9-oh3" customClass="ShowTrvalCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="31"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iCB-v9-oh3" id="DG1-jB-fnv">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="30.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="技能包：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sph-FC-Rr9">
+                        <rect key="frame" x="16" y="7.5" width="53.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psC-r6-gmD">
+                        <rect key="frame" x="5" y="29.5" width="310" height="1"/>
+                        <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Sbh-yt-fFg"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJe-fY-Cbw">
+                        <rect key="frame" x="69.5" y="-2.5" width="241.5" height="35.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="JHE-3l-uUG"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="psC-r6-gmD" firstAttribute="leading" secondItem="DG1-jB-fnv" secondAttribute="leading" constant="5" id="5uZ-gT-O1N"/>
+                    <constraint firstItem="oJe-fY-Cbw" firstAttribute="leading" secondItem="Sph-FC-Rr9" secondAttribute="trailing" id="9dp-vp-g5e"/>
+                    <constraint firstAttribute="bottom" secondItem="psC-r6-gmD" secondAttribute="bottom" id="FzI-wa-53m"/>
+                    <constraint firstItem="Sph-FC-Rr9" firstAttribute="leading" secondItem="DG1-jB-fnv" secondAttribute="leadingMargin" id="VCm-bf-JdZ"/>
+                    <constraint firstItem="oJe-fY-Cbw" firstAttribute="centerY" secondItem="Sph-FC-Rr9" secondAttribute="centerY" id="lNx-Dz-QKd"/>
+                    <constraint firstItem="Sph-FC-Rr9" firstAttribute="centerY" secondItem="DG1-jB-fnv" secondAttribute="centerY" id="rrI-J0-Npq"/>
+                    <constraint firstAttribute="trailing" secondItem="psC-r6-gmD" secondAttribute="trailing" constant="5" id="sim-HX-i84"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="oJe-fY-Cbw" secondAttribute="trailing" constant="-7" id="vAK-JO-6ia"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="view_JNB" destination="oJe-fY-Cbw" id="WYe-CJ-Zm6"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="865"/>
         </tableViewCell>
     </objects>
     <resources>

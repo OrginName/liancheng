@@ -181,8 +181,8 @@
             self.title = mo.user.nickName?mo.user.nickName:KString(@"用户%@", [mo.user.ID description]);
             self.trvaltab.MoTrval = mo;
         }else{
-            ServiceListMo * mo = self.data_Count[indexPath.row];
-            self.title = mo.user1.nickName?mo.user1.nickName:KString(@"用户%@", [mo.user1.ID description]);
+            UserMo * mo = self.data_Count[indexPath.row];
+            self.title = mo.nickName?mo.nickName:KString(@"用户%@", [mo.ID description]);
             self.trvaltab.Mo = mo; 
         }
         [cell.contentView addSubview:self.trvaltab];

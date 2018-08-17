@@ -7,8 +7,7 @@
 //
 
 #import "BaseModel.h"
-
-@interface UserMo : BaseModel<NSCoding> 
+@interface UserMo : BaseModel<NSCoding>
 proStr(age);
 proStr(isBlack);
 proStr(isCompanyAuth);
@@ -44,5 +43,7 @@ proStr(weight);
 proStr(realName);
 proStr(marriage);
 proStr(marriageName);
+ProMutArr(JNArr);//技能包数组
 proArr(serviceCircleList);//当前好友的服务圈
+ProMutArr(serviceList);//当前人的服务列表
 @end

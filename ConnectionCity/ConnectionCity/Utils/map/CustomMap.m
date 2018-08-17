@@ -214,16 +214,15 @@
         [self.annotations addObject:a1];
         self.annotationView.zIndex = idx;
          */
-        
         ZWCustomPointAnnotation *pointAnnotation = [[ZWCustomPointAnnotation alloc] init];
-        if ([obj isKindOfClass:[ServiceListMo class]]) {
-            ServiceListMo * list = (ServiceListMo *)obj;
+        if ([obj isKindOfClass:[UserMo class]]) {
+            UserMo * list = (UserMo *)obj;
             CLLocationCoordinate2D coor ;
             coor.latitude = [list.lat doubleValue];
             coor.longitude = [list.lng doubleValue];
             pointAnnotation.coordinate = coor;
             pointAnnotation.title = list.ID;
-            pointAnnotation.storImageUrl = list.user1.headImage;
+            pointAnnotation.storImageUrl = list.headImage;
         }else if ([obj isKindOfClass:[AbilttyMo class]]){
             AbilttyMo * abilt = (AbilttyMo *)obj;
             CLLocationCoordinate2D coor ;

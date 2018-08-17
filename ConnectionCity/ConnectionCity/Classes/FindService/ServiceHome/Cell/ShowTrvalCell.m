@@ -28,12 +28,15 @@
         if (indexPath.row==0) {
             identifiy = @"ShowTrvalCell0";
             index = 0;
-        } else if (indexPath.row==2){
+        } else if (indexPath.row==3){
             identifiy = @"ShowTrvalCell1";
             index = 1;
-        }else{
+        }else if(indexPath.row==1){
             identifiy = @"ShowTrvalCell5";
             index = 5;
+        }else{
+            identifiy = @"ShowTrvalCell6";
+            index = 6;
         }
     }else if (indexPath.section==1){
         identifiy = @"ShowTrvalCell2";
@@ -92,32 +95,33 @@
     }
 //  trval.comments 评论咱不知道怎么写
 }
--(void)setList:(ServiceListMo *)list{
+-(void)setList:(UserMo *)list{
     _list = list;
     if (list!=nil) {
+        ServiceListMo * list1 = list.serviceList[self.JNIndexReceive];
         self.lab_TrvalDY.hidden = YES;
 //        self.lab_TrvalDes.hidden = YES;
         self.lab_TrvalPrice.hidden = YES;
 //        self.lab_trvalJNXQ.hidden = YES;
 //        self.view_trval1.hidden = YES;
         self.layout_height.constant = 75;
-        self.lab_Title.text = list.user1.nickName?list.user1.nickName:@"无";
+        self.lab_Title.text = list.nickName?list.nickName:@"无";
         if (list.cityName.length!=0) {
             [self.btn_city setTitle:list.cityName forState:UIControlStateNormal];
         }
-        [self.btn_height setTitle:KString(@"%@cm", list.user1.height?list.user1.height:@"无") forState:UIControlStateNormal];
-        [self.btn_coll setTitle:list.user1.educationName?list.user1.educationName:@"无" forState:UIControlStateNormal];
-        [self.btn_wight setTitle:list.user1.marriageName?list.user1.marriageName:@"无" forState:UIControlStateNormal];
-        self.lab_Age.text = list.user1.age?list.user1.age:@"无";
-        self.lab_price.text = [NSString stringWithFormat:@"¥%@",list.price];
-        self.lab_PriceDY.text = list.typeName;
-        self.image_sex.image = [UIImage imageNamed:[KString(@"%@", list.user1.gender) isEqualToString:@"2"]?@"women":@"men"];
-        [self.btn_weight setTitle:KString(@"%@kg", list.user1.weight?list.user1.weight:@"无") forState:UIControlStateNormal];
-        self.lab_ServiceTitle.text = list.title?list.title:@"无";
-        self.lab_TrvalDes.text = list.introduce?list.introduce:@"无";
-        if (list.property.length!=0&&[[self stringToJSON:list.property] count]!=0) {
+        [self.btn_height setTitle:KString(@"%@cm", list.height?list.height:@"-") forState:UIControlStateNormal];
+        [self.btn_coll setTitle:list.educationName?list.educationName:@"-" forState:UIControlStateNormal];
+        [self.btn_wight setTitle:list.marriageName?list.marriageName:@"-" forState:UIControlStateNormal];
+        self.lab_Age.text = list.age?list.age:@"-";
+        self.lab_price.text = [NSString stringWithFormat:@"¥%@",list1.price];
+        self.lab_PriceDY.text = list1.typeName;
+        self.image_sex.image = [UIImage imageNamed:[KString(@"%@", list.gender) isEqualToString:@"2"]?@"women":@"men"];
+        [self.btn_weight setTitle:KString(@"%@kg", list.weight?list.weight:@"-") forState:UIControlStateNormal];
+        self.lab_ServiceTitle.text = list1.title?list1.title:@"";
+        self.lab_TrvalDes.text = list1.introduce?list1.introduce:@"";
+        if (list1.property.length!=0&&[[self stringToJSON:list1.property] count]!=0) {
             NSString * propertyTxt = @"";
-            NSArray * arr = [self stringToJSON:list.property];
+            NSArray * arr = [self stringToJSON:list1.property];
             for (NSDictionary * dic in arr) {
                 NSString * str = @"";
                 NSArray * arr1 = dic[@"childs"];
@@ -131,11 +135,11 @@
             }
             self.lab_DW.text =propertyTxt;
         }else{
-            self.lab_DW.text = @"无";
+            self.lab_DW.text = @"";
         }
-        self.lab_LLNum.text = [NSString stringWithFormat:@"浏览%@次",list.browseTimes?list.browseTimes:@"999+"];
-        self.lab_DTNum.text = KString(@"%lu", (unsigned long)list.serviceCircleList.count);
-        for (NSDictionary * dic in list.serviceCircleList) {
+        self.lab_LLNum.text = [NSString stringWithFormat:@"浏览%@次",list1.browseTimes?list1.browseTimes:@"999+"];
+        self.lab_DTNum.text = KString(@"%lu", (unsigned long)list1.serviceCircleList.count);
+        for (NSDictionary * dic in list1.serviceCircleList) {
             if ([[dic[@"containsImage"] description] isEqualToString:@"1"] && ![YSTools dx_isNullOrNilWithObject:dic[@"images"]]) {
                 NSArray * arr2 = [dic[@"images"] componentsSeparatedByString:@";"];
                 for (int i=0; i<([arr2 count]>4?4:arr2.count); i++) {
