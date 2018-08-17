@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -218,24 +218,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="192.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王者荣耀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMi-99-3Vg">
-                        <rect key="frame" x="16" y="11" width="278" height="21"/>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王者荣耀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMi-99-3Vg">
+                        <rect key="frame" x="16" y="11" width="278" height="0.0"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="ikb-2U-aED"/>
+                            <constraint firstAttribute="height" id="ikb-2U-aED"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sy2-GH-Fzm">
-                        <rect key="frame" x="16" y="64" width="39" height="16"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <rect key="frame" x="112.5" y="43" width="47" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.95686274510000002" green="0.69411764710000001" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/时" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S50-NE-1le">
-                        <rect key="frame" x="55" y="64" width="18" height="16"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <rect key="frame" x="159.5" y="43.5" width="21.5" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.68235294117647061" green="0.68235294117647061" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -305,7 +305,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="最高段位：王者 擅长位置：刺客" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oF-8I-nWy">
-                        <rect key="frame" x="16" y="40" width="278" height="16"/>
+                        <rect key="frame" x="16" y="19" width="278" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.95686274510000002" green="0.69411764710000001" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -337,7 +337,6 @@
                     <constraint firstItem="sy2-GH-Fzm" firstAttribute="top" secondItem="8oF-8I-nWy" secondAttribute="bottom" constant="8" id="3iL-HS-8tf"/>
                     <constraint firstItem="aAN-yv-8L2" firstAttribute="centerY" secondItem="hGc-VG-Qgt" secondAttribute="centerY" id="3p0-Ey-wNn"/>
                     <constraint firstItem="9fA-Qp-IiD" firstAttribute="top" secondItem="TSX-iV-6Nl" secondAttribute="bottom" constant="10" id="4Nr-8T-JCj"/>
-                    <constraint firstItem="sy2-GH-Fzm" firstAttribute="leading" secondItem="XMi-99-3Vg" secondAttribute="leading" id="4jD-3I-Os7"/>
                     <constraint firstItem="XMi-99-3Vg" firstAttribute="leading" secondItem="ixU-cz-zb1" secondAttribute="leadingMargin" id="6lp-Hn-aJf"/>
                     <constraint firstAttribute="trailingMargin" secondItem="XMi-99-3Vg" secondAttribute="trailing" constant="10" id="7Zr-km-nUx"/>
                     <constraint firstItem="K1A-gv-hFZ" firstAttribute="centerX" secondItem="ixU-cz-zb1" secondAttribute="centerX" id="8Da-Gk-LFt"/>
@@ -345,6 +344,7 @@
                     <constraint firstItem="K1A-gv-hFZ" firstAttribute="top" secondItem="9fA-Qp-IiD" secondAttribute="bottom" constant="10" id="CMj-yK-kNs"/>
                     <constraint firstItem="Hjn-6u-3xT" firstAttribute="centerY" secondItem="8bg-36-xP5" secondAttribute="centerY" id="FAn-if-Kx4"/>
                     <constraint firstAttribute="trailingMargin" secondItem="TSX-iV-6Nl" secondAttribute="trailing" id="G1A-gY-Eqz"/>
+                    <constraint firstItem="sy2-GH-Fzm" firstAttribute="trailing" secondItem="8bg-36-xP5" secondAttribute="trailing" id="K3K-Hb-j9T"/>
                     <constraint firstItem="S50-NE-1le" firstAttribute="centerY" secondItem="sy2-GH-Fzm" secondAttribute="centerY" id="NLT-7h-35l"/>
                     <constraint firstItem="wMr-JO-sCe" firstAttribute="leading" secondItem="ixU-cz-zb1" secondAttribute="leadingMargin" id="OUB-AT-qH6"/>
                     <constraint firstItem="aAN-yv-8L2" firstAttribute="trailing" secondItem="ixU-cz-zb1" secondAttribute="trailingMargin" id="QOZ-KG-r7H"/>
@@ -630,6 +630,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="lab_JNB" destination="Sph-FC-Rr9" id="lRV-UU-fh1"/>
                 <outlet property="view_JNB" destination="oJe-fY-Cbw" id="WYe-CJ-Zm6"/>
             </connections>
             <point key="canvasLocation" x="34" y="865"/>

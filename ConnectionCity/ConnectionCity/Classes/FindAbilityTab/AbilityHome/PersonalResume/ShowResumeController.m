@@ -259,8 +259,8 @@
                 
             }];
         }else{
-            ServiceListMo * mo = self.data_Count[self.zIndex];
-            [ServiceHomeNet requstLiulanNum:@{@"id":mo.ID} flag:1 withSuc:^(NSMutableArray *successArrValue) {
+            UserMo * mo = self.data_Count[self.zIndex];
+            [ServiceHomeNet requstLiulanNum:@{@"id":[mo.serviceList[self.trvaltab.JNIndex] ID]} flag:1 withSuc:^(NSMutableArray *successArrValue) {
                 
             }];
         }

@@ -13,7 +13,7 @@
 #import "FriendCircleController.h"
 @interface ShowtrvalTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ShowTrvalCellDelegate,CustomScroDelegate>
 {
-    NSInteger JNIndex;//当前点击的第几个技能包
+    
 }
 @property (nonatomic,strong) SDCycleScrollView * cycleScrollView;
 @property (nonatomic,strong) NSMutableArray * lunArr;//轮播图数组
@@ -29,13 +29,14 @@
         self.control = control;
         [self initScroll];
         [self addSubview:self.tab_Bottom];
-        JNIndex = 0;
+        self.JNIndex = 0;
     }
     return self;
 }
 -(void)setMo:(UserMo *)Mo{
     _Mo = Mo;
-    ServiceListMo * list = Mo.serviceList[JNIndex];
+    [self.lunArr removeAllObjects];
+    ServiceListMo * list = Mo.serviceList[self.JNIndex];
     for (NSString * url in [list.images componentsSeparatedByString:@";"]) {
         if (url.length!=0) {
             [self.lunArr addObject:url];
@@ -72,7 +73,7 @@
         return 1;
     }else{
         if (self.Mo!=nil) {
-            return [self.Mo.serviceList[JNIndex] commentList].count;
+            return [self.Mo.serviceList[_JNIndex] commentList].count;
         }else{
             return self.MoTrval.comments.count;
         }
@@ -83,25 +84,28 @@
         if (indexPath.row == 0 ) {
             return 65;
         }else if(indexPath.row==3){
-            if ((self.Mo!=nil&&[self.Mo.serviceList[JNIndex] serviceCircleList].count==0)||(self.MoTrval!=nil&&self.MoTrval.serviceCircleList.count==0)) {
+            if ((self.Mo!=nil&&[self.Mo.serviceList[self.JNIndex] serviceCircleList].count==0)||(self.MoTrval!=nil&&self.MoTrval.serviceCircleList.count==0)) {
                 return 40;
             }else{
                 return (kScreenWidth-68)/4+45;
             }
         }else{
+            if (indexPath.row==2&&self.Mo==nil) {
+                return 0;
+            }
             return 40;
         }
     }else if (indexPath.section==1){
         if (self.Mo!=nil) {
-            float hidth = [YSTools cauculateHeightOfText:[self.Mo.serviceList[JNIndex] introduce] width:kScreenWidth-40 font:13];
-            return 225+hidth;
+            float hidth = [YSTools cauculateHeightOfText:[self.Mo.serviceList[self.JNIndex] introduce] width:kScreenWidth-40 font:13];
+            return 200+hidth;
         }else{
             float hidth = [YSTools cauculateHeightOfText:self.MoTrval.introduce width:kScreenWidth-40 font:13];
              return 170+hidth;
         }
     }else{
         if (self.Mo!=nil) {
-            commentList * com =[self.Mo.serviceList[JNIndex] commentList][indexPath.row];
+            commentList * com =[self.Mo.serviceList[self.JNIndex] commentList][indexPath.row];
             return com.cellHeight;
         }else{
             comments * com = self.MoTrval.comments[indexPath.row];
@@ -124,7 +128,7 @@
         StarEvaluator * ev = [[StarEvaluator alloc] initWithFrame:CGRectMake(0, 9, 140, 40)];
         ev.animate = NO;
         if (self.Mo!=nil) {
-            ev.currentValue = [[self.Mo.serviceList[JNIndex]score] floatValue]/2;
+            ev.currentValue = [[self.Mo.serviceList[self.JNIndex]score] floatValue]/2;
         }else{
             ev.currentValue = [self.MoTrval.score floatValue]/2;
         }
@@ -164,11 +168,11 @@
     }
     if (indexPath.section<2) {
         cell.list = self.Mo;
-        cell.JNIndexReceive = JNIndex;
+        cell.JNIndexReceive = self.JNIndex;
         cell.trval = self.MoTrval;
     }else{
         if (self.Mo!=nil) {
-            cell.commen = [self.Mo.serviceList[JNIndex]commentList][indexPath.row];
+            cell.commen = [self.Mo.serviceList[self.JNIndex]commentList][indexPath.row];
         }else{
             cell.commentrval = self.MoTrval.comments[indexPath.row];
         }
@@ -176,7 +180,7 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section==0&&indexPath.row==2) {
+    if (indexPath.section==0&&indexPath.row==3) {
             FriendCircleController * friend = [FriendCircleController new];
         friend.user = self.Mo!=nil?self.Mo:self.MoTrval.user;
             [self.control.navigationController pushViewController:friend animated:YES];
@@ -202,13 +206,14 @@
 -(void)btnClick:(NSInteger)tag{
     AppointmentController * appoint = [AppointmentController new];
     appoint.str =_flag==0?@"YD":@"trval";
-    appoint.list = self.Mo.serviceList[JNIndex];
+    appoint.list = self.Mo.serviceList[self.JNIndex];
     appoint.trval = self.MoTrval;
     [self.control.navigationController pushViewController:appoint animated:YES];
 }
 - (void)CustomScroBtnClick:(UIButton *)tag{
-    JNIndex = tag.tag-1;
+    self.JNIndex = tag.tag-1;
     [self setMo:self.Mo];
+    self.cycleScrollView.imageURLStringsGroup = self.lunArr;
     [self.cycleScrollView reload];
     [self.tab_Bottom reloadData];
 } //声明协议方法

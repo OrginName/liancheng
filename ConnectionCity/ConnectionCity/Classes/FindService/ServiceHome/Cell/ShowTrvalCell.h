@@ -15,6 +15,7 @@
 -(void)btnClick:(NSInteger)tag;
 @end
 @interface ShowTrvalCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *lab_JNB;
 @property (nonatomic,assign) NSInteger JNIndexReceive;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_height;
 @property (nonatomic,strong) comments * commentrval;

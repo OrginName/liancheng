@@ -11,6 +11,7 @@
 #import "UserMo.h"
 #import "trvalMo.h"
 @interface ShowtrvalTab : UIView
+@property (nonatomic,assign)NSInteger JNIndex;//当前点击的第几个技能包
 @property (nonatomic,strong)UserMo *Mo;
 @property (nonatomic,strong)trvalMo * MoTrval;
 -(instancetype)initWithFrame:(CGRect)frame withControl:(UIViewController *)control;

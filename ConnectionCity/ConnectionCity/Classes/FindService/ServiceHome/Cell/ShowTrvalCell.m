@@ -60,14 +60,16 @@
         self.lab_PriceDY.hidden = YES;
         self.lab_price.hidden=YES;
         self.lab_Des.hidden = YES;
+        self.view_JNB.hidden = YES;
+        self.lab_JNB.hidden = YES;
         self.lab_Title.text = trval.user.nickName;
         if (trval.cityName.length!=0) {
             [self.btn_city setTitle:trval.cityName forState:UIControlStateNormal];
         }
         [self.btn_height setTitle:[NSString stringWithFormat:@"%@cm",trval.user.height?trval.user.height:@"180"] forState:UIControlStateNormal];
-        [self.btn_coll setTitle:trval.user.educationName?trval.user.educationName:@"无" forState:UIControlStateNormal];
-        [self.btn_wight setTitle:trval.user.marriageName?trval.user.marriageName:@"无" forState:UIControlStateNormal];
-        self.lab_Age.text = trval.user.age?trval.user.age:@"无";
+        [self.btn_coll setTitle:trval.user.educationName?trval.user.educationName:@"-" forState:UIControlStateNormal];
+        [self.btn_wight setTitle:trval.user.marriageName?trval.user.marriageName:@"-" forState:UIControlStateNormal];
+        self.lab_Age.text = trval.user.age?trval.user.age:@"-";
         [self.btn_weight setTitle:[NSString stringWithFormat:@"%@kg",trval.user.weight?trval.user.weight:@""] forState:UIControlStateNormal];
         self.lab_TrvalPrice.text = [NSString stringWithFormat:@"¥%@",trval.price];
         self.lab_DTNum.text = KString(@"%lu", (unsigned long)trval.serviceCircleList.count);
@@ -104,8 +106,8 @@
         self.lab_TrvalPrice.hidden = YES;
 //        self.lab_trvalJNXQ.hidden = YES;
 //        self.view_trval1.hidden = YES;
-        self.layout_height.constant = 75;
-        self.lab_Title.text = list.nickName?list.nickName:@"无";
+        self.layout_height.constant = 55;
+        self.lab_Title.text = list.nickName?list.nickName:@"-";
         if (list.cityName.length!=0) {
             [self.btn_city setTitle:list.cityName forState:UIControlStateNormal];
         }

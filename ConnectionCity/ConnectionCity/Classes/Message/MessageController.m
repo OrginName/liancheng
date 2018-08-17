@@ -59,7 +59,7 @@
     [self initData];
     flag = NO;
     if ([KUserDefults objectForKey:kUserCityID]!=nil) {
-        [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
+        [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(JB:) name:@"TSJBACTIVE" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:@"LOADSERVICELIST" object:nil];
@@ -106,20 +106,12 @@
 }
 //加载服务列表数据
 -(void)loadServiceList:(NSDictionary *)dic{
-    NSDictionary * dic1 = @{};
-    if ([YSTools dx_isNullOrNilWithObject:dic[@"cityCode"]]) {
-        dic1 = @{
+    NSDictionary * dic1 = @{
                  @"distance": @([dic[@"distance"]?dic[@"distance"]:KDistance integerValue]),
                  @"lat": @([dic[@"lat"] floatValue]),
                  @"lng": @([dic[@"lng"] floatValue]),
                  };
-    }else
-      dic1 = @{
-                @"cityCode":dic[@"cityCode"]?dic[@"cityCode"]:@"",
-                @"distance": @([dic[@"distance"]?dic[@"distance"]:@"" integerValue]),
-                @"lat": @([dic[@"lat"] floatValue]),
-                @"lng": @([dic[@"lng"] floatValue]),
-             };
+    
     //    加载服务列表
     [ServiceHomeNet requstServiceList:dic1 withSuc:^(NSMutableArray *successArrValue) {
         self.cusMap.Arr_Mark = successArrValue;
@@ -201,12 +193,13 @@
 -(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng{
     UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];
     [btn setTitle:name forState:UIControlStateNormal];
-    [self loadServiceList:@{@"lat":lat,@"lng":lng,@"cityCode":ID}];
+    [self loadServiceList:@{@"lat":lat,@"lng":lng}];
     [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([lat floatValue], [lng floatValue])];
     [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
 }
 -(void)cityMo:(CityMo *)mo{
-    [self loadServiceList:@{@"lat":mo.lat,@"lng":mo.lng,@"cityCode":mo.ID}];
+//    ,@"cityCode":mo.ID
+    [self loadServiceList:@{@"lat":mo.lat,@"lng":mo.lng}];
     [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([mo.lat floatValue], [mo.lng floatValue])];
     [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
 }
