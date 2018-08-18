@@ -34,11 +34,7 @@
     [super viewDidLoad];
     [self setUI];
     [self setupTableView];
-    
-    
-    // Do any additional setup after loading the view from its nib.
 }
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     //关闭自适应
@@ -79,15 +75,15 @@
     [self registerCell];
 }
 - (void)registerCell {
-    _tableHeadV = [[NSBundle mainBundle] loadNibNamed:@"ProfileHeadView" owner:nil options:nil][2];
-    _tableHeadV.delegate = self;
-    _tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 300);
+    self.tableHeadV = [[NSBundle mainBundle] loadNibNamed:@"ProfileHeadView" owner:nil options:nil][2];
+    self.tableHeadV.delegate = self;
+    self.tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 300);
     WeakSelf
-    _tableHeadV.Block = ^{
+    self.tableHeadV.Block = ^{
         weakSelf.tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 300);
         [weakSelf.tableView reloadData];
     };
-    self.tableView.tableHeaderView = _tableHeadV;
+    self.tableView.tableHeaderView = self.tableHeadV;
 }
 #pragma mark - setter and getter
 - (NSArray<YTSideMenuModel *> *)menuModels {

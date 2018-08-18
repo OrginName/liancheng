@@ -136,6 +136,8 @@
 		72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */; };
 		72BAB43920B047F500496D29 /* YSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB43820B047F500496D29 /* YSButton.m */; };
 		72D8B1162125C2DA007EE681 /* LYSDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B1152125C2DA007EE681 /* LYSDatePicker.m */; };
+		72D8B11A2127F5C1007EE681 /* ProfileTwoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72D8B1172127F5BF007EE681 /* ProfileTwoController.xib */; };
+		72D8B11B2127F5C1007EE681 /* ProfileTwoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B1182127F5C0007EE681 /* ProfileTwoController.m */; };
 		72EBB8B620C6DB5900F670E9 /* CardAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */; };
 		72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */; };
 		72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8BA20C800C200F670E9 /* PresentCell.m */; };
@@ -895,6 +897,9 @@
 		72BAB43820B047F500496D29 /* YSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSButton.m; sourceTree = "<group>"; };
 		72D8B1142125C2DA007EE681 /* LYSDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSDatePicker.h; sourceTree = "<group>"; };
 		72D8B1152125C2DA007EE681 /* LYSDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSDatePicker.m; sourceTree = "<group>"; };
+		72D8B1172127F5BF007EE681 /* ProfileTwoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTwoController.xib; sourceTree = "<group>"; };
+		72D8B1182127F5C0007EE681 /* ProfileTwoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTwoController.m; sourceTree = "<group>"; };
+		72D8B1192127F5C0007EE681 /* ProfileTwoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTwoController.h; sourceTree = "<group>"; };
 		72EBB8B320C6DB5900F670E9 /* CardAuthorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardAuthorController.h; sourceTree = "<group>"; };
 		72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardAuthorController.m; sourceTree = "<group>"; };
 		72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardAuthorController.xib; sourceTree = "<group>"; };
@@ -4417,6 +4422,9 @@
 				CE0BA61D209D61C0004C3C33 /* ProfileController.h */,
 				CE0BA61E209D61C0004C3C33 /* ProfileController.m */,
 				CE0BA61F209D61C0004C3C33 /* ProfileController.xib */,
+				72D8B1192127F5C0007EE681 /* ProfileTwoController.h */,
+				72D8B1182127F5C0007EE681 /* ProfileTwoController.m */,
+				72D8B1172127F5BF007EE681 /* ProfileTwoController.xib */,
 				CE6645F8210326AF00AA956E /* PersonalBasicDataController.h */,
 				CE6645F9210326AF00AA956E /* PersonalBasicDataController.m */,
 				CE6645FA210326AF00AA956E /* PersonalBasicDataController.xib */,
@@ -4812,6 +4820,7 @@
 				723D376820ABDA62003FD4DF /* ShowResumeCell.xib in Resources */,
 				727418CD20B17F4B001D6BE1 /* ChangeHeadView.xib in Resources */,
 				8DF7E3CE20CF994C009A92D7 /* ClassCell.xib in Resources */,
+				72D8B11A2127F5C1007EE681 /* ProfileTwoController.xib in Resources */,
 				8D35878D20C6A693008A5E74 /* OurPlayCell.xib in Resources */,
 				8DC17A8020C0E430005D9EE0 /* CircleCell.xib in Resources */,
 				72EBB8ED20CAC52600F670E9 /* CollectionController.xib in Resources */,
@@ -5126,6 +5135,7 @@
 				8D2B8B9B20A2DABD00C3157F /* ConnectionController.m in Sources */,
 				CE0BA5B6209D5E6B004C3C33 /* NSObject+YTGetObject.m in Sources */,
 				8D2B8B9120A2DA9F00C3157F /* AbilityHomeController.m in Sources */,
+				72D8B11B2127F5C1007EE681 /* ProfileTwoController.m in Sources */,
 				8DE4663D20EDF62E009730F7 /* RealTimeLocationViewController.m in Sources */,
 				CE5C283820B99441006A8332 /* PayOrderController.m in Sources */,
 				8DE4668920EE05B2009730F7 /* RCDSearchFriendViewController.m in Sources */,
