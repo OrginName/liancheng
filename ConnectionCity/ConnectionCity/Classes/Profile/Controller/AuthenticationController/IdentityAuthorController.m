@@ -106,7 +106,12 @@
     } cancelTitle:@"取消" cancelHandler:nil completion:nil];
 }
 - (void)requestData {
-    NSDictionary *dic = @{@"certNo": _idTF.text,@"image":[NSString stringWithFormat:@"%@;%@",self.frontImgStr,self.backgroundImgStr],@"type":_mo.value};
+    NSDictionary *dic = @{
+                          @"certNo": _idTF.text,
+                          @"image":[NSString stringWithFormat:@"%@;%@",self.frontImgStr,self.backgroundImgStr],@"type":_mo.value,
+                           @"faceImage": self.frontImgStr,
+                           @"backImage": self.backgroundImgStr
+                        };
     WeakSelf
     [YSNetworkTool POST:v1MyAuthUseridentityAuthCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {

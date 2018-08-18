@@ -52,7 +52,7 @@
         weakSelf.lab_RZ1.text = model.mobileInfo?model.mobileInfo:@"未认证";
         weakSelf.lab_RZ2.text = model.identityInfo?model.identityInfo:@"未认证";
         weakSelf.lab_RZ3.text = model.skillInfo?model.skillInfo:@"未认证";
-        weakSelf.lab_RZ4.text = model.isCompanyAuth?model.isCompanyAuth:@"未认证";
+        weakSelf.lab_RZ4.text = model.companyInfo?model.companyInfo:@"未认证";
     } failure:nil];
 }
 

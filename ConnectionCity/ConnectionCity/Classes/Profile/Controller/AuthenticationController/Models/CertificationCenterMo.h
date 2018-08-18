@@ -26,4 +26,5 @@
 /** <#skills描述#> */
 @property (nonatomic, strong) NSArray *skillss;
 @property (nonatomic, copy) NSString * isCompanyAuth;
+proStr(companyInfo);
 @end

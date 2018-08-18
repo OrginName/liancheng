@@ -85,9 +85,9 @@
         if ([self.data_Count[self.zIndex] isKindOfClass:[trvalMo class]]) {
             trvalMo * mo = self.data_Count[self.zIndex];
             [self GZLoadData:mo.ID typeID:@"40"];
-        }else if ([self.data_Count[self.zIndex] isKindOfClass:[ServiceListMo class]]){
-            ServiceListMo * mo = self.data_Count[self.zIndex];
-            [self GZLoadData:mo.ID typeID:@"20"];
+        }else if ([self.data_Count[self.zIndex] isKindOfClass:[UserMo class]]){
+            UserMo * mo = self.data_Count[self.zIndex];
+            [self GZLoadData:[mo.serviceList[self.trvaltab.JNIndex] ID] typeID:@"20"];
         }else if ([self.data_Count[self.zIndex] isKindOfClass:[AbilttyMo class]]){
             AbilttyMo*mo = self.data_Count[self.zIndex];
             [self GZLoadData:mo.ID typeID:@"50"];
@@ -105,8 +105,8 @@
                 AbilttyMo * mo = self.data_Count[self.zIndex];
                 str = mo.userMo.isBlack;
             }else{
-                ServiceListMo * mo = self.data_Count[self.zIndex];
-                str = mo.user1.isBlack;
+                UserMo * mo = self.data_Count[self.zIndex];
+                str = mo.isBlack;
             }
             if ([[str description] isEqualToString:@"1"]) {
                 return [YTAlertUtil showTempInfo:@"您已在对方的黑名单中,暂不能对话"];
@@ -121,9 +121,9 @@
                 ID = [mo.user.ID description];
                 name = mo.user.nickName;
             }else{
-                ServiceListMo * mo = self.data_Count[self.zIndex];
-                ID = [mo.user1.ID description];
-                name = mo.user1.nickName;
+                UserMo * mo = self.data_Count[self.zIndex];
+                ID = [mo.ID description];
+                name = mo.nickName;
             }
         }else if (self.Receive_Type == ENUM_TypeResume){
             AbilttyMo * resume = self.data_Count[self.zIndex];

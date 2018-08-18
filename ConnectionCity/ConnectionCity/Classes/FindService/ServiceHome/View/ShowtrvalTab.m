@@ -278,7 +278,7 @@
     AllContentMo * mo = [arr[5] contentArr][1];
     NSString * str = @"";
     if (self.Mo!=nil) {
-        str = self.Mo.ID;
+        str = [self.Mo.serviceList[self.JNIndex] ID];
     }else
         str = self.MoTrval.ID;
     [YSNetworkTool POST:v1CommonCommentAddlike  params:@{@"typeId":@([str integerValue]),@"type":@([mo.value integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
