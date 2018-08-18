@@ -85,8 +85,8 @@
 }
 //导航左按钮我的点击
 -(void)MyselfClick{
-//    [self.navigationController pushViewController:[super rotateClass:@"ProfileController"] animated:YES];
-    self.navigationController.tabBarController.selectedIndex=4;
+    [self.navigationController pushViewController:[super rotateClass:@"ProfileTwoController"] animated:YES];
+//    self.navigationController.tabBarController.selectedIndex=4;
 }
 //导航右侧按钮点击
 -(void)MessageClick{

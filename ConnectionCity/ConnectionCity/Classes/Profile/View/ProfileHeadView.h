@@ -38,6 +38,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *twoNickName;
 @property (weak, nonatomic) IBOutlet UILabel *twoSvipTimeLab;
 @property (weak, nonatomic) IBOutlet UIButton *twoSvipBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *threebackgroundImage;
+@property (weak, nonatomic) IBOutlet UIImageView *threeheadImage;
+@property (weak, nonatomic) IBOutlet UILabel *threenickName;
+@property (weak, nonatomic) IBOutlet UILabel *threesvipTimeLab;
+@property (weak, nonatomic) IBOutlet UIImageView *threesvipImgV;
+@property (weak, nonatomic) IBOutlet UIButton *threeembershipRenewalBtn;
+
 @property (copy, nonatomic) void (^Block)(void);
 
 @end

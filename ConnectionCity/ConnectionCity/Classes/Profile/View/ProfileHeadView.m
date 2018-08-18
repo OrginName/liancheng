@@ -24,6 +24,12 @@
     UILongPressGestureRecognizer *headImageLongTap = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(headImageLongTap)];
     [self.headImage addGestureRecognizer:headImageLongTap];
     
+    self.threeheadImage.layer.cornerRadius = 27;
+    self.threeheadImage.clipsToBounds = YES;
+    self.threeembershipRenewalBtn.layer.cornerRadius = 15;
+    self.threeembershipRenewalBtn.backgroundColor = [UIColor orangeColor];
+    self.threeembershipRenewalBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.threeembershipRenewalBtn.layer.borderWidth = 1;
 }
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -52,4 +58,5 @@
         [_delegate profileHeadViewHeadImgLongTap:self];
     }
 }
+
 @end

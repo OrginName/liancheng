@@ -33,7 +33,9 @@
 @property (nonatomic,strong) NSString * nickName;
 @property (nonatomic,strong) NSString * ID;
 @property (nonatomic,strong) NSString * token;
-@property(nonatomic, strong) NSTimer *retryTime;
+@property (nonatomic, strong) NSTimer *retryTime;
+@property (nonatomic, strong) BaseTabBarController *mainTabBarVC;
+
 @end
 @implementation YSLoginController
 
@@ -233,12 +235,13 @@
 //    [RCDDataSource syncFriendList:userId
 //                         complete:^(NSMutableArray *friends){
 //                         }];
+    WeakSelf
+    weakSelf.mainTabBarVC = [[BaseTabBarController alloc] init];
     dispatch_async(dispatch_get_main_queue(), ^{
         UIWindow *win = [[UIApplication sharedApplication].windows objectAtIndex:0];
-        [KUserDefults setObject:self.phoneTF.text forKey:@"userPhone"];
+        [win setRootViewController:weakSelf.mainTabBarVC];
+        [KUserDefults setObject:weakSelf.phoneTF.text forKey:@"userPhone"];
         [KUserDefults synchronize];
-        BaseTabBarController *mainTabBarVC = [[BaseTabBarController alloc] init];
-        win.rootViewController = mainTabBarVC;
     });
 }
 - (void)onRCIMConnectionStatusChanged:(RCConnectionStatus)status {
