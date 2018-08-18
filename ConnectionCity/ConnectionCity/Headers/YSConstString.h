@@ -70,6 +70,22 @@
 #define kUserinfo          [YSAccountTool userInfo]
 /** 是否登录 */
 #define kIsLogin           [[GlobalManager globalManagerShare]isOrNoLogin]
+/** app视图布局边缘 */
+#define AppViewLayoutMargin 8
+/** app车型图片宽高比 */
+#define AppViewCarSizeRatio 208/121.0f
+/** TableView section间隔高度 */
+#define AppViewTableHeaderFooterSectionH 15
+/** app统一圆角值 */
+#define AppViewCornerRadius 5
+/** app状态栏高度 */
+#define AppViewStatusBarH [UIApplication sharedApplication].statusBarFrame.size.height
+/** app导航条最大y值 */
+#define AppViewNavigationMaxY AppViewCommonHeight + AppViewStatusBarH
+/** 视图通用高度 */
+#define AppViewCommonHeight 44
+/** 单行Label高度 */
+#define AppViewSingleLineLabelHeight 30
 /** 响应message */
 #define kMessage           @"message"
 /** 响应data */

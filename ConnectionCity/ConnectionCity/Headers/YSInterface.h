@@ -510,6 +510,30 @@ static NSString * const v1PlayFeverRelationToMeList = @"/v1/play/fever/relation-
 static NSString * const v1PlayFeverSignIn = @"/v1/play/fever/sign-in";
 //退出发烧友
 static NSString * const v1PlayFeverSignOut = @"/v1/play/fever/sign-out";
+#pragma mark -   ------添加有奖反馈-------
+//添加有奖反馈
+static NSString * const v1FeedbackCreate = @"/v1/feedback/create";
+#pragma mark -   ------亲密账户-------
+//个人流水统计
+static NSString * const v1usercloseaccountbilldate = @"/v1/user/close/account/bill/date";
+//月度流水统计
+static NSString * const v1usercloseaccountbillmonth = @"/v1/user/close/account/bill/month";
+//年度流水统计
+static NSString * const v1usercloseaccountbillyear = @"/v1/user/close/account/bill/year";
+//修改锁定密码
+static NSString * const v1usercloseaccountchangpwd = @"/v1/user/close/account/chang-pwd";
+//添加亲密账户
+static NSString * const v1usercloseaccountcreate = @"/v1/user/close/account/create";
+//删除亲密账户
+static NSString * const v1usercloseaccountdelete = @"/v1/user/close/account/delete";
+//我开通的亲密账户
+static NSString * const v1usercloseaccountlist = @"/v1/user/close/account/list";
+//我被开通的亲密账户
+static NSString * const v1usercloseaccountopenedlist = @"/v1/user/close/account/opened/list";
+//我的流水汇总
+static NSString * const v1usercloseaccountorderstatistics = @"/v1/user/close/account/order/statistics";
+//修改亲密账户
+static NSString * const v1usercloseaccountupdate = @"/v1/user/close/account/update";
 
 
 //公工接口

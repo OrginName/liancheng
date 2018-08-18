@@ -88,7 +88,7 @@
 #pragma mark - setter and getter
 - (NSArray<YTSideMenuModel *> *)menuModels {
     if (_menuModels == nil) {
-        _menuModels = @[@[[YTSideMenuModel modelWithDictionary:@{@"icon": @"our-kf",@"title": @"亲密账户",@"class": @"kissAccountController"}]],@[[YTSideMenuModel modelWithDictionary:@{@"icon": @"our-kf",@"title": @"客服",@"class": @"SetViewController"}],[YTSideMenuModel modelWithDictionary:@{@"icon": @"our-kf",@"title": @"商务合作",@"class": @"SetViewController"}],[YTSideMenuModel modelWithDictionary:@{@"icon": @"our-kf",@"title": @"邀请好友",@"class": @"SetViewController"}]],@[[YTSideMenuModel modelWithDictionary:@{@"icon": @"our-kf",@"title": @"有奖反馈",@"class": @"SetViewController"}]]];
+        _menuModels = @[@[[YTSideMenuModel modelWithDictionary:@{@"icon": @"our-kf",@"title": @"亲密账户",@"class": @"kissAccountController"}]],@[[YTSideMenuModel modelWithDictionary:@{@"icon": @"our-kf",@"title": @"客服",@"class": @"SetViewController"}],[YTSideMenuModel modelWithDictionary:@{@"icon": @"our-kf",@"title": @"商务合作",@"class": @"SetViewController"}],[YTSideMenuModel modelWithDictionary:@{@"icon": @"our-kf",@"title": @"邀请好友",@"class": @"ShareController"}]],@[[YTSideMenuModel modelWithDictionary:@{@"icon": @"our-kf",@"title": @"有奖反馈",@"class": @"FeedbackController"}]]];
     }
     return _menuModels;
 }
@@ -111,28 +111,15 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    // 根据类名跳转控制器
-    //    NSString *className = [YTAccountInfo loginState] ? self.menuModels[indexPath.row].mClass : @"YTLoginViewController";
-    
-    //相册
-    if (indexPath.row==5) {
-        [[TakePhoto sharedPhoto] hehe:^(UIImage *image) {
-            
-        }];
-        return;
-    }
     //客服
-    if (indexPath.row==6) {
-        
+    if (indexPath.section==1 && indexPath.row==0) {
         AgreementController *connectUs = [[AgreementController alloc]init];
         connectUs.alias = @"customservice";
         [self.navigationController pushViewController:connectUs animated:YES];
-        
         return;
     }
     //商务合作
-    if(indexPath.row==7){
+    if(indexPath.section==1 && indexPath.row==1){
         AgreementController *agreementVC = [[AgreementController alloc]init];
         agreementVC.alias = cooperation;
         [self.navigationController pushViewController:agreementVC animated:YES];
@@ -182,13 +169,9 @@
     [YSNetworkTool POST:v1PrivateUserInfo params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
         [YSAccountTool saveUserinfo:userInfoModel];
-        
-        [weakSelf.tableHeadV.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
-        [weakSelf.tableHeadV.headImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
-        weakSelf.tableHeadV.nickName.text = userInfoModel.nickName;
-        weakSelf.tableHeadV.genderName.text = userInfoModel.genderName;
-        weakSelf.tableHeadV.age.text = [NSString stringWithFormat:@"%@",userInfoModel.age?[NSString stringWithFormat:@"%@岁",userInfoModel.age]:@""];
-        weakSelf.tableHeadV.centerLab.text = [NSString stringWithFormat:@"%@  %@  %@  %@  %@",userInfoModel.cityName?userInfoModel.cityName:@"",userInfoModel.height?[NSString stringWithFormat:@"%@CM",userInfoModel.height]:@"",userInfoModel.weight?[NSString stringWithFormat:@"%@KG",userInfoModel.weight]:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.marriageName?userInfoModel.marriageName:@""];
+        [weakSelf.tableHeadV.threebackgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
+        [weakSelf.tableHeadV.threeheadImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
+        weakSelf.tableHeadV.threenickName.text = userInfoModel.nickName;
     } failure:nil];
 }
 //用户svip详情
@@ -197,9 +180,9 @@
     [YSNetworkTool POST:v1MembershipUserSvip params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if (![YSTools dx_isNullOrNilWithObject:responseObject[kData]]) {
             if (![responseObject[kData] isKindOfClass:[NSArray class]]) {
-                weakSelf.tableHeadV.svipLogoBtn.hidden = NO;
-                weakSelf.tableHeadV.svipxfBtn.hidden = NO;
-                weakSelf.tableHeadV.svipTimeLab.text = [responseObject[kData] objectForKey:@"endTime"];
+                weakSelf.tableHeadV.threesvipImgV.hidden = NO;
+                weakSelf.tableHeadV.threeembershipRenewalBtn.hidden = NO;
+                weakSelf.tableHeadV.threesvipTimeLab.text = [responseObject[kData] objectForKey:@"endTime"];
             }
         }
     } failure:nil];
