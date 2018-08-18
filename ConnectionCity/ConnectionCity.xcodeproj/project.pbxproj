@@ -138,6 +138,22 @@
 		72D8B1162125C2DA007EE681 /* LYSDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B1152125C2DA007EE681 /* LYSDatePicker.m */; };
 		72D8B11A2127F5C1007EE681 /* ProfileTwoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72D8B1172127F5BF007EE681 /* ProfileTwoController.xib */; };
 		72D8B11B2127F5C1007EE681 /* ProfileTwoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B1182127F5C0007EE681 /* ProfileTwoController.m */; };
+		72D8B12121280413007EE681 /* kissAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B11F21280413007EE681 /* kissAccountController.m */; };
+		72D8B12221280413007EE681 /* kissAccountController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72D8B12021280413007EE681 /* kissAccountController.xib */; };
+		72D8B126212845CC007EE681 /* AddKissController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B124212845CC007EE681 /* AddKissController.m */; };
+		72D8B127212845CC007EE681 /* AddKissController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72D8B125212845CC007EE681 /* AddKissController.xib */; };
+		72D8B135212874BB007EE681 /* KissModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B12A212874BA007EE681 /* KissModel.m */; };
+		72D8B136212874BB007EE681 /* KissCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B12D212874BA007EE681 /* KissCell.m */; };
+		72D8B137212874BB007EE681 /* KissCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72D8B12E212874BA007EE681 /* KissCell.xib */; };
+		72D8B138212874BB007EE681 /* MeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B130212874BA007EE681 /* MeView.m */; };
+		72D8B139212874BB007EE681 /* OtherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B132212874BA007EE681 /* OtherView.m */; };
+		72D8B13A212874BB007EE681 /* YTAdviceInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B134212874BA007EE681 /* YTAdviceInputView.m */; };
+		72D8B13E212874D0007EE681 /* FeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B13B212874CF007EE681 /* FeedbackController.m */; };
+		72D8B13F212874D0007EE681 /* FeedbackController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72D8B13D212874CF007EE681 /* FeedbackController.xib */; };
+		72D8B14221287578007EE681 /* YTPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B14121287578007EE681 /* YTPlaceholderTextView.m */; };
+		72D8B149212875CF007EE681 /* UILabel+YTFitSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B143212875CE007EE681 /* UILabel+YTFitSize.m */; };
+		72D8B14A212875CF007EE681 /* UITextView+YTFitSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B144212875CE007EE681 /* UITextView+YTFitSize.m */; };
+		72D8B14B212875CF007EE681 /* NSString+YTFitSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B145212875CE007EE681 /* NSString+YTFitSize.m */; };
 		72EBB8B620C6DB5900F670E9 /* CardAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */; };
 		72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */; };
 		72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8BA20C800C200F670E9 /* PresentCell.m */; };
@@ -900,6 +916,34 @@
 		72D8B1172127F5BF007EE681 /* ProfileTwoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTwoController.xib; sourceTree = "<group>"; };
 		72D8B1182127F5C0007EE681 /* ProfileTwoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTwoController.m; sourceTree = "<group>"; };
 		72D8B1192127F5C0007EE681 /* ProfileTwoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTwoController.h; sourceTree = "<group>"; };
+		72D8B11E21280413007EE681 /* kissAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kissAccountController.h; sourceTree = "<group>"; };
+		72D8B11F21280413007EE681 /* kissAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kissAccountController.m; sourceTree = "<group>"; };
+		72D8B12021280413007EE681 /* kissAccountController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = kissAccountController.xib; sourceTree = "<group>"; };
+		72D8B123212845CC007EE681 /* AddKissController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddKissController.h; sourceTree = "<group>"; };
+		72D8B124212845CC007EE681 /* AddKissController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddKissController.m; sourceTree = "<group>"; };
+		72D8B125212845CC007EE681 /* AddKissController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddKissController.xib; sourceTree = "<group>"; };
+		72D8B129212874BA007EE681 /* KissModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KissModel.h; sourceTree = "<group>"; };
+		72D8B12A212874BA007EE681 /* KissModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KissModel.m; sourceTree = "<group>"; };
+		72D8B12C212874BA007EE681 /* KissCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KissCell.h; sourceTree = "<group>"; };
+		72D8B12D212874BA007EE681 /* KissCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KissCell.m; sourceTree = "<group>"; };
+		72D8B12E212874BA007EE681 /* KissCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KissCell.xib; sourceTree = "<group>"; };
+		72D8B12F212874BA007EE681 /* MeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeView.h; sourceTree = "<group>"; };
+		72D8B130212874BA007EE681 /* MeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeView.m; sourceTree = "<group>"; };
+		72D8B131212874BA007EE681 /* OtherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherView.h; sourceTree = "<group>"; };
+		72D8B132212874BA007EE681 /* OtherView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherView.m; sourceTree = "<group>"; };
+		72D8B133212874BA007EE681 /* YTAdviceInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTAdviceInputView.h; sourceTree = "<group>"; };
+		72D8B134212874BA007EE681 /* YTAdviceInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTAdviceInputView.m; sourceTree = "<group>"; };
+		72D8B13B212874CF007EE681 /* FeedbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackController.m; sourceTree = "<group>"; };
+		72D8B13C212874CF007EE681 /* FeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackController.h; sourceTree = "<group>"; };
+		72D8B13D212874CF007EE681 /* FeedbackController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackController.xib; sourceTree = "<group>"; };
+		72D8B14021287577007EE681 /* YTPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlaceholderTextView.h; sourceTree = "<group>"; };
+		72D8B14121287578007EE681 /* YTPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlaceholderTextView.m; sourceTree = "<group>"; };
+		72D8B143212875CE007EE681 /* UILabel+YTFitSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+YTFitSize.m"; sourceTree = "<group>"; };
+		72D8B144212875CE007EE681 /* UITextView+YTFitSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+YTFitSize.m"; sourceTree = "<group>"; };
+		72D8B145212875CE007EE681 /* NSString+YTFitSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+YTFitSize.m"; sourceTree = "<group>"; };
+		72D8B146212875CF007EE681 /* UITextView+YTFitSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+YTFitSize.h"; sourceTree = "<group>"; };
+		72D8B147212875CF007EE681 /* NSString+YTFitSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+YTFitSize.h"; sourceTree = "<group>"; };
+		72D8B148212875CF007EE681 /* UILabel+YTFitSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+YTFitSize.h"; sourceTree = "<group>"; };
 		72EBB8B320C6DB5900F670E9 /* CardAuthorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardAuthorController.h; sourceTree = "<group>"; };
 		72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardAuthorController.m; sourceTree = "<group>"; };
 		72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardAuthorController.xib; sourceTree = "<group>"; };
@@ -2388,6 +2432,57 @@
 			path = Date;
 			sourceTree = "<group>";
 		};
+		72D8B11C21280413007EE681 /* kissAccount */ = {
+			isa = PBXGroup;
+			children = (
+				72D8B128212874BA007EE681 /* Model */,
+				72D8B12B212874BA007EE681 /* View */,
+				72D8B11D21280413007EE681 /* Controller */,
+			);
+			path = kissAccount;
+			sourceTree = "<group>";
+		};
+		72D8B11D21280413007EE681 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				72D8B11E21280413007EE681 /* kissAccountController.h */,
+				72D8B11F21280413007EE681 /* kissAccountController.m */,
+				72D8B12021280413007EE681 /* kissAccountController.xib */,
+				72D8B123212845CC007EE681 /* AddKissController.h */,
+				72D8B124212845CC007EE681 /* AddKissController.m */,
+				72D8B125212845CC007EE681 /* AddKissController.xib */,
+				72D8B13C212874CF007EE681 /* FeedbackController.h */,
+				72D8B13B212874CF007EE681 /* FeedbackController.m */,
+				72D8B13D212874CF007EE681 /* FeedbackController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		72D8B128212874BA007EE681 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				72D8B129212874BA007EE681 /* KissModel.h */,
+				72D8B12A212874BA007EE681 /* KissModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		72D8B12B212874BA007EE681 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				72D8B12C212874BA007EE681 /* KissCell.h */,
+				72D8B12D212874BA007EE681 /* KissCell.m */,
+				72D8B12E212874BA007EE681 /* KissCell.xib */,
+				72D8B12F212874BA007EE681 /* MeView.h */,
+				72D8B130212874BA007EE681 /* MeView.m */,
+				72D8B131212874BA007EE681 /* OtherView.h */,
+				72D8B132212874BA007EE681 /* OtherView.m */,
+				72D8B133212874BA007EE681 /* YTAdviceInputView.h */,
+				72D8B134212874BA007EE681 /* YTAdviceInputView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		72EBB8B220C6DB3600F670E9 /* AuthenticationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -3613,6 +3708,12 @@
 		CE0BA599209D5E6A004C3C33 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				72D8B147212875CF007EE681 /* NSString+YTFitSize.h */,
+				72D8B145212875CE007EE681 /* NSString+YTFitSize.m */,
+				72D8B148212875CF007EE681 /* UILabel+YTFitSize.h */,
+				72D8B143212875CE007EE681 /* UILabel+YTFitSize.m */,
+				72D8B146212875CF007EE681 /* UITextView+YTFitSize.h */,
+				72D8B144212875CE007EE681 /* UITextView+YTFitSize.m */,
 				CE21F0DB20DD38A700478482 /* NSDictionary+SafeValue.h */,
 				CE21F0DC20DD38A700478482 /* NSDictionary+SafeValue.m */,
 				8D8E4ED520C937D200C3D537 /* NKColorSwitch.h */,
@@ -3709,6 +3810,8 @@
 				CE0BA5DC209D5E9B004C3C33 /* SRDownloadManager.m */,
 				CE24791420CEC9F100D4C396 /* EGOCache.h */,
 				CE24791520CEC9F100D4C396 /* EGOCache.m */,
+				72D8B14021287577007EE681 /* YTPlaceholderTextView.h */,
+				72D8B14121287578007EE681 /* YTPlaceholderTextView.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -4409,6 +4512,7 @@
 		CEC4A54620C3FBE50026EE19 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				72D8B11C21280413007EE681 /* kissAccount */,
 				CEFC90F82110AB29006E262E /* Share */,
 				CEE524FA20F771D400DD6179 /* QR */,
 				72EBB8E820CAC51A00F670E9 /* Collection */,
@@ -4739,6 +4843,7 @@
 				8D2B8BA120A2DACC00C3157F /* MakeMoneyController.xib in Resources */,
 				CEC4A53020C3D6D10026EE19 /* TeamHeadView.xib in Resources */,
 				727418FD20B3C282001D6BE1 /* SwapHomeCell.xib in Resources */,
+				72D8B127212845CC007EE681 /* AddKissController.xib in Resources */,
 				72EC1B7820BA9F7B00ACC20B /* PlayEditController.xib in Resources */,
 				8D22C35220C7CDA1004DC8F4 /* ExchangeController.xib in Resources */,
 				8D50C55720C636560095A824 /* OurResumeController.xib in Resources */,
@@ -4781,11 +4886,13 @@
 				CE0BA615209D6160004C3C33 /* LifeHallController.xib in Resources */,
 				723F4FA720BEDE6000AF8268 /* TrvalInvitController.xib in Resources */,
 				8D114CC120CA236900637D34 /* AccountView.xib in Resources */,
+				72D8B137212874BB007EE681 /* KissCell.xib in Resources */,
 				CEC4A55B20C407500026EE19 /* MemberCenterController.xib in Resources */,
 				CEC4A53E20C3D6FC0026EE19 /* TeamCollectionCell.xib in Resources */,
 				7210411A210776A200B575BB /* NoticeController.xib in Resources */,
 				CEC4A54C20C3FC180026EE19 /* ProfileCell.xib in Resources */,
 				CE5C280020B8FE5A006A8332 /* BiddInfoHeadView.xib in Resources */,
+				72D8B13F212874D0007EE681 /* FeedbackController.xib in Resources */,
 				8DD48CE920A8367100D6D1E6 /* GuardEduController.xib in Resources */,
 				72EC1BBA20BC4CA100ACC20B /* SendServiceCell.xib in Resources */,
 				CEC4A53F20C3D6FC0026EE19 /* TeamHeadCell.xib in Resources */,
@@ -4836,6 +4943,7 @@
 				8D09E18220BFB49A000F7EBD /* SendTripController.xib in Resources */,
 				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
 				CE5C281C20B94D84006A8332 /* BidManagerCell.xib in Resources */,
+				72D8B12221280413007EE681 /* kissAccountController.xib in Resources */,
 				8D09E18720BFC4B8000F7EBD /* AppointmentController.xib in Resources */,
 				CEC4A56520C407BF0026EE19 /* WalletController.xib in Resources */,
 				CEBEDD8320B17ED1000F9EE4 /* MarginCell.xib in Resources */,
@@ -5016,6 +5124,7 @@
 				CE0BA5DD209D5E9B004C3C33 /* YTSystemUtil.m in Sources */,
 				723F4FA120BED37800AF8268 /* TrvalCell.m in Sources */,
 				8D5FF5ED210B16EE0094516F /* MyTab.m in Sources */,
+				72D8B12121280413007EE681 /* kissAccountController.m in Sources */,
 				CE14BD6F20F3794000F85C49 /* YTThirdPartyPay.m in Sources */,
 				CE03EDF520B4544700F07D78 /* FirstSectionHeadV.m in Sources */,
 				8D50C55120C632090095A824 /* OurSendController.m in Sources */,
@@ -5083,6 +5192,7 @@
 				8DEA451A20C12C06001529F1 /* CustomPlayer.m in Sources */,
 				8DC17A7C20C0E430005D9EE0 /* MomentCell.m in Sources */,
 				CEE68C4920ECFAFC00233AE3 /* TravelInvite.m in Sources */,
+				72D8B139212874BB007EE681 /* OtherView.m in Sources */,
 				CEC4A55120C3FF4F0026EE19 /* YTSideMenuModel.m in Sources */,
 				7266FEC5210B4304005794AD /* MyCollectionView.m in Sources */,
 				8DD48CCF20A811EA00D6D1E6 /* TAPageControl.m in Sources */,
@@ -5095,6 +5205,7 @@
 				8D88FD5A21197F160085EA82 /* CompanyCertificationController.m in Sources */,
 				8DE4660520EDF2CE009730F7 /* RCDConversationSettingTableViewHeader.m in Sources */,
 				8DD48CDF20A828F200D6D1E6 /* CustomtextView.m in Sources */,
+				72D8B13A212874BB007EE681 /* YTAdviceInputView.m in Sources */,
 				720263FD20B5015500382B2F /* TZVideoPlayerController.m in Sources */,
 				8DE4660720EDF2CE009730F7 /* RCDDiscussSettingCell.m in Sources */,
 				72EC1B5B20B7027000ACC20B /* SwapListController.m in Sources */,
@@ -5144,12 +5255,14 @@
 				CE21F0F220DF963400478482 /* educationExperienceListModel.m in Sources */,
 				727418E320B290D1001D6BE1 /* SwapController.m in Sources */,
 				8D22C35120C7CDA1004DC8F4 /* ExchangeController.m in Sources */,
+				72D8B149212875CF007EE681 /* UILabel+YTFitSize.m in Sources */,
 				8DFA326D20EDDC0A0086423A /* RCDHttpTool.m in Sources */,
 				8DD48CE820A8367100D6D1E6 /* GuardEduController.m in Sources */,
 				8DD48CD320A811EA00D6D1E6 /* UIView+SDExtension.m in Sources */,
 				721DAE1120F272BA006F141F /* FoundQunController.m in Sources */,
 				72104109210243D300B575BB /* UIView+Extension.m in Sources */,
 				72EC1B6720B8465D00ACC20B /* ShowTreaueTab.m in Sources */,
+				72D8B138212874BB007EE681 /* MeView.m in Sources */,
 				CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */,
 				72B6EC9B20FF621500B4088D /* friendMo.m in Sources */,
 				CE0BA5B3209D5E6B004C3C33 /* UIView+YSCategory.m in Sources */,
@@ -5192,6 +5305,7 @@
 				8DD48CD720A81B9100D6D1E6 /* GuardCollController.m in Sources */,
 				8DE161A92106FA5D00CC7558 /* MessageMo.m in Sources */,
 				727418CB20B17F3D001D6BE1 /* ChangeHeadView.m in Sources */,
+				72D8B126212845CC007EE681 /* AddKissController.m in Sources */,
 				720263F820B5015500382B2F /* TZLocationManager.m in Sources */,
 				720263F420B5015500382B2F /* TZImageCropManager.m in Sources */,
 				723D376720ABDA62003FD4DF /* ShowResumeCell.m in Sources */,
@@ -5336,6 +5450,7 @@
 				8D19FF2320D8CFE4005F7361 /* ServiceListMo.m in Sources */,
 				72EC1B7220BA984400ACC20B /* PlayDouctCell.m in Sources */,
 				727418F020B2DDAC001D6BE1 /* ChangeListController.m in Sources */,
+				72D8B135212874BB007EE681 /* KissModel.m in Sources */,
 				8DB277B420EF53E100B3D747 /* RCDSearchMoreController.m in Sources */,
 				CE0BA61A209D6197004C3C33 /* FoundController.m in Sources */,
 				8DF7E3D520CFB33F009A92D7 /* PopThree.m in Sources */,
@@ -5345,10 +5460,13 @@
 				8DE4665020EDFB6B009730F7 /* RCDFrienfRemarksViewController.m in Sources */,
 				CE2C401620EF87E700D33B17 /* RCDAddressBookTableViewCell.m in Sources */,
 				722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */,
+				72D8B136212874BB007EE681 /* KissCell.m in Sources */,
+				72D8B13E212874D0007EE681 /* FeedbackController.m in Sources */,
 				8DB277B720EF53F500B3D747 /* RCDSearchMoreViewCell.m in Sources */,
 				727418D920B290AE001D6BE1 /* PlayPoductController.m in Sources */,
 				CE03EDF120B44FB000F07D78 /* FirstTableViewCell.m in Sources */,
 				8D22C34C20C7CD68004DC8F4 /* ExpressiveController.m in Sources */,
+				72D8B14221287578007EE681 /* YTPlaceholderTextView.m in Sources */,
 				72BAB42A20B03A8C00496D29 /* BulidTeamCell.m in Sources */,
 				CE0BA5FB209D5EBE004C3C33 /* BaseTabBarController.m in Sources */,
 				72EC1B6320B8357400ACC20B /* ShowCardCell.m in Sources */,
@@ -5380,6 +5498,7 @@
 				CE782ABF21159891002C6403 /* orderListModel.m in Sources */,
 				720263FC20B5015500382B2F /* TZProgressView.m in Sources */,
 				720263F220B5015500382B2F /* TZAssetModel.m in Sources */,
+				72D8B14A212875CF007EE681 /* UITextView+YTFitSize.m in Sources */,
 				8D35878C20C6A693008A5E74 /* OurPlayCell.m in Sources */,
 				72EC1BAF20BC350D00ACC20B /* BaseFindServiceTabController.m in Sources */,
 				8DFA325220EDAFEA0086423A /* RCDataBaseManager.m in Sources */,
@@ -5441,6 +5560,7 @@
 				CE24791620CEC9F100D4C396 /* EGOCache.m in Sources */,
 				72EBB8E120C95F8800F670E9 /* AccountSecurityController.m in Sources */,
 				CE0BA5B7209D5E6B004C3C33 /* NSData+hexString.m in Sources */,
+				72D8B14B212875CF007EE681 /* NSString+YTFitSize.m in Sources */,
 				CEBEDD8920B17ED1000F9EE4 /* BidderCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
