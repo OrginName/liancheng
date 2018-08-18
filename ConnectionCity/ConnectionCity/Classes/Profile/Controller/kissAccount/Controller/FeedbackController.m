@@ -42,7 +42,7 @@
 }
 - (void)setUI {
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
-    NSArray *contentArr = [arr[33] contentArr];
+    NSArray *contentArr = [arr[32] contentArr];
     if (contentArr.count>0) {
         _mo = contentArr[0];
         _categoryLab.text = _mo.description1;
@@ -66,7 +66,7 @@
 }
 - (IBAction)selectCategoryBtnClick:(id)sender {
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
-    NSArray *contentArr = [arr[33] contentArr];
+    NSArray *contentArr = [arr[32] contentArr];
     NSMutableArray *title = [NSMutableArray array];
     for (int i=0; i < contentArr.count; i++) {
         AllContentMo * mo = contentArr[i];
