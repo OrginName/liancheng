@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *adviceBgV;
 @property (weak, nonatomic) IBOutlet UIView *photoBgV;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLab;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_image;
 @property (nonatomic, strong) YTAdviceInputView *adviceView;
 @property (nonatomic, strong) PhotoSelect * photo;
 @property (nonatomic, strong) NSMutableArray *Arr_Url;
@@ -28,17 +29,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Do any additional setup after loading the view from its nib.
+    self.title = @"问题反馈";
+    [self setUI];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self setUI];
-
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 - (void)setUI {
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
@@ -48,7 +46,8 @@
         _categoryLab.text = _mo.description1;
     }
     [_adviceBgV addSubview:self.adviceView];
-    self.photo = [[PhotoSelect alloc] initWithFrame:CGRectMake(0, 0, _photoBgV.width, _photoBgV.height) withController:self];
+    self.layout_image.constant = (kScreenWidth-70) / 3+10;
+    self.photo = [[PhotoSelect alloc] initWithFrame:CGRectMake(0, 0, _photoBgV.width, (kScreenWidth-70) / 3) withController:self];
     self.photo.backgroundColor = [UIColor whiteColor];
     self.photo.PhotoDelegate = self;
     self.photo.allowTakeVideo = NO;

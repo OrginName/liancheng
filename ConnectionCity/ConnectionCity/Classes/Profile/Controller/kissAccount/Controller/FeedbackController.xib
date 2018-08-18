@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="adviceBgV" destination="TWb-uk-6f8" id="Lvv-fb-Pp6"/>
                 <outlet property="categoryLab" destination="8CL-RV-v1s" id="5C8-t2-0oj"/>
+                <outlet property="layout_image" destination="YNh-1I-Crt" id="37G-IE-U4Z"/>
                 <outlet property="photoBgV" destination="1xa-ja-YJN" id="OCK-NJ-P9h"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
