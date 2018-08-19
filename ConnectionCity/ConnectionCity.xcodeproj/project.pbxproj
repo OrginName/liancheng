@@ -139,6 +139,16 @@
 		72D8B14D21287FAC007EE681 /* OtherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B14C21287FAC007EE681 /* OtherView.m */; };
 		72D8B1532128830E007EE681 /* AddKissController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B1512128830E007EE681 /* AddKissController.m */; };
 		72D8B1542128830E007EE681 /* AddKissController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72D8B1522128830E007EE681 /* AddKissController.xib */; };
+		72D8B158212946DF007EE681 /* KissDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B156212946DF007EE681 /* KissDetailController.m */; };
+		72D8B159212946DF007EE681 /* KissDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72D8B157212946DF007EE681 /* KissDetailController.xib */; };
+		72D8B16521296052007EE681 /* BaoBiaoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B15C21296051007EE681 /* BaoBiaoItem.m */; };
+		72D8B16621296052007EE681 /* BaoBiaoItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72D8B15D21296051007EE681 /* BaoBiaoItem.xib */; };
+		72D8B16721296052007EE681 /* BaoBiaoItemHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B15F21296051007EE681 /* BaoBiaoItemHeader.m */; };
+		72D8B16821296052007EE681 /* BaoBiaoItemHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72D8B16021296051007EE681 /* BaoBiaoItemHeader.xib */; };
+		72D8B16921296052007EE681 /* BaoBiaoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B16221296051007EE681 /* BaoBiaoLayout.m */; };
+		72D8B16A21296052007EE681 /* BaoBiaoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B16421296051007EE681 /* BaoBiaoVC.m */; };
+		72D8B16E212965FD007EE681 /* KissUpdateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B16C212965FD007EE681 /* KissUpdateController.m */; };
+		72D8B16F212965FD007EE681 /* KissUpdateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72D8B16D212965FD007EE681 /* KissUpdateController.xib */; };
 		72EBB8B620C6DB5900F670E9 /* CardAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */; };
 		72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */; };
 		72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8BA20C800C200F670E9 /* PresentCell.m */; };
@@ -931,6 +941,22 @@
 		72D8B1502128830D007EE681 /* AddKissController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddKissController.h; sourceTree = "<group>"; };
 		72D8B1512128830E007EE681 /* AddKissController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddKissController.m; sourceTree = "<group>"; };
 		72D8B1522128830E007EE681 /* AddKissController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddKissController.xib; sourceTree = "<group>"; };
+		72D8B155212946DF007EE681 /* KissDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KissDetailController.h; sourceTree = "<group>"; };
+		72D8B156212946DF007EE681 /* KissDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KissDetailController.m; sourceTree = "<group>"; };
+		72D8B157212946DF007EE681 /* KissDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KissDetailController.xib; sourceTree = "<group>"; };
+		72D8B15B21296051007EE681 /* BaoBiaoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaoBiaoItem.h; sourceTree = "<group>"; };
+		72D8B15C21296051007EE681 /* BaoBiaoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaoBiaoItem.m; sourceTree = "<group>"; };
+		72D8B15D21296051007EE681 /* BaoBiaoItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaoBiaoItem.xib; sourceTree = "<group>"; };
+		72D8B15E21296051007EE681 /* BaoBiaoItemHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaoBiaoItemHeader.h; sourceTree = "<group>"; };
+		72D8B15F21296051007EE681 /* BaoBiaoItemHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaoBiaoItemHeader.m; sourceTree = "<group>"; };
+		72D8B16021296051007EE681 /* BaoBiaoItemHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaoBiaoItemHeader.xib; sourceTree = "<group>"; };
+		72D8B16121296051007EE681 /* BaoBiaoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaoBiaoLayout.h; sourceTree = "<group>"; };
+		72D8B16221296051007EE681 /* BaoBiaoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaoBiaoLayout.m; sourceTree = "<group>"; };
+		72D8B16321296051007EE681 /* BaoBiaoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaoBiaoVC.h; sourceTree = "<group>"; };
+		72D8B16421296051007EE681 /* BaoBiaoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaoBiaoVC.m; sourceTree = "<group>"; };
+		72D8B16B212965FD007EE681 /* KissUpdateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KissUpdateController.h; sourceTree = "<group>"; };
+		72D8B16C212965FD007EE681 /* KissUpdateController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KissUpdateController.m; sourceTree = "<group>"; };
+		72D8B16D212965FD007EE681 /* KissUpdateController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KissUpdateController.xib; sourceTree = "<group>"; };
 		72EBB8B320C6DB5900F670E9 /* CardAuthorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardAuthorController.h; sourceTree = "<group>"; };
 		72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardAuthorController.m; sourceTree = "<group>"; };
 		72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardAuthorController.xib; sourceTree = "<group>"; };
@@ -2446,6 +2472,23 @@
 			path = Date;
 			sourceTree = "<group>";
 		};
+		72D8B15A21296051007EE681 /* BB */ = {
+			isa = PBXGroup;
+			children = (
+				72D8B15B21296051007EE681 /* BaoBiaoItem.h */,
+				72D8B15C21296051007EE681 /* BaoBiaoItem.m */,
+				72D8B15D21296051007EE681 /* BaoBiaoItem.xib */,
+				72D8B15E21296051007EE681 /* BaoBiaoItemHeader.h */,
+				72D8B15F21296051007EE681 /* BaoBiaoItemHeader.m */,
+				72D8B16021296051007EE681 /* BaoBiaoItemHeader.xib */,
+				72D8B16121296051007EE681 /* BaoBiaoLayout.h */,
+				72D8B16221296051007EE681 /* BaoBiaoLayout.m */,
+				72D8B16321296051007EE681 /* BaoBiaoVC.h */,
+				72D8B16421296051007EE681 /* BaoBiaoVC.m */,
+			);
+			path = BB;
+			sourceTree = "<group>";
+		};
 		72EBB8B220C6DB3600F670E9 /* AuthenticationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -3720,6 +3763,7 @@
 		CE0BA5BE209D5E9B004C3C33 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				72D8B15A21296051007EE681 /* BB */,
 				7266FED421173ED4005794AD /* CustomClass */,
 				8D95E324210EDF5600C26892 /* HCCountdown.h */,
 				8D95E323210EDF5500C26892 /* HCCountdown.m */,
@@ -4714,12 +4758,18 @@
 				72D8B1502128830D007EE681 /* AddKissController.h */,
 				72D8B1512128830E007EE681 /* AddKissController.m */,
 				72D8B1522128830E007EE681 /* AddKissController.xib */,
+				72D8B155212946DF007EE681 /* KissDetailController.h */,
+				72D8B156212946DF007EE681 /* KissDetailController.m */,
+				72D8B157212946DF007EE681 /* KissDetailController.xib */,
 				CEFC04622127079C00630722 /* kissAccountController.h */,
 				CEFC04632127079C00630722 /* kissAccountController.m */,
 				CEFC04642127079C00630722 /* kissAccountController.xib */,
 				CEA79B2B212804F60026522E /* FeedbackController.h */,
 				CEA79B2C212804F60026522E /* FeedbackController.m */,
 				CEA79B2D212804F60026522E /* FeedbackController.xib */,
+				72D8B16B212965FD007EE681 /* KissUpdateController.h */,
+				72D8B16C212965FD007EE681 /* KissUpdateController.m */,
+				72D8B16D212965FD007EE681 /* KissUpdateController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4880,6 +4930,7 @@
 				727418D220B1A058001D6BE1 /* FirstController.xib in Resources */,
 				8D09426720C14AF200C45E2B /* EvaluationController.xib in Resources */,
 				72EC1B7320BA984400ACC20B /* PlayDouctCell.xib in Resources */,
+				72D8B16F212965FD007EE681 /* KissUpdateController.xib in Resources */,
 				CEE4B2A720C6CC3F008B8731 /* PersonalCenterController.xib in Resources */,
 				8D8E4ECF20C9109E00C3D537 /* EditProfileController.xib in Resources */,
 				8D67602820A408470027CDEE /* ClassificationsController.xib in Resources */,
@@ -4928,6 +4979,7 @@
 				CE5C282B20B972B9006A8332 /* ConsultativeNegotiationController.xib in Resources */,
 				CE5C27FB20B8FE0A006A8332 /* BiddInfoController.xib in Resources */,
 				72EBB8DC20C81CA500F670E9 /* AccountManageCell.xib in Resources */,
+				72D8B16821296052007EE681 /* BaoBiaoItemHeader.xib in Resources */,
 				8D35878820C6A544008A5E74 /* OurPlayController.xib in Resources */,
 				CE5C282120B953CE006A8332 /* BidManagerHeadV.xib in Resources */,
 				CEBEDD8620B17ED1000F9EE4 /* BidderCell.xib in Resources */,
@@ -4986,6 +5038,7 @@
 				CE5C283920B99441006A8332 /* PayOrderController.xib in Resources */,
 				721DAE1220F272BA006F141F /* FoundQunController.xib in Resources */,
 				8D50C55C20C669020095A824 /* OurConcernController.xib in Resources */,
+				72D8B16621296052007EE681 /* BaoBiaoItem.xib in Resources */,
 				72EC1BB420BC386D00ACC20B /* SendServiceController.xib in Resources */,
 				7274190220B3F60D001D6BE1 /* SendSwapController.xib in Resources */,
 				8D50C55220C632090095A824 /* OurSendController.xib in Resources */,
@@ -5024,6 +5077,7 @@
 				8DEA450520C10BB7001529F1 /* FindMySelfCell.xib in Resources */,
 				CEBEDD9820B17F40000F9EE4 /* BulidTeamController.xib in Resources */,
 				CE5C280D20B91AD8006A8332 /* WinnerInfoController.xib in Resources */,
+				72D8B159212946DF007EE681 /* KissDetailController.xib in Resources */,
 				8D22C34820C7C9CC004DC8F4 /* RechargeController.xib in Resources */,
 				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
 				8D50C56720C67C2F0095A824 /* OurServiceCell.xib in Resources */,
@@ -5213,6 +5267,7 @@
 				8D10B3B121002E8B00C153EF /* CommentView.m in Sources */,
 				8DE465DA20EDF0A0009730F7 /* RCDAddFriendViewController.m in Sources */,
 				722D253B20AA76D400AB3863 /* JFCityViewController.m in Sources */,
+				72D8B158212946DF007EE681 /* KissDetailController.m in Sources */,
 				8D8E4ED720C937D200C3D537 /* NKColorSwitch.m in Sources */,
 				72EBB8DB20C81CA500F670E9 /* AccountManageCell.m in Sources */,
 				721041212108CEB500B575BB /* NoticeCell.m in Sources */,
@@ -5360,6 +5415,7 @@
 				72EC1B5120B6EAB600ACC20B /* SendTreasureController.m in Sources */,
 				CE0BA60E209D6126004C3C33 /* AddressBookController.m in Sources */,
 				7274190F20B4036E001D6BE1 /* TZTestCell.m in Sources */,
+				72D8B16921296052007EE681 /* BaoBiaoLayout.m in Sources */,
 				CEC4A52920C3D6AE0026EE19 /* TeamChatController.m in Sources */,
 				CEC4A52820C3D6AE0026EE19 /* TeamInfoController.m in Sources */,
 				CE0BA620209D61C0004C3C33 /* ProfileController.m in Sources */,
@@ -5383,6 +5439,7 @@
 				721DAE0820F24302006F141F /* ShoolOREduMo.m in Sources */,
 				72A3F48620E12EF8005BA873 /* AllDicMo.m in Sources */,
 				8DE4668320EDFF79009730F7 /* RCDPrivateSettingsUserInfoCell.m in Sources */,
+				72D8B16E212965FD007EE681 /* KissUpdateController.m in Sources */,
 				CE0BA5DE209D5E9B004C3C33 /* YTDataPacket.m in Sources */,
 				CEBEDD8A20B17ED1000F9EE4 /* BidderSectionHeadV.m in Sources */,
 				8DF7E3C820CF6182009A92D7 /* CityMo.m in Sources */,
@@ -5525,6 +5582,7 @@
 				8DE4665F20EDFC7D009730F7 /* RCDGroupMemberCollectionViewCell.m in Sources */,
 				7266FEE121173ED5005794AD /* JKAreaTableViewCell.m in Sources */,
 				CE782ABF21159891002C6403 /* orderListModel.m in Sources */,
+				72D8B16A21296052007EE681 /* BaoBiaoVC.m in Sources */,
 				720263FC20B5015500382B2F /* TZProgressView.m in Sources */,
 				720263F220B5015500382B2F /* TZAssetModel.m in Sources */,
 				8D35878C20C6A693008A5E74 /* OurPlayCell.m in Sources */,
@@ -5566,12 +5624,14 @@
 				8DFA324820EDAF330086423A /* RCDUtilities.m in Sources */,
 				8DC17A8520C0E598005D9EE0 /* FriendCircleController.m in Sources */,
 				721DAE0520F2421A006F141F /* SortCollProController.m in Sources */,
+				72D8B16521296052007EE681 /* BaoBiaoItem.m in Sources */,
 				8DE9484B2109BB8000AEC160 /* RefineSearchBar.m in Sources */,
 				722D253C20AA76D400AB3863 /* JFSearchView.m in Sources */,
 				8DE465F520EDF29B009730F7 /* RCDConversationSettingBaseViewController.m in Sources */,
 				8DE4662720EDF51C009730F7 /* RCDPrivateSettingsTableViewController.m in Sources */,
 				8D22C37520C7E54D004DC8F4 /* TransactionRecordController.m in Sources */,
 				72D8B1162125C2DA007EE681 /* LYSDatePicker.m in Sources */,
+				72D8B16721296052007EE681 /* BaoBiaoItemHeader.m in Sources */,
 				72EBB8D120C8184700F670E9 /* SetController.m in Sources */,
 				CEE5252020FA689800DD6179 /* BidStateTools.m in Sources */,
 				7266FEE321173ED5005794AD /* JKReusableView.m in Sources */,

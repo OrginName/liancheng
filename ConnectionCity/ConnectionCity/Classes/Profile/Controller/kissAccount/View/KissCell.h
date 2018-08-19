@@ -12,7 +12,9 @@
 @class KissCell;
 
 @protocol KissCellDelegate <NSObject>
+@optional
 - (void)kissCell:(KissCell *)cell deleteBtnClick:(UIButton *)btn;
+@optional
 - (void)kissCell:(KissCell *)cell sawBtnClick:(UIButton *)btn;
 
 @end
@@ -23,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *idLab;
 @property (weak, nonatomic) IBOutlet UILabel *rateLab;
 @property (weak, nonatomic) IBOutlet UILabel *amountLab;
-@property (nonatomic,weak)id<KissCellDelegate>delegate;
+@property (nonatomic,assign)id<KissCellDelegate>delegate;
 @property (nonatomic, strong) KissModel *model;
 
 @end

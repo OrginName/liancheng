@@ -9,8 +9,9 @@
 #import "MeView.h"
 #import "KissCell.h"
 #import "KissModel.h"
-
+#import "KissDetailController.h"
 @interface MeView ()<UITableViewDataSource,UITableViewDelegate,KissCellDelegate>
+@property (nonatomic,strong) UIViewController * controller;
 @property (nonatomic, strong) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *mutDataArr;
 @property (nonatomic, assign) NSInteger page;
@@ -19,10 +20,11 @@
 @end
 
 @implementation MeView
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame viewController:(UIViewController *)controller
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.controller = controller;
         self.page = 1;
         self.flag = 0;
         [self addSubview:self.tableView];
@@ -108,18 +110,12 @@
 }
 #pragma mark - KissCellDelegate
 - (void)kissCell:(KissCell *)cell deleteBtnClick:(UIButton *)btn {
-    
+     
 }
 - (void)kissCell:(KissCell *)cell sawBtnClick:(UIButton *)btn {
-    
+   
+    KissDetailController * deltail = [KissDetailController new];
+    deltail.title = @"账户详情";
+    [self.controller.navigationController pushViewController:deltail animated:YES];
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 @end

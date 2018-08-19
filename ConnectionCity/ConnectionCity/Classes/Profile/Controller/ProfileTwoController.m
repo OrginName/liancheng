@@ -58,10 +58,6 @@
     [self.navigationController.navigationBar setBackgroundImage:
      [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 #pragma mark - Setup
 - (void)setUI {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];

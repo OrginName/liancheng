@@ -30,8 +30,8 @@
     }
 }
 - (IBAction)sawBtnClick:(id)sender {
-    if (_delegate && [_delegate respondsToSelector:@selector(kissCell:sawBtnClick:)]) {
-        [_delegate kissCell:self sawBtnClick:sender];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(kissCell:sawBtnClick:)]) {
+        [self.delegate kissCell:self sawBtnClick:sender];
     }
 }
 

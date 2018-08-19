@@ -9,7 +9,7 @@
 #import "kissAccountController.h"
 #import "MeView.h"
 #import "OtherView.h"
-
+#import "AddKissController.h"
 @interface kissAccountController ()<OtherViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *tabBgV;
 @property (weak, nonatomic) IBOutlet UIButton *meBtn;
@@ -23,20 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Do any additional setup after loading the view from its nib.
-}
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
     [self setUI];
     self.view.backgroundColor = kCommonBGColor;
-
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)setUI {
     self.navigationItem.title = @"亲密账户";
     self.lastBtn = self.meBtn;
@@ -48,14 +37,14 @@
 //wo
 -(MeView *)meV{
     if (!_meV) {
-        _meV = [[MeView alloc] initWithFrame:CGRectMake(0, 0, _tabBgV.width, _tabBgV.height)];
+        _meV = [[MeView alloc] initWithFrame:CGRectMake(0, 0, _tabBgV.width, _tabBgV.height) viewController:self];
     }
     return _meV;
 }
 //ta
 -(OtherView *)otherV{
     if (!_otherV) {
-        _otherV = [[OtherView alloc] initWithFrame:CGRectMake(0, 0, _tabBgV.width, _tabBgV.height)];
+        _otherV = [[OtherView alloc] initWithFrame:CGRectMake(0, 0, _tabBgV.width, _tabBgV.height) viewController:self];
         _otherV.delegate = self;
     }
     return _otherV;
@@ -79,17 +68,8 @@
 }
 #pragma mark - OtherViewDelegate
 - (void)otherView:(OtherView *)view addBtn:(UIButton *)btn {
-    
+    AddKissController * kiss = [AddKissController new];
+    kiss.title = @"添加亲密账户";
+    [self.navigationController pushViewController:kiss animated:YES];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

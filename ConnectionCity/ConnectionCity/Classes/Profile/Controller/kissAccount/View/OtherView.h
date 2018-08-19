@@ -17,5 +17,5 @@
 @interface OtherView : UIView
 @property (nonatomic, strong) NSString *refreshStr;
 @property (nonatomic, weak) id<OtherViewDelegate>delegate;
-
+- (instancetype)initWithFrame:(CGRect)frame viewController:(UIViewController *)controller;
 @end

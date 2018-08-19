@@ -9,7 +9,13 @@
 #import "AddKissController.h"
 
 @interface AddKissController ()
-
+@property (weak, nonatomic) IBOutlet UILabel *lab_LCH;//连城号
+@property (weak, nonatomic) IBOutlet UITextField *txt_workCircle;//工作周期
+@property (weak, nonatomic) IBOutlet UITextField *txt_worTime;
+@property (weak, nonatomic) IBOutlet UITextField *txt_ShareRadio;//共享比例
+@property (weak, nonatomic) IBOutlet UITextField *txt_TALCH;//对方的连城号
+@property (weak, nonatomic) IBOutlet UIButton *btn_agree;
+@property (weak, nonatomic) IBOutlet UITextField *txt_password;
 @end
 
 @implementation AddKissController
@@ -19,19 +25,12 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+/**
+ 绑定亲密账户
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+ @param sender btn
+ */
+- (IBAction)sureClick:(UIButton *)sender {
 }
-*/
 
 @end

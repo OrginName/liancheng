@@ -8,21 +8,23 @@
 
 #import "OtherView.h"
 #import "KissCell.h"
+#import "KissDetailController.h"
 
 @interface OtherView ()<UITableViewDataSource,UITableViewDelegate,KissCellDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *mutDataArr;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, assign) NSInteger flag;
-
+@property (nonatomic,strong) UIViewController * controller;
 @end
 
 @implementation OtherView
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame viewController:(UIViewController *)controller
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.controller = controller;
         self.page = 1;
         self.flag = 0;
         [self addSubview:self.tableView];
@@ -123,7 +125,9 @@
     
 }
 - (void)kissCell:(KissCell *)cell sawBtnClick:(UIButton *)btn {
-    
+    KissDetailController * deltail = [KissDetailController new];
+    deltail.title = @"账户详情";
+    [self.controller.navigationController pushViewController:deltail animated:YES];
 }
 
 #pragma mark - 点击事件
@@ -132,13 +136,4 @@
         [_delegate otherView:self addBtn:btn];
     }
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 @end

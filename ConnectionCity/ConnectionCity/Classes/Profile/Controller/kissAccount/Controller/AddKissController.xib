@@ -11,6 +11,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddKissController">
             <connections>
+                <outlet property="btn_agree" destination="EXj-vk-0ZR" id="FRh-Y6-HvR"/>
+                <outlet property="lab_LCH" destination="qkB-bR-jIY" id="fDe-Qg-dsP"/>
+                <outlet property="txt_ShareRadio" destination="fe3-Te-AqP" id="uox-Ps-HWR"/>
+                <outlet property="txt_TALCH" destination="51x-Rj-V1V" id="6ct-4d-Xg3"/>
+                <outlet property="txt_password" destination="qJq-p6-bx0" id="UMK-Ym-Uml"/>
+                <outlet property="txt_worTime" destination="wji-Fu-9ly" id="Vfd-5R-Q4G"/>
+                <outlet property="txt_workCircle" destination="FHR-y7-bxs" id="Wh6-bR-9GF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,7 +30,7 @@
                     <rect key="frame" x="10" y="10" width="355" height="647"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oui-2N-TQ8">
-                            <rect key="frame" x="0.0" y="0.0" width="355" height="600"/>
+                            <rect key="frame" x="0.0" y="0.0" width="355" height="500"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Spd-c2-bOD">
                                     <rect key="frame" x="0.0" y="0.0" width="355" height="86"/>
@@ -87,15 +94,15 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工作周期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mnt-mf-etS">
-                                            <rect key="frame" x="20" y="20" width="73.5" height="21.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <rect key="frame" x="20" y="20.5" width="69.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.27168682829247104" green="0.27437679688942618" blue="0.27437679688942618" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(请选择您的工作周期)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FHR-y7-bxs">
-                                            <rect key="frame" x="103.5" y="0.0" width="231.5" height="59"/>
+                                            <rect key="frame" x="99.5" y="0.0" width="235.5" height="59"/>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
@@ -123,15 +130,15 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工作时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuX-D6-Us0">
-                                            <rect key="frame" x="20" y="20" width="73.5" height="21.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <rect key="frame" x="20" y="20.5" width="69.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.27168682830000002" green="0.2743767969" blue="0.2743767969" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(请选择您的工作时间)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wji-Fu-9ly">
-                                            <rect key="frame" x="103.5" y="0.0" width="231.5" height="59"/>
+                                            <rect key="frame" x="99.5" y="0.0" width="235.5" height="59"/>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
@@ -159,15 +166,15 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="连城号 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAK-2R-8Wu">
-                                            <rect key="frame" x="20" y="20" width="60" height="21.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <rect key="frame" x="20" y="20.5" width="56.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.27168682830000002" green="0.2743767969" blue="0.2743767969" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(请输入TA的连城号)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="51x-Rj-V1V">
-                                            <rect key="frame" x="90" y="0.0" width="245" height="59"/>
+                                            <rect key="frame" x="86.5" y="0.0" width="248.5" height="59"/>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
@@ -195,15 +202,15 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共享比例" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7t-tU-OIZ">
-                                            <rect key="frame" x="20" y="20" width="73.5" height="21.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <rect key="frame" x="20" y="20.5" width="69.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.27168682830000002" green="0.2743767969" blue="0.2743767969" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(请填写您共享的收入比例)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fe3-Te-AqP">
-                                            <rect key="frame" x="103.5" y="0.0" width="231.5" height="59"/>
+                                            <rect key="frame" x="99.5" y="0.0" width="235.5" height="59"/>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
@@ -230,17 +237,17 @@
                                                 <constraint firstAttribute="height" constant="1" id="QEj-ts-WfC"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共享比例" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rS-EY-KwV">
-                                            <rect key="frame" x="20" y="20" width="73.5" height="21.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="锁定密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rS-EY-KwV">
+                                            <rect key="frame" x="20" y="20.5" width="69.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.27168682830000002" green="0.2743767969" blue="0.2743767969" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(请填写您共享的收入比例)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qJq-p6-bx0">
-                                            <rect key="frame" x="104" y="0.0" width="146" height="59"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(请记住您的锁定密码)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qJq-p6-bx0">
+                                            <rect key="frame" x="100" y="0.0" width="150" height="59"/>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZ2-De-RZ0">
                                             <rect key="frame" x="260" y="20" width="75" height="20"/>
@@ -273,13 +280,16 @@
                                         <constraint firstAttribute="bottom" secondItem="25J-0O-C2l" secondAttribute="bottom" id="ukM-0D-dWv"/>
                                     </constraints>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXj-vk-0ZR">
+                                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXj-vk-0ZR">
                                     <rect key="frame" x="20" y="406" width="20" height="20"/>
-                                    <color key="backgroundColor" red="0.91910606620000002" green="0.36992591619999998" blue="0.35516113040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="Zp6-1y-ZCc"/>
                                         <constraint firstAttribute="width" constant="20" id="vyn-xC-Zxf"/>
                                     </constraints>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <state key="normal" backgroundImage="weixuanhzong"/>
+                                    <state key="selected" backgroundImage="xuanzhong"/>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开通并同意亲密账户协议" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHL-NZ-25z">
                                     <rect key="frame" x="50" y="407" width="168.5" height="18"/>
@@ -301,6 +311,9 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="sureClick:" destination="-1" eventType="touchUpInside" id="sga-1l-yZs"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -318,7 +331,7 @@
                                 <constraint firstItem="9ih-HI-ZpN" firstAttribute="leading" secondItem="oui-2N-TQ8" secondAttribute="leading" id="Hyy-9x-nRz"/>
                                 <constraint firstItem="14v-4D-OM1" firstAttribute="top" secondItem="lMP-kE-xfI" secondAttribute="bottom" id="JaS-jk-hfc"/>
                                 <constraint firstItem="Mnt-mf-etS" firstAttribute="leading" secondItem="APG-2p-rdm" secondAttribute="leading" id="KJk-9g-fVl"/>
-                                <constraint firstAttribute="height" constant="600" id="Pa2-n5-98h"/>
+                                <constraint firstAttribute="height" constant="500" id="Pa2-n5-98h"/>
                                 <constraint firstItem="KHL-NZ-25z" firstAttribute="leading" secondItem="EXj-vk-0ZR" secondAttribute="trailing" constant="10" id="Q9J-op-v6C"/>
                                 <constraint firstAttribute="trailing" secondItem="dCc-fa-Eij" secondAttribute="trailing" id="QHv-U1-yLf"/>
                                 <constraint firstItem="Spd-c2-bOD" firstAttribute="leading" secondItem="oui-2N-TQ8" secondAttribute="leading" id="QhA-ix-t0n"/>
@@ -360,4 +373,8 @@
             <point key="canvasLocation" x="79.5" y="48.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="weixuanhzong" width="14" height="14"/>
+        <image name="xuanzhong" width="12" height="12"/>
+    </resources>
 </document>
