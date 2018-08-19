@@ -149,6 +149,9 @@
 		72D8B16A21296052007EE681 /* BaoBiaoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B16421296051007EE681 /* BaoBiaoVC.m */; };
 		72D8B16E212965FD007EE681 /* KissUpdateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B16C212965FD007EE681 /* KissUpdateController.m */; };
 		72D8B16F212965FD007EE681 /* KissUpdateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72D8B16D212965FD007EE681 /* KissUpdateController.xib */; };
+		72D8B1722129B975007EE681 /* CCPPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B1712129B974007EE681 /* CCPPickerView.m */; };
+		72D8B1752129C28D007EE681 /* SelectWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B1742129C28D007EE681 /* SelectWeek.m */; };
+		72D8B1772129C29A007EE681 /* SelectWeek.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72D8B1762129C29A007EE681 /* SelectWeek.xib */; };
 		72EBB8B620C6DB5900F670E9 /* CardAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */; };
 		72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */; };
 		72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8BA20C800C200F670E9 /* PresentCell.m */; };
@@ -957,6 +960,11 @@
 		72D8B16B212965FD007EE681 /* KissUpdateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KissUpdateController.h; sourceTree = "<group>"; };
 		72D8B16C212965FD007EE681 /* KissUpdateController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KissUpdateController.m; sourceTree = "<group>"; };
 		72D8B16D212965FD007EE681 /* KissUpdateController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KissUpdateController.xib; sourceTree = "<group>"; };
+		72D8B1702129B973007EE681 /* CCPPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPPickerView.h; sourceTree = "<group>"; };
+		72D8B1712129B974007EE681 /* CCPPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPPickerView.m; sourceTree = "<group>"; };
+		72D8B1732129C28D007EE681 /* SelectWeek.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectWeek.h; sourceTree = "<group>"; };
+		72D8B1742129C28D007EE681 /* SelectWeek.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectWeek.m; sourceTree = "<group>"; };
+		72D8B1762129C29A007EE681 /* SelectWeek.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWeek.xib; sourceTree = "<group>"; };
 		72EBB8B320C6DB5900F670E9 /* CardAuthorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardAuthorController.h; sourceTree = "<group>"; };
 		72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardAuthorController.m; sourceTree = "<group>"; };
 		72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardAuthorController.xib; sourceTree = "<group>"; };
@@ -3021,6 +3029,9 @@
 				8DF7E3D620CFB363009A92D7 /* PopThree.xib */,
 				8D10B3AF21002E8B00C153EF /* CommentView.h */,
 				8D10B3B021002E8B00C153EF /* CommentView.m */,
+				72D8B1732129C28D007EE681 /* SelectWeek.h */,
+				72D8B1742129C28D007EE681 /* SelectWeek.m */,
+				72D8B1762129C29A007EE681 /* SelectWeek.xib */,
 			);
 			path = RefineThing;
 			sourceTree = "<group>";
@@ -4573,6 +4584,8 @@
 		CEE4B28920C585D4008B8731 /* CustomPicker */ = {
 			isa = PBXGroup;
 			children = (
+				72D8B1702129B973007EE681 /* CCPPickerView.h */,
+				72D8B1712129B974007EE681 /* CCPPickerView.m */,
 				CE6BEC1820C83740003B36D7 /* LCPicker.h */,
 				CE6BEC1920C83740003B36D7 /* LCPicker.m */,
 				CE6BEC1B20C83769003B36D7 /* LCDatePicker.h */,
@@ -4953,6 +4966,7 @@
 				72EC1B6C20B8475100ACC20B /* ShowtreaureCell.xib in Resources */,
 				CEBEDD8820B17ED1000F9EE4 /* BidderController.xib in Resources */,
 				8D5B3C3E20C0147A00773105 /* ServiceListCell.xib in Resources */,
+				72D8B1772129C29A007EE681 /* SelectWeek.xib in Resources */,
 				CE0BA61B209D6197004C3C33 /* FoundController.xib in Resources */,
 				727418F120B2DDAC001D6BE1 /* ChangeListController.xib in Resources */,
 				720263F620B5015500382B2F /* TZImagePickerController.bundle in Resources */,
@@ -5404,6 +5418,7 @@
 				8DE4667020EDFD0F009730F7 /* RCDSearchResultModel.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
 				CE9B9A6F20E9168D005C47B2 /* AgreementController.m in Sources */,
+				72D8B1722129B975007EE681 /* CCPPickerView.m in Sources */,
 				72626F5C20ED03BC001B807D /* RCDChatRoomInfo.m in Sources */,
 				CE6645FB210326AF00AA956E /* PersonalBasicDataController.m in Sources */,
 				CEBEDD7D20B17ED1000F9EE4 /* WinningBidderCell.m in Sources */,
@@ -5465,6 +5480,7 @@
 				8DE4662A20EDF557009730F7 /* RCDReceiptDetailsTableViewController.m in Sources */,
 				723F4FB320BEEA8D00AF8268 /* TrvalTripCell.m in Sources */,
 				CE5C281520B91B3A006A8332 /* WinnerInfoHeadView.m in Sources */,
+				72D8B1752129C28D007EE681 /* SelectWeek.m in Sources */,
 				CE782ABB21158D1B002C6403 /* BidManagerCellOne.m in Sources */,
 				8DE465EB20EDF1C5009730F7 /* RCDCreateGroupViewController.m in Sources */,
 				8DE465E120EDF0FF009730F7 /* RCDCustomerEmoticonTab.m in Sources */,

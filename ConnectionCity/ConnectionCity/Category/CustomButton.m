@@ -48,6 +48,7 @@
     self.layer.borderWidth = SelectborderWidth;
 }
 -(void)setSelected:(BOOL)selected{
+    [super setSelected:selected];
     if (selected) {
         [self setBackgroundColor:self.selectBackColor];
         [self setTitleColor: self.selectTitleColor forState:UIControlStateNormal];
@@ -56,8 +57,6 @@
         [self setBackgroundColor:self.NOselectBackColor];
         [self setTitleColor:self.NoSelectTitleColor forState:UIControlStateNormal];
         self.layer.borderColor = self.NoSelectBorderColor.CGColor;
-
     }
 }
-
 @end

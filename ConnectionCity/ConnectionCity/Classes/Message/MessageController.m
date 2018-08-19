@@ -85,6 +85,7 @@
 }
 //导航左按钮我的点击
 -(void)MyselfClick{
+    flag = NO;
     [self.navigationController pushViewController:[super rotateClass:@"ProfileTwoController"] animated:YES];
 //    self.navigationController.tabBarController.selectedIndex=4;
 }
