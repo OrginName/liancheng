@@ -34,6 +34,8 @@
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    self.photo.frame = CGRectMake(0, 0, _photoBgV.width, (kScreenWidth-70) / 3);
+    self.adviceView.frame = CGRectMake(0, 0, _adviceBgV.width, _adviceBgV.height);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

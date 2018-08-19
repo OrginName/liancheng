@@ -24,7 +24,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     self.view.backgroundColor = kCommonBGColor;
+    self.meV.frame = CGRectMake(0, 0, _tabBgV.width, _tabBgV.height);
+    self.otherV.frame = CGRectMake(0, 0, _tabBgV.width, _tabBgV.height);
 }
 - (void)setUI {
     self.navigationItem.title = @"亲密账户";

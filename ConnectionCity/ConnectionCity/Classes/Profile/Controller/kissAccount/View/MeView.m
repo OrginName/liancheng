@@ -36,6 +36,9 @@
     }
     return self;
 }
+//- (void)setFrame:(CGRect)frame {
+//    self.tableView.frame = CGRectMake(0, 0, self.width, self.height);
+//}
 #pragma mark -setter & getter
 - (UITableView *)tableView {
     if (!_tableView) {
