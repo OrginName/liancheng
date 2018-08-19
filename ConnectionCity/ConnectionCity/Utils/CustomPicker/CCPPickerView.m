@@ -117,7 +117,7 @@
     toolbar.frame = CGRectMake(0, 0, CCPWIDTH, 40);
     
     UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CCPWIDTH , 40)];
-    lable.backgroundColor = [UIColor lightGrayColor];
+    lable.backgroundColor = YSColor(244, 177, 113);
     lable.text = titleString;
     lable.textAlignment = 1;
     lable.textColor = [UIColor whiteColor];
