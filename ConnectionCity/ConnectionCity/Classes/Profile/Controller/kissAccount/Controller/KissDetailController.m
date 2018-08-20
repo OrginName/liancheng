@@ -21,20 +21,26 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab_monthMoney;
 @property (weak, nonatomic) IBOutlet UILabel *lab_yearMoney;
 @property (weak, nonatomic) IBOutlet UITextField *txt_date;
-
-
 @end
 
 @implementation KissDetailController
-
 - (void)viewDidLoad {
     self.myList = self.collec_Bottom;
     [super viewDidLoad];
     [self setUI];
+    [self initData];
 }
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
+-(void)initData{
+    WeakSelf
+    [YSNetworkTool POST:v1usercloseaccountorderstatistics params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakSelf.lab_todayMoney.text = KString(@"累计%@元", responseObject[kData][@"todayAmount"]);
+            weakSelf.lab_yearMoney.text = KString(@"累计%@元", responseObject[kData][@"yearAmount"]);;
+            weakSelf.lab_monthMoney.text = KString(@"累计%@元", responseObject[kData][@"monthAmount"]);;
+        });
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 - (IBAction)btn_Update:(UIButton *)sender {
     KissUpdateController * kiss = [KissUpdateController new];
