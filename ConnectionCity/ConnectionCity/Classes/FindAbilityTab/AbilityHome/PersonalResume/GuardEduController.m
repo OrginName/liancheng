@@ -11,7 +11,8 @@
 #import "LCDatePicker.h"
 #import "AbilityNet.h"
 #import "SortCollProController.h"
-@interface GuardEduController ()<UITextViewDelegate,LCDatePickerDelegate>
+#import <PGDatePicker/PGDatePickManager.h>
+@interface GuardEduController ()<UITextViewDelegate,LCDatePickerDelegate,PGDatePickerDelegate>
 {
     NSInteger currtenTag;
     NSString * _EduID;
@@ -149,17 +150,25 @@
     }
     else{
         currtenTag = sender.tag;
-        [self.myDatePick animateShow];
+//        [self.myDatePick animateShow];
+        [self tanDatePick];
     }
 }
 -(void)setUI{
     self.textView_Indro.placeholder = @"请输入工作描述";
     self.textView_Indro.placeholderColor = [UIColor hexColorWithString:@"#bbbbbb"];
     
-    [self initDate];
+//    [self initDate];
 }
-#pragma mark ---LCDatePickerDelegate-----
-- (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
+//#pragma mark ---LCDatePickerDelegate-----
+//- (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
+//    UITextField * text = (UITextField *)[self.view viewWithTag:currtenTag+6];
+//    text.text = str;
+//}
+#pragma mark ---- PGDatePickerDelegate-----
+- (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
+    NSLog(@"dateComponents = %ld", (long)dateComponents.year);
+    NSString * str = [NSString stringWithFormat:@"%ld-%@%ld-%@%ld",(long)dateComponents.year,dateComponents.month<10?@"0":@"",(long)dateComponents.month,dateComponents.day<10?@"0":@"",(long)dateComponents.day];
     UITextField * text = (UITextField *)[self.view viewWithTag:currtenTag+6];
     text.text = str;
 }
@@ -168,6 +177,22 @@
     self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
     self.myDatePick.delegate  = self;
     [self.view addSubview:self.myDatePick];
+}
+-(void)tanDatePick{
+    PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
+    PGDatePicker *datePicker = datePickManager.datePicker;
+    //设置半透明的背景颜色
+    datePickManager.isShadeBackgroud = true;
+    //设置头部的背景颜色
+    datePickManager.headerViewBackgroundColor = YSColor(244, 177, 113);
+    datePicker.datePickerMode = PGDatePickerModeDate;
+    //设置取消按钮的字体颜色
+    datePickManager.cancelButtonTextColor = [UIColor whiteColor];
+    datePickManager.confirmButtonTextColor = [UIColor whiteColor];
+    //    datePicker.datePickerType = PGDatePickerType2;
+    datePicker.maximumDate = [NSDate date];
+    datePicker.delegate = self;
+    [self presentViewController:datePickManager animated:false completion:nil];
 }
 -(void)textViewDidChange:(UITextView *)textView{
     //首行缩进

@@ -60,6 +60,7 @@ PODS:
     - MOBFoundation
   - ShareSDK3/ShareSDKUI (4.0.4):
     - MOBFoundation
+  - TYAlertController (1.2.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -85,6 +86,7 @@ DEPENDENCIES:
   - ShareSDK3/ShareSDKPlatforms/QQ (from `https://github.com/MobClub/ShareSDK-for-iOS-Spec.git`)
   - ShareSDK3/ShareSDKPlatforms/WeChat (from `https://github.com/MobClub/ShareSDK-for-iOS-Spec.git`)
   - ShareSDK3/ShareSDKUI (from `https://github.com/MobClub/ShareSDK-for-iOS-Spec.git`)
+  - TYAlertController
 
 EXTERNAL SOURCES:
   ShareSDK3:
@@ -119,7 +121,8 @@ SPEC CHECKSUMS:
   RongCloudIM: dbbf0ff365f1627324cfead498136d75c99cbeac
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   ShareSDK3: 83f47b9723e16756d426bb8ebf63497f2412bdef
+  TYAlertController: c121090edb0bea7426f987da94cdddd81eef4231
 
-PODFILE CHECKSUM: 14b3b1ed3b566c4d507c432680ecdb78403f7737
+PODFILE CHECKSUM: 24716c68852884bab7645ef46bb14fcdc2f532a4
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.1.1

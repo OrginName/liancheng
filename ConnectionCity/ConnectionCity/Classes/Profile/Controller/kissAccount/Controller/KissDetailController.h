@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "BaoBiaoVC.h"
+#import "KissModel.h"
 @interface KissDetailController : BaoBiaoVC
-
+@property (nonatomic,strong) KissModel * modelReceive;
 @end

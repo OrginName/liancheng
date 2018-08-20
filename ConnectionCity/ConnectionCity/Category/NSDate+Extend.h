@@ -35,4 +35,6 @@
 
 /* 从时间戳获取特定格式的时间字符串 */
 + (NSString *)stringWithTimestamp:(NSTimeInterval)tt format:(NSString *)format;
+//NSDate 转 规定格式的时间字符串
++(NSString *)stringDate:(NSDate *)date;
 @end

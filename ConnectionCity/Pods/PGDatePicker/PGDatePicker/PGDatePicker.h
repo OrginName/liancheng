@@ -96,7 +96,7 @@ typedef NS_ENUM(NSUInteger, PGDatePickerType) {
 @end
 
 @protocol PGDatePickerDelegate <NSObject>
-
+@optional
 - (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents;
 @end
 

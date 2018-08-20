@@ -97,6 +97,10 @@
         if (weakSelf.mutDataArr.count!=0) {
             weakSelf.controller.view_QMZH.hidden = YES;
         }
+        if (weakSelf.mutDataArr.count==3) {
+            [weakSelf.tableView.tableFooterView removeFromSuperview];
+            weakSelf.tableView.tableFooterView.height = 0;
+        }
         [weakSelf.tableView reloadData];
     } failure:nil];
 }
@@ -145,19 +149,22 @@
 - (void)kissCell:(KissCell *)cell deleteBtnClick:(UIButton *)btn {
     NSIndexPath * index = [self.tableView indexPathForCell:cell];
     KissModel * model = _mutDataArr[index.row];
+    WeakSelf
     [YTAlertUtil alertDualWithTitle:@"连程" message:KString(@"您即将解除亲密账户%@", model.closeUserId) style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
         
     } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {
-        [YSNetworkTool POST:v1usercloseaccountdelete params:@{@"id":model.closeUserId} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-            
+        [YSNetworkTool POST:v1usercloseaccountdelete params:@{@"id":model.modelId} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+            [weakSelf getHeaderData];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
     } completion:nil];
 }
 - (void)kissCell:(KissCell *)cell sawBtnClick:(UIButton *)btn {
+    NSIndexPath * index  = [self.tableView indexPathForCell:cell];
     KissDetailController * deltail = [KissDetailController new];
     deltail.title = @"账户详情";
+    deltail.modelReceive = _mutDataArr[index.row];
     [self.controller.navigationController pushViewController:deltail animated:YES];
 }
 #pragma mark - 点击事件

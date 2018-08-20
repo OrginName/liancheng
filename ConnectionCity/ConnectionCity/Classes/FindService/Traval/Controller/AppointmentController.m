@@ -10,8 +10,9 @@
 #import "LCDatePicker.h"
 #import "EditAllController.h"
 #import "OurServiceController.h"
-#import "LYSDatePicker.h"
-@interface AppointmentController ()<LCDatePickerDelegate,UITextFieldDelegate>
+#import <PGDatePicker/PGDatePickManager.h>
+//LCDatePickerDelegate
+@interface AppointmentController ()<UITextFieldDelegate,PGDatePickerDelegate>
 @property (nonatomic,strong) LCDatePicker * myDatePick;
 @property (weak, nonatomic) IBOutlet UILabel *lab_title1;
 @property (weak, nonatomic) IBOutlet UILabel *lab_title2;
@@ -33,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    [self initDate];
+//    [self initDrate];
 }
 -(void)setUI{
     if ([self.str isEqualToString:@"YD"]) {
@@ -71,10 +72,11 @@
 }
 //创建日期插件
 -(void)initDate{
-    self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
-    self.myDatePick.dateModel = UIDatePickerModeDateAndTime;
-    self.myDatePick.delegate  = self;
-    [self.view addSubview:self.myDatePick];
+//    self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
+//    self.myDatePick.dateModel = UIDatePickerModeDateAndTime;
+//    self.myDatePick.delegate  = self;
+//    [self.view addSubview:self.myDatePick];
+    
 }
 - (IBAction)yuyueClick:(UIButton *)sender {
     NSInteger flag;
@@ -130,7 +132,8 @@
 - (IBAction)TimeClick:(id)sender {
     UIButton * btn = (UIButton *)sender;
     if (btn.tag==4) {
-        [self.myDatePick animateShow];
+//        [self.myDatePick animateShow];
+        [self tanDatePick];
     }else{
         EditAllController * edit = [EditAllController new];
         edit.receiveTxt = self.txt_Place.text;
@@ -140,8 +143,28 @@
         [self.navigationController pushViewController:edit animated:YES];
     }
 }
-#pragma mark ---LCDatePickerDelegate-----
-- (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str { 
-    self.txt_Time.text = str;
+//#pragma mark ---LCDatePickerDelegate-----
+//- (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
+//    self.txt_Time.text = str;
+//}
+#pragma mark ---PGDatePickerDelegate-----
+- (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents{
+    self.txt_Time.text = [NSString stringWithFormat:@"%ld-%@%ld-%@%ld %@%ld:%@%ld",dateComponents.year,dateComponents.month<10?@"0":@"",dateComponents.month,dateComponents.day<10?@"0":@"",dateComponents.day,dateComponents.hour<10?@"0":@"",dateComponents.hour,dateComponents.minute<10?@"0":@"",dateComponents.minute];
+}
+-(void)tanDatePick{
+    PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
+    PGDatePicker *datePicker = datePickManager.datePicker;
+    //设置半透明的背景颜色
+    datePickManager.isShadeBackgroud = true;
+    //设置头部的背景颜色
+    datePickManager.headerViewBackgroundColor = YSColor(244, 177, 113);
+    datePicker.datePickerMode = PGDatePickerModeDateHourMinute;
+    //设置取消按钮的字体颜色
+    datePickManager.cancelButtonTextColor = [UIColor whiteColor];
+    datePickManager.confirmButtonTextColor = [UIColor whiteColor];
+    //    datePicker.datePickerType = PGDatePickerType2;
+    datePicker.minimumDate = [NSDate date];
+    datePicker.delegate = self;
+    [self presentViewController:datePickManager animated:false completion:nil];
 }
 @end

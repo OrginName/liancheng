@@ -135,7 +135,6 @@
 		72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */; };
 		72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */; };
 		72BAB43920B047F500496D29 /* YSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB43820B047F500496D29 /* YSButton.m */; };
-		72D8B1162125C2DA007EE681 /* LYSDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B1152125C2DA007EE681 /* LYSDatePicker.m */; };
 		72D8B14D21287FAC007EE681 /* OtherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B14C21287FAC007EE681 /* OtherView.m */; };
 		72D8B1532128830E007EE681 /* AddKissController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B1512128830E007EE681 /* AddKissController.m */; };
 		72D8B1542128830E007EE681 /* AddKissController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72D8B1522128830E007EE681 /* AddKissController.xib */; };
@@ -924,8 +923,6 @@
 		72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulidTeamSectionHead.m; sourceTree = "<group>"; };
 		72BAB43720B047F500496D29 /* YSButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSButton.h; sourceTree = "<group>"; };
 		72BAB43820B047F500496D29 /* YSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSButton.m; sourceTree = "<group>"; };
-		72D8B1142125C2DA007EE681 /* LYSDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSDatePicker.h; sourceTree = "<group>"; };
-		72D8B1152125C2DA007EE681 /* LYSDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSDatePicker.m; sourceTree = "<group>"; };
 		72D8B124212845CC007EE681 /* AddKissController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddKissController.m; sourceTree = "<group>"; };
 		72D8B125212845CC007EE681 /* AddKissController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddKissController.xib; sourceTree = "<group>"; };
 		72D8B12A212874BA007EE681 /* KissModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KissModel.m; sourceTree = "<group>"; };
@@ -2339,7 +2336,6 @@
 		729BA6B120A01E7F009713FD /* Third */ = {
 			isa = PBXGroup;
 			children = (
-				72D8B1132125C2DA007EE681 /* Date */,
 				721040FC210243D200B575BB /* XMPlayer */,
 				72B6EC9220FCC16700B4088D /* Star */,
 				CE14BD0E20F3780E00F85C49 /* Alipay */,
@@ -2469,15 +2465,6 @@
 				CEC4A53820C3D6FB0026EE19 /* TeamSwitchCell.xib */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		72D8B1132125C2DA007EE681 /* Date */ = {
-			isa = PBXGroup;
-			children = (
-				72D8B1142125C2DA007EE681 /* LYSDatePicker.h */,
-				72D8B1152125C2DA007EE681 /* LYSDatePicker.m */,
-			);
-			path = Date;
 			sourceTree = "<group>";
 		};
 		72D8B15A21296051007EE681 /* BB */ = {
@@ -3747,13 +3734,13 @@
 				CE0BA59E209D5E6A004C3C33 /* MBProgressHUD+Extension.h */,
 				CE0BA59F209D5E6A004C3C33 /* NSData+DDAdditions.m */,
 				CE0BA5A1209D5E6A004C3C33 /* NSDate+Extend.h */,
+				CE0BA5A8209D5E6B004C3C33 /* NSDate+Extend.m */,
 				CE0BA5A2209D5E6A004C3C33 /* UIFont+YTInchFit.m */,
 				CE0BA5A3209D5E6B004C3C33 /* UIViewController+BackButtonHandler.m */,
 				CE0BA5A4209D5E6B004C3C33 /* NSObject+YTGetObject.m */,
 				CE0BA5A5209D5E6B004C3C33 /* NSData+hexString.m */,
 				CE0BA5A6209D5E6B004C3C33 /* UIColor+Extension.m */,
 				CE0BA5A7209D5E6B004C3C33 /* UIAlertView+Blocks.m */,
-				CE0BA5A8209D5E6B004C3C33 /* NSDate+Extend.m */,
 				CE0BA5A9209D5E6B004C3C33 /* UIFont+YTInchFit.h */,
 				CE0BA5AA209D5E6B004C3C33 /* UIView+YSCategory.h */,
 				CE0BA5A0209D5E6A004C3C33 /* UIView+YSCategory.m */,
@@ -5646,7 +5633,6 @@
 				8DE465F520EDF29B009730F7 /* RCDConversationSettingBaseViewController.m in Sources */,
 				8DE4662720EDF51C009730F7 /* RCDPrivateSettingsTableViewController.m in Sources */,
 				8D22C37520C7E54D004DC8F4 /* TransactionRecordController.m in Sources */,
-				72D8B1162125C2DA007EE681 /* LYSDatePicker.m in Sources */,
 				72D8B16721296052007EE681 /* BaoBiaoItemHeader.m in Sources */,
 				72EBB8D120C8184700F670E9 /* SetController.m in Sources */,
 				CEE5252020FA689800DD6179 /* BidStateTools.m in Sources */,

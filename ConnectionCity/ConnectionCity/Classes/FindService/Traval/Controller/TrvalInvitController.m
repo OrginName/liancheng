@@ -10,7 +10,8 @@
 #import "TrvalCell.h"
 #import "JFCityViewController.h"
 #import "LCDatePicker.h"
-@interface TrvalInvitController ()<UITableViewDataSource,UITableViewDelegate,JFCityViewControllerDelegate,LCDatePickerDelegate>
+#import <PGDatePickManager.h>
+@interface TrvalInvitController ()<UITableViewDataSource,UITableViewDelegate,JFCityViewControllerDelegate,PGDatePickerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * Arr_Dic;
 @property (nonatomic,strong) NSMutableDictionary * Dic;
@@ -24,7 +25,6 @@
     [super viewDidLoad];
     [self setUI];
     [self initData];
-    [self initDate];
     self.Arr_Dic = [NSMutableArray array];
     self.Dic = [NSMutableDictionary dictionary];
 }
@@ -123,7 +123,7 @@
         } completion:nil];
     }
     if (indexPath.section==1&&indexPath.row==0) {
-        [self.myDatePick animateShow];
+        [self tanDatePick];
     }
     if (indexPath.section==0&&indexPath.row==0) {
         JFCityViewController * jf= [JFCityViewController new];
@@ -132,8 +132,11 @@
         [self.navigationController presentViewController:nav animated:YES completion:nil];
     }
 }
-#pragma mark ---LCDatePickerDelegate-----
-- (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
+
+#pragma mark ---- PGDatePickerDelegate-----
+- (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
+    NSLog(@"dateComponents = %ld", (long)dateComponents.year);
+    NSString * str = [NSString stringWithFormat:@"%ld-%@%ld-%@%ld",(long)dateComponents.year,dateComponents.month<10?@"0":@"",(long)dateComponents.month,dateComponents.day<10?@"0":@"",(long)dateComponents.day];
     TrvalCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
     cell.txt_Edit.text = str;
     [self.Dic setObject:str forKey:@"10"];
@@ -177,11 +180,21 @@
     }else
         return 50;
 }
-//创建日期插件
--(void)initDate{
-    self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
-    self.myDatePick.minDate =[NSDate date];
-    self.myDatePick.delegate  = self;
-    [self.view addSubview:self.myDatePick];
+
+-(void)tanDatePick{
+    PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
+    PGDatePicker *datePicker = datePickManager.datePicker;
+    //设置半透明的背景颜色
+    datePickManager.isShadeBackgroud = true;
+    //设置头部的背景颜色
+    datePickManager.headerViewBackgroundColor = YSColor(244, 177, 113);
+    datePicker.datePickerMode = PGDatePickerModeDate;
+    //设置取消按钮的字体颜色
+    datePickManager.cancelButtonTextColor = [UIColor whiteColor];
+    datePickManager.confirmButtonTextColor = [UIColor whiteColor];
+    //    datePicker.datePickerType = PGDatePickerType2;
+    datePicker.minimumDate = [NSDate date];
+    datePicker.delegate = self;
+    [self presentViewController:datePickManager animated:false completion:nil];
 }
 @end

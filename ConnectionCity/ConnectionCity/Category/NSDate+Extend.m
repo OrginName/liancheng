@@ -97,4 +97,11 @@
 	[formatter setDateFormat:format];
 	return [formatter stringFromDate:date];
 }
+//NSDate 转 规定格式的时间字符串
++(NSString *)stringDate:(NSDate *)date{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *strDate = [dateFormatter stringFromDate:date];
+    return strDate;
+}
 @end

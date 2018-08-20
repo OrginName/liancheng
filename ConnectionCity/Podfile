@@ -23,5 +23,6 @@ pod 'ShareSDK3/ShareSDKExtension',:git => ‘https://github.com/MobClub/ShareSDK
 pod 'JPush', '3.0.6'
 pod 'DZNEmptyDataSet'
 pod 'PGDatePicker'
+pod 'TYAlertController'
 end
 
