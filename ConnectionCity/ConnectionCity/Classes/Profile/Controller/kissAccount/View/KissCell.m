@@ -29,16 +29,23 @@
         [self.delegate kissCell:self sawBtnClick:sender];
     }
 }
+-(void)setDicReceive:(NSDictionary *)dicReceive{
+    _dicReceive = dicReceive;
+    self.image_bottom2.image = [UIImage imageNamed:KString(@"bg%u", arc4random()%4)];
+     self.lab_Name2.text = [NSString stringWithFormat:@"%@人为我开通亲密账户",[dicReceive[@"accountCount"] description]];
+    self.lab_SYLJ.text = KString(@"累计收益：%@元", [dicReceive[@"totalAmount"] description]);
+    
+}
 - (void)setModel:(KissModel *)model {
     _model = model;
     if ([self.flagStr isEqualToString:@"MEVIEW"]) {
-        _nameLab.text = [NSString stringWithFormat:@"%@为我开通的亲密账户",model.closeUserId];
+        _nameLab.text = [NSString stringWithFormat:@"%@为我开通的亲密账户",model.user.nickName?model.user.nickName:model.user.ID];
     }else
     _nameLab.text = [NSString stringWithFormat:@"我为%@开通的亲密账户",model.closeUserId];
     _idLab.text = [NSString stringWithFormat:@"连城号：%@",model.closeUserId];
     _rateLab.text = [NSString stringWithFormat:@"分享比例：%.0f%%",[model.rate floatValue]*100];
     _amountLab.text = [NSString stringWithFormat:@"累计转账：%.2f元",model.incomeAmount];
-    self.image_background.image = self.image_bottom2.image = [UIImage imageNamed:KString(@"bg%u", arc4random()%4)];
+    self.image_background.image = [UIImage imageNamed:KString(@"bg%u", arc4random()%4)];
     
 }
 

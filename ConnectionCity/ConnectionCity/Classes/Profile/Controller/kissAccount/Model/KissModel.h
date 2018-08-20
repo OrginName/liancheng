@@ -7,7 +7,7 @@
 //
 
 #import "BaseModel.h"
-
+#import "UserMo.h"
 @interface KissModel : BaseModel
 proStr(closeUserId)
 proStr(createTime)
@@ -21,4 +21,5 @@ proStr(workPeriod)
 proStr(workTime)
 proStr(accountCount);//开通人数
 proStr(totalAmount);//总收益
+@property (nonatomic,strong) UserMo * user;
 @end

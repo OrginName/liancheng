@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSMutableArray *mutDataArr;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, assign) NSInteger flag;
-
+@property (strong, nonatomic) NSDictionary * DicData;
 @end
 
 @implementation MeView
@@ -30,6 +30,7 @@
         self.flag = 0;
         [self addSubview:self.tableView];
         _mutDataArr = [[NSMutableArray alloc]init];
+        self.DicData = [NSDictionary dictionary];
         [self getHeaderData];
         
 //        [self addHeaderRefresh];
@@ -81,6 +82,7 @@
     //我开通的亲密账户
     WeakSelf
     [YSNetworkTool POST:v1usercloseaccountopenedlist params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        weakSelf.DicData = responseObject[@"data"];
         weakSelf.mutDataArr = [KissModel mj_objectArrayWithKeyValuesArray:responseObject[kData][@"accountList"]];
         [weakSelf.tableView reloadData];
     } failure:nil];
@@ -105,6 +107,7 @@
         if (!cell) {
             cell = [[NSBundle mainBundle] loadNibNamed:@"KissCell" owner:nil options:nil][2];
         }
+        cell.dicReceive = self.DicData;
         return cell;
     }else{
         KissCell *cell = [tableView dequeueReusableCellWithIdentifier:@"KissCell0"];

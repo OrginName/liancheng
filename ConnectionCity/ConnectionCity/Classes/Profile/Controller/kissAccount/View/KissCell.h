@@ -22,6 +22,7 @@
 @interface KissCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *image_background;
 @property (nonatomic,strong) NSString * flagStr;
+@property (nonatomic,strong) NSDictionary * dicReceive;
 @property (weak, nonatomic) IBOutlet UIImageView *bgImgV;
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
 @property (weak, nonatomic) IBOutlet UILabel *idLab;

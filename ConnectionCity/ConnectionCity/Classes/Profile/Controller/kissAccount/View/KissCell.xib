@@ -79,9 +79,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hks-iR-jfx">
-                                <rect key="frame" x="194" y="104.5" width="9" height="45"/>
+                                <rect key="frame" x="190" y="104.5" width="13" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="9" id="bzL-dd-rG3"/>
+                                    <constraint firstAttribute="width" constant="13" id="bzL-dd-rG3"/>
                                 </constraints>
                                 <state key="normal" image="Q-jiechu"/>
                                 <connections>
@@ -103,7 +103,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qj9-ct-J2c">
-                                <rect key="frame" x="108" y="104.5" width="86" height="45"/>
+                                <rect key="frame" x="104" y="104.5" width="86" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="86" id="EKO-XR-8sS"/>
                                 </constraints>
