@@ -73,6 +73,10 @@
 - (void)otherView:(OtherView *)view addBtn:(UIButton *)btn {
     AddKissController * kiss = [AddKissController new];
     kiss.title = @"添加亲密账户";
+    WeakSelf
+    kiss.blockData = ^{
+        [weakSelf.otherV getHeaderData];
+    };
     [self.navigationController pushViewController:kiss animated:YES];
 }
 @end

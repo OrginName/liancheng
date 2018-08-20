@@ -97,8 +97,12 @@
                            @"workPeriod": weekIDC,
                            @"workTime": self.txt_worTime.text
                            };
+    WeakSelf
     [YSNetworkTool POST:v1usercloseaccountcreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+        if (weakSelf.blockData) {
+            weakSelf.blockData();
+        } 
+        [weakSelf.navigationController popViewControllerAnimated:YES];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

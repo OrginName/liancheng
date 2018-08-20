@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+typedef void (^refreshData)(void);
 @interface AddKissController : BaseViewController
+@property (nonatomic,copy) refreshData blockData;
 
 @end

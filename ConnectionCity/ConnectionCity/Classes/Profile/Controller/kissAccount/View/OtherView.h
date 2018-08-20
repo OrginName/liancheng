@@ -18,4 +18,5 @@
 @property (nonatomic, strong) NSString *refreshStr;
 @property (nonatomic, weak) id<OtherViewDelegate>delegate;
 - (instancetype)initWithFrame:(CGRect)frame viewController:(kissAccountController *)controller;
+- (void)getHeaderData;//刷新数据
 @end
