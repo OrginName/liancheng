@@ -19,5 +19,6 @@ proStr(updateTime)
 proStr(userId)
 proStr(workPeriod)
 proStr(workTime)
-
+proStr(accountCount);//开通人数
+proStr(totalAmount);//总收益
 @end

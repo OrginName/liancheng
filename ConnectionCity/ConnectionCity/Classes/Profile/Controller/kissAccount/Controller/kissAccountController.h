@@ -7,7 +7,6 @@
 //
 
 #import "BaseViewController.h"
-
 @interface kissAccountController : BaseViewController
-
+@property (weak, nonatomic) IBOutlet UIView *view_QMZH;
 @end

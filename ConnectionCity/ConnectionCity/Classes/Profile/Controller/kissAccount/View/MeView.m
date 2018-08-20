@@ -10,9 +10,10 @@
 #import "KissCell.h"
 #import "KissModel.h"
 #import "KissDetailController.h"
+#import "MyTab.h"
 @interface MeView ()<UITableViewDataSource,UITableViewDelegate,KissCellDelegate>
 @property (nonatomic,strong) UIViewController * controller;
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) MyTab *tableView;
 @property (strong, nonatomic) NSMutableArray *mutDataArr;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, assign) NSInteger flag;
@@ -43,7 +44,7 @@
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = ({
-            UITableView *tb = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height) style:UITableViewStylePlain];
+            MyTab *tb = [[MyTab alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height) style:UITableViewStylePlain];
             tb.showsVerticalScrollIndicator = NO;
             tb.rowHeight = 160;
             tb.delegate = self;
@@ -52,7 +53,7 @@
             tb.tableFooterView = [UIView new];
             tb.separatorStyle = UITableViewCellSeparatorStyleNone;
             //[tb registerClass:[KissCell class] forCellReuseIdentifier:@"KissCell"];
-            [tb registerNib:[UINib nibWithNibName:@"KissCell" bundle:nil] forCellReuseIdentifier:@"KissCell"];
+//            [tb registerNib:[UINib nibWithNibName:@"KissCell" bundle:nil] forCellReuseIdentifier:@"KissCell"];
             tb;
         });
     }
@@ -80,7 +81,7 @@
     //我开通的亲密账户
     WeakSelf
     [YSNetworkTool POST:v1usercloseaccountopenedlist params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        weakSelf.mutDataArr = [KissModel mj_objectArrayWithKeyValuesArray:responseObject[kData]];
+        weakSelf.mutDataArr = [KissModel mj_objectArrayWithKeyValuesArray:responseObject[kData][@"accountList"]];
         [weakSelf.tableView reloadData];
     } failure:nil];
 }
@@ -96,20 +97,34 @@
 }
 #pragma mark - UITableView DataSource & Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _mutDataArr.count;
+    return _mutDataArr.count+1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    KissCell *cell = [tableView dequeueReusableCellWithIdentifier:@"KissCell"];
-    cell.flagStr = @"MEVIEW";
-    cell.model = _mutDataArr[indexPath.row];
-    cell.delegate = self;
-    return cell;
+    if (indexPath.row==0) {
+        KissCell *cell = [tableView dequeueReusableCellWithIdentifier:@"KissCell2"];
+        if (!cell) {
+            cell = [[NSBundle mainBundle] loadNibNamed:@"KissCell" owner:nil options:nil][2];
+        }
+        return cell;
+    }else{
+        KissCell *cell = [tableView dequeueReusableCellWithIdentifier:@"KissCell0"];
+        if (!cell) {
+            cell = [[NSBundle mainBundle] loadNibNamed:@"KissCell" owner:nil options:nil][0];
+        }
+        cell.flagStr = @"MEVIEW";
+        cell.model = _mutDataArr[indexPath.row-1];
+        cell.delegate = self;
+         return cell;
+    }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row==0) {
+        return 133;
+    }
     return 170;
 }
 #pragma mark - KissCellDelegate

@@ -40,13 +40,13 @@
         self.lab_title1.text = @"服务价格";
         self.lab_title2.text = @"服务时间";
         self.lab_title3.text = @"服务地点";
-        self.navigationItem.title = self.list.user1.nickName;
-        [self.image_head sd_setImageWithURL:[NSURL URLWithString:self.list.user1.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
-        self.lab_name.text = self.list.user1.nickName;
-        self.lab_Sex.image = [UIImage imageNamed:[self.list.user1.gender isEqualToString:@"0"]?@"men":@"weomen"];
-        self.lab_age.text = self.list.user1.age?self.list.user1.age:@"";
-        self.lab_Preson.text = [NSString stringWithFormat:@"%@cm %@kg %@ %@",self.list.user1.height?self.list.user1.height:@"",self.list.user1.weight?self.list.user1.weight:@"",self.list.user1.educationName?self.list.user1.educationName:@"",self.list.user1.marriageName?self.list.user1.marriageName:@""];
-        self.lab_Servicetitle.text = self.list.title;
+        self.navigationItem.title = self.user.nickName?self.user.nickName:KString(@"用户%@", self.user.ID);
+        [self.image_head sd_setImageWithURL:[NSURL URLWithString:self.user.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+        self.lab_name.text = self.user.nickName;
+        self.lab_Sex.image = [UIImage imageNamed:[self.user.gender isEqualToString:@"0"]?@"men":@"weomen"];
+        self.lab_age.text = self.user.age?self.user.age:@"";
+        self.lab_Preson.text = [NSString stringWithFormat:@"%@cm %@kg %@ %@",self.user.height?self.user.height:@"-",self.user.weight?self.user.weight:@"-",self.user.educationName?self.user.educationName:@"-",self.user.marriageName?self.user.marriageName:@"-"];
+        self.lab_Servicetitle.text = self.list.serviceCategoryName[@"name"]?self.list.serviceCategoryName[@"name"]:@"-";
         self.lab_Price.text = self.list.price;
         self.lab_DY.text = self.list.typeName;
     }else{
@@ -55,10 +55,10 @@
         self.lab_name.text = self.trval.user.nickName;
         self.lab_Sex.image = [UIImage imageNamed:[self.trval.user.gender isEqualToString:@"0"]?@"men":@"women"];
         self.lab_age.text = self.trval.user.age?self.trval.user.age:@"";
-        self.lab_Preson.text = [NSString stringWithFormat:@"%@cm %@kg %@ %@",self.trval.user.height?self.trval.user.height:@"",self.trval.user.weight?self.trval.user.weight:@"",self.trval.user.educationName?self.trval.user.educationName:@"",self.trval.user.marriageName?self.trval.user.marriageName:@""];
+        self.lab_Preson.text = [NSString stringWithFormat:@"%@cm %@kg %@ %@",self.trval.user.height?self.trval.user.height:@"-",self.trval.user.weight?self.trval.user.weight:@"-",self.trval.user.educationName?self.trval.user.educationName:@"-",self.trval.user.marriageName?self.trval.user.marriageName:@"-"];
         self.lab_Servicetitle.text = self.trval.introduce;
         self.lab_Price.text = self.trval.price;
-        self.lab_DY.text = self.trval.priceUnit?self.trval.priceUnit:@"无";
+        self.lab_DY.text = self.trval.priceUnit?self.trval.priceUnit:@"-";
     }
 }
 #define mark -----UITextFieldDelegate------
@@ -75,7 +75,6 @@
     self.myDatePick.dateModel = UIDatePickerModeDateAndTime;
     self.myDatePick.delegate  = self;
     [self.view addSubview:self.myDatePick];
-    
 }
 - (IBAction)yuyueClick:(UIButton *)sender {
     NSInteger flag;

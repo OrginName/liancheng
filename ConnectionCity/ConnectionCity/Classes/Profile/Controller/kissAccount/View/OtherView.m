@@ -15,12 +15,12 @@
 @property (strong, nonatomic) NSMutableArray *mutDataArr;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, assign) NSInteger flag;
-@property (nonatomic,strong) UIViewController * controller;
+@property (nonatomic,strong)  kissAccountController * controller;
 @end
 
 @implementation OtherView
 
-- (instancetype)initWithFrame:(CGRect)frame viewController:(UIViewController *)controller
+- (instancetype)initWithFrame:(CGRect)frame viewController:(kissAccountController *)controller
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -48,15 +48,16 @@
             tb.rowHeight = 160;
             tb.delegate = self;
             tb.dataSource = self;
-            tb.backgroundColor = kCommonBGColor;
+            tb.backgroundColor = [UIColor whiteColor];
             tb.tableFooterView = [UIView new];
             tb.separatorStyle = UITableViewCellSeparatorStyleNone;
             //[tb registerClass:[KissCell class] forCellReuseIdentifier:@"KissCell"];
-            [tb registerNib:[UINib nibWithNibName:@"KissCell" bundle:nil] forCellReuseIdentifier:@"KissCell"];
+//            [tb registerNib:[UINib nibWithNibName:@"KissCell" bundle:nil] forCellReuseIdentifier:@"KissCell"];
             UIView *footerV = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.width, 170)];
+            footerV.backgroundColor = [UIColor whiteColor];
             UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeSystem];
             addBtn.frame = CGRectMake((footerV.width - 100)/2.0, footerV.center.y - 50, 100, 100);
-            addBtn.backgroundColor = [UIColor redColor];
+            [addBtn setBackgroundImage:[UIImage imageNamed:@"jiaMe"] forState:UIControlStateNormal];
             [addBtn addTarget:self action:@selector(addBtnClick:) forControlEvents:UIControlEventTouchUpInside];
             [footerV addSubview:addBtn];
             UILabel *addLab = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(addBtn.frame), footerV.width, 30)];
@@ -65,7 +66,7 @@
             addLab.textAlignment = NSTextAlignmentCenter;
             [footerV addSubview:addLab];
             tb.tableFooterView = footerV;
-            tb;
+             tb;
         });
     }
     return _tableView;
@@ -84,7 +85,7 @@
     __weak typeof(self) weakSelf = self;
     [YSRefreshTool addRefreshFooterWithView:self.tableView refreshingBlock:^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        strongSelf.page ++;
+        strongSelf.page++;
         [strongSelf getFooterData];
     }];
 }
@@ -93,6 +94,9 @@
     WeakSelf
     [YSNetworkTool POST:v1usercloseaccountlist params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         weakSelf.mutDataArr = [KissModel mj_objectArrayWithKeyValuesArray:responseObject[kData]];
+        if (weakSelf.mutDataArr.count!=0) {
+            weakSelf.controller.view_QMZH.hidden = YES;
+        }
         [weakSelf.tableView reloadData];
     } failure:nil];
 }
@@ -108,20 +112,34 @@
 }
 #pragma mark - UITableView DataSource & Delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _mutDataArr.count;
+    return _mutDataArr.count==0?1:_mutDataArr.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    KissCell *cell = [tableView dequeueReusableCellWithIdentifier:@"KissCell"];
-    cell.model = _mutDataArr[indexPath.row];
-    cell.delegate = self;
-    return cell;
+    if (_mutDataArr.count!=0) {
+        KissCell *cell = [tableView dequeueReusableCellWithIdentifier:@"KissCell0"];
+        if (!cell) {
+            cell = [[NSBundle mainBundle] loadNibNamed:@"KissCell" owner:nil options:nil][0];
+        }
+        cell.model = _mutDataArr[indexPath.row];
+        cell.delegate = self;
+        return cell;
+    }else{
+       KissCell *cell = [tableView dequeueReusableCellWithIdentifier:@"KissCell1"];
+        if (!cell) {
+            cell = [[NSBundle mainBundle] loadNibNamed:@"KissCell" owner:nil options:nil][1];
+        }
+       return cell;
+    }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 170;
+    if (_mutDataArr.count!=0){
+        return 170;
+    }
+    return kScreenHeight-270-64-20;
 }
 #pragma mark - KissCellDelegate
 - (void)kissCell:(KissCell *)cell deleteBtnClick:(UIButton *)btn {
@@ -132,7 +150,6 @@
     deltail.title = @"账户详情";
     [self.controller.navigationController pushViewController:deltail animated:YES];
 }
-
 #pragma mark - 点击事件
 - (void)addBtnClick:(UIButton *)btn {
     if (_delegate && [_delegate respondsToSelector:@selector(otherView:addBtn:)]) {

@@ -15,14 +15,9 @@
     _bgImgV.layer.cornerRadius = 5;
     _bgImgV.clipsToBounds = YES;
     _bgImgV.userInteractionEnabled = YES;
-    
-    // Initialization code
 }
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 - (IBAction)deleteBtnClick:(id)sender {
     if (_delegate && [_delegate respondsToSelector:@selector(kissCell:deleteBtnClick:)]) {
@@ -43,7 +38,8 @@
     _idLab.text = [NSString stringWithFormat:@"连城号：%@",model.closeUserId];
     _rateLab.text = [NSString stringWithFormat:@"分享比例：%.0f%%",[model.rate floatValue]*100];
     _amountLab.text = [NSString stringWithFormat:@"累计转账：%.2f元",model.incomeAmount];
-
+    self.image_background.image = self.image_bottom2.image = [UIImage imageNamed:KString(@"bg%u", arc4random()%4)];
+    
 }
 
 @end

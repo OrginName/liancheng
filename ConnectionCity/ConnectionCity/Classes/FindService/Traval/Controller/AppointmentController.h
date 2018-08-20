@@ -9,8 +9,10 @@
 #import "BaseViewController.h"
 #import "ServiceListMo.h"
 #import "trvalMo.h"
+#import "UserMo.h"
 @interface AppointmentController : BaseViewController
 @property (nonatomic,strong) NSString * str;//YD  PY
-@property (nonatomic,strong)ServiceListMo * list;
-@property (nonatomic,strong)trvalMo * trval;
+@property (nonatomic,strong) ServiceListMo * list;
+@property (nonatomic,strong) UserMo * user;
+@property (nonatomic,strong) trvalMo * trval;
 @end

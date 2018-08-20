@@ -206,6 +206,7 @@
 -(void)btnClick:(NSInteger)tag{
     AppointmentController * appoint = [AppointmentController new];
     appoint.str =_flag==0?@"YD":@"trval";
+    appoint.user = self.Mo;
     appoint.list = self.Mo.serviceList[self.JNIndex];
     appoint.trval = self.MoTrval;
     [self.control.navigationController pushViewController:appoint animated:YES];

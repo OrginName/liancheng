@@ -20,7 +20,6 @@
 @end
 
 @implementation kissAccountController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
@@ -33,11 +32,11 @@
 }
 - (void)setUI {
     self.navigationItem.title = @"亲密账户";
-    self.lastBtn = self.meBtn;
+    self.lastBtn = self.otherBtn;
     [_tabBgV addSubview:self.meV];
     [_tabBgV addSubview:self.otherV];
-    self.meV.hidden = NO;
-    self.otherV.hidden = YES;
+    self.meV.hidden = YES;
+    self.otherV.hidden = NO;
 }
 //wo
 -(MeView *)meV{
@@ -54,7 +53,6 @@
     }
     return _otherV;
 }
-
 - (IBAction)switchBtnClick:(id)sender {
     UIButton *btn = (UIButton *)sender;
     if (_lastBtn == btn) {

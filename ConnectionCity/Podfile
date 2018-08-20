@@ -22,5 +22,6 @@ pod 'ShareSDK3/ShareSDKUI',:git => ‘https://github.com/MobClub/ShareSDK-for-iO
 pod 'ShareSDK3/ShareSDKExtension',:git => ‘https://github.com/MobClub/ShareSDK-for-iOS-Spec.git'
 pod 'JPush', '3.0.6'
 pod 'DZNEmptyDataSet'
+pod 'PGDatePicker'
 end
 

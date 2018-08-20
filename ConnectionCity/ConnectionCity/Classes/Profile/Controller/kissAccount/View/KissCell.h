@@ -20,6 +20,7 @@
 @end
 
 @interface KissCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *image_background;
 @property (nonatomic,strong) NSString * flagStr;
 @property (weak, nonatomic) IBOutlet UIImageView *bgImgV;
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
@@ -28,5 +29,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *amountLab;
 @property (nonatomic,assign)id<KissCellDelegate>delegate;
 @property (nonatomic, strong) KissModel *model;
+@property (weak, nonatomic) IBOutlet UILabel *lab_Name2;//20人为我开头亲密账户
+@property (weak, nonatomic) IBOutlet UILabel *lab_SYLJ;//累计收益
+@property (weak, nonatomic) IBOutlet UIImageView *image_bottom2;
 
 @end

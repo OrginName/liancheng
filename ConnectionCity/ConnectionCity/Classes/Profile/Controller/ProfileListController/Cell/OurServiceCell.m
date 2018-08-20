@@ -52,7 +52,7 @@ static NSArray * btnTitleArr1;
     if ([mo.typeName isEqualToString:@"旅游"]) {
         self.lab_title.text = mo.obj.introduce?mo.obj.introduce:@"无";
     }else{
-        self.lab_title.text = mo.obj.title?mo.obj.title:@"无";
+        self.lab_title.text = mo.obj.serviceCategoryName.name?mo.obj.serviceCategoryName.name:@"-";
     }
     self.lab_price.text = [NSString stringWithFormat:@"¥%@%@x%@",mo.obj.price,[mo.typeName isEqualToString:@"旅游"]?mo.obj.priceUnit:mo.obj.typeName,mo.num];
     self.lab_sumPrice.text = [NSString stringWithFormat:@"合计:¥%.2f",[mo.obj.price floatValue]*[mo.num intValue]];

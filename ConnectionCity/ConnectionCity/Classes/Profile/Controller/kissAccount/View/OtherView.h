@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "kissAccountController.h"
 @class OtherView;
 @protocol OtherViewDelegate <NSObject>
 - (void)otherView:(OtherView *)view addBtn:(UIButton *)btn;
@@ -17,5 +17,5 @@
 @interface OtherView : UIView
 @property (nonatomic, strong) NSString *refreshStr;
 @property (nonatomic, weak) id<OtherViewDelegate>delegate;
-- (instancetype)initWithFrame:(CGRect)frame viewController:(UIViewController *)controller;
+- (instancetype)initWithFrame:(CGRect)frame viewController:(kissAccountController *)controller;
 @end
