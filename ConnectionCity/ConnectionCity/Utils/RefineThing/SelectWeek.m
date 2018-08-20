@@ -25,13 +25,14 @@
     }else{
         NSString * str1 = @"";
         NSString * str2 = @"";
-        for (NSString * week in self.arrSelect) {
+        for (long i=self.arrSelect.count-1; i>=0; i--) {
+            NSString * week = self.arrSelect[i];
             str1 = [NSString stringWithFormat:@"%@,%@",week,str1];
             NSString * str3 = [week isEqualToString:@"1"]?@"周日":[week isEqualToString:@"2"]?@"周一":[week isEqualToString:@"3"]?@"周二":[week isEqualToString:@"4"]?@"周三":[week isEqualToString:@"5"]?@"周四":[week isEqualToString:@"6"]?@"周五":@"周六";
             str2 = [NSString stringWithFormat:@"%@,%@",str3,str2];
         }
         if (self.weekBlock) {
-            self.weekBlock(str1, str2);
+            self.weekBlock(str2, str1);
         }
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:CLOSEANI object:nil];

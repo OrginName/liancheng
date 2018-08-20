@@ -34,12 +34,14 @@
         [self.delegate kissCell:self sawBtnClick:sender];
     }
 }
-
 - (void)setModel:(KissModel *)model {
     _model = model;
+    if ([self.flagStr isEqualToString:@"MEVIEW"]) {
+        _nameLab.text = [NSString stringWithFormat:@"%@为我开通的亲密账户",model.closeUserId];
+    }else
     _nameLab.text = [NSString stringWithFormat:@"我为%@开通的亲密账户",model.closeUserId];
     _idLab.text = [NSString stringWithFormat:@"连城号：%@",model.closeUserId];
-    _rateLab.text = [NSString stringWithFormat:@"分享比例：%@",model.rate];
+    _rateLab.text = [NSString stringWithFormat:@"分享比例：%.0f%%",[model.rate floatValue]*100];
     _amountLab.text = [NSString stringWithFormat:@"累计转账：%.2f元",model.incomeAmount];
 
 }

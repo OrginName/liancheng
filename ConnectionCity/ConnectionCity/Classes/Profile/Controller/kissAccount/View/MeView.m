@@ -79,7 +79,7 @@
 - (void)getHeaderData {
     //我开通的亲密账户
     WeakSelf
-    [YSNetworkTool POST:v1usercloseaccountlist params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1usercloseaccountopenedlist params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         weakSelf.mutDataArr = [KissModel mj_objectArrayWithKeyValuesArray:responseObject[kData]];
         [weakSelf.tableView reloadData];
     } failure:nil];
@@ -100,6 +100,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     KissCell *cell = [tableView dequeueReusableCellWithIdentifier:@"KissCell"];
+    cell.flagStr = @"MEVIEW";
     cell.model = _mutDataArr[indexPath.row];
     cell.delegate = self;
     return cell;
