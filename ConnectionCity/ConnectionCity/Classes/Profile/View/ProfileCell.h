@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *resumeeditBtn;
 @property (weak, nonatomic) IBOutlet UIButton *resumeedeleteBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *iconImgV;
+@property (weak, nonatomic) IBOutlet UIButton *icomBtn;
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @property (weak, nonatomic) IBOutlet UILabel *resumetitleLab;
 @property (weak, nonatomic) IBOutlet UILabel *resumeDescribLab;

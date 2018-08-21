@@ -101,7 +101,8 @@
         profileCell = [[NSBundle mainBundle] loadNibNamed:@"ProfileCell" owner:nil options:nil][0];
     }
     YTSideMenuModel *model = self.menuModels[indexPath.section][indexPath.row];
-    profileCell.iconImgV.image = [UIImage imageNamed:model.mIcon];
+//    profileCell.iconImgV.image = [UIImage imageNamed:model.mIcon];
+    [profileCell.icomBtn setImage:[UIImage imageNamed:model.mIcon] forState:UIControlStateNormal];
     profileCell.titleLab.text = model.mTitle;
     return profileCell;
 }
