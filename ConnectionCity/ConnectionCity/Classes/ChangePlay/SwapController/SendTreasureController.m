@@ -11,7 +11,7 @@
 #import "ChangePlayNet.h"
 #import "QiniuUploader.h"
 #import "ClassificationsController1.h"
-@interface SendTreasureController ()<PhotoSelectDelegate>
+@interface SendTreasureController ()<PhotoSelectDelegate,UITextFieldDelegate>
 {
     CGFloat itemHeigth;
     UIButton * _tmpBtn;
@@ -78,9 +78,8 @@
         
     }];
 }
-//
-- (IBAction)BtnClick:(UIButton *)sender {
-    if (sender.tag==2) {
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if (textField.tag==2) {
         ClassificationsController1 * class = [ClassificationsController1 new];
         class.title = @"宝物分类";
         class.arr_Data = self.arr_receive;
@@ -91,7 +90,8 @@
             
         };
         [self.navigationController pushViewController:class animated:YES];
-    } 
+    }
+    return NO;
 }
 - (IBAction)changStatusClick:(UIButton *)sender {
     if (sender.tag!=13) {
