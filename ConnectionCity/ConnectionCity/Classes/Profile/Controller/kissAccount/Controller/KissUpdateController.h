@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "KissModel.h"
 @interface KissUpdateController : BaseViewController
-
+@property (nonatomic,strong) KissModel * model;//
 @end

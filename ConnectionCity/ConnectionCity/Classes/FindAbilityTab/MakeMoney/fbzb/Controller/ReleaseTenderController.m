@@ -18,8 +18,9 @@
 #import "CityMo.h"
 #import "ClassificationsController1.h"
 #import "AbilityNet.h"
-
-@interface ReleaseTenderController ()<LCDatePickerDelegate,JFCityViewControllerDelegate,PhotoSelectDelegate>
+#import <PGDatePickManager.h>
+//LCDatePickerDelegate,
+@interface ReleaseTenderController ()<PGDatePickerDelegate,JFCityViewControllerDelegate,PhotoSelectDelegate>
 {
     NSInteger currtenTag;
     CGFloat itemHeigth;
@@ -135,11 +136,27 @@
 }
 //创建日期插件
 -(void)initDate{
-    self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
-    self.myDatePick.delegate  = self;
-    self.myDatePick.minDate = [NSDate date];
-    [self.view addSubview:self.myDatePick];
+//    self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
+//    self.myDatePick.delegate  = self;
+//    self.myDatePick.minDate = [NSDate date];
+//    [self.view addSubview:self.myDatePick];
     self.Arr_Url = [NSMutableArray array];
+}
+-(void)tanDatePick{
+    PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
+    PGDatePicker *datePicker = datePickManager.datePicker;
+    //设置半透明的背景颜色
+    datePickManager.isShadeBackgroud = true;
+    //设置头部的背景颜色
+    datePickManager.headerViewBackgroundColor = YSColor(244, 177, 113);
+    datePicker.datePickerMode = PGDatePickerModeDate;
+    //设置取消按钮的字体颜色
+    datePickManager.cancelButtonTextColor = [UIColor whiteColor];
+    datePickManager.confirmButtonTextColor = [UIColor whiteColor];
+    //    datePicker.datePickerType = PGDatePickerType2;
+//    datePicker.maximumDate = [NSDate date];
+    datePicker.delegate = self;
+    [self presentViewController:datePickManager animated:false completion:nil];
 }
 -(void)initEDITData{
     _cellCntentText = [NSMutableArray arrayWithArray:@[
@@ -234,11 +251,13 @@
         return;
     }else if (indexPath.row==7){
         currtenTag = indexPath.row;
-        [self.myDatePick animateShow];
+        [self tanDatePick];
+//        [self.myDatePick animateShow];
         return;
     }else if (indexPath.row==8){
         currtenTag = indexPath.row;
-        [self.myDatePick animateShow];
+        [self tanDatePick];
+//        [self.myDatePick animateShow];
         return;
     }
     
@@ -287,11 +306,20 @@
     }
     return headerView;
 }
-#pragma mark ---LCDatePickerDelegate-----
-- (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
+//#pragma mark ---LCDatePickerDelegate-----
+//- (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
+//    self.cellCntentText[currtenTag] = str;
+//    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:currtenTag inSection:0];
+//    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+//}
+#pragma mark ---- PGDatePickerDelegate-----
+- (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
+    NSLog(@"dateComponents = %ld", (long)dateComponents.year);
+    NSString * str = [NSString stringWithFormat:@"%ld-%@%ld-%@%ld",(long)dateComponents.year,dateComponents.month<10?@"0":@"",(long)dateComponents.month,dateComponents.day<10?@"0":@"",(long)dateComponents.day];
     self.cellCntentText[currtenTag] = str;
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:currtenTag inSection:0];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+    
 }
 #pragma mark - JFCityViewControllerDelegate
 - (void)cityName:(NSString *)name {
@@ -382,15 +410,4 @@
     zbjfVC.industryCategoryName = self.industryCategoryName;
     [self.navigationController pushViewController:zbjfVC animated:YES];
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
 @end

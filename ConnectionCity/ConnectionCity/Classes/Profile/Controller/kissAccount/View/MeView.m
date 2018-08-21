@@ -132,7 +132,18 @@
 }
 #pragma mark - KissCellDelegate
 - (void)kissCell:(KissCell *)cell deleteBtnClick:(UIButton *)btn {
-     
+    NSIndexPath * index = [self.tableView indexPathForCell:cell];
+    KissModel * model = _mutDataArr[index.row];
+    WeakSelf
+    [YTAlertUtil alertDualWithTitle:@"连程" message:KString(@"您即将解除亲密账户%@", model.closeUserId) style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
+        
+    } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {
+        [YSNetworkTool POST:v1usercloseaccountdelete params:@{@"id":model.modelId} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+            [weakSelf getHeaderData];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+    } completion:nil];
 }
 - (void)kissCell:(KissCell *)cell sawBtnClick:(UIButton *)btn {
    

@@ -10,15 +10,15 @@
 
 @implementation UIView (TYAlertView)
 
-+ (instancetype)createViewFromNibName:(NSString *)nibName
++ (instancetype)createViewFromNibName:(NSString *)nibName index:(NSUInteger) index
 {
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil];
-    return [nib objectAtIndex:0];
+    return [nib objectAtIndex:index];
 }
 
-+ (instancetype)createViewFromNib
++ (instancetype)createViewFromNib:(NSUInteger) index
 {
-    return [self createViewFromNibName:NSStringFromClass(self.class)];
+    return [self createViewFromNibName:NSStringFromClass(self.class) index:index];
 }
 
 - (UIViewController*)viewController

@@ -8,8 +8,9 @@
 
 #import "DubTimeSlectorController.h"
 #import "LCDatePicker.h"
-
-@interface DubTimeSlectorController ()<LCDatePickerDelegate>
+#import <PGDatePickManager.h>
+//LCDatePickerDelegate
+@interface DubTimeSlectorController ()<PGDatePickerDelegate>
 {
     NSInteger currtenTag;
 }
@@ -24,13 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    
-    // Do any additional setup after loading the view from its nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 #pragma mark - 初始化UI
 - (void)setUI {
@@ -40,19 +34,20 @@
     self.startBtn.layer.borderWidth = 1;
     self.endBtn.layer.borderColor = [UIColor orangeColor].CGColor;
     self.endBtn.layer.borderWidth = 1;
-    [self initDate];
+//    [self initDate];
 }
 //创建日期插件
--(void)initDate{
-    self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
-    self.myDatePick.delegate  = self;
-    [self.view addSubview:self.myDatePick];
-}
+//-(void)initDate{
+//    self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
+//    self.myDatePick.delegate  = self;
+//    [self.view addSubview:self.myDatePick];
+//}
 #pragma mark - 点击事件
 - (IBAction)selectedBtnClick:(id)sender {
     UIButton *btn = (UIButton *)sender;
     currtenTag = btn.tag;
-    [self.myDatePick animateShow];
+//    [self.myDatePick animateShow];
+    [self tanDatePick];
 }
 -(void)complete{
     if ([_startBtn.titleLabel.text isEqualToString:@"请选择开始时间"]||[_startBtn.titleLabel.text isEqualToString:@"请选择结束时间"]) {
@@ -64,22 +59,38 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
-#pragma mark ---LCDatePickerDelegate-----
-- (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
+//#pragma mark ---LCDatePickerDelegate-----
+//- (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
+//    if (currtenTag==1) {
+//        [_startBtn setTitle:str forState:UIControlStateNormal];
+//    }if (currtenTag==2) {
+//        [_endBtn setTitle:str forState:UIControlStateNormal];
+//    }
+//}
+#pragma mark ---- PGDatePickerDelegate-----
+- (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
+    NSLog(@"dateComponents = %ld", (long)dateComponents.year);
+    NSString * str = [NSString stringWithFormat:@"%ld-%@%ld-%@%ld",(long)dateComponents.year,dateComponents.month<10?@"0":@"",(long)dateComponents.month,dateComponents.day<10?@"0":@"",(long)dateComponents.day];
     if (currtenTag==1) {
         [_startBtn setTitle:str forState:UIControlStateNormal];
     }if (currtenTag==2) {
         [_endBtn setTitle:str forState:UIControlStateNormal];
     }
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)tanDatePick{
+    PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
+    PGDatePicker *datePicker = datePickManager.datePicker;
+    //设置半透明的背景颜色
+    datePickManager.isShadeBackgroud = true;
+    //设置头部的背景颜色
+    datePickManager.headerViewBackgroundColor = YSColor(244, 177, 113);
+    datePicker.datePickerMode = PGDatePickerModeDate;
+    //设置取消按钮的字体颜色
+    datePickManager.cancelButtonTextColor = [UIColor whiteColor];
+    datePickManager.confirmButtonTextColor = [UIColor whiteColor];
+    //    datePicker.datePickerType = PGDatePickerType2;
+//    datePicker.maximumDate = [NSDate date];
+    datePicker.delegate = self;
+    [self presentViewController:datePickManager animated:false completion:nil];
 }
-*/
-
 @end

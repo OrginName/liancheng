@@ -70,7 +70,7 @@
                               @"description": self.textView_Indro.text,
                               @"educationId": @([_EduID integerValue]),
                               @"endDate": self.end_Time.text,
-                              @"professionalId": _proID.length!=0? @([_proID integerValue]):@"",
+                              @"professionalId": _proID.length!=0? @([_proID integerValue]):@0,
                               @"resumeId": @([self.resumeID integerValue]),
                               @"schoolId": @([_collID integerValue]),//****
                               @"startDate": self.Start_time.text,

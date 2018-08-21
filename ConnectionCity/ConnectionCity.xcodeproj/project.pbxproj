@@ -278,6 +278,8 @@
 		8D67602720A408470027CDEE /* ClassificationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67602520A408470027CDEE /* ClassificationsController.m */; };
 		8D67602820A408470027CDEE /* ClassificationsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D67602620A408470027CDEE /* ClassificationsController.xib */; };
 		8D67603620A448CB0027CDEE /* SX.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D67603520A448CB0027CDEE /* SX.plist */; };
+		8D6A29CC212BED0800361850 /* ForgetPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A29CB212BED0800361850 /* ForgetPasswordView.m */; };
+		8D6A29CE212BED2200361850 /* ForgetPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D6A29CD212BED2200361850 /* ForgetPasswordView.xib */; };
 		8D75934F20CA84CA0059C9F6 /* AboutOurController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D75934D20CA84CA0059C9F6 /* AboutOurController.m */; };
 		8D75935020CA84CA0059C9F6 /* AboutOurController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D75934E20CA84CA0059C9F6 /* AboutOurController.xib */; };
 		8D7FF6B020D3A8AB0075B2D5 /* ClassAttrMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7FF6AF20D3A8AB0075B2D5 /* ClassAttrMo.m */; };
@@ -1162,6 +1164,9 @@
 		8D67602520A408470027CDEE /* ClassificationsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassificationsController.m; sourceTree = "<group>"; };
 		8D67602620A408470027CDEE /* ClassificationsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassificationsController.xib; sourceTree = "<group>"; };
 		8D67603520A448CB0027CDEE /* SX.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = SX.plist; sourceTree = "<group>"; };
+		8D6A29CA212BED0800361850 /* ForgetPasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordView.h; sourceTree = "<group>"; };
+		8D6A29CB212BED0800361850 /* ForgetPasswordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordView.m; sourceTree = "<group>"; };
+		8D6A29CD212BED2200361850 /* ForgetPasswordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgetPasswordView.xib; sourceTree = "<group>"; };
 		8D75934C20CA84CA0059C9F6 /* AboutOurController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutOurController.h; sourceTree = "<group>"; };
 		8D75934D20CA84CA0059C9F6 /* AboutOurController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutOurController.m; sourceTree = "<group>"; };
 		8D75934E20CA84CA0059C9F6 /* AboutOurController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutOurController.xib; sourceTree = "<group>"; };
@@ -4748,6 +4753,9 @@
 				CEA79B45212839380026522E /* KissCell.h */,
 				CEA79B46212839380026522E /* KissCell.m */,
 				CEA79B47212839380026522E /* KissCell.xib */,
+				8D6A29CA212BED0800361850 /* ForgetPasswordView.h */,
+				8D6A29CB212BED0800361850 /* ForgetPasswordView.m */,
+				8D6A29CD212BED2200361850 /* ForgetPasswordView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5024,6 +5032,7 @@
 				CE5C281C20B94D84006A8332 /* BidManagerCell.xib in Resources */,
 				CEFC04662127079C00630722 /* kissAccountController.xib in Resources */,
 				8D09E18720BFC4B8000F7EBD /* AppointmentController.xib in Resources */,
+				8D6A29CE212BED2200361850 /* ForgetPasswordView.xib in Resources */,
 				CEC4A56520C407BF0026EE19 /* WalletController.xib in Resources */,
 				CEBEDD8320B17ED1000F9EE4 /* MarginCell.xib in Resources */,
 				CE03EDF220B44FB000F07D78 /* FirstTableViewCell.xib in Resources */,
@@ -5190,6 +5199,7 @@
 				72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */,
 				72626F5B20ED03BC001B807D /* RCDTestMessage.m in Sources */,
 				8DE465E420EDF162009730F7 /* RCDContactSelectedCollectionViewCell.m in Sources */,
+				8D6A29CC212BED0800361850 /* ForgetPasswordView.m in Sources */,
 				CE0BA5F7209D5EBE004C3C33 /* BaseViewController.m in Sources */,
 				8DC17A7E20C0E430005D9EE0 /* Utility.m in Sources */,
 				CEE5251020F771D400DD6179 /* MYScanLineAnimation.m in Sources */,

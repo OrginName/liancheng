@@ -87,7 +87,7 @@
         return [YTAlertUtil showTempInfo:@"请输入共享比例"];
     }
     if ([YSTools dx_isNullOrNilWithObject:self.txt_password.text]) {
-        return [YTAlertUtil showTempInfo:@"请输入锁定密码"];
+        return [YTAlertUtil showTempInfo:@"请输入锁定密码并牢记"];
     }
     NSDictionary * dic = @{
                            @"closeUserId": @([self.txt_TALCH.text intValue]),

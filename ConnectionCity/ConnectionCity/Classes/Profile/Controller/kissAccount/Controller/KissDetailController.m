@@ -34,7 +34,7 @@
     [self initData];
 }
 -(void)initData{
-    self.lab_nickName.text = self.modelReceive.user.nickName?self.modelReceive.user.nickName:self.modelReceive.user.ID;
+    self.lab_nickName.text = self.modelReceive.user.nickName?self.modelReceive.user.nickName:self.modelReceive.user.ID?self.modelReceive.user.ID:@"-";
     self.txt_date.text = [NSDate stringDate:[NSDate date]];
     WeakSelf
     [YSNetworkTool POST:v1usercloseaccountorderstatistics params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -62,6 +62,7 @@
 - (IBAction)btn_Update:(UIButton *)sender {
     KissUpdateController * kiss = [KissUpdateController new];
     kiss.title = @"账户修改";
+    kiss.model = self.modelReceive;
     [self.navigationController pushViewController:kiss animated:YES];
 }
 //日期选择

@@ -37,6 +37,12 @@
     [_tabBgV addSubview:self.otherV];
     self.meV.hidden = YES;
     self.otherV.hidden = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refrshData) name:@"refreshDear" object:nil];
+}
+//更新亲密账户数据后刷新
+-(void)refrshData{
+    [self.otherV getHeaderData];
+    [self.meV getHeaderData];
 }
 //wo
 -(MeView *)meV{

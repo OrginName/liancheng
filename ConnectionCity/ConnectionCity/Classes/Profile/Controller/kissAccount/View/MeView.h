@@ -11,4 +11,5 @@
 @interface MeView : UIView
 @property (nonatomic, strong) NSString *refreshStr;
 - (instancetype)initWithFrame:(CGRect)frame viewController:(UIViewController *)controller;
+- (void)getHeaderData;
 @end

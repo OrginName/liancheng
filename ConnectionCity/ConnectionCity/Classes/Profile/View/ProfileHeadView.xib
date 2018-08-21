@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -240,6 +240,13 @@
                                 <constraint firstAttribute="width" constant="54" id="Qai-Ud-UkC"/>
                             </constraints>
                         </imageView>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="svip" translatesAutoresizingMaskIntoConstraints="NO" id="jOx-FX-fhI">
+                            <rect key="frame" x="168" y="119.5" width="38" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="38" id="SJm-0D-S8i"/>
+                                <constraint firstAttribute="height" constant="14" id="n42-3V-hA4"/>
+                            </constraints>
+                        </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oR-GC-2fT">
                             <rect key="frame" x="0.0" y="135.5" width="375" height="21"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -259,13 +266,6 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="svip" translatesAutoresizingMaskIntoConstraints="NO" id="jOx-FX-fhI">
-                            <rect key="frame" x="168.5" y="116" width="38" height="14"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="38" id="SJm-0D-S8i"/>
-                                <constraint firstAttribute="height" constant="14" id="n42-3V-hA4"/>
-                            </constraints>
-                        </imageView>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaJ-2x-pdg">
                             <rect key="frame" x="147" y="187.5" width="80" height="30"/>
                             <constraints>
@@ -300,7 +300,7 @@
                         <constraint firstItem="jSK-3y-h8e" firstAttribute="trailing" secondItem="4oR-GC-2fT" secondAttribute="trailing" id="s9s-eJ-fpd"/>
                         <constraint firstItem="jSK-3y-h8e" firstAttribute="centerX" secondItem="4oR-GC-2fT" secondAttribute="centerX" id="tU4-Ak-Wp6"/>
                         <constraint firstItem="jOx-FX-fhI" firstAttribute="centerX" secondItem="mmL-ON-cqF" secondAttribute="centerX" id="vTH-qd-ZHm"/>
-                        <constraint firstItem="jOx-FX-fhI" firstAttribute="bottom" secondItem="mmL-ON-cqF" secondAttribute="bottom" id="zG5-jf-2r0"/>
+                        <constraint firstItem="jOx-FX-fhI" firstAttribute="bottom" secondItem="mmL-ON-cqF" secondAttribute="bottom" constant="3" id="zG5-jf-2r0"/>
                     </constraints>
                 </view>
             </subviews>
@@ -320,7 +320,7 @@
                 <outlet property="threesvipImgV" destination="jOx-FX-fhI" id="RmR-La-ML1"/>
                 <outlet property="threesvipTimeLab" destination="jSK-3y-h8e" id="3dg-Y1-F1P"/>
             </connections>
-            <point key="canvasLocation" x="-68.5" y="837.5"/>
+            <point key="canvasLocation" x="-68.5" y="531.5"/>
         </view>
     </objects>
     <resources>

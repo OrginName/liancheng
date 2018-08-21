@@ -12,9 +12,9 @@
 
 @interface UIView (TYAlertView)
 
-+ (instancetype)createViewFromNib;
++ (instancetype)createViewFromNib:(NSUInteger) index;
 
-+ (instancetype)createViewFromNibName:(NSString *)nibName;
++ (instancetype)createViewFromNibName:(NSString *)nibName index:(NSUInteger) index;
 
 - (UIViewController*)viewController;
 

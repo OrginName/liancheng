@@ -98,8 +98,11 @@
             weakSelf.controller.view_QMZH.hidden = YES;
         }
         if (weakSelf.mutDataArr.count==3) {
-            [weakSelf.tableView.tableFooterView removeFromSuperview];
+            weakSelf.tableView.tableFooterView.hidden = YES;
             weakSelf.tableView.tableFooterView.height = 0;
+        }else{
+            weakSelf.tableView.tableFooterView.hidden = NO;
+            weakSelf.tableView.tableFooterView.height = 170;
         }
         [weakSelf.tableView reloadData];
     } failure:nil];
