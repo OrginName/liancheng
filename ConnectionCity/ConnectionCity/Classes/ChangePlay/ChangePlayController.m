@@ -130,9 +130,6 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     }
 }
 @end
-
-
-
 //FilterLayout
 @implementation ChangeLayout
 /// 准备布局

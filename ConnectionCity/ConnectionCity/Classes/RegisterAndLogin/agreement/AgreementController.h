@@ -10,5 +10,5 @@
 
 @interface AgreementController : BaseViewController
 @property (nonatomic, strong) NSString *alias;
-
+@property (nonatomic,strong) NSString * url;
 @end

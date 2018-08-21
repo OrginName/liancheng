@@ -72,7 +72,7 @@ typedef void (^FailErrBlock) (NSError * failValue);
  @param param 字典
  @param sucBlok 成功返回
  */
-+(void)requstNotice:(NSDictionary *)param withSuc:(SuccessDicBlock)sucBlok;
++(void)requstNotice:(NSDictionary *)param withSuc:(SuccessArrBlock)sucBlok;
 /**
  更新用户配置接口
  

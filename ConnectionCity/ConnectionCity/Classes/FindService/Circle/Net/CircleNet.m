@@ -169,12 +169,9 @@
  @param param 字典
  @param sucBlok 成功返回
  */
-+(void)requstNotice:(NSDictionary *)param withSuc:(SuccessDicBlock)sucBlok{
++(void)requstNotice:(NSDictionary *)param withSuc:(SuccessArrBlock)sucBlok{
     [YSNetworkTool POST:v1CommonNoticePage params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSArray * arr = responseObject[@"data"][@"content"];
-        if (arr.count!=0) {
-            sucBlok(arr[0]);
-        }
+        sucBlok(responseObject[@"data"][@"content"]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

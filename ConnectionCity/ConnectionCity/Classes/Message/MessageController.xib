@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -196,15 +196,25 @@
                                     <color key="textColor" red="0.15686274510000001" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cI4-Pb-5jo">
+                                    <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
+                                    <connections>
+                                        <action selector="NoticeClick:" destination="-1" eventType="touchUpInside" id="oRg-Ss-YuU"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="JRm-XK-dUA" secondAttribute="trailing" constant="10" id="D2P-kw-0au"/>
                                 <constraint firstItem="q7S-Az-aMI" firstAttribute="leading" secondItem="xL6-Su-Zl3" secondAttribute="leading" constant="20" id="FH4-5q-Ryy"/>
                                 <constraint firstItem="q7S-Az-aMI" firstAttribute="centerY" secondItem="xL6-Su-Zl3" secondAttribute="centerY" id="GJ4-IC-FGw"/>
+                                <constraint firstItem="cI4-Pb-5jo" firstAttribute="leading" secondItem="xL6-Su-Zl3" secondAttribute="leading" id="H0f-b8-Aps"/>
                                 <constraint firstAttribute="height" constant="50" id="RDm-UO-zhD"/>
+                                <constraint firstAttribute="trailing" secondItem="cI4-Pb-5jo" secondAttribute="trailing" id="UhX-OG-beb"/>
                                 <constraint firstItem="JRm-XK-dUA" firstAttribute="centerY" secondItem="q7S-Az-aMI" secondAttribute="centerY" id="VRu-fw-nmQ"/>
+                                <constraint firstAttribute="bottom" secondItem="cI4-Pb-5jo" secondAttribute="bottom" id="ZzT-HU-d9R"/>
                                 <constraint firstItem="JRm-XK-dUA" firstAttribute="leading" secondItem="q7S-Az-aMI" secondAttribute="trailing" constant="15" id="iGx-yq-q8U"/>
+                                <constraint firstItem="cI4-Pb-5jo" firstAttribute="top" secondItem="xL6-Su-Zl3" secondAttribute="top" id="rXh-ce-fnx"/>
                             </constraints>
                         </view>
                     </subviews>

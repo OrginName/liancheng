@@ -26,10 +26,12 @@
 #import "CircleNet.h"
 #import "NoticeController.h"
 #import "UITabBar+badge.h"
+#import "AgreementController.h"
 @interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate>
 {
     BOOL flag;
 }
+@property (nonatomic,strong) NSString * url;
 @property (strong,nonatomic)UIButton * tmpBtn;
 @property (weak, nonatomic) IBOutlet UIView *view_line;
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
@@ -298,9 +300,20 @@
 //    }
 }
 -(void)initData{
+    NSDictionary * dic = @{
+                           @"pageNumber":@1,
+                           @"pageSize":@20,
+//                           @"cityCode":@([[KUserDefults objectForKey:kUserCityID] intValue]),
+                           };
     WeakSelf
-    [CircleNet requstNotice:@{@"pageNumber": @1,@"pageSize":@20} withSuc:^(NSDictionary *successDicValue) {
-        weakSelf.lab_Notice.text = successDicValue[@"content"];
+    [CircleNet requstNotice:dic withSuc:^(NSMutableArray *successDicValue) {
+        if([successDicValue count]==0){
+            weakSelf.view_notice.hidden = YES;
+        }else{
+            weakSelf.view_notice.hidden = NO;
+            weakSelf.lab_Notice.text = successDicValue[0][@"content"];
+            weakSelf.url = successDicValue[0][@"url"];
+        }
     }];
     if ([KUserDefults objectForKey:KAllDic]!=nil) {
         return;
@@ -324,5 +337,10 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+}
+- (IBAction)NoticeClick:(UIButton *)sender {
+    AgreementController *agreementVC = [[AgreementController alloc]init];
+    agreementVC.url = self.url;
+    [self.navigationController pushViewController:agreementVC animated:YES];
 }
 @end

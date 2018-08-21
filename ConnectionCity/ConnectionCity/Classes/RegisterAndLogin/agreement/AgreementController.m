@@ -15,19 +15,14 @@
 @end
 
 @implementation AgreementController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (self.alias.length==0) {
+        self.title = @"详情";
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
+    }else
     [self pageInfo];
-    
-    // Do any additional setup after loading the view from its nib.
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)pageInfo{
     WeakSelf
     [YSNetworkTool POST:pageInfo params:@{@"alias": self.alias} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -36,14 +31,4 @@
         [weakSelf.webView loadHTMLString:mo.content baseURL:nil];
     } failure:nil];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end
