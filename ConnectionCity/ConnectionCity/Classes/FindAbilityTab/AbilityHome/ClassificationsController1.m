@@ -81,8 +81,12 @@ static NSString *footerID = @"footerID";
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSArray *array = self.dataArray[indexPath.section];
-    self.block(array[indexPath.row][@"name"]);
-    self.block1(array[indexPath.row][@"id"],array[indexPath.row][@"name"]);
+    if (self.block) {
+        self.block(array[indexPath.row][@"name"]);
+    }
+    if (self.block1) {
+        self.block1(array[indexPath.row][@"id"],array[indexPath.row][@"name"]);
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {

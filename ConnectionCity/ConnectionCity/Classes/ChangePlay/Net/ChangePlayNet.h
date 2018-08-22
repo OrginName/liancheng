@@ -12,7 +12,7 @@
  */
 typedef void (^SuccessArrBlock) (NSMutableArray * successArrValue);
 typedef void (^SuccessDicBlock) (NSDictionary * successDicValue);
-typedef void (^FailDicBlock) (NSString * failValue);
+typedef void (^FailBlock) (NSError * failValue);
 @interface ChangePlayNet : NSObject
 /**
  宝物分类列表
@@ -25,5 +25,23 @@ typedef void (^FailDicBlock) (NSString * failValue);
  
  @param sucBlock 成功回调
  */
-+(void)requstSendBWClass:(NSDictionary *)param sucBlock:(SuccessArrBlock)sucBlock failBlock:(FailDicBlock)failBlock;
++(void)requstSendBWClass:(NSDictionary *)param sucBlock:(SuccessDicBlock)sucBlock failBlock:(FailBlock)failBlock;
+/**
+ 宝物列表
+ 
+ @param sucBlock 成功回调
+ */
++(void)requstBWList:(NSDictionary *)param sucBlock:(SuccessArrBlock)sucBlock failBlock:(FailBlock)failBlock;
+/**
+ 发布互换信息
+ 
+ @param sucBlock 成功回调
+ */
++(void)requstSendHH:(NSDictionary *)param sucBlock:(SuccessDicBlock)sucBlock failBlock:(FailBlock)failBlock;
+/**
+ 宝物列表
+ 
+ @param sucBlock 成功回调
+ */
++(void)requstHHList:(NSDictionary *)param sucBlock:(SuccessArrBlock)sucBlock failBlock:(FailBlock)failBlock;
 @end

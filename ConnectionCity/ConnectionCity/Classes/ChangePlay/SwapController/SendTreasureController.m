@@ -11,10 +11,12 @@
 #import "ChangePlayNet.h"
 #import "QiniuUploader.h"
 #import "ClassificationsController1.h"
+#import "EditAllController.h"
 @interface SendTreasureController ()<PhotoSelectDelegate,UITextFieldDelegate>
 {
     CGFloat itemHeigth;
     UIButton * _tmpBtn;
+    NSString * classID;
 }
 @property (weak, nonatomic) IBOutlet UITextField *txt_treName;//宝物名称
 @property (weak, nonatomic) IBOutlet UITextField *txt_treClass;
@@ -39,7 +41,16 @@
 }
 #pragma mark --- 各种按钮点击------
 -(void)Upload{
-    [YTAlertUtil showTempInfo:@"发布"];
+    if (self.Arr_Url.count==0) {
+        return [YTAlertUtil showTempInfo:@"请拍摄宝物图片"];
+    }
+//    ||[YSTools dx_isNullOrNilWithObject:self.txt_changeClass.text]
+    if ([YSTools dx_isNullOrNilWithObject:self.txt_treName.text]||[YSTools dx_isNullOrNilWithObject:self.txt_treClass.text]||[YSTools dx_isNullOrNilWithObject:self.txt_treDes.text]||[YSTools dx_isNullOrNilWithObject:self.txt_changeYQ.text]||[YSTools dx_isNullOrNilWithObject:self.txt_changeName.text]) {
+        return [YTAlertUtil showTempInfo:@"请填写完整"];
+    }
+    if (!self.btn_agree.selected) {
+        return [YTAlertUtil showTempInfo:@"请阅读并同意换着玩规则"];
+    }
     __block NSInteger flag = 0;
     __block NSString * str = @"";//网址图片
     [YTAlertUtil showHUDWithTitle:@"正在发布"];
@@ -59,23 +70,24 @@
 }
 -(void)sendData:(NSString *)url{
     NSDictionary * dic1 = @{
-                           @"areaCode": @0,
-                           @"changeCategoryId": @0,
-                           @"changeRequire": @"string",
-                           @"changeTitle": @"string",
-                           @"description": @"string",
-                           @"images": @"string",
-                           @"lat": @0,
-                           @"lng": @0,
-                           @"memo": @"string",
-                           @"name": @"string",
-                           @"treasureCategoryId": @0,
-                           @"type": @0
+                            @"areaCode":@([[KUserDefults objectForKey:kUserCityID]intValue]),
+                           @"changeCategoryId": @0,//暂不知道是什么
+                           @"changeRequire": self.txt_changeYQ.text,
+                           @"changeTitle": self.txt_treName.text,
+                           @"description": self.txt_treDes.text,
+                           @"images": url,
+                           @"lat": @([[KUserDefults objectForKey:kLat] floatValue]),
+                           @"lng": @([[KUserDefults objectForKey:KLng] floatValue]),
+                           @"memo": self.txt_treDes.text,
+                           @"name": self.txt_treName.text,
+                           @"treasureCategoryId": @([classID intValue]),
+                           @"type": _tmpBtn.tag==13?@1:@2
                            };
-    [ChangePlayNet requstSendBWClass:dic1 sucBlock:^(NSMutableArray *successArrValue) {
-        
-    } failBlock:^(NSString *failValue) {
-        
+    [ChangePlayNet requstSendBWClass:dic1 sucBlock:^(NSDictionary *successDicValue) {
+        [YTAlertUtil hideHUD];
+        [self.navigationController popViewControllerAnimated:YES];
+    } failBlock:^(NSError *failValue) {
+         [YTAlertUtil hideHUD];
     }];
 }
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
@@ -83,17 +95,29 @@
         ClassificationsController1 * class = [ClassificationsController1 new];
         class.title = @"宝物分类";
         class.arr_Data = self.arr_receive;
-        class.block = ^(NSString *classifiation) {
-            
-        };
+        WeakSelf
         class.block1 = ^(NSString *classifiation,NSString *classifiation1){
-            
+            classID = [classifiation description];
+            weakSelf.txt_treClass.text  = [classifiation1 description];
         };
         [self.navigationController pushViewController:class animated:YES];
+    }else if (textField.tag==4) {
+        [YTAlertUtil showTempInfo:@"交换类别"];
+    }else{
+        EditAllController * edit = [EditAllController new];
+        edit.receiveTxt = textField.text;
+        edit.block = ^(NSString *EditStr) {
+            textField.text = EditStr;
+        };
+        [self.navigationController pushViewController:edit animated:YES];
     }
     return NO;
 }
 - (IBAction)changStatusClick:(UIButton *)sender {
+    if (sender.tag==15) {
+        sender.selected = !sender.selected;
+        return;
+    }
     if (sender.tag!=13) {
         self.btn_HZW.selected = NO;
         self.btn_YJH.layer.borderColor = YSColor(253, 210, 161).CGColor;

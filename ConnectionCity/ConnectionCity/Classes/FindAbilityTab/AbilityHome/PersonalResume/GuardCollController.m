@@ -174,17 +174,4 @@
     datePicker.delegate = self;
     [self presentViewController:datePickManager animated:false completion:nil];
 }
--(void)textViewDidChange:(UITextView *)textView{
-    //首行缩进
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = 3;    //行间距
-    //    paragraphStyle.maximumLineHeight = 60;   /**最大行高*/
-    paragraphStyle.firstLineHeadIndent = 20.f;    /**首行缩进宽度*/
-    paragraphStyle.alignment = NSTextAlignmentJustified;
-    NSDictionary *attributes = @{
-                                 NSFontAttributeName:[UIFont systemFontOfSize:13],
-                                 NSParagraphStyleAttributeName:paragraphStyle
-                                 ,NSForegroundColorAttributeName:[UIColor hexColorWithString:@"#bbbbbb"]};
-    self.textView_Indro.attributedText = [[NSAttributedString alloc] initWithString:self.textView_Indro.text attributes:attributes];
-}
 @end

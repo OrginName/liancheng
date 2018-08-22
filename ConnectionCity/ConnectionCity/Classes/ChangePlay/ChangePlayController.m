@@ -14,6 +14,7 @@
 #import "RefineView.h"
 #import "PopThree.h"
 #import "SendTreasureController.h"
+#import "ChangePlayNet.h"
 #define ID @"ChangeCell"
 static NSString * collectionCellIndentider = @"collectionCellIndentider";
 @interface ChangePlayController ()<UICollectionViewDelegate,UICollectionViewDataSource,PopThreeDelegate>
@@ -132,22 +133,18 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
 }
 #pragma mark - 数据请求
 - (void)v1PlayTreasureList {
-    
-    NSDictionary *dic = @{@"areaCode": @"0",
-                          @"category": @"0",
-                          @"cityCode": @"0",
-                          @"distance": @"0",
-                          @"keyword": @"0",
-                          @"lat": @"0",
-                          @"lng": @"0",
-                          @"provinceCode": @"0",
-                          @"userStatus": @"0",
-                          @"validType": @"0"
-                          };
-    [YSNetworkTool POST:v1PlayTreasureList params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSDictionary *dic = @{
+                          @"areaCode":[KUserDefults objectForKey:kUserCityID],
+                          @"cityCode": [KUserDefults objectForKey:kUserCityID],
+                          @"distance": @"10",
+                          @"lat": [KUserDefults objectForKey:kLat],
+                          @"lng": [KUserDefults objectForKey:KLng],
+                        };
+    [ChangePlayNet requstBWList:dic sucBlock:^(NSMutableArray *successArrValue) {
         
-    } failure:nil];
-    
+    } failBlock:^(NSError *failValue) {
+        
+    }];
 }
 
 @end
@@ -193,5 +190,4 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     titleLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:titleLabel];
 }
-
 @end

@@ -63,7 +63,7 @@
                                                     <color key="textColor" red="0.42740643020000002" green="0.4274736643" blue="0.4273971915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写您的宝物名称" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xRp-5r-nR7">
+                                                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写您的宝物名称" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xRp-5r-nR7">
                                                     <rect key="frame" x="91" y="0.0" width="234" height="49"/>
                                                     <color key="textColor" red="0.76463013889999998" green="0.76474446060000001" blue="0.76461452249999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -112,7 +112,7 @@
                                                     <color key="textColor" red="0.42740643020000002" green="0.4274736643" blue="0.4273971915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择您的宝物类别" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mKe-tX-YCC">
+                                                <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择您的宝物类别" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mKe-tX-YCC">
                                                     <rect key="frame" x="91" y="0.0" width="234" height="49"/>
                                                     <color key="textColor" red="0.76463013889999998" green="0.76474446060000001" blue="0.76461452249999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -161,7 +161,7 @@
                                                     <color key="textColor" red="0.42740643020000002" green="0.4274736643" blue="0.4273971915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的宝物描述" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NFj-DQ-F4G">
+                                                <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的宝物描述" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NFj-DQ-F4G">
                                                     <rect key="frame" x="91" y="0.0" width="234" height="49"/>
                                                     <color key="textColor" red="0.76463013889999998" green="0.76474446060000001" blue="0.76461452249999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -291,7 +291,7 @@
                                                     <color key="textColor" red="0.42740643020000002" green="0.4274736643" blue="0.4273971915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入交换类别" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="727-XM-nMP">
+                                                <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入交换类别" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="727-XM-nMP">
                                                     <rect key="frame" x="91" y="0.0" width="234" height="49"/>
                                                     <color key="textColor" red="0.76463013889999998" green="0.76474446060000001" blue="0.76461452249999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -340,7 +340,7 @@
                                                     <color key="textColor" red="0.42740643020000002" green="0.4274736643" blue="0.4273971915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入交换标题" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6w0-IS-ecz">
+                                                <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入交换标题" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6w0-IS-ecz">
                                                     <rect key="frame" x="91" y="0.0" width="234" height="49"/>
                                                     <color key="textColor" red="0.76463013889999998" green="0.76474446060000001" blue="0.76461452249999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -389,7 +389,7 @@
                                                     <color key="textColor" red="0.42740643020000002" green="0.4274736643" blue="0.4273971915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入交换要求" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MWp-kn-jQm">
+                                                <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入交换要求" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MWp-kn-jQm">
                                                     <rect key="frame" x="90.5" y="0.0" width="234.5" height="49"/>
                                                     <color key="textColor" red="0.76463013889999998" green="0.76474446060000001" blue="0.76461452249999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -446,7 +446,7 @@
                                             <color key="textColor" red="0.42740643020000002" green="0.4274736643" blue="0.4273971915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsX-Os-SE4">
+                                        <button opaque="NO" tag="15" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsX-Os-SE4">
                                             <rect key="frame" x="10" y="12.5" width="15" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="ODz-ZT-C3N"/>

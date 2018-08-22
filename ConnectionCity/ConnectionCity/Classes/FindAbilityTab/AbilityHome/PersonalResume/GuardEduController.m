@@ -12,7 +12,8 @@
 #import "AbilityNet.h"
 #import "SortCollProController.h"
 #import <PGDatePicker/PGDatePickManager.h>
-@interface GuardEduController ()<UITextViewDelegate,LCDatePickerDelegate,PGDatePickerDelegate>
+//LCDatePickerDelegate
+@interface GuardEduController ()<UITextViewDelegate,PGDatePickerDelegate>
 {
     NSInteger currtenTag;
     NSString * _EduID;
@@ -174,9 +175,9 @@
 }
 //创建日期插件
 -(void)initDate{
-    self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
-    self.myDatePick.delegate  = self;
-    [self.view addSubview:self.myDatePick];
+//    self.myDatePick = [[LCDatePicker alloc] initWithFrame:kScreen];
+//    self.myDatePick.delegate  = self;
+//    [self.view addSubview:self.myDatePick];
 }
 -(void)tanDatePick{
     PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
@@ -194,18 +195,6 @@
     datePicker.delegate = self;
     [self presentViewController:datePickManager animated:false completion:nil];
 }
--(void)textViewDidChange:(UITextView *)textView{
-    //首行缩进
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = 3;    //行间距
-    //    paragraphStyle.maximumLineHeight = 60;   /**最大行高*/
-    paragraphStyle.firstLineHeadIndent = 20.f;    /**首行缩进宽度*/
-    paragraphStyle.alignment = NSTextAlignmentJustified;
-    NSDictionary *attributes = @{
-                                 NSFontAttributeName:[UIFont systemFontOfSize:13],
-                                 NSParagraphStyleAttributeName:paragraphStyle
-                                 ,NSForegroundColorAttributeName:[UIColor hexColorWithString:@"#bbbbbb"]};
-    self.textView_Indro.attributedText = [[NSAttributedString alloc] initWithString:self.textView_Indro.text attributes:attributes];
-}
+
 @end
 

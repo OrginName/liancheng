@@ -34,11 +34,43 @@
  
  @param sucBlock 成功回调
  */
-+(void)requstSendBWClass:(NSDictionary *)param sucBlock:(SuccessArrBlock)sucBlock failBlock:(FailDicBlock)failBlock{
-    [YSNetworkTool POST:v1PlayTreasureCreate params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        
++(void)requstSendBWClass:(NSDictionary *)param sucBlock:(SuccessDicBlock)sucBlock failBlock:(FailBlock)failBlock{
+    [YSNetworkTool POST:v1PlayTreasureCreate params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        sucBlock(responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+        failBlock(error);
     }];
+}
+/**
+ 宝物列表
+ 
+ @param sucBlock 成功回调
+ */
++(void)requstBWList:(NSDictionary *)param sucBlock:(SuccessArrBlock)sucBlock failBlock:(FailBlock)failBlock{
+    [YSNetworkTool POST:v1PlayTreasureList params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:nil];
+}
+/**
+ 发布互换信息
+ 
+ @param sucBlock 成功回调
+ */
++(void)requstSendHH:(NSDictionary *)param sucBlock:(SuccessDicBlock)sucBlock failBlock:(FailBlock)failBlock{
+    [YSNetworkTool POST:v1PlayIdentityCreate params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        sucBlock(responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failBlock(error);
+    }];
+}
+/**
+ 宝物列表
+ 
+ @param sucBlock 成功回调
+ */
++(void)requstHHList:(NSDictionary *)param sucBlock:(SuccessArrBlock)sucBlock failBlock:(FailBlock)failBlock{
+    [YSNetworkTool POST:v1PlayIdentityPage params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:nil];
 }
 @end

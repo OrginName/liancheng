@@ -10,6 +10,7 @@
 #import "SwapHomeCell.h"
 #import "SendSwapController.h"
 #import "ShowResumeController.h"
+#import "ChangePlayNet.h"
 @interface SwapController ()<UITableViewDelegate,UITableViewDataSource,SwapHeadDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,strong) SwapHeadView * headView ;
@@ -22,6 +23,7 @@
     [super viewDidLoad];
     [super setFlag_back:YES];//设置返回按钮
     [self setUI];
+    [self loadData];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -43,8 +45,7 @@
     NSArray *  arr = @[left1,right2];
     self.navigationItem.leftBarButtonItems = arr;
     [self initNavi];
-}
-
+} 
 //互换身份按钮点击
 -(void)AddressClick:(UIButton *)btn{
     [YTAlertUtil showTempInfo:@"互换身份"];
@@ -52,6 +53,19 @@
 //发布按钮点击
 -(void)SearchClick{
     [self.navigationController pushViewController:[super rotateClass:@"SendSwapController"] animated:YES];
+}
+//加载
+-(void)loadData{
+    NSDictionary * dic = @{
+                           @"cityCode": @320200,
+                           @"pageNumber": @1,
+                           @"pageSize": @5
+                           };
+    [ChangePlayNet requstHHList:dic sucBlock:^(NSMutableArray *successArrValue) {
+        
+    } failBlock:^(NSError *failValue) {
+        
+    }];
 }
 //表头部点击
 #pragma mark ----SwapHeadDelegate-----
