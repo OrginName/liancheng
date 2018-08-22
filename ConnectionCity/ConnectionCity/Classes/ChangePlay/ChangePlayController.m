@@ -31,6 +31,7 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     [super viewDidLoad];
     [super setFlag_back:YES];//设置返回按钮
     [self setUI];
+    [self v1PlayTreasureList];
      _flag = NO;
 }
 //导航栏标题点击
@@ -129,6 +130,26 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
         self.navigationController.navigationBar.hidden= YES;
     }
 }
+#pragma mark - 数据请求
+- (void)v1PlayTreasureList {
+    
+    NSDictionary *dic = @{@"areaCode": @"0",
+                          @"category": @"0",
+                          @"cityCode": @"0",
+                          @"distance": @"0",
+                          @"keyword": @"0",
+                          @"lat": @"0",
+                          @"lng": @"0",
+                          @"provinceCode": @"0",
+                          @"userStatus": @"0",
+                          @"validType": @"0"
+                          };
+    [YSNetworkTool POST:v1PlayTreasureList params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:nil];
+    
+}
+
 @end
 //FilterLayout
 @implementation ChangeLayout
@@ -172,4 +193,5 @@ static NSString * collectionCellIndentider = @"collectionCellIndentider";
     titleLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:titleLabel];
 }
+
 @end
