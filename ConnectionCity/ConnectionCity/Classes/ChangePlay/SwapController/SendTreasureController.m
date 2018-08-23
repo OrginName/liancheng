@@ -16,7 +16,7 @@
 {
     CGFloat itemHeigth;
     UIButton * _tmpBtn;
-    NSString * classID;
+    NSString * classID,*classID1;
 }
 @property (weak, nonatomic) IBOutlet UITextField *txt_treName;//宝物名称
 @property (weak, nonatomic) IBOutlet UITextField *txt_treClass;
@@ -43,9 +43,8 @@
 -(void)Upload{
     if (self.Arr_Url.count==0) {
         return [YTAlertUtil showTempInfo:@"请拍摄宝物图片"];
-    }
-//    ||[YSTools dx_isNullOrNilWithObject:self.txt_changeClass.text]
-    if ([YSTools dx_isNullOrNilWithObject:self.txt_treName.text]||[YSTools dx_isNullOrNilWithObject:self.txt_treClass.text]||[YSTools dx_isNullOrNilWithObject:self.txt_treDes.text]||[YSTools dx_isNullOrNilWithObject:self.txt_changeYQ.text]||[YSTools dx_isNullOrNilWithObject:self.txt_changeName.text]) {
+    } 
+    if ([YSTools dx_isNullOrNilWithObject:self.txt_treName.text]||[YSTools dx_isNullOrNilWithObject:self.txt_treClass.text]||[YSTools dx_isNullOrNilWithObject:self.txt_treDes.text]||[YSTools dx_isNullOrNilWithObject:self.txt_changeYQ.text]||[YSTools dx_isNullOrNilWithObject:self.txt_changeName.text]||[YSTools dx_isNullOrNilWithObject:self.txt_changeClass.text]) {
         return [YTAlertUtil showTempInfo:@"请填写完整"];
     }
     if (!self.btn_agree.selected) {
@@ -71,7 +70,7 @@
 -(void)sendData:(NSString *)url{
     NSDictionary * dic1 = @{
                             @"areaCode":@([[KUserDefults objectForKey:kUserCityID]intValue]),
-                           @"changeCategoryId": @0,//暂不知道是什么
+                           @"changeCategoryId": @([classID1 intValue]),//暂不知道是什么
                            @"changeRequire": self.txt_changeYQ.text,
                            @"changeTitle": self.txt_treName.text,
                            @"description": self.txt_treDes.text,
@@ -91,14 +90,19 @@
     }];
 }
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    if (textField.tag==2) {
+    if (textField.tag==2||textField.tag==4) {
         ClassificationsController1 * class = [ClassificationsController1 new];
         class.title = @"宝物分类";
         class.arr_Data = self.arr_receive;
         WeakSelf
         class.block1 = ^(NSString *classifiation,NSString *classifiation1){
-            classID = [classifiation description];
-            weakSelf.txt_treClass.text  = [classifiation1 description];
+            if (textField.tag==2) {
+                classID = [classifiation description];
+                weakSelf.txt_treClass.text  = [classifiation1 description];
+            }else{
+                classID1 = [classifiation description];
+                weakSelf.txt_changeClass.text = [classifiation1 description];
+            }
         };
         [self.navigationController pushViewController:class animated:YES];
     }else if (textField.tag==4) {

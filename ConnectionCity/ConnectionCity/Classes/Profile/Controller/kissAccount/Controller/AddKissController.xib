@@ -213,7 +213,7 @@
                                             <color key="textColor" red="0.27168682830000002" green="0.2743767969" blue="0.2743767969" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(请填写您共享的收入比例)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fe3-Te-AqP">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(请填写共享比例0.0~1.0)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fe3-Te-AqP">
                                             <rect key="frame" x="99.5" y="0.0" width="235.5" height="59"/>
                                             <color key="textColor" red="0.70973342660000005" green="0.70983988050000002" blue="0.70971876379999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>

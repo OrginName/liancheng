@@ -522,6 +522,8 @@ static NSString * const v1usercloseaccountbillmonth = @"/v1/user/close/account/b
 static NSString * const v1usercloseaccountbillyear = @"/v1/user/close/account/bill/year";
 //修改锁定密码
 static NSString * const v1usercloseaccountchangpwd = @"/v1/user/close/account/chang-pwd";
+//忘记锁定密码
+static NSString * const v1UserCloseAccountForget = @"/v1/user/close/account/forget";
 //添加亲密账户
 static NSString * const v1usercloseaccountcreate = @"/v1/user/close/account/create";
 //删除亲密账户

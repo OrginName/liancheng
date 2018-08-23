@@ -133,7 +133,7 @@
 #pragma mark - KissCellDelegate
 - (void)kissCell:(KissCell *)cell deleteBtnClick:(UIButton *)btn {
     NSIndexPath * index = [self.tableView indexPathForCell:cell];
-    KissModel * model = _mutDataArr[index.row];
+    KissModel * model = _mutDataArr[index.row-1];
     WeakSelf
     [YTAlertUtil alertDualWithTitle:@"连程" message:KString(@"您即将解除亲密账户%@", model.closeUserId) style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
         

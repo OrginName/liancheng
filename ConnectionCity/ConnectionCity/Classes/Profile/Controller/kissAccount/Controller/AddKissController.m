@@ -83,8 +83,8 @@
     if ([YSTools dx_isNullOrNilWithObject:self.txt_workCircle.text]) {
         return [YTAlertUtil showTempInfo:@"请输入工作周期"];
     }
-    if ([YSTools dx_isNullOrNilWithObject:self.txt_ShareRadio.text]) {
-        return [YTAlertUtil showTempInfo:@"请输入共享比例"];
+    if ([YSTools dx_isNullOrNilWithObject:self.txt_ShareRadio.text]||[self.txt_ShareRadio.text floatValue]>1) {
+        return [YTAlertUtil showTempInfo:@"请输入正确的共享比例"];
     }
     if ([YSTools dx_isNullOrNilWithObject:self.txt_password.text]) {
         return [YTAlertUtil showTempInfo:@"请输入锁定密码并牢记"];

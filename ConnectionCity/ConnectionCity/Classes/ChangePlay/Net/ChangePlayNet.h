@@ -39,7 +39,7 @@ typedef void (^FailBlock) (NSError * failValue);
  */
 +(void)requstSendHH:(NSDictionary *)param sucBlock:(SuccessDicBlock)sucBlock failBlock:(FailBlock)failBlock;
 /**
- 宝物列表
+ 身份互换信息列表
  
  @param sucBlock 成功回调
  */

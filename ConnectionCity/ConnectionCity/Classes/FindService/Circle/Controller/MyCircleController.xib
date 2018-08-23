@@ -62,6 +62,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="JHQ-8l-c2k"/>
                             </constraints>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="视频">
                                 <color key="titleColor" red="0.43917000290000002" green="0.43923890589999998" blue="0.43916058540000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -90,6 +91,7 @@
                             <rect key="frame" x="236.5" y="0.0" width="118.5" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="动态管理">
                                 <color key="titleColor" red="0.43917000290000002" green="0.43923890589999998" blue="0.43916058540000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>

@@ -53,7 +53,7 @@
  */
 -(void)loadLS{
     NSString * url = _tmpBtn.tag==1?v1usercloseaccountbilldate:_tmpBtn.tag==2?v1usercloseaccountbillmonth:v1usercloseaccountbillyear;
-    [YSNetworkTool POST:url params:@{@"date":self.txt_date.text} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:url params:@{@"date":self.txt_date.text,@"userId": @([self.modelReceive.closeUserId intValue])} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         

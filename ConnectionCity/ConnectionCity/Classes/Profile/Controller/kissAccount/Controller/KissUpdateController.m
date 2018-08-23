@@ -65,7 +65,6 @@
             weekStr = weekStr.length!=0?[weekStr substringToIndex:weekStr.length-1]:@"";
             weekIDC = weekID.length!=0?[weekID substringToIndex:weekID.length-1]:@"";
             textField.text = weekStr;
-            YTLog(@"%@-%@",weekStr,weekID);
         };
         self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.selectView];
         [self.refine alertSelectViewshow];
@@ -98,8 +97,8 @@
                 if ([YSTools dx_isNullOrNilWithObject:self.txt_weekCircle.text]) {
                     return [YTAlertUtil showTempInfo:@"请输入工作周期"];
                 }
-                if ([YSTools dx_isNullOrNilWithObject:self.txt_shareRadio.text]) {
-                    return [YTAlertUtil showTempInfo:@"请输入共享比例"];
+                if ([YSTools dx_isNullOrNilWithObject:self.txt_shareRadio.text]||[self.txt_shareRadio.text floatValue]>1) {
+                    return [YTAlertUtil showTempInfo:@"请输入正确的共享比例(0.0~1.0)"];
                 }
                 if ([YSTools dx_isNullOrNilWithObject:self.txt_password.text]) {
                     return [YTAlertUtil showTempInfo:@"请输入锁定密码"];
