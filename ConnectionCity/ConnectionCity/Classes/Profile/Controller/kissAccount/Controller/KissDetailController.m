@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab_monthMoney;
 @property (weak, nonatomic) IBOutlet UILabel *lab_yearMoney;
 @property (weak, nonatomic) IBOutlet UITextField *txt_date;
+@property (nonatomic,strong) KissModel * modelReceive;
 @end
 
 @implementation KissDetailController
@@ -34,10 +35,13 @@
     [self initData];
 }
 -(void)initData{
-    self.lab_nickName.text = self.modelReceive.user.nickName?self.modelReceive.user.nickName:self.modelReceive.user.ID?self.modelReceive.user.ID:@"-";
     self.txt_date.text = [NSDate stringDate:[NSDate date]];
     WeakSelf
-    [YSNetworkTool POST:v1usercloseaccountorderstatistics params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1UserCloseAccountGet params:@{@"id": @([self.ID intValue])} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        weakSelf.modelReceive = [KissModel mj_objectWithKeyValues:responseObject[kData]];
+        weakSelf.lab_nickName.text = weakSelf.modelReceive.user.nickName?weakSelf.modelReceive.user.nickName:KString(@"用户%@", weakSelf.modelReceive.user.ID);
+    } failure:nil];
+    [YSNetworkTool POST:v1UserCloseAccountBillStatistics params:@{@"id": @([self.ID intValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         dispatch_async(dispatch_get_main_queue(), ^{
             weakSelf.lab_todayMoney.text = KString(@"累计%@元", responseObject[kData][@"todayAmount"]);
             weakSelf.lab_yearMoney.text = KString(@"累计%@元", responseObject[kData][@"yearAmount"]);;
@@ -53,8 +57,15 @@
  */
 -(void)loadLS{
     NSString * url = _tmpBtn.tag==1?v1usercloseaccountbilldate:_tmpBtn.tag==2?v1usercloseaccountbillmonth:v1usercloseaccountbillyear;
-    [YSNetworkTool POST:url params:@{@"date":self.txt_date.text,@"userId": @([self.modelReceive.closeUserId intValue])} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+    [YSNetworkTool POST:url params:@{@"date":self.txt_date.text,@"id": @([self.ID intValue])} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary * dic1 = responseObject[kData];
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic setObject:@1 forKey:@"lockColumn"];
+        NSArray *data = @[@[@"连程号",@"比例",@"收入"]
+                          ,@[dic1[@"closeUserId"],KString(@"%.0f%%", [dic1[@"rate"] floatValue]*100),[dic1[@"incomeAmount"] description]]
+                          ];
+        [dic setObject:data forKey:@"data"];
+        [self updateMyList:dic withColumnWidths:@[@3,@3,@3]];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
@@ -105,13 +116,6 @@
     self.view.backgroundColor = kCommonBGColor;
     self.view_date.layer.borderColor = YSColor(247, 247, 247).CGColor;
     self.view_date.layer.borderWidth = 1;
-    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:@1 forKey:@"lockColumn"];
-    NSArray *data = @[@[@"连程号",@"比例",@"收入"]
-                      ,@[@"100001",@"12%",@"100"]
-                      ];
-    [dic setObject:data forKey:@"data"];
-    [self updateMyList:dic withColumnWidths:@[@3,@3,@3]];
 }
 -(void)tanDatePick:(PGDatePickerMode) mode{
     PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];

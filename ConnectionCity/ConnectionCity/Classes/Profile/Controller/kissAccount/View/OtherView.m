@@ -167,7 +167,7 @@
     NSIndexPath * index  = [self.tableView indexPathForCell:cell];
     KissDetailController * deltail = [KissDetailController new];
     deltail.title = @"账户详情";
-    deltail.modelReceive = _mutDataArr[index.row];
+    deltail.ID = [_mutDataArr[index.row] modelId];
     [self.controller.navigationController pushViewController:deltail animated:YES];
 }
 #pragma mark - 点击事件

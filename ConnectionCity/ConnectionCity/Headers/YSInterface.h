@@ -534,9 +534,13 @@ static NSString * const v1usercloseaccountlist = @"/v1/user/close/account/list";
 static NSString * const v1usercloseaccountopenedlist = @"/v1/user/close/account/opened/list";
 //我的流水汇总
 static NSString * const v1usercloseaccountorderstatistics = @"/v1/user/close/account/order/statistics";
+//我的流水汇总
+static NSString * const v1UserCloseAccountBillStatistics = @"/v1/user/close/account/bill/statistics";
+
 //修改亲密账户
 static NSString * const v1usercloseaccountupdate = @"/v1/user/close/account/update";
-
+//亲密账户详情
+static NSString * const v1UserCloseAccountGet = @"/v1/user/close/account/get";
 
 //公工接口
 //关注

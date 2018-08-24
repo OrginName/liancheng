@@ -41,7 +41,7 @@
         self.txt_weekCircle.text = [NSString stringWithFormat:@"%@,%@",str,self.txt_weekCircle.text];
     }
     self.txt_workTime.text = self.model.workTime;
-    self.txt_shareRadio.text = [self.model.rate description];
+    self.txt_shareRadio.text = KString(@"%.2f", [self.model.rate floatValue]);
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {

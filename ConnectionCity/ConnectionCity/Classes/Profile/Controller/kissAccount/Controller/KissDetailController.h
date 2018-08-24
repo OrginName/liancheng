@@ -10,5 +10,5 @@
 #import "BaoBiaoVC.h"
 #import "KissModel.h"
 @interface KissDetailController : BaoBiaoVC
-@property (nonatomic,strong) KissModel * modelReceive;
+@property (nonatomic,copy) NSString * ID;
 @end
