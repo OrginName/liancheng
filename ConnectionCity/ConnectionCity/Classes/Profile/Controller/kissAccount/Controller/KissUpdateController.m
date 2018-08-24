@@ -48,15 +48,10 @@
     [textField resignFirstResponder];
     if (textField.tag==2) {
         CCPPickerView *pickerView = [[CCPPickerView alloc] initWithpickerViewWithCenterTitle:@"" andCancel:@"取消" andSure:@"确定"];
-        
         [pickerView pickerVIewClickCancelBtnBlock:^{
-            
             NSLog(@"取消");
-            
         } sureBtClcik:^(NSString *leftString) {
-            
-            textField.text = leftString;
-            
+            textField.text = leftString; 
         }];
     }else if (textField.tag==1){
         self.selectView = [[[NSBundle mainBundle] loadNibNamed:@"SelectWeek" owner:nil options:nil] firstObject];
