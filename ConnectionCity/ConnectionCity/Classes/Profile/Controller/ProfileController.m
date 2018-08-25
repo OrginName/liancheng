@@ -137,13 +137,13 @@
         
         return;
     }
-    //商务合作
-    if(indexPath.row==7){
-        AgreementController *agreementVC = [[AgreementController alloc]init];
-        agreementVC.alias = cooperation;
-        [self.navigationController pushViewController:agreementVC animated:YES];
-        return;
-    }
+//    //商务合作
+//    if(indexPath.row==7){
+//        AgreementController *agreementVC = [[AgreementController alloc]init];
+//        agreementVC.alias = cooperation;
+//        [self.navigationController pushViewController:agreementVC animated:YES];
+//        return;
+//    }
     NSString *className = self.menuModels[indexPath.row].mClass;
     UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc]init];
     vc.view.backgroundColor = [UIColor whiteColor];
