@@ -48,7 +48,7 @@
             weakSelf.lab_monthMoney.text = KString(@"累计%@元", responseObject[kData][@"monthAmount"]);;
         });
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+
     }];
     [self loadLS];
 } 
@@ -57,7 +57,8 @@
  */
 -(void)loadLS{
     NSString * url = _tmpBtn.tag==1?v1usercloseaccountbilldate:_tmpBtn.tag==2?v1usercloseaccountbillmonth:v1usercloseaccountbillyear;
-    [YSNetworkTool POST:url params:@{@"date":self.txt_date.text,@"id": @([self.ID intValue])} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSString * key = _tmpBtn.tag==1?@"day":_tmpBtn.tag==2?@"month":@"year";
+    [YSNetworkTool POST:url params:@{key:self.txt_date.text,@"id": @([self.ID intValue])} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary * dic1 = responseObject[kData];
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         [dic setObject:@1 forKey:@"lockColumn"];
