@@ -15,6 +15,7 @@
 #import "AbilttyMo.h"
 @interface CustomMap()<MAMapViewDelegate,CustomLocationDelegate,UITextFieldDelegate>{
     CLLocation * currentLocation;
+    NSInteger flag;
 }
 @property (nonatomic,assign) id controller;
 @property (nonatomic, strong) CustomAnnotationView * annotationView;
@@ -28,7 +29,7 @@
         ///初始化地图
         ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
         MAMapView * map = [[MAMapView alloc] init];
-        map.showsUserLocation = YES;
+//        map.showsUserLocation = YES;
 //        map.userTrackingMode = MAUserTrackingModeFollow;
         map.showsCompass= NO;
         map.showsScale= NO;  //设置成NO表示不显示比例尺；YES表示显示比例尺
@@ -38,7 +39,6 @@
         [self addSubview:self.mapView];
         self.location = [[CustomLocatiom alloc] init];
         _location.delegate = self;
-        
         UIButton * btn = [[UIButton alloc] init];
         [btn setBackgroundImage:[UIImage imageNamed:@"Location"] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(locationClick) forControlEvents:UIControlEventTouchUpInside];
@@ -47,11 +47,13 @@
         [self addSubview:self.image_Mark];
 //        [self initAnnotations];
 //        [self setArr_Mark:self.Arr_Mark];
+        flag=0;
     }
     return self;
 }
 //定位当前自己位置
 -(void)locationClick{
+    [self.location startUpdatingLocation];
     if(self.mapView.userLocation.updating && self.mapView.userLocation.location) {
         [self.mapView setCenterCoordinate:self.mapView.userLocation.location.coordinate animated:YES];
         [self.mapView setZoomLevel:15.1 animated:NO];
@@ -238,10 +240,16 @@
     [self.mapView addAnnotations:self.annotations];
     
 }
+- (void)mapView:(MAMapView *)mapView mapWillZoomByUser:(BOOL)wasUserAction{
+    if (wasUserAction) {
+        [self.location cleanUpAction];
+    } 
+}
 - (void)mapView:(MAMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     if (currentLocation==nil) {
         return;
     }
+    [self.location cleanUpAction];
     MACoordinateRegion region;
     CLLocationCoordinate2D centerCoordinate = mapView.region.center;
     region.center= centerCoordinate;

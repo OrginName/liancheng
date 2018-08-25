@@ -15,6 +15,7 @@
 @property (nonatomic,assign) NSInteger page;
 @property (nonatomic,strong) NSDictionary * dic;
 -(instancetype)initWithFrame:(CGRect)frame withControl:(UIViewController *)control;
+-(void)loadData:(NSDictionary *)dic;
 @end
 
 @interface TrvalTripLayout : UICollectionViewFlowLayout

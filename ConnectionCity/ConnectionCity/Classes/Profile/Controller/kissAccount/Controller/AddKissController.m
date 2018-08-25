@@ -83,7 +83,7 @@
     if ([YSTools dx_isNullOrNilWithObject:self.txt_workCircle.text]) {
         return [YTAlertUtil showTempInfo:@"请输入工作周期"];
     }
-    if ([YSTools dx_isNullOrNilWithObject:self.txt_ShareRadio.text]||[self.txt_ShareRadio.text floatValue]>1) {
+    if ([YSTools dx_isNullOrNilWithObject:self.txt_ShareRadio.text]||[self.txt_ShareRadio.text floatValue]<1||[self.txt_ShareRadio.text floatValue]>100) {
         return [YTAlertUtil showTempInfo:@"请输入正确的共享比例"];
     }
     if ([YSTools dx_isNullOrNilWithObject:self.txt_password.text]) {
@@ -93,7 +93,7 @@
                            @"closeUserId": @([self.txt_TALCH.text intValue]),
                            @"id": @([self.lab_LCH.text intValue]),
                            @"lockPassword": self.txt_password.text,
-                           @"rate": @((floorf([self.txt_ShareRadio.text floatValue]*100 + 0.5))/100),
+                           @"rate": @((floorf([self.txt_ShareRadio.text floatValue] + 0.5))/100),
                            @"workPeriod": weekIDC,
                            @"workTime": self.txt_worTime.text
                            };

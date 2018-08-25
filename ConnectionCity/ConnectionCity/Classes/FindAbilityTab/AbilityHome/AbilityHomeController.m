@@ -203,6 +203,7 @@
     btn.text = name;
 }
 -(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng{
+    [self.cusMap.location cleanUpAction];
     UILabel * btn = (UILabel *)[self.view_SX viewWithTag:1];
     btn.text = name;
     [self loadServiceList:@{@"lat":lat,@"lng":lng,@"cityID":ID}];
@@ -230,9 +231,8 @@
         show.zIndex = index;
         NSLog(@"当前zindex为：%ld",index);
         [self.navigationController pushViewController:show animated:YES];
-    }else{
-        [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
     }
+    
 }
 //回到当前位置的按钮点击
 -(void)currentLocationClick:(CLLocationCoordinate2D)location{
@@ -243,10 +243,12 @@
     [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude)}];
 }
 -(void)cityMo:(CityMo *)mo{
+    [self.cusMap.location cleanUpAction];
     [self loadServiceList:@{@"lat":mo.lat,@"lng":mo.lng,@"cityID":mo.ID}];
     [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([mo.lat floatValue], [mo.lng floatValue])];
     [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
 }
+
 #pragma mark ---初始化关键字button加载-----
 -(void)loadketBtn:(NSMutableArray *)arr{
     CustomScro * cus = [[CustomScro alloc] initWithFrame:CGRectMake(103, 52, kScreenWidth-113, 47) arr:[arr copy] flag:NO];

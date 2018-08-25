@@ -38,8 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      _page=1;
-//    [KUserDefults objectForKey:kUserCityID]
-    _cityID = @"";
+    _cityID = [KUserDefults objectForKey:kUserCityID];
     [self setUI];
     [self initData];
 }
@@ -60,8 +59,8 @@
                            @"cityCode": dic[@"cityID"],
                            @"distance": dic[@"distance"]?dic[@"distance"]:@"",
                            @"gender": dic[@"gender"]?dic[@"gender"]:@"",
-                           @"lat": @([[KUserDefults objectForKey:kLat]floatValue]),
-                           @"lng": @([[KUserDefults objectForKey:KLng]floatValue]),
+                           @"lat": @([dic[@"lat"]?dic[@"lat"]:[KUserDefults objectForKey:kLat] floatValue]),
+                           @"lng": @([dic[@"lng"]?dic[@"lng"]:[KUserDefults objectForKey:KLng] floatValue]),
                            @"pageNumber": @(_page),
                            @"pageSize": @15,
                            @"userStatus": dic[@"userStatus"]?dic[@"userStatus"]:@"",
@@ -129,26 +128,30 @@
 //获取当前选取的城市model
 #pragma mark --- JFCityViewControllerDelegate-----
 -(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng{
-    [self loadData:ID name:name];
+    [self loadData:ID name:name lat:lat lng:lng];
     _cityID = ID;
-    [self.tab_Bottom.mj_header beginRefreshing];
+//    _page=1;
+//    [self requstLoad:@{@"cityID":ID,@"lat":lat,@"lng":lng}];
     self.btnView.width = [YSTools caculateTheWidthOfLableText:15 withTitle:name]+20;
 }
 -(void)cityMo:(CityMo *)mo{
-    [self loadData:mo.ID name:mo.name];
+    [self loadData:mo.ID name:mo.name lat:mo.lat lng:mo.lng];
     _cityID = mo.ID;
-    [self.tab_Bottom.mj_header beginRefreshing];
+//    _page=1;
+//    [self requstLoad:@{@"cityID":mo.ID,@"lat":mo.lat,@"lng":mo.lng}];
     self.btnView.width = [YSTools caculateTheWidthOfLableText:15 withTitle:mo.name]+20;
 }
--(void)loadData:(NSString *)ID name:(NSString *)name{
+-(void)loadData:(NSString *)ID name:(NSString *)name lat:(NSString *)lat lng:(NSString *)lng{
     [self.backBtn setTitle:name forState:UIControlStateNormal];
     [self.data_Arr removeAllObjects];
     _cityID = ID;
     _page = 1;
+    [self requstLoad:@{@"cityID":ID,@"lat":lat,@"lng":lng}];
     [self.tab_Bottom.mj_header beginRefreshing];
     self.trval.page=1;
     self.trval.cityID = ID;
     [self.trval.data_Arr removeAllObjects];
+    [self.trval loadData:@{@"cityID":ID,@"lat":lat,@"lng":lng}];
     [self.trval.bollec_bottom.mj_header beginRefreshing];
     self.btnView.width = [YSTools caculateTheWidthOfLableText:15 withTitle:name]+20;
 }

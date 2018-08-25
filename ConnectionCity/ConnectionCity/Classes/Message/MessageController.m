@@ -194,6 +194,7 @@
     [btn setTitle:name forState:UIControlStateNormal];
 }
 -(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng{
+    [self.cusMap.location cleanUpAction];
     UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];
     [btn setTitle:name forState:UIControlStateNormal];
     [self loadServiceList:@{@"lat":lat,@"lng":lng}];
@@ -201,7 +202,7 @@
     [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
 }
 -(void)cityMo:(CityMo *)mo{
-//    ,@"cityCode":mo.ID
+    [self.cusMap.location cleanUpAction];
     [self loadServiceList:@{@"lat":mo.lat,@"lng":mo.lng}];
     [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([mo.lat floatValue], [mo.lng floatValue])];
     [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
@@ -272,8 +273,6 @@
         show.zIndex = index;
         NSLog(@"当前zindex为：%ld",index);
         [self.navigationController pushViewController:show animated:YES];
-    }else{
-        [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
     }
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -296,7 +295,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 //    if ([KUserDefults objectForKey:kUserCityID]!=nil) {
-        [self.cusMap locationClick];
+//        [self.cusMap locationClick];
 //    }
 }
 -(void)initData{

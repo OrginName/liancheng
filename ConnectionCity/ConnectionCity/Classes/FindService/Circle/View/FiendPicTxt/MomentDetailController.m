@@ -15,6 +15,8 @@
 #import "CommentView.h"
 #import <IQKeyboardManager.h>
 #import "ServiceListController.h"
+#import "ServiceHomeNet.h"
+#import "ShowResumeController.h"
 @interface MomentDetailController ()<UITableViewDelegate,UITableViewDataSource,CommentViewDelegate>
 {
     NSInteger CurrentIndex;
@@ -79,11 +81,33 @@
         [weakSelf saveClick];
     };//收藏 
     self.momment.YDBlock = ^{
-        ServiceListController * serive = [ServiceListController new];
-        serive.user = weakSelf.receiveMo.userMo;
-        [weakSelf.navigationController pushViewController:serive animated:YES];
+//        ServiceListController * serive = [ServiceListController new];
+//        serive.user = weakSelf.receiveMo.userMo;
+//        [weakSelf.navigationController pushViewController:serive animated:YES];
+        [weakSelf loadServiceList];
     };//约单
     [self.tab_Bottom reloadData];
+}
+//加载服务列表数据
+-(void)loadServiceList{
+    NSDictionary * dic1 = @{
+                            @"cityCode":self.receiveMo.userMo.cityCode?self.self.receiveMo.userMo.cityCode:@"",
+                            @"lat": @([self.receiveMo.userMo.lat floatValue]),
+                            @"lng": @([self.receiveMo.userMo.lng floatValue]),
+                            @"userId":self.receiveMo.userMo.ID
+                            };
+    //    加载服务列表
+    [ServiceHomeNet requstServiceList:dic1 withSuc:^(NSMutableArray *successArrValue) {
+        if (successArrValue.count==0) {
+            return [YTAlertUtil showTempInfo:@"该用户暂无服务"];
+        }
+        ShowResumeController * show = [ShowResumeController new];
+        show.Receive_Type = ENUM_TypeTrval;
+        show.data_Count = successArrValue;
+        __block NSUInteger index = 0;
+        show.zIndex = index;
+        [self.navigationController pushViewController:show animated:YES];
+    }];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;

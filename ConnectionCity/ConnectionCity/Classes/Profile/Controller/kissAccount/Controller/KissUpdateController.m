@@ -41,7 +41,7 @@
         self.txt_weekCircle.text = [NSString stringWithFormat:@"%@,%@",str,self.txt_weekCircle.text];
     }
     self.txt_workTime.text = self.model.workTime;
-    self.txt_shareRadio.text = KString(@"%.2f", [self.model.rate floatValue]);
+    self.txt_shareRadio.text = KString(@"%.2f", [self.model.rate floatValue]*100);
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
@@ -92,8 +92,8 @@
                 if ([YSTools dx_isNullOrNilWithObject:self.txt_weekCircle.text]) {
                     return [YTAlertUtil showTempInfo:@"请输入工作周期"];
                 }
-                if ([YSTools dx_isNullOrNilWithObject:self.txt_shareRadio.text]||[self.txt_shareRadio.text floatValue]>1) {
-                    return [YTAlertUtil showTempInfo:@"请输入正确的共享比例(0.0~1.0)"];
+                if ([YSTools dx_isNullOrNilWithObject:self.txt_shareRadio.text]||[self.txt_shareRadio.text floatValue]<1||[self.txt_shareRadio.text floatValue]>100) {
+                    return [YTAlertUtil showTempInfo:@"请输入正确的共享比例(1~100)"];
                 }
                 if ([YSTools dx_isNullOrNilWithObject:self.txt_password.text]) {
                     return [YTAlertUtil showTempInfo:@"请输入锁定密码"];
@@ -115,7 +115,7 @@
                            @"closeUserId": @([self.model.closeUserId intValue]),
                            @"id": @([self.model.modelId intValue]),
                            @"lockPassword": self.txt_password.text,
-                           @"rate": @((floorf([self.txt_shareRadio.text floatValue]*100 + 0.5))/100),
+                           @"rate": @((floorf([self.txt_shareRadio.text floatValue] + 0.5))/100),
                            @"workPeriod": weekIDC.length==0?self.model.workPeriod:weekIDC,
                            @"workTime": self.txt_workTime.text
                            };
