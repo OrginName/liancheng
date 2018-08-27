@@ -38,7 +38,7 @@
 +(void)requstServiceList:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock{
     [YSNetworkTool POST:v1ServiceList params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray * arr = [NSMutableArray array];
-        if ([responseObject[@"data"] isKindOfClass:[NSArray class]]) {
+        if ([responseObject[@"data"] isKindOfClass:[NSArray class]]&&[responseObject[@"data"] count]!=0){
             for (int i=0; i<[responseObject[@"data"] count]; i++) {
                 NSMutableArray * arr1 = [NSMutableArray array];
                 UserMo * user = [UserMo mj_objectWithKeyValues:responseObject[@"data"][i]];

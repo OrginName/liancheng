@@ -50,7 +50,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab_Notice;
 @property (nonatomic,strong) RefineView * refine;
 @property (nonatomic,strong) FirstTanView * first;
-@property (nonatomic,strong)CustomMap * cusMap;
+@property (nonatomic,strong) CustomMap * cusMap;
 @end
 
 @implementation MessageController
@@ -60,7 +60,7 @@
     [self setUI];
     [self initData];
     flag = NO;
-    if ([KUserDefults objectForKey:kUserCityID]!=nil) {
+    if ([KUserDefults objectForKey:kLat]!=nil&&[KUserDefults objectForKey:KLng]!=nil) {
         [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(JB:) name:@"TSJBACTIVE" object:nil];
@@ -111,8 +111,8 @@
 -(void)loadServiceList:(NSDictionary *)dic{
     NSDictionary * dic1 = @{
                  @"distance": @([dic[@"distance"]?dic[@"distance"]:KDistance integerValue]),
-                 @"lat": @([dic[@"lat"] floatValue]),
-                 @"lng": @([dic[@"lng"] floatValue]),
+                 @"lat": @([dic[@"lat"]?dic[@"lat"]:@"" floatValue]),
+                 @"lng": @([dic[@"lng"]?dic[@"lng"]:@"" floatValue]),
                  };
     
     //    加载服务列表
@@ -122,12 +122,13 @@
 }
 //获取当前自己的位置并设为中心点
 - (IBAction)btn_UserLocation:(UIButton *)sender {
-    
 //    [self.mapView setCenterCoordinate:self.pointAnnotaiton.coordinate];
 //    [self.mapView setZoomLevel:15.1 animated:NO];
 }
 -(void)dragCenterLocation:(CLLocationCoordinate2D)location{
-    [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude),@"distance":KDistance}];
+    if (KString(@"%f", location.latitude)!=nil&&KString(@"%f", location.longitude)!=nil) {
+        [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude)}];
+    }
 }
 //首页三个按钮点击选中方法
 - (IBAction)btn_selected:(UIButton *)sender {
@@ -245,7 +246,6 @@
     [self.view_Map bringSubviewToFront:self.btn_mapUserLocation];
     [self.view_Map bringSubviewToFront:self.view_notice];
     [self.view_Map bringSubviewToFront:self.view_userLocation];
-    
 }
 - (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location{
     self.lab_Location.text =locationDictionary[@"addRess"];
@@ -271,7 +271,6 @@
             }
         }];
         show.zIndex = index;
-        NSLog(@"当前zindex为：%ld",index);
         [self.navigationController pushViewController:show animated:YES];
     }
 }
@@ -292,17 +291,11 @@
         self.navigationController.navigationBar.hidden= YES;
     }
 }
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-//    if ([KUserDefults objectForKey:kUserCityID]!=nil) {
-//        [self.cusMap locationClick];
-//    }
-}
 -(void)initData{
     NSDictionary * dic = @{
                            @"pageNumber":@1,
                            @"pageSize":@20,
-//                           @"cityCode":@([[KUserDefults objectForKey:kUserCityID] intValue]),
+                           @"cityCode":@([[KUserDefults objectForKey:kUserCityID] intValue]),
                            };
     WeakSelf
     [CircleNet requstNotice:dic withSuc:^(NSMutableArray *successDicValue) {

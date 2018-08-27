@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <AMapLocationKit/AMapLocationKit.h>
 @protocol CustomLocationDelegate <NSObject>
-
+@optional
 /// 定位中
 - (void)locating;
-
+@optional
 /**
  当前位置
  
@@ -25,6 +25,7 @@
  
  @param message 提示信息
  */
+@optional
 - (void)refuseToUsePositioningSystem:(NSString *)message;
 
 /**
@@ -32,6 +33,7 @@
  
  @param message 提示信息
  */
+@optional
 - (void)locateFailure:(NSString *)message;
 
 @end

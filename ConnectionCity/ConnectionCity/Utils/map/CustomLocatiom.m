@@ -43,13 +43,12 @@
     self.locationManager.delegate = self;
 }
 #pragma mark - AMapLocationManager Delegate
-
 - (void)amapLocationManager:(AMapLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"%s, amapLocationManager = %@, error = %@", __func__, [manager class], error);
     if ([error code] == kCLErrorDenied) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(refuseToUsePositioningSystem:)]) {
-            [self.delegate refuseToUsePositioningSystem:@"已拒绝使用定位系统"];
+            [self.delegate refuseToUsePositioningSystem:@"您已拒绝使用系统定位，请前往设置中开启"];
         }
     }
     if ([error code] == kCLErrorLocationUnknown) {

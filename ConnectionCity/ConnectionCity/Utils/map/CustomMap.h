@@ -13,7 +13,6 @@
 #import "ServiceListMo.h"
 #import "CustomAnnotationView.h"
 #import "ZWCustomPointAnnotation.h"
-
 @protocol CustomMapDelegate <NSObject>
 @optional
 - (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location;

@@ -134,6 +134,15 @@
         [self.delegate currentMapLocation:locationDictionary location:location];
         }
 }
+////拒绝定位
+//- (void)refuseToUsePositioningSystem:(NSString *)message{
+//    [YTAlertUtil alertSingleWithTitle:@"连程" message:message defaultTitle:@"前往开启" defaultHandler:^(UIAlertAction *action) {
+//        NSURL *url = [[NSURL alloc] initWithString:UIApplicationOpenSettingsURLString];
+//        if( [[UIApplication sharedApplication] canOpenURL:url]) {
+//            [[UIApplication sharedApplication] openURL:url];
+//        }
+//    } completion:nil];
+//}
 #pragma mark ------
 -(void)updateUseLat{
     NSDictionary * dic = @{
@@ -191,10 +200,6 @@
     
 }
 
-//用户拒绝定位
-- (void)refuseToUsePositioningSystem:(NSString *)message {
-    [YTAlertUtil showTempInfo:@""];
-}
 -(void)setArr_Mark:(NSMutableArray *)Arr_Mark{
     _Arr_Mark = Arr_Mark;
     [self.mapView removeAnnotations:[self.annotations copy]];

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseOneTabController.h"
+#import "CustomLocatiom.h"
 
 /** 网络是否连接 */
 typedef NS_ENUM(NSUInteger, AppDelegateNetworkStatus) {
@@ -23,6 +24,6 @@ typedef NS_ENUM(NSUInteger, AppDelegateNetworkStatus) {
 @property (nonatomic, assign, getter=isKeyboardDidShow) BOOL keyboardDidShow;
 /** 网络连接状态 */
 @property(nonatomic, assign) AppDelegateNetworkStatus networkStatus;
-
+@property (nonatomic,strong) CustomLocatiom * location;
 @end
 

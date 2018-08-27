@@ -111,14 +111,16 @@
     //客服
     if (indexPath.section==1 && indexPath.row==0) {
         AgreementController *connectUs = [[AgreementController alloc]init];
-        connectUs.alias = @"customservice";
+        connectUs.alias = @"";
+        connectUs.url = @"https://www.lc.test.cn-apps.com/help/index";
         [self.navigationController pushViewController:connectUs animated:YES];
         return;
     }
     //商务合作
     if(indexPath.section==1 && indexPath.row==1){
         AgreementController *agreementVC = [[AgreementController alloc]init];
-        agreementVC.alias = cooperation;
+        agreementVC.alias = @"";
+        agreementVC.url = @"https://www.lc.test.cn-apps.com/business/index";
         [self.navigationController pushViewController:agreementVC animated:YES];
         return;
     }
@@ -192,15 +194,4 @@
         [weakSelf.tableHeadV.headImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage]];
     } failure:nil];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

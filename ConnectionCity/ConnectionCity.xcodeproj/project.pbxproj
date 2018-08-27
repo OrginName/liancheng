@@ -5811,6 +5811,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
@@ -5847,7 +5848,7 @@
 					"\"$(SRCROOT)/ConnectionCity/Third/Alipay\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5871,6 +5872,7 @@
 				CODE_SIGN_ENTITLEMENTS = ConnectionCity/ConnectionCity.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5906,7 +5908,7 @@
 					"\"$(SRCROOT)/ConnectionCity/Third/Alipay\"",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ConnectionCity/Main/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5915,8 +5917,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.LC.CC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "22cf1c5a-63b4-4558-8dde-5c0f4007b782";
-				PROVISIONING_PROFILE_SPECIFIER = LCC;
+				PROVISIONING_PROFILE = "0f4a6194-25d9-4a9d-af10-6f16a574482d";
+				PROVISIONING_PROFILE_SPECIFIER = TCLC;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

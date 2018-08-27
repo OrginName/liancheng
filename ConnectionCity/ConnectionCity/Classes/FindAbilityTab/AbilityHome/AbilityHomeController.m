@@ -140,7 +140,9 @@
 }
 #pragma mark ----初始化加载数据（开始）------
 -(void)initData{
-    [self loadServiceList:@{@"cityID":[KUserDefults objectForKey:kUserCityID],@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
+    if ([KUserDefults objectForKey:kLat]!=nil&&[KUserDefults objectForKey:KLng]!=nil) {
+        [self loadServiceList:@{@"cityID":[KUserDefults objectForKey:kUserCityID],@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
+    } 
 //    热门职业加载
     [AbilityNet requstAbilityHot:^(NSMutableArray *successArrValue) {
         dispatch_async(dispatch_get_main_queue(), ^{

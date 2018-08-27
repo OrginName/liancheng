@@ -47,7 +47,7 @@
 #define RONGCLOUD_IM_APPKEY @"3argexb63m7xe"// online key
 #define UMENG_APPKEY @"5b4a423c8f4a9d1b3a00047e"
 #define LOG_EXPIRE_TIME -7 * 24 * 60 * 60
-@interface AppDelegate ()<RCIMReceiveMessageDelegate,RCIMConnectionStatusDelegate,RCWKAppInfoProvider,WXApiDelegate,JPUSHRegisterDelegate>
+@interface AppDelegate ()<RCIMReceiveMessageDelegate,RCIMConnectionStatusDelegate,RCWKAppInfoProvider,WXApiDelegate,JPUSHRegisterDelegate,CustomLocationDelegate>
 @end
 @implementation AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -56,7 +56,8 @@
     [self.window makeKeyAndVisible];
     UIViewController *vc = [[UIViewController alloc]initWithNibName:nil bundle:nil];
     self.window.rootViewController = vc;
-    
+    self.location = [[CustomLocatiom alloc] init];
+    _location.delegate = self;
     [self umengTrack];
     //非debug模式初始化sdk
     [[RCIM sharedRCIM] initWithAppKey:RONGCLOUD_IM_APPKEY];
@@ -505,6 +506,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                                                                              ]];
         application.applicationIconBadgeNumber = unreadMsgCount;
     }
+    
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -527,14 +529,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         [self saveConversationInfoForMessageShare];
     }
 }
-
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state;
-    // here you can undo many of the changes made on entering the background.
     if ([[RCIMClient sharedRCIMClient] getConnectionStatus] == ConnectionStatus_Connected) {
         // 插入分享消息
         [self insertSharedMessageIfNeed];
     }
+    self.location = [[CustomLocatiom alloc] init];
+    _location.delegate = self;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -900,7 +901,23 @@ handleWatchKitExtensionRequest:(NSDictionary *)userInfo
         }];
     }
 }
-
+//拒绝定位
+- (void)refuseToUsePositioningSystem:(NSString *)message{
+    [YTAlertUtil alertSingleWithTitle:@"连程" message:message defaultTitle:@"前往开启" defaultHandler:^(UIAlertAction *action) {
+        NSURL *url = [[NSURL alloc] initWithString:UIApplicationOpenSettingsURLString];
+        if( [[UIApplication sharedApplication] canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url];
+        }
+    } completion:nil];
+}
+#pragma mark -------CustomLocationDelegate------
+- (void)currentLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location{
+    NSLog(@"%@",locationDictionary[@"addRess"]);
+    [KUserDefults setObject:locationDictionary[@"city"] forKey:kUserCity];
+    [KUserDefults setObject:[NSString stringWithFormat:@"%f",location.coordinate.latitude] forKey:kLat];
+    [KUserDefults setObject:[NSString stringWithFormat:@"%f",location.coordinate.longitude] forKey:KLng];
+    [KUserDefults synchronize];
+}
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:RCKitDispatchMessageNotification object:nil];
 }
