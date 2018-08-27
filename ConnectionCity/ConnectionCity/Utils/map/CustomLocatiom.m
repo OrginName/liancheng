@@ -78,7 +78,7 @@
                 [self.delegate currentLocation:location1 location:location];
             }
 //        });
-//        [self cleanUpAction];
+        [self cleanUpAction];
     }
     
 //    self.lab_Location.text =reGeocode.formattedAddress;

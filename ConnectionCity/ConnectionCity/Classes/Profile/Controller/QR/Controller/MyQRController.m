@@ -42,7 +42,7 @@
     CIFilter *filter=[CIFilter filterWithName:@"CIQRCodeGenerator"];
     [filter setDefaults];
     
-    [filter setValue:[codeStr dataUsingEncoding:NSUTF8StringEncoding] forKey:@"inputMessage"];
+    [filter setValue:[KString(@"%@_窗前明月光疑似地上霜举头望明月低头思故乡", codeStr) dataUsingEncoding:NSUTF8StringEncoding] forKey:@"inputMessage"];
     //4.获取生成的图片
     CIImage *ciImg=filter.outputImage;
     //放大ciImg,默认生产的图片很小
