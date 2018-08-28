@@ -13,7 +13,7 @@
 #import "FriendCircleController.h"
 @interface ShowtrvalTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ShowTrvalCellDelegate,CustomScroDelegate>
 {
-    
+    CustomScro * _scr;
 }
 @property (nonatomic,strong) SDCycleScrollView * cycleScrollView;
 @property (nonatomic,strong) NSMutableArray * lunArr;//轮播图数组
@@ -34,7 +34,7 @@
     return self;
 }
 -(void)setMo:(UserMo *)Mo{
-    _Mo = Mo;
+    _Mo  = Mo;
     [self.lunArr removeAllObjects];
     ServiceListMo * list = Mo.serviceList[self.JNIndex];
     for (NSString * url in [list.images componentsSeparatedByString:@";"]) {
@@ -45,9 +45,10 @@
     if ([list.likeCount intValue]>0) {
         self.btn_Like.selected = YES;
     }
-     [self.btn_Like setTitle:[list.likeCount description] forState:UIControlStateNormal];
+    [self.btn_Like setTitle:[list.likeCount description] forState:UIControlStateNormal];
     _flag = 0;
 }
+
 -(void)setMoTrval:(trvalMo *)MoTrval{
     _MoTrval  = MoTrval;
     for (NSString * url in [MoTrval.images componentsSeparatedByString:@";"]) {
@@ -158,17 +159,20 @@
         }else{
             arr = [self loadA:self.MoTrval.user.isSkillAuth b:self.MoTrval.user.isMobileAuth c:self.MoTrval.user.isIdentityAuth d:self.MoTrval.user.isCompanyAuth];
         }
+        
         CustomImageScro * img = [[CustomImageScro alloc] initWithFrame:CGRectMake(0, 0, cell.view_RZ.width, cell.view_RZ.height) arr:[arr copy]];
         [cell.view_RZ addSubview:img];
     }
     if (indexPath.section==0&&indexPath.row==2) {
-        CustomScro * scr = [[CustomScro alloc] initWithFrame:CGRectMake(0, 0, cell.view_JNB.width, cell.view_JNB.height) arr:self.Mo.JNArr flag:NO];
-        scr.delegate = self;
-        [cell.view_JNB addSubview:scr];
+        if (!_scr) {
+            _scr = [[CustomScro alloc] initWithFrame:CGRectMake(0, 0, cell.view_JNB.width, cell.view_JNB.height) arr:self.Mo.JNArr flag:NO];
+            _scr.delegate = self;
+            [cell.view_JNB addSubview:_scr];
+        }
     }
     if (indexPath.section<2) {
-        cell.list = self.Mo;
         cell.JNIndexReceive = self.JNIndex;
+        cell.list = self.Mo;
         cell.trval = self.MoTrval;
     }else{
         if (self.Mo!=nil) {
@@ -215,8 +219,8 @@
     self.JNIndex = tag.tag-1;
     [self setMo:self.Mo];
     self.cycleScrollView.imageURLStringsGroup = self.lunArr;
-    [self.cycleScrollView reload];
     [self.tab_Bottom reloadData];
+    [self.cycleScrollView reload];
 } //声明协议方法
 #pragma mark ---initUI--------
 -(void)initScroll{

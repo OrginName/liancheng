@@ -97,6 +97,9 @@
     }
 //  trval.comments 评论咱不知道怎么写
 }
+-(void)setJNIndexReceive:(NSInteger)JNIndexReceive{
+    _JNIndexReceive = JNIndexReceive;
+}
 -(void)setList:(UserMo *)list{
     _list = list;
     if (list!=nil) {

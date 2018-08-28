@@ -160,8 +160,8 @@
                 index = idx;
             }
         }];
-        SendServiceController * send = [SendServiceController new];
-        [self.navigationController pushViewController:send animated:YES];
+//        SendServiceController * send = [SendServiceController new];
+//        [self.navigationController pushViewController:send animated:YES];
 //        ShowResumeController * show = [ShowResumeController new];
 //        show.Receive_Type = ENUM_TypeTrval;
 //        show.data_Count = mutArr;
@@ -199,8 +199,8 @@
                 index = idx;
             }
         }];
-        SendTripController * trip = [SendTripController new];
-        [self.navigationController pushViewController:trip animated:YES];
+//        SendTripController * trip = [SendTripController new];
+//        [self.navigationController pushViewController:trip animated:YES];
 //        ShowResumeController * show = [ShowResumeController new];
 //        show.Receive_Type = ENUM_TypeTrval;
 //        show.data_Count = mutArr;

@@ -204,7 +204,11 @@
     __block NSUInteger index = 0;
     [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UserMo * list = (UserMo *)obj;
-        if ([annotation.title  isEqualToString: @"当前位置"]&&[list.ID isEqualToString:[[YSAccountTool userInfo]modelId]]) {
+        if (annotation.title == list.ID) {
+            index = idx;
+            *stop = YES;
+        }
+        if (self.cusMap.Arr_Mark.count!=0&& [annotation.title isEqualToString:@"当前位置"]&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
             index = idx;
             *stop = YES;
         }

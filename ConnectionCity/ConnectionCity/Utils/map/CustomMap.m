@@ -224,15 +224,14 @@
         ZWCustomPointAnnotation *pointAnnotation = [[ZWCustomPointAnnotation alloc] init];
         if ([obj isKindOfClass:[UserMo class]]) {
             UserMo * list = (UserMo *)obj;
-            if ([list.ID isEqualToString:[[YSAccountTool userInfo]modelId]]) {
-                return;
+            if (![list.ID isEqualToString:[[YSAccountTool userInfo]modelId]]) {
+                CLLocationCoordinate2D coor ;
+                coor.latitude = [list.lat doubleValue];
+                coor.longitude = [list.lng doubleValue];
+                pointAnnotation.coordinate = coor;
+                pointAnnotation.title = list.ID;
+                pointAnnotation.storImageUrl = list.headImage;
             }
-            CLLocationCoordinate2D coor ;
-            coor.latitude = [list.lat doubleValue];
-            coor.longitude = [list.lng doubleValue];
-            pointAnnotation.coordinate = coor;
-            pointAnnotation.title = list.ID;
-            pointAnnotation.storImageUrl = list.headImage;
         }else if ([obj isKindOfClass:[AbilttyMo class]]){
             AbilttyMo * abilt = (AbilttyMo *)obj;
             CLLocationCoordinate2D coor ;

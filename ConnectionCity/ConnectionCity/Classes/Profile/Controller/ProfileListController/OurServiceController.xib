@@ -30,7 +30,7 @@
                     <state key="normal" title="预约的服务" image="our-yue">
                         <color key="titleColor" red="0.3999579251" green="0.4000213742" blue="0.39994928239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
-                    <state key="selected" title="附近的人" image="fujin111">
+                    <state key="selected" title="预约的服务" image="our-yue">
                         <color key="titleColor" red="0.95109003780000001" green="0.5641317964" blue="0.1661938429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -117,7 +117,6 @@
         </view>
     </objects>
     <resources>
-        <image name="fujin111" width="15" height="19"/>
         <image name="our-gongying" width="19" height="19"/>
         <image name="our-yue" width="20" height="20"/>
     </resources>
