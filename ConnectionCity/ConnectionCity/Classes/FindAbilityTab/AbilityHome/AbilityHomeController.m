@@ -140,7 +140,7 @@
 }
 #pragma mark ----初始化加载数据（开始）------
 -(void)initData{
-    if ([KUserDefults objectForKey:kLat]!=nil&&[KUserDefults objectForKey:KLng]!=nil) {
+    if ([KUserDefults objectForKey:kLat]!=nil&&[KUserDefults objectForKey:KLng]!=nil&&[KUserDefults objectForKey:kUserCityID]!=nil) {
         [self loadServiceList:@{@"cityID":[KUserDefults objectForKey:kUserCityID],@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
     } 
 //    热门职业加载
