@@ -17,11 +17,23 @@
 @implementation AgreementController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setUI];
     if (self.alias.length==0) {
-        self.title = @"详情";
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
-    }else
-    [self pageInfo];
+    }else{
+        self.title = @"详情";
+        [self pageInfo];
+    }
+}
+-(void)setUI{
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(back) image:@"return-f" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -40, 0, 0)];
+}
+-(void)back{
+    if (self.webView.canGoBack) {
+        [self.webView goBack];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 - (void)pageInfo{
     WeakSelf

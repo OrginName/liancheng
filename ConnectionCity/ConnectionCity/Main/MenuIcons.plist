@@ -52,14 +52,6 @@
 	</dict>
 	<dict>
 		<key>icon</key>
-		<string>our-kf</string>
-		<key>title</key>
-		<string>客服</string>
-		<key>class</key>
-		<string>SetViewController</string>
-	</dict>
-	<dict>
-		<key>icon</key>
 		<string>our-shetup</string>
 		<key>title</key>
 		<string>设置</string>

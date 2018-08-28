@@ -31,7 +31,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="xnY-ka-58R"/>
                             </constraints>
-                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="图文">
                                 <color key="titleColor" red="0.43917000293731689" green="0.43923890590667725" blue="0.43916058540344238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -62,6 +62,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="JHQ-8l-c2k"/>
                             </constraints>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="视频">
                                 <color key="titleColor" red="0.43917000290000002" green="0.43923890589999998" blue="0.43916058540000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>

@@ -27,6 +27,7 @@
 #import "NoticeController.h"
 #import "UITabBar+badge.h"
 #import "AgreementController.h"
+#import "privateUserInfoModel.h"
 @interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate>
 {
     BOOL flag;
@@ -259,21 +260,21 @@
 }
 -(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
     flag = NO;
-    if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
+//    if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
         ShowResumeController * show = [ShowResumeController new];
         show.Receive_Type = ENUM_TypeTrval;
         show.data_Count = self.cusMap.Arr_Mark;
         __block NSUInteger index = 0;
         [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            ServiceListMo * list = (ServiceListMo *)obj;
-            if (annotation.title == list.ID) {
+            UserMo * list = (UserMo *)obj;
+            if ([annotation.title  isEqualToString: @"当前位置"]&&[list.ID isEqualToString:[[YSAccountTool userInfo]modelId]]) {
                 index = idx;
                 *stop = YES;
             }
         }];
         show.zIndex = index;
         [self.navigationController pushViewController:show animated:YES];
-    }
+//    }
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

@@ -17,6 +17,7 @@
 #import "QiniuUploader.h"
 #import "CustomScro.h"
 #import "AllDicMo.h"
+#import "AgreementController.h"
 @interface SendServiceController ()<PhotoSelectDelegate,UITableViewDelegate,UITableViewDataSource,SendSelectCellDelegate,SendServiceCellDelegate,CustomScroDelegate>
 {
     CGFloat itemHeigth,layout_Height;
@@ -227,6 +228,10 @@
             [self.Dic2 setValue:str forKey:[NSString stringWithFormat:@"%ld",indexPath.section]];
         };
         [self.navigationController pushViewController:edit animated:YES];
+    }else if(indexPath.section==4){
+        AgreementController *agreementVC = [[AgreementController alloc]init];
+        agreementVC.alias = serviceAgreement;
+        [self.navigationController pushViewController:agreementVC animated:YES];
     }
 }
 #pragma mark -----CustomScroDelegate--------

@@ -128,15 +128,15 @@
         }];
         return;
     }
-    //客服
-    if (indexPath.row==6) {
-        
-        AgreementController *connectUs = [[AgreementController alloc]init];
-        connectUs.alias = @"customservice";
-        [self.navigationController pushViewController:connectUs animated:YES];
-        
-        return;
-    }
+//    //客服
+//    if (indexPath.row==6) {
+//        
+//        AgreementController *connectUs = [[AgreementController alloc]init];
+//        connectUs.alias = @"customservice";
+//        [self.navigationController pushViewController:connectUs animated:YES];
+//        
+//        return;
+//    }
 //    //商务合作
 //    if(indexPath.row==7){
 //        AgreementController *agreementVC = [[AgreementController alloc]init];

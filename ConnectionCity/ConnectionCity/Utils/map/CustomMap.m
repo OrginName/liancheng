@@ -29,12 +29,14 @@
         ///初始化地图
         ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
         MAMapView * map = [[MAMapView alloc] init];
-//        map.showsUserLocation = YES;
-//        map.userTrackingMode = MAUserTrackingModeFollow;
+        map.showsUserLocation = YES;
+        map.userTrackingMode = MAUserTrackingModeFollow;
         map.showsCompass= NO;
         map.showsScale= NO;  //设置成NO表示不显示比例尺；YES表示显示比例尺
         ///把地图添加至view
+//        map.zoomEnabled = NO;
         map.delegate = self;
+        map.maxZoomLevel = 15.1;
         self.mapView = map;
         [self addSubview:self.mapView];
         self.location = [[CustomLocatiom alloc] init];
@@ -88,7 +90,6 @@
     }
     return annotationView;
 }
-
 /**
  选中当前点击mark的代理
  @param mapView mapView description
@@ -96,16 +97,16 @@
  */
 - (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view{
     NSLog(@"%f",view.annotation.coordinate.latitude);
-    if ([self.annotationView isKindOfClass:[MAUserLocation class]]) {
-        [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
-        return;
-    }
-    
-    if ([view isKindOfClass:[CustomAnnotationView class]]) {
+//    if ([self.annotationView isKindOfClass:[MAUserLocation class]]) {
+//        [YTAlertUtil showTempInfo:@"当前点击的为自己位置"];
+//        return;
+//    }
+//
+//    if ([view isKindOfClass:[CustomAnnotationView class]]) {
         if (_delegate && [_delegate respondsToSelector:@selector(currentAnimatinonViewClick:annotation:)] ) {
             [_delegate currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)view.annotation];
         }
-    }
+//    }
 }
 #pragma mark -------CustomLocationDelegate------
 - (void)currentLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location{
@@ -199,7 +200,6 @@
 - (void)locating {
     
 }
-
 -(void)setArr_Mark:(NSMutableArray *)Arr_Mark{
     _Arr_Mark = Arr_Mark;
     [self.mapView removeAnnotations:[self.annotations copy]];
@@ -224,6 +224,9 @@
         ZWCustomPointAnnotation *pointAnnotation = [[ZWCustomPointAnnotation alloc] init];
         if ([obj isKindOfClass:[UserMo class]]) {
             UserMo * list = (UserMo *)obj;
+            if ([list.ID isEqualToString:[[YSAccountTool userInfo]modelId]]) {
+                return;
+            }
             CLLocationCoordinate2D coor ;
             coor.latitude = [list.lat doubleValue];
             coor.longitude = [list.lng doubleValue];
