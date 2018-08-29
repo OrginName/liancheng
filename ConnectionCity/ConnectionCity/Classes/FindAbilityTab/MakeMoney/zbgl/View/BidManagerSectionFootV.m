@@ -55,7 +55,7 @@
         _negotiationBtn.hidden = YES;
     }else if([model.status integerValue]==2){
         _reviewStatusLab.text = @"招标中";
-        _changeBtn.hidden = NO;
+        _changeBtn.hidden = YES;
         _deleteBtn.hidden = NO;
         _negotiationBtn.hidden = YES;
     }else if([model.status integerValue]==3){

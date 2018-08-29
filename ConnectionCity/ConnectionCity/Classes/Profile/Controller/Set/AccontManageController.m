@@ -250,6 +250,11 @@
     [KUserDefults setObject:password forKey:@"userPwd"];
     [KUserDefults setObject:token forKey:@"userToken"];
     [KUserDefults setObject:userId forKey:@"userId"];
+    //删除旧账号存储的信息
+    [kDefaults removeObjectForKey:@"cellCntentText"];
+    [kDefaults removeObjectForKey:@"citymooo"];
+    [kDefaults synchronize];
+
     //保存“发现”的信息
     //    [RCDHTTPTOOL getSquareInfoCompletion:^(NSMutableArray *result) {
     //        [DEFAULTS setObject:result forKey:@"SquareInfoList"];

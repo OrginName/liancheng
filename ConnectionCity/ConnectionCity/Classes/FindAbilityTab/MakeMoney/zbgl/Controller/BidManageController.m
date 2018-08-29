@@ -148,8 +148,11 @@
     [self.navigationController pushViewController:releasevc animated:YES];
 }
 - (void)BidManagerSectionFootV:(BidManagerSectionFootV *)view deleteBtnClick:(UIButton *)btn {
-    FirstControllerMo *mo = _dataArr[btn.tag - 100];
-    [self v1TalentTenderDelete:@{@"id": mo.modelId}];
+    WeakSelf
+    [YTAlertUtil alertDualWithTitle:@"提示" message:@"确认删除？" style:UIAlertControllerStyleAlert cancelTitle:@"取消" cancelHandler:nil defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+        FirstControllerMo *mo = _dataArr[btn.tag - 100];
+        [weakSelf v1TalentTenderDelete:@{@"id": mo.modelId}];
+    } completion:nil];
 }
 - (void)BidManagerSectionFootV:(BidManagerSectionFootV *)view negotiationBtnClick:(UIButton *)btn {
     FirstControllerMo *mo = _dataArr[btn.tag - 100];
