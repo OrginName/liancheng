@@ -12,6 +12,7 @@
 #import "StarEvaluator.h"
 #import "CircleNet.h"
 #import "EvaluationController.h"
+#import <UIView+TYAlertView.h>
 @interface OurServiceController ()<MLMSegmentPageDelegate,UITableViewDelegate,UITableViewDataSource,CellClickDelegate,FirstTanViewDelegate,StarEvaluatorDelegate>
 {
     NSArray *list,*list1;
@@ -31,6 +32,7 @@
 @property (strong, nonatomic) MyTab *tableView;
 @property (nonatomic,strong) NSMutableArray * data_Arr;
 @property (nonatomic,assign) float scroe;
+
 @end
 @implementation OurServiceController
 - (void)viewDidLoad {
@@ -38,7 +40,13 @@
     [self setUI];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alipayNotice:) name:NOTI_ALI_PAY_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTab) name:NOTI_WEI_XIN_PAY_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MYSERVICE" object:@{@"num":@""}];
     self.scroe = 0;
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:
+     [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
 }
 #pragma mark - alipayNotice
 - (void)alipayNotice:(NSNotification *)notification {
@@ -96,15 +104,17 @@
         self.first = [[NSBundle mainBundle] loadNibNamed:@"FirstTanView" owner:nil options:nil][1];
         self.first.delegate = self;
         self.first.frame = CGRectMake(10, 0, kScreenWidth-20, 235); 
-        self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.first];
+//        self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.first];
         WeakSelf
         self.first.block = ^(NSString *txt) {
+            [weakSelf.first hideInController];
             [weakSelf requstUpdateStates:@{
                                            @"remark": txt,
                                            @"orderNo": mo.orderNo,
                                        @"status":@40}];
         };
-        [self.refine alertSelectViewshow];
+        [self.first showInController:self];
+//        [self.refine alertSelectViewshow];
     }else if([cell1.btn_status.titleLabel.text isEqualToString:@"接单"]){
         [self requstUpdateStates:@{@"orderNo": mo.orderNo,
                                    @"status":@15,
@@ -127,17 +137,19 @@
         StarEvaluator * ev = [[StarEvaluator alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
         ev.delegate = self;
         [self.first.view_PJ addSubview:ev];
-        self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.first];
+//        self.refine = [[RefineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) type:self.first];
         WeakSelf
         self.first.block = ^(NSString *txt) {
+            [weakSelf.first hideInController];
             [weakSelf requstUpdatePJ:@{
                                        @"content": txt,
                                        @"typeId": @([mo.obj.ID integerValue]),
                                        @"orderNo":mo.orderNo
                                        }];
             
-        };
-        [self.refine alertSelectViewshow];
+        }; 
+        [self.first showInController:self];
+//        [self.refine alertSelectViewshow];
     }
 }
 //评论按钮点击

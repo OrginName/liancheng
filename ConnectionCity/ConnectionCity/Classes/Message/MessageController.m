@@ -61,9 +61,9 @@
     [self setUI];
     [self initData];
     flag = NO;
-    if ([KUserDefults objectForKey:kLat]!=nil&&[KUserDefults objectForKey:KLng]!=nil) {
-        [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
-    }
+//    if ([KUserDefults objectForKey:kLat]!=nil&&[KUserDefults objectForKey:KLng]!=nil) {
+//        [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
+//    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(JB:) name:@"TSJBACTIVE" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:@"LOADSERVICELIST" object:nil];
 }
@@ -111,12 +111,11 @@
 //加载服务列表数据
 -(void)loadServiceList:(NSDictionary *)dic{
     NSDictionary * dic1 = @{
-                 @"distance": @([KDistance integerValue]),
+                 @"distance": @([KDistance intValue]),
                  @"lat": @([dic[@"lat"] floatValue]),
                  @"lng": @([dic[@"lng"] floatValue]),
                  };
-    
-    //    加载服务列表
+    //    加载服列表
     [ServiceHomeNet requstServiceList:dic1 withSuc:^(NSMutableArray *successArrValue) {
         self.cusMap.Arr_Mark = successArrValue;
     }];
@@ -127,7 +126,6 @@
 //    [self.mapView setZoomLevel:15.1 animated:NO];
 }
 -(void)dragCenterLocation:(CLLocationCoordinate2D)location{
-
     if (![YSTools dx_isNullOrNilWithObject:KString(@"%f", location.latitude)]&&![YSTools dx_isNullOrNilWithObject:KString(@"%f", location.longitude)]) {
         [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude)}];
     }

@@ -81,6 +81,7 @@
         }
         self.block(self.txtView_PJ.text);
     }
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:CLOSEANI object:nil];
 }
 /**

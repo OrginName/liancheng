@@ -18,6 +18,7 @@ proStr(orderNo);//订单号
 proStr(serviceTime);//服务时间
 proStr(num);//数量
 proStr(typeName);//类型
+proStr(providerId);
 @property (nonatomic,strong) UserMo * reserveUser;
 @property (nonatomic,strong) myServiceObj * obj;
 @end

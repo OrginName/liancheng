@@ -79,13 +79,13 @@
     }
     self.annotationView = annotationView;
     if ([annotation isKindOfClass:[MAUserLocation class]]) {
-        [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:[[YSAccountTool userInfo]headImage]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+        [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:[[YSAccountTool userInfo]headImage]] placeholderImage:[UIImage imageNamed:@"logo"]];
     }else{
         if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
             ZWCustomPointAnnotation *pointAnnotation = (ZWCustomPointAnnotation*)annotation;
             //在这里,直接将请求回来的商户图片地址复制给calloutview的imageview
             //关键是需要拿到弹出视图的iamge对象,我才可以对其进行赋值
-            [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:pointAnnotation.storImageUrl] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+            [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:pointAnnotation.storImageUrl] placeholderImage:[UIImage imageNamed:@"logo"]];
         }
     }
     return annotationView;
@@ -241,7 +241,9 @@
             pointAnnotation.title = abilt.ID;
             pointAnnotation.storImageUrl = abilt.userMo.headImage;
         }
-        [self.annotations addObject:pointAnnotation];
+        if (pointAnnotation) {
+            [self.annotations addObject:pointAnnotation];
+        } 
         self.annotationView.zIndex = idx;
     }];
     [self.mapView addAnnotations:self.annotations];

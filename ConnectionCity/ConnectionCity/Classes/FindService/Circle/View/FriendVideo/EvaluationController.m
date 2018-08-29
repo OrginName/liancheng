@@ -143,7 +143,7 @@
             if ([self.service.typeName isEqualToString:@"旅游"]) {
                 str = self.service.obj.userId;
             }else
-            str = self.service.obj.user.ID;
+            str = self.service.providerId;
         }else{
             str = self.moment.userMo.ID;
         }

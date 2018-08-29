@@ -20,6 +20,7 @@
 #import "TakePhoto.h"
 #import "ZoomImage.h"
 #import "QiniuUploader.h"
+#import "UITabBar+badge.h"
 
 @interface ProfileController ()<ProfileHeadViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -34,8 +35,7 @@
     [super viewDidLoad];
     [self setUI];
     [self setupTableView];
-    
-    // Do any additional setup after loading the view from its nib.
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBadge:) name:@"MYSERVICE" object:nil];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -64,10 +64,19 @@
     [super viewWillDisappear:animated];
     [self.navigationController.navigationBar setBackgroundImage:
      [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
+   
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//更新角标标示
+-(void)updateBadge:(NSNotification *)noti{
+    NSDictionary * dic = noti.object;
+    ProfileCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    if ([dic[@"num"] intValue]==0) {
+        [self.tabBarController.tabBar hideBadgeOnItemIndex:4];
+        cell.view_Layer.hidden = YES;
+    }else{
+        [self.tabBarController.tabBar showBadgeOnItemIndex:4 badgeValue:[dic[@"num"] intValue]];
+        cell.view_Layer.hidden = NO;
+    }
 }
 #pragma mark - Setup
 - (void)setUI {
@@ -215,15 +224,7 @@
         [weakSelf.tableHeadV.headImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage]];
     } failure:nil];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-*/
-
 @end

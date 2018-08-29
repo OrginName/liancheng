@@ -14,6 +14,8 @@
     if (_resumeModel) {
         self.resumeModel = _resumeModel;
     }
+    self.view_Layer.layer.cornerRadius = 5;
+    self.view_Layer.layer.masksToBounds = YES;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

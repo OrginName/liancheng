@@ -36,17 +36,17 @@
 {
     // 会重新调用drawRect:方法
     [self setNeedsDisplay];
-    //首行缩进
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = 3;    //行间距
-    //    paragraphStyle.maximumLineHeight = 60;   /**最大行高*/
-    paragraphStyle.firstLineHeadIndent = 20.f;    /**首行缩进宽度*/
-    paragraphStyle.alignment = NSTextAlignmentJustified;
-    NSDictionary *attributes = @{
-                                 NSFontAttributeName:[UIFont systemFontOfSize:13],
-                                 NSParagraphStyleAttributeName:paragraphStyle
-                                 ,NSForegroundColorAttributeName:[UIColor hexColorWithString:@"#bbbbbb"]};
-    self.attributedText = [[NSAttributedString alloc] initWithString:self.text attributes:attributes];
+//    //首行缩进
+//    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+//    paragraphStyle.lineSpacing = 3;    //行间距
+//    //    paragraphStyle.maximumLineHeight = 60;   /**最大行高*/
+//    paragraphStyle.firstLineHeadIndent = 20.f;    /**首行缩进宽度*/
+//    paragraphStyle.alignment = NSTextAlignmentJustified;
+//    NSDictionary *attributes = @{
+//                                 NSFontAttributeName:[UIFont systemFontOfSize:13],
+//                                 NSParagraphStyleAttributeName:paragraphStyle
+//                                 ,NSForegroundColorAttributeName:[UIColor hexColorWithString:@"#bbbbbb"]};
+//    self.attributedText = [[NSAttributedString alloc] initWithString:self.text attributes:attributes];
 }
 /**
  * 每次调用drawRect:方法，都会将以前画的东西清除掉

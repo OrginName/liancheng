@@ -13,6 +13,8 @@
 #import "privateUserInfoModel.h"
 #import "OccupationCategoryNameModel.h"
 #import "OurServiceController.h"
+#import "UITabBar+badge.h"
+
 @interface MemberCenterController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, copy) NSArray <YTSideMenuModel *> *menuModels;
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
@@ -25,6 +27,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBadge:) name:@"MYSERVICE" object:nil];
+}
+//更新角标标示
+-(void)updateBadge:(NSNotification *)noti{
+    NSDictionary * dic = noti.object;
+    ProfileCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[dic[@"type"] intValue]==2?1:2 inSection:0]];
+    if ([dic[@"num"] intValue]==0) {
+        cell.view_Layer.hidden = YES;
+    }else{
+        cell.view_Layer.hidden = NO;
+    }
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -125,5 +138,7 @@
         weakSelf.tableHeadV.twoSvipTimeLab.text = @"xxxx.xx.xx";
     } failure:nil];
 }
-
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

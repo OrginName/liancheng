@@ -30,6 +30,7 @@
 //微信SDK头文件
 #import <WXApi.h>
 #import <AlipaySDK/AlipaySDK.h>
+#import "OurServiceController.h"
 // 引入JPush功能所需头文件
 #import "JPUSHService.h"
 // iOS10注册APNs所需头文件
@@ -401,6 +402,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if (![userInfo[@"rc"][@"oName"] isEqualToString:@"RC:TxtMsg"]) {
         if([arr containsObject:[userInfo[@"type"] description]]){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"JOINACTIVE" object:@{@"num":@"1"}];
+        }else if ([[userInfo[@"type"] description] isEqualToString:@"2"]||[[userInfo[@"type"] description] isEqualToString:@"4"]){
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"MYSERVICE" object:@{@"num":@"1",@"type":[userInfo[@"type"] description]}];
         }else
             [[NSNotificationCenter defaultCenter] postNotificationName:@"TSJBACTIVE" object:@{@"num":@"1"}];
     } 
@@ -434,6 +437,15 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             UINavigationController *nav = tabBar.selectedViewController;//获取到当前视图的导航视图
             [nav.topViewController.navigationController pushViewController:address animated:YES];//获取当前跟视图push到的最高视图层,然后进行push到目的页面
         }
+    }else if ([[userInfo[@"type"] description] isEqualToString:@"2"]||[[userInfo[@"type"] description] isEqualToString:@"4"]){
+        OurServiceController * service = [OurServiceController new];
+        service.inter = [[userInfo[@"type"] description] isEqualToString:@"2"]?1:2;
+        BaseTabBarController *tabBar = (BaseTabBarController *)self.window.rootViewController;//获取window的跟视图,并进行强制转换
+        if ([tabBar isKindOfClass:[BaseTabBarController class]]) {//判断是否是当前根视图
+            UINavigationController *nav = tabBar.selectedViewController;//获取到当前视图的导航视图
+            [nav.topViewController.navigationController pushViewController:service animated:YES];//获取当前跟视图push到的最高视图层,然后进行push到目的页面
+        }
+        
     }else{
         NoticeController * notice = [NoticeController new];
         notice.title = @"消息";
@@ -478,6 +490,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         if (![userInfo[@"rc"][@"oName"] isEqualToString:@"RC:TxtMsg"]) {
             if([arr containsObject:[userInfo[@"type"] description]]){
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"JOINACTIVE" object:@{@"num":@"1"}];
+            }else if ([[userInfo[@"type"] description] isEqualToString:@"2"]){
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"MYSERVICE" object:@{@"num":@"1"}];
+            }else if ([[userInfo[@"type"] description] isEqualToString:@"4"]){
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"MYTRVAL" object:@{@"num":@"1"}];
             }else
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"TSJBACTIVE" object:@{@"num":@"1"}];
         } 

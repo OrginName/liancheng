@@ -43,16 +43,19 @@
                 NSMutableArray * arr1 = [NSMutableArray array];
                 UserMo * user = [UserMo mj_objectWithKeyValues:responseObject[@"data"][i]];
                 for (ServiceListMo * mo in user.serviceList) {
-                    [arr1 addObject:mo.serviceCategoryName[@"name"]];
+                    if ([mo.serviceCategoryName[@"name"] length]!=0) {
+                        [arr1 addObject:mo.serviceCategoryName[@"name"]];
+                    } 
                 }
                 user.JNArr = arr1;
-                [arr addObject:user];
+                if (user) {
+                    [arr addObject:user];
+                } 
             }
+            sucBlock(arr);
         }else
-            [YTAlertUtil showTempInfo:@"暂无数据"];
-        sucBlock(arr);
+            [YTAlertUtil showTempInfo:@"附近暂无服务"];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
     }];
 }
 +(void)requstServiceClass:(SuccessArrBlock)sucBlock{

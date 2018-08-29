@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *resumeDescribLab;
 @property (weak, nonatomic) IBOutlet UILabel *industryAndTimeLab;
 @property (nonatomic, strong) OurResumeMo *resumeModel;
+@property (weak, nonatomic) IBOutlet UIView *view_Layer;
 
 @property (weak, nonatomic) IBOutlet UIImageView *headerImgV;
 @property (weak, nonatomic) IBOutlet UILabel *concernTitleLab;
