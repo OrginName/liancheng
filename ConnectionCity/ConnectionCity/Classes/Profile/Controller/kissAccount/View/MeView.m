@@ -135,7 +135,7 @@
     NSIndexPath * index = [self.tableView indexPathForCell:cell];
     KissModel * model = _mutDataArr[index.row-1];
     WeakSelf
-    [YTAlertUtil alertDualWithTitle:@"连程" message:KString(@"您即将解除亲密账户%@", model.closeUserId) style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
+    [YTAlertUtil alertDualWithTitle:@"连程" message:KString(@"您即将解除亲密账户%@", model.userId) style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
         
     } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {
         [YSNetworkTool POST:v1usercloseaccountdelete params:@{@"id":model.modelId} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -149,6 +149,7 @@
     NSIndexPath * index  = [self.tableView indexPathForCell:cell];
     KissDetailController * deltail = [KissDetailController new];
     deltail.title = @"账户详情";
+    deltail.flag = NO;
     deltail.ID = [_mutDataArr[index.row-1] modelId];
     [self.controller.navigationController pushViewController:deltail animated:YES];
 }

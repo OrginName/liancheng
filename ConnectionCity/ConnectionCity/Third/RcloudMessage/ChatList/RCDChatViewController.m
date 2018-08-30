@@ -149,7 +149,7 @@ NSMutableDictionary *userInputStatus;
     ///注册自定义测试消息Cell
     [self registerClass:[RCDTestMessageCell class] forMessageClass:[RCDTestMessage class]];
     [self notifyUpdateUnreadMessageCount];
-    [self.chatSessionInputBarControl.pluginBoardView removeItemWithTag:1003];
+//    [self.chatSessionInputBarControl.pluginBoardView removeItemWithTag:1003];
 //    if (self.conversationType != ConversationType_APPSERVICE &&
 //        self.conversationType != ConversationType_PUBLICSERVICE) {
 //        //加号区域增加发送文件功能，Kit中已经默认实现了该功能，但是为了SDK向后兼容性，目前SDK默认不开启该入口，可以参考以下代码在加号区域中增加发送文件功能。

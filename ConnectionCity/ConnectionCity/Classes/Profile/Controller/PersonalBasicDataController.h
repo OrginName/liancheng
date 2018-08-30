@@ -11,4 +11,6 @@
 @interface PersonalBasicDataController : BaseViewController
 @property (nonatomic,strong)UserMo * connectionMo;//连合作人脉
 @property (nonatomic,strong)NSString * flagStr;
+@property (nonatomic,strong) NSMutableArray * arr_User;//数据源数组
+@property (nonatomic,assign) NSInteger flag;//标识当前是第几个
 @end

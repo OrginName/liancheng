@@ -29,6 +29,7 @@
 #import "AgreementController.h"
 #import "privateUserInfoModel.h"
 #import "PersonalBasicDataController.h"
+#import "FilterOneController.h"
 @interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate>
 {
     BOOL flag;
@@ -50,6 +51,7 @@
 @property (weak, nonatomic) IBOutlet UIView *view_userLocation;
 @property (weak, nonatomic) IBOutlet UILabel *lab_Location;
 @property (weak, nonatomic) IBOutlet UILabel *lab_Notice;
+@property (weak, nonatomic) IBOutlet UIButton *btn_SX;
 @property (nonatomic,strong) RefineView * refine;
 @property (nonatomic,strong) FirstTanView * first;
 @property (nonatomic,strong) CustomMap * cusMap;
@@ -67,6 +69,24 @@
 //    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(JB:) name:@"TSJBACTIVE" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:@"LOADSERVICELIST" object:nil];
+}
+#pragma mark -----首页筛选------------
+- (IBAction)SXClick:(UIButton *)sender {
+    FilterOneController * filter = [FilterOneController new];
+    filter.title = @"筛选条件";
+    filter.flag_SX = 1;
+    filter.block = ^(NSDictionary *strDic) {
+        [self loadServiceList:@{
+                                @"age":strDic[@"0"],
+                                @"distance":strDic[@"1"],
+                                @"gender":strDic[@"2"],
+                                @"userStatus":strDic[@"10"],
+                                @"validType":strDic[@"3"],
+                                @"lat":[KUserDefults objectForKey:kLat],
+                                @"lng":[KUserDefults objectForKey:KLng]
+                                }];
+    };
+    [self.navigationController pushViewController:filter animated:YES];
 }
 -(void)JB:(NSNotification *)noti{
     NSDictionary * dic = noti.object;
@@ -121,11 +141,15 @@
 //        self.cusMap.Arr_Mark = successArrValue;
 //    }];
     NSDictionary * dic1 = @{
-                           @"gender": @"",
-                           @"lat": @([dic[@"lat"]?dic[@"lat"]:@"" floatValue]),
-                           @"lng": @([dic[@"lng"]?dic[@"lng"]:@"" floatValue]),
-                           @"pageNumber": @1,
-                           @"pageSize": @50
+                            @"age":dic[@"age"]?dic[@"age"]:@"",
+                            @"distance":@([dic[@"distance"]?dic[@"distance"]:@"" intValue]),
+                            @"gender":dic[@"gender"]?@([dic[@"gender"] intValue]):@"",
+                            @"userStatus":dic[@"userStatus"]?@([dic[@"userStatus"] intValue]):@"",
+                            @"validType":dic[@"validType"]?@([dic[@"validType"] intValue]):@"",
+                            @"lat": @([dic[@"lat"]?dic[@"lat"]:@"" floatValue]),
+                            @"lng": @([dic[@"lng"]?dic[@"lng"]:@"" floatValue]),
+                            @"pageNumber": @1,
+                            @"pageSize": @50
                            };
     [YSNetworkTool POST:v1PrivateUserNearbyList params:dic1 showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray * arr = [UserMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
@@ -214,13 +238,13 @@
     [btn setTitle:name forState:UIControlStateNormal];
     [self loadServiceList:@{@"lat":lat,@"lng":lng}];
     [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([lat floatValue], [lng floatValue])];
-    [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
+    [self.cusMap.mapView setZoomLevel:14.1 animated:NO];
 }
 -(void)cityMo:(CityMo *)mo{
     [self.cusMap.location cleanUpAction];
     [self loadServiceList:@{@"lat":mo.lat,@"lng":mo.lng}];
     [self.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([mo.lat floatValue], [mo.lng floatValue])];
-    [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
+    [self.cusMap.mapView setZoomLevel:14.1 animated:NO];
 }
 -(void)setUI{
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MyselfClick) image:@"people" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
@@ -258,7 +282,9 @@
     [self.view_Map addSubview:self.cusMap];
     self.cusMap.delegate = self;
     [self.view_Map bringSubviewToFront:self.btn_mapUserLocation];
+     [self.view_Map bringSubviewToFront:self.btn_mapUserLocation];
     [self.view_Map bringSubviewToFront:self.view_notice];
+    [self.view_Map bringSubviewToFront:self.btn_SX];
     [self.view_Map bringSubviewToFront:self.view_userLocation];
 }
 - (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location{
@@ -299,23 +325,26 @@
         }
     }];
     PersonalBasicDataController * center = [PersonalBasicDataController new];
-    if ([annotation.title isEqualToString:@"当前位置"]) {
-        privateUserInfoModel * pri = [YSAccountTool userInfo];
-        UserMo * user = [UserMo new];
-        user.ID = pri.ID;
-        user.backgroundImage = pri.backgroundImage;
-        user.nickName = pri.nickName;
-        user.headImage = pri.headImage;
-        user.gender = KString(@"%ld", (long)pri.gender);
-        user.sign = pri.sign;
-        user.mobile = pri.mobile;
-        user.friendRemark = pri.friendRemark;
-        user.cityName = pri.cityName;
-        center.connectionMo = user;
-        [self.navigationController pushViewController:center animated:YES];
+    if (annotation.title==nil||[annotation.title isEqualToString:@"当前位置"]) {
+//        privateUserInfoModel * pri = [YSAccountTool userInfo];
+//        UserMo * user = [UserMo new];
+//        user.ID = pri.ID;
+//        user.backgroundImage = pri.backgroundImage;
+//        user.nickName = pri.nickName;
+//        user.headImage = pri.headImage;
+//        user.gender = KString(@"%ld", (long)pri.gender);
+//        user.sign = pri.sign;
+//        user.mobile = pri.mobile;
+//        user.friendRemark = pri.friendRemark;
+//        user.cityName = pri.cityName;
+//        center.connectionMo = user;
+//        [self.navigationController pushViewController:center animated:YES];
+        [YTAlertUtil showTempInfo:@"当前位置"];
     }else{
-        UserMo * mo = self.cusMap.Arr_Mark[index];
-        center.connectionMo = mo;
+//        UserMo * mo = self.cusMap.Arr_Mark[index];
+//        center.connectionMo = mo;
+        center.arr_User = self.cusMap.Arr_Mark;
+        center.flag = index;
         [self.navigationController pushViewController:center animated:YES];
     }
 }

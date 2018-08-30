@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab_monthMoney;
 @property (weak, nonatomic) IBOutlet UILabel *lab_yearMoney;
 @property (weak, nonatomic) IBOutlet UITextField *txt_date;
+@property (weak, nonatomic) IBOutlet UIButton *btn_Update;
 @property (nonatomic,strong) KissModel * modelReceive;
 @end
 
@@ -33,6 +34,9 @@
     [self setUI];
     _tmpBtn = self.btn1;
     [self initData];
+    if (!self.flag) {
+        self.btn_Update.hidden = YES;
+    }
 }
 -(void)initData{
     self.txt_date.text = [NSDate stringDate:[NSDate date]];

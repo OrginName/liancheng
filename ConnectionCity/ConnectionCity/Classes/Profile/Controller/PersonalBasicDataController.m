@@ -16,6 +16,7 @@
 #import "FriendCircleController.h"
 #import "ZoomImage.h"
 @interface PersonalBasicDataController ()
+@property (weak, nonatomic) IBOutlet UIScrollView *scro_View;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_View;
 @property (weak, nonatomic) IBOutlet UIView *view_Phone;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_phone;
@@ -33,34 +34,45 @@
 @property (weak, nonatomic) IBOutlet UIButton *sendMessageBtn;
 @property (weak, nonatomic) IBOutlet UIView *view_Image;
 @property (weak, nonatomic) IBOutlet UIButton *btn_BZ;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_Btn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_view;
+@property (weak, nonatomic) IBOutlet UIView *view_leftRight;
 @end
 @implementation PersonalBasicDataController
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    [self setConnectionMo:self.connectionMo];
+    if (self.arr_User.count==0) {
+        [self setConnectionMo:self.connectionMo];
+        self.view_leftRight.hidden = YES;
+        self.layout_view.constant = 0;
+    }else{
+        UserMo * user = self.arr_User[self.flag];
+        [self setConnectionMo:user];
+    }
     if ([self.flagStr isEqualToString:@"BLACKLIST"]) {
         self.view_btn.hidden = YES;
         self.btn_BZ.userInteractionEnabled = NO;
     }
-    if (self.connectionMo.serviceCircleList.count==0) {
-        WeakSelf
-        [YSNetworkTool POST:v1PrivateUserUserinfo params:@{@"id":self.connectionMo.ID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSArray * arr = responseObject[@"data"][@"serviceCircleList"];
-            NSMutableArray * arr1 = [NSMutableArray array];
-            for (int i=0; i<(arr.count>4?4:arr.count); i++) {
-                NSDictionary * dic = arr[i];
-                if ([dic[@"images"] isKindOfClass:[NSString class]]&&[dic[@"images"] description]!=0) {
-                    NSString * url =[dic[@"images"] componentsSeparatedByString:@";"][0];
-                    [arr1 addObject:url];
-                } 
-            }
-            [weakSelf loadData:[arr1 copy]];
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            
-        }];
-    }
 }
+-(void)loadFriendList{
+    WeakSelf
+    [YSNetworkTool POST:v1PrivateUserUserinfo params:@{@"id":self.connectionMo.ID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray * arr = responseObject[@"data"][@"serviceCircleList"];
+        NSMutableArray * arr1 = [NSMutableArray array];
+        for (int i=0; i<(arr.count>4?4:arr.count); i++) {
+            NSDictionary * dic = arr[i];
+            if ([dic[@"images"] isKindOfClass:[NSString class]]&&[dic[@"images"] description]!=0) {
+                NSString * url =[dic[@"images"] componentsSeparatedByString:@";"][0];
+                [arr1 addObject:url];
+            }
+        }
+        [weakSelf loadData:[arr1 copy]];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+
 -(void)setConnectionMo:(UserMo *)connectionMo{
     _connectionMo = connectionMo;
     if (_connectionMo!=nil) {
@@ -75,6 +87,9 @@
             self.layout_phone.constant = 50;
             self.layout_View.constant = 280;
             self.view_btn.hidden = YES;
+            self.layout_view.constant = 0;
+            self.view_leftRight.hidden = YES;
+            self.layout_Btn.constant = 0;
         }
         self.phoneNumLab.text = [connectionMo.mobile description];
         self.addressLab.text = [connectionMo.cityName description];
@@ -92,11 +107,20 @@
                 }
             }
             [self loadData:[arr1 copy]];
+        }else{
+            [self loadFriendList];
         }
     }
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    //关闭自适应
+    if (@available(iOS 11.0, *)) {
+        self.scro_View.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        // Fallback on earlier versions
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     //设置导航透明
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]forBarMetrics:UIBarMetricsDefault];
     //去掉导航栏底部的黑线
@@ -185,6 +209,35 @@
     FriendCircleController * friend = [FriendCircleController new];
     friend.user = self.connectionMo;
     [self.navigationController pushViewController:friend animated:YES];
+}
+#pragma ------------上一个 下一个---------------------
+- (IBAction)nextAndReturn:(UIButton *)sender {
+    switch (sender.tag) {
+        case 3:
+            {
+                self.flag--;
+                if (self.flag<=0) {
+                    self.flag=0;
+                    return [YTAlertUtil showTempInfo:@"再往前没有了"];
+                }
+                UserMo * user = self.arr_User[self.flag];
+                [self setConnectionMo:user];
+            }
+            break;
+        case 4:
+        {
+            self.flag++;
+            if (self.flag>=self.arr_User.count-1) {
+                self.flag=self.arr_User.count-1;
+                return [YTAlertUtil showTempInfo:@"再往后没有了"];
+            }
+            UserMo * user = self.arr_User[self.flag];
+            [self setConnectionMo:user];
+        }
+            break;
+        default:
+            break;
+    }
 }
 -(void)updateBeiZhu:(NSString *)str{
     if (str.length==0) {

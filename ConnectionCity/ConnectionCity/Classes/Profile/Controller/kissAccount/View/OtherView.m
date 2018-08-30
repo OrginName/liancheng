@@ -167,6 +167,7 @@
     NSIndexPath * index  = [self.tableView indexPathForCell:cell];
     KissDetailController * deltail = [KissDetailController new];
     deltail.title = @"账户详情";
+    deltail.flag = YES;
     deltail.ID = [_mutDataArr[index.row] modelId];
     [self.controller.navigationController pushViewController:deltail animated:YES];
 }

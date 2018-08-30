@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KissDetailController">
             <connections>
                 <outlet property="btn1" destination="vhj-kV-pXz" id="ha4-rq-pdx"/>
+                <outlet property="btn_Update" destination="GdJ-7m-4Hh" id="JVu-Jf-rRU"/>
                 <outlet property="collec_Bottom" destination="9s1-ah-1Ob" id="3dU-zI-M9m"/>
                 <outlet property="lab_monthMoney" destination="ihm-bo-Nzc" id="kfm-W3-Bjt"/>
                 <outlet property="lab_nickName" destination="VR2-v8-DCa" id="D3F-Q1-GJh"/>

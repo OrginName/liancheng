@@ -11,4 +11,5 @@
 #import "KissModel.h"
 @interface KissDetailController : BaoBiaoVC
 @property (nonatomic,copy) NSString * ID;
+@property (nonatomic,assign) BOOL flag;
 @end
