@@ -36,7 +36,7 @@
         ///把地图添加至view
 //        map.zoomEnabled = NO;
         map.delegate = self;
-        map.maxZoomLevel = 15.1;
+        map.maxZoomLevel = 16.1;
         self.mapView = map;
         [self addSubview:self.mapView];
         self.location = [[CustomLocatiom alloc] init];

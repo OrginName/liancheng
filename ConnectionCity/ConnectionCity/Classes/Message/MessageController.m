@@ -28,6 +28,7 @@
 #import "UITabBar+badge.h"
 #import "AgreementController.h"
 #import "privateUserInfoModel.h"
+#import "PersonalBasicDataController.h"
 @interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate>
 {
     BOOL flag;
@@ -110,14 +111,27 @@
 }
 //加载服务列表数据
 -(void)loadServiceList:(NSDictionary *)dic{
+//    NSDictionary * dic1 = @{
+//                 @"distance": @([KDistance intValue]),
+//                 @"lat": @([dic[@"lat"] floatValue]),
+//                 @"lng": @([dic[@"lng"] floatValue]),
+//                 };
+//    //    加载服列表
+//    [ServiceHomeNet requstServiceList:dic1 withSuc:^(NSMutableArray *successArrValue) {
+//        self.cusMap.Arr_Mark = successArrValue;
+//    }];
     NSDictionary * dic1 = @{
-                 @"distance": @([KDistance intValue]),
-                 @"lat": @([dic[@"lat"] floatValue]),
-                 @"lng": @([dic[@"lng"] floatValue]),
-                 };
-    //    加载服列表
-    [ServiceHomeNet requstServiceList:dic1 withSuc:^(NSMutableArray *successArrValue) {
-        self.cusMap.Arr_Mark = successArrValue;
+                           @"gender": @"",
+                           @"lat": @([dic[@"lat"]?dic[@"lat"]:@"" floatValue]),
+                           @"lng": @([dic[@"lng"]?dic[@"lng"]:@"" floatValue]),
+                           @"pageNumber": @1,
+                           @"pageSize": @50
+                           };
+    [YSNetworkTool POST:v1PrivateUserNearbyList params:dic1 showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray * arr = [UserMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+        self.cusMap.Arr_Mark = arr;
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
     }];
 }
 //获取当前自己的位置并设为中心点
@@ -259,24 +273,39 @@
 -(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
     flag = NO;
 //    if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
-        ShowResumeController * show = [ShowResumeController new];
-        show.Receive_Type = ENUM_TypeTrval;
-        show.data_Count = self.cusMap.Arr_Mark;
+//        ShowResumeController * show = [ShowResumeController new];
+//        show.Receive_Type = ENUM_TypeTrval;
+//        show.data_Count = self.cusMap.Arr_Mark;
         __block NSUInteger index = 0;
-        [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            UserMo * list = (UserMo *)obj;
-            if (annotation.title == list.ID) {
-                index = idx;
-                *stop = YES;
-            }
-            if (self.cusMap.Arr_Mark.count!=0&& [annotation.title isEqualToString:@"当前位置"]&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
-                index = idx;
-                *stop = YES;
-            }
-        }];
-        show.zIndex = index;
-        [self.navigationController pushViewController:show animated:YES];
+//        [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            UserMo * list = (UserMo *)obj;
+//            if (annotation.title == list.ID) {
+//                index = idx;
+//                *stop = YES;
+//            }
+//            if (self.cusMap.Arr_Mark.count!=0&& [annotation.title isEqualToString:@"当前位置"]&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
+//                index = idx;
+//                *stop = YES;
+//            }
+//        }];
+//        show.zIndex = index;
+//        [self.navigationController pushViewController:show animated:YES];
 //    }
+    [self.cusMap.Arr_Mark enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UserMo * list = (UserMo *)obj;
+        if (annotation.title == list.ID) {
+            index = idx;
+            *stop = YES;
+        }
+        if (self.cusMap.Arr_Mark.count!=0&& [annotation.title isEqualToString:@"当前位置"]&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
+            index = idx;
+            *stop = YES;
+        }
+    }];
+    PersonalBasicDataController * center = [PersonalBasicDataController new];
+    UserMo * mo = self.cusMap.Arr_Mark[index];
+    center.connectionMo = mo;
+    [self.navigationController pushViewController:center animated:YES];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
