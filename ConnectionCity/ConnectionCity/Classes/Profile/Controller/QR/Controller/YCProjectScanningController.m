@@ -113,9 +113,6 @@
     }
     [_qrScanView startDeviceReadyingWithText:@"相机启动中"];
 }
-
-
-
 // 开始扫描
 - (void)beginScan {
     
@@ -144,7 +141,7 @@
         AVMetadataMachineReadableCodeObject *metadataObject = [metadataObjects firstObject];
         NSString *scanResult = metadataObject.stringValue;
         if (scanResult.length > 0) {
-            if ([scanResult containsString:@"10000"]) {
+            if ([YSTools isNum:[scanResult componentsSeparatedByString:@"_"][0]]) {
                 if (self.completionHandler) {
                     self.completionHandler(scanResult);
                 }

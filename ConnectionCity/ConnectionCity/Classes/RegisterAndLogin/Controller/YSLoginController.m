@@ -98,21 +98,20 @@
     [KUserDefults synchronize];
     [[RCDataBaseManager shareInstance] closeDBForDisconnect];
     [[RCIMClient sharedRCIMClient] logout];
-    //[[RCIMClient sharedRCIMClient]disconnect:NO];
-    
+    //[[RCIMClient sharedRCIMClient]disconnect:NO]; 
     NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.cn.rongcloud.im.share"];
     [userDefaults removeObjectForKey:@"Cookie"];
     [userDefaults synchronize];
-    
-    
-    if ([YSTools dx_isNullOrNilWithObject:_phoneTF.text] || [YSTools dx_isNullOrNilWithObject:_passwordTF.text]) {
-        [YTAlertUtil showTempInfo:@"请将信息填写完整"];
-        return;
+    if ([YSTools dx_isNullOrNilWithObject:_phoneTF.text] ) {
+        return [YTAlertUtil showTempInfo:@"请输入手机号或连程号"];
     }
-    if (![YSTools isRightPhoneNumberFormat:_phoneTF.text]) {
-        [YTAlertUtil showTempInfo:@"请填写正确的手机号码"];
-        return;
+    if ([YSTools dx_isNullOrNilWithObject:_passwordTF.text]) {
+        return [YTAlertUtil showTempInfo:@"请输入密码"];
     }
+//    if (![YSTools isRightPhoneNumberFormat:_phoneTF.text]) {
+//        [YTAlertUtil showTempInfo:@"请填写正确的手机号码"];
+//        return;
+//    }
     if (!self.checkBtn.selected) {
         [YTAlertUtil showTempInfo:@"请阅读并同意服务条款"];
         return;

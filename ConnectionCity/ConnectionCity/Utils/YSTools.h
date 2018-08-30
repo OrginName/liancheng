@@ -54,6 +54,7 @@
 +(NSInteger)initTimerCompare:(NSString *)startTime withEndTime:(NSString *)endTime;
 #pragma mark -------- 时间戳
 +(NSString *)cTimestampFromString:(NSString *)theTime;
+ 
 @end
 
 

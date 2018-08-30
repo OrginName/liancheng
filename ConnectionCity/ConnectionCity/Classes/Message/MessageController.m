@@ -297,15 +297,27 @@
             index = idx;
             *stop = YES;
         }
-        if (self.cusMap.Arr_Mark.count!=0&& [annotation.title isEqualToString:@"当前位置"]&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
-            index = idx;
-            *stop = YES;
-        }
     }];
     PersonalBasicDataController * center = [PersonalBasicDataController new];
-    UserMo * mo = self.cusMap.Arr_Mark[index];
-    center.connectionMo = mo;
-    [self.navigationController pushViewController:center animated:YES];
+    if ([annotation.title isEqualToString:@"当前位置"]) {
+        privateUserInfoModel * pri = [YSAccountTool userInfo];
+        UserMo * user = [UserMo new];
+        user.ID = pri.ID;
+        user.backgroundImage = pri.backgroundImage;
+        user.nickName = pri.nickName;
+        user.headImage = pri.headImage;
+        user.gender = KString(@"%ld", (long)pri.gender);
+        user.sign = pri.sign;
+        user.mobile = pri.mobile;
+        user.friendRemark = pri.friendRemark;
+        user.cityName = pri.cityName;
+        center.connectionMo = user;
+        [self.navigationController pushViewController:center animated:YES];
+    }else{
+        UserMo * mo = self.cusMap.Arr_Mark[index];
+        center.connectionMo = mo;
+        [self.navigationController pushViewController:center animated:YES];
+    }
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

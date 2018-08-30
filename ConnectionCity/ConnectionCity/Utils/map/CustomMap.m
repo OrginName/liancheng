@@ -36,7 +36,7 @@
         ///把地图添加至view
 //        map.zoomEnabled = NO;
         map.delegate = self;
-        map.maxZoomLevel = 16.1;
+        map.maxZoomLevel = 15.1;
         self.mapView = map;
         [self addSubview:self.mapView];
         self.location = [[CustomLocatiom alloc] init];
@@ -129,7 +129,7 @@
             [self.mapView selectAnnotation:self.pointAnnotaiton animated:YES];
         }
         [self.mapView setCenterCoordinate:location.coordinate];
-        [self.mapView setZoomLevel:15.1 animated:NO];
+        [self.mapView setZoomLevel:14.1 animated:NO];
         [self.mapView addAnnotations:self.annotations];
     if ([self.delegate respondsToSelector:@selector(currentMapLocation:location:)]) {
         [self.delegate currentMapLocation:locationDictionary location:location];

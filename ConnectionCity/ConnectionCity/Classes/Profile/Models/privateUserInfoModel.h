@@ -93,7 +93,7 @@
 /** <#marriageName描述#> */
 @property (nonatomic, copy) NSString *marriageName;
 @property (nonatomic, copy) NSString *isFriend;
-
+proStr(friendRemark);
 proStr(rongyunToken);//融云token
 
 /** <#occupationCategoryName描述#> */
