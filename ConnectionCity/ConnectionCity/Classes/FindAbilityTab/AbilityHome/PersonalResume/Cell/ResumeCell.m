@@ -62,10 +62,10 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ResumeCell" owner:self options:nil] objectAtIndex:index];
     }
-    cell.lab_eduAndWork.text  = indexPath.section==5?@"+教育经历":@"+工作经历";
-    cell.lab_proOrXL.text = indexPath.section==5?@"学历：":@"职业：";
+    cell.lab_eduAndWork.text  = indexPath.section==5?@"+教育经历":@"+合作描述";
+    cell.lab_proOrXL.text = indexPath.section==5?@"学历：":@"行业：";
     cell.lab_pro.text = indexPath.section==5?@"专业：":@"描述：";
-    cell.lab_workEdu.text = indexPath.section==5?@"教育经历":@"工作经历";
+    cell.lab_workEdu.text = indexPath.section==5?@"教育经历":@"合作描述";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.lab_salaryAndJY.text = indexPath.section == 1?@"薪资":indexPath.section == 2?@"学历":@"工作经验";
     cell.txt_salWay.placeholder = indexPath.section==1?@"请选择薪资":indexPath.section==2?@"学历":@"请选择工作经验";

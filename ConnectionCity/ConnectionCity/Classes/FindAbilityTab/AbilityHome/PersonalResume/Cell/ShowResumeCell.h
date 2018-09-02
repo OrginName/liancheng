@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn_XL;
 @property (weak, nonatomic) IBOutlet UIButton *btn_age;
 @property (weak, nonatomic) IBOutlet UILabel *lab_CompanyAndCollege;
-@property (weak, nonatomic) IBOutlet UILabel *lab_proW;//职业
+@property (weak, nonatomic) IBOutlet UILabel *lab_proW;//行业
 @property (weak, nonatomic) IBOutlet UILabel *lab_MSW;//描述
 @property (weak, nonatomic) IBOutlet UILabel *lab_time;
 @property (weak, nonatomic) IBOutlet UILabel *lab_EduAndWork;//工作或教育经历标题

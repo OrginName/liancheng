@@ -92,7 +92,7 @@
 #pragma mark - setter and getter
 - (NSArray *)titleDataArr{
     if (!_titleDataArr) {
-        _titleDataArr = @[@[@"昵称",@"姓名",@"年龄",@"性别",@"所在地区"],@[@"身高",@"体重",@"婚姻",@"学历",@"职业",@"签名"]];
+        _titleDataArr = @[@[@"昵称",@"姓名",@"年龄",@"性别",@"所在地区"],@[@"身高",@"体重",@"婚姻",@"学历",@"行业",@"签名"]];
         _parmeDataArr = @[@[@"nickName",@"realName",@"age",@"gender",@"areaCode"],@[@"height",@"weight",@"marriage",@"educationId",@"occupationCategoryId",@"sign"]];
     }
     return _titleDataArr;
@@ -100,7 +100,7 @@
 - (NSMutableArray *)contentDataArr {
     if (!_contentDataArr) {
         NSMutableArray *firstMutArr = [[NSMutableArray alloc]initWithArray:@[@"东方奇迹",@"江小白",@"18",@"女",@"武汉"]];
-        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[@"160",@"45",@"未婚",@"研究生",@"职业",@"我是单身贵族"]];
+        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[@"160",@"45",@"未婚",@"研究生",@"行业",@"我是单身贵族"]];
         _contentDataArr = [[NSMutableArray alloc]initWithArray:@[firstMutArr,secondMutArr]];
     }
     return _contentDataArr;
@@ -193,7 +193,7 @@
         } cancelTitle:@"取消" cancelHandler:nil completion:nil];
     }else if (indexPath.section==1&&indexPath.row==4){
         ClassificationsController1 * class = [ClassificationsController1 new];
-        class.title = @"职业类型";
+        class.title = @"行业类型";
         class.arr_Data = self.arr_Class;
         WeakSelf
         class.block = ^(NSString *classifiation){

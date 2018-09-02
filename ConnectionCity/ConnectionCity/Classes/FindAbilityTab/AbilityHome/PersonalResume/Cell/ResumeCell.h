@@ -18,10 +18,10 @@ typedef void (^blockClick)(void);
 @property (weak, nonatomic) IBOutlet UIImageView *imageISNo;
 @property (weak, nonatomic) IBOutlet UIImageView *image_edit;
 @property (weak, nonatomic) IBOutlet UILabel *lab_workEdu;//工作和教育标题
-@property (weak, nonatomic) IBOutlet UILabel *lab_proOrXL;//职业和学历
+@property (weak, nonatomic) IBOutlet UILabel *lab_proOrXL;//行业和学历
 @property (weak, nonatomic) IBOutlet UILabel *lab_pro;//描述
 @property (weak, nonatomic) IBOutlet UILabel *lab_comAndCollege;//大学And公司
-@property (weak, nonatomic) IBOutlet UILabel *lab_time;//教育AND职业时间
+@property (weak, nonatomic) IBOutlet UILabel *lab_time;//教育AND行业时间
 @property (weak, nonatomic) IBOutlet UILabel *lab_proAndCollW;//大学And公司赋值
 @property (weak, nonatomic) IBOutlet UILabel *lab_proW;//描述赋值
 @property (weak, nonatomic) IBOutlet UILabel *lab_eduAndWork;//教育AND工作标题

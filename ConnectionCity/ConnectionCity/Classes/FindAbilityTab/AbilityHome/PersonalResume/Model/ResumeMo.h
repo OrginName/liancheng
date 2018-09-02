@@ -11,7 +11,7 @@
 @class WorkMo;
 @interface ResumeMo : BaseModel
 proStr(collAndcompany);//学校
-proStr(proAndPro);//专业职业
+proStr(proAndPro);//专业行业
 proStr(XLAndIntro);//学历
 proStr(satrtTime);//开始时间
 proStr(endTime);//结束时间

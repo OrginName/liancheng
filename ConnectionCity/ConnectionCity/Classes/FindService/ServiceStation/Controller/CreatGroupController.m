@@ -51,7 +51,7 @@
     }
     if (self.flag_str!=3) {
         if (self.txt_class.text.length==0) {
-            [YTAlertUtil showTempInfo:self.flag_str==1?@"请选择职业分类":@"请选择服务类别"];
+            [YTAlertUtil showTempInfo:self.flag_str==1?@"请选择行业分类":@"请选择服务类别"];
             return;
         }
     }
@@ -115,7 +115,7 @@
     if (sender.tag==3) {
         ClassificationsController1 * class = [ClassificationsController1 new];
         class.arr_Data = self.Arr_Classify;
-        class.title = self.flag_str==1?@"职业分类":@"服务分类";
+        class.title = self.flag_str==1?@"行业分类":@"服务分类";
         class.block1 = ^(NSString *classifiationID, NSString *classifiation) {
             self.txt_class.text = classifiation;
             _ID = classifiationID;

@@ -39,7 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title  = @"个人简历";
+    self.title  = @"合作信息";
     [self setUI];
     [self initData];
 }
@@ -428,7 +428,7 @@
             [weakSelf.data_ArrWork replaceObjectAtIndex:(_currtIndexRow-1) withObject:Mo];
             [self loadArr1];
         };
-        guard.title = @"编辑工作经历";
+        guard.title = @"编辑合作介绍";
         _currtIndexRow = indexPath.row;
         [self.navigationController pushViewController:guard animated:YES];
         

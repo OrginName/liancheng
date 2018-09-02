@@ -271,7 +271,7 @@ static NSString * const dictionaryAreaTreeList = @"/dictionary/area/tree-list";
 static NSString * const dictionaryDictionaryAll = @"/dictionary/dictionary/all";
 //学历
 static NSString * const dictionaryEducation = @"/dictionary/education";
-//职业分类
+//行业分类
 static NSString * const dictionaryOccupationCategory = @"/dictionary/occupation-category";
 //赚外快-行业分类
 static NSString * const dictionaryIndustryCategory = @"/dictionary/industry-category";

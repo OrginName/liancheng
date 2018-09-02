@@ -56,7 +56,7 @@
 }
 - (IBAction)btn_SelectProfess:(UIButton *)sender {
     ClassificationsController1 * class = [ClassificationsController1 new];
-    class.title = @"职业分类";
+    class.title = @"行业分类";
     class.arr_Data = self.arr_Class;
     class.block = ^(NSString *classifiation){
     };

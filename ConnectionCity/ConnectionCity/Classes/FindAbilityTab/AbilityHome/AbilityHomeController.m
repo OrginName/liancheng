@@ -102,7 +102,7 @@
         case 2:
         {
             ClassificationsController1 * class = [ClassificationsController1 new];
-            class.title = @"职业分类";
+            class.title = @"行业分类";
             class.arr_Data = self.arr_Class;
             class.block = ^(NSString *classifiation){
                 UILabel * btn = (UILabel *)[self.view_SX viewWithTag:2];
@@ -143,7 +143,7 @@
     if ([KUserDefults objectForKey:kLat]!=nil&&[KUserDefults objectForKey:KLng]!=nil&&[KUserDefults objectForKey:kUserCityID]!=nil) {
         [self loadServiceList:@{@"cityID":[KUserDefults objectForKey:kUserCityID],@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
     } 
-//    热门职业加载
+//    热门行业加载
     [AbilityNet requstAbilityHot:^(NSMutableArray *successArrValue) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self loadketBtn:successArrValue];

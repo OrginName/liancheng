@@ -28,13 +28,13 @@ typedef void (^FailDicBlock) (NSString * failValue);
  */
 +(void)requstAbilityHot:(SuccessArrBlock)block;
 /**
- 职业分类
+ 行业分类
  
  @param block 成功返回
  */
 +(void)requstAbilityClass:(SuccessArrBlock)block;
 /**
- 职业筛选
+ 行业筛选
  
  @param block 成功返回
  */

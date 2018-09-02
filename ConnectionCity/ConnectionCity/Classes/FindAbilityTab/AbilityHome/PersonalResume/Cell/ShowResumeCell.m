@@ -41,7 +41,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ShowResumeCell" owner:self options:nil] objectAtIndex:index];
         
     }
-    cell.lab_ProTitle.text = indexPath.section==2?@"学历：":@"职业：";
+    cell.lab_ProTitle.text = indexPath.section==2?@"学历：":@"行业：";
     cell.lab_introTitle.text = indexPath.section==2?@"专业：":@"描述：";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
