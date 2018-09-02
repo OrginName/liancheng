@@ -135,7 +135,7 @@
 }
 -(void)setUI{
     [super setFlag_back:YES];//设置返回按钮
-    self.cusMap = [[CustomMap alloc] initWithFrame:CGRectMake(0, 0, self.view_Map.width, self.view_Map.height) ];
+    self.cusMap = [[CustomMap alloc] initWithFrame: CGRectMake(0, 0, kScreenWidth, kScreenHeight-64-44-50)];
     self.cusMap.delegate = self;
     [self.view_Map addSubview:self.cusMap];
     [self.view_Map bringSubviewToFront:self.btn_fajianli];

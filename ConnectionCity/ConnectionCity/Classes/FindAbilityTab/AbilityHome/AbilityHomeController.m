@@ -174,7 +174,7 @@
 #pragma mark ----初始化加载数据（结束）------
 -(void)setUI{
     [super setFlag_back:YES];
-    self.cusMap = [[CustomMap alloc] initWithFrame:CGRectMake(0, 0, self.view_Map.width, self.view_Map.height) ];
+    self.cusMap = [[CustomMap alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64-44-50)];
     self.cusMap.delegate = self;
     [self.view_Map addSubview:self.cusMap];
     [self.view_Map bringSubviewToFront:self.btn_fajianli];

@@ -27,11 +27,9 @@
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
         instance = [[[self class] alloc] init];
-
     });
     return instance;
 }
-
 - (void)syncGroups {
     //开发者调用自己的服务器接口获取所属群组信息
 //    [RCDHTTPTOOL getMyGroupsWithBlock:^(NSMutableArray *result) {
@@ -116,14 +114,15 @@
 }
 
 - (void)getAllMembersOfGroup:(NSString *)groupId result:(void (^)(NSArray *userIdList))resultBlock {
-//    [RCDHTTPTOOL getGroupMembersWithGroupId:groupId flag:2
-//                                                      Block:^(NSMutableArray *result) {
-//                                                          NSMutableArray *ret = [[NSMutableArray alloc] init];
-//                                                          for (RCUserInfo *user in result) {
-//                                                              [ret addObject:user.userId];
-//                                                          }
-//                                                          resultBlock(ret);
-//                                                      }];
+    
+    [RCDHTTPTOOL getGroupMembersWithGroupId:groupId flag:[[KUserDefults objectForKey:@"FLAGID"] intValue]
+                                                      Block:^(NSMutableArray *result) {
+                                                          NSMutableArray *ret = [[NSMutableArray alloc] init];
+                                                          for (RCUserInfo *user in result) {
+                                                              [ret addObject:user.userId];
+                                                          }
+                                                          resultBlock(ret);
+                                                      }];
 }
 
 - (NSArray *)getAllUserInfo:(void (^)(void))completion {

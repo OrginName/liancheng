@@ -61,6 +61,8 @@
 		723F4FAF20BEE8FF00AF8268 /* TrvalTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FAE20BEE8FF00AF8268 /* TrvalTrip.m */; };
 		723F4FB320BEEA8D00AF8268 /* TrvalTripCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FB120BEEA8D00AF8268 /* TrvalTripCell.m */; };
 		723F4FB420BEEA8D00AF8268 /* TrvalTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723F4FB220BEEA8D00AF8268 /* TrvalTripCell.xib */; };
+		724B5F38213C22B800F51134 /* MyLocationPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724B5F36213C22B800F51134 /* MyLocationPickerController.m */; };
+		724B5F3D213C4A2000F51134 /* MyLocationPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 724B5F3C213C4A2000F51134 /* MyLocationPickerController.xib */; };
 		72626F2F20ECF295001B807D /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72626F2C20ECF295001B807D /* libMobClickLibrary.a */; };
 		72626F3220ECF66E001B807D /* RCDSettingUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 72626F3120ECF66E001B807D /* RCDSettingUserDefaults.m */; };
 		72626F3F20ECFBE9001B807D /* RongContactCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72626F3E20ECFBE9001B807D /* RongContactCard.framework */; };
@@ -789,6 +791,9 @@
 		723F4FB020BEEA8D00AF8268 /* TrvalTripCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrvalTripCell.h; sourceTree = "<group>"; };
 		723F4FB120BEEA8D00AF8268 /* TrvalTripCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrvalTripCell.m; sourceTree = "<group>"; };
 		723F4FB220BEEA8D00AF8268 /* TrvalTripCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrvalTripCell.xib; sourceTree = "<group>"; };
+		724B5F35213C22B800F51134 /* MyLocationPickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyLocationPickerController.h; sourceTree = "<group>"; };
+		724B5F36213C22B800F51134 /* MyLocationPickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyLocationPickerController.m; sourceTree = "<group>"; };
+		724B5F3C213C4A2000F51134 /* MyLocationPickerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyLocationPickerController.xib; sourceTree = "<group>"; };
 		72626F2C20ECF295001B807D /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		72626F2D20ECF295001B807D /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		72626F2E20ECF295001B807D /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
@@ -2887,6 +2892,9 @@
 				72626F3020ECF66D001B807D /* RCDSettingUserDefaults.h */,
 				72626F3120ECF66E001B807D /* RCDSettingUserDefaults.m */,
 				8D14FDE420EB0C000013A9DF /* Utilites */,
+				724B5F35213C22B800F51134 /* MyLocationPickerController.h */,
+				724B5F36213C22B800F51134 /* MyLocationPickerController.m */,
+				724B5F3C213C4A2000F51134 /* MyLocationPickerController.xib */,
 			);
 			path = RcloudMessage;
 			sourceTree = "<group>";
@@ -5079,6 +5087,7 @@
 				CEE4B2B020C6D948008B8731 /* MemberRenewalController.xib in Resources */,
 				727418DF20B290BF001D6BE1 /* EnthusiastsControll.xib in Resources */,
 				72EC1BAC20BC34AA00ACC20B /* TravalController.xib in Resources */,
+				724B5F3D213C4A2000F51134 /* MyLocationPickerController.xib in Resources */,
 				CE14BD6720F3780E00F85C49 /* AlipaySDK.bundle in Resources */,
 				72EC1BA220BC347D00ACC20B /* ProfileServiceController.xib in Resources */,
 				8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */,
@@ -5267,6 +5276,7 @@
 				72B1D84E20F645D50001FF43 /* ConnectionMo.m in Sources */,
 				723F4FA620BEDE6000AF8268 /* TrvalInvitController.m in Sources */,
 				7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */,
+				724B5F38213C22B800F51134 /* MyLocationPickerController.m in Sources */,
 				CEBEDD9920B17F40000F9EE4 /* BulidTeamController.m in Sources */,
 				8D07D76820DCE0370073807C /* QiniuUploader.m in Sources */,
 				CE21F0E320DDF04C00478482 /* MembershipMealModel.m in Sources */,

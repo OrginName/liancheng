@@ -293,14 +293,16 @@
 }
 -(void)layoutSubviews{
     [super layoutSubviews];
-    self.mapView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-64-44-50);
+    self.mapView.frame = self.frame;
     self.mapView.logoCenter = CGPointMake(-1000, 1000);
     self.btn_location.frame = CGRectMake(kScreenWidth-50, 10, 40, 40);
+//    self.image_Mark.center = self.center;
+    self.image_Mark.frame = CGRectMake((self.width-6)/2, (self.height-25)/2, 15, 25);
 }
 -(UIImageView *)image_Mark{
     if (!_image_Mark) {
         _image_Mark = [[UIImageView alloc] init];
-        _image_Mark.frame = CGRectMake(kScreenWidth/2-7, (kScreenHeight-64-100)/2-12, 15, 25);
+//        _image_Mark.frame = CGRectMake(kScreenWidth/2-7, (kScreenHeight-64-100)/2-12, 15, 25);
         _image_Mark.image = [UIImage imageNamed:@"position-1"];
     }
     return _image_Mark;

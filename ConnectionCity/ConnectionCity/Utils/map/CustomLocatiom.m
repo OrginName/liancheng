@@ -36,6 +36,7 @@
     //    {
     //        [self.locationManager startUpdatingHeading];
     //    }
+   
 }
 
 - (void)startUpdatingLocation {

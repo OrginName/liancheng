@@ -37,6 +37,7 @@
 #import <IQKeyboardManager.h>
 #import "PersonalBasicDataController.h"
 #import "UserMo.h"
+#import "MyLocationPickerController.h"
 @interface RCDChatViewController () <UIActionSheetDelegate, RCRealTimeLocationObserver,
                                      RealTimeLocationStatusViewDelegate, UIAlertViewDelegate, RCMessageCellDelegate>
 @property(nonatomic, weak) id<RCRealTimeLocationProxy> realTimeLocation;
@@ -70,7 +71,10 @@ NSMutableDictionary *userInputStatus;
             //      self.defaultInputType = RCChatSessionInputBarInputExtention;
         }
     }
-
+    if (self.conversationType == ConversationType_GROUP) {
+        NSString * str = [[self.targetId description] containsString:@"station_"]?@"2":[[self.targetId description] containsString:@"team_"]?@"1":@"3";
+        [KUserDefults setObject:str forKey:@"FLAGID"];
+    }
 //    [self refreshTitle];
     //    [self.chatSessionInputBarControl updateStatus:self.chatSessionInputBarControl.currentBottomBarStatus
     //    animated:NO];
@@ -512,6 +516,10 @@ NSMutableDictionary *userInputStatus;
                                                        destructiveButtonTitle:nil
                                                             otherButtonTitles:@"发送位置", @"位置实时共享", nil];
             [actionSheet showInView:self.view];
+        }else if(tag==1003){
+            MyLocationPickerController * pic = [MyLocationPickerController new];
+            pic.title =@"发送定位";
+            [self.navigationController pushViewController:pic animated:YES];
         } else {
             [super pluginBoardView:pluginBoardView clickedItemWithTag:tag];
         }

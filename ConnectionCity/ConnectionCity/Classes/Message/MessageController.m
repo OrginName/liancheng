@@ -277,7 +277,7 @@
     if (self.cusMap) {
         [self.cusMap removeFromSuperview];
     }
-    self.cusMap = [[CustomMap alloc] initWithFrame:CGRectMake(0, 0, self.view_Map.width, self.view_Map.height)];
+    self.cusMap = [[CustomMap alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64-44-50)];
 //    self.cusMap.selectAnimation = YES;
     [self.view_Map addSubview:self.cusMap];
     self.cusMap.delegate = self;
