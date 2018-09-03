@@ -236,14 +236,16 @@
                 pointAnnotation.storImageUrl = list.headImage;
             }
         }else if ([obj isKindOfClass:[AbilttyMo class]]){
-            AbilttyMo * abilt = (AbilttyMo *)obj;
-            CLLocationCoordinate2D coor ;
-            float a = (float)(rand() % 100) /10000;
-            coor.latitude = [abilt.lat doubleValue]+a;
-            coor.longitude = [abilt.lng doubleValue];
-            pointAnnotation.coordinate = coor;
-            pointAnnotation.title = abilt.ID;
-            pointAnnotation.storImageUrl = abilt.userMo.headImage;
+             AbilttyMo * abilt = (AbilttyMo *)obj;
+            if (![abilt.userMo.ID isEqualToString:[[YSAccountTool userInfo]modelId]]) { 
+                CLLocationCoordinate2D coor ;
+                float a = (float)(rand() % 100) /10000;
+                coor.latitude = [abilt.lat doubleValue]+a;
+                coor.longitude = [abilt.lng doubleValue];
+                pointAnnotation.coordinate = coor;
+                pointAnnotation.title = abilt.ID;
+                pointAnnotation.storImageUrl = abilt.userMo.headImage;
+            } 
         }
         if (pointAnnotation) {
             [self.annotations addObject:pointAnnotation];

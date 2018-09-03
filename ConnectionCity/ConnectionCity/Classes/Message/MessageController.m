@@ -149,10 +149,10 @@
                             @"lat": @([dic[@"lat"]?dic[@"lat"]:@"" floatValue]),
                             @"lng": @([dic[@"lng"]?dic[@"lng"]:@"" floatValue]),
                             @"pageNumber": @1,
-                            @"pageSize": @50
+                            @"pageSize": @100
                            };
-    [YSNetworkTool POST:v1PrivateUserNearbyList params:dic1 showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSMutableArray * arr = [UserMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+    [YSNetworkTool POST:v1PrivateUserHomeList params:dic1 showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray * arr = [UserMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         self.cusMap.Arr_Mark = arr;
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -299,7 +299,7 @@
 -(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
     flag = NO;
 //    if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
-//        ShowResumeController * show = [ShowResumeController new];
+//        PersonalBasicDataController * show = [PersonalBasicDataController new];
 //        show.Receive_Type = ENUM_TypeTrval;
 //        show.data_Count = self.cusMap.Arr_Mark;
         __block NSUInteger index = 0;
@@ -323,30 +323,17 @@
             index = idx;
             *stop = YES;
         }
+        if ((annotation.title.length==0||[annotation.title isEqualToString:@"当前位置"])&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
+            index = idx;
+            *stop = YES;
+        }
     }];
     PersonalBasicDataController * center = [PersonalBasicDataController new];
-    if (annotation.title==nil||[annotation.title isEqualToString:@"当前位置"]) {
-//        privateUserInfoModel * pri = [YSAccountTool userInfo];
-//        UserMo * user = [UserMo new];
-//        user.ID = pri.ID;
-//        user.backgroundImage = pri.backgroundImage;
-//        user.nickName = pri.nickName;
-//        user.headImage = pri.headImage;
-//        user.gender = KString(@"%ld", (long)pri.gender);
-//        user.sign = pri.sign;
-//        user.mobile = pri.mobile;
-//        user.friendRemark = pri.friendRemark;
-//        user.cityName = pri.cityName;
-//        center.connectionMo = user;
-//        [self.navigationController pushViewController:center animated:YES];
-        [YTAlertUtil showTempInfo:@"当前位置"];
-    }else{
 //        UserMo * mo = self.cusMap.Arr_Mark[index];
 //        center.connectionMo = mo;
-        center.arr_User = self.cusMap.Arr_Mark;
-        center.flag = index;
-        [self.navigationController pushViewController:center animated:YES];
-    }
+    center.arr_User = self.cusMap.Arr_Mark;
+    center.flag = index;
+    [self.navigationController pushViewController:center animated:YES];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

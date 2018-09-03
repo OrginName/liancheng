@@ -280,6 +280,7 @@
         if ([isDisplayID isEqualToString:@"YES"]) {
             cell.userIdLabel.text = [RCIM sharedRCIM].currentUserInfo.userId;
         }
+       
         cell.nicknameLabel.text = [RCIM sharedRCIM].currentUserInfo.name;
         [cell.portraitView sd_setImageWithURL:[NSURL URLWithString:[RCIM sharedRCIM].currentUserInfo.portraitUri]
                              placeholderImage:[UIImage imageNamed:@"contact"]];
@@ -293,7 +294,11 @@
             if ([isDisplayID isEqualToString:@"YES"]) {
                 cell.userIdLabel.text = userInfo.userId;
             }
+            if ([[userInfo.status description] isEqualToString:@"0"]||[[userInfo.status description] isEqualToString:@"2"]) {
+                 cell.statusLabel.text = @"【离线】";
+            }
             cell.nicknameLabel.text = [userInfo.name isEqualToString:@"<null>"]?userInfo.userId:userInfo.name;
+            
             if ([userInfo.portraitUri isEqualToString:@""]) {
                 DefaultPortraitView *defaultPortrait =
                     [[DefaultPortraitView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];

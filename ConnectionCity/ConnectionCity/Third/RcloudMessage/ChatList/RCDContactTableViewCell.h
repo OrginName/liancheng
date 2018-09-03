@@ -10,10 +10,11 @@
 
 @interface RCDContactTableViewCell : UITableViewCell
 
-@property(nonatomic, strong) UIImageView *portraitView;
+@property(nonatomic, strong) UIImageView * portraitView;
 
-@property(nonatomic, strong) UILabel *nicknameLabel;
+@property(nonatomic, strong) UILabel * nicknameLabel;
 
-@property(nonatomic, strong) UILabel *userIdLabel;
+@property(nonatomic, strong) UILabel * userIdLabel;
 
+@property (nonatomic,strong) UILabel * statusLabel;
 @end

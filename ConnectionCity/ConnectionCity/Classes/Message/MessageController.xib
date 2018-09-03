@@ -225,6 +225,11 @@
                                 <constraint firstAttribute="height" constant="42" id="WqA-Ft-IVY"/>
                             </constraints>
                             <state key="normal" backgroundImage="icon_filter"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius ">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="SXClick:" destination="-1" eventType="touchUpInside" id="pwm-QA-YAK"/>
                                 <action selector="btn_UserLocation:" destination="-1" eventType="touchUpInside" id="S8A-sB-IBG"/>

@@ -95,7 +95,8 @@
 @property (nonatomic, copy) NSString *isFriend;
 proStr(friendRemark);
 proStr(rongyunToken);//融云token
-
+proDic(schoolName);
+proStr(schoolId);
 /** <#occupationCategoryName描述#> */
 @property (nonatomic, strong) OccupationCategoryNameModel *occupationCategoryName;
 proStr(ID);

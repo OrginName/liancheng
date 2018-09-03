@@ -136,6 +136,9 @@ static NSString * const v1PrivateUserChangePassword = @"/v1/private/user/change-
 static NSString * const v1PrivateUserInfo = @"/v1/private/user/info";
 //附近的人
 static NSString * const v1PrivateUserNearbyList = @"/v1/private/user/nearby/list";
+//首页-附近的人
+static NSString * const v1PrivateUserHomeList = @"/v1/private/user/home/list";
+
 //用户更新
 static NSString * const v1PrivateUserUpdate = @"/v1/private/user/update";
 //查找用户信息

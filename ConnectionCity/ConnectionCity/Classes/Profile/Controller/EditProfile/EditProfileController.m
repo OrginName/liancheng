@@ -19,7 +19,7 @@
 #import "AllDicMo.h"
 #import "AbilityNet.h"
 #import "ClassificationsController1.h"
-
+#import "SortCollProController.h"
 @interface EditProfileController ()<EditProfileHeadViewDelegate,JFCityViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) EditProfileHeadView *tableHeadV;
@@ -92,15 +92,15 @@
 #pragma mark - setter and getter
 - (NSArray *)titleDataArr{
     if (!_titleDataArr) {
-        _titleDataArr = @[@[@"昵称",@"姓名",@"年龄",@"性别",@"所在地区"],@[@"身高",@"体重",@"婚姻",@"学历",@"行业",@"签名"]];
-        _parmeDataArr = @[@[@"nickName",@"realName",@"age",@"gender",@"areaCode"],@[@"height",@"weight",@"marriage",@"educationId",@"occupationCategoryId",@"sign"]];
+        _titleDataArr = @[@[@"昵称",@"姓名",@"年龄",@"性别",@"所在地区"],@[@"身高cm",@"体重kg",@"婚姻",@"学历",@"行业",@"学校",@"签名"]];
+        _parmeDataArr = @[@[@"nickName",@"realName",@"age",@"gender",@"areaCode"],@[@"height",@"weight",@"marriage",@"educationId",@"occupationCategoryId",@"schoolName",@"sign"]];
     }
     return _titleDataArr;
 }
 - (NSMutableArray *)contentDataArr {
     if (!_contentDataArr) {
         NSMutableArray *firstMutArr = [[NSMutableArray alloc]initWithArray:@[@"东方奇迹",@"江小白",@"18",@"女",@"武汉"]];
-        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[@"160",@"45",@"未婚",@"研究生",@"行业",@"我是单身贵族"]];
+        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[@"160",@"45",@"未婚",@"研究生",@"行业",@"北大",@"我是单身贵族"]];
         _contentDataArr = [[NSMutableArray alloc]initWithArray:@[firstMutArr,secondMutArr]];
     }
     return _contentDataArr;
@@ -204,6 +204,17 @@
         };
         [self.navigationController pushViewController:class animated:YES];
 
+    }else if (indexPath.section==1&&indexPath.row==5){
+        SortCollProController * sort = [SortCollProController new];
+        sort.title = @"学校";
+        sort.url = dictionarySchool;
+        WeakSelf
+        sort.block = ^(ShoolOREduMo *mo) {
+             weakSelf.contentDataArr[indexPath.section][indexPath.row] = mo.name;
+            [weakSelf requestPrivateUserUpdateWithDic:@{@"schoolId":mo.ID}];
+            [weakSelf.tableView reloadData];
+        };
+        [self.navigationController pushViewController:sort animated:YES];
     }else{
         EditAllController * edit = [EditAllController new];
         WeakSelf
@@ -273,7 +284,7 @@
         [YSAccountTool saveUserinfo:userInfoModel];
         
         NSMutableArray *firstMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.nickName?userInfoModel.nickName:@"",userInfoModel.realName?userInfoModel.realName:@"",userInfoModel.age?userInfoModel.age:@"",userInfoModel.genderName?userInfoModel.genderName:@"",userInfoModel.cityName?userInfoModel.cityName:@""]];
-        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.height?[NSString stringWithFormat:@"%@CM",userInfoModel.height]:@"",userInfoModel.weight?[NSString stringWithFormat:@"%@KG",userInfoModel.weight]:@"",userInfoModel.marriageName?userInfoModel.marriageName:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.occupationCategoryName.name?userInfoModel.occupationCategoryName.name:@"",userInfoModel.sign?userInfoModel.sign:@""]];
+        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.height?[NSString stringWithFormat:@"%@CM",userInfoModel.height]:@"",userInfoModel.weight?[NSString stringWithFormat:@"%@KG",userInfoModel.weight]:@"",userInfoModel.marriageName?userInfoModel.marriageName:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.occupationCategoryName.name?userInfoModel.occupationCategoryName.name:@"",userInfoModel.schoolName[@"name"]?userInfoModel.schoolName[@"name"]:@"",userInfoModel.sign?userInfoModel.sign:@""]];
         weakSelf.contentDataArr = [[NSMutableArray alloc]initWithArray:@[firstMutArr,secondMutArr]];
         [weakSelf.tableHeadV.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
         [weakSelf.tableHeadV.headImage sd_setBackgroundImageWithURL:[NSURL URLWithString:userInfoModel.headImage] forState:UIControlStateNormal];
@@ -287,7 +298,7 @@
         [YSAccountTool saveUserinfo:userInfoModel];
         
         NSMutableArray *firstMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.nickName?userInfoModel.nickName:@"",userInfoModel.realName?userInfoModel.realName:@"",userInfoModel.age?userInfoModel.age:@"",userInfoModel.genderName?userInfoModel.genderName:@"",userInfoModel.cityName?userInfoModel.cityName:@""]];
-        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.height?[NSString stringWithFormat:@"%@CM",userInfoModel.height]:@"",userInfoModel.weight?[NSString stringWithFormat:@"%@KG",userInfoModel.weight]:@"",userInfoModel.marriageName?userInfoModel.marriageName:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.occupationCategoryName.name?userInfoModel.occupationCategoryName.name:@"",userInfoModel.sign?userInfoModel.sign:@""]];
+        NSMutableArray *secondMutArr = [[NSMutableArray alloc]initWithArray:@[userInfoModel.height?[NSString stringWithFormat:@"%@CM",userInfoModel.height]:@"",userInfoModel.weight?[NSString stringWithFormat:@"%@KG",userInfoModel.weight]:@"",userInfoModel.marriageName?userInfoModel.marriageName:@"",userInfoModel.educationName?userInfoModel.educationName:@"",userInfoModel.occupationCategoryName.name?userInfoModel.occupationCategoryName.name:@"",userInfoModel.schoolName[@"name"]?userInfoModel.schoolName[@"name"]:@"",userInfoModel.sign?userInfoModel.sign:@""]];
         weakSelf.contentDataArr = [[NSMutableArray alloc]initWithArray:@[firstMutArr,secondMutArr]];
         [weakSelf.tableHeadV.backgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
         [weakSelf.tableHeadV.headImage sd_setBackgroundImageWithURL:[NSURL URLWithString:userInfoModel.headImage] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"our-center-1"]];

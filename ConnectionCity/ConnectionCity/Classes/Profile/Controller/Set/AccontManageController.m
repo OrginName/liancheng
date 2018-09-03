@@ -130,10 +130,10 @@
             [self loginBtnClick:_accountArr[indexPath.row]];
         }
     }else if (indexPath.section==1&&indexPath.row<2){
-        if(indexPath.row !=  _selectRow) {
+        if(indexPath.row !=  _selectRow1) {
             _selectRow1= indexPath.row;
             [self.tab_Bottom reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
-//            [self loginBtnClick:_accountArr[indexPath.row]];
+            [self updateUseLat:_selectRow1==0?1:2];
         }
     }else if (indexPath.section==1&&indexPath.row==2){
         [YTAlertUtil alertDualWithTitle:@"连程" message:@"是否要退出当前账号" style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
@@ -156,7 +156,18 @@
             [kWindow setRootViewController:base];
         } completion:nil];
     }
-} 
+}
+#pragma mark ------
+-(void)updateUseLat:(NSInteger)a{
+    NSDictionary * dic = @{
+                           @"status": @(a)
+                           };
+    [YSNetworkTool POST:v1PrivateUserUpdate params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        [KUserDefults setObject:KString(@"%ld", (long)a) forKey:@"Online"];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
 - (void)loginBtnClick:(NSDictionary *)dic {
     [KUserDefults removeObjectForKey:@"userToken"];
     [KUserDefults removeObjectForKey:@"userCookie"];
