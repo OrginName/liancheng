@@ -20,6 +20,7 @@
 @interface AccontManageController ()<UITableViewDelegate,UITableViewDataSource,RCIMConnectionStatusDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,assign)NSInteger  selectRow;
+@property (nonatomic,assign)NSInteger  selectRow1;
 @property (nonatomic, strong) NSArray *accountArr;
 @property(nonatomic, strong) NSTimer *retryTime;
 @property (nonatomic,strong) NSString * nickName;
@@ -37,12 +38,13 @@
 //    [kDefaults removeObjectForKey:KAccountManager];
     self.accountArr = [kDefaults objectForKey:KAccountManager];
     self.selectRow = 9999;
+    self.selectRow1 = [[KUserDefults objectForKey:@"Online"] integerValue]?[[KUserDefults objectForKey:@"Online"] integerValue]:0;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section==0) {
         return _accountArr.count + 1;
     }else
-        return 2;
+        return 3;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
@@ -68,11 +70,17 @@
             cell.iamge_Select.image = [UIImage imageNamed:@""];
         }
         NSDictionary *dic = _accountArr[indexPath.row];
-        cell.accountLab.text = [dic objectForKey:@"account"];
+        cell.accountLab.text = [dic objectForKey:@"id"];
     }
-    if (indexPath.section==1&&indexPath.row==0) {
-        cell.image_onLine.selected = YES;
-        cell.currentCountLab.text = kUserinfo.mobile;
+    if (indexPath.section==1) {
+        //重用机制，如果选中的行正好要重用
+        if( indexPath.row ==_selectRow1)
+        {
+            cell.image_onLine.selected = YES;
+        } else {
+            cell.image_onLine.selected = NO;
+        }
+        cell.currentCountLab.text = indexPath.row==0?@"在线状态":@"隐身状态";
     }
     if (indexPath.section==0&&indexPath.row==_accountArr.count) {
         return addcell;
@@ -90,7 +98,7 @@
         UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
         view.backgroundColor = YSColor(239, 239, 239);
         UILabel * lab = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 100, 40)];
-        lab.text = @"在线状态";
+        lab.text = @"设置在线状态";
         lab.textColor = YSColor(69, 69, 69);
         lab.font = [UIFont systemFontOfSize:14];
         [view addSubview:lab];
@@ -117,20 +125,17 @@
         BaseNavigationController * base = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
         [kWindow setRootViewController:base];
     } else if (indexPath.section==0&&indexPath.row < _accountArr.count) {
-//        [tableView deselectRowAtIndexPath:indexPath animated:NO];
-        if(indexPath.row !=  _selectRow) { //selectedButton : 我这里是cell中得一个按钮属性
-//            AccountManageCell *newCell = (AccountManageCell *)[tableView cellForRowAtIndexPath:indexPath];
-//            newCell.iamge_Select.image = [UIImage imageNamed:@"our-chose"]; //yes:打勾状态
-//            AccountManageCell *oldCell = (AccountManageCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_selectRow inSection:0]];
-//            oldCell.iamge_Select.image = [UIImage imageNamed:@""];
+        if(indexPath.row !=  _selectRow) {
             _selectRow= indexPath.row;
             [self loginBtnClick:_accountArr[indexPath.row]];
         }
-    }else if (indexPath.section==1&&indexPath.row==0){
-//        AccountManageCell *newCell = (AccountManageCell *)[tableView cellForRowAtIndexPath:indexPath];
-//        newCell.image_onLine.selected = !newCell.image_onLine.selected;
-//        newCell.currentCountLab.text = kUserinfo.modelId;
-    }else if (indexPath.section==1&&indexPath.row==1){
+    }else if (indexPath.section==1&&indexPath.row<2){
+        if(indexPath.row !=  _selectRow) {
+            _selectRow1= indexPath.row;
+            [self.tab_Bottom reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+//            [self loginBtnClick:_accountArr[indexPath.row]];
+        }
+    }else if (indexPath.section==1&&indexPath.row==2){
         [YTAlertUtil alertDualWithTitle:@"连程" message:@"是否要退出当前账号" style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
             
         } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {

@@ -10,7 +10,7 @@
 #import "CustomMap.h"
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
-@interface MyLocationPickerController ()<CustomMapDelegate,UITableViewDelegate,UITableViewDataSource,CustomLocationDelegate,AMapSearchDelegate>
+@interface MyLocationPickerController ()<CustomMapDelegate,UITableViewDelegate,UITableViewDataSource,CustomLocationDelegate,AMapSearchDelegate,RCLocationPickerViewControllerDelegate>
 {
     NSInteger _index;
 }
@@ -28,19 +28,30 @@
 //    [super viewDidLoad];
     [self setUI];
     self.poiAnnotations = [NSMutableArray array];
+//    self.delegate = self;
 }
+- (void)leftBarButtonItemPressed:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)rightBarButtonItemPressed:(id)sender{
+    [super rightBarButtonItemPressed:nil];
+}
+
 - (void)SendClick{
     if (self.delegate) {
         AMapPOI * poi = self.poiAnnotations[_index];
         CLLocationCoordinate2D cla = CLLocationCoordinate2DMake(poi.location.latitude, poi.location.longitude);
-        
         [self.delegate locationPicker:self
-         
+
                     didSelectLocation:cla
-         
+
                          locationName:poi.name
-         
-                        mapScreenShot:[UIImage imageNamed:@"1"]];
+
+                        mapScreenShot:[self.dataSource mapViewScreenShot]];
+//        [super rightBarButtonItemPressed:nil];
+    }else{
+        NSLog(@"他是空的");
     }
 }
 -(void)setUI{
@@ -54,7 +65,7 @@
     self.request.sortrule            = 0;
     self.request.requireExtension    = YES;
     [self.search AMapPOIAroundSearch:self.request];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SendClick) image:@"" title:@"发送" EdgeInsets:UIEdgeInsetsZero];
+//    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SendClick) image:@"" title:@"发送" EdgeInsets:UIEdgeInsetsZero];
     self.tab_Bottom.allowsMultipleSelectionDuringEditing = YES;
     _index = 0;
 }

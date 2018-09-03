@@ -169,7 +169,7 @@ typedef void (^OnPoiSearchResult)(NSArray *pois, BOOL clearPreviousResult, BOOL 
  地理位置选择完成之后的回调
  */
 @protocol RCLocationPickerViewControllerDelegate <NSObject>
-
+@optional
 /*!
  地理位置选择完成之后的回调
 

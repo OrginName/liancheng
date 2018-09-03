@@ -24,16 +24,11 @@
     NSString * str = @"";
     NSInteger index;
     if (indexPath.section==0) {
-//        if (indexPath.row==2) {
-//            str = @"AccountManageCell1";
-//            index = 1;
-//        }else{
-            str = @"AccountManageCell0";
-            index = 0;
-//        }
+        str = @"AccountManageCell0";
+        index = 0;
     }else{
-        str = [NSString stringWithFormat:@"AccountManageCell%ld",indexPath.row+2];
-        index = indexPath.row+2;
+        str = indexPath.row<2?@"AccountManageCel2":@"AccountManageCel3";
+        index = indexPath.row<2?2:3;
     }
     AccountManageCell * cell = [tableView dequeueReusableCellWithIdentifier:str];
     if (!cell) {

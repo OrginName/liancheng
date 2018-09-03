@@ -6,11 +6,12 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "app-store-Retina.png",
+      "filename" : "40pt x 40pt.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "60pt x 60pt.png",
       "scale" : "3x"
     }
   ],

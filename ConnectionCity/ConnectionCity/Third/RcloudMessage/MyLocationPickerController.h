@@ -7,7 +7,6 @@
 //
 
 #import <RongIMKit/RongIMKit.h>
-
 @interface MyLocationPickerController : RCLocationPickerViewController
 
 @end

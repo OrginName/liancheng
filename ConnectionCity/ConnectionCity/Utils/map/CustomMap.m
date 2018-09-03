@@ -79,13 +79,13 @@
     }
     self.annotationView = annotationView;
     if ([annotation isKindOfClass:[MAUserLocation class]]) {
-        [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:[[YSAccountTool userInfo]headImage]] placeholderImage:[UIImage imageNamed:@"logo"]];
+        [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:[[YSAccountTool userInfo]headImage]] placeholderImage:[UIImage imageNamed:@"logo1"]];
     }else{
         if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
             ZWCustomPointAnnotation *pointAnnotation = (ZWCustomPointAnnotation*)annotation;
             //在这里,直接将请求回来的商户图片地址复制给calloutview的imageview
             //关键是需要拿到弹出视图的iamge对象,我才可以对其进行赋值
-            [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:pointAnnotation.storImageUrl] placeholderImage:[UIImage imageNamed:@"logo"]];
+            [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:pointAnnotation.storImageUrl] placeholderImage:[UIImage imageNamed:@"logo1"]];
         }
     }
     return annotationView;
@@ -226,8 +226,11 @@
             UserMo * list = (UserMo *)obj;
             if (![list.ID isEqualToString:[[YSAccountTool userInfo]modelId]]) {
                 CLLocationCoordinate2D coor ;
-                coor.latitude = [list.lat doubleValue];
-                coor.longitude = [list.lng doubleValue];
+                float a = (float)(rand() % 100) /10000;
+//                NSLog(@"++++++%f",a);
+                coor.latitude = [list.lat floatValue]+a;
+//                NSLog(@"------%f",coor.latitude);
+                coor.longitude = [list.lng floatValue];
                 pointAnnotation.coordinate = coor;
                 pointAnnotation.title = list.ID;
                 pointAnnotation.storImageUrl = list.headImage;
@@ -235,7 +238,8 @@
         }else if ([obj isKindOfClass:[AbilttyMo class]]){
             AbilttyMo * abilt = (AbilttyMo *)obj;
             CLLocationCoordinate2D coor ;
-            coor.latitude = [abilt.lat doubleValue];
+            float a = (float)(rand() % 100) /10000;
+            coor.latitude = [abilt.lat doubleValue]+a;
             coor.longitude = [abilt.lng doubleValue];
             pointAnnotation.coordinate = coor;
             pointAnnotation.title = abilt.ID;
@@ -247,7 +251,6 @@
         self.annotationView.zIndex = idx;
     }];
     [self.mapView addAnnotations:self.annotations];
-    
 }
 - (void)mapView:(MAMapView *)mapView mapWillZoomByUser:(BOOL)wasUserAction{
     if (wasUserAction) {
