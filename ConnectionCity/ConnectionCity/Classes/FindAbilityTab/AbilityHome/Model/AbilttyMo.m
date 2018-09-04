@@ -7,9 +7,10 @@
 //
 
 #import "AbilttyMo.h"
-
 @implementation AbilttyMo
-
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"ID":@"id"};
+}
 @end
 @implementation AbilttyEducationMo
 

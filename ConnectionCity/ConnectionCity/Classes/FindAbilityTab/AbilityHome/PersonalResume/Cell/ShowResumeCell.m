@@ -47,17 +47,18 @@
     return cell;
     
 }
--(void)setAbility:(AbilttyMo *)ability{
-    _ability = ability;
-    self.lab_Name.text = ability.userMo.nickName;
+-(void)setMo:(UserMo *)mo{
+    _mo = mo;
+    AbilttyMo * ability = mo.resumeList[0];
+    self.lab_Name.text = mo.nickName;
     self.lab_city.text = ability.cityName;
-    self.lab_signature.text = ability.userMo.sign;
-    self.image_sex.image = [UIImage imageNamed:[ability.userMo.gender isEqualToString:@"0"]?@"men":@"women"];
-    NSString * str = [NSString stringWithFormat:@"%@/%@",ability.userMo.occupationCategoryName[@"parentName"],ability.userMo.occupationCategoryName[@"name"]];
+    self.lab_signature.text = mo.sign;
+    self.image_sex.image = [UIImage imageNamed:[mo.gender isEqualToString:@"0"]?@"men":@"women"];
+    NSString * str = [NSString stringWithFormat:@"%@/%@",mo.occupationCategoryName[@"parentName"],mo.occupationCategoryName[@"name"]];
     self.lab_Profession.text = [str containsString:@"null"]?@"":str;
     [self.btn_year setTitle:ability.workingName forState:UIControlStateNormal];//工作经验
-    [self.btn_XL setTitle:ability.userMo.educationName forState:UIControlStateNormal];
-    [self.btn_age setTitle:ability.userMo.age forState:UIControlStateNormal];//年龄
+    [self.btn_XL setTitle:mo.educationName forState:UIControlStateNormal];
+    [self.btn_age setTitle:mo.age forState:UIControlStateNormal];//年龄
     [self.btn_salary setTitle:ability.salaryName forState:UIControlStateNormal];//薪资名字
     self.txtView_MyselfIntro.text = ability.introduce;
 }

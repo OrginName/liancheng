@@ -63,6 +63,8 @@
 		723F4FB420BEEA8D00AF8268 /* TrvalTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723F4FB220BEEA8D00AF8268 /* TrvalTripCell.xib */; };
 		724B5F38213C22B800F51134 /* MyLocationPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724B5F36213C22B800F51134 /* MyLocationPickerController.m */; };
 		724B5F3D213C4A2000F51134 /* MyLocationPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 724B5F3C213C4A2000F51134 /* MyLocationPickerController.xib */; };
+		724B5F40213EE58E00F51134 /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724B5F3F213EE58E00F51134 /* MapController.m */; };
+		724B5F43213EEEDF00F51134 /* JZLocationConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 724B5F42213EEEDE00F51134 /* JZLocationConverter.m */; };
 		72626F2F20ECF295001B807D /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72626F2C20ECF295001B807D /* libMobClickLibrary.a */; };
 		72626F3220ECF66E001B807D /* RCDSettingUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 72626F3120ECF66E001B807D /* RCDSettingUserDefaults.m */; };
 		72626F3F20ECFBE9001B807D /* RongContactCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72626F3E20ECFBE9001B807D /* RongContactCard.framework */; };
@@ -794,6 +796,10 @@
 		724B5F35213C22B800F51134 /* MyLocationPickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyLocationPickerController.h; sourceTree = "<group>"; };
 		724B5F36213C22B800F51134 /* MyLocationPickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyLocationPickerController.m; sourceTree = "<group>"; };
 		724B5F3C213C4A2000F51134 /* MyLocationPickerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyLocationPickerController.xib; sourceTree = "<group>"; };
+		724B5F3E213EE58E00F51134 /* MapController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapController.h; sourceTree = "<group>"; };
+		724B5F3F213EE58E00F51134 /* MapController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapController.m; sourceTree = "<group>"; };
+		724B5F41213EEEDD00F51134 /* JZLocationConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZLocationConverter.h; sourceTree = "<group>"; };
+		724B5F42213EEEDE00F51134 /* JZLocationConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZLocationConverter.m; sourceTree = "<group>"; };
 		72626F2C20ECF295001B807D /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		72626F2D20ECF295001B807D /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		72626F2E20ECF295001B807D /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
@@ -2891,6 +2897,10 @@
 				72626F5120ED03A4001B807D /* Models */,
 				72626F3020ECF66D001B807D /* RCDSettingUserDefaults.h */,
 				72626F3120ECF66E001B807D /* RCDSettingUserDefaults.m */,
+				724B5F3E213EE58E00F51134 /* MapController.h */,
+				724B5F3F213EE58E00F51134 /* MapController.m */,
+				724B5F41213EEEDD00F51134 /* JZLocationConverter.h */,
+				724B5F42213EEEDE00F51134 /* JZLocationConverter.m */,
 				8D14FDE420EB0C000013A9DF /* Utilites */,
 				724B5F35213C22B800F51134 /* MyLocationPickerController.h */,
 				724B5F36213C22B800F51134 /* MyLocationPickerController.m */,
@@ -5421,6 +5431,7 @@
 				CE5C27FE20B8FE3A006A8332 /* BiddInfoHeadView.m in Sources */,
 				CEE5250E20F771D400DD6179 /* MYScanViewStyle.m in Sources */,
 				CE21F0E020DDF00F00478482 /* MemberRenewalM.m in Sources */,
+				724B5F43213EEEDF00F51134 /* JZLocationConverter.m in Sources */,
 				7266FEE221173ED5005794AD /* JKFlowLayout.m in Sources */,
 				8DE4667020EDFD0F009730F7 /* RCDSearchResultModel.m in Sources */,
 				CE0BA5BD209D5E6B004C3C33 /* NSString+MD5.m in Sources */,
@@ -5446,6 +5457,7 @@
 				8DE4668020EDFF54009730F7 /* RCDPrivateSettingsCell.m in Sources */,
 				8DFA325C20EDB93F0086423A /* RCWKNotifier.m in Sources */,
 				CE0BA5DF209D5E9B004C3C33 /* TakePhoto.m in Sources */,
+				724B5F40213EE58E00F51134 /* MapController.m in Sources */,
 				729BA6AF209FEB9B009713FD /* UIButton+ImageTitleSpacing.m in Sources */,
 				8DE4664D20EDF71B009730F7 /* RCLocationView.m in Sources */,
 				8D2B8B8820A2D3B200C3157F /* BaseOneTabController.m in Sources */,

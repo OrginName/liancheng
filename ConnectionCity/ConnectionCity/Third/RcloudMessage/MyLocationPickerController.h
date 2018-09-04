@@ -8,5 +8,6 @@
 
 #import <RongIMKit/RongIMKit.h>
 @interface MyLocationPickerController : RCLocationPickerViewController
-
+@property (nonatomic,assign) NSInteger flag;
+@property (nonatomic,strong) NSString * ID;
 @end

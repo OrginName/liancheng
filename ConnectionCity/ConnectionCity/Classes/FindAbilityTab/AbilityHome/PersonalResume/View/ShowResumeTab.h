@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserMo.h"
 #import "AbilttyMo.h"
 @interface ShowResumeTab : UIView
-@property(nonatomic,strong) AbilttyMo * abilttyMo;
+@property(nonatomic,strong) UserMo * Mo;
 @end

@@ -85,11 +85,11 @@
         if ([self.data_Count[self.zIndex] isKindOfClass:[trvalMo class]]) {
             trvalMo * mo = self.data_Count[self.zIndex];
             [self GZLoadData:mo.ID typeID:@"40"];
-        }else if ([self.data_Count[self.zIndex] isKindOfClass:[UserMo class]]){
+        }else if ([self.data_Count[self.zIndex] isKindOfClass:[UserMo class]]&&self.Receive_Type == ENUM_TypeTrval){
             UserMo * mo = self.data_Count[self.zIndex];
             [self GZLoadData:[mo.serviceList[self.trvaltab.JNIndex] ID] typeID:@"20"];
-        }else if ([self.data_Count[self.zIndex] isKindOfClass:[AbilttyMo class]]){
-            AbilttyMo*mo = self.data_Count[self.zIndex];
+        }else if (self.Receive_Type == ENUM_TypeResume){
+            AbilttyMo*mo = [self.data_Count[self.zIndex] resumeList][0];
             [self GZLoadData:mo.ID typeID:@"50"];
         }
     }
@@ -102,8 +102,8 @@
         }else{
             NSString * str = @"";
             if (self.Receive_Type == ENUM_TypeResume){
-                AbilttyMo * mo = self.data_Count[self.zIndex];
-                str = mo.userMo.isBlack;
+                UserMo * mo = self.data_Count[self.zIndex];
+                str = mo.isBlack;
             }else{
                 UserMo * mo = self.data_Count[self.zIndex];
                 str = mo.isBlack;
@@ -126,9 +126,9 @@
                 name = mo.nickName;
             }
         }else if (self.Receive_Type == ENUM_TypeResume){
-            AbilttyMo * resume = self.data_Count[self.zIndex];
-            ID = [resume.userMo.ID description];
-            name = resume.userMo.nickName;
+            UserMo * resume = self.data_Count[self.zIndex];
+            ID = [resume.ID description];
+            name = resume.nickName?resume.nickName:resume.ID;
         }
         chatViewController.targetId = ID;
         if ([ID isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
@@ -167,9 +167,9 @@
     }
     if (self.Receive_Type == ENUM_TypeResume) {
         self.showTab = [[ShowResumeTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];
-        AbilttyMo * resume = self.data_Count[indexPath.row];
-        self.showTab.abilttyMo = resume;
-        self.title = resume.userMo.nickName?resume.userMo.nickName:KString(@"用户%@", [resume.userMo.ID description]);
+        UserMo * mo = self.data_Count[indexPath.row];
+        self.title = mo.nickName?mo.nickName:KString(@"用户%@", [mo.ID description]);
+        self.showTab.Mo = mo;
         [cell.contentView addSubview:self.showTab];
     }else if(self.Receive_Type == ENUM_TypeCard){
         self.showCardTab = [[ShowCardTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];

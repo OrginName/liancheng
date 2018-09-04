@@ -208,7 +208,7 @@
             index = idx;
             *stop = YES;
         }
-        if (self.cusMap.Arr_Mark.count!=0&& [annotation.title isEqualToString:@"当前位置"]&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
+        if (self.cusMap.Arr_Mark.count!=0&&([annotation.title isEqualToString:@"当前位置"]||annotation.title.length==0)&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
             index = idx;
             *stop = YES;
         }

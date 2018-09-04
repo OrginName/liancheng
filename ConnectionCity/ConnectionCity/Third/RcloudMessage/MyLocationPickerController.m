@@ -30,30 +30,23 @@
     self.poiAnnotations = [NSMutableArray array];
 //    self.delegate = self;
 }
-- (void)leftBarButtonItemPressed:(id)sender{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)rightBarButtonItemPressed:(id)sender{
-    [super rightBarButtonItemPressed:nil];
-}
-
 - (void)SendClick{
-    if (self.delegate) {
-        AMapPOI * poi = self.poiAnnotations[_index];
-        CLLocationCoordinate2D cla = CLLocationCoordinate2DMake(poi.location.latitude, poi.location.longitude);
-        [self.delegate locationPicker:self
-
-                    didSelectLocation:cla
-
-                         locationName:poi.name
-
-                        mapScreenShot:[self.dataSource mapViewScreenShot]];
-//        [super rightBarButtonItemPressed:nil];
-    }else{
-        NSLog(@"他是空的");
-    }
+    AMapPOI * poi = self.poiAnnotations[_index];
+    CLLocationCoordinate2D cla = CLLocationCoordinate2DMake(poi.location.latitude, poi.location.longitude);
+    self.cusMap.btn_location.hidden = YES;
+    UIImage * image = [self screenShotView:self.cusMap];
+    UIImage * image1 = [self thumbnailWithImage:image size:CGSizeMake(200, 100)];
+    RCLocationMessage* message = [RCLocationMessage messageWithLocationImage:image1
+     
+                                       location:cla
+     
+                                   locationName:poi.name];
+    [[RCIM sharedRCIM] sendMessage:self.flag targetId:self.ID content:message pushContent:nil pushData:nil success:^(long messageId) {
+    } error:^(RCErrorCode nErrorCode, long messageId) {
+    }];
+     [self.navigationController popViewControllerAnimated:YES];
 }
+
 -(void)setUI{
     self.cusMap = [[CustomMap alloc] initWithFrame:self.view_Map.frame];
     self.cusMap.delegate = self;
@@ -65,7 +58,7 @@
     self.request.sortrule            = 0;
     self.request.requireExtension    = YES;
     [self.search AMapPOIAroundSearch:self.request];
-//    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SendClick) image:@"" title:@"发送" EdgeInsets:UIEdgeInsetsZero];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SendClick) image:@"" title:@"发送" EdgeInsets:UIEdgeInsetsZero];
     self.tab_Bottom.allowsMultipleSelectionDuringEditing = YES;
     _index = 0;
 }
@@ -124,5 +117,57 @@
     _index = indexPath.row;
     //afterDelay为延迟多少删除上次的选中效果
     [self.tab_Bottom performSelector:@selector(deselectRowAtIndexPath:animated:) withObject:lastIndex afterDelay:.0];
+}
+
+-(UIImage *)thumbnailWithImage:(UIImage *)image size:(CGSize)asize
+{
+    
+    UIImage *newimage;
+    
+    if (nil == image) {
+        
+        newimage = nil;
+        
+    }
+    
+    else{
+        
+        UIGraphicsBeginImageContext(asize);
+        
+        [image drawInRect:CGRectMake(0, 0, asize.width, asize.height)];
+        
+        newimage = UIGraphicsGetImageFromCurrentImageContext();
+        
+        UIGraphicsEndImageContext();
+        
+    }
+    
+    return newimage;
+    
+}
+// 对指定视图进行截图
+- (UIImage *)screenShotView:(UIView *)view
+{
+    UIImage *imageRet = nil;
+    
+    if (view)
+    {
+        if(&UIGraphicsBeginImageContextWithOptions)
+        {
+            UIGraphicsBeginImageContextWithOptions(view.frame.size, NO, 0.0);
+        }
+        else
+        {
+            UIGraphicsBeginImageContext(view.frame.size);
+        }
+        
+        //获取图像
+        [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+        imageRet = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }else{
+    }
+    
+    return imageRet;
 }
 @end

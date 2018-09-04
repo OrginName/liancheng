@@ -8,12 +8,13 @@
 
 #import "UserMo.h"
 #import "ServiceListMo.h"
+#import "AbilttyMo.h"
 @implementation UserMo
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"ID":@"id"};
 }
 + (NSDictionary *)mj_objectClassInArray {
-    return @{@"serviceList":[ServiceListMo class]};
+    return @{@"serviceList":[ServiceListMo class],@"resumeList":[AbilttyMo class]};
 }
 
 @end

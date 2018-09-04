@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "AbilttyMo.h"
+#import "UserMo.h"
 @interface ShowResumeCell : UITableViewCell
 @property (nonatomic,strong)AbilttyMo * ability;
+@property (nonatomic,strong)UserMo * mo;
 @property (nonatomic,strong)AbilttyWorkMo * work;
 @property (nonatomic,strong)AbilttyEducationMo* edu;
 @property (weak, nonatomic) IBOutlet UIView *view_RZ;

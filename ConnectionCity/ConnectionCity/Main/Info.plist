@@ -66,6 +66,10 @@
 		<string>timapi</string>
 		<string>wechat</string>
 		<string>weixin</string>
+		<string>baidumap</string>
+		<string>iosamap</string>
+		<string>comgooglemaps</string>
+		<string>qqmap</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

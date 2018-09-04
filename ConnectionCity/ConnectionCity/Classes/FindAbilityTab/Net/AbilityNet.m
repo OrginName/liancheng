@@ -111,26 +111,25 @@
         NSMutableArray * arr1 = [NSMutableArray array];
         NSMutableArray * arr2 = [NSMutableArray array];
         for (int i=0; i<[responseObject[@"data"] count]; i++) {
-            AbilttyMo * mo = [AbilttyMo mj_objectWithKeyValues:responseObject[@"data"][i]];
-            mo.ID = responseObject[@"data"][i][@"id"];
-            mo.userMo = [UserMo mj_objectWithKeyValues:mo.user];
-            mo.userMo.ID = mo.user[@"id"];
-            for (int j=0; j<mo.workExperienceList.count; j++) {
-                AbilttyWorkMo * workMo = [AbilttyWorkMo mj_objectWithKeyValues:mo.workExperienceList[j]];
-                workMo.ID = mo.workExperienceList[j][@"id"];
-                workMo.description1 = mo.workExperienceList[j][@"description"];
-                [arr1 addObject:workMo];
-            }
-            if (mo.educationExperienceList.count!=0) {
-                for (int k=0; k<mo.educationExperienceList.count; k++) {
-                    AbilttyEducationMo * educationMo = [AbilttyEducationMo mj_objectWithKeyValues:mo.educationExperienceList[k]];
-                    educationMo.ID = mo.educationExperienceList[k][@"id"];
-                    educationMo.description1 = mo.educationExperienceList[k][@"description"];
-                    [arr2 addObject:educationMo];
+            UserMo * mo = [UserMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+            for (AbilttyMo * mo1 in mo.resumeList) {
+                for (int j=0; j<mo1.workExperienceList.count; j++) {
+                    AbilttyWorkMo * workMo = [AbilttyWorkMo mj_objectWithKeyValues:mo1.workExperienceList[j]];
+                    workMo.ID = mo1.workExperienceList[j][@"id"];
+                    workMo.description1 = mo1.workExperienceList[j][@"description"];
+                    [arr1 addObject:workMo];
                 }
+                if (mo1.educationExperienceList.count!=0) {
+                    for (int k=0; k<mo1.educationExperienceList.count; k++) {
+                        AbilttyEducationMo * educationMo = [AbilttyEducationMo mj_objectWithKeyValues:mo1.educationExperienceList[k]];
+                        educationMo.ID = mo1.educationExperienceList[k][@"id"];
+                        educationMo.description1 = mo1.educationExperienceList[k][@"description"];
+                        [arr2 addObject:educationMo];
+                    }
+                }
+                mo1.WorArr = arr1;
+                mo1.EduArr = arr2;
             }
-            mo.WorArr = arr1;
-            mo.EduArr = arr2;
             [arr addObject:mo];
         }
         block(arr);

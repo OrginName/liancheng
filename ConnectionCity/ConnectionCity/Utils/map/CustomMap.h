@@ -25,6 +25,7 @@
 @end
 
 @interface CustomMap : UIView
+@property (nonatomic,strong) UIButton * btn_location;
 @property (nonatomic,strong) MAMapView * mapView;
 @property (nonatomic,strong) CustomLocatiom * location;
 @property (nonatomic, strong) NSMutableArray *annotations;

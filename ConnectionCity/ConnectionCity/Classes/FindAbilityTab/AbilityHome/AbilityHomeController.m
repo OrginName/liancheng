@@ -140,9 +140,9 @@
 }
 #pragma mark ----初始化加载数据（开始）------
 -(void)initData{
-    if ([KUserDefults objectForKey:kLat]!=nil&&[KUserDefults objectForKey:KLng]!=nil&&[KUserDefults objectForKey:kUserCityID]!=nil) {
-        [self loadServiceList:@{@"cityID":[KUserDefults objectForKey:kUserCityID],@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
-    } 
+//    if ([KUserDefults objectForKey:kLat]!=nil&&[KUserDefults objectForKey:KLng]!=nil&&[KUserDefults objectForKey:kUserCityID]!=nil) {
+//        [self loadServiceList:@{@"cityID":[KUserDefults objectForKey:kUserCityID],@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
+//    }
 //    热门行业加载
     [AbilityNet requstAbilityHot:^(NSMutableArray *successArrValue) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -218,22 +218,23 @@
     btn.text = locationDictionary[@"city"];
 }
 -(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
-    if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
-        ShowResumeController * show = [ShowResumeController new];
-        show.Receive_Type = ENUM_TypeResume;
-        show.data_Count = self.cusMap.Arr_Mark;
-        __block NSUInteger index = 0;
-        [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            AbilttyMo * abilt = (AbilttyMo *)obj;
-            if (annotation.title == abilt.ID) {
-                index = idx;
-                *stop = YES;
-            }
-        }];
-        show.zIndex = index;
-        NSLog(@"当前zindex为：%ld",index);
-        [self.navigationController pushViewController:show animated:YES];
-    }
+    ShowResumeController * show = [ShowResumeController new];
+    show.Receive_Type = ENUM_TypeResume;
+    show.data_Count = self.cusMap.Arr_Mark;
+    __block NSUInteger index = 0;
+    [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UserMo * list = (UserMo *)obj;
+        if (annotation.title == list.ID) {
+            index = idx;
+            *stop = YES;
+        }
+        if (self.cusMap.Arr_Mark.count!=0&& ([annotation.title isEqualToString:@"当前位置"]||annotation.title.length==0)&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
+            index = idx;
+            *stop = YES;
+        }
+    }];
+    show.zIndex = index;
+    [self.navigationController pushViewController:show animated:YES];
     
 }
 //回到当前位置的按钮点击

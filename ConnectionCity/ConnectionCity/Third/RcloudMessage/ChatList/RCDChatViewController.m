@@ -38,6 +38,7 @@
 #import "PersonalBasicDataController.h"
 #import "UserMo.h"
 #import "MyLocationPickerController.h"
+#import "MapController.h"
 @interface RCDChatViewController () <UIActionSheetDelegate, RCRealTimeLocationObserver,
                                      RealTimeLocationStatusViewDelegate, UIAlertViewDelegate, RCMessageCellDelegate>
 @property(nonatomic, weak) id<RCRealTimeLocationProxy> realTimeLocation;
@@ -509,16 +510,19 @@ NSMutableDictionary *userInputStatus;
 - (void)pluginBoardView:(RCPluginBoardView *)pluginBoardView clickedItemWithTag:(NSInteger)tag {
     switch (tag) {
     case PLUGIN_BOARD_ITEM_LOCATION_TAG: {
-        if (self.realTimeLocation) {
-            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                                     delegate:self
-                                                            cancelButtonTitle:@"取消"
-                                                       destructiveButtonTitle:nil
-                                                            otherButtonTitles:@"发送位置", @"位置实时共享", nil];
-            [actionSheet showInView:self.view];
-        }else if(tag==1003){
+//        if (self.realTimeLocation) {
+//            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+//                                                                     delegate:self
+//                                                            cancelButtonTitle:@"取消"
+//                                                       destructiveButtonTitle:nil
+//                                                            otherButtonTitles:@"发送位置", @"位置实时共享", nil];
+//            [actionSheet showInView:self.view];
+//        }else
+        if(tag==1003||self.realTimeLocation){
             MyLocationPickerController * pic = [MyLocationPickerController new];
             pic.title =@"发送定位";
+            pic.flag =self.realTimeLocation?1:3;
+            pic.ID = self.targetId;
             [self.navigationController pushViewController:pic animated:YES];
         } else {
             [super pluginBoardView:pluginBoardView clickedItemWithTag:tag];
@@ -563,11 +567,18 @@ NSMutableDictionary *userInputStatus;
 
 #pragma mark override
 - (void)didTapMessageCell:(RCMessageModel *)model {
-    [super didTapMessageCell:model];
-    if ([model.content isKindOfClass:[RCRealTimeLocationStartMessage class]]) {
-        [self showRealTimeLocationViewController];
+//    [super didTapMessageCell:model];
+//    if ([model.content isKindOfClass:[RCRealTimeLocationStartMessage class]]) {
+//        [self showRealTimeLocationViewController];
+//    }
+    if ([model.content isKindOfClass:[RCLocationMessage class]]) {
+        RCLocationMessage * location1 = (RCLocationMessage *)model.content;
+        MapController * map = [MapController new];
+        map.colld = location1.location;
+        map.name = location1.locationName;
+        map.title = @"位置信息";
+        [self.navigationController pushViewController:map animated:YES];
     }
-
     if ([model.content isKindOfClass:[RCContactCardMessage class]]) {
         RCContactCardMessage *cardMSg = (RCContactCardMessage *)model.content;
         RCUserInfo *user =

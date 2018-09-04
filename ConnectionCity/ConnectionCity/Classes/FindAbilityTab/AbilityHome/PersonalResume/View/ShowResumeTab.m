@@ -17,6 +17,7 @@
 @property (nonatomic,strong) NSMutableDictionary * dict;
 @property (nonatomic,strong) NSMutableArray * data_Arr;
 @property (nonatomic,strong) ShowResume1 * resume;
+@property (nonatomic,strong) AbilttyMo * ability;
 @end
 @implementation ShowResumeTab
 -(instancetype)initWithFrame:(CGRect)frame{
@@ -31,15 +32,25 @@
     self.data_Arr = [NSMutableArray array];
     self.dict =[[NSMutableDictionary alloc] initWithDictionary:@{@"1":@"NO",@"2":@"NO"}];
 }
--(void)setAbilttyMo:(AbilttyMo *)abilttyMo{
-    _abilttyMo = abilttyMo;
-    for (NSString * url in [abilttyMo.userMo.headImage componentsSeparatedByString:@";"]) {
+-(void)setMo:(UserMo *)Mo{
+    _Mo = Mo;
+    self.ability = Mo.resumeList[0];
+    [self.lunArr removeAllObjects];
+    for (NSString * url in [self.ability.avatar componentsSeparatedByString:@";"]) {
         if (url.length!=0) {
             [self.lunArr addObject:url];
         }
     }
-//    self.lunArr = [[abilttyMo.userMo.headImage componentsSeparatedByString:@";"] mutableCopy];
 }
+//-(void)setAbilttyMo:(AbilttyMo *)abilttyMo{
+//    _abilttyMo = abilttyMo;
+//    for (NSString * url in [abilttyMo.userMo.headImage componentsSeparatedByString:@";"]) {
+//        if (url.length!=0) {
+//            [self.lunArr addObject:url];
+//        }
+//    }
+//    self.lunArr = [[abilttyMo.userMo.headImage componentsSeparatedByString:@";"] mutableCopy];
+//}
 #pragma mark ---SDCycleScrollViewDelegate-----
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     
@@ -50,14 +61,14 @@
         return 3;
     }else if (section==1){
         if ([self.dict[@"1"] isEqualToString:@"NO"]) {
-            return self.abilttyMo.workExperienceList.count>0?1:0;
+            return self.ability.workExperienceList.count>0?1:0;
         }
-        return self.abilttyMo.workExperienceList.count;
+        return self.ability.workExperienceList.count;
     }else if (section==2){
         if ([self.dict[@"2"] isEqualToString:@"NO"]) {
-            return self.abilttyMo.educationExperienceList.count>0?1:0;
+            return self.ability.educationExperienceList.count>0?1:0;
         }
-        return self.abilttyMo.educationExperienceList.count;
+        return self.ability.educationExperienceList.count;
     }else{
         return 1;
     }
@@ -88,28 +99,28 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShowResumeCell *cell = [ShowResumeCell tempTableViewCellWith:tableView indexPath:indexPath];
-    cell.ability = self.abilttyMo;
+    cell.ability = self.ability;
     if (indexPath.section==1) {
         if ([self.dict[@"1"] isEqualToString:@"YES"]) {
-            cell.work = self.abilttyMo.WorArr[indexPath.row];
+            cell.work = self.ability.WorArr[indexPath.row];
             NSLog(@"%@",self.resume.lab_nametitle.text);
             self.resume.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
         }else{
-            cell.work = self.abilttyMo.WorArr[0];
+            cell.work = self.ability.WorArr[0];
             self.resume.imageTurn.transform = CGAffineTransformIdentity;
         }
     }
     if (indexPath.section==0&&indexPath.row==1) {
-         NSMutableArray * arr = [self loadA:self.abilttyMo.userMo.isSkillAuth b:self.abilttyMo.userMo.isMobileAuth c:self.abilttyMo.userMo.isIdentityAuth];
+         NSMutableArray * arr = [self loadA:self.Mo.isSkillAuth b:self.Mo.isMobileAuth c:self.Mo.isIdentityAuth];
         CustomImageScro * img = [[CustomImageScro alloc] initWithFrame:CGRectMake(0, 0, cell.view_RZ.width, cell.view_RZ.height) arr:[arr copy]];
         [cell.view_RZ addSubview:img];
     }
     if (indexPath.section==2) {
         if ([self.dict[@"2"] isEqualToString:@"YES"]) {
-            cell.edu = self.abilttyMo.EduArr[indexPath.row];
+            cell.edu = self.ability.EduArr[indexPath.row];
              self.resume.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
         }else{
-            cell.edu = self.abilttyMo.EduArr[0];
+            cell.edu = self.ability.EduArr[0];
              self.resume.imageTurn.transform = CGAffineTransformIdentity;
         }
     }
