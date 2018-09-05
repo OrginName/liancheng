@@ -27,18 +27,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBadge:) name:@"MYSERVICE" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBadge1:) name:@"MYSERVICE" object:nil];
 }
-//更新角标标示
--(void)updateBadge:(NSNotification *)noti{
-    NSDictionary * dic = noti.object;
-    ProfileCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[dic[@"type"] intValue]==2?1:2 inSection:0]];
-    if ([dic[@"num"] intValue]==0) {
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    ProfileCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[self.dic_Receive[@"type"] intValue]==2?1:2 inSection:0]];
+    if ([self.dic_Receive[@"num"] intValue]==0) {
         cell.view_Layer.hidden = YES;
     }else{
         cell.view_Layer.hidden = NO;
     }
 }
+//更新角标标示
+//-(void)updateBadge1:(NSNotification *)noti{
+//    NSDictionary * dic = noti.object;
+//
+//}
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //关闭自适应
@@ -52,10 +56,9 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]forBarMetrics:UIBarMetricsDefault];
     //去掉导航栏底部的黑线
     self.navigationController.navigationBar.shadowImage = [UIImage new];
+    
 }
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController.navigationBar setBackgroundImage:
@@ -90,10 +93,15 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     NSString *className = self.menuModels[indexPath.row].mClass;
     UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc]init];
     if ([vc isKindOfClass:[OurServiceController class]]) {
         OurServiceController * os = (OurServiceController *)vc;
+        os.block = ^(NSInteger a) {
+            ProfileCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:a inSection:0]];
+            cell.view_Layer.hidden = YES;
+        };
         os.inter = indexPath.row;//2服务3//旅行
     }
     if (vc == nil)return;

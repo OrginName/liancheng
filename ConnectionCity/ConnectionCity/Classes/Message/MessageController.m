@@ -326,6 +326,8 @@
         if ((annotation.title.length==0||[annotation.title isEqualToString:@"当前位置"])&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
             index = idx;
             *stop = YES;
+        }else{
+            return [YTAlertUtil showTempInfo:@"当前位置"];
         }
     }];
     PersonalBasicDataController * center = [PersonalBasicDataController new];

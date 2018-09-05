@@ -45,7 +45,7 @@
 #define QQ_APPKEY @"dTrtNRCsVY79nCwC"
 #define APPID_WEIXIN @"wxb773a629b959a9f9"
 #define APPSECRET_WEIXIN @"682ffe7c6b89c8eea9f30862ebdfc1ce"
-#define RONGCLOUD_IM_APPKEY @"3argexb63m7xe"// online key
+#define RONGCLOUD_IM_APPKEY @"ik1qhw09iprwp"// online key
 #define UMENG_APPKEY @"5b4a423c8f4a9d1b3a00047e"
 #define LOG_EXPIRE_TIME -7 * 24 * 60 * 60
 @interface AppDelegate ()<RCIMReceiveMessageDelegate,RCIMConnectionStatusDelegate,RCWKAppInfoProvider,WXApiDelegate,JPUSHRegisterDelegate,CustomLocationDelegate>
@@ -383,6 +383,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 // iOS 10 Support 前台收到的
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
+    // 系统声音
+    AudioServicesPlaySystemSound(1007);
     // Required
     NSDictionary * userInfo = notification.request.content.userInfo;
     if (@available(iOS 10.0, *)) {
@@ -482,6 +484,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     completionHandler(UIBackgroundFetchResultNewData);
     if([UIApplication sharedApplication].applicationState == UIApplicationStateActive)
     {
+        // 系统声音
+        AudioServicesPlaySystemSound(1007);
         NSLog(@"应用程序在前台");
         NSArray * arr = @[@"10",@"20",@"30",@"40"];
         if (![userInfo[@"rc"][@"oName"] isEqualToString:@"RC:TxtMsg"]) {

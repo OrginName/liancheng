@@ -202,6 +202,7 @@
     show.Receive_Type = ENUM_TypeTrval;
     show.data_Count = self.cusMap.Arr_Mark;
     __block NSUInteger index = 0;
+    __block BOOL flag = NO;
     [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UserMo * list = (UserMo *)obj;
         if (annotation.title == list.ID) {
@@ -212,9 +213,17 @@
             index = idx;
             *stop = YES;
         }
+        if (([annotation.title isEqualToString:@"当前位置"]||annotation.title.length==0)&&![[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
+            flag = YES;
+        }
     }];
-    show.zIndex = index;
-    [self.navigationController pushViewController:show animated:YES];
+    if (!flag&&self.cusMap.Arr_Mark.count!=0) {
+        show.zIndex = index;
+        [self.navigationController pushViewController:show animated:YES];
+    }else
+        return [YTAlertUtil showTempInfo:@"当前位置"];
+   
+    
     //    }
 }
 //加载服务列表数据

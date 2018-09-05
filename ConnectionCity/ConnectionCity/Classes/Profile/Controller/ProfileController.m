@@ -21,12 +21,12 @@
 #import "ZoomImage.h"
 #import "QiniuUploader.h"
 #import "UITabBar+badge.h"
-
+#import "MemberCenterController.h"
 @interface ProfileController ()<ProfileHeadViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, copy) NSArray <YTSideMenuModel *> *menuModels;
 @property (nonatomic, strong) ProfileHeadView *tableHeadV;
-
+@property (nonatomic,strong) NSDictionary * dic;
 @end
 
 @implementation ProfileController
@@ -77,6 +77,7 @@
         [self.tabBarController.tabBar showBadgeOnItemIndex:4 badgeValue:[dic[@"num"] intValue]];
         cell.view_Layer.hidden = NO;
     }
+    self.dic = dic;
 }
 #pragma mark - Setup
 - (void)setUI {
@@ -156,6 +157,11 @@
     NSString *className = self.menuModels[indexPath.row].mClass;
     UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc]init];
     vc.view.backgroundColor = [UIColor whiteColor];
+    if ([vc isKindOfClass:[MemberCenterController class]]) {
+        MemberCenterController * menmber = (MemberCenterController*)vc;
+        menmber.dic_Receive = self.dic;
+        
+    }
     if (vc == nil)return;
     [self.navigationController pushViewController:vc animated:YES];
 }

@@ -40,13 +40,19 @@
     [self setUI];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alipayNotice:) name:NOTI_ALI_PAY_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTab) name:NOTI_WEI_XIN_PAY_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"MYSERVICE" object:@{@"num":@""}];
     self.scroe = 0;
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBackgroundImage:
      [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"MYSERVICE" object:@{@"num":@""}];
+    if (self.block) {
+        self.block(self.inter);
+    } 
 }
 #pragma mark - alipayNotice
 - (void)alipayNotice:(NSNotification *)notification {

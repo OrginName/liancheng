@@ -7,9 +7,10 @@
 //
 
 #import "BaseViewController.h"
-
+typedef void (^blockStr)(NSInteger a);
 @interface OurServiceController : BaseViewController
 @property (nonatomic,assign) NSInteger inter;//区分是我的服务还是旅行
+@property (nonatomic,copy)blockStr block;
 @end
 
 @interface leftView : UIView

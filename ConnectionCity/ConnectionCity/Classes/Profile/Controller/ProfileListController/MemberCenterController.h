@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface MemberCenterController : BaseViewController
+@property (nonatomic,strong) NSDictionary * dic_Receive;
 
 @end
