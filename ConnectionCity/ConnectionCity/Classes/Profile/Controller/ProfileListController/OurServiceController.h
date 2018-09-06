@@ -11,6 +11,7 @@ typedef void (^blockStr)(NSInteger a);
 @interface OurServiceController : BaseViewController
 @property (nonatomic,assign) NSInteger inter;//区分是我的服务还是旅行
 @property (nonatomic,copy)blockStr block;
+@property (nonatomic,strong)NSDictionary * receiveDic;
 @end
 
 @interface leftView : UIView

@@ -322,7 +322,7 @@
                                 <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                     <color key="value" red="0.85873913759999998" green="0.85886651280000004" blue="0.8587217331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="请输入取消原因"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="请输入评价内容"/>
                             </userDefinedRuntimeAttributes>
                         </textView>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ndb-yp-S3I">

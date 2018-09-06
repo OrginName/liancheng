@@ -44,6 +44,12 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAutomatic;
+    } else {
+        // Fallback on earlier versions
+        self.automaticallyAdjustsScrollViewInsets = YES;
+    }
     [self.navigationController.navigationBar setBackgroundImage:
      [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
 }
@@ -81,16 +87,35 @@
         [self.btn_All setTitle:@"提供的陪游" forState:UIControlStateNormal];
         [self.btn_AllOne setTitle:@"预约的陪游" forState:UIControlStateNormal];
     }
-    self.btn_AllOne.selected = YES;
-    _tmpBtn = self.btn_AllOne;
     list = @[@"待付款", @"待接单",@"待赴约",@"已赴约", @"待评价", @"已完成"];
     list1 = @[@"待付款", @"待接单",@"待履约", @"待评价", @"已完成"];
     self.tab_Arr = [NSMutableArray array];
     self.data_Arr = [NSMutableArray array];
-    _currentIndex = 0;
     _page = 1;
-    [self setupSlider:list1];
-    currentTag = 2;
+    NSLog(@"通知为：--%@",self.receiveDic);
+    if (self.receiveDic!=nil&&[[self.receiveDic[@"orderType"] description] intValue]==0) {
+        self.btn_All.selected = YES;
+        self.btn_AllOne.selected = NO;
+        _tmpBtn = self.btn_All;
+        currentTag = 1;
+        NSInteger a = [[self.receiveDic[@"orderStatus"] description] integerValue];
+        _currentIndex = (a==6||a==1)?0:a==2?1:(a==3||a==7)?2:a==4?4:a==5?5:3;
+        [self setupSlider:list];
+//         [self selectedIndex:_currentIndex];
+    }else{
+        self.btn_All.selected = NO;
+        self.btn_AllOne.selected = YES;
+        currentTag = 2;
+        _tmpBtn = self.btn_AllOne;
+        if (self.receiveDic!=nil&&[[self.receiveDic[@"orderType"] description] intValue]==1) {
+            NSInteger a = [[self.receiveDic[@"orderStatus"] description] integerValue];
+            _currentIndex = (a==6||a==1)?0:a==2?1:a==3?2:a==4?3:a==5?4:0;
+            
+//            [self selectedIndex:_currentIndex];
+        }else
+        _currentIndex = 0;
+        [self setupSlider:list1];
+    }
 }
 - (void)cellBtnClick:(UIButton *)btn cell:(UITableViewCell *)cell{
     UITableView * tab = (UITableView *)self.tab_Arr[_currentIndex];
@@ -253,7 +278,8 @@
     _pageView.headStyle = SegmentHeadStyleLine;
     _pageView.delegate = self;
     _pageView.loadAll = YES;
-    _pageView.countLimit = arr.count;
+//    _pageView.countLimit = arr.count;
+    _pageView.showIndex = _currentIndex;
     _pageView.fontScale = 1;
     _pageView.fontSize = 15;
     _pageView.lineHeight = 1;
@@ -262,7 +288,7 @@
     _pageView.selectColor = YSColor(243, 152, 48);
     _pageView.lineColor = YSColor(243, 152, 48);
     [self.view addSubview:_pageView];
-    UITableView * tab = arr1[0];
+    UITableView * tab = arr1[_currentIndex];
     [tab.mj_header beginRefreshing];
 }
 #pragma mark ---UITableViewDelegate------

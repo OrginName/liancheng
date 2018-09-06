@@ -159,7 +159,7 @@
     vc.view.backgroundColor = [UIColor whiteColor];
     if ([vc isKindOfClass:[MemberCenterController class]]) {
         MemberCenterController * menmber = (MemberCenterController*)vc;
-        menmber.dic_Receive = self.dic;
+        menmber.dic_Receive = self.dic;//推送的字典
         
     }
     if (vc == nil)return;

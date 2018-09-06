@@ -402,7 +402,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         if([arr containsObject:[userInfo[@"type"] description]]){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"JOINACTIVE" object:@{@"num":@"1"}];
         }else if ([[userInfo[@"type"] description] isEqualToString:@"2"]||[[userInfo[@"type"] description] isEqualToString:@"4"]){
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"MYSERVICE" object:@{@"num":@"1",@"type":[userInfo[@"type"] description]}];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"MYSERVICE" object:@{@"num":@"1",@"type":[userInfo[@"type"] description],@"orderStatus":[userInfo[@"orderStatus"] description],@"orderType":[userInfo[@"orderType"] description],@"typeId":[userInfo[@"typeId"] description]}];
         }else
             [[NSNotificationCenter defaultCenter] postNotificationName:@"TSJBACTIVE" object:@{@"num":@"1"}];
     } 
@@ -438,6 +438,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         }
     }else if ([[userInfo[@"type"] description] isEqualToString:@"2"]||[[userInfo[@"type"] description] isEqualToString:@"4"]){
         OurServiceController * service = [OurServiceController new];
+        service.receiveDic = userInfo;
         service.inter = [[userInfo[@"type"] description] isEqualToString:@"2"]?1:2;
         BaseTabBarController *tabBar = (BaseTabBarController *)self.window.rootViewController;//获取window的跟视图,并进行强制转换
         if ([tabBar isKindOfClass:[BaseTabBarController class]]) {//判断是否是当前根视图

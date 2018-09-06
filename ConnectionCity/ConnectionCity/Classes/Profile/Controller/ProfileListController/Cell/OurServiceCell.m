@@ -97,11 +97,13 @@ static NSArray * btnTitleArr1;
         cell.lab_tipStatus.text = labArr[tableView.tag-1000];
         if (tableView.tag<1004) {
             [cell.btn_status setTitle:btnTitleArr[tableView.tag-1000] forState:UIControlStateNormal];
-        }
+        }else
+            cell.btn_status.hidden = YES;
     }else{
         if (tableView.tag<1004) {
             [cell.btn_status setTitle:btnTitleArr1[tableView.tag-1000] forState:UIControlStateNormal];
-        }
+        }else
+            cell.btn_status.hidden = YES;
         cell.lab_tipStatus.text = labArr1[tableView.tag-1000];
     }
     return cell;

@@ -98,6 +98,7 @@
     UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc]init];
     if ([vc isKindOfClass:[OurServiceController class]]) {
         OurServiceController * os = (OurServiceController *)vc;
+        os.receiveDic = self.dic_Receive;//传递推送的字典
         os.block = ^(NSInteger a) {
             ProfileCell * cell = [self.tab_Bottom cellForRowAtIndexPath:[NSIndexPath indexPathForRow:a inSection:0]];
             cell.view_Layer.hidden = YES;
