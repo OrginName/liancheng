@@ -70,13 +70,20 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section==0) {
         return 4;
-    }else if (section==1){
+    }else if (section==2){
         return 1;
-    }else{
+    }else if(section==3){
         if (self.Mo!=nil) {
             return [self.Mo.serviceList[_JNIndex] commentList].count;
         }else{
             return self.MoTrval.comments.count;
+        }
+    }else{
+        if (self.Mo!=nil) {
+            ServiceListMo * list = self.Mo.serviceList[_JNIndex];
+            return list.property.length!=0?[[YSTools stringToJSON:list.property] count]:0;
+        }else{
+            return 0;
         }
     }
 }
@@ -96,7 +103,7 @@
             }
             return 40;
         }
-    }else if (indexPath.section==1){
+    }else if (indexPath.section==2){
         if (self.Mo!=nil) {
             float hidth = [YSTools cauculateHeightOfText:[self.Mo.serviceList[self.JNIndex] introduce] width:kScreenWidth-40 font:13];
             return 200+hidth;
@@ -104,7 +111,7 @@
             float hidth = [YSTools cauculateHeightOfText:self.MoTrval.introduce width:kScreenWidth-40 font:13];
              return 170+hidth;
         }
-    }else{
+    }else if(indexPath.section==3){
         if (self.Mo!=nil) {
             commentList * com =[self.Mo.serviceList[self.JNIndex] commentList][indexPath.row];
             return com.cellHeight;
@@ -112,19 +119,28 @@
             comments * com = self.MoTrval.comments[indexPath.row];
            return com.cellHeight;
         }
+    }else{
+        if (self.Mo!=nil) {
+            ServiceListMo * list = self.Mo.serviceList[_JNIndex];
+            return [YSTools cauculateHeightOfText:list.propertyNameArr[indexPath.row] width:kScreenWidth-40 font:14]+40;
+        }else{
+            return 0;
+        }
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section==2) {
+    if (section==3) {
         return 50;
-    }else
+    }else if(section==2){
+        return 0;
+    }
     return 10;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.001f;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    if (section==2) {
+    if (section==3) {
         ShowTrvalCell * cell = [[NSBundle mainBundle] loadNibNamed:@"ShowTrvalCell" owner:nil options:nil][4];
         StarEvaluator * ev = [[StarEvaluator alloc] initWithFrame:CGRectMake(0, 9, 140, 40)];
         ev.animate = NO;
@@ -147,7 +163,7 @@
     return footView;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 4;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShowTrvalCell *cell = [ShowTrvalCell tempTableViewCellWith:tableView indexPath:indexPath];
@@ -167,18 +183,25 @@
         if (!_scr) {
             _scr = [[CustomScro alloc] initWithFrame:CGRectMake(0, 0, cell.view_JNB.width, cell.view_JNB.height) arr:self.Mo.JNArr flag:NO];
             _scr.delegate = self;
+            _scr.isShowLine = YES;
             [cell.view_JNB addSubview:_scr];
         }
     }
-    if (indexPath.section<2) {
+    if (indexPath.section==0||indexPath.section==2) {
         cell.JNIndexReceive = self.JNIndex;
         cell.list = self.Mo;
         cell.trval = self.MoTrval;
-    }else{
+        
+    }else if(indexPath.section==3){
         if (self.Mo!=nil) {
             cell.commen = [self.Mo.serviceList[self.JNIndex]commentList][indexPath.row];
         }else{
             cell.commentrval = self.MoTrval.comments[indexPath.row];
+        }
+    }else{
+        if (self.Mo!=nil) {
+            cell.propertyName = [self.Mo.serviceList[self.JNIndex] propertyNameArr][indexPath.row];
+            cell.typeName = [self.Mo.serviceList[self.JNIndex] typeNameArr][indexPath.row];
         }
     }
     return cell;

@@ -65,6 +65,7 @@
 		724B5F3D213C4A2000F51134 /* MyLocationPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 724B5F3C213C4A2000F51134 /* MyLocationPickerController.xib */; };
 		724B5F40213EE58E00F51134 /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724B5F3F213EE58E00F51134 /* MapController.m */; };
 		724B5F43213EEEDF00F51134 /* JZLocationConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 724B5F42213EEEDE00F51134 /* JZLocationConverter.m */; };
+		724B5F472142CDC600F51134 /* LMJScrollTextView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 724B5F462142CDC500F51134 /* LMJScrollTextView2.m */; };
 		72626F2F20ECF295001B807D /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72626F2C20ECF295001B807D /* libMobClickLibrary.a */; };
 		72626F3220ECF66E001B807D /* RCDSettingUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 72626F3120ECF66E001B807D /* RCDSettingUserDefaults.m */; };
 		72626F3F20ECFBE9001B807D /* RongContactCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72626F3E20ECFBE9001B807D /* RongContactCard.framework */; };
@@ -800,6 +801,8 @@
 		724B5F3F213EE58E00F51134 /* MapController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapController.m; sourceTree = "<group>"; };
 		724B5F41213EEEDD00F51134 /* JZLocationConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZLocationConverter.h; sourceTree = "<group>"; };
 		724B5F42213EEEDE00F51134 /* JZLocationConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZLocationConverter.m; sourceTree = "<group>"; };
+		724B5F452142CDC500F51134 /* LMJScrollTextView2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMJScrollTextView2.h; sourceTree = "<group>"; };
+		724B5F462142CDC500F51134 /* LMJScrollTextView2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMJScrollTextView2.m; sourceTree = "<group>"; };
 		72626F2C20ECF295001B807D /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		72626F2D20ECF295001B807D /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		72626F2E20ECF295001B807D /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
@@ -2122,6 +2125,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		724B5F442142CDC500F51134 /* HScrollAuto */ = {
+			isa = PBXGroup;
+			children = (
+				724B5F452142CDC500F51134 /* LMJScrollTextView2.h */,
+				724B5F462142CDC500F51134 /* LMJScrollTextView2.m */,
+			);
+			path = HScrollAuto;
+			sourceTree = "<group>";
+		};
 		72626F2B20ECF295001B807D /* UMAnalytics */ = {
 			isa = PBXGroup;
 			children = (
@@ -2352,6 +2364,7 @@
 		729BA6B120A01E7F009713FD /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				724B5F442142CDC500F51134 /* HScrollAuto */,
 				721040FC210243D200B575BB /* XMPlayer */,
 				72B6EC9220FCC16700B4088D /* Star */,
 				CE14BD0E20F3780E00F85C49 /* Alipay */,
@@ -5487,6 +5500,7 @@
 				8DF7E3D220CFAA78009A92D7 /* ClassifyMo.m in Sources */,
 				8D14FDED20EB0C000013A9DF /* UITabBar+badge.m in Sources */,
 				723D376B20AC2BC3003FD4DF /* SearchHistoryController.m in Sources */,
+				724B5F472142CDC600F51134 /* LMJScrollTextView2.m in Sources */,
 				CE9B9A6B20E91655005C47B2 /* Agreement.m in Sources */,
 				8DB277AE20EF34C400B3D747 /* groupMo.m in Sources */,
 				727418F620B3B37B001D6BE1 /* SwapHeadView.m in Sources */,

@@ -15,6 +15,7 @@
 
 @interface CustomScro : UIView<UIScrollViewDelegate>
 @property (nonatomic,strong)UIScrollView * scrollView;
+@property (nonatomic,assign) BOOL isShowLine;//是否显示底部的滑动条
 @property (nonatomic,assign)id<CustomScroDelegate>delegate;
 -(instancetype)initWithFrame:(CGRect)frame arr:(NSArray *)arr flag:(BOOL) flag;
 @end

@@ -30,10 +30,15 @@
 #import "privateUserInfoModel.h"
 #import "PersonalBasicDataController.h"
 #import "FilterOneController.h"
-@interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate>
+#import "LMJScrollTextView2.h"
+#import "NoticeMo.h"
+#import "CertificationCenterController.h"
+@interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate,LMJScrollTextView2Delegate>
 {
     BOOL flag;
+    LMJScrollTextView2 * _scrollTextView;
 }
+@property (weak, nonatomic) IBOutlet UIView *view_HScro;
 @property (nonatomic,strong) NSString * url;
 @property (strong,nonatomic)UIButton * tmpBtn;
 @property (weak, nonatomic) IBOutlet UIView *view_line;
@@ -55,6 +60,7 @@
 @property (nonatomic,strong) RefineView * refine;
 @property (nonatomic,strong) FirstTanView * first;
 @property (nonatomic,strong) CustomMap * cusMap;
+@property (nonatomic,strong) NSMutableArray * arr_notice;
 @end
 
 @implementation MessageController
@@ -286,6 +292,29 @@
     [self.view_Map bringSubviewToFront:self.view_notice];
     [self.view_Map bringSubviewToFront:self.btn_SX];
     [self.view_Map bringSubviewToFront:self.view_userLocation];
+    
+    _scrollTextView = [[LMJScrollTextView2 alloc] initWithFrame:CGRectMake(0, 0, self.view_HScro.width, self.view_HScro.height)];
+    _scrollTextView.delegate            = self;
+    _scrollTextView.textStayTime        = 2;
+    _scrollTextView.scrollAnimationTime = 1;
+    _scrollTextView.backgroundColor     = [UIColor clearColor];
+    _scrollTextView.textColor           = YSColor(65, 65, 65);
+    _scrollTextView.textFont            = [UIFont systemFontOfSize:14];
+    _scrollTextView.textAlignment       = NSTextAlignmentLeft;
+    _scrollTextView.touchEnable         = YES;
+    [self.view_HScro addSubview:_scrollTextView];
+    [self YZMobile];
+}
+//判断是否绑定手机号等
+-(void)YZMobile{
+    flag = NO;
+    if ([YSTools dx_isNullOrNilWithObject:[[YSAccountTool userInfo] mobile]]) {
+        [YTAlertUtil alertDualWithTitle:@"特别提醒" message:@"为了您更好的使用该号码权益，确保该号码不被它人抢注，请尽快前往认证中心进行手机号等身份认证。连程支持手机号、连程号和微信、QQ快捷登录等四种登录方式。一个手机号只能绑定一个连程号，祝福您美好工作生活从连程开始，谢谢。" style:UIAlertControllerStyleAlert cancelTitle:@"稍后在去" cancelHandler:^(UIAlertAction *action) {
+        } defaultTitle:@"去认证" defaultHandler:^(UIAlertAction *action) {
+            CertificationCenterController * center = [CertificationCenterController new];
+            [self.navigationController pushViewController:center animated:YES];
+        } completion:nil];
+    }
 }
 - (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location{
     self.lab_Location.text =locationDictionary[@"addRess"];
@@ -366,8 +395,14 @@
             weakSelf.view_notice.hidden = YES;
         }else{
             weakSelf.view_notice.hidden = NO;
-            weakSelf.lab_Notice.text = successDicValue[0][@"content"];
-            weakSelf.url = successDicValue[0][@"url"];
+            NSArray * arr = [NoticeMo mj_objectArrayWithKeyValuesArray:successDicValue];
+            NSMutableArray * arr1 = [NSMutableArray array];
+            self.arr_notice = [arr mutableCopy];
+            for (NoticeMo * mo in arr) {
+                [arr1 addObject:mo.title];
+            }
+            _scrollTextView.textDataArr = arr1;
+            [_scrollTextView startScrollBottomToTopWithNoSpace];
         }
     }];
     if ([KUserDefults objectForKey:KAllDic]!=nil) {
@@ -393,9 +428,16 @@
         
     }];
 }
-- (IBAction)NoticeClick:(UIButton *)sender {
+#pragma mark - LMJScrollTextView2 Delegate
+- (void)scrollTextView2:(LMJScrollTextView2 *)scrollTextView currentTextIndex:(NSInteger)index{
+    NSLog(@"当前是信息%ld",index);
+}
+- (void)scrollTextView2:(LMJScrollTextView2 *)scrollTextView clickIndex:(NSInteger)index content:(NSString *)content{
+    NSLog(@"#####点击的是：第%ld条信息 内容：%@",index,content);
+    NoticeMo * mo  = self.arr_notice[index];
     AgreementController *agreementVC = [[AgreementController alloc]init];
-    agreementVC.url = self.url;
+    agreementVC.title = @"详情";
+    agreementVC.url = mo.url;
     [self.navigationController pushViewController:agreementVC animated:YES];
 }
 @end

@@ -143,10 +143,6 @@
         [self.navigationController pushViewController:edit animated:YES];
     }
 }
-//#pragma mark ---LCDatePickerDelegate-----
-//- (void)lcDatePickerViewWithPickerView:(LCDatePicker *)picker str:(NSString *)str {
-//    self.txt_Time.text = str;
-//}
 #pragma mark ---PGDatePickerDelegate-----
 - (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents{
     self.txt_Time.text = [NSString stringWithFormat:@"%ld-%@%ld-%@%ld %@%ld:%@%ld",dateComponents.year,dateComponents.month<10?@"0":@"",dateComponents.month,dateComponents.day<10?@"0":@"",dateComponents.day,dateComponents.hour<10?@"0":@"",dateComponents.hour,dateComponents.minute<10?@"0":@"",dateComponents.minute];

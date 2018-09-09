@@ -35,6 +35,7 @@
     //添加通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alipayNotice:) name:NOTI_ALI_PAY_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wxNotice:) name:NOTI_WEI_XIN_PAY_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(balancePay:) name:NOTI_BALANCE_PAY_SUCCESS object:nil];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -102,14 +103,16 @@
 
 //开通套餐rechargeVip
 - (void)requestv1MembershipSvipRecharge:(NSString *)ID {
-    WeakSelf
-    [YSNetworkTool POST:v1MembershipSvipRecharge params:@{@"id": ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+//    WeakSelf
+    [YSNetworkTool POST:v1MembershipSvipRecharge params:@{@"id": ID} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic = responseObject[kData];
-        [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:@[@"支付宝",@"微信"] multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
+        [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:@[@"支付宝",@"微信",@"余额"] multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
             if (idx==0) {
                 [YTThirdPartyPay v1Pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kAlipay}];
-            }else{
+            }else if(idx==1){
                 [YTThirdPartyPay v1Pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kWechat}];
+            }else{
+                [YTThirdPartyPay v1Pay:@{@"orderNo": [dic objectForKey:@"orderNo"],@"payType":kBalance}];
             }
         } cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
         } completion:nil];
@@ -160,15 +163,20 @@
         } completion:nil];
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+//余额支付成功或失败
+-(void)balancePay:(NSNotification *)noti{
+    if (noti.object!=nil) {
+        //支付成功
+        WeakSelf
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付成功" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } completion:nil];
+    }else{
+        //支付失败
+        WeakSelf
+        [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付失败" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } completion:nil];
+    }
 }
-*/
-
 @end

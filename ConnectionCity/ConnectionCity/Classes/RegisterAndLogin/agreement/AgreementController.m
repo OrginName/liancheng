@@ -9,7 +9,7 @@
 #import "AgreementController.h"
 #import "AgreementMo.h"
 
-@interface AgreementController ()
+@interface AgreementController ()<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
@@ -43,4 +43,10 @@
         [weakSelf.webView loadHTMLString:mo.content baseURL:nil];
     } failure:nil];
 }
+//- (void)webViewDidStartLoad:(UIWebView *)webView{
+//    [YTAlertUtil showHUDWithTitle:@"正在加载"];
+//}
+//- (void)webViewDidFinishLoad:(UIWebView *)webView{
+//    [YTAlertUtil hideHUD];
+//}
 @end

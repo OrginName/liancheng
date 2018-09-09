@@ -21,13 +21,17 @@
 + (void)v1Pay:(NSDictionary *)dic {
     [YSNetworkTool POST:v1Pay params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([kBalance isEqualToString:dic[@"payType"]]) {
-            
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_BALANCE_PAY_SUCCESS object:responseObject];
         }else if ([kAlipay isEqualToString:dic[@"payType"]]) {
             [YTThirdPartyPay payByThirdPartyWithPaymet:YTThirdPartyPaymentAlipay dictionary:responseObject[kData]];
         }else if([kWechat isEqualToString:dic[@"payType"]]){
             [YTThirdPartyPay payByThirdPartyWithPaymet:YTThirdPartyPaymentWechat dictionary:responseObject[kData]];
         }
-    } failure:nil];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if ([kBalance isEqualToString:dic[@"payType"]]){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_BALANCE_PAY_SUCCESS object:@{}];
+        } 
+    }];
 }
 
 + (void)payByThirdPartyWithPaymet:(YTThirdPartyPayment)payment

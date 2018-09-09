@@ -24,9 +24,11 @@
             [self.scrollView addSubview:btn];
             self.scrollView.contentSize = CGSizeMake(width*arr.count, 0);
         }
+        
     }
     return self;
 }
+
 -(void)btnClick:(UIButton *)btn{
     if (self.delegate&&[self.delegate respondsToSelector:@selector(CustomScroBtnClick:)]) {
         [self.delegate CustomScroBtnClick:btn];

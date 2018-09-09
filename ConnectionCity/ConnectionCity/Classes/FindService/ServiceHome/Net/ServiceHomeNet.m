@@ -45,7 +45,23 @@
                 for (ServiceListMo * mo in user.serviceList) {
                     if ([mo.serviceCategoryName[@"name"] length]!=0) {
                         [arr1 addObject:mo.serviceCategoryName[@"name"]];
-                    } 
+                    }
+                    NSMutableArray * arr3 = [NSMutableArray array];
+                    NSMutableArray * arr4 = [NSMutableArray array];
+                    NSArray * arr2 = [YSTools stringToJSON:mo.property];
+                    for (long j=0;j<arr2.count;j++) {
+                        NSDictionary * dic1 = arr2[j];
+                        NSString * typeName = dic1[@"name"];
+                        [arr4 addObject:typeName];
+                        NSString * strName = @"";
+                        for (long k=0;k<[dic1[@"childs"] count];k++) {
+                            NSDictionary * dic2 = dic1[@"childs"][k];
+                            strName = [NSString stringWithFormat:@"%@  %@",dic2[@"name"],strName];
+                        }
+                        [arr3 addObject:strName];
+                    }
+                    mo.propertyNameArr = [arr3 copy];
+                    mo.typeNameArr = [arr4 copy];
                 }
                 user.JNArr = arr1;
                 if (user) {

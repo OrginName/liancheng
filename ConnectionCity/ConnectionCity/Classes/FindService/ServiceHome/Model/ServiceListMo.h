@@ -9,6 +9,8 @@
 #import "BaseModel.h"
 #import "UserMo.h"
 @interface ServiceListMo : BaseModel
+proArr(propertyNameArr);//每个type下的property名字
+proArr(typeNameArr);//每个type
 proStr(ID);
 proStr(likeCount);
 proStr(images);

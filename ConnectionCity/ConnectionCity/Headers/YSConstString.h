@@ -141,6 +141,8 @@ static NSString * const NOTI_WEI_XIN_AUTH_SUCCESS = @"WeiXinAuthSuccess";
 static NSString * const NOTI_WEI_XIN_PAY_SUCCESS = @"WeiXinPaySuccess";
 /** 支付宝支付成功 */
 static NSString * const NOTI_ALI_PAY_SUCCESS = @"AlipaySuccess";
+/** 余额支付成功 */
+static NSString * const NOTI_BALANCE_PAY_SUCCESS = @"kBalance";
 #endif /* YSConstString_h */
 
 

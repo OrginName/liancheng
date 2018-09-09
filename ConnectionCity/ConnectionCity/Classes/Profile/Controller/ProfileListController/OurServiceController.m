@@ -40,6 +40,7 @@
     [self setUI];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alipayNotice:) name:NOTI_ALI_PAY_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTab) name:NOTI_WEI_XIN_PAY_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(balancePay:) name:NOTI_BALANCE_PAY_SUCCESS object:nil];
     self.scroe = 0;
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -59,6 +60,12 @@
     if (self.block) {
         self.block(self.inter);
     } 
+}
+#pragma mark -----余额支付---------
+-(void)balancePay:(NSNotification *)noti{
+    if (noti.object!=nil) {
+        [self reloadTab];
+    }
 }
 #pragma mark - alipayNotice
 - (void)alipayNotice:(NSNotification *)notification {
@@ -123,11 +130,13 @@
     NSIndexPath * index = [tab indexPathForCell:cell1];
     myServiceMo * mo = self.data_Arr[index.row];
     if ([cell1.btn_status.titleLabel.text isEqualToString:@"缴费"]&&btn.tag<100000000) {
-        [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:@[@"支付宝",@"微信"] multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
+        [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:@[@"支付宝",@"微信",@"余额"] multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
             if (idx==0) {
                 [YTThirdPartyPay v1Pay:@{@"orderNo": mo.orderNo,@"payType":kAlipay}];
-            }else{
+            }else if(idx==1){
                 [YTThirdPartyPay v1Pay:@{@"orderNo": mo.orderNo,@"payType":kWechat}];
+            }else{
+                [YTThirdPartyPay v1Pay:@{@"orderNo": mo.orderNo,@"payType":kBalance}];
             }
         } cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
         } completion:nil];

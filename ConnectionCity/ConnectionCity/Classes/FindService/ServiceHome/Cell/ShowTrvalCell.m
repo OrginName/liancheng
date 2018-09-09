@@ -12,12 +12,19 @@
 {
     NSMutableArray * _arr_image;
 }
+@property (weak, nonatomic) IBOutlet UILabel *lab_type;
+@property (weak, nonatomic) IBOutlet UIView *view_line2;
+@property (weak, nonatomic) IBOutlet UIView *view_line1;
+@property (weak, nonatomic) IBOutlet UILabel *lab_typeProperty;
 @end
 @implementation ShowTrvalCell
 -(void)awakeFromNib{
     [super awakeFromNib];
     if (!_arr_image) {
         _arr_image = [[NSMutableArray alloc] initWithObjects:self.image1,self.image2,self.image3,self.image4, nil];
+        //把绘制好的虚线添加上来
+        [self.view_line1.layer addSublayer:[self drawDottedLine]];
+        [self.view_line2.layer addSublayer:[self drawDottedLine]];
     }
 }
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView
@@ -38,12 +45,15 @@
             identifiy = @"ShowTrvalCell6";
             index = 6;
         }
-    }else if (indexPath.section==1){
+    }else if (indexPath.section==2){
         identifiy = @"ShowTrvalCell2";
         index = 2;
-    }else{
+    }else if (indexPath.section==3){
         identifiy = @"ShowTrvalCell3";
         index = 3;
+    }else{
+        identifiy = @"ShowTrvalCell7";
+        index = 7;
     }
     ShowTrvalCell * cell = [tableView dequeueReusableCellWithIdentifier:identifiy];
     if (!cell) {
@@ -109,6 +119,7 @@
         self.lab_TrvalPrice.hidden = YES;
 //        self.lab_trvalJNXQ.hidden = YES;
 //        self.view_trval1.hidden = YES;
+        self.lab_DW.hidden = YES;
         self.layout_height.constant = 55;
         self.lab_Title.text = list.nickName?list.nickName:@"-";
         if (list.cityName.length!=0) {
@@ -124,24 +135,26 @@
         [self.btn_weight setTitle:KString(@"%@kg", list.weight?list.weight:@"-") forState:UIControlStateNormal];
         self.lab_ServiceTitle.text = list1.title?list1.title:@"";
         self.lab_TrvalDes.text = list1.introduce?list1.introduce:@"";
-        if (list1.property.length!=0&&[[self stringToJSON:list1.property] count]!=0) {
-            NSString * propertyTxt = @"";
-            NSArray * arr = [self stringToJSON:list1.property];
-            for (NSDictionary * dic in arr) {
-                NSString * str = @"";
-                NSArray * arr1 = dic[@"childs"];
-                for (NSDictionary * dic1 in arr1) {
-                    if (str.length==0) {
-                        str = dic1[@"name"];
-                    }else
-                    str = [NSString stringWithFormat:@"%@,%@",dic1[@"name"],str];
-                }
-                propertyTxt = [NSString stringWithFormat:@"%@ %@",[NSString stringWithFormat:@"%@:%@",dic[@"name"],str],propertyTxt];
-            }
-            self.lab_DW.text =propertyTxt;
-        }else{
-            self.lab_DW.text = @"";
-        }
+//        self.lab_typeProperty.text = @"";
+//        self.lab_type.text = list1.typeName;
+//        if (list1.property.length!=0&&[[self stringToJSON:list1.property] count]!=0) {
+//            NSString * propertyTxt = @"";
+//            NSArray * arr = [self stringToJSON:list1.property];
+//            for (NSDictionary * dic in arr) {
+//                NSString * str = @"";
+//                NSArray * arr1 = dic[@"childs"];
+//                for (NSDictionary * dic1 in arr1) {
+//                    if (str.length==0) {
+//                        str = dic1[@"name"];
+//                    }else
+//                    str = [NSString stringWithFormat:@"%@,%@",dic1[@"name"],str];
+//                }
+//                propertyTxt = [NSString stringWithFormat:@"%@ %@",[NSString stringWithFormat:@"%@:%@",dic[@"name"],str],propertyTxt];
+//            }
+//            self.lab_DW.text =propertyTxt;
+//        }else{
+//            self.lab_DW.text = @"";
+//        }
         self.lab_LLNum.text = [NSString stringWithFormat:@"浏览%@次",list1.browseTimes?list1.browseTimes:@"999+"];
         self.lab_DTNum.text = KString(@"%lu", (unsigned long)list1.serviceCircleList.count);
         for (NSDictionary * dic in list1.serviceCircleList) {
@@ -160,6 +173,14 @@
             }
         }
     }
+}
+-(void)setPropertyName:(NSString *)propertyName{
+    _propertyName = propertyName;
+    self.lab_typeProperty.text = propertyName;
+}
+-(void)setTypeName:(NSString *)typeName{
+    _typeName = typeName;
+    self.lab_type.text = typeName;
 }
 -(void)setCommentrval:(comments *)commentrval{
     _commentrval = commentrval;
@@ -209,5 +230,20 @@
         [self.delegate btnClick:sender.tag];
     }
 }
-
+-(CAShapeLayer *)drawDottedLine{
+    CAShapeLayer *dotteShapeLayer = [CAShapeLayer layer];
+    CGMutablePathRef dotteShapePath =  CGPathCreateMutable();
+    //设置虚线颜色为blackColor
+    [dotteShapeLayer setStrokeColor:YSColor(224, 224, 226).CGColor];
+    //设置虚线宽度
+    dotteShapeLayer.lineWidth = 2.0f ;
+    //10=线的宽度 5=每条线的间距
+    NSArray *dotteShapeArr = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:10],[NSNumber numberWithInt:5], nil];
+    [dotteShapeLayer setLineDashPattern:dotteShapeArr];
+    CGPathMoveToPoint(dotteShapePath, NULL, 8 ,0);
+    CGPathAddLineToPoint(dotteShapePath, NULL, kScreenWidth-40, 0);
+    [dotteShapeLayer setPath:dotteShapePath];
+    CGPathRelease(dotteShapePath);
+    return dotteShapeLayer;
+}
 @end

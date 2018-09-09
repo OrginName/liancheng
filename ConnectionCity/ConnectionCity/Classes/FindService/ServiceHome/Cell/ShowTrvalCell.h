@@ -15,6 +15,8 @@
 -(void)btnClick:(NSInteger)tag;
 @end
 @interface ShowTrvalCell : UITableViewCell
+@property (nonatomic,copy) NSString * propertyName;
+@property (nonatomic,copy) NSString * typeName;
 @property (weak, nonatomic) IBOutlet UILabel *lab_JNB;
 @property (nonatomic,assign) NSInteger JNIndexReceive;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_height;

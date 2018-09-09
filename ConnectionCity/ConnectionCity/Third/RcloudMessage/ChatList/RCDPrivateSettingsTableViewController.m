@@ -44,6 +44,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     self.title = @"聊天详情";
     [self.view addSubview:self.tableView];
     FirstTanView * tan = [[NSBundle mainBundle] loadNibNamed:@"FirstTanView" owner:nil options:nil][3];
+    tan.frame = CGRectMake(0, 0, kScreenWidth, (kScreenWidth*3)/4);
     tan.userInfo = self.userInfo1;
     self.tableView.tableHeaderView = tan;
     [self.tableView reloadData];

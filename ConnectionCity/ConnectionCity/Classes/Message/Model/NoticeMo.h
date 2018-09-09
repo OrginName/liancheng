@@ -12,11 +12,12 @@
 proStr(isImportant);
 proStr(isValid);
 proStr(receiveUserId);
-proStr(title);
+proStr(title);//滚动标题
 proStr(type);
 proStr(typeName);
 proStr(sendUserId);
 proStr(ID);
 proStr(content);
+proStr(url);//跳转链接
 @property (nonatomic,strong)UserMo * user;
 @end

@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 typedef void(^EditBlock)(NSString * EditStr);
 @interface EditAllController : BaseViewController
+@property (weak, nonatomic) IBOutlet CustomtextView *textView_EditAll;
 @property (nonatomic, copy) EditBlock block;
 @property (nonatomic,copy) NSString * receiveTxt;
 @end

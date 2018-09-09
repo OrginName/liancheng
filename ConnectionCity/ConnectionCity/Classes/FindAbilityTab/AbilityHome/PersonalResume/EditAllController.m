@@ -9,7 +9,6 @@
 #import "EditAllController.h"
 
 @interface EditAllController ()<UITextViewDelegate>
-@property (weak, nonatomic) IBOutlet CustomtextView *textView_EditAll;
 
 
 @end

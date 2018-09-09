@@ -5,9 +5,13 @@
 //  Created by umbrella on 2018/6/29.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
 #import "CustomScro.h"
+@interface CustomScro()
+@property (nonatomic,strong)UIView * viewLine;
+@end
 @implementation CustomScro
 -(instancetype)initWithFrame:(CGRect)frame arr:(NSArray *)arr flag:(BOOL) flag{
     if (self = [super initWithFrame:frame]) {
+        self.isShowLine = NO;
         [self addSubview:self.scrollView];
         for (int i=0; i<arr.count; i++) {
             float width = 0.0f;
@@ -36,13 +40,31 @@
             btn.tag=i+1;
             [self.scrollView addSubview:btn];
             self.scrollView.contentSize = CGSizeMake(width*arr.count, 0);
+            if (i==0) {
+                UIView * view= [[UIView alloc] initWithFrame:CGRectMake(btn.x, btn.height-2, btn.width, 2)];
+                view.backgroundColor = [UIColor orangeColor];
+                self.viewLine = view;
+            }
         }
     }
     return self;
 }
+//滑动按钮点击方法
 -(void)btnClick:(UIButton *)btn{
     if (self.delegate&&[self.delegate respondsToSelector:@selector(CustomScroBtnClick:)]) {
         [self.delegate CustomScroBtnClick:btn];
+    }
+    if (self.viewLine) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.viewLine.frame = CGRectMake(btn.x, btn.height-2, btn.width, 2);
+        }];
+    }
+}
+//是否显示滑动的view
+-(void)setIsShowLine:(BOOL)isShowLine{
+    _isShowLine = isShowLine;
+    if (isShowLine) {
+        [self.scrollView addSubview:self.viewLine];
     }
 }
 -(UIScrollView *)scrollView{
