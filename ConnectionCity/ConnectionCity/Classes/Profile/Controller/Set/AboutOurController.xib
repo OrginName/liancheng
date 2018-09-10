@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,11 +22,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m8C-KF-cdT">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="ISd-wo-dE3">
-                            <rect key="frame" x="62.5" y="26" width="250" height="110"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo2" translatesAutoresizingMaskIntoConstraints="NO" id="ISd-wo-dE3">
+                            <rect key="frame" x="157.5" y="51" width="60" height="60"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="250" id="GNV-Yq-72M"/>
-                                <constraint firstAttribute="height" constant="110" id="lKo-Pm-BMz"/>
+                                <constraint firstAttribute="width" constant="60" id="GNV-Yq-72M"/>
+                                <constraint firstAttribute="height" constant="60" id="lKo-Pm-BMz"/>
                             </constraints>
                         </imageView>
                     </subviews>
@@ -256,7 +256,7 @@
         </view>
     </objects>
     <resources>
-        <image name="2" width="600" height="366"/>
         <image name="arraw-right" width="9" height="15"/>
+        <image name="logo2" width="60" height="60"/>
     </resources>
 </document>

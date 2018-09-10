@@ -228,16 +228,15 @@
         if (annotation.title == list.ID) {
             index = idx;
             *stop = YES;
+            flag = YES;
         }
         if (self.cusMap.Arr_Mark.count!=0&&([annotation.title isEqualToString:@"当前位置"]||annotation.title.length==0)&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
             index = idx;
             *stop = YES;
-        }
-        if (([annotation.title isEqualToString:@"当前位置"]||annotation.title.length==0)&&![[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
             flag = YES;
         }
     }];
-    if (!flag&&self.cusMap.Arr_Mark.count!=0) {
+    if (flag&&self.cusMap.Arr_Mark.count!=0) {
         show.zIndex = index;
         [self.navigationController pushViewController:show animated:YES];
     }else

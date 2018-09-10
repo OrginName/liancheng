@@ -13,8 +13,9 @@
 #import "QFDatePickerView.h"
 #import "TransactionRecordMo.h"
 #import "PaymentModel.h"
+#import <PGDatePicker/PGDatePickManager.h>
 
-@interface TransactionRecordController ()<UITableViewDelegate,UITableViewDataSource>
+@interface TransactionRecordController ()<UITableViewDelegate,UITableViewDataSource,PGDatePickerDelegate>
 {
     CustomButton * _tmpBtn;
 }
@@ -47,6 +48,13 @@
     NSInteger currentMonth=[[formatter stringFromDate:date]integerValue];
     
     [_selectedMonceBtn setTitle:[NSString stringWithFormat:@"%ld-%.2ld",currentYear,currentMonth] forState:UIControlStateNormal];
+}
+#pragma mark ---- PGDatePickerDelegate-----
+- (void)datePicker:(PGDatePicker *)datePicker didSelectDate:(NSDateComponents *)dateComponents {
+    NSLog(@"dateComponents = %ld", (long)dateComponents.year);
+    NSString * str = [NSString stringWithFormat:@"%ld-%@%ld",(long)dateComponents.year,dateComponents.month<10?@"0":@"",(long)dateComponents.month];
+    [_selectedMonceBtn setTitle:str forState:UIControlStateNormal];
+    [YSRefreshTool beginRefreshingWithView:self.tab_Bottom];
 }
 -(void)setUI{
     self.navigationItem.title = @"交易记录";
@@ -85,13 +93,7 @@
     [YSRefreshTool beginRefreshingWithView:self.tab_Bottom];
 }
 - (IBAction)selectedMonceBtnClick:(id)sender {
-    QFDatePickerView *datePickerView = [[QFDatePickerView alloc]initDatePackerWithResponse:^(NSString *str) {
-        NSString *string = str;
-        NSLog(@"str = %@",string);
-        [_selectedMonceBtn setTitle:str forState:UIControlStateNormal];
-        [YSRefreshTool beginRefreshingWithView:self.tab_Bottom];
-    }];
-    [datePickerView animateShow];
+    [self tanDatePick];
 }
 #pragma mark - 接口请求
 - (void)addHeaderRefresh {
@@ -150,6 +152,22 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [YSRefreshTool endRefreshingWithView:self.tab_Bottom];
     }];
+}
+-(void)tanDatePick{
+    PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
+    PGDatePicker *datePicker = datePickManager.datePicker;
+    //设置半透明的背景颜色
+    datePickManager.isShadeBackgroud = true;
+    //设置头部的背景颜色
+    datePickManager.headerViewBackgroundColor = YSColor(244, 177, 113);
+    datePicker.datePickerMode = PGDatePickerModeYearAndMonth;
+    //设置取消按钮的字体颜色
+    datePickManager.cancelButtonTextColor = [UIColor whiteColor];
+    datePickManager.confirmButtonTextColor = [UIColor whiteColor];
+    //    datePicker.datePickerType = PGDatePickerType2;
+    datePicker.maximumDate = [NSDate date];
+    datePicker.delegate = self;
+    [self presentViewController:datePickManager animated:false completion:nil];
 }
 
 @end

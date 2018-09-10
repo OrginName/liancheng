@@ -352,12 +352,10 @@
             index = idx;
             *stop = YES;
         }
-        if ((annotation.title.length==0||[annotation.title isEqualToString:@"当前位置"])&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
+        if ([list.ID isEqualToString: [[YSAccountTool userInfo] modelId]]) {
             index = idx;
             *stop = YES;
-        }else{
-            return [YTAlertUtil showTempInfo:@"当前位置"];
-        }
+        } 
     }];
     PersonalBasicDataController * center = [PersonalBasicDataController new];
 //        UserMo * mo = self.cusMap.Arr_Mark[index];

@@ -73,7 +73,7 @@
     //我的钱包
     WeakSelf
     [YSNetworkTool POST:v1UserWalletInfo params:nil showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        weakSelf.balanceLab.text = [NSString stringWithFormat:@"%@",responseObject[kData][@"balance"]];
+        weakSelf.balanceLab.text = [NSString stringWithFormat:@"%.2f",[responseObject[kData][@"balance"] floatValue]];
         weakSelf.fbLab.text = [[NSString stringWithFormat:@"%@",responseObject[kData][@"fb"]] isEqual:@"<null>"]?@"0":[NSString stringWithFormat:@"%@",responseObject[kData][@"fb"]];
     } failure:nil];
 }

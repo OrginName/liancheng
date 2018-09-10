@@ -668,7 +668,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ase-1X-IRy">
-                        <rect key="frame" x="10" y="34" width="300" height="44.5"/>
+                        <rect key="frame" x="16" y="34" width="294" height="44.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.39211553339999999" green="0.39217787980000002" blue="0.39210706950000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -683,11 +683,11 @@
                     <constraint firstItem="Ase-1X-IRy" firstAttribute="top" secondItem="E00-nS-13l" secondAttribute="bottom" id="UMj-gz-kM9"/>
                     <constraint firstItem="wEf-u6-WWD" firstAttribute="top" secondItem="c55-Hr-rxo" secondAttribute="topMargin" id="bhs-XU-CiM"/>
                     <constraint firstItem="wEf-u6-WWD" firstAttribute="leading" secondItem="c55-Hr-rxo" secondAttribute="leadingMargin" id="bii-jh-cnR"/>
-                    <constraint firstItem="Ase-1X-IRy" firstAttribute="leading" secondItem="c55-Hr-rxo" secondAttribute="leading" constant="10" id="d4a-f0-ToA"/>
                     <constraint firstAttribute="bottom" secondItem="XCw-gK-wBD" secondAttribute="bottom" id="ikn-GC-Ujo"/>
                     <constraint firstItem="E00-nS-13l" firstAttribute="leading" secondItem="c55-Hr-rxo" secondAttribute="leading" constant="10" id="jle-la-GuU"/>
                     <constraint firstItem="XCw-gK-wBD" firstAttribute="trailing" secondItem="E00-nS-13l" secondAttribute="trailing" id="pxC-7g-DL4"/>
                     <constraint firstItem="XCw-gK-wBD" firstAttribute="centerX" secondItem="c55-Hr-rxo" secondAttribute="centerX" id="u8c-Ec-vIW"/>
+                    <constraint firstItem="Ase-1X-IRy" firstAttribute="leading" secondItem="wEf-u6-WWD" secondAttribute="leading" id="vzZ-rW-QqE"/>
                     <constraint firstItem="XCw-gK-wBD" firstAttribute="top" secondItem="Ase-1X-IRy" secondAttribute="bottom" id="wdp-oY-vN9"/>
                 </constraints>
             </tableViewCellContentView>
