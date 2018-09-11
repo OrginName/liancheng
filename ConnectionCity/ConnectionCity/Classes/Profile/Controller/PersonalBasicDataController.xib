@@ -22,6 +22,7 @@
                 <outlet property="layoutMu" destination="45j-WT-FJQ" id="pky-kV-UWm"/>
                 <outlet property="layout_Btn" destination="53a-Vz-5Oe" id="7aE-8t-UG2"/>
                 <outlet property="layout_View" destination="Zlm-id-aPl" id="qeN-tP-ryD"/>
+                <outlet property="layout_jia" destination="834-eC-G1i" id="egW-qw-X4o"/>
                 <outlet property="layout_phone" destination="tXO-Rm-UrM" id="DUk-WV-cVc"/>
                 <outlet property="layout_view" destination="obb-J1-bFK" id="jvx-1k-ETG"/>
                 <outlet property="lcNumLab" destination="eHE-KH-eO9" id="UlI-pB-DUt"/>

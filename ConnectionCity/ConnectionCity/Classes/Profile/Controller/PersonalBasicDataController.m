@@ -37,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_Btn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_view;
 @property (weak, nonatomic) IBOutlet UIView *view_leftRight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_jia;
 @end
 @implementation PersonalBasicDataController
 - (void)viewDidLoad {
@@ -86,15 +87,21 @@
             self.view_Phone.hidden = NO;
             self.layout_phone.constant = 50;
             self.layout_View.constant = 280;
-            self.view_btn.hidden = YES;
-            self.layout_view.constant = 0;
-            self.view_leftRight.hidden = YES;
-            self.layout_Btn.constant = 0;
+            if (self.arr_User.count==0) {
+               self.view_leftRight.hidden = YES;
+               self.layout_view.constant = 0;
+                self.view_btn.hidden = YES;
+                self.layout_Btn.constant = 0;
+            }else{
+                self.layoutMu.constant = (kScreenWidth-50)/2-40;
+            }
         }
         self.phoneNumLab.text = [connectionMo.mobile description];
         self.addressLab.text = [connectionMo.cityName description];
         if ([[connectionMo.isFriend description] isEqualToString:@"1"]) {
             self.layoutMu.constant = (kScreenWidth-50)/2-40;
+        }else if(![[connectionMo.ID description] isEqualToString:[[YSAccountTool userInfo] modelId]]){
+            self.layoutMu.constant = self.layout_jia.constant-40;
         }
         self.beiZhuLab.text = connectionMo.friendRemark?connectionMo.friendRemark:connectionMo.nickName;
         if (connectionMo.serviceCircleList.count!=0) {
@@ -216,7 +223,7 @@
         case 3:
             {
                 self.flag--;
-                if (self.flag<=0) {
+                if (self.flag<0) {
                     self.flag=0;
                     return [YTAlertUtil showTempInfo:@"再往前没有了"];
                 }
@@ -227,7 +234,7 @@
         case 4:
         {
             self.flag++;
-            if (self.flag>=self.arr_User.count-1) {
+            if (self.flag>self.arr_User.count-1) {
                 self.flag=self.arr_User.count-1;
                 return [YTAlertUtil showTempInfo:@"再往后没有了"];
             }

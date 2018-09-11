@@ -100,6 +100,8 @@ static NSString * const pageInfo = @"/page/info";
 static NSString * const about = @"about";
 //连程使用协议
 static NSString * const useAgreement = @"use-agreement";
+//连程号码规则
+static NSString * const connectRule = @"connect-rule";
 //连程用户行为规范
 static NSString * const userBehaviorStandard = @"user-behavior-standard";
 //连程服务协议

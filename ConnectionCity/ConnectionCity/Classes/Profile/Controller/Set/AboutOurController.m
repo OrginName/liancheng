@@ -20,35 +20,13 @@
     self.navigationItem.title = @"关于连程";
 }
 - (IBAction)BtnClick:(UIButton *)sender {
-    switch (sender.tag) {
-        case 1://检查更新
-            {
-                [YTAlertUtil showTempInfo:@"暂无更新"];
-            }
-            break;
-        case 2://许可协议
-        {
-            AgreementController *agreementVC = [[AgreementController alloc]init];
-            agreementVC.alias = useAgreement;
-            [self.navigationController pushViewController:agreementVC animated:YES];
-        }
-            break;
-        case 3://隐私条款
-        {
-            AgreementController *agreementVC = [[AgreementController alloc]init];
-            agreementVC.alias = privacyAgreement;
-            [self.navigationController pushViewController:agreementVC animated:YES];
-        }
-            break;
-        case 4://联系我们
-        {
-            AgreementController *agreementVC = [[AgreementController alloc]init];
-            agreementVC.alias = about;
-            [self.navigationController pushViewController:agreementVC animated:YES];
-        }
-            break;
-        default:
-            break;
+    NSArray * arr = @[privacyAgreement,connectRule,useAgreement,userBehaviorStandard,serviceAgreement,about];
+    if (sender.tag==1) {
+        [YTAlertUtil showTempInfo:@"火热开发中..."];
+    }else{
+        AgreementController *agreementVC = [[AgreementController alloc]init];
+        agreementVC.alias = arr[sender.tag-2];
+        [self.navigationController pushViewController:agreementVC animated:YES];
     }
 }
 @end
