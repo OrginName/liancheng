@@ -107,7 +107,7 @@
 - (void)updateData {
     [self.cusMap.mapView removeAnnotations:self.cusMap.mapView.annotations];
     [self.cusMap locationClick];
-//    [self.cusMap.location startUpdatingLocation];
+    [self.cusMap.location startUpdatingLocation];
 }
 //导航左按钮我的点击
 -(void)MyselfClick{
