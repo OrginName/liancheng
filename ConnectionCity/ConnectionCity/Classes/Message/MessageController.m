@@ -30,14 +30,14 @@
 #import "privateUserInfoModel.h"
 #import "PersonalBasicDataController.h"
 #import "FilterOneController.h"
-#import "LMJScrollTextView2.h"
 #import "NoticeMo.h"
 #import "CertificationCenterController.h"
-@interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate,LMJScrollTextView2Delegate>
+#import <TXScrollLabelView.h>
+@interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate,TXScrollLabelViewDelegate>
 {
     BOOL flag;
-    LMJScrollTextView2 * _scrollTextView;
 }
+@property (nonatomic,strong) TXScrollLabelView * scroLabel;
 @property (weak, nonatomic) IBOutlet UIView *view_HScro;
 @property (nonatomic,strong) NSString * url;
 @property (strong,nonatomic)UIButton * tmpBtn;
@@ -67,8 +67,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    [self setUI];
     [self initData];
+    [self setUI];
     flag = NO;
 //    if ([KUserDefults objectForKey:kLat]!=nil&&[KUserDefults objectForKey:KLng]!=nil) {
 //        [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
@@ -106,12 +106,8 @@
 }
 - (void)updateData {
     [self.cusMap.mapView removeAnnotations:self.cusMap.mapView.annotations];
-    [self.cusMap.location startUpdatingLocation];
-//    [self setUI];
+    [self.cusMap locationClick];
 //    [self.cusMap.location startUpdatingLocation];
-//    if ([KUserDefults objectForKey:kUserCityID]!=nil) {
-//        [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityCode":[KUserDefults objectForKey:kUserCityID]}];
-//    }
 }
 //导航左按钮我的点击
 -(void)MyselfClick{
@@ -137,15 +133,6 @@
 }
 //加载服务列表数据
 -(void)loadServiceList:(NSDictionary *)dic{
-//    NSDictionary * dic1 = @{
-//                 @"distance": @([KDistance intValue]),
-//                 @"lat": @([dic[@"lat"] floatValue]),
-//                 @"lng": @([dic[@"lng"] floatValue]),
-//                 };
-//    //    加载服列表
-//    [ServiceHomeNet requstServiceList:dic1 withSuc:^(NSMutableArray *successArrValue) {
-//        self.cusMap.Arr_Mark = successArrValue;
-//    }];
     NSDictionary * dic1 = @{
                             @"age":dic[@"age"]?dic[@"age"]:@"",
                             @"distance":@([dic[@"distance"]?dic[@"distance"]:@"" intValue]),
@@ -199,10 +186,6 @@
         {
             BaseFindServiceTabController * base = [BaseFindServiceTabController new];
             [self.navigationController pushViewController:base animated:YES];
-//            BaseOneTabController * one = [[BaseOneTabController alloc] init];
-//            [self.navigationController pushViewController:one animated:YES];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"TABBAR" object:nil];
-//
         } 
             break;
         case 2:
@@ -293,16 +276,18 @@
     [self.view_Map bringSubviewToFront:self.btn_SX];
     [self.view_Map bringSubviewToFront:self.view_userLocation];
     
-    _scrollTextView = [[LMJScrollTextView2 alloc] initWithFrame:CGRectMake(0, 0, self.view_HScro.width, self.view_HScro.height)];
-    _scrollTextView.delegate            = self;
-    _scrollTextView.textStayTime        = 2;
-    _scrollTextView.scrollAnimationTime = 1;
-    _scrollTextView.backgroundColor     = [UIColor clearColor];
-    _scrollTextView.textColor           = YSColor(65, 65, 65);
-    _scrollTextView.textFont            = [UIFont systemFontOfSize:14];
-    _scrollTextView.textAlignment       = NSTextAlignmentLeft;
-    _scrollTextView.touchEnable         = YES;
-    [self.view_HScro addSubview:_scrollTextView];
+ 
+    NSString *scrollTitle = @"";
+    TXScrollLabelView *scrollLabelView = [TXScrollLabelView scrollWithTitle:scrollTitle type:TXScrollLabelViewTypeLeftRight velocity:2 options:UIViewAnimationOptionCurveEaseInOut];
+    scrollLabelView.scrollLabelViewDelegate = self;
+    scrollLabelView.scrollInset = UIEdgeInsetsMake(0, -100, 0, 0);
+    scrollLabelView.scrollTitleColor = YSColor(40, 40, 40);
+    scrollLabelView.font = [UIFont systemFontOfSize:15];
+    scrollLabelView.backgroundColor = [UIColor whiteColor];
+    scrollLabelView.frame = CGRectMake(0, 0, kScreenWidth-70, 50);
+    [self.view_HScro addSubview:scrollLabelView];
+    self.scroLabel = scrollLabelView;
+    
     [self YZMobile];
 }
 //判断是否绑定手机号等
@@ -327,25 +312,7 @@
 }
 -(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
     flag = NO;
-//    if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
-//        PersonalBasicDataController * show = [PersonalBasicDataController new];
-//        show.Receive_Type = ENUM_TypeTrval;
-//        show.data_Count = self.cusMap.Arr_Mark;
-        __block NSUInteger index = 0;
-//        [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//            UserMo * list = (UserMo *)obj;
-//            if (annotation.title == list.ID) {
-//                index = idx;
-//                *stop = YES;
-//            }
-//            if (self.cusMap.Arr_Mark.count!=0&& [annotation.title isEqualToString:@"当前位置"]&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
-//                index = idx;
-//                *stop = YES;
-//            }
-//        }];
-//        show.zIndex = index;
-//        [self.navigationController pushViewController:show animated:YES];
-//    }
+    __block NSUInteger index = 0;
     [self.cusMap.Arr_Mark enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UserMo * list = (UserMo *)obj;
         if (annotation.title == list.ID) {
@@ -358,8 +325,6 @@
         } 
     }];
     PersonalBasicDataController * center = [PersonalBasicDataController new];
-//        UserMo * mo = self.cusMap.Arr_Mark[index];
-//        center.connectionMo = mo;
     center.arr_User = self.cusMap.Arr_Mark;
     center.flag = index;
     [self.navigationController pushViewController:center animated:YES];
@@ -381,11 +346,12 @@
         self.navigationController.navigationBar.hidden= YES;
     }
 }
+
 -(void)initData{
     NSDictionary * dic = @{
                            @"pageNumber":@1,
                            @"pageSize":@20,
-                           @"cityCode":@([[KUserDefults objectForKey:kUserCityID] intValue]),
+                           //                           @"cityCode":@([[KUserDefults objectForKey:kUserCityID] intValue]),
                            };
     WeakSelf
     [CircleNet requstNotice:dic withSuc:^(NSMutableArray *successDicValue) {
@@ -394,13 +360,9 @@
         }else{
             weakSelf.view_notice.hidden = NO;
             NSArray * arr = [NoticeMo mj_objectArrayWithKeyValuesArray:successDicValue];
-            NSMutableArray * arr1 = [NSMutableArray array];
-            self.arr_notice = [arr mutableCopy];
-            for (NoticeMo * mo in arr) {
-                [arr1 addObject:mo.title];
-            }
-            _scrollTextView.textDataArr = arr1;
-            [_scrollTextView startScrollBottomToTopWithNoSpace];
+            weakSelf.arr_notice = [arr mutableCopy];
+            weakSelf.scroLabel.scrollTitle = [arr[arr.count-1] title];
+            [weakSelf.scroLabel beginScrolling];
         }
     }];
     if ([KUserDefults objectForKey:KAllDic]!=nil) {
@@ -427,12 +389,8 @@
     }];
 }
 #pragma mark - LMJScrollTextView2 Delegate
-- (void)scrollTextView2:(LMJScrollTextView2 *)scrollTextView currentTextIndex:(NSInteger)index{
-    NSLog(@"当前是信息%ld",index);
-}
-- (void)scrollTextView2:(LMJScrollTextView2 *)scrollTextView clickIndex:(NSInteger)index content:(NSString *)content{
-    NSLog(@"#####点击的是：第%ld条信息 内容：%@",index,content);
-    NoticeMo * mo  = self.arr_notice[index];
+- (void)scrollLabelView:(TXScrollLabelView *)scrollLabelView didClickWithText:(NSString *)text atIndex:(NSInteger)index{
+    NoticeMo * mo  = self.arr_notice[self.arr_notice.count-1];
     AgreementController *agreementVC = [[AgreementController alloc]init];
     agreementVC.title = @"详情";
     agreementVC.url = mo.url;

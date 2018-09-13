@@ -45,9 +45,7 @@
         [btn addTarget:self action:@selector(locationClick) forControlEvents:UIControlEventTouchUpInside];
         self.btn_location = btn;
         [self addSubview:btn];
-        [self addSubview:self.image_Mark];
-//        [self initAnnotations];
-//        [self setArr_Mark:self.Arr_Mark];
+        [self addSubview:self.image_Mark]; 
         flag=0;
     }
     return self;
@@ -77,11 +75,11 @@
 //            annotationView.calloutOffset = CGPointMake(0, 0);
     }
     self.annotationView = annotationView;
-    if ([annotation isKindOfClass:[MAUserLocation class]]) {
+    if ([annotation isKindOfClass:[MAUserLocation class]]||[annotation isKindOfClass:[CustomLocatiom class]]) {
         [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:[[YSAccountTool userInfo]headImage]] placeholderImage:[UIImage imageNamed:@"logo1"]];
     }else{
         if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
-            ZWCustomPointAnnotation *pointAnnotation = (ZWCustomPointAnnotation*)annotation;
+             ZWCustomPointAnnotation *pointAnnotation = (ZWCustomPointAnnotation*)annotation;
             //在这里,直接将请求回来的商户图片地址复制给calloutview的imageview
             //关键是需要拿到弹出视图的iamge对象,我才可以对其进行赋值
             [annotationView.portraitImageView sd_setImageWithURL:[NSURL URLWithString:pointAnnotation.storImageUrl] placeholderImage:[UIImage imageNamed:@"logo1"]];
@@ -105,6 +103,7 @@
         if (_delegate && [_delegate respondsToSelector:@selector(currentAnimatinonViewClick:annotation:)] ) {
             [_delegate currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)view.annotation];
         }
+        [mapView deselectAnnotation:view.annotation animated:YES];
 //    }
 }
 #pragma mark -------CustomLocationDelegate------

@@ -24,5 +24,6 @@ pod 'JPush', '3.0.6'
 pod 'DZNEmptyDataSet'
 pod 'PGDatePicker'
 pod 'TYAlertController'
+pod 'TXScrollLabelView'
 end
 
