@@ -25,11 +25,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, copy) NSArray *menuModels;
 @property (nonatomic, strong) ProfileHeadView *tableHeadV;
-
 @end
-
 @implementation ProfileTwoController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];

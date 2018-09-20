@@ -17,7 +17,7 @@
 // 名字视图高度
 #define kNameLabelH         20
 // 时间视图高度
-#define kTimeLabelH         15
+#define kTimeLabelH         20
 // 顶部和底部的留白
 #define kBlank              10
 // 右侧留白

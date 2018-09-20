@@ -351,7 +351,7 @@
     NSDictionary * dic = @{
                            @"pageNumber":@1,
                            @"pageSize":@20,
-                           //                           @"cityCode":@([[KUserDefults objectForKey:kUserCityID] intValue]),
+//                           @"cityCode":@([[KUserDefults objectForKey:kUserCityID] intValue]),
                            };
     WeakSelf
     [CircleNet requstNotice:dic withSuc:^(NSMutableArray *successDicValue) {

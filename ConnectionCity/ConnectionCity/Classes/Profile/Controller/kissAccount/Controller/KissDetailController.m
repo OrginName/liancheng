@@ -47,9 +47,9 @@
     } failure:nil];
     [YSNetworkTool POST:v1UserCloseAccountBillStatistics params:@{@"id": @([self.ID intValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            weakSelf.lab_todayMoney.text = KString(@"累计%@元", responseObject[kData][@"todayAmount"]);
-            weakSelf.lab_yearMoney.text = KString(@"累计%@元", responseObject[kData][@"yearAmount"]);;
-            weakSelf.lab_monthMoney.text = KString(@"累计%@元", responseObject[kData][@"monthAmount"]);;
+            weakSelf.lab_todayMoney.text = KString(@"累计%.3f元", [responseObject[kData][@"todayAmount"] floatValue]);
+            weakSelf.lab_yearMoney.text = KString(@"累计%.3f元", [responseObject[kData][@"yearAmount"] floatValue]);
+            weakSelf.lab_monthMoney.text = KString(@"累计%.3f元", [responseObject[kData][@"monthAmount"] floatValue]);
         });
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
 
@@ -67,7 +67,7 @@
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         [dic setObject:@1 forKey:@"lockColumn"];
         NSArray *data = @[@[@"连程号",@"比例",@"收入"]
-                          ,@[dic1[@"closeUserId"],KString(@"%.0f%%", [dic1[@"rate"] floatValue]*100),[dic1[@"incomeAmount"] description]]
+                          ,@[dic1[@"closeUserId"],KString(@"%.1f%%", [dic1[@"rate"] floatValue]*100),KString(@"%.3f", [[dic1[@"incomeAmount"] description] floatValue])]
                           ];
         [dic setObject:data forKey:@"data"];
         [self updateMyList:dic withColumnWidths:@[@3,@3,@3]];

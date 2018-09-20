@@ -133,7 +133,7 @@ CGFloat maxLimitHeight = 0;
 {
     _moment = moment;
     // 头像
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:moment.userMo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:moment.userMo.headImage] placeholderImage:[UIImage imageNamed:@"logo2"]];
     // 昵称
     _nameLab.text = moment.userMo.nickName;
     _nameLab.frame = CGRectMake(_headImageView.right+5, _headImageView.top, [YSTools caculateTheWidthOfLableText:16 withTitle:_nameLab.text]+10, 20);

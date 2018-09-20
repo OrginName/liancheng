@@ -8,11 +8,10 @@
 
 #ifndef YSInterface_h
 #define YSInterface_h
-
-
 //主机地址
 //#define HOSTURL @"https://api.lc.test.cn-apps.com:8080"
-#define HOSTURL @"http://210.16.185.211:8080"
+//210.16.185.211:8080
+#define HOSTURL @"http://47.99.131.119:8080"
 #define QINIUURL @"http://panixgsjz.bkt.clouddn.com/"
 
 #pragma mark ----- 首页-------

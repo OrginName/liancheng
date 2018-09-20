@@ -99,7 +99,7 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShowResumeCell *cell = [ShowResumeCell tempTableViewCellWith:tableView indexPath:indexPath];
-    cell.ability = self.ability;
+    cell.mo = self.Mo;
     if (indexPath.section==1) {
         if ([self.dict[@"1"] isEqualToString:@"YES"]) {
             cell.work = self.ability.WorArr[indexPath.row];

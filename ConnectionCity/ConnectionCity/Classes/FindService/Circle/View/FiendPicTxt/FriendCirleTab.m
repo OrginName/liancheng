@@ -47,6 +47,7 @@
         _page=1;
         _CurrentTag= 0;
         [self setComment];
+        [self.mj_header beginRefreshing];
     }
     return self;
 }
@@ -111,7 +112,7 @@
     self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         [weakSelf loadDataFriendList];
     }];
-    [self.mj_header beginRefreshing];
+//
 //    NSMutableArray *commentList;
 //    for (int i = 0;  i < 10; i ++)  {
 //         // 评论
@@ -215,10 +216,13 @@
 {
     return [self.momentList count];
 }
-//-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    MomentCell * cell1 = (MomentCell *)cell;
-//    
-//}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    MomentCell *cell1 = (MomentCell *)cell;
+    cell1.tag = indexPath.row;
+    cell1.delegate = self;
+    cell1.moment = [self.momentList objectAtIndex:indexPath.row];
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"MomentCell";
@@ -227,10 +231,7 @@
         cell = [[MomentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor whiteColor];
-    }
-    cell.tag = indexPath.row;
-    cell.moment = [self.momentList objectAtIndex:indexPath.row];
-    cell.delegate = self;
+    } 
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

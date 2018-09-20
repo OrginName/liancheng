@@ -4,8 +4,6 @@
 //
 //  Created by qt on 2018/5/30.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
-//
-
 #import "TrvalTrip.h"
 #import "TrvalTripCell.h"
 #import "AppointmentController.h"

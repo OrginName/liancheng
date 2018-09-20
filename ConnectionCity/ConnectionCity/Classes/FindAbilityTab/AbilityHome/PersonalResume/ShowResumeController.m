@@ -89,6 +89,8 @@
             UserMo * mo = self.data_Count[self.zIndex];
             [self GZLoadData:[mo.serviceList[self.trvaltab.JNIndex] ID] typeID:@"20"];
         }else if (self.Receive_Type == ENUM_TypeResume){
+//            UserMo * mo = self.data_Count[self.zIndex];
+//            [self GZLoadData:[mo.serviceList[self.trvaltab.JNIndex] ID] typeID:@"20"];
             AbilttyMo*mo = [self.data_Count[self.zIndex] resumeList][0];
             [self GZLoadData:mo.ID typeID:@"50"];
         }
