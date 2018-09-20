@@ -180,7 +180,7 @@
         self.trvaltab = [[ShowtrvalTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight) withControl:self];
         if ([self.str isEqualToString:@"TrvalTrip"]) {
             trvalMo * mo = self.data_Count[indexPath.row];
-            self.title = mo.user.nickName?mo.user.nickName:KString(@"用户%@", [mo.user.ID description]);
+            self.title = mo.user.nickName?mo.user.nickName:KString(@"用户%@", [mo.userId description]);
             self.trvaltab.MoTrval = mo;
         }else{
             UserMo * mo = self.data_Count[indexPath.row];

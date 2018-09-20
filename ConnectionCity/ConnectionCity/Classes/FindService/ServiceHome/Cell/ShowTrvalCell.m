@@ -157,21 +157,24 @@
 //        }
         self.lab_LLNum.text = [NSString stringWithFormat:@"浏览%@次",list1.browseTimes?list1.browseTimes:@"999+"];
         self.lab_DTNum.text = KString(@"%lu", (unsigned long)list1.serviceCircleList.count);
-        for (NSDictionary * dic in list1.serviceCircleList) {
-            if ([[dic[@"containsImage"] description] isEqualToString:@"1"] && ![YSTools dx_isNullOrNilWithObject:dic[@"images"]]) {
-                NSArray * arr2 = [dic[@"images"] componentsSeparatedByString:@";"];
-                for (int i=0; i<([arr2 count]>4?4:arr2.count); i++) {
-                    if ([arr2[i] length]!=0) {
-                        if (_arr_image.count!=0) {
-                            UIImageView * image = _arr_image[i];
-                            image.hidden = NO;
-                            [image sd_setImageWithURL:[NSURL URLWithString:arr2[i]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+        if (![YSTools dx_isNullOrNilWithObject:list.serviceCircleList]&&[list.serviceCircleList isKindOfClass:[NSArray class]]) {
+            for (NSDictionary * dic in list.serviceCircleList) {
+                if ([[dic[@"containsImage"] description] isEqualToString:@"1"] && ![YSTools dx_isNullOrNilWithObject:dic[@"images"]]) {
+                    NSArray * arr2 = [dic[@"images"] componentsSeparatedByString:@";"];
+                    for (int i=0; i<([arr2 count]>4?4:arr2.count); i++) {
+                        if ([arr2[i] length]!=0) {
+                            if (_arr_image.count!=0) {
+                                UIImageView * image = _arr_image[i];
+                                image.hidden = NO;
+                                [image sd_setImageWithURL:[NSURL URLWithString:arr2[i]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+                            }
                         }
                     }
+                    break;
                 }
-                break;
             }
         }
+        
     }
 }
 -(void)setPropertyName:(NSString *)propertyName{

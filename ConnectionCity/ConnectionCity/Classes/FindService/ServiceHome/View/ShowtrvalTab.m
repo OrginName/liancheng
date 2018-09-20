@@ -92,7 +92,7 @@
         if (indexPath.row == 0 ) {
             return 65;
         }else if(indexPath.row==3){
-            if ((self.Mo!=nil&&[self.Mo.serviceList[self.JNIndex] serviceCircleList].count==0)||(self.MoTrval!=nil&&self.MoTrval.serviceCircleList.count==0)) {
+            if ((self.Mo!=nil&&self.Mo.serviceCircleList.count==0)||(self.MoTrval!=nil&&self.MoTrval.serviceCircleList.count==0)) {
                 return 40;
             }else{
                 return (kScreenWidth-68)/4+45;

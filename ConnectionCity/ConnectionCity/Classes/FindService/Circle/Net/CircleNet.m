@@ -24,13 +24,15 @@
             for (int i=0; i<Arr.count; i++) {
                 Moment * moment = [Moment  mj_objectWithKeyValues:Arr[i]];
                 moment.ID = Arr[i][@"id"];
-                moment.userMo = [UserMo mj_objectWithKeyValues:Arr[i][@"obj"][@"user"]];
-                moment.userMo.ID = Arr[i][@"obj"][@"user"][@"id"];
                 NSMutableArray * commentArr = [NSMutableArray array];
-                for (int j=0; j<[Arr[i][@"obj"][@"comments"] count]; j++) {
-                    Comment * comment = [Comment mj_objectWithKeyValues:Arr[i][@"obj"][@"comments"][j]];
-                    comment.typeName = Arr[i][@"obj"][@"comments"][j][@"user"][@"nickName"];
-                    [commentArr addObject:comment];
+                if (![YSTools dx_isNullOrNilWithObject:Arr[i][@"obj"]]) {
+                    moment.userMo = [UserMo mj_objectWithKeyValues:Arr[i][@"obj"][@"user"]];
+                    moment.userMo.ID = Arr[i][@"obj"][@"user"][@"id"];
+                    for (int j=0; j<[Arr[i][@"obj"][@"comments"] count]; j++) {
+                        Comment * comment = [Comment mj_objectWithKeyValues:Arr[i][@"obj"][@"comments"][j]];
+                        comment.typeName = Arr[i][@"obj"][@"comments"][j][@"user"][@"nickName"];
+                        [commentArr addObject:comment];
+                    }
                 }
                 moment.singleWidth = 500;
                 moment.singleHeight = 315;
