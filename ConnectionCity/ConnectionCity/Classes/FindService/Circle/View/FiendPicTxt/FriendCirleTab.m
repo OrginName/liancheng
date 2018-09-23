@@ -37,13 +37,13 @@
         [self setUI];
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
-        NSArray * arr = @[];
-        if ([self.flagStr isEqualToString:@"HomeSend"]){
-           arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"PICHOME"]];
-        }else
-           arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"PICTXT"]];
-        [self defultData:arr];
-        [self initTestInfo]; 
+//        NSArray * arr = @[];
+//        if ([self.flagStr isEqualToString:@"HomeSend"]){
+//           arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"PICHOME"]];
+//        }else
+//           arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:@"PICTXT"]];
+//        [self defultData:arr];
+        [self initTestInfo];
         _page=1;
         _CurrentTag= 0;
         [self setComment];
@@ -183,14 +183,16 @@
         [weakSelf.mj_header endRefreshing];
         [weakSelf.mj_footer endRefreshing];
         [weakSelf.momentList addObjectsFromArray:successArrValue];
-        if ([self.flagStr isEqualToString:@"HomeSend"]) {
-            [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:weakSelf.momentList] forKey:@"PICHOME"];
-        }else
-        [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:weakSelf.momentList] forKey:@"PICTXT"];
+//        if ([self.flagStr isEqualToString:@"HomeSend"]) {
+//            [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:weakSelf.momentList] forKey:@"PICHOME"];
+//        }else
+//        [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:weakSelf.momentList] forKey:@"PICTXT"];
         if (weakSelf.momentList.count!=0) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                // 通知主线程刷新 神马的
-                weakSelf.tableHeaderView = weakSelf.headImage;
+                if (!weakSelf.tableHeaderView) {
+                    // 通知主线程刷新 神马的
+                    weakSelf.tableHeaderView = weakSelf.headImage;
+                }
             });
         }
         [weakSelf reloadData];
@@ -216,13 +218,10 @@
 {
     return [self.momentList count];
 }
-
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    MomentCell *cell1 = (MomentCell *)cell;
-    cell1.tag = indexPath.row;
-    cell1.delegate = self;
-    cell1.moment = [self.momentList objectAtIndex:indexPath.row];
-}
+//-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    MomentCell *cell1 = (MomentCell *)cell;
+//
+//}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"MomentCell";
@@ -231,7 +230,10 @@
         cell = [[MomentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor whiteColor];
-    } 
+    }
+    cell.tag = indexPath.row;
+    cell.delegate = self;
+    cell.moment = [self.momentList objectAtIndex:indexPath.row];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

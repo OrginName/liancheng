@@ -10,7 +10,7 @@
 #import "Moment.h"
 @implementation CircleNet
 /**
- 旅行旅游列表
+ 圈子列表
  @param sucBlock 成功回调
  */
 +(void)requstCirclelDic:(NSDictionary *) param flag:(NSString *)flag withSuc:(SuccessArrBlock)sucBlock FailErrBlock:(FailErrBlock)failErrBlock{

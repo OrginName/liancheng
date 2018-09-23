@@ -1,11 +1,8 @@
 //
 //  FriendMyselfTab.m
 //  ConnectionCity
-//
 //  Created by umbrella on 2018/6/1.
 //  Copyright © 2018年 ConnectionCity. All rights reserved.
-//
-
 #import "FriendMyselfTab.h"
 #import "FindMySelfCell.h"
 #import "privateUserInfoModel.h"
@@ -135,7 +132,9 @@
     }
     [self.data_Arr addObjectsFromArray:[self.data copy]];
     if (self.data_Arr.count!=0) {
-        self.tableHeaderView = self.headImage;
+        if (!self.tableHeaderView) {
+            self.tableHeaderView = self.headImage;
+        } 
     }
     [self reloadData];
     NSLog(@"%lu",(unsigned long)self.data.count);

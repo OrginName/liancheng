@@ -110,7 +110,10 @@
         imageView = [self viewWithTag:1000+i];
         imageView.hidden = NO;
         imageView.frame = frame;
-        [imageView sd_setImageWithURL:[NSURL URLWithString:imageArr[i]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+//        imageView.image = [UIImage imageNamed:@"moment_cover"];
+        NSArray * arr = @[@"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3457184767,371679418&fm=26&gp=0.jpg",@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537722453047&di=ce774610819312b535ba6349034fea0d&imgtype=jpg&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D4240415302%2C355604357%26fm%3D214%26gp%3D0.jpg",@"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2742374398,945220484&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=160284927,309591575&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3325662271,741744409&fm=26&gp=0.jpg",@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2531716358,4262243817&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=119217756,3868930988&fm=26&gp=0.jpg"];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:arr[arc4random()%6]] placeholderImage:[UIImage imageNamed:@"logo2"]];
+//        [imageView sd_setImageWithURL:[NSURL URLWithString:imageArr[i]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     }
     self.width = kTextWidth;
     self.height = imageView.bottom;

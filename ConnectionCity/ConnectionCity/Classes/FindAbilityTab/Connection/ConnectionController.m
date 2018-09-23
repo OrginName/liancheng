@@ -55,11 +55,11 @@
                 @"pageSize": @(15) 
                 };
     [YSNetworkTool POST:str params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSArray * arr = responseObject[@"data"][@"content"];
         if (_page==1) {
             [self.data_Arr removeAllObjects];
         }
         _page++;
+        NSArray * arr = responseObject[@"data"][@"content"];
         for (int i=0; i<[arr count]; i++) {
             UserMo * mo = [UserMo mj_objectWithKeyValues:arr[i]];
             [self.data_Arr addObject:mo];
