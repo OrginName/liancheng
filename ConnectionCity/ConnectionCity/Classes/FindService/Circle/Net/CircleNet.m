@@ -34,8 +34,8 @@
                         [commentArr addObject:comment];
                     }
                 }
-                moment.singleWidth = 500;
-                moment.singleHeight = 315;
+                moment.singleWidth = 400;
+                moment.singleHeight = 250;
                 moment.comments = commentArr;
                 moment.likeCount = Arr[i][@"obj"][@"likeCount"];
                 moment.commentCount = Arr[i][@"obj"][@"commentCount"];

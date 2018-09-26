@@ -89,6 +89,9 @@
         Comment * comment = [Comment new];
         comment.content = weakSelf.comment.textField.text;
         comment.typeName = [[YSAccountTool userInfo] nickName];
+        comment.user = [UserMo new];
+        comment.user.ID = [[YSAccountTool userInfo] modelId];
+        comment.user.headImage = [[YSAccountTool userInfo] headImage];
         [momet.comments addObject:comment];
         [weakSelf.momentList replaceObjectAtIndex:_CurrentTag withObject:momet];
         NSIndexPath * index = [NSIndexPath indexPathForRow:_CurrentTag inSection:0];

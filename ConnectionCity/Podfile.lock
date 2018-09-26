@@ -44,9 +44,9 @@ PODS:
   - RongCloudIM/IMKit (2.8.31):
     - RongCloudIM/IMLib
   - RongCloudIM/IMLib (2.8.31)
-  - SDWebImage (3.8.2):
-    - SDWebImage/Core (= 3.8.2)
-  - SDWebImage/Core (3.8.2)
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
   - ShareSDK3 (4.0.4):
     - MOBFoundation
     - ShareSDK3/ShareSDK (= 4.0.4)
@@ -62,6 +62,9 @@ PODS:
     - MOBFoundation
   - TXScrollLabelView (1.3.2)
   - TYAlertController (1.2.0)
+  - YYImage (1.0.4):
+    - YYImage/Core (= 1.0.4)
+  - YYImage/Core (1.0.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -81,7 +84,7 @@ DEPENDENCIES:
   - Qiniu (~> 7.1)
   - RongCloudIM/IMKit (~> 2.8.3)
   - RongCloudIM/IMLib (~> 2.8.3)
-  - SDWebImage (~> 3.8)
+  - SDWebImage (~> 4.3.3)
   - ShareSDK3 (from `https://github.com/MobClub/ShareSDK-for-iOS-Spec.git`)
   - ShareSDK3/ShareSDKExtension (from `https://github.com/MobClub/ShareSDK-for-iOS-Spec.git`)
   - ShareSDK3/ShareSDKPlatforms/QQ (from `https://github.com/MobClub/ShareSDK-for-iOS-Spec.git`)
@@ -89,33 +92,7 @@ DEPENDENCIES:
   - ShareSDK3/ShareSDKUI (from `https://github.com/MobClub/ShareSDK-for-iOS-Spec.git`)
   - TXScrollLabelView
   - TYAlertController
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - AFNetworking
-    - AMap2DMap
-    - AMapFoundation
-    - AMapLocation
-    - AMapSearch
-    - DZNEmptyDataSet
-    - FMDB
-    - HappyDNS
-    - IQKeyboardManager
-    - JCore
-    - JPush
-    - Masonry
-    - MBProgressHUD
-    - MJExtension
-    - MJRefresh
-    - MLLabel
-    - MOBFoundation
-    - PGDatePicker
-    - PGPickerView
-    - Qiniu
-    - RongCloudIM
-    - SDWebImage
-    - TXScrollLabelView
-    - TYAlertController
+  - YYImage
 
 EXTERNAL SOURCES:
   ShareSDK3:
@@ -148,11 +125,12 @@ SPEC CHECKSUMS:
   PGPickerView: 8fbbf63d0404065a43a495a0115d339455e0f819
   Qiniu: ae0fea1cc379fae1560d8748ac537e0fbeb8626e
   RongCloudIM: dbbf0ff365f1627324cfead498136d75c99cbeac
-  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   ShareSDK3: 83f47b9723e16756d426bb8ebf63497f2412bdef
   TXScrollLabelView: 0e1650caf61198bf5dc0938ea6493254aeb80f90
   TYAlertController: c121090edb0bea7426f987da94cdddd81eef4231
+  YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
 
-PODFILE CHECKSUM: 3bb95b434df7ad585d229433c9fe77b39272357e
+PODFILE CHECKSUM: 3b53f0331aa05c3cc29d97b96275fa7d12810a11
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.1.1

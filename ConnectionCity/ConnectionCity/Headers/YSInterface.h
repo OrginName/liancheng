@@ -12,7 +12,8 @@
 //#define HOSTURL @"https://api.lc.test.cn-apps.com:8080"
 //210.16.185.211:8080
 #define HOSTURL @"http://47.99.131.119:8080"
-#define QINIUURL @"http://panixgsjz.bkt.clouddn.com/"
+
+#define QINIUURL @"http://pfngwvts2.bkt.clouddn.com/"
 
 #pragma mark ----- 首页-------
 //发现 -发布朋友圈

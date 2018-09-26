@@ -395,6 +395,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
     if (@available(iOS 10.0, *)) {
         completionHandler(UNNotificationPresentationOptionAlert);
+        
     } else {
     }
     NSArray * arr = @[@"10",@"20",@"30",@"40"];

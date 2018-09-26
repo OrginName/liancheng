@@ -73,7 +73,7 @@
             mo.endTime = model.endDate;
             mo.description1 = model.description1;
             mo.ID = model.ID;
-            [self.data_ArrWdu addObject:mo]; 
+            [self.data_ArrWdu addObject:mo];
         }
         for (WorkExperienceListModel * model in self.resume.workExperienceList) {
             ResumeMo * mo = [ResumeMo new];
@@ -96,9 +96,9 @@
         WeakSelf
         [imgArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString * urlStr = (NSString *)obj;
-            [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:urlStr] options:SDWebImageCacheMemoryOnly progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+            [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:urlStr] options:SDWebImageDownloaderUseNSURLCache progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
                 
-            } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
                 i++;
                 if (![YSTools dx_isNullOrNilWithObject:image]) {
                     [weakSelf.lunArr addObject:image];
@@ -175,7 +175,7 @@
     }else{
         [self loadData:@""];
     }
-   
+    
 }
 -(void)loadData:(NSString *)str{
     NSDictionary * dic = @{
@@ -222,7 +222,7 @@
                     [[self.tab_bottom.tableHeaderView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
                     
                     [self initScroll];
-                self.cycleScrollView.localizationImagesGroup = self.lunArr;
+                    self.cycleScrollView.localizationImagesGroup = self.lunArr;
                 }else{
                     [self.lunArr addObject:image];
                     self.cycleScrollView.localizationImagesGroup = self.lunArr;
@@ -245,13 +245,13 @@
         if ([self.isOpen[@"40"] isEqualToString:@"NO"]) {
             return self.CollArr.count>0?3:2;
         }else
-        return self.CollArr.count+2;
+            return self.CollArr.count+2;
         
     }else if(section==5){
         if ([self.isOpen[@"50"] isEqualToString:@"NO"]) {
             return self.EduArr.count>0?3:2;
         }else
-        return self.EduArr.count+2;
+            return self.EduArr.count+2;
     }else{
         return 0;
     }
@@ -295,15 +295,15 @@
             cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2);
         }
     }
-   else if (indexPath.section==4&&indexPath.row!=0&&indexPath.row!=self.CollArr.count+1) {
+    else if (indexPath.section==4&&indexPath.row!=0&&indexPath.row!=self.CollArr.count+1) {
         if ([self.isOpen[@"40"] isEqualToString:@"NO"]&&self.CollArr.count!=0) {
             if (self.CollArr.count>0) {
-                 cell.Mo = self.CollArr[0];
-            }   
+                cell.Mo = self.CollArr[0];
+            }
             cell.imageISNo.transform = CGAffineTransformIdentity;
         }else{
             cell.Mo = self.CollArr[indexPath.row-1];
-            cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2); 
+            cell.imageISNo.transform = CGAffineTransformMakeRotation(M_PI_2);
         }
     }
     if (_resume!=nil) {
@@ -340,7 +340,7 @@
             }
             cell.imageISNo.transform = CGAffineTransformIdentity;
         }
-         [self.tab_bottom reloadData];
+        [self.tab_bottom reloadData];
     }
     if (indexPath.section==5&&indexPath.row==0) {
         if ([self.isOpen[@"50"] isEqualToString:@"NO"]) {
@@ -349,7 +349,7 @@
             [self.EduArr removeAllObjects];
             [self.EduArr addObjectsFromArray:[self.data_ArrWdu copy]];
         }else{
-             self.isOpen[@"50"] = @"NO";
+            self.isOpen[@"50"] = @"NO";
             cell.imageISNo.transform = CGAffineTransformIdentity;
             if (self.data_ArrWdu.count!=0) {
                 [self.EduArr removeAllObjects];
@@ -374,7 +374,7 @@
         guard.resumeID = resumeID;
         [self.navigationController pushViewController:guard animated:YES];
     }else if((indexPath.section==5&&indexPath.row==self.EduArr.count+1)){
-//        resumeID = @"18";
+        //        resumeID = @"18";
         if (resumeID.length==0) {
             return [YTAlertUtil showTempInfo:@"请先点击完成新增简历在添加教育经历"];
         }
@@ -469,21 +469,21 @@
         [YTAlertUtil showTempInfo:@"暂无轮播图无法编辑,请点击添加按钮"];
         return;
     }
-//    轮播图点击
+    //    轮播图点击
     switch (self.flagTag) {
         case 1:
-            {
-                [[TakePhoto sharedPhoto] sharePicture:^(UIImage *image) {
-                    [self.lunArr replaceObjectAtIndex:index withObject:image];
-                    [self reloadScro];
-                }];
-            }
+        {
+            [[TakePhoto sharedPhoto] sharePicture:^(UIImage *image) {
+                [self.lunArr replaceObjectAtIndex:index withObject:image];
+                [self reloadScro];
+            }];
+        }
             break;
         case 2:
-            {
-                [self.lunArr removeObjectAtIndex:index];
-                [self reloadScro];
-            }
+        {
+            [self.lunArr removeObjectAtIndex:index];
+            [self reloadScro];
+        }
             break;
         default:
             break;
@@ -499,7 +499,7 @@
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(complete) image:@"" title:@"完成" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 -(void)initScroll{
-//    __block ResumeController * weakSelf = self;
+    //    __block ResumeController * weakSelf = self;
     _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.tab_bottom.width, self.tab_bottom.width*0.8) imageURLStringsGroup:nil]; // 模拟网络延时情景
     _cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     _cycleScrollView.delegate = self;
@@ -511,9 +511,9 @@
     }else
         self.tab_bottom.tableHeaderView = _cycleScrollView;
     //                     --- 模拟加载延迟
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        _cycleScrollView.localizationImagesGroup = weakSelf.lunArr;
-//    });
+    //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    //        _cycleScrollView.localizationImagesGroup = weakSelf.lunArr;
+    //    });
     
     UIButton * EditBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     EditBtn.frame = CGRectMake(kScreenWidth-60, 10, 30, 30);
@@ -538,3 +538,4 @@
 }
 
 @end
+

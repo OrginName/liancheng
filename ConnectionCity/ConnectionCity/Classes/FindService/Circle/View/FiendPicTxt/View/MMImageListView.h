@@ -23,6 +23,7 @@
 //### 单个小图显示视图
 @interface MMImageView : UIImageView
 
+@property (nonatomic,strong) NSString * imageUrl;
 // 点击小图
 @property (nonatomic, copy) void (^tapSmallView)(MMImageView *imageView);
 

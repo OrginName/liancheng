@@ -224,7 +224,7 @@ CGFloat maxLimitHeight = 0;
             Comment * comment = moment.comments[i];
             if ([[comment.user.ID description] isEqualToString:[[YSAccountTool userInfo] modelId]]) {
                 CommentLabel *label = [[CommentLabel alloc] initWithFrame:CGRectMake(0, top, width, 0)];
-                label.comment = [moment.comments objectAtIndex:i];
+                label.comment = comment;
                 [label setDidClickText:^(Comment *comment) {
                     if ([self.delegate respondsToSelector:@selector(didSelectComment:)]) {
                         [self.delegate didSelectComment:comment];

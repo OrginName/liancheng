@@ -11,6 +11,7 @@
 #import "MomentKit.h"
 #import "Utility.h"
 #import "UIView+Geometry.h"
+#import "YBImageBrowser.h"
 #pragma mark - ------------------ 小图List显示视图 ------------------
 #define KIMAGEWIDTH  (self.width-kPaddingValue*2)/3
 @interface MMImageListView ()
@@ -107,68 +108,86 @@
             CGSize singleSize = [Utility getSingleSize:CGSizeMake(moment.singleWidth, moment.singleHeight)];
             frame = CGRectMake(0, 0, singleSize.width, singleSize.height);
         }
+        imageView.imageUrl = imageArr[i];
         imageView = [self viewWithTag:1000+i];
         imageView.hidden = NO;
         imageView.frame = frame;
-//        imageView.image = [UIImage imageNamed:@"moment_cover"];
-        NSArray * arr = @[@"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3457184767,371679418&fm=26&gp=0.jpg",@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537722453047&di=ce774610819312b535ba6349034fea0d&imgtype=jpg&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D4240415302%2C355604357%26fm%3D214%26gp%3D0.jpg",@"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2742374398,945220484&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=160284927,309591575&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3325662271,741744409&fm=26&gp=0.jpg",@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2531716358,4262243817&fm=26&gp=0.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=119217756,3868930988&fm=26&gp=0.jpg"];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:arr[arc4random()%6]] placeholderImage:[UIImage imageNamed:@"logo2"]];
-//        [imageView sd_setImageWithURL:[NSURL URLWithString:imageArr[i]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+        NSString * str = @"";
+        if (imageArr.count==1) {
+            str = KString(@"?imageView2/2/w/%d", 400);
+        }else
+            str = @"?imageView2/1/w/200/h/200";
+        [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",imageArr[i],str]] placeholderImage:[UIImage imageNamed:@"logo2"]];
     }
     self.width = kTextWidth;
     self.height = imageView.bottom;
 }
-
 #pragma mark - 小图单击
 - (void)singleTapSmallViewCallback:(MMImageView *)imageView
 {
-    UIWindow *window = [[UIApplication sharedApplication].windows objectAtIndex:0];
-    // 解除隐藏
-    [window addSubview:_previewView];
-    [window bringSubviewToFront:_previewView];
-    // 清空
-    [_previewView.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    // 添加子视图
-    NSInteger index = imageView.tag-1000;
-    NSInteger count = _moment.fileCount;
-    CGRect convertRect;
-    if (count == 1) {
-        [_previewView.pageControl removeFromSuperview];
-    }
-    for (NSInteger i = 0; i < count; i ++)
-    {
-        // 转换Frame
-        MMImageView *pImageView = (MMImageView *)[self viewWithTag:1000+i];
-        convertRect = [[pImageView superview] convertRect:pImageView.frame toView:window];
-        // 添加
-        MMScrollView *scrollView = [[MMScrollView alloc] initWithFrame:CGRectMake(i*_previewView.width, 0, _previewView.width, _previewView.height)];
-        scrollView.tag = 100+i;
-        scrollView.maximumZoomScale = 2.0;
-        scrollView.image = pImageView.image;
-        scrollView.contentRect = convertRect;
-        // 单击
-        [scrollView setTapBigView:^(MMScrollView *scrollView){
-            [self singleTapBigViewCallback:scrollView];
-        }];
-        // 长按
-        [scrollView setLongPressBigView:^(MMScrollView *scrollView){
-            [self longPresssBigViewCallback:scrollView];
-        }];
-        [_previewView.scrollView addSubview:scrollView];
-        if (i == index) {
-            [UIView animateWithDuration:0.3 animations:^{
-                _previewView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1.0];
-                _previewView.pageControl.hidden = NO;
-                [scrollView updateOriginRect];
-            }];
-        } else {
-            [scrollView updateOriginRect];
+    NSArray * imageArr = [self.moment.images componentsSeparatedByString:@";"];
+    NSMutableArray *browserDataArr = [NSMutableArray array];
+    [imageArr enumerateObjectsUsingBlock:^(NSString *_Nonnull urlStr, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (![YSTools dx_isNullOrNilWithObject:urlStr]) {
+            YBImageBrowseCellData *data = [YBImageBrowseCellData new];
+            data.url = [NSURL URLWithString:urlStr];
+            data.sourceObject = imageView;
+            [browserDataArr addObject:data];
         }
-    }
-    // 更新offset
-    CGPoint offset = _previewView.scrollView.contentOffset;
-    offset.x = index * kWidth;
-    _previewView.scrollView.contentOffset = offset;
+    }];
+    YBImageBrowser *browser = [YBImageBrowser new];
+    browser.dataSourceArray = browserDataArr;
+    browser.currentIndex = imageView.tag-1000;
+    [browser show];
+    
+//    UIWindow *window = [[UIApplication sharedApplication].windows objectAtIndex:0];
+//    // 解除隐藏
+//    [window addSubview:_previewView];
+//    [window bringSubviewToFront:_previewView];
+//    // 清空
+//    [_previewView.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//    // 添加子视图
+//    NSInteger index = imageView.tag-1000;
+//    NSInteger count = _moment.fileCount;
+//    CGRect convertRect;
+//    if (count == 1) {
+//        [_previewView.pageControl removeFromSuperview];
+//    }
+//    for (NSInteger i = 0; i < count; i ++)
+//    {
+//        // 转换Frame
+//        MMImageView *pImageView = (MMImageView *)[self viewWithTag:1000+i];
+//        convertRect = [[pImageView superview] convertRect:pImageView.frame toView:window];
+//        // 添加
+//        MMScrollView *scrollView = [[MMScrollView alloc] initWithFrame:CGRectMake(i*_previewView.width, 0, _previewView.width, _previewView.height)];
+//        scrollView.tag = 100+i;
+//        scrollView.maximumZoomScale = 2.0;
+//        [scrollView.imageView sd_setImageWithURL:[NSURL URLWithString:imageArr[i]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+////        scrollView.image = pImageView.image;
+//        scrollView.contentRect = convertRect;
+//        // 单击
+//        [scrollView setTapBigView:^(MMScrollView *scrollView){
+//            [self singleTapBigViewCallback:scrollView];
+//        }];
+//        // 长按
+//        [scrollView setLongPressBigView:^(MMScrollView *scrollView){
+//            [self longPresssBigViewCallback:scrollView];
+//        }];
+//        [_previewView.scrollView addSubview:scrollView];
+//        if (i == index) {
+//            [UIView animateWithDuration:0.3 animations:^{
+//                _previewView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1.0];
+//                _previewView.pageControl.hidden = NO;
+//                [scrollView updateOriginRect];
+//            }];
+//        } else {
+//            [scrollView updateOriginRect];
+//        }
+//    }
+//    // 更新offset
+//    CGPoint offset = _previewView.scrollView.contentOffset;
+//    offset.x = index * kWidth;
+//    _previewView.scrollView.contentOffset = offset;
 }
 
 #pragma mark - 大图单击||长按
