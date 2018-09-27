@@ -104,6 +104,7 @@
 		7266FEE221173ED5005794AD /* JKFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7266FEDC21173ED4005794AD /* JKFlowLayout.m */; };
 		7266FEE321173ED5005794AD /* JKReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7266FEDE21173ED4005794AD /* JKReusableView.m */; };
 		7266FEE6211742E3005794AD /* ClassificationsController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 7266FEE5211742E3005794AD /* ClassificationsController1.m */; };
+		72695718215D260B009A4EC0 /* serviceListNewMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72695717215D260B009A4EC0 /* serviceListNewMo.m */; };
 		7274188020B13CB6001D6BE1 /* MLMSegmentHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */; };
 		7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187C20B13CB6001D6BE1 /* MLMSegmentPage.m */; };
 		7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187F20B13CB6001D6BE1 /* UIView+ViewController.m */; };
@@ -911,6 +912,8 @@
 		7266FEDE21173ED4005794AD /* JKReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKReusableView.m; sourceTree = "<group>"; };
 		7266FEE4211742E3005794AD /* ClassificationsController1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassificationsController1.h; sourceTree = "<group>"; };
 		7266FEE5211742E3005794AD /* ClassificationsController1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassificationsController1.m; sourceTree = "<group>"; };
+		72695716215D260B009A4EC0 /* serviceListNewMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = serviceListNewMo.h; sourceTree = "<group>"; };
+		72695717215D260B009A4EC0 /* serviceListNewMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = serviceListNewMo.m; sourceTree = "<group>"; };
 		7274187920B13CB6001D6BE1 /* MLMSegmentHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentHead.h; sourceTree = "<group>"; };
 		7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLMSegmentHead.m; sourceTree = "<group>"; };
 		7274187B20B13CB6001D6BE1 /* MLMSegmentPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentPage.h; sourceTree = "<group>"; };
@@ -3831,6 +3834,8 @@
 				8D7FF6AF20D3A8AB0075B2D5 /* ClassAttrMo.m */,
 				8D19FF2120D8CFE4005F7361 /* ServiceListMo.h */,
 				8D19FF2220D8CFE4005F7361 /* ServiceListMo.m */,
+				72695716215D260B009A4EC0 /* serviceListNewMo.h */,
+				72695717215D260B009A4EC0 /* serviceListNewMo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5508,6 +5513,7 @@
 				724B5F38213C22B800F51134 /* MyLocationPickerController.m in Sources */,
 				CEBEDD9920B17F40000F9EE4 /* BulidTeamController.m in Sources */,
 				8D07D76820DCE0370073807C /* QiniuUploader.m in Sources */,
+				72695718215D260B009A4EC0 /* serviceListNewMo.m in Sources */,
 				CE21F0E320DDF04C00478482 /* MembershipMealModel.m in Sources */,
 				8D5B3C3D20C0147A00773105 /* ServiceListCell.m in Sources */,
 				723D376120ABBEB4003FD4DF /* ShowResumeTab.m in Sources */,

@@ -327,6 +327,8 @@ static NSString * const v1ServiceConditions = @"/v1/service/conditions";
 static NSString * const v1ServiceCreate = @"/v1/service/create";
 //服务详情
 static NSString * const v1ServiceDetail = @"/v1/service/detail";
+//根据userID 获取服务详情
+static NSString * const v1ServiceUserList = @"/v1/service/user/list";
 //服务列表
 static NSString * const v1ServiceList = @"/v1/service/list";
 

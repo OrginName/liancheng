@@ -13,6 +13,7 @@
 #import "CityMo.h"
 #import "privateUserInfoModel.h"
 #import "AbilttyMo.h"
+#import "serviceListNewMo.h"
 @interface CustomMap()<MAMapViewDelegate,CustomLocationDelegate,UITextFieldDelegate>{
     CLLocation * currentLocation;
     NSInteger flag;
@@ -24,7 +25,7 @@
 @end
 @implementation CustomMap
 -(instancetype)initWithFrame:(CGRect)frame{
-    if (self = [super initWithFrame:frame]) {
+    if (self = [super initWithFrame:frame]) { 
         ///初始化地图
         ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
         MAMapView * map = [[MAMapView alloc] init];
@@ -204,24 +205,9 @@
     [self.annotations removeAllObjects];
     self.annotations = [NSMutableArray array];
     [Arr_Mark enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        /*
-        MAPointAnnotation *a1 = [[MAPointAnnotation alloc] init];
-        if ([obj isKindOfClass:[ServiceListMo class]]) {
-            ServiceListMo * list = (ServiceListMo *)obj;
-            a1.coordinate = CLLocationCoordinate2DMake([list.lat doubleValue], [list.lng doubleValue]);
-            a1.title = list.ID;
-        }else if ([obj isKindOfClass:[AbilttyMo class]]){
-            AbilttyMo * abilt = (AbilttyMo *)obj;
-            a1.coordinate = CLLocationCoordinate2DMake([abilt.lat doubleValue], [abilt.lng doubleValue]);
-            a1.title = abilt.ID;
-        }
-        NSLog(@"%ld",(long)self.annotationView.zIndex);
-        [self.annotations addObject:a1];
-        self.annotationView.zIndex = idx;
-         */
         ZWCustomPointAnnotation *pointAnnotation = [[ZWCustomPointAnnotation alloc] init];
-        if ([obj isKindOfClass:[UserMo class]]) {
-            UserMo * list = (UserMo *)obj;
+        if ([obj isKindOfClass:[serviceListNewMo class]]) {
+            serviceListNewMo * list = (serviceListNewMo *)obj;
             if (![list.ID isEqualToString:[[YSAccountTool userInfo]modelId]]) {
                 CLLocationCoordinate2D coor ;
                 float a = (float)(rand() % 100) /10000;
@@ -232,18 +218,6 @@
                 pointAnnotation.storImageUrl = list.headImage;
             }
         }
-//        else if ([obj isKindOfClass:[AbilttyMo class]]){
-//            AbilttyMo * abilt = (AbilttyMo *)obj;
-//            if (![abilt.userMo.ID isEqualToString:[[YSAccountTool userInfo]modelId]]) {
-//                CLLocationCoordinate2D coor ;
-//                float a = (float)(rand() % 100) /10000;
-//                coor.latitude = [abilt.lat doubleValue]+a;
-//                coor.longitude = [abilt.lng doubleValue];
-//                pointAnnotation.coordinate = coor;
-//                pointAnnotation.title = abilt.ID;
-//                pointAnnotation.storImageUrl = abilt.userMo.headImage;
-//            }
-//        }
         if (pointAnnotation) {
             [self.annotations addObject:pointAnnotation];
         } 

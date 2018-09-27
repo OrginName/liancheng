@@ -21,6 +21,7 @@
 #import "CustomAnnotationView.h"
 #import "ClassificationsController1.h"
 #import "privateUserInfoModel.h"
+#import "serviceListNewMo.h"
 @interface ServiceHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate,CustomScroDelegate>
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
@@ -204,7 +205,7 @@
     __block NSUInteger index = 0;
     __block BOOL flag = NO;
     [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UserMo * list = (UserMo *)obj;
+         serviceListNewMo* list = (serviceListNewMo *)obj;
         if (annotation.title == list.ID) {
             index = idx;
             *stop = YES;

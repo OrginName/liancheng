@@ -15,6 +15,7 @@
 #import "AllDicMo.h"
 #import "ServiceHomeNet.h"
 #import "RCDChatViewController.h"
+#import "serviceListNewMo.h"
 #define identifier @"ScrollCell"
 #define TabHeight kScreenHeight-185
 @interface ShowResumeController ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -183,7 +184,7 @@
             self.title = mo.user.nickName?mo.user.nickName:KString(@"用户%@", [mo.userId description]);
             self.trvaltab.MoTrval = mo;
         }else{
-            UserMo * mo = self.data_Count[indexPath.row];
+             serviceListNewMo* mo = self.data_Count[indexPath.row];
             self.title = mo.nickName?mo.nickName:KString(@"用户%@", [mo.ID description]);
             self.trvaltab.Mo = mo; 
         }
@@ -226,6 +227,7 @@
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.pagingEnabled = YES;
+        _collectionView.scrollEnabled = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
         [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:identifier];
@@ -261,10 +263,10 @@
                 
             }];
         }else{
-            UserMo * mo = self.data_Count[self.zIndex];
-            [ServiceHomeNet requstLiulanNum:@{@"id":[mo.serviceList[self.trvaltab.JNIndex] ID]} flag:1 withSuc:^(NSMutableArray *successArrValue) {
-                
-            }];
+//            UserMo * mo = self.data_Count[self.zIndex];
+//            [ServiceHomeNet requstLiulanNum:@{@"id":[mo.serviceList[self.trvaltab.JNIndex] ID]} flag:1 withSuc:^(NSMutableArray *successArrValue) {
+//
+//            }];
         }
     }
 }
