@@ -47,6 +47,7 @@
     }
     [self.btn_Like setTitle:[list.likeCount description] forState:UIControlStateNormal];
     _flag = 0;
+    [self.cycleScrollView reload];
 }
 
 -(void)setMoTrval:(trvalMo *)MoTrval{

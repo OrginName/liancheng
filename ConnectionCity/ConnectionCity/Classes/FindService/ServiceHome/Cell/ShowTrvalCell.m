@@ -95,7 +95,7 @@
                         if (_arr_image.count!=0) {
                             UIImageView * image = _arr_image[i];
                             image.hidden = NO;
-                            [image sd_setImageWithURL:[NSURL URLWithString:arr2[i]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+                            [image sd_setImageWithURL:[NSURL URLWithString:arr2[i]] placeholderImage:[UIImage imageNamed:@"logo2"]];
                         }
                     }
                 }

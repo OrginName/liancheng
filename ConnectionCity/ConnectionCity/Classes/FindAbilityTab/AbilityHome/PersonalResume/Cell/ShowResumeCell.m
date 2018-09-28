@@ -69,10 +69,10 @@
     self.lab_time.text = [NSString stringWithFormat:@"%@-%@",work.startDate,work.endDate];
 }
 -(void)setEdu:(AbilttyEducationMo *)edu{
-    _edu = edu;
-    self.lab_CompanyAndCollege.text = edu.educationName;
-    self.lab_proW.text = edu.professionalName;
-    self.lab_MSW.text = edu.description1;
+    _edu = edu; 
+    self.lab_CompanyAndCollege.text = edu.schoolName;
+    self.lab_proW.text = edu.educationName;
+    self.lab_MSW.text = edu.professionalName;
     self.lab_time.text = [NSString stringWithFormat:@"%@-%@",edu.startDate,edu.endDate];
 }
 @end

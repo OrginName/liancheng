@@ -17,6 +17,7 @@
 #import "ServiceListController.h"
 #import "ServiceHomeNet.h"
 #import "ShowResumeController.h"
+#import "CircleNet.h"
 @interface MomentDetailController ()<UITableViewDelegate,UITableViewDataSource,CommentViewDelegate>
 {
     NSInteger CurrentIndex;
@@ -31,6 +32,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [IQKeyboardManager sharedManager].enable = NO;
+    [self loadCircleDetail];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,6 +41,13 @@
     }
     [self setComment];
     CurrentIndex = 0;
+}
+-(void)loadCircleDetail{
+    WeakSelf
+    [CircleNet requstCircleDetail:@{@"id":self.receiveMo.ID} withSuc:^(NSMutableArray *successArrValue) {
+        weakSelf.receiveMo.comments = successArrValue;
+        [weakSelf.tab_Bottom reloadData];
+    }];
 }
 -(void)saveClick{
     int a = [self.flagStr isEqualToString:@"HomeSend"]?40:20;
@@ -104,6 +113,7 @@
         ShowResumeController * show = [ShowResumeController new];
         show.Receive_Type = ENUM_TypeTrval;
         show.data_Count = successArrValue;
+        show.flag = @"1";
         __block NSUInteger index = 0;
         show.zIndex = index;
         [self.navigationController pushViewController:show animated:YES];

@@ -105,7 +105,7 @@
  @param sucBlock 成功回调
  */
 +(void)requstCircleDetail:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock{
-    [YSNetworkTool POST:v1ServiceCircleInfo params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1ServiceCircleInfo params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray * arr1 = [NSMutableArray array];
         Moment * momet = [Moment mj_objectWithKeyValues:responseObject[@"data"]];
         momet.ID = responseObject[@"data"][@"id"];
