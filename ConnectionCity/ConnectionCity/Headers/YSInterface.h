@@ -13,7 +13,7 @@
 //210.16.185.211:8080
 #define HOSTURL @"http://47.99.131.119:8080"
 
-#define QINIUURL @"http://pfngwvts2.bkt.clouddn.com/"
+#define QINIUURL @"http://img.lian-cheng.com/"
 
 #pragma mark ----- 首页-------
 //发现 -发布朋友圈

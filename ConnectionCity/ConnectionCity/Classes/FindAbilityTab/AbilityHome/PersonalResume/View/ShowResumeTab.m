@@ -32,25 +32,15 @@
     self.data_Arr = [NSMutableArray array];
     self.dict =[[NSMutableDictionary alloc] initWithDictionary:@{@"1":@"NO",@"2":@"NO"}];
 }
--(void)setMo:(UserMo *)Mo{
+-(void)setMo:(AbilttyMo *)Mo{
     _Mo = Mo;
-    self.ability = Mo.resumeList[0];
     [self.lunArr removeAllObjects];
-    for (NSString * url in [self.ability.avatar componentsSeparatedByString:@";"]) {
+    for (NSString * url in [Mo.avatar componentsSeparatedByString:@";"]) {
         if (url.length!=0) {
             [self.lunArr addObject:url];
         }
     }
 }
-//-(void)setAbilttyMo:(AbilttyMo *)abilttyMo{
-//    _abilttyMo = abilttyMo;
-//    for (NSString * url in [abilttyMo.userMo.headImage componentsSeparatedByString:@";"]) {
-//        if (url.length!=0) {
-//            [self.lunArr addObject:url];
-//        }
-//    }
-//    self.lunArr = [[abilttyMo.userMo.headImage componentsSeparatedByString:@";"] mutableCopy];
-//}
 #pragma mark ---SDCycleScrollViewDelegate-----
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     
@@ -61,14 +51,14 @@
         return 3;
     }else if (section==1){
         if ([self.dict[@"1"] isEqualToString:@"NO"]) {
-            return self.ability.workExperienceList.count>0?1:0;
+            return self.Mo.workExperienceList.count>0?1:0;
         }
-        return self.ability.workExperienceList.count;
+        return self.Mo.workExperienceList.count;
     }else if (section==2){
         if ([self.dict[@"2"] isEqualToString:@"NO"]) {
-            return self.ability.educationExperienceList.count>0?1:0;
+            return self.Mo.educationExperienceList.count>0?1:0;
         }
-        return self.ability.educationExperienceList.count;
+        return self.Mo.educationExperienceList.count;
     }else{
         return 1;
     }
@@ -99,28 +89,28 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShowResumeCell *cell = [ShowResumeCell tempTableViewCellWith:tableView indexPath:indexPath];
-    cell.mo = self.Mo;
+    cell.ability = self.Mo;
     if (indexPath.section==1) {
         if ([self.dict[@"1"] isEqualToString:@"YES"]) {
-            cell.work = self.ability.WorArr[indexPath.row];
+            cell.work = self.Mo.WorArr[indexPath.row];
             NSLog(@"%@",self.resume.lab_nametitle.text);
             self.resume.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
         }else{
-            cell.work = self.ability.WorArr[0];
+            cell.work = self.Mo.WorArr[0];
             self.resume.imageTurn.transform = CGAffineTransformIdentity;
         }
     }
     if (indexPath.section==0&&indexPath.row==1) {
-         NSMutableArray * arr = [self loadA:self.Mo.isSkillAuth b:self.Mo.isMobileAuth c:self.Mo.isIdentityAuth];
+         NSMutableArray * arr = [self loadA:self.ability.user.isSkillAuth b:self.ability.user.isMobileAuth c:self.ability.user.isIdentityAuth];
         CustomImageScro * img = [[CustomImageScro alloc] initWithFrame:CGRectMake(0, 0, cell.view_RZ.width, cell.view_RZ.height) arr:[arr copy]];
         [cell.view_RZ addSubview:img];
     }
     if (indexPath.section==2) {
         if ([self.dict[@"2"] isEqualToString:@"YES"]) {
-            cell.edu = self.ability.EduArr[indexPath.row];
+            cell.edu = self.Mo.EduArr[indexPath.row];
              self.resume.imageTurn.transform = CGAffineTransformMakeRotation(M_PI_2);
         }else{
-            cell.edu = self.ability.EduArr[0];
+            cell.edu = self.Mo.EduArr[0];
              self.resume.imageTurn.transform = CGAffineTransformIdentity;
         }
     }

@@ -10,5 +10,5 @@
 #import "UserMo.h"
 #import "AbilttyMo.h"
 @interface ShowResumeTab : UIView
-@property(nonatomic,strong) UserMo * Mo;
+@property(nonatomic,strong) AbilttyMo * Mo;
 @end

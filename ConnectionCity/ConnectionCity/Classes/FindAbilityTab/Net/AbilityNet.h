@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AbilttyMo.h"
 /**
  *  类型自定义
  */
 typedef void (^SuccessArrBlock) (NSMutableArray * successArrValue);
 typedef void (^SuccessDicBlock) (NSDictionary * successDicValue);
 typedef void (^FailDicBlock) (NSString * failValue);
+typedef void (^SuccessAbiltty) (AbilttyMo * user);
 @interface AbilityNet : NSObject
 
 /**
@@ -73,4 +75,12 @@ typedef void (^FailDicBlock) (NSString * failValue);
  @param block 成功数组
  */
 +(void)requstAddEdu:(NSDictionary *)param withBlock:(SuccessDicBlock)block;
+
+/**
+ 简历详情
+
+ @param param param description
+ @param block block description
+ */
++(void)requstResumeDetail:(NSDictionary *)param withBlock:(SuccessAbiltty)block;
 @end

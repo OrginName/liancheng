@@ -11,6 +11,9 @@
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"ID":@"id"};
 }
++ (NSDictionary *)mj_objectClassInArray {
+    return @{@"user":[UserMo class]};
+}
 @end
 @implementation AbilttyEducationMo
 

@@ -201,6 +201,7 @@
     //    if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
     ShowResumeController * show = [ShowResumeController new];
     show.Receive_Type = ENUM_TypeTrval;
+    show.flag = @"1";
     show.data_Count = self.cusMap.Arr_Mark;
     __block NSUInteger index = 0;
     __block BOOL flag = NO;

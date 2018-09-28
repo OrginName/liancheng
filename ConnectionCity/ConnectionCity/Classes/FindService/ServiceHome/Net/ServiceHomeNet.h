@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UserMo.h"
 /**
  *  类型自定义
  */
 typedef void (^SuccessArrBlock) (NSMutableArray * successArrValue);
 typedef void (^SuccessDicBlock) (NSDictionary * successDicValue);
 typedef void (^FailDicBlock) (NSString * failValue);
+typedef void (^SuccessUser) (UserMo * user);
 @interface ServiceHomeNet : NSObject
 
 /**
@@ -71,5 +73,11 @@ typedef void (^FailDicBlock) (NSString * failValue);
  */
 +(void)requstLiulanNum:(NSDictionary *) param flag:(int)flag withSuc:(SuccessArrBlock)sucBlock;
 
+/**
+ 根据userID去查询当前技能包圈子等
 
+ @param param param
+ @param sucBlock 成功返回
+ */
++(void)requstServiceListJN:(NSDictionary *) param  withSuc:(SuccessUser)sucBlock;
 @end

@@ -11,7 +11,6 @@
 #import "CustomImageScro.h"
 #import "CustomScro.h"
 #import "FriendCircleController.h"
-#import "UserMo.h"
 @interface ShowtrvalTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ShowTrvalCellDelegate,CustomScroDelegate>
 {
     CustomScro * _scr;
@@ -23,58 +22,21 @@
 @property (nonatomic,strong) UIButton * Save_Like;
 @property (nonatomic,strong) UIButton * btn_Like;
 @property (nonatomic,assign) NSInteger flag;
-@property (nonatomic,strong) UserMo * userNew;
 @end
 @implementation ShowtrvalTab
 -(instancetype)initWithFrame:(CGRect)frame withControl:(UIViewController *)control{
     if (self = [super initWithFrame:frame]) {
         self.control = control;
         [self initScroll];
-        self.JNIndex = 0;
         [self addSubview:self.tab_Bottom];
+        self.JNIndex = 0;
     }
     return self;
 }
-//加载当前的服务详情
--(void)loadCurrentServiceDetail:(NSString *)index{
-    WeakSelf
-    [YSNetworkTool POST:v1ServiceUserList params:@{@"id":index} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        _scr = nil;
-        NSMutableArray * arr1 = [NSMutableArray array];
-        UserMo * user = [UserMo mj_objectWithKeyValues:responseObject[@"data"]];
-        for (ServiceListMo * mo in user.serviceList) {
-            if ([mo.serviceCategoryName[@"name"] length]!=0) {
-                [arr1 addObject:mo.serviceCategoryName[@"name"]];
-            }
-            NSMutableArray * arr3 = [NSMutableArray array];
-            NSMutableArray * arr4 = [NSMutableArray array];
-            NSArray * arr2 = [YSTools stringToJSON:mo.property];
-            for (long j=0;j<arr2.count;j++) {
-                NSDictionary * dic1 = arr2[j];
-                NSString * typeName = dic1[@"name"];
-                [arr4 addObject:typeName];
-                NSString * strName = @"";
-                for (long k=0;k<[dic1[@"childs"] count];k++) {
-                    NSDictionary * dic2 = dic1[@"childs"][k];
-                    strName = [NSString stringWithFormat:@"%@  %@",dic2[@"name"],strName];
-                }
-                [arr3 addObject:strName];
-            }
-            mo.propertyNameArr = [arr3 copy];
-            mo.typeNameArr = [arr4 copy];
-        }
-        user.JNArr = arr1;
-        weakSelf.userNew = user;
-        [weakSelf setLunArr];
-        [weakSelf.tab_Bottom reloadData];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-    }];
-}
-//设置轮播图
--(void)setLunArr{
+-(void)setMo:(UserMo *)Mo{
+    _Mo  = Mo;
     [self.lunArr removeAllObjects];
-    ServiceListMo * list = self.userNew.serviceList[self.JNIndex];
+    ServiceListMo * list = Mo.serviceList[self.JNIndex];
     for (NSString * url in [list.images componentsSeparatedByString:@";"]) {
         if (url.length!=0) {
             [self.lunArr addObject:url];
@@ -85,10 +47,6 @@
     }
     [self.btn_Like setTitle:[list.likeCount description] forState:UIControlStateNormal];
     _flag = 0;
-}
--(void)setMo:(serviceListNewMo *)Mo{
-    _Mo  = Mo;
-    [self loadCurrentServiceDetail:Mo.ID];
 }
 
 -(void)setMoTrval:(trvalMo *)MoTrval{
@@ -115,14 +73,14 @@
     }else if (section==2){
         return 1;
     }else if(section==3){
-        if (self.userNew!=nil) {
-            return [self.userNew.serviceList[_JNIndex] commentList].count;
+        if (self.Mo!=nil) {
+            return [self.Mo.serviceList[_JNIndex] commentList].count;
         }else{
             return self.MoTrval.comments.count;
         }
     }else{
-        if (self.userNew!=nil) {
-            ServiceListMo * list = self.userNew.serviceList[_JNIndex];
+        if (self.Mo!=nil) {
+            ServiceListMo * list = self.Mo.serviceList[_JNIndex];
             return list.property.length!=0?[[YSTools stringToJSON:list.property] count]:0;
         }else{
             return 0;
@@ -134,7 +92,7 @@
         if (indexPath.row == 0 ) {
             return 65;
         }else if(indexPath.row==3){
-            if ((self.userNew!=nil&&self.userNew.serviceCircleList.count==0)||(self.MoTrval!=nil&&self.MoTrval.serviceCircleList.count==0)) {
+            if ((self.Mo!=nil&&self.Mo.serviceCircleList.count==0)||(self.MoTrval!=nil&&self.MoTrval.serviceCircleList.count==0)) {
                 return 40;
             }else{
                 return (kScreenWidth-68)/4+45;
@@ -146,24 +104,24 @@
             return 40;
         }
     }else if (indexPath.section==2){
-        if (self.userNew!=nil) {
-            float hidth = [YSTools cauculateHeightOfText:[self.userNew.serviceList[self.JNIndex] introduce] width:kScreenWidth-40 font:13];
+        if (self.Mo!=nil) {
+            float hidth = [YSTools cauculateHeightOfText:[self.Mo.serviceList[self.JNIndex] introduce] width:kScreenWidth-40 font:13];
             return 200+hidth;
         }else{
             float hidth = [YSTools cauculateHeightOfText:self.MoTrval.introduce width:kScreenWidth-40 font:13];
-             return 170+hidth;
+            return 170+hidth;
         }
     }else if(indexPath.section==3){
-        if (self.userNew!=nil) {
-            commentList * com =[self.userNew.serviceList[self.JNIndex] commentList][indexPath.row];
+        if (self.Mo!=nil) {
+            commentList * com =[self.Mo.serviceList[self.JNIndex] commentList][indexPath.row];
             return com.cellHeight;
         }else{
             comments * com = self.MoTrval.comments[indexPath.row];
-           return com.cellHeight;
+            return com.cellHeight;
         }
     }else{
-        if (self.userNew!=nil) {
-            ServiceListMo * list = self.userNew.serviceList[_JNIndex];
+        if (self.Mo!=nil) {
+            ServiceListMo * list = self.Mo.serviceList[_JNIndex];
             return [YSTools cauculateHeightOfText:list.propertyNameArr[indexPath.row] width:kScreenWidth-40 font:14]+40;
         }else{
             return 0;
@@ -187,7 +145,7 @@
         StarEvaluator * ev = [[StarEvaluator alloc] initWithFrame:CGRectMake(0, 9, 140, 40)];
         ev.animate = NO;
         if (self.Mo!=nil) {
-            ev.currentValue = [[self.userNew.serviceList[self.JNIndex]score] floatValue]/2;
+            ev.currentValue = [[self.Mo.serviceList[self.JNIndex]score] floatValue]/2;
         }else{
             ev.currentValue = [self.MoTrval.score floatValue]/2;
         }
@@ -212,17 +170,18 @@
     cell.delegate = self;
     if (indexPath.section==0&&indexPath.row==1) {
         NSMutableArray * arr = [NSMutableArray array];
-        if (self.userNew!=nil) {
-            arr = [self loadA:self.userNew.isSkillAuth b:self.userNew.isMobileAuth c:self.userNew.isIdentityAuth d:self.userNew.isCompanyAuth];
+        if (self.Mo!=nil) {
+            arr = [self loadA:self.Mo.isSkillAuth b:self.Mo.isMobileAuth c:self.Mo.isIdentityAuth d:self.Mo.isCompanyAuth];
         }else{
             arr = [self loadA:self.MoTrval.user.isSkillAuth b:self.MoTrval.user.isMobileAuth c:self.MoTrval.user.isIdentityAuth d:self.MoTrval.user.isCompanyAuth];
         }
+        
         CustomImageScro * img = [[CustomImageScro alloc] initWithFrame:CGRectMake(0, 0, cell.view_RZ.width, cell.view_RZ.height) arr:[arr copy]];
         [cell.view_RZ addSubview:img];
     }
     if (indexPath.section==0&&indexPath.row==2) {
         if (!_scr) {
-            _scr = [[CustomScro alloc] initWithFrame:CGRectMake(0, 0, cell.view_JNB.width, cell.view_JNB.height) arr:self.userNew.JNArr flag:NO];
+            _scr = [[CustomScro alloc] initWithFrame:CGRectMake(0, 0, cell.view_JNB.width, cell.view_JNB.height) arr:self.Mo.JNArr flag:NO];
             _scr.delegate = self;
             _scr.isShowLine = YES;
             [cell.view_JNB addSubview:_scr];
@@ -230,28 +189,28 @@
     }
     if (indexPath.section==0||indexPath.section==2) {
         cell.JNIndexReceive = self.JNIndex;
-        cell.list = self.userNew;
+        cell.list = self.Mo;
         cell.trval = self.MoTrval;
         
     }else if(indexPath.section==3){
         if (self.Mo!=nil) {
-            cell.commen = [self.userNew.serviceList[self.JNIndex]commentList][indexPath.row];
+            cell.commen = [self.Mo.serviceList[self.JNIndex]commentList][indexPath.row];
         }else{
             cell.commentrval = self.MoTrval.comments[indexPath.row];
         }
     }else{
-        if (self.userNew!=nil) {
-            cell.propertyName = [self.userNew.serviceList[self.JNIndex] propertyNameArr][indexPath.row];
-            cell.typeName = [self.userNew.serviceList[self.JNIndex] typeNameArr][indexPath.row];
+        if (self.Mo!=nil) {
+            cell.propertyName = [self.Mo.serviceList[self.JNIndex] propertyNameArr][indexPath.row];
+            cell.typeName = [self.Mo.serviceList[self.JNIndex] typeNameArr][indexPath.row];
         }
     }
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0&&indexPath.row==3) {
-            FriendCircleController * friend = [FriendCircleController new];
-        friend.user = self.userNew!=nil?self.userNew:self.MoTrval.user;
-            [self.control.navigationController pushViewController:friend animated:YES];
+        FriendCircleController * friend = [FriendCircleController new];
+        friend.user = self.Mo!=nil?self.Mo:self.MoTrval.user;
+        [self.control.navigationController pushViewController:friend animated:YES];
     }
 }
 -(NSMutableArray *)loadA:(NSString *)a b:(NSString *)b c:(NSString *)c d:(NSString *)d{
@@ -274,17 +233,17 @@
 -(void)btnClick:(NSInteger)tag{
     AppointmentController * appoint = [AppointmentController new];
     appoint.str =_flag==0?@"YD":@"trval";
-    appoint.user = self.userNew;
-    appoint.list = self.userNew.serviceList[self.JNIndex];
+    appoint.user = self.Mo;
+    appoint.list = self.Mo.serviceList[self.JNIndex];
     appoint.trval = self.MoTrval;
     [self.control.navigationController pushViewController:appoint animated:YES];
 }
 - (void)CustomScroBtnClick:(UIButton *)tag{
     self.JNIndex = tag.tag-1;
-    [self setLunArr];
+    [self setMo:self.Mo];
     self.cycleScrollView.imageURLStringsGroup = self.lunArr;
-    [self.cycleScrollView reload];
     [self.tab_Bottom reloadData];
+    [self.cycleScrollView reload];
 } //声明协议方法
 #pragma mark ---initUI--------
 -(void)initScroll{
@@ -346,8 +305,8 @@
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[5] contentArr][1];
     NSString * str = @"";
-    if (self.userNew!=nil) {
-        str = [self.userNew.serviceList[self.JNIndex] ID];
+    if (self.Mo!=nil) {
+        str = [self.Mo.serviceList[self.JNIndex] ID];
     }else
         str = self.MoTrval.ID;
     [YSNetworkTool POST:v1CommonCommentAddlike  params:@{@"typeId":@([str integerValue]),@"type":@([mo.value integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -378,3 +337,4 @@
     return _btn_Like;
 }
 @end
+

@@ -9,6 +9,7 @@
 #import "AbilityNet.h"
 #import "ClassifyMo.h"
 #import "AbilttyMo.h"
+#import "serviceListNewMo.h"
 @implementation AbilityNet
 +(void)requstAbilityKeyWords:(SuccessArrBlock)block{
     [YSNetworkTool POST:keywordTalentKeyword params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -107,32 +108,8 @@
         if ([responseObject[@"data"] count]==0) {
             [YTAlertUtil showTempInfo:@"附近暂无简历"];
         }
-        NSMutableArray * arr = [NSMutableArray array];
-        NSMutableArray * arr1 = [NSMutableArray array];
-        NSMutableArray * arr2 = [NSMutableArray array];
-        for (int i=0; i<[responseObject[@"data"] count]; i++) {
-            UserMo * mo = [UserMo mj_objectWithKeyValues:responseObject[@"data"][i]];
-            for (AbilttyMo * mo1 in mo.resumeList) {
-                for (int j=0; j<mo1.workExperienceList.count; j++) {
-                    AbilttyWorkMo * workMo = [AbilttyWorkMo mj_objectWithKeyValues:mo1.workExperienceList[j]];
-                    workMo.ID = mo1.workExperienceList[j][@"id"];
-                    workMo.description1 = mo1.workExperienceList[j][@"description"];
-                    [arr1 addObject:workMo];
-                }
-                if (mo1.educationExperienceList.count!=0) {
-                    for (int k=0; k<mo1.educationExperienceList.count; k++) {
-                        AbilttyEducationMo * educationMo = [AbilttyEducationMo mj_objectWithKeyValues:mo1.educationExperienceList[k]];
-                        educationMo.ID = mo1.educationExperienceList[k][@"id"];
-                        educationMo.description1 = mo1.educationExperienceList[k][@"description"];
-                        [arr2 addObject:educationMo];
-                    }
-                }
-                mo1.WorArr = arr1;
-                mo1.EduArr = arr2;
-            }
-            [arr addObject:mo];
-        }
-        block(arr);
+        NSArray * arr = [serviceListNewMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"]]; 
+        block([arr mutableCopy]);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
@@ -168,6 +145,40 @@
         block(responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [YTAlertUtil hideHUD];
+    }];
+}
+/**
+ 简历详情
+ 
+ @param param param description
+ @param block block description
+ */
++(void)requstResumeDetail:(NSDictionary *)param withBlock:(SuccessAbiltty)block{
+    [YSNetworkTool POST:v1TalentResumeInfo params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray * arr1 = [NSMutableArray array];
+        NSMutableArray * arr2 = [NSMutableArray array];
+        AbilttyMo * mo = [AbilttyMo mj_objectWithKeyValues:responseObject[@"data"]];
+        if (mo.workExperienceList.count!=0) {
+            for (int j=0; j<mo.workExperienceList.count; j++) {
+                AbilttyWorkMo * workMo = [AbilttyWorkMo mj_objectWithKeyValues:mo.workExperienceList[j]];
+                workMo.ID = mo.workExperienceList[j][@"id"];
+                workMo.description1 = mo.workExperienceList[j][@"description"];
+                [arr1 addObject:workMo];
+            }
+        } 
+        if (mo.educationExperienceList.count!=0) {
+            for (int k=0; k<mo.educationExperienceList.count; k++) {
+                AbilttyEducationMo * educationMo = [AbilttyEducationMo mj_objectWithKeyValues:mo.educationExperienceList[k]];
+                educationMo.ID = mo.educationExperienceList[k][@"id"];
+                educationMo.description1 = mo.educationExperienceList[k][@"description"];
+                [arr2 addObject:educationMo];
+            }
+        }
+        mo.WorArr = arr1;
+        mo.EduArr = arr2;
+        block(mo);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
     }];
 }
 @end

@@ -16,6 +16,7 @@
 #import "ServiceHomeNet.h"
 #import "RCDChatViewController.h"
 #import "serviceListNewMo.h"
+#import "AbilityNet.h"
 #define identifier @"ScrollCell"
 #define TabHeight kScreenHeight-185
 @interface ShowResumeController ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -29,7 +30,8 @@
 @property (nonatomic, strong)ShowCardTab * showCardTab;
 @property (nonatomic, strong)ShowTreaueTab * showTreaueTab;
 @property (nonatomic, strong)ShowtrvalTab * trvaltab;
-
+@property (nonatomic, strong)UserMo * User;
+@property (nonatomic, strong)AbilttyMo * abilityMoNew;
 @end
 
 @implementation ShowResumeController
@@ -42,31 +44,41 @@
     [YSShareTool share];
 }
 -(void)setUI{
-     self.imageArray = [NSMutableArray arrayWithArray:@[@"001.jpg",@"002.jpg",@"003.jpg"]];
+    self.imageArray = [NSMutableArray arrayWithArray:@[@"001.jpg",@"002.jpg",@"003.jpg"]];
     [self.view addSubview:self.collectionView];
     if(self.Receive_Type == ENUM_TypeCard){
         self.title = @"互换身份";
     }else if (self.Receive_Type == ENUM_TypeResume){
-       [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.zIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+        [self loadResumedetail];
     }else if (self.Receive_Type == ENUM_TypeTreasure){
         self.title = @"互换宝物";
         [self.btn_sayAndChange setTitle:@"我想换" forState:UIControlStateNormal];
-    }else if (self.Receive_Type == ENUM_TypeTrval){
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.zIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    }else if ([self.flag isEqualToString:@"1"]){
+        [self loadDataJNB];
     }
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(Share) image:@"share" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, -10)];
     _currentIndex = 0;
 }
+//加载简历详情
+-(void)loadResumedetail{
+    WeakSelf
+    serviceListNewMo * mo = self.data_Count[self.zIndex];
+    [AbilityNet requstResumeDetail:@{@"id":mo.resumeId} withBlock:^(AbilttyMo *user) {
+        weakSelf.abilityMoNew = user;
+        NSIndexPath * index = [NSIndexPath indexPathForRow:self.zIndex inSection:0];
+        [weakSelf.collectionView reloadItemsAtIndexPaths:@[index]];
+    }];
+}
 //加载列表数据
--(void)loadData:(NSString *)ID{
-//    加载服务数据
-    if (self.Receive_Type == ENUM_TypeTrval){
-        [YSNetworkTool POST:v1ServiceDetail params:@{@"id":ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-            
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            
-        }];
-    }
+-(void)loadDataJNB{
+    WeakSelf
+    serviceListNewMo * mo = self.data_Count[self.zIndex];
+    [ServiceHomeNet requstServiceListJN:@{@"id":mo.ID} withSuc:^(UserMo *user) {
+        weakSelf.User = user;
+        [weakSelf.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:weakSelf.zIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+        NSIndexPath * index = [NSIndexPath indexPathForRow:self.zIndex inSection:0];
+        [weakSelf.collectionView reloadItemsAtIndexPaths:@[index]];
+    }];
 }
 #pragma mark --各种点击事件---
 //导航栏完成按钮点击
@@ -78,22 +90,14 @@
     if (sender.tag==4&&self.Receive_Type == ENUM_TypeTreasure) {
         [self.navigationController pushViewController:[super rotateClass:@"DouctChangeController"] animated:YES];
     }
-//    if (sender.tag==4&&self.Receive_Type == ENUM_TypeTrval&&[self.str isEqualToString:@"TrvalTrip"]) {
-//        trvalMo * mo = self.data_Count[self.zIndex];
-//        [self GZLoadData:mo.ID typeID:@"40"];
-//    }
     if (sender.tag==4) {
         if ([self.data_Count[self.zIndex] isKindOfClass:[trvalMo class]]) {
             trvalMo * mo = self.data_Count[self.zIndex];
             [self GZLoadData:mo.ID typeID:@"40"];
-        }else if ([self.data_Count[self.zIndex] isKindOfClass:[UserMo class]]&&self.Receive_Type == ENUM_TypeTrval){
-            UserMo * mo = self.data_Count[self.zIndex];
-            [self GZLoadData:[mo.serviceList[self.trvaltab.JNIndex] ID] typeID:@"20"];
+        }else if ([self.data_Count[self.zIndex] isKindOfClass:[serviceListNewMo class]]&&self.Receive_Type == ENUM_TypeTrval){
+            [self GZLoadData:[self.User.serviceList[self.trvaltab.JNIndex] ID] typeID:@"20"];
         }else if (self.Receive_Type == ENUM_TypeResume){
-//            UserMo * mo = self.data_Count[self.zIndex];
-//            [self GZLoadData:[mo.serviceList[self.trvaltab.JNIndex] ID] typeID:@"20"];
-            AbilttyMo*mo = [self.data_Count[self.zIndex] resumeList][0];
-            [self GZLoadData:mo.ID typeID:@"50"];
+            [self GZLoadData:self.abilityMoNew.ID typeID:@"50"];
         }
     }
     if (sender.tag==3) {
@@ -105,11 +109,9 @@
         }else{
             NSString * str = @"";
             if (self.Receive_Type == ENUM_TypeResume){
-                UserMo * mo = self.data_Count[self.zIndex];
-                str = mo.isBlack;
-            }else{
-                UserMo * mo = self.data_Count[self.zIndex];
-                str = mo.isBlack;
+                str = self.abilityMoNew.user.isBlack;
+            }else{ 
+                str = self.User.isBlack;
             }
             if ([[str description] isEqualToString:@"1"]) {
                 return [YTAlertUtil showTempInfo:@"您已在对方的黑名单中,暂不能对话"];
@@ -120,18 +122,16 @@
         NSString *title,*ID,*name;
         if (self.Receive_Type == ENUM_TypeTrval){
             if ([self.str isEqualToString:@"TrvalTrip"]){
-                trvalMo * mo = self.data_Count[self.zIndex];                
+                trvalMo * mo = self.data_Count[self.zIndex];
                 ID = [mo.user.ID description];
                 name = mo.user.nickName;
             }else{
-                UserMo * mo = self.data_Count[self.zIndex];
-                ID = [mo.ID description];
-                name = mo.nickName;
+                ID = [self.User.ID description];
+                name = self.User.nickName;
             }
         }else if (self.Receive_Type == ENUM_TypeResume){
-            UserMo * resume = self.data_Count[self.zIndex];
-            ID = [resume.ID description];
-            name = resume.nickName?resume.nickName:resume.ID;
+            ID = [self.abilityMoNew.user.ID description];
+            name = self.abilityMoNew.user.nickName?self.abilityMoNew.user.nickName:self.abilityMoNew.user.ID;
         }
         chatViewController.targetId = ID;
         if ([ID isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
@@ -140,7 +140,7 @@
             title = name;
         }
         chatViewController.title = title;
-//        chatViewController.needPopToRootView = YES;
+        //        chatViewController.needPopToRootView = YES;
         chatViewController.displayUserNameInCell = NO;
         [self.navigationController pushViewController:chatViewController animated:YES];
     }
@@ -170,9 +170,8 @@
     }
     if (self.Receive_Type == ENUM_TypeResume) {
         self.showTab = [[ShowResumeTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];
-        UserMo * mo = self.data_Count[indexPath.row];
-        self.title = mo.nickName?mo.nickName:KString(@"用户%@", [mo.ID description]);
-        self.showTab.Mo = mo;
+        self.title = self.abilityMoNew.user.nickName?self.abilityMoNew.user.nickName:KString(@"用户%@", [self.abilityMoNew.user.ID description]);
+        self.showTab.Mo = self.abilityMoNew;
         [cell.contentView addSubview:self.showTab];
     }else if(self.Receive_Type == ENUM_TypeCard){
         self.showCardTab = [[ShowCardTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];
@@ -184,19 +183,18 @@
             self.title = mo.user.nickName?mo.user.nickName:KString(@"用户%@", [mo.userId description]);
             self.trvaltab.MoTrval = mo;
         }else{
-             serviceListNewMo* mo = self.data_Count[indexPath.row];
-            self.title = mo.nickName?mo.nickName:KString(@"用户%@", [mo.ID description]);
-            self.trvaltab.Mo = mo; 
+            self.title = self.User.nickName?self.User.nickName:KString(@"用户%@", [self.User.ID description]);
+            self.trvaltab.Mo = self.User;
         }
         [cell.contentView addSubview:self.trvaltab];
-
+        
     }else {
         self.showTreaueTab = [[ShowTreaueTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];
         [cell.contentView addSubview:self.showTreaueTab];
     }
     return cell;
 }
- 
+
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     return UIEdgeInsetsMake(0, 0, 0, 0);
@@ -235,9 +233,8 @@
         _collectionView.contentOffset = CGPointMake(0, 0);
     }
     return _collectionView;
-} 
+}
 - (IBAction)UPDownClick:(UIButton *)sender {
-//    [self layoutIfNeeded];
     if (sender.tag==1) {
         self.zIndex--;
         if (self.zIndex<0) {
@@ -245,8 +242,6 @@
             [YTAlertUtil showTempInfo:@"在往前没有了"];
             return;
         }
-       
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.zIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }else{
         self.zIndex++;
         if (self.zIndex>self.data_Count.count-1) {
@@ -254,7 +249,11 @@
             [YTAlertUtil showTempInfo:@"在往后没有了"];
             return;
         }
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.zIndex inSection:0]  atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    }
+    if ([self.flag isEqualToString:@"1"]) {
+        [self loadDataJNB];//加载服务技能包详情
+    }else if ([self.flag isEqualToString:@"2"]){
+        [self loadResumedetail];//加载简历详情
     }
     if (self.Receive_Type == ENUM_TypeTrval&&self.zIndex<=self.data_Count.count-1&&self.zIndex>0){
         if ([self.str isEqualToString:@"TrvalTrip"]){
@@ -263,11 +262,11 @@
                 
             }];
         }else{
-//            UserMo * mo = self.data_Count[self.zIndex];
-//            [ServiceHomeNet requstLiulanNum:@{@"id":[mo.serviceList[self.trvaltab.JNIndex] ID]} flag:1 withSuc:^(NSMutableArray *successArrValue) {
-//
-//            }];
+            [ServiceHomeNet requstLiulanNum:@{@"id":[self.User.serviceList[self.trvaltab.JNIndex] ID]} flag:1 withSuc:^(NSMutableArray *successArrValue) {
+                
+            }];
         }
     }
 }
 @end
+

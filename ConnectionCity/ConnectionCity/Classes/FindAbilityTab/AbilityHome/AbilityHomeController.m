@@ -220,6 +220,7 @@
 -(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
     ShowResumeController * show = [ShowResumeController new];
     show.Receive_Type = ENUM_TypeResume;
+    show.flag = @"2";
     show.data_Count = self.cusMap.Arr_Mark;
     __block NSUInteger index = 0;
     __block BOOL flag = NO;
