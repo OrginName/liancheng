@@ -20,11 +20,10 @@
 }
 -(void)setMo:(ResumeMo *)Mo{
     _Mo = Mo;
-    self.lab_comAndCollege.text = Mo.proAndPro;
-    self.lab_proAndCollW.text = Mo.collAndcompany;
+    self.lab_comAndCollege.text = Mo.collAndcompany;
+    self.lab_proAndCollW.text = Mo.proAndPro;
     self.lab_proW.text = Mo.XLAndIntro;
     self.lab_time.text = [NSString stringWithFormat:@"%@-%@",Mo.satrtTime,Mo.endTime]; 
-    
 }
 + (instancetype)tempTableViewCellWith:(UITableView *)tableView
                             indexPath:(NSIndexPath *)indexPath withCollArr:(NSMutableArray * )arr withEduArr:(NSMutableArray * )EduArr {

@@ -39,7 +39,7 @@
     ServiceListMo * list = Mo.serviceList[self.JNIndex];
     for (NSString * url in [list.images componentsSeparatedByString:@";"]) {
         if (url.length!=0) {
-            [self.lunArr addObject:url];
+            [self.lunArr addObject:[NSString stringWithFormat:@"%@%@",url,BIGTU]];
         }
     }
     if ([list.likeCount intValue]>0) {

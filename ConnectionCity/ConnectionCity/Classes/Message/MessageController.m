@@ -33,6 +33,7 @@
 #import "NoticeMo.h"
 #import "CertificationCenterController.h"
 #import <TXScrollLabelView.h>
+#import "serviceListNewMo.h"
 @interface MessageController ()<JFCityViewControllerDelegate,MAMapViewDelegate, AMapLocationManagerDelegate,CustomMapDelegate,TXScrollLabelViewDelegate>
 {
     BOOL flag;
@@ -145,8 +146,9 @@
                             @"pageSize": @100
                            };
     [YSNetworkTool POST:v1PrivateUserHomeList params:dic1 showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSMutableArray * arr = [UserMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        self.cusMap.Arr_Mark = arr;
+        NSArray * arr = [serviceListNewMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//        NSMutableArray * arr = [UserMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        self.cusMap.Arr_Mark = [arr mutableCopy];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
@@ -314,7 +316,7 @@
     flag = NO;
     __block NSUInteger index = 0;
     [self.cusMap.Arr_Mark enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UserMo * list = (UserMo *)obj;
+        serviceListNewMo * list = (serviceListNewMo *)obj;
         if (annotation.title == list.ID) {
             index = idx;
             *stop = YES;

@@ -11,6 +11,8 @@
 //主机地址
 #define HOSTURL @"https://api.lian-cheng.com"
 
+//#define HOSTURL @"https://api.lian-cheng.com:8081"
+
 #define QINIUURL @"http://img.lian-cheng.com/"
 
 #pragma mark ----- 首页-------

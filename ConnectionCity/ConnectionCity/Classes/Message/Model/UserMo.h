@@ -47,5 +47,4 @@ ProMutArr(JNArr);//技能包数组
 proArr(serviceCircleList);//当前好友的服务圈
 ProMutArr(serviceList);//当前人的服务列表
 ProMutArr(resumeList);//当前人的简历列表
-
 @end

@@ -46,7 +46,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="532"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aR5-1I-0DD">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="650"/>
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="550"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PV7-km-ZiO">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="281"/>
@@ -360,7 +360,7 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="3vh-qe-Pbd" secondAttribute="trailing" id="10s-An-vpN"/>
                                 <constraint firstAttribute="trailing" secondItem="PV7-km-ZiO" secondAttribute="trailing" id="FcN-re-1VP"/>
-                                <constraint firstAttribute="height" constant="650" id="Gwh-Qf-Rcu"/>
+                                <constraint firstAttribute="height" constant="550" id="Gwh-Qf-Rcu"/>
                                 <constraint firstItem="3vh-qe-Pbd" firstAttribute="leading" secondItem="aR5-1I-0DD" secondAttribute="leading" id="ZE7-Xc-K8k"/>
                                 <constraint firstItem="3vh-qe-Pbd" firstAttribute="top" secondItem="PV7-km-ZiO" secondAttribute="bottom" id="avS-vc-bZP"/>
                                 <constraint firstItem="PV7-km-ZiO" firstAttribute="top" secondItem="aR5-1I-0DD" secondAttribute="top" id="n3C-4A-H6m"/>

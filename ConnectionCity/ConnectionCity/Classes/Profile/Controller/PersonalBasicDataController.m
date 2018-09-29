@@ -15,6 +15,7 @@
 #import "privateUserInfoModel.h"
 #import "FriendCircleController.h"
 #import "ZoomImage.h"
+#import "serviceListNewMo.h"
 @interface PersonalBasicDataController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scro_View;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_View;
@@ -48,13 +49,23 @@
         self.view_leftRight.hidden = YES;
         self.layout_view.constant = 0;
     }else{
-        UserMo * user = self.arr_User[self.flag];
-        [self setConnectionMo:user];
+        serviceListNewMo * user = self.arr_User[self.flag];
+        [self loadUser:user.ID];
+//        [self setConnectionMo:user];
     }
     if ([self.flagStr isEqualToString:@"BLACKLIST"]) {
         self.view_btn.hidden = YES;
         self.btn_BZ.userInteractionEnabled = NO;
     }
+}
+-(void)loadUser:(NSString *)ID{
+    WeakSelf
+    [YSNetworkTool POST:v1PrivateUserUserinfo params:@{@"id":ID} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        UserMo * user = [UserMo mj_objectWithKeyValues:responseObject[@"data"]];
+        [weakSelf setConnectionMo:user];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 -(void)loadFriendList{
     WeakSelf
@@ -77,7 +88,7 @@
 -(void)setConnectionMo:(UserMo *)connectionMo{
     _connectionMo = connectionMo;
     if (_connectionMo!=nil) {
-        [self.backgroundImage sd_setImageWithURL:[NSURL URLWithString:connectionMo.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
+        [self.backgroundImage sd_setImageWithURL:[NSURL URLWithString:KString(@"%@?imageView2/1/w/400/h/400", connectionMo.backgroundImage)] placeholderImage:[UIImage imageNamed:@"2"]];
         [self.headImage sd_setImageWithURL:[NSURL URLWithString:[connectionMo.headImage description]] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
         self.sexImage.image =[UIImage imageNamed:[[connectionMo.gender description] isEqualToString:@"1"]?@"men":@"women"];
         self.nickNameLab.text = connectionMo.nickName?connectionMo.nickName:[connectionMo.ID description];
@@ -95,6 +106,9 @@
             }else{
                 self.layoutMu.constant = (kScreenWidth-50)/2-40;
             }
+        }else{
+            self.view_Phone.hidden = YES;
+            self.layout_phone.constant = 0;
         }
         self.phoneNumLab.text = [connectionMo.mobile description];
         self.addressLab.text = [connectionMo.cityName description];
@@ -115,6 +129,9 @@
             }
             [self loadData:[arr1 copy]];
         }else{
+            if (self.arr_User.count!=0) {
+                [self.view_Image.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            }else
             [self loadFriendList];
         }
     }
@@ -227,8 +244,7 @@
                     self.flag=0;
                     return [YTAlertUtil showTempInfo:@"再往前没有了"];
                 }
-                UserMo * user = self.arr_User[self.flag];
-                [self setConnectionMo:user];
+                [self loadUser:[self.arr_User[self.flag]ID]];
             }
             break;
         case 4:
@@ -238,8 +254,7 @@
                 self.flag=self.arr_User.count-1;
                 return [YTAlertUtil showTempInfo:@"再往后没有了"];
             }
-            UserMo * user = self.arr_User[self.flag];
-            [self setConnectionMo:user];
+            [self loadUser:[self.arr_User[self.flag]ID]];
         }
             break;
         default:
@@ -265,9 +280,8 @@
         float width = 50;
         float kpadding = (self.view_Image.width-width*4-15)/2;
         UIImageView * image = [[UIImageView alloc] initWithFrame:CGRectMake(kpadding+i*(width+5),1, width, width)];
-        [image sd_setImageWithURL:[NSURL URLWithString:arr[i]] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+        [image sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",arr[i],SMALLPICTURE]] placeholderImage:[UIImage imageNamed:@"logo2"]];
         [self.view_Image addSubview:image];
     }
-     
 }
 @end

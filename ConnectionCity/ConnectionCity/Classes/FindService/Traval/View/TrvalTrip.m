@@ -91,6 +91,7 @@
     show.Receive_Type = ENUM_TypeTrval;
     show.data_Count = self.data_Arr;
     show.zIndex = indexPath.row;
+    show.flag = @"3";
     show.str = @"TrvalTrip";
     [self.control.navigationController pushViewController:show animated:YES]; 
 }

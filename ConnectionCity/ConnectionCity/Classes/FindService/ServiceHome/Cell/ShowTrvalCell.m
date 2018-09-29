@@ -76,7 +76,7 @@
         if (trval.cityName.length!=0) {
             [self.btn_city setTitle:trval.cityName forState:UIControlStateNormal];
         }
-        [self.btn_height setTitle:[NSString stringWithFormat:@"%@cm",trval.user.height?trval.user.height:@"180"] forState:UIControlStateNormal];
+        [self.btn_height setTitle:[NSString stringWithFormat:@"%@cm",trval.user.height?trval.user.height:@"-"] forState:UIControlStateNormal];
         [self.btn_coll setTitle:trval.user.educationName?trval.user.educationName:@"-" forState:UIControlStateNormal];
         [self.btn_wight setTitle:trval.user.marriageName?trval.user.marriageName:@"-" forState:UIControlStateNormal];
         self.lab_Age.text = trval.user.age?trval.user.age:@"-";
@@ -187,7 +187,7 @@
 }
 -(void)setCommentrval:(comments *)commentrval{
     _commentrval = commentrval;
-    [self.imgae_Comment sd_setImageWithURL:[NSURL URLWithString:commentrval.user.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    [self.imgae_Comment sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",commentrval.user.headImage,SMALLPICTURE]] placeholderImage:[UIImage imageNamed:@"logo2"]];
     self.lab_commentTitle.text = commentrval.user.nickName?commentrval.user.nickName:commentrval.user.ID;
     self.lab_Comment.text = commentrval.content;
     self.lab_HF.text = commentrval.replyList.count!=0?commentrval.replyList[0][@"content"]:@"";
@@ -196,7 +196,7 @@
 }
 -(void)setCommen:(commentList *)commen{
     _commen = commen;
-    [self.imgae_Comment sd_setImageWithURL:[NSURL URLWithString:commen.user.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    [self.imgae_Comment sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",commen.user.headImage,SMALLPICTURE]] placeholderImage:[UIImage imageNamed:@"logo2"]];
     self.lab_commentTitle.text = commen.user.nickName?commen.user.nickName:commen.user.ID;
     self.lab_Comment.text = commen.content;
     self.lab_HF.text = commen.replyList.count!=0?commen.replyList[0][@"content"]:@"";

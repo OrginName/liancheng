@@ -168,7 +168,7 @@
     [YSNetworkTool POST:v1PrivateUserInfo params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
         [YSAccountTool saveUserinfo:userInfoModel];
-        [weakSelf.tableHeadV.threebackgroundImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
+        [weakSelf.tableHeadV.threebackgroundImage sd_setImageWithURL:[NSURL URLWithString:KString(@"%@?imageView2/1/w/400/h/400", userInfoModel.backgroundImage)] placeholderImage:[UIImage imageNamed:@"2"]];
         [weakSelf.tableHeadV.threeheadImage sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
         weakSelf.tableHeadV.threenickName.text = userInfoModel.nickName;
     } failure:nil];

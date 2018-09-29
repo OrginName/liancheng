@@ -37,7 +37,7 @@
     [self.lunArr removeAllObjects];
     for (NSString * url in [Mo.avatar componentsSeparatedByString:@";"]) {
         if (url.length!=0) {
-            [self.lunArr addObject:url];
+            [self.lunArr addObject:[NSString stringWithFormat:@"%@%@",url,BIGTU]];
         }
     }
 }

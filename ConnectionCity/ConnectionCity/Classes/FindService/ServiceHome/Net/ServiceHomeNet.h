@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "UserMo.h"
+#import "trvalMo.h"
+
 /**
  *  类型自定义
  */
@@ -15,6 +17,7 @@ typedef void (^SuccessArrBlock) (NSMutableArray * successArrValue);
 typedef void (^SuccessDicBlock) (NSDictionary * successDicValue);
 typedef void (^FailDicBlock) (NSString * failValue);
 typedef void (^SuccessUser) (UserMo * user);
+typedef void (^Successtrval) (trvalMo * user);
 @interface ServiceHomeNet : NSObject
 
 /**
@@ -80,4 +83,11 @@ typedef void (^SuccessUser) (UserMo * user);
  @param sucBlock 成功返回
  */
 +(void)requstServiceListJN:(NSDictionary *) param  withSuc:(SuccessUser)sucBlock;
+/**
+ 根据userID去查询当前陪游详情
+ 
+ @param param param
+ @param sucBlock 成功返回
+ */
++(void)requstPYDetail:(NSDictionary *) param  withSuc:(Successtrval)sucBlock;
 @end

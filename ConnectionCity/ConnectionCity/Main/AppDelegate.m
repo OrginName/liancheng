@@ -195,6 +195,12 @@
      * 统计推送打开率1
      */
     [[RCIMClient sharedRCIMClient] recordLaunchOptionsEvent:launchOptions];
+    NSNotificationCenter*defaultCenter =[NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self
+                     selector:@selector(networkDidLogin:)
+                        name:kJPFNetworkDidLoginNotification
+     
+                       object:nil];
     /**
      * 获取融云推送服务扩展字段1
      */
@@ -284,7 +290,12 @@ didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSe
     // register to receive notifications
     [application registerForRemoteNotifications];
 }
-
+- (void)networkDidLogin:(NSNotification*)notification {
+    NSLog(@"已登录");
+    NSString *registrationIDStr = [JPUSHService registrationID];
+    [kDefaults setObject:registrationIDStr forKey:JpuskKey];
+    [kDefaults synchronize];
+}
 /**
  * 推送处理3
  */
@@ -296,6 +307,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                        withString:@""];
     
     [[RCIMClient sharedRCIMClient] setDeviceToken:token];
+    
     /// Required - 注册 DeviceToken
     [JPUSHService registerDeviceToken:deviceToken];
 }
@@ -361,7 +373,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 //友盟设置
 - (void)umengTrack {
     //    [MobClick setCrashReportEnabled:NO]; // 如果不需要捕捉异常，注释掉此行
-    [MobClick setLogEnabled:YES]; // 打开友盟sdk调试，注意Release发布时需要注释掉此行,减少io消耗
+//    [MobClick setLogEnabled:YES]; // 打开友盟sdk调试，注意Release发布时需要注释掉此行,减少io消耗
     [MobClick setAppVersion:XcodeAppVersion]; //参数为NSString *
     [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:(ReportPolicy)REALTIME channelId:nil];
     //   reportPolicy为枚举类型,可以为 REALTIME, BATCH,SENDDAILY,SENDWIFIONLY几种

@@ -395,15 +395,15 @@
         _headImage.userInteractionEnabled = YES;
         privateUserInfoModel * userInfo = [YSAccountTool userInfo];
         if (self.user!=nil) {
-            [_headImage sd_setImageWithURL:[NSURL URLWithString:self.user.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
+            [_headImage sd_setImageWithURL:[NSURL URLWithString:KString(@"%@?imageView2/1/w/400/h/400", self.user.backgroundImage)] placeholderImage:[UIImage imageNamed:@"2"]];
         }else
-        [_headImage sd_setImageWithURL:[NSURL URLWithString:userInfo.backgroundImage] placeholderImage:[UIImage imageNamed:@"2"]];
+        [_headImage sd_setImageWithURL:[NSURL URLWithString:KString(@"%@?imageView2/1/w/400/h/400", userInfo.backgroundImage)] placeholderImage:[UIImage imageNamed:@"2"]];
         UIImageView * image1 = [[UIImageView alloc] initWithFrame:CGRectMake(_headImage.width-70, _headImage.height-30, 60, 60)];
         image1.tag = 999;
         if (self.user!=nil) {
-            [image1 sd_setImageWithURL:[NSURL URLWithString:self.user.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+            [image1 sd_setImageWithURL:[NSURL URLWithString:KString(@"%@?imageView2/1/w/50/h/50", self.user.headImage)] placeholderImage:[UIImage imageNamed:@"logo2"]];
         }else
-        [image1 sd_setImageWithURL:[NSURL URLWithString:userInfo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+        [image1 sd_setImageWithURL:[NSURL URLWithString:KString(@"%@?imageView2/1/w/50/h/50", userInfo.headImage)] placeholderImage:[UIImage imageNamed:@"logo2"]];
         image1.layer.cornerRadius = 5;
         image1.layer.masksToBounds = YES;
         image1.userInteractionEnabled = YES;

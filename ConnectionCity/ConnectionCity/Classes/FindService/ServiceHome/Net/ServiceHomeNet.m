@@ -8,7 +8,6 @@
 
 #import "ServiceHomeNet.h"
 #import "ClassifyMo.h"
-#import "trvalMo.h"
 #import "ClassAttrMo.h"
 #import "ServiceListMo.h"
 #import "serviceListNewMo.h"
@@ -38,7 +37,7 @@
 }
 +(void)requstServiceList:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock{
     [YSNetworkTool POST:v1ServiceList params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-         if ([responseObject[@"data"] isKindOfClass:[NSArray class]]&&[responseObject[@"data"] count]!=0){
+         if ([responseObject[@"data"] isKindOfClass:[NSArray class]]){
              NSArray * arr = [serviceListNewMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
              sucBlock([arr mutableCopy]);
         }else
@@ -94,7 +93,7 @@
         if ([responseObject[@"data"] isKindOfClass:[NSDictionary class]]) {
             for (int i=0; i<[responseObject[@"data"][@"content"] count]; i++) {
                 trvalMo * trval = [trvalMo mj_objectWithKeyValues:responseObject[@"data"][@"content"][i]];
-                trval.comments = [comments mj_objectArrayWithKeyValuesArray:trval.comments];
+//                trval.comments = [comments mj_objectArrayWithKeyValuesArray:trval.comments];
                 [arr addObject:trval];
             }
         } 
@@ -186,6 +185,20 @@
         }
         user.JNArr = arr1;
         sucBlock(user);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+/**
+ 根据userID去查询当前陪游详情
+ 
+ @param param param
+ @param sucBlock 成功返回
+ */
++(void)requstPYDetail:(NSDictionary *) param  withSuc:(Successtrval)sucBlock{
+    [YSNetworkTool POST:v1ServiceTravelInfo params:param showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        trvalMo * mo1 = [trvalMo mj_objectWithKeyValues:responseObject[@"data"]];
+        sucBlock(mo1);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

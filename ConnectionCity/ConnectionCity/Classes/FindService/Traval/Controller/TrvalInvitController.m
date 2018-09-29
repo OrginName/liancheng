@@ -51,7 +51,7 @@
                            @"description": cell.txt_View.text,
                            @"inviteObject": self.Dic[@"01"][@"ID"],
                            @"longTime": self.Dic[@"11"][@"ID"],
-                           @"startTime": self.Dic[@"10"],
+                           @"departTime": self.Dic[@"10"][@"ID"],
                            @"travelFee": self.Dic[@"13"][@"ID"],
                            @"travelMode": self.Dic[@"12"][@"ID"]
                            };
@@ -92,7 +92,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     TrvalCell * cell = [tableView cellForRowAtIndexPath:indexPath];
-    if ((indexPath.section==0&&indexPath.row==1)||(indexPath.section==1&&indexPath.row>0)) {
+    if ((indexPath.section==0&&indexPath.row==1)||(indexPath.section==1&&indexPath.row>0)||(indexPath.section==1&&indexPath.row==0)) {
         NSArray * arr = [NSArray array];
         NSString * str = @"";
         if (indexPath.section==0&&indexPath.row==1) {
@@ -103,8 +103,11 @@
                 str = @"20";
             }else if (indexPath.row==2){
                 str = @"21";
+            }else if (indexPath.row ==3){
+                 str = @"22";
             }else
-                str = @"22";
+                str = @"19";
+            
         }
         for (int i=0; i<self.Arr_Dic.count; i++) {
             if ([[self.Arr_Dic[i][@"id"] stringValue] isEqualToString:str]) {
@@ -122,9 +125,10 @@
             
         } completion:nil];
     }
-    if (indexPath.section==1&&indexPath.row==0) {
-        [self tanDatePick];
-    }
+//    if (indexPath.section==1&&indexPath.row==0) {
+////        [self tanDatePick];
+//
+//    }
     if (indexPath.section==0&&indexPath.row==0) {
         JFCityViewController * jf= [JFCityViewController new];
         jf.delegate = self;

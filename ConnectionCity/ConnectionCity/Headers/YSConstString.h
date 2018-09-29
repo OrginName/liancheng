@@ -98,6 +98,12 @@
 #define kWechat              @"wechat"
 /** 余额 */
 #define kBalance              @"balance"
+//极光ID
+#define JpuskKey        @"JpuskKey"
+//大图
+#define BIGTU @"?imageView2/1/w/400/h/400"
+//小图
+#define SMALLPICTURE @"?imageView2/1/w/70/h/70"
 //添加好友成功的帅新
 #define KAddFriend @"KAddFriend"
 /** @"UserCity"*/

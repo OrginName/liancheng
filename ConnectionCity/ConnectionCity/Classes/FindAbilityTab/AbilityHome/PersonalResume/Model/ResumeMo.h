@@ -10,6 +10,7 @@
 #import "UserMo.h"
 @class WorkMo;
 @interface ResumeMo : BaseModel
+proStr(eduID);//学校ID
 proStr(collAndcompany);//学校
 proStr(proAndPro);//专业行业
 proStr(XLAndIntro);//学历

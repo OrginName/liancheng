@@ -12,6 +12,7 @@
 #import "AbilityNet.h"
 #import "SortCollProController.h"
 #import <PGDatePicker/PGDatePickManager.h>
+#import "AllDicMo.h"
 //LCDatePickerDelegate
 @interface GuardEduController ()<UITextViewDelegate,PGDatePickerDelegate>
 {
@@ -51,6 +52,7 @@
         self.end_Time.text = mo.endTime;
         self.textView_Indro.text = mo.description1;
         self.layout.constant = (kScreenWidth-20)/2;
+        _EduID = mo.eduID;
     }
 }
 //保存按钮点击
@@ -64,14 +66,14 @@
             [YTAlertUtil showTempInfo:@"结束日期不能小于开始日期"];
             return;
         }
-        if (self.textView_Indro.text.length==0) {
-            return [YTAlertUtil showTempInfo:@"请输入描述"];
-        }
+//        if (self.textView_Indro.text.length==0) {
+//            return [YTAlertUtil showTempInfo:@"请输入描述"];
+//        }
         NSDictionary * dic =@{
                               @"description": self.textView_Indro.text,
                               @"educationId": @([_EduID integerValue]),
                               @"endDate": self.end_Time.text,
-                              @"professionalId": _proID.length!=0? @([_proID integerValue]):@0,
+//                              @"professionalId": _proID.length!=0? @([_proID integerValue]):@"",
                               @"resumeId": @([self.resumeID integerValue]),
                               @"schoolId": @([_collID integerValue]),//****
                               @"startDate": self.Start_time.text,
@@ -108,6 +110,7 @@
     mo.XLAndIntro = self.text_XL.text;
     mo.satrtTime = self.Start_time.text;
     mo.endTime = self.end_Time.text;
+    mo.eduID = _EduID;
     a==1?self.block(mo):self.block1(mo);
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -138,16 +141,21 @@
         [self.navigationController pushViewController:edit animated:YES];
     }
     else if (sender.tag==3) {
-        NSMutableArray * title = [NSMutableArray array];
-        for (int i=0; i<self.eduArr.count; i++) {
-            [title addObject:self.eduArr[i][@"description"]];
+        NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
+        NSArray *contentArr = [arr[0] contentArr];
+        NSMutableArray *title = [NSMutableArray array];
+        for (int i=0; i < contentArr.count; i++) {
+            AllContentMo * mo = contentArr[i];
+            [title addObject:mo.description1];
+            YTLog(@"%@",mo.description1);
+            YTLog(@"%@",mo.value);
         }
+        WeakSelf
         [YTAlertUtil alertMultiWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet multiTitles:title multiHandler:^(UIAlertAction *action, NSArray *titles, NSUInteger idx) {
-            self.text_XL.text = title[idx];
-            _EduID = self.eduArr[idx][@"value"];
-        } cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
-            
-        } completion:nil];
+            AllContentMo * mo = contentArr[idx];
+            weakSelf.text_XL.text = mo.description1;
+            _EduID = mo.value;
+        } cancelTitle:@"取消" cancelHandler:nil completion:nil];
     }
     else{
         currtenTag = sender.tag;
