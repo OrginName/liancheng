@@ -73,6 +73,8 @@
             mo.endTime = model.endDate;
             mo.description1 = model.description1;
             mo.ID = model.ID;
+            mo.eduID = model.educationId;
+            mo.schoolId = model.schoolId;
             [self.data_ArrWdu addObject:mo];
         }
         for (WorkExperienceListModel * model in self.resume.workExperienceList) {
@@ -83,6 +85,7 @@
             mo.ID = KString(@"%ld", model.modelId);
             mo.satrtTime = model.startDate;
             mo.endTime = model.endDate;
+            mo.occupationCategoryId = KString(@"%ld", model.occupationCategoryId);
             [self.data_ArrWork addObject:mo];
         }
         if (self.data_ArrWdu.count!=0) {
@@ -96,26 +99,29 @@
         WeakSelf
         [imgArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString * urlStr = (NSString *)obj;
-            [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:urlStr] options:SDWebImageDownloaderUseNSURLCache progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
-                
-            } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
-                i++;
-                if (![YSTools dx_isNullOrNilWithObject:image]) {
-                    [weakSelf.lunArr addObject:image];
-                }
-                if (i==imgArr.count) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        if (weakSelf.lunArr.count!=0) {
-                            [[weakSelf.tab_bottom.tableHeaderView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
-                            [weakSelf initScroll];
-                        }
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                            weakSelf.cycleScrollView.localizationImagesGroup = weakSelf.lunArr;
-                            [weakSelf.cycleScrollView reload];
+            urlStr = [NSString stringWithFormat:@"%@%@",urlStr,BIGTU];
+            if (urlStr.length!=0) {
+                [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:urlStr] options:SDWebImageDownloaderUseNSURLCache progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+                    
+                } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
+                    i++;
+                    if (![YSTools dx_isNullOrNilWithObject:image]) {
+                        [weakSelf.lunArr addObject:image];
+                    }
+                    if (i==imgArr.count) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            if (weakSelf.lunArr.count!=0) {
+                                [[weakSelf.tab_bottom.tableHeaderView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+                                [weakSelf initScroll];
+                            }
+                            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                weakSelf.cycleScrollView.localizationImagesGroup = weakSelf.lunArr;
+                                [weakSelf.cycleScrollView reload];
+                            });
                         });
-                    });
-                }
-            }];
+                    }
+                }];
+            }
         }];
         [self.Data_Dic setObject:@{@"name":self.resume.salaryName,@"ID":KString(@"%ld", self.resume.salaryId)} forKey:@"10"];
         [self.Data_Dic setObject:@{@"name":self.resume.educationName,@"ID":KString(@"%ld", self.resume.educationId)} forKey:@"20"];
@@ -452,7 +458,7 @@
 -(void)loadArr1{
     WeakSelf
     [weakSelf.CollArr removeAllObjects];
-    [weakSelf.CollArr  addObjectsFromArray:[weakSelf.data_ArrWdu copy]];
+    [weakSelf.CollArr  addObjectsFromArray:[weakSelf.data_ArrWork copy]];
     weakSelf.isOpen[@"40"] = @"YES";
     [weakSelf.tab_bottom reloadData];
 }

@@ -32,5 +32,4 @@
 @property (nonatomic, copy) NSString *endDate;
 /** <#description描述#> */
 @property (nonatomic, copy) NSString *descriptions;
-
 @end

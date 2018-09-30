@@ -252,7 +252,7 @@
     SDCycleScrollView * cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectZero imageURLStringsGroup:nil]; // 模拟网络延时情景
     cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     cycleScrollView.delegate = self;
-    cycleScrollView.autoScroll = YES;
+    cycleScrollView.autoScroll = NO;
     cycleScrollView.dotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
     cycleScrollView.placeholderImage = [UIImage imageNamed:@"no-pic"];
     self.cycleScrollView = cycleScrollView;

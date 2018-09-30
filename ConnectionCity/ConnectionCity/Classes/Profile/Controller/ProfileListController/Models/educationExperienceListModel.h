@@ -18,4 +18,6 @@ proStr(status);
 proStr(ID);
 proStr(educationName);
 proStr(description1);
+proStr(schoolId);
+proStr(educationId);
 @end

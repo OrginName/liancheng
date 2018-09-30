@@ -45,6 +45,7 @@
         self.end_Time.text = mo.endTime;
         self.textView_Indro.text = mo.XLAndIntro;
         self.layout.constant = (kScreenWidth-20)/2;
+        _proID = mo.occupationCategoryId;
     }
 }
 -(void)initData{

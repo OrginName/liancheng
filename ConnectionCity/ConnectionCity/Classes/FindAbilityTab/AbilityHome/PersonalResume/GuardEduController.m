@@ -53,6 +53,7 @@
         self.textView_Indro.text = mo.description1;
         self.layout.constant = (kScreenWidth-20)/2;
         _EduID = mo.eduID;
+        _collID = mo.schoolId;
     }
 }
 //保存按钮点击
@@ -77,7 +78,7 @@
                               @"resumeId": @([self.resumeID integerValue]),
                               @"schoolId": @([_collID integerValue]),//****
                               @"startDate": self.Start_time.text,
-                              @"professinalName":self.text_Pro.text,//专业名称
+                              @"professionalName":self.text_Pro.text,//专业名称
                               @"schoolName":self.text_Coll.text,//学校名称
                               @"educationId":self.mo!=nil?self.mo.ID:@"",
                               @"educationExperienceId":self.mo!=nil?self.mo.ID:@""
@@ -106,8 +107,8 @@
 -(void)backReload:(int)a{
     ResumeMo * mo = [[ResumeMo alloc] init];
     mo.collAndcompany = self.text_Coll.text;
-    mo.proAndPro = self.text_Pro.text;
-    mo.XLAndIntro = self.text_XL.text;
+    mo.proAndPro = self.text_XL.text;
+    mo.XLAndIntro = self.text_Pro.text;
     mo.satrtTime = self.Start_time.text;
     mo.endTime = self.end_Time.text;
     mo.eduID = _EduID;
@@ -135,6 +136,7 @@
 //        };
 //        [self.navigationController pushViewController:sort animated:YES];
         EditAllController * edit = [EditAllController new];
+        edit.receiveTxt  = sender.tag==2?self.text_Pro.text :self.text_Coll.text;
         edit.block = ^(NSString * str){
             sender.tag==2?(self.text_Pro.text = str):(self.text_Coll.text=str);
         };

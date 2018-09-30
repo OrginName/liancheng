@@ -33,6 +33,7 @@ proStr(priceUnit);
 proStr(typeName);//单位
 proStr(likeCount);//点赞数
 @property (nonatomic,strong) UserMo * user;
+@property (nonatomic,strong) UserMo * userVO;
 @end
 
 @interface comments : BaseModel
