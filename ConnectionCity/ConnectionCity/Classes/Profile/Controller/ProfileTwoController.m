@@ -80,8 +80,9 @@
 }
 #pragma mark - setter and getter
 - (NSArray<YTSideMenuModel *> *)menuModels {
+//    ,[YTSideMenuModel modelWithDictionary:@{@"icon": @"q-yaoqing",@"title": @"邀请好友",@"class": @"ShareController"}]
     if (_menuModels == nil) {
-        _menuModels = @[@[[YTSideMenuModel modelWithDictionary:@{@"icon": @"q-qinmi",@"title": @"亲密账户",@"class": @"kissAccountController"}]],@[[YTSideMenuModel modelWithDictionary:@{@"icon": @"qi-kefu",@"title": @"客服",@"class": @"SetViewController"}],[YTSideMenuModel modelWithDictionary:@{@"icon": @"q-hezuo",@"title": @"商务合作",@"class": @"SetViewController"}],[YTSideMenuModel modelWithDictionary:@{@"icon": @"q-yaoqing",@"title": @"邀请好友",@"class": @"ShareController"}]],@[[YTSideMenuModel modelWithDictionary:@{@"icon": @"1-fankui",@"title": @"有奖反馈",@"class": @"FeedbackController"}]]];
+        _menuModels = @[@[[YTSideMenuModel modelWithDictionary:@{@"icon": @"q-qinmi",@"title": @"亲密账户",@"class": @"kissAccountController"}]],@[[YTSideMenuModel modelWithDictionary:@{@"icon": @"qi-kefu",@"title": @"客服",@"class": @"SetViewController"}],[YTSideMenuModel modelWithDictionary:@{@"icon": @"q-hezuo",@"title": @"商务合作",@"class": @"SetViewController"}]],@[[YTSideMenuModel modelWithDictionary:@{@"icon": @"1-fankui",@"title": @"有奖反馈",@"class": @"FeedbackController"}]]];
     }
     return _menuModels;
 }

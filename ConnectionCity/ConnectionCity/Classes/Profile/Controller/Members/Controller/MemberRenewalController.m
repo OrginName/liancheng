@@ -43,10 +43,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_ALI_PAY_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_WEI_XIN_PAY_SUCCESS object:nil];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 #pragma mark - setup
 - (void)setUI{
     self.navigationItem.title = @"会员续费";
@@ -57,7 +53,7 @@
     WeakSelf
     [YSNetworkTool POST:v1MembershipSvipInfo params:nil showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         weakSelf.model = [MemberRenewalM mj_objectWithKeyValues:responseObject[@"data"]];
-        [self.logo sd_setImageWithURL:[NSURL URLWithString:weakSelf.model.logo]];
+        [self.logo sd_setImageWithURL:[NSURL URLWithString:weakSelf.model.logo] placeholderImage:[UIImage imageNamed:@"logo2"]];
         self.name.text = weakSelf.model.name;
         self.descriptions.text = weakSelf.model.modelDescription;
         self.descriptions.text = [NSString stringWithFormat:@"连程号  %@",kAccount.userId];
@@ -78,7 +74,7 @@
             bgv.layer.borderColor = kCommonBGColor.CGColor;
             [weakSelf.membershipMealsVbg addSubview:bgv];
             UIImageView *headImgV = [[UIImageView alloc]initWithFrame:CGRectMake((width - 44)/2.0, 20, 44, 44)];
-            [headImgV sd_setImageWithURL:[NSURL URLWithString:m.logo]];
+            [headImgV sd_setImageWithURL:[NSURL URLWithString:m.logo] placeholderImage:[UIImage imageNamed:@"logo2"]];
             [bgv addSubview:headImgV];
             UILabel *titleLab = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(headImgV.frame), width, 30)];
             titleLab.text = [NSString stringWithFormat:@"￥%@/%@",m.price,m.title];

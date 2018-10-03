@@ -47,6 +47,9 @@
 
     [self.view addSubview:self.friendsTabelView];
     [self.view addSubview:self.searchFriendsBar];
+    self.friendsTabelView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self updateData];
+    }];
 }
 
 - (UISearchBar *)searchFriendsBar {
@@ -463,13 +466,14 @@
 //        }
 //    }
 //    if (friendList.count <= 0 && !self.hasSyncFriendList) {
+    
         [RCDDataSource syncFriendList:[RCIM sharedRCIM].currentUserInfo.userId
                              complete:^(NSMutableArray *result) {
-//                                 [result removeAllObjects];
-                                 
-                                 self.hasSyncFriendList = YES;
-                                 [self sortAndRefreshWithList:result];
+//                                 [result removeAllObjects]; 
+                                 weakSelf.hasSyncFriendList = YES;
+                                 [weakSelf sortAndRefreshWithList:result];
                                  weakSelf.arr_Data = result;
+                                 [weakSelf.friendsTabelView.mj_header endRefreshing];
                              }];
 //    }
     //如有好友备注，则显示备注

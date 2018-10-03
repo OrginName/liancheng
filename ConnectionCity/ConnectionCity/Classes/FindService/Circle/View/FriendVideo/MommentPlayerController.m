@@ -17,6 +17,8 @@
 #import "PersonalBasicDataController.h"
 #import "ServiceListController.h"
 #import "privateUserInfoModel.h"
+#import "ServiceHomeNet.h"
+#import "ShowResumeController.h"
 @interface MommentPlayerController ()<LPAVPlayerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *lab_Zan;
 @property (weak, nonatomic) IBOutlet UILabel *like_Zan;
@@ -145,11 +147,29 @@
     [YSShareTool share];
 }
 - (IBAction)BtnClcik:(UIButton *)sender {
-   
     if (sender.tag==5) {
-        ServiceListController * servist = [ServiceListController new];
-        servist.user = self.moment.userMo;
-        [self.navigationController pushViewController:servist animated:YES];
+        NSDictionary * dic1 = @{
+                                @"cityCode":self.moment.userMo.cityCode?self.self.moment.userMo.cityCode:@"",
+                                @"lat": @([self.moment.userMo.lat floatValue]),
+                                @"lng": @([self.moment.userMo.lng floatValue]),
+                                @"userId":self.moment.userMo.ID
+                                };
+        //    加载服务列表
+        [ServiceHomeNet requstServiceList:dic1 withSuc:^(NSMutableArray *successArrValue) {
+            if (successArrValue.count==0) {
+                return [YTAlertUtil showTempInfo:@"该用户暂无服务"];
+            }
+            ShowResumeController * show = [ShowResumeController new];
+            show.Receive_Type = ENUM_TypeTrval;
+            show.data_Count = successArrValue;
+            show.flag = @"1";
+            __block NSUInteger index = 0;
+            show.zIndex = index;
+            [self.navigationController pushViewController:show animated:YES];
+        }];
+//        ServiceListController * servist = [ServiceListController new];
+//        servist.user = self.moment.userMo;
+//        [self.navigationController pushViewController:servist animated:YES];
     }
     if (sender.tag==4) {
         if ([self.btn_PL.titleLabel.text isEqualToString:@"评论(0)"]) {
