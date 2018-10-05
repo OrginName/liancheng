@@ -54,7 +54,8 @@
 +(NSInteger)initTimerCompare:(NSString *)startTime withEndTime:(NSString *)endTime;
 #pragma mark -------- 时间戳
 +(NSString *)cTimestampFromString:(NSString *)theTime;
- 
+//根据高度计算宽度
++ (CGFloat)getWidthWithText:(NSString *)text height:(CGFloat)height font:(CGFloat)font;
 @end
 
 

@@ -111,7 +111,7 @@
         AgreementController *connectUs = [[AgreementController alloc]init];
         connectUs.alias = @"";
         connectUs.title = @"客服";
-        connectUs.url = @"https://www.lc.test.cn-apps.com/help/index";
+        connectUs.url = KString(@"%@/help/index", baseUrl);
         [self.navigationController pushViewController:connectUs animated:YES];
         return;
     }
@@ -120,7 +120,7 @@
         AgreementController *agreementVC = [[AgreementController alloc]init];
         agreementVC.alias = @"";
         agreementVC.title = @"商务合作";
-        agreementVC.url = @"https://www.lc.test.cn-apps.com/business/index";
+        agreementVC.url = KString(@"%@/business/index", baseUrl);
         [self.navigationController pushViewController:agreementVC animated:YES];
         return;
     }

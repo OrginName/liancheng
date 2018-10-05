@@ -81,22 +81,22 @@
     [self.navigationController pushViewController:xfVC animated:YES];
 }
 - (IBAction)functionBtnClick:(id)sender {
-    UIButton *btn = (UIButton *)sender;
-    if (btn.tag==100) {
-        AgreementController *agreementVC = [[AgreementController alloc]init];
-        agreementVC.alias = annualFee;
-        [self.navigationController pushViewController:agreementVC animated:YES];
-        return;
-    }
+//    UIButton *btn = (UIButton *)sender;
+//    if (btn.tag==100) {
+//        AgreementController *agreementVC = [[AgreementController alloc]init];
+//        agreementVC.alias = annualFee;
+//        [self.navigationController pushViewController:agreementVC animated:YES];
+//        return;
+//    }
 //    else if (btn.tag==101){
 //        AgreementController *agreementVC = [[AgreementController alloc]init];
 //        agreementVC.alias = function;
 //        [self.navigationController pushViewController:agreementVC animated:YES];
 //        return;
 //    }
-    else{
+//    else{
         [YTAlertUtil showTempInfo:@"开发中！请见谅"];
-    }
+//    }
 }
 #pragma mark - 数据请求
 - (void)requestV1PrivateUserInfo {

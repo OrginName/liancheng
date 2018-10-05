@@ -182,7 +182,7 @@
     }
     if (indexPath.section==0&&indexPath.row==2) {
         if (!_scr) {
-            _scr = [[CustomScro alloc] initWithFrame:CGRectMake(0, 0, cell.view_JNB.width, cell.view_JNB.height) arr:self.Mo.JNArr flag:NO];
+            _scr = [[CustomScro alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-100, cell.view_JNB.height) arr:self.Mo.JNArr flag:NO];
             _scr.delegate = self;
             _scr.isShowLine = YES;
             [cell.view_JNB addSubview:_scr];

@@ -15,6 +15,8 @@
 
 #define QINIUURL @"http://img.lian-cheng.com/"
 
+#define baseUrl  @"http://m.lian-cheng.com"
+
 #pragma mark ----- 首页-------
 //发现 -发布朋友圈
 static NSString * const v1FriendCircleCreate = @"/v1/friend-circle/create";

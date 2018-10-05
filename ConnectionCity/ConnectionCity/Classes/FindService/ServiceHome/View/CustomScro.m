@@ -1,4 +1,3 @@
-//
 //  CustomScro.m
 //  ConnectionCity
 //
@@ -13,23 +12,21 @@
     if (self = [super initWithFrame:frame]) {
         self.isShowLine = NO;
         [self addSubview:self.scrollView];
+        float w = 0;
         for (int i=0; i<arr.count; i++) {
             float width = 0.0f;
-            float width1 = 0.0f;
             if (!flag) {
-                width = [YSTools caculateTheWidthOfLableText:15 withTitle:arr[i]]+10;
-                width1 = 0.0;
-                if (i!=0) {
-                    width1 = [YSTools caculateTheWidthOfLableText:15 withTitle:arr[i-1]]+10;
-                }else
-                    width1 = width;
+                width = [YSTools caculateTheWidthOfLableText:14 withTitle:arr[i]];
             }else{
-                width=width1=80;
+                width=80;
             }
-            UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(5+i*width1, 0, width, self.height)];
+            NSLog(@"====%f------%@",width,arr[i]);
+            UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(10+w, 0, width, self.height)];
             [btn setTitle:arr[i] forState:UIControlStateNormal];
             btn.titleLabel.font = [UIFont systemFontOfSize: flag?13:14];
             [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+            btn.titleLabel.textAlignment = NSTextAlignmentLeft;
+            w = btn.frame.size.width + btn.frame.origin.x;
             if (flag) {
                 [btn setImage:[UIImage imageNamed:@"weixuanhzong"] forState:UIControlStateNormal];
                 [btn setImage:[UIImage imageNamed:@"xuanzhong"] forState:UIControlStateSelected];

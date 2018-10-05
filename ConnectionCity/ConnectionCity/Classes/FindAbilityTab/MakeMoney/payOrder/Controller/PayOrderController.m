@@ -18,9 +18,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *amountLab;
 @property (weak, nonatomic) IBOutlet UIButton *wxPayBtn;
 @property (nonatomic, strong) UIButton *lastBtn;
+@property (nonatomic,strong) UIButton * lastBtn1;
 @property (nonatomic, strong) HCCountdown *countdown;
 @property (nonatomic) long nowTimeSp;
 @property (nonatomic) long fiveMinuteSp;
+@property (weak, nonatomic) IBOutlet UIView *view1;
+@property (weak, nonatomic) IBOutlet UIView *view2;
 
 @end
 
@@ -163,6 +166,8 @@
     self.pintView.clipsToBounds = YES;
     self.amountLab.text = _amount;
     self.lastBtn = _wxPayBtn;
+    UIButton * btn1 = (UIButton *)[self.view2 viewWithTag:101];
+    self.lastBtn1 = btn1;
     self.navigationItem.title = @"支付订单";
 }
 #pragma mark - 点击事件
@@ -171,9 +176,17 @@
 }
 - (IBAction)selectedBtnClick:(id)sender {
     UIButton *btn = (UIButton *)sender;
+    UIButton * btn1;
+    if (btn.tag==200) {
+        btn1 = (UIButton *)[self.view1 viewWithTag:100];
+    }else
+        btn1 = (UIButton *)[self.view2 viewWithTag:btn.tag-100];
     btn.selected = !btn.selected;
+    btn1.selected = !btn1.selected;
     _lastBtn.selected = !_lastBtn.selected;
+    _lastBtn1.selected = !_lastBtn1.selected;
     _lastBtn = btn;
+    _lastBtn1 = btn1;
 }
 
 #pragma mark - 接口请求

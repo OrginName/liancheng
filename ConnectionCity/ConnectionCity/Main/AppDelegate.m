@@ -43,7 +43,7 @@
 #define JpushAppKey @"06ead6e422830a9523255984"
 #define QQ_APPID @"1106473725"
 #define QQ_APPKEY @"dTrtNRCsVY79nCwC"
-#define APPID_WEIXIN @"wxb773a629b959a9f9"
+#define APPID_WEIXIN @"wx59416de31bed624b"
 #define APPSECRET_WEIXIN @"682ffe7c6b89c8eea9f30862ebdfc1ce"
 #define RONGCLOUD_IM_APPKEY @"ik1qhw09iprwp"// online key
 #define UMENG_APPKEY @"5b4a423c8f4a9d1b3a00047e"
@@ -446,7 +446,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         RCDAddressBookViewController * address = [RCDAddressBookViewController new];
         BaseTabBarController *tabBar = (BaseTabBarController *)self.window.rootViewController;//获取window的跟视图,并进行强制转换
         if ([tabBar isKindOfClass:[BaseTabBarController class]]) {//判断是否是当前根视图
-            UINavigationController *nav = tabBar.selectedViewController;//获取到当前视图的导航视图
+            BaseNavigationController *nav = tabBar.selectedViewController;//获取到当前视图的导航视图
             [nav.topViewController.navigationController pushViewController:address animated:YES];//获取当前跟视图push到的最高视图层,然后进行push到目的页面
         }
     }else if ([[userInfo[@"type"] description] isEqualToString:@"2"]||[[userInfo[@"type"] description] isEqualToString:@"4"]){
@@ -455,7 +455,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         service.inter = [[userInfo[@"type"] description] isEqualToString:@"2"]?1:2;
         BaseTabBarController *tabBar = (BaseTabBarController *)self.window.rootViewController;//获取window的跟视图,并进行强制转换
         if ([tabBar isKindOfClass:[BaseTabBarController class]]) {//判断是否是当前根视图
-            UINavigationController *nav = tabBar.selectedViewController;//获取到当前视图的导航视图
+            BaseNavigationController *nav = tabBar.selectedViewController;//获取到当前视图的导航视图
             [nav.topViewController.navigationController pushViewController:service animated:YES];//获取当前跟视图push到的最高视图层,然后进行push到目的页面
         }
         

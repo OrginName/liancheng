@@ -23,6 +23,11 @@
     NSArray * arr = @[privacyAgreement,connectRule,useAgreement,userBehaviorStandard,serviceAgreement,about];
     if (sender.tag==1) {
         [YTAlertUtil showTempInfo:@"火热开发中..."];
+    }else if (sender.tag==7){ 
+        AgreementController *agreementVC = [[AgreementController alloc]init];
+        agreementVC.url = KString(@"%@/contact/index", baseUrl);
+        agreementVC.title = @"联系我们";
+        [self.navigationController pushViewController:agreementVC animated:YES];
     }else{
         AgreementController *agreementVC = [[AgreementController alloc]init];
         agreementVC.alias = arr[sender.tag-2];

@@ -51,16 +51,19 @@
     }
     return self;
 }
-//定位当前自己位置
+//定位当前自己位置 
 -(void)locationClick{
     [self.location startUpdatingLocation];
     if(self.mapView.userLocation.updating && self.mapView.userLocation.location) {
         [self.mapView setCenterCoordinate:self.mapView.userLocation.location.coordinate animated:YES];
-//        [self.mapView setZoomLevel:15.1 animated:NO];
+        [self.mapView setZoomLevel:15.1 animated:NO];
         if (self.delegate && [self.delegate respondsToSelector:@selector(currentLocationClick:)]) {
             [self.delegate currentLocationClick:self.mapView.userLocation.location.coordinate];
         }
     }
+//    CLLocationCoordinate2D coor = CLLocationCoordinate2DMake(31.299472,121.103438);
+//    [self.mapView setCenterCoordinate:coor];
+//    [self.mapView setZoomLevel:15.1 animated:NO];
 }
 #pragma mark - MAMapView Delegate
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation

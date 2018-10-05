@@ -126,11 +126,11 @@
                                                     userInfo:nil
                                                      repeats:NO];
     WeakSelf
-    [YSNetworkTool POST:login params:@{@"loginName":_phoneTF.text,@"password":_passwordTF.text,@"status":@"1",@"jpushRegistrationId":[KUserDefults objectForKey:JpuskKey]} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:login params:@{@"loginName":_phoneTF.text,@"password":_passwordTF.text,@"status":@"1",@"jpushRegistrationId":[KUserDefults objectForKey:JpuskKey]?[KUserDefults objectForKey:JpuskKey]:@"123"} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([YSNetworkTool isSuccessWithResp:responseObject]) {
-            [JPUSHService setAlias:[responseObject[@"data"][@"userId"] description] completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
-                NSLog(@"别名设置为%ld---%@",(long)iResCode,iAlias);
-            } seq:10000];
+//            [JPUSHService setAlias:[responseObject[@"data"][@"userId"] description] completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+//                NSLog(@"别名设置为%ld---%@",(long)iResCode,iAlias);
+//            } seq:10000];
             YSAccount *account = [YSAccount mj_objectWithKeyValues:responseObject[kData]];
             [YSAccountTool saveAccount:account];
             [weakSelf loadUserInfo];
