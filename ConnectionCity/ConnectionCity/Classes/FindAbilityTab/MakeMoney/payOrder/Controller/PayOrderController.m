@@ -192,7 +192,7 @@
 #pragma mark - 接口请求
 //赚外快-创建订单（支付全额/分期/保证金）
 - (void)v1TalentTenderorderCreate {
-    if (_lastBtn==nil) {
+    if (_lastBtn1==nil) {
         [YTAlertUtil showTempInfo:@"请选择支付方式"];
         return;
     }
@@ -206,12 +206,12 @@
 
     WeakSelf
     [YSNetworkTool POST:v1TalentTenderorderCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        if (weakSelf.lastBtn.tag==100) {
+        if (weakSelf.lastBtn1.tag==100) {
             //[YTThirdPartyPay v1Pay:@{@"orderNo": responseObject[kData],@"payType":kBalance}];
             [weakSelf v1Pay:@{@"orderNo": responseObject[kData],@"payType":kBalance}];
-        }else if (weakSelf.lastBtn.tag==101) {
+        }else if (weakSelf.lastBtn1.tag==101) {
             [YTThirdPartyPay v1Pay:@{@"orderNo": responseObject[kData],@"payType":kWechat}];
-        }else if(weakSelf.lastBtn.tag==102){
+        }else if(weakSelf.lastBtn1.tag==102){
             [YTThirdPartyPay v1Pay:@{@"orderNo": responseObject[kData],@"payType":kAlipay}];
         }
         

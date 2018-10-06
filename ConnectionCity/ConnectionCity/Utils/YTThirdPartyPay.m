@@ -13,10 +13,7 @@
 #import "WXApi.h"
 #import "WXApiObject.h"
 #import "NSString+MD5.h"
-
-
 @implementation YTThirdPartyPay
-
 #pragma mark - Pay by third party
 + (void)v1Pay:(NSDictionary *)dic {
     [YSNetworkTool POST:v1Pay params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
