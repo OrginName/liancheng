@@ -12,6 +12,7 @@
 #import "ReleaseTenderController.h"
 #import "SendSwapController.h"
 #import "privateUserInfoModel.h"
+#import "ResumeController.h"
 @implementation FirstTanView
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super initWithCoder:aDecoder]) {
@@ -53,8 +54,24 @@
     }
 }
 - (IBAction)FirstTanClick:(UIButton *)sender {
+    
     if (sender.tag==5) {
         
+    }else if (sender.tag==3){
+        [YSNetworkTool POST:v1MyResumePage params:@{@"pageNumber": @1,@"pageSize":@20} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+            if ([responseObject[@"data"][@"content"] count]!=0) {
+                NSArray * arr = [OurResumeMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+                OurResumeMo *mo = arr[0];
+                ResumeController * resume = [ResumeController new];
+                resume.resume = mo;
+                [self.messController.navigationController pushViewController:resume animated:YES];
+                
+            }else{
+                [self.messController.navigationController pushViewController:[self rotateClass:@"ResumeController"] animated:YES];
+            }
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
     }else{
         NSArray * arr = @[@"SendServiceController",@"SendTripController",@"ReleaseTenderController",@"SendSwapController"];
         [self.messController.navigationController pushViewController:[self rotateClass:arr[sender.tag-1]] animated:YES];
