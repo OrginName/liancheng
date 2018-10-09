@@ -44,7 +44,7 @@
 #define QQ_APPID @"1106473725"
 #define QQ_APPKEY @"dTrtNRCsVY79nCwC"
 #define APPID_WEIXIN @"wx59416de31bed624b"
-#define APPSECRET_WEIXIN @"682ffe7c6b89c8eea9f30862ebdfc1ce"
+#define APPSECRET_WEIXIN @"bc53b4eff040fe8c682f32019bbe059c"
 #define RONGCLOUD_IM_APPKEY @"ik1qhw09iprwp"// online key
 #define UMENG_APPKEY @"5b4a423c8f4a9d1b3a00047e"
 #define LOG_EXPIRE_TIME -7 * 24 * 60 * 60
@@ -128,7 +128,8 @@
     NSString *password = [KUserDefults objectForKey:@"userPwd"];
     NSString *userNickName = [KUserDefults objectForKey:@"userNickName"];
     NSString *userPortraitUri = [KUserDefults objectForKey:@"userPortraitUri"];
-    if (token.length && userId.length && password.length) {
+//    token.length && userId.length && password.length
+    if ([YSAccountTool userInfo]!=nil) {
         BaseTabBarController *baseTabBar = [[BaseTabBarController alloc]init];
         //    ShowResumeController * baseTabBar = [ShowResumeController new];
         [self.window setRootViewController:baseTabBar];

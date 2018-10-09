@@ -216,7 +216,7 @@ NSString * const YTHttpUtilResponseData = @"Data";
 
 /** 服务器返回是否成功的字段 */
 + (BOOL)isSuccessWithResp:(id)response {
-    BOOL isSuccess = [response[kCode] isEqualToString:@"SUCCESS"];
+    BOOL isSuccess = [response[kCode] isEqualToString:@"SUCCESS"]||[response[kCode] isEqualToString:@"NOT_FOUND"];
     return isSuccess;
 }
 /** 处理请求失败 */

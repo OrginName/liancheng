@@ -73,11 +73,6 @@
     return self;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - searchResultDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == self.searchDisplayController.searchResultsTableView)
@@ -194,16 +189,15 @@
 /**
  *  执行delegate搜索好友
  *
- *  @param searchBar  searchBar description
- *  @param searchText searchText description
+ *  @param searchBar  searchBar description 
  */
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [_searchResult removeAllObjects];
-    if ([searchText length]>0) {
+    if ([searchBar.text length]>0) {
         [RCDHTTPTOOL
-            searchUserByPhone:searchText 
+            searchUserByPhone:searchBar.text
                      complete:^(NSMutableArray *result) {
-                         if (result) {
+                         if (result.count!=0) {
                              for (RCDUserInfo *user in result) {
                                  if ([user.userId isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
                                      [[RCDUserInfoManager shareInstance]
@@ -225,6 +219,12 @@
                                             }];
                                  }
                              }
+                         }else{
+                             dispatch_async(dispatch_get_main_queue(), ^{
+                            [self.searchDisplayController.searchResultsTableView reloadData];
+                                 [searchBar becomeFirstResponder];
+                             });
+                             
                          }
                      }];
     }

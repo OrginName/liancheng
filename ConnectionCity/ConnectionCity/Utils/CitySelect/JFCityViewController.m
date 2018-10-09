@@ -245,6 +245,7 @@ JFSearchViewDelegate,UITextFieldDelegate>
             [KUserDefults setObject:mo.ID forKey:kUserCityID];
         }
         if ([[mo.isHot description] isEqualToString:@"1"]) {
+            NSLog(@"++++++%@",mo.fullName);
             [self.hotCity_Arr addObject:mo];
         }
         if (mo.initial.length) {

@@ -339,7 +339,7 @@
     [ShareSDK getUserInfo:SSDKPlatformTypeQQ onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
         [ShareSDK cancelAuthorize:SSDKPlatformTypeQQ];
         if (state == SSDKResponseStateSuccess) {
-            NSDictionary *dic = @{@"headImageUrl": user.icon,@"identifier":user.uid,@"loginType":@"qq",@"nickName":user.nickname,@"status":@"1",@"jpushRegistrationId":[KUserDefults objectForKey:JpuskKey]};
+            NSDictionary *dic = @{@"headImageUrl": user.icon,@"identifier":user.uid,@"loginType":@"qq",@"nickName":user.nickname,@"status":@"1",@"jpushRegistrationId":[KUserDefults objectForKey:JpuskKey]?[KUserDefults objectForKey:JpuskKey]:@"123"};
             [weakSelf auth:dic];
         }else{
             [YTAlertUtil alertSingleWithTitle:@"提示" message:@"授权失败" defaultTitle:@"确定" defaultHandler:nil completion:nil];
@@ -351,7 +351,7 @@
 - (void)weixinAuthSuccess:(NSNotification*)dic {
     NSDictionary *dd = dic.userInfo;
     NSLog(@"%@",[KUserDefults objectForKey:JpuskKey]);
-    NSDictionary *dict = @{@"headImageUrl": dd[@"headimgurl"],@"identifier":dd[@"openid"],@"loginType":@"wechat",@"nickName":dd[@"nickname"],@"status":@"1",@"jpushRegistrationId":[KUserDefults objectForKey:JpuskKey]};
+    NSDictionary *dict = @{@"headImageUrl": dd[@"headimgurl"],@"identifier":dd[@"openid"],@"loginType":@"wechat",@"nickName":dd[@"nickname"],@"status":@"1",@"jpushRegistrationId":[KUserDefults objectForKey:JpuskKey]?[KUserDefults objectForKey:JpuskKey]:@"123"};
     [self auth:dict];
 }
 #pragma mark - 请求数据

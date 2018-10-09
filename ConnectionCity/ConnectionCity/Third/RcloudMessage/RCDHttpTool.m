@@ -576,7 +576,7 @@
 - (void)searchUserByPhone:(NSString *)phone complete:(void (^)(NSMutableArray *))userList {
     NSMutableArray *list = [NSMutableArray new]; 
     [YSNetworkTool POST:v1PrivateUserSearch params:@{@"keyword":KString(@"%@", phone)} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        if (userList && [KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]){
+        if ([KString(@"%@", responseObject[@"code"]) isEqualToString:@"SUCCESS"]){
             id result = responseObject[@"data"];
             if ([result respondsToSelector:@selector(intValue)])
                 return;
@@ -591,8 +591,8 @@
                 [list addObject:userInfo];
                 userList(list);
             }
-        } else if (userList) {
-            userList(nil);
+        } else{
+            userList(list);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         userList(nil);
