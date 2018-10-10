@@ -283,6 +283,7 @@
 		8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9A20A2DABD00C3157F /* ConnectionController.xib */; };
 		8D2B8BA020A2DACC00C3157F /* MakeMoneyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9E20A2DACC00C3157F /* MakeMoneyController.m */; };
 		8D2B8BA120A2DACC00C3157F /* MakeMoneyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2B8B9F20A2DACC00C3157F /* MakeMoneyController.xib */; };
+		8D32B8B2216DCE3D001D1D68 /* CommonNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D32B8B1216DCE3D001D1D68 /* CommonNet.m */; };
 		8D35878720C6A544008A5E74 /* OurPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D35878520C6A544008A5E74 /* OurPlayController.m */; };
 		8D35878820C6A544008A5E74 /* OurPlayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D35878620C6A544008A5E74 /* OurPlayController.xib */; };
 		8D35878C20C6A693008A5E74 /* OurPlayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D35878A20C6A693008A5E74 /* OurPlayCell.m */; };
@@ -1222,6 +1223,8 @@
 		8D2B8B9D20A2DACC00C3157F /* MakeMoneyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MakeMoneyController.h; sourceTree = "<group>"; };
 		8D2B8B9E20A2DACC00C3157F /* MakeMoneyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MakeMoneyController.m; sourceTree = "<group>"; };
 		8D2B8B9F20A2DACC00C3157F /* MakeMoneyController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MakeMoneyController.xib; sourceTree = "<group>"; };
+		8D32B8B0216DCE3D001D1D68 /* CommonNet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonNet.h; sourceTree = "<group>"; };
+		8D32B8B1216DCE3D001D1D68 /* CommonNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonNet.m; sourceTree = "<group>"; };
 		8D35878420C6A544008A5E74 /* OurPlayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OurPlayController.h; sourceTree = "<group>"; };
 		8D35878520C6A544008A5E74 /* OurPlayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OurPlayController.m; sourceTree = "<group>"; };
 		8D35878620C6A544008A5E74 /* OurPlayController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OurPlayController.xib; sourceTree = "<group>"; };
@@ -2830,6 +2833,7 @@
 		72EC1B7F20BC307E00ACC20B /* FindService */ = {
 			isa = PBXGroup;
 			children = (
+				8D32B8AF216DCE1A001D1D68 /* CommonNet */,
 				72EC1B8020BC307E00ACC20B /* Circle */,
 				72EC1B8420BC307E00ACC20B /* Profile */,
 				72EC1B8820BC307E00ACC20B /* ServiceHome */,
@@ -3329,6 +3333,16 @@
 			);
 			path = MakeMoney;
 			sourceTree = "<group>";
+		};
+		8D32B8AF216DCE1A001D1D68 /* CommonNet */ = {
+			isa = PBXGroup;
+			children = (
+				8D32B8B0216DCE3D001D1D68 /* CommonNet.h */,
+				8D32B8B1216DCE3D001D1D68 /* CommonNet.m */,
+			);
+			name = CommonNet;
+			path = ConnectionCity/Classes/CommonNet;
+			sourceTree = SOURCE_ROOT;
 		};
 		8D35878320C692EB008A5E74 /* View */ = {
 			isa = PBXGroup;
@@ -5537,6 +5551,7 @@
 				CEE68C4920ECFAFC00233AE3 /* TravelInvite.m in Sources */,
 				CEC4A55120C3FF4F0026EE19 /* YTSideMenuModel.m in Sources */,
 				7266FEC5210B4304005794AD /* MyCollectionView.m in Sources */,
+				8D32B8B2216DCE3D001D1D68 /* CommonNet.m in Sources */,
 				8DD48CCF20A811EA00D6D1E6 /* TAPageControl.m in Sources */,
 				8DE4669320EE0C3F009730F7 /* RCDGroupTableViewCell.m in Sources */,
 				CE0BA5E7209D5E9B004C3C33 /* YSTools.m in Sources */,

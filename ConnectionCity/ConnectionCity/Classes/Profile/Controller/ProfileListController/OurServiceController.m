@@ -83,7 +83,8 @@
 }
 //刷新数据
 -(void)reloadData{
-    UITableView * tab = self.tab_Arr[_currentIndex];
+    _page=1;
+    MyTab * tab = self.tab_Arr[_currentIndex];
     [tab.mj_header beginRefreshing];
 }
 -(void)setUI{
@@ -260,14 +261,14 @@
                            @"pageSize": @15,
                            };
     [ProfileNet requstMyService:dic ZT:self.inter flag:_tmpBtn.tag block:^(NSMutableArray *successArrValue) {
+        if (_page==1) {
+            [self.data_Arr removeAllObjects];
+        }
         if (successArrValue.count==0) {
             [self endRefrsh:tab];
             [tab reloadData];
             return;
-        }
-        if (_page==1) {
-            [self.data_Arr removeAllObjects];
-        }
+        } 
         _page++;
         self.data_Arr = successArrValue;
         [tab reloadData];

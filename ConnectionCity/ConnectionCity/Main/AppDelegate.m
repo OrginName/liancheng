@@ -35,6 +35,7 @@
 #import "JPUSHService.h"
 // iOS10注册APNs所需头文件
 #import "NoticeController.h"
+#import "CommonNet.h"
 #import "RCDAddressBookViewController.h"
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
@@ -128,6 +129,7 @@
     NSString *password = [KUserDefults objectForKey:@"userPwd"];
     NSString *userNickName = [KUserDefults objectForKey:@"userNickName"];
     NSString *userPortraitUri = [KUserDefults objectForKey:@"userPortraitUri"];
+    [CommonNet CheckVersion];
 //    token.length && userId.length && password.length
     if ([YSAccountTool userInfo]!=nil) {
         BaseTabBarController *baseTabBar = [[BaseTabBarController alloc]init];

@@ -8,8 +8,12 @@
 
 #import "AboutOurController.h"
 #import "AgreementController.h"
-
+#import "CommonNet.h"
 @interface AboutOurController ()
+{
+    NSString * str_bundle;
+}
+@property (weak, nonatomic) IBOutlet UILabel *lab_bundle;
 
 @end
 
@@ -18,11 +22,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"关于连程";
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    // app build版本
+    NSString *appCurVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    str_bundle = appCurVersion;
+    self.lab_bundle.text = KString(@"V %@", appCurVersion);
 }
 - (IBAction)BtnClick:(UIButton *)sender {
     NSArray * arr = @[privacyAgreement,connectRule,useAgreement,userBehaviorStandard,serviceAgreement,about];
     if (sender.tag==1) {
-        [YTAlertUtil showTempInfo:@"火热开发中..."];
+        [CommonNet CheckVersion];
     }else if (sender.tag==7){ 
         AgreementController *agreementVC = [[AgreementController alloc]init];
         agreementVC.url = KString(@"%@/contact/index", baseUrl);

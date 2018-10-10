@@ -17,6 +17,10 @@
 
 #define baseUrl  @"http://m.lian-cheng.com"
 
+//APP更新链接
+//itms-apps://itunes.apple.com/cn/app/id1329918420?mt=8
+static NSString * const v1CheckVersionUrl = @"";
+
 #pragma mark ----- 首页-------
 //发现 -发布朋友圈
 static NSString * const v1FriendCircleCreate = @"/v1/friend-circle/create";
@@ -564,6 +568,9 @@ static NSString * const v1MyConfigGet = @"/v1/my/config/get";
 static NSString * const v1MyConfigUpdate = @"/v1/my/config/update";
 //获取某个用户配置列表
 static NSString * const v1PrivateUserConfig = @"/v1/private/user/config";
+//获取版本号
+static NSString * const v1AppVersion = @"/v1/app/version";
+
 
 #endif /* YSInterface_h */
 
