@@ -7,7 +7,7 @@
 //
 
 #import "CircleNet.h"
-#import "Moment.h"
+
 @implementation CircleNet
 /**
  圈子列表
@@ -104,11 +104,11 @@
  圈子详情
  @param sucBlock 成功回调
  */
-+(void)requstCircleDetail:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock{
++(void)requstCircleDetail:(NSDictionary *) param withSuc:(SuccMoment)sucBlock{
     [YSNetworkTool POST:v1ServiceCircleInfo params:param showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray * arr1 = [NSMutableArray array];
         Moment * momet = [Moment mj_objectWithKeyValues:responseObject[@"data"]];
-        momet.ID = responseObject[@"data"][@"id"];
+        momet.ID = [responseObject[@"data"][@"id"] description];
         momet.commentCount = responseObject[@"data"][@"obj"][@"commentCount"];
         momet.likeCount = responseObject[@"data"][@"obj"][@"likeCount"];
         NSArray * arr = responseObject[@"data"][@"obj"][@"comments"];
@@ -116,7 +116,9 @@
             Comment * comment = [Comment mj_objectWithKeyValues:arr[i]];
             [arr1 addObject:comment];
         }
-        sucBlock(arr1);
+        momet.comments = [arr1 mutableCopy];
+        momet.userMo = [UserMo mj_objectWithKeyValues:responseObject[@"data"][@"obj"][@"user"]];
+        sucBlock(momet);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

@@ -22,6 +22,7 @@
 {
     NSInteger CurrentIndex;
 }
+@property (nonatomic,strong) Moment * moment;
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,strong) MomentDetailView * momment;
 @property (nonatomic,strong)CommentView * comment;
@@ -44,8 +45,11 @@
 }
 -(void)loadCircleDetail{
     WeakSelf
-    [CircleNet requstCircleDetail:@{@"id":self.receiveMo.ID} withSuc:^(NSMutableArray *successArrValue) {
-        weakSelf.receiveMo.comments = successArrValue;
+    [CircleNet requstCircleDetail:@{@"id":self.receiveMo.ID} withSuc:^(Moment *mo) {
+        weakSelf.moment = mo;
+        weakSelf.receiveMo.comments = mo.comments;
+        weakSelf.receiveMo.userMo = mo.userMo;
+        weakSelf.momment.receiveMo = self.receiveMo;
         [weakSelf.tab_Bottom reloadData];
     }];
 }
@@ -80,7 +84,6 @@
          self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(ClearAll) image:@"" title:@"清空" EdgeInsets:UIEdgeInsetsZero];
     }
     self.momment = [[MomentDetailView alloc] initWithFrame:CGRectZero];
-    self.momment.receiveMo = self.receiveMo;
     self.tab_Bottom.tableHeaderView = self.momment;
     self.tab_Bottom.tableHeaderView.height = self.receiveMo.cellHeight;
     self.momment.Btnblock = ^{
@@ -139,7 +142,7 @@
     longPressGesture.minimumPressDuration=1.0f;//设置长按 时间
     [cell addGestureRecognizer:longPressGesture];
     
-    cell.moment =self.receiveMo.comments[indexPath.row];
+    cell.moment =self.moment.comments[indexPath.row];
     return cell;
 }
 -(void)cellLongPress:(UILongPressGestureRecognizer *)longRecognizer{
@@ -271,6 +274,9 @@
     if ([receiveMo.userId isEqualToString:[[YSAccountTool userInfo]modelId]]) {
         self.delebtn.hidden = NO;
     }
+    if ([receiveMo.userMo.isFriend isEqualToString:@"1"]) {
+        self.btnYD.hidden = YES;
+    }
     // 头像
     [_headImage sd_setImageWithURL:[NSURL URLWithString:receiveMo.userMo.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
     // 昵称
@@ -302,6 +308,9 @@
     }];
     [_btnSave mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_timelab.mas_top);
+        if ([receiveMo.userMo.isFriend isEqualToString:@"1"]){
+           make.left.equalTo(_timelab.mas_right).offset(5);
+        }else
         make.left.equalTo(_btnYD.mas_right).offset(5);
         make.bottom.equalTo(_btnYD.mas_bottom);
     }];

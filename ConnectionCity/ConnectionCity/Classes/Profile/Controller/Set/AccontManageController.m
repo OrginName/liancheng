@@ -39,6 +39,12 @@
     self.accountArr = [kDefaults objectForKey:KAccountManager];
     self.selectRow = 9999;
     self.selectRow1 = [[KUserDefults objectForKey:@"Online"] integerValue]?[[KUserDefults objectForKey:@"Online"] integerValue]:0;
+    NSString * status = [[YSAccountTool userInfo] status];
+    if ([status isEqualToString:@"0"]) {
+        _selectRow1 = 0;
+    }else{
+        _selectRow1 = 1;
+    }
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section==0) {
@@ -163,6 +169,8 @@
                            @"status": @(a)
                            };
     [YSNetworkTool POST:v1PrivateUserUpdate params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
+        [YSAccountTool saveUserinfo:userInfoModel];
         [KUserDefults setObject:KString(@"%ld", (long)a) forKey:@"Online"];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         

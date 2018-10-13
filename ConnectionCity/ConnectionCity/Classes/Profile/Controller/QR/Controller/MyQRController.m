@@ -22,7 +22,11 @@
 @end
 
 @implementation MyQRController
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self requestV1PrivateUserInfo];
+    [self loadUserPZ];//加载用户配置信息
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"我的二维码";
@@ -30,8 +34,6 @@
     self.bgView.layer.cornerRadius = 5;
     self.headImgV.layer.cornerRadius = 5;
     self.headImgV.clipsToBounds = YES;
-    [self loadUserPZ];//加载用户配置信息
-    [self requestV1PrivateUserInfo];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(SX) name:@"LCPZ" object:nil];
 }
 -(void)SX{
@@ -89,10 +91,10 @@
     //设置图片
     self.imageView.image = finalImg;
     self.imageView.userInteractionEnabled = YES;
-    if ([self.LCSet intValue]==0) {
-        self.view_Meng.hidden = NO;
-        return;
-    }
+//    if ([self.LCSet intValue]==0) {
+//        self.view_Meng.hidden = NO;
+//        return;
+//    }
     //长按手势识别器
     UILongPressGestureRecognizer *pressGesture=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleLongPress:)];
     [self.imageView addGestureRecognizer:pressGesture];
@@ -138,6 +140,10 @@
     [YSNetworkTool POST:v1MyConfigGet params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString * str = [responseObject[@"data"][@"openSearchUserID"] description];
         weakSelf.LCSet = str?str:@"";
+        if ([weakSelf.LCSet intValue]==1) {
+            weakSelf.view_Meng.hidden = YES;
+        }else
+            weakSelf.view_Meng.hidden = NO;
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
@@ -145,16 +151,21 @@
 #pragma mark ------- 数据请求 -----------
 - (void)requestV1PrivateUserInfo {
     //获取用户信息
-    WeakSelf
-    [YSNetworkTool POST:v1PrivateUserInfo params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-        privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
-        [YSAccountTool saveUserinfo:userInfoModel];
-        
-        [weakSelf.headImgV sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
-        weakSelf.nameLab.text = userInfoModel.nickName;
-        weakSelf.addressLab.text = [NSString stringWithFormat:@"%@",[YSTools dx_isNullOrNilWithObject:userInfoModel.cityName]?@"":userInfoModel.cityName];
-        [weakSelf createCoreImage:kAccount.userId centerImage:[UIImage imageWithData:[NSData  dataWithContentsOfURL:[NSURL URLWithString:userInfoModel.headImage]]]];
-    } failure:nil];
+    privateUserInfoModel * userInfoModel = [YSAccountTool userInfo];
+    [self.headImgV sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
+    self.nameLab.text = userInfoModel.nickName;
+    self.addressLab.text = [NSString stringWithFormat:@"%@",[YSTools dx_isNullOrNilWithObject:userInfoModel.cityName]?@"":userInfoModel.cityName];
+    [self createCoreImage:kAccount.userId centerImage:[UIImage imageWithData:[NSData  dataWithContentsOfURL:[NSURL URLWithString:userInfoModel.headImage]]]];
+//    WeakSelf
+//    [YSNetworkTool POST:v1PrivateUserInfo params:nil showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+//        privateUserInfoModel *userInfoModel = [privateUserInfoModel mj_objectWithKeyValues:responseObject[@"data"]];
+//        [YSAccountTool saveUserinfo:userInfoModel];
+//
+//        [weakSelf.headImgV sd_setImageWithURL:[NSURL URLWithString:userInfoModel.headImage] placeholderImage:[UIImage imageNamed:@"our-center-1"]];
+//        weakSelf.nameLab.text = userInfoModel.nickName;
+//        weakSelf.addressLab.text = [NSString stringWithFormat:@"%@",[YSTools dx_isNullOrNilWithObject:userInfoModel.cityName]?@"":userInfoModel.cityName];
+//        [weakSelf createCoreImage:kAccount.userId centerImage:[UIImage imageWithData:[NSData  dataWithContentsOfURL:[NSURL URLWithString:userInfoModel.headImage]]]];
+//    } failure:nil];
 }
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];

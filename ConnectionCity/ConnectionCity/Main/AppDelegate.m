@@ -467,7 +467,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         notice.title = @"消息";
         BaseTabBarController *tabBar = (BaseTabBarController *)self.window.rootViewController;//获取window的跟视图,并进行强制转换
         if ([tabBar isKindOfClass:[BaseTabBarController class]]) {//判断是否是当前根视图
-            UINavigationController *nav = tabBar.selectedViewController;//获取到当前视图的导航视图
+            BaseNavigationController *nav = tabBar.selectedViewController;//获取到当前视图的导航视图
             [nav.topViewController.navigationController pushViewController:notice animated:YES];//获取当前跟视图push到的最高视图层,然后进行push到目的页面
         }
     }

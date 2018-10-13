@@ -75,8 +75,8 @@
     CurrentIndex = 0;
 }
 -(void)initData{
-    [CircleNet requstCircleDetail:@{@"id":self.moment.ID} withSuc:^(NSMutableArray *successArrValue) {
-        self.array = successArrValue;
+    [CircleNet requstCircleDetail:@{@"id":self.moment.ID} withSuc:^(Moment *mo) {
+        self.array = mo.comments;
         [self.tab_bottom reloadData];
     }];
 }

@@ -567,7 +567,7 @@ NSMutableDictionary *userInputStatus;
 
 #pragma mark override
 - (void)didTapMessageCell:(RCMessageModel *)model {
-//    [super didTapMessageCell:model];
+    [super didTapMessageCell:model];
 //    if ([model.content isKindOfClass:[RCRealTimeLocationStartMessage class]]) {
 //        [self showRealTimeLocationViewController];
 //    }

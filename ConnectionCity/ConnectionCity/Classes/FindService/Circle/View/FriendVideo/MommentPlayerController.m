@@ -35,6 +35,8 @@
 @property (weak, nonatomic) IBOutlet UIView *view_Like;
 @property (weak, nonatomic) IBOutlet UIView *view_moment;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_zan;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_PL;
+@property (weak, nonatomic) IBOutlet UIButton *btn_YD;
 @property (nonatomic,strong) CustomPlayer * playView;
 @property (nonatomic,strong) UIView * mainView;
 @end
@@ -77,6 +79,13 @@
     //写入这个方法后,这个页面将没有这种效果
     [IQKeyboardManager sharedManager].enable = NO;
 //    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
+    WeakSelf
+    [CircleNet requstCircleDetail:@{@"id":self.moment.ID} withSuc:^(Moment *mo) {
+        if ([mo.userMo.isFriend isEqualToString:@"1"]) {
+            weakSelf.layout_PL.constant = 10;
+            weakSelf.btn_YD.hidden = YES;
+        }
+    }];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];

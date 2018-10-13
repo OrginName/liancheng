@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Moment.h"
 /**
  *  类型自定义
  */
 typedef void (^SuccessArrBlock) (NSMutableArray * successArrValue);
 typedef void (^SuccessDicBlock) (NSDictionary * successDicValue);
 typedef void (^FailErrBlock) (NSError * failValue);
-
+typedef void(^SuccMoment) (Moment * mo);
 @interface CircleNet : NSObject
 /**
  旅行旅游列表
@@ -37,7 +38,7 @@ typedef void (^FailErrBlock) (NSError * failValue);
  评论发送列表
  @param sucBlock 成功回调
  */
-+(void)requstCircleDetail:(NSDictionary *) param withSuc:(SuccessArrBlock)sucBlock;
++(void)requstCircleDetail:(NSDictionary *) param withSuc:(SuccMoment)sucBlock;
 /**
  点赞接口
  @param sucBlock 成功回调

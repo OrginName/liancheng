@@ -265,8 +265,8 @@
             [self.data_Arr removeAllObjects];
         }
         if (successArrValue.count==0) {
-            [self endRefrsh:tab];
             [tab reloadData];
+            [self endRefrsh:tab];
             return;
         } 
         _page++;
@@ -298,7 +298,7 @@
     _pageView.selectColor = YSColor(243, 152, 48);
     _pageView.lineColor = YSColor(243, 152, 48);
     [self.view addSubview:_pageView];
-    UITableView * tab = arr1[_currentIndex];
+    MyTab * tab = arr1[_currentIndex];
     [tab.mj_header beginRefreshing];
 }
 #pragma mark ---UITableViewDelegate------

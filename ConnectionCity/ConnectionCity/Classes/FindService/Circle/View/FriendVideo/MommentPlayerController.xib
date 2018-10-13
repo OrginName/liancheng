@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MommentPlayerController">
             <connections>
                 <outlet property="btn_PL" destination="4TJ-YK-ydz" id="Hif-vC-i5c"/>
+                <outlet property="btn_YD" destination="yPk-HS-Kia" id="kTl-4Q-Xw9"/>
                 <outlet property="btn_Zan" destination="JQp-gq-Asa" id="TT9-CB-y4Q"/>
                 <outlet property="btn_like" destination="P0g-cs-B5h" id="tz9-2Z-yas"/>
                 <outlet property="btn_moment" destination="pgU-8C-Ge5" id="Ld5-zJ-gT0"/>
@@ -21,6 +22,7 @@
                 <outlet property="lab_Zan" destination="cwR-Mg-jQp" id="D4s-0w-KXl"/>
                 <outlet property="lab_time" destination="jhp-be-qXm" id="kAp-LG-vku"/>
                 <outlet property="lab_title" destination="xSr-a7-ci3" id="woO-1e-B4k"/>
+                <outlet property="layout_PL" destination="eIq-fY-o8j" id="IXn-Nv-sGK"/>
                 <outlet property="layout_zan" destination="kiD-yd-DTv" id="sna-Zg-054"/>
                 <outlet property="like_Zan" destination="i72-z9-PNA" id="Xlm-hh-ucS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -85,7 +87,7 @@
                     <rect key="frame" x="10" y="607" width="355" height="50"/>
                     <subviews>
                         <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入评论内容" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="26Y-lQ-BI1">
-                            <rect key="frame" x="10" y="6" width="205" height="38"/>
+                            <rect key="frame" x="10" y="6" width="206" height="38"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -110,7 +112,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4TJ-YK-ydz">
-                            <rect key="frame" x="225" y="8" width="70" height="35"/>
+                            <rect key="frame" x="226" y="8" width="70" height="35"/>
                             <color key="backgroundColor" red="0.9137254901960784" green="0.37647058823529411" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="YgZ-E2-H6c"/>
@@ -129,7 +131,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjD-yJ-ece">
-                            <rect key="frame" x="10" y="7" width="207" height="37"/>
+                            <rect key="frame" x="10" y="7" width="208" height="37"/>
                             <connections>
                                 <action selector="TanClick:" destination="-1" eventType="touchUpInside" id="Lrl-zj-zsO"/>
                             </connections>
@@ -141,11 +143,11 @@
                         <constraint firstItem="4TJ-YK-ydz" firstAttribute="centerY" secondItem="yPk-HS-Kia" secondAttribute="centerY" id="Erc-hU-Eqw"/>
                         <constraint firstItem="4TJ-YK-ydz" firstAttribute="leading" secondItem="26Y-lQ-BI1" secondAttribute="trailing" constant="10" id="HBh-vI-AVr"/>
                         <constraint firstItem="26Y-lQ-BI1" firstAttribute="leading" secondItem="a91-J1-WeO" secondAttribute="leading" constant="10" id="JXN-hi-4di"/>
-                        <constraint firstItem="yPk-HS-Kia" firstAttribute="leading" secondItem="4TJ-YK-ydz" secondAttribute="trailing" constant="10" id="QXo-1M-aso"/>
                         <constraint firstItem="zjD-yJ-ece" firstAttribute="leading" secondItem="a91-J1-WeO" secondAttribute="leading" constant="10" id="Xnz-zg-Bsw"/>
                         <constraint firstAttribute="trailing" secondItem="yPk-HS-Kia" secondAttribute="trailing" constant="10" id="YOq-l7-OCe"/>
                         <constraint firstItem="26Y-lQ-BI1" firstAttribute="top" secondItem="a91-J1-WeO" secondAttribute="top" constant="6" id="Zec-3b-Fi0"/>
                         <constraint firstAttribute="bottom" secondItem="zjD-yJ-ece" secondAttribute="bottom" constant="6" id="aeE-mT-YdB"/>
+                        <constraint firstAttribute="trailing" secondItem="4TJ-YK-ydz" secondAttribute="trailing" constant="59" id="eIq-fY-o8j"/>
                         <constraint firstItem="zjD-yJ-ece" firstAttribute="top" secondItem="a91-J1-WeO" secondAttribute="top" constant="7" id="gnR-Ns-8wa"/>
                         <constraint firstItem="yPk-HS-Kia" firstAttribute="centerY" secondItem="a91-J1-WeO" secondAttribute="centerY" id="pgD-ap-bhr"/>
                         <constraint firstItem="4TJ-YK-ydz" firstAttribute="leading" secondItem="zjD-yJ-ece" secondAttribute="trailing" constant="8" id="sPO-Mh-BV7"/>

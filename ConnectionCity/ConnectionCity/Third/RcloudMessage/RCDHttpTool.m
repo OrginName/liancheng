@@ -103,9 +103,12 @@
     [YSNetworkTool POST:str params:@{@"id": str1} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *code = [NSString stringWithFormat:@"%@", responseObject[@"code"]];
         NSDictionary * result;
+        if ([responseObject[@"data"] count]==0) {
+            return [YTAlertUtil showTempInfo:@"该群已解散或您当前不在此群组"];
+        }
         if (flag==2) {
             result = responseObject[@"data"][@"serviceStation"];
-        }else if (flag==3){
+        }else if (flag==3){ 
             result = responseObject[@"data"][@"group"];
         }else{
            result = responseObject[@"data"][@"team"];

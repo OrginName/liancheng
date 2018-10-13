@@ -552,12 +552,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                                         [[RCDataBaseManager shareInstance] deleteGroupToDB:groupId];
                                         [self.navigationController popToRootViewControllerAnimated:YES];
                                     } else {
-                                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
-                                                                                            message:@"退出失败！"
-                                                                                           delegate:nil
-                                                                                  cancelButtonTitle:@"确定"
-                                                                                  otherButtonTitles:nil, nil];
-                                        [alertView show];
+                                        
                                     }
                                 });
                             }];

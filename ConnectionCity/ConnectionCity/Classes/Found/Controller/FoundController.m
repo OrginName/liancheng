@@ -72,8 +72,8 @@
             YCProjectScanningController *scanVC = [[YCProjectScanningController alloc]init];
             scanVC.completionHandler = ^(NSString *result) {
                  
-                    [RCDHTTPTOOL requestFriend:[result componentsSeparatedByString:@"_"][1] complete:^(BOOL result) {
-                        [YTAlertUtil showTempInfo:@"添加成功"];
+                    [RCDHTTPTOOL requestFriend:[result componentsSeparatedByString:@"_"][0] complete:^(BOOL result) {
+                        [YTAlertUtil showTempInfo:@"申请已发送"];
                     }];
                 
             };
