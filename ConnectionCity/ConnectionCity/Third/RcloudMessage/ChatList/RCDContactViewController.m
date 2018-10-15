@@ -50,6 +50,7 @@
     self.friendsTabelView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self updateData];
     }];
+//    [self.friendsTabelView.mj_header beginRefreshing];
 }
 
 - (UISearchBar *)searchFriendsBar {
@@ -66,12 +67,12 @@
     return _searchFriendsBar;
 }
 
-- (RCDTableView *)friendsTabelView {
+- (UITableView *)friendsTabelView {
     if (!_friendsTabelView) {
         CGRect searchBarFrame = self.searchFriendsBar.frame;
         CGFloat originY = CGRectGetMaxY(searchBarFrame);
-        _friendsTabelView = [[RCDTableView alloc]
-                             initWithFrame:CGRectMake(0, originY, self.view.bounds.size.width, self.view.bounds.size.height - searchBarFrame.size.height)
+        _friendsTabelView = [[UITableView alloc]
+                             initWithFrame:CGRectMake(0, originY, self.view.width, self.view.height - searchBarFrame.size.height)
                     style:UITableViewStyleGrouped];
         
         _friendsTabelView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
@@ -95,11 +96,11 @@
     }
     return _friendsTabelView;
 }
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:
-     [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
-}
+//-(void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear:animated];
+//    [self.navigationController.navigationBar setBackgroundImage:
+//     [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
+//}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -119,12 +120,12 @@
     self.friendsTabelView.sectionIndexBackgroundColor = [UIColor clearColor];
     self.friendsTabelView.sectionIndexColor = HEXCOLOR(0x555555);
 
-    if ([self.friendsTabelView respondsToSelector:@selector(setSeparatorInset:)]) {
-        [self.friendsTabelView setSeparatorInset:UIEdgeInsetsMake(0, 14, 0, 0)];
-    }
-    if ([self.friendsTabelView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [self.friendsTabelView setLayoutMargins:UIEdgeInsetsMake(0, 14, 0, 0)];
-    }
+//    if ([self.friendsTabelView respondsToSelector:@selector(setSeparatorInset:)]) {
+//        [self.friendsTabelView setSeparatorInset:UIEdgeInsetsMake(0, 14, 0, 0)];
+//    }
+//    if ([self.friendsTabelView respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [self.friendsTabelView setLayoutMargins:UIEdgeInsetsMake(0, 14, 0, 0)];
+//    }
 
     UIImage *searchBarBg = [self GetImageWithColor:[UIColor clearColor] andHeight:32.0f];
     //设置顶部搜索栏的背景图片
@@ -159,7 +160,8 @@
     
     self.tabBarController.navigationItem.title = @"通讯录";
     [self.searchFriendsBar resignFirstResponder];
-    [self sortAndRefreshWithList:[self getAllFriendList]];
+    
+    [self updateData];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:@"MYADDRESSBOOK" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateBage:) name:@"JOINACTIVE" object:nil];
 }
@@ -191,12 +193,6 @@
 //        [self.friendsTabelView setContentOffset:CGPointMake(0, 0) animated:NO];
     }
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger rows = 0;
@@ -251,7 +247,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *isDisplayID = [[NSUserDefaults standardUserDefaults] objectForKey:@"isDisplayID"];
+//    NSString *isDisplayID = [[NSUserDefaults standardUserDefaults] objectForKey:@"isDisplayID"];
     static NSString *reusableCellWithIdentifier = @"RCDContactTableViewCell";
     RCDContactTableViewCell *cell =
         [self.friendsTabelView dequeueReusableCellWithIdentifier:reusableCellWithIdentifier];
@@ -260,29 +256,29 @@
     }
 
     if (indexPath.section == 0 && indexPath.row < 2) {
-        if ([RCDForwardMananer shareInstance].isForward && indexPath.section == 0 && indexPath.row == 0) {
-            
-        }else{
-            if (indexPath.row==0) {
-                UIView * view = [[UIView alloc] initWithFrame:CGRectMake(110, 22, 10, 10)];
-                view.backgroundColor = [UIColor redColor];
-                view.alpha = 0.8;
-                view.tag = 1000000;
-                view.hidden = YES;
-                view.layer.cornerRadius = 5;
-                view.layer.masksToBounds = YES;
-                [cell.contentView addSubview:view];
-            }
+//        if ([RCDForwardMananer shareInstance].isForward && indexPath.section == 0 && indexPath.row == 0) {
+//
+//        }else{
+//            if (indexPath.row==0) {
+//                UIView * view = [[UIView alloc] initWithFrame:CGRectMake(110, 22, 10, 10)];
+//                view.backgroundColor = [UIColor redColor];
+//                view.alpha = 0.8;
+//                view.tag = 1000000;
+//                view.hidden = YES;
+//                view.layer.cornerRadius = 5;
+//                view.layer.masksToBounds = YES;
+//                [cell.contentView addSubview:view];
+//            }
             cell.nicknameLabel.text = [_defaultCellsTitle objectAtIndex:indexPath.row];
             [cell.portraitView
              setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", [_defaultCellsPortrait
                                                                              objectAtIndex:indexPath.row]]]];
-        }
+//        }
     }
     if (indexPath.section == 0 && indexPath.row == 2) {
-        if ([isDisplayID isEqualToString:@"YES"]) {
-            cell.userIdLabel.text = [RCIM sharedRCIM].currentUserInfo.userId;
-        }
+//        if ([isDisplayID isEqualToString:@"YES"]) {
+//            cell.userIdLabel.text = [RCIM sharedRCIM].currentUserInfo.userId;
+//        }
        
         cell.nicknameLabel.text = [RCIM sharedRCIM].currentUserInfo.name;
         [cell.portraitView sd_setImageWithURL:[NSURL URLWithString:[RCIM sharedRCIM].currentUserInfo.portraitUri]
@@ -294,36 +290,36 @@
         NSArray *sectionUserInfoList = self.allFriendSectionDic[letter];
         RCDUserInfo *userInfo = sectionUserInfoList[indexPath.row];
         if (userInfo) {
-            if ([isDisplayID isEqualToString:@"YES"]) {
-                cell.userIdLabel.text = userInfo.userId;
-            }
+//            if ([isDisplayID isEqualToString:@"YES"]) {
+//                cell.userIdLabel.text = userInfo.userId;
+//            }
             if ([[userInfo.status description] isEqualToString:@"0"]||[[userInfo.status description] isEqualToString:@"2"]) {
                  cell.statusLabel.text = @"【离线】";
             }
             cell.nicknameLabel.text = [userInfo.name isEqualToString:@"<null>"]?userInfo.userId:userInfo.name;
             
-            if ([userInfo.portraitUri isEqualToString:@""]) {
-                DefaultPortraitView *defaultPortrait =
-                    [[DefaultPortraitView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-                [defaultPortrait setColorAndLabel:userInfo.userId Nickname:userInfo.name];
-                UIImage *portrait = [defaultPortrait imageFromView];
-                cell.portraitView.image = portrait;
-            } else {
+//            if ([userInfo.portraitUri isEqualToString:@""]) {
+//                DefaultPortraitView *defaultPortrait =
+//                    [[DefaultPortraitView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+//                [defaultPortrait setColorAndLabel:userInfo.userId Nickname:userInfo.name];
+//                UIImage *portrait = [defaultPortrait imageFromView];
+//                cell.portraitView.image = portrait;
+//            } else {
                 [cell.portraitView sd_setImageWithURL:[NSURL URLWithString:userInfo.portraitUri]
                                      placeholderImage:[UIImage imageNamed:@"contact"]];
-            }
+//            }
         }
     }
-    if ([RCIM sharedRCIM].globalConversationAvatarStyle == RC_USER_AVATAR_CYCLE &&
-        [RCIM sharedRCIM].globalMessageAvatarStyle == RC_USER_AVATAR_CYCLE) {
-        cell.portraitView.layer.masksToBounds = YES;
-        cell.portraitView.layer.cornerRadius = 20.f;
-    } else {
-        cell.portraitView.layer.masksToBounds = YES;
-        cell.portraitView.layer.cornerRadius = 5.f;
-    }
+//    if ([RCIM sharedRCIM].globalConversationAvatarStyle == RC_USER_AVATAR_CYCLE &&
+//        [RCIM sharedRCIM].globalMessageAvatarStyle == RC_USER_AVATAR_CYCLE) {
+//        cell.portraitView.layer.masksToBounds = YES;
+//        cell.portraitView.layer.cornerRadius = 20.f;
+//    } else {
+//        cell.portraitView.layer.masksToBounds = YES;
+//        cell.portraitView.layer.cornerRadius = 5.f;
+//    }
     cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-    cell.portraitView.contentMode = UIViewContentModeScaleAspectFill;
+//    cell.portraitView.contentMode = UIViewContentModeScaleAspectFill;
     cell.nicknameLabel.font = [UIFont systemFontOfSize:15.f];
     return cell;
 }

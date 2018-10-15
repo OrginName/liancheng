@@ -323,6 +323,7 @@
 		8D8E4ED420C9320200C3D537 /* PrivateController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D8E4ED220C9320200C3D537 /* PrivateController.xib */; };
 		8D8E4ED720C937D200C3D537 /* NKColorSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E4ED620C937D200C3D537 /* NKColorSwitch.m */; };
 		8D95E325210EDF5600C26892 /* HCCountdown.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D95E323210EDF5500C26892 /* HCCountdown.m */; };
+		8D9F84932174B028002084AD /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D9F84922174B028002084AD /* libc++.tbd */; };
 		8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990620A6FDEB00968F86 /* ResumeController.m */; };
 		8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA4990720A6FDEB00968F86 /* ResumeController.xib */; };
 		8DA4990D20A7063E00968F86 /* ResumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990B20A7063E00968F86 /* ResumeCell.m */; };
@@ -1285,6 +1286,7 @@
 		8D8E4ED620C937D200C3D537 /* NKColorSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKColorSwitch.m; sourceTree = "<group>"; };
 		8D95E323210EDF5500C26892 /* HCCountdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCountdown.m; sourceTree = "<group>"; };
 		8D95E324210EDF5600C26892 /* HCCountdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCountdown.h; sourceTree = "<group>"; };
+		8D9F84922174B028002084AD /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		8DA4990520A6FDEB00968F86 /* ResumeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeController.h; sourceTree = "<group>"; };
 		8DA4990620A6FDEB00968F86 /* ResumeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeController.m; sourceTree = "<group>"; };
 		8DA4990720A6FDEB00968F86 /* ResumeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeController.xib; sourceTree = "<group>"; };
@@ -2050,6 +2052,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D9F84932174B028002084AD /* libc++.tbd in Frameworks */,
 				8DEA451620C12180001529F1 /* AVFoundation.framework in Frameworks */,
 				CE14BD6C20F3780F00F85C49 /* AlipaySDK.framework in Frameworks */,
 				8D24A22720A19C8F00F0740D /* MapKit.framework in Frameworks */,
@@ -3039,6 +3042,7 @@
 		8B7BE3068BAA237F55FD6962 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8D9F84922174B028002084AD /* libc++.tbd */,
 				72626F3E20ECFBE9001B807D /* RongContactCard.framework */,
 				8DEA451520C12180001529F1 /* AVFoundation.framework */,
 				729BA6D820A04BE7009713FD /* MapKit.framework */,
@@ -6095,7 +6099,6 @@
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ConnectionCity/Third/RcloudMessage/framework",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ConnectionCity/Third/Alipay",
 				);
@@ -6155,7 +6158,6 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ConnectionCity/Third/RcloudMessage/framework",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ConnectionCity/Third/Alipay",
 				);
