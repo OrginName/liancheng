@@ -324,6 +324,7 @@
 		8D8E4ED720C937D200C3D537 /* NKColorSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E4ED620C937D200C3D537 /* NKColorSwitch.m */; };
 		8D95E325210EDF5600C26892 /* HCCountdown.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D95E323210EDF5500C26892 /* HCCountdown.m */; };
 		8D9F84932174B028002084AD /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D9F84922174B028002084AD /* libc++.tbd */; };
+		8D9F84982174C682002084AD /* ContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F84962174C682002084AD /* ContactCell.m */; };
 		8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990620A6FDEB00968F86 /* ResumeController.m */; };
 		8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA4990720A6FDEB00968F86 /* ResumeController.xib */; };
 		8DA4990D20A7063E00968F86 /* ResumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990B20A7063E00968F86 /* ResumeCell.m */; };
@@ -1287,6 +1288,8 @@
 		8D95E323210EDF5500C26892 /* HCCountdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCCountdown.m; sourceTree = "<group>"; };
 		8D95E324210EDF5600C26892 /* HCCountdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCCountdown.h; sourceTree = "<group>"; };
 		8D9F84922174B028002084AD /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		8D9F84952174C682002084AD /* ContactCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactCell.h; sourceTree = "<group>"; };
+		8D9F84962174C682002084AD /* ContactCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactCell.m; sourceTree = "<group>"; };
 		8DA4990520A6FDEB00968F86 /* ResumeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeController.h; sourceTree = "<group>"; };
 		8DA4990620A6FDEB00968F86 /* ResumeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeController.m; sourceTree = "<group>"; };
 		8DA4990720A6FDEB00968F86 /* ResumeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeController.xib; sourceTree = "<group>"; };
@@ -3098,6 +3101,7 @@
 		8D14FDE320EB0BAA0013A9DF /* RcloudMessage */ = {
 			isa = PBXGroup;
 			children = (
+				8D9F84942174C64B002084AD /* Cell */,
 				8DE4668420EE05B2009730F7 /* SearchFiend */,
 				8DE4663720EDF609009730F7 /* View */,
 				8DE465EC20EDF225009730F7 /* Set */,
@@ -3424,6 +3428,15 @@
 				CE6BEC2D20C970D1003B36D7 /* EditProfileHeadView.xib */,
 			);
 			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		8D9F84942174C64B002084AD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8D9F84952174C682002084AD /* ContactCell.h */,
+				8D9F84962174C682002084AD /* ContactCell.m */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		8DA4990420A6FDCB00968F86 /* PersonalResume */ = {
@@ -5453,6 +5466,7 @@
 				72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */,
 				721B5658215BA9670024953B /* YBIBPhotoAlbumManager.m in Sources */,
 				72626F5B20ED03BC001B807D /* RCDTestMessage.m in Sources */,
+				8D9F84982174C682002084AD /* ContactCell.m in Sources */,
 				721B5655215BA9660024953B /* YBIBFileManager.m in Sources */,
 				8DE465E420EDF162009730F7 /* RCDContactSelectedCollectionViewCell.m in Sources */,
 				8D6A29CC212BED0800361850 /* ForgetPasswordView.m in Sources */,

@@ -29,6 +29,7 @@
 #import "FoundQunController.h"
 #import "RCDChatViewController.h"
 #import "UITabBar+badge.h"
+#import "ContactCell.h"
 @interface RCDContactViewController ()
 @property(strong, nonatomic) NSMutableArray *matchFriendList;
 @property(strong, nonatomic) NSArray *defaultCellsTitle;
@@ -248,7 +249,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    NSString *isDisplayID = [[NSUserDefaults standardUserDefaults] objectForKey:@"isDisplayID"];
-    static NSString *reusableCellWithIdentifier = @"RCDContactTableViewCell";
+    
+    static NSString *reusableCellWithIdentifier = @"ContactCell";
+    ContactCell * cell = []
     RCDContactTableViewCell *cell =
         [self.friendsTabelView dequeueReusableCellWithIdentifier:reusableCellWithIdentifier];
     if (cell == nil) {
