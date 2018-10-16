@@ -42,7 +42,7 @@ static NSArray * arr_title;
 }
 -(void)setReceive_Mo:(trvalMo *)receive_Mo{
     _receive_Mo = receive_Mo;
-    [self.image_Head sd_setImageWithURL:[NSURL URLWithString:receive_Mo.user.headImage] placeholderImage:[UIImage imageNamed:@"no-pic"]];
+    [self.image_Head sd_setImageWithURL:[NSURL URLWithString:receive_Mo.user.headImage] placeholderImage:[UIImage imageNamed:@"logo2"]];
     self.lab_Name.text = receive_Mo.user.nickName?receive_Mo.user.nickName:@"无";
     self.lab_Time.text = receive_Mo.createTime;
     self.lab_Age.text = receive_Mo.user.age?receive_Mo.user.age:@"无";

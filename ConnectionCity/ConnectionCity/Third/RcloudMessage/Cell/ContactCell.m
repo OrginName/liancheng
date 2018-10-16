@@ -9,6 +9,14 @@
 #import "ContactCell.h"
 #import "UIColor+RCColor.h"
 @implementation ContactCell
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self = [super initWithStyle:style
+                reuseIdentifier:reuseIdentifier];
+    if (self) {
+        [self initialize];
+    }
+    return self;
+}
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -26,20 +34,20 @@
 }
 - (void)initialize {
     _portraitView = [[UIImageView alloc] init];
-    _portraitView.translatesAutoresizingMaskIntoConstraints = NO;
+//    _portraitView.translatesAutoresizingMaskIntoConstraints = NO;
     _portraitView.frame = CGRectMake(10, 8, 40, 40);
     _portraitView.layer.cornerRadius = 2;
     _portraitView.layer.masksToBounds = YES;
     [self.contentView addSubview:_portraitView];
     
     _nicknameLabel = [[UILabel alloc] init];
-    _nicknameLabel.translatesAutoresizingMaskIntoConstraints = NO;
+//    _nicknameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _nicknameLabel.frame = CGRectMake(_portraitView.width+20, 8, 200, 40);
     [_nicknameLabel setFont:[UIFont fontWithName:@"Heiti SC" size:15.0]];
     [self.contentView addSubview:_nicknameLabel];
  
     _statusLabel = [[UILabel alloc] init];
-    _statusLabel.translatesAutoresizingMaskIntoConstraints = NO;
+//    _statusLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [_statusLabel setFont:[UIFont fontWithName:@"Heiti SC" size:14.0]];
     _statusLabel.frame = CGRectMake(kScreenWidth-100, 8, 70, 40);
     _statusLabel.textColor = [UIColor lightGrayColor];

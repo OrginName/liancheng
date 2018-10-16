@@ -82,8 +82,8 @@
         return;
     }
     // 更新视图数据
-    _previewView.pageNum = count;
-    _previewView.scrollView.contentSize = CGSizeMake(_previewView.width*count, _previewView.height);
+//    _previewView.pageNum = count;
+//    _previewView.scrollView.contentSize = CGSizeMake(_previewView.width*count, _previewView.height);
     // 添加图片
     MMImageView *imageView = nil;
     for (NSInteger i = 0; i < count; i++)
@@ -131,7 +131,7 @@
         if (![YSTools dx_isNullOrNilWithObject:urlStr]) {
             YBImageBrowseCellData *data = [YBImageBrowseCellData new];
             data.url = [NSURL URLWithString:urlStr];
-            data.sourceObject = imageView;
+            data.sourceObject = _imageViewsArray[idx];
             [browserDataArr addObject:data];
         }
     }];

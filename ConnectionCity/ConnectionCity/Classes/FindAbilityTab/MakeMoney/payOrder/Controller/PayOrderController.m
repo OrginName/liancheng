@@ -245,10 +245,11 @@
         } completion:nil];
     }else if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"failure"]) {
         //支付失败
-        WeakSelf
-        [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付失败" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        } completion:nil];
+        [YTAlertUtil showTempInfo:@"支付失败，请重新支付"];
+//        WeakSelf
+//        [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付失败" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+//            [weakSelf.navigationController popViewControllerAnimated:YES];
+//        } completion:nil];
     }
 }
 - (void)wxNotice:(NSNotification *)notification {
@@ -263,10 +264,11 @@
         } completion:nil];
     }else if ([[notification.userInfo objectForKey:@"status"] isEqualToString:@"failure"]) {
         //支付失败
-        WeakSelf
-        [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付失败" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        } completion:nil];
+        [YTAlertUtil showTempInfo:@"支付失败，请重新支付"];
+//        WeakSelf
+//        [YTAlertUtil alertSingleWithTitle:@"提示" message:@"支付失败" defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+//            [weakSelf.navigationController popViewControllerAnimated:YES];
+//        } completion:nil];
     }
 }
 

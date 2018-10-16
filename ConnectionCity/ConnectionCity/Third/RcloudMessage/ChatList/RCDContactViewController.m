@@ -251,11 +251,14 @@
 //    NSString *isDisplayID = [[NSUserDefaults standardUserDefaults] objectForKey:@"isDisplayID"];
     
     static NSString *reusableCellWithIdentifier = @"ContactCell";
-    ContactCell * cell = []
-    RCDContactTableViewCell *cell =
-        [self.friendsTabelView dequeueReusableCellWithIdentifier:reusableCellWithIdentifier];
-    if (cell == nil) {
-        cell = [[RCDContactTableViewCell alloc] init];
+    ContactCell * cell = [tableView dequeueReusableCellWithIdentifier:reusableCellWithIdentifier];
+//    RCDContactTableViewCell *cell =
+//        [self.friendsTabelView dequeueReusableCellWithIdentifier:reusableCellWithIdentifier];
+//    if (cell == nil) {
+//        cell = [[RCDContactTableViewCell alloc] init];
+//    }
+    if (!cell) {
+        cell = [[ContactCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reusableCellWithIdentifier];
     }
 
     if (indexPath.section == 0 && indexPath.row < 2) {
@@ -272,10 +275,9 @@
 //                view.layer.masksToBounds = YES;
 //                [cell.contentView addSubview:view];
 //            }
-            cell.nicknameLabel.text = [_defaultCellsTitle objectAtIndex:indexPath.row];
+            cell.nicknameLabel.text = _defaultCellsTitle[indexPath.row];
             [cell.portraitView
-             setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", [_defaultCellsPortrait
-                                                                             objectAtIndex:indexPath.row]]]];
+             setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", _defaultCellsPortrait[indexPath.row]]]];
 //        }
     }
     if (indexPath.section == 0 && indexPath.row == 2) {

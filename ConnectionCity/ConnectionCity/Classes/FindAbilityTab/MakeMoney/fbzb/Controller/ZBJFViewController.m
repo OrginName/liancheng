@@ -280,39 +280,50 @@
     }else{
         mo = [arr[8] contentArr][7];
     }
-
-    NSDictionary *dic = @{
-                          @"amount": self.cellCntentText[9],
-                          @"areaCode": self.mo.ID?self.mo.ID:@"",
-                          @"company": self.cellCntentText[1],
-                          @"contactMobile": self.cellCntentText[11],
-                          @"contactName": self.cellCntentText[10],
-                          @"content": self.cellCntentText[5],
-                          @"depositAmount": mo20.data,
-                          @"industryCategoryId": self.industryCategoryId?self.industryCategoryId:@"",
-                          @"industryCategoryName": self.industryCategoryName?self.industryCategoryName:@"",
-                          @"industryCategoryParentId": @"",
-                          @"industryCategoryParentName": @"",
-                          @"lat": self.mo?self.mo.lat:@"",
-                          @"lng": self.mo?self.mo.lng:@"",
-                          @"periodAmount1": mo0.data,
-                          @"periodAmount2": mo1.data,
-                          @"periodAmount3": mo2.data,
-                          @"periodAmount4": mo3.data,
-                          @"periodAmount5": mo4.data,
-                          @"rewardAmount1": mo0.data,
-                          @"rewardAmount2": mo1.data,
-                          @"rewardAmount3": mo2.data,
-                          @"rewardAmount4": mo3.data,
-                          @"rewardAmount5": mo4.data,
-                          @"tenderAddress": self.cellCntentText[4],
-                          @"tenderEndDate": self.cellCntentText[8],
-                          @"tenderImages": self.cellCntentText[6],
-                          @"tenderStartDate": self.cellCntentText[7],
-                          @"title": self.cellCntentText[0],
-                          @"tenderId": self.tenderId?self.tenderId:@"",
-                          @"payType":mo.value
-                          };
+    
+    NSMutableDictionary *dic =[[NSMutableDictionary alloc] initWithDictionary:@{
+                                                                                                          @"amount": self.cellCntentText[9],
+                                                                                @"areaCode": self.mo.ID?self.mo.ID:@"",
+                                                                                @"company": self.cellCntentText[1],
+                                                                                @"contactMobile": self.cellCntentText[11],
+                                                                                @"contactName": self.cellCntentText[10],
+                                                                                @"content": self.cellCntentText[5],
+                                                                                //                          @"depositAmount": mo20.data,
+                                                                                @"industryCategoryId": self.industryCategoryId?self.industryCategoryId:@"",
+                                                                                @"industryCategoryName": self.industryCategoryName?self.industryCategoryName:@"",
+                                                                                @"industryCategoryParentId": @"",
+                                                                                @"industryCategoryParentName": @"",
+                                                                                @"lat": self.mo?self.mo.lat:@"",
+                                                                                @"lng": self.mo?self.mo.lng:@"",
+                                                                                //                          @"periodAmount1": mo0.data,
+                                                                                //                          @"periodAmount2": mo1.data,
+                                                                                //                          @"periodAmount3": mo2.data,
+                                                                                //                          @"periodAmount4": mo3.data,
+                                                                                //                          @"periodAmount5": mo4.data,
+                                                                                //                          @"rewardAmount1": mo0.data,
+                                                                                //                          @"rewardAmount2": mo1.data,
+                                                                                //                          @"rewardAmount3": mo2.data,
+                                                                                //                          @"rewardAmount4": mo3.data,
+                                                                                //                          @"rewardAmount5": mo4.data,
+                                                                                @"tenderAddress": self.cellCntentText[4],
+                                                                                @"tenderEndDate": self.cellCntentText[8],
+                                                                                @"tenderImages": self.cellCntentText[6],
+                                                                                @"tenderStartDate": self.cellCntentText[7],
+                                                                                @"title": self.cellCntentText[0],
+                                                                                @"tenderId": self.tenderId?self.tenderId:@"",
+                                                                                @"payType":mo.value
+                                                                                }] ;
+    if (mo00.bbb) {
+//        [dic setObject:self.cellCntentText[9] forKey:@"amount"];
+    }else if (mo0.bbb || mo1.bbb || mo2.bbb || mo3.bbb || mo4.bbb){
+        [dic setObject:mo0.data forKey:@"periodAmount1"];
+        [dic setObject:mo1.data forKey:@"periodAmount2"];
+        [dic setObject:mo2.data forKey:@"periodAmount3"];
+        [dic setObject:mo3.data forKey:@"periodAmount4"];
+        [dic setObject:mo4.data forKey:@"periodAmount5"];
+    }else if (mo20.bbb){
+        [dic setObject:mo20.data forKey:@"depositAmount"];
+    }
     BOOL a = [self.receive_flag isEqualToString:@"EDIT"]?YES:NO;
     if (a) {
         [self v1TalentTenderUpdate:dic];

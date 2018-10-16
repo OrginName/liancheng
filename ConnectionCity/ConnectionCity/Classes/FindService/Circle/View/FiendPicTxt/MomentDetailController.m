@@ -33,7 +33,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [IQKeyboardManager sharedManager].enable = NO;
-    [self loadCircleDetail];
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,6 +50,7 @@
         weakSelf.receiveMo.comments = mo.comments;
         weakSelf.receiveMo.userMo = mo.userMo;
         weakSelf.momment.receiveMo = self.receiveMo;
+        weakSelf.tab_Bottom.tableHeaderView.height = weakSelf.receiveMo.cellHeight;
         [weakSelf.tab_Bottom reloadData];
     }];
 }
@@ -85,7 +86,7 @@
     }
     self.momment = [[MomentDetailView alloc] initWithFrame:CGRectZero];
     self.tab_Bottom.tableHeaderView = self.momment;
-    self.tab_Bottom.tableHeaderView.height = self.receiveMo.cellHeight;
+    
     self.momment.Btnblock = ^{
         [weakSelf ClearAll];
     };//删除
@@ -98,7 +99,7 @@
 //        [weakSelf.navigationController pushViewController:serive animated:YES];
         [weakSelf loadServiceList];
     };//约单
-    [self.tab_Bottom reloadData];
+    [self loadCircleDetail];
 }
 //加载服务列表数据
 -(void)loadServiceList{
