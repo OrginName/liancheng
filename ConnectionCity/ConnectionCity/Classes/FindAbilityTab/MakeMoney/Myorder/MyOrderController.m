@@ -8,7 +8,7 @@
 
 #import "MyOrderController.h"
 
-@interface MyOrderController ()<uita>
+@interface MyOrderController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tab_bottom;
 
 @end
@@ -17,5 +17,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+#pragma mark ------UITableViewDelegate------
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 10;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    cell.textLabel.text = KString(@"%ld", (long)indexPath.row);
+    return cell;
 }
 @end
