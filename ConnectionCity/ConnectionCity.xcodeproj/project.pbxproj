@@ -329,6 +329,8 @@
 		8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA4990720A6FDEB00968F86 /* ResumeController.xib */; };
 		8DA4990D20A7063E00968F86 /* ResumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA4990B20A7063E00968F86 /* ResumeCell.m */; };
 		8DA4990E20A7063E00968F86 /* ResumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA4990C20A7063E00968F86 /* ResumeCell.xib */; };
+		8DAA2FEB21774BEE0030C329 /* MyOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAA2FE921774BEE0030C329 /* MyOrderController.m */; };
+		8DAA2FEC21774BEE0030C329 /* MyOrderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DAA2FEA21774BEE0030C329 /* MyOrderController.xib */; };
 		8DAB6671211AD663000FBFD8 /* MyCircleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DAB6670211AD662000FBFD8 /* MyCircleController.xib */; };
 		8DB277AE20EF34C400B3D747 /* groupMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB277AD20EF34C400B3D747 /* groupMo.m */; };
 		8DB277B120EF53B900B3D747 /* RCDSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB277AF20EF53B800B3D747 /* RCDSearchViewController.m */; };
@@ -1296,6 +1298,9 @@
 		8DA4990A20A7063E00968F86 /* ResumeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeCell.h; sourceTree = "<group>"; };
 		8DA4990B20A7063E00968F86 /* ResumeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeCell.m; sourceTree = "<group>"; };
 		8DA4990C20A7063E00968F86 /* ResumeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeCell.xib; sourceTree = "<group>"; };
+		8DAA2FE821774BEE0030C329 /* MyOrderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderController.h; sourceTree = "<group>"; };
+		8DAA2FE921774BEE0030C329 /* MyOrderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderController.m; sourceTree = "<group>"; };
+		8DAA2FEA21774BEE0030C329 /* MyOrderController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyOrderController.xib; sourceTree = "<group>"; };
 		8DAB6670211AD662000FBFD8 /* MyCircleController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCircleController.xib; sourceTree = "<group>"; };
 		8DB277AC20EF34C400B3D747 /* groupMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = groupMo.h; sourceTree = "<group>"; };
 		8DB277AD20EF34C400B3D747 /* groupMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = groupMo.m; sourceTree = "<group>"; };
@@ -3327,6 +3332,7 @@
 		8D2B8B8D20A2DA7A00C3157F /* MakeMoney */ = {
 			isa = PBXGroup;
 			children = (
+				8DAA2FE721774B180030C329 /* Myorder */,
 				CE97DC0A20B5B221003E46BD /* Controller */,
 				CE97DC0B20B5B222003E46BD /* View */,
 				CE9B9A5720E7DC68005C47B2 /* Models */,
@@ -3464,6 +3470,16 @@
 				721DAE0420F2421A006F141F /* SortCollProController.m */,
 			);
 			path = PersonalResume;
+			sourceTree = "<group>";
+		};
+		8DAA2FE721774B180030C329 /* Myorder */ = {
+			isa = PBXGroup;
+			children = (
+				8DAA2FE821774BEE0030C329 /* MyOrderController.h */,
+				8DAA2FE921774BEE0030C329 /* MyOrderController.m */,
+				8DAA2FEA21774BEE0030C329 /* MyOrderController.xib */,
+			);
+			path = Myorder;
 			sourceTree = "<group>";
 		};
 		8DB277AB20EF349E00B3D747 /* Model */ = {
@@ -5340,6 +5356,7 @@
 				8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */,
 				72D8B1542128830E007EE681 /* AddKissController.xib in Resources */,
 				CEA79B2F212804F60026522E /* FeedbackController.xib in Resources */,
+				8DAA2FEC21774BEE0030C329 /* MyOrderController.xib in Resources */,
 				8DEA450520C10BB7001529F1 /* FindMySelfCell.xib in Resources */,
 				CEBEDD9820B17F40000F9EE4 /* BulidTeamController.xib in Resources */,
 				CE5C280D20B91AD8006A8332 /* WinnerInfoController.xib in Resources */,
@@ -5478,6 +5495,7 @@
 				CEA79B2E212804F60026522E /* FeedbackController.m in Sources */,
 				8DE4664B20EDF71B009730F7 /* RCAnnotationView.m in Sources */,
 				CEBEDD8B20B17ED1000F9EE4 /* BountyHostingController.m in Sources */,
+				8DAA2FEB21774BEE0030C329 /* MyOrderController.m in Sources */,
 				8DE4664A20EDF71B009730F7 /* RCAnnotation.m in Sources */,
 				72EBB8B620C6DB5900F670E9 /* CardAuthorController.m in Sources */,
 				8DE465CB20EDEE24009730F7 /* RCDForwardAlertView.m in Sources */,

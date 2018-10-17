@@ -12,7 +12,7 @@
 #import "FootprintController.h"
 #import "MarginController.h"
 #import "WinningBidderController.h"
-
+#import "MyOrderController.h"
 @interface BaseMakeMoneyTabController ()<UITabBarControllerDelegate>
 
 @end
@@ -36,13 +36,13 @@
     MarginController *lifeVC = [[MarginController alloc]init];
     BountyHostingController *foundVC = [[BountyHostingController alloc]init];
     FootprintController *profileVC = [[FootprintController alloc]init];
+    MyOrderController * myOrder = [MyOrderController new];
+    NSArray *arrVC = @[messageVC,addressVC,lifeVC,foundVC,profileVC,myOrder];
+    NSArray *titleArr = @[@"抢单人",@"中单人",@"保证金",@"赏金托管",@"足迹",@"我的中单"];
+    NSArray *picArr = @[@"Tendering5-5",@"Tendering4-4",@"Tendering3-3",@"Tendering2-2",@"Tendering1-1",@"Tendering4-4"];
+    NSArray *picSelectArr = @[@"Tendering5",@"Tendering4",@"Tendering3",@"Tendering2",@"Tendering1",@"Tendering4"];
     
-    NSArray *arrVC = @[messageVC,addressVC,lifeVC,foundVC,profileVC];
-    NSArray *titleArr = @[@"抢单人",@"中单人",@"保证金",@"赏金托管",@"足迹"];
-    NSArray *picArr = @[@"Tendering5-5",@"Tendering4-4",@"Tendering3-3",@"Tendering2-2",@"Tendering1-1"];
-    NSArray *picSelectArr = @[@"Tendering5",@"Tendering4",@"Tendering3",@"Tendering2",@"Tendering1"];
-    
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 6; i++) {
         [self addChildViewController:arrVC[i] title:titleArr[i] image:picArr[i] selectedImage:picSelectArr[i]];
     }
 }
