@@ -21,7 +21,7 @@
 #import "DubTimeSlectorController.h"
 
 @interface FirstController ()<FirstSectionHeadVDelegate,FirstTableViewCellDelegate,JFCityViewControllerDelegate,LCDatePickerDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet MyTab *tableView;
 @property (nonatomic, strong) FirstSectionHeadV *sectinV;
 @property (nonatomic, strong) LCDatePicker * myDatePick;
 @property (nonatomic, strong) NSMutableArray * arr_Class;
@@ -45,8 +45,10 @@
     [self setTableView];
     [self initData];
     [self initDate];
+     _page=1;
     [self addHeaderRefresh];
     [self addFooterRefresh];
+   
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -210,7 +212,7 @@
                           @"industryCategoryId":_industryCategoryId?_industryCategoryId:@"",
                           @"maxDate": _endTime?_endTime:@"",
                           @"minDate": _startTime?_startTime:@"",
-                          @"pageNumber": [NSString stringWithFormat:@"%ld",(long)_page],
+                          @"pageNumber": @(_page),
                           @"pageSize": @"10",
                           @"provinceCode": @""
                           };

@@ -55,7 +55,7 @@
     FirstController * first = [FirstController new];
     MyOrderController * order = [MyOrderController new];
     NSArray *arrVC = @[first,messageVC,addressVC,lifeVC,foundVC,profileVC,order];
-    _titleArr = @[@"抢单人",@"中单人",@"保证金",@"赏金托管",@"足迹",@"我的订单"];
+    _titleArr = @[@"抢单人",@"中单人",@"保证金",@"赏金托管",@"足迹",@"我的中单"];
     NSArray *picArr = @[@"Tendering5-5",@"Tendering4-4",@"Tendering3-3",@"Tendering2-2",@"Tendering1-1",@"Tendering4-4"];
     NSArray *picSelectArr = @[@"Tendering5",@"Tendering4",@"Tendering3",@"Tendering2",@"Tendering1",@"Tendering4"];
     self.custom = [[CustomPage alloc]initSegmentWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kSafeAreaBottomHeight - 64) titlesArray:_titleArr withSelectArr:picSelectArr withDeSlectArr:picArr vcOrviews:arrVC];

@@ -14,7 +14,7 @@
 #import "RCDHttpTool.h"
 
 @interface WinningBidderController ()<WinningBidderCellDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet MyTab *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, assign) NSInteger page;
 

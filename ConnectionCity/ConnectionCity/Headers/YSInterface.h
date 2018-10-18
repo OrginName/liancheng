@@ -259,6 +259,10 @@ static NSString * const v1TalentTenderFootPrintPage = @"/v1/talent/tender/foot-p
 static NSString * const v1TalentTenderRecordWin = @"/v1/talent/tender/record/win";
 //招标订单状态更新
 static NSString * const v1TalentTenderUpdateOrderStatus = @"/v1/talent/tender/update-order-status";
+//我的中单
+static NSString * const v1TalentTenderMyWinPage = @"/v1/talent/tender/my-win/page";
+
+
 
 #pragma mark - 关键字信息
 //换着玩关键字
