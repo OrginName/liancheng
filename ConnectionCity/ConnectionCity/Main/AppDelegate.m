@@ -12,6 +12,7 @@
 #import "ResumeController.h"
 #import "ShowResumeController.h"
 #import "YSLoginController.h"
+#import "BaseOneTabController.h"
 #import <AudioToolbox/AudioToolbox.h>
 //#import <RongCallKit/RongCallKit.h>
 #import <RongIMKit/RongIMKit.h>
@@ -129,7 +130,7 @@
     NSString *password = [KUserDefults objectForKey:@"userPwd"];
     NSString *userNickName = [KUserDefults objectForKey:@"userNickName"];
     NSString *userPortraitUri = [KUserDefults objectForKey:@"userPortraitUri"];
-    [CommonNet CheckVersion];
+    [CommonNet CheckVersion:false];
 //    token.length && userId.length && password.length
     if ([YSAccountTool userInfo]!=nil) {
         BaseTabBarController *baseTabBar = [[BaseTabBarController alloc]init];
@@ -439,6 +440,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [self gotoNextPage:userInfo];
     completionHandler();  // 系统要求执行这个方法
 }
+//点击通知栏跳转界面
 -(void)gotoNextPage:(NSDictionary *)userInfo{
     NSArray * arr = @[@"10",@"20",@"30",@"40"];
     // 融云目前用到的消息类型  RC:TxtMsg RC:ImgMsg RC:CardMsg RC:FileMsg RC:VcMsg
@@ -462,6 +464,13 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             [nav.topViewController.navigationController pushViewController:service animated:YES];//获取当前跟视图push到的最高视图层,然后进行push到目的页面
         }
         
+    }else if([[userInfo[@"type"] description] isEqualToString:@"6"]){
+        BaseOneTabController * service = [BaseOneTabController new]; 
+        BaseTabBarController *tabBar = (BaseTabBarController *)self.window.rootViewController;//获取window的跟视图,并进行强制转换
+        if ([tabBar isKindOfClass:[BaseTabBarController class]]) {//判断是否是当前根视图
+            BaseNavigationController *nav = tabBar.selectedViewController;//获取到当前视图的导航视图
+            [nav.topViewController.navigationController pushViewController:service animated:YES];//获取当前跟视图push到的最高视图层,然后进行push到目的页面
+        }
     }else{
         NoticeController * notice = [NoticeController new];
         notice.title = @"消息";
@@ -512,6 +521,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"MYSERVICE" object:@{@"num":@"1"}];
             }else if ([[userInfo[@"type"] description] isEqualToString:@"4"]){
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"MYTRVAL" object:@{@"num":@"1"}];
+            }else if ([[userInfo[@"type"] description] isEqualToString:@"6"]){
+                
             }else
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"TSJBACTIVE" object:@{@"num":@"1"}];
         } 

@@ -31,7 +31,7 @@
 - (IBAction)BtnClick:(UIButton *)sender {
     NSArray * arr = @[privacyAgreement,connectRule,useAgreement,userBehaviorStandard,serviceAgreement,about];
     if (sender.tag==1) {
-        [CommonNet CheckVersion];
+        [CommonNet CheckVersion:true];
     }else if (sender.tag==7){ 
         AgreementController *agreementVC = [[AgreementController alloc]init];
         agreementVC.url = KString(@"%@/contact/index", baseUrl);

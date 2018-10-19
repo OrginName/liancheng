@@ -51,9 +51,9 @@
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    BidManagerHeadV *tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"BidManagerHeadV" owner:nil options:nil] firstObject];
-    tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 120);
-    self.tableView.tableHeaderView = tableHeadV;
+//    BidManagerHeadV *tableHeadV = [[[NSBundle mainBundle] loadNibNamed:@"BidManagerHeadV" owner:nil options:nil] firstObject];
+//    tableHeadV.frame = CGRectMake(0, 0, kScreenWidth, 120);
+//    self.tableView.tableHeaderView = tableHeadV;
     BidManagerFootV *tableFootV = [[[NSBundle mainBundle] loadNibNamed:@"BidManagerFootV" owner:nil options:nil] firstObject];
     tableFootV.frame = CGRectMake(0, 0, kScreenWidth, 90);
     self.tableView.tableFooterView = tableFootV;

@@ -16,9 +16,6 @@ typedef void (^FailDicBlock) (NSString * failValue);
 @interface CommonNet : NSObject
 /**
  检查版本更新
- 
- @param sucBloc 成功回调
- @param failBlock 失败回调
  */
-+(void)CheckVersion;
++(void)CheckVersion:(BOOL)flag;
 @end
