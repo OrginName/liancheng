@@ -349,7 +349,7 @@
     }
 }
 
--(void)initData{ i
+-(void)initData{
     NSDictionary * dic = @{
                            @"pageNumber":@1,
                            @"pageSize":@20,
