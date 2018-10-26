@@ -54,7 +54,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0.1</string>
+	<string>1.0.7</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>mqqOpensdkSSoLogin</string>
@@ -96,16 +96,18 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>APP需要您的同意,才能在配对时使用蓝牙</string>
 	<key>NSCameraUsageDescription</key>
-	<string>App需要您的同意,才能访问相机</string>
+	<string>App需要您的同意,才能在发布服务或陪游时访问相机</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>App需要您的同意,才能在使用期间获取位置</string>
+	<string>App需要您的同意,才能在获取附近服务和人才时获取位置信息</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>App需要您的同意,才能录音</string>
+	<string>App需要您的同意,才能在实时聊天时使用录音</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>APP</string>
+	<string>APP需要您的同意,才能在发布服务和简历时使用相册</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>App需要您的同意,才能访问相册</string>
+	<string>APP需要您的同意,才能在发布服务和简历时使用相册</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

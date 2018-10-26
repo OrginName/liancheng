@@ -103,13 +103,15 @@
         NSMutableArray <YTSideMenuModel *> *menuArr = [NSMutableArray array];
         NSString *path = [[NSBundle mainBundle]pathForResource:@"MenuIcons" ofType:@"plist"];
         NSArray *menuArray = [NSArray arrayWithContentsOfFile:path];
-        if ([[[YSAccountTool userInfo] modelId] isEqualToString:@"10002"]) {
-            [menuArr removeObjectAtIndex:3];
-            [menuArr removeObjectAtIndex:0];
-        }
         [menuArray enumerateObjectsUsingBlock:^(NSDictionary *_Nonnull dic, NSUInteger idx, BOOL * _Nonnull stop) {
             YTSideMenuModel *model = [YTSideMenuModel modelWithDictionary:dic];
-            [menuArr addObject:model];
+            if ([[[YSAccountTool userInfo] modelId] isEqualToString:@"10002"]) {
+                if (idx!=0&&idx!=3) {
+                    [menuArr addObject:model];
+                }
+            }else{
+                [menuArr addObject:model];
+            }
         }];
         _menuModels = menuArr;
     }

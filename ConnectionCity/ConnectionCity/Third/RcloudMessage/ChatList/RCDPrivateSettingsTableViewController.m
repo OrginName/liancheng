@@ -49,7 +49,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     self.tableView.tableHeaderView = tan;
     [self.tableView reloadData];
     
-    if (![self.userId isEqualToString: [[YSAccountTool userInfo] modelId]]&&![self.userId isEqualToString:@"10002"]) {
+    if (![self.userId isEqualToString: [[YSAccountTool userInfo] modelId]]&&![[[YSAccountTool userInfo] modelId] isEqualToString:@"10002"]) {
         self.navigationItem.rightBarButtonItem =
         [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"our-more"]
                                          style:UIBarButtonItemStylePlain
