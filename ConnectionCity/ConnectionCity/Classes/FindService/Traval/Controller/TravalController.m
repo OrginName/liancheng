@@ -41,6 +41,7 @@
     [super viewDidLoad];
      _page=1;
     _cityID = [KUserDefults objectForKey:kUserCityID];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self setUI];
     [self initData];
 //    if ([[[YSAccountTool userInfo] modelId] isEqualToString:APPID]) {
@@ -169,8 +170,8 @@
     [super setFlag_back:YES];//设置返回按钮
     self.btn_invit.layer.borderColor = YSColor(246, 207, 174).CGColor;
     self.btn_invit.layer.borderWidth = 2;
-    TrvalCell * cell = [[NSBundle mainBundle] loadNibNamed:@"TrvalCell" owner:nil options:nil][1];
-    self.tab_Bottom.tableHeaderView = cell;
+//    TrvalCell * cell = [[NSBundle mainBundle] loadNibNamed:@"TrvalCell" owner:nil options:nil][1];
+//    self.tab_Bottom.tableHeaderView = cell;
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SearchClick) image:@"" title:@"筛选" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
     [self.view addSubview:self.trval];
     [self initLeftBarButton];
@@ -243,6 +244,16 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
 }
+-(void)setIsInvitOrTrval:(BOOL)isInvitOrTrval{
+    _isInvitOrTrval = isInvitOrTrval;
+    if (isInvitOrTrval) {//yes是旅行  NO 是陪游
+        self.tab_Bottom.hidden = YES;
+        self.trval.hidden = NO;
+    }else{
+        self.tab_Bottom.hidden = NO;
+        self.trval.hidden = YES;
+    }
+}
 - (IBAction)btnClick:(UIButton *)sender {
     sender.layer.borderWidth = 2;
     _tmpBtn.layer.borderWidth = 2;
@@ -276,7 +287,7 @@
 }
 -(TrvalTrip *)trval{
     if (!_trval) {
-        _trval = [[TrvalTrip alloc] initWithFrame:CGRectMake(10, 70, kScreenWidth-20, kScreenHeight-260) withControl:self];
+        _trval = [[TrvalTrip alloc] initWithFrame:CGRectMake(10, 10, kScreenWidth-20, kScreenHeight-180) withControl:self];
         _trval.hidden = YES;
     }
     return _trval;

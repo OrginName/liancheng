@@ -12,17 +12,32 @@
 #import "EditMenuController.h"
 #import "NoticeController.h"
 #import "JFCityViewController.h"
+#import "HomeNet.h"
+#import "MenuMo.h"
+#import "TravalController.h"
+#import "NewsListController.h"
 @interface HomeController ()<JFCityViewControllerDelegate>
 {
     BOOL flag;
 }
+@property (nonatomic,strong)NSMutableArray * myMenuArr;
 @end
 
 @implementation HomeController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     flag = NO;
-    [self setUI];
+    self.myMenuArr  = [NSMutableArray array];
+    [self initData];
+    
+}
+-(void)initData{
+    WeakSelf
+    [HomeNet loadMyMeu:^(NSMutableArray *successArrValue) {
+        weakSelf.myMenuArr = successArrValue;
+        [weakSelf setUI];
+    }];
 }
 -(void)setUI{
     //必要的设置, 如果没有设置可能导致内容显示不正常
@@ -33,6 +48,8 @@
     style.gradualChangeTitleColor = YES;
     // 显示附加的按钮
     style.showExtraButton = YES;
+    style.titleFont = [UIFont systemFontOfSize:16];
+    style.selectedTitleColor = YSColor(249, 145, 0);
     // 设置附加按钮的背景图片
 //    style.extraBtnBackgroundImageName = @"our-more";
     style.extraBtnTitleName = @"●●●";
@@ -43,9 +60,9 @@
     // 额外的按钮响应的block
     WeakSelf
     scrollPageView.extraBtnOnClick = ^(UIButton *extraBtn){
+        flag = NO;
         EditMenuController * edit = [EditMenuController new];
-        [weakSelf presentViewController:edit animated:YES completion:nil];
-        
+        [weakSelf.navigationController presentViewController:edit animated:YES completion:nil];
     };
     [self.view addSubview:scrollPageView];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MyselfClick) image:@"people" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
@@ -66,7 +83,7 @@
     UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(40, 0, 60, 44)];
     btn.tag = 99999;
     btn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [btn setTitle:@"苏州市" forState:UIControlStateNormal];
+    [btn setTitle:@"首页" forState:UIControlStateNormal];
     [btn setTitleColor:KFontColor forState:UIControlStateNormal];
     [btn setImage:[UIImage imageNamed:@"Arrow-xia1"] forState:UIControlStateNormal];
     [btn layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleRight imageTitleSpace:5];
@@ -107,18 +124,41 @@
     
 }
 - (NSArray *)setupChildVcAndTitle {
-    
-    UIViewController * vc1 = [UIViewController new];
-    vc1.view.backgroundColor = [UIColor redColor];
-    vc1.title = @"首页";
-    UIViewController * vc2 = [UIViewController new];
-    vc2.view.backgroundColor = [UIColor yellowColor];
-    vc2.title = @"首页1";
-    UIViewController * vc3 = [UIViewController new];
-    vc3.view.backgroundColor = [UIColor cyanColor];
-    vc3.title = @"首页2";
-    
-    NSArray *childVcs = [NSArray arrayWithObjects:vc1, vc2, vc3, nil];
+    TravalController * trval;
+    TravalController * trval2;
+    NewsListController * news;
+    for (MenuMo * mo in self.myMenuArr) {
+        if ([mo.ID isEqualToString:@"1"]) {//旅行
+            trval = [TravalController new];
+            trval.isInvitOrTrval = YES;
+            trval.title = mo.name;
+        }else if ([mo.ID isEqualToString:@"2"]){//娱乐
+            news = [NewsListController new];
+            news.title = @"娱乐";
+        }
+//        else if ([mo.ID isEqualToString:@"3"]){//生活
+//            TravalController * trval = [TravalController new];
+//            trval.title = mo.name;
+//        }else if ([mo.ID isEqualToString:@"4"]){//圈子
+//            TravalController * trval = [TravalController new];
+//            trval.title = mo.name;
+//        }else if ([mo.ID isEqualToString:@"5"]){//视频
+//            TravalController * trval = [TravalController new];
+//            trval.title = mo.name;
+//        }else if ([mo.ID isEqualToString:@"6"]){//工作
+//            TravalController * trval = [TravalController new];
+//            trval.title = mo.name;
+//        }else if ([mo.ID isEqualToString:@"7"]){//赚外快
+//            TravalController * trval = [TravalController new];
+//            trval.title = mo.name;
+//        }
+        else if ([mo.ID isEqualToString:@"8"]){//旅行邀约
+            trval2 = [TravalController new];
+            trval2.isInvitOrTrval = NO;
+            trval2.title = mo.name;
+        }
+    } 
+    NSArray *childVcs = [NSArray arrayWithObjects:trval,news,trval2, nil];
     return childVcs;
 }
 
@@ -128,5 +168,15 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     [self.navigationController.navigationBar setBackgroundImage:
      [UIImage createImageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    if (!flag) {
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        [self.navigationController.navigationBar setBackgroundImage:
+         [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
+    }else{
+        self.navigationController.navigationBar.hidden= YES;
+    }
 }
 @end

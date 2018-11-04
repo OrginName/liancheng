@@ -28,7 +28,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYo-X7-Dr9">
                     <rect key="frame" x="10" y="10" width="355" height="40"/>
                     <subviews>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2m-5S-3yD">
+                        <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2m-5S-3yD">
                             <rect key="frame" x="0.0" y="0.0" width="172.5" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -50,7 +50,7 @@
                                 <action selector="btnClick:" destination="-1" eventType="touchUpInside" id="HUQ-Fb-b1V"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3e-GR-LpM">
+                        <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3e-GR-LpM">
                             <rect key="frame" x="182.5" y="0.0" width="172.5" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -87,17 +87,17 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eoO-en-mft">
-                    <rect key="frame" x="10" y="60" width="355" height="597"/>
+                    <rect key="frame" x="10" y="10" width="355" height="598"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBr-UD-sSo">
-                            <rect key="frame" x="0.0" y="499" width="355" height="4"/>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBr-UD-sSo">
+                            <rect key="frame" x="0.0" y="500" width="355" height="4"/>
                             <color key="backgroundColor" red="0.94901960780000005" green="0.59607843140000005" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="4" id="3rF-In-GuA"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Od9-0U-5Bq">
-                            <rect key="frame" x="0.0" y="508" width="355" height="40"/>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Od9-0U-5Bq">
+                            <rect key="frame" x="0.0" y="509" width="355" height="40"/>
                             <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="mau-hf-n9t"/>
@@ -113,7 +113,7 @@
                             </connections>
                         </button>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="190" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Xv-SW-9fQ" customClass="MyTab">
-                            <rect key="frame" x="0.0" y="0.0" width="355" height="489"/>
+                            <rect key="frame" x="0.0" y="0.0" width="355" height="588"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="QG9-tk-xBx"/>
@@ -121,7 +121,8 @@
                             </connections>
                         </tableView>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="9Xv-SW-9fQ" secondAttribute="trailing" id="5fm-zG-uwf"/>
                         <constraint firstItem="Od9-0U-5Bq" firstAttribute="top" secondItem="PBr-UD-sSo" secondAttribute="bottom" constant="5" id="K58-DX-ZCL"/>
@@ -129,7 +130,7 @@
                         <constraint firstItem="Od9-0U-5Bq" firstAttribute="leading" secondItem="eoO-en-mft" secondAttribute="leading" id="Y5N-gb-HOs"/>
                         <constraint firstAttribute="trailing" secondItem="PBr-UD-sSo" secondAttribute="trailing" id="eBY-32-np3"/>
                         <constraint firstAttribute="trailing" secondItem="Od9-0U-5Bq" secondAttribute="trailing" id="fpL-GK-Ks4"/>
-                        <constraint firstItem="PBr-UD-sSo" firstAttribute="top" secondItem="9Xv-SW-9fQ" secondAttribute="bottom" constant="10" id="oUq-EU-frv"/>
+                        <constraint firstAttribute="bottom" secondItem="9Xv-SW-9fQ" secondAttribute="bottom" constant="10" id="j73-GY-790"/>
                         <constraint firstItem="PBr-UD-sSo" firstAttribute="leading" secondItem="eoO-en-mft" secondAttribute="leading" id="pDy-SB-Xsb"/>
                         <constraint firstItem="9Xv-SW-9fQ" firstAttribute="top" secondItem="eoO-en-mft" secondAttribute="top" id="qiv-q7-sra"/>
                         <constraint firstAttribute="bottom" secondItem="Od9-0U-5Bq" secondAttribute="bottom" constant="49" id="sJG-An-eA6"/>
@@ -143,8 +144,8 @@
                 <constraint firstItem="HYo-X7-Dr9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="bTS-fX-4wU"/>
                 <constraint firstItem="eoO-en-mft" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="duT-dN-Pvv"/>
                 <constraint firstAttribute="trailing" secondItem="eoO-en-mft" secondAttribute="trailing" constant="10" id="eOn-fO-ci1"/>
-                <constraint firstAttribute="bottom" secondItem="eoO-en-mft" secondAttribute="bottom" constant="10" id="qh2-wd-QuX"/>
-                <constraint firstItem="eoO-en-mft" firstAttribute="top" secondItem="HYo-X7-Dr9" secondAttribute="bottom" constant="10" id="wUj-vd-Bxb"/>
+                <constraint firstItem="eoO-en-mft" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="mxI-vB-qvl"/>
+                <constraint firstAttribute="bottom" secondItem="eoO-en-mft" secondAttribute="bottom" constant="59" id="qh2-wd-QuX"/>
             </constraints>
             <point key="canvasLocation" x="275" y="-225"/>
         </view>

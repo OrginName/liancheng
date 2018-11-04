@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -272,7 +273,7 @@
                 <outlet property="lab_TrvalWay" destination="HoN-uk-oTW" id="iBA-g4-ojn"/>
                 <outlet property="lab_Trvaltime" destination="cRV-Db-2V1" id="ZIc-ec-HFB"/>
             </connections>
-            <point key="canvasLocation" x="9" y="-17"/>
+            <point key="canvasLocation" x="142" y="-50"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TrvalCell1" rowHeight="50" id="k32-hG-FAI" customClass="TrvalCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
@@ -382,7 +383,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jpa-uc-1vp" id="7KC-Mz-nkl">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="95.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Jtv-ZB-dph" customClass="CustomtextView">

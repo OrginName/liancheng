@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface TravalController : BaseViewController
-
+@property (nonatomic,assign) BOOL isInvitOrTrval;
 @end

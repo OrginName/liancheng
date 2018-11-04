@@ -20,13 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.view.layer.cornerRadius = 10;
-    self.view.layer.masksToBounds = YES;
     [self initData];
-    
+    self.view.backgroundColor = YSColor(249, 144, 0);
 }
-
 -(void)initData{
     self.MyArr = [NSMutableArray array];
     self.allMenuArr = [NSMutableArray array]; 
@@ -34,12 +30,18 @@
     [HomeNet loadMyMeu:^(NSMutableArray *successArrValue) {
         weakSelf.MyArr = successArrValue;
         [HomeNet loadAllMeu:^(NSMutableArray *successArrValue) {
-            for (MenuMo * mo in weakSelf.MyArr) {
-                if ([successArrValue containsObject:mo]) {
-                    [successArrValue removeObject:mo];
-                }
-            }
             weakSelf.allMenuArr = successArrValue;
+            [weakSelf.MyArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                MenuMo * mo = (MenuMo *)obj;
+                NSString * ID = mo.ID;
+                [weakSelf.allMenuArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    MenuMo * mo1 = (MenuMo *)obj;
+                    if ([mo1.ID isEqualToString:ID]) {
+                        [weakSelf.allMenuArr removeObject:mo1];
+                        *stop = YES;
+                    }
+                }];
+            }];
             [weakSelf setUI];
         }];
     }];
@@ -71,6 +73,7 @@
 -(void)Close{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+ 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     //关闭自适应

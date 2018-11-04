@@ -106,7 +106,6 @@
 		7266FEE6211742E3005794AD /* ClassificationsController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 7266FEE5211742E3005794AD /* ClassificationsController1.m */; };
 		72695718215D260B009A4EC0 /* serviceListNewMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72695717215D260B009A4EC0 /* serviceListNewMo.m */; };
 		726B5F20218DD688000B16EE /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B5F1E218DD688000B16EE /* HomeController.m */; };
-		726B5F21218DD688000B16EE /* HomeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 726B5F1F218DD688000B16EE /* HomeController.xib */; };
 		726B5F2F218DD734000B16EE /* UIView+ZJFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B5F24218DD734000B16EE /* UIView+ZJFrame.m */; };
 		726B5F30218DD734000B16EE /* ZJContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B5F26218DD734000B16EE /* ZJContentView.m */; };
 		726B5F31218DD734000B16EE /* ZJCustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B5F28218DD734000B16EE /* ZJCustomLabel.m */; };
@@ -149,6 +148,8 @@
 		7274190220B3F60D001D6BE1 /* SendSwapController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7274190020B3F60D001D6BE1 /* SendSwapController.xib */; };
 		7274190C20B402FC001D6BE1 /* LxGridViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274190B20B402FB001D6BE1 /* LxGridViewFlowLayout.m */; };
 		7274190F20B4036E001D6BE1 /* TZTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274190E20B4036E001D6BE1 /* TZTestCell.m */; };
+		72799B7A218F4B1F00C63005 /* NewsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72799B78218F4B1F00C63005 /* NewsListController.m */; };
+		72799B7B218F4B1F00C63005 /* NewsListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72799B79218F4B1F00C63005 /* NewsListController.xib */; };
 		727C86D720DBE11D00AA2796 /* CreatGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727C86D520DBE11D00AA2796 /* CreatGroupController.m */; };
 		727C86D820DBE11D00AA2796 /* CreatGroupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727C86D620DBE11D00AA2796 /* CreatGroupController.xib */; };
 		728483412178DFA4000DF084 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7284833F2178DFA4000DF084 /* OrderCell.m */; };
@@ -936,7 +937,6 @@
 		72695717215D260B009A4EC0 /* serviceListNewMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = serviceListNewMo.m; sourceTree = "<group>"; };
 		726B5F1D218DD688000B16EE /* HomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
 		726B5F1E218DD688000B16EE /* HomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
-		726B5F1F218DD688000B16EE /* HomeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeController.xib; sourceTree = "<group>"; };
 		726B5F23218DD734000B16EE /* UIView+ZJFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZJFrame.h"; sourceTree = "<group>"; };
 		726B5F24218DD734000B16EE /* UIView+ZJFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZJFrame.m"; sourceTree = "<group>"; };
 		726B5F25218DD734000B16EE /* ZJContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJContentView.h; sourceTree = "<group>"; };
@@ -1010,6 +1010,9 @@
 		7274190B20B402FB001D6BE1 /* LxGridViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LxGridViewFlowLayout.m; sourceTree = "<group>"; };
 		7274190D20B4036E001D6BE1 /* TZTestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZTestCell.h; sourceTree = "<group>"; };
 		7274190E20B4036E001D6BE1 /* TZTestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZTestCell.m; sourceTree = "<group>"; };
+		72799B77218F4B1F00C63005 /* NewsListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsListController.h; sourceTree = "<group>"; };
+		72799B78218F4B1F00C63005 /* NewsListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsListController.m; sourceTree = "<group>"; };
+		72799B79218F4B1F00C63005 /* NewsListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListController.xib; sourceTree = "<group>"; };
 		727C86D420DBE11D00AA2796 /* CreatGroupController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreatGroupController.h; sourceTree = "<group>"; };
 		727C86D520DBE11D00AA2796 /* CreatGroupController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreatGroupController.m; sourceTree = "<group>"; };
 		727C86D620DBE11D00AA2796 /* CreatGroupController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatGroupController.xib; sourceTree = "<group>"; };
@@ -2425,12 +2428,12 @@
 		726B5F1C218DD656000B16EE /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				72799B76218F4AE700C63005 /* NewsList */,
 				726B5F40218ED03F000B16EE /* Model */,
 				726B5F3C218ECC79000B16EE /* HomeNet */,
 				726B5F35218EA894000B16EE /* EditMenu */,
 				726B5F1D218DD688000B16EE /* HomeController.h */,
 				726B5F1E218DD688000B16EE /* HomeController.m */,
-				726B5F1F218DD688000B16EE /* HomeController.xib */,
 				726B5F39218EA8B3000B16EE /* EditMenuController.h */,
 				726B5F3A218EA8B3000B16EE /* EditMenuController.m */,
 			);
@@ -2643,6 +2646,16 @@
 				7274190B20B402FB001D6BE1 /* LxGridViewFlowLayout.m */,
 			);
 			path = layout;
+			sourceTree = "<group>";
+		};
+		72799B76218F4AE700C63005 /* NewsList */ = {
+			isa = PBXGroup;
+			children = (
+				72799B77218F4B1F00C63005 /* NewsListController.h */,
+				72799B78218F4B1F00C63005 /* NewsListController.m */,
+				72799B79218F4B1F00C63005 /* NewsListController.xib */,
+			);
+			path = NewsList;
 			sourceTree = "<group>";
 		};
 		7294184F20AD119C0054B71D /* HistorySearch */ = {
@@ -5412,8 +5425,8 @@
 				8D09E18220BFB49A000F7EBD /* SendTripController.xib in Resources */,
 				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
 				CE5C281C20B94D84006A8332 /* BidManagerCell.xib in Resources */,
+				72799B7B218F4B1F00C63005 /* NewsListController.xib in Resources */,
 				CEFC04662127079C00630722 /* kissAccountController.xib in Resources */,
-				726B5F21218DD688000B16EE /* HomeController.xib in Resources */,
 				8D09E18720BFC4B8000F7EBD /* AppointmentController.xib in Resources */,
 				8D6A29CE212BED2200361850 /* ForgetPasswordView.xib in Resources */,
 				CEC4A56520C407BF0026EE19 /* WalletController.xib in Resources */,
@@ -5866,6 +5879,7 @@
 				8DF7E3CD20CF994C009A92D7 /* ClassCell.m in Sources */,
 				8DE4664020EDF701009730F7 /* HeadCollectionView.m in Sources */,
 				8D50C55620C636560095A824 /* OurResumeController.m in Sources */,
+				72799B7A218F4B1F00C63005 /* NewsListController.m in Sources */,
 				720263FA20B5015500382B2F /* TZPhotoPreviewCell.m in Sources */,
 				729BA6D120A01E7F009713FD /* JFLocation.m in Sources */,
 				8DB42FD420A57D6E00C4EBF8 /* FilterOneController.m in Sources */,

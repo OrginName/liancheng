@@ -148,7 +148,7 @@
     [self setupScrollViewAndExtraBtn];
     [self setUpLabelsPosition];
     [self setupScrollLineAndCover];
-    
+     [self setBottomLine];
     if (self.segmentStyle.isScrollTitle) { // 设置滚动区域
         ZJCustomLabel *lastLabel = (ZJCustomLabel *)self.titleLabels.lastObject;
         
@@ -158,7 +158,11 @@
     }
     
 }
-
+-(void)setBottomLine{
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, self.zj_height-1, self.zj_width, 1)];
+    view.backgroundColor = YSColor(241, 242, 242);
+    [self addSubview:view];
+}
 - (void)setupScrollViewAndExtraBtn {
     CGFloat extraBtnW = 44.0;
     CGFloat extraBtnY = 5.0;
@@ -458,10 +462,9 @@
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         btn.backgroundColor = [UIColor whiteColor];
         // 设置边缘的阴影效果
-//        [btn SetShadowPathWith:[UIColor lightGrayColor] shadowOpacity:0 shadowRadius:3 shadowSide:ShadowPathAllSide shadowPathWidth:10];
-        btn.layer.shadowColor = [UIColor lightGrayColor].CGColor;
-        btn.layer.shadowOffset = CGSizeMake(-5, 0);
-        btn.layer.shadowOpacity = 1;
+//        btn.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+//        btn.layer.shadowOffset = CGSizeMake(-5, 0);
+//        btn.layer.shadowOpacity = 1;
         
         [self addSubview:btn];
         _extraBtn = btn;

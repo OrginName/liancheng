@@ -83,13 +83,15 @@ static CGFloat btnH;
     UILabel *compileLabel = [[UILabel alloc]init];
     compileLabel.text = @"我的频道";
     compileLabel.font = [UIFont systemFontOfSize:15.0f];
-    compileLabel.frame = CGRectMake(10, 0, 100, 50);
+    compileLabel.frame = CGRectMake(10, 0, 70, 50);
     [self.ScrollView addSubview:compileLabel];
+    
     UILabel *compileLabel1 = [[UILabel alloc]init];
     compileLabel1.text = @"点击进入频道";
+    compileLabel1.textAlignment = NSTextAlignmentLeft;
     compileLabel1.textColor = [UIColor lightGrayColor];
     compileLabel1.font = [UIFont systemFontOfSize:12.0f];
-    compileLabel1.frame = CGRectMake(110, 0, 100, 50);
+    compileLabel1.frame = CGRectMake(80, 0, 100, 50);
     [self.ScrollView addSubview:compileLabel1];
     
     self.backgroundView = [[UIView alloc]init];
@@ -124,14 +126,16 @@ static CGFloat btnH;
     UILabel *channelLabel = [[UILabel alloc]init];
     channelLabel.text = @"频道推荐";
     channelLabel.font = compileLabel.font;
-    channelLabel.frame = CGRectMake(0, CGRectGetMaxY(self.upFranmeArr[self.upFranmeArr.count-1].CGRectValue), 100, 100-btnH);
+    channelLabel.frame = CGRectMake(0, CGRectGetMaxY(self.upFranmeArr[self.upFranmeArr.count-1].CGRectValue), 70, 100-btnH);
     [self.backgroundView addSubview:channelLabel];
     self.channelLabel = channelLabel;
     
     UILabel *channelLabel1 = [[UILabel alloc]init];
     channelLabel1.text = @"点击添加频道";
-    channelLabel1.font = compileLabel.font;
-    channelLabel1.frame = CGRectMake(channelLabel.frame.size.width+10,channelLabel.frame.origin.y,100,40);
+    channelLabel1.textColor = [UIColor lightGrayColor];
+    channelLabel1.textAlignment = NSTextAlignmentLeft;
+    channelLabel1.font = [UIFont systemFontOfSize:12.0f];
+    channelLabel1.frame = CGRectMake(channelLabel.frame.size.width,channelLabel.frame.origin.y+2,100,100-btnH);
     [self.backgroundView addSubview:channelLabel1];
     
     
