@@ -47,6 +47,10 @@
     if ([KUserDefults objectForKey:kUserCityID]!=nil) {
          [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
     }
+//    if ([[[YSAccountTool userInfo] modelId] isEqualToString:APPID]) {
+//        self.view_fajianli.hidden = YES;
+//        self.btn_fajianli.hidden = YES;
+//    }
     _flag = NO;
 }
 //导航条人才类型选择

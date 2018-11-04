@@ -15,6 +15,7 @@
 #import "ProfileController.h"
 #import <RongIMKit/RongIMKit.h>
 #import "RCDContactViewController.h"
+#import "HomeController.h"
 @interface BaseTabBarController ()<UITabBarControllerDelegate>
 @property NSUInteger previousIndex;
 @end
@@ -52,13 +53,14 @@
     [super viewDidAppear:animated];
 }
 - (void)addItems {
-    MessageController *messageVC = [[MessageController alloc]init];
+    HomeController * home = [HomeController new];
+//    MessageController *messageVC = [[MessageController alloc]init];
     AddressBookController *addressVC = [[AddressBookController alloc]init];
     RCDContactViewController *lifeVC = [[RCDContactViewController alloc]init];
     FoundController *foundVC = [[FoundController alloc]init];
     ProfileController *profileVC = [[ProfileController alloc]init];
 
-    NSArray *arrVC = @[messageVC,addressVC,lifeVC,foundVC,profileVC];
+    NSArray *arrVC = @[home,addressVC,lifeVC,foundVC,profileVC];
     NSArray *titleArr = @[@"首页",@"消息",@"通讯录",@"发现",@"我的"];
     NSArray *picArr = @[@"index-nav",@"nav-new",@"nav-tel",@"nav-fond",@"nav-our"];
     NSArray *picSelectArr = @[@"index-nav1",@"nav-new1",@"nav-te1",@"nav-fond1",@"nav-our1"];

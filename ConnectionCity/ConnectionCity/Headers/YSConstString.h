@@ -100,6 +100,8 @@
 #define kBalance              @"balance"
 //极光ID
 #define JpuskKey        @"JpuskKey"
+
+#define APPID  @"10002"
 //大图
 #define BIGTU @"?imageView2/1/w/400/h/400"
 //小图

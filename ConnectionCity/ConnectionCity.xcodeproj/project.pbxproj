@@ -105,6 +105,18 @@
 		7266FEE321173ED5005794AD /* JKReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7266FEDE21173ED4005794AD /* JKReusableView.m */; };
 		7266FEE6211742E3005794AD /* ClassificationsController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 7266FEE5211742E3005794AD /* ClassificationsController1.m */; };
 		72695718215D260B009A4EC0 /* serviceListNewMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72695717215D260B009A4EC0 /* serviceListNewMo.m */; };
+		726B5F20218DD688000B16EE /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B5F1E218DD688000B16EE /* HomeController.m */; };
+		726B5F21218DD688000B16EE /* HomeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 726B5F1F218DD688000B16EE /* HomeController.xib */; };
+		726B5F2F218DD734000B16EE /* UIView+ZJFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B5F24218DD734000B16EE /* UIView+ZJFrame.m */; };
+		726B5F30218DD734000B16EE /* ZJContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B5F26218DD734000B16EE /* ZJContentView.m */; };
+		726B5F31218DD734000B16EE /* ZJCustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B5F28218DD734000B16EE /* ZJCustomLabel.m */; };
+		726B5F32218DD734000B16EE /* ZJScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B5F2A218DD734000B16EE /* ZJScrollPageView.m */; };
+		726B5F33218DD734000B16EE /* ZJScrollSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B5F2C218DD734000B16EE /* ZJScrollSegmentView.m */; };
+		726B5F34218DD734000B16EE /* ZJSegmentStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B5F2E218DD734000B16EE /* ZJSegmentStyle.m */; };
+		726B5F38218EA894000B16EE /* ChannelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B5F37218EA894000B16EE /* ChannelView.m */; };
+		726B5F3B218EA8B3000B16EE /* EditMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B5F3A218EA8B3000B16EE /* EditMenuController.m */; };
+		726B5F3F218ECC88000B16EE /* HomeNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B5F3E218ECC88000B16EE /* HomeNet.m */; };
+		726B5F43218ED09D000B16EE /* MenuMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 726B5F42218ED09D000B16EE /* MenuMo.m */; };
 		7274188020B13CB6001D6BE1 /* MLMSegmentHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */; };
 		7274188120B13CB6001D6BE1 /* MLMSegmentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187C20B13CB6001D6BE1 /* MLMSegmentPage.m */; };
 		7274188220B13CB6001D6BE1 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274187F20B13CB6001D6BE1 /* UIView+ViewController.m */; };
@@ -922,6 +934,29 @@
 		7266FEE5211742E3005794AD /* ClassificationsController1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassificationsController1.m; sourceTree = "<group>"; };
 		72695716215D260B009A4EC0 /* serviceListNewMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = serviceListNewMo.h; sourceTree = "<group>"; };
 		72695717215D260B009A4EC0 /* serviceListNewMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = serviceListNewMo.m; sourceTree = "<group>"; };
+		726B5F1D218DD688000B16EE /* HomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
+		726B5F1E218DD688000B16EE /* HomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
+		726B5F1F218DD688000B16EE /* HomeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeController.xib; sourceTree = "<group>"; };
+		726B5F23218DD734000B16EE /* UIView+ZJFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZJFrame.h"; sourceTree = "<group>"; };
+		726B5F24218DD734000B16EE /* UIView+ZJFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZJFrame.m"; sourceTree = "<group>"; };
+		726B5F25218DD734000B16EE /* ZJContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJContentView.h; sourceTree = "<group>"; };
+		726B5F26218DD734000B16EE /* ZJContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJContentView.m; sourceTree = "<group>"; };
+		726B5F27218DD734000B16EE /* ZJCustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCustomLabel.h; sourceTree = "<group>"; };
+		726B5F28218DD734000B16EE /* ZJCustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCustomLabel.m; sourceTree = "<group>"; };
+		726B5F29218DD734000B16EE /* ZJScrollPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJScrollPageView.h; sourceTree = "<group>"; };
+		726B5F2A218DD734000B16EE /* ZJScrollPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJScrollPageView.m; sourceTree = "<group>"; };
+		726B5F2B218DD734000B16EE /* ZJScrollSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJScrollSegmentView.h; sourceTree = "<group>"; };
+		726B5F2C218DD734000B16EE /* ZJScrollSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJScrollSegmentView.m; sourceTree = "<group>"; };
+		726B5F2D218DD734000B16EE /* ZJSegmentStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSegmentStyle.h; sourceTree = "<group>"; };
+		726B5F2E218DD734000B16EE /* ZJSegmentStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSegmentStyle.m; sourceTree = "<group>"; };
+		726B5F36218EA894000B16EE /* ChannelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelView.h; sourceTree = "<group>"; };
+		726B5F37218EA894000B16EE /* ChannelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelView.m; sourceTree = "<group>"; };
+		726B5F39218EA8B3000B16EE /* EditMenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditMenuController.h; sourceTree = "<group>"; };
+		726B5F3A218EA8B3000B16EE /* EditMenuController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditMenuController.m; sourceTree = "<group>"; };
+		726B5F3D218ECC88000B16EE /* HomeNet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeNet.h; sourceTree = "<group>"; };
+		726B5F3E218ECC88000B16EE /* HomeNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeNet.m; sourceTree = "<group>"; };
+		726B5F41218ED09D000B16EE /* MenuMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuMo.h; sourceTree = "<group>"; };
+		726B5F42218ED09D000B16EE /* MenuMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuMo.m; sourceTree = "<group>"; };
 		7274187920B13CB6001D6BE1 /* MLMSegmentHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentHead.h; sourceTree = "<group>"; };
 		7274187A20B13CB6001D6BE1 /* MLMSegmentHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLMSegmentHead.m; sourceTree = "<group>"; };
 		7274187B20B13CB6001D6BE1 /* MLMSegmentPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentPage.h; sourceTree = "<group>"; };
@@ -2387,6 +2422,67 @@
 			path = CustomClass;
 			sourceTree = "<group>";
 		};
+		726B5F1C218DD656000B16EE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				726B5F40218ED03F000B16EE /* Model */,
+				726B5F3C218ECC79000B16EE /* HomeNet */,
+				726B5F35218EA894000B16EE /* EditMenu */,
+				726B5F1D218DD688000B16EE /* HomeController.h */,
+				726B5F1E218DD688000B16EE /* HomeController.m */,
+				726B5F1F218DD688000B16EE /* HomeController.xib */,
+				726B5F39218EA8B3000B16EE /* EditMenuController.h */,
+				726B5F3A218EA8B3000B16EE /* EditMenuController.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		726B5F22218DD734000B16EE /* ZJScrollPageView */ = {
+			isa = PBXGroup;
+			children = (
+				726B5F23218DD734000B16EE /* UIView+ZJFrame.h */,
+				726B5F24218DD734000B16EE /* UIView+ZJFrame.m */,
+				726B5F25218DD734000B16EE /* ZJContentView.h */,
+				726B5F26218DD734000B16EE /* ZJContentView.m */,
+				726B5F27218DD734000B16EE /* ZJCustomLabel.h */,
+				726B5F28218DD734000B16EE /* ZJCustomLabel.m */,
+				726B5F29218DD734000B16EE /* ZJScrollPageView.h */,
+				726B5F2A218DD734000B16EE /* ZJScrollPageView.m */,
+				726B5F2B218DD734000B16EE /* ZJScrollSegmentView.h */,
+				726B5F2C218DD734000B16EE /* ZJScrollSegmentView.m */,
+				726B5F2D218DD734000B16EE /* ZJSegmentStyle.h */,
+				726B5F2E218DD734000B16EE /* ZJSegmentStyle.m */,
+			);
+			path = ZJScrollPageView;
+			sourceTree = "<group>";
+		};
+		726B5F35218EA894000B16EE /* EditMenu */ = {
+			isa = PBXGroup;
+			children = (
+				726B5F36218EA894000B16EE /* ChannelView.h */,
+				726B5F37218EA894000B16EE /* ChannelView.m */,
+			);
+			path = EditMenu;
+			sourceTree = "<group>";
+		};
+		726B5F3C218ECC79000B16EE /* HomeNet */ = {
+			isa = PBXGroup;
+			children = (
+				726B5F3D218ECC88000B16EE /* HomeNet.h */,
+				726B5F3E218ECC88000B16EE /* HomeNet.m */,
+			);
+			path = HomeNet;
+			sourceTree = "<group>";
+		};
+		726B5F40218ED03F000B16EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				726B5F41218ED09D000B16EE /* MenuMo.h */,
+				726B5F42218ED09D000B16EE /* MenuMo.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7274187820B13CB6001D6BE1 /* MLMSegmentPageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2575,6 +2671,7 @@
 		729BA6B120A01E7F009713FD /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				726B5F22218DD734000B16EE /* ZJScrollPageView */,
 				721B5611215BA9650024953B /* YBImageBrowser */,
 				724B5F442142CDC500F51134 /* HScrollAuto */,
 				721040FC210243D200B575BB /* XMPlayer */,
@@ -4157,6 +4254,7 @@
 		CE0BA603209D605D004C3C33 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				726B5F1C218DD656000B16EE /* Home */,
 				72EC1B7F20BC307E00ACC20B /* FindService */,
 				727418C120B17E65001D6BE1 /* ChangePlay */,
 				8D2B8B8920A2D9D300C3157F /* FindAbilityTab */,
@@ -5315,6 +5413,7 @@
 				8D2B8B9220A2DA9F00C3157F /* AbilityHomeController.xib in Resources */,
 				CE5C281C20B94D84006A8332 /* BidManagerCell.xib in Resources */,
 				CEFC04662127079C00630722 /* kissAccountController.xib in Resources */,
+				726B5F21218DD688000B16EE /* HomeController.xib in Resources */,
 				8D09E18720BFC4B8000F7EBD /* AppointmentController.xib in Resources */,
 				8D6A29CE212BED2200361850 /* ForgetPasswordView.xib in Resources */,
 				CEC4A56520C407BF0026EE19 /* WalletController.xib in Resources */,
@@ -5568,6 +5667,7 @@
 				CEBEDD9120B17ED1000F9EE4 /* FootprintController.m in Sources */,
 				7210410D210243D300B575BB /* XMWaves.m in Sources */,
 				CEBEDD8120B17ED1000F9EE4 /* MarginController.m in Sources */,
+				726B5F2F218DD734000B16EE /* UIView+ZJFrame.m in Sources */,
 				CE9B9A5D20E7DC69005C47B2 /* TenderRecordsMo.m in Sources */,
 				CE14BD6820F3780E00F85C49 /* APOrderInfo.m in Sources */,
 				CEC4A57C20C41D540026EE19 /* ProfileHeadView.m in Sources */,
@@ -5592,6 +5692,7 @@
 				72EBB8DB20C81CA500F670E9 /* AccountManageCell.m in Sources */,
 				721041212108CEB500B575BB /* NoticeCell.m in Sources */,
 				72B1D85520FA78600001FF43 /* myServiceMo.m in Sources */,
+				726B5F30218DD734000B16EE /* ZJContentView.m in Sources */,
 				729BA6FE20A32F0B009713FD /* CustomMap.m in Sources */,
 				8DE465BC20EDECC2009730F7 /* RCDContactViewController.m in Sources */,
 				8DB42FDC20A57DBC00C4EBF8 /* FilterCell.m in Sources */,
@@ -5673,9 +5774,11 @@
 				721DAE1120F272BA006F141F /* FoundQunController.m in Sources */,
 				72104109210243D300B575BB /* UIView+Extension.m in Sources */,
 				72EC1B6720B8465D00ACC20B /* ShowTreaueTab.m in Sources */,
+				726B5F38218EA894000B16EE /* ChannelView.m in Sources */,
 				CE0BA639209D68A3004C3C33 /* YSAccount.m in Sources */,
 				72B6EC9B20FF621500B4088D /* friendMo.m in Sources */,
 				CE0BA5B3209D5E6B004C3C33 /* UIView+YSCategory.m in Sources */,
+				726B5F3B218EA8B3000B16EE /* EditMenuController.m in Sources */,
 				8D07D75E20DCC8AB0073807C /* AbilttyMo.m in Sources */,
 				CE5C280C20B91AD8006A8332 /* WinnerInfoController.m in Sources */,
 				CE97DBFA20B5AE9F003E46BD /* ReleaseTenderAdditionalCell.m in Sources */,
@@ -5708,6 +5811,7 @@
 				7294185920AD120E0054B71D /* SearchLayout.m in Sources */,
 				720263FB20B5015500382B2F /* TZPhotoPreviewController.m in Sources */,
 				8DC17A7920C0E430005D9EE0 /* MLLabelUtil.m in Sources */,
+				726B5F33218DD734000B16EE /* ZJScrollSegmentView.m in Sources */,
 				727418D120B1A058001D6BE1 /* FirstController.m in Sources */,
 				727418FC20B3C282001D6BE1 /* SwapHomeCell.m in Sources */,
 				8DE465D420EDEFBE009730F7 /* RCDNoFriendView.m in Sources */,
@@ -5777,6 +5881,7 @@
 				8D09E18620BFC4B8000F7EBD /* AppointmentController.m in Sources */,
 				720263F720B5015500382B2F /* TZImagePickerController.m in Sources */,
 				CE0A99DD20C57C44003A4D91 /* CertificationCenterController.m in Sources */,
+				726B5F34218DD734000B16EE /* ZJSegmentStyle.m in Sources */,
 				727418C020B17536001D6BE1 /* CustomTabr.m in Sources */,
 				8DD48CD120A811EA00D6D1E6 /* SDCycleScrollView.m in Sources */,
 				7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */,
@@ -5845,6 +5950,7 @@
 				8DA4990D20A7063E00968F86 /* ResumeCell.m in Sources */,
 				721B5662215BA9670024953B /* YBVideoBrowseTopBar.m in Sources */,
 				8DE4665320EDFBF7009730F7 /* RCDEditGroupNameViewController.m in Sources */,
+				726B5F31218DD734000B16EE /* ZJCustomLabel.m in Sources */,
 				CE0BA5B2209D5E6B004C3C33 /* NSData+DDAdditions.m in Sources */,
 				8D24A23220A1CB8200F0740D /* FirstTanView.m in Sources */,
 				8D54139D2101E8E6000366E6 /* ShowResume1.m in Sources */,
@@ -5877,6 +5983,7 @@
 				728483452178E3D8000DF084 /* OrderMo.m in Sources */,
 				8DE4663A20EDF611009730F7 /* RealTimeLocationStatusView.m in Sources */,
 				8D19FF2320D8CFE4005F7361 /* ServiceListMo.m in Sources */,
+				726B5F20218DD688000B16EE /* HomeController.m in Sources */,
 				72EC1B7220BA984400ACC20B /* PlayDouctCell.m in Sources */,
 				727418F020B2DDAC001D6BE1 /* ChangeListController.m in Sources */,
 				721B5656215BA9660024953B /* YBIBGestureInteractionProfile.m in Sources */,
@@ -5884,6 +5991,7 @@
 				CE0BA61A209D6197004C3C33 /* FoundController.m in Sources */,
 				8DF7E3D520CFB33F009A92D7 /* PopThree.m in Sources */,
 				8D19FF2020D8AC98005F7361 /* UserMo.m in Sources */,
+				726B5F3F218ECC88000B16EE /* HomeNet.m in Sources */,
 				CE6BEC1A20C83740003B36D7 /* LCPicker.m in Sources */,
 				8D09E19C20BFDC16000F7EBD /* ShowTrvalCell.m in Sources */,
 				8DE4665020EDFB6B009730F7 /* RCDFrienfRemarksViewController.m in Sources */,
@@ -5930,6 +6038,7 @@
 				8D35878C20C6A693008A5E74 /* OurPlayCell.m in Sources */,
 				72EC1BAF20BC350D00ACC20B /* BaseFindServiceTabController.m in Sources */,
 				8DFA325220EDAFEA0086423A /* RCDataBaseManager.m in Sources */,
+				726B5F43218ED09D000B16EE /* MenuMo.m in Sources */,
 				CE5C281B20B94D84006A8332 /* BidManagerCell.m in Sources */,
 				CE2C401920EF925000D33B17 /* ZWCustomPointAnnotation.m in Sources */,
 				8DE4662D20EDF586009730F7 /* RCDRoomSettingViewController.m in Sources */,
@@ -5953,6 +6062,7 @@
 				720263F920B5015500382B2F /* TZPhotoPickerController.m in Sources */,
 				8DD48CCD20A811EA00D6D1E6 /* TAAnimatedDotView.m in Sources */,
 				72EC1B7D20BAACBA00ACC20B /* DouctChangeController.m in Sources */,
+				726B5F32218DD734000B16EE /* ZJScrollPageView.m in Sources */,
 				72B6EC9720FCC16700B4088D /* AnotherStarEvaluator.m in Sources */,
 				7274190120B3F60D001D6BE1 /* SendSwapController.m in Sources */,
 				8D22C36020C7D18E004DC8F4 /* PresentManageViewController.m in Sources */,

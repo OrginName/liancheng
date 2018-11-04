@@ -13,7 +13,7 @@
 #import "BulidTeamController.h"
 #import "MakeMoneyController.h"
 #import "ConnectionController.h"
-
+#import "privateUserInfoModel.h"
 @interface BaseOneTabController ()<UITabBarControllerDelegate>
 
 @end
@@ -32,18 +32,28 @@
    
 }
 - (void)addItems {
+    BOOL a = [[[YSAccountTool userInfo] modelId] isEqualToString:APPID]?YES:NO;
     AbilityHomeController *messageVC = [[AbilityHomeController alloc]init];
     AddressBookController *addressVC = [[AddressBookController alloc]init];
     BulidTeamController *lifeVC = [[BulidTeamController alloc]init];
     MakeMoneyController *foundVC = [[MakeMoneyController alloc]init];
     ConnectionController *profileVC = [[ConnectionController alloc]init];
-    
-    NSArray *arrVC = @[messageVC,addressVC,lifeVC,foundVC,profileVC];
-    NSArray *titleArr = @[@"首页",@"消息",@"建团队",@"赚外快",@"人脉"];
-    NSArray *picArr = @[@"index-nav",@"nav-new1-1",@"nav-t",@"money",@"ren"];
-    NSArray *picSelectArr = @[@"index-nav1",@"nav-new1",@"nav-t1",@"money1",@"ren1"];
-    
-    for (int i = 0; i < 5; i++) {
+    NSArray * arrVC = [NSArray array];
+    NSArray * titleArr = [NSArray array];
+    NSArray * picArr = [NSArray array];
+    NSArray *picSelectArr = [NSArray array];
+    if (a) {
+       arrVC = @[messageVC,addressVC,lifeVC,profileVC];
+       titleArr = @[@"首页",@"消息",@"建团队",@"人脉"];
+        picArr = @[@"index-nav",@"nav-new1-1",@"nav-t",@"ren"];
+        picSelectArr = @[@"index-nav1",@"nav-new1",@"nav-t1",@"ren1"];
+    }else{
+        arrVC = @[messageVC,addressVC,lifeVC,foundVC,profileVC];
+        titleArr = @[@"首页",@"消息",@"建团队",@"赚外快",@"人脉"];
+        picArr = @[@"index-nav",@"nav-new1-1",@"nav-t",@"money",@"ren"];
+        picSelectArr = @[@"index-nav1",@"nav-new1",@"nav-t1",@"money1",@"ren1"];
+    }
+    for (int i = 0; i < arrVC.count; i++) {
         [self addChildViewController:arrVC[i] title:titleArr[i] image:picArr[i] selectedImage:picSelectArr[i]];
     }
 }

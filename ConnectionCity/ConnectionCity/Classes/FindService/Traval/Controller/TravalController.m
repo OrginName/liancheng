@@ -18,12 +18,14 @@
 #import "RCDChatViewController.h"
 #import "UIView+Geometry.h"
 #import "PersonalBasicDataController.h"
+#import "privateUserInfoModel.h"
 @interface TravalController ()<UITableViewDelegate,UITableViewDataSource,JFCityViewControllerDelegate,TrvalCellDelegate>
 {
     UIButton * _tmpBtn;
     NSInteger  _page;
     NSString * _cityID;
 }
+@property (weak, nonatomic) IBOutlet UIView *btnView1;
 @property (weak, nonatomic) IBOutlet UIButton *btn_PYYY;
 @property (nonatomic,strong)TrvalTrip * trval;
 @property (weak, nonatomic) IBOutlet UIButton *btn_travl;
@@ -41,6 +43,10 @@
     _cityID = [KUserDefults objectForKey:kUserCityID];
     [self setUI];
     [self initData];
+//    if ([[[YSAccountTool userInfo] modelId] isEqualToString:APPID]) {
+//        self.btn_PYYY.hidden = YES;
+//        self.btnView1.hidden = YES;
+//    }
 }
 -(void)initData{
     self.data_Arr = [NSMutableArray array];

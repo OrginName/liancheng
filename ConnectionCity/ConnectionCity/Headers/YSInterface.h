@@ -443,6 +443,12 @@ static NSString * const v1MyTravelOrderRequiredPage = @"/v1/my/travel-order/requ
 static NSString * const v1MyTravelPage = @"/v1/my/travel/page";
 //个人中心-我的发布-宝物
 static NSString * const v1MyTreasurePage = @"/v1/my/treasure/page";
+//全部菜单按钮
+static NSString * const v1MyChannelAll = @"/v1/my/channel/all";
+//获取我的频道
+static NSString * const v1MyChannelGet = @"/v1/my/channel/get";
+//更新频道顺序
+static NSString * const v1MyChannelUpdate = @"/v1/my/channel/update";
 
 //服务-删除旅游邀约
 static NSString * const v1ServiceTravelDeleteInvite = @"/v1/service/travel/delete-invite";
