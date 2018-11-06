@@ -150,6 +150,9 @@
 		7274190F20B4036E001D6BE1 /* TZTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7274190E20B4036E001D6BE1 /* TZTestCell.m */; };
 		72799B7A218F4B1F00C63005 /* NewsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72799B78218F4B1F00C63005 /* NewsListController.m */; };
 		72799B7B218F4B1F00C63005 /* NewsListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72799B79218F4B1F00C63005 /* NewsListController.xib */; };
+		72799B80218FDF7B00C63005 /* NewsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72799B7E218FDF7B00C63005 /* NewsListCell.m */; };
+		72799B81218FDF7B00C63005 /* NewsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72799B7F218FDF7B00C63005 /* NewsListCell.xib */; };
+		72799B842190938400C63005 /* YLMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72799B832190938400C63005 /* YLMo.m */; };
 		727C86D720DBE11D00AA2796 /* CreatGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 727C86D520DBE11D00AA2796 /* CreatGroupController.m */; };
 		727C86D820DBE11D00AA2796 /* CreatGroupController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 727C86D620DBE11D00AA2796 /* CreatGroupController.xib */; };
 		728483412178DFA4000DF084 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7284833F2178DFA4000DF084 /* OrderCell.m */; };
@@ -1013,6 +1016,11 @@
 		72799B77218F4B1F00C63005 /* NewsListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsListController.h; sourceTree = "<group>"; };
 		72799B78218F4B1F00C63005 /* NewsListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsListController.m; sourceTree = "<group>"; };
 		72799B79218F4B1F00C63005 /* NewsListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListController.xib; sourceTree = "<group>"; };
+		72799B7D218FDF7B00C63005 /* NewsListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsListCell.h; sourceTree = "<group>"; };
+		72799B7E218FDF7B00C63005 /* NewsListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsListCell.m; sourceTree = "<group>"; };
+		72799B7F218FDF7B00C63005 /* NewsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListCell.xib; sourceTree = "<group>"; };
+		72799B822190938400C63005 /* YLMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YLMo.h; sourceTree = "<group>"; };
+		72799B832190938400C63005 /* YLMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YLMo.m; sourceTree = "<group>"; };
 		727C86D420DBE11D00AA2796 /* CreatGroupController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreatGroupController.h; sourceTree = "<group>"; };
 		727C86D520DBE11D00AA2796 /* CreatGroupController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreatGroupController.m; sourceTree = "<group>"; };
 		727C86D620DBE11D00AA2796 /* CreatGroupController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatGroupController.xib; sourceTree = "<group>"; };
@@ -2482,6 +2490,8 @@
 			children = (
 				726B5F41218ED09D000B16EE /* MenuMo.h */,
 				726B5F42218ED09D000B16EE /* MenuMo.m */,
+				72799B822190938400C63005 /* YLMo.h */,
+				72799B832190938400C63005 /* YLMo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2651,11 +2661,22 @@
 		72799B76218F4AE700C63005 /* NewsList */ = {
 			isa = PBXGroup;
 			children = (
+				72799B7C218FDF5800C63005 /* Cell */,
 				72799B77218F4B1F00C63005 /* NewsListController.h */,
 				72799B78218F4B1F00C63005 /* NewsListController.m */,
 				72799B79218F4B1F00C63005 /* NewsListController.xib */,
 			);
 			path = NewsList;
+			sourceTree = "<group>";
+		};
+		72799B7C218FDF5800C63005 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				72799B7D218FDF7B00C63005 /* NewsListCell.h */,
+				72799B7E218FDF7B00C63005 /* NewsListCell.m */,
+				72799B7F218FDF7B00C63005 /* NewsListCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		7294184F20AD119C0054B71D /* HistorySearch */ = {
@@ -5476,6 +5497,7 @@
 				727418DF20B290BF001D6BE1 /* EnthusiastsControll.xib in Resources */,
 				72EC1BAC20BC34AA00ACC20B /* TravalController.xib in Resources */,
 				724B5F3D213C4A2000F51134 /* MyLocationPickerController.xib in Resources */,
+				72799B81218FDF7B00C63005 /* NewsListCell.xib in Resources */,
 				CE14BD6720F3780E00F85C49 /* AlipaySDK.bundle in Resources */,
 				72EC1BA220BC347D00ACC20B /* ProfileServiceController.xib in Resources */,
 				8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */,
@@ -5743,6 +5765,7 @@
 				CE0BA5E2209D5E9B004C3C33 /* SRDownloadModel.m in Sources */,
 				8D24A23520A1D5A700F0740D /* RefineView.m in Sources */,
 				720263F120B5015500382B2F /* TZAssetCell.m in Sources */,
+				72799B80218FDF7B00C63005 /* NewsListCell.m in Sources */,
 				8DFA327020EDDCB40086423A /* SortForTime.m in Sources */,
 				CEC4A54320C3D6FC0026EE19 /* TeamHeadCell.m in Sources */,
 				727418EB20B2AAB9001D6BE1 /* ChangeCell.m in Sources */,
@@ -5970,6 +5993,7 @@
 				8D54139D2101E8E6000366E6 /* ShowResume1.m in Sources */,
 				8DFA324B20EDAF620086423A /* DefaultPortraitView.m in Sources */,
 				7274188020B13CB6001D6BE1 /* MLMSegmentHead.m in Sources */,
+				72799B842190938400C63005 /* YLMo.m in Sources */,
 				CEE5251520F7907C00DD6179 /* MyQRController.m in Sources */,
 				CEE4B29720C6B5A2008B8731 /* NearManController.m in Sources */,
 				8DE4660E20EDF31C009730F7 /* RCDGroupSettingsTableViewCell.m in Sources */,

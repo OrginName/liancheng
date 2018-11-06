@@ -16,6 +16,8 @@
 #import "MenuMo.h"
 #import "TravalController.h"
 #import "NewsListController.h"
+#import "ServiceHomeController.h"
+#import "FriendCircleController.h"
 @interface HomeController ()<JFCityViewControllerDelegate>
 {
     BOOL flag;
@@ -62,6 +64,9 @@
     scrollPageView.extraBtnOnClick = ^(UIButton *extraBtn){
         flag = NO;
         EditMenuController * edit = [EditMenuController new];
+        edit.dataBlock = ^{
+            [weakSelf initData];
+        };
         [weakSelf.navigationController presentViewController:edit animated:YES completion:nil];
     };
     [self.view addSubview:scrollPageView];
@@ -126,7 +131,10 @@
 - (NSArray *)setupChildVcAndTitle {
     TravalController * trval;
     TravalController * trval2;
+    ServiceHomeController * trval3;
     NewsListController * news;
+    FriendCircleController * circle1;
+    FriendCircleController * circle2;
     for (MenuMo * mo in self.myMenuArr) {
         if ([mo.ID isEqualToString:@"1"]) {//旅行
             trval = [TravalController new];
@@ -134,18 +142,20 @@
             trval.title = mo.name;
         }else if ([mo.ID isEqualToString:@"2"]){//娱乐
             news = [NewsListController new];
-            news.title = @"娱乐";
+            news.title = mo.name;
         }
-//        else if ([mo.ID isEqualToString:@"3"]){//生活
-//            TravalController * trval = [TravalController new];
-//            trval.title = mo.name;
-//        }else if ([mo.ID isEqualToString:@"4"]){//圈子
-//            TravalController * trval = [TravalController new];
-//            trval.title = mo.name;
-//        }else if ([mo.ID isEqualToString:@"5"]){//视频
-//            TravalController * trval = [TravalController new];
-//            trval.title = mo.name;
-//        }else if ([mo.ID isEqualToString:@"6"]){//工作
+        else if ([mo.ID isEqualToString:@"3"]){//生活
+            trval3 = [ServiceHomeController new];
+            trval3.title = mo.name;
+        }
+            else if ([mo.ID isEqualToString:@"4"]){//圈子
+            circle1 = [FriendCircleController new];
+            circle1.title = mo.name;
+        }else if ([mo.ID isEqualToString:@"5"]){//视频
+            circle2 = [FriendCircleController new];
+            circle2.title = mo.name;
+        }
+//            else if ([mo.ID isEqualToString:@"6"]){//工作
 //            TravalController * trval = [TravalController new];
 //            trval.title = mo.name;
 //        }else if ([mo.ID isEqualToString:@"7"]){//赚外快
@@ -158,7 +168,7 @@
             trval2.title = mo.name;
         }
     } 
-    NSArray *childVcs = [NSArray arrayWithObjects:trval,news,trval2, nil];
+    NSArray *childVcs = [NSArray arrayWithObjects:trval,news,trval3,trval2, nil];
     return childVcs;
 }
 

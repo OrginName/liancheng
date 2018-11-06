@@ -145,8 +145,8 @@
     [self.view_Map addSubview:self.cusMap];
     [self.view_Map bringSubviewToFront:self.btn_fajianli];
     [self.view_Map bringSubviewToFront:self.view_fajianli];
-    [self initNavi];
-    [self initRightBarItem];
+//    [self initNavi];
+//    [self initRightBarItem];
 }
 -(void)initNavi{
     //自定义标题视图

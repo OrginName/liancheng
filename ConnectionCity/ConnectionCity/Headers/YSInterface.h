@@ -449,6 +449,9 @@ static NSString * const v1MyChannelAll = @"/v1/my/channel/all";
 static NSString * const v1MyChannelGet = @"/v1/my/channel/get";
 //更新频道顺序
 static NSString * const v1MyChannelUpdate = @"/v1/my/channel/update";
+//获取娱乐list
+static NSString * const v1ServiceYulePage = @"/v1/service/yule/page";
+
 
 //服务-删除旅游邀约
 static NSString * const v1ServiceTravelDeleteInvite = @"/v1/service/travel/delete-invite";

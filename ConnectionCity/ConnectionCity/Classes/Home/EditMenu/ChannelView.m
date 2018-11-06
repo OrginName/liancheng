@@ -87,7 +87,7 @@ static CGFloat btnH;
     [self.ScrollView addSubview:compileLabel];
     
     UILabel *compileLabel1 = [[UILabel alloc]init];
-    compileLabel1.text = @"点击进入频道";
+    compileLabel1.text = @"长按可拖动排序";
     compileLabel1.textAlignment = NSTextAlignmentLeft;
     compileLabel1.textColor = [UIColor lightGrayColor];
     compileLabel1.font = [UIFont systemFontOfSize:12.0f];
@@ -116,11 +116,11 @@ static CGFloat btnH;
         UIButton *btn  = [self addBtnFrame:CGRectMake((i%self.btnNumber)*btnW+(i%self.btnNumber)*10, a*btnH + a*10, btnW, btnH)];
         [btn addTarget:self action:@selector(clickUpBtn:) forControlEvents:UIControlEventTouchUpInside];
         [btn setTitle:[self.upBtnDataArr[i] name] forState:UIControlStateNormal];
+        btn.tag = i;
         //添加手势
         [self addLongPress:btn];
         [self.upFranmeArr addObject:[NSValue valueWithCGRect:btn.frame]];
         [self.upBtn addObject:btn];
-   
     }
     
     UILabel *channelLabel = [[UILabel alloc]init];
@@ -135,7 +135,7 @@ static CGFloat btnH;
     channelLabel1.textColor = [UIColor lightGrayColor];
     channelLabel1.textAlignment = NSTextAlignmentLeft;
     channelLabel1.font = [UIFont systemFontOfSize:12.0f];
-    channelLabel1.frame = CGRectMake(channelLabel.frame.size.width,channelLabel.frame.origin.y+2,100,100-btnH);
+    channelLabel1.frame = CGRectMake(75,CGRectGetMaxY(self.upFranmeArr[self.upFranmeArr.count-1].CGRectValue),100,100-btnH);
     [self.backgroundView addSubview:channelLabel1];
     
     
@@ -144,6 +144,7 @@ static CGFloat btnH;
         UIButton *btn  = [self addBtnFrame:CGRectMake((j%self.btnNumber)*btnW+(j%self.btnNumber)*10, b*btnH + b*10 +  [self.upFranmeArr[self.upFranmeArr.count-1]CGRectValue].origin.y+compileLabel.frame.size.height*2, btnW, btnH)];
         [btn addTarget:self action:@selector(clickBelowBtn:) forControlEvents:UIControlEventTouchUpInside];
         [btn setTitle:[NSString stringWithFormat:@"+  %@",[self.belowBtnDataArr[j] name]] forState:UIControlStateNormal];
+        btn.tag =[[self.belowBtnDataArr[j] ID] longLongValue];
         [self.belowFranmeArr addObject:[NSValue valueWithCGRect:btn.frame]];
         [self.belowBtn addObject:btn];
     }
@@ -244,7 +245,7 @@ static CGFloat btnH;
                     militaryFork.hidden = YES;
                 }
             }
-            [upBtnText addObject:obj.titleLabel.text];
+            [upBtnText addObject:[NSString stringWithFormat:@"%ld",obj.tag]];
         }];
         
         if (self.dataBlock) {

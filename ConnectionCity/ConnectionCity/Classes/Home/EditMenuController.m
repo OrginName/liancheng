@@ -61,9 +61,16 @@
     //获取数据Block
     WeakSelf
     self.channelView.dataBlock = ^(NSMutableArray *dataArr) {
+        NSString * str = @"";
         for (NSString *upBtnText in dataArr) {
-            NSLog(@"%@",upBtnText);
+            str = [NSString stringWithFormat:@"%@,%@",upBtnText,str];
         }
+        [HomeNet loadUpdateMyMeu:@{@"channelIds":str} withSuc:^(NSDictionary *successDicValue) {
+            if (weakSelf.dataBlock) {
+                weakSelf.dataBlock();
+            }
+            [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }];
     };
     self.channelView.closeBlock = ^(UIButton *btn) {
         [weakSelf Close];

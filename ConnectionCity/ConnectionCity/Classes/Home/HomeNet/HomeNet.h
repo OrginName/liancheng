@@ -19,5 +19,7 @@ typedef void (^FailDicBlock) (NSString * failValue);
 //获取我所有的频道
 +(void)loadMyMeu:(SuccessArrBlock)sucBlock;
 //更改频道顺序
-+(void)loadUpdateMyMeu:(NSDictionary *)param withSuc:(SuccessArrBlock)sucBlock;
++(void)loadUpdateMyMeu:(NSDictionary *)param withSuc:(SuccessDicBlock)sucBlock;
+//获取娱乐list
++(void)loadYLList:(NSDictionary *)param withSuc:(SuccessArrBlock)sucBlock;
 @end

@@ -9,5 +9,8 @@
 #import "BaseViewController.h"
 
 @interface EditMenuController : BaseViewController
-
+/**
+ *返回调整好的标签数组
+ **/
+@property (nonatomic, copy) void(^dataBlock)(void);
 @end
