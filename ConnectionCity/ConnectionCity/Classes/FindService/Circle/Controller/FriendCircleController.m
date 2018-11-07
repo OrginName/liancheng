@@ -30,14 +30,20 @@ static NSInteger i;//判断当前返回按钮点击次数
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [IQKeyboardManager sharedManager].enable = NO;
-    self.tabBarController.tabBar.hidden = YES;
-    i=0; 
+//    self.tabBarController.tabBar.hidden = YES;
+    i=0;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];
     self.navigationItem.title = @"服务圈";
-   
+    if ([self.flagCircle isEqualToString:@"QZ"]) {
+        self.frendTab.hidden = NO;
+        self.frendVedio.hidden = YES;
+    }else if ([self.flagCircle isEqualToString:@"SP"]){
+        self.frendTab.hidden = YES;
+        self.frendVedio.hidden = NO;
+    }
 }
 //发布朋友圈
 -(void)SendFriend{

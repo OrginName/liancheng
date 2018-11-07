@@ -21,6 +21,13 @@
 #import "OurResumeMo.h"
 #import "ResumeController.h"
 @interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate,CustomScroDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *btn_SXOne;
+@property (weak, nonatomic) IBOutlet UIButton *btn_SX;
+@property (weak, nonatomic) IBOutlet UIView *notice_Scro;
+@property (weak, nonatomic) IBOutlet UILabel *lab_location;
+@property (weak, nonatomic) IBOutlet UIView *noticeView;
+@property (weak, nonatomic) IBOutlet UIView *locationView;
+
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
 @property (weak, nonatomic) IBOutlet UIView *view_fajianli;

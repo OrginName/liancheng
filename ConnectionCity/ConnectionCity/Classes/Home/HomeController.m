@@ -18,6 +18,7 @@
 #import "NewsListController.h"
 #import "ServiceHomeController.h"
 #import "FriendCircleController.h"
+#import "AbilityHomeController.h"
 @interface HomeController ()<JFCityViewControllerDelegate>
 {
     BOOL flag;
@@ -137,6 +138,7 @@
     FriendCircleController * circle2;
     TravalController * trval4;
     TravalController * trval5;
+    AbilityHomeController * ability;
     NSMutableArray * arr = [NSMutableArray array];
     for (MenuMo * mo in self.myMenuArr) {
         if ([mo.ID isEqualToString:@"1"]) {//旅行
@@ -166,10 +168,9 @@
             [arr addObject:circle2];
         }
         else if ([mo.ID isEqualToString:@"6"]){//工作
-            trval4 = [TravalController new];
-            trval4.title = mo.name;
-            
-            [arr addObject:trval4];
+            ability = [AbilityHomeController new];
+            ability.title = mo.name;
+            [arr addObject:ability];
         }else if ([mo.ID isEqualToString:@"7"]){//赚外快
             trval5 = [TravalController new];
             trval5.title = mo.name;
