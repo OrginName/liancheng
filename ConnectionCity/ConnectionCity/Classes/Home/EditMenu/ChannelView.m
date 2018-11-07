@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSMutableArray <NSValue*>*belowFranmeArr;
 
 @property (nonatomic, weak) UILabel *channelLabel;
+@property (nonatomic, weak) UILabel *channelLabel1;
 @property (nonatomic, weak) UIButton *compileBtn;
 @end
 
@@ -103,12 +104,12 @@ static CGFloat btnH;
     
     UIButton *compileBtn = [[UIButton alloc]init];
     [compileBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [compileBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    [compileBtn setTitle:@"完成" forState:UIControlStateNormal];
     [compileBtn addTarget:self action:@selector(compileBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [compileBtn setTitle:@"完成" forState:UIControlStateSelected];
+//    [compileBtn setTitle:@"完成" forState:UIControlStateSelected];
     compileBtn.titleLabel.font = [UIFont systemFontOfSize:15.0f];
     compileBtn.frame = CGRectMake(self.ScrollView.frame.size.width-60, 0, 50, 50);
-     [self.ScrollView addSubview:compileBtn];
+    [self.ScrollView addSubview:compileBtn];
     self.compileBtn = compileBtn;
  
     for (int i = 0; i < self.upBtnDataArr.count; i ++) {
@@ -116,7 +117,7 @@ static CGFloat btnH;
         UIButton *btn  = [self addBtnFrame:CGRectMake((i%self.btnNumber)*btnW+(i%self.btnNumber)*10, a*btnH + a*10, btnW, btnH)];
         [btn addTarget:self action:@selector(clickUpBtn:) forControlEvents:UIControlEventTouchUpInside];
         [btn setTitle:[self.upBtnDataArr[i] name] forState:UIControlStateNormal];
-        btn.tag = i;
+        btn.tag = [[self.upBtnDataArr[i] ID] integerValue];
         //添加手势
         [self addLongPress:btn];
         [self.upFranmeArr addObject:[NSValue valueWithCGRect:btn.frame]];
@@ -137,11 +138,13 @@ static CGFloat btnH;
     channelLabel1.font = [UIFont systemFontOfSize:12.0f];
     channelLabel1.frame = CGRectMake(75,CGRectGetMaxY(self.upFranmeArr[self.upFranmeArr.count-1].CGRectValue),100,100-btnH);
     [self.backgroundView addSubview:channelLabel1];
+    self.channelLabel1 = channelLabel1;
     
     
     for (int j = 0; j < self.belowBtnDataArr.count; j ++) {
         int b = (j/self.btnNumber);
         UIButton *btn  = [self addBtnFrame:CGRectMake((j%self.btnNumber)*btnW+(j%self.btnNumber)*10, b*btnH + b*10 +  [self.upFranmeArr[self.upFranmeArr.count-1]CGRectValue].origin.y+compileLabel.frame.size.height*2, btnW, btnH)];
+        btn.tag = [[self.belowBtnDataArr[j] ID] integerValue];
         [btn addTarget:self action:@selector(clickBelowBtn:) forControlEvents:UIControlEventTouchUpInside];
         [btn setTitle:[NSString stringWithFormat:@"+  %@",[self.belowBtnDataArr[j] name]] forState:UIControlStateNormal];
         btn.tag =[[self.belowBtnDataArr[j] ID] longLongValue];
@@ -153,7 +156,50 @@ static CGFloat btnH;
     jianbian.image = [UIImage imageNamed:@"渐变"];
     jianbian.frame = CGRectMake(0, self.frame.size.height-50, self.frame.size.width, 50);
     [self addSubview:jianbian];
+    [self.upBtn enumerateObjectsUsingBlock:^(UIButton *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        for (UIImageView *militaryFork in obj.subviews) {
+            if ([militaryFork isKindOfClass:[UIImageView class]]) {
+                militaryFork.hidden = NO;
+                if ([obj.titleLabel.text isEqualToString:self.upBtnDataArr[0]] && !self.IS_compileFirstBtn) {
+                    militaryFork.hidden = YES;
+                }
+            }
+        }
+    }];
+}
+//编辑
+-(void)compileBtn:(UIButton *)btn{
+//    if (btn.selected) {
+        NSMutableArray *upBtnText = [NSMutableArray array];
+        [self.upBtn enumerateObjectsUsingBlock:^(UIButton *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            for (UIImageView *militaryFork in obj.subviews) {
+                if ([militaryFork isKindOfClass:[UIImageView class]]) {
+                    militaryFork.hidden = YES;
+                }
+            }
+            [upBtnText addObject:[NSString stringWithFormat:@"%ld",obj.tag]];
+        }];
+        
+        if (self.dataBlock) {
+            self.dataBlock(upBtnText);
+        }
+//    }
+//        else{
     
+//        [self.upBtn enumerateObjectsUsingBlock:^(UIButton *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            for (UIImageView *militaryFork in obj.subviews) {
+//                if ([militaryFork isKindOfClass:[UIImageView class]]) {
+//                    militaryFork.hidden = NO;
+//                    if ([obj.titleLabel.text isEqualToString:self.upBtnDataArr[0]] && !self.IS_compileFirstBtn) {
+//                        militaryFork.hidden = YES;
+//                    }
+//                }
+//            }
+//
+//        }];
+        
+//    }
+//    btn.selected = !btn.selected;
 }
 -(void)Close:(UIButton *)btn{
     if (self.closeBlock) {
@@ -184,9 +230,9 @@ static CGFloat btnH;
 }
 
 - (void) handleLongPressGestures:(UILongPressGestureRecognizer *)paramSender{
-    if (!self.compileBtn.selected) {
-        return;
-    }
+//    if (!self.compileBtn.selected) {
+//        return;
+//    }
     UIView *view = paramSender.view;
     static  CGRect viewFrame;
     if (paramSender.state == UIGestureRecognizerStateBegan){
@@ -233,46 +279,13 @@ static CGFloat btnH;
         }];
     }
 }
-
-
-//编辑
--(void)compileBtn:(UIButton *)btn{
-    if (btn.selected) {
-        NSMutableArray *upBtnText = [NSMutableArray array];
-        [self.upBtn enumerateObjectsUsingBlock:^(UIButton *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            for (UIImageView *militaryFork in obj.subviews) {
-                if ([militaryFork isKindOfClass:[UIImageView class]]) {
-                    militaryFork.hidden = YES;
-                }
-            }
-            [upBtnText addObject:[NSString stringWithFormat:@"%ld",obj.tag]];
-        }];
-        
-        if (self.dataBlock) {
-            self.dataBlock(upBtnText);
-        }
-    }else{
-        
-        [self.upBtn enumerateObjectsUsingBlock:^(UIButton *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            for (UIImageView *militaryFork in obj.subviews) {
-                if ([militaryFork isKindOfClass:[UIImageView class]]) {
-                    militaryFork.hidden = NO;
-                    if ([obj.titleLabel.text isEqualToString:self.upBtnDataArr[0]] && !self.IS_compileFirstBtn) {
-                        militaryFork.hidden = YES;
-                    }
-                }
-            }
-            
-        }];
-        
-    }
-    btn.selected = !btn.selected;
-}
-
 //点击上btn
 -(void)clickUpBtn:(UIButton *)btn{
-    if (!self.compileBtn.selected) {
-        return;
+//    if (!self.compileBtn.selected) {
+//        return;
+//    }
+    if (self.upBtn.count<=1) {
+        return [YTAlertUtil showTempInfo:@"请至少保留一个功能页"];
     }
     if ([btn.titleLabel.text isEqualToString:self.upBtnDataArr[0]] && !self.IS_compileFirstBtn) {
         return;
@@ -282,7 +295,6 @@ static CGFloat btnH;
             militaryFork.hidden = YES;
         }
     }
- 
     [btn removeTarget:self action:@selector(clickUpBtn:) forControlEvents:UIControlEventTouchUpInside];
 
     [btn removeGestureRecognizer:btn.gestureRecognizers[0]];
@@ -313,10 +325,9 @@ static CGFloat btnH;
 
     [UIView animateWithDuration:0.3 animations:^{
         self.channelLabel.frame = CGRectMake(0, CGRectGetMaxY(self.upFranmeArr[self.upFranmeArr.count-1].CGRectValue), self.channelLabel.frame.size.width, self.channelLabel.frame.size.height);
+        self.channelLabel1.frame = CGRectMake(75, self.channelLabel.frame.origin.y, self.channelLabel1.frame.size.width, self.channelLabel1.frame.size.height);
     }];
 }
-
-
 //添加长按手势
 -(void)addLongPress:(UIButton *)btn{
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
@@ -330,13 +341,13 @@ static CGFloat btnH;
 
 //点击下Btn
 -(void)clickBelowBtn:(UIButton *)btn{
-    if (self.compileBtn.selected) {
+//    if (self.compileBtn.selected) {
         for (UIImageView *militaryFork in btn.subviews) {
             if ([militaryFork isKindOfClass:[UIImageView class]]) {
                 militaryFork.hidden = NO;
             }
         }
-    }
+//    }
     [btn removeTarget:self action:@selector(clickBelowBtn:) forControlEvents:UIControlEventTouchUpInside];
    
     [btn addTarget:self action:@selector(clickUpBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -355,6 +366,7 @@ static CGFloat btnH;
         }
         [self.upFranmeArr addObject:[NSValue valueWithCGRect:btn.frame]];
         self.channelLabel.frame = CGRectMake(0, CGRectGetMaxY(self.upFranmeArr[self.upFranmeArr.count-1].CGRectValue), self.channelLabel.frame.size.width, self.channelLabel.frame.size.height);
+        self.channelLabel1.frame = CGRectMake(75, self.channelLabel.frame.origin.y, self.channelLabel1.frame.size.width, self.channelLabel1.frame.size.height);
     }];
     [UIView animateWithDuration:0.3 animations:^{
         [self.belowBtn enumerateObjectsUsingBlock:^(UIButton *obj, NSUInteger idx, BOOL * _Nonnull stop) {

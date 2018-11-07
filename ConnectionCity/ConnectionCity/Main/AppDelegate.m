@@ -59,8 +59,8 @@
     [self.window makeKeyAndVisible];
     UIViewController *vc = [[UIViewController alloc]initWithNibName:nil bundle:nil];
     self.window.rootViewController = vc;
-    self.location = [[CustomLocatiom alloc] init];
-    _location.delegate = self;
+//    self.location = [[CustomLocatiom alloc] init];
+//    _location.delegate = self;
     [self umengTrack];
     //非debug模式初始化sdk
     [[RCIM sharedRCIM] initWithAppKey:RONGCLOUD_IM_APPKEY];

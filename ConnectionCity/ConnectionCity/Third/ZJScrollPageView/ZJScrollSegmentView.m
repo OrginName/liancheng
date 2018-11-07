@@ -147,8 +147,10 @@
 - (void)setupUI {
     [self setupScrollViewAndExtraBtn];
     [self setUpLabelsPosition];
-    [self setupScrollLineAndCover];
-     [self setBottomLine];
+    if (self.titleLabels.count!=0) {
+        [self setupScrollLineAndCover];
+    }
+    [self setBottomLine];
     if (self.segmentStyle.isScrollTitle) { // 设置滚动区域
         ZJCustomLabel *lastLabel = (ZJCustomLabel *)self.titleLabels.lastObject;
         
@@ -208,21 +210,18 @@
             index++;
             
         }
-        
     }
-    
-    ZJCustomLabel *firstLabel = (ZJCustomLabel *)self.titleLabels[0];
-    
-    if (firstLabel) {
-        
-        // 缩放, 设置初始的label的transform
-        if (self.segmentStyle.isScaleTitle) {
-            firstLabel.currentTransformSx = self.segmentStyle.titleBigScale;
+    if (self.titleLabels.count!=0) {
+        ZJCustomLabel *firstLabel = (ZJCustomLabel *)self.titleLabels[0];
+        if (firstLabel) {
+            // 缩放, 设置初始的label的transform
+            if (self.segmentStyle.isScaleTitle) {
+                firstLabel.currentTransformSx = self.segmentStyle.titleBigScale;
+            }
+            // 设置初始状态文字的颜色
+            firstLabel.textColor = self.segmentStyle.selectedTitleColor;
         }
-        // 设置初始状态文字的颜色
-        firstLabel.textColor = self.segmentStyle.selectedTitleColor;
     }
-    
 }
 
 - (void)setupScrollLineAndCover {

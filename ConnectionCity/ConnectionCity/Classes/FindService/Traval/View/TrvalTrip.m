@@ -29,18 +29,18 @@
 }
 -(void)initData{
     self.bollec_bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        _page=1;
-        [self loadData:@{@"cityID":self.cityID}];
+        _page=1; 
+        [self loadData:@{@"cityID":self.cityID?self.cityID:@""}];
     }];
     self.bollec_bottom.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [self loadData:@{@"cityID":self.cityID}];
+        [self loadData:@{@"cityID":self.cityID?self.cityID:@""}];
     }];
 }
 -(void)setDic:(NSDictionary *)dic{
     _dic = dic;
     _page=1;
     [self loadData:@{
-                     @"cityID":self.cityID,
+//                     @"cityID":self.cityID?self.cityID:@"",
                      @"age":dic[@"0"],
                      @"distance":dic[@"1"],
                      @"gender":dic[@"2"],
@@ -51,7 +51,7 @@
 -(void)loadData:(NSDictionary *)dic{
     NSDictionary * dic1 = @{
                             @"age": dic[@"age"]?dic[@"age"]:@"",
-                            @"cityCode": @([dic[@"cityID"] integerValue]),
+//                            @"cityCode": dic[@"cityID"],
                             @"distance": dic[@"distance"]?dic[@"distance"]:@"",
                             @"gender": dic[@"gender"]?dic[@"gender"]:@"",
                             @"lat": @([dic[@"lat"]?dic[@"lat"]:[KUserDefults objectForKey:kLat] floatValue]),

@@ -53,17 +53,17 @@
     self.data_Arr = [NSMutableArray array];
     self.tab_Bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         _page=1;
-        [self requstLoad:@{@"cityID":_cityID}];
+        [self requstLoad:@{@"cityID":_cityID?_cityID:@""}];
     }];
     self.tab_Bottom.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [self requstLoad:@{@"cityID":_cityID}];
+        [self requstLoad:@{@"cityID":_cityID?_cityID:@""}];
     }];
     [self.tab_Bottom.mj_header beginRefreshing];
 }
 -(void)requstLoad:(NSDictionary *) dic{
     NSDictionary * dic1 = @{
                            @"age": dic[@"age"]?dic[@"age"]:@"",
-                           @"cityCode": dic[@"cityID"],
+//                           @"cityCode": dic[@"cityID"],
                            @"distance": dic[@"distance"]?dic[@"distance"]:@"",
                            @"gender": dic[@"gender"]?dic[@"gender"]:@"",
                            @"lat": @([dic[@"lat"]?dic[@"lat"]:[KUserDefults objectForKey:kLat] floatValue]),

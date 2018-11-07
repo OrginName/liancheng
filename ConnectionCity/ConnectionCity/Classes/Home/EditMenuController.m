@@ -63,13 +63,13 @@
     self.channelView.dataBlock = ^(NSMutableArray *dataArr) {
         NSString * str = @"";
         for (NSString *upBtnText in dataArr) {
-            str = [NSString stringWithFormat:@"%@,%@",upBtnText,str];
+            str = [NSString stringWithFormat:@"%@,%@",str,upBtnText];
         }
-        [HomeNet loadUpdateMyMeu:@{@"channelIds":str} withSuc:^(NSDictionary *successDicValue) {
+        [HomeNet loadUpdateMyMeu:@{@"channelIds":[str substringFromIndex:1]} withSuc:^(NSDictionary *successDicValue) {
             if (weakSelf.dataBlock) {
                 weakSelf.dataBlock();
             }
-            [weakSelf.navigationController dismissViewControllerAnimated:YES completion:nil];
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
         }];
     };
     self.channelView.closeBlock = ^(UIButton *btn) {

@@ -11,4 +11,5 @@
 @interface FriendCircleController : BaseViewController
 @property (nonatomic, assign) BOOL showOrHidden;
 @property (nonatomic, strong) UserMo * user;//当前传进来的userID
+@property (nonatomic,strong) NSString * flagCircle;
 @end

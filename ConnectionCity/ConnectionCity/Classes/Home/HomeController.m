@@ -135,41 +135,54 @@
     NewsListController * news;
     FriendCircleController * circle1;
     FriendCircleController * circle2;
+    TravalController * trval4;
+    TravalController * trval5;
+    NSMutableArray * arr = [NSMutableArray array];
     for (MenuMo * mo in self.myMenuArr) {
         if ([mo.ID isEqualToString:@"1"]) {//旅行
             trval = [TravalController new];
             trval.isInvitOrTrval = YES;
             trval.title = mo.name;
+            [arr addObject:trval];
         }else if ([mo.ID isEqualToString:@"2"]){//娱乐
             news = [NewsListController new];
             news.title = mo.name;
+            [arr addObject:news];
         }
         else if ([mo.ID isEqualToString:@"3"]){//生活
             trval3 = [ServiceHomeController new];
             trval3.title = mo.name;
+           [arr addObject:trval3];
         }
-            else if ([mo.ID isEqualToString:@"4"]){//圈子
+        else if ([mo.ID isEqualToString:@"4"]){//圈子
             circle1 = [FriendCircleController new];
             circle1.title = mo.name;
+            circle1.flagCircle = @"QZ";
+           [arr addObject:circle1];
         }else if ([mo.ID isEqualToString:@"5"]){//视频
             circle2 = [FriendCircleController new];
             circle2.title = mo.name;
+            circle2.flagCircle = @"SP";
+            [arr addObject:circle2];
         }
-//            else if ([mo.ID isEqualToString:@"6"]){//工作
-//            TravalController * trval = [TravalController new];
-//            trval.title = mo.name;
-//        }else if ([mo.ID isEqualToString:@"7"]){//赚外快
-//            TravalController * trval = [TravalController new];
-//            trval.title = mo.name;
-//        }
+        else if ([mo.ID isEqualToString:@"6"]){//工作
+            trval4 = [TravalController new];
+            trval4.title = mo.name;
+            
+            [arr addObject:trval4];
+        }else if ([mo.ID isEqualToString:@"7"]){//赚外快
+            trval5 = [TravalController new];
+            trval5.title = mo.name;
+            [arr addObject:trval5];
+        }
         else if ([mo.ID isEqualToString:@"8"]){//旅行邀约
             trval2 = [TravalController new];
             trval2.isInvitOrTrval = NO;
             trval2.title = mo.name;
+            [arr addObject:trval2];
         }
     } 
-    NSArray *childVcs = [NSArray arrayWithObjects:trval,news,trval3,trval2, nil];
-    return childVcs;
+    return [arr copy];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

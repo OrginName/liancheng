@@ -92,9 +92,9 @@ static NSInteger i;//判断当前返回按钮点击次数
     self.frendTab.user = self.user;
     self.frendVedio.user = self.user;
 //    [self.view addSubview:self.frendMyselfTab];
-    if (self.user==nil) {
-       self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SendFriend) image:@"" title:@"发布" EdgeInsets:UIEdgeInsetsZero];
-    }
+//    if (self.user==nil) {
+//       self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SendFriend) image:@"" title:@"发布" EdgeInsets:UIEdgeInsetsZero];
+//    }
     if ([self.tabBarItem.title isEqualToString:@"我的"]) {
         self.btn_picTxt.selected = NO;
         self.btn_My.selected = YES;
