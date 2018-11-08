@@ -21,6 +21,8 @@
 #import "AbilityHomeController.h"
 #import "TrvalInvitController.h"
 #import "SendTripController.h"
+#import "AllDicMo.h"
+#import "SendMomentController.h"
 @interface HomeController ()<JFCityViewControllerDelegate>
 {
     BOOL flag;
@@ -51,6 +53,28 @@
     [HomeNet loadMyMeu:^(NSMutableArray *successArrValue) {
         weakSelf.myMenuArr = successArrValue;
         [weakSelf setUI];
+    }];
+    if ([KUserDefults objectForKey:KAllDic]!=nil) {
+        return;
+    }
+    [YSNetworkTool POST:dictionaryDictionaryAll params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray * arr1 = [NSMutableArray array];
+        for (int i=0; i<[responseObject[@"data"] count]; i++) {
+            NSMutableArray * arrContent= [NSMutableArray array];
+            AllDicMo * Mo = [AllDicMo mj_objectWithKeyValues:responseObject[@"data"][i]];
+            Mo.ID = responseObject[@"data"][i][@"id"];
+            NSArray * arr= [YSTools stringToJSON:Mo.content];
+            for (int j=0; j<[arr count]; j++) {
+                AllContentMo * content = [AllContentMo mj_objectWithKeyValues:arr[j]];
+                content.description1 = arr[j][@"description"];
+                [arrContent addObject:content];
+            }
+            Mo.contentArr = arrContent;
+            [arr1 addObject:Mo];
+        }
+        [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:arr1] forKey:KAllDic];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
     }];
 }
 -(void)setUI{
@@ -139,9 +163,19 @@
     }else if ([mo.ID isEqualToString:@"3"]){
         
     }else if ([mo.ID isEqualToString:@"4"]){
-        
+        SendMomentController * send = [SendMomentController new];
+        send.block = ^{
+            [self.circle1.frendTab.mj_header beginRefreshing]; 
+        };
+        send.flagStr = @"HomeSend";
+        [self.navigationController pushViewController:send animated:YES];
     }else if ([mo.ID isEqualToString:@"5"]){
-        
+        SendMomentController * send = [SendMomentController new];
+        send.block = ^{
+            [self.circle2.frendVedio.mj_header beginRefreshing];
+         };
+        send.flagStr = @"SP";
+        [self.navigationController pushViewController:send animated:YES];
     }else if ([mo.ID isEqualToString:@"6"]){
         
     }else if ([mo.ID isEqualToString:@"8"]){
@@ -151,7 +185,7 @@
         };
         [self.navigationController pushViewController:invit animated:YES];
     }
-    [YTAlertUtil showTempInfo:KString(@"当前index%ld", currentIndexHome)];
+    NSLog(@"当前index%ld",currentIndexHome);
 }
 #pragma mark - JFCityViewControllerDelegate
 - (void)cityName:(NSString *)name {

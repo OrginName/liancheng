@@ -163,10 +163,14 @@
     if ([self.flagStr isEqualToString:@"HomeSend"]) {
         self.photo.allowTakeVideo = NO;
         self.photo.allowPickingVideoSwitch = NO;
+        self.photo.allowTakePicture = YES;
+        self.photo.allowPickingImageSwitch = YES;
     }else{
+        self.photo.allowTakeVideo = YES;
         self.photo.allowPickingVideoSwitch = YES;
-    }
-    self.photo.allowPickingImageSwitch = YES;//是否允许选取照片
+        self.photo.allowTakePicture = NO;
+        self.photo.allowPickingImageSwitch = NO;
+    } 
     self.photo.showSelectedIndexSwitch = NO;
     self.photo.backgroundColor = [UIColor whiteColor];
     self.photo.PhotoDelegate = self;

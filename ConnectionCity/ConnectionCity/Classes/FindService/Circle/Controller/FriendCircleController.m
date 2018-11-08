@@ -8,8 +8,6 @@
 
 #import "FriendCircleController.h"
 #import "CustomButton.h"
-#import "FriendCirleTab.h"
-#import "FriendVideo.h"
 #import "FriendMyselfTab.h"
 #import "SendMomentController.h"
 #import <IQKeyboardManager.h>
@@ -21,8 +19,7 @@ static NSInteger i;//判断当前返回按钮点击次数
 @property (weak, nonatomic) IBOutlet CustomButton *btn_video;
 @property (weak, nonatomic) IBOutlet CustomButton *btn_picTxt;
 @property (weak, nonatomic) IBOutlet CustomButton *btn_My;
-@property (nonatomic,strong)FriendCirleTab * frendTab;
-@property (nonatomic,strong)FriendVideo * frendVedio;
+
 //@property (nonatomic,strong)FriendMyselfTab * frendMyselfTab;
 @end
 
