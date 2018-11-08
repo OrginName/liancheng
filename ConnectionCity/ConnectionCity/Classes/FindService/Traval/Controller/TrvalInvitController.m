@@ -12,10 +12,10 @@
 #import "LCDatePicker.h"
 #import <PGDatePickManager.h>
 @interface TrvalInvitController ()<UITableViewDataSource,UITableViewDelegate,JFCityViewControllerDelegate,PGDatePickerDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * Arr_Dic;
 @property (nonatomic,strong) NSMutableDictionary * Dic;
 @property (nonatomic,strong) LCDatePicker * myDatePick;
+@property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 
 @end
 

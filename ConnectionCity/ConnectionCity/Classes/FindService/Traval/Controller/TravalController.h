@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
-
+#import "TrvalTrip.h"
 @interface TravalController : BaseViewController
 @property (nonatomic,assign) BOOL isInvitOrTrval;
+@property (nonatomic,strong) TrvalTrip * trval;
+@property (weak, nonatomic)  IBOutlet MyTab *tab_Bottom;
+
 @end

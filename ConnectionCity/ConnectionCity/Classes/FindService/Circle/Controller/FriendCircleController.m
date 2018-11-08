@@ -91,8 +91,7 @@ static NSInteger i;//判断当前返回按钮点击次数
     }
 }
 
--(void)setUI{
-//    self.navigationItem.leftBarButtonItem  = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"return-f"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+-(void)setUI{ 
     [self.view addSubview:self.frendTab];
     [self.view addSubview:self.frendVedio];
     self.frendTab.user = self.user;

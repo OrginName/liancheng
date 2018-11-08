@@ -12,7 +12,7 @@
 #import "FriendListController.h"
 #import "YCProjectScanningController.h"
 #import "RCDHttpTool.h"
-
+#import "ConnectionController.h"
 @interface FoundController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
@@ -30,7 +30,7 @@
 }
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FoundCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FoundCell"];
@@ -51,6 +51,12 @@
         {
             cell.headImgV.image = [UIImage imageNamed:@"fj-people"];
             cell.titleLab.text = @"附近的人";
+            break;
+        }
+        case 2:
+        {
+            cell.headImgV.image = [UIImage imageNamed:@"ren"];
+            cell.titleLab.text = @"人脉";
             break;
         }
         default:
@@ -83,6 +89,13 @@
         case 1:
         {
             NearManController *nearManVC = [[NearManController alloc]init];
+            [self.navigationController pushViewController:nearManVC animated:YES];
+            break;
+        }
+        case 2:
+        {
+            ConnectionController *nearManVC = [[ConnectionController alloc]init];
+            nearManVC.title = @"人脉";
             [self.navigationController pushViewController:nearManVC animated:YES];
             break;
         }

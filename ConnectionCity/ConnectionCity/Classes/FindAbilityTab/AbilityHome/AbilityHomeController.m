@@ -16,17 +16,23 @@
 #import "RefineView.h"
 #import "PopThree.h"
 #import "AbilityNet.h"
-#import "CustomScro.h"
+//#import "CustomScro.h"
 #import "AbilttyMo.h"
 #import "OurResumeMo.h"
 #import "ResumeController.h"
-@interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate,CustomScroDelegate>
+#import "CircleNet.h"
+#import "TXScrollLabelView.h"
+#import "NoticeMo.h"
+#import "AgreementController.h"
+//CustomScroDelegate
+@interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate,TXScrollLabelViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btn_SXOne;
 @property (weak, nonatomic) IBOutlet UIButton *btn_SX;
 @property (weak, nonatomic) IBOutlet UIView *notice_Scro;
 @property (weak, nonatomic) IBOutlet UILabel *lab_location;
 @property (weak, nonatomic) IBOutlet UIView *noticeView;
 @property (weak, nonatomic) IBOutlet UIView *locationView;
+@property (nonatomic,strong) TXScrollLabelView *scrollLable;
 
 @property (weak, nonatomic) IBOutlet UIView *view_Map;
 @property (weak, nonatomic) IBOutlet UIButton *btn_fajianli;
@@ -38,6 +44,8 @@
 @property (nonatomic,strong) PopThree * pop;
 @property (nonatomic,assign) NSInteger  flag;
 @property (nonatomic,strong) NSMutableArray * arr_Class;
+@property (nonatomic,strong) NSMutableArray * arr_notice;
+
 @end
 
 @implementation AbilityHomeController
@@ -151,11 +159,11 @@
 //        [self loadServiceList:@{@"cityID":[KUserDefults objectForKey:kUserCityID],@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
 //    }
 //    热门行业加载
-    [AbilityNet requstAbilityHot:^(NSMutableArray *successArrValue) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self loadketBtn:successArrValue];
-        });
-    }];
+//    [AbilityNet requstAbilityHot:^(NSMutableArray *successArrValue) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self loadketBtn:successArrValue];
+//        });
+//    }];
     //    加载分类数据
     [AbilityNet requstAbilityClass:^(NSMutableArray *successArrValue) {
         self.arr_Class = successArrValue;
@@ -178,16 +186,59 @@
         self.cusMap.Arr_Mark = successArrValue;
     }];
 }
+- (IBAction)btn_SXClick:(UIButton *)sender {
+    FilterOneController * filter = [FilterOneController new];
+    filter.title = @"筛选条件";
+    filter.flag_SX = 2;
+    filter.block = ^(NSDictionary *strDic) {
+        [self loadServiceList:@{@"cityID":[KUserDefults objectForKey:kUserCityID],@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],
+                                @"salary":strDic[@"2"],
+                                @"education":strDic[@"1"],
+                                @"work":strDic[@"0"],
+                                @"userStatus":strDic[@"10"]
+                                }];
+    };
+    [self.navigationController pushViewController:filter animated:YES];
+}
+- (IBAction)btn_SXOnew:(UIButton *)sender {
+    ClassificationsController1 * class = [ClassificationsController1 new];
+    class.title = @"行业分类";
+    class.arr_Data = self.arr_Class;
+    class.block = ^(NSString *classifiation){
+        UILabel * btn = (UILabel *)[self.view_SX viewWithTag:2];
+        btn.text = classifiation;
+    };
+    class.block1 = ^(NSString *classifiationID, NSString *classifiation) {
+        [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityID":[KUserDefults objectForKey:kUserCityID],@"category":classifiationID}];
+    };
+    [self.navigationController pushViewController:class animated:YES];
+}
 #pragma mark ----初始化加载数据（结束）------
 -(void)setUI{
     [super setFlag_back:YES];
     self.cusMap = [[CustomMap alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64-44-50)];
     self.cusMap.delegate = self;
     [self.view_Map addSubview:self.cusMap];
-    [self.view_Map bringSubviewToFront:self.btn_fajianli];
-    [self.view_Map bringSubviewToFront:self.view_fajianli];
-    [self initNavi];
-    [self initRightBarItem];
+//    [self.view_Map bringSubviewToFront:self.btn_fajianli];
+//    [self.view_Map bringSubviewToFront:self.view_fajianli];
+    
+    [self.view_Map bringSubviewToFront:self.locationView];
+    [self.view_Map bringSubviewToFront:self.noticeView];
+    [self.view_Map bringSubviewToFront:self.btn_SX];
+    [self.view_Map bringSubviewToFront:self.btn_SXOne];
+    
+    NSString *scrollTitle = @"";
+    TXScrollLabelView *scrollLabelView = [TXScrollLabelView scrollWithTitle:scrollTitle type:TXScrollLabelViewTypeLeftRight velocity:2 options:UIViewAnimationOptionCurveEaseInOut];
+    scrollLabelView.scrollLabelViewDelegate = self;
+    scrollLabelView.scrollInset = UIEdgeInsetsMake(0, -100, 0, 0);
+    scrollLabelView.scrollTitleColor = YSColor(40, 40, 40);
+    scrollLabelView.font = [UIFont systemFontOfSize:15];
+    scrollLabelView.backgroundColor = [UIColor whiteColor];
+    scrollLabelView.frame = CGRectMake(0, 0, kScreenWidth-70, 50);
+    [self.notice_Scro addSubview:scrollLabelView];
+    self.scrollLable = scrollLabelView;
+//    [self initNavi];
+//    [self initRightBarItem];
 }
 -(void)initNavi{
     //自定义标题视图
@@ -221,8 +272,29 @@
 }
 #pragma mark - CustomMapDelegate
 - (void)currentMapLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location{
-    UILabel * btn = (UILabel *)[self.view_SX viewWithTag:1];
-    btn.text = locationDictionary[@"city"];
+//    UILabel * btn = (UILabel *)[self.view_SX viewWithTag:1];
+//    btn.text = locationDictionary[@"city"];
+    self.lab_location.text =locationDictionary[@"addRess"];
+    [self loadNotice];
+}
+-(void)loadNotice{
+    NSDictionary * dic = @{
+                           @"pageNumber":@1,
+                           @"pageSize":@20,
+                           @"cityCode":[KUserDefults objectForKey:kUserCityID]?@([[KUserDefults objectForKey:kUserCityID] intValue]):@"",
+                           };
+    WeakSelf
+    [CircleNet requstNotice:dic withSuc:^(NSMutableArray *successDicValue) {
+        if([successDicValue count]==0){
+            weakSelf.noticeView.hidden = YES;
+        }else{
+            weakSelf.noticeView.hidden = NO;
+            NSArray * arr = [NoticeMo mj_objectArrayWithKeyValuesArray:successDicValue];
+            weakSelf.arr_notice = [arr mutableCopy];
+            weakSelf.scrollLable.scrollTitle = [arr[arr.count-1] title];
+            [weakSelf.scrollLable beginScrolling];
+        }
+    }];
 }
 -(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
     ShowResumeController * show = [ShowResumeController new];
@@ -266,11 +338,19 @@
     [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
 }
 
-#pragma mark ---初始化关键字button加载-----
--(void)loadketBtn:(NSMutableArray *)arr{
-    CustomScro * cus = [[CustomScro alloc] initWithFrame:CGRectMake(103, 52, kScreenWidth-113, 47) arr:[arr copy] flag:NO];
-    cus.delegate = self;
-    [self.view addSubview:cus];
+//#pragma mark ---初始化关键字button加载-----
+//-(void)loadketBtn:(NSMutableArray *)arr{
+//    CustomScro * cus = [[CustomScro alloc] initWithFrame:CGRectMake(103, 52, kScreenWidth-113, 47) arr:[arr copy] flag:NO];
+//    cus.delegate = self;
+//    [self.view addSubview:cus];
+//}
+#pragma mark - LMJScrollTextView2 Delegate
+- (void)scrollLabelView:(TXScrollLabelView *)scrollLabelView didClickWithText:(NSString *)text atIndex:(NSInteger)index{
+    NoticeMo * mo  = self.arr_notice[self.arr_notice.count-1];
+    AgreementController *agreementVC = [[AgreementController alloc]init];
+    agreementVC.title = @"详情";
+    agreementVC.url = mo.url;
+    [self.navigationController pushViewController:agreementVC animated:YES];
 }
 -(void)CustomScroBtnClick:(UIButton *)tag{
     [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"cityID":[KUserDefults objectForKey:kUserCityID],@"keyword":tag.titleLabel.text}];

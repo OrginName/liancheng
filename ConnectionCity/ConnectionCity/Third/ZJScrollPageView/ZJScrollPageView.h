@@ -11,8 +11,10 @@
 #import "ZJContentView.h"
 @interface ZJScrollPageView : UIView
 typedef void(^ExtraBtnOnClick)(UIButton *extraBtn);
+typedef void(^CurrentIndexBlock)(NSInteger currentIndex);
 
 @property (copy, nonatomic) ExtraBtnOnClick extraBtnOnClick;
+@property (copy, nonatomic) CurrentIndexBlock Index;
 
 - (instancetype)initWithFrame:(CGRect)frame segmentStyle:(ZJSegmentStyle *)segmentStyle childVcs:(NSArray *)childVcs parentViewController:(UIViewController *)parentViewController;
 

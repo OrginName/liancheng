@@ -9,8 +9,7 @@
 #import "TravalController.h"
 #import "CustomButton.h"
 #import "TrvalCell.h"
-#import "TrvalTrip.h"
-#import "FilterOneController.h"
+ #import "FilterOneController.h"
 #import "JFCityViewController.h"
 #import "ServiceHomeNet.h"
 #import "TrvalInvitController.h"
@@ -27,10 +26,8 @@
 }
 @property (weak, nonatomic) IBOutlet UIView *btnView1;
 @property (weak, nonatomic) IBOutlet UIButton *btn_PYYY;
-@property (nonatomic,strong)TrvalTrip * trval;
 @property (weak, nonatomic) IBOutlet UIButton *btn_travl;
 @property (weak, nonatomic) IBOutlet UIButton *btn_invit;
-@property (weak, nonatomic) IBOutlet MyTab *tab_Bottom;
 @property (weak, nonatomic) IBOutlet UIView *view_tab;
 @property (nonatomic,strong) UIButton * backBtn;
 @property (nonatomic,strong) NSMutableArray * data_Arr;

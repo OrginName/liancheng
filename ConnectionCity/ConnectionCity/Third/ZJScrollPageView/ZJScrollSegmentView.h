@@ -13,10 +13,12 @@
 
 typedef void(^TitleBtnOnClickBlock)(UILabel *label, NSInteger index);
 typedef void(^ExtraBtnOnClick)(UIButton *extraBtn);
+typedef void(^CurrentIndexBlock)(NSInteger Index);
 
 @interface ZJScrollSegmentView : UIView
 
 @property (copy, nonatomic) ExtraBtnOnClick extraBtnOnClick;
+@property (copy, nonatomic) CurrentIndexBlock Index;
 
 @property (strong, nonatomic) UIImage *backgroundImage;
 

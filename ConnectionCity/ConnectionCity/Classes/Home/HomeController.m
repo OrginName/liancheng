@@ -19,10 +19,21 @@
 #import "ServiceHomeController.h"
 #import "FriendCircleController.h"
 #import "AbilityHomeController.h"
+#import "TrvalInvitController.h"
+#import "SendTripController.h"
 @interface HomeController ()<JFCityViewControllerDelegate>
 {
     BOOL flag;
+    NSInteger currentIndexHome;
 }
+@property (nonatomic,strong) TravalController * trval;
+@property (nonatomic,strong) TravalController * trval2;
+@property (nonatomic,strong) ServiceHomeController * trval3;
+@property (nonatomic,strong) NewsListController * news;
+@property (nonatomic,strong) FriendCircleController * circle1;
+@property (nonatomic,strong) FriendCircleController * circle2;
+@property (nonatomic,strong) TravalController * trval5;
+@property (nonatomic,strong) AbilityHomeController * ability;
 @property (nonatomic,strong)NSMutableArray * myMenuArr;
 @end
 
@@ -70,9 +81,13 @@
         };
         [weakSelf.navigationController presentViewController:edit animated:YES completion:nil];
     };
+    scrollPageView.Index = ^(NSInteger currentIndex) {
+        NSLog(@"当前index为：%ld",currentIndex);
+        currentIndexHome = currentIndex;
+    };
     [self.view addSubview:scrollPageView];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MyselfClick) image:@"people" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MessageClick) image:@"index-dope" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MessageClick) image:@"icon_home_camera" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
     self.navigationItem.leftBarButtonItem.badgeValue=self.navigationItem.rightBarButtonItem.badgeValue = @"";
     self.navigationItem.leftBarButtonItem.badgeOriginX = 19;
     self.navigationItem.rightBarButtonItem.badgeOriginX = 29; self.navigationItem.leftBarButtonItem.badgeOriginY = 5;
@@ -112,9 +127,31 @@
 //导航右侧按钮点击
 -(void)MessageClick{
     flag = NO;
-    NoticeController * noice = [NoticeController new];
-    noice.title = @"消息列表";
-    [self.navigationController pushViewController:noice animated:YES];
+    MenuMo * mo = self.myMenuArr[currentIndexHome];
+    if ([mo.ID isEqualToString:@"1"]) {
+        SendTripController * invit = [SendTripController new];
+        invit.block = ^{
+            [self.trval.trval.bollec_bottom.mj_header beginRefreshing];
+        };
+        [self.navigationController pushViewController:invit animated:YES];
+    }else if ([mo.ID isEqualToString:@"2"]){
+        
+    }else if ([mo.ID isEqualToString:@"3"]){
+        
+    }else if ([mo.ID isEqualToString:@"4"]){
+        
+    }else if ([mo.ID isEqualToString:@"5"]){
+        
+    }else if ([mo.ID isEqualToString:@"6"]){
+        
+    }else if ([mo.ID isEqualToString:@"8"]){
+        TrvalInvitController * invit = [TrvalInvitController new];
+        invit.block = ^{
+            [self.trval2.tab_Bottom.mj_header beginRefreshing];
+        };
+        [self.navigationController pushViewController:invit animated:YES];
+    }
+    [YTAlertUtil showTempInfo:KString(@"当前index%ld", currentIndexHome)];
 }
 #pragma mark - JFCityViewControllerDelegate
 - (void)cityName:(NSString *)name {
@@ -136,7 +173,6 @@
     NewsListController * news;
     FriendCircleController * circle1;
     FriendCircleController * circle2;
-    TravalController * trval4;
     TravalController * trval5;
     AbilityHomeController * ability;
     NSMutableArray * arr = [NSMutableArray array];
@@ -145,41 +181,49 @@
             trval = [TravalController new];
             trval.isInvitOrTrval = YES;
             trval.title = mo.name;
+            self.trval = trval;
             [arr addObject:trval];
         }else if ([mo.ID isEqualToString:@"2"]){//娱乐
             news = [NewsListController new];
             news.title = mo.name;
+            self.news = news;
             [arr addObject:news];
         }
         else if ([mo.ID isEqualToString:@"3"]){//生活
             trval3 = [ServiceHomeController new];
             trval3.title = mo.name;
+            self.trval3 = trval3;
            [arr addObject:trval3];
         }
         else if ([mo.ID isEqualToString:@"4"]){//圈子
             circle1 = [FriendCircleController new];
             circle1.title = mo.name;
             circle1.flagCircle = @"QZ";
+            self.circle1 = circle1;
            [arr addObject:circle1];
         }else if ([mo.ID isEqualToString:@"5"]){//视频
             circle2 = [FriendCircleController new];
             circle2.title = mo.name;
             circle2.flagCircle = @"SP";
+            self.circle2 = circle2;
             [arr addObject:circle2];
         }
         else if ([mo.ID isEqualToString:@"6"]){//工作
             ability = [AbilityHomeController new];
             ability.title = mo.name;
+            self.ability = ability;
             [arr addObject:ability];
         }else if ([mo.ID isEqualToString:@"7"]){//赚外快
             trval5 = [TravalController new];
             trval5.title = mo.name;
+            self.trval5 = trval5;
             [arr addObject:trval5];
         }
         else if ([mo.ID isEqualToString:@"8"]){//旅行邀约
             trval2 = [TravalController new];
             trval2.isInvitOrTrval = NO;
             trval2.title = mo.name;
+            self.trval2 = trval2;
             [arr addObject:trval2];
         }
     } 

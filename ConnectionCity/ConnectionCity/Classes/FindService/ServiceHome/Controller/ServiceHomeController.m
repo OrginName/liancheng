@@ -17,7 +17,7 @@
 #import "RefineView.h"
 #import "PopThree.h"
 #import "SendServiceController.h"
-#import "CustomScro.h"
+//#import "CustomScro.h"
 #import "CustomAnnotationView.h"
 #import "ClassificationsController1.h"
 #import "privateUserInfoModel.h"
@@ -26,7 +26,8 @@
 #import "CircleNet.h"
 #import "NoticeMo.h"
 #import "AgreementController.h"
-@interface ServiceHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate,CustomScroDelegate,TXScrollLabelViewDelegate>
+//CustomScroDelegate
+@interface ServiceHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate,TXScrollLabelViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btn_SXOne;
 @property (weak, nonatomic) IBOutlet UIButton *btn_SX;
 @property (weak, nonatomic) IBOutlet UIView *notice_Scro;
@@ -342,12 +343,12 @@
         self.Arr_Classify = successArrValue;
     }];
 //    关键字
-    [ServiceHomeNet requstServiceHot:^(NSMutableArray *successArrValue) {
-        self.Arr_keyWords = successArrValue;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self loadketBtn:successArrValue];
-        });
-    }];
+//    [ServiceHomeNet requstServiceHot:^(NSMutableArray *successArrValue) {
+//        self.Arr_keyWords = successArrValue;
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self loadketBtn:successArrValue];
+//        });
+//    }];
 }
 //-(void)viewWillAppear:(BOOL)animated{
 //    [super viewWillAppear:animated];
@@ -359,12 +360,12 @@
 //        self.navigationController.navigationBar.hidden= YES;
 //    }
 //}
-#pragma mark ---初始化关键字button加载-----
--(void)loadketBtn:(NSMutableArray *)arr{
-    CustomScro * cus = [[CustomScro alloc] initWithFrame:CGRectMake(103, 52, kScreenWidth-113, 47) arr:[arr copy] flag:NO];
-    cus.delegate = self;
-    [self.view addSubview:cus];
-}
+//#pragma mark ---初始化关键字button加载-----
+//-(void)loadketBtn:(NSMutableArray *)arr{
+//    CustomScro * cus = [[CustomScro alloc] initWithFrame:CGRectMake(103, 52, kScreenWidth-113, 47) arr:[arr copy] flag:NO];
+//    cus.delegate = self;
+//    [self.view addSubview:cus];
+//}
 -(void)CustomScroBtnClick:(UIButton *)tag{
     [self loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng],@"keyword":tag.titleLabel.text}];
 }

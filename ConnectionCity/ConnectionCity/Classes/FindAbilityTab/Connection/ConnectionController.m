@@ -41,7 +41,7 @@
 }
 -(void)setUI{
     _tmpBtn = self.btn_All;
-    [super setFlag_back:YES];
+//    [super setFlag_back:YES];
     self.data_Arr = [NSMutableArray array];
 //     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(SearchClick) image:@"search" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
 }
@@ -114,7 +114,7 @@
 -(void)setupSlider{
     self.edgesForExtendedLayout = UIRectEdgeNone;
     list = @[@"同乡",@"校友", @"同行"];
-    _pageView = [[MLMSegmentPage alloc] initSegmentWithFrame:CGRectMake(10, 70, kScreenWidth-20, kScreenHeight-200) titlesArray:list vcOrviews:[self viewArr]];
+    _pageView = [[MLMSegmentPage alloc] initSegmentWithFrame:CGRectMake(10, 70, kScreenWidth-20, kScreenHeight-150) titlesArray:list vcOrviews:[self viewArr]];
     _pageView.headStyle = SegmentHeadStyleLine;
     _pageView.delegate = self;
     _pageView.loadAll = YES;

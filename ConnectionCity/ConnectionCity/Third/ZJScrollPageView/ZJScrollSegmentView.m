@@ -64,9 +64,10 @@
         // 设置了frame之后可以直接设置其他的控件的frame了, 不需要在layoutsubView()里面设置
         [self setupTitles];
         [self setupUI];
-
-    }
-    
+        if(self.Index){
+            self.Index(_currentIndex);
+        }
+    } 
     return self;
 }
 
@@ -302,7 +303,7 @@
 }
 
 - (void)adjustUIWithProgress:(CGFloat)progress oldIndex:(NSInteger)oldIndex currentIndex:(NSInteger)currentIndex {
-    _oldIndex = currentIndex;
+     _oldIndex = currentIndex;
     ZJCustomLabel *oldLabel = (ZJCustomLabel *)self.titleLabels[oldIndex];
     ZJCustomLabel *currentLabel = (ZJCustomLabel *)self.titleLabels[currentIndex];
     
@@ -344,6 +345,9 @@
 }
 
 - (void)adjustTitleOffSetToCurrentIndex:(NSInteger)currentIndex {
+    if (self.Index) {
+        self.Index(currentIndex);
+    }
     ZJCustomLabel *currentLabel = (ZJCustomLabel *)self.titleLabels[currentIndex];
     
     CGFloat offSetx = currentLabel.center.x - _currentWidth * 0.5;
@@ -402,12 +406,8 @@
     [self setupTitles];
     [self setupUI];
     [self setSelectedIndex:0 animated:YES];
-    
 }
-
-
 #pragma mark - getter --- setter
-
 - (UIView *)scrollLine {
     
     if (!self.segmentStyle.isShowLine) {

@@ -128,5 +128,8 @@
     _extraBtnOnClick = extraBtnOnClick;
     self.segmentView.extraBtnOnClick = extraBtnOnClick;
 }
-
+-(void)setIndex:(CurrentIndexBlock)Index{
+    _Index = Index;
+    self.segmentView.Index = Index;
+}
 @end
