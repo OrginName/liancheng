@@ -7,7 +7,7 @@
 //
 
 #import "ServiceHomeController.h"
-#import "CustomMap.h"
+//#import "CustomMap.h"
 #import "JFCityViewController.h"
 #import "ClassificationsController.h"
 #import "FilterOneController.h"
@@ -39,7 +39,6 @@
 @property (weak, nonatomic) IBOutlet UIView *view_fajianli;
 @property (weak, nonatomic) IBOutlet UIView *view_SX;
 @property (weak, nonatomic) IBOutlet UIView *view_KeyWords;
-@property (nonatomic,strong) CustomMap *cusMap;
 @property (nonatomic,strong) NSMutableArray * Arr_SX;
 @property (nonatomic,strong) NSMutableArray * Arr_Classify;//分类数据源数组
 @property (nonatomic,strong) RefineView * refine;

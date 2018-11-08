@@ -22,10 +22,14 @@
 #import "TrvalInvitController.h"
 #import "SendTripController.h"
 #import "AllDicMo.h"
+#import "OurResumeMo.h"
+#import "ResumeController.h"
 #import "SendMomentController.h"
+#import "SendServiceController.h"
+#import "ServiceHomeNet.h"
 @interface HomeController ()<JFCityViewControllerDelegate>
 {
-    BOOL flag;
+    BOOL flag1;
     NSInteger currentIndexHome;
 }
 @property (nonatomic,strong) TravalController * trval;
@@ -37,13 +41,14 @@
 @property (nonatomic,strong) TravalController * trval5;
 @property (nonatomic,strong) AbilityHomeController * ability;
 @property (nonatomic,strong)NSMutableArray * myMenuArr;
+@property (nonatomic,strong) NSMutableArray * Arr_Classify;//分类数据源数组
 @end
 
 @implementation HomeController
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    flag = NO;
+    flag1 = NO;
     self.myMenuArr  = [NSMutableArray array];
     [self initData];
     
@@ -53,6 +58,11 @@
     [HomeNet loadMyMeu:^(NSMutableArray *successArrValue) {
         weakSelf.myMenuArr = successArrValue;
         [weakSelf setUI];
+    }];
+    self.Arr_Classify = [NSMutableArray array];
+     //    服务类别列表
+    [ServiceHomeNet requstServiceClass:^(NSMutableArray *successArrValue) {
+        self.Arr_Classify = successArrValue;
     }];
     if ([KUserDefults objectForKey:KAllDic]!=nil) {
         return;
@@ -98,7 +108,7 @@
     // 额外的按钮响应的block
     WeakSelf
     scrollPageView.extraBtnOnClick = ^(UIButton *extraBtn){
-        flag = NO;
+        flag1 = NO;
         EditMenuController * edit = [EditMenuController new];
         edit.dataBlock = ^{
             [weakSelf initData];
@@ -145,12 +155,12 @@
 }
 //导航左按钮我的点击
 -(void)MyselfClick{
-    flag = NO;
+    flag1 = NO;
     [self.navigationController pushViewController:[super rotateClass:@"ProfileTwoController"] animated:YES];
 }
 //导航右侧按钮点击
 -(void)MessageClick{
-    flag = NO;
+    flag1 = NO;
     MenuMo * mo = self.myMenuArr[currentIndexHome];
     if ([mo.ID isEqualToString:@"1"]) {
         SendTripController * invit = [SendTripController new];
@@ -161,13 +171,19 @@
     }else if ([mo.ID isEqualToString:@"2"]){
         
     }else if ([mo.ID isEqualToString:@"3"]){
+        SendServiceController * send = [SendServiceController new];
+        send.arr_receive = self.Arr_Classify;
+        send.refreshBlock = ^{
+            [self.trval3 loadServiceList:@{@"lat":[KUserDefults objectForKey:kLat],@"lng":[KUserDefults objectForKey:KLng]}];
+        };
+        [self.navigationController pushViewController:send animated:YES];
         
     }else if ([mo.ID isEqualToString:@"4"]){
         SendMomentController * send = [SendMomentController new];
         send.block = ^{
             [self.circle1.frendTab.mj_header beginRefreshing]; 
         };
-        send.flagStr = @"HomeSend";
+        send.flagStr = @"CircleSend";
         [self.navigationController pushViewController:send animated:YES];
     }else if ([mo.ID isEqualToString:@"5"]){
         SendMomentController * send = [SendMomentController new];
@@ -177,6 +193,19 @@
         send.flagStr = @"SP";
         [self.navigationController pushViewController:send animated:YES];
     }else if ([mo.ID isEqualToString:@"6"]){
+        [YSNetworkTool POST:v1MyResumePage params:@{@"pageNumber": @1,@"pageSize":@20} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+            if ([responseObject[@"data"][@"content"] count]!=0) {
+                NSArray * arr = [OurResumeMo mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"content"]];
+                OurResumeMo *mo = arr[0];
+                ResumeController * resume = [ResumeController new];
+                resume.resume = mo;
+                [self.navigationController pushViewController:resume animated:YES];
+            }else{
+                [self.navigationController pushViewController:[self rotateClass:@"ResumeController"] animated:YES];
+            }
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
         
     }else if ([mo.ID isEqualToString:@"8"]){
         TrvalInvitController * invit = [TrvalInvitController new];
@@ -188,6 +217,7 @@
     NSLog(@"当前index%ld",currentIndexHome);
 }
 #pragma mark - JFCityViewControllerDelegate
+#pragma mark - JFCityViewControllerDelegate
 - (void)cityName:(NSString *)name {
     UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];
     [btn setTitle:name forState:UIControlStateNormal];
@@ -195,10 +225,32 @@
 -(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng{
     UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];
     [btn setTitle:name forState:UIControlStateNormal];
-    
+    [self homeLoadData:lat lng:lng];
 }
 -(void)cityMo:(CityMo *)mo{
-    
+    [self homeLoadData:mo.lat lng:mo.lng];
+}
+#pragma mark ----根据城市筛选加载数据-------------
+-(void)homeLoadData:(NSString *)lat lng:(NSString *)lng{
+    flag1 = NO;
+    MenuMo * mo1 = self.myMenuArr[currentIndexHome];
+    if ([mo1.ID isEqualToString:@"1"]) {
+        [self.trval.trval loadData:@{@"lat":lat,@"lng":lng}];
+    }else if ([mo1.ID isEqualToString:@"2"]){
+        
+    }else if ([mo1.ID isEqualToString:@"3"]){
+        [self.trval3 loadServiceList:@{@"lat":lat,@"lng":lng}];
+        [self.trval3.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([lat floatValue], [lng floatValue])];
+        [self.trval3.cusMap.mapView setZoomLevel:15.1 animated:NO];
+    }else if ([mo1.ID isEqualToString:@"4"]){
+        
+    }else if ([mo1.ID isEqualToString:@"6"]){
+        [self.ability loadServiceList:@{@"lat":lat,@"lng":lng}];
+        [self.ability.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([lat floatValue], [lng floatValue])];
+        [self.ability.cusMap.mapView setZoomLevel:15.1 animated:NO];
+    }else if ([mo1.ID isEqualToString:@"5"]){
+        
+    }
 }
 - (NSArray *)setupChildVcAndTitle {
     TravalController * trval;
@@ -273,7 +325,7 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    if (!flag) {
+    if (!flag1) {
         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
         [self.navigationController.navigationBar setBackgroundImage:
          [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];

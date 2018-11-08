@@ -187,7 +187,7 @@
     self.showTakeVideoBtnSwitch=YES;
     self.sortAscendingSwitch = YES;
     self.allowPickingVideoSwitch = NO;
-    self.allowPickingImageSwitch = YES;
+    self.allowPickingImageSwitch = NO;
     self.allowPickingGifSwitch = NO;
     self.allowPickingOriginalPhotoSwitch = YES;
     self.showSheetSwitch = YES;
@@ -364,7 +364,7 @@
     // 3. Set allow picking video & photo & originalPhoto or not
     // 3. 设置是否可以选择视频/图片/原图
     imagePickerVc.allowPickingVideo = self.allowPickingVideoSwitch;
-    imagePickerVc.allowPickingImage = YES;
+    imagePickerVc.allowPickingImage = self.allowPickingImageSwitch;
     imagePickerVc.allowPickingOriginalPhoto = self.allowPickingOriginalPhotoSwitch;
     imagePickerVc.allowPickingGif = self.allowPickingGifSwitch;
     imagePickerVc.allowPickingMultipleVideo = self.allowPickingMuitlpleVideoSwitch; // 是否可以多选视频

@@ -60,6 +60,7 @@
     self.photo.backgroundColor = [UIColor whiteColor];
     self.photo.PhotoDelegate = self;
     self.photo.allowTakeVideo = NO;
+    self.photo.allowPickingImageSwitch = YES;
     self.tab_Bottom.tableHeaderView = self.photo;
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(complete) image:@"" title:@"完成" EdgeInsets:UIEdgeInsetsZero];
     [self.view addSubview:self.myPicker];

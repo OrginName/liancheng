@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+#import "CustomMap.h"
 @interface AbilityHomeController : BaseViewController
-
+@property (nonatomic,strong) CustomMap *cusMap;
+//加载简历列表数据
+-(void)loadServiceList:(NSDictionary *)dic;
 @end

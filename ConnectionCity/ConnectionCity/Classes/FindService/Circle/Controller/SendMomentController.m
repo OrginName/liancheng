@@ -160,7 +160,7 @@
     self.photo = [[PhotoSelect alloc] initWithFrame:CGRectMake(0, 0, self.view_Photo.width, itemHeigth) withController:self];
     self.photo.showTakePhotoBtnSwitch = NO;
     self.photo.showTakeVideoBtnSwitch=NO;
-    if ([self.flagStr isEqualToString:@"HomeSend"]) {
+    if ([self.flagStr isEqualToString:@"CircleSend"]) {
         self.photo.allowTakeVideo = NO;
         self.photo.allowPickingVideoSwitch = NO;
         self.photo.allowTakePicture = YES;

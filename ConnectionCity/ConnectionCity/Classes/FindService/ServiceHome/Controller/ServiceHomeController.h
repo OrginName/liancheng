@@ -7,8 +7,10 @@
 //
 
 #import "BaseViewController.h"
-
+#import "CustomMap.h"
 
 @interface ServiceHomeController : BaseViewController
+@property (nonatomic,strong) CustomMap *cusMap;
 
+-(void)loadServiceList:(NSDictionary *)dic;
 @end

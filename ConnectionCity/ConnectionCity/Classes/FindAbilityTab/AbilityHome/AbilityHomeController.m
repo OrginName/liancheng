@@ -7,7 +7,7 @@
 //
 
 #import "AbilityHomeController.h"
-#import "CustomMap.h"
+//#import "CustomMap.h"
 #import "JFCityViewController.h"
 #import "ClassificationsController1.h"
 #import "FilterOneController.h"
@@ -39,7 +39,6 @@
 @property (weak, nonatomic) IBOutlet UIView *view_fajianli;
 @property (weak, nonatomic) IBOutlet UIView *view_SX;
 @property (weak, nonatomic) IBOutlet UIView *view_keyWords;
-@property (nonatomic,strong) CustomMap *cusMap;
 @property (nonatomic,strong) RefineView * refine;
 @property (nonatomic,strong) PopThree * pop;
 @property (nonatomic,assign) NSInteger  flag;
