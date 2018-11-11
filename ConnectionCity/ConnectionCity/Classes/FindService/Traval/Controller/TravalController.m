@@ -21,7 +21,6 @@
 @interface TravalController ()<UITableViewDelegate,UITableViewDataSource,JFCityViewControllerDelegate,TrvalCellDelegate>
 {
     UIButton * _tmpBtn;
-    NSInteger  _page;
     NSString * _cityID;
 }
 @property (weak, nonatomic) IBOutlet UIView *btnView1;

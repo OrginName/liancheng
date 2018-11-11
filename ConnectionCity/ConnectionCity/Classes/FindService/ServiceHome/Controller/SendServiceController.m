@@ -223,6 +223,9 @@
     }else if(indexPath.section!=3&&indexPath.section!=4){
         SendServiceCell * cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section]];
         EditAllController * edit = [EditAllController new];
+        if (indexPath.section==2) {
+            edit.type = UIKeyboardTypeDecimalPad;
+        }
         edit.receiveTxt = cell.txt_Placeholder.text;
         edit.block = ^(NSString * str){
             cell.txt_Placeholder.text = str;

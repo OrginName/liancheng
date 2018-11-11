@@ -23,8 +23,9 @@
 #import "UIView+Geometry.h"
 @interface FriendCirleTab()<UITableViewDelegate,UITableViewDataSource,MomentCellDelegate,CommentViewDelegate>
 {
-    NSInteger _page;
+//    NSInteger _page;
     NSInteger _CurrentTag;
+    NSString * _cityCode;
 }
 @property (nonatomic,strong)UIImageView * headImage;
 @property (nonatomic,strong) NSMutableArray *momentList;
@@ -34,6 +35,7 @@
 -(instancetype)initWithFrame:(CGRect)frame withControll:(UIViewController *)control{
     if (self = [super initWithFrame:frame]) {
         self.controller = control;
+        _cityCode = @"";
         [self setUI];
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
@@ -110,10 +112,10 @@
     WeakSelf
     self.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         _page=1;
-        [weakSelf loadDataFriendList];
+        [weakSelf loadDataFriendList:_cityCode];
     }];
     self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [weakSelf loadDataFriendList];
+        [weakSelf loadDataFriendList:_cityCode];
     }];
 //
 //    NSMutableArray *commentList;
@@ -158,7 +160,8 @@
 //    }
 }
 //加载朋友圈列表
--(void)loadDataFriendList{
+-(void)loadDataFriendList:(NSString *)cityCode{
+    _cityCode = cityCode;
     NSDictionary * dic = @{};
     if ([self.flagStr isEqualToString:@"HomeSend"]) {
         dic = @{
@@ -167,6 +170,7 @@
                 };
     }else{
         dic = @{
+                @"cityCode":_cityCode,
                 @"containsImage": @1,
                 @"containsVideo": @0,
                 @"pageNumber": @(_page),

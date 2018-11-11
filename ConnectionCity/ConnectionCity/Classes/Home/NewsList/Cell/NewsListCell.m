@@ -17,6 +17,9 @@
 -(void)setYlMo:(YLMo *)ylMo{
     _ylMo = ylMo;
     [self.image_head sd_setImageWithURL:[NSURL URLWithString:ylMo.user.headImage] placeholderImage:[UIImage imageNamed:@"logo2"]];
+    if ([ylMo.images containsString:@";"]) {
+        ylMo.images = [ylMo.images componentsSeparatedByString:@";"][0];
+    }
     [self.iamge_yl sd_setImageWithURL:[NSURL URLWithString:ylMo.images] placeholderImage:[UIImage imageNamed:@"2"]];
     self.lab_title.text = ylMo.user.nickName ? ylMo.user.nickName:ylMo.ID;
     self.lab_context.text = ylMo.content;

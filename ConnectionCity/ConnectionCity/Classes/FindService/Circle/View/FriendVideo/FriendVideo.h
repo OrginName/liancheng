@@ -10,7 +10,9 @@
 #import "UserMo.h"
 @interface FriendVideo : MyCollectionView
 @property (nonatomic,strong) UserMo * user;
--(void)loadDataFriendList;//加载视频列表
+@property (nonatomic,assign) NSInteger page;
+//加载朋友圈列表
+-(void)loadDataFriendList:(NSString *)cityCode flag:(NSString *)flag;
 -(instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout withController:(UIViewController *)controller;
 @end
 @interface FriendVideoLayout : UICollectionViewFlowLayout

@@ -12,4 +12,5 @@ typedef void(^EditBlock)(NSString * EditStr);
 @property (weak, nonatomic) IBOutlet CustomtextView *textView_EditAll;
 @property (nonatomic, copy) EditBlock block;
 @property (nonatomic,copy) NSString * receiveTxt;
+@property (nonatomic,assign) UIKeyboardType type;
 @end

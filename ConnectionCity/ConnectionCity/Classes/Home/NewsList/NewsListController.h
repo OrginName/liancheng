@@ -9,5 +9,7 @@
 #import "BaseViewController.h"
 
 @interface NewsListController : BaseViewController
-
+@property (nonatomic,assign) NSInteger  page;
+-(void)requstLoad:(NSString *)cityCode;
+@property (weak, nonatomic) IBOutlet MyTab *tab_Bottom;
 @end

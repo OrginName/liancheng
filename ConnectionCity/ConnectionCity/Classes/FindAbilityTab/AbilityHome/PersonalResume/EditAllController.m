@@ -29,6 +29,9 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)setUI{
+    if (self.type) {
+        self.textView_EditAll.keyboardType = self.type;
+    }
     self.textView_EditAll.placeholder = @"请输入内容";
     self.textView_EditAll.placeholderColor = [UIColor hexColorWithString:@"#bbbbbb"];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(complete) image:@"" title:@"完成" EdgeInsets:UIEdgeInsetsZero];

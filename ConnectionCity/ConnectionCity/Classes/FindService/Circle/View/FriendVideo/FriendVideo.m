@@ -13,7 +13,7 @@
 #import "MommentPlayerController.h"
 @interface FriendVideo()<UICollectionViewDelegate,UICollectionViewDataSource>
 {
-    NSInteger _page;
+    NSString * _cityCode;
 }
 @property (nonatomic,strong) NSMutableArray * data_Arr;
 @property (nonatomic,strong) UIViewController * controller;
@@ -27,6 +27,7 @@
         self.showsVerticalScrollIndicator = NO;
         self.backgroundColor = [UIColor clearColor];
         self.collectionViewLayout = [[FriendVideoLayout alloc] init];
+        _cityCode = @"";
         [self registerNib:[UINib nibWithNibName:@"FriendVideoCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"VideoCell"];
         self.delegate = self;
         self.dataSource = self;
@@ -49,16 +50,18 @@
 -(void)initData{
     self.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         _page=1;
-        [self loadDataFriendList];
+        [self loadDataFriendList:_cityCode flag:@""];
     }];
     self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [self loadDataFriendList];
+        [self loadDataFriendList:_cityCode flag:@""];
     }];
     [self.mj_header beginRefreshing];
 }
 //加载朋友圈列表
--(void)loadDataFriendList{
+-(void)loadDataFriendList:(NSString *)cityCode flag:(NSString *)flag{
+    _cityCode = cityCode;
     NSDictionary * dic = @{
+                           @"cityCode":_cityCode,
                            @"containsImage": @0,
                            @"containsVideo": @1,
                            @"pageNumber": @(_page),
@@ -71,7 +74,7 @@
     }else
         str = @"Friend";
     [CircleNet requstCirclelDic:dic flag:str withSuc:^(NSMutableArray *successArrValue) {
-        if (_page==1) {
+        if (_page==1||[flag isEqualToString:@"Home"]) {
             [self.data_Arr removeAllObjects];
         }
         _page++;

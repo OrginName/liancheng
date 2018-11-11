@@ -49,7 +49,8 @@
     NSLog(@"%s, amapLocationManager = %@, error = %@", __func__, [manager class], error);
     if ([error code] == kCLErrorDenied) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(refuseToUsePositioningSystem:)]) {
-            [self.delegate refuseToUsePositioningSystem:@"您已拒绝使用系统定位，请前往设置中开启"];
+            
+            [self.delegate refuseToUsePositioningSystem:@"为了能获取到附近的服务或简历,请打开系统定位"];
         }
     }
     if ([error code] == kCLErrorLocationUnknown) {

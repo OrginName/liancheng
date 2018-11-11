@@ -21,4 +21,5 @@ typedef enum {
 @property (nonatomic,strong) NSMutableArray * data_Count;
 @property (nonatomic,assign) NSInteger zIndex;
 @property (nonatomic,strong) NSString * str;//判断传进来的是哪个
+@property (nonatomic,strong) NSString * flagNext;//判断需不需要显示切换上下页按钮
 @end

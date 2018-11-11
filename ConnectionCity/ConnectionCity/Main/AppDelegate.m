@@ -948,12 +948,14 @@ handleWatchKitExtensionRequest:(NSDictionary *)userInfo
 }
 //拒绝定位
 - (void)refuseToUsePositioningSystem:(NSString *)message{
-    [YTAlertUtil alertSingleWithTitle:@"连程" message:message defaultTitle:@"前往开启" defaultHandler:^(UIAlertAction *action) {
+    [YTAlertUtil alertDualWithTitle:@"温馨提示" message:message style:UIAlertControllerStyleAlert cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
+        
+    } defaultTitle:@"前往开启" defaultHandler:^(UIAlertAction *action) {
         NSURL *url = [[NSURL alloc] initWithString:UIApplicationOpenSettingsURLString];
         if( [[UIApplication sharedApplication] canOpenURL:url]) {
             [[UIApplication sharedApplication] openURL:url];
         }
-    } completion:nil];
+    } completion:nil]; 
 }
 #pragma mark -------CustomLocationDelegate------
 - (void)currentLocation:(NSDictionary *)locationDictionary location:(CLLocation*)location{

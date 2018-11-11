@@ -9,11 +9,12 @@
 #import "NewsListController.h"
 #import "NewsListCell.h"
 #import "HomeNet.h"
+#import "ShowResumeController.h"
+#import "serviceListNewMo.h"
 @interface NewsListController ()<UITableViewDelegate,UITableViewDataSource>
 {
-    NSInteger  _page;
+    NSString * _cityCode;
 }
-@property (weak, nonatomic) IBOutlet MyTab *tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * data_Arr;
 
 @end
@@ -23,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _page=1;
+    _cityCode = @"";
     [self initData];
     self.view.backgroundColor = [UIColor whiteColor];
 }
@@ -30,20 +32,19 @@
     self.data_Arr = [NSMutableArray array];
     self.tab_Bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         _page=1;
-        [self requstLoad:@{}];
+        [self requstLoad:_cityCode];
     }];
     self.tab_Bottom.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [self requstLoad:@{}];
+        [self requstLoad:_cityCode];
     }];
     [self.tab_Bottom.mj_header beginRefreshing];
 }
--(void)requstLoad:(NSDictionary *)dic1{
+-(void)requstLoad:(NSString *)cityCode{
+    _cityCode = cityCode;
     NSDictionary * dic = @{
-                           //                           @"areaCode": 110101,
-                           //                           @"cityCode": @(110000),
+                           @"cityCode": _cityCode,
                            @"pageNumber": @(_page),
                            @"pageSize": @15,
-                           //                           @"provinceCode": 110000
                            };
     [HomeNet loadYLList:dic withSuc:^(NSMutableArray *successArrValue) {
         if (_page==1) {
@@ -69,5 +70,24 @@
     }
     cell.ylMo = self.data_Arr[indexPath.row];
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    NewsListDetailController * detail = [NewsListDetailController new];
+//    detail.receiveMo = self.data_Arr[indexPath.row];
+//    [self.navigationController pushViewController:detail animated:YES];
+    
+    ShowResumeController * show = [ShowResumeController new];
+    show.Receive_Type = ENUM_TypeTrval;
+    NSMutableArray * arr = [NSMutableArray array];
+    for (YLMo * mo in self.data_Arr) {
+        serviceListNewMo * list = [serviceListNewMo new];
+        list.ID = mo.user.ID;
+        [arr addObject:list];
+    }
+    show.data_Count = arr;
+    show.zIndex = indexPath.row;
+    show.flag = @"1";
+    show.flagNext = @"NONext";
+    [self.navigationController pushViewController:show animated:YES];
 }
 @end

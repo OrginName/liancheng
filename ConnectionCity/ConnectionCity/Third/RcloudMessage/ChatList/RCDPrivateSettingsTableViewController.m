@@ -62,7 +62,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     NSString * arr = @"";
     if (![[self.userId description] isEqualToString:model.modelId]) {
         if ([[self.userInfo1.isFriend description] isEqualToString:@"1"]) {
-            arr = @"加入黑名单";
+            arr = @"删除好友";
         }else{
             arr = @"加为好友";
         }
@@ -71,7 +71,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     [YTAlertUtil alertDualWithTitle:nil message:nil style:UIAlertControllerStyleActionSheet cancelTitle:@"取消" cancelHandler:^(UIAlertAction *action) {
         
     } defaultTitle:arr defaultHandler:^(UIAlertAction *action) {
-        if ([action.title isEqualToString:@"加入黑名单"]) {
+        if ([action.title isEqualToString:@"删除好友"]) {
             
             [weakSelf joinBlacklist];
         }else{
@@ -89,7 +89,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 -(void)joinBlacklist{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     //黑名单
-        hud.labelText = @"正在加入黑名单";
+        hud.labelText = @"正在删除";
     WeakSelf
     [[RCIMClient sharedRCIMClient] addToBlacklist:self.userId
                                           success:^{
@@ -99,7 +99,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
                                                   [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateNum" object:nil];
                                                   dispatch_async(dispatch_get_main_queue(), ^{
                                                       [hud hide:YES];
-                                                      [YTAlertUtil showTempInfo:@"已移除到黑名单"];
+//                                                      [YTAlertUtil showTempInfo:@"已移除到黑名单"];
                                                   [weakSelf.navigationController popToRootViewControllerAnimated:YES];
                                                       
                                                   });

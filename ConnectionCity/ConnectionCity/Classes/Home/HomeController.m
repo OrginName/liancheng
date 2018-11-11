@@ -27,6 +27,7 @@
 #import "SendMomentController.h"
 #import "SendServiceController.h"
 #import "ServiceHomeNet.h"
+#import "ClassifyMo.h"
 @interface HomeController ()<JFCityViewControllerDelegate>
 {
     BOOL flag1;
@@ -135,13 +136,39 @@
     image.image = [UIImage imageNamed:@"logo"];
     [nav_view addSubview:image];
     
+//    UIView * view =[[UIView alloc] initWithFrame:CGRectMake(40, 0, 70, 44)];
+//    view.backgroundColor = [UIColor redColor];
+//    [nav_view addSubview:view];
+//
+//    UILabel * alb = [[UILabel alloc] init];
+//    alb.font = [UIFont systemFontOfSize:14];
+//    alb.tag = 99999;
+//    alb.text = @"首页";
+//    [view addSubview:alb];
+//    [alb mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(view.mas_left).offset(5);
+//        make.top.equalTo(view.mas_top);
+//        make.bottom.equalTo(view.mas_bottom);
+//    }];
+//
+//    UIImageView * xiaImage = [[UIImageView alloc]init];
+//    xiaImage.image = [UIImage imageNamed:@"Arrow-xia1"];
+//    [view addSubview:xiaImage];
+//    [xiaImage mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(alb.mas_left).offset(5);
+//        make.width.equalTo(@10);
+//        make.height.equalTo(@5);
+//        make.top.equalTo(@19);
+//    }];
+    
     UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(40, 0, 60, 44)];
     btn.tag = 99999;
+//    btn.backgroundColor = [UIColor redColor];
     btn.titleLabel.font = [UIFont systemFontOfSize:14];
     [btn setTitle:@"首页" forState:UIControlStateNormal];
     [btn setTitleColor:KFontColor forState:UIControlStateNormal];
     [btn setImage:[UIImage imageNamed:@"Arrow-xia1"] forState:UIControlStateNormal];
-    [btn layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleRight imageTitleSpace:5];
+    [btn layoutButtonWithEdgeInsetsStyle:GLButtonEdgeInsetsStyleRight imageTitleSpace:15];
     [btn addTarget:self action:@selector(AddressClick:) forControlEvents:UIControlEventTouchUpInside];
     [nav_view addSubview:btn];
     self.navigationItem.titleView = nav_view;
@@ -169,7 +196,20 @@
         };
         [self.navigationController pushViewController:invit animated:YES];
     }else if ([mo.ID isEqualToString:@"2"]){
-        
+        SendServiceController * send = [SendServiceController new];
+        NSMutableArray * arr = [NSMutableArray array];
+        for (int i=0; i<self.Arr_Classify.count; i++) {
+            ClassifyMo * mo = self.Arr_Classify[i];
+            if ([[mo.ID description] isEqualToString:@"103"]) {
+                [arr addObject:mo];
+            }
+        }
+        send.arr_receive = arr;
+        WeakSelf
+        send.refreshBlock = ^{
+            [weakSelf.news.tab_Bottom.mj_header beginRefreshing];
+        };
+        [self.navigationController pushViewController:send animated:YES];
     }else if ([mo.ID isEqualToString:@"3"]){
         SendServiceController * send = [SendServiceController new];
         send.arr_receive = self.Arr_Classify;
@@ -214,7 +254,7 @@
         };
         [self.navigationController pushViewController:invit animated:YES];
     }
-    NSLog(@"当前index%ld",currentIndexHome);
+    NSLog(@"当前index%ld",(long)currentIndexHome);
 }
 #pragma mark - JFCityViewControllerDelegate
 #pragma mark - JFCityViewControllerDelegate
@@ -225,31 +265,38 @@
 -(void)city:(NSString *)name ID:(NSString *)ID lat:(NSString *)lat lng:(NSString *)lng{
     UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];
     [btn setTitle:name forState:UIControlStateNormal];
-    [self homeLoadData:lat lng:lng];
+    [self homeLoadData:lat lng:lng ID:ID];
 }
 -(void)cityMo:(CityMo *)mo{
-    [self homeLoadData:mo.lat lng:mo.lng];
+    [self homeLoadData:mo.lat lng:mo.lng ID:mo.ID];
 }
 #pragma mark ----根据城市筛选加载数据-------------
--(void)homeLoadData:(NSString *)lat lng:(NSString *)lng{
+-(void)homeLoadData:(NSString *)lat lng:(NSString *)lng ID:(NSString *)cityCode{
     flag1 = NO;
     MenuMo * mo1 = self.myMenuArr[currentIndexHome];
     if ([mo1.ID isEqualToString:@"1"]) {
+        self.trval.trval.page = 1;
         [self.trval.trval loadData:@{@"lat":lat,@"lng":lng}];
     }else if ([mo1.ID isEqualToString:@"2"]){
-        
+        self.news.page = 1;
+        [self.news requstLoad:cityCode];
     }else if ([mo1.ID isEqualToString:@"3"]){
         [self.trval3 loadServiceList:@{@"lat":lat,@"lng":lng}];
         [self.trval3.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([lat floatValue], [lng floatValue])];
         [self.trval3.cusMap.mapView setZoomLevel:15.1 animated:NO];
     }else if ([mo1.ID isEqualToString:@"4"]){
-        
+        self.circle1.frendTab.page = 1;
+        [self.circle1.frendTab loadDataFriendList:cityCode];
     }else if ([mo1.ID isEqualToString:@"6"]){
         [self.ability loadServiceList:@{@"lat":lat,@"lng":lng}];
         [self.ability.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([lat floatValue], [lng floatValue])];
         [self.ability.cusMap.mapView setZoomLevel:15.1 animated:NO];
     }else if ([mo1.ID isEqualToString:@"5"]){
-        
+        self.circle2.frendVedio.page = 1;
+        [self.circle2.frendVedio loadDataFriendList:cityCode flag:@"Home"];
+    }else if ([mo1.ID isEqualToString:@"8"]){
+        self.trval2.page = 1;
+        [self.trval2 requstLoad:@{@"lat":lat,@"lng":lng}];
     }
 }
 - (NSArray *)setupChildVcAndTitle {

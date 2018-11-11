@@ -335,7 +335,13 @@
     }
     return 55.5;
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [self.navigationController.navigationBar setBackgroundImage:
+     [UIImage imageNamed:@"椭圆2拷贝4"] forBarMetrics:UIBarMetricsDefault];
+}
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     return self.resultDic[@"allKeys"];
 }

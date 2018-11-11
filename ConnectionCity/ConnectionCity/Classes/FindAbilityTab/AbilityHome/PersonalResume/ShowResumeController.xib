@@ -12,7 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowResumeController">
             <connections>
                 <outlet property="btn_sayAndChange" destination="bpQ-Xt-5Rw" id="sA7-jT-ase"/>
+                <outlet property="next_layout" destination="RK7-Wy-iy1" id="E2g-xG-bEA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view_Nex" destination="SFq-8m-4ar" id="Ntg-eT-jXS"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

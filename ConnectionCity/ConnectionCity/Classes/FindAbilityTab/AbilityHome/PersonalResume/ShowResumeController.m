@@ -18,8 +18,11 @@
 #import "serviceListNewMo.h"
 #import "AbilityNet.h"
 #define identifier @"ScrollCell"
-#define TabHeight kScreenHeight-185
+#define TabHeight kScreenHeight-184
+#define TabHeight1 kScreenHeight-134
 @interface ShowResumeController ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *next_layout;
+@property (weak, nonatomic) IBOutlet UIView *view_Nex;
 @property (weak, nonatomic) IBOutlet UIButton *btn_sayAndChange;
 @property (nonatomic, strong)NSMutableArray *imageArray;
 @property (nonatomic, assign)Boolean isFullScreen;
@@ -55,6 +58,10 @@
         self.title = @"互换宝物";
         [self.btn_sayAndChange setTitle:@"我想换" forState:UIControlStateNormal];
     }else if ([self.flag isEqualToString:@"1"]){
+        if ([self.flagNext isEqualToString:@"NONext"]) {
+            self.view_Nex.hidden = YES;
+            self.next_layout.constant = 0;
+        }
         [self loadDataJNB];
     }else if([self.flag isEqualToString:@"3"]){
         [self loadDataPYDetail];
@@ -190,7 +197,7 @@
         self.showCardTab = [[ShowCardTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight)];
         [cell.contentView addSubview:self.showCardTab];
     }else if (self.Receive_Type == ENUM_TypeTrval){
-        self.trvaltab = [[ShowtrvalTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-20, TabHeight) withControl:self];
+        self.trvaltab = [[ShowtrvalTab alloc] initWithFrame:CGRectMake(0, [self.flagNext isEqualToString:@"NONext"]?-25:0, kScreenWidth-20,self.collectionView.height) withControl:self];
         if ([self.flag isEqualToString:@"3"]) {
             self.title = self.trvalNew.user.nickName?self.trvalNew.user.nickName:KString(@"用户%@", [self.trvalNew.userId description]);
             self.trvaltab.MoTrval = self.trvalNew;
@@ -232,12 +239,13 @@
         layout.itemSize = CGSizeMake(kScreenWidth, kScreenHeight);
         layout.minimumInteritemSpacing = 0.0f;
         
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(10, 10, kScreenWidth-20, TabHeight) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(10, 10, kScreenWidth-20, [self.flagNext isEqualToString:@"NONext"]? TabHeight1: TabHeight) collectionViewLayout:layout];
         _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.pagingEnabled = YES;
         _collectionView.scrollEnabled = NO;
+        _collectionView.backgroundColor = [UIColor redColor];
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
         [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:identifier];
