@@ -19,7 +19,7 @@
 #import "UIView+TXFrame.h"
 
 @class TXScrollLabelView;
-
+typedef void (^btnClick)(void);
 @protocol TXScrollLabelViewDelegate <NSObject>
 @optional
 - (void)scrollLabelView:(TXScrollLabelView *)scrollLabelView didClickWithText:(NSString *)text atIndex:(NSInteger)index;
@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, TXScrollLabelViewType) {
     TXScrollLabelViewTypeFlipRepeat,    //not supports scrollInset.top\bottom
     TXScrollLabelViewTypeFlipNoRepeat   //not supports scrollInset.top\bottom
 };
-
+@property (nonatomic,copy)btnClick click;
 /*************WILL BE REMOVED IN FUTURE.********************/
 #pragma mark - Deprecated property
 /** Deprecated, please Use `scrollTitle` */

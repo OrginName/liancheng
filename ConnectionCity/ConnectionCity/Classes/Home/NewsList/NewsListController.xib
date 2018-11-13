@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="tab_Bottom" destination="4DV-oI-jo0" id="hH0-Tj-2ns"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view_Bottom" destination="thO-mQ-hCo" id="Rsg-xe-qcN"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -21,22 +22,32 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="280" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4DV-oI-jo0" customClass="MyTab">
-                    <rect key="frame" x="0.0" y="10" width="375" height="598"/>
+                    <rect key="frame" x="0.0" y="10" width="375" height="548"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="1jO-fK-xUe"/>
                         <outlet property="delegate" destination="-1" id="no7-Yw-4P2"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thO-mQ-hCo">
+                    <rect key="frame" x="0.0" y="558" width="375" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="UNd-es-A59"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="4DV-oI-jo0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="IdS-AJ-qJg"/>
                 <constraint firstAttribute="trailing" secondItem="4DV-oI-jo0" secondAttribute="trailing" id="QNt-ET-XLZ"/>
-                <constraint firstAttribute="bottom" secondItem="4DV-oI-jo0" secondAttribute="bottom" constant="59" id="iWP-mM-lVh"/>
+                <constraint firstAttribute="bottom" secondItem="4DV-oI-jo0" secondAttribute="bottom" constant="109" id="iWP-mM-lVh"/>
+                <constraint firstItem="thO-mQ-hCo" firstAttribute="top" secondItem="4DV-oI-jo0" secondAttribute="bottom" id="jze-4e-ffN"/>
+                <constraint firstItem="thO-mQ-hCo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wEY-Tq-OyV"/>
                 <constraint firstItem="4DV-oI-jo0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ytG-A4-pDU"/>
+                <constraint firstAttribute="trailing" secondItem="thO-mQ-hCo" secondAttribute="trailing" id="zx8-VM-QjL"/>
             </constraints>
-            <point key="canvasLocation" x="-113" y="-33"/>
+            <point key="canvasLocation" x="-114.40000000000001" y="-33.733133433283363"/>
         </view>
     </objects>
 </document>

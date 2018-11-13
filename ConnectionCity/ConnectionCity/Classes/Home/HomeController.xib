@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeController">
+            <connections>
+                <outlet property="noticeView" destination="K9d-nE-1qu" id="aCo-ll-4ab"/>
+                <outlet property="notice_Scro" destination="zUo-Vo-HpX" id="Dpo-iQ-FmZ"/>
+                <outlet property="view" destination="iN0-l3-epB" id="a67-ce-zfv"/>
+                <outlet property="view_Bottom" destination="mQX-hU-bZ9" id="A3r-LT-qil"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9d-nE-1qu">
+                    <rect key="frame" x="10" y="617" width="355" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news" translatesAutoresizingMaskIntoConstraints="NO" id="Cg4-kR-DUu">
+                            <rect key="frame" x="10" y="15" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="1K6-L6-W0p"/>
+                                <constraint firstAttribute="height" constant="20" id="ck4-JL-cGo"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zUo-Vo-HpX">
+                            <rect key="frame" x="40" y="0.0" width="305" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="zUo-Vo-HpX" firstAttribute="centerY" secondItem="Cg4-kR-DUu" secondAttribute="centerY" id="0iK-p4-FY9"/>
+                        <constraint firstItem="zUo-Vo-HpX" firstAttribute="top" secondItem="K9d-nE-1qu" secondAttribute="top" id="aw8-Zy-JCr"/>
+                        <constraint firstItem="Cg4-kR-DUu" firstAttribute="leading" secondItem="K9d-nE-1qu" secondAttribute="leading" constant="10" id="egL-Hm-PeF"/>
+                        <constraint firstAttribute="trailing" secondItem="zUo-Vo-HpX" secondAttribute="trailing" constant="10" id="n1T-bY-2NY"/>
+                        <constraint firstAttribute="height" constant="50" id="ooU-MX-ERB"/>
+                        <constraint firstItem="zUo-Vo-HpX" firstAttribute="leading" secondItem="Cg4-kR-DUu" secondAttribute="trailing" constant="10" id="pnb-zY-BKk"/>
+                        <constraint firstItem="Cg4-kR-DUu" firstAttribute="centerY" secondItem="K9d-nE-1qu" secondAttribute="centerY" id="uyE-3N-ltW"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQX-hU-bZ9">
+                    <rect key="frame" x="0.0" y="20" width="375" height="597"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mQX-hU-bZ9" secondAttribute="trailing" id="3B8-7b-KUT"/>
+                <constraint firstItem="K9d-nE-1qu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="Kyp-Ox-Pgm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="K9d-nE-1qu" secondAttribute="trailing" constant="10" id="UjR-nU-fF4"/>
+                <constraint firstItem="mQX-hU-bZ9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="f7l-Wg-0mD"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="K9d-nE-1qu" secondAttribute="bottom" id="jhe-7D-zuO"/>
+                <constraint firstItem="K9d-nE-1qu" firstAttribute="top" secondItem="mQX-hU-bZ9" secondAttribute="bottom" id="mZl-XY-jsK"/>
+                <constraint firstItem="mQX-hU-bZ9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="om0-hl-4Ey"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="news" width="18" height="18"/>
+    </resources>
+</document>

@@ -61,6 +61,11 @@
             [self.delegate currentLocationClick:self.mapView.userLocation.location.coordinate];
         }
     }
+    CLLocationCoordinate2D coor = self.mapView.userLocation.location.coordinate;
+    [KUserDefults setObject:KString(@"%f", coor.latitude) forKey:YLat];
+    [KUserDefults setObject:KString(@"%f", coor.longitude) forKey:YLng];
+    [KUserDefults setObject:[KUserDefults objectForKey:kUserCityID] forKey:YCode];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"CityNameN" object:nil];
 //    CLLocationCoordinate2D coor = CLLocationCoordinate2DMake(31.299472,121.103438);
 //    [self.mapView setCenterCoordinate:coor];
 //    [self.mapView setZoomLevel:15.1 animated:NO];

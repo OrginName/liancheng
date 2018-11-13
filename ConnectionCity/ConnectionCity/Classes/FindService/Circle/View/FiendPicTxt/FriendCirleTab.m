@@ -162,6 +162,7 @@
 //加载朋友圈列表
 -(void)loadDataFriendList:(NSString *)cityCode{
     _cityCode = cityCode;
+    NSString * code = [KUserDefults objectForKey:YCode]?[KUserDefults objectForKey:YCode]:@"";
     NSDictionary * dic = @{};
     if ([self.flagStr isEqualToString:@"HomeSend"]) {
         dic = @{
@@ -170,7 +171,7 @@
                 };
     }else{
         dic = @{
-                @"cityCode":_cityCode,
+                @"cityCode":code,
                 @"containsImage": @1,
                 @"containsVideo": @0,
                 @"pageNumber": @(_page),

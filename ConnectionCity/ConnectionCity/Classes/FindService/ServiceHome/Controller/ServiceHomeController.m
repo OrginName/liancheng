@@ -276,14 +276,14 @@
 //        [self.cusMap.mapView setCenterCoordinate:self.cusMap.mapView.userLocation.location.coordinate animated:YES];
 //        [self.cusMap.mapView setZoomLevel:15.1 animated:NO];
 //    }
+    
 }
 -(void)dragCenterLocation:(CLLocationCoordinate2D)location{
 //    ,@"cityCode":[KUserDefults objectForKey:kUserCityID]
     [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude),@"distance":KDistance}];
 }
 -(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
-    //    if ([annotation isKindOfClass:[ZWCustomPointAnnotation class]]) {
-    ShowResumeController * show = [ShowResumeController new];
+     ShowResumeController * show = [ShowResumeController new];
     show.Receive_Type = ENUM_TypeTrval;
     show.flag = @"1";
     show.data_Count = self.cusMap.Arr_Mark;
@@ -307,9 +307,6 @@
         [self.navigationController pushViewController:show animated:YES];
     }else
         return [YTAlertUtil showTempInfo:@"当前位置"];
-   
-    
-    //    }
 }
 //加载服务列表数据
 -(void)loadServiceList:(NSDictionary *)dic{

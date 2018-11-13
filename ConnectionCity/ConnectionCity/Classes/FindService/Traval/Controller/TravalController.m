@@ -57,13 +57,14 @@
     [self.tab_Bottom.mj_header beginRefreshing];
 }
 -(void)requstLoad:(NSDictionary *) dic{
+    NSString * code = [KUserDefults objectForKey:YCode]?[KUserDefults objectForKey:YCode]:@"";
     NSDictionary * dic1 = @{
                            @"age": dic[@"age"]?dic[@"age"]:@"",
-//                           @"cityCode": dic[@"cityID"],
+                           @"cityCode": @([code integerValue]),
                            @"distance": dic[@"distance"]?dic[@"distance"]:@"",
                            @"gender": dic[@"gender"]?dic[@"gender"]:@"",
-                           @"lat": @([dic[@"lat"]?dic[@"lat"]:[KUserDefults objectForKey:kLat] floatValue]),
-                           @"lng": @([dic[@"lng"]?dic[@"lng"]:[KUserDefults objectForKey:KLng] floatValue]),
+//                           @"lat": @([dic[@"lat"]?dic[@"lat"]:[KUserDefults objectForKey:kLat] floatValue]),
+//                           @"lng": @([dic[@"lng"]?dic[@"lng"]:[KUserDefults objectForKey:KLng] floatValue]),
                            @"pageNumber": @(_page),
                            @"pageSize": @15,
                            @"userStatus": dic[@"userStatus"]?dic[@"userStatus"]:@"",

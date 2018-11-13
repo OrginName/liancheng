@@ -392,6 +392,8 @@
 		8DD48CE920A8367100D6D1E6 /* GuardEduController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DD48CE720A8367100D6D1E6 /* GuardEduController.xib */; };
 		8DD48CEE20A8380D00D6D1E6 /* EditAllController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CEC20A8380D00D6D1E6 /* EditAllController.m */; };
 		8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DD48CED20A8380D00D6D1E6 /* EditAllController.xib */; };
+		8DDC6142219AE6C20063EC04 /* HomeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DDC6141219AE6C20063EC04 /* HomeController.xib */; };
+		8DDC6145219AF0D60063EC04 /* NoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDC6144219AF0D60063EC04 /* NoticeView.m */; };
 		8DE161A92106FA5D00CC7558 /* MessageMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE161A82106FA5D00CC7558 /* MessageMo.m */; };
 		8DE161AE21072A3B00CC7558 /* PaymentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE161AA21072A3A00CC7558 /* PaymentModel.m */; };
 		8DE161AF21072A3B00CC7558 /* TransactionRecordMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE161AD21072A3B00CC7558 /* TransactionRecordMo.m */; };
@@ -1433,6 +1435,9 @@
 		8DD48CEB20A8380D00D6D1E6 /* EditAllController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditAllController.h; sourceTree = "<group>"; };
 		8DD48CEC20A8380D00D6D1E6 /* EditAllController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditAllController.m; sourceTree = "<group>"; };
 		8DD48CED20A8380D00D6D1E6 /* EditAllController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditAllController.xib; sourceTree = "<group>"; };
+		8DDC6141219AE6C20063EC04 /* HomeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeController.xib; sourceTree = "<group>"; };
+		8DDC6143219AF0D60063EC04 /* NoticeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeView.h; sourceTree = "<group>"; };
+		8DDC6144219AF0D60063EC04 /* NoticeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeView.m; sourceTree = "<group>"; };
 		8DE161A72106FA5D00CC7558 /* MessageMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageMo.h; sourceTree = "<group>"; };
 		8DE161A82106FA5D00CC7558 /* MessageMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageMo.m; sourceTree = "<group>"; };
 		8DE161AA21072A3A00CC7558 /* PaymentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentModel.m; sourceTree = "<group>"; };
@@ -2442,6 +2447,7 @@
 				726B5F35218EA894000B16EE /* EditMenu */,
 				726B5F1D218DD688000B16EE /* HomeController.h */,
 				726B5F1E218DD688000B16EE /* HomeController.m */,
+				8DDC6141219AE6C20063EC04 /* HomeController.xib */,
 				726B5F39218EA8B3000B16EE /* EditMenuController.h */,
 				726B5F3A218EA8B3000B16EE /* EditMenuController.m */,
 			);
@@ -3153,6 +3159,8 @@
 			children = (
 				723F4FAD20BEE8FF00AF8268 /* TrvalTrip.h */,
 				723F4FAE20BEE8FF00AF8268 /* TrvalTrip.m */,
+				8DDC6143219AF0D60063EC04 /* NoticeView.h */,
+				8DDC6144219AF0D60063EC04 /* NoticeView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -5508,6 +5516,7 @@
 				CEBEDD9820B17F40000F9EE4 /* BulidTeamController.xib in Resources */,
 				CE5C280D20B91AD8006A8332 /* WinnerInfoController.xib in Resources */,
 				72D8B159212946DF007EE681 /* KissDetailController.xib in Resources */,
+				8DDC6142219AE6C20063EC04 /* HomeController.xib in Resources */,
 				8D22C34820C7C9CC004DC8F4 /* RechargeController.xib in Resources */,
 				8D2B8B9C20A2DABD00C3157F /* ConnectionController.xib in Resources */,
 				8D50C56720C67C2F0095A824 /* OurServiceCell.xib in Resources */,
@@ -5865,6 +5874,7 @@
 				723D376720ABDA62003FD4DF /* ShowResumeCell.m in Sources */,
 				72EC1BBD20BDA25200ACC20B /* SendSelectCell.m in Sources */,
 				7266FEE021173ED5005794AD /* JKAreaCollectionViewCell.m in Sources */,
+				8DDC6145219AF0D60063EC04 /* NoticeView.m in Sources */,
 				CE5C27FE20B8FE3A006A8332 /* BiddInfoHeadView.m in Sources */,
 				CEE5250E20F771D400DD6179 /* MYScanViewStyle.m in Sources */,
 				CE21F0E020DDF00F00478482 /* MemberRenewalM.m in Sources */,
@@ -6290,7 +6300,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = J55M6SR759;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6335,7 +6345,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.LC.CC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "bbef5a66-dbe5-485a-b433-c4c851742dd7";
-				PROVISIONING_PROFILE_SPECIFIER = lCDev;
+				PROVISIONING_PROFILE_SPECIFIER = tsLC;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -6351,7 +6361,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = J55M6SR759;
+				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6395,7 +6405,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.LC.CC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "dd961a98-373a-42f6-a177-72ffe7b4e7e0";
-				PROVISIONING_PROFILE_SPECIFIER = LCAppStore;
+				PROVISIONING_PROFILE_SPECIFIER = LCC;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

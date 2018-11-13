@@ -11,11 +11,14 @@
 #import "HomeNet.h"
 #import "ShowResumeController.h"
 #import "serviceListNewMo.h"
+#import "NoticeView.h"
 @interface NewsListController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSString * _cityCode;
 }
+@property (weak, nonatomic) IBOutlet UIView *view_Bottom;
 @property (nonatomic,strong) NSMutableArray * data_Arr;
+@property (nonatomic,strong) NoticeView *noticeView;
 
 @end
 
@@ -27,6 +30,7 @@
     _cityCode = @"";
     [self initData];
     self.view.backgroundColor = [UIColor whiteColor];
+    [self.view_Bottom addSubview:self.noticeView];
 }
 -(void)initData{
     self.data_Arr = [NSMutableArray array];
@@ -39,10 +43,17 @@
     }];
     [self.tab_Bottom.mj_header beginRefreshing];
 }
+-(NoticeView *)noticeView{
+    if (!_noticeView) {
+        _noticeView = [[NoticeView alloc] initWithFrame:CGRectMake(0, 0, self.view_Bottom.width, 50) controller:self];
+    }
+    return _noticeView;
+}
 -(void)requstLoad:(NSString *)cityCode{
     _cityCode = cityCode;
+    NSString * code = [KUserDefults objectForKey:YCode]?[KUserDefults objectForKey:YCode]:@"";
     NSDictionary * dic = @{
-                           @"cityCode": _cityCode,
+                           @"cityCode": code,
                            @"pageNumber": @(_page),
                            @"pageSize": @15,
                            };

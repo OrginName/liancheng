@@ -161,6 +161,9 @@ typedef NS_ENUM(NSInteger, TXScrollLabelType) {
     
     if ([self.scrollLabelViewDelegate respondsToSelector:@selector(scrollLabelView:didClickWithText:atIndex:)]) {
         [self.scrollLabelViewDelegate scrollLabelView:self didClickWithText:label.text atIndex:index];
+        if (self.click) {
+            self.click();
+        }
     }
 }
 

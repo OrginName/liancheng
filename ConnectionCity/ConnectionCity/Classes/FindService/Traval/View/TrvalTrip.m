@@ -9,21 +9,25 @@
 #import "AppointmentController.h"
 #import "ServiceHomeNet.h"
 #import "ShowResumeController.h"
+#import "NoticeView.h"
 @interface TrvalTrip()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic,strong)TrvalTripLayout * flowLyout;
 @property (nonatomic,strong)UIViewController * control;
+@property (nonatomic,strong)NoticeView * noticeView;
 @end
 @implementation TrvalTrip
 -(instancetype)initWithFrame:(CGRect)frame withControl:(UIViewController *)control{
     if (self = [super initWithFrame:frame]) {
         self.control = control;
         [self addSubview:self.bollec_bottom];
+        [self addSubview:self.noticeView];
         _page=1;
         self.cityID = [KUserDefults objectForKey:kUserCityID];
         self.data_Arr = [NSMutableArray array];
         [self.bollec_bottom registerNib:[UINib nibWithNibName:@"TrvalTripCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"TripCell"];
         [self initData];
         [self.bollec_bottom.mj_header beginRefreshing];
+        
     }
     return self;
 }
@@ -49,13 +53,14 @@
                      }];
 }
 -(void)loadData:(NSDictionary *)dic{
+    NSString * code = [KUserDefults objectForKey:YCode]?[KUserDefults objectForKey:YCode]:@"";
     NSDictionary * dic1 = @{
                             @"age": dic[@"age"]?dic[@"age"]:@"",
-//                            @"cityCode": dic[@"cityID"],
+                            @"cityCode": @([code floatValue]),
                             @"distance": dic[@"distance"]?dic[@"distance"]:@"",
                             @"gender": dic[@"gender"]?dic[@"gender"]:@"",
-                            @"lat": @([dic[@"lat"]?dic[@"lat"]:[KUserDefults objectForKey:kLat] floatValue]),
-                            @"lng": @([dic[@"lng"]?dic[@"lng"]:[KUserDefults objectForKey:KLng] floatValue]),
+//                            @"lat": @([dic[@"lat"]?dic[@"lat"]:[KUserDefults objectForKey:kLat] floatValue]),
+//                            @"lng": @([dic[@"lng"]?dic[@"lng"]:[KUserDefults objectForKey:KLng] floatValue]),
                             @"pageNumber": @(_page),
                             @"pageSize": @15,
                             @"userStatus": dic[@"userStatus"]?dic[@"userStatus"]:@"",
@@ -105,10 +110,17 @@
     }
     return _bollec_bottom;
 }
+-(NoticeView *)noticeView{
+    if (!_noticeView) {
+        _noticeView = [[NoticeView alloc] initWithFrame:CGRectMake(0, self.height-50, self.width, 50) controller:self.control];
+    }
+    return _noticeView;
+}
 -(void)layoutSubviews{
     [super layoutSubviews];
-    self.bollec_bottom.frame = CGRectMake(0, 0, self.width, self.height);
-}
+    self.bollec_bottom.frame = CGRectMake(0, 0, self.width, self.height-40);
+    self.noticeView.frame = CGRectMake(0, self.height-40, self.width, 50);
+} 
 @end
 @implementation TrvalTripLayout
 -(void)prepareLayout{

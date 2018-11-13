@@ -60,8 +60,9 @@
 //加载朋友圈列表
 -(void)loadDataFriendList:(NSString *)cityCode flag:(NSString *)flag{
     _cityCode = cityCode;
+      NSString * code = [KUserDefults objectForKey:YCode]?[KUserDefults objectForKey:YCode]:@"";
     NSDictionary * dic = @{
-                           @"cityCode":_cityCode,
+                           @"cityCode":code,
                            @"containsImage": @0,
                            @"containsVideo": @1,
                            @"pageNumber": @(_page),

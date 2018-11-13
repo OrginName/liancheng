@@ -28,11 +28,15 @@
 #import "SendServiceController.h"
 #import "ServiceHomeNet.h"
 #import "ClassifyMo.h"
+
 @interface HomeController ()<JFCityViewControllerDelegate>
 {
     BOOL flag1;
     NSInteger currentIndexHome;
 }
+@property (weak, nonatomic) IBOutlet UIView *view_Bottom;
+@property (weak, nonatomic) IBOutlet UIView *notice_Scro;
+@property (weak, nonatomic) IBOutlet UIView *noticeView;
 @property (nonatomic,strong) TravalController * trval;
 @property (nonatomic,strong) TravalController * trval2;
 @property (nonatomic,strong) ServiceHomeController * trval3;
@@ -51,8 +55,15 @@
     self.view.backgroundColor = [UIColor whiteColor];
     flag1 = NO;
     self.myMenuArr  = [NSMutableArray array];
+    [KUserDefults removeObjectForKey:YCode];
+    [KUserDefults removeObjectForKey:YLat];
+    [KUserDefults removeObjectForKey:YLng];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(upDataANme) name:@"CityNameN" object:nil];
     [self initData];
-    
+}
+-(void)upDataANme{
+    UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];
+    [btn setTitle:[KUserDefults objectForKey:kUserCity] forState:UIControlStateNormal];
 }
 -(void)initData{
     WeakSelf
@@ -89,7 +100,7 @@
     }];
 }
 -(void)setUI{
-    //必要的设置, 如果没有设置可能导致内容显示不正常
+//    //必要的设置, 如果没有设置可能导致内容显示不正常
     ZJSegmentStyle *style = [[ZJSegmentStyle alloc] init];
     //显示遮盖
     style.showCover = NO;
@@ -97,7 +108,7 @@
     style.gradualChangeTitleColor = YES;
     // 显示附加的按钮
     style.showExtraButton = YES;
-    style.titleFont = [UIFont systemFontOfSize:16];
+    style.titleFont = [UIFont systemFontOfSize:18];
     style.selectedTitleColor = YSColor(249, 145, 0);
     // 设置附加按钮的背景图片
 //    style.extraBtnBackgroundImageName = @"our-more";
@@ -120,7 +131,7 @@
         NSLog(@"当前index为：%ld",currentIndex);
         currentIndexHome = currentIndex;
     };
-    [self.view addSubview:scrollPageView];
+    [self.view_Bottom addSubview:scrollPageView];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MyselfClick) image:@"people" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
     if (![[[YSAccountTool userInfo] modelId] isEqualToString:APPID]) {
         self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MessageClick) image:@"icon_home_camera" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
@@ -137,35 +148,11 @@
     image.image = [UIImage imageNamed:@"logo"];
     [nav_view addSubview:image];
     
-//    UIView * view =[[UIView alloc] initWithFrame:CGRectMake(40, 0, 70, 44)];
-//    view.backgroundColor = [UIColor redColor];
-//    [nav_view addSubview:view];
-//
-//    UILabel * alb = [[UILabel alloc] init];
-//    alb.font = [UIFont systemFontOfSize:14];
-//    alb.tag = 99999;
-//    alb.text = @"首页";
-//    [view addSubview:alb];
-//    [alb mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(view.mas_left).offset(5);
-//        make.top.equalTo(view.mas_top);
-//        make.bottom.equalTo(view.mas_bottom);
-//    }];
-//
-//    UIImageView * xiaImage = [[UIImageView alloc]init];
-//    xiaImage.image = [UIImage imageNamed:@"Arrow-xia1"];
-//    [view addSubview:xiaImage];
-//    [xiaImage mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(alb.mas_left).offset(5);
-//        make.width.equalTo(@10);
-//        make.height.equalTo(@5);
-//        make.top.equalTo(@19);
-//    }];
-    
+ 
     UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(40, 0, 60, 44)];
     btn.tag = 99999;
 //    btn.backgroundColor = [UIColor redColor];
-    btn.titleLabel.font = [UIFont systemFontOfSize:14];
+    btn.titleLabel.font = [UIFont systemFontOfSize:15];
     [btn setTitle:@"首页" forState:UIControlStateNormal];
     [btn setTitleColor:KFontColor forState:UIControlStateNormal];
     [btn setImage:[UIImage imageNamed:@"Arrow-xia1"] forState:UIControlStateNormal];
@@ -274,6 +261,9 @@
 #pragma mark ----根据城市筛选加载数据-------------
 -(void)homeLoadData:(NSString *)lat lng:(NSString *)lng ID:(NSString *)cityCode{
     flag1 = NO;
+    [KUserDefults setObject:lat forKey:YLat];
+    [KUserDefults setObject:lng forKey:YLng];
+    [KUserDefults setObject:cityCode forKey:YCode];
     MenuMo * mo1 = self.myMenuArr[currentIndexHome];
     if ([mo1.ID isEqualToString:@"1"]) {
         self.trval.trval.page = 1;
@@ -317,12 +307,12 @@
             trval.title = mo.name;
             self.trval = trval;
             [arr addObject:trval];
-        }else if ([mo.ID isEqualToString:@"2"]){//娱乐
+         }else if ([mo.ID isEqualToString:@"2"]){//娱乐
             news = [NewsListController new];
             news.title = mo.name;
             self.news = news;
             [arr addObject:news];
-        }
+         }
         else if ([mo.ID isEqualToString:@"3"]){//生活
             trval3 = [ServiceHomeController new];
             trval3.title = mo.name;
@@ -363,7 +353,6 @@
     } 
     return [arr copy];
 }
-
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden= NO;

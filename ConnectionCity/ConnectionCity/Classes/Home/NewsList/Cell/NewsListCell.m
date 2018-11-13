@@ -22,7 +22,6 @@
     }
     [self.iamge_yl sd_setImageWithURL:[NSURL URLWithString:ylMo.images] placeholderImage:[UIImage imageNamed:@"2"]];
     self.lab_title.text = ylMo.user.nickName ? ylMo.user.nickName:ylMo.ID;
-    self.lab_context.text = ylMo.content;
+    self.lab_context.text = ylMo.introduce;
 }
-
 @end

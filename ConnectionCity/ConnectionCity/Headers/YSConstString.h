@@ -113,6 +113,9 @@
 #define kUserCityID @"UserCityID"
 #define kLat @"lat"
 #define KLng @"lng"
+#define YLat @"YLat"
+#define YLng @"YLng"
+#define YCode @"YCode"
 #define KAllDic @"kAllDic"
 #define KAccountManager @"KAccountManager"
 /** 服务的UUID */
