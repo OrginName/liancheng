@@ -122,8 +122,9 @@
     };
     [self.view addSubview:scrollPageView];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MyselfClick) image:@"people" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MessageClick) image:@"icon_home_camera" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
-    self.navigationItem.leftBarButtonItem.badgeValue=self.navigationItem.rightBarButtonItem.badgeValue = @"";
+    if (![[[YSAccountTool userInfo] modelId] isEqualToString:APPID]) {
+        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MessageClick) image:@"icon_home_camera" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
+    } self.navigationItem.leftBarButtonItem.badgeValue=self.navigationItem.rightBarButtonItem.badgeValue = @"";
     self.navigationItem.leftBarButtonItem.badgeOriginX = 19;
     self.navigationItem.rightBarButtonItem.badgeOriginX = 29; self.navigationItem.leftBarButtonItem.badgeOriginY = 5;
     self.navigationItem.rightBarButtonItem.badgeOriginY = 2;
