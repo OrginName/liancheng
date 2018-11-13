@@ -61,10 +61,13 @@
             [self.delegate currentLocationClick:self.mapView.userLocation.location.coordinate];
         }
     }
-    CLLocationCoordinate2D coor = self.mapView.userLocation.location.coordinate;
-    [KUserDefults setObject:KString(@"%f", coor.latitude) forKey:YLat];
-    [KUserDefults setObject:KString(@"%f", coor.longitude) forKey:YLng];
-    [KUserDefults setObject:[KUserDefults objectForKey:kUserCityID] forKey:YCode];
+//    CLLocationCoordinate2D coor = self.mapView.userLocation.location.coordinate;
+//    KString(@"%f", coor.latitude)
+//    KString(@"%f", coor.longitude)
+//    [KUserDefults objectForKey:kUserCityID]
+    [KUserDefults setObject:@"" forKey:YLat];
+    [KUserDefults setObject:@"" forKey:YLng];
+    [KUserDefults setObject:@"" forKey:YCode];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"CityNameN" object:nil];
 //    CLLocationCoordinate2D coor = CLLocationCoordinate2DMake(31.299472,121.103438);
 //    [self.mapView setCenterCoordinate:coor];
@@ -135,7 +138,14 @@
         if (self.selectAnimation) {
             [self.mapView selectAnnotation:self.pointAnnotaiton animated:YES];
         }
-        [self.mapView setCenterCoordinate:location.coordinate];
+    NSString * lat = [KUserDefults objectForKey:YLat];
+    NSString * lng = [KUserDefults objectForKey:YLng];
+    if ([lat length]!=0&&[lng length]!=0) {
+        CLLocationCoordinate2D coords = CLLocationCoordinate2DMake([lat floatValue],[lng floatValue]);//纬度，经度
+        [self.mapView setCenterCoordinate:coords];
+    }else{
+       [self.mapView setCenterCoordinate:location.coordinate];
+    } 
         [self.mapView setZoomLevel:14.1 animated:NO];
         [self.mapView addAnnotations:self.annotations];
     if ([self.delegate respondsToSelector:@selector(currentMapLocation:location:)]) {

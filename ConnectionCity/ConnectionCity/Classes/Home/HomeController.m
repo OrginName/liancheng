@@ -63,7 +63,7 @@
 }
 -(void)upDataANme{
     UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];
-    [btn setTitle:[KUserDefults objectForKey:kUserCity] forState:UIControlStateNormal];
+    [btn setTitle:@"首页" forState:UIControlStateNormal];
 }
 -(void)initData{
     WeakSelf
@@ -130,11 +130,12 @@
     scrollPageView.Index = ^(NSInteger currentIndex) {
         NSLog(@"当前index为：%ld",currentIndex);
         currentIndexHome = currentIndex;
+        [weakSelf homeLoadData:[KUserDefults objectForKey:YLat] lng:[KUserDefults objectForKey:YLng] ID:[KUserDefults objectForKey:YCode]];
     };
     [self.view_Bottom addSubview:scrollPageView];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MyselfClick) image:@"people" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
     if (![[[YSAccountTool userInfo] modelId] isEqualToString:APPID]) {
-        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MessageClick) image:@"icon_home_camera" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
+        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MessageClick) image:@"photo" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
     } self.navigationItem.leftBarButtonItem.badgeValue=self.navigationItem.rightBarButtonItem.badgeValue = @"";
     self.navigationItem.leftBarButtonItem.badgeOriginX = 19;
     self.navigationItem.rightBarButtonItem.badgeOriginX = 29; self.navigationItem.leftBarButtonItem.badgeOriginY = 5;
@@ -267,19 +268,19 @@
     MenuMo * mo1 = self.myMenuArr[currentIndexHome];
     if ([mo1.ID isEqualToString:@"1"]) {
         self.trval.trval.page = 1;
-        [self.trval.trval loadData:@{@"lat":lat,@"lng":lng}];
+        [self.trval.trval loadData:@{@"lat":@"",@"lng":@""}];
     }else if ([mo1.ID isEqualToString:@"2"]){
         self.news.page = 1;
         [self.news requstLoad:cityCode];
     }else if ([mo1.ID isEqualToString:@"3"]){
-        [self.trval3 loadServiceList:@{@"lat":lat,@"lng":lng}];
+        [self.trval3 loadServiceList:@{@"lat":@"",@"lng":@""}];
         [self.trval3.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([lat floatValue], [lng floatValue])];
         [self.trval3.cusMap.mapView setZoomLevel:15.1 animated:NO];
     }else if ([mo1.ID isEqualToString:@"4"]){
         self.circle1.frendTab.page = 1;
         [self.circle1.frendTab loadDataFriendList:cityCode];
     }else if ([mo1.ID isEqualToString:@"6"]){
-        [self.ability loadServiceList:@{@"lat":lat,@"lng":lng}];
+        [self.ability loadServiceList:@{@"lat":@"",@"lng":@""}];
         [self.ability.cusMap.mapView setCenterCoordinate:CLLocationCoordinate2DMake([lat floatValue], [lng floatValue])];
         [self.ability.cusMap.mapView setZoomLevel:15.1 animated:NO];
     }else if ([mo1.ID isEqualToString:@"5"]){
@@ -287,7 +288,7 @@
         [self.circle2.frendVedio loadDataFriendList:cityCode flag:@"Home"];
     }else if ([mo1.ID isEqualToString:@"8"]){
         self.trval2.page = 1;
-        [self.trval2 requstLoad:@{@"lat":lat,@"lng":lng}];
+        [self.trval2 requstLoad:@{@"lat":@"",@"lng":@""}];
     }
 }
 - (NSArray *)setupChildVcAndTitle {

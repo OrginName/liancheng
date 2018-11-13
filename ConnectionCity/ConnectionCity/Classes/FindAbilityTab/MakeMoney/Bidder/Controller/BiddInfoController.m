@@ -157,19 +157,8 @@
 - (void)v1CommonFollowCreate{
     NSMutableArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[6] contentArr][0];
-    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":self.bidid,@"type":@([mo.value integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":self.bidid,@"type":@([mo.value integerValue]),@"followedUserId":[[YSAccountTool userInfo] modelId]} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [YTAlertUtil showTempInfo:responseObject[@"message"]];
     } failure:nil];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

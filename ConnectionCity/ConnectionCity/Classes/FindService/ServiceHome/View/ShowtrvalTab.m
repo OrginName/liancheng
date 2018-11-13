@@ -11,6 +11,7 @@
 #import "CustomImageScro.h"
 #import "CustomScro.h"
 #import "FriendCircleController.h"
+#import "privateUserInfoModel.h"
 @interface ShowtrvalTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ShowTrvalCellDelegate,CustomScroDelegate>
 {
     CustomScro * _scr;
@@ -310,7 +311,7 @@
         str = [self.Mo.serviceList[self.JNIndex] ID];
     }else
         str = self.MoTrval.ID;
-    [YSNetworkTool POST:v1CommonCommentAddlike  params:@{@"typeId":@([str integerValue]),@"type":@([mo.value integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1CommonCommentAddlike  params:@{@"typeId":@([str integerValue]),@"type":@([mo.value integerValue]),@"followedUserId":[[YSAccountTool userInfo] modelId]} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         sender.selected = !sender.selected;
         [sender setTitle:[NSString stringWithFormat:@"%@",responseObject[@"data"]] forState:UIControlStateNormal];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

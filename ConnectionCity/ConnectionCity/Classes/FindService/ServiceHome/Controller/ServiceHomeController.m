@@ -184,7 +184,7 @@
  
     NSString *scrollTitle = @"";
     TXScrollLabelView *scrollLabelView = [TXScrollLabelView scrollWithTitle:scrollTitle type:TXScrollLabelViewTypeLeftRight velocity:2 options:UIViewAnimationOptionCurveEaseInOut];
-    scrollLabelView.scrollLabelViewDelegate = self;
+//    scrollLabelView.scrollLabelViewDelegate = self;
     scrollLabelView.scrollInset = UIEdgeInsetsMake(0, -100, 0, 0);
     scrollLabelView.scrollTitleColor = YSColor(40, 40, 40);
     scrollLabelView.font = [UIFont systemFontOfSize:15];

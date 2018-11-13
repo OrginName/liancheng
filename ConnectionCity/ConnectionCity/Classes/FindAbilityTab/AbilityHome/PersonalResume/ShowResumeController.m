@@ -17,6 +17,7 @@
 #import "RCDChatViewController.h"
 #import "serviceListNewMo.h"
 #import "AbilityNet.h"
+#import "privateUserInfoModel.h"
 #define identifier @"ScrollCell"
 #define TabHeight kScreenHeight-184
 #define TabHeight1 kScreenHeight-134
@@ -168,7 +169,12 @@
     }
 }
 -(void)GZLoadData:(NSString *)type typeID:(NSString *)typeID{
-    [YSNetworkTool POST:v1CommonFollowCreate params:@{@"typeId":@([type integerValue]),@"type":@([typeID integerValue])} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSDictionary * dic = @{
+                           @"typeId":@([type integerValue]),
+                           @"type":@([typeID integerValue]),
+                           @"followedUserId":[[YSAccountTool userInfo] modelId]
+                           };
+    [YSNetworkTool POST:v1CommonFollowCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [YTAlertUtil showTempInfo:@"关注成功"];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         

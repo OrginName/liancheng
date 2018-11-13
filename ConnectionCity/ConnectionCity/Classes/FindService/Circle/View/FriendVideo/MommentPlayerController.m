@@ -247,7 +247,7 @@
 //    [YTAlertUtil showTempInfo:@"点赞"];
     NSArray * arr = [NSKeyedUnarchiver unarchiveObjectWithData:[KUserDefults objectForKey:KAllDic]];
     AllContentMo * mo = [arr[5] contentArr][4];;
-    [YSNetworkTool POST:v1CommonCommentAddlike params:@{@"typeId":@([self.moment.ID integerValue]),@"type":mo.value} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1CommonCommentAddlike params:@{@"typeId":@([self.moment.ID integerValue]),@"type":mo.value,@"followedUserId":[[YSAccountTool userInfo] modelId]} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         [YTAlertUtil showTempInfo:responseObject[@"message"]];
         self.lab_Zan.text =  [responseObject[@"data"]description];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
