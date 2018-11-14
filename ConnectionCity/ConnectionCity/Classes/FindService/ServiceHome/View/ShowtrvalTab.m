@@ -12,6 +12,7 @@
 #import "CustomScro.h"
 #import "FriendCircleController.h"
 #import "privateUserInfoModel.h"
+#import "PersonDTController.h"
 @interface ShowtrvalTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ShowTrvalCellDelegate,CustomScroDelegate>
 {
     CustomScro * _scr;
@@ -210,9 +211,12 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0&&indexPath.row==3) {
-        FriendCircleController * friend = [FriendCircleController new];
-        friend.user = self.Mo!=nil?self.Mo:self.MoTrval.user;
-        [self.control.navigationController pushViewController:friend animated:YES];
+        PersonDTController * person = [PersonDTController new];
+        [self.control.navigationController pushViewController:person animated:YES];
+//        FriendCircleController * friend = [FriendCircleController new];
+//        friend.user = self.Mo!=nil?self.Mo:self.MoTrval.user;
+//        [self.control.navigationController pushViewController:friend animated:YES];
+        
     }
 }
 -(NSMutableArray *)loadA:(NSString *)a b:(NSString *)b c:(NSString *)c d:(NSString *)d{

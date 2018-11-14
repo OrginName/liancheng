@@ -392,6 +392,8 @@
 		8DD48CE920A8367100D6D1E6 /* GuardEduController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DD48CE720A8367100D6D1E6 /* GuardEduController.xib */; };
 		8DD48CEE20A8380D00D6D1E6 /* EditAllController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD48CEC20A8380D00D6D1E6 /* EditAllController.m */; };
 		8DD48CEF20A8380D00D6D1E6 /* EditAllController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DD48CED20A8380D00D6D1E6 /* EditAllController.xib */; };
+		8DD9373B219C406900F8E8F3 /* PersonDTController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD93739219C406900F8E8F3 /* PersonDTController.m */; };
+		8DD9373C219C406900F8E8F3 /* PersonDTController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DD9373A219C406900F8E8F3 /* PersonDTController.xib */; };
 		8DDC6142219AE6C20063EC04 /* HomeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DDC6141219AE6C20063EC04 /* HomeController.xib */; };
 		8DDC6145219AF0D60063EC04 /* NoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDC6144219AF0D60063EC04 /* NoticeView.m */; };
 		8DE161A92106FA5D00CC7558 /* MessageMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE161A82106FA5D00CC7558 /* MessageMo.m */; };
@@ -1435,6 +1437,9 @@
 		8DD48CEB20A8380D00D6D1E6 /* EditAllController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditAllController.h; sourceTree = "<group>"; };
 		8DD48CEC20A8380D00D6D1E6 /* EditAllController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditAllController.m; sourceTree = "<group>"; };
 		8DD48CED20A8380D00D6D1E6 /* EditAllController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditAllController.xib; sourceTree = "<group>"; };
+		8DD93738219C406900F8E8F3 /* PersonDTController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonDTController.h; sourceTree = "<group>"; };
+		8DD93739219C406900F8E8F3 /* PersonDTController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonDTController.m; sourceTree = "<group>"; };
+		8DD9373A219C406900F8E8F3 /* PersonDTController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonDTController.xib; sourceTree = "<group>"; };
 		8DDC6141219AE6C20063EC04 /* HomeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeController.xib; sourceTree = "<group>"; };
 		8DDC6143219AF0D60063EC04 /* NoticeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeView.h; sourceTree = "<group>"; };
 		8DDC6144219AF0D60063EC04 /* NoticeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeView.m; sourceTree = "<group>"; };
@@ -2989,6 +2994,7 @@
 		72EC1B7F20BC307E00ACC20B /* FindService */ = {
 			isa = PBXGroup;
 			children = (
+				8DD93737219C3F4E00F8E8F3 /* CommonControl */,
 				8D32B8AF216DCE1A001D1D68 /* CommonNet */,
 				72EC1B8020BC307E00ACC20B /* Circle */,
 				72EC1B8420BC307E00ACC20B /* Profile */,
@@ -3807,6 +3813,16 @@
 				723D376620ABDA62003FD4DF /* ShowResumeCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		8DD93737219C3F4E00F8E8F3 /* CommonControl */ = {
+			isa = PBXGroup;
+			children = (
+				8DD93738219C406900F8E8F3 /* PersonDTController.h */,
+				8DD93739219C406900F8E8F3 /* PersonDTController.m */,
+				8DD9373A219C406900F8E8F3 /* PersonDTController.xib */,
+			);
+			path = CommonControl;
 			sourceTree = "<group>";
 		};
 		8DE161B321072B9100CC7558 /* QFDatePickerView */ = {
@@ -5477,6 +5493,7 @@
 				72EC1BB420BC386D00ACC20B /* SendServiceController.xib in Resources */,
 				7274190220B3F60D001D6BE1 /* SendSwapController.xib in Resources */,
 				8D50C55220C632090095A824 /* OurSendController.xib in Resources */,
+				8DD9373C219C406900F8E8F3 /* PersonDTController.xib in Resources */,
 				721DAE0220F20EBC006F141F /* FriendListController.xib in Resources */,
 				723F4FB420BEEA8D00AF8268 /* TrvalTripCell.xib in Resources */,
 				CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */,
@@ -6139,6 +6156,7 @@
 				8DE4662420EDF4F0009730F7 /* RCDPrivateSettingViewController.m in Sources */,
 				8DE4664C20EDF71B009730F7 /* RCLocationConvert.m in Sources */,
 				721B5660215BA9670024953B /* YBVideoBrowseCell.m in Sources */,
+				8DD9373B219C406900F8E8F3 /* PersonDTController.m in Sources */,
 				7294185320AD11E00054B71D /* SearchCell.m in Sources */,
 				CEA79B3A21280B180026522E /* UILabel+YTFitSize.m in Sources */,
 				CE5C282420B955EA006A8332 /* BidManagerFootV.m in Sources */,

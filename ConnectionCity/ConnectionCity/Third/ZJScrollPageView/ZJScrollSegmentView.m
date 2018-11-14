@@ -55,12 +55,9 @@
         _currentIndex = 0;
         _oldIndex = 0;
         _currentWidth = frame.size.width;
-        
         if (!self.segmentStyle.isScrollTitle) { // 不能滚动的时候就不要把缩放和遮盖或者滚动条同时使用, 否则显示效果不好
-            
-            self.segmentStyle.scaleTitle = !(self.segmentStyle.isShowCover || self.segmentStyle.isShowLine);
+//            self.segmentStyle.scaleTitle = !(self.segmentStyle.isShowCover || self.segmentStyle.isShowLine);
         }
-        
         // 设置了frame之后可以直接设置其他的控件的frame了, 不需要在layoutsubView()里面设置
         [self setupTitles];
         [self setupUI];
