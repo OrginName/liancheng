@@ -11,6 +11,7 @@
 #import "TravalController.h"
 #import "NewsListController.h"
 #import "FriendCircleController.h"
+#import <YNPageConfigration.h>
 @interface PersonDTController ()
 @end
 
@@ -19,8 +20,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人动态";
-    [self setUI];
+    
 }
+-(void)setUI1{
+    YNPageConfigration *configration = [YNPageConfigration defaultConfig];
+    configration.pageStyle = YNPageStyleSuspensionCenter;
+    configration.headerViewCouldScale = YES;
+    //    configration.headerViewScaleMode = YNPageHeaderViewScaleModeCenter;
+    configration.headerViewScaleMode = YNPageHeaderViewScaleModeTop;
+    configration.showTabbar = NO;
+    configration.showNavigation = YES;
+    configration.scrollMenu = NO;
+    configration.aligmentModeCenter = NO;
+    configration.lineWidthEqualFontWidth = true;
+    configration.showBottomLine = YES;
+    
+    return [self suspendCenterPageVCWithConfig:configration];
+}
+-(YNSuspendCenterPageVC *)suspendCenterPageVCWithConfig:(YNPageConfigration *)config {
+    
+    YNSuspendCenterPageVC *vc = [YNSuspendCenterPageVC pageViewControllerWithControllers:[self getArrayVCs]
+                                                                                  titles:[self getArrayTitles]
+                                                                                  config:config];
+    vc.dataSource = vc;
+    vc.delegate = vc;
+    /// 轮播图
+    SDCycleScrollView *autoScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 200) imageURLStringsGroup:vc.imagesURLs];
+    autoScrollView.delegate = vc;
+    
+    vc.headerView = autoScrollView;
+    /// 指定默认选择index 页面
+    vc.pageIndex = 2;
+    
+    return vc;
+}
+
 -(void)setUI{
     //    //必要的设置, 如果没有设置可能导致内容显示不正常
     ZJSegmentStyle *style = [[ZJSegmentStyle alloc] init];
