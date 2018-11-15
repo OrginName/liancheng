@@ -26,5 +26,6 @@ pod 'PGDatePicker'
 pod 'TYAlertController'
 pod 'TXScrollLabelView'
 pod 'YYImage'
+pod 'YNPageViewController'
 end
 
