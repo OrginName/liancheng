@@ -211,7 +211,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0&&indexPath.row==3) {
-        PersonDTController * person = [PersonDTController new];
+        PersonDTController * person = [PersonDTController suspendCenterPageVC];
         [self.control.navigationController pushViewController:person animated:YES];
 //        FriendCircleController * friend = [FriendCircleController new];
 //        friend.user = self.Mo!=nil?self.Mo:self.MoTrval.user;

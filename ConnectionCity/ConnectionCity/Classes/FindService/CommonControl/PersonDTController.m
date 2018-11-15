@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人动态";
-    
+   
 }
 + (instancetype)suspendCenterPageVC {
     YNPageConfigration *configration = [YNPageConfigration defaultConfig];
@@ -56,23 +56,26 @@
 }
 + (NSArray *)getArrayVCs {
     
-    UIViewController *vc_1 = [[UIViewController alloc] init];
-    UIViewController *vc_2 = [[UIViewController alloc] init];
+    TravalController * controll = [TravalController new];
+    TravalController * controll1 = [TravalController new];
     
-    UIViewController *vc_3 = [[UIViewController alloc] init];
-    UIViewController *vc_4 = [[UIViewController alloc] init];
-    UIViewController *vc_5 = [[UIViewController alloc] init];
-    return @[vc_1, vc_2, vc_3,vc_4,vc_5];
+    TravalController * controll2 = [TravalController new];
+    TravalController * controll3 = [TravalController new];
+    TravalController * controll4 = [TravalController new];
+    return @[controll, controll1, controll2,controll3,controll4];
 }
 
 + (NSArray *)getArrayTitles {
     return @[@"鞋子", @"衣服", @"帽子", @"大大", @"娱乐"];
 }
-//#pragma mark - YNPageViewControllerDataSource
-//- (UIScrollView *)pageViewController:(YNPageViewController *)pageViewController pageForIndex:(NSInteger)index {
-//    UIViewController *vc = pageViewController.controllersM[index];
-//
-//}
+#pragma mark - YNPageViewControllerDataSource
+- (UIScrollView *)pageViewController:(YNPageViewController *)pageViewController pageForIndex:(NSInteger)index {
+    UIViewController *vc = pageViewController.controllersM[index];
+    if ([vc isKindOfClass:[TravalController class]]) {
+        return [(TravalController *)vc tab_Bottom];
+    }  
+    return vc;
+}
 #pragma mark - YNPageViewControllerDelegate
 - (void)pageViewController:(YNPageViewController *)pageViewController
             contentOffsetY:(CGFloat)contentOffset
