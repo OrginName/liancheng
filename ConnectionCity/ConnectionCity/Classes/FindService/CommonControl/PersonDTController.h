@@ -7,10 +7,10 @@
 //
 
 #import "BaseViewController.h"
-
+#import <YNPageViewController.h>
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PersonDTController : BaseViewController
+@interface PersonDTController : YNPageViewController
 
 @end
 

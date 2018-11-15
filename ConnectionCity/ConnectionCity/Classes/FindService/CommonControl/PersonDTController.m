@@ -12,7 +12,7 @@
 #import "NewsListController.h"
 #import "FriendCircleController.h"
 #import <YNPageConfigration.h>
-@interface PersonDTController ()
+@interface PersonDTController ()<YNPageViewControllerDataSource, YNPageViewControllerDelegate>
 @end
 
 @implementation PersonDTController
@@ -22,7 +22,7 @@
     self.title = @"个人动态";
     
 }
--(void)setUI1{
++ (instancetype)suspendCenterPageVC {
     YNPageConfigration *configration = [YNPageConfigration defaultConfig];
     configration.pageStyle = YNPageStyleSuspensionCenter;
     configration.headerViewCouldScale = YES;
@@ -37,22 +37,50 @@
     
     return [self suspendCenterPageVCWithConfig:configration];
 }
--(YNSuspendCenterPageVC *)suspendCenterPageVCWithConfig:(YNPageConfigration *)config {
++ (instancetype)suspendCenterPageVCWithConfig:(YNPageConfigration *)config {
     
-    YNSuspendCenterPageVC *vc = [YNSuspendCenterPageVC pageViewControllerWithControllers:[self getArrayVCs]
+    PersonDTController *vc = [PersonDTController pageViewControllerWithControllers:[self getArrayVCs]
                                                                                   titles:[self getArrayTitles]
                                                                                   config:config];
     vc.dataSource = vc;
     vc.delegate = vc;
-    /// 轮播图
-    SDCycleScrollView *autoScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 200) imageURLStringsGroup:vc.imagesURLs];
-    autoScrollView.delegate = vc;
+    
+    UIView * autoScrollView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 250)];
+    autoScrollView.backgroundColor = [UIColor redColor];
     
     vc.headerView = autoScrollView;
     /// 指定默认选择index 页面
     vc.pageIndex = 2;
     
     return vc;
+}
++ (NSArray *)getArrayVCs {
+    
+    UIViewController *vc_1 = [[UIViewController alloc] init];
+    UIViewController *vc_2 = [[UIViewController alloc] init];
+    
+    UIViewController *vc_3 = [[UIViewController alloc] init];
+    UIViewController *vc_4 = [[UIViewController alloc] init];
+    UIViewController *vc_5 = [[UIViewController alloc] init];
+    return @[vc_1, vc_2, vc_3,vc_4,vc_5];
+}
+
++ (NSArray *)getArrayTitles {
+    return @[@"鞋子", @"衣服", @"帽子", @"大大", @"娱乐"];
+}
+//#pragma mark - YNPageViewControllerDataSource
+//- (UIScrollView *)pageViewController:(YNPageViewController *)pageViewController pageForIndex:(NSInteger)index {
+//    UIViewController *vc = pageViewController.controllersM[index];
+//
+//}
+#pragma mark - YNPageViewControllerDelegate
+- (void)pageViewController:(YNPageViewController *)pageViewController
+            contentOffsetY:(CGFloat)contentOffset
+                  progress:(CGFloat)progress {
+    //        NSLog(@"--- contentOffset = %f,    progress = %f", contentOffset, progress);
+}
+- (void)pageViewController:(YNPageViewController *)pageViewController didScrollMenuItem:(UIButton *)itemButton index:(NSInteger)index {
+    NSLog(@"didScrollMenuItem index %ld", index);
 }
 
 -(void)setUI{
