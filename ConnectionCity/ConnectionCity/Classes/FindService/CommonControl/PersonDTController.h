@@ -11,7 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PersonDTController : YNPageViewController
-+ (instancetype)suspendCenterPageVC;
+@property (nonatomic,strong)NSString * userID;//接受到的userID
++ (instancetype)suspendCenterPageVC:(NSDictionary *)dic;
++(void)loadData;
 @end
 
 NS_ASSUME_NONNULL_END

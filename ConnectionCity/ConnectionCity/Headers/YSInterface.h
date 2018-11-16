@@ -584,7 +584,17 @@ static NSString * const v1PrivateUserConfig = @"/v1/private/user/config";
 //获取版本号
 static NSString * const v1AppVersion = @"/v1/app/version";
 
-
+/* 用户动态接口 */
+//用户动态
+static NSString * const v1UserCircleGet = @"/v1/user/circle/get";
+//用户圈子、视频分页
+static NSString * const v1UserCircleServiceCirclePage = @"/v1/user/circle/service-circle/page";
+//旅行分页
+static NSString * const v1UserCircleServiceTravelPage = @"/v1/user/circle/service-travel/page";
+//生活分页
+static NSString * const v1UserCircleServicePage = @"/v1/user/circle/service/page";
+//生活分页
+static NSString * const v1UserCircleServiceYulePage = @"/v1/user/circle/service/yule/page";
 #endif /* YSInterface_h */
 
 

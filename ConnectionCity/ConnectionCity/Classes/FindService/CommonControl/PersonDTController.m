@@ -12,68 +12,87 @@
 #import "NewsListController.h"
 #import "FriendCircleController.h"
 #import <YNPageConfigration.h>
+#import "YLController.h"
+#import "PersonDTView.h"
+#import "PersonNet.h"
+#import "YSAccountTool.h"
+#import "privateUserInfoModel.h"
+#import "NewsController.h"
+static NSDictionary * dicNew;
 @interface PersonDTController ()<YNPageViewControllerDataSource, YNPageViewControllerDelegate>
+//@property (nonatomic,strong)NSDictionary * dic;
 @end
 
 @implementation PersonDTController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人动态";
-   
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MessageClick) image:@"" title:@"私信" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
 }
-+ (instancetype)suspendCenterPageVC {
+-(void)MessageClick{
+    [YTAlertUtil showTempInfo:@"私信"];
+} 
++ (instancetype)suspendCenterPageVC:(NSDictionary *)dic{
     YNPageConfigration *configration = [YNPageConfigration defaultConfig];
     configration.pageStyle = YNPageStyleSuspensionCenter;
     configration.headerViewCouldScale = YES;
     //    configration.headerViewScaleMode = YNPageHeaderViewScaleModeCenter;
     configration.headerViewScaleMode = YNPageHeaderViewScaleModeTop;
     configration.showTabbar = NO;
+    configration.showBottomLine = YES;
     configration.showNavigation = YES;
+    configration.showScrollLine = NO;
+    configration.bottomLineHeight = 1;
     configration.scrollMenu = NO;
     configration.aligmentModeCenter = NO;
+    configration.bottomLineBgColor = YSColor(241, 242, 243);
     configration.lineWidthEqualFontWidth = true;
-    configration.showBottomLine = YES;
-    
-    return [self suspendCenterPageVCWithConfig:configration];
+    configration.scrollViewBackgroundColor = [UIColor whiteColor];
+    configration.itemFont = configration.selectedItemFont = [UIFont systemFontOfSize:18];
+    configration.normalItemColor = [UIColor blackColor];
+    configration.selectedItemColor = YSColor(249, 145, 0);
+    return [self suspendCenterPageVCWithConfig:configration dic:dic];
 }
-+ (instancetype)suspendCenterPageVCWithConfig:(YNPageConfigration *)config {
-    
++ (instancetype)suspendCenterPageVCWithConfig:(YNPageConfigration *)config dic:(NSDictionary *)dic{
+    dicNew = dic;
     PersonDTController *vc = [PersonDTController pageViewControllerWithControllers:[self getArrayVCs]
                                                                                   titles:[self getArrayTitles]
                                                                                   config:config];
     vc.dataSource = vc;
     vc.delegate = vc;
-    
-    UIView * autoScrollView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 250)];
-    autoScrollView.backgroundColor = [UIColor redColor];
-    
-    vc.headerView = autoScrollView;
+    PersonDTView * dtView = [[NSBundle mainBundle] loadNibNamed:@"PersonDTView" owner:nil options:nil][0];
+    dtView.frame = CGRectMake(0, 0, kScreenWidth, 263);
+    dtView.receiveDic = dic;
+    vc.headerView = dtView;
     /// 指定默认选择index 页面
-    vc.pageIndex = 2;
-    
+    vc.pageIndex = 0;
     return vc;
 }
 + (NSArray *)getArrayVCs {
-    
-    TravalController * controll = [TravalController new];
-    TravalController * controll1 = [TravalController new];
-    
-    TravalController * controll2 = [TravalController new];
-    TravalController * controll3 = [TravalController new];
-    TravalController * controll4 = [TravalController new];
+    YLController * controll = [YLController new];
+    controll.userID = dicNew[kData][@"user"][@"id"];
+    NewsController * controll1 = [NewsController new];
+    controll1.userID = dicNew[kData][@"user"][@"id"];
+    YLController * controll2 = [YLController new];
+    controll2.userID = dicNew[kData][@"user"][@"id"];
+    YLController * controll3 = [YLController new];
+    controll3.userID = dicNew[kData][@"user"][@"id"];
+    YLController * controll4 = [YLController new];
+    controll4.userID = dicNew[kData][@"user"][@"id"];
     return @[controll, controll1, controll2,controll3,controll4];
 }
 
 + (NSArray *)getArrayTitles {
-    return @[@"鞋子", @"衣服", @"帽子", @"大大", @"娱乐"];
+    return @[@"旅行", @"娱乐", @"生活", @"圈子", @"视频"];
 }
 #pragma mark - YNPageViewControllerDataSource
 - (UIScrollView *)pageViewController:(YNPageViewController *)pageViewController pageForIndex:(NSInteger)index {
     UIViewController *vc = pageViewController.controllersM[index];
-    if ([vc isKindOfClass:[TravalController class]]) {
-        return [(TravalController *)vc tab_Bottom];
-    }  
+    if ([vc isKindOfClass:[YLController class]]) {
+        return [(YLController *)vc bollec_bottom];
+    } else if ([vc isKindOfClass:[NewsController class]]){
+        return [(NewsController *)vc tab_Bottom];
+    }
     return vc;
 }
 #pragma mark - YNPageViewControllerDelegate
@@ -84,54 +103,5 @@
 }
 - (void)pageViewController:(YNPageViewController *)pageViewController didScrollMenuItem:(UIButton *)itemButton index:(NSInteger)index {
     NSLog(@"didScrollMenuItem index %ld", index);
-}
-
--(void)setUI{
-    //    //必要的设置, 如果没有设置可能导致内容显示不正常
-    ZJSegmentStyle *style = [[ZJSegmentStyle alloc] init];
-    //显示遮盖
-    style.showCover = NO;
-    // 颜色渐变
-    style.gradualChangeTitleColor = YES;
-     // 显示附加的按钮
-    style.showExtraButton = NO;
-    style.scrollTitle = NO;
-    style.scaleTitle = NO;
-    style.titleFont = [UIFont systemFontOfSize:18];
-    style.selectedTitleColor = YSColor(249, 145, 0);
-    // 设置附加按钮的背景图片
-    //    style.extraBtnBackgroundImageName = @"our-more";
-     // 设置子控制器 --- 注意子控制器需要设置title, 将用于对应的tag显示title
-    NSArray *childVcs = [NSArray arrayWithArray:[self setupChildVcAndTitle]];
-    // 初始化
-    ZJScrollPageView *scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, 250,kScreenWidth, kScreenHeight-324) segmentStyle:style childVcs:childVcs parentViewController:self];
-    scrollPageView.Index = ^(NSInteger currentIndex) {
-        NSLog(@"当前index为：%ld",currentIndex);
-        
-    };
-    [self.view addSubview:scrollPageView];
-}
-- (NSArray *)setupChildVcAndTitle {
-    TravalController * controll = [TravalController new];
-    controll.isInvitOrTrval = YES;
-    controll.title = @"旅行";
-    
-    UIViewController * controll1 = [UIViewController new];
-    controll1.view.backgroundColor = [UIColor yellowColor];
-    controll1.title = @"娱乐";
-    
-    UIViewController * controll2 = [UIViewController new];
-    controll2.view.backgroundColor = [UIColor blueColor];
-    controll2.title = @"生活";
-    
-    UIViewController * controll3 = [UIViewController new];
-    controll3.view.backgroundColor = [UIColor cyanColor];
-    controll3.title = @"圈子";
-    
-    UIViewController * controll4 = [UIViewController new];
-    controll4.view.backgroundColor = [UIColor yellowColor];
-    controll4.title = @"视频";
-    
-    return [NSArray arrayWithObjects:controll,controll1,controll2,controll3,controll4, nil];
 }
 @end

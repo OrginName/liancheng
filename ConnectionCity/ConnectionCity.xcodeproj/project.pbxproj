@@ -479,6 +479,15 @@
 		8DEA451420C11F85001529F1 /* MommentPlayerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DEA451220C11F85001529F1 /* MommentPlayerController.xib */; };
 		8DEA451620C12180001529F1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEA451520C12180001529F1 /* AVFoundation.framework */; };
 		8DEA451A20C12C06001529F1 /* CustomPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEA451920C12C06001529F1 /* CustomPlayer.m */; };
+		8DEDA659219E8FFF00564E10 /* YLController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEDA657219E8FFF00564E10 /* YLController.m */; };
+		8DEDA661219E92EE00564E10 /* PersonDTView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEDA660219E92EE00564E10 /* PersonDTView.m */; };
+		8DEDA663219E92FC00564E10 /* PersonDTView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DEDA662219E92FC00564E10 /* PersonDTView.xib */; };
+		8DEDA667219EA1FF00564E10 /* PersonNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEDA666219EA1FF00564E10 /* PersonNet.m */; };
+		8DEDA66D219EBCFE00564E10 /* YCLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEDA66C219EBCFE00564E10 /* YCLayout.m */; };
+		8DEDA671219EC5DA00564E10 /* NewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEDA66F219EC5DA00564E10 /* NewsController.m */; };
+		8DEDA672219EC5DA00564E10 /* NewsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DEDA670219EC5DA00564E10 /* NewsController.xib */; };
+		8DEDA679219ECB3500564E10 /* CircleTController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DEDA677219ECB3500564E10 /* CircleTController.m */; };
+		8DEDA67A219ECB3500564E10 /* CircleTController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DEDA678219ECB3500564E10 /* CircleTController.xib */; };
 		8DF7E3C820CF6182009A92D7 /* CityMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7E3C720CF6182009A92D7 /* CityMo.m */; };
 		8DF7E3CD20CF994C009A92D7 /* ClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7E3CB20CF994C009A92D7 /* ClassCell.m */; };
 		8DF7E3CE20CF994C009A92D7 /* ClassCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DF7E3CC20CF994C009A92D7 /* ClassCell.xib */; };
@@ -1602,6 +1611,21 @@
 		8DEA451520C12180001529F1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8DEA451820C12C06001529F1 /* CustomPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPlayer.h; sourceTree = "<group>"; };
 		8DEA451920C12C06001529F1 /* CustomPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPlayer.m; sourceTree = "<group>"; };
+		8DEDA656219E8FFF00564E10 /* YLController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YLController.h; sourceTree = "<group>"; };
+		8DEDA657219E8FFF00564E10 /* YLController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YLController.m; sourceTree = "<group>"; };
+		8DEDA65F219E92EE00564E10 /* PersonDTView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDTView.h; sourceTree = "<group>"; };
+		8DEDA660219E92EE00564E10 /* PersonDTView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonDTView.m; sourceTree = "<group>"; };
+		8DEDA662219E92FC00564E10 /* PersonDTView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonDTView.xib; sourceTree = "<group>"; };
+		8DEDA665219EA1FF00564E10 /* PersonNet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonNet.h; sourceTree = "<group>"; };
+		8DEDA666219EA1FF00564E10 /* PersonNet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonNet.m; sourceTree = "<group>"; };
+		8DEDA66B219EBCFE00564E10 /* YCLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCLayout.h; sourceTree = "<group>"; };
+		8DEDA66C219EBCFE00564E10 /* YCLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YCLayout.m; sourceTree = "<group>"; };
+		8DEDA66E219EC5DA00564E10 /* NewsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsController.h; sourceTree = "<group>"; };
+		8DEDA66F219EC5DA00564E10 /* NewsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsController.m; sourceTree = "<group>"; };
+		8DEDA670219EC5DA00564E10 /* NewsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsController.xib; sourceTree = "<group>"; };
+		8DEDA676219ECB3500564E10 /* CircleTController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleTController.h; sourceTree = "<group>"; };
+		8DEDA677219ECB3500564E10 /* CircleTController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleTController.m; sourceTree = "<group>"; };
+		8DEDA678219ECB3500564E10 /* CircleTController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircleTController.xib; sourceTree = "<group>"; };
 		8DF7E3C620CF6182009A92D7 /* CityMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityMo.h; sourceTree = "<group>"; };
 		8DF7E3C720CF6182009A92D7 /* CityMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityMo.m; sourceTree = "<group>"; };
 		8DF7E3CA20CF994C009A92D7 /* ClassCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassCell.h; sourceTree = "<group>"; };
@@ -3818,6 +3842,7 @@
 		8DD93737219C3F4E00F8E8F3 /* CommonControl */ = {
 			isa = PBXGroup;
 			children = (
+				8DEDA655219E8FE500564E10 /* viewControlls */,
 				8DD93738219C406900F8E8F3 /* PersonDTController.h */,
 				8DD93739219C406900F8E8F3 /* PersonDTController.m */,
 				8DD9373A219C406900F8E8F3 /* PersonDTController.xib */,
@@ -4027,6 +4052,52 @@
 				8DEA451920C12C06001529F1 /* CustomPlayer.m */,
 			);
 			path = CustomPlayer;
+			sourceTree = "<group>";
+		};
+		8DEDA655219E8FE500564E10 /* viewControlls */ = {
+			isa = PBXGroup;
+			children = (
+				8DEDA66A219EBCC600564E10 /* Layout */,
+				8DEDA664219EA1E500564E10 /* Net */,
+				8DEDA65E219E92EE00564E10 /* Views */,
+				8DEDA656219E8FFF00564E10 /* YLController.h */,
+				8DEDA657219E8FFF00564E10 /* YLController.m */,
+				8DEDA66E219EC5DA00564E10 /* NewsController.h */,
+				8DEDA66F219EC5DA00564E10 /* NewsController.m */,
+				8DEDA670219EC5DA00564E10 /* NewsController.xib */,
+				8DEDA676219ECB3500564E10 /* CircleTController.h */,
+				8DEDA677219ECB3500564E10 /* CircleTController.m */,
+				8DEDA678219ECB3500564E10 /* CircleTController.xib */,
+			);
+			path = viewControlls;
+			sourceTree = "<group>";
+		};
+		8DEDA65E219E92EE00564E10 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8DEDA65F219E92EE00564E10 /* PersonDTView.h */,
+				8DEDA660219E92EE00564E10 /* PersonDTView.m */,
+				8DEDA662219E92FC00564E10 /* PersonDTView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8DEDA664219EA1E500564E10 /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				8DEDA665219EA1FF00564E10 /* PersonNet.h */,
+				8DEDA666219EA1FF00564E10 /* PersonNet.m */,
+			);
+			path = Net;
+			sourceTree = "<group>";
+		};
+		8DEDA66A219EBCC600564E10 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				8DEDA66B219EBCFE00564E10 /* YCLayout.h */,
+				8DEDA66C219EBCFE00564E10 /* YCLayout.m */,
+			);
+			path = Layout;
 			sourceTree = "<group>";
 		};
 		8DF7E3C920CF9935009A92D7 /* Cell */ = {
@@ -5373,6 +5444,7 @@
 				CEE5251620F7907C00DD6179 /* MyQRController.xib in Resources */,
 				721B5663215BA9670024953B /* YBImageBrowser.bundle in Resources */,
 				CEC4A54220C3D6FC0026EE19 /* TeamSwitchCell.xib in Resources */,
+				8DEDA67A219ECB3500564E10 /* CircleTController.xib in Resources */,
 				CE5C281220B91AFD006A8332 /* WinnerInfoCell.xib in Resources */,
 				727418D220B1A058001D6BE1 /* FirstController.xib in Resources */,
 				8D09426720C14AF200C45E2B /* EvaluationController.xib in Resources */,
@@ -5411,6 +5483,7 @@
 				CEBEDD8E20B17ED1000F9EE4 /* FootprintController.xib in Resources */,
 				CE0BA615209D6160004C3C33 /* LifeHallController.xib in Resources */,
 				723F4FA720BEDE6000AF8268 /* TrvalInvitController.xib in Resources */,
+				8DEDA663219E92FC00564E10 /* PersonDTView.xib in Resources */,
 				8D114CC120CA236900637D34 /* AccountView.xib in Resources */,
 				CEC4A55B20C407500026EE19 /* MemberCenterController.xib in Resources */,
 				CEA79B49212839380026522E /* KissCell.xib in Resources */,
@@ -5509,6 +5582,7 @@
 				8D8E4ECD20C9109E00C3D537 /* EditProfileCell.xib in Resources */,
 				72EBB8D720C81B4600F670E9 /* AccontManageController.xib in Resources */,
 				72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */,
+				8DEDA672219EC5DA00564E10 /* NewsController.xib in Resources */,
 				727C86D820DBE11D00AA2796 /* CreatGroupController.xib in Resources */,
 				CE5C283020B9733A006A8332 /* ConsultativeNegotiationCell.xib in Resources */,
 				8D67603620A448CB0027CDEE /* SX.plist in Resources */,
@@ -5680,6 +5754,7 @@
 				CE5C281F20B953C1006A8332 /* BidManagerHeadV.m in Sources */,
 				CEC4A52F20C3D6D10026EE19 /* TeamHeadView.m in Sources */,
 				CE6BEC1D20C83769003B36D7 /* LCDatePicker.m in Sources */,
+				8DEDA661219E92EE00564E10 /* PersonDTView.m in Sources */,
 				CE782AB021158860002C6403 /* BidManagerSectionHeadV.m in Sources */,
 				CE9B9A7620E920C6005C47B2 /* OurConcernMo.m in Sources */,
 				8D12931620E616670008BD6F /* CustomScro.m in Sources */,
@@ -5708,6 +5783,7 @@
 				CEFC90FC2110AB43006E262E /* ShareController.m in Sources */,
 				72EBB8E620C9682A00F670E9 /* AccountOneController.m in Sources */,
 				8D14FDEC20EB0C000013A9DF /* UIColor+RCColor.m in Sources */,
+				8DEDA679219ECB3500564E10 /* CircleTController.m in Sources */,
 				8DC17A7620C0E430005D9EE0 /* FriendCirleTab.m in Sources */,
 				CEBEDD9120B17ED1000F9EE4 /* FootprintController.m in Sources */,
 				7210410D210243D300B575BB /* XMWaves.m in Sources */,
@@ -5847,6 +5923,7 @@
 				8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */,
 				CE03EDFC20B4595600F07D78 /* FirstCustomButton.m in Sources */,
 				8D09E18120BFB49A000F7EBD /* SendTripController.m in Sources */,
+				8DEDA659219E8FFF00564E10 /* YLController.m in Sources */,
 				8DC17AB220C0E7B8005D9EE0 /* FriendVideo.m in Sources */,
 				721B5661215BA9670024953B /* YBVideoBrowseCellData.m in Sources */,
 				72EBB8F120CAC66D00F670E9 /* CollectionCell.m in Sources */,
@@ -6071,6 +6148,7 @@
 				72EC1BB320BC386D00ACC20B /* SendServiceController.m in Sources */,
 				8DFA326120EDB97B0086423A /* RCWKRequestHandler.m in Sources */,
 				8DE161B221072B0000CC7558 /* ZoomImage.m in Sources */,
+				8DEDA667219EA1FF00564E10 /* PersonNet.m in Sources */,
 				7274188620B1474B001D6BE1 /* ConnectionCell.m in Sources */,
 				8D24A22E20A1B9BA00F0740D /* CustomCalloutView.m in Sources */,
 				72EC1BA620BC349600ACC20B /* ServiceStationController.m in Sources */,
@@ -6086,6 +6164,7 @@
 				720263F220B5015500382B2F /* TZAssetModel.m in Sources */,
 				8D35878C20C6A693008A5E74 /* OurPlayCell.m in Sources */,
 				72EC1BAF20BC350D00ACC20B /* BaseFindServiceTabController.m in Sources */,
+				8DEDA671219EC5DA00564E10 /* NewsController.m in Sources */,
 				8DFA325220EDAFEA0086423A /* RCDataBaseManager.m in Sources */,
 				726B5F43218ED09D000B16EE /* MenuMo.m in Sources */,
 				CE5C281B20B94D84006A8332 /* BidManagerCell.m in Sources */,
@@ -6113,6 +6192,7 @@
 				72EC1B7D20BAACBA00ACC20B /* DouctChangeController.m in Sources */,
 				726B5F32218DD734000B16EE /* ZJScrollPageView.m in Sources */,
 				72B6EC9720FCC16700B4088D /* AnotherStarEvaluator.m in Sources */,
+				8DEDA66D219EBCFE00564E10 /* YCLayout.m in Sources */,
 				7274190120B3F60D001D6BE1 /* SendSwapController.m in Sources */,
 				8D22C36020C7D18E004DC8F4 /* PresentManageViewController.m in Sources */,
 				CE0BA5E0209D5E9B004C3C33 /* DDFileReader.m in Sources */,

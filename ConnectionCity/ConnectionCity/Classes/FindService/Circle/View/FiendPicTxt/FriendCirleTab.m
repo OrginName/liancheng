@@ -22,8 +22,7 @@
 #import "PersonalBasicDataController.h"
 #import "UIView+Geometry.h"
 @interface FriendCirleTab()<UITableViewDelegate,UITableViewDataSource,MomentCellDelegate,CommentViewDelegate>
-{
-//    NSInteger _page;
+{ 
     NSInteger _CurrentTag;
     NSString * _cityCode;
 }

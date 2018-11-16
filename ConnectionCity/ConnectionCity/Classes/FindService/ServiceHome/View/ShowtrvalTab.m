@@ -13,6 +13,7 @@
 #import "FriendCircleController.h"
 #import "privateUserInfoModel.h"
 #import "PersonDTController.h"
+#import "PersonNet.h"
 @interface ShowtrvalTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ShowTrvalCellDelegate,CustomScroDelegate>
 {
     CustomScro * _scr;
@@ -211,8 +212,12 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0&&indexPath.row==3) {
-        PersonDTController * person = [PersonDTController suspendCenterPageVC];
-        [self.control.navigationController pushViewController:person animated:YES];
+        NSString * userId = self.Mo!=nil?self.Mo.ID:self.MoTrval.user.ID;
+        [PersonNet requstPersonDT:@{@"userId":userId} withDic:^(NSDictionary * _Nonnull successDicValue) {
+            PersonDTController * person = [PersonDTController suspendCenterPageVC:successDicValue];
+            [self.control.navigationController pushViewController:person animated:YES];
+        }];
+        
 //        FriendCircleController * friend = [FriendCircleController new];
 //        friend.user = self.Mo!=nil?self.Mo:self.MoTrval.user;
 //        [self.control.navigationController pushViewController:friend animated:YES];
