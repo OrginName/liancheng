@@ -101,7 +101,7 @@
 //极光ID
 #define JpuskKey        @"JpuskKey"
 
-#define APPID  @"10002"
+#define APPID  @"852112"
 //大图
 #define BIGTU @"?imageView2/1/w/400/h/400"
 //小图

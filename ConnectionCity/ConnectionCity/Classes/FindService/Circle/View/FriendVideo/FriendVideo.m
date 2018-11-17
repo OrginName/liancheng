@@ -10,7 +10,6 @@
 #import "FriendVideoCell.h"
 #import "MommentPlayerController.h"
 #import "CircleNet.h"
-#import "MommentPlayerController.h"
 @interface FriendVideo()<UICollectionViewDelegate,UICollectionViewDataSource>
 {
     NSString * _cityCode;

@@ -26,12 +26,32 @@
     self.data_Arr = [NSMutableArray array];
     self.tab_Bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         _page=1;
-        [self requstLoad];
+        [self.flag isEqualToString:@"1"]?[self requstLoad]:[self requstLoad1];
     }];
     self.tab_Bottom.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [self requstLoad];
+        [self.flag isEqualToString:@"1"]?[self requstLoad]:[self requstLoad1];
+    }]; 
+    [self.flag isEqualToString:@"1"]?[self requstLoad]:[self requstLoad1];
+}
+-(void)requstLoad1{
+    NSDictionary * dic = @{
+                           @"channelId": @(3),
+                           @"pageNumber": @(_page),
+                           @"pageSize": @(15),
+                           @"userId": self.userID
+                           };
+    [PersonNet requstPersonSH:dic withArr:^(NSMutableArray * _Nonnull successArrValue) {
+        if (_page==1) {
+            [self.data_Arr removeAllObjects];
+        }
+        _page++;
+        [self.tab_Bottom.mj_header endRefreshing];
+        [self.tab_Bottom.mj_footer endRefreshing];
+        [self.data_Arr addObjectsFromArray:successArrValue];
+        [self.tab_Bottom reloadData];
+    } FailDicBlock:^(NSError * _Nonnull failValue) {
+        
     }];
-    [self requstLoad];
 }
 -(void)requstLoad{
     NSDictionary * dic = @{

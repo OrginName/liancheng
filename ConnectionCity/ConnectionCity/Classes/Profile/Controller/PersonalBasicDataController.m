@@ -16,6 +16,8 @@
 #import "FriendCircleController.h"
 #import "ZoomImage.h"
 #import "serviceListNewMo.h"
+#import "PersonNet.h"
+#import "PersonDTController.h"
 @interface PersonalBasicDataController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scro_View;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_View;
@@ -230,9 +232,13 @@
 }
 #pragma ------------好友动态---------------------
 - (IBAction)btn_friendDT:(UIButton *)sender {
-    FriendCircleController * friend = [FriendCircleController new];
-    friend.user = self.connectionMo;
-    [self.navigationController pushViewController:friend animated:YES];
+    [PersonNet requstPersonDT:@{@"userId":self.connectionMo.ID} withDic:^(NSDictionary * _Nonnull successDicValue) {
+        PersonDTController * person = [PersonDTController suspendCenterPageVC:successDicValue];
+        [self.navigationController pushViewController:person animated:YES];
+    }];
+//    FriendCircleController * friend = [FriendCircleController new];
+//    friend.user = self.connectionMo;
+//    [self.navigationController pushViewController:friend animated:YES];
 }
 #pragma ------------上一个 下一个---------------------
 - (IBAction)nextAndReturn:(UIButton *)sender {

@@ -18,6 +18,9 @@
 #import "YSAccountTool.h"
 #import "privateUserInfoModel.h"
 #import "NewsController.h"
+#import "CircleTController.h"
+#import "VideoController.h"
+#import "RCDChatViewController.h"
 static NSDictionary * dicNew;
 @interface PersonDTController ()<YNPageViewControllerDataSource, YNPageViewControllerDelegate>
 //@property (nonatomic,strong)NSDictionary * dic;
@@ -29,8 +32,21 @@ static NSDictionary * dicNew;
     self.title = @"个人动态";
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MessageClick) image:@"" title:@"私信" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
 }
--(void)MessageClick{
-    [YTAlertUtil showTempInfo:@"私信"];
+-(void)MessageClick{ 
+    RCDChatViewController *chatViewController = [[RCDChatViewController alloc] init];
+    chatViewController.conversationType = ConversationType_PRIVATE;
+    NSString *title,*ID,*name;
+    ID = [dicNew[kData][@"user"][@"id"] description];
+    name = [dicNew[kData][@"user"][@"nickName"] description];
+    chatViewController.targetId = ID;
+    if ([ID isEqualToString:[RCIM sharedRCIM].currentUserInfo.userId]) {
+        title = [RCIM sharedRCIM].currentUserInfo.name;
+    } else {
+        title = name;
+    }
+    chatViewController.title = title;
+    chatViewController.displayUserNameInCell = NO;
+    [self.navigationController pushViewController:chatViewController animated:YES];
 } 
 + (instancetype)suspendCenterPageVC:(NSDictionary *)dic{
     YNPageConfigration *configration = [YNPageConfigration defaultConfig];
@@ -72,12 +88,14 @@ static NSDictionary * dicNew;
     YLController * controll = [YLController new];
     controll.userID = dicNew[kData][@"user"][@"id"];
     NewsController * controll1 = [NewsController new];
+    controll1.flag = @"1";
     controll1.userID = dicNew[kData][@"user"][@"id"];
-    YLController * controll2 = [YLController new];
+    NewsController * controll2 = [NewsController new];
+    controll2.flag = @"2";
     controll2.userID = dicNew[kData][@"user"][@"id"];
-    YLController * controll3 = [YLController new];
+    CircleTController * controll3 = [CircleTController new];
     controll3.userID = dicNew[kData][@"user"][@"id"];
-    YLController * controll4 = [YLController new];
+    VideoController * controll4 = [VideoController new];
     controll4.userID = dicNew[kData][@"user"][@"id"];
     return @[controll, controll1, controll2,controll3,controll4];
 }
@@ -92,6 +110,10 @@ static NSDictionary * dicNew;
         return [(YLController *)vc bollec_bottom];
     } else if ([vc isKindOfClass:[NewsController class]]){
         return [(NewsController *)vc tab_Bottom];
+    }else if ([vc isKindOfClass:[CircleTController class]]){
+        return [(CircleTController *)vc tab_Bottom];
+    }else if ([vc isKindOfClass:[VideoController class]]){
+        return [(VideoController *)vc coll_Bottom];
     }
     return vc;
 }

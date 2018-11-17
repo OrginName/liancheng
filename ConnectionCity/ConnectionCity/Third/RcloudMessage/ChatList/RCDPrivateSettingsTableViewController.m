@@ -24,6 +24,8 @@
 #import "UIView+Geometry.h"
 #import "UserMo.h"
 #import "FriendCircleController.h"
+#import "PersonNet.h"
+#import "PersonDTController.h"
 static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 @interface RCDPrivateSettingsTableViewController ()
 @property (nonatomic,strong) RCDUserInfo * userInfo;
@@ -49,7 +51,7 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
     self.tableView.tableHeaderView = tan;
     [self.tableView reloadData];
     
-    if (![self.userId isEqualToString: [[YSAccountTool userInfo] modelId]]&&![[[YSAccountTool userInfo] modelId] isEqualToString:@"10002"]) {
+    if (![self.userId isEqualToString: [[YSAccountTool userInfo] modelId]]&&![[[YSAccountTool userInfo] modelId] isEqualToString:APPID]) {
         self.navigationItem.rightBarButtonItem =
         [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"our-more"]
                                          style:UIBarButtonItemStylePlain
@@ -296,9 +298,13 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
         [self.navigationController pushViewController:edit animated:YES];
     }
     if ([self.userId isEqualToString:[[YSAccountTool userInfo] modelId]]&&indexPath.section==0&&indexPath.row==4) {
-        FriendCircleController * friend = [FriendCircleController new];
-        friend.user = user;
-        [self.navigationController pushViewController:friend animated:YES];
+        [PersonNet requstPersonDT:@{@"userId":user.ID} withDic:^(NSDictionary * _Nonnull successDicValue) {
+            PersonDTController * person = [PersonDTController suspendCenterPageVC:successDicValue];
+            [self.navigationController pushViewController:person animated:YES];
+        }];
+//        FriendCircleController * friend = [FriendCircleController new];
+//        friend.user = user;
+//        [self.navigationController pushViewController:friend animated:YES];
     }else if(indexPath.section==0&&indexPath.row==3){
         FriendCircleController * friend = [FriendCircleController new];
         friend.user = user;

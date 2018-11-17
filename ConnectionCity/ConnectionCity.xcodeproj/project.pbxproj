@@ -199,6 +199,9 @@
 		72D8B1722129B975007EE681 /* CCPPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B1712129B974007EE681 /* CCPPickerView.m */; };
 		72D8B1752129C28D007EE681 /* SelectWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B1742129C28D007EE681 /* SelectWeek.m */; };
 		72D8B1772129C29A007EE681 /* SelectWeek.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72D8B1762129C29A007EE681 /* SelectWeek.xib */; };
+		72DC0A7C219F17CE001DECD2 /* VideoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0A7B219F17CE001DECD2 /* VideoLayout.m */; };
+		72DC0A80219F1882001DECD2 /* VideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0A7E219F1882001DECD2 /* VideoController.m */; };
+		72DC0A81219F1882001DECD2 /* VideoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0A7F219F1882001DECD2 /* VideoController.xib */; };
 		72EBB8B620C6DB5900F670E9 /* CardAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */; };
 		72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */; };
 		72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8BA20C800C200F670E9 /* PresentCell.m */; };
@@ -1130,6 +1133,11 @@
 		72D8B1732129C28D007EE681 /* SelectWeek.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectWeek.h; sourceTree = "<group>"; };
 		72D8B1742129C28D007EE681 /* SelectWeek.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectWeek.m; sourceTree = "<group>"; };
 		72D8B1762129C29A007EE681 /* SelectWeek.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWeek.xib; sourceTree = "<group>"; };
+		72DC0A7A219F17CE001DECD2 /* VideoLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoLayout.h; sourceTree = "<group>"; };
+		72DC0A7B219F17CE001DECD2 /* VideoLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoLayout.m; sourceTree = "<group>"; };
+		72DC0A7D219F1882001DECD2 /* VideoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoController.h; sourceTree = "<group>"; };
+		72DC0A7E219F1882001DECD2 /* VideoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoController.m; sourceTree = "<group>"; };
+		72DC0A7F219F1882001DECD2 /* VideoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoController.xib; sourceTree = "<group>"; };
 		72EBB8B320C6DB5900F670E9 /* CardAuthorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardAuthorController.h; sourceTree = "<group>"; };
 		72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardAuthorController.m; sourceTree = "<group>"; };
 		72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardAuthorController.xib; sourceTree = "<group>"; };
@@ -4068,6 +4076,9 @@
 				8DEDA676219ECB3500564E10 /* CircleTController.h */,
 				8DEDA677219ECB3500564E10 /* CircleTController.m */,
 				8DEDA678219ECB3500564E10 /* CircleTController.xib */,
+				72DC0A7D219F1882001DECD2 /* VideoController.h */,
+				72DC0A7E219F1882001DECD2 /* VideoController.m */,
+				72DC0A7F219F1882001DECD2 /* VideoController.xib */,
 			);
 			path = viewControlls;
 			sourceTree = "<group>";
@@ -4096,6 +4107,8 @@
 			children = (
 				8DEDA66B219EBCFE00564E10 /* YCLayout.h */,
 				8DEDA66C219EBCFE00564E10 /* YCLayout.m */,
+				72DC0A7A219F17CE001DECD2 /* VideoLayout.h */,
+				72DC0A7B219F17CE001DECD2 /* VideoLayout.m */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -5472,6 +5485,7 @@
 				72EC1B6C20B8475100ACC20B /* ShowtreaureCell.xib in Resources */,
 				CEBEDD8820B17ED1000F9EE4 /* BidderController.xib in Resources */,
 				8D5B3C3E20C0147A00773105 /* ServiceListCell.xib in Resources */,
+				72DC0A81219F1882001DECD2 /* VideoController.xib in Resources */,
 				72D8B1772129C29A007EE681 /* SelectWeek.xib in Resources */,
 				CE0BA61B209D6197004C3C33 /* FoundController.xib in Resources */,
 				727418F120B2DDAC001D6BE1 /* ChangeListController.xib in Resources */,
@@ -5768,6 +5782,7 @@
 				8DE465C820EDED71009730F7 /* RCDContactTableViewCell.m in Sources */,
 				CE03EDED20B43DC400F07D78 /* FootprintTabbleHeadV.m in Sources */,
 				721B565A215BA9670024953B /* YBIBUtilities.m in Sources */,
+				72DC0A7C219F17CE001DECD2 /* VideoLayout.m in Sources */,
 				CEC4A55A20C407500026EE19 /* MemberCenterController.m in Sources */,
 				CE0BA614209D6160004C3C33 /* LifeHallController.m in Sources */,
 				721DAE0120F20EBC006F141F /* FriendListController.m in Sources */,
@@ -6152,6 +6167,7 @@
 				7274188620B1474B001D6BE1 /* ConnectionCell.m in Sources */,
 				8D24A22E20A1B9BA00F0740D /* CustomCalloutView.m in Sources */,
 				72EC1BA620BC349600ACC20B /* ServiceStationController.m in Sources */,
+				72DC0A80219F1882001DECD2 /* VideoController.m in Sources */,
 				8DE4668D20EE0ABD009730F7 /* RCDGroupViewController.m in Sources */,
 				CE5C281120B91AFD006A8332 /* WinnerInfoCell.m in Sources */,
 				8DE4666C20EDFCFE009730F7 /* RCDSearchDataManager.m in Sources */,
@@ -6382,7 +6398,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = J55M6SR759;
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -6427,7 +6443,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.LC.CC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "bbef5a66-dbe5-485a-b433-c4c851742dd7";
-				PROVISIONING_PROFILE_SPECIFIER = tsLC;
+				PROVISIONING_PROFILE_SPECIFIER = lCDev;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -6443,7 +6459,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 5ZZQZXVFDM;
+				DEVELOPMENT_TEAM = J55M6SR759;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6487,7 +6503,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.LC.CC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "dd961a98-373a-42f6-a177-72ffe7b4e7e0";
-				PROVISIONING_PROFILE_SPECIFIER = LCC;
+				PROVISIONING_PROFILE_SPECIFIER = LCAppStore;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

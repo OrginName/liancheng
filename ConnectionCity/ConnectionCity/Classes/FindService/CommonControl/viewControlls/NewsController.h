@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NewsController : BaseViewController
 @property (weak, nonatomic) IBOutlet UITableView *tab_Bottom;
 @property (nonatomic,strong)NSString * userID;
+@property (nonatomic,strong)NSString * flag;
 @end
 
 NS_ASSUME_NONNULL_END

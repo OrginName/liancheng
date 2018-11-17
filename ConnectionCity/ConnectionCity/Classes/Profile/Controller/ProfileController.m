@@ -105,7 +105,7 @@
         NSArray *menuArray = [NSArray arrayWithContentsOfFile:path];
         [menuArray enumerateObjectsUsingBlock:^(NSDictionary *_Nonnull dic, NSUInteger idx, BOOL * _Nonnull stop) {
             YTSideMenuModel *model = [YTSideMenuModel modelWithDictionary:dic];
-            if ([[[YSAccountTool userInfo] modelId] isEqualToString:@"10002"]) {
+            if ([[[YSAccountTool userInfo] modelId] isEqualToString:APPID]) {
                 if (idx!=0&&idx!=3) {
                     [menuArr addObject:model];
                 }

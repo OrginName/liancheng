@@ -288,7 +288,7 @@
        mo = [arr[5] contentArr][4];
     }
     WeakSelf
-    [CircleNet requstCircleDZ:@{@"typeId":[self.momentList[cell.tag] ID],@"type":mo.value,@"followedUserId":[[YSAccountTool userInfo] modelId]} withSuc:^(NSDictionary *successDicValue) {
+    [CircleNet requstCircleDZ:@{@"typeId":[self.momentList[cell.tag] ID],@"type":mo.value,@"commentedUserId":[[YSAccountTool userInfo] modelId]} withSuc:^(NSDictionary *successDicValue) {
 //        cell.praiseBtn.selected = YES;
         Moment * momet = weakSelf.momentList[cell.tag];
         momet.likeCount = KString(@"%@", successDicValue[@"data"]);

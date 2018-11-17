@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 typedef void (^SuccessArrBlock) (NSMutableArray * successArrValue);
 typedef void (^SuccessDicBlock) (NSDictionary * successDicValue);
-typedef void (^FailDicBlock) (NSString * failValue);
+typedef void (^FailDicBlock) (NSError * failValue);
 @interface PersonNet : NSObject
 
 
@@ -39,6 +39,23 @@ typedef void (^FailDicBlock) (NSString * failValue);
  @param block dic
  */
 +(void)requstPersonYL1:(NSDictionary *)dic withArr:(SuccessArrBlock)block;
+
+/**
+ 获取用户图文或视频接口
+
+
+ @param dic 字典
+ @param block 返回内容
+ */
++(void)requstPersonVideo:(NSDictionary *)dic withArr:(SuccessArrBlock)block FailDicBlock:(FailDicBlock)fail;
+/**
+ 获取生活接口
+ 
+ 
+ @param dic 字典
+ @param block 返回内容
+ */
++(void)requstPersonSH:(NSDictionary *)dic withArr:(SuccessArrBlock)block FailDicBlock:(FailDicBlock)fail;
 
 @end
 
