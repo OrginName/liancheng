@@ -19,7 +19,7 @@
 @implementation ServiceListController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"服务约单";
+    self.navigationItem.title = @"服务预约";
     self.arr_data = [NSMutableArray array];
     [self loadServiceList];
 }

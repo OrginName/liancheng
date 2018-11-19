@@ -48,7 +48,7 @@
         _page=1;
         _CurrentTag= 0;
         [self setComment];
-//        [self.mj_header beginRefreshing];
+        [self.mj_header beginRefreshing];
     }
     return self;
 }
@@ -187,8 +187,6 @@
             [weakSelf.momentList removeAllObjects];
         }
         _page++;
-        [weakSelf.mj_header endRefreshing];
-        [weakSelf.mj_footer endRefreshing];
         [weakSelf.momentList addObjectsFromArray:successArrValue];
 //        if ([self.flagStr isEqualToString:@"HomeSend"]) {
 //            [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:weakSelf.momentList] forKey:@"PICHOME"];
@@ -203,6 +201,8 @@
             });
         }
         [weakSelf reloadData];
+        [weakSelf.mj_header endRefreshing];
+        [weakSelf.mj_footer endRefreshing];
     } FailErrBlock:^(NSError *failValue) {
         [weakSelf.mj_header endRefreshing];
         [weakSelf.mj_footer endRefreshing];

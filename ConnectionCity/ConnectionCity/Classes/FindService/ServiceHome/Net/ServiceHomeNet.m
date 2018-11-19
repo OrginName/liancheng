@@ -11,6 +11,8 @@
 #import "ClassAttrMo.h"
 #import "ServiceListMo.h"
 #import "serviceListNewMo.h"
+#import "YSAccountTool.h"
+#import "privateUserInfoModel.h"
 @implementation ServiceHomeNet
 +(void)requstConditions:(SuccessArrBlock) sucBloc withFailBlock:(FailDicBlock)failBlock{
     [YSNetworkTool POST:v1ServiceConditions params:@{} showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -94,7 +96,12 @@
             for (int i=0; i<[responseObject[@"data"][@"content"] count]; i++) {
                 trvalMo * trval = [trvalMo mj_objectWithKeyValues:responseObject[@"data"][@"content"][i]];
 //                trval.comments = [comments mj_objectArrayWithKeyValuesArray:trval.comments];
-                [arr addObject:trval];
+                if ([[[YSAccountTool userInfo] modelId] isEqualToString:APPID]){
+                    if (![trval.user.ID isEqualToString:@"408562"]) {
+                        [arr addObject:trval];
+                    }
+                }else
+                    [arr addObject:trval];
             }
         } 
         sucBlock(arr);

@@ -130,7 +130,9 @@
     scrollPageView.Index = ^(NSInteger currentIndex) {
         NSLog(@"当前index为：%ld",currentIndex);
         currentIndexHome = currentIndex;
-        [weakSelf homeLoadData:[KUserDefults objectForKey:YLat] lng:[KUserDefults objectForKey:YLng] ID:[KUserDefults objectForKey:YCode]];
+        if (([KUserDefults objectForKey:YLat]!=nil&&[KUserDefults objectForKey:YLng]!=nil)||[KUserDefults objectForKey:YCode]!=nil) {
+            [weakSelf homeLoadData:@"" lng:@"" ID:@""];
+        }
     };
     [self.view_Bottom addSubview:scrollPageView];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MyselfClick) image:@"people" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
@@ -265,7 +267,7 @@
     flag1 = NO;
     [KUserDefults setObject:lat forKey:YLat];
     [KUserDefults setObject:lng forKey:YLng];
-    [KUserDefults setObject:cityCode forKey:YCode];
+    [KUserDefults setObject:cityCode forKey:YCode]; 
     MenuMo * mo1 = self.myMenuArr[currentIndexHome];
     if ([mo1.ID isEqualToString:@"1"]) {
         self.trval.trval.page = 1;

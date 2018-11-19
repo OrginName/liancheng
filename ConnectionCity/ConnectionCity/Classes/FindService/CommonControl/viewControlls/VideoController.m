@@ -11,13 +11,18 @@
 #import "MommentPlayerController.h"
 #import "VideoLayout.h"
 #import "PersonNet.h"
+#import <IQKeyboardManager.h>
 @interface VideoController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic,strong) NSMutableArray * data_Arr;
 @property (nonatomic,assign) NSInteger page;
 @end
 
 @implementation VideoController
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [IQKeyboardManager sharedManager].enable = NO;
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUI];

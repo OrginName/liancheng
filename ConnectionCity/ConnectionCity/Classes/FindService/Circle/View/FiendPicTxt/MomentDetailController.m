@@ -376,7 +376,7 @@
         _btnYD.titleLabel.font = [UIFont systemFontOfSize:14.0f];
         [_btnYD setTitleColor:YSColor(242, 151, 40) forState:UIControlStateNormal];
         _btnYD.backgroundColor = [UIColor clearColor];
-        [_btnYD setTitle:@"约单" forState:UIControlStateNormal];
+        [_btnYD setTitle:@"预约" forState:UIControlStateNormal];
         [_btnYD addTarget:self action:@selector(YDMoment:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btnYD;

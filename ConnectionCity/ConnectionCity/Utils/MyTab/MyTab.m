@@ -21,6 +21,9 @@
 -(void)Mydelegate{
     self.emptyDataSetSource = self;
     self.emptyDataSetDelegate = self;
+    self.estimatedRowHeight = 0;
+    self.estimatedSectionHeaderHeight = 0;
+    self.estimatedSectionFooterHeight = 0;
 }
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
     return [UIImage imageNamed:@"empty"];

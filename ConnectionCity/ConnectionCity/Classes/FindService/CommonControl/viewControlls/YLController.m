@@ -18,7 +18,9 @@
 @end
 
 @implementation YLController
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     _page=1;

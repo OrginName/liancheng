@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,14 +19,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="279.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="iT7-vS-2PZ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="224.5"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="spatial" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="iT7-vS-2PZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="223.5"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="cLG-nS-7jz">
                         <rect key="frame" x="15" y="234.5" width="36" height="35"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="35" id="9iT-BJ-Q27"/>
-                            <constraint firstAttribute="width" constant="36" id="Sin-7n-fqz"/>
+                            <constraint firstAttribute="height" constant="35" id="suC-6b-0FN"/>
+                            <constraint firstAttribute="width" constant="36" id="ve7-Bw-0HD"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -37,29 +36,29 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="测试数据" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dd-B3-JGk">
-                        <rect key="frame" x="61" y="244.5" width="53.5" height="16"/>
+                        <rect key="frame" x="61" y="244" width="53.5" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.55759119987487793" green="0.56462538242340088" blue="0.56828373670578003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="测试数据" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gA6-Oh-sdb">
-                        <rect key="frame" x="124.5" y="244" width="169.5" height="17"/>
+                        <rect key="frame" x="124.5" y="243.5" width="169.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="iT7-vS-2PZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="09L-B6-W5N"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="gA6-Oh-sdb" secondAttribute="trailing" constant="10" id="2FG-k7-ZE1"/>
-                    <constraint firstItem="gA6-Oh-sdb" firstAttribute="centerY" secondItem="8dd-B3-JGk" secondAttribute="centerY" id="4PF-lb-Arq"/>
-                    <constraint firstAttribute="trailing" secondItem="iT7-vS-2PZ" secondAttribute="trailing" id="6kU-07-l2M"/>
-                    <constraint firstItem="8dd-B3-JGk" firstAttribute="centerY" secondItem="cLG-nS-7jz" secondAttribute="centerY" id="7DA-ye-Klb"/>
-                    <constraint firstItem="iT7-vS-2PZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="APJ-Vu-2zL"/>
-                    <constraint firstAttribute="bottom" secondItem="cLG-nS-7jz" secondAttribute="bottom" constant="10" id="RwL-LS-Oh8"/>
-                    <constraint firstItem="gA6-Oh-sdb" firstAttribute="leading" secondItem="8dd-B3-JGk" secondAttribute="trailing" constant="10" id="ZaW-PU-cvN"/>
-                    <constraint firstItem="cLG-nS-7jz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="dw8-XC-4kJ"/>
-                    <constraint firstItem="8dd-B3-JGk" firstAttribute="leading" secondItem="cLG-nS-7jz" secondAttribute="trailing" constant="10" id="l0e-TH-zdB"/>
-                    <constraint firstItem="cLG-nS-7jz" firstAttribute="top" secondItem="iT7-vS-2PZ" secondAttribute="bottom" constant="10" id="yWV-gW-rt6"/>
+                    <constraint firstItem="iT7-vS-2PZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="5Lc-oQ-U8f"/>
+                    <constraint firstItem="iT7-vS-2PZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="9Qk-Bf-TLH"/>
+                    <constraint firstAttribute="trailing" secondItem="iT7-vS-2PZ" secondAttribute="trailing" id="Fgf-8b-CyO"/>
+                    <constraint firstItem="iT7-vS-2PZ" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="3.2:4" id="K8N-pT-fze"/>
+                    <constraint firstItem="gA6-Oh-sdb" firstAttribute="leading" secondItem="8dd-B3-JGk" secondAttribute="trailing" constant="10" id="QQs-YW-fYl"/>
+                    <constraint firstItem="gA6-Oh-sdb" firstAttribute="centerY" secondItem="8dd-B3-JGk" secondAttribute="centerY" id="SdC-22-OIG"/>
+                    <constraint firstItem="8dd-B3-JGk" firstAttribute="leading" secondItem="cLG-nS-7jz" secondAttribute="trailing" constant="10" id="Tau-oN-uVw"/>
+                    <constraint firstAttribute="bottom" secondItem="cLG-nS-7jz" secondAttribute="bottom" constant="10" id="ht4-Bw-QeJ"/>
+                    <constraint firstItem="cLG-nS-7jz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="mZH-Et-D3n"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="gA6-Oh-sdb" secondAttribute="trailing" constant="10" id="zcz-De-aVE"/>
+                    <constraint firstItem="8dd-B3-JGk" firstAttribute="centerY" secondItem="cLG-nS-7jz" secondAttribute="centerY" id="zqt-VZ-Fbo"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>

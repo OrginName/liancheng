@@ -54,7 +54,7 @@
     self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         [self loadDataFriendList:_cityCode flag:@""];
     }];
-//    [self.mj_header beginRefreshing];
+    [self.mj_header beginRefreshing];
 }
 //加载朋友圈列表
 -(void)loadDataFriendList:(NSString *)cityCode flag:(NSString *)flag{
@@ -78,11 +78,11 @@
             [self.data_Arr removeAllObjects];
         }
         _page++;
-        [self.mj_header endRefreshing];
-        [self.mj_footer endRefreshing];
         [self.data_Arr addObjectsFromArray:successArrValue];
         [KUserDefults setObject:[NSKeyedArchiver archivedDataWithRootObject:self.data_Arr] forKey:@"VIDEO"];
         [self reloadData];
+        [self.mj_header endRefreshing];
+        [self.mj_footer endRefreshing];
     }FailErrBlock:^(NSError *failValue) {
         [self.mj_header endRefreshing];
         [self.mj_footer endRefreshing];

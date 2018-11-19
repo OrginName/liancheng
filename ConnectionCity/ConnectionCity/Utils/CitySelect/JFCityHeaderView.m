@@ -94,9 +94,9 @@ NSString * const JFCityTableViewCellDidChangeCityNotification = @"JFCityTableVie
 -(void)NowCityClick{
     CityMo * mo =  [CityMo new];
     mo.name = _currentCityLabel.text;
-    mo.ID = [KUserDefults objectForKey:kUserCityID];
-    mo.lat = [KUserDefults objectForKey:kLat];
-    mo.lng = [KUserDefults objectForKey:KLng];
+    mo.ID = [KUserDefults objectForKey:kUserCityID]?[KUserDefults objectForKey:kUserCityID]:@"";
+    mo.lat = [KUserDefults objectForKey:kLat]?[KUserDefults objectForKey:kLat]:@"";
+    mo.lng = [KUserDefults objectForKey:KLng]?[KUserDefults objectForKey:KLng]:@"";
     NSDictionary *cityNameDic = @{@"cityName":mo.name,@"ID":mo.ID,@"lat":mo.lat,@"lng":mo.lng};
     [[NSNotificationCenter defaultCenter] postNotificationName:JFCityTableViewCellDidChangeCityNotification object:self userInfo:cityNameDic];
 }

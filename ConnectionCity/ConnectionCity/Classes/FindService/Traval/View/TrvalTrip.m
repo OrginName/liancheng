@@ -26,8 +26,7 @@
         self.data_Arr = [NSMutableArray array];
         [self.bollec_bottom registerNib:[UINib nibWithNibName:@"TrvalTripCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"TripCell"];
         [self initData];
-//        [self.bollec_bottom.mj_header beginRefreshing];
-        
+        [self.bollec_bottom.mj_header beginRefreshing];
     }
     return self;
 }

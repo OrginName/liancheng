@@ -31,6 +31,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [IQKeyboardManager sharedManager].enable = NO;
+    self.tab_Bottom.estimatedRowHeight = 0;
+    self.tab_Bottom.estimatedSectionHeaderHeight = 0;
+    self.tab_Bottom.estimatedSectionFooterHeight = 0;
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];

@@ -196,12 +196,11 @@ JFSearchViewDelegate,UITextFieldDelegate>
     }
     return _areaMutableArray;
 }
-
 - (JFCityHeaderView *)headerView {
     if (!_headerView) {
         _headerView = [[JFCityHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
         _headerView.backgroundColor = [UIColor whiteColor];
-        NSString * str = [KUserDefults objectForKey:kUserCity];
+        NSString * str = [KUserDefults objectForKey:kUserCity]?[KUserDefults objectForKey:kUserCity]:@"全国";
         _headerView.cityName = str;
 //        _headerView.buttonTitle = @"选择区县";
 //        _headerView.cityName = [kCurrentCityInfoDefaults objectForKey:@"currentCity"] ? [kCurrentCityInfoDefaults objectForKey:@"currentCity"] : [kCurrentCityInfoDefaults objectForKey:@"locationCity"];

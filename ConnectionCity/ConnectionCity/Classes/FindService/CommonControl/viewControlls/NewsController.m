@@ -17,6 +17,12 @@
 
 @end
 @implementation NewsController
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tab_Bottom.estimatedRowHeight = 0;
+    self.tab_Bottom.estimatedSectionHeaderHeight = 0;
+    self.tab_Bottom.estimatedSectionFooterHeight = 0;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     _page=1;

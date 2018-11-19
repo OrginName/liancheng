@@ -33,14 +33,25 @@
 @property (nonatomic,strong) UIView * btnView;
 @end
 @implementation TravalController
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+//    if (@available(iOS 11.0, *)) {
+//        self.tab_Bottom.contentInsetAdjustmentBehavior =UIScrollViewContentInsetAdjustmentNever;
+//        self.tab_Bottom.contentInset =UIEdgeInsetsMake(0,0,0,0);//64和49自己看效果，是否应该改成0
+//        self.tab_Bottom.scrollIndicatorInsets = self.tab_Bottom.contentInset;
+//    }
+    self.tab_Bottom.estimatedRowHeight = 0;
+    self.tab_Bottom.estimatedSectionHeaderHeight = 0;
+    self.tab_Bottom.estimatedSectionFooterHeight = 0;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
      self.page=1;
     _cityID = [KUserDefults objectForKey:kUserCityID];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self setUI];
     [self initData];
-//    [self.tab_Bottom.mj_header beginRefreshing];
+    [self setUI];
+    [self.tab_Bottom.mj_header beginRefreshing];
 //    if ([[[YSAccountTool userInfo] modelId] isEqualToString:APPID]) {
 //        self.btn_PYYY.hidden = YES;
 //        self.btnView1.hidden = YES;
@@ -77,10 +88,10 @@
             [self.data_Arr removeAllObjects];
         }
         weakSelf.page++;
-        [self.tab_Bottom.mj_header endRefreshing];
-        [self.tab_Bottom.mj_footer endRefreshing];
         [self.data_Arr addObjectsFromArray:successArrValue];
         [self.tab_Bottom reloadData];
+        [self.tab_Bottom.mj_header endRefreshing];
+        [self.tab_Bottom.mj_footer endRefreshing];
     }];
 }
 #pragma mark ---按钮点击事件-----
