@@ -35,11 +35,12 @@
 @implementation TravalController
 - (void)viewDidLoad {
     [super viewDidLoad];
-     _page=1;
+     self.page=1;
     _cityID = [KUserDefults objectForKey:kUserCityID];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setUI];
     [self initData];
+//    [self.tab_Bottom.mj_header beginRefreshing];
 //    if ([[[YSAccountTool userInfo] modelId] isEqualToString:APPID]) {
 //        self.btn_PYYY.hidden = YES;
 //        self.btnView1.hidden = YES;
@@ -47,14 +48,14 @@
 }
 -(void)initData{
     self.data_Arr = [NSMutableArray array];
+    WeakSelf
     self.tab_Bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        _page=1;
+        weakSelf.page=1;
         [self requstLoad:@{@"cityID":_cityID?_cityID:@""}];
     }];
     self.tab_Bottom.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         [self requstLoad:@{@"cityID":_cityID?_cityID:@""}];
     }];
-    [self.tab_Bottom.mj_header beginRefreshing];
 }
 -(void)requstLoad:(NSDictionary *) dic{
     NSString * code = [KUserDefults objectForKey:YCode]?[KUserDefults objectForKey:YCode]:@"";
@@ -65,16 +66,17 @@
                            @"gender": dic[@"gender"]?dic[@"gender"]:@"",
 //                           @"lat": @([dic[@"lat"]?dic[@"lat"]:[KUserDefults objectForKey:kLat] floatValue]),
 //                           @"lng": @([dic[@"lng"]?dic[@"lng"]:[KUserDefults objectForKey:KLng] floatValue]),
-                           @"pageNumber": @(_page),
+                           @"pageNumber": @(self.page),
                            @"pageSize": @15,
                            @"userStatus": dic[@"userStatus"]?dic[@"userStatus"]:@"",
                            @"validType": dic[@"validType"]?dic[@"validType"]:@""
                            };
+    WeakSelf
     [ServiceHomeNet requstTrvalDic:dic1 withSuc:^(NSMutableArray *successArrValue){
-        if (_page==1) {
+        if (weakSelf.page==1) {
             [self.data_Arr removeAllObjects];
         }
-        _page++;
+        weakSelf.page++;
         [self.tab_Bottom.mj_header endRefreshing];
         [self.tab_Bottom.mj_footer endRefreshing];
         [self.data_Arr addObjectsFromArray:successArrValue];

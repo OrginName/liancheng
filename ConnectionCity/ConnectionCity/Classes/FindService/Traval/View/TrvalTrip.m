@@ -21,12 +21,12 @@
         self.control = control;
         [self addSubview:self.bollec_bottom];
         [self addSubview:self.noticeView];
-        _page=1;
+        self.page=1;
         self.cityID = [KUserDefults objectForKey:kUserCityID];
         self.data_Arr = [NSMutableArray array];
         [self.bollec_bottom registerNib:[UINib nibWithNibName:@"TrvalTripCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"TripCell"];
         [self initData];
-        [self.bollec_bottom.mj_header beginRefreshing];
+//        [self.bollec_bottom.mj_header beginRefreshing];
         
     }
     return self;
@@ -66,11 +66,12 @@
                             @"userStatus": dic[@"userStatus"]?dic[@"userStatus"]:@"",
                             @"validType": dic[@"validType"]?dic[@"validType"]:@""
                             };
+    WeakSelf
     [ServiceHomeNet requstTrvalInvitDic:dic1 withSuc:^(NSMutableArray *successArrValue) {
-        if (_page==1) {
+        if (weakSelf.page==1) {
             [self.data_Arr removeAllObjects];
         }
-        _page++;
+        weakSelf.page++;
         [self.data_Arr addObjectsFromArray:successArrValue];
         [self.bollec_bottom reloadData];
         [self.bollec_bottom.mj_header endRefreshing];

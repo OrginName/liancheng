@@ -48,7 +48,7 @@
         _page=1;
         _CurrentTag= 0;
         [self setComment];
-        [self.mj_header beginRefreshing];
+//        [self.mj_header beginRefreshing];
     }
     return self;
 }
