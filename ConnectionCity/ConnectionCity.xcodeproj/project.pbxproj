@@ -358,6 +358,7 @@
 		8DB277B120EF53B900B3D747 /* RCDSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB277AF20EF53B800B3D747 /* RCDSearchViewController.m */; };
 		8DB277B420EF53E100B3D747 /* RCDSearchMoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB277B320EF53E100B3D747 /* RCDSearchMoreController.m */; };
 		8DB277B720EF53F500B3D747 /* RCDSearchMoreViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB277B620EF53F500B3D747 /* RCDSearchMoreViewCell.m */; };
+		8DB35C0421A54B76002DDB0B /* RecommendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB35C0321A54B76002DDB0B /* RecommendController.m */; };
 		8DB42FD420A57D6E00C4EBF8 /* FilterOneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB42FD220A57D6D00C4EBF8 /* FilterOneController.m */; };
 		8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DB42FD320A57D6E00C4EBF8 /* FilterOneController.xib */; };
 		8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB42FD720A57D9900C4EBF8 /* FilterLayout.m */; };
@@ -1385,6 +1386,8 @@
 		8DB277B320EF53E100B3D747 /* RCDSearchMoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDSearchMoreController.m; sourceTree = "<group>"; };
 		8DB277B520EF53F500B3D747 /* RCDSearchMoreViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDSearchMoreViewCell.h; sourceTree = "<group>"; };
 		8DB277B620EF53F500B3D747 /* RCDSearchMoreViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDSearchMoreViewCell.m; sourceTree = "<group>"; };
+		8DB35C0221A54B76002DDB0B /* RecommendController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendController.h; sourceTree = "<group>"; };
+		8DB35C0321A54B76002DDB0B /* RecommendController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendController.m; sourceTree = "<group>"; };
 		8DB42FD120A57D6D00C4EBF8 /* FilterOneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterOneController.h; sourceTree = "<group>"; };
 		8DB42FD220A57D6D00C4EBF8 /* FilterOneController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterOneController.m; sourceTree = "<group>"; };
 		8DB42FD320A57D6E00C4EBF8 /* FilterOneController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterOneController.xib; sourceTree = "<group>"; };
@@ -4079,6 +4082,8 @@
 				72DC0A7D219F1882001DECD2 /* VideoController.h */,
 				72DC0A7E219F1882001DECD2 /* VideoController.m */,
 				72DC0A7F219F1882001DECD2 /* VideoController.xib */,
+				8DB35C0221A54B76002DDB0B /* RecommendController.h */,
+				8DB35C0321A54B76002DDB0B /* RecommendController.m */,
 			);
 			path = viewControlls;
 			sourceTree = "<group>";
@@ -6219,6 +6224,7 @@
 				7210410A210243D300B575BB /* XMPlayerManager.m in Sources */,
 				8DE465CE20EDEED9009730F7 /* RCDUIBarButtonItem.m in Sources */,
 				8DFA324820EDAF330086423A /* RCDUtilities.m in Sources */,
+				8DB35C0421A54B76002DDB0B /* RecommendController.m in Sources */,
 				8DC17A8520C0E598005D9EE0 /* FriendCircleController.m in Sources */,
 				721DAE0520F2421A006F141F /* SortCollProController.m in Sources */,
 				72D8B16521296052007EE681 /* BaoBiaoItem.m in Sources */,

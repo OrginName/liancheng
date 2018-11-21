@@ -28,7 +28,7 @@
 #import "SendServiceController.h"
 #import "ServiceHomeNet.h"
 #import "ClassifyMo.h"
-
+#import "RecommendController.h"
 @interface HomeController ()<JFCityViewControllerDelegate>
 {
     BOOL flag1;
@@ -304,6 +304,9 @@
     TravalController * trval5;
     AbilityHomeController * ability;
     NSMutableArray * arr = [NSMutableArray array];
+    RecommendController * recommed = [RecommendController new];
+    recommed.title = @"推荐";
+    [arr addObject:recommed];
     for (MenuMo * mo in self.myMenuArr) {
         if ([mo.ID isEqualToString:@"1"]) {//旅行
             trval = [TravalController new];
