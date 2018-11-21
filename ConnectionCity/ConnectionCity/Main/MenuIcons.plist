@@ -58,5 +58,13 @@
 		<key>class</key>
 		<string>SetController</string>
 	</dict>
+	<dict>
+		<key>icon</key>
+		<string>our-shetup</string>
+		<key>title</key>
+		<string>隐私政策</string>
+		<key>class</key>
+		<string>SetController</string>
+	</dict>
 </array>
 </plist>
