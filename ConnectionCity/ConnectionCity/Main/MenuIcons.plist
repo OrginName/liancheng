@@ -64,7 +64,7 @@
 		<key>title</key>
 		<string>隐私政策</string>
 		<key>class</key>
-		<string>SetController</string>
+		<string>AgreementController</string>
 	</dict>
 </array>
 </plist>

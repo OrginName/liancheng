@@ -22,6 +22,7 @@
 #import "QiniuUploader.h"
 #import "UITabBar+badge.h"
 #import "MemberCenterController.h"
+#import "AgreementController.h"
 @interface ProfileController ()<ProfileHeadViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, copy) NSArray <YTSideMenuModel *> *menuModels;
@@ -166,6 +167,13 @@
     if ([vc isKindOfClass:[MemberCenterController class]]) {
         MemberCenterController * menmber = (MemberCenterController*)vc;
         menmber.dic_Receive = self.dic;//推送的字典 
+    }
+    if ([vc isKindOfClass:[AgreementController class]]) {
+        AgreementController *agreementVC = [AgreementController new];
+        agreementVC.url = @"http://www.lian-cheng.com/yingshi.asp";
+        agreementVC.title = @"隐私政策";
+        [self.navigationController pushViewController:agreementVC animated:YES];
+        return;
     }
     if (vc == nil)return;
     [self.navigationController pushViewController:vc animated:YES];
