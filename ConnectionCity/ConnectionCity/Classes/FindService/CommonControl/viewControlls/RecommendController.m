@@ -48,7 +48,7 @@
 #pragma mark ---initUI--------
 -(void)initScroll{
     WeakSelf
-    SDCycleScrollView * cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(20, 5, kScreenWidth-40, 200) imageURLStringsGroup:nil]; // 模拟网络延时情景
+    SDCycleScrollView * cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(20, 5, self.tab_Bottom.width-40, 200) imageURLStringsGroup:nil]; // 模拟网络延时情景
     cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     cycleScrollView.delegate = self;
     cycleScrollView.autoScroll = YES;
