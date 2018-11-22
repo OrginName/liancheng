@@ -47,18 +47,34 @@
 }
 #pragma mark ---initUI--------
 -(void)initScroll{
+    UIView * view_Bottom = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tab_Bottom.width, 250)];
+    self.tab_Bottom.tableHeaderView = view_Bottom;
+    
     WeakSelf
-    SDCycleScrollView * cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(20, 5, self.tab_Bottom.width-40, 200) imageURLStringsGroup:nil]; // 模拟网络延时情景
+    SDCycleScrollView * cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(10, 10, view_Bottom.width-20, 150) imageURLStringsGroup:nil]; // 模拟网络延时情景
+    cycleScrollView.layer.cornerRadius = 10;
+    cycleScrollView.layer.masksToBounds = YES;
     cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     cycleScrollView.delegate = self;
     cycleScrollView.autoScroll = YES;
     cycleScrollView.dotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
     cycleScrollView.placeholderImage = [UIImage imageNamed:@"no-pic"];
-    self.tab_Bottom.tableHeaderView = cycleScrollView;
+    [view_Bottom addSubview:cycleScrollView];
     //--- 模拟加载延迟
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         cycleScrollView.imageURLStringsGroup = weakSelf.lunArr;
     });
+    
+    UIView * view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 180, self.tab_Bottom.width, 10)];
+    view1.backgroundColor = YSColor(242, 243, 244);
+    [view_Bottom addSubview:view1];
+    
+    
+    
+    UIView * view2 = [[UIView alloc] initWithFrame:CGRectMake(0, 240, self.tab_Bottom.width, 10)];
+    view2.backgroundColor = YSColor(242, 243, 244);
+    [view_Bottom addSubview:view2];
+    
 }
 #pragma mark ----懒加载UI------
 -(MyTab *)tab_Bottom{
