@@ -76,63 +76,8 @@
             </connections>
             <point key="canvasLocation" x="-17" y="225"/>
         </collectionViewCell>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="POz-gz-0hR" customClass="TopCell">
-            <rect key="frame" x="0.0" y="0.0" width="108" height="170"/>
-            <autoresizingMask key="autoresizingMask"/>
-            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="108" height="170"/>
-                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="fTY-s3-YY8">
-                        <rect key="frame" x="0.0" y="0.0" width="108" height="119"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="李白" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LK-bo-0F3">
-                        <rect key="frame" x="32.5" y="129" width="33" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="men" translatesAutoresizingMaskIntoConstraints="NO" id="pmm-ku-t7Z">
-                        <rect key="frame" x="70.5" y="131.5" width="15" height="15"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="15" id="UNI-FW-DTh"/>
-                            <constraint firstAttribute="width" constant="15" id="ZJk-Iq-xdI"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="李白" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eX1-HE-4Rm">
-                        <rect key="frame" x="38" y="150" width="33" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                </subviews>
-            </view>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="6LK-bo-0F3" firstAttribute="top" secondItem="fTY-s3-YY8" secondAttribute="bottom" constant="10" id="1fU-EF-fQI"/>
-                <constraint firstItem="eX1-HE-4Rm" firstAttribute="centerX" secondItem="6LK-bo-0F3" secondAttribute="centerX" id="3Xo-GC-LrV"/>
-                <constraint firstItem="pmm-ku-t7Z" firstAttribute="centerY" secondItem="6LK-bo-0F3" secondAttribute="centerY" id="4aR-Ff-RMm"/>
-                <constraint firstItem="fTY-s3-YY8" firstAttribute="leading" secondItem="POz-gz-0hR" secondAttribute="leading" id="5tb-bS-Feq"/>
-                <constraint firstItem="fTY-s3-YY8" firstAttribute="height" secondItem="POz-gz-0hR" secondAttribute="height" multiplier="2.8:4" id="7e8-Cd-Hn1"/>
-                <constraint firstItem="pmm-ku-t7Z" firstAttribute="leading" secondItem="6LK-bo-0F3" secondAttribute="trailing" constant="5" id="QdK-e9-t5a"/>
-                <constraint firstAttribute="trailing" secondItem="fTY-s3-YY8" secondAttribute="trailing" id="b8y-EJ-uop"/>
-                <constraint firstItem="fTY-s3-YY8" firstAttribute="top" secondItem="POz-gz-0hR" secondAttribute="top" id="bHg-c4-ZO3"/>
-                <constraint firstItem="6LK-bo-0F3" firstAttribute="centerX" secondItem="POz-gz-0hR" secondAttribute="centerX" constant="-5" id="sJb-xd-Be9"/>
-            </constraints>
-            <viewLayoutGuide key="safeArea" id="Aa0-eH-3Vs"/>
-            <size key="customSize" width="108" height="170"/>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
-                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-            </userDefinedRuntimeAttributes>
-            <connections>
-                <outlet property="image_head" destination="fTY-s3-YY8" id="Hf4-46-zjp"/>
-            </connections>
-            <point key="canvasLocation" x="-17" y="433"/>
-        </collectionViewCell>
     </objects>
     <resources>
         <image name="2" width="600" height="366"/>
-        <image name="men" width="13" height="13"/>
     </resources>
 </document>

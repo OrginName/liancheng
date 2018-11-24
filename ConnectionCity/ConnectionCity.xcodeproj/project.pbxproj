@@ -206,6 +206,10 @@
 		72DC0A8821A853BF001DECD2 /* RecommendTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0A8721A853BF001DECD2 /* RecommendTopCell.m */; };
 		72DC0A8D21A85749001DECD2 /* TopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0A8B21A85749001DECD2 /* TopCell.m */; };
 		72DC0A8E21A85749001DECD2 /* TopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0A8C21A85749001DECD2 /* TopCell.xib */; };
+		72DC0A9221A97F9B001DECD2 /* MiddleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0A9021A97F9A001DECD2 /* MiddleCell.m */; };
+		72DC0A9321A97F9B001DECD2 /* MiddleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0A9121A97F9A001DECD2 /* MiddleCell.xib */; };
+		72DC0A9721A98A1F001DECD2 /* FJCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0A9521A98A1F001DECD2 /* FJCell.m */; };
+		72DC0A9821A98A1F001DECD2 /* FJCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0A9621A98A1F001DECD2 /* FJCell.xib */; };
 		72EBB8B620C6DB5900F670E9 /* CardAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */; };
 		72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */; };
 		72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8BA20C800C200F670E9 /* PresentCell.m */; };
@@ -1150,6 +1154,12 @@
 		72DC0A8A21A85749001DECD2 /* TopCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopCell.h; sourceTree = "<group>"; };
 		72DC0A8B21A85749001DECD2 /* TopCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopCell.m; sourceTree = "<group>"; };
 		72DC0A8C21A85749001DECD2 /* TopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopCell.xib; sourceTree = "<group>"; };
+		72DC0A8F21A97F9A001DECD2 /* MiddleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiddleCell.h; sourceTree = "<group>"; };
+		72DC0A9021A97F9A001DECD2 /* MiddleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiddleCell.m; sourceTree = "<group>"; };
+		72DC0A9121A97F9A001DECD2 /* MiddleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiddleCell.xib; sourceTree = "<group>"; };
+		72DC0A9421A98A1F001DECD2 /* FJCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJCell.h; sourceTree = "<group>"; };
+		72DC0A9521A98A1F001DECD2 /* FJCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJCell.m; sourceTree = "<group>"; };
+		72DC0A9621A98A1F001DECD2 /* FJCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FJCell.xib; sourceTree = "<group>"; };
 		72EBB8B320C6DB5900F670E9 /* CardAuthorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardAuthorController.h; sourceTree = "<group>"; };
 		72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardAuthorController.m; sourceTree = "<group>"; };
 		72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardAuthorController.xib; sourceTree = "<group>"; };
@@ -2930,6 +2940,12 @@
 				72DC0A8A21A85749001DECD2 /* TopCell.h */,
 				72DC0A8B21A85749001DECD2 /* TopCell.m */,
 				72DC0A8C21A85749001DECD2 /* TopCell.xib */,
+				72DC0A8F21A97F9A001DECD2 /* MiddleCell.h */,
+				72DC0A9021A97F9A001DECD2 /* MiddleCell.m */,
+				72DC0A9121A97F9A001DECD2 /* MiddleCell.xib */,
+				72DC0A9421A98A1F001DECD2 /* FJCell.h */,
+				72DC0A9521A98A1F001DECD2 /* FJCell.m */,
+				72DC0A9621A98A1F001DECD2 /* FJCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -5503,6 +5519,7 @@
 				72EC1B7320BA984400ACC20B /* PlayDouctCell.xib in Resources */,
 				72D8B16F212965FD007EE681 /* KissUpdateController.xib in Resources */,
 				CEE4B2A720C6CC3F008B8731 /* PersonalCenterController.xib in Resources */,
+				72DC0A9821A98A1F001DECD2 /* FJCell.xib in Resources */,
 				8D8E4ECF20C9109E00C3D537 /* EditProfileController.xib in Resources */,
 				8D67602820A408470027CDEE /* ClassificationsController.xib in Resources */,
 				CEBEDD8020B17ED1000F9EE4 /* WinningBidderCell.xib in Resources */,
@@ -5619,6 +5636,7 @@
 				7274190220B3F60D001D6BE1 /* SendSwapController.xib in Resources */,
 				8D50C55220C632090095A824 /* OurSendController.xib in Resources */,
 				8DD9373C219C406900F8E8F3 /* PersonDTController.xib in Resources */,
+				72DC0A9321A97F9B001DECD2 /* MiddleCell.xib in Resources */,
 				721DAE0220F20EBC006F141F /* FriendListController.xib in Resources */,
 				723F4FB420BEEA8D00AF8268 /* TrvalTripCell.xib in Resources */,
 				CE0BA638209D68A3004C3C33 /* YSRegisterController.xib in Resources */,
@@ -6067,6 +6085,7 @@
 				727418C020B17536001D6BE1 /* CustomTabr.m in Sources */,
 				8DD48CD120A811EA00D6D1E6 /* SDCycleScrollView.m in Sources */,
 				7294185620AD11F70054B71D /* SearchCollectionCell.m in Sources */,
+				72DC0A9221A97F9B001DECD2 /* MiddleCell.m in Sources */,
 				CE0BA5EB209D5E9B004C3C33 /* SRDownloadManager.m in Sources */,
 				8DF7E3D220CFAA78009A92D7 /* ClassifyMo.m in Sources */,
 				8D14FDED20EB0C000013A9DF /* UITabBar+badge.m in Sources */,
@@ -6259,6 +6278,7 @@
 				CEE5250F20F771D400DD6179 /* MYScanView.m in Sources */,
 				72EC1BAB20BC34AA00ACC20B /* TravalController.m in Sources */,
 				8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */,
+				72DC0A9721A98A1F001DECD2 /* FJCell.m in Sources */,
 				7210410A210243D300B575BB /* XMPlayerManager.m in Sources */,
 				8DE465CE20EDEED9009730F7 /* RCDUIBarButtonItem.m in Sources */,
 				8DFA324820EDAF330086423A /* RCDUtilities.m in Sources */,

@@ -11,6 +11,7 @@
 #import "TXScrollLabelView.h"
 #import "HeadView.h"
 #import "RecommendTopCell.h"
+#import "MiddleCell.h"
 @interface RecommendController()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 @property (nonatomic,strong) MyTab * tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * lunArr;
@@ -47,6 +48,12 @@
             cell = [[RecommendTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RecommendTopCell"];
         }
         return cell;
+    }else if (indexPath.section==1){
+        MiddleCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MiddleCell"];
+        if (!cell) {
+            cell = [[NSBundle mainBundle] loadNibNamed:@"MiddleCell" owner:nil options:nil][0];
+        }
+        return cell;
     }
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
@@ -58,6 +65,8 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
         return 195;
+    }else if (indexPath.section==1){
+        return ((self.tab_Bottom.width-30)/2*2);
     }
     return 40;
 }
