@@ -202,6 +202,10 @@
 		72DC0A7C219F17CE001DECD2 /* VideoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0A7B219F17CE001DECD2 /* VideoLayout.m */; };
 		72DC0A80219F1882001DECD2 /* VideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0A7E219F1882001DECD2 /* VideoController.m */; };
 		72DC0A81219F1882001DECD2 /* VideoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0A7F219F1882001DECD2 /* VideoController.xib */; };
+		72DC0A8421A83D15001DECD2 /* HeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0A8321A83D14001DECD2 /* HeadView.m */; };
+		72DC0A8821A853BF001DECD2 /* RecommendTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0A8721A853BF001DECD2 /* RecommendTopCell.m */; };
+		72DC0A8D21A85749001DECD2 /* TopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0A8B21A85749001DECD2 /* TopCell.m */; };
+		72DC0A8E21A85749001DECD2 /* TopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0A8C21A85749001DECD2 /* TopCell.xib */; };
 		72EBB8B620C6DB5900F670E9 /* CardAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */; };
 		72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */; };
 		72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8BA20C800C200F670E9 /* PresentCell.m */; };
@@ -1139,6 +1143,13 @@
 		72DC0A7D219F1882001DECD2 /* VideoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoController.h; sourceTree = "<group>"; };
 		72DC0A7E219F1882001DECD2 /* VideoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoController.m; sourceTree = "<group>"; };
 		72DC0A7F219F1882001DECD2 /* VideoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoController.xib; sourceTree = "<group>"; };
+		72DC0A8221A83D14001DECD2 /* HeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadView.h; sourceTree = "<group>"; };
+		72DC0A8321A83D14001DECD2 /* HeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeadView.m; sourceTree = "<group>"; };
+		72DC0A8621A853BF001DECD2 /* RecommendTopCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendTopCell.h; sourceTree = "<group>"; };
+		72DC0A8721A853BF001DECD2 /* RecommendTopCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendTopCell.m; sourceTree = "<group>"; };
+		72DC0A8A21A85749001DECD2 /* TopCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopCell.h; sourceTree = "<group>"; };
+		72DC0A8B21A85749001DECD2 /* TopCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopCell.m; sourceTree = "<group>"; };
+		72DC0A8C21A85749001DECD2 /* TopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopCell.xib; sourceTree = "<group>"; };
 		72EBB8B320C6DB5900F670E9 /* CardAuthorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardAuthorController.h; sourceTree = "<group>"; };
 		72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardAuthorController.m; sourceTree = "<group>"; };
 		72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardAuthorController.xib; sourceTree = "<group>"; };
@@ -2902,6 +2913,27 @@
 			path = BB;
 			sourceTree = "<group>";
 		};
+		72DC0A8521A83D2D001DECD2 /* footView */ = {
+			isa = PBXGroup;
+			children = (
+				72DC0A8221A83D14001DECD2 /* HeadView.h */,
+				72DC0A8321A83D14001DECD2 /* HeadView.m */,
+				72DC0A8621A853BF001DECD2 /* RecommendTopCell.h */,
+				72DC0A8721A853BF001DECD2 /* RecommendTopCell.m */,
+			);
+			path = footView;
+			sourceTree = "<group>";
+		};
+		72DC0A8921A85732001DECD2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				72DC0A8A21A85749001DECD2 /* TopCell.h */,
+				72DC0A8B21A85749001DECD2 /* TopCell.m */,
+				72DC0A8C21A85749001DECD2 /* TopCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		72EBB8B220C6DB3600F670E9 /* AuthenticationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -4068,6 +4100,8 @@
 		8DEDA655219E8FE500564E10 /* viewControlls */ = {
 			isa = PBXGroup;
 			children = (
+				72DC0A8921A85732001DECD2 /* Cell */,
+				72DC0A8521A83D2D001DECD2 /* footView */,
 				8DEDA66A219EBCC600564E10 /* Layout */,
 				8DEDA664219EA1E500564E10 /* Net */,
 				8DEDA65E219E92EE00564E10 /* Views */,
@@ -5613,6 +5647,7 @@
 				CEE4B2B020C6D948008B8731 /* MemberRenewalController.xib in Resources */,
 				727418DF20B290BF001D6BE1 /* EnthusiastsControll.xib in Resources */,
 				72EC1BAC20BC34AA00ACC20B /* TravalController.xib in Resources */,
+				72DC0A8E21A85749001DECD2 /* TopCell.xib in Resources */,
 				724B5F3D213C4A2000F51134 /* MyLocationPickerController.xib in Resources */,
 				72799B81218FDF7B00C63005 /* NewsListCell.xib in Resources */,
 				CE14BD6720F3780E00F85C49 /* AlipaySDK.bundle in Resources */,
@@ -5787,6 +5822,7 @@
 				8DE465C820EDED71009730F7 /* RCDContactTableViewCell.m in Sources */,
 				CE03EDED20B43DC400F07D78 /* FootprintTabbleHeadV.m in Sources */,
 				721B565A215BA9670024953B /* YBIBUtilities.m in Sources */,
+				72DC0A8D21A85749001DECD2 /* TopCell.m in Sources */,
 				72DC0A7C219F17CE001DECD2 /* VideoLayout.m in Sources */,
 				CEC4A55A20C407500026EE19 /* MemberCenterController.m in Sources */,
 				CE0BA614209D6160004C3C33 /* LifeHallController.m in Sources */,
@@ -5806,6 +5842,7 @@
 				8DEDA679219ECB3500564E10 /* CircleTController.m in Sources */,
 				8DC17A7620C0E430005D9EE0 /* FriendCirleTab.m in Sources */,
 				CEBEDD9120B17ED1000F9EE4 /* FootprintController.m in Sources */,
+				72DC0A8421A83D15001DECD2 /* HeadView.m in Sources */,
 				7210410D210243D300B575BB /* XMWaves.m in Sources */,
 				CEBEDD8120B17ED1000F9EE4 /* MarginController.m in Sources */,
 				726B5F2F218DD734000B16EE /* UIView+ZJFrame.m in Sources */,
@@ -6143,6 +6180,7 @@
 				8DE4665020EDFB6B009730F7 /* RCDFrienfRemarksViewController.m in Sources */,
 				721B5653215BA9660024953B /* YBImageBrowserViewLayout.m in Sources */,
 				CE2C401620EF87E700D33B17 /* RCDAddressBookTableViewCell.m in Sources */,
+				72DC0A8821A853BF001DECD2 /* RecommendTopCell.m in Sources */,
 				722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */,
 				8DB277B720EF53F500B3D747 /* RCDSearchMoreViewCell.m in Sources */,
 				727418D920B290AE001D6BE1 /* PlayPoductController.m in Sources */,

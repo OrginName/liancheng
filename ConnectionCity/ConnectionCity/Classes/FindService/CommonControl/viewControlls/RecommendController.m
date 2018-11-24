@@ -8,6 +8,9 @@
 
 #import "RecommendController.h"
 #import "SDCycleScrollView.h"
+#import "TXScrollLabelView.h"
+#import "HeadView.h"
+#import "RecommendTopCell.h"
 @interface RecommendController()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 @property (nonatomic,strong) MyTab * tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * lunArr;
@@ -15,6 +18,7 @@
 @implementation RecommendController
 -(void)viewDidLoad{
     [super viewDidLoad];
+    [self.tab_Bottom registerClass:[HeadView class] forHeaderFooterViewReuseIdentifier:@"HeadView"];
     [self initData];
     [self setUI];
 }
@@ -28,18 +32,47 @@
 }
 #pragma mark ---------UITableviewDelegate----------
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 4;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (section==0||section==1||section==2) {
+        return 1;
+    }
     return 10;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section==0) {
+        RecommendTopCell * cell = [tableView dequeueReusableCellWithIdentifier:@"RecommendTopCell"];
+        if (!cell) {
+            cell = [[RecommendTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RecommendTopCell"];
+        }
+        return cell;
+    }
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%ld%ld",indexPath.section,indexPath.row];
     return cell;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section==0) {
+        return 195;
+    }
+    return 40;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    HeadView * head = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"HeadView"];
+     return head;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section<3) {
+        return 40;
+    }
+    return 0;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.0001f;
 }
 #pragma mark --------SDCycleScrollViewDelegate--------
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
@@ -69,8 +102,25 @@
     view1.backgroundColor = YSColor(242, 243, 244);
     [view_Bottom addSubview:view1];
     
+    UIImageView * lc = [[UIImageView alloc] initWithFrame:CGRectMake(10, 195, 100, 40)];
+    lc.image = [UIImage imageNamed:@"lctt"];
+    [view_Bottom addSubview:lc];
     
+    UIImageView * rightImage = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.width-20, 205, 10, 15)];
+    rightImage.image = [UIImage imageNamed:@"arraw-right"];
+    [view_Bottom addSubview:rightImage];
     
+    NSString *scrollTitle = @"测试测试测试测试";
+    TXScrollLabelView *scrollLabelView = [TXScrollLabelView scrollWithTitle:scrollTitle type:TXScrollLabelViewTypeFlipRepeat velocity:2 options:UIViewAnimationOptionTransitionNone];
+    //    scrollLabelView.scrollLabelViewDelegate = self;
+    scrollLabelView.scrollInset = UIEdgeInsetsMake(0, -100, 0, 0);
+    scrollLabelView.scrollTitleColor = YSColor(40, 40, 40);
+    scrollLabelView.font = [UIFont systemFontOfSize:15];
+    scrollLabelView.backgroundColor = [UIColor whiteColor];
+    scrollLabelView.frame = CGRectMake(120, 190, kScreenWidth-150, 50);
+    [view_Bottom addSubview:scrollLabelView];
+    [scrollLabelView beginScrolling];
+ 
     UIView * view2 = [[UIView alloc] initWithFrame:CGRectMake(0, 240, self.tab_Bottom.width, 10)];
     view2.backgroundColor = YSColor(242, 243, 244);
     [view_Bottom addSubview:view2];
