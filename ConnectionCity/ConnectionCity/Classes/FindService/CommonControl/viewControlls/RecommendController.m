@@ -12,6 +12,7 @@
 #import "HeadView.h"
 #import "RecommendTopCell.h"
 #import "MiddleCell.h"
+#import "ListCell.h"
 @interface RecommendController()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 @property (nonatomic,strong) MyTab * tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * lunArr;
@@ -42,10 +43,11 @@
     return 10;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section==0) {
+    if (indexPath.section==0||indexPath.section==2) {
         RecommendTopCell * cell = [tableView dequeueReusableCellWithIdentifier:@"RecommendTopCell"];
+        NSString * str = indexPath.section==0?@"First":@"Third";
         if (!cell) {
-            cell = [[RecommendTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RecommendTopCell"];
+            cell = [[RecommendTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RecommendTopCell" withFlag:str];
         }
         return cell;
     }else if (indexPath.section==1){
@@ -55,23 +57,26 @@
         }
         return cell;
     }
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    ListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ListCell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil][0];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld%ld",indexPath.section,indexPath.row];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
         return 195;
     }else if (indexPath.section==1){
-        return ((self.tab_Bottom.width-30)/2*2);
-    }
-    return 40;
+        return ((self.tab_Bottom.width-30)/2*2)+10;
+    }else if (indexPath.section==2){
+        return 244;
+    } 
+    return 327;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     HeadView * head = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"HeadView"];
+    NSArray * arr = @[@"同城热约",@"限时活动",@"附近动态"];
+    head.lab_title.text = arr[section];
      return head;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

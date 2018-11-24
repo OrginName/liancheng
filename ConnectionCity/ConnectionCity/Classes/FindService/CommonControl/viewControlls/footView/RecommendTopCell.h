@@ -10,7 +10,13 @@
 
 @interface RecommendTopCell : UITableViewCell<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic,strong)UICollectionView * coll_Bottom;
+@property (nonatomic,strong)UIView * view_Bottom;
+@property (nonatomic,strong)NSString * flagStr;//标识加载的cell类型
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withFlag:(NSString *)flag;
 @end
 @interface ReLayout : UICollectionViewFlowLayout
+
+@end
+@interface FJLayout : UICollectionViewFlowLayout
 
 @end

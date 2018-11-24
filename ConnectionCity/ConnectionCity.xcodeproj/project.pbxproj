@@ -210,6 +210,8 @@
 		72DC0A9321A97F9B001DECD2 /* MiddleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0A9121A97F9A001DECD2 /* MiddleCell.xib */; };
 		72DC0A9721A98A1F001DECD2 /* FJCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0A9521A98A1F001DECD2 /* FJCell.m */; };
 		72DC0A9821A98A1F001DECD2 /* FJCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0A9621A98A1F001DECD2 /* FJCell.xib */; };
+		72DC0A9C21A99CC2001DECD2 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0A9A21A99CC1001DECD2 /* ListCell.m */; };
+		72DC0A9D21A99CC2001DECD2 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0A9B21A99CC2001DECD2 /* ListCell.xib */; };
 		72EBB8B620C6DB5900F670E9 /* CardAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */; };
 		72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */; };
 		72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8BA20C800C200F670E9 /* PresentCell.m */; };
@@ -1160,6 +1162,9 @@
 		72DC0A9421A98A1F001DECD2 /* FJCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJCell.h; sourceTree = "<group>"; };
 		72DC0A9521A98A1F001DECD2 /* FJCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJCell.m; sourceTree = "<group>"; };
 		72DC0A9621A98A1F001DECD2 /* FJCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FJCell.xib; sourceTree = "<group>"; };
+		72DC0A9921A99CC1001DECD2 /* ListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
+		72DC0A9A21A99CC1001DECD2 /* ListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
+		72DC0A9B21A99CC2001DECD2 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
 		72EBB8B320C6DB5900F670E9 /* CardAuthorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardAuthorController.h; sourceTree = "<group>"; };
 		72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardAuthorController.m; sourceTree = "<group>"; };
 		72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardAuthorController.xib; sourceTree = "<group>"; };
@@ -2946,6 +2951,9 @@
 				72DC0A9421A98A1F001DECD2 /* FJCell.h */,
 				72DC0A9521A98A1F001DECD2 /* FJCell.m */,
 				72DC0A9621A98A1F001DECD2 /* FJCell.xib */,
+				72DC0A9921A99CC1001DECD2 /* ListCell.h */,
+				72DC0A9A21A99CC1001DECD2 /* ListCell.m */,
+				72DC0A9B21A99CC2001DECD2 /* ListCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -5526,6 +5534,7 @@
 				72EC1B7E20BAACBA00ACC20B /* DouctChangeController.xib in Resources */,
 				CE6BEC2E20C970D1003B36D7 /* EditProfileHeadView.xib in Resources */,
 				8D8E4ED420C9320200C3D537 /* PrivateController.xib in Resources */,
+				72DC0A9D21A99CC2001DECD2 /* ListCell.xib in Resources */,
 				723F4FA220BED37800AF8268 /* TrvalCell.xib in Resources */,
 				72EC1B5C20B7027000ACC20B /* SwapListController.xib in Resources */,
 				CE97DBF620B5A2C1003E46BD /* ReleaseTenderCell.xib in Resources */,
@@ -6024,6 +6033,7 @@
 				727418CB20B17F3D001D6BE1 /* ChangeHeadView.m in Sources */,
 				720263F820B5015500382B2F /* TZLocationManager.m in Sources */,
 				720263F420B5015500382B2F /* TZImageCropManager.m in Sources */,
+				72DC0A9C21A99CC2001DECD2 /* ListCell.m in Sources */,
 				723D376720ABDA62003FD4DF /* ShowResumeCell.m in Sources */,
 				72EC1BBD20BDA25200ACC20B /* SendSelectCell.m in Sources */,
 				7266FEE021173ED5005794AD /* JKAreaCollectionViewCell.m in Sources */,

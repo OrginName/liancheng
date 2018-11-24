@@ -19,6 +19,7 @@
     }
     return self;
 }
+
 -(UIView *)view_Top{
     if (!_view_Top) {
         _view_Top = [[UIView alloc] initWithFrame:CGRectMake(15, 10, 5, 20)];
@@ -43,7 +44,7 @@
         _lab_more=[[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth-85, 0, 50, 40)];
         _lab_more.text = @"更多";
         _lab_more.textAlignment = NSTextAlignmentRight;
-        _lab_more.font = [UIFont systemFontOfSize:16];
+        _lab_more.font = [UIFont systemFontOfSize:15];
         _lab_more.textColor = YSColor(150, 151, 152);
     }
     return _lab_more;

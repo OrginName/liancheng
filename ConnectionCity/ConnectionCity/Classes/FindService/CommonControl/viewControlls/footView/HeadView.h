@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface HeadView : UITableViewHeaderFooterView
-@property(nonatomic,strong)UILabel * lab_title;
+@property (nonatomic,strong)NSArray * arr;
+@property (nonatomic,strong)UILabel * lab_title;
 @property (nonatomic,strong)UILabel * lab_more;
 @property (nonatomic,strong)UIImageView * image_right;
 @property (nonatomic,strong)UIView * view_Top;

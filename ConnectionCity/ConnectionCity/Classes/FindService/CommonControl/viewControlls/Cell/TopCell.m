@@ -30,7 +30,6 @@
     maskLayer1.frame = self.lab_Name.bounds;
     maskLayer1.path = maskPath1.CGPath;
     self.lab_Name.layer.mask = maskLayer1;
-    
-//    self.lab_Name.backgroundColor = [UIColor colorWithWhite:0.f alpha:.5];
+
 }
 @end
