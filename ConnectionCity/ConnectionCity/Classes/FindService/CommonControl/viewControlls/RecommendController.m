@@ -16,6 +16,7 @@
 @interface RecommendController()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 @property (nonatomic,strong) MyTab * tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * lunArr;
+@property (nonatomic,strong) UIView * view_security;
 @end
 @implementation RecommendController
 -(void)viewDidLoad{
