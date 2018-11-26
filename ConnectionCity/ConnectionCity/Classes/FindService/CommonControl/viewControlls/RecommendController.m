@@ -13,10 +13,11 @@
 #import "RecommendTopCell.h"
 #import "MiddleCell.h"
 #import "ListCell.h"
+#import "SecureController.h"
 @interface RecommendController()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 @property (nonatomic,strong) MyTab * tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * lunArr;
-@property (nonatomic,strong) UIView * view_security;
+@property (nonatomic,strong) UIImageView * image_security;
 @end
 @implementation RecommendController
 -(void)viewDidLoad{
@@ -32,6 +33,7 @@
 -(void)setUI{
     [self.view addSubview:self.tab_Bottom];
     [self initScroll];
+    [self.view addSubview:self.image_security];
 }
 #pragma mark ---------UITableviewDelegate----------
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -88,6 +90,19 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.0001f;
+}
+#pragma mark ----secClick--------
+-(void)secClick{ 
+    //弹出ViewController
+    SecureController *xVC = [SecureController new];
+    //设置ViewController的背景颜色及透明度
+    xVC.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+     //设置ViewController的模态模式，即ViewController的显示方式
+    xVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    //加载模态视图
+    [self presentViewController:xVC animated:YES completion:^{
+    }];
 }
 #pragma mark --------SDCycleScrollViewDelegate--------
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
@@ -151,12 +166,14 @@
     }
     return _tab_Bottom;
 }
--(UIView *)view_security{
-    if (!_view_security) {
-        _view_security = [[UIView alloc] initWithFrame:CGRectMake(0, 100, 100, 50)];
-        _view_security.backgroundColor = [UIColor redColor];
-        
+-(UIImageView *)image_security{
+    if (!_image_security) {
+        _image_security = [[UIImageView alloc] initWithFrame:CGRectMake(0, (kScreenHeight-25)/2, 150, 55)];
+        _image_security.image = [UIImage imageNamed:@"secure"];
+        _image_security.userInteractionEnabled = YES;
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(secClick)];
+        [_image_security addGestureRecognizer:tap];
     }
-    return _view_security;
+    return _image_security;
 }
 @end

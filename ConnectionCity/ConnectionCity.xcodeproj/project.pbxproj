@@ -212,6 +212,8 @@
 		72DC0A9821A98A1F001DECD2 /* FJCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0A9621A98A1F001DECD2 /* FJCell.xib */; };
 		72DC0A9C21A99CC2001DECD2 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0A9A21A99CC1001DECD2 /* ListCell.m */; };
 		72DC0A9D21A99CC2001DECD2 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0A9B21A99CC2001DECD2 /* ListCell.xib */; };
+		72DC0AA221AC4025001DECD2 /* SecureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0AA021AC4025001DECD2 /* SecureController.m */; };
+		72DC0AA321AC4026001DECD2 /* SecureController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0AA121AC4025001DECD2 /* SecureController.xib */; };
 		72EBB8B620C6DB5900F670E9 /* CardAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */; };
 		72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */; };
 		72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8BA20C800C200F670E9 /* PresentCell.m */; };
@@ -1165,6 +1167,9 @@
 		72DC0A9921A99CC1001DECD2 /* ListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
 		72DC0A9A21A99CC1001DECD2 /* ListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
 		72DC0A9B21A99CC2001DECD2 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
+		72DC0A9F21AC4025001DECD2 /* SecureController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecureController.h; sourceTree = "<group>"; };
+		72DC0AA021AC4025001DECD2 /* SecureController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecureController.m; sourceTree = "<group>"; };
+		72DC0AA121AC4025001DECD2 /* SecureController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecureController.xib; sourceTree = "<group>"; };
 		72EBB8B320C6DB5900F670E9 /* CardAuthorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardAuthorController.h; sourceTree = "<group>"; };
 		72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardAuthorController.m; sourceTree = "<group>"; };
 		72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardAuthorController.xib; sourceTree = "<group>"; };
@@ -2958,6 +2963,16 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		72DC0A9E21AC3FD7001DECD2 /* Controlls */ = {
+			isa = PBXGroup;
+			children = (
+				72DC0A9F21AC4025001DECD2 /* SecureController.h */,
+				72DC0AA021AC4025001DECD2 /* SecureController.m */,
+				72DC0AA121AC4025001DECD2 /* SecureController.xib */,
+			);
+			path = Controlls;
+			sourceTree = "<group>";
+		};
 		72EBB8B220C6DB3600F670E9 /* AuthenticationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -4124,6 +4139,7 @@
 		8DEDA655219E8FE500564E10 /* viewControlls */ = {
 			isa = PBXGroup;
 			children = (
+				72DC0A9E21AC3FD7001DECD2 /* Controlls */,
 				72DC0A8921A85732001DECD2 /* Cell */,
 				72DC0A8521A83D2D001DECD2 /* footView */,
 				8DEDA66A219EBCC600564E10 /* Layout */,
@@ -5603,6 +5619,7 @@
 				727418DA20B290AE001D6BE1 /* PlayPoductController.xib in Resources */,
 				CE97DC0820B5B1CA003E46BD /* BidManageController.xib in Resources */,
 				723D376820ABDA62003FD4DF /* ShowResumeCell.xib in Resources */,
+				72DC0AA321AC4026001DECD2 /* SecureController.xib in Resources */,
 				727418CD20B17F4B001D6BE1 /* ChangeHeadView.xib in Resources */,
 				8DF7E3CE20CF994C009A92D7 /* ClassCell.xib in Resources */,
 				CEFC045D2127008C00630722 /* ProfileTwoController.xib in Resources */,
@@ -6172,6 +6189,7 @@
 				CEE4B29720C6B5A2008B8731 /* NearManController.m in Sources */,
 				8DE4660E20EDF31C009730F7 /* RCDGroupSettingsTableViewCell.m in Sources */,
 				CE0BA5B5209D5E6B004C3C33 /* UIViewController+BackButtonHandler.m in Sources */,
+				72DC0AA221AC4025001DECD2 /* SecureController.m in Sources */,
 				723B9F1320B4195B00AD919B /* PhotoSelect.m in Sources */,
 				CEBEDD8720B17ED1000F9EE4 /* BidderController.m in Sources */,
 				721041102102477700B575BB /* viewPaly.m in Sources */,
