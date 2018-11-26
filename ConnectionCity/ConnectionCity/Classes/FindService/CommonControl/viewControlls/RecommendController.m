@@ -151,4 +151,12 @@
     }
     return _tab_Bottom;
 }
+-(UIView *)view_security{
+    if (!_view_security) {
+        _view_security = [[UIView alloc] initWithFrame:CGRectMake(0, 100, 100, 50)];
+        _view_security.backgroundColor = [UIColor redColor];
+        
+    }
+    return _view_security;
+}
 @end
