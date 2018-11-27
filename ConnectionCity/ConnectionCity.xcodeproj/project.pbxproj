@@ -214,6 +214,10 @@
 		72DC0A9D21A99CC2001DECD2 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0A9B21A99CC2001DECD2 /* ListCell.xib */; };
 		72DC0AA221AC4025001DECD2 /* SecureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0AA021AC4025001DECD2 /* SecureController.m */; };
 		72DC0AA321AC4026001DECD2 /* SecureController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0AA121AC4025001DECD2 /* SecureController.xib */; };
+		72DC0AA721AD8727001DECD2 /* AddContactController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0AA521AD8727001DECD2 /* AddContactController.m */; };
+		72DC0AA821AD8727001DECD2 /* AddContactController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0AA621AD8727001DECD2 /* AddContactController.xib */; };
+		72DC0AAC21ADA4C0001DECD2 /* AddNewContactController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0AAA21ADA4C0001DECD2 /* AddNewContactController.m */; };
+		72DC0AAD21ADA4C0001DECD2 /* AddNewContactController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0AAB21ADA4C0001DECD2 /* AddNewContactController.xib */; };
 		72EBB8B620C6DB5900F670E9 /* CardAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */; };
 		72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */; };
 		72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8BA20C800C200F670E9 /* PresentCell.m */; };
@@ -1170,6 +1174,12 @@
 		72DC0A9F21AC4025001DECD2 /* SecureController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecureController.h; sourceTree = "<group>"; };
 		72DC0AA021AC4025001DECD2 /* SecureController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecureController.m; sourceTree = "<group>"; };
 		72DC0AA121AC4025001DECD2 /* SecureController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecureController.xib; sourceTree = "<group>"; };
+		72DC0AA421AD8727001DECD2 /* AddContactController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddContactController.h; sourceTree = "<group>"; };
+		72DC0AA521AD8727001DECD2 /* AddContactController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddContactController.m; sourceTree = "<group>"; };
+		72DC0AA621AD8727001DECD2 /* AddContactController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddContactController.xib; sourceTree = "<group>"; };
+		72DC0AA921ADA4C0001DECD2 /* AddNewContactController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddNewContactController.h; sourceTree = "<group>"; };
+		72DC0AAA21ADA4C0001DECD2 /* AddNewContactController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddNewContactController.m; sourceTree = "<group>"; };
+		72DC0AAB21ADA4C0001DECD2 /* AddNewContactController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewContactController.xib; sourceTree = "<group>"; };
 		72EBB8B320C6DB5900F670E9 /* CardAuthorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardAuthorController.h; sourceTree = "<group>"; };
 		72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardAuthorController.m; sourceTree = "<group>"; };
 		72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardAuthorController.xib; sourceTree = "<group>"; };
@@ -2969,6 +2979,12 @@
 				72DC0A9F21AC4025001DECD2 /* SecureController.h */,
 				72DC0AA021AC4025001DECD2 /* SecureController.m */,
 				72DC0AA121AC4025001DECD2 /* SecureController.xib */,
+				72DC0AA421AD8727001DECD2 /* AddContactController.h */,
+				72DC0AA521AD8727001DECD2 /* AddContactController.m */,
+				72DC0AA621AD8727001DECD2 /* AddContactController.xib */,
+				72DC0AA921ADA4C0001DECD2 /* AddNewContactController.h */,
+				72DC0AAA21ADA4C0001DECD2 /* AddNewContactController.m */,
+				72DC0AAB21ADA4C0001DECD2 /* AddNewContactController.xib */,
 			);
 			path = Controlls;
 			sourceTree = "<group>";
@@ -5653,8 +5669,10 @@
 				CEBEDD8220B17ED1000F9EE4 /* MarginController.xib in Resources */,
 				8D22C36120C7D18E004DC8F4 /* PresentManageViewController.xib in Resources */,
 				CE03EE0120B467EC00F07D78 /* ReleaseTenderController.xib in Resources */,
+				72DC0AA821AD8727001DECD2 /* AddContactController.xib in Resources */,
 				CEBEDD7E20B17ED1000F9EE4 /* WinningBidderController.xib in Resources */,
 				CE5C283920B99441006A8332 /* PayOrderController.xib in Resources */,
+				72DC0AAD21ADA4C0001DECD2 /* AddNewContactController.xib in Resources */,
 				721DAE1220F272BA006F141F /* FoundQunController.xib in Resources */,
 				8D50C55C20C669020095A824 /* OurConcernController.xib in Resources */,
 				72D8B16621296052007EE681 /* BaoBiaoItem.xib in Resources */,
@@ -6230,6 +6248,7 @@
 				72DC0A8821A853BF001DECD2 /* RecommendTopCell.m in Sources */,
 				722D253720AA76D400AB3863 /* JFCityCollectionFlowLayout.m in Sources */,
 				8DB277B720EF53F500B3D747 /* RCDSearchMoreViewCell.m in Sources */,
+				72DC0AAC21ADA4C0001DECD2 /* AddNewContactController.m in Sources */,
 				727418D920B290AE001D6BE1 /* PlayPoductController.m in Sources */,
 				CE03EDF120B44FB000F07D78 /* FirstTableViewCell.m in Sources */,
 				8D22C34C20C7CD68004DC8F4 /* ExpressiveController.m in Sources */,
@@ -6303,6 +6322,7 @@
 				8D22C36020C7D18E004DC8F4 /* PresentManageViewController.m in Sources */,
 				CE0BA5E0209D5E9B004C3C33 /* DDFileReader.m in Sources */,
 				8DE161AE21072A3B00CC7558 /* PaymentModel.m in Sources */,
+				72DC0AA721AD8727001DECD2 /* AddContactController.m in Sources */,
 				CEE5250F20F771D400DD6179 /* MYScanView.m in Sources */,
 				72EC1BAB20BC34AA00ACC20B /* TravalController.m in Sources */,
 				8DA4990820A6FDEB00968F86 /* ResumeController.m in Sources */,

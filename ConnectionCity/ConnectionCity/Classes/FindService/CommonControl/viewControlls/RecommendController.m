@@ -97,11 +97,13 @@
     SecureController *xVC = [SecureController new];
     //设置ViewController的背景颜色及透明度
     xVC.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
-     //设置ViewController的模态模式，即ViewController的显示方式
-    xVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    BaseNavigationController * nav = [[BaseNavigationController alloc] initWithRootViewController:xVC];
+    //设置ViewController的模态模式，即ViewController的显示方式
+    nav.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    nav.view.backgroundColor = [UIColor clearColor];
     //加载模态视图
-    [self presentViewController:xVC animated:YES completion:^{
+    [self presentViewController:nav animated:YES completion:^{
     }];
 }
 #pragma mark --------SDCycleScrollViewDelegate--------

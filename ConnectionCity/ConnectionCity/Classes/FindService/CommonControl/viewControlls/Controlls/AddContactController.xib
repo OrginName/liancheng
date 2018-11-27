@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddContactController">
+            <connections>
+                <outlet property="lab_tip" destination="Ik7-Dp-h4j" id="2O2-bz-ifR"/>
+                <outlet property="tab_bottom" destination="TnT-a8-MKk" id="CGT-21-gXZ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加紧急联系人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2w3-xD-Uym">
+                    <rect key="frame" x="20" y="45" width="136" height="23"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="· 设置后仅在使用一键报警或紧急情况下，会主动通知紧急联系人" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ik7-Dp-h4j">
+                    <rect key="frame" x="25" y="88" width="330" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="33" id="rwF-QD-192"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.49843072891235352" green="0.50180339813232422" blue="0.50179070234298706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="· 目前仅支持号码归属地为中国大陆的手机号码" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylo-mu-zmM">
+                    <rect key="frame" x="25" y="131" width="330" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.49843072890000001" green="0.50180339809999996" blue="0.5017907023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TnT-a8-MKk">
+                    <rect key="frame" x="0.0" y="172" width="375" height="495"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="eZx-rV-Qmg"/>
+                        <outlet property="delegate" destination="-1" id="GaC-av-amc"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="TnT-a8-MKk" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="0zG-kN-N7H"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="TnT-a8-MKk" secondAttribute="bottom" id="1zG-gV-j2Q"/>
+                <constraint firstItem="TnT-a8-MKk" firstAttribute="top" secondItem="ylo-mu-zmM" secondAttribute="bottom" constant="25" id="2RD-eY-Cmb"/>
+                <constraint firstItem="TnT-a8-MKk" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="9Od-R1-tPM"/>
+                <constraint firstItem="2w3-xD-Uym" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="25" id="N9M-f7-feS"/>
+                <constraint firstItem="2w3-xD-Uym" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="NZP-Mh-BH4"/>
+                <constraint firstItem="ylo-mu-zmM" firstAttribute="leading" secondItem="Ik7-Dp-h4j" secondAttribute="leading" id="RGW-CH-Qlz"/>
+                <constraint firstItem="ylo-mu-zmM" firstAttribute="top" secondItem="Ik7-Dp-h4j" secondAttribute="bottom" constant="10" id="djG-zP-ee4"/>
+                <constraint firstItem="Ik7-Dp-h4j" firstAttribute="top" secondItem="2w3-xD-Uym" secondAttribute="bottom" constant="20" id="gAS-TV-PQt"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Ik7-Dp-h4j" secondAttribute="trailing" constant="20" id="nSd-R4-nvn"/>
+                <constraint firstItem="Ik7-Dp-h4j" firstAttribute="leading" secondItem="2w3-xD-Uym" secondAttribute="leading" constant="5" id="pQ4-CL-Heh"/>
+                <constraint firstItem="ylo-mu-zmM" firstAttribute="trailing" secondItem="Ik7-Dp-h4j" secondAttribute="trailing" id="u2d-jb-IwE"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="24.5" y="52.5"/>
+        </view>
+    </objects>
+</document>

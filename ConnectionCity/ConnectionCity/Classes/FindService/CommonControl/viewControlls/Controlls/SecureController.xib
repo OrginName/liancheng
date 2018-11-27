@@ -58,6 +58,9 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfC-La-2Zs">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
+                                    <connections>
+                                        <action selector="btn_add:" destination="-1" eventType="touchUpInside" id="WXK-zn-uwr"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.96752160787582397" green="0.93725430965423584" blue="0.85711175203323364" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -125,6 +128,9 @@
                                         <color key="titleColor" red="0.9364202618598938" green="0.51547044515609741" blue="0.52706611156463623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="btn_add:" destination="-1" eventType="touchUpInside" id="D66-D7-0JK"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
