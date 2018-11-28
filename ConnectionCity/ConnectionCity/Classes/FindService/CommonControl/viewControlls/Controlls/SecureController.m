@@ -8,6 +8,7 @@
 
 #import "SecureController.h"
 #import "AddContactController.h"
+#import "YJBJController.h"
 @interface SecureController ()
 
 @end
@@ -24,6 +25,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor redColor];
+}
+- (IBAction)btn_Se:(UIButton *)sender {
+    YJBJController * yjbj = [YJBJController new];
+    yjbj.title = @"一键报警";
+    [self.navigationController pushViewController:yjbj animated:YES];
 }
 
 - (IBAction)btn_add:(UIButton *)sender {

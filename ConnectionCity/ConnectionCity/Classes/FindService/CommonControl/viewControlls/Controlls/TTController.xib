@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TTController">
+            <connections>
+                <outlet property="tab_Bottom" destination="4Gw-S1-CtM" id="eBC-hm-NFm"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="yoM-lI-BJM">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Gw-S1-CtM">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="a3I-qH-F5g"/>
+                        <outlet property="delegate" destination="-1" id="TsZ-tn-BEo"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="4Gw-S1-CtM" secondAttribute="trailing" id="EgL-6h-gmM"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="yoM-lI-BJM" secondAttribute="trailing" id="QSa-EO-Nqi"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="4Gw-S1-CtM" secondAttribute="bottom" id="Vgr-gQ-MLH"/>
+                <constraint firstItem="4Gw-S1-CtM" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="WhX-fs-ABC"/>
+                <constraint firstItem="yoM-lI-BJM" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="XG6-0E-sU4"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="yoM-lI-BJM" secondAttribute="bottom" id="iqc-hM-t0O"/>
+                <constraint firstItem="yoM-lI-BJM" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="td7-Fv-9BK"/>
+                <constraint firstItem="4Gw-S1-CtM" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="yqz-5K-5MQ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="BG" width="450" height="800"/>
+    </resources>
+</document>

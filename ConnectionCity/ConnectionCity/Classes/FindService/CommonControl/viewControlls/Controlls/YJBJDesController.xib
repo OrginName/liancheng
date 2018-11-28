@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YJBJDesController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9f-ga-7Y6">
+                    <rect key="frame" x="25" y="50" width="74" height="34"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <state key="normal" title="一键报警">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjI-Ho-rJK">
+                    <rect key="frame" x="25" y="94" width="330" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="SSZ-6h-iNe"/>
+                    </constraints>
+                    <attributedString key="attributedText">
+                        <fragment content="点击呼叫">
+                            <attributes>
+                                <color key="NSColor" red="0.30956453080000002" green="0.3103382885" blue="0.31748497489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="110">
+                            <attributes>
+                                <color key="NSColor" red="0.30956453080000002" green="0.3103382885" blue="0.31748497489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" metaFont="system"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="后，您可以直接拨打本地">
+                            <attributes>
+                                <color key="NSColor" red="0.30956453080000002" green="0.3103382885" blue="0.31748497489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="110">
+                            <attributes>
+                                <color key="NSColor" red="0.30956453080000002" green="0.3103382885" blue="0.31748497489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" metaFont="system"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="。页面中提供了车辆信息以及您当前所在位置，以便您与警方沟通。（">
+                            <attributes>
+                                <color key="NSColor" red="0.30956453080000002" green="0.3103382885" blue="0.31748497489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="GPS">
+                            <attributes>
+                                <color key="NSColor" red="0.30956453080000002" green="0.3103382885" blue="0.31748497489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" metaFont="system"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="信号弱时，位置可能有所偏移）">
+                            <attributes>
+                                <color key="NSColor" red="0.30956453080000002" green="0.3103382885" blue="0.31748497489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anquan_icon9" translatesAutoresizingMaskIntoConstraints="NO" id="vvY-94-kMH">
+                    <rect key="frame" x="25" y="154" width="330" height="330"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="vvY-94-kMH" secondAttribute="height" multiplier="1:1" id="ej1-wa-FCW"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wyv-lf-VyS">
+                    <rect key="frame" x="25" y="484" width="330" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="43" id="s7p-hl-64b"/>
+                    </constraints>
+                    <attributedString key="attributedText">
+                        <fragment content="所有信息也会以短息的形式直接发送到您的手机。（受运营商影响，短信可能存在延迟）">
+                            <attributes>
+                                <color key="NSColor" red="0.30956453080000002" green="0.3103382885" blue="0.31748497489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="K9f-ga-7Y6" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="30" id="0TS-nV-keD"/>
+                <constraint firstItem="vvY-94-kMH" firstAttribute="top" secondItem="bjI-Ho-rJK" secondAttribute="bottom" id="3tU-LR-MzN"/>
+                <constraint firstItem="Wyv-lf-VyS" firstAttribute="top" secondItem="vvY-94-kMH" secondAttribute="bottom" id="58X-Rj-PaJ"/>
+                <constraint firstItem="K9f-ga-7Y6" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="25" id="IuD-7j-KpN"/>
+                <constraint firstItem="vvY-94-kMH" firstAttribute="trailing" secondItem="bjI-Ho-rJK" secondAttribute="trailing" id="Khu-Y8-SD4"/>
+                <constraint firstItem="Wyv-lf-VyS" firstAttribute="trailing" secondItem="vvY-94-kMH" secondAttribute="trailing" id="MzX-rL-TUJ"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="bjI-Ho-rJK" secondAttribute="trailing" constant="20" id="RCW-ZP-dEY"/>
+                <constraint firstItem="vvY-94-kMH" firstAttribute="leading" secondItem="bjI-Ho-rJK" secondAttribute="leading" id="UNB-G9-VDG"/>
+                <constraint firstItem="Wyv-lf-VyS" firstAttribute="leading" secondItem="vvY-94-kMH" secondAttribute="leading" id="WHu-SZ-nF3"/>
+                <constraint firstItem="bjI-Ho-rJK" firstAttribute="top" secondItem="K9f-ga-7Y6" secondAttribute="bottom" constant="10" id="arb-0G-ICb"/>
+                <constraint firstItem="bjI-Ho-rJK" firstAttribute="leading" secondItem="K9f-ga-7Y6" secondAttribute="leading" id="rzi-4t-9Mv"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="32.5" y="97.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="anquan_icon9" width="320" height="256"/>
+    </resources>
+</document>

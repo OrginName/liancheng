@@ -223,6 +223,14 @@
 		72DC0AB521AEB14E001DECD2 /* FollowHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0AB421AEB14E001DECD2 /* FollowHeadView.m */; };
 		72DC0AB921AEB4CD001DECD2 /* FollwCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0AB721AEB4CD001DECD2 /* FollwCollectionViewCell.m */; };
 		72DC0ABA21AEB4CD001DECD2 /* FollwCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0AB821AEB4CD001DECD2 /* FollwCollectionViewCell.xib */; };
+		72DC0ABE21AED69F001DECD2 /* YJBJController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0ABC21AED69F001DECD2 /* YJBJController.m */; };
+		72DC0ABF21AED69F001DECD2 /* YJBJController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0ABD21AED69F001DECD2 /* YJBJController.xib */; };
+		72DC0AC321AEE4EC001DECD2 /* YJBJDesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0AC121AEE4EC001DECD2 /* YJBJDesController.m */; };
+		72DC0AC421AEE4EC001DECD2 /* YJBJDesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0AC221AEE4EC001DECD2 /* YJBJDesController.xib */; };
+		72DC0AC821AEEC37001DECD2 /* TTController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0AC621AEEC37001DECD2 /* TTController.m */; };
+		72DC0AC921AEEC37001DECD2 /* TTController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0AC721AEEC37001DECD2 /* TTController.xib */; };
+		72DC0ACD21AEF023001DECD2 /* TTCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0ACB21AEF023001DECD2 /* TTCell.m */; };
+		72DC0ACE21AEF023001DECD2 /* TTCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0ACC21AEF023001DECD2 /* TTCell.xib */; };
 		72EBB8B620C6DB5900F670E9 /* CardAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */; };
 		72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */; };
 		72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8BA20C800C200F670E9 /* PresentCell.m */; };
@@ -1193,6 +1201,18 @@
 		72DC0AB621AEB4CD001DECD2 /* FollwCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollwCollectionViewCell.h; sourceTree = "<group>"; };
 		72DC0AB721AEB4CD001DECD2 /* FollwCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollwCollectionViewCell.m; sourceTree = "<group>"; };
 		72DC0AB821AEB4CD001DECD2 /* FollwCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollwCollectionViewCell.xib; sourceTree = "<group>"; };
+		72DC0ABB21AED69F001DECD2 /* YJBJController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJBJController.h; sourceTree = "<group>"; };
+		72DC0ABC21AED69F001DECD2 /* YJBJController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJBJController.m; sourceTree = "<group>"; };
+		72DC0ABD21AED69F001DECD2 /* YJBJController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YJBJController.xib; sourceTree = "<group>"; };
+		72DC0AC021AEE4EC001DECD2 /* YJBJDesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJBJDesController.h; sourceTree = "<group>"; };
+		72DC0AC121AEE4EC001DECD2 /* YJBJDesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJBJDesController.m; sourceTree = "<group>"; };
+		72DC0AC221AEE4EC001DECD2 /* YJBJDesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YJBJDesController.xib; sourceTree = "<group>"; };
+		72DC0AC521AEEC37001DECD2 /* TTController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTController.h; sourceTree = "<group>"; };
+		72DC0AC621AEEC37001DECD2 /* TTController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTController.m; sourceTree = "<group>"; };
+		72DC0AC721AEEC37001DECD2 /* TTController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TTController.xib; sourceTree = "<group>"; };
+		72DC0ACA21AEF023001DECD2 /* TTCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTCell.h; sourceTree = "<group>"; };
+		72DC0ACB21AEF023001DECD2 /* TTCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTCell.m; sourceTree = "<group>"; };
+		72DC0ACC21AEF023001DECD2 /* TTCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TTCell.xib; sourceTree = "<group>"; };
 		72EBB8B320C6DB5900F670E9 /* CardAuthorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardAuthorController.h; sourceTree = "<group>"; };
 		72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardAuthorController.m; sourceTree = "<group>"; };
 		72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardAuthorController.xib; sourceTree = "<group>"; };
@@ -2987,6 +3007,9 @@
 				72DC0AB621AEB4CD001DECD2 /* FollwCollectionViewCell.h */,
 				72DC0AB721AEB4CD001DECD2 /* FollwCollectionViewCell.m */,
 				72DC0AB821AEB4CD001DECD2 /* FollwCollectionViewCell.xib */,
+				72DC0ACA21AEF023001DECD2 /* TTCell.h */,
+				72DC0ACB21AEF023001DECD2 /* TTCell.m */,
+				72DC0ACC21AEF023001DECD2 /* TTCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -3003,6 +3026,15 @@
 				72DC0AA921ADA4C0001DECD2 /* AddNewContactController.h */,
 				72DC0AAA21ADA4C0001DECD2 /* AddNewContactController.m */,
 				72DC0AAB21ADA4C0001DECD2 /* AddNewContactController.xib */,
+				72DC0ABB21AED69F001DECD2 /* YJBJController.h */,
+				72DC0ABC21AED69F001DECD2 /* YJBJController.m */,
+				72DC0ABD21AED69F001DECD2 /* YJBJController.xib */,
+				72DC0AC021AEE4EC001DECD2 /* YJBJDesController.h */,
+				72DC0AC121AEE4EC001DECD2 /* YJBJDesController.m */,
+				72DC0AC221AEE4EC001DECD2 /* YJBJDesController.xib */,
+				72DC0AC521AEEC37001DECD2 /* TTController.h */,
+				72DC0AC621AEEC37001DECD2 /* TTController.m */,
+				72DC0AC721AEEC37001DECD2 /* TTController.xib */,
 			);
 			path = Controlls;
 			sourceTree = "<group>";
@@ -5576,6 +5608,7 @@
 				8DEDA67A219ECB3500564E10 /* CircleTController.xib in Resources */,
 				CE5C281220B91AFD006A8332 /* WinnerInfoCell.xib in Resources */,
 				727418D220B1A058001D6BE1 /* FirstController.xib in Resources */,
+				72DC0ABF21AED69F001DECD2 /* YJBJController.xib in Resources */,
 				8D09426720C14AF200C45E2B /* EvaluationController.xib in Resources */,
 				72EC1B7320BA984400ACC20B /* PlayDouctCell.xib in Resources */,
 				72D8B16F212965FD007EE681 /* KissUpdateController.xib in Resources */,
@@ -5598,6 +5631,7 @@
 				8D12931320E5F16D0008BD6F /* EditCircleController.xib in Resources */,
 				CE0A99DE20C57C44003A4D91 /* CertificationCenterController.xib in Resources */,
 				CEBEDD8C20B17ED1000F9EE4 /* BountyHostingController.xib in Resources */,
+				72DC0AC921AEEC37001DECD2 /* TTController.xib in Resources */,
 				8DEA450A20C1148C001529F1 /* SendMomentController.xib in Resources */,
 				CE5C280520B90473006A8332 /* BiddInfoCell.xib in Resources */,
 				72EBB8E220C95F8800F670E9 /* AccountSecurityController.xib in Resources */,
@@ -5644,6 +5678,7 @@
 				72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */,
 				8D22C34D20C7CD68004DC8F4 /* ExpressiveController.xib in Resources */,
 				CE782ABC21158D1B002C6403 /* BidManagerCellOne.xib in Resources */,
+				72DC0ACE21AEF023001DECD2 /* TTCell.xib in Resources */,
 				CE9B9A7020E9168D005C47B2 /* AgreementController.xib in Resources */,
 				CEE4B29820C6B5A2008B8731 /* NearManController.xib in Resources */,
 				8DA4990920A6FDEB00968F86 /* ResumeController.xib in Resources */,
@@ -5726,6 +5761,7 @@
 				8D67603620A448CB0027CDEE /* SX.plist in Resources */,
 				8D5B3C3920C0143200773105 /* ServiceListController.xib in Resources */,
 				8DC17A8420C0E598005D9EE0 /* FriendCircleController.xib in Resources */,
+				72DC0AC421AEE4EC001DECD2 /* YJBJDesController.xib in Resources */,
 				8DEA450F20C1193E001529F1 /* MomentDetailController.xib in Resources */,
 				8DA4990E20A7063E00968F86 /* ResumeCell.xib in Resources */,
 				CE782AB5211588A1002C6403 /* BidManagerSectionHeadV.xib in Resources */,
@@ -5896,6 +5932,7 @@
 				8DEDA661219E92EE00564E10 /* PersonDTView.m in Sources */,
 				CE782AB021158860002C6403 /* BidManagerSectionHeadV.m in Sources */,
 				CE9B9A7620E920C6005C47B2 /* OurConcernMo.m in Sources */,
+				72DC0ABE21AED69F001DECD2 /* YJBJController.m in Sources */,
 				8D12931620E616670008BD6F /* CustomScro.m in Sources */,
 				CEE4B2A620C6CC3F008B8731 /* PersonalCenterController.m in Sources */,
 				72EC1BB920BC4CA100ACC20B /* SendServiceCell.m in Sources */,
@@ -5948,6 +5985,7 @@
 				8DFA326220EDB97B0086423A /* RCWKSharedUserDefault.m in Sources */,
 				8DD48CCB20A811EA00D6D1E6 /* NSData+SDDataCache.m in Sources */,
 				CEE5251920F9039F00DD6179 /* YSShareTool.m in Sources */,
+				72DC0ACD21AEF023001DECD2 /* TTCell.m in Sources */,
 				8D10B3B121002E8B00C153EF /* CommentView.m in Sources */,
 				8DE465DA20EDF0A0009730F7 /* RCDAddFriendViewController.m in Sources */,
 				722D253B20AA76D400AB3863 /* JFCityViewController.m in Sources */,
@@ -5996,6 +6034,7 @@
 				720263F120B5015500382B2F /* TZAssetCell.m in Sources */,
 				72799B80218FDF7B00C63005 /* NewsListCell.m in Sources */,
 				8DFA327020EDDCB40086423A /* SortForTime.m in Sources */,
+				72DC0AC321AEE4EC001DECD2 /* YJBJDesController.m in Sources */,
 				CEC4A54320C3D6FC0026EE19 /* TeamHeadCell.m in Sources */,
 				727418EB20B2AAB9001D6BE1 /* ChangeCell.m in Sources */,
 				CE0BA5E5209D5E9B004C3C33 /* YSNetworkTool.m in Sources */,
@@ -6065,6 +6104,7 @@
 				8D8E4ED320C9320200C3D537 /* PrivateController.m in Sources */,
 				8DB42FD820A57D9900C4EBF8 /* FilterLayout.m in Sources */,
 				CE03EDFC20B4595600F07D78 /* FirstCustomButton.m in Sources */,
+				72DC0AC821AEEC37001DECD2 /* TTController.m in Sources */,
 				8D09E18120BFB49A000F7EBD /* SendTripController.m in Sources */,
 				8DEDA659219E8FFF00564E10 /* YLController.m in Sources */,
 				8DC17AB220C0E7B8005D9EE0 /* FriendVideo.m in Sources */,

@@ -14,7 +14,8 @@
 #import "MiddleCell.h"
 #import "ListCell.h"
 #import "SecureController.h"
-@interface RecommendController()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
+#import "TTController.h"
+@interface RecommendController()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,TXScrollLabelViewDelegate>
 @property (nonatomic,strong) MyTab * tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * lunArr;
 @property (nonatomic,strong) UIImageView * image_security;
@@ -110,6 +111,11 @@
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
     
 }
+- (void)scrollLabelView:(TXScrollLabelView *)scrollLabelView didClickWithText:(NSString *)text atIndex:(NSInteger)index{
+    TTController * tt = [TTController new];
+    tt.title = @"连程头条";
+    [self.navigationController pushViewController:tt animated:YES];
+}
 #pragma mark ---initUI--------
 -(void)initScroll{
     UIView * view_Bottom = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tab_Bottom.width, 250)];
@@ -144,7 +150,7 @@
     
     NSString *scrollTitle = @"测试测试测试测试";
     TXScrollLabelView *scrollLabelView = [TXScrollLabelView scrollWithTitle:scrollTitle type:TXScrollLabelViewTypeFlipRepeat velocity:2 options:UIViewAnimationOptionTransitionNone];
-    //    scrollLabelView.scrollLabelViewDelegate = self;
+    scrollLabelView.scrollLabelViewDelegate = self;
     scrollLabelView.scrollInset = UIEdgeInsetsMake(0, -100, 0, 0);
     scrollLabelView.scrollTitleColor = YSColor(40, 40, 40);
     scrollLabelView.font = [UIFont systemFontOfSize:15];
