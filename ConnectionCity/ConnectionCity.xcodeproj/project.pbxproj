@@ -218,6 +218,11 @@
 		72DC0AA821AD8727001DECD2 /* AddContactController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0AA621AD8727001DECD2 /* AddContactController.xib */; };
 		72DC0AAC21ADA4C0001DECD2 /* AddNewContactController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0AAA21ADA4C0001DECD2 /* AddNewContactController.m */; };
 		72DC0AAD21ADA4C0001DECD2 /* AddNewContactController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0AAB21ADA4C0001DECD2 /* AddNewContactController.xib */; };
+		72DC0AB121AEAFDE001DECD2 /* FollowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0AAF21AEAFDE001DECD2 /* FollowController.m */; };
+		72DC0AB221AEAFDE001DECD2 /* FollowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0AB021AEAFDE001DECD2 /* FollowController.xib */; };
+		72DC0AB521AEB14E001DECD2 /* FollowHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0AB421AEB14E001DECD2 /* FollowHeadView.m */; };
+		72DC0AB921AEB4CD001DECD2 /* FollwCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DC0AB721AEB4CD001DECD2 /* FollwCollectionViewCell.m */; };
+		72DC0ABA21AEB4CD001DECD2 /* FollwCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72DC0AB821AEB4CD001DECD2 /* FollwCollectionViewCell.xib */; };
 		72EBB8B620C6DB5900F670E9 /* CardAuthorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */; };
 		72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */; };
 		72EBB8BC20C800C300F670E9 /* PresentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EBB8BA20C800C200F670E9 /* PresentCell.m */; };
@@ -1180,6 +1185,14 @@
 		72DC0AA921ADA4C0001DECD2 /* AddNewContactController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddNewContactController.h; sourceTree = "<group>"; };
 		72DC0AAA21ADA4C0001DECD2 /* AddNewContactController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddNewContactController.m; sourceTree = "<group>"; };
 		72DC0AAB21ADA4C0001DECD2 /* AddNewContactController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewContactController.xib; sourceTree = "<group>"; };
+		72DC0AAE21AEAFDE001DECD2 /* FollowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollowController.h; sourceTree = "<group>"; };
+		72DC0AAF21AEAFDE001DECD2 /* FollowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowController.m; sourceTree = "<group>"; };
+		72DC0AB021AEAFDE001DECD2 /* FollowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowController.xib; sourceTree = "<group>"; };
+		72DC0AB321AEB14E001DECD2 /* FollowHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollowHeadView.h; sourceTree = "<group>"; };
+		72DC0AB421AEB14E001DECD2 /* FollowHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowHeadView.m; sourceTree = "<group>"; };
+		72DC0AB621AEB4CD001DECD2 /* FollwCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollwCollectionViewCell.h; sourceTree = "<group>"; };
+		72DC0AB721AEB4CD001DECD2 /* FollwCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollwCollectionViewCell.m; sourceTree = "<group>"; };
+		72DC0AB821AEB4CD001DECD2 /* FollwCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollwCollectionViewCell.xib; sourceTree = "<group>"; };
 		72EBB8B320C6DB5900F670E9 /* CardAuthorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardAuthorController.h; sourceTree = "<group>"; };
 		72EBB8B420C6DB5900F670E9 /* CardAuthorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardAuthorController.m; sourceTree = "<group>"; };
 		72EBB8B520C6DB5900F670E9 /* CardAuthorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardAuthorController.xib; sourceTree = "<group>"; };
@@ -2946,6 +2959,8 @@
 		72DC0A8521A83D2D001DECD2 /* footView */ = {
 			isa = PBXGroup;
 			children = (
+				72DC0AB321AEB14E001DECD2 /* FollowHeadView.h */,
+				72DC0AB421AEB14E001DECD2 /* FollowHeadView.m */,
 				72DC0A8221A83D14001DECD2 /* HeadView.h */,
 				72DC0A8321A83D14001DECD2 /* HeadView.m */,
 				72DC0A8621A853BF001DECD2 /* RecommendTopCell.h */,
@@ -2969,6 +2984,9 @@
 				72DC0A9921A99CC1001DECD2 /* ListCell.h */,
 				72DC0A9A21A99CC1001DECD2 /* ListCell.m */,
 				72DC0A9B21A99CC2001DECD2 /* ListCell.xib */,
+				72DC0AB621AEB4CD001DECD2 /* FollwCollectionViewCell.h */,
+				72DC0AB721AEB4CD001DECD2 /* FollwCollectionViewCell.m */,
+				72DC0AB821AEB4CD001DECD2 /* FollwCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -4174,6 +4192,9 @@
 				72DC0A7F219F1882001DECD2 /* VideoController.xib */,
 				8DB35C0221A54B76002DDB0B /* RecommendController.h */,
 				8DB35C0321A54B76002DDB0B /* RecommendController.m */,
+				72DC0AAE21AEAFDE001DECD2 /* FollowController.h */,
+				72DC0AAF21AEAFDE001DECD2 /* FollowController.m */,
+				72DC0AB021AEAFDE001DECD2 /* FollowController.xib */,
 			);
 			path = viewControlls;
 			sourceTree = "<group>";
@@ -5569,6 +5590,7 @@
 				72DC0A9D21A99CC2001DECD2 /* ListCell.xib in Resources */,
 				723F4FA220BED37800AF8268 /* TrvalCell.xib in Resources */,
 				72EC1B5C20B7027000ACC20B /* SwapListController.xib in Resources */,
+				72DC0AB221AEAFDE001DECD2 /* FollowController.xib in Resources */,
 				CE97DBF620B5A2C1003E46BD /* ReleaseTenderCell.xib in Resources */,
 				CE2C401E20F1EAF100D33B17 /* DubTimeSlectorController.xib in Resources */,
 				CEC4A54E20C3FE070026EE19 /* MenuIcons.plist in Resources */,
@@ -5697,6 +5719,7 @@
 				8D8E4ECD20C9109E00C3D537 /* EditProfileCell.xib in Resources */,
 				72EBB8D720C81B4600F670E9 /* AccontManageController.xib in Resources */,
 				72EBB8B720C6DB5900F670E9 /* CardAuthorController.xib in Resources */,
+				72DC0ABA21AEB4CD001DECD2 /* FollwCollectionViewCell.xib in Resources */,
 				8DEDA672219EC5DA00564E10 /* NewsController.xib in Resources */,
 				727C86D820DBE11D00AA2796 /* CreatGroupController.xib in Resources */,
 				CE5C283020B9733A006A8332 /* ConsultativeNegotiationCell.xib in Resources */,
@@ -5882,6 +5905,7 @@
 				8DE4667320EDFD22009730F7 /* RCDSearchResultViewCell.m in Sources */,
 				72EBB8EC20CAC52600F670E9 /* CollectionController.m in Sources */,
 				8DE465C820EDED71009730F7 /* RCDContactTableViewCell.m in Sources */,
+				72DC0AB921AEB4CD001DECD2 /* FollwCollectionViewCell.m in Sources */,
 				CE03EDED20B43DC400F07D78 /* FootprintTabbleHeadV.m in Sources */,
 				721B565A215BA9670024953B /* YBIBUtilities.m in Sources */,
 				72DC0A8D21A85749001DECD2 /* TopCell.m in Sources */,
@@ -6273,6 +6297,7 @@
 				8DFA326120EDB97B0086423A /* RCWKRequestHandler.m in Sources */,
 				8DE161B221072B0000CC7558 /* ZoomImage.m in Sources */,
 				8DEDA667219EA1FF00564E10 /* PersonNet.m in Sources */,
+				72DC0AB521AEB14E001DECD2 /* FollowHeadView.m in Sources */,
 				7274188620B1474B001D6BE1 /* ConnectionCell.m in Sources */,
 				8D24A22E20A1B9BA00F0740D /* CustomCalloutView.m in Sources */,
 				72EC1BA620BC349600ACC20B /* ServiceStationController.m in Sources */,
@@ -6311,6 +6336,7 @@
 				8DC17A7B20C0E430005D9EE0 /* MMImagePreviewView.m in Sources */,
 				8DE4668A20EE05B2009730F7 /* RCDSearchResultTableViewCell.m in Sources */,
 				8D95E325210EDF5600C26892 /* HCCountdown.m in Sources */,
+				72DC0AB121AEAFDE001DECD2 /* FollowController.m in Sources */,
 				8D67602720A408470027CDEE /* ClassificationsController.m in Sources */,
 				720263F920B5015500382B2F /* TZPhotoPickerController.m in Sources */,
 				8DD48CCD20A811EA00D6D1E6 /* TAAnimatedDotView.m in Sources */,

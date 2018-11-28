@@ -29,6 +29,7 @@
 #import "ServiceHomeNet.h"
 #import "ClassifyMo.h"
 #import "RecommendController.h"
+#import "FollowController.h"
 @interface HomeController ()<JFCityViewControllerDelegate>
 {
     BOOL flag1;
@@ -307,6 +308,9 @@
     RecommendController * recommed = [RecommendController new];
     recommed.title = @"推荐";
     [arr addObject:recommed];
+    FollowController * follow = [FollowController new];
+    follow.title = @"关注";
+    [arr addObject:follow];
     for (MenuMo * mo in self.myMenuArr) {
         if ([mo.ID isEqualToString:@"1"]) {//旅行
             trval = [TravalController new];
