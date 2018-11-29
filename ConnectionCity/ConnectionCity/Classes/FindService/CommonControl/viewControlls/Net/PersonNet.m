@@ -132,4 +132,29 @@
         
     }];
 }
+/**
+ 获取首页广告接口 
+ @param block 返回内容
+ */
++(void)requstTJGGArr:(SuccessArrBlock)block FailDicBlock:(FailDicBlock)fail{
+    [YSNetworkTool POST:v1BannerList params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray * arr = [NSMutableArray array];
+        for (int i=0; i<[responseObject[kData] count]; i++) {
+            [arr addObject:responseObject[kData][i][@"url"]];
+        }
+        block(arr);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    }];
+}
+/**
+ 获取首页同城列表
+ @param block 返回内容
+ */
++(void)requstTJArr:(NSDictionary *)dic withArr:(SuccessArrBlock)block FailDicBlock:(FailDicBlock)fail{
+    [YSNetworkTool POST:v1RecommendPage params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
 @end

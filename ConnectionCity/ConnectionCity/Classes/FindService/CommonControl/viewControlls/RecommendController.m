@@ -15,26 +15,42 @@
 #import "ListCell.h"
 #import "SecureController.h"
 #import "TTController.h"
+#import "NoticeView.h"
+#import "PersonNet.h"
 @interface RecommendController()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,TXScrollLabelViewDelegate>
 @property (nonatomic,strong) MyTab * tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * lunArr;
 @property (nonatomic,strong) UIImageView * image_security;
+@property (nonatomic,strong) NoticeView *noticeView;
 @end
 @implementation RecommendController
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self.tab_Bottom registerClass:[HeadView class] forHeaderFooterViewReuseIdentifier:@"HeadView"];
     [self initData];
-    [self setUI];
 }
 -(void)initData{
-    self.lunArr = [NSMutableArray array];
-    [self.lunArr addObjectsFromArray:[NSArray arrayWithObjects:@"http://img18.3lian.com/d/file/201709/21/f498e01633b5b704ebfe0385f52bad20.jpg",@"http://photo.16pic.com/00/04/73/16pic_473516_b.jpg",@"http://5b0988e595225.cdn.sohucs.com/images/20170826/b6fc1b92d3384f7f96a0e7a7e073d579.jpeg", nil]];
+    self.lunArr = [NSMutableArray array]; 
+    WeakSelf
+    [PersonNet requstTJGGArr:^(NSMutableArray *  successArrValue) {
+        weakSelf.lunArr = successArrValue;
+        [weakSelf setUI];
+    } FailDicBlock:nil];
+    NSDictionary * dic = @{ 
+                           @"lat":@([[KUserDefults objectForKey:kLat] floatValue]),
+                           @"lng": @([[KUserDefults objectForKey:KLng] floatValue]),
+                           @"pageNumber": @1,
+                           @"pageSize": @5,
+                           };
+    [PersonNet requstTJArr:dic withArr:^(NSMutableArray * _Nonnull successArrValue) {
+        
+    } FailDicBlock:nil];
 }
 -(void)setUI{
     [self.view addSubview:self.tab_Bottom];
     [self initScroll];
     [self.view addSubview:self.image_security];
+    [self.view addSubview:self.noticeView];
 }
 #pragma mark ---------UITableviewDelegate----------
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -71,7 +87,7 @@
     if (indexPath.section==0) {
         return 195;
     }else if (indexPath.section==1){
-        return ((self.tab_Bottom.width-30)/2*2)+10;
+        return ((kScreenWidth-30)*0.5*1.2*0.5)*2+40;
     }else if (indexPath.section==2){
         return 244;
     } 
@@ -167,7 +183,7 @@
 #pragma mark ----懒加载UI------
 -(MyTab *)tab_Bottom{
     if (!_tab_Bottom) {
-        _tab_Bottom = [[MyTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-153)];
+        _tab_Bottom = [[MyTab alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-213)];
         _tab_Bottom.delegate = self;
         _tab_Bottom.dataSource = self;
         _tab_Bottom.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -176,12 +192,18 @@
 }
 -(UIImageView *)image_security{
     if (!_image_security) {
-        _image_security = [[UIImageView alloc] initWithFrame:CGRectMake(0, (kScreenHeight-25)/2, 150, 55)];
+        _image_security = [[UIImageView alloc] initWithFrame:CGRectMake(0, (kScreenHeight-25)/2, 100, 45)];
         _image_security.image = [UIImage imageNamed:@"secure"];
         _image_security.userInteractionEnabled = YES;
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(secClick)];
         [_image_security addGestureRecognizer:tap];
     }
     return _image_security;
+}
+-(NoticeView *)noticeView{
+    if (!_noticeView) {
+        _noticeView = [[NoticeView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.tab_Bottom.frame)+10, kScreenWidth, 50) controller:self];
+    }
+    return _noticeView;
 }
 @end

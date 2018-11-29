@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
+//NS_ASSUME_NONNULL_BEGIN
 /**
  *  类型自定义
  */
-typedef void (^SuccessArrBlock) (NSMutableArray * successArrValue);
-typedef void (^SuccessDicBlock) (NSDictionary * successDicValue);
+typedef void (^SuccessArrBlock) (NSMutableArray *  successArrValue);
+typedef void (^SuccessDicBlock) (NSDictionary *  successDicValue);
 typedef void (^FailDicBlock) (NSError * failValue);
 @interface PersonNet : NSObject
 
@@ -56,7 +56,17 @@ typedef void (^FailDicBlock) (NSError * failValue);
  @param block 返回内容
  */
 +(void)requstPersonSH:(NSDictionary *)dic withArr:(SuccessArrBlock)block FailDicBlock:(FailDicBlock)fail;
-
+/**
+ 获取首页广告接口 
+ @param block 返回内容
+ */
++(void)requstTJGGArr:(SuccessArrBlock)block FailDicBlock:(FailDicBlock)fail;
+/**
+ 获取首页同城列表
+ @param block 返回内容
+ */
++(void)requstTJArr:(NSDictionary *)dic withArr:(SuccessArrBlock)block FailDicBlock:(FailDicBlock)fail;
 @end
 
-NS_ASSUME_NONNULL_END
+//NS_ASSUME_NONNULL_END
+

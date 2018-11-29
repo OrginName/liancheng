@@ -595,6 +595,19 @@ static NSString * const v1UserCircleServiceTravelPage = @"/v1/user/circle/servic
 static NSString * const v1UserCircleServicePage = @"/v1/user/circle/service/page";
 //生活分页
 static NSString * const v1UserCircleServiceYulePage = @"/v1/user/circle/service/yule/page";
+
+/* 推荐接口*/
+//推荐广告
+static NSString * const v1BannerList = @"/v1/banner/list";
+//显示活动
+static NSString * const v1RecommendActivityList = @"/v1/recommend/activity/list";
+//同城热约列表
+static NSString * const v1RecommendHotList = @"/v1/recommend/hot/list";
+//附近推荐人
+static NSString * const v1RecommendNearbyPage = @"/v1/recommend/nearby/page";
+//合并接口
+static NSString * const v1RecommendPage = @"/v1/recommend/page";
+
 #endif /* YSInterface_h */
 
 

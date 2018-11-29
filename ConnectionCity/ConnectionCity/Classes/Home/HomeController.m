@@ -30,6 +30,7 @@
 #import "ClassifyMo.h"
 #import "RecommendController.h"
 #import "FollowController.h"
+#import "CustomMap.h"
 @interface HomeController ()<JFCityViewControllerDelegate>
 {
     BOOL flag1;
@@ -54,13 +55,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    flag1 = NO;
+    flag1 = NO; 
     self.myMenuArr  = [NSMutableArray array];
     [KUserDefults removeObjectForKey:YCode];
     [KUserDefults removeObjectForKey:YLat];
     [KUserDefults removeObjectForKey:YLng];
+    [self setUI1];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(upDataANme) name:@"CityNameN" object:nil];
     [self initData];
+}
+-(void)setUI1{
+    CustomMap * map = [[CustomMap alloc] initWithFrame:CGRectZero];
+    map.hidden = YES;
+    [self.view addSubview:map];
+    
 }
 -(void)upDataANme{
     UIButton * btn = (UIButton *)[self.navigationItem.titleView viewWithTag:99999];

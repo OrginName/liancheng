@@ -28,4 +28,7 @@
     self.lab_FSNum.text = [receiveDic[kData][@"followCount"] description]?[receiveDic[kData][@"followCount"] description]:@"0";
     self.lab_HZNum.text = [receiveDic[kData][@"likeCount"] description]?[receiveDic[kData][@"likeCount"] description]:@"0";
 }
+- (IBAction)GZClick:(UIButton *)sender {
+    
+}
 @end
