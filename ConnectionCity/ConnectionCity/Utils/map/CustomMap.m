@@ -125,6 +125,7 @@
     [KUserDefults setObject:locationDictionary[@"city"] forKey:kUserCity];
     [KUserDefults setObject:[NSString stringWithFormat:@"%f",location.coordinate.latitude] forKey:kLat];
     [KUserDefults setObject:[NSString stringWithFormat:@"%f",location.coordinate.longitude] forKey:KLng];
+    [KUserDefults setObject:locationDictionary[@"addRess"] forKey:KUserAddress];
     [KUserDefults synchronize];
     [self loadCityData];
     [self updateUseLat];

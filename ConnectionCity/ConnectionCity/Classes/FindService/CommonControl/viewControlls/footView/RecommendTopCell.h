@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface RecommendTopCell : UITableViewCell<UICollectionViewDelegate,UICollectionViewDataSource>
+@property (nonatomic,strong) NSArray * arr_Data;
 @property (nonatomic,strong)UICollectionView * coll_Bottom;
 @property (nonatomic,strong)UIView * view_Bottom;
 @property (nonatomic,strong)NSString * flagStr;//标识加载的cell类型

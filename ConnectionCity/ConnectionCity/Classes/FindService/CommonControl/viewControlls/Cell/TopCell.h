@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ReceMo.h"
 @interface TopCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *image_head;
 @property (weak, nonatomic) IBOutlet UILabel *lab_Name;
-
+@property (nonatomic,strong)HotServiceMo * mo;
 @end

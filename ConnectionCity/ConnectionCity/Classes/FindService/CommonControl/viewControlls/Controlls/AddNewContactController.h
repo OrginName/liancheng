@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+typedef void (^refreshBlock) (void);
 @interface AddNewContactController : BaseViewController
-
+@property (nonatomic,strong)NSDictionary * dicReceive;
+@property (nonatomic,copy) refreshBlock blcok;
 @end

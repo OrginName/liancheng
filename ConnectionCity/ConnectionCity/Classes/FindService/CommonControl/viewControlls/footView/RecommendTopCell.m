@@ -30,13 +30,17 @@
     }
     return self;
 }
+-(void)setArr_Data:(NSArray *)arr_Data{
+    _arr_Data = arr_Data;
+    [self.coll_Bottom reloadData];
+}
 -(UICollectionView *)coll_Bottom{
     if (!_coll_Bottom) {
         ReLayout * flowLyout = [[ReLayout alloc] init];
         FJLayout * flowLayout1 = [[FJLayout alloc] init];
         _coll_Bottom = [[UICollectionView  alloc] initWithFrame:CGRectMake(15, 0, kScreenWidth-30, [self.flagStr isEqualToString:@"First"]?175:224) collectionViewLayout:[self.flagStr isEqualToString:@"First"]?flowLyout:flowLayout1];
         _coll_Bottom.showsHorizontalScrollIndicator = NO;
-         _coll_Bottom.backgroundColor = [UIColor whiteColor];
+        _coll_Bottom.backgroundColor = [UIColor whiteColor];
         _coll_Bottom.delegate = self;
         _coll_Bottom.dataSource = self;
     }
@@ -51,7 +55,7 @@
 }
 #pragma mark UICollectionViewDataSource 数据源方法
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return self.arr_Data.count;
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
@@ -62,9 +66,11 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.flagStr isEqualToString:@"First"]) {
         TopCell * cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"TopCell" forIndexPath:indexPath];
+        cell.mo= self.arr_Data[indexPath.item];
         return cell;
     }else{
        FJCell * cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"FJCell" forIndexPath:indexPath];
+        cell.mo= self.arr_Data[indexPath.item];
         return cell;
     }  
 }

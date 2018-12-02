@@ -60,7 +60,7 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfp-2C-PdI">
                     <rect key="frame" x="10" y="223.5" width="70" height="30"/>
-                    <color key="backgroundColor" red="0.89019607840000003" green="0.18961588541666666" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.91910606620000002" green="0.36992591619999998" blue="0.35516113040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="N3v-kH-fjl"/>
                         <constraint firstAttribute="width" constant="70" id="wm1-Xc-AIl"/>
@@ -117,6 +117,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="btn_GZ" destination="jfp-2C-PdI" id="BqF-WV-04t"/>
                 <outlet property="imag_bac" destination="Een-xN-dNO" id="GfZ-ui-1rI"/>
                 <outlet property="image_head" destination="2ei-Gr-tp4" id="HUs-9u-1Qy"/>
                 <outlet property="lab_FBNum" destination="ORl-e0-pyj" id="m1J-qR-auU"/>

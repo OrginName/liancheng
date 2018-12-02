@@ -607,6 +607,20 @@ static NSString * const v1RecommendHotList = @"/v1/recommend/hot/list";
 static NSString * const v1RecommendNearbyPage = @"/v1/recommend/nearby/page";
 //合并接口
 static NSString * const v1RecommendPage = @"/v1/recommend/page";
+//连程头条接口
+static NSString * const v1HeadlinePage = @"/v1/headline/page";
+
+/* 紧急联系人*/
+//新增紧急联系人
+static NSString * const v1ContactCreate = @"/v1/contact/create";
+//删除紧急联系人
+static NSString * const v1ContactDelete = @"/v1/contact/delete";
+//联系人分页
+static NSString * const v1ContactPage = @"/v1/contact/page";
+//一键报警
+static NSString * const v1ContactSms = @"/v1/contact/sms";
+//修改紧急联系人
+static NSString * const v1ContactUpdate = @"/v1/contact/update";
 
 #endif /* YSInterface_h */
 

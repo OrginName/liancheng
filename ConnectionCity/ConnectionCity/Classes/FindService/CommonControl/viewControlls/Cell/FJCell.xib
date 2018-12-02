@@ -59,6 +59,12 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="C3F-C1-poZ"/>
             <size key="customSize" width="156" height="224"/>
+            <connections>
+                <outlet property="image_Head" destination="lUm-BW-qEL" id="QrJ-lO-Pqe"/>
+                <outlet property="image_sex" destination="TAJ-Bm-RhH" id="AJ4-YK-ckq"/>
+                <outlet property="lab_JL" destination="Gfq-w2-MVI" id="Npc-6C-ub0"/>
+                <outlet property="lab_Name" destination="jc2-dt-CnS" id="Aw6-zn-7Uh"/>
+            </connections>
             <point key="canvasLocation" x="7" y="460"/>
         </collectionViewCell>
     </objects>

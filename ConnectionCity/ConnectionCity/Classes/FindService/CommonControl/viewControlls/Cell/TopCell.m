@@ -32,4 +32,9 @@
     self.lab_Name.layer.mask = maskLayer1;
 
 }
+-(void)setMo:(HotServiceMo *)mo{
+    _mo = mo;
+    [self.image_head sd_setImageWithURL:[NSURL URLWithString:mo.user.headImage] placeholderImage:[UIImage imageNamed:@"button"]];
+    self.lab_Name.text = mo.user.nickName;
+}
 @end

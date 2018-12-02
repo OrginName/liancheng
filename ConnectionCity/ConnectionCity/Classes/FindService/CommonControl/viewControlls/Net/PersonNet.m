@@ -150,8 +150,95 @@
  获取首页同城列表
  @param block 返回内容
  */
-+(void)requstTJArr:(NSDictionary *)dic withArr:(SuccessArrBlock)block FailDicBlock:(FailDicBlock)fail{
++(void)requstTJArr:(NSDictionary *)dic withArr:(ReceMoBlock)block FailDicBlock:(FailDicBlock)fail{
     [YSNetworkTool POST:v1RecommendPage params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        ReceMo * mo = [ReceMo new];
+        mo.activityList = [ActivityMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"activityList"]];
+        mo.bannerList = [ActivityMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"bannerList"]];
+        mo.hotServiceList = [HotServiceMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"hotServiceList"]];
+        mo.nearbyPage = [NearByMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"nearbyPage"]];
+        block(mo);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+/**
+ 新增紧急联系人
+ @param block 返回内容
+ */
++(void)requstAddContact:(NSDictionary *)dic withDic:(SuccessDicBlock)block FailDicBlock:(FailDicBlock)fail{
+    [YSNetworkTool POST:v1ContactCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        block(responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+/**
+ 删除紧急联系人
+ @param block 返回内容
+ */
++(void)requstDeleContact:(NSDictionary *)dic withDic:(SuccessDicBlock)block FailDicBlock:(FailDicBlock)fail{
+    [YSNetworkTool POST:v1ContactDelete params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        block(responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+/**
+ 紧急联系人列表
+ @param block 返回内容
+ */
++(void)requstContactList:(NSDictionary *)dic withDic:(SuccessArrBlock)block FailDicBlock:(FailDicBlock)fail{
+    [YSNetworkTool POST:v1ContactPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        block(responseObject[kData][@"content"]);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+/**
+ 修改紧急联系人
+ @param block 返回内容
+ */
++(void)requstUpdateContact:(NSDictionary *)dic withDic:(SuccessDicBlock)block FailDicBlock:(FailDicBlock)fail{
+    [YSNetworkTool POST:v1ContactUpdate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        block(responseObject[kData]);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+/**
+ 一键报警
+ @param block 返回内容
+ */
++(void)requstContactSMS:(NSDictionary *)dic withDic:(SuccessDicBlock)block FailDicBlock:(FailDicBlock)fail{
+    [YSNetworkTool POST:v1ContactSms params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        block(responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+/**
+ 练成头条接口
+ @param block 返回内容
+ */
++(void)requstGZArr:(SuccessArrBlock)block FailDicBlock:(FailDicBlock)fail{
+    [YSNetworkTool POST:v1HeadlinePage params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray * arr = [NSMutableArray array];
+        for (NSDictionary * dic in responseObject[kData][@"content"]) {
+            TTMo * mo = [TTMo mj_objectWithKeyValues:dic];
+        }
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+//
+/**
+ 关注和取消关注
+ @param block 返回内容
+ */
++(void)requstGZ:(NSDictionary *)dic withArr:(SuccessDicBlock)block FailDicBlock:(FailDicBlock)fail{
+    [YSNetworkTool POST:v1CommonFollowCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         

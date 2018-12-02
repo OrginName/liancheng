@@ -8,7 +8,9 @@
 
 #import "YJBJController.h"
 #import "YJBJDesController.h"
-#import "AddNewContactController.h"
+#import "AddNewContact1Controller.h"
+#import "PersonNet.h"
+#import "CustomMap.h"
 @interface YJBJController ()
 @property (weak, nonatomic) IBOutlet UIView *view_Tip;
 @property (weak, nonatomic) IBOutlet UIButton *btn_ljtj;
@@ -21,8 +23,18 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setUI];
+    [self setUI1];
 }
-
+-(void)MessageClick{
+    YJBJDesController  * des = [YJBJDesController new];
+    des.title = @"一键报警功能说明";
+    [self.navigationController pushViewController:des animated:YES];
+}
+-(void)setUI1{
+    CustomMap * map = [[CustomMap alloc] initWithFrame:CGRectZero];
+    map.hidden = YES;
+    [self.view addSubview:map];
+}
 /**
  一键报警说明
 
@@ -32,21 +44,21 @@
     switch (sender.tag) {
         case 1:
         {
-            YJBJDesController  * des = [YJBJDesController new];
-            des.title = @"一键报警功能说明";
-            [self.navigationController pushViewController:des animated:YES];
+            
         }
             break;
         case 2:
         {
-            AddNewContactController * add = [AddNewContactController new];
+            AddNewContact1Controller * add = [AddNewContact1Controller new];
             add.title = @"添加紧急联系人";
             [self.navigationController pushViewController:add animated:YES];
         }
             break;
         case 3:
         {
-            [YTAlertUtil showTempInfo:@"呼叫110"];
+            [PersonNet requstContactSMS:@{@"address":[KUserDefults objectForKey:KUserAddress]?[KUserDefults objectForKey:KUserAddress]:@""} withDic:^(NSDictionary *successDicValue) {
+                
+            } FailDicBlock:nil];
         }
             break;
         default:
@@ -63,5 +75,6 @@
     self.view_Tip.layer.shadowRadius = 10;
     self.btn_ljtj.layer.borderColor = YSColor(214, 214, 216).CGColor;
     self.btn_ljtj.layer.borderWidth = 1;
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MessageClick) image:@"" title:@"功能说明" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 @end

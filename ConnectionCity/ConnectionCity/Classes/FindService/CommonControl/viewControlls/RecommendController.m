@@ -17,33 +17,37 @@
 #import "TTController.h"
 #import "NoticeView.h"
 #import "PersonNet.h"
+#import "ReceMo.h"
 @interface RecommendController()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,TXScrollLabelViewDelegate>
 @property (nonatomic,strong) MyTab * tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * lunArr;
 @property (nonatomic,strong) UIImageView * image_security;
 @property (nonatomic,strong) NoticeView *noticeView;
+@property (nonatomic,strong) ReceMo * receMo;
 @end
 @implementation RecommendController
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self.tab_Bottom registerClass:[HeadView class] forHeaderFooterViewReuseIdentifier:@"HeadView"];
+    [self setUI];
     [self initData];
+    [self.tab_Bottom registerClass:[HeadView class] forHeaderFooterViewReuseIdentifier:@"HeadView"];
 }
 -(void)initData{
     self.lunArr = [NSMutableArray array]; 
     WeakSelf
-    [PersonNet requstTJGGArr:^(NSMutableArray *  successArrValue) {
-        weakSelf.lunArr = successArrValue;
-        [weakSelf setUI];
-    } FailDicBlock:nil];
-    NSDictionary * dic = @{ 
+    NSDictionary * dic = @{
                            @"lat":@([[KUserDefults objectForKey:kLat] floatValue]),
                            @"lng": @([[KUserDefults objectForKey:KLng] floatValue]),
                            @"pageNumber": @1,
                            @"pageSize": @5,
                            };
-    [PersonNet requstTJArr:dic withArr:^(NSMutableArray * _Nonnull successArrValue) {
-        
+    [PersonNet requstTJGGArr:^(NSMutableArray *  successArrValue) {
+        weakSelf.lunArr = successArrValue;
+        [PersonNet requstTJArr:dic withArr:^(ReceMo *mo) {
+            weakSelf.receMo = mo;
+            NSLog(@"%ld",weakSelf.receMo.hotServiceList.count);
+            [weakSelf.tab_Bottom reloadData];
+        } FailDicBlock:nil];
     } FailDicBlock:nil];
 }
 -(void)setUI{
@@ -69,12 +73,14 @@
         if (!cell) {
             cell = [[RecommendTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RecommendTopCell" withFlag:str];
         }
+        cell.arr_Data = indexPath.section==0?[self.receMo.hotServiceList mutableCopy]:[self.receMo.nearbyPage mutableCopy];
         return cell;
     }else if (indexPath.section==1){
         MiddleCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MiddleCell"];
         if (!cell) {
             cell = [[NSBundle mainBundle] loadNibNamed:@"MiddleCell" owner:nil options:nil][0];
         }
+        cell.arr = [self.receMo.activityList mutableCopy];
         return cell;
     }
     ListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ListCell"];

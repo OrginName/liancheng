@@ -111,6 +111,7 @@
 /** @"UserCity"*/
 #define kUserCity @"UserCity"
 #define kUserCityID @"UserCityID"
+#define KUserAddress @"UserAddress"
 #define kLat @"lat"
 #define KLng @"lng"
 #define YLat @"YLat"

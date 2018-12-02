@@ -17,4 +17,5 @@
 @property (nonatomic,strong)UILabel * lab_Phone;
 @property (nonatomic,strong)UIButton * btn_GL;
 @property (nonatomic,strong)UIView * view_line;
+@property (nonatomic,strong)NSDictionary * dic;
 @end

@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="142" height="85"/>
                                 <color key="backgroundColor" white="1" alpha="0.37944135273972601" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                <state key="normal" title="充值送大礼">
+                                <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -63,7 +63,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="142" height="84"/>
                                 <color key="backgroundColor" white="1" alpha="0.37944135270000001" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                <state key="normal" title="每日签到">
+                                <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -94,7 +94,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="142" height="85"/>
                                 <color key="backgroundColor" white="1" alpha="0.37944135270000001" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                <state key="normal" title="邀请好友">
+                                <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -125,7 +125,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="142" height="85"/>
                                 <color key="backgroundColor" white="1" alpha="0.37944135270000001" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                <state key="normal" title="视频精选">
+                                <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -247,6 +247,16 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="btn1" destination="Joj-yH-cvz" id="tLA-jh-Ier"/>
+                <outlet property="btn2" destination="gj0-hS-X3H" id="YDk-ce-TwM"/>
+                <outlet property="btn3" destination="y4S-61-Qht" id="n9o-BD-EEW"/>
+                <outlet property="btn4" destination="JJi-7I-HbE" id="TkR-Mq-RpH"/>
+                <outlet property="image1" destination="huK-TJ-jTv" id="Ao9-eN-nSV"/>
+                <outlet property="image2" destination="gUX-FA-1Ng" id="WvL-iU-fqo"/>
+                <outlet property="image3" destination="JkM-QF-u1r" id="cte-9Y-hxb"/>
+                <outlet property="image4" destination="O8g-B5-8go" id="4kA-32-HyZ"/>
+            </connections>
             <point key="canvasLocation" x="25" y="136"/>
         </tableViewCell>
     </objects>

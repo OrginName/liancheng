@@ -14,5 +14,12 @@
     [super awakeFromNib];
     // Initialization code
 }
-
+-(void)setMo:(NearByMo *)mo{
+    _mo = mo;
+    [self.image_Head sd_setImageWithURL:[NSURL URLWithString:mo.headImage] placeholderImage:[UIImage imageNamed:@"button"]];
+    self.lab_Name.text = mo.realName;
+    NSString * str = [mo.gender isEqualToString:@"1"]?@"men":@"women";
+    self.image_sex.image = [UIImage imageNamed:str];
+    self.lab_JL.text = KString(@"%@米", mo.distance);
+}
 @end

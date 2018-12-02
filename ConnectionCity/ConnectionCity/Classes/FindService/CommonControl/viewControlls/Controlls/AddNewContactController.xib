@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddNewContactController">
             <connections>
+                <outlet property="txt_Name" destination="xd0-Tn-qPA" id="Krf-FT-6Xm"/>
+                <outlet property="txt_phone" destination="K2l-0q-sNV" id="Ozx-of-jOR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -103,23 +105,23 @@
                         <constraint firstAttribute="height" constant="10" id="MaU-Bh-DAQ"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spx-q4-4Lq">
-                    <rect key="frame" x="0.0" y="140" width="375" height="60"/>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spx-q4-4Lq">
+                    <rect key="frame" x="0.0" y="140" width="375" height="0.0"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查询信息授权" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jok-uf-w57">
-                            <rect key="frame" x="15" y="12.5" width="86" height="17"/>
+                            <rect key="frame" x="15" y="-17.5" width="86" height="17"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="紧急情况下允许紧急联系人致电客服获取您的行程信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9J-Zv-zBy">
-                            <rect key="frame" x="15" y="32.5" width="270" height="13.5"/>
+                            <rect key="frame" x="15" y="2.5" width="270" height="13.5"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
                             <color key="textColor" red="0.67130541801452637" green="0.67835557460784912" blue="0.6819959282875061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="v2t-gr-29J">
-                            <rect key="frame" x="316" y="15" width="51" height="31"/>
+                            <rect key="frame" x="316" y="-15" width="51" height="31"/>
                         </switch>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -129,23 +131,26 @@
                         <constraint firstItem="h9J-Zv-zBy" firstAttribute="leading" secondItem="Jok-uf-w57" secondAttribute="leading" id="TdF-L6-p1H"/>
                         <constraint firstItem="Jok-uf-w57" firstAttribute="leading" secondItem="spx-q4-4Lq" secondAttribute="leading" constant="15" id="dNV-ki-ckL"/>
                         <constraint firstItem="Jok-uf-w57" firstAttribute="centerY" secondItem="spx-q4-4Lq" secondAttribute="centerY" constant="-9" id="oUY-Rp-XRA"/>
-                        <constraint firstAttribute="height" constant="60" id="v8v-2Z-LkB"/>
+                        <constraint firstAttribute="height" id="v8v-2Z-LkB"/>
                         <constraint firstItem="h9J-Zv-zBy" firstAttribute="top" secondItem="Jok-uf-w57" secondAttribute="bottom" constant="3" id="vYs-N4-Z1d"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j1e-lh-OUL">
-                    <rect key="frame" x="0.0" y="200" width="375" height="20"/>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j1e-lh-OUL">
+                    <rect key="frame" x="0.0" y="140" width="375" height="0.0"/>
                     <color key="backgroundColor" red="0.94321072100000003" green="0.96017748120000002" blue="0.96399849650000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="20" id="BFR-P4-d0Y"/>
+                        <constraint firstAttribute="height" id="BFR-P4-d0Y"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFf-yU-Rfv">
-                    <rect key="frame" x="40" y="245" width="295" height="29"/>
+                    <rect key="frame" x="40" y="165" width="295" height="29"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="删除紧急联系人">
                         <color key="titleColor" red="0.91498512029647827" green="0.24532651901245117" blue="0.27567705512046814" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="deleteClick:" destination="-1" eventType="touchUpInside" id="RkR-VE-XnL"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

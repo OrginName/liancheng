@@ -183,6 +183,9 @@
 		72BAB42B20B03A8C00496D29 /* BulidTeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72BAB42920B03A8B00496D29 /* BulidTeamCell.xib */; };
 		72BAB42E20B03A9D00496D29 /* BulidTeamSectionHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */; };
 		72BAB43920B047F500496D29 /* YSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 72BAB43820B047F500496D29 /* YSButton.m */; };
+		72CA3F7E21B2D5670010F33A /* ReceMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 72CA3F7D21B2D5670010F33A /* ReceMo.m */; };
+		72CA3F8221B41DB60010F33A /* AddNewContact1Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 72CA3F8021B41DB60010F33A /* AddNewContact1Controller.m */; };
+		72CA3F8321B41DB60010F33A /* AddNewContact1Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72CA3F8121B41DB60010F33A /* AddNewContact1Controller.xib */; };
 		72D8B14D21287FAC007EE681 /* OtherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B14C21287FAC007EE681 /* OtherView.m */; };
 		72D8B1532128830E007EE681 /* AddKissController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D8B1512128830E007EE681 /* AddKissController.m */; };
 		72D8B1542128830E007EE681 /* AddKissController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72D8B1522128830E007EE681 /* AddKissController.xib */; };
@@ -1124,6 +1127,11 @@
 		72BAB42D20B03A9D00496D29 /* BulidTeamSectionHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulidTeamSectionHead.m; sourceTree = "<group>"; };
 		72BAB43720B047F500496D29 /* YSButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSButton.h; sourceTree = "<group>"; };
 		72BAB43820B047F500496D29 /* YSButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSButton.m; sourceTree = "<group>"; };
+		72CA3F7C21B2D5660010F33A /* ReceMo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceMo.h; sourceTree = "<group>"; };
+		72CA3F7D21B2D5670010F33A /* ReceMo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceMo.m; sourceTree = "<group>"; };
+		72CA3F7F21B41DB60010F33A /* AddNewContact1Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddNewContact1Controller.h; sourceTree = "<group>"; };
+		72CA3F8021B41DB60010F33A /* AddNewContact1Controller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddNewContact1Controller.m; sourceTree = "<group>"; };
+		72CA3F8121B41DB60010F33A /* AddNewContact1Controller.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewContact1Controller.xib; sourceTree = "<group>"; };
 		72D8B124212845CC007EE681 /* AddKissController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddKissController.m; sourceTree = "<group>"; };
 		72D8B125212845CC007EE681 /* AddKissController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddKissController.xib; sourceTree = "<group>"; };
 		72D8B12A212874BA007EE681 /* KissModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KissModel.m; sourceTree = "<group>"; };
@@ -2959,6 +2967,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		72CA3F7B21B2D5470010F33A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				72CA3F7C21B2D5660010F33A /* ReceMo.h */,
+				72CA3F7D21B2D5670010F33A /* ReceMo.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		72D8B15A21296051007EE681 /* BB */ = {
 			isa = PBXGroup;
 			children = (
@@ -3035,6 +3052,9 @@
 				72DC0AC521AEEC37001DECD2 /* TTController.h */,
 				72DC0AC621AEEC37001DECD2 /* TTController.m */,
 				72DC0AC721AEEC37001DECD2 /* TTController.xib */,
+				72CA3F7F21B41DB60010F33A /* AddNewContact1Controller.h */,
+				72CA3F8021B41DB60010F33A /* AddNewContact1Controller.m */,
+				72CA3F8121B41DB60010F33A /* AddNewContact1Controller.xib */,
 			);
 			path = Controlls;
 			sourceTree = "<group>";
@@ -4205,6 +4225,7 @@
 		8DEDA655219E8FE500564E10 /* viewControlls */ = {
 			isa = PBXGroup;
 			children = (
+				72CA3F7B21B2D5470010F33A /* Model */,
 				72DC0A9E21AC3FD7001DECD2 /* Controlls */,
 				72DC0A8921A85732001DECD2 /* Cell */,
 				72DC0A8521A83D2D001DECD2 /* footView */,
@@ -5685,6 +5706,7 @@
 				721041222108CEB500B575BB /* NoticeCell.xib in Resources */,
 				CEE4B29220C6B17C008B8731 /* FoundCell.xib in Resources */,
 				8D22C37620C7E54D004DC8F4 /* TransactionRecordController.xib in Resources */,
+				72CA3F8321B41DB60010F33A /* AddNewContact1Controller.xib in Resources */,
 				8DB42FD520A57D6E00C4EBF8 /* FilterOneController.xib in Resources */,
 				8D24A23720A1D5BF00F0740D /* FirstTanView.xib in Resources */,
 				8D09E19D20BFDC16000F7EBD /* ShowTrvalCell.xib in Resources */,
@@ -6037,12 +6059,14 @@
 				72DC0AC321AEE4EC001DECD2 /* YJBJDesController.m in Sources */,
 				CEC4A54320C3D6FC0026EE19 /* TeamHeadCell.m in Sources */,
 				727418EB20B2AAB9001D6BE1 /* ChangeCell.m in Sources */,
+				72CA3F8221B41DB60010F33A /* AddNewContact1Controller.m in Sources */,
 				CE0BA5E5209D5E9B004C3C33 /* YSNetworkTool.m in Sources */,
 				72626F5A20ED03BC001B807D /* RCDGroupInfo.m in Sources */,
 				8D14FDEB20EB0C000013A9DF /* RCDTabBarBtn.m in Sources */,
 				8DE4663320EDF5D9009730F7 /* RealTimeLocationEndCell.m in Sources */,
 				CE97DC0720B5B1CA003E46BD /* BidManageController.m in Sources */,
 				CEC4A56420C407BF0026EE19 /* WalletController.m in Sources */,
+				72CA3F7E21B2D5670010F33A /* ReceMo.m in Sources */,
 				72BAB43920B047F500496D29 /* YSButton.m in Sources */,
 				CEE4B2AF20C6D948008B8731 /* MemberRenewalController.m in Sources */,
 				8DEA451320C11F85001529F1 /* MommentPlayerController.m in Sources */,
