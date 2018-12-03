@@ -175,6 +175,7 @@
             }
             NSMutableArray * arr3 = [NSMutableArray array];
             NSMutableArray * arr4 = [NSMutableArray array];
+            NSMutableArray * arr5 = [NSMutableArray array];
             NSArray * arr2 = [YSTools stringToJSON:mo.property];
             for (long j=0;j<arr2.count;j++) {
                 NSDictionary * dic1 = arr2[j];
@@ -187,8 +188,16 @@
                 }
                 [arr3 addObject:strName];
             }
+            for (NSDictionary * dic in mo.browserList) {
+                NSString * str = dic[@"headImage"];
+                if ([YSTools dx_isNullOrNilWithObject:str]) {
+                    str = @"http://";
+                }
+                [arr5 addObject:str];
+            }
             mo.propertyNameArr = [arr3 copy];
             mo.typeNameArr = [arr4 copy];
+            mo.imageArr = [arr5 copy];
         }
         user.JNArr = arr1;
         sucBlock(user);

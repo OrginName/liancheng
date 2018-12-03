@@ -12,10 +12,15 @@
 {
     NSMutableArray * _arr_image;
 }
+@property (weak, nonatomic) IBOutlet UILabel *lab_FK;
+@property (weak, nonatomic) IBOutlet UILabel *lab_dd;
+@property (weak, nonatomic) IBOutlet UILabel *lab_yydd;
 @property (weak, nonatomic) IBOutlet UILabel *lab_type;
 @property (weak, nonatomic) IBOutlet UIView *view_line2;
 @property (weak, nonatomic) IBOutlet UIView *view_line1;
 @property (weak, nonatomic) IBOutlet UILabel *lab_typeProperty;
+@property (weak, nonatomic) IBOutlet UILabel *lab_ddNum;
+@property (weak, nonatomic) IBOutlet UILabel *lab_fkRS;
 @end
 @implementation ShowTrvalCell
 -(void)awakeFromNib{
@@ -45,13 +50,16 @@
             identifiy = @"ShowTrvalCell6";
             index = 6;
         }
-    }else if (indexPath.section==2){
+    }else if (indexPath.section==3){
         identifiy = @"ShowTrvalCell2";
         index = 2;
-    }else if (indexPath.section==3){
+    }else if (indexPath.section==4){
         identifiy = @"ShowTrvalCell3";
         index = 3;
-    }else{
+    }else if (indexPath.section==1){
+        identifiy = @"ShowTrvalCell8";
+        index = 8;
+    } else{
         identifiy = @"ShowTrvalCell7";
         index = 7;
     }
@@ -72,6 +80,11 @@
         self.lab_Des.hidden = YES;
         self.view_JNB.hidden = YES;
         self.lab_JNB.hidden = YES;
+        self.lab_yydd.hidden = YES;
+        self.lab_dd.hidden = YES;
+        self.lab_ddNum.hidden = YES;
+        self.lab_FK.hidden = YES;
+        self.lab_fkRS.hidden = YES;
         self.lab_Title.text = trval.user.nickName;
         if (trval.cityName.length!=0) {
             [self.btn_city setTitle:trval.cityName forState:UIControlStateNormal];
@@ -121,7 +134,9 @@
 //        self.view_trval1.hidden = YES;
         self.lab_DW.hidden = YES;
         self.layout_height.constant = 55;
+        self.lab_fkRS.text = KString(@"%@人", [list1.browserCount description]);
         self.lab_Title.text = list.nickName?list.nickName:@"-";
+        self.lab_ddNum.text = [list1.orderCount description];
         if (list.cityName.length!=0) {
             [self.btn_city setTitle:list.cityName forState:UIControlStateNormal];
         }

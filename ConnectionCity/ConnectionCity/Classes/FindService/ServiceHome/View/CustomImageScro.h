@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 @protocol CustomImageScroDelegate <NSObject>
 @optional
-- (void)CustomScroBtnClick:(UIButton *)tag; //声明协议方法
+//- (void)CustomScroBtnClick:(UIButton *)tag; //声明协议方法
+- (void)CustomScroIMGClick:(UIButton *)tag; //声明协议方法
 @end
 
 @interface CustomImageScro : UIView<UIScrollViewDelegate>

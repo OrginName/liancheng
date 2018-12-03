@@ -47,9 +47,10 @@
     [super viewDidLoad];
     [self setUI];
     if (self.arr_User.count==0) {
-        [self setConnectionMo:self.connectionMo];
+//        [self setConnectionMo:self.connectionMo];
         self.view_leftRight.hidden = YES;
         self.layout_view.constant = 0;
+        [self loadUser:self.connectionMo.ID];
     }else{
         serviceListNewMo * user = self.arr_User[self.flag];
         [self loadUser:user.ID];

@@ -198,7 +198,7 @@
 }
 -(UIImageView *)image_security{
     if (!_image_security) {
-        _image_security = [[UIImageView alloc] initWithFrame:CGRectMake(0, (kScreenHeight-25)/2, 100, 45)];
+        _image_security = [[UIImageView alloc] initWithFrame:CGRectMake(0, (kScreenHeight-15)/2, 120, 50)];
         _image_security.image = [UIImage imageNamed:@"secure"];
         _image_security.userInteractionEnabled = YES;
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(secClick)];

@@ -35,6 +35,10 @@ proArr(comments);
 proStr(score);
 proDic(serviceCategoryName);
 proArr(serviceCircleList);//圈子
+proArr(browserList);//浏览访客List
+proStr(browserCount);//访客数
+proStr(orderCount);//应邀订单数
+proArr(imageArr);//浏览的访客图片数
 @property (nonatomic,strong) UserMo * user1;
 @end
 
@@ -48,3 +52,4 @@ proArr(replyList);//回复列表
 @property (nonatomic,assign)CGFloat cellHeight;
 @property (nonatomic,strong)UserMo * user;
 @end
+

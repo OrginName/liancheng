@@ -14,9 +14,13 @@
 #import "privateUserInfoModel.h"
 #import "PersonDTController.h"
 #import "PersonNet.h"
-@interface ShowtrvalTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ShowTrvalCellDelegate,CustomScroDelegate>
+#import "CustomImageScro.h"
+#import "PersonalBasicDataController.h"
+#import "UserMo.h"
+@interface ShowtrvalTab()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,ShowTrvalCellDelegate,CustomScroDelegate,CustomImageScroDelegate>
 {
     CustomScro * _scr;
+    CustomImageScro * _scr1;
 }
 @property (nonatomic,strong) SDCycleScrollView * cycleScrollView;
 @property (nonatomic,strong) NSMutableArray * lunArr;//轮播图数组
@@ -74,9 +78,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section==0) {
         return 4;
-    }else if (section==2){
+    }else if (section==3||section==1){
         return 1;
-    }else if(section==3){
+    }else if(section==4){
         if (self.Mo!=nil) {
             return [self.Mo.serviceList[_JNIndex] commentList].count;
         }else{
@@ -93,7 +97,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
-        if (indexPath.row == 0 ) {
+        if (indexPath.row == 0) {
             return 65;
         }else if(indexPath.row==3){
             if ((self.Mo!=nil&&self.Mo.serviceCircleList.count==0)||(self.MoTrval!=nil&&self.MoTrval.serviceCircleList.count==0)) {
@@ -107,7 +111,7 @@
             }
             return 40;
         }
-    }else if (indexPath.section==2){
+    }else if (indexPath.section==3){
         if (self.Mo!=nil) {
             float hidth = [YSTools cauculateHeightOfText:[self.Mo.serviceList[self.JNIndex] introduce] width:kScreenWidth-40 font:13];
             return 200+hidth;
@@ -115,7 +119,7 @@
             float hidth = [YSTools cauculateHeightOfText:self.MoTrval.introduce width:kScreenWidth-40 font:13];
             return 170+hidth;
         }
-    }else if(indexPath.section==3){
+    }else if(indexPath.section==4){
         if (self.Mo!=nil) {
             commentList * com =[self.Mo.serviceList[self.JNIndex] commentList][indexPath.row];
             return com.cellHeight;
@@ -123,7 +127,13 @@
             comments * com = self.MoTrval.comments[indexPath.row];
             return com.cellHeight;
         }
-    }else{
+    }else if (indexPath.section==1){
+        if (self.Mo!=nil) {
+            return [self.Mo.serviceList[_JNIndex] imageArr].count!=0?105:50;
+        }else{
+            return 0;
+        }
+    } else{
         if (self.Mo!=nil) {
             ServiceListMo * list = self.Mo.serviceList[_JNIndex];
             return [YSTools cauculateHeightOfText:list.propertyNameArr[indexPath.row] width:kScreenWidth-40 font:14]+40;
@@ -133,9 +143,9 @@
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section==3) {
+    if (section==4) {
         return 50;
-    }else if(section==2){
+    }else if(section==3){
         return 0;
     }
     return 10;
@@ -144,7 +154,7 @@
     return 0.001f;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    if (section==3) {
+    if (section==4) {
         ShowTrvalCell * cell = [[NSBundle mainBundle] loadNibNamed:@"ShowTrvalCell" owner:nil options:nil][4];
         StarEvaluator * ev = [[StarEvaluator alloc] initWithFrame:CGRectMake(0, 9, 140, 40)];
         ev.animate = NO;
@@ -167,7 +177,7 @@
     return footView;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return 5;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ShowTrvalCell *cell = [ShowTrvalCell tempTableViewCellWith:tableView indexPath:indexPath];
@@ -191,12 +201,21 @@
             [cell.view_JNB addSubview:_scr];
         }
     }
-    if (indexPath.section==0||indexPath.section==2) {
+    if (indexPath.section==1) {
+        cell.list = self.Mo;
+        ServiceListMo * list = self.Mo.serviceList[self.JNIndex];
+        if (!_scr1) {
+            _scr1 = [[CustomImageScro alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth-50, cell.view_Visitors.height) arr:list.imageArr];
+            _scr1.delegate = self;
+            [cell.view_Visitors addSubview:_scr1];
+        }
+    }
+    if (indexPath.section==0||indexPath.section==3) {
         cell.JNIndexReceive = self.JNIndex;
         cell.list = self.Mo;
         cell.trval = self.MoTrval;
         
-    }else if(indexPath.section==3){
+    }else if(indexPath.section==4){
         if (self.Mo!=nil) {
             cell.commen = [self.Mo.serviceList[self.JNIndex]commentList][indexPath.row];
         }else{
@@ -223,6 +242,19 @@
 //        [self.control.navigationController pushViewController:friend animated:YES];
         
     }
+}
+#pragma mark ---CustomImageScroDelegate-----
+- (void)CustomScroIMGClick:(UIButton *)tag{
+    ServiceListMo * list = self.Mo.serviceList[self.JNIndex];
+    PersonalBasicDataController * person = [PersonalBasicDataController new];
+    UserMo * user = [UserMo new];
+    NSDictionary * dic =list.browserList[tag.tag-1];
+    user.headImage = [dic[@"headImage"] description];
+    user.nickName = [dic[@"nickName"] description];
+    user.ID =[dic[@"id"] description];
+    user.mobile =[dic[@"mobile"] description];
+    person.connectionMo = user;
+    [self.control.navigationController pushViewController:person animated:YES];
 }
 -(NSMutableArray *)loadA:(NSString *)a b:(NSString *)b c:(NSString *)c d:(NSString *)d{
     NSMutableArray * arr = [NSMutableArray array];

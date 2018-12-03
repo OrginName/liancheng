@@ -15,23 +15,25 @@
             float width = 0.0f;
             width=self.height-10;
             UIButton * btn = [[UIButton alloc] initWithFrame:CGRectMake(5+i*(width+10), 5, width, width)];
-            [btn setBackgroundImage:[UIImage imageNamed:arr[i]] forState:UIControlStateNormal];
+            if ([arr[i] containsString:@"http"]) {
+                [btn sd_setBackgroundImageWithURL:[NSURL URLWithString:arr[i]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"logo2"]];
+            }else
+                [btn setBackgroundImage:[UIImage imageNamed:arr[i]] forState:UIControlStateNormal];
             btn.layer.cornerRadius = width/2;
             btn.layer.masksToBounds = YES;
             [btn setBackgroundColor:[UIColor whiteColor]];
             [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
             btn.tag=i+1;
+            self.scrollView.contentSize = CGSizeMake((width+10)*arr.count, 0);
             [self.scrollView addSubview:btn];
-            self.scrollView.contentSize = CGSizeMake(width*arr.count, 0);
-        }
-        
+        } 
     }
     return self;
 }
 
 -(void)btnClick:(UIButton *)btn{
-    if (self.delegate&&[self.delegate respondsToSelector:@selector(CustomScroBtnClick:)]) {
-        [self.delegate CustomScroBtnClick:btn];
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(CustomScroIMGClick:)]) {
+        [self.delegate CustomScroIMGClick:btn];
     }
 }
 -(UIScrollView *)scrollView{

@@ -14,7 +14,7 @@
         self.contentView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.view_Top];
         [self addSubview:self.lab_title];
-        [self addSubview:self.lab_more];
+//        [self addSubview:self.lab_more];
         [self addSubview:self.image_right];
     }
     return self;

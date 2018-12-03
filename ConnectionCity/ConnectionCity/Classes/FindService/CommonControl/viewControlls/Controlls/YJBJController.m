@@ -56,8 +56,9 @@
             break;
         case 3:
         {
+            NSLog(@"%@",[KUserDefults objectForKey:KUserAddress]);
             [PersonNet requstContactSMS:@{@"address":[KUserDefults objectForKey:KUserAddress]?[KUserDefults objectForKey:KUserAddress]:@""} withDic:^(NSDictionary *successDicValue) {
-                
+                [YSTools DaDianHua:@"110"];
             } FailDicBlock:nil];
         }
             break;

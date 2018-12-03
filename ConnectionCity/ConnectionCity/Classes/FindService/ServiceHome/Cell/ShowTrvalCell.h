@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab_JNB;
 @property (nonatomic,assign) NSInteger JNIndexReceive;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_height;
+@property (weak, nonatomic) IBOutlet UIView *view_Visitors;
 @property (nonatomic,strong) comments * commentrval;
 @property (weak, nonatomic) IBOutlet UIView *view_RZ;
 @property (nonatomic,strong) commentList * commen;
