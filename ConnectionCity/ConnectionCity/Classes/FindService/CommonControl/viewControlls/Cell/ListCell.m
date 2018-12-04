@@ -8,6 +8,7 @@
 
 #import "ListCell.h"
 #import "YBImageBrowser.h"
+#import "ServiceHomeNet.h"
 @implementation ListCell
 
 - (void)awakeFromNib {
@@ -49,6 +50,8 @@
     [browser show];
 }
 - (IBAction)YY:(UIButton *)sender {
-    
+    [ServiceHomeNet requstServiceListJN:@{@"id":self.mom.userId} withSuc:^(UserMo *user) {
+        
+     }];
 }
 @end
