@@ -18,6 +18,8 @@
 #import "NoticeView.h"
 #import "PersonNet.h"
 #import "ReceMo.h"
+#import "ShowResumeController.h"
+#import "serviceListNewMo.h"
 @interface RecommendController()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,TXScrollLabelViewDelegate>
 @property (nonatomic,strong) MyTab * tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * lunArr;
@@ -87,7 +89,18 @@
     if (!cell) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil][0];
     }
+    WeakSelf
     cell.mom = self.receMo.circleList[indexPath.row];
+    cell.block = ^(ListCell *cell) {
+        NSIndexPath * index = [weakSelf.tab_Bottom indexPathForCell:cell];
+        Moment * mo = weakSelf.receMo.circleList[index.row];
+        ShowResumeController * show = [ShowResumeController new];
+        show.Receive_Type = ENUM_TypeTrval;
+        show.flag = @"1";
+        show.flagNext = @"NONext";
+        [weakSelf.navigationController pushViewController:show animated:YES];
+    };
+    
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -50,8 +50,15 @@
     [browser show];
 }
 - (IBAction)YY:(UIButton *)sender {
+    WeakSelf
     [ServiceHomeNet requstServiceListJN:@{@"id":self.mom.userId} withSuc:^(UserMo *user) {
-        
+        if (!user) {
+            
+        }else{
+            if (weakSelf.block) {
+                weakSelf.block(self);
+            } 
+        }
      }];
 }
 @end

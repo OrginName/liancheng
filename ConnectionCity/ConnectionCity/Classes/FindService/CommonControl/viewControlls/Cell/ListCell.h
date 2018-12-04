@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Moment.h"
+@class ListCell;
+typedef void (^BtnClickBlock)(ListCell * cell);
 @interface ListCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lab_des;
 @property (weak, nonatomic) IBOutlet UIImageView *iamge3;
@@ -20,4 +22,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *lab_nickName;
 @property (nonatomic,strong) NSMutableArray * Arr;
 @property (nonatomic,strong)Moment * mom;
+@property (nonatomic,copy)BtnClickBlock block;
 @end
