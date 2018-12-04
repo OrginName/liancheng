@@ -64,14 +64,14 @@
     if (section==0||section==1||section==2) {
         return 1;
     }
-    return 10;
+    return self.receMo.circleList.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0||indexPath.section==2) {
         RecommendTopCell * cell = [tableView dequeueReusableCellWithIdentifier:@"RecommendTopCell"];
         NSString * str = indexPath.section==0?@"First":@"Third";
         if (!cell) {
-            cell = [[RecommendTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RecommendTopCell" withFlag:str];
+            cell = [[RecommendTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RecommendTopCell" withFlag:str control:self];
         }
         cell.arr_Data = indexPath.section==0?[self.receMo.hotServiceList mutableCopy]:[self.receMo.nearbyPage mutableCopy];
         return cell;
@@ -87,6 +87,7 @@
     if (!cell) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil][0];
     }
+    cell.mom = self.receMo.circleList[indexPath.row];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -97,7 +98,7 @@
     }else if (indexPath.section==2){
         return 244;
     } 
-    return 327;
+    return 280;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     HeadView * head = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"HeadView"];

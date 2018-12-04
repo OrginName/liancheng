@@ -54,6 +54,11 @@ proStr(containsImage);
 proStr(containsVideo);
 proArr(replyList);
 proStr(videoCover);//视频截图
+proStr(headImage);
+proStr(age);
+proStr(gender);
+proStr(distance);
+proStr(nickName);
 @property (nonatomic,strong)UIImage * coverImage;
 @property (nonatomic,strong) UserMo * userMo;
 @end

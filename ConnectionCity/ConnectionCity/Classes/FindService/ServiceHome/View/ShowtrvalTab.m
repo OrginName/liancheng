@@ -223,8 +223,10 @@
         }
     }else{
         if (self.Mo!=nil) {
-            cell.propertyName = [self.Mo.serviceList[self.JNIndex] propertyNameArr][indexPath.row];
-            cell.typeName = [self.Mo.serviceList[self.JNIndex] typeNameArr][indexPath.row];
+            if ([self.Mo.serviceList[self.JNIndex] propertyNameArr].count!=0&&[self.Mo.serviceList[self.JNIndex] typeNameArr].count!=0) {
+                cell.propertyName = [self.Mo.serviceList[self.JNIndex] propertyNameArr][indexPath.row];
+                cell.typeName = [self.Mo.serviceList[self.JNIndex] typeNameArr][indexPath.row];
+            }
         }
     }
     return cell;

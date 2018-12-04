@@ -13,6 +13,7 @@ proArr(activityList);//显示活动列表
 proArr(bannerList);//广告列表
 proArr(hotServiceList);//热门服务列表
 proArr(nearbyPage);//附近动态
+ProMutArr(circleList);//附近的人的圈子列表
 @end
 
 @interface ActivityMo : BaseModel
@@ -43,7 +44,12 @@ proStr(headImage);
 proStr(genderName);
 proStr(realName);
 proStr(gender);
+proStr(age);
+proStr(nickName);
+proArr(serviceCircleList);//朋友圈列表
+proArr(serviceCircleListMo);//朋友圈列表Model
 @end
+
 
 @interface TTMo : BaseModel
 proStr(ID);

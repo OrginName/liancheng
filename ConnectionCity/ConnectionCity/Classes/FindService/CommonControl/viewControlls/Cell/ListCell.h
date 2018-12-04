@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Moment.h"
 @interface ListCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UILabel *lab_des;
+@property (weak, nonatomic) IBOutlet UIImageView *iamge3;
+@property (weak, nonatomic) IBOutlet UIImageView *image2;
+@property (weak, nonatomic) IBOutlet UIImageView *image1;
+@property (weak, nonatomic) IBOutlet UILabel *lab_JL;
+@property (weak, nonatomic) IBOutlet UILabel *lab_age;
+@property (weak, nonatomic) IBOutlet UIImageView *image_sex;
+@property (weak, nonatomic) IBOutlet UIImageView *img_head;
+@property (weak, nonatomic) IBOutlet UILabel *lab_nickName;
+@property (nonatomic,strong) NSMutableArray * Arr;
+@property (nonatomic,strong)Moment * mom;
 @end

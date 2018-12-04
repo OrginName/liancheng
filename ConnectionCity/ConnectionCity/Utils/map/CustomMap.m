@@ -125,7 +125,13 @@
     [KUserDefults setObject:locationDictionary[@"city"] forKey:kUserCity];
     [KUserDefults setObject:[NSString stringWithFormat:@"%f",location.coordinate.latitude] forKey:kLat];
     [KUserDefults setObject:[NSString stringWithFormat:@"%f",location.coordinate.longitude] forKey:KLng];
-    [KUserDefults setObject:locationDictionary[@"addRess"] forKey:KUserAddress];
+    NSString * address;
+    if ([locationDictionary[@"addRess"] length]>20) {
+        address = [[locationDictionary[@"addRess"] componentsSeparatedByString:@"市"][1] componentsSeparatedByString:@"("][0];
+    }else{
+        address = locationDictionary[@"addRess"];
+    } 
+    [KUserDefults setObject:address forKey:KUserAddress];
     [KUserDefults synchronize];
     [self loadCityData];
     [self updateUseLat];

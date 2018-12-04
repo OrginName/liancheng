@@ -157,6 +157,21 @@
         mo.bannerList = [ActivityMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"bannerList"]];
         mo.hotServiceList = [HotServiceMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"hotServiceList"]];
         mo.nearbyPage = [NearByMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"nearbyPage"]];
+        NSMutableArray * arr2 = [NSMutableArray array];
+        for (NearByMo * mo1 in mo.nearbyPage) {
+            NSArray * arr3 = [Moment mj_objectArrayWithKeyValuesArray:mo1.serviceCircleList];
+            for (int i=0;i<arr3.count;i++) {
+                Moment * mom = arr3[i];
+                mom.headImage = mo1.headImage;
+                mom.age = mo1.age;
+                mom.gender = mo1.gender;
+                mom.distance = mo1.distance;
+                mom.nickName = mo1.nickName;
+                [[arr3 mutableCopy] replaceObjectAtIndex:i withObject:mom];
+            } 
+            [arr2 addObjectsFromArray:arr3];
+        }
+        mo.circleList = arr2;
         block(mo);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         

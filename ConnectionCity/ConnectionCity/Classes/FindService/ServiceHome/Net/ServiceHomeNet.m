@@ -177,17 +177,19 @@
             NSMutableArray * arr4 = [NSMutableArray array];
             NSMutableArray * arr5 = [NSMutableArray array];
             NSArray * arr2 = [YSTools stringToJSON:mo.property];
-            for (long j=0;j<arr2.count;j++) {
-                NSDictionary * dic1 = arr2[j];
-                NSString * typeName = dic1[@"name"];
-                [arr4 addObject:typeName];
-                NSString * strName = @"";
-                for (long k=0;k<[dic1[@"childs"] count];k++) {
-                    NSDictionary * dic2 = dic1[@"childs"][k];
-                    strName = [NSString stringWithFormat:@"%@  %@",dic2[@"name"],strName];
+            if (arr2.count!=0) {
+                for (long j=0;j<arr2.count;j++) {
+                    NSDictionary * dic1 = arr2[j];
+                    NSString * typeName = dic1[@"name"];
+                    [arr4 addObject:typeName];
+                    NSString * strName = @"";
+                    for (long k=0;k<[dic1[@"childs"] count];k++) {
+                        NSDictionary * dic2 = dic1[@"childs"][k];
+                        strName = [NSString stringWithFormat:@"%@  %@",dic2[@"name"],strName];
+                    }
+                    [arr3 addObject:strName];
                 }
-                [arr3 addObject:strName];
-            }
+            } 
             for (NSDictionary * dic in mo.browserList) {
                 NSString * str = dic[@"headImage"];
                 if ([YSTools dx_isNullOrNilWithObject:str]) {

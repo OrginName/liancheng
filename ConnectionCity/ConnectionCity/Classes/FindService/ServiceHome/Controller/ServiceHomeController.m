@@ -283,7 +283,7 @@
     [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude),@"distance":KDistance}];
 }
 -(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
-     ShowResumeController * show = [ShowResumeController new];
+    ShowResumeController * show = [ShowResumeController new];
     show.Receive_Type = ENUM_TypeTrval;
     show.flag = @"1";
     show.data_Count = self.cusMap.Arr_Mark;

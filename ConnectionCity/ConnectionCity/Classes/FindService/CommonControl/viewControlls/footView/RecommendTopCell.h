@@ -13,7 +13,8 @@
 @property (nonatomic,strong)UICollectionView * coll_Bottom;
 @property (nonatomic,strong)UIView * view_Bottom;
 @property (nonatomic,strong)NSString * flagStr;//标识加载的cell类型
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withFlag:(NSString *)flag;
+@property (nonatomic,strong)UIViewController * controller;
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withFlag:(NSString *)flag control:(UIViewController *)con;
 @end
 @interface ReLayout : UICollectionViewFlowLayout
 

@@ -9,6 +9,10 @@
 #import "RecommendTopCell.h"
 #import "TopCell.h"
 #import "FJCell.h"
+#import "ShowResumeController.h"
+#import "serviceListNewMo.h"
+#import "PersonalBasicDataController.h"
+#import "UserMo.h"
 @class ReLayout;
 @class FJLayout;
 @implementation RecommendTopCell
@@ -16,9 +20,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 }
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withFlag:(NSString *)flag{
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withFlag:(NSString *)flag control:(UIViewController *)con{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.flagStr = flag;
+        self.controller = con;
         [self.contentView addSubview:self.coll_Bottom];
         
         if ([flag isEqualToString:@"First"]) {
@@ -75,7 +80,31 @@
     }  
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+    if ([self.flagStr isEqualToString:@"First"]) {
+        ShowResumeController * show = [ShowResumeController new];
+        show.Receive_Type = ENUM_TypeTrval;
+        show.flag = @"1";
+        NSMutableArray * arr = [NSMutableArray array];
+        for (HotServiceMo * mo in self.arr_Data) {
+            serviceListNewMo * mo1 = [serviceListNewMo new];
+            mo1.ID = mo.userId;
+            [arr addObject:mo1];
+        }
+        show.data_Count = arr;
+        show.zIndex = indexPath.item;
+        [self.controller.navigationController pushViewController:show animated:YES];
+    }else{
+         PersonalBasicDataController * personal = [PersonalBasicDataController new];
+        NSMutableArray * arr = [NSMutableArray array];
+        for (NearByMo * mo in self.arr_Data) {
+            serviceListNewMo * mo1 = [serviceListNewMo new];
+            mo1.ID = mo.ID;
+            [arr addObject:mo1];
+        }
+        personal.arr_User = arr;
+        personal.flag = indexPath.item;
+        [self.controller.navigationController pushViewController:personal animated:YES];
+    }
 }
 @end
 @implementation ReLayout

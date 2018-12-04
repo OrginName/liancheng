@@ -136,7 +136,12 @@
         self.layout_height.constant = 55;
         self.lab_fkRS.text = KString(@"%@人", [list1.browserCount description]);
         self.lab_Title.text = list.nickName?list.nickName:@"-";
-        self.lab_ddNum.text = [list1.orderCount description];
+        if ([[list1.orderCount description] isEqualToString:@"0"]) {
+            self.lab_dd.hidden = YES;
+            self.lab_ddNum.hidden =  YES;
+            self.lab_yydd.hidden = YES;
+        }else
+            self.lab_ddNum.text = [list1.orderCount description];
         if (list.cityName.length!=0) {
             [self.btn_city setTitle:list.cityName forState:UIControlStateNormal];
         }
