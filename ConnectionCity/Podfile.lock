@@ -96,35 +96,6 @@ DEPENDENCIES:
   - YNPageViewController
   - YYImage
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - AFNetworking
-    - AMap2DMap
-    - AMapFoundation
-    - AMapLocation
-    - AMapSearch
-    - DZNEmptyDataSet
-    - FMDB
-    - HappyDNS
-    - IQKeyboardManager
-    - JCore
-    - JPush
-    - Masonry
-    - MBProgressHUD
-    - MJExtension
-    - MJRefresh
-    - MLLabel
-    - MOBFoundation
-    - PGDatePicker
-    - PGPickerView
-    - Qiniu
-    - RongCloudIM
-    - SDWebImage
-    - TXScrollLabelView
-    - TYAlertController
-    - YNPageViewController
-    - YYImage
-
 EXTERNAL SOURCES:
   ShareSDK3:
     :git: https://github.com/MobClub/ShareSDK-for-iOS-Spec.git
@@ -165,4 +136,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 68c7ba6a67ba83b122bad14ebc6b42ad575bfce9
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.1.1

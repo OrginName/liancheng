@@ -53,12 +53,17 @@
     WeakSelf
     [ServiceHomeNet requstServiceListJN:@{@"id":self.mom.userId} withSuc:^(UserMo *user) {
         if (!user) {
-            
+            [YTAlertUtil showTempInfo:@"暂无服务"];
         }else{
             if (weakSelf.block) {
                 weakSelf.block(self);
             } 
         }
      }];
+}
+- (IBAction)btn_ClikHead:(UIButton *)sender {
+    if (self.headBlcok) {
+        self.headBlcok(self);
+    }
 }
 @end

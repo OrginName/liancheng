@@ -20,7 +20,11 @@
 #import "ReceMo.h"
 #import "ShowResumeController.h"
 #import "serviceListNewMo.h"
+#import "PersonalBasicDataController.h"
 @interface RecommendController()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,TXScrollLabelViewDelegate>
+{
+    SDCycleScrollView * _cy;
+}
 @property (nonatomic,strong) MyTab * tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * lunArr;
 @property (nonatomic,strong) UIImageView * image_security;
@@ -92,13 +96,27 @@
     WeakSelf
     cell.mom = self.receMo.circleList[indexPath.row];
     cell.block = ^(ListCell *cell) {
-        NSIndexPath * index = [weakSelf.tab_Bottom indexPathForCell:cell];
-        Moment * mo = weakSelf.receMo.circleList[index.row];
         ShowResumeController * show = [ShowResumeController new];
         show.Receive_Type = ENUM_TypeTrval;
         show.flag = @"1";
         show.flagNext = @"NONext";
+        NSMutableArray * arr = [NSMutableArray array];
+        for (Moment * mo in weakSelf.receMo.circleList) {
+            serviceListNewMo * mo1 = [serviceListNewMo new];
+            mo1.ID = mo.userId;
+            [arr addObject:mo1];
+        }
+        show.data_Count = arr;
         [weakSelf.navigationController pushViewController:show animated:YES];
+    };
+    cell.headBlcok = ^(ListCell *cell) {
+        NSIndexPath * index = [self.tab_Bottom indexPathForCell:cell];
+        Moment * mo = self.receMo.circleList[index.row];
+        PersonalBasicDataController * base = [PersonalBasicDataController new];
+        UserMo * user = [UserMo new];
+        user.ID = mo.userId;
+        base.connectionMo = user;
+        [self.navigationController pushViewController:base animated:YES];
     };
     
     return cell;
@@ -164,7 +182,7 @@
     cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     cycleScrollView.delegate = self;
     cycleScrollView.autoScroll = YES;
-    cycleScrollView.dotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
+//    cycleScrollView.dotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
     cycleScrollView.placeholderImage = [UIImage imageNamed:@"no-pic"];
     [view_Bottom addSubview:cycleScrollView];
     //--- 模拟加载延迟
@@ -184,21 +202,57 @@
     rightImage.image = [UIImage imageNamed:@"arraw-right"];
     [view_Bottom addSubview:rightImage];
     
-    NSString *scrollTitle = @"测试测试测试测试";
-    TXScrollLabelView *scrollLabelView = [TXScrollLabelView scrollWithTitle:scrollTitle type:TXScrollLabelViewTypeFlipRepeat velocity:2 options:UIViewAnimationOptionTransitionNone];
-    scrollLabelView.scrollLabelViewDelegate = self;
-    scrollLabelView.scrollInset = UIEdgeInsetsMake(0, -100, 0, 0);
-    scrollLabelView.scrollTitleColor = YSColor(40, 40, 40);
-    scrollLabelView.font = [UIFont systemFontOfSize:15];
-    scrollLabelView.backgroundColor = [UIColor whiteColor];
-    scrollLabelView.frame = CGRectMake(120, 190, kScreenWidth-150, 50);
-    [view_Bottom addSubview:scrollLabelView];
-    [scrollLabelView beginScrolling];
+//    NSString *balance =@"888888";
+//    NSMutableAttributedString *aString = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"账户余额: %@元",balance]];
+//    [aString addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor]range:NSMakeRange(0,1)];
+//    [aString addAttribute:NSForegroundColorAttributeName value:[UIColor yellowColor]range:NSMakeRange(1,1)];
+//    [aString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor]range:NSMakeRange(2,1)];
+//    [aString addAttribute:NSForegroundColorAttributeName value:[UIColor purpleColor]range:NSMakeRange(3,1)];
+//    [aString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor]range:NSMakeRange(6, balance.length)];
+//    [aString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15]range:NSMakeRange(6, balance.length)];
+    
+    _cy = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(120, 190, kScreenWidth-150, 50) delegate:self placeholderImage:nil];
+    _cy.scrollDirection = UICollectionViewScrollDirectionVertical;
+    _cy.showPageControl = NO;
+    _cy.imageURLStringsGroup = @[@"",@"",@""];
+    [view_Bottom addSubview:_cy];
+    
+//    TXScrollLabelView * scrollView = [TXScrollLabelView scrollWithTextArray:@[@"1",@"2",@"3"] type:TXScrollLabelViewTypeFlipNoRepeat velocity:2 options:UIViewAnimationOptionTransitionNone inset:UIEdgeInsetsMake(0, -100, 0, 0)];
+//    [scrollView setupAttributeTitle:aString];
+//    scrollView.scrollLabelViewDelegate = self;
+////    scrollView.scrollInset = UIEdgeInsetsMake(0, -100, 0, 0);
+//    scrollView.scrollTitleColor = YSColor(40, 40, 40);
+//    scrollView.font = [UIFont systemFontOfSize:15];
+//    scrollView.backgroundColor = [UIColor whiteColor];
+//    scrollView.frame = CGRectMake(120, 190, kScreenWidth-150, 50);
+//    [view_Bottom addSubview:scrollView];
+//    [scrollView beginScrolling];
  
     UIView * view2 = [[UIView alloc] initWithFrame:CGRectMake(0, 240, self.tab_Bottom.width, 10)];
     view2.backgroundColor = YSColor(242, 243, 244);
     [view_Bottom addSubview:view2];
     
+}
+// 如果要实现自定义cell的轮播图，必须先实现customCollectionViewCellClassForCycleScrollView:和setupCustomCell:forIndex:代理方法
+- (Class)customCollectionViewCellClassForCycleScrollView:(SDCycleScrollView *)view
+{
+    if (view != _cy) {
+        return nil;
+    }
+    return [CustomCollectionViewCell class];
+}
+
+- (void)setupCustomCell:(UICollectionViewCell *)cell forIndex:(NSInteger)index cycleScrollView:(SDCycleScrollView *)view
+{
+    CustomCollectionViewCell *myCell = (CustomCollectionViewCell *)cell;
+    NSArray *titleArray = @[@"新闻",
+                            @"娱乐",
+                            @"体育"];
+    NSArray *contentArray = @[@"新闻新闻新闻新闻新闻新闻新闻新闻新闻新闻新闻新闻",
+                              @"娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐",
+                              @"体育体育体育体育体育体育体育体育体育体育体育体育"];
+    myCell.titleLabel.text = titleArray[index];
+    myCell.contentLabel.text = contentArray[index];
 }
 #pragma mark ----懒加载UI------
 -(MyTab *)tab_Bottom{
@@ -225,5 +279,56 @@
         _noticeView = [[NoticeView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.tab_Bottom.frame)+10, kScreenWidth, 50) controller:self];
     }
     return _noticeView;
+}
+@end
+@implementation CustomCollectionViewCell
+
+#pragma mark - 懒加载
+- (UILabel *)titleLabel {
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc]init];
+        _titleLabel.text = @"新闻";
+        _titleLabel.textColor = [UIColor redColor];
+        _titleLabel.numberOfLines = 0;
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.font = [UIFont systemFontOfSize:12];
+        _titleLabel.backgroundColor = [UIColor yellowColor];
+        _titleLabel.layer.masksToBounds = YES;
+        _titleLabel.layer.cornerRadius = 5;
+        _titleLabel.layer.borderColor = [UIColor redColor].CGColor;
+        _titleLabel.layer.borderWidth = 1.f;
+    }
+    return _titleLabel;
+}
+- (UILabel *)contentLabel {
+    if (!_contentLabel) {
+        _contentLabel = [[UILabel alloc]init];
+        _contentLabel.text = @"我是label的内容";
+        _contentLabel.textColor = [UIColor blackColor];
+        _contentLabel.numberOfLines = 0;
+        _contentLabel.font = [UIFont systemFontOfSize:12];
+    }
+    return _contentLabel;
+}
+#pragma mark - 页面初始化
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        self.contentView.backgroundColor = [UIColor whiteColor];
+        [self setupViews];
+    }
+    return self;
+}
+
+#pragma mark - 添加子控件
+- (void)setupViews {
+    [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:self.contentLabel];
+}
+
+#pragma mark - 布局子控件
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    _titleLabel.frame = CGRectMake(15, 10, 45, 20);
+    _contentLabel.frame = CGRectMake(15 + 45 + 15, 10, 200, 20);
 }
 @end

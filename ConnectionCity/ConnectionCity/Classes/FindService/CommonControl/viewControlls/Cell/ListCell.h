@@ -10,6 +10,7 @@
 #import "Moment.h"
 @class ListCell;
 typedef void (^BtnClickBlock)(ListCell * cell);
+typedef void (^btnHeadClick)(ListCell * cell);
 @interface ListCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lab_des;
 @property (weak, nonatomic) IBOutlet UIImageView *iamge3;
@@ -23,4 +24,5 @@ typedef void (^BtnClickBlock)(ListCell * cell);
 @property (nonatomic,strong) NSMutableArray * Arr;
 @property (nonatomic,strong)Moment * mom;
 @property (nonatomic,copy)BtnClickBlock block;
+@property (nonatomic,copy)btnHeadClick headBlcok;
 @end

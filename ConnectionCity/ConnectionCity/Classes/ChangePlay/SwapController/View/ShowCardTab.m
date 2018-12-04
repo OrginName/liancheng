@@ -56,7 +56,7 @@
     cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     cycleScrollView.delegate = self;
     cycleScrollView.autoScroll = YES;
-    cycleScrollView.dotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
+//    cycleScrollView.dotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
     cycleScrollView.placeholderImage = [UIImage imageNamed:@"no-pic"];
     self.cycleScrollView = cycleScrollView;
     self.tab_Bottom.tableHeaderView = cycleScrollView;

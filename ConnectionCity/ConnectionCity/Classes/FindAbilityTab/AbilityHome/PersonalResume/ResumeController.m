@@ -115,7 +115,7 @@
                                 [weakSelf initScroll];
                             }
                             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                weakSelf.cycleScrollView.localizationImagesGroup = weakSelf.lunArr;
+                                weakSelf.cycleScrollView.localizationImageNamesGroup = weakSelf.lunArr;
                                 [weakSelf.cycleScrollView reload];
                             });
                         });
@@ -228,10 +228,10 @@
                     [[self.tab_bottom.tableHeaderView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
                     
                     [self initScroll];
-                    self.cycleScrollView.localizationImagesGroup = self.lunArr;
+                    self.cycleScrollView.localizationImageNamesGroup = self.lunArr;
                 }else{
                     [self.lunArr addObject:image];
-                    self.cycleScrollView.localizationImagesGroup = self.lunArr;
+                    self.cycleScrollView.localizationImageNamesGroup = self.lunArr;
                     [self.cycleScrollView reload];
                 }
             }];
@@ -497,7 +497,7 @@
     
 }
 -(void)reloadScro{
-    self.cycleScrollView.localizationImagesGroup = self.lunArr;
+    self.cycleScrollView.localizationImageNamesGroup = self.lunArr;
     [self.cycleScrollView reload];
 }
 #pragma mark ---initUI--------
@@ -510,7 +510,7 @@
     _cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     _cycleScrollView.delegate = self;
     _cycleScrollView.autoScroll = YES;
-    _cycleScrollView.dotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
+//    _cycleScrollView.dotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
     _cycleScrollView.placeholderImage = [UIImage imageNamed:@"no-pic"];
     if (self.lunArr.count==0) {
         self.tab_bottom.tableHeaderView = self.MaskBtn;
