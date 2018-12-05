@@ -20,7 +20,7 @@
     self.lab_nickName.text = mom.nickName;
     self.lab_age.text = mom.age?mom.age:@"-";
     self.image_sex.image = [UIImage imageNamed:[mom.gender isEqualToString:@"1"]?@"men":@"women"];
-    self.lab_JL.text = KString(@"%@km", mom.distance);
+    self.lab_JL.text = KString(@"%.2fkm", [mom.distance floatValue]);
     self.Arr = [NSMutableArray arrayWithArray:@[self.image1,self.image2,self.iamge3]];
     NSArray * imageArr = [mom.images componentsSeparatedByString:@";"];
     for (int i=0; i<self.Arr.count; i++) {

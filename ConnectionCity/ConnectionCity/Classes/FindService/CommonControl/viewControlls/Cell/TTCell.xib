@@ -95,6 +95,9 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="Send:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="54U-Nw-gpx"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.92344528439999995" green="0.76065945629999998" blue="0.28458032010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -137,6 +140,14 @@
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
+                <outlet property="imag2" destination="QVQ-5m-6Xe" id="qr9-Eu-dt5"/>
+                <outlet property="image1" destination="ejM-FK-tmK" id="Dsu-pa-PXS"/>
+                <outlet property="lab_name1" destination="Ycg-fj-8bR" id="ZZm-u6-Rnd"/>
+                <outlet property="lab_name2" destination="beT-gB-HzY" id="hw4-oK-GyM"/>
+                <outlet property="lab_time" destination="6ic-Ik-A9G" id="xDm-Eb-w47"/>
+                <outlet property="lab_tip1" destination="fjz-O3-luh" id="dBb-l8-fAG"/>
+                <outlet property="lab_tip5" destination="9wr-BJ-kq0" id="vrc-A3-KYM"/>
+                <outlet property="lab_tipi2" destination="ceK-OA-T8e" id="a12-Tj-gbj"/>
                 <outlet property="view_Bottom" destination="NWE-RV-bhx" id="Bid-Re-i27"/>
             </connections>
             <point key="canvasLocation" x="25" y="58"/>
@@ -183,6 +194,9 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="Send:" destination="Dql-ZO-nby" eventType="touchUpInside" id="J4z-DY-R5e"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.77852576971054077" green="0.25514298677444458" blue="0.2568759024143219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -213,9 +227,11 @@
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <viewLayoutGuide key="safeArea" id="fdM-gt-xvV"/>
             <connections>
+                <outlet property="imag3" destination="RuB-Fx-x9b" id="qMZ-CJ-Ukt"/>
+                <outlet property="lab_tip5" destination="9wr-BJ-kq0" id="7Nz-Ge-QnW"/>
                 <outlet property="view_Bottom1" destination="uRN-pb-bDU" id="WrS-qo-Oqu"/>
             </connections>
-            <point key="canvasLocation" x="25" y="147"/>
+            <point key="canvasLocation" x="25" y="166"/>
         </tableViewCell>
     </objects>
     <resources>

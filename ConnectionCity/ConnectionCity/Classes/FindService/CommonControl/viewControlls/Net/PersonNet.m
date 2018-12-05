@@ -151,7 +151,7 @@
  @param block 返回内容
  */
 +(void)requstTJArr:(NSDictionary *)dic withArr:(ReceMoBlock)block FailDicBlock:(FailDicBlock)fail{
-    [YSNetworkTool POST:v1RecommendPage params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+    [YSNetworkTool POST:v1RecommendPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         ReceMo * mo = [ReceMo new];
         mo.activityList = [ActivityMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"activityList"]];
         mo.bannerList = [ActivityMo mj_objectArrayWithKeyValuesArray:responseObject[kData][@"bannerList"]];
@@ -237,12 +237,34 @@
  @param block 返回内容
  */
 +(void)requstGZArr:(SuccessArrBlock)block FailDicBlock:(FailDicBlock)fail{
+    
     [YSNetworkTool POST:v1HeadlinePage params:@{} showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray * arr = [NSMutableArray array];
         for (NSDictionary * dic in responseObject[kData][@"content"]) {
             TTMo * mo = [TTMo mj_objectWithKeyValues:dic];
+            if ([mo.type isEqualToString:@"10"]) {
+                mo.XSStr = [NSString stringWithFormat:@"%@在%@发布了新服务",mo.nickName,[mo.createTime componentsSeparatedByString:@" "][0]];
+            }else if ([mo.type isEqualToString:@"20"]){
+                NSMutableAttributedString * firstPart = [[NSMutableAttributedString alloc] initWithString:KString(@"%@在", mo.nickName)];
+                NSDictionary * firstAttributes = @{ NSFontAttributeName:[UIFont boldSystemFontOfSize:13],NSForegroundColorAttributeName:[UIColor redColor],};
+                NSString * time = [mo.createTime componentsSeparatedByString:@" "][0];
+                if ([YSTools dx_isNullOrNilWithObject:time]) {
+                    time = @"-";
+                }
+                [firstPart setAttributes:firstAttributes range:NSMakeRange(0,mo.nickName.length)];
+                NSMutableAttributedString * secondPart = [[NSMutableAttributedString alloc] initWithString:KString(@"%@预约了", time)];
+                NSDictionary * secondAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:[UIColor redColor]};
+                [secondPart setAttributes:secondAttributes range:NSMakeRange(0,time.length)];
+                NSMutableAttributedString * TPart = [[NSMutableAttributedString alloc] initWithString:KString(@"%@服务", mo.providerNickName?mo.providerNickName:@"-")];
+                NSDictionary * TAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14],NSForegroundColorAttributeName:[UIColor redColor]};
+                [TPart setAttributes:TAttributes range:NSMakeRange(0,mo.providerNickName.length)];
+                [firstPart appendAttributedString:secondPart];
+                [firstPart appendAttributedString:TPart];
+                mo.firstPart = firstPart;
+            }
+            [arr addObject:mo];
         }
-        
+        block(arr);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

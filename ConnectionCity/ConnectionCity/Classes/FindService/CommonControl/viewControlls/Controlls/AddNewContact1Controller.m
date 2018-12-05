@@ -18,10 +18,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+//    [self.txt_phone becomeFirstResponder];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.txt_phone becomeFirstResponder];
+    self.tabBarController.tabBar.hidden = YES;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.tabBarController.tabBar.hidden = NO;
 }
 - (IBAction)addClick:(UIButton *)sender {
     if ([YSTools dx_isNullOrNilWithObject:self.txt_phone.text]&&self.txt_phone.text.length!=11) {

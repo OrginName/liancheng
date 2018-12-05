@@ -13,7 +13,6 @@
 #import "RecommendTopCell.h"
 #import "MiddleCell.h"
 #import "ListCell.h"
-#import "SecureController.h"
 #import "TTController.h"
 #import "NoticeView.h"
 #import "PersonNet.h"
@@ -21,45 +20,71 @@
 #import "ShowResumeController.h"
 #import "serviceListNewMo.h"
 #import "PersonalBasicDataController.h"
+
 @interface RecommendController()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,TXScrollLabelViewDelegate>
 {
     SDCycleScrollView * _cy;
+    NSInteger _page;
 }
 @property (nonatomic,strong) MyTab * tab_Bottom;
 @property (nonatomic,strong) NSMutableArray * lunArr;
 @property (nonatomic,strong) UIImageView * image_security;
 @property (nonatomic,strong) NoticeView *noticeView;
 @property (nonatomic,strong) ReceMo * receMo;
+@property (nonatomic,strong) NSMutableArray * arr_TT;
+@property (nonatomic,strong) NSMutableArray * arr_nearBy;
+@property (nonatomic,strong) NSMutableArray * nearByArrP;
 @end
 @implementation RecommendController
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self setUI];
+    _page = 1;
     [self initData];
     [self.tab_Bottom registerClass:[HeadView class] forHeaderFooterViewReuseIdentifier:@"HeadView"];
 }
 -(void)initData{
-    self.lunArr = [NSMutableArray array]; 
+    self.lunArr = [NSMutableArray array];
+    self.arr_TT = [NSMutableArray array];
+    self.arr_nearBy = [NSMutableArray array];
+    self.nearByArrP = [NSMutableArray array];
     WeakSelf
+    [PersonNet requstTJGGArr:^(NSMutableArray *  successArrValue) {
+        weakSelf.lunArr = successArrValue;
+        [weakSelf loadList];
+    } FailDicBlock:nil];
+    self.tab_Bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        _page=1;
+        [weakSelf loadList];
+    }];
+    self.tab_Bottom.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf loadList];
+    }];
+}
+-(void)loadList{
     NSDictionary * dic = @{
                            @"lat":@([[KUserDefults objectForKey:kLat] floatValue]),
                            @"lng": @([[KUserDefults objectForKey:KLng] floatValue]),
-                           @"pageNumber": @1,
-                           @"pageSize": @5,
+                           @"pageNumber": @(_page),
+                           @"pageSize": @15,
                            };
-    [PersonNet requstTJGGArr:^(NSMutableArray *  successArrValue) {
-        weakSelf.lunArr = successArrValue;
-        [PersonNet requstTJArr:dic withArr:^(ReceMo *mo) {
-            weakSelf.receMo = mo;
-            NSLog(@"%ld",weakSelf.receMo.hotServiceList.count);
-            [weakSelf.tab_Bottom reloadData];
-        } FailDicBlock:nil];
+    WeakSelf
+    [PersonNet requstTJArr:dic withArr:^(ReceMo *mo) {
+        weakSelf.receMo = mo;
+        if (_page==1) {
+            [weakSelf.arr_nearBy removeAllObjects];
+        }
+        _page++;
+        [weakSelf.tab_Bottom.mj_header endRefreshing];
+        [weakSelf.tab_Bottom.mj_footer endRefreshing];
+        [weakSelf.arr_nearBy addObjectsFromArray:mo.circleList];
+        [weakSelf.nearByArrP addObjectsFromArray:mo.nearbyPage];
+        [weakSelf.tab_Bottom reloadData];
     } FailDicBlock:nil];
 }
 -(void)setUI{
     [self.view addSubview:self.tab_Bottom];
     [self initScroll];
-    [self.view addSubview:self.image_security];
     [self.view addSubview:self.noticeView];
 }
 #pragma mark ---------UITableviewDelegate----------
@@ -70,7 +95,7 @@
     if (section==0||section==1||section==2) {
         return 1;
     }
-    return self.receMo.circleList.count;
+    return self.arr_nearBy.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0||indexPath.section==2) {
@@ -79,7 +104,7 @@
         if (!cell) {
             cell = [[RecommendTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RecommendTopCell" withFlag:str control:self];
         }
-        cell.arr_Data = indexPath.section==0?[self.receMo.hotServiceList mutableCopy]:[self.receMo.nearbyPage mutableCopy];
+        cell.arr_Data = indexPath.section==0?[self.receMo.hotServiceList mutableCopy]:[self.nearByArrP mutableCopy];
         return cell;
     }else if (indexPath.section==1){
         MiddleCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MiddleCell"];
@@ -94,14 +119,14 @@
         cell = [[NSBundle mainBundle] loadNibNamed:@"ListCell" owner:nil options:nil][0];
     }
     WeakSelf
-    cell.mom = self.receMo.circleList[indexPath.row];
+    cell.mom = self.arr_nearBy[indexPath.row];
     cell.block = ^(ListCell *cell) {
         ShowResumeController * show = [ShowResumeController new];
         show.Receive_Type = ENUM_TypeTrval;
         show.flag = @"1";
         show.flagNext = @"NONext";
         NSMutableArray * arr = [NSMutableArray array];
-        for (Moment * mo in weakSelf.receMo.circleList) {
+        for (Moment * mo in weakSelf.arr_nearBy) {
             serviceListNewMo * mo1 = [serviceListNewMo new];
             mo1.ID = mo.userId;
             [arr addObject:mo1];
@@ -111,7 +136,7 @@
     };
     cell.headBlcok = ^(ListCell *cell) {
         NSIndexPath * index = [self.tab_Bottom indexPathForCell:cell];
-        Moment * mo = self.receMo.circleList[index.row];
+        Moment * mo = self.arr_nearBy[index.row];
         PersonalBasicDataController * base = [PersonalBasicDataController new];
         UserMo * user = [UserMo new];
         user.ID = mo.userId;
@@ -146,29 +171,17 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.0001f;
 }
-#pragma mark ----secClick--------
--(void)secClick{ 
-    //弹出ViewController
-    SecureController *xVC = [SecureController new];
-    //设置ViewController的背景颜色及透明度
-    xVC.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
-    self.modalPresentationStyle = UIModalPresentationCurrentContext;
-    BaseNavigationController * nav = [[BaseNavigationController alloc] initWithRootViewController:xVC];
-    //设置ViewController的模态模式，即ViewController的显示方式
-    nav.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    nav.view.backgroundColor = [UIColor clearColor];
-    //加载模态视图
-    [self presentViewController:nav animated:YES completion:^{
-    }];
-}
 #pragma mark --------SDCycleScrollViewDelegate--------
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
-    
+    if (cycleScrollView.tag==200000) {
+        TTController * tt = [TTController new];
+        tt.title = @"连程头条";
+        tt.arrReceive = self.arr_TT;
+        [self.navigationController pushViewController:tt animated:YES];
+    }
 }
 - (void)scrollLabelView:(TXScrollLabelView *)scrollLabelView didClickWithText:(NSString *)text atIndex:(NSInteger)index{
-    TTController * tt = [TTController new];
-    tt.title = @"连程头条";
-    [self.navigationController pushViewController:tt animated:YES];
+    
 }
 #pragma mark ---initUI--------
 -(void)initScroll{
@@ -181,6 +194,7 @@
     cycleScrollView.layer.masksToBounds = YES;
     cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     cycleScrollView.delegate = self;
+    cycleScrollView.tag = 100000;
     cycleScrollView.autoScroll = YES;
 //    cycleScrollView.dotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
     cycleScrollView.placeholderImage = [UIImage imageNamed:@"no-pic"];
@@ -201,33 +215,22 @@
     UIImageView * rightImage = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.width-20, 205, 10, 15)];
     rightImage.image = [UIImage imageNamed:@"arraw-right"];
     [view_Bottom addSubview:rightImage];
-    
-//    NSString *balance =@"888888";
-//    NSMutableAttributedString *aString = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"账户余额: %@元",balance]];
-//    [aString addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor]range:NSMakeRange(0,1)];
-//    [aString addAttribute:NSForegroundColorAttributeName value:[UIColor yellowColor]range:NSMakeRange(1,1)];
-//    [aString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor]range:NSMakeRange(2,1)];
-//    [aString addAttribute:NSForegroundColorAttributeName value:[UIColor purpleColor]range:NSMakeRange(3,1)];
-//    [aString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor]range:NSMakeRange(6, balance.length)];
-//    [aString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15]range:NSMakeRange(6, balance.length)];
-    
-    _cy = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(120, 190, kScreenWidth-150, 50) delegate:self placeholderImage:nil];
+ 
+    _cy = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(110, 190, kScreenWidth-140, 50) delegate:self placeholderImage:nil];
+    _cy.backgroundColor = [UIColor whiteColor];
     _cy.scrollDirection = UICollectionViewScrollDirectionVertical;
     _cy.showPageControl = NO;
-    _cy.imageURLStringsGroup = @[@"",@"",@""];
+    _cy.tag = 200000;
     [view_Bottom addSubview:_cy];
+    [PersonNet requstGZArr:^(NSMutableArray *successArrValue) {
+        weakSelf.arr_TT = successArrValue;
+        NSMutableArray * arr = [NSMutableArray array];
+        for (int i=0;i<successArrValue.count;i++) {
+            [arr addObject:@""];
+        }
+        _cy.imageURLStringsGroup = arr;
+    } FailDicBlock:nil];
     
-//    TXScrollLabelView * scrollView = [TXScrollLabelView scrollWithTextArray:@[@"1",@"2",@"3"] type:TXScrollLabelViewTypeFlipNoRepeat velocity:2 options:UIViewAnimationOptionTransitionNone inset:UIEdgeInsetsMake(0, -100, 0, 0)];
-//    [scrollView setupAttributeTitle:aString];
-//    scrollView.scrollLabelViewDelegate = self;
-////    scrollView.scrollInset = UIEdgeInsetsMake(0, -100, 0, 0);
-//    scrollView.scrollTitleColor = YSColor(40, 40, 40);
-//    scrollView.font = [UIFont systemFontOfSize:15];
-//    scrollView.backgroundColor = [UIColor whiteColor];
-//    scrollView.frame = CGRectMake(120, 190, kScreenWidth-150, 50);
-//    [view_Bottom addSubview:scrollView];
-//    [scrollView beginScrolling];
- 
     UIView * view2 = [[UIView alloc] initWithFrame:CGRectMake(0, 240, self.tab_Bottom.width, 10)];
     view2.backgroundColor = YSColor(242, 243, 244);
     [view_Bottom addSubview:view2];
@@ -245,15 +248,19 @@
 - (void)setupCustomCell:(UICollectionViewCell *)cell forIndex:(NSInteger)index cycleScrollView:(SDCycleScrollView *)view
 {
     CustomCollectionViewCell *myCell = (CustomCollectionViewCell *)cell;
-    NSArray *titleArray = @[@"新闻",
-                            @"娱乐",
-                            @"体育"];
-    NSArray *contentArray = @[@"新闻新闻新闻新闻新闻新闻新闻新闻新闻新闻新闻新闻",
-                              @"娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐娱乐",
-                              @"体育体育体育体育体育体育体育体育体育体育体育体育"];
-    myCell.titleLabel.text = titleArray[index];
-    myCell.contentLabel.text = contentArray[index];
-}
+    TTMo * mo = self.arr_TT[index];
+    if ([mo.type isEqualToString:@"10"]) {
+        myCell.titleLabel.text = mo.XSStr;
+        myCell.image1.hidden = YES;
+        [myCell.image2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",mo.headImage,SMALLPICTURE]] placeholderImage:[UIImage imageNamed:@"logo2"]];
+    }else{
+       myCell.titleLabel.attributedText = mo.firstPart;
+        myCell.image1.hidden = NO;
+        [myCell.image2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",mo.providerHeadImage,SMALLPICTURE]] placeholderImage:[UIImage imageNamed:@"logo2"]];
+        [myCell.image1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",mo.headImage,SMALLPICTURE]] placeholderImage:[UIImage imageNamed:@"logo2"]];
+    }
+ }
+
 #pragma mark ----懒加载UI------
 -(MyTab *)tab_Bottom{
     if (!_tab_Bottom) {
@@ -263,16 +270,6 @@
         _tab_Bottom.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tab_Bottom;
-}
--(UIImageView *)image_security{
-    if (!_image_security) {
-        _image_security = [[UIImageView alloc] initWithFrame:CGRectMake(0, (kScreenHeight-15)/2, 120, 50)];
-        _image_security.image = [UIImage imageNamed:@"secure"];
-        _image_security.userInteractionEnabled = YES;
-        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(secClick)];
-        [_image_security addGestureRecognizer:tap];
-    }
-    return _image_security;
 }
 -(NoticeView *)noticeView{
     if (!_noticeView) {
@@ -287,28 +284,31 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc]init];
-        _titleLabel.text = @"新闻";
-        _titleLabel.textColor = [UIColor redColor];
-        _titleLabel.numberOfLines = 0;
+        _titleLabel.numberOfLines = 1;
         _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleLabel.font = [UIFont systemFontOfSize:12];
-        _titleLabel.backgroundColor = [UIColor yellowColor];
-        _titleLabel.layer.masksToBounds = YES;
-        _titleLabel.layer.cornerRadius = 5;
-        _titleLabel.layer.borderColor = [UIColor redColor].CGColor;
-        _titleLabel.layer.borderWidth = 1.f;
-    }
+        _titleLabel.font = [UIFont systemFontOfSize:14];
+     }
     return _titleLabel;
 }
-- (UILabel *)contentLabel {
-    if (!_contentLabel) {
-        _contentLabel = [[UILabel alloc]init];
-        _contentLabel.text = @"我是label的内容";
-        _contentLabel.textColor = [UIColor blackColor];
-        _contentLabel.numberOfLines = 0;
-        _contentLabel.font = [UIFont systemFontOfSize:12];
+-(UIImageView *)image1{
+    if (!_image1) {
+        _image1 = [[UIImageView alloc] init];
+        _image1.frame = CGRectMake(self.width-55, 10, 30, 30);
+        _image1.layer.cornerRadius = _image1.width/2;
+        _image1.image = [UIImage imageNamed:@"logo2"];
+        _image1.layer.masksToBounds = YES;
     }
-    return _contentLabel;
+    return _image1;
+}
+-(UIImageView *)image2{
+    if (!_image2) {
+        _image2 = [[UIImageView alloc] init];
+        _image2.frame = CGRectMake(self.width-30, 10, 30, 30);
+        _image2.layer.cornerRadius = _image2.width/2;
+        _image2.image = [UIImage imageNamed:@"moment_cover"];
+        _image2.layer.masksToBounds = YES;
+    }
+    return _image2;
 }
 #pragma mark - 页面初始化
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -322,13 +322,13 @@
 #pragma mark - 添加子控件
 - (void)setupViews {
     [self.contentView addSubview:self.titleLabel];
-    [self.contentView addSubview:self.contentLabel];
+    [self.contentView addSubview:self.image1];
+    [self.contentView addSubview:self.image2];
 }
 
 #pragma mark - 布局子控件
 - (void)layoutSubviews {
     [super layoutSubviews];
-    _titleLabel.frame = CGRectMake(15, 10, 45, 20);
-    _contentLabel.frame = CGRectMake(15 + 45 + 15, 10, 200, 20);
+    _titleLabel.frame = CGRectMake(0, 0, self.width-55, 50);
 }
 @end

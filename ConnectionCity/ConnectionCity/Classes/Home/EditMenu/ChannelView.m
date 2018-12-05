@@ -160,7 +160,7 @@ static CGFloat btnH;
         for (UIImageView *militaryFork in obj.subviews) {
             if ([militaryFork isKindOfClass:[UIImageView class]]) {
                 militaryFork.hidden = NO;
-                if ([obj.titleLabel.text isEqualToString:self.upBtnDataArr[0]] && !self.IS_compileFirstBtn) {
+                if ([obj.titleLabel.text isEqualToString:[self.upBtnDataArr[0] name]] && !self.IS_compileFirstBtn) {
                     militaryFork.hidden = YES;
                 }
             }
@@ -287,7 +287,7 @@ static CGFloat btnH;
     if (self.upBtn.count<=1) {
         return [YTAlertUtil showTempInfo:@"请至少保留一个功能页"];
     }
-    if ([btn.titleLabel.text isEqualToString:self.upBtnDataArr[0]] && !self.IS_compileFirstBtn) {
+    if ([btn.titleLabel.text isEqualToString:[self.upBtnDataArr[0] name]] && !self.IS_compileFirstBtn) {
         return;
     }
     for (UIImageView *militaryFork in btn.subviews) {

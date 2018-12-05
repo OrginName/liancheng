@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface TTController : BaseViewController
-
+@property (nonatomic,strong) NSMutableArray * arrReceive;
 @end

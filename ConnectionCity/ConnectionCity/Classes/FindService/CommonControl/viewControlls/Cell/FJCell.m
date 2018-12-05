@@ -20,6 +20,6 @@
     self.lab_Name.text = mo.realName;
     NSString * str = [mo.gender isEqualToString:@"1"]?@"men":@"women";
     self.image_sex.image = [UIImage imageNamed:str];
-    self.lab_JL.text = KString(@"%@米", mo.distance);
+    self.lab_JL.text = KString(@"%.2fkm", [mo.distance floatValue]);
 }
 @end

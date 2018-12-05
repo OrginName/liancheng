@@ -31,6 +31,7 @@
 #import "RecommendController.h"
 #import "FollowController.h"
 #import "CustomMap.h"
+#import "SecureController.h"
 @interface HomeController ()<JFCityViewControllerDelegate>
 {
     BOOL flag1;
@@ -49,6 +50,7 @@
 @property (nonatomic,strong) AbilityHomeController * ability;
 @property (nonatomic,strong)NSMutableArray * myMenuArr;
 @property (nonatomic,strong) NSMutableArray * Arr_Classify;//分类数据源数组
+@property (nonatomic,strong)UIImageView * image_security;
 @end
 
 @implementation HomeController
@@ -109,6 +111,7 @@
     }];
 }
 -(void)setUI{
+    
 //    //必要的设置, 如果没有设置可能导致内容显示不正常
     ZJSegmentStyle *style = [[ZJSegmentStyle alloc] init];
     //显示遮盖
@@ -139,6 +142,16 @@
     scrollPageView.Index = ^(NSInteger currentIndex) {
         NSLog(@"当前index为：%ld",currentIndex);
         currentIndexHome = currentIndex;
+        MenuMo * mo1 = self.myMenuArr[currentIndexHome];
+        if ([mo1.ID isEqualToString:@"9"]||[mo1.ID isEqualToString:@"10"]) {
+            self.navigationItem.rightBarButtonItem = nil;
+        }else{
+            if (self.navigationItem.rightBarButtonItem == nil) {
+                if (![[[YSAccountTool userInfo] modelId] isEqualToString:APPID]) {
+                    weakSelf.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MessageClick) image:@"photo" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
+                }
+            }
+        }
         if (([KUserDefults objectForKey:YLat]!=nil&&[KUserDefults objectForKey:YLng]!=nil)||[KUserDefults objectForKey:YCode]!=nil) {
             [weakSelf homeLoadData:@"" lng:@"" ID:@""];
         }
@@ -146,9 +159,7 @@
     [self.view_Bottom addSubview:scrollPageView];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MyselfClick) image:@"people" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
     NSLog(@"%@=+==%@",[[YSAccountTool userInfo] modelId],APPID);
-    if (![[[YSAccountTool userInfo] modelId] isEqualToString:APPID]) {
-        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MessageClick) image:@"photo" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
-    } self.navigationItem.leftBarButtonItem.badgeValue=self.navigationItem.rightBarButtonItem.badgeValue = @"";
+     self.navigationItem.leftBarButtonItem.badgeValue=self.navigationItem.rightBarButtonItem.badgeValue = @"";
     self.navigationItem.leftBarButtonItem.badgeOriginX = 19;
     self.navigationItem.rightBarButtonItem.badgeOriginX = 29; self.navigationItem.leftBarButtonItem.badgeOriginY = 5;
     self.navigationItem.rightBarButtonItem.badgeOriginY = 2;
@@ -173,6 +184,8 @@
     [btn addTarget:self action:@selector(AddressClick:) forControlEvents:UIControlEventTouchUpInside];
     [nav_view addSubview:btn];
     self.navigationItem.titleView = nav_view;
+    
+    [self.view addSubview:self.image_security];
 }
 //城市选择按钮点击
 -(void)AddressClick:(UIButton *)btn{
@@ -278,6 +291,7 @@
     [KUserDefults setObject:lng forKey:YLng];
     [KUserDefults setObject:cityCode forKey:YCode]; 
     MenuMo * mo1 = self.myMenuArr[currentIndexHome];
+ 
     if ([mo1.ID isEqualToString:@"1"]) {
         self.trval.trval.page = 1;
         [self.trval.trval loadData:@{@"lat":@"",@"lng":@""}];
@@ -313,12 +327,6 @@
     TravalController * trval5;
     AbilityHomeController * ability;
     NSMutableArray * arr = [NSMutableArray array];
-    RecommendController * recommed = [RecommendController new];
-    recommed.title = @"推荐";
-    [arr addObject:recommed];
-    FollowController * follow = [FollowController new];
-    follow.title = @"关注";
-    [arr addObject:follow];
     for (MenuMo * mo in self.myMenuArr) {
         if ([mo.ID isEqualToString:@"1"]) {//旅行
             trval = [TravalController new];
@@ -368,9 +376,43 @@
             trval2.title = mo.name;
             self.trval2 = trval2;
             [arr addObject:trval2];
+        }else if ([mo.ID isEqualToString:@"9"]){
+            RecommendController * recommed = [RecommendController new];
+            recommed.title = mo.name;
+            [arr addObject:recommed];
+            
+        }else if ([mo.ID isEqualToString:@"10"]){
+            FollowController * follow = [FollowController new];
+            follow.title = mo.name;
+            [arr addObject:follow];
         }
     } 
     return [arr copy];
+}
+#pragma mark ----secClick--------
+-(void)secClick{
+    //弹出ViewController
+    SecureController *xVC = [SecureController new];
+    //设置ViewController的背景颜色及透明度
+    xVC.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    BaseNavigationController * nav = [[BaseNavigationController alloc] initWithRootViewController:xVC];
+    //设置ViewController的模态模式，即ViewController的显示方式
+    nav.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    nav.view.backgroundColor = [UIColor clearColor];
+    //加载模态视图
+    [self presentViewController:nav animated:YES completion:^{
+    }];
+}
+-(UIImageView *)image_security{
+    if (!_image_security) {
+        _image_security = [[UIImageView alloc] initWithFrame:CGRectMake(0, kScreenHeight/2+30, 120, 50)];
+        _image_security.image = [UIImage imageNamed:@"secure"];
+        _image_security.userInteractionEnabled = YES;
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(secClick)];
+        [_image_security addGestureRecognizer:tap];
+    }
+    return _image_security;
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

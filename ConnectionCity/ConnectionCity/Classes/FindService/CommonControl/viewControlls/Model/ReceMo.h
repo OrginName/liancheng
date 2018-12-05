@@ -61,7 +61,9 @@ proStr(providerId);
 proStr(providerNickName);
 proStr(providerHeadImage);
 proStr(createTime);
-proStr(XSStr);//拼接好要显示字符 
+proStr(type);
+proStr(XSStr);//拼接好要显示字符
+@property (nonatomic,strong)NSMutableAttributedString * firstPart;
 @end
 
 

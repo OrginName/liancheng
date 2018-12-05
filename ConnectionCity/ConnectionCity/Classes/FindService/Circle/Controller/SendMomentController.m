@@ -74,7 +74,6 @@
     __block NSString * urlStr = @"";//图片路径拼接
     __block NSString * videoStr = @"";//视频路径
     __block NSInteger index = 0;
-    WeakSelf
     [YTAlertUtil showHUDWithTitle:a?@"正在更新":@"正在发布"];
     if (self.Arr_images.count!=0) {
         for (int i=0; i<self.Arr_images.count; i++) {
@@ -170,7 +169,7 @@
         self.photo.allowPickingVideoSwitch = YES;
         self.photo.allowTakePicture = NO;
         self.photo.allowPickingImageSwitch = NO;
-    } 
+    }
     self.photo.showSelectedIndexSwitch = NO;
     self.photo.backgroundColor = [UIColor whiteColor];
     self.photo.PhotoDelegate = self;

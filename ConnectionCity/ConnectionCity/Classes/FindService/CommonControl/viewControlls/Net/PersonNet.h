@@ -104,6 +104,13 @@ typedef void (^ReceMoBlock)(ReceMo * mo);
  @param block 返回内容
  */
 +(void)requstUpdateContact:(NSDictionary *)dic withDic:(SuccessDicBlock)block FailDicBlock:(FailDicBlock)fail;
+
+/**
+ 修改紧急联系人
+ @param block 返回内容
+ */
+//+(void)requstUpdateContact:(NSDictionary *)dic withDic:(SuccessDicBlock)block FailDicBlock:(FailDicBlock)fail;
+
 @end
 
 //NS_ASSUME_NONNULL_END
