@@ -19,9 +19,13 @@
     }
     return self;
 }
+-(void)setArr_receive:(NSMutableArray *)arr_receive{
+    _arr_receive = arr_receive;
+    [self.coll_Bottom reloadData];
+}
 #pragma mark UICollectionViewDataSource 数据源方法
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return self.arr_receive.count;
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
@@ -31,8 +35,13 @@
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FollwCollectionViewCell * cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"FollwCollectionViewCell" forIndexPath:indexPath];
+    cell.mo = self.arr_receive[indexPath.row];
     return cell;
-    return [UICollectionViewCell new];
+}
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.clickBlock) {
+        self.clickBlock(indexPath);
+    }
 }
 -(UICollectionView *)coll_Bottom{
     if (!_coll_Bottom) {

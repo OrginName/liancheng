@@ -57,6 +57,7 @@
             <size key="customSize" width="113" height="141"/>
             <connections>
                 <outlet property="image_Bottom" destination="Won-gG-2H4" id="bpG-9A-PIY"/>
+                <outlet property="lab_name" destination="TVb-lb-jXc" id="rZc-26-JP6"/>
                 <outlet property="view_Bottom" destination="DOT-wf-Njv" id="BaQ-i6-7db"/>
             </connections>
             <point key="canvasLocation" x="3.5" y="139.5"/>

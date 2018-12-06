@@ -80,7 +80,10 @@
         [weakSelf.arr_nearBy addObjectsFromArray:mo.circleList];
         [weakSelf.nearByArrP addObjectsFromArray:mo.nearbyPage];
         [weakSelf.tab_Bottom reloadData];
-    } FailDicBlock:nil];
+    } FailDicBlock:^(NSError *failValue) {
+        [weakSelf.tab_Bottom.mj_header endRefreshing];
+        [weakSelf.tab_Bottom.mj_footer endRefreshing];
+    }];
 }
 -(void)setUI{
     [self.view addSubview:self.tab_Bottom];
@@ -124,7 +127,7 @@
         ShowResumeController * show = [ShowResumeController new];
         show.Receive_Type = ENUM_TypeTrval;
         show.flag = @"1";
-        show.flagNext = @"NONext";
+//        show.flagNext = @"NONext";
         NSMutableArray * arr = [NSMutableArray array];
         for (Moment * mo in weakSelf.arr_nearBy) {
             serviceListNewMo * mo1 = [serviceListNewMo new];

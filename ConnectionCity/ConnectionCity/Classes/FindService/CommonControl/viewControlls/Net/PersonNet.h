@@ -106,10 +106,10 @@ typedef void (^ReceMoBlock)(ReceMo * mo);
 +(void)requstUpdateContact:(NSDictionary *)dic withDic:(SuccessDicBlock)block FailDicBlock:(FailDicBlock)fail;
 
 /**
- 修改紧急联系人
+ 关注list
  @param block 返回内容
  */
-//+(void)requstUpdateContact:(NSDictionary *)dic withDic:(SuccessDicBlock)block FailDicBlock:(FailDicBlock)fail;
++(void)requstGZList:(NSDictionary *)dic withDic:(SuccessDicBlock)block FailDicBlock:(FailDicBlock)fail;
 
 @end
 

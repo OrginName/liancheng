@@ -10,6 +10,7 @@
 #import "trvalMo.h"
 #import "YLMo.h"
 #import "Moment.h"
+#import "GZMo.h"
 @implementation PersonNet
 /**
  获取用户动态接口
@@ -277,6 +278,31 @@
 +(void)requstGZ:(NSDictionary *)dic withArr:(SuccessDicBlock)block FailDicBlock:(FailDicBlock)fail{
     [YSNetworkTool POST:v1UserFollowAdd params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
         block(responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+/**
+ 关注list
+ @param block 返回内容
+ */
++(void)requstGZList:(NSDictionary *)dic withDic:(SuccessDicBlock)block FailDicBlock:(FailDicBlock)fail{
+    [YSNetworkTool POST:v1UserFollowPage params:dic showHud:NO success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray * arr = [NSMutableArray array];
+        NSMutableArray * arr1 = [NSMutableArray array];
+        for (NSDictionary * dic in responseObject[kData][@"content"]) {
+            GZMo * mo = [GZMo mj_objectWithKeyValues:dic[@"user"]];
+            mo.serviceCircleList = [CircleListMo mj_objectArrayWithKeyValuesArray:mo.serviceCircleList];
+            for (CircleListMo * mo1 in mo.serviceCircleList) {
+                mo1.headImage = mo.headImage;
+                mo1.nickName = mo.nickName;
+                mo1.distance = mo.distance;
+            } 
+            [arr1 addObjectsFromArray:mo.serviceCircleList];
+            [arr addObject:mo];
+            NSLog(@"%@",mo.serviceCircleList);
+        }
+        block(@{@"key1":arr,@"key2":arr1});
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

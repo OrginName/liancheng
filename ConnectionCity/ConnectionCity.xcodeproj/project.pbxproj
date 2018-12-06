@@ -84,6 +84,7 @@
 		723F4FAF20BEE8FF00AF8268 /* TrvalTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FAE20BEE8FF00AF8268 /* TrvalTrip.m */; };
 		723F4FB320BEEA8D00AF8268 /* TrvalTripCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 723F4FB120BEEA8D00AF8268 /* TrvalTripCell.m */; };
 		723F4FB420BEEA8D00AF8268 /* TrvalTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 723F4FB220BEEA8D00AF8268 /* TrvalTripCell.xib */; };
+		7249C57B21B95E6800CA16AF /* GZMo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7249C57A21B95E6700CA16AF /* GZMo.m */; };
 		724B5F38213C22B800F51134 /* MyLocationPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724B5F36213C22B800F51134 /* MyLocationPickerController.m */; };
 		724B5F3D213C4A2000F51134 /* MyLocationPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 724B5F3C213C4A2000F51134 /* MyLocationPickerController.xib */; };
 		724B5F40213EE58E00F51134 /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724B5F3F213EE58E00F51134 /* MapController.m */; };
@@ -943,6 +944,8 @@
 		723F4FB020BEEA8D00AF8268 /* TrvalTripCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrvalTripCell.h; sourceTree = "<group>"; };
 		723F4FB120BEEA8D00AF8268 /* TrvalTripCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrvalTripCell.m; sourceTree = "<group>"; };
 		723F4FB220BEEA8D00AF8268 /* TrvalTripCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrvalTripCell.xib; sourceTree = "<group>"; };
+		7249C57921B95E6700CA16AF /* GZMo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GZMo.h; sourceTree = "<group>"; };
+		7249C57A21B95E6700CA16AF /* GZMo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GZMo.m; sourceTree = "<group>"; };
 		724B5F35213C22B800F51134 /* MyLocationPickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyLocationPickerController.h; sourceTree = "<group>"; };
 		724B5F36213C22B800F51134 /* MyLocationPickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyLocationPickerController.m; sourceTree = "<group>"; };
 		724B5F3C213C4A2000F51134 /* MyLocationPickerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyLocationPickerController.xib; sourceTree = "<group>"; };
@@ -2966,6 +2969,8 @@
 			children = (
 				72CA3F7C21B2D5660010F33A /* ReceMo.h */,
 				72CA3F7D21B2D5670010F33A /* ReceMo.m */,
+				7249C57921B95E6700CA16AF /* GZMo.h */,
+				7249C57A21B95E6700CA16AF /* GZMo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6297,6 +6302,7 @@
 				72799B842190938400C63005 /* YLMo.m in Sources */,
 				CEE5251520F7907C00DD6179 /* MyQRController.m in Sources */,
 				CEE4B29720C6B5A2008B8731 /* NearManController.m in Sources */,
+				7249C57B21B95E6800CA16AF /* GZMo.m in Sources */,
 				8DE4660E20EDF31C009730F7 /* RCDGroupSettingsTableViewCell.m in Sources */,
 				CE0BA5B5209D5E6B004C3C33 /* UIViewController+BackButtonHandler.m in Sources */,
 				72DC0AA221AC4025001DECD2 /* SecureController.m in Sources */,

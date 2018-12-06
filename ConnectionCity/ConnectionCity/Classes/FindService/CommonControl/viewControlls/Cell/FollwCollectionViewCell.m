@@ -21,5 +21,9 @@
     self.image_Bottom.layer.cornerRadius = (itemW-14)/2;
     self.image_Bottom.layer.masksToBounds = YES;
 }
-
+-(void)setMo:(GZMo *)mo{
+    _mo = mo;
+    [self.image_Bottom sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",mo.headImage,SMALLPICTURE]] placeholderImage:[UIImage imageNamed:@"logo2"]];
+    self.lab_name.text = mo.nickName;
+}
 @end

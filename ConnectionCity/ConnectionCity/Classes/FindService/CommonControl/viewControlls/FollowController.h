@@ -7,7 +7,5 @@
 //
 
 #import "BaseViewController.h"
-
 @interface FollowController : BaseViewController
-
 @end

@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GZMo.h"
 @interface FollwCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIView *view_Bottom;
 @property (weak, nonatomic) IBOutlet UIImageView *image_Bottom;
-
+@property (weak, nonatomic) IBOutlet UILabel *lab_name;
+@property (nonatomic,strong)GZMo * mo;
 @end
