@@ -116,11 +116,12 @@
     if (sender.tag==4) {
         if ([self.data_Count[self.zIndex] isKindOfClass:[trvalMo class]]) {
             trvalMo * mo = self.data_Count[self.zIndex];
-            [self GZLoadData:mo.ID typeID:@"40"];
+            [self GZLoadData:mo.userId typeID:@"40"];
         }else if ([self.data_Count[self.zIndex] isKindOfClass:[serviceListNewMo class]]&&self.Receive_Type == ENUM_TypeTrval){
-            [self GZLoadData:[self.User.serviceList[self.trvaltab.JNIndex] ID] typeID:@"20"];
+//            [self.User.serviceList[self.trvaltab.JNIndex] ID]
+            [self GZLoadData:self.User.ID typeID:@"20"];
         }else if (self.Receive_Type == ENUM_TypeResume){
-            [self GZLoadData:self.abilityMoNew.ID typeID:@"50"];
+            [self GZLoadData:self.abilityMoNew.user.ID typeID:@"50"];
         }
     }
     if (sender.tag==3) {
@@ -170,12 +171,13 @@
 }
 -(void)GZLoadData:(NSString *)type typeID:(NSString *)typeID{
     NSDictionary * dic = @{
-                           @"typeId":@([type integerValue]),
-                           @"type":@([typeID integerValue]),
-                           @"followedUserId":[[YSAccountTool userInfo] modelId]
+//                           [[YSAccountTool userInfo] modelId]
+//                           @"typeId":@([type integerValue]),
+//                           @"type":@([typeID integerValue]),
+                           @"followUserId":type
                            };
-    [YSNetworkTool POST:v1CommonFollowCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        [YTAlertUtil showTempInfo:@"关注成功"];
+    [YSNetworkTool POST:v1UserFollowAdd params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        [YTAlertUtil showTempInfo:responseObject[@"message"]];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

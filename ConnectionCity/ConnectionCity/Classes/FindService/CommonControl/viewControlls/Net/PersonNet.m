@@ -275,8 +275,8 @@
  @param block 返回内容
  */
 +(void)requstGZ:(NSDictionary *)dic withArr:(SuccessDicBlock)block FailDicBlock:(FailDicBlock)fail{
-    [YSNetworkTool POST:v1CommonFollowCreate params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+    [YSNetworkTool POST:v1UserFollowAdd params:dic showHud:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        block(responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

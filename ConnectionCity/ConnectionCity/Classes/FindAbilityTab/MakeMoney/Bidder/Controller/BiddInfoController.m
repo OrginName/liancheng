@@ -35,11 +35,6 @@
     
     // Do any additional setup after loading the view from its nib.
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 #pragma mark - setup
 - (void)setData {
     _titleArr = @[@"接单金额",@"报名/抢单时间",@"报名/抢单截止时间",@"联系人",@"联系电话"];
