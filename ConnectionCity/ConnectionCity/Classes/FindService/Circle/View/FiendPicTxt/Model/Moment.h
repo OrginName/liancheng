@@ -59,6 +59,9 @@ proStr(age);
 proStr(gender);
 proStr(distance);
 proStr(nickName);
+proDoub(rowHeight);//行高
+proDoub(SJHeight);//实际行高
+@property (nonatomic,assign) BOOL isOpen;//是否展开
 @property (nonatomic,strong)UIImage * coverImage;
 @property (nonatomic,strong) UserMo * userMo;
 @end

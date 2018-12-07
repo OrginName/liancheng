@@ -168,6 +168,12 @@
                 mom.gender = mo1.gender;
                 mom.distance = mo1.distance;
                 mom.nickName = mo1.nickName;
+                mom.isOpen = false;
+                double contentHeight = [YSTools cauculateHeightOfText:mom.content width:(kScreenWidth-20) font:14];
+                double height = (kScreenWidth-40)/3+148+contentHeight;
+                double a = contentHeight<34?(kScreenWidth-40)/3+138+30:(kScreenWidth-40)/3+138+45;
+                mom.rowHeight = a;
+                mom.SJHeight = height;
                 [[arr3 mutableCopy] replaceObjectAtIndex:i withObject:mom];
             } 
             [arr2 addObjectsFromArray:arr3];
@@ -297,6 +303,11 @@
                 mo1.headImage = mo.headImage;
                 mo1.nickName = mo.nickName;
                 mo1.distance = mo.distance;
+                double contentHeight = [YSTools cauculateHeightOfText:mo1.content width:(kScreenWidth-20) font:14];
+                double height = (kScreenWidth-40)/3+148+contentHeight;
+                double a = contentHeight<34?(kScreenWidth-40)/3+138+30:(kScreenWidth-40)/3+138+45;
+                mo1.rowHeight = a;
+                mo1.SJHeight = height;
             } 
             [arr1 addObjectsFromArray:mo.serviceCircleList];
             [arr addObject:mo];

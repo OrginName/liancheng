@@ -28,4 +28,7 @@ proStr(createTime);
 proStr(nickName);
 proStr(headImage);
 proStr(distance);
+proDoub(rowHeight);//行高
+proDoub(SJHeight);//实际行高
+@property (nonatomic,assign) BOOL isOpen;//是否展开
 @end

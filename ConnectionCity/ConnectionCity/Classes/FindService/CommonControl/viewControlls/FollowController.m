@@ -87,7 +87,6 @@
         ShowResumeController * show = [ShowResumeController new];
         show.Receive_Type = ENUM_TypeTrval;
         show.flag = @"1";
-//        show.flagNext = @"NONext";
         NSMutableArray * arr = [NSMutableArray array];
         for (GZMo * mo in weakSelf.arr_data) {
             serviceListNewMo * mo1 = [serviceListNewMo new];
@@ -106,6 +105,12 @@
         base.connectionMo = user;
         [self.navigationController pushViewController:base animated:YES];
     };
+    cell.labBlock = ^(ListCell *cell1) {
+        NSIndexPath * index = [self.tab_bottom indexPathForCell:cell1];
+        CircleListMo * cir = self.arr_data1[indexPath.row];
+        cir.isOpen = !cir.isOpen;
+        [weakSelf.tab_bottom reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationNone];
+    };
     return cell;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -121,10 +126,14 @@
     head.arr_receive = self.arr_data;
     return head;
 }
-//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    CircleListMo * cir = self.arr_data1[indexPath.row];
-//    return 153+(kScreenWidth-40)/3+[YSTools cauculateHeightOfText:cir.content width:(kScreenWidth-20) font:14];
-//}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CircleListMo * cir = self.arr_data1[indexPath.row];
+    if (cir.isOpen == false) {
+        return cir.rowHeight;
+    }else{
+        return cir.SJHeight;
+    }
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return self.arr_data.count==0?0.001f:((kScreenWidth-20)/5+35);
 }

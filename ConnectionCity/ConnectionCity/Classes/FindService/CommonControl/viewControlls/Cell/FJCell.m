@@ -12,7 +12,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 -(void)setMo:(NearByMo *)mo{
     _mo = mo;
@@ -20,6 +19,6 @@
     self.lab_Name.text = mo.realName;
     NSString * str = [mo.gender isEqualToString:@"1"]?@"men":@"women";
     self.image_sex.image = [UIImage imageNamed:str];
-    self.lab_JL.text = KString(@"%.2fkm", [mo.distance floatValue]);
+    self.lab_JL.text = KString(@"%.2fkm", [mo.distance floatValue]/1000);
 }
 @end

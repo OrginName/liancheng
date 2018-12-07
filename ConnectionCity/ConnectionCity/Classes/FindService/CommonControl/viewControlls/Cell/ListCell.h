@@ -12,6 +12,7 @@
 @class ListCell;
 typedef void (^BtnClickBlock)(ListCell * cell);
 typedef void (^btnHeadClick)(ListCell * cell);
+typedef void (^labClickBlock)(ListCell * cell);
 @interface ListCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lab_time;
 @property (weak, nonatomic) IBOutlet UIView *view_ageSex;
@@ -29,4 +30,5 @@ typedef void (^btnHeadClick)(ListCell * cell);
 @property (nonatomic,copy)BtnClickBlock block;
 @property (nonatomic,copy)btnHeadClick headBlcok;
 @property (nonatomic,strong)CircleListMo * mo;
+@property (nonatomic,copy)labClickBlock labBlock;
 @end

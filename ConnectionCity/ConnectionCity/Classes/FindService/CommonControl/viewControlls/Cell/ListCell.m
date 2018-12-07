@@ -13,14 +13,25 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(isOpen)];
+    [self.lab_des addGestureRecognizer:tap];
+}
+-(void)isOpen{
+    if (self.labBlock) {
+        self.labBlock(self);
+    }
 }
 -(void)setMom:(Moment *)mom{
     _mom = mom;
     [self.img_head sd_setImageWithURL:[NSURL URLWithString:KString(@"%@?imageView2/1/w/100/h/100", mom.headImage)] placeholderImage:[UIImage imageNamed:@"logo2"]];
+    if (mom.isOpen) {
+        self.lab_des.numberOfLines=0;
+    }else
+        self.lab_des.numberOfLines=2;
     self.lab_nickName.text = mom.nickName;
     self.lab_age.text = mom.age?mom.age:@"-";
     self.image_sex.image = [UIImage imageNamed:[mom.gender isEqualToString:@"1"]?@"men":@"women"];
-    self.lab_JL.text = KString(@"%.2fkm", [mom.distance floatValue]);
+    self.lab_JL.text = KString(@"%.2fkm", [mom.distance floatValue]/1000);
     self.Arr = [NSMutableArray arrayWithArray:@[self.image1,self.image2,self.iamge3]];
     self.lab_time.hidden = YES;
     NSArray * imageArr = [mom.images componentsSeparatedByString:@";"];
@@ -42,8 +53,12 @@
 -(void)setMo:(CircleListMo *)mo{
     _mo = mo;
     [self.img_head sd_setImageWithURL:[NSURL URLWithString:KString(@"%@?imageView2/1/w/100/h/100", mo.headImage)] placeholderImage:[UIImage imageNamed:@"logo2"]];
+    if (mo.isOpen) {
+        self.lab_des.numberOfLines=0;
+    }else
+        self.lab_des.numberOfLines=2;
     self.lab_nickName.text = mo.nickName;
-    self.lab_JL.text = KString(@"%.2fkm", [mo.distance floatValue]);
+    self.lab_JL.text = KString(@"%.2fkm", [mo.distance floatValue]/1000);
     self.view_ageSex.hidden = YES;
     self.lab_time.text = [YSTools compareCurrentTime:mo.createTime];;
     self.Arr = [NSMutableArray arrayWithArray:@[self.image1,self.image2,self.iamge3]];

@@ -132,6 +132,12 @@
     }
     WeakSelf
     cell.mom = self.arr_nearBy[indexPath.row];
+    cell.labBlock = ^(ListCell *cell1) {
+        NSIndexPath * index = [self.tab_Bottom indexPathForCell:cell1];
+        Moment * mom = self.arr_nearBy[index.row];
+        mom.isOpen = !mom.isOpen;
+        [weakSelf.tab_Bottom reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationNone];
+    };
     cell.block = ^(ListCell *cell) {
         ShowResumeController * show = [ShowResumeController new];
         show.Receive_Type = ENUM_TypeTrval;
@@ -165,8 +171,13 @@
         return ((kScreenWidth-30)*0.5*1.2*0.5)*2+40;
     }else if (indexPath.section==2){
         return 244;
-    } 
-    return 280;
+    }
+    Moment * mo = self.arr_nearBy[indexPath.row];
+    if (mo.isOpen == false) {
+        return mo.rowHeight;
+    }else{
+        return mo.SJHeight;
+    }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     HeadView * head = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"HeadView"];
