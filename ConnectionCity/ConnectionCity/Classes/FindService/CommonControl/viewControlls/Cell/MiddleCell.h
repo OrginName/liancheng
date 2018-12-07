@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void (^middleClick)(NSInteger tag);
 @interface MiddleCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *image1;
 @property (weak, nonatomic) IBOutlet UIButton *btn1;
@@ -18,4 +18,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image4;
 @property (weak, nonatomic) IBOutlet UIButton *btn4;
 @property (nonatomic,strong) NSMutableArray * arr;
+@property (nonatomic,strong) middleClick middBlock;
 @end

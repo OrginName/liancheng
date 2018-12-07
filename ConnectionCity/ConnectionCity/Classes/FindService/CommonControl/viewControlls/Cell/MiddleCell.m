@@ -14,6 +14,11 @@
     [super awakeFromNib];
     
 }
+- (IBAction)MiddleClick:(UIButton *)sender {
+    if (self.middBlock) {
+        self.middBlock(sender.tag);
+    }
+}
 -(void)setArr:(NSMutableArray *)arr{
     _arr = arr;
     NSArray * arr1 = @[self.image1,self.image2,self.image3,self.image4];

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -27,13 +27,16 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="huK-TJ-jTv">
                                 <rect key="frame" x="0.0" y="0.0" width="142" height="85"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Joj-yH-cvz">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Joj-yH-cvz">
                                 <rect key="frame" x="0.0" y="0.0" width="142" height="85"/>
                                 <color key="backgroundColor" white="1" alpha="0.37944135273972601" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="MiddleClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hHu-dL-C51"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.9166904092" green="0.29527169469999998" blue="0.27215579150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -59,13 +62,16 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="gUX-FA-1Ng">
                                 <rect key="frame" x="0.0" y="0.0" width="142" height="84"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gj0-hS-X3H">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gj0-hS-X3H">
                                 <rect key="frame" x="0.0" y="0.0" width="142" height="84"/>
                                 <color key="backgroundColor" white="1" alpha="0.37944135270000001" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="MiddleClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bRm-u4-GS9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.9166904092" green="0.29527169469999998" blue="0.27215579150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -90,13 +96,16 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="JkM-QF-u1r">
                                 <rect key="frame" x="0.0" y="0.0" width="142" height="85"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4S-61-Qht">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4S-61-Qht">
                                 <rect key="frame" x="0.0" y="0.0" width="142" height="85"/>
                                 <color key="backgroundColor" white="1" alpha="0.37944135270000001" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="MiddleClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HPJ-R6-5Mf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.9166904092" green="0.29527169469999998" blue="0.27215579150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -121,13 +130,16 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="O8g-B5-8go">
                                 <rect key="frame" x="0.0" y="0.0" width="142" height="85"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJi-7I-HbE">
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJi-7I-HbE">
                                 <rect key="frame" x="0.0" y="0.0" width="142" height="85"/>
                                 <color key="backgroundColor" white="1" alpha="0.37944135270000001" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="MiddleClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IfS-ks-VBh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.9166904092" green="0.29527169469999998" blue="0.27215579150000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

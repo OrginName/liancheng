@@ -20,7 +20,7 @@
 #import "ShowResumeController.h"
 #import "serviceListNewMo.h"
 #import "PersonalBasicDataController.h"
-
+#import "AgreementController.h"
 @interface RecommendController()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate,TXScrollLabelViewDelegate>
 {
     SDCycleScrollView * _cy;
@@ -115,6 +115,15 @@
             cell = [[NSBundle mainBundle] loadNibNamed:@"MiddleCell" owner:nil options:nil][0];
         }
         cell.arr = [self.receMo.activityList mutableCopy];
+        WeakSelf
+        cell.middBlock = ^(NSInteger tag) {
+            if (tag==4) {
+                AgreementController *agreementVC = [[AgreementController alloc]init];
+                agreementVC.url = KString(@"%@/#/peopleStrategy", baseUrl);
+                agreementVC.title = @"约人攻略";
+                [weakSelf.navigationController pushViewController:agreementVC animated:YES];
+            } 
+        };
         return cell;
     }
     ListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ListCell"];

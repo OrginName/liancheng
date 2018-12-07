@@ -32,6 +32,7 @@ proStr(browseTimes);
 proStr(priceUnit);
 proStr(typeName);//单位
 proStr(likeCount);//点赞数
+proStr(orderCount);//应邀订单数
 @property (nonatomic,strong) UserMo * user;
 @property (nonatomic,strong) UserMo * userVO;
 @end
