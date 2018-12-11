@@ -26,6 +26,7 @@
 #import "CircleNet.h"
 #import "NoticeMo.h"
 #import "AgreementController.h"
+#import "PersonalBasicDataController.h"
 //CustomScroDelegate
 @interface ServiceHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate,TXScrollLabelViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btn_SXOne;
@@ -291,22 +292,33 @@
     __block BOOL flag = NO;
     [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
          serviceListNewMo* list = (serviceListNewMo *)obj;
-        if (annotation.title == list.ID) {
+        if ((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&list.serviceCircleList.count!=0) {
             index = idx;
             *stop = YES;
             flag = YES;
         }
-        if (self.cusMap.Arr_Mark.count!=0&&([annotation.title isEqualToString:@"当前位置"]||annotation.title.length==0)&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
+        if((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&list.serviceCircleList.count==0){
             index = idx;
             *stop = YES;
-            flag = YES;
+            flag = NO;
         }
+//        if (self.cusMap.Arr_Mark.count!=0&&([annotation.title isEqualToString:@"当前位置"]||annotation.title.length==0)&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
+//            index = idx;
+//            *stop = YES;
+//            flag = NO;
+//        }
     }];
     if (self.cusMap.Arr_Mark.count!=0&&flag) {
         show.zIndex = index;
         [self.navigationController pushViewController:show animated:YES];
-    }else
-        return [YTAlertUtil showTempInfo:@"当前位置"];
+    }else{
+        PersonalBasicDataController * person = [PersonalBasicDataController new];
+        UserMo * user = [UserMo new];
+        serviceListNewMo * list = self.cusMap.Arr_Mark[index];
+        user.ID = list.ID;
+        person.connectionMo = user;
+        [self.navigationController pushViewController:person animated:YES];
+    }
 }
 //加载服务列表数据
 -(void)loadServiceList:(NSDictionary *)dic{

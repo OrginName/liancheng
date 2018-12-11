@@ -62,18 +62,15 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="娃哈哈" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RP5-V2-xob">
-                                            <rect key="frame" x="5" y="129" width="364" height="21"/>
+                                            <rect key="frame" x="25" y="129" width="324" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="oij-Mj-cxN"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我很丑，可是我很温柔..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDz-TA-Qdl">
-                                            <rect key="frame" x="126.5" y="155" width="122.5" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="CwN-Ck-mLs"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我很丑，可是我很温柔..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDz-TA-Qdl">
+                                            <rect key="frame" x="20" y="155" width="334" height="13.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -94,7 +91,8 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="U4u-2n-cfY" firstAttribute="centerX" secondItem="PV7-km-ZiO" secondAttribute="centerX" id="1vt-MQ-hFI"/>
-                                        <constraint firstItem="RP5-V2-xob" firstAttribute="leading" secondItem="PV7-km-ZiO" secondAttribute="leading" constant="5" id="2WG-JZ-lg0"/>
+                                        <constraint firstItem="RP5-V2-xob" firstAttribute="leading" secondItem="PV7-km-ZiO" secondAttribute="leading" constant="25" id="2WG-JZ-lg0"/>
+                                        <constraint firstAttribute="trailing" secondItem="jDz-TA-Qdl" secondAttribute="trailing" constant="20" id="5ul-Bd-Cxp"/>
                                         <constraint firstItem="AqQ-PS-Qxf" firstAttribute="top" secondItem="U4u-2n-cfY" secondAttribute="top" id="5vS-Dg-bOO"/>
                                         <constraint firstAttribute="trailing" secondItem="Wq1-ud-zn5" secondAttribute="trailing" id="8Og-e7-kvQ"/>
                                         <constraint firstAttribute="bottom" secondItem="Wq1-ud-zn5" secondAttribute="bottom" id="9gW-da-IxF"/>
@@ -104,11 +102,12 @@
                                         <constraint firstItem="As4-Hb-Dj0" firstAttribute="leading" secondItem="U4u-2n-cfY" secondAttribute="leading" id="I8z-Sv-Deh"/>
                                         <constraint firstItem="jDz-TA-Qdl" firstAttribute="centerX" secondItem="PV7-km-ZiO" secondAttribute="centerX" id="KPM-8V-Zkf"/>
                                         <constraint firstItem="U4u-2n-cfY" firstAttribute="top" secondItem="PV7-km-ZiO" secondAttribute="top" constant="70" id="KkE-eh-OUY"/>
-                                        <constraint firstAttribute="trailing" secondItem="RP5-V2-xob" secondAttribute="trailing" constant="5" id="aVg-Pi-WQu"/>
+                                        <constraint firstAttribute="trailing" secondItem="RP5-V2-xob" secondAttribute="trailing" constant="25" id="aVg-Pi-WQu"/>
                                         <constraint firstItem="As4-Hb-Dj0" firstAttribute="bottom" secondItem="U4u-2n-cfY" secondAttribute="bottom" id="i9D-Pw-QzD"/>
                                         <constraint firstItem="RP5-V2-xob" firstAttribute="top" secondItem="U4u-2n-cfY" secondAttribute="bottom" constant="5" id="mwL-ae-X3m"/>
                                         <constraint firstItem="As4-Hb-Dj0" firstAttribute="top" secondItem="U4u-2n-cfY" secondAttribute="top" id="oVe-ck-kez"/>
                                         <constraint firstItem="jDz-TA-Qdl" firstAttribute="top" secondItem="RP5-V2-xob" secondAttribute="bottom" constant="5" id="sbR-l3-hFd"/>
+                                        <constraint firstItem="jDz-TA-Qdl" firstAttribute="leading" secondItem="PV7-km-ZiO" secondAttribute="leading" constant="20" id="uJq-yO-Qsm"/>
                                         <constraint firstItem="Wq1-ud-zn5" firstAttribute="top" secondItem="PV7-km-ZiO" secondAttribute="top" id="uYZ-aR-SmU"/>
                                         <constraint firstItem="Wq1-ud-zn5" firstAttribute="leading" secondItem="PV7-km-ZiO" secondAttribute="leading" id="y5K-rv-jsr"/>
                                     </constraints>

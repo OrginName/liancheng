@@ -97,7 +97,7 @@
 - (IBAction)YY:(UIButton *)sender {
     WeakSelf
     [ServiceHomeNet requstServiceListJN:@{@"id":self.mom!=nil?self.mom.userId:self.mo.userId} withSuc:^(UserMo *user) {
-        if (!user) {
+        if (!user||(user&&user.serviceList.count==0)) {
             [YTAlertUtil showTempInfo:@"暂无服务"];
         }else{
             if (weakSelf.block) {

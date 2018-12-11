@@ -139,10 +139,11 @@
         [weakSelf.tab_Bottom reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationNone];
     };
     cell.block = ^(ListCell *cell) {
+        NSIndexPath * index = [self.tab_Bottom indexPathForCell:cell];
         ShowResumeController * show = [ShowResumeController new];
         show.Receive_Type = ENUM_TypeTrval;
+        show.zIndex = index.row;
         show.flag = @"1";
-//        show.flagNext = @"NONext";
         NSMutableArray * arr = [NSMutableArray array];
         for (Moment * mo in weakSelf.arr_nearBy) {
             serviceListNewMo * mo1 = [serviceListNewMo new];
@@ -220,7 +221,7 @@
     cycleScrollView.tag = 100000;
     cycleScrollView.autoScroll = YES;
 //    cycleScrollView.dotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
-    cycleScrollView.placeholderImage = [UIImage imageNamed:@"no-pic"];
+    cycleScrollView.placeholderImage = [UIImage imageNamed:@"2"];
     [view_Bottom addSubview:cycleScrollView];
     //--- 模拟加载延迟
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

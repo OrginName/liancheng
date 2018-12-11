@@ -18,4 +18,5 @@ proStr(mobile);
 proStr(nickName);
 proStr(realName);
 proStr(resumeId);
+proArr(serviceCircleList);
 @end

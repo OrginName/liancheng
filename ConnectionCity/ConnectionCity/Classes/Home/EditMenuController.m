@@ -10,6 +10,7 @@
 #import "ChannelView.h"
 #import "HomeNet.h"
 #import "MenuMo.h"
+#import "privateUserInfoModel.h"
 @interface EditMenuController ()
 @property (nonatomic, strong) ChannelView *channelView;
 @property (nonatomic,strong) NSMutableArray * MyArr;
@@ -55,7 +56,7 @@
     //每行按钮个数
     self.channelView.btnNumber = 4;
     //允许第一个按钮参与编辑
-//    self.channelView.IS_compileFirstBtn = NO;
+//    self.channelView.IS_compileFirstBtn = YES;
     //设置按钮字体Font
     self.channelView.btnTextFont = 13.0f;
     //获取数据Block

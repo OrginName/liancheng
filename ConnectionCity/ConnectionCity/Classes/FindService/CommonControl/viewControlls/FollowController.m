@@ -84,13 +84,15 @@
     cell.mo = self.arr_data1[indexPath.row];
     WeakSelf
     cell.block = ^(ListCell *cell) {
+        NSIndexPath * index = [self.tab_bottom indexPathForCell:cell];
         ShowResumeController * show = [ShowResumeController new];
         show.Receive_Type = ENUM_TypeTrval;
+        show.zIndex = index.row;
         show.flag = @"1";
         NSMutableArray * arr = [NSMutableArray array];
-        for (GZMo * mo in weakSelf.arr_data) {
+        for (CircleListMo * mo in weakSelf.arr_data1) {
             serviceListNewMo * mo1 = [serviceListNewMo new];
-            mo1.ID = mo.ID;
+            mo1.ID = mo.userId;
             [arr addObject:mo1];
         }
         show.data_Count = arr;

@@ -24,6 +24,7 @@
 #import "TXScrollLabelView.h"
 #import "NoticeMo.h"
 #import "AgreementController.h"
+#import "PersonalBasicDataController.h"
 //CustomScroDelegate
 @interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate,TXScrollLabelViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btn_SXOne;
@@ -304,23 +305,31 @@
     __block BOOL flag = NO;
     [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UserMo * list = (UserMo *)obj;
-        if (annotation.title == list.ID) {
+        if ((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&![YSTools dx_isNullOrNilWithObject:list.resumeId]) {
             index = idx;
             *stop = YES;
             flag = YES;
         }
-        if (self.cusMap.Arr_Mark.count!=0&&([annotation.title isEqualToString:@"当前位置"]||annotation.title.length==0)&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
+        if (annotation.title == list.ID&&[YSTools dx_isNullOrNilWithObject:list.resumeId]) {
             index = idx;
             *stop = YES;
-            flag = YES;
+            flag = NO;
         }
+//        if (self.cusMap.Arr_Mark.count!=0&&([annotation.title isEqualToString:@"当前位置"]||annotation.title.length==0)&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
+//            index = idx;
+//            *stop = YES;
+//            flag = YES;
+//        }
     }];
     if (flag&&self.cusMap.Arr_Mark.count!=0) {
         show.zIndex = index;
         [self.navigationController pushViewController:show animated:YES];
-    }else
-        return [YTAlertUtil showTempInfo:@"当前位置"];
-    
+    }else{
+        PersonalBasicDataController * person = [PersonalBasicDataController new];
+        UserMo * user = self.cusMap.Arr_Mark[index];
+        person.connectionMo = user;
+        [self.navigationController pushViewController:person animated:YES];
+    }
 }
 //回到当前位置的按钮点击
 -(void)currentLocationClick:(CLLocationCoordinate2D)location{

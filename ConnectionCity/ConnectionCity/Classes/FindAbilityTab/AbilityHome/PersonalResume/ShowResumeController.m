@@ -77,7 +77,7 @@
     [AbilityNet requstResumeDetail:@{@"id":mo.resumeId} withBlock:^(AbilttyMo *user) {
         weakSelf.abilityMoNew = user;
         [weakSelf.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:weakSelf.zIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
-        NSIndexPath * index = [NSIndexPath indexPathForRow:self.zIndex inSection:0];
+        NSIndexPath * index = [NSIndexPath indexPathForRow:weakSelf.zIndex inSection:0];
         [weakSelf.collectionView reloadItemsAtIndexPaths:@[index]];
     }];
 }
@@ -90,6 +90,7 @@
         [weakSelf.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:weakSelf.zIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
         NSIndexPath * index = [NSIndexPath indexPathForRow:self.zIndex inSection:0];
         [weakSelf.collectionView reloadItemsAtIndexPaths:@[index]];
+//        [weakSelf.collectionView reloadData];
     }];
 }
 //加载陪游详情

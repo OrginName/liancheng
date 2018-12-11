@@ -49,7 +49,9 @@
 #pragma mark -
 #pragma mark 打电话
 +(void)DaDianHua:(NSString *)phone {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"ls://%@",phone]]];
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",phone];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@",phone]]];
 }
 #pragma mark -
 #pragma mark 验证电话号码格式的对错

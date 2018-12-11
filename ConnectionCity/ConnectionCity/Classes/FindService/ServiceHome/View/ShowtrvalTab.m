@@ -43,16 +43,18 @@
 -(void)setMo:(UserMo *)Mo{
     _Mo  = Mo;
     [self.lunArr removeAllObjects];
-    ServiceListMo * list = Mo.serviceList[self.JNIndex];
-    for (NSString * url in [list.images componentsSeparatedByString:@";"]) {
-        if (url.length!=0) {
-            [self.lunArr addObject:[NSString stringWithFormat:@"%@%@",url,BIGTU]];
+    if (Mo.serviceList.count!=0) {
+        ServiceListMo * list = Mo.serviceList[self.JNIndex];
+        for (NSString * url in [list.images componentsSeparatedByString:@";"]) {
+            if (url.length!=0) {
+                [self.lunArr addObject:[NSString stringWithFormat:@"%@%@",url,BIGTU]];
+            }
         }
-    }
-    if ([list.likeCount intValue]>0) {
-        self.btn_Like.selected = YES;
-    }
-    [self.btn_Like setTitle:[list.likeCount description] forState:UIControlStateNormal];
+        if ([list.likeCount intValue]>0) {
+            self.btn_Like.selected = YES;
+        }
+        [self.btn_Like setTitle:[list.likeCount description] forState:UIControlStateNormal];
+    } 
     _flag = 0;
     [self.cycleScrollView reload];
 }
@@ -82,14 +84,20 @@
         return 1;
     }else if(section==4){
         if (self.Mo!=nil) {
-            return [self.Mo.serviceList[_JNIndex] commentList].count;
+            if (self.Mo.serviceList.count!=0) {
+               return [self.Mo.serviceList[_JNIndex] commentList].count;
+            }else
+                return 0;
         }else{
             return self.MoTrval.comments.count;
         }
     }else{
         if (self.Mo!=nil) {
-            ServiceListMo * list = self.Mo.serviceList[_JNIndex];
-            return list.property.length!=0?[[YSTools stringToJSON:list.property] count]:0;
+            if (self.Mo.serviceList.count!=0) {
+                ServiceListMo * list = self.Mo.serviceList[_JNIndex];
+                return list.property.length!=0?[[YSTools stringToJSON:list.property] count]:0;
+            }else
+                return 0;
         }else{
             return 0;
         }
