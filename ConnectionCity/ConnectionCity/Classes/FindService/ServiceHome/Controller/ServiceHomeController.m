@@ -284,41 +284,67 @@
     [self loadServiceList:@{@"lat":KString(@"%f", location.latitude),@"lng":KString(@"%f", location.longitude),@"distance":KDistance}];
 }
 -(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
-    ShowResumeController * show = [ShowResumeController new];
-    show.Receive_Type = ENUM_TypeTrval;
-    show.flag = @"1";
-    show.data_Count = self.cusMap.Arr_Mark;
-    __block NSUInteger index = 0;
-    __block BOOL flag = NO;
-    [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-         serviceListNewMo* list = (serviceListNewMo *)obj;
-        if ((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&[list.hasService isEqualToString:@"1"]) {
-            index = idx;
-            *stop = YES;
-            flag = YES;
+    WeakSelf
+    NSMutableArray * rArr = [NSMutableArray array];
+    NSMutableArray * uArr = [NSMutableArray array];
+//    __block NSUInteger index = 0;
+//    __block BOOL flag = NO;
+    [self.cusMap.Arr_Mark enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        serviceListNewMo* list = (serviceListNewMo *)obj;
+        if ([list.hasService isEqualToString:@"1"]) {
+            [rArr addObject:list];
+        }else{
+            [uArr addObject:list];
         }
-        if((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&[list.hasService isEqualToString:@"0"]){
-            index = idx;
+    }];
+    [rArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        serviceListNewMo* list = (serviceListNewMo *)obj;
+        if ((annotation.title == list.ID||([annotation.title isEqualToString:@"当前位置"]&&[[[YSAccountTool userInfo]modelId]isEqualToString:list.ID]))&&[list.hasService isEqualToString:@"1"]) {
+            ShowResumeController * show = [ShowResumeController new];
+            show.Receive_Type = ENUM_TypeTrval;
+            show.flag = @"1";
+            show.data_Count = rArr;
+            show.zIndex = idx;
+            [weakSelf.navigationController pushViewController:show animated:YES];
             *stop = YES;
-            flag = NO;
+         }
+    }];
+    [uArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        serviceListNewMo* list = (serviceListNewMo *)obj;
+        if ((annotation.title == list.ID||([annotation.title isEqualToString:@"当前位置"]&&[[[YSAccountTool userInfo]modelId]isEqualToString:list.ID]))&&[list.hasService isEqualToString:@"0"]) {
+            PersonalBasicDataController * person = [PersonalBasicDataController new];
+            UserMo * user = [UserMo new];
+            serviceListNewMo * list = (serviceListNewMo *)obj;
+            user.ID = list.ID;
+            person.connectionMo = user;
+            [weakSelf.navigationController pushViewController:person animated:YES];
+            *stop = YES;
         }
-//        if (self.cusMap.Arr_Mark.count!=0&&([annotation.title isEqualToString:@"当前位置"]||annotation.title.length==0)&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
+    }];
+//    [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//         serviceListNewMo* list = (serviceListNewMo *)obj;
+//        if ((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&[list.hasService isEqualToString:@"1"]) {
+//            index = idx;
+//            *stop = YES;
+//            flag = YES;
+//        }
+//        if((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&[list.hasService isEqualToString:@"0"]){
 //            index = idx;
 //            *stop = YES;
 //            flag = NO;
 //        }
-    }];
-    if (self.cusMap.Arr_Mark.count!=0&&flag) {
-        show.zIndex = index;
-        [self.navigationController pushViewController:show animated:YES];
-    }else{
-        PersonalBasicDataController * person = [PersonalBasicDataController new];
-        UserMo * user = [UserMo new];
-        serviceListNewMo * list = self.cusMap.Arr_Mark[index];
-        user.ID = list.ID;
-        person.connectionMo = user;
-        [self.navigationController pushViewController:person animated:YES];
-    }
+//    }];
+//    if (self.cusMap.Arr_Mark.count!=0&&flag) {
+//        show.zIndex = index;
+//        [self.navigationController pushViewController:show animated:YES];
+//    }else{
+//        PersonalBasicDataController * person = [PersonalBasicDataController new];
+//        UserMo * user = [UserMo new];
+//        serviceListNewMo * list = self.cusMap.Arr_Mark[index];
+//        user.ID = list.ID;
+//        person.connectionMo = user;
+//        [self.navigationController pushViewController:person animated:YES];
+//    }
 }
 //加载服务列表数据
 -(void)loadServiceList:(NSDictionary *)dic{

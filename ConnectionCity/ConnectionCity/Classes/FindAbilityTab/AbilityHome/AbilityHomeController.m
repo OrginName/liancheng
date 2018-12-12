@@ -298,36 +298,74 @@
     }];
 }
 -(void)currentAnimatinonViewClick:(CustomAnnotationView *)view annotation:(ZWCustomPointAnnotation *)annotation {
-    ShowResumeController * show = [ShowResumeController new];
-    show.Receive_Type = ENUM_TypeResume;
-    show.flag = @"2";
-    show.data_Count = self.cusMap.Arr_Mark;
-    __block NSUInteger index = 0;
-    __block BOOL flag = NO;
-    [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        serviceListNewMo * list = (serviceListNewMo *)obj;
-        if ((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&[list.hasResume isEqualToString:@"1"]) {
-            index = idx;
-            *stop = YES;
-            flag = YES;
-        }
-        if ((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&[list.hasResume isEqualToString:@"0"]) {
-            index = idx;
-            *stop = YES;
-            flag = NO;
+    
+    WeakSelf
+    NSMutableArray * rArr = [NSMutableArray array];
+    NSMutableArray * uArr = [NSMutableArray array];
+    [self.cusMap.Arr_Mark enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        serviceListNewMo* list = (serviceListNewMo *)obj;
+        if ([list.hasResume isEqualToString:@"1"]) {
+            [rArr addObject:list];
+        }else{
+            [uArr addObject:list];
         }
     }];
-    if (flag&&self.cusMap.Arr_Mark.count!=0) {
-        show.zIndex = index;
-        [self.navigationController pushViewController:show animated:YES];
-    }else{
-        PersonalBasicDataController * person = [PersonalBasicDataController new];
-        UserMo * user = [UserMo new];
-        serviceListNewMo * list = self.cusMap.Arr_Mark[index];
-        user.ID = list.ID;
-        person.connectionMo = user;
-        [self.navigationController pushViewController:person animated:YES];
-    }
+    [rArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        serviceListNewMo* list = (serviceListNewMo *)obj;
+        if ((annotation.title == list.ID||(annotation.title.length==0&&[[[YSAccountTool userInfo]modelId]isEqualToString:list.ID]))&&[list.hasResume isEqualToString:@"1"]) {
+            ShowResumeController * show = [ShowResumeController new];
+            show.Receive_Type = ENUM_TypeResume;
+            show.flag = @"2";
+            show.data_Count = rArr;
+            show.zIndex = idx;
+            [weakSelf.navigationController pushViewController:show animated:YES];
+            *stop = YES;
+        }
+    }];
+    [uArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        serviceListNewMo* list = (serviceListNewMo *)obj;
+        if ((annotation.title == list.ID||(annotation.title.length==0&&[[[YSAccountTool userInfo]modelId]isEqualToString:list.ID]))&&[list.hasResume isEqualToString:@"0"]) {
+            PersonalBasicDataController * person = [PersonalBasicDataController new];
+            UserMo * user = [UserMo new];
+            serviceListNewMo * list = (serviceListNewMo *)obj;
+            user.ID = list.ID;
+            person.connectionMo = user;
+            [weakSelf.navigationController pushViewController:person animated:YES];
+            *stop = YES;
+        }
+    }];
+    
+    
+//    ShowResumeController * show = [ShowResumeController new];
+//    show.Receive_Type = ENUM_TypeResume;
+//    show.flag = @"2";
+//    show.data_Count = self.cusMap.Arr_Mark;
+//    __block NSUInteger index = 0;
+//    __block BOOL flag = NO;
+//    [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        serviceListNewMo * list = (serviceListNewMo *)obj;
+//        if ((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&[list.hasResume isEqualToString:@"1"]) {
+//            index = idx;
+//            *stop = YES;
+//            flag = YES;
+//        }
+//        if ((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&[list.hasResume isEqualToString:@"0"]) {
+//            index = idx;
+//            *stop = YES;
+//            flag = NO;
+//        }
+//    }];
+//    if (flag&&self.cusMap.Arr_Mark.count!=0) {
+//        show.zIndex = index;
+//        [self.navigationController pushViewController:show animated:YES];
+//    }else{
+//        PersonalBasicDataController * person = [PersonalBasicDataController new];
+//        UserMo * user = [UserMo new];
+//        serviceListNewMo * list = self.cusMap.Arr_Mark[index];
+//        user.ID = list.ID;
+//        person.connectionMo = user;
+//        [self.navigationController pushViewController:person animated:YES];
+//    }
 }
 //回到当前位置的按钮点击
 -(void)currentLocationClick:(CLLocationCoordinate2D)location{
