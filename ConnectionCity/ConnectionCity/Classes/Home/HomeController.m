@@ -160,7 +160,7 @@
     };
     [self.view_Bottom addSubview:scrollPageView];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MyselfClick) image:@"people" title:@"" EdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
-    NSLog(@"%@=+==%@",[[YSAccountTool userInfo] modelId],APPID);
+//    NSLog(@"%@=+==%@",[[YSAccountTool userInfo] modelId],APPID);
      self.navigationItem.leftBarButtonItem.badgeValue=self.navigationItem.rightBarButtonItem.badgeValue = @"";
     self.navigationItem.leftBarButtonItem.badgeOriginX = 19;
     self.navigationItem.rightBarButtonItem.badgeOriginX = 29; self.navigationItem.leftBarButtonItem.badgeOriginY = 5;

@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _page=1;
+    self.page=1;
     _cityCode = @"";
     [self initData];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -35,7 +35,7 @@
 -(void)initData{
     self.data_Arr = [NSMutableArray array];
     self.tab_Bottom.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        _page=1;
+        self.page=1;
         [self requstLoad:_cityCode];
     }];
     self.tab_Bottom.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
@@ -50,6 +50,7 @@
     return _noticeView;
 }
 -(void)requstLoad:(NSString *)cityCode{
+    WeakSelf
     _cityCode = cityCode;
     NSString * code = [KUserDefults objectForKey:YCode]?[KUserDefults objectForKey:YCode]:@"";
     NSDictionary * dic = @{
@@ -58,14 +59,14 @@
                            @"pageSize": @15,
                            };
     [HomeNet loadYLList:dic withSuc:^(NSMutableArray *successArrValue) {
-        if (_page==1) {
-            [self.data_Arr removeAllObjects];
+        if (weakSelf.page==1) {
+            [weakSelf.data_Arr removeAllObjects];
         }
-        _page++;
-        [self.tab_Bottom.mj_header endRefreshing];
-        [self.tab_Bottom.mj_footer endRefreshing];
-        [self.data_Arr addObjectsFromArray:successArrValue];
-        [self.tab_Bottom reloadData];
+        weakSelf.page++;
+        [weakSelf.tab_Bottom.mj_header endRefreshing];
+        [weakSelf.tab_Bottom.mj_footer endRefreshing];
+        [weakSelf.data_Arr addObjectsFromArray:successArrValue];
+        [weakSelf.tab_Bottom reloadData];
     }];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
