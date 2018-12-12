@@ -207,10 +207,10 @@
     }else if (self.Receive_Type == ENUM_TypeTrval){
         self.trvaltab = [[ShowtrvalTab alloc] initWithFrame:CGRectMake(0, [self.flagNext isEqualToString:@"NONext"]?-25:0, kScreenWidth-20,self.collectionView.height) withControl:self];
         if ([self.flag isEqualToString:@"3"]) {
-            self.title = self.trvalNew.user.nickName?self.trvalNew.user.nickName:KString(@"用户%@", [self.trvalNew.userId description]);
+            self.title = self.trvalNew.user.nickName?self.trvalNew.user.nickName:KString(@"用户%@", [self.trvalNew.userId description]?[self.trvalNew.userId description]:@"");
             self.trvaltab.MoTrval = self.trvalNew;
         }else if([self.flag isEqualToString:@"1"]){
-            self.title = self.User.nickName?self.User.nickName:KString(@"用户%@", [self.User.ID description]);
+            self.title = self.User.nickName?self.User.nickName:KString(@"用户%@", [self.User.ID description]?[self.User.ID description]:@"");
             self.trvaltab.Mo = self.User;
         }
         [cell.contentView addSubview:self.trvaltab];

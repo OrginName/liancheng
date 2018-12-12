@@ -312,7 +312,7 @@
     }];
     [rArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         serviceListNewMo* list = (serviceListNewMo *)obj;
-        if ((annotation.title == list.ID||(annotation.title.length==0&&[[[YSAccountTool userInfo]modelId]isEqualToString:list.ID]))&&[list.hasResume isEqualToString:@"1"]) {
+        if ((annotation.title == list.ID||(([annotation.title isEqualToString:@"当前位置"]||annotation.title.length==0)&&[[[YSAccountTool userInfo]modelId]isEqualToString:list.ID]))&&[list.hasResume isEqualToString:@"1"]) {
             ShowResumeController * show = [ShowResumeController new];
             show.Receive_Type = ENUM_TypeResume;
             show.flag = @"2";
@@ -324,7 +324,7 @@
     }];
     [uArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         serviceListNewMo* list = (serviceListNewMo *)obj;
-        if ((annotation.title == list.ID||(annotation.title.length==0&&[[[YSAccountTool userInfo]modelId]isEqualToString:list.ID]))&&[list.hasResume isEqualToString:@"0"]) {
+        if ((annotation.title == list.ID||(([annotation.title isEqualToString:@"当前位置"]||annotation.title.length==0)&&[[[YSAccountTool userInfo]modelId]isEqualToString:list.ID]))&&[list.hasResume isEqualToString:@"0"]) {
             PersonalBasicDataController * person = [PersonalBasicDataController new];
             UserMo * user = [UserMo new];
             serviceListNewMo * list = (serviceListNewMo *)obj;
