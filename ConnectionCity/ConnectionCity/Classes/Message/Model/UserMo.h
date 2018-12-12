@@ -48,4 +48,6 @@ ProMutArr(JNArr);//技能包数组
 proArr(serviceCircleList);//当前好友的服务圈
 ProMutArr(serviceList);//当前人的服务列表
 ProMutArr(resumeList);//当前人的简历列表
+proStr(hasResume);//是否有简历
+proStr(hasService);//是否有服务
 @end

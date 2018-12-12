@@ -19,4 +19,6 @@ proStr(nickName);
 proStr(realName);
 proStr(resumeId);
 proArr(serviceCircleList);
+proStr(hasService);
+proStr(hasResume);
 @end

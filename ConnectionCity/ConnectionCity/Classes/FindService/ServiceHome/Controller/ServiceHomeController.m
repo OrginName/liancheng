@@ -292,12 +292,12 @@
     __block BOOL flag = NO;
     [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
          serviceListNewMo* list = (serviceListNewMo *)obj;
-        if ((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&list.serviceCircleList.count!=0) {
+        if ((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&[list.hasService isEqualToString:@"1"]) {
             index = idx;
             *stop = YES;
             flag = YES;
         }
-        if((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&list.serviceCircleList.count==0){
+        if((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&[list.hasService isEqualToString:@"0"]){
             index = idx;
             *stop = YES;
             flag = NO;

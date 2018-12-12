@@ -118,8 +118,10 @@
     style.showCover = NO;
     // 颜色渐变
     style.gradualChangeTitleColor = YES;
-    // 显示附加的按钮
-    style.showExtraButton = YES;
+    if (![[[YSAccountTool userInfo] modelId] isEqualToString:APPID]){
+        // 显示附加的按钮
+        style.showExtraButton = YES;
+    }
     style.titleFont = [UIFont systemFontOfSize:18];
     style.selectedTitleColor = YSColor(249, 145, 0);
     // 设置附加按钮的背景图片
@@ -375,7 +377,10 @@
             trval2.isInvitOrTrval = NO;
             trval2.title = mo.name;
             self.trval2 = trval2;
-            [arr addObject:trval2];
+            if (![[[YSAccountTool userInfo] modelId] isEqualToString:APPID]){
+                // 添加是否显示旅行邀约功能
+                [arr addObject:trval2];
+            }
         }else if ([mo.ID isEqualToString:@"9"]){
             RecommendController * recommed = [RecommendController new];
             recommed.title = mo.name;

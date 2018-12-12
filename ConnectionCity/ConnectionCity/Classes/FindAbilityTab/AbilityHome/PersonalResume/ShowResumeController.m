@@ -90,8 +90,7 @@
         [weakSelf.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:weakSelf.zIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
         NSIndexPath * index = [NSIndexPath indexPathForRow:self.zIndex inSection:0];
         [weakSelf.collectionView reloadItemsAtIndexPaths:@[index]];
-//        [weakSelf.collectionView reloadData];
-    }];
+     }];
 }
 //加载陪游详情
 -(void)loadDataPYDetail{

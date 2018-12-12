@@ -216,18 +216,18 @@
     SDCycleScrollView * cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(10, 10, view_Bottom.width-20, 150) imageURLStringsGroup:nil]; // 模拟网络延时情景
     cycleScrollView.layer.cornerRadius = 10;
     cycleScrollView.layer.masksToBounds = YES;
-    cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
+    cycleScrollView.showPageControl = NO;
+//    cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
     cycleScrollView.delegate = self;
     cycleScrollView.tag = 100000;
     cycleScrollView.autoScroll = YES;
-//    cycleScrollView.dotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
-    cycleScrollView.placeholderImage = [UIImage imageNamed:@"2"];
+    cycleScrollView.pageDotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
+//    cycleScrollView.placeholderImage = [UIImage imageNamed:@"2"];
     [view_Bottom addSubview:cycleScrollView];
     //--- 模拟加载延迟
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         cycleScrollView.imageURLStringsGroup = weakSelf.lunArr;
     });
-    
     UIView * view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 180, self.tab_Bottom.width, 10)];
     view1.backgroundColor = YSColor(242, 243, 244);
     [view_Bottom addSubview:view1];

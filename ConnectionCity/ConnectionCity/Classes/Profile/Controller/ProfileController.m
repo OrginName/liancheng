@@ -138,13 +138,7 @@
     // 根据类名跳转控制器
 //    NSString *className = [YTAccountInfo loginState] ? self.menuModels[indexPath.row].mClass : @"YTLoginViewController";
     
-    //相册
-    if (indexPath.row==5) {
-        [[TakePhoto sharedPhoto] hehe:^(UIImage *image) {
-            
-        }];
-        return;
-    }
+    
 //    //客服
 //    if (indexPath.row==6) {
 //        
@@ -167,6 +161,13 @@
     if ([vc isKindOfClass:[MemberCenterController class]]) {
         MemberCenterController * menmber = (MemberCenterController*)vc;
         menmber.dic_Receive = self.dic;//推送的字典 
+    }
+    //相册
+    if ([className isEqualToString:@"CustomerServiceController"]) {
+        [[TakePhoto sharedPhoto] hehe:^(UIImage *image) {
+            
+        }];
+        return;
     }
     if ([vc isKindOfClass:[AgreementController class]]) {
         AgreementController *agreementVC = [AgreementController new];

@@ -54,17 +54,17 @@
 		<key>icon</key>
 		<string>our-shetup</string>
 		<key>title</key>
-		<string>设置</string>
+		<string>隐私政策</string>
 		<key>class</key>
-		<string>SetController</string>
+		<string>AgreementController</string>
 	</dict>
 	<dict>
 		<key>icon</key>
 		<string>our-shetup</string>
 		<key>title</key>
-		<string>隐私政策</string>
+		<string>设置</string>
 		<key>class</key>
-		<string>AgreementController</string>
+		<string>SetController</string>
 	</dict>
 </array>
 </plist>

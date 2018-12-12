@@ -25,6 +25,7 @@
 #import "NoticeMo.h"
 #import "AgreementController.h"
 #import "PersonalBasicDataController.h"
+#import "serviceListNewMo.h"
 //CustomScroDelegate
 @interface AbilityHomeController ()<JFCityViewControllerDelegate,CustomMapDelegate,PopThreeDelegate,TXScrollLabelViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btn_SXOne;
@@ -304,29 +305,26 @@
     __block NSUInteger index = 0;
     __block BOOL flag = NO;
     [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UserMo * list = (UserMo *)obj;
-        if ((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&![YSTools dx_isNullOrNilWithObject:list.resumeId]) {
+        serviceListNewMo * list = (serviceListNewMo *)obj;
+        if ((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&[list.hasResume isEqualToString:@"1"]) {
             index = idx;
             *stop = YES;
             flag = YES;
         }
-        if (annotation.title == list.ID&&[YSTools dx_isNullOrNilWithObject:list.resumeId]) {
+        if ((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&[list.hasResume isEqualToString:@"0"]) {
             index = idx;
             *stop = YES;
             flag = NO;
         }
-//        if (self.cusMap.Arr_Mark.count!=0&&([annotation.title isEqualToString:@"当前位置"]||annotation.title.length==0)&&[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID]) {
-//            index = idx;
-//            *stop = YES;
-//            flag = YES;
-//        }
     }];
     if (flag&&self.cusMap.Arr_Mark.count!=0) {
         show.zIndex = index;
         [self.navigationController pushViewController:show animated:YES];
     }else{
         PersonalBasicDataController * person = [PersonalBasicDataController new];
-        UserMo * user = self.cusMap.Arr_Mark[index];
+        UserMo * user = [UserMo new];
+        serviceListNewMo * list = self.cusMap.Arr_Mark[index];
+        user.ID = list.ID;
         person.connectionMo = user;
         [self.navigationController pushViewController:person animated:YES];
     }
