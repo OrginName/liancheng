@@ -59,11 +59,12 @@ NSString * const YTHttpUtilResponseData = @"Data";
             } 
             success ? success(task, dic1) : nil;
         }else if([responseObject[kCode] isEqualToString:@"UNAUTHORIZED"]){
-            [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
-                YSLoginController *loginVC = [[YSLoginController alloc]init];
-                BaseNavigationController * base = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
-                [kWindow setRootViewController:base];
-            } completion:nil];
+//            [YTAlertUtil alertSingleWithTitle:@"提示" message:responseObject[kMessage] defaultTitle:@"确定" defaultHandler:^(UIAlertAction *action) {
+//                
+//            } completion:nil];
+            YSLoginController *loginVC = [[YSLoginController alloc]init];
+            BaseNavigationController * base = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
+            [kWindow setRootViewController:base];
         }else{
             [YTAlertUtil showTempInfo:responseObject[kMessage]];
         }

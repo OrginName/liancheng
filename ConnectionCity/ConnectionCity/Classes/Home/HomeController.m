@@ -64,7 +64,11 @@
     [KUserDefults removeObjectForKey:YLng];
     [self setUI1];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(upDataANme) name:@"CityNameN" object:nil];
-    [self initData];
+    if (![[[YSAccountTool userInfo] modelId] isEqualToString:APPID]){
+        
+    }else{
+       [self initData];
+    }
 }
 -(void)setUI1{
     CustomMap * map = [[CustomMap alloc] initWithFrame:CGRectZero];
@@ -149,9 +153,9 @@
             self.navigationItem.rightBarButtonItem = nil;
         }else{
             if (self.navigationItem.rightBarButtonItem == nil) {
-                if (![[[YSAccountTool userInfo] modelId] isEqualToString:APPID]) {
+//                if (![[[YSAccountTool userInfo] modelId] isEqualToString:APPID]) {
                     weakSelf.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MessageClick) image:@"photo" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
-                }
+//                }
             }
         }
         if (([KUserDefults objectForKey:YLat]!=nil&&[KUserDefults objectForKey:YLng]!=nil)||[KUserDefults objectForKey:YCode]!=nil) {
