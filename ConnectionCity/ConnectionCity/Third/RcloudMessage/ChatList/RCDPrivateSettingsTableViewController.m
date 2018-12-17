@@ -305,10 +305,14 @@ static NSString *CellIdentifier = @"RCDBaseSettingTableViewCell";
 //        FriendCircleController * friend = [FriendCircleController new];
 //        friend.user = user;
 //        [self.navigationController pushViewController:friend animated:YES];
-    }else if(indexPath.section==0&&indexPath.row==3){
-        FriendCircleController * friend = [FriendCircleController new];
-        friend.user = user;
-        [self.navigationController pushViewController:friend animated:YES];
+    }else if(indexPath.section==0&&indexPath.row==3&&![self.userId isEqualToString:[[YSAccountTool userInfo] modelId]]){
+        [PersonNet requstPersonDT:@{@"userId":user.ID} withDic:^(NSDictionary * _Nonnull successDicValue) {
+            PersonDTController * person = [PersonDTController suspendCenterPageVC:successDicValue];
+            [self.navigationController pushViewController:person animated:YES];
+        }];
+//        FriendCircleController * friend = [FriendCircleController new];
+//        friend.user = user;
+//        [self.navigationController pushViewController:friend animated:YES];
     }
     if (indexPath.section == 1) {
         RCDSearchHistoryMessageController *searchViewController = [[RCDSearchHistoryMessageController alloc] init];
