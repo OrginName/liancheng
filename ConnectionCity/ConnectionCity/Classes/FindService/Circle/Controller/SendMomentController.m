@@ -11,6 +11,7 @@
 #import "QiniuUploader.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <AVFoundation/AVFoundation.h>
+#import "AgreementController.h"
 @interface SendMomentController ()<PhotoSelectDelegate>
 {
     CGFloat itemHeigth;
@@ -19,6 +20,7 @@
     int _isVideo;//是否包含视频
     NSString * _imageURL,*_coverImgaeUrl;
 }
+@property (weak, nonatomic) IBOutlet UIButton *btn_GZ;
 @property (weak, nonatomic) IBOutlet CustomtextView *txt_Moment;
 @property (weak, nonatomic) IBOutlet UIView *view_Photo;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_photoSlect;
@@ -69,6 +71,9 @@
 -(void)complete{
     if (self.txt_Moment.text.length==0) {
         return [YTAlertUtil showTempInfo:@"对圈子内的朋友说点什么..."];
+    }
+    if (!self.btn_GZ.selected) {
+        return [YTAlertUtil showTempInfo:@"请阅读并同意软件使用规则"];
     }
     BOOL a = [self.receive_flag isEqualToString:@"EDIT"]?YES:NO;
     __block NSString * urlStr = @"";//图片路径拼接
@@ -213,6 +218,14 @@
         self.photo.maxCountTF = 8;
         _videoUrl = @"";
     }
+}
+- (IBAction)btnSelect:(UIButton *)sender {
+    sender.selected = !sender.selected;
+}
+- (IBAction)btnGZ:(UIButton *)sender {
+    AgreementController *agreementVC = [[AgreementController alloc]init];
+    agreementVC.alias = serviceAgreement;
+    [self.navigationController pushViewController:agreementVC animated:YES];
 }
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];

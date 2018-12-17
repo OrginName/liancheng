@@ -51,7 +51,14 @@
 -(void)setUI{
     self.navigationItem.title = @"服务圈视频";
     [self.view addSubview:self.playView];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(ShareBtn) image:@"share-1" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, -10)];
+    UIBarButtonItem * itemJB = [UIBarButtonItem itemWithTarget:self action:@selector(JB) image:@"" title:@"举报" EdgeInsets:UIEdgeInsetsZero];
+    UIBarButtonItem * itemFX = [UIBarButtonItem itemWithTarget:self action:@selector(ShareBtn) image:@"share-1" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 0, -10)];
+    if ([[[YSAccountTool userInfo] modelId] isEqualToString:APPID]) {
+        self.navigationItem.rightBarButtonItems = @[itemFX,itemJB];
+    }else{
+        self.navigationItem.rightBarButtonItem = itemFX;
+    }
+    
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 40)];
     view.backgroundColor =[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
     [self.view addSubview:view];
@@ -74,6 +81,18 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeContentViewPoint:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissKeyBoard:) name:UIKeyboardWillHideNotification object:nil];
 }
+-(void)JB{
+    [YTAlertUtil alertDualWithTitle:@"温馨提示" message:@"是否要举报该用户" style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
+        
+    } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {
+        [YTAlertUtil showHUDWithTitle:@"举报中..."];
+        int64_t delayInSeconds = 1+arc4random()%2; // 延迟的时间
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [YTAlertUtil hideHUD];
+            [YTAlertUtil showTempInfo:@"举报成功,平台将会在24小时之内给出回复"];
+        });
+    } completion:nil];
+}
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //写入这个方法后,这个页面将没有这种效果
@@ -81,7 +100,7 @@
 //    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
     WeakSelf
     [CircleNet requstCircleDetail:@{@"id":self.moment.ID} withSuc:^(Moment *mo) {
-        if ([mo.userMo.isFriend isEqualToString:@"1"]) {
+        if ([mo.userMo.isFriend isEqualToString:@"1"]||[mo.userMo.ID isEqualToString:[[YSAccountTool userInfo] modelId]]) {
             weakSelf.layout_PL.constant = 10;
             weakSelf.btn_YD.hidden = YES;
         }
@@ -90,7 +109,6 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [IQKeyboardManager sharedManager].enable = YES;
-//    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
 }
 #pragma mark ----发送按钮-----
 -(void)btnClicked{

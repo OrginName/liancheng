@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowResumeController">
             <connections>
+                <outlet property="btn_JB" destination="aKq-UL-an2" id="69O-ub-20x"/>
                 <outlet property="btn_sayAndChange" destination="bpQ-Xt-5Rw" id="sA7-jT-ase"/>
+                <outlet property="layout" destination="GCG-bi-MQ6" id="Wh8-Ms-jwa"/>
                 <outlet property="next_layout" destination="RK7-Wy-iy1" id="E2g-xG-bEA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="view_Nex" destination="SFq-8m-4ar" id="Ntg-eT-jXS"/>
@@ -26,7 +28,7 @@
                     <rect key="frame" x="10" y="617" width="355" height="40"/>
                     <subviews>
                         <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpQ-Xt-5Rw">
-                            <rect key="frame" x="177.5" y="0.0" width="177.5" height="40"/>
+                            <rect key="frame" x="118.5" y="0.0" width="118" height="40"/>
                             <color key="backgroundColor" red="0.94667142629623413" green="0.60174822807312012" blue="0.22287982702255249" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="关注">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -36,7 +38,11 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bn-iZ-lOc">
-                            <rect key="frame" x="0.0" y="0.0" width="177.5" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="118.5" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="xp6-bU-0TP"/>
+                            </constraints>
                             <state key="normal" title="对话">
                                 <color key="titleColor" red="0.43917000290000002" green="0.43923890589999998" blue="0.43916058540000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -44,18 +50,35 @@
                                 <action selector="callAndChangeClick:" destination="-1" eventType="touchUpInside" id="TYt-GP-Ftj"/>
                             </connections>
                         </button>
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKq-UL-an2">
+                            <rect key="frame" x="236.5" y="0.0" width="118.5" height="40"/>
+                            <color key="backgroundColor" red="0.94667142630000001" green="0.26573321656854093" blue="0.34353739221388135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="gn8-WX-AZI"/>
+                            </constraints>
+                            <state key="normal" title="举报">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="callAndChangeClick:" destination="-1" eventType="touchUpInside" id="lb5-B2-beY"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="bpQ-Xt-5Rw" firstAttribute="top" secondItem="mCo-gi-Xge" secondAttribute="top" id="2gI-lk-1kz"/>
-                        <constraint firstAttribute="bottom" secondItem="2Bn-iZ-lOc" secondAttribute="bottom" id="9Pq-mY-Y5l"/>
+                        <constraint firstItem="bpQ-Xt-5Rw" firstAttribute="leading" secondItem="2Bn-iZ-lOc" secondAttribute="trailing" id="0Za-cq-ylp"/>
+                        <constraint firstItem="2Bn-iZ-lOc" firstAttribute="leading" secondItem="mCo-gi-Xge" secondAttribute="leading" id="7DY-nt-B0O"/>
+                        <constraint firstAttribute="bottom" secondItem="aKq-UL-an2" secondAttribute="bottom" id="ED0-nh-yTD"/>
+                        <constraint firstItem="aKq-UL-an2" firstAttribute="width" secondItem="2Bn-iZ-lOc" secondAttribute="width" id="GCG-bi-MQ6"/>
                         <constraint firstAttribute="height" constant="40" id="J4T-92-aUu"/>
-                        <constraint firstAttribute="trailing" secondItem="bpQ-Xt-5Rw" secondAttribute="trailing" id="J5P-qi-NZb"/>
-                        <constraint firstItem="2Bn-iZ-lOc" firstAttribute="top" secondItem="mCo-gi-Xge" secondAttribute="top" id="QoG-ri-aDR"/>
-                        <constraint firstAttribute="bottom" secondItem="bpQ-Xt-5Rw" secondAttribute="bottom" id="Yov-cD-otW"/>
-                        <constraint firstItem="2Bn-iZ-lOc" firstAttribute="leading" secondItem="mCo-gi-Xge" secondAttribute="leading" id="luU-6Q-yWG"/>
-                        <constraint firstItem="bpQ-Xt-5Rw" firstAttribute="leading" secondItem="2Bn-iZ-lOc" secondAttribute="trailing" id="tYl-F3-HlP"/>
-                        <constraint firstItem="bpQ-Xt-5Rw" firstAttribute="width" secondItem="2Bn-iZ-lOc" secondAttribute="width" id="vzL-BM-pwa"/>
+                        <constraint firstItem="aKq-UL-an2" firstAttribute="leading" secondItem="bpQ-Xt-5Rw" secondAttribute="trailing" id="JbA-kr-T7C"/>
+                        <constraint firstAttribute="trailing" secondItem="aKq-UL-an2" secondAttribute="trailing" id="KK3-7J-0Ds"/>
+                        <constraint firstAttribute="bottom" secondItem="2Bn-iZ-lOc" secondAttribute="bottom" id="M6i-4a-glc"/>
+                        <constraint firstItem="bpQ-Xt-5Rw" firstAttribute="top" secondItem="mCo-gi-Xge" secondAttribute="top" id="UgY-5h-2cp"/>
+                        <constraint firstAttribute="bottom" secondItem="bpQ-Xt-5Rw" secondAttribute="bottom" id="cuu-he-wgo"/>
+                        <constraint firstItem="2Bn-iZ-lOc" firstAttribute="top" secondItem="mCo-gi-Xge" secondAttribute="top" id="oJg-aa-jWM"/>
+                        <constraint firstItem="aKq-UL-an2" firstAttribute="top" secondItem="mCo-gi-Xge" secondAttribute="top" id="rhy-uy-4nx"/>
+                        <constraint firstItem="bpQ-Xt-5Rw" firstAttribute="width" secondItem="2Bn-iZ-lOc" secondAttribute="width" id="upc-ae-1II"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFq-8m-4ar">

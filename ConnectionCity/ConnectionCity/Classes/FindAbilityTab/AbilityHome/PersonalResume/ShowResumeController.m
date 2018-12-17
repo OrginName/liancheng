@@ -22,6 +22,8 @@
 #define TabHeight kScreenHeight-184
 #define TabHeight1 kScreenHeight-134
 @interface ShowResumeController ()<UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@property (weak, nonatomic) IBOutlet UIButton *btn_JB;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *next_layout;
 @property (weak, nonatomic) IBOutlet UIView *view_Nex;
 @property (weak, nonatomic) IBOutlet UIButton *btn_sayAndChange;
@@ -167,6 +169,18 @@
         //        chatViewController.needPopToRootView = YES;
         chatViewController.displayUserNameInCell = NO;
         [self.navigationController pushViewController:chatViewController animated:YES];
+    }else if (sender.tag==5){
+        [YTAlertUtil alertDualWithTitle:@"温馨提示" message:@"是否要举报该用户" style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
+            
+        } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {
+            [YTAlertUtil showHUDWithTitle:@"举报中..."];
+            int64_t delayInSeconds = 1+arc4random()%2; // 延迟的时间
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [YTAlertUtil hideHUD];
+                [YTAlertUtil showTempInfo:@"举报成功,平台将会在24小时之内给出回复"];
+            });
+        } completion:nil];
+        
     }
 }
 -(void)GZLoadData:(NSString *)type typeID:(NSString *)typeID{

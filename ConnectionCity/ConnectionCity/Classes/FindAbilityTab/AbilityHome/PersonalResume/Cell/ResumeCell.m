@@ -70,6 +70,12 @@
     cell.txt_salWay.placeholder = indexPath.section==1?@"请选择薪资":indexPath.section==2?@"学历":@"请选择工作经验";
     return cell;
 } 
+- (IBAction)GZClick:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    if (self.block) {
+        self.block(sender.selected);
+    }
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 }

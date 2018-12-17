@@ -321,30 +321,6 @@
             *stop = YES;
         }
     }];
-//    [show.data_Count enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//         serviceListNewMo* list = (serviceListNewMo *)obj;
-//        if ((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&[list.hasService isEqualToString:@"1"]) {
-//            index = idx;
-//            *stop = YES;
-//            flag = YES;
-//        }
-//        if((annotation.title == list.ID||[[[YSAccountTool userInfo] modelId] isEqualToString:list.ID])&&[list.hasService isEqualToString:@"0"]){
-//            index = idx;
-//            *stop = YES;
-//            flag = NO;
-//        }
-//    }];
-//    if (self.cusMap.Arr_Mark.count!=0&&flag) {
-//        show.zIndex = index;
-//        [self.navigationController pushViewController:show animated:YES];
-//    }else{
-//        PersonalBasicDataController * person = [PersonalBasicDataController new];
-//        UserMo * user = [UserMo new];
-//        serviceListNewMo * list = self.cusMap.Arr_Mark[index];
-//        user.ID = list.ID;
-//        person.connectionMo = user;
-//        [self.navigationController pushViewController:person animated:YES];
-//    }
 }
 //加载服务列表数据
 -(void)loadServiceList:(NSDictionary *)dic{

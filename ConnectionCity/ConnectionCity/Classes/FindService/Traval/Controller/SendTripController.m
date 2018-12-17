@@ -13,6 +13,7 @@
 #import "QiniuUploader.h"
 #import "CustomScro.h"
 #import "AllDicMo.h"
+#import "AgreementController.h"
 @interface SendTripController ()<JFCityViewControllerDelegate,PhotoSelectDelegate,CustomScroDelegate>
 {
     CGFloat itemHeigth;
@@ -21,6 +22,7 @@
     NSInteger priceTag;
     NSArray * _arr;
 }
+@property (weak, nonatomic) IBOutlet UIButton *btn_GZ;
 @property (nonatomic,strong) CustomScro * customScro;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layout_select;
 @property (nonatomic,strong)NSMutableDictionary * dictionary;
@@ -65,6 +67,9 @@
     }
     if (!_tmpBtn.selected) {
         return [YTAlertUtil showTempInfo:@"请选择单位"];
+    }
+    if (!self.btn_GZ.selected) {
+        return [YTAlertUtil showTempInfo:@"请阅读并同意软件使用规则"];
     }
     NSString * urlStr = @"";
     if (self.Arr_Url.count!=0) {
@@ -207,5 +212,14 @@
         self.photo.height=self.layout_select.constant= itemHeigth;
     }
     [self.Arr_Url removeObjectAtIndex:tag];
+}
+- (IBAction)btn_GZS:(UIButton *)sender {
+    if (sender.tag==1000) {
+        sender.selected = !sender.selected;
+    }else{
+        AgreementController *agreementVC = [[AgreementController alloc]init];
+        agreementVC.alias = serviceAgreement;
+        [self.navigationController pushViewController:agreementVC animated:YES];
+    }
 }
 @end

@@ -64,11 +64,12 @@
     [KUserDefults removeObjectForKey:YLng];
     [self setUI1];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(upDataANme) name:@"CityNameN" object:nil];
-    if (![[[YSAccountTool userInfo] modelId] isEqualToString:APPID]){
-        
-    }else{
-       [self initData];
-    }
+    [self initData];
+//    if (![[[YSAccountTool userInfo] modelId] isEqualToString:APPID]){
+//
+//    }else{
+//       [self initData];
+//    }
 }
 -(void)setUI1{
     CustomMap * map = [[CustomMap alloc] initWithFrame:CGRectZero];
@@ -153,10 +154,8 @@
             self.navigationItem.rightBarButtonItem = nil;
         }else{
             if (self.navigationItem.rightBarButtonItem == nil) {
-//                if (![[[YSAccountTool userInfo] modelId] isEqualToString:APPID]) {
                     weakSelf.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MessageClick) image:@"photo" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
-//                }
-            }
+             }
         }
         if (([KUserDefults objectForKey:YLat]!=nil&&[KUserDefults objectForKey:YLng]!=nil)||[KUserDefults objectForKey:YCode]!=nil) {
             [weakSelf homeLoadData:@"" lng:@"" ID:@""];
@@ -297,7 +296,7 @@
     [KUserDefults setObject:lng forKey:YLng];
     [KUserDefults setObject:cityCode forKey:YCode]; 
     MenuMo * mo1 = self.myMenuArr[currentIndexHome];
- 
+    
     if ([mo1.ID isEqualToString:@"1"]) {
         self.trval.trval.page = 1;
         [self.trval.trval loadData:@{@"lat":@"",@"lng":@""}];
@@ -334,6 +333,11 @@
     AbilityHomeController * ability;
     NSMutableArray * arr = [NSMutableArray array];
     for (MenuMo * mo in self.myMenuArr) {
+        if (![mo.ID isEqualToString:@"9"]&&![mo.ID isEqualToString:@"10"]) {
+            if (self.navigationItem.rightBarButtonItem == nil) {
+               self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(MessageClick) image:@"photo" title:@"" EdgeInsets:UIEdgeInsetsMake(0, 0, 10, 0)];
+            } 
+        }
         if ([mo.ID isEqualToString:@"1"]) {//旅行
             trval = [TravalController new];
             trval.isInvitOrTrval = YES;

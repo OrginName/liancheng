@@ -17,6 +17,7 @@
 #import "TakePhoto.h"
 #import "AbilityNet.h"
 #import "QiniuUploader.h"
+#import "AgreementController.h"
 #define leftCellIdentifier @"leftCellIdentifier"
 @interface ResumeController ()<UITableViewDelegate,UITableViewDataSource,SDCycleScrollViewDelegate>
 {
@@ -129,6 +130,7 @@
         [self.Data_Dic setObject:self.resume.introduce forKey:@"60"];
         [self.tab_bottom reloadData];
     }
+    [self.Data_Dic setObject:@"1" forKey:@"70"];
 }
 #pragma mark --各种点击事件---
 -(void)NOPicClick{
@@ -152,7 +154,7 @@
         return [YTAlertUtil showTempInfo:@"请选择工作经验"];
     }
     if (![arr containsObject:@"70"]||([arr containsObject:@"70"]&&![self.Data_Dic[@"70"] isEqualToString:@"1"])) {
-        return [YTAlertUtil showTempInfo:@"请同意发布规则"];
+        return [YTAlertUtil showTempInfo:@"请阅读并同意发布规则"];
     }
     if (![arr containsObject:@"60"]) {
         return [YTAlertUtil showTempInfo:@"请输入自我介绍"];
@@ -327,6 +329,10 @@
             cell.txt_salWay.text = self.Data_Dic[idnex][@"name"];
         }
     }
+    WeakSelf
+    cell.block = ^(NSInteger flag) {
+        [weakSelf.Data_Dic setValue:[NSString stringWithFormat:@"%ld",(long)flag] forKey:@"70"];
+    };
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -412,8 +418,11 @@
             
         } completion:nil];
     }else if (indexPath.section==7){
-        cell.btnAgree.selected = !cell.btnAgree.selected;
-        [self.Data_Dic setValue:[NSString stringWithFormat:@"%d",cell.btnAgree.selected] forKey:@"70"];
+//        cell.btnAgree.selected = !cell.btnAgree.selected;
+//        [self.Data_Dic setValue:[NSString stringWithFormat:@"%d",cell.btnAgree.selected] forKey:@"70"];
+        AgreementController *agreementVC = [[AgreementController alloc]init];
+        agreementVC.alias = serviceAgreement;
+        [self.navigationController pushViewController:agreementVC animated:YES];
     }else if (indexPath.section==6){
         EditAllController * edit  = [EditAllController new];
         edit.receiveTxt = cell.lab_MyselfProW.text;

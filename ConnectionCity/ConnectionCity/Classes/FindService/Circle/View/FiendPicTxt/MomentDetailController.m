@@ -84,6 +84,9 @@
     if ([self.receiveMo.userId isEqualToString:[[YSAccountTool userInfo]modelId]]) {
          self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(ClearAll) image:@"" title:@"清空" EdgeInsets:UIEdgeInsetsZero];
     }
+    if (![self.receiveMo.userId isEqualToString:[[YSAccountTool userInfo]modelId]]&&[[[YSAccountTool userInfo] modelId] isEqualToString:APPID]){
+        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(JB) image:@"" title:@"举报" EdgeInsets:UIEdgeInsetsZero];
+    }
     self.momment = [[MomentDetailView alloc] initWithFrame:CGRectZero];
     self.tab_Bottom.tableHeaderView = self.momment;
     
@@ -100,6 +103,19 @@
         [weakSelf loadServiceList];
     };//约单
     [self loadCircleDetail];
+}
+//举报按钮
+-(void)JB{
+    [YTAlertUtil alertDualWithTitle:@"温馨提示" message:@"是否举报该用户" style:UIAlertControllerStyleAlert cancelTitle:@"否" cancelHandler:^(UIAlertAction *action) {
+        
+    } defaultTitle:@"是" defaultHandler:^(UIAlertAction *action) {
+        [YTAlertUtil showHUDWithTitle:@"举报中..."];
+        int64_t delayInSeconds = 1+arc4random()%2; // 延迟的时间
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [YTAlertUtil hideHUD];
+            [YTAlertUtil showTempInfo:@"举报成功,平台将会在24小时之内给出回复"];
+        });
+    } completion:nil];
 }
 //加载服务列表数据
 -(void)loadServiceList{

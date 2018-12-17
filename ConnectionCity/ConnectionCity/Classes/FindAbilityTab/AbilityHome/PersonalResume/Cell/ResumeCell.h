@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ResumeMo.h"
-typedef void (^blockClick)(void);
+typedef void (^blockClick)(NSInteger flag);
 @interface ResumeCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *image_sex;
 @property (weak, nonatomic) IBOutlet UILabel *lab_Sign;
